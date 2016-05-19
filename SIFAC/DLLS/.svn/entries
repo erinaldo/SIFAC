@@ -1,0 +1,54 @@
+8
+
+dir
+253
+svn://192.168.1.10/SCCUM/Fuente/DLLS
+svn://192.168.1.10/SCCUM
+
+
+
+2009-04-23T23:38:31.093750Z
+108
+PTINOCO
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9a928f08-a27a-a648-9679-26b042a4a105
+
+Seguridad.Formularios.dll
+file
+
+
+
+
+2010-09-29T16:00:18.000000Z
+d7a91b6bda75fcb6461eb438f3322ee6
+2009-04-23T23:38:31.093750Z
+108
+PTINOCO
+has-props
+
+Seguridad.Datos.dll
+file
+
+
+
+
+2010-09-29T16:00:18.000000Z
+a8c30eaa69de09aa1204781650177fbf
+2009-04-23T23:38:31.093750Z
+108
+PTINOCO
+has-props
+
