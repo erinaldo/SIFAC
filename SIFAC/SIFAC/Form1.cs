@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto.Catalogos.Formularios;
+using Seguridad.Formularios;
 
 namespace SIFAC
 {
@@ -20,8 +21,9 @@ namespace SIFAC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmStbMantCatalogo objCatalogos = new frmStbMantCatalogo();
-            objCatalogos.Show();
+
+            LoginForm objLogin = new LoginForm();
+            objLogin.Show();
         }
     }
 }

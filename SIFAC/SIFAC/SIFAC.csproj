@@ -32,65 +32,50 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C1.C1Excel.2">
-      <HintPath>..\DLLS\C1.C1Excel.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.C1Pdf.2">
-      <HintPath>..\DLLS\C1.C1Pdf.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1Command.2">
-      <HintPath>..\DLLS\C1.Win.C1Command.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1FlexGrid.2">
-      <HintPath>..\DLLS\C1.Win.C1FlexGrid.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1Input.2">
-      <HintPath>..\DLLS\C1.Win.C1Input.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1List.2">
-      <HintPath>..\DLLS\C1.Win.C1List.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1Ribbon.2">
-      <HintPath>..\DLLS\C1.Win.C1Ribbon.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1Schedule.2">
-      <HintPath>..\DLLS\C1.Win.C1Schedule.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1Sizer.2">
-      <HintPath>..\DLLS\C1.Win.C1Sizer.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1SuperTooltip.2">
-      <HintPath>..\DLLS\C1.Win.C1SuperTooltip.2.dll</HintPath>
-    </Reference>
-    <Reference Include="C1.Win.C1TrueDBGrid.2">
-      <HintPath>..\DLLS\C1.Win.C1TrueDBGrid.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DAL">
+    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20073.357, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Input.2, Version=2.0.20073.33104, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1List.2, Version=2.1.20073.132, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Ribbon.2, Version=2.0.20073.72, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20073.20, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20073.61130, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLS\DAL.dll</HintPath>
     </Reference>
-    <Reference Include="GUI">
+    <Reference Include="GUI, Version=1.0.2866.30389, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLS\GUI.dll</HintPath>
     </Reference>
-    <Reference Include="Proyecto.BO">
+    <Reference Include="Proyecto.BO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLS\Proyecto.BO.dll</HintPath>
     </Reference>
-    <Reference Include="Proyecto.Catalogos.Datos">
-      <HintPath>..\..\..\DLL\Proyecto.Catalogos.Datos.dll</HintPath>
+    <Reference Include="Proyecto.Catalogos.Datos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\Proyecto.Catalogos.Datos.dll</HintPath>
     </Reference>
-    <Reference Include="Proyecto.Catalogos.Formularios">
-      <HintPath>..\..\..\DLL\Proyecto.Catalogos.Formularios.dll</HintPath>
+    <Reference Include="Proyecto.Catalogos.Formularios, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\Proyecto.Catalogos.Formularios.dll</HintPath>
     </Reference>
-    <Reference Include="Proyecto.Configuracion">
-      <HintPath>..\..\..\DLL\Proyecto.Configuracion.dll</HintPath>
+    <Reference Include="Proyecto.Configuracion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\Proyecto.Configuracion.dll</HintPath>
     </Reference>
-    <Reference Include="Seguridad.Datos">
+    <Reference Include="Seguridad.Datos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLS\Seguridad.Datos.dll</HintPath>
     </Reference>
-    <Reference Include="Seguridad.Formularios">
+    <Reference Include="Seguridad.Formularios, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLS\Seguridad.Formularios.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -112,6 +97,7 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
