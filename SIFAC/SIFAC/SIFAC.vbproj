@@ -363,42 +363,6 @@
     <Compile Include="Formularios\Facturas\frmSfaFaturaEditar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccEditNotaCredito.Designer.vb">
-      <DependentUpon>frmSccEditNotaCredito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccEditNotaCredito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccMantNotaCredito.Designer.vb">
-      <DependentUpon>frmSccMantNotaCredito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccMantNotaCredito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccParamBuscarNotaCredito.designer.vb">
-      <DependentUpon>frmSccParamBuscarNotaCredito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccParamBuscarNotaCredito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccEditNotaDebito.designer.vb">
-      <DependentUpon>frmSccEditNotaDebito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccEditNotaDebito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccMantNotaDebito.Designer.vb">
-      <DependentUpon>frmSccMantNotaDebito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccMantNotaDebito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccParamBuscarNotaDebito.Designer.vb">
-      <DependentUpon>frmSccParamBuscarNotaDebito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccParamBuscarNotaDebito.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\PIM\frmPersonaSelector.Designer.vb">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
     </Compile>
@@ -1138,30 +1102,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Facturas\frmSfaFaturaEditar.resx">
       <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaCredito\frmSccEditNotaCredito.resx">
-      <DependentUpon>frmSccEditNotaCredito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaCredito\frmSccMantNotaCredito.resx">
-      <DependentUpon>frmSccMantNotaCredito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaCredito\frmSccParamBuscarNotaCredito.resx">
-      <DependentUpon>frmSccParamBuscarNotaCredito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaDebito\frmSccEditNotaDebito.resx">
-      <DependentUpon>frmSccEditNotaDebito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaDebito\frmSccMantNotaDebito.resx">
-      <DependentUpon>frmSccMantNotaDebito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaDebito\frmSccParamBuscarNotaDebito.resx">
-      <DependentUpon>frmSccParamBuscarNotaDebito.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PIM\frmPersonaSelector.resx">

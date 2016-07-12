@@ -215,65 +215,6 @@ Public Class frmSccCuentas
 
 #Region "REESTRUCTURAR CUENTA CLIENTE"
 
-    Private Sub cmdReestructurarCuenta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdReestructurarCuenta.Click
-        Dim iCantidadErrores As Integer = 0
-        If NotaCredito_Step1() Then 'Paso1
-            If Recibo_Step2() Then 'Paso2
-                If LimiteCredito_Step3() Then
-                    If Not CrearFactura_Step4() Then
-                        iCantidadErrores += 1
-                    End If
-                Else
-                    iCantidadErrores += 1
-                End If
-            Else
-                iCantidadErrores += 1
-            End If
-        Else
-            iCantidadErrores += 1
-        End If
-
-        If iCantidadErrores <> 0 Then
-            MsgBox("Proceso de Reestructuración de Cuenta CANCELADO.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-        Else
-            MsgBox("Proceso de Reestructuración de Cuenta ha sido Completado con EXITO.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-        End If
-    End Sub
-
-    Private Function NotaCredito_Step1() As Short
-        Dim objfrm As frmSccEditNotaCredito
-        Try
-            Me.Cursor = Cursors.WaitCursor
-            objfrm = New frmSccEditNotaCredito
-            objfrm.TypeGui = 0
-
-            objfrm.blnReestructurarCuenta = True
-            objfrm.IdCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
-            objfrm.IDTienda = Me.grdCuentas.Columns("objTiendaID").Value
-            objfrm.Cliente = Me.grdCuentas.Columns("Cliente").Value
-            objfrm.SaldoCuenta = Me.grdCuentas.Columns("Saldo").Value
-
-            'Verificar si existen notas de Crédito Autorizadas sin Aplicar
-            Dim NC As New SccNotaCredito
-            Dim sFiltro As String = " objEstadoID = " + ClsCatalogos.ObtenerIDSTbCatalogo("ESTADONC", "AUTORIZADA").ToString + " AND objSccCuentaID='" + Me.grdCuentas.Columns("SccCuentaID").Value.ToString + "' AND objTiendaId=" + Me.grdCuentas.Columns("objTiendaID").Value.ToString
-            Dim sSQL As String = clsConsultas.ObtenerConsultaGeneral("COUNT(*) as Contador", "dbo.SccNotaCredito", sFiltro)
-            Dim iContador As Integer = SqlHelper.ExecuteScalar(CommandType.Text, sSQL)
-
-            If iContador <> 0 Then
-                MsgBox("Hay notas de crédito que aún no han sido aplicadas, Favor apliquela y vuelva a intentarlo.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                Return False
-                Exit Function
-            End If
-
-            Return objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-            Return False
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Function
-
     Private Function Recibo_Step2()
         Dim iErrores As Integer = 0
         Dim iTasaCambioConfirmadaID As Integer = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOTASACAMBIO", "CONFIRMADO")

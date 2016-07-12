@@ -242,7 +242,7 @@ Public Class frmPrincipal
 
 #Region "Seguridad"
 
-    Private Sub cmdSeguridad_Click1(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub cmdSeguridad_Click1(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdSeguridad.Click
         Dim objfrm As frmSsgPrincipalSeguridad
         Try
             Me.Cursor = Cursors.WaitCursor
@@ -259,7 +259,7 @@ Public Class frmPrincipal
         Me.IniciarSesion()
     End Sub
 
-    Private Sub cmdCerrarSesion_Click1(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub cmdCerrarSesion_Click1(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdCerrarSesion.Click
         Try
             If Me.MdiChildren.Length > 0 Then
                 Select Case MsgBox("Todas las ventanas activas se cerrarán. ¿Desea cerrar sesión?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
@@ -652,12 +652,6 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
-#Region "Devoluciones"
-    Private Sub cmdDevoluciones_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdDevoluciones.Click
-        Call Me.CargarDevoluciones()
-    End Sub
-#End Region
-
 #Region "Proveedores"
     Private Sub cmdProveedores_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdProveedores.Click
         Me.CargarProveedores()
@@ -1023,34 +1017,7 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
-#Region "Cargar Notas de Credito"
-    Private Sub CargarNotascredito()
-        Dim objNotasCredito As frmSccMantNotaCredito
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario("frmSccMantNotaCredito", Me) Then
-                    objNotasCredito = New frmSccMantNotaCredito
-                    objNotasCredito.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objNotasCredito.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objNotasCredito.MdiParent = Me
-                    objNotasCredito.Show()
-                End If
 
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-
-    End Sub
-
-    Private Sub cmdNotasCredito_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdNotasCredito.Click
-        Call Me.CargarNotascredito()
-    End Sub
-
-#End Region
 
 #Region "Cargar Cuentas"
     Private Sub CargarCuentas()
@@ -1102,110 +1069,6 @@ Public Class frmPrincipal
     Private Sub cmdReciboCaja_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdReciboCaja.Click
         Call Me.CargarRecibosCaja()
     End Sub
-#End Region
-
-#Region "Cargar Notas de Debito"
-    Private Sub CargarNotasDebito()
-        Dim objNotasDebito As frmSccMantNotaDebito
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario("frmSccMantNotaDebito", Me) Then
-                    objNotasDebito = New frmSccMantNotaDebito
-                    objNotasDebito.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objNotasDebito.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objNotasDebito.MdiParent = Me
-                    objNotasDebito.Show()
-                End If
-
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
-
-    Private Sub cmdNotasDebito_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdNotasDebito.Click
-        Call Me.CargarNotasDebito()
-    End Sub
-
-
-#Region "Carga bitacora"
-    Private Sub CargarBitacora()
-        Dim objBitacora As frmStbBitacora
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario("frmStbBitacora", Me) Then
-                    objBitacora = New frmStbBitacora
-                    objBitacora.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objBitacora.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objBitacora.MdiParent = Me
-                    objBitacora.Show()
-                End If
-
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
-    Private Sub cmdBitacora_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdBitacora.Click
-        Call Me.CargarBitacora()
-    End Sub
-
-#Region "Carga Minutas"
-    Private Sub CargarMinutas()
-        Dim objMinuta As frmSccMinutasCobro
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario("frmSccMinutasCobro", Me) Then
-                    objMinuta = New frmSccMinutasCobro
-                    'objMinuta.MdiParent = Me
-                    objMinuta.ShowDialog(Me)
-                End If
-
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
-    Private Sub cmdMinutas_Click(ByVal sender As Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdMinutas.Click
-        Call Me.CargarMinutas()
-    End Sub
-
-#End Region
-#Region "Carga Devoluciones"
-    Private Sub CargarDevoluciones()
-        Dim objDevolucion As New frmSccDevoluciones
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario("frmStbBitacora", Me) Then
-                    objDevolucion = New frmSccDevoluciones
-                    objDevolucion.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objDevolucion.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objDevolucion.MdiParent = Me
-                    objDevolucion.Show()
-                End If
-
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
-#End Region
-
-
-#End Region
-
 #End Region
 
 #Region "Cargar Tramite Legal"

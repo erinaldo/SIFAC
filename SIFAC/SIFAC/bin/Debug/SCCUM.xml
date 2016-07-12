@@ -1904,49 +1904,6 @@ Represents the connection and commands used to retrieve and save data.
  Fecha : 4 de Abril de 2009.
  </summary>
 	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaCredito.SeleccionarCuenta">
-	<summary>
- Procedimiento encargado de seleccionar la cuenta.
- Autor : Pedro Pablo Tinoco
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaCredito.CargarConceptoNC">
-	<summary>
- Procedimiento encargado de cargar el concepto de la nota de credito.
- Autor : Pedro Tinoco
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaCredito.CargaDatos">
-	<summary>
- Procedimiento principal de Carga de Datos
- Autor : Pedro Pablo Tinoco Salgado
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaCredito.CargarEstado">
-	<summary>
- Procedimiento encargado de cargar las estados posibles de las notas de credito
- Autor : Pedro Pablo Tinoco Salgado.
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaCredito.CargarDatosEdicion">
-	<summary>
- Procedimiento encargado de cargar las notas de credito en Modo edicion y Consulta
- Autor : Pedro Pablo Tinoco Salgado.
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaCredito.ActualizarNC">
-	<summary>
- Procedimiento encargad de Actualizar Nota de Credito.
- Autor : Pedro Tinoco Salgado.
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<returns></returns>
-	<remarks></remarks>
 </member><member name="M:SCCUM.frmPrincipal.frmPrincipal_Load(System.Object,System.EventArgs)">
 	<summary>
  Cargar el Formulario Principal
@@ -2045,54 +2002,6 @@ Represents a strongly typed in-memory cache of data.
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
-</member><member name="M:SCCUM.frmSccEditNotaDebito.SeleccionarCuenta">
-	<summary>
- Procedimiento encargado de seleccionar la cuenta.
- Autor : Pedro Pablo Tinoco
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaDebito.CargarConceptoNC">
-	<summary>
- Procedimiento encargado de cargar el concepto de la nota de credito.
- Autor : Pedro Tinoco
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaDebito.CargaDatos">
-	<summary>
- Procedimiento principal de Carga de Datos
- Autor : Pedro Pablo Tinoco Salgado
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaDebito.CargarEstado">
-	<summary>
- Procedimiento encargado de cargar las estados posibles de las notas de credito
- Autor : Pedro Pablo Tinoco Salgado.
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaDebito.CargarDatosEdicion">
-	<summary>
- Procedimiento encargado de cargar las notas de credito en Modo edicion y Consulta
- Autor : Pedro Pablo Tinoco Salgado.
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaDebito.ActualizarND">
-	<summary>
- Procedimiento encargad de Actualizar Nota de Credito.
- Autor : Pedro Tinoco Salgado.
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:SCCUM.frmSccEditNotaDebito.CargarFacturas">
-	<summary>
- Procedimiento encargado de Cargar las facturas a seleccionar para la nota de Debito.
- </summary>
-	<remarks></remarks>
 </member><member name="M:SCCUM.frmSccBuscarRecibo.CargarEstadoRecibo">
 	<summary>
  Autor : Pedro Pablo Tinoco 

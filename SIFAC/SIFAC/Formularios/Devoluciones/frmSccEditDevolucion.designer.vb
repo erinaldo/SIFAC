@@ -19,41 +19,41 @@ Partial Class frmSccEditDevolucion
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSccEditDevolucion))
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.txtEstado = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.GrpExpediente = New System.Windows.Forms.GroupBox
-        Me.cmdConsultar = New System.Windows.Forms.Button
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.cmdExpediente = New System.Windows.Forms.Button
-        Me.txtCliente = New System.Windows.Forms.TextBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.txtNumCuenta = New System.Windows.Forms.TextBox
-        Me.txtCodTienda = New System.Windows.Forms.TextBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.dtpFecha = New C1.Win.C1Input.C1DateEdit
-        Me.lblFechaPedido = New System.Windows.Forms.Label
-        Me.txtNumero = New System.Windows.Forms.TextBox
-        Me.lblNumeroPedido = New System.Windows.Forms.Label
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.numTotal = New C1.Win.C1Input.C1NumericEdit
-        Me.Label2 = New System.Windows.Forms.Label
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtEstado = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GrpExpediente = New System.Windows.Forms.GroupBox()
+        Me.cmdConsultar = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.cmdExpediente = New System.Windows.Forms.Button()
+        Me.txtCliente = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtNumCuenta = New System.Windows.Forms.TextBox()
+        Me.txtCodTienda = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.dtpFecha = New C1.Win.C1Input.C1DateEdit()
+        Me.lblFechaPedido = New System.Windows.Forms.Label()
+        Me.txtNumero = New System.Windows.Forms.TextBox()
+        Me.lblNumeroPedido = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.numTotal = New C1.Win.C1Input.C1NumericEdit()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.ErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.cmdGuardar = New System.Windows.Forms.Button
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.tbFacturas = New System.Windows.Forms.TabControl
-        Me.PGFacturas = New System.Windows.Forms.TabPage
-        Me.grdFacturas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.cmbSucursal = New C1.Win.C1List.C1Combo
-        Me.lblEstado = New System.Windows.Forms.Label
-        Me.lblInfo = New System.Windows.Forms.Label
-        Me.cmdAutorizar = New System.Windows.Forms.Button
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
+        Me.cmdGuardar = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.tbFacturas = New System.Windows.Forms.TabControl()
+        Me.PGFacturas = New System.Windows.Forms.TabPage()
+        Me.grdFacturas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.cmbSucursal = New C1.Win.C1List.C1Combo()
+        Me.lblEstado = New System.Windows.Forms.Label()
+        Me.lblInfo = New System.Windows.Forms.Label()
+        Me.cmdAutorizar = New System.Windows.Forms.Button()
         Me.ToolTip = New C1.Win.C1SuperTooltip.C1SuperTooltip(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GrpExpediente.SuspendLayout()
@@ -195,6 +195,16 @@ Partial Class frmSccEditDevolucion
         '
         'dtpFecha
         '
+        '
+        '
+        '
+        Me.dtpFecha.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpFecha.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpFecha.Calendar.ClearText = "&Clear"
+        Me.dtpFecha.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpFecha.Calendar.SelectedDate = New Date(2016, 7, 12, 0, 0, 0, 0)
+        Me.dtpFecha.Calendar.TodayText = "&Today"
+        Me.dtpFecha.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFecha.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFecha.Location = New System.Drawing.Point(62, 68)
         Me.dtpFecha.Name = "dtpFecha"
@@ -246,9 +256,9 @@ Partial Class frmSccEditDevolucion
         '
         Me.numTotal.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numTotal.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numTotal.Enabled = False
         Me.numTotal.ErrorInfo.ShowErrorMessage = False
         Me.numTotal.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
@@ -357,7 +367,7 @@ Partial Class frmSccEditDevolucion
         Me.grdFacturas.Name = "grdFacturas"
         Me.grdFacturas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdFacturas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdFacturas.PreviewInfo.ZoomFactor = 75
+        Me.grdFacturas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdFacturas.PrintInfo.PageSettings = CType(resources.GetObject("grdFacturas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdFacturas.Size = New System.Drawing.Size(651, 115)
         Me.grdFacturas.TabIndex = 0

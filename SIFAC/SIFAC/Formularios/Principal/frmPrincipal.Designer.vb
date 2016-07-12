@@ -116,8 +116,6 @@ Partial Class frmPrincipal
         Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink2 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink3 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink5 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink6 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink23 = New C1.Win.C1Command.C1CommandLink()
         Me.outReportes = New C1.Win.C1Command.C1OutPage()
@@ -332,7 +330,7 @@ Partial Class frmPrincipal
         Me.OutBarPrincipal.Location = New System.Drawing.Point(0, 24)
         Me.OutBarPrincipal.Name = "OutBarPrincipal"
         Me.OutBarPrincipal.PageLayout = C1.Win.C1Command.ButtonLayoutEnum.TextOnLeft
-        Me.OutBarPrincipal.SelectedIndex = 6
+        Me.OutBarPrincipal.SelectedIndex = 1
         Me.OutBarPrincipal.Size = New System.Drawing.Size(188, 583)
         Me.OutBarPrincipal.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
@@ -854,7 +852,7 @@ Partial Class frmPrincipal
         Me.ToolBarCartera.Border.Style = C1.Win.C1Command.BorderStyleEnum.Ridge
         Me.ToolBarCartera.ButtonLookVert = CType((C1.Win.C1Command.ButtonLookFlags.Text Or C1.Win.C1Command.ButtonLookFlags.Image), C1.Win.C1Command.ButtonLookFlags)
         Me.ToolBarCartera.CommandHolder = Me.C1CommandHolder1
-        Me.ToolBarCartera.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink4, Me.C1CommandLink5, Me.C1CommandLink6, Me.C1CommandLink23})
+        Me.ToolBarCartera.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink6, Me.C1CommandLink23})
         Me.ToolBarCartera.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarCartera.Horizontal = False
         Me.ToolBarCartera.Location = New System.Drawing.Point(0, 0)
@@ -879,25 +877,15 @@ Partial Class frmPrincipal
         Me.C1CommandLink3.Command = Me.cmdReciboCaja
         Me.C1CommandLink3.SortOrder = 2
         '
-        'C1CommandLink4
-        '
-        Me.C1CommandLink4.Command = Me.cmdNotasCredito
-        Me.C1CommandLink4.SortOrder = 3
-        '
-        'C1CommandLink5
-        '
-        Me.C1CommandLink5.Command = Me.cmdNotasDebito
-        Me.C1CommandLink5.SortOrder = 4
-        '
         'C1CommandLink6
         '
         Me.C1CommandLink6.Command = Me.cmdDevoluciones
-        Me.C1CommandLink6.SortOrder = 5
+        Me.C1CommandLink6.SortOrder = 3
         '
         'C1CommandLink23
         '
         Me.C1CommandLink23.Command = Me.cmdTramiteLegal
-        Me.C1CommandLink23.SortOrder = 6
+        Me.C1CommandLink23.SortOrder = 4
         '
         'outReportes
         '
@@ -1474,8 +1462,6 @@ Partial Class frmPrincipal
     Friend WithEvents C1CommandLink1 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents C1CommandLink2 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents C1CommandLink3 As C1.Win.C1Command.C1CommandLink
-    Friend WithEvents C1CommandLink4 As C1.Win.C1Command.C1CommandLink
-    Friend WithEvents C1CommandLink5 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents C1CommandLink6 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents outReportes As C1.Win.C1Command.C1OutPage
     Friend WithEvents ToolBReportes As C1.Win.C1Command.C1ToolBar

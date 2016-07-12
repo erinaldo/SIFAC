@@ -53,12 +53,6 @@ D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSfaBuscarFacturaExp.resources
 D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSfaCambiosPagos.resources
 D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSfaFactura.resources
 D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSfaFaturaEditar.resources
-D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSccEditNotaCredito.resources
-D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSccMantNotaCredito.resources
-D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSccParamBuscarNotaCredito.resources
-D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSccEditNotaDebito.resources
-D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSccMantNotaDebito.resources
-D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmSccParamBuscarNotaDebito.resources
 D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmPersonaSelector.resources
 D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmStbPersonaBuscar.resources
 D:\meza\SIFAC\SIFAC\obj\Debug\SCCUM.frmStbPersonas.resources
