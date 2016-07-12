@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtDatosServicioTallerBitacoraMoto" targetNamespace="http://tempuri.org/dtDatosServicioTallerBitacoraMoto.xsd" xmlns:mstns="http://tempuri.org/dtDatosServicioTallerBitacoraMoto.xsd" xmlns="http://tempuri.org/dtDatosServicioTallerBitacoraMoto.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUMConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.My.MySettings.GlobalReference.Default.SCCUMConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwStaServicioTallerBitacoraMotoTableAdapter" GeneratorDataComponentClassName="vwStaServicioTallerBitacoraMotoTableAdapter" Name="vwStaServicioTallerBitacoraMoto" UserDataComponentName="vwStaServicioTallerBitacoraMotoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SCCUMConnectionString (MySettings)" DbObjectName="SIFUM.dbo.vwStaServicioTallerBitacoraMoto" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>SELECT StaServicioTallerID, Cliente, objServicioTiendaID, NombreTiendaServicio, CodigoTiendaServicio, objTipoServicioID, TipoServicio, EstadoServicio, FechaRecibida, FechaEntrega, objTecnicoAsignadoID, NombreTecnico, ModeloMoto, Chasis, NoMotor, MarcaMoto, TrabajosRealizados, objSccCuentaID, objSccCuentaTiendaID, NombreTiendaCuenta, CodigoTiendaCuenta, NumeroServicio FROM vwStaServicioTallerBitacoraMoto</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StaServicioTallerID" DataSetColumn="StaServicioTallerID" />
+              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
+              <Mapping SourceColumn="objServicioTiendaID" DataSetColumn="objServicioTiendaID" />
+              <Mapping SourceColumn="NombreTiendaServicio" DataSetColumn="NombreTiendaServicio" />
+              <Mapping SourceColumn="CodigoTiendaServicio" DataSetColumn="CodigoTiendaServicio" />
+              <Mapping SourceColumn="objTipoServicioID" DataSetColumn="objTipoServicioID" />
+              <Mapping SourceColumn="TipoServicio" DataSetColumn="TipoServicio" />
+              <Mapping SourceColumn="EstadoServicio" DataSetColumn="EstadoServicio" />
+              <Mapping SourceColumn="FechaRecibida" DataSetColumn="FechaRecibida" />
+              <Mapping SourceColumn="FechaEntrega" DataSetColumn="FechaEntrega" />
+              <Mapping SourceColumn="objTecnicoAsignadoID" DataSetColumn="objTecnicoAsignadoID" />
+              <Mapping SourceColumn="NombreTecnico" DataSetColumn="NombreTecnico" />
+              <Mapping SourceColumn="ModeloMoto" DataSetColumn="ModeloMoto" />
+              <Mapping SourceColumn="Chasis" DataSetColumn="Chasis" />
+              <Mapping SourceColumn="NoMotor" DataSetColumn="NoMotor" />
+              <Mapping SourceColumn="MarcaMoto" DataSetColumn="MarcaMoto" />
+              <Mapping SourceColumn="TrabajosRealizados" DataSetColumn="TrabajosRealizados" />
+              <Mapping SourceColumn="objSccCuentaID" DataSetColumn="objSccCuentaID" />
+              <Mapping SourceColumn="objSccCuentaTiendaID" DataSetColumn="objSccCuentaTiendaID" />
+              <Mapping SourceColumn="NombreTiendaCuenta" DataSetColumn="NombreTiendaCuenta" />
+              <Mapping SourceColumn="CodigoTiendaCuenta" DataSetColumn="CodigoTiendaCuenta" />
+              <Mapping SourceColumn="NumeroServicio" DataSetColumn="NumeroServicio" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtDatosServicioTallerBitacoraMoto" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dtDatosServicioTallerBitacoraMoto" msprop:Generator_DataSetName="dtDatosServicioTallerBitacoraMoto">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwStaServicioTallerBitacoraMoto" msprop:Generator_UserTableName="vwStaServicioTallerBitacoraMoto" msprop:Generator_RowDeletedName="vwStaServicioTallerBitacoraMotoRowDeleted" msprop:Generator_RowChangedName="vwStaServicioTallerBitacoraMotoRowChanged" msprop:Generator_RowClassName="vwStaServicioTallerBitacoraMotoRow" msprop:Generator_RowChangingName="vwStaServicioTallerBitacoraMotoRowChanging" msprop:Generator_RowEvArgName="vwStaServicioTallerBitacoraMotoRowChangeEvent" msprop:Generator_RowEvHandlerName="vwStaServicioTallerBitacoraMotoRowChangeEventHandler" msprop:Generator_TableClassName="vwStaServicioTallerBitacoraMotoDataTable" msprop:Generator_TableVarName="tablevwStaServicioTallerBitacoraMoto" msprop:Generator_RowDeletingName="vwStaServicioTallerBitacoraMotoRowDeleting" msprop:Generator_TablePropName="vwStaServicioTallerBitacoraMoto">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StaServicioTallerID" msprop:Generator_UserColumnName="StaServicioTallerID" msprop:Generator_ColumnVarNameInTable="columnStaServicioTallerID" msprop:Generator_ColumnPropNameInRow="StaServicioTallerID" msprop:Generator_ColumnPropNameInTable="StaServicioTallerIDColumn" type="xs:int" />
+              <xs:element name="Cliente" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="objServicioTiendaID" msprop:Generator_UserColumnName="objServicioTiendaID" msprop:Generator_ColumnVarNameInTable="columnobjServicioTiendaID" msprop:Generator_ColumnPropNameInRow="objServicioTiendaID" msprop:Generator_ColumnPropNameInTable="objServicioTiendaIDColumn" type="xs:int" />
+              <xs:element name="NombreTiendaServicio" msprop:Generator_UserColumnName="NombreTiendaServicio" msprop:Generator_ColumnVarNameInTable="columnNombreTiendaServicio" msprop:Generator_ColumnPropNameInRow="NombreTiendaServicio" msprop:Generator_ColumnPropNameInTable="NombreTiendaServicioColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodigoTiendaServicio" msprop:Generator_UserColumnName="CodigoTiendaServicio" msprop:Generator_ColumnVarNameInTable="columnCodigoTiendaServicio" msprop:Generator_ColumnPropNameInRow="CodigoTiendaServicio" msprop:Generator_ColumnPropNameInTable="CodigoTiendaServicioColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="objTipoServicioID" msprop:Generator_UserColumnName="objTipoServicioID" msprop:Generator_ColumnVarNameInTable="columnobjTipoServicioID" msprop:Generator_ColumnPropNameInRow="objTipoServicioID" msprop:Generator_ColumnPropNameInTable="objTipoServicioIDColumn" type="xs:int" />
+              <xs:element name="TipoServicio" msprop:Generator_UserColumnName="TipoServicio" msprop:Generator_ColumnVarNameInTable="columnTipoServicio" msprop:Generator_ColumnPropNameInRow="TipoServicio" msprop:Generator_ColumnPropNameInTable="TipoServicioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EstadoServicio" msprop:Generator_UserColumnName="EstadoServicio" msprop:Generator_ColumnVarNameInTable="columnEstadoServicio" msprop:Generator_ColumnPropNameInRow="EstadoServicio" msprop:Generator_ColumnPropNameInTable="EstadoServicioColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaRecibida" msprop:Generator_UserColumnName="FechaRecibida" msprop:Generator_ColumnVarNameInTable="columnFechaRecibida" msprop:Generator_ColumnPropNameInRow="FechaRecibida" msprop:Generator_ColumnPropNameInTable="FechaRecibidaColumn" type="xs:dateTime" />
+              <xs:element name="FechaEntrega" msprop:Generator_UserColumnName="FechaEntrega" msprop:Generator_ColumnVarNameInTable="columnFechaEntrega" msprop:Generator_ColumnPropNameInRow="FechaEntrega" msprop:Generator_ColumnPropNameInTable="FechaEntregaColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="objTecnicoAsignadoID" msprop:Generator_UserColumnName="objTecnicoAsignadoID" msprop:Generator_ColumnVarNameInTable="columnobjTecnicoAsignadoID" msprop:Generator_ColumnPropNameInRow="objTecnicoAsignadoID" msprop:Generator_ColumnPropNameInTable="objTecnicoAsignadoIDColumn" type="xs:int" />
+              <xs:element name="NombreTecnico" msdata:ReadOnly="true" msprop:Generator_UserColumnName="NombreTecnico" msprop:Generator_ColumnVarNameInTable="columnNombreTecnico" msprop:Generator_ColumnPropNameInRow="NombreTecnico" msprop:Generator_ColumnPropNameInTable="NombreTecnicoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ModeloMoto" msprop:Generator_UserColumnName="ModeloMoto" msprop:Generator_ColumnVarNameInTable="columnModeloMoto" msprop:Generator_ColumnPropNameInRow="ModeloMoto" msprop:Generator_ColumnPropNameInTable="ModeloMotoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Chasis" msprop:Generator_UserColumnName="Chasis" msprop:Generator_ColumnVarNameInTable="columnChasis" msprop:Generator_ColumnPropNameInRow="Chasis" msprop:Generator_ColumnPropNameInTable="ChasisColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NoMotor" msprop:Generator_UserColumnName="NoMotor" msprop:Generator_ColumnVarNameInTable="columnNoMotor" msprop:Generator_ColumnPropNameInRow="NoMotor" msprop:Generator_ColumnPropNameInTable="NoMotorColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MarcaMoto" msprop:Generator_UserColumnName="MarcaMoto" msprop:Generator_ColumnVarNameInTable="columnMarcaMoto" msprop:Generator_ColumnPropNameInRow="MarcaMoto" msprop:Generator_ColumnPropNameInTable="MarcaMotoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TrabajosRealizados" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TrabajosRealizados" msprop:Generator_ColumnVarNameInTable="columnTrabajosRealizados" msprop:Generator_ColumnPropNameInRow="TrabajosRealizados" msprop:Generator_ColumnPropNameInTable="TrabajosRealizadosColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="800" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="objSccCuentaID" msprop:Generator_UserColumnName="objSccCuentaID" msprop:Generator_ColumnVarNameInTable="columnobjSccCuentaID" msprop:Generator_ColumnPropNameInRow="objSccCuentaID" msprop:Generator_ColumnPropNameInTable="objSccCuentaIDColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="objSccCuentaTiendaID" msprop:Generator_UserColumnName="objSccCuentaTiendaID" msprop:Generator_ColumnVarNameInTable="columnobjSccCuentaTiendaID" msprop:Generator_ColumnPropNameInRow="objSccCuentaTiendaID" msprop:Generator_ColumnPropNameInTable="objSccCuentaTiendaIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="NombreTiendaCuenta" msprop:Generator_UserColumnName="NombreTiendaCuenta" msprop:Generator_ColumnVarNameInTable="columnNombreTiendaCuenta" msprop:Generator_ColumnPropNameInRow="NombreTiendaCuenta" msprop:Generator_ColumnPropNameInTable="NombreTiendaCuentaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodigoTiendaCuenta" msprop:Generator_UserColumnName="CodigoTiendaCuenta" msprop:Generator_ColumnVarNameInTable="columnCodigoTiendaCuenta" msprop:Generator_ColumnPropNameInRow="CodigoTiendaCuenta" msprop:Generator_ColumnPropNameInTable="CodigoTiendaCuentaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NumeroServicio" msdata:ReadOnly="true" msprop:Generator_UserColumnName="NumeroServicio" msprop:Generator_ColumnPropNameInRow="NumeroServicio" msprop:Generator_ColumnVarNameInTable="columnNumeroServicio" msprop:Generator_ColumnPropNameInTable="NumeroServicioColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwStaServicioTallerBitacoraMoto" />
+      <xs:field xpath="mstns:StaServicioTallerID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

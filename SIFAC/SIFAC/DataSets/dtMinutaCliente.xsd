@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtMinutaCliente" targetNamespace="http://tempuri.org/dtMinutaCliente.xsd" xmlns:mstns="http://tempuri.org/dtMinutaCliente.xsd" xmlns="http://tempuri.org/dtMinutaCliente.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUMConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.My.MySettings.GlobalReference.Default.SCCUMConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwSccMinutaCobroTableAdapter" GeneratorDataComponentClassName="vwSccMinutaCobroTableAdapter" Name="vwSccMinutaCobro" UserDataComponentName="vwSccMinutaCobroTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SCCUMConnectionString (MySettings)" DbObjectName="SCCUM.dbo.vwSccMinutaCobro" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>SELECT SccCuentaID, Tienda, Cliente, CodigoTienda, StbTiendaID, StbPersonaID, Saldo, LimiteCredito, objEstadoID, Descripcion, Codigo, Clasificacion, objCalificacionID, objFacturaID, objConceptoFactura, StbValorCatalogoID, Concepto FROM dbo.vwSccMinutaCobro</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SccCuentaID" DataSetColumn="SccCuentaID" />
+              <Mapping SourceColumn="Tienda" DataSetColumn="Tienda" />
+              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
+              <Mapping SourceColumn="CodigoTienda" DataSetColumn="CodigoTienda" />
+              <Mapping SourceColumn="StbTiendaID" DataSetColumn="StbTiendaID" />
+              <Mapping SourceColumn="StbPersonaID" DataSetColumn="StbPersonaID" />
+              <Mapping SourceColumn="Saldo" DataSetColumn="Saldo" />
+              <Mapping SourceColumn="LimiteCredito" DataSetColumn="LimiteCredito" />
+              <Mapping SourceColumn="objEstadoID" DataSetColumn="objEstadoID" />
+              <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
+              <Mapping SourceColumn="Codigo" DataSetColumn="Codigo" />
+              <Mapping SourceColumn="Clasificacion" DataSetColumn="Clasificacion" />
+              <Mapping SourceColumn="objCalificacionID" DataSetColumn="objCalificacionID" />
+              <Mapping SourceColumn="objFacturaID" DataSetColumn="objFacturaID" />
+              <Mapping SourceColumn="objConceptoFactura" DataSetColumn="objConceptoFactura" />
+              <Mapping SourceColumn="StbValorCatalogoID" DataSetColumn="StbValorCatalogoID" />
+              <Mapping SourceColumn="Concepto" DataSetColumn="Concepto" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtMinutaCliente" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dtMinutaCliente" msprop:Generator_DataSetName="dtMinutaCliente">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwSccMinutaCobro" msprop:Generator_UserTableName="vwSccMinutaCobro" msprop:Generator_RowDeletedName="vwSccMinutaCobroRowDeleted" msprop:Generator_RowChangedName="vwSccMinutaCobroRowChanged" msprop:Generator_RowClassName="vwSccMinutaCobroRow" msprop:Generator_RowChangingName="vwSccMinutaCobroRowChanging" msprop:Generator_RowEvArgName="vwSccMinutaCobroRowChangeEvent" msprop:Generator_RowEvHandlerName="vwSccMinutaCobroRowChangeEventHandler" msprop:Generator_TableClassName="vwSccMinutaCobroDataTable" msprop:Generator_TableVarName="tablevwSccMinutaCobro" msprop:Generator_RowDeletingName="vwSccMinutaCobroRowDeleting" msprop:Generator_TablePropName="vwSccMinutaCobro">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SccCuentaID" msprop:Generator_UserColumnName="SccCuentaID" msprop:Generator_ColumnVarNameInTable="columnSccCuentaID" msprop:Generator_ColumnPropNameInRow="SccCuentaID" msprop:Generator_ColumnPropNameInTable="SccCuentaIDColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tienda" msprop:Generator_UserColumnName="Tienda" msprop:Generator_ColumnVarNameInTable="columnTienda" msprop:Generator_ColumnPropNameInRow="Tienda" msprop:Generator_ColumnPropNameInTable="TiendaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cliente" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodigoTienda" msprop:Generator_UserColumnName="CodigoTienda" msprop:Generator_ColumnVarNameInTable="columnCodigoTienda" msprop:Generator_ColumnPropNameInRow="CodigoTienda" msprop:Generator_ColumnPropNameInTable="CodigoTiendaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StbTiendaID" msprop:Generator_UserColumnName="StbTiendaID" msprop:Generator_ColumnVarNameInTable="columnStbTiendaID" msprop:Generator_ColumnPropNameInRow="StbTiendaID" msprop:Generator_ColumnPropNameInTable="StbTiendaIDColumn" type="xs:int" />
+              <xs:element name="StbPersonaID" msprop:Generator_UserColumnName="StbPersonaID" msprop:Generator_ColumnVarNameInTable="columnStbPersonaID" msprop:Generator_ColumnPropNameInRow="StbPersonaID" msprop:Generator_ColumnPropNameInTable="StbPersonaIDColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Saldo" msprop:Generator_UserColumnName="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" type="xs:decimal" />
+              <xs:element name="LimiteCredito" msprop:Generator_UserColumnName="LimiteCredito" msprop:Generator_ColumnVarNameInTable="columnLimiteCredito" msprop:Generator_ColumnPropNameInRow="LimiteCredito" msprop:Generator_ColumnPropNameInTable="LimiteCreditoColumn" type="xs:decimal" />
+              <xs:element name="objEstadoID" msprop:Generator_UserColumnName="objEstadoID" msprop:Generator_ColumnVarNameInTable="columnobjEstadoID" msprop:Generator_ColumnPropNameInRow="objEstadoID" msprop:Generator_ColumnPropNameInTable="objEstadoIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Clasificacion" msprop:Generator_UserColumnName="Clasificacion" msprop:Generator_ColumnVarNameInTable="columnClasificacion" msprop:Generator_ColumnPropNameInRow="Clasificacion" msprop:Generator_ColumnPropNameInTable="ClasificacionColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="objCalificacionID" msprop:Generator_UserColumnName="objCalificacionID" msprop:Generator_ColumnVarNameInTable="columnobjCalificacionID" msprop:Generator_ColumnPropNameInRow="objCalificacionID" msprop:Generator_ColumnPropNameInTable="objCalificacionIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="objFacturaID" msprop:Generator_UserColumnName="objFacturaID" msprop:Generator_ColumnVarNameInTable="columnobjFacturaID" msprop:Generator_ColumnPropNameInRow="objFacturaID" msprop:Generator_ColumnPropNameInTable="objFacturaIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="objConceptoFactura" msprop:Generator_UserColumnName="objConceptoFactura" msprop:Generator_ColumnVarNameInTable="columnobjConceptoFactura" msprop:Generator_ColumnPropNameInRow="objConceptoFactura" msprop:Generator_ColumnPropNameInTable="objConceptoFacturaColumn" type="xs:int" />
+              <xs:element name="StbValorCatalogoID" msprop:Generator_UserColumnName="StbValorCatalogoID" msprop:Generator_ColumnVarNameInTable="columnStbValorCatalogoID" msprop:Generator_ColumnPropNameInRow="StbValorCatalogoID" msprop:Generator_ColumnPropNameInTable="StbValorCatalogoIDColumn" type="xs:int" />
+              <xs:element name="Concepto" msprop:Generator_UserColumnName="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwSccMinutaCobro" />
+      <xs:field xpath="mstns:SccCuentaID" />
+      <xs:field xpath="mstns:StbTiendaID" />
+      <xs:field xpath="mstns:StbPersonaID" />
+      <xs:field xpath="mstns:StbValorCatalogoID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

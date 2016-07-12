@@ -1,0 +1,9 @@
+D:\meza\SIFAC\SIFAC.BO\bin\Debug\SCCUM.BO.dll
+D:\meza\SIFAC\SIFAC.BO\bin\Debug\SCCUM.BO.pdb
+D:\meza\SIFAC\SIFAC.BO\bin\Debug\Proyecto.BO.xml
+D:\meza\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.Resources.resources
+D:\meza\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.vbproj.GenerateResource.Cache
+D:\meza\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.dll
+D:\meza\SIFAC\SIFAC.BO\obj\Debug\Proyecto.BO.xml
+D:\meza\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.pdb
+D:\meza\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.vbprojResolveAssemblyReference.cache

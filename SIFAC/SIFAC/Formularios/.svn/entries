@@ -1,0 +1,82 @@
+9
+
+dir
+592
+svn://192.168.1.10/SIFUM/Fuente/prjSCCUM/Formularios
+svn://192.168.1.10/SIFUM
+
+
+
+2010-08-31T16:01:52.500000Z
+591
+mruiz
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a903ecea-92bf-5a46-91d1-1ba4fe2d372a
+
+Principal
+dir
+
+ReciboCaja
+dir
+
+Productos
+dir
+
+SubSistemaTaller
+dir
+
+CuentasXCobrar
+dir
+
+Bitacora
+dir
+
+PIM
+dir
+
+Tiendas
+dir
+
+NotaDebito
+dir
+
+Repuestos
+dir
+
+SubSistemaFacturacion
+dir
+
+Devoluciones
+dir
+
+RecursosHumanos
+dir
+
+TasaCambio
+dir
+
+Facturas
+dir
+
+TramiteLegal
+dir
+
+NotaCredito
+dir
+
+SubSistemaInventario
+dir
+

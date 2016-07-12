@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C9CC746B-0B3A-4F47-8638-772BC3AA75BD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SCCUM.BO</RootNamespace>
+    <AssemblyName>SCCUM.BO</AssemblyName>
+    <MyType>Windows</MyType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Proyecto.BO.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Proyecto.BO.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\prjSCCUM\bin\Debug\DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsConsultas.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SccCuentaFiador_CF.vb" />
+    <Compile Include="SccCuentaPorCobrarDetalle_CF.vb" />
+    <Compile Include="SccCuentaPorCobrar_CF.vb" />
+    <Compile Include="SccDetalleMovimientos_CF.vb" />
+    <Compile Include="SccDevolucion_CF.vb" />
+    <Compile Include="SccNotaCredito_CF.vb" />
+    <Compile Include="SccNotaDebito_CF.vb" />
+    <Compile Include="SccPersonasCuentas_CF.vb" />
+    <Compile Include="SccReciboCaja_CF.vb" />
+    <Compile Include="SccReciboDetFactura_CF.vb" />
+    <Compile Include="SccReciboDetNC_CF.vb" />
+    <Compile Include="SccReciboDetND_CF.vb" />
+    <Compile Include="SccTramiteLegal_CF.vb" />
+    <Compile Include="SfaCotizacionDetalle_CF.vb" />
+    <Compile Include="SfaCotizacion_CF.vb" />
+    <Compile Include="SfaFacturaRepuestoDetalle_CF.vb" />
+    <Compile Include="SfaFacturaRepuesto_CF.vb" />
+    <Compile Include="SfaFactura_CF.vb" />
+    <Compile Include="SfaPromocionDetalle_CF.vb" />
+    <Compile Include="SfaPromocionDetTienda_CF.vb" />
+    <Compile Include="SfaPromocion_CF.vb" />
+    <Compile Include="SivBodegaRepuestos_CF.vb" />
+    <Compile Include="SivEntradaBodegaDetalle_CF.vb" />
+    <Compile Include="SivEntradaBodegaPREIMP_CF.vb" />
+    <Compile Include="SivEntradaBodega_CF.vb" />
+    <Compile Include="SivEntradaPreliquidacion_CF.vb" />
+    <Compile Include="SivProductos_CF.vb" />
+    <Compile Include="SivProveedorDetProvision_CF.vb" />
+    <Compile Include="SivProveedor_CF.vb" />
+    <Compile Include="SivRepuestosDetCompat_CF.vb" />
+    <Compile Include="SivRepuestosDetProv_CF.vb" />
+    <Compile Include="SivRepuestos_CF.vb" />
+    <Compile Include="SivSalidaBodegaDetalle_CF.vb" />
+    <Compile Include="SivSalidaBodega_CF.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SivTransferenciaDetalle_CF.vb" />
+    <Compile Include="SivTransferencia_CF.vb" />
+    <Compile Include="SrhEmpleado_CF.vb" />
+    <Compile Include="StaServicioTaller_CF.vb" />
+    <Compile Include="StbBitacoraCliente_CF.vb" />
+    <Compile Include="StbCiudad_CF.vb" />
+    <Compile Include="StbContactos_CF.vb" />
+    <Compile Include="StbPersonaClasificacion_CF.vb" />
+    <Compile Include="StbPersona_CF.vb" />
+    <Compile Include="StbTasaCambioOficial_CF.vb" />
+    <Compile Include="StbTiendaContactos_CF.vb" />
+    <Compile Include="StbTienda_CF.vb" />
+    <Compile Include="StbTipoPersona_CF.vb" />
+    <Compile Include="StbTiposEntrada_CF.vb" />
+    <Compile Include="txRC_FacturaDetalle_Step3_CF.vb" />
+    <Compile Include="txRC_Factura_Step3_CF.vb" />
+    <Compile Include="txRC_NotaCredito_Step1_CF.vb" />
+    <Compile Include="txRC_ReciboDetFactura_Step2_CF.vb" />
+    <Compile Include="txRC_ReciboDetNC_Step2_CF.vb" />
+    <Compile Include="txRC_ReciboDetND_Step2_CF.vb" />
+    <Compile Include="txRC_Recibo_Step2_CF.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCCUM.Configuracion\SCCUM.Configuracion.vbproj">
+      <Project>{56A5F0B6-2FAB-419E-AAF1-C98724860924}</Project>
+      <Name>SCCUM.Configuracion</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,348 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Proyecto.Catalogos.Datos
+</name>
+</assembly>
+<members>
+<member name="P:Proyecto.Catalogos.Datos.StbCatalogo.Nombre">
+	<summary>
+ Nombre del cat?logo
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbCatalogo.Descripcion">
+	<summary>
+ Descripci?n del Cat?logo
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbCatalogo.UsuarioCreacion">
+	<summary>
+ Login del Usuario que cre? el registro. Varchar (30). No permite Null.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbCatalogo.FechaCreacion">
+	<summary>
+ Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbCatalogo.UsuarioModificacion">
+	<summary>
+ Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbCatalogo.FechaModificacion">
+	<summary>
+ ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
+ </summary>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla StbCatalogo en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla StbCatalogo </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto StbCatalogo
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto StbCatalogo usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbCatalogo en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbCatalogo en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbCatalogo en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase StbCatalogo.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto StbCatalogo en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto StbCatalogo de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto StbCatalogo de la base de datos
+ </summary>
+</member><member name="M:Proyecto.Catalogos.Datos.StbCatalogo.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos StbCatalogo de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="P:Proyecto.Catalogos.Datos.StbValorCatalogo.Codigo">
+	<summary>
+ Valor para el campo c?digo del cat?logo
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbValorCatalogo.Descripcion">
+	<summary>
+ Valor para el campo descripci?n.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbValorCatalogo.objCatalogoId">
+	<summary>
+ ID de cat?logo al cual se asocian los valores.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbValorCatalogo.UsuarioCreacion">
+	<summary>
+ Login del Usuario que cre? el registro. Varchar (30). No permite Null.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbValorCatalogo.FechaCreacion">
+	<summary>
+ Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbValorCatalogo.UsuarioModificacion">
+	<summary>
+ Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbValorCatalogo.FechaModificacion">
+	<summary>
+ ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
+ </summary>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla StbValorCatalogo en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla StbValorCatalogo </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto StbValorCatalogo
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto StbValorCatalogo usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbValorCatalogo en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbValorCatalogo en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbValorCatalogo en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase StbValorCatalogo.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto StbValorCatalogo en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto StbValorCatalogo de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto StbValorCatalogo de la base de datos
+ </summary>
+</member><member name="M:Proyecto.Catalogos.Datos.StbValorCatalogo.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos StbValorCatalogo de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="T:Proyecto.Catalogos.Datos.StbValorCatalogo">
+	<summary>
+ Valores o Registros espec?ficos del cat?logo para los campos de C?digo y Descripci?n.
+ </summary>
+</member><member name="M:Proyecto.Catalogos.Datos.ClsCatalogos.ObtenerValorParametro(System.String,System.String,System.String)">
+	<summary>
+ Recupera datos de la Tabla Parámetro
+ </summary>
+	<param name="strCampos">Campos a mostrar</param>
+	<param name="strFiltro"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.ClsCatalogos.ObtenerValCat(System.Object)">
+	<summary>
+ Recupera datos de los valores catalogo para un catalogo en especifico
+ </summary>
+	<param name="strNombre">Nombre del catalogo</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.ClsCatalogos.GetValorCatalogoID(System.String,System.String)">
+	<summary>
+ Devuelve el Identificador del Valor catálogo (StbValorCatalogoID) que corresponde con los parámetros recibidos
+ </summary>
+	<param name="sNombreCatalogo">Nombre del catálogo al que pertenece el valor</param>
+	<param name="sCodigoValorCatalogo">Campo Código del catálogo valor</param>
+	<returns>Número entero que corresponde al StbValorCatalogoID</returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.ClsCatalogos.GetValoresCatalogo(System.String,System.String,System.String)">
+	<summary>
+ Devuelve los [valores catálogos] activos de un [catálogo] específico recibido como argumento
+ </summary>
+	<param name="sNombreCatalogo">Nombre del catálogo a recuperar</param>
+	<param name="sCamposValorCatalogo">Campos que desea recuperar de ValorCatálogo, campos disponibles (StbValorCatalogoID, Codigo, Descripcion) </param>
+	<param name="sOrderBy">Campos por los que le gustaría ordenar los resultados. campos disponibles (ValorCatalogoID, Codigo, Descripcion) </param>
+	<returns>Un datatable con los valores del catálogo</returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.ClsCatalogos.GetValoresCatalogo(System.String)">
+	<summary>
+ Sobrecarga de GetValoresCatalogo para devolver campos por defecto (StbValorCatalogoID, Descripcion)
+ </summary>
+	<param name="sNombreCatalogo">Nombre del catálogo a recuperar, se devolverá por defecto (StbValorCatalogoID, Descripcion) ordenado ascendentemente por campo Descripción</param>
+	<returns>Un datatable con los valores del catálogo</returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.ClsCatalogos.GetValorParametro(System.Object)">
+	<summary>
+ Recupera el valor de un Parámetro de la base de datos 
+ </summary>
+	<param name="sNombreParametro">Nombre del parámetro a buscar</param>
+	<returns>Valor del parámetro en string</returns>
+	<remarks></remarks>
+</member><member name="P:Proyecto.Catalogos.Datos.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Proyecto.Catalogos.Datos.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Proyecto.Catalogos.Datos.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbParametro.Nombre">
+	<summary>
+ Nombre del par?metro.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbParametro.Valor">
+	<summary>
+ Valor del par?metro.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbParametro.UsuarioCreacion">
+	<summary>
+ Usuario que crea el registro.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbParametro.FechaCreacion">
+	<summary>
+ Fecha en que se cre? el registro.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbParametro.UsuarioModificacion">
+	<summary>
+ Usuario que realiz? la ?ltima modificaci?n al registro.
+ </summary>
+</member><member name="P:Proyecto.Catalogos.Datos.StbParametro.FechaModificacion">
+	<summary>
+ Fecha de la ?ltima modificaci?n.
+ </summary>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla StbParametro en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla StbParametro </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto StbParametro
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto StbParametro usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbParametro en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbParametro en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbParametro en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase StbParametro.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto StbParametro en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto StbParametro de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto StbParametro de la base de datos
+ </summary>
+</member><member name="M:Proyecto.Catalogos.Datos.StbParametro.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos StbParametro de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member>
+</members>
+</doc>

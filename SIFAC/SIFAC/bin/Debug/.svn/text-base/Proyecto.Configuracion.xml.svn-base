@@ -1,0 +1,164 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Proyecto.Configuracion
+</name>
+</assembly>
+<members>
+<member name="P:Proyecto.Configuracion.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Proyecto.Configuracion.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Proyecto.Configuracion.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.#ctor(System.String,System.String,System.String,System.String,System.String,System.DateTime)">
+	<summary>
+ Inicializa las propiedades del proyecto
+ </summary>
+	<param name="SiglasSistema"> Corresponde a las siglas del sistema</param>
+	<param name="RESOURCE_PATH">Corresponde a la ubicación del proyecto en la maquina cliente</param>
+	<param name="Servidor">Corresponde al nombre del servidor</param>
+	<param name="BaseDeDatos">Corresponde al nombre de la Base de Datos que se esta estableciendo la conexión</param>
+	<param name="Usuario">Corresponde al nombre de Usuario o login que se esta conectando a la BD</param>
+	<param name="FechaServidor">Corresponde a la Fecha y Hora del servidor</param>
+	<remarks></remarks>
+</member><member name="F:Proyecto.Configuracion.clsProyecto.SiglasSistema">
+	<summary>
+ Siglas del Sistema
+ </summary>
+	<remarks></remarks>
+</member><member name="F:Proyecto.Configuracion.clsProyecto.RESOURCE_PATH">
+	<summary>
+ Directorio desde donde se corre la aplicación
+ </summary>
+	<remarks></remarks>
+</member><member name="T:Proyecto.Configuracion.clsProyecto.Conexion">
+	<summary>
+ Esta estructura Contiene la información general de la conección
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.MostrarFormulario(System.String,System.Windows.Forms.Form)">
+	<summary>
+ No permite mostrar mas de un FORM en el MDI
+ </summary>
+	<param name="strNombreFormulario">Nombre del Formulario</param>
+	<param name="mdiParent">Objeto MDI Contenedor</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.CargarTemaDefinido(System.Object)">
+	<summary>
+ Configura el formulario en base a las propiedades definidas para el tema
+ seleccionado
+ </summary>
+	<param name="ObjFormulario">Formulario al que se le aplicará el tema.
+ En la propiedad Tag del formulario se debe especificar a que modulo pertenece
+ el formulario: 
+ 1- Seguridad
+ 2- Catalogos
+ 3- Inventario
+ 4- Facturacion</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.NumerosSinEspacio(System.Char)">
+	<summary>
+ Verifica si el Caracter introducido en el Txt corresponda a los Numeros en Rango de [0-9] y 
+ la tecla de Borrado BackSpace.
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.LetrasYEspacio(System.Char)">
+	<summary>
+ Verifica si el Caracter introducido en el Txt corresponda a las Letras de [A-Z] [a-z], la tecla 
+ BackSpace y Barra Espaciadora
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.LetrasSinEspacio(System.Char)">
+	<summary>
+ Verifica si el Caracter introducido en el Txt corresponda a las Letras de [A-Z] [a-z] y la 
+ tecla de BackSpace.
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.LetrasYNumerosSinEspacio(System.Char)">
+	<summary>
+ Verifica si el Caracter introducido en el Txt corresponda a las Letras de [A-Z] [a-z], los 
+ Numeros [0-9] y la tecla BackSpace.
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.LetrasYNumerosConEspacio(System.Char)">
+	<summary>
+ Verifica si el Caracter introducido en el Txt corresponda a Letras en Rango de [A-Z] [a-z], 
+ Numeros en Rango de [0-9], la tecla BackSpace y la Barra Espaciadora.
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.CEspecialDir(System.Char)">
+	<summary>
+ Verifica si el Caracter Especial introducido en el Txt para Direcciones (Dirección Física de un 
+ Lugar en un pais)corresponda solamente a los Símbolos "Pleca y Numeral". Ejemplo de Entrada: 
+ B. Waspán. Enacal 1/2 cuadra abajo. Casa # 15
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.CEspecComayPunto(System.Char)">
+	<summary>
+ Verifica si el Caracter Especial introducido en el Txt corresponda los Simbolos "Coma y Punto"
+ [. ,]
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.CEspecPlecaInvertida(System.Char)">
+	<summary>
+ Verifica si el Caracter Especial introducido en el Txt corresponda el Simbolo "Pleca Invertida" 
+ [\]
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.CEspecParentesis(System.Char)">
+	<summary>
+ Verifica si el Caracter Especial introducido en el Txt corresponda los Simbolos "Parentesís" 
+ [( )]
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.CEspecArrobaGuionbajoyPunto(System.Char)">
+	<summary>
+ Verifica si el Caracter Especial introducido en el Txt corresponda los Simbolos "Arroba, Guión
+ Bajo y Punto" [@ _ .]. Para campos de Email.
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Configuracion.clsProyecto.CEspecGuion(System.Char)">
+	<summary>
+ Verifica si el Caracter Especial introducido en el Txt corresponda al Simbolo "Guión" [-]
+ </summary>
+	<param name="Caracter">Tecla Presionada</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:Proyecto.Configuracion.clsProyecto">
+	<summary>
+ Esta Clase Contiene las Propiedades y Metodos del Proyecto   
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Proyecto.Catalogos.Formularios
+</name>
+</assembly>
+<members>
+<member name="M:Proyecto.Catalogos.Formularios.ClsCatalogos.ObtenerValorParametro(System.String,System.String,System.String)">
+	<summary>
+ Recupera datos de la Tabla Parámetro
+ </summary>
+	<param name="strCampos">Campos a mostrar</param>
+	<param name="strFiltro"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Proyecto.Catalogos.Formularios.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Proyecto.Catalogos.Formularios.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:Proyecto.Catalogos.Formularios.My.Resources.Resources.MsgActualizado">
+	<summary>
+  Looks up a localized string similar to El registro se ha actualizado satisfactoriamente..
+</summary>
+</member><member name="P:Proyecto.Catalogos.Formularios.My.Resources.Resources.MsgAgregado">
+	<summary>
+  Looks up a localized string similar to El registro se ha guardado satisfactoriamente..
+</summary>
+</member><member name="P:Proyecto.Catalogos.Formularios.My.Resources.Resources.MsgConfirmarEliminar">
+	<summary>
+  Looks up a localized string similar to ¿Está seguro de eliminar el registro seleccionado?.
+</summary>
+</member><member name="P:Proyecto.Catalogos.Formularios.My.Resources.Resources.MsgConfirmarGuardar">
+	<summary>
+  Looks up a localized string similar to ¿Desea guardar los cambios?.
+</summary>
+</member><member name="P:Proyecto.Catalogos.Formularios.My.Resources.Resources.MsgEliminado">
+	<summary>
+  Looks up a localized string similar to El registro se ha eliminado satisfactoriamente..
+</summary>
+</member><member name="T:Proyecto.Catalogos.Formularios.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

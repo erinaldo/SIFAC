@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CAC48429-C201-4E7B-9864-D76B30ED6382}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Proyecto.Catalogos.Formularios</RootNamespace>
+    <AssemblyName>Proyecto.Catalogos.Formularios</AssemblyName>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Proyecto.Catalogos.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Proyecto.Catalogos.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports.Chart">
+      <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\ActiveReports.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Interop, Version=5.2.0.397, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="ActiveReports.PdfExport, Version=5.2.0.397, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\ActiveReports.PdfExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Viewer3, Version=5.2.0.397, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\ActiveReports.Viewer3.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.XlsExport">
+      <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\ActiveReports.XlsExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports3, Version=5.2.0.397, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\ActiveReports3.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1Command.2, Version=2.0.20073.19306, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20073.357, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Input.2, Version=2.0.20073.33104, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1List.2, Version=2.1.20073.132, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20073.20, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20073.61130, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="GUI, Version=1.0.2803.25234, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\GUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.HostingProcess.Utilities.Sync, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\Microsoft.VisualStudio.HostingProcess.Utilities.Sync.dll</HintPath>
+    </Reference>
+    <Reference Include="Proyecto.Configuracion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\Proyecto.Configuracion.dll</HintPath>
+    </Reference>
+    <Reference Include="Seguridad.Datos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WindowsApplication1\bin\Debug\Seguridad.Datos.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClsCatalogos.vb" />
+    <Compile Include="frmStbEditCatalogo.Designer.vb">
+      <DependentUpon>frmStbEditCatalogo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStbEditCatalogo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStbEditParametro.Designer.vb">
+      <DependentUpon>frmStbEditParametro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStbEditParametro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStbEditValorCatalogo.Designer.vb">
+      <DependentUpon>frmStbEditValorCatalogo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStbEditValorCatalogo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStbImpresion.Designer.vb">
+      <DependentUpon>frmStbImpresion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStbImpresion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStbMantCatalogo.Designer.vb">
+      <DependentUpon>frmStbMantCatalogo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStbMantCatalogo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStbMantParametro.Designer.vb">
+      <DependentUpon>frmStbMantParametro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStbMantParametro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStbValAsociados.Designer.vb">
+      <DependentUpon>frmStbValAsociados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStbValAsociados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="rptEncabezadoReportes.Designer.vb">
+      <DependentUpon>rptEncabezadoReportes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rptEncabezadoReportes.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptStbCatalogosValores.Designer.vb">
+      <DependentUpon>rptStbCatalogosValores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rptStbCatalogosValores.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmStbEditCatalogo.resx">
+      <DependentUpon>frmStbEditCatalogo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStbEditParametro.resx">
+      <DependentUpon>frmStbEditParametro.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStbEditValorCatalogo.resx">
+      <DependentUpon>frmStbEditValorCatalogo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStbImpresion.resx">
+      <DependentUpon>frmStbImpresion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStbMantCatalogo.resx">
+      <DependentUpon>frmStbMantCatalogo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStbMantParametro.resx">
+      <DependentUpon>frmStbMantParametro.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStbValAsociados.resx">
+      <DependentUpon>frmStbValAsociados.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptEncabezadoReportes.resx">
+      <DependentUpon>rptEncabezadoReportes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptStbCatalogosValores.resx">
+      <DependentUpon>rptStbCatalogosValores.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imprimir.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editarico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditICO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AgregarIco.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIFAC.Catalogos.Datos\Catalogos.Datos.vbproj">
+      <Project>{33da4e3e-a1d1-4d09-857a-4884251cbb4b}</Project>
+      <Name>Catalogos.Datos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

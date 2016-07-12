@@ -1,0 +1,109 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Proyecto.Parametros.Datos
+</name>
+</assembly>
+<members>
+<member name="M:Proyecto.Parametros.Datos.clsParametros.ObtenerValorParametro(System.String,System.String,System.String)">
+	<summary>
+ Recupera datos de la Tabla Parámetro
+ </summary>
+	<param name="strCampos">Campos a mostrar</param>
+	<param name="strFiltro"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Proyecto.Parametros.Datos.StbParametro.Nombre">
+	<summary>
+ Nombre del par?metro.
+ </summary>
+</member><member name="P:Proyecto.Parametros.Datos.StbParametro.Valor">
+	<summary>
+ Valor del par?metro.
+ </summary>
+</member><member name="P:Proyecto.Parametros.Datos.StbParametro.UsuarioCreacion">
+	<summary>
+ Usuario que crea el registro.
+ </summary>
+</member><member name="P:Proyecto.Parametros.Datos.StbParametro.FechaCreacion">
+	<summary>
+ Fecha en que se cre? el registro.
+ </summary>
+</member><member name="P:Proyecto.Parametros.Datos.StbParametro.UsuarioModificacion">
+	<summary>
+ Usuario que realiz? la ?ltima modificaci?n al registro.
+ </summary>
+</member><member name="P:Proyecto.Parametros.Datos.StbParametro.FechaModificacion">
+	<summary>
+ Fecha de la ?ltima modificaci?n.
+ </summary>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla StbParametro en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla StbParametro </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto StbParametro
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto StbParametro usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbParametro en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbParametro en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos StbParametro en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase StbParametro.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto StbParametro en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto StbParametro de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto StbParametro de la base de datos
+ </summary>
+</member><member name="M:Proyecto.Parametros.Datos.StbParametro.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos StbParametro de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member>
+</members>
+</doc>

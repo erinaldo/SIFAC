@@ -1,0 +1,105 @@
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Formularios.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Formularios.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Command.2.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1List.2.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Sizer.2.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1TrueDBGrid.2.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Configuracion.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Input.2.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Input.2.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1List.2.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Sizer.2.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Command.2.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Configuracion.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Configuracion.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1TrueDBGrid.2.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\ResolveAssemblyReference.cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmCatalogoAdd.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbEditParametro.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbEditValorCatalogo.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbImpresion.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbMantCatalogo.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbMantParametro.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbValAsociados.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.Resources.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.rptEncabezadoReportes.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.rptStbCatalogosValores.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.vbproj.GenerateResource.Cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.dll.licenses
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.pdb
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Formularios.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Formularios.pdb
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Command.2.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1List.2.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Sizer.2.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1TrueDBGrid.2.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Datos.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Configuracion.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Input.2.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Input.2.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1List.2.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Datos.pdb
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Datos.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Sizer.2.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Command.2.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Configuracion.pdb
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Configuracion.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1TrueDBGrid.2.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmCatalogoAdd.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbEditParametro.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbEditValorCatalogo.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbImpresion.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbMantCatalogo.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbMantParametro.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbValAsociados.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.Resources.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.rptEncabezadoReportes.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.rptStbCatalogosValores.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.vbproj.GenerateResource.Cache
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.dll.licenses
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.pdb
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Formularios.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Formularios.pdb
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Command.2.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1List.2.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Sizer.2.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1TrueDBGrid.2.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Datos.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Configuracion.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Input.2.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Input.2.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1List.2.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Datos.pdb
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Catalogos.Datos.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Sizer.2.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1Command.2.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Configuracion.pdb
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\Proyecto.Configuracion.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\bin\Debug\C1.Win.C1TrueDBGrid.2.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmCatalogoAdd.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbEditParametro.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbEditValorCatalogo.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbImpresion.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbMantCatalogo.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbMantParametro.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.frmStbValAsociados.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.Resources.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.rptEncabezadoReportes.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.rptStbCatalogosValores.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.vbproj.GenerateResource.Cache
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.dll.licenses
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.Catalogos\obj\Debug\Proyecto.Catalogos.Formularios.pdb

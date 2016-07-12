@@ -1,0 +1,11 @@
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\Proyecto.Catalogos.Datos.dll
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\Proyecto.Catalogos.Datos.pdb
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\Proyecto.Catalogos.Datos.xml
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\SCCUM.BO.dll
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\SCCUM.BO.pdb
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Catalogos.Datos.vbprojResolveAssemblyReference.cache
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.Resources.resources
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Catalogos.Datos.vbproj.GenerateResource.Cache
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.dll
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.xml
+D:\meza\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.pdb

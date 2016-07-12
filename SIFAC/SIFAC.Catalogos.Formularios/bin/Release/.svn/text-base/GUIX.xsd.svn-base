@@ -1,0 +1,39 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="GUI" type="GUIType" />
+  <xsd:complexType name="GUIType">
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element name="Tema" type="TemaType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TemaType">
+    <xsd:sequence>
+      <xsd:element name="NombreTema" type="xsd:string" />
+      <xsd:element name="Flat" type="xsd:decimal" />
+      <xsd:element name="AlternatingRowStyle" type="xsd:decimal" />
+      <xsd:element name="FormBackColor" type="xsd:decimal" />
+      <xsd:element name="FilterBarBackColor" type="xsd:decimal" />
+      <xsd:element name="GridCaptionBold" type="xsd:decimal" />
+      <xsd:element name="GridCaptionColor" type="xsd:decimal" />
+      <xsd:element name="GridEvenColor" type="xsd:decimal" />
+      <xsd:element name="GridOddColor" type="xsd:decimal" />
+      <xsd:element name="EditForeColor" type="xsd:decimal" />
+      <xsd:element name="NombreItemBackColor" type="xsd:string" />
+      <xsd:element name="ShowFilterPanel" type="xsd:decimal" />
+      <xsd:element name="ShowGroupPanel" type="xsd:decimal" />
+      <xsd:element name="ShowHorizontalLines" type="xsd:decimal" />
+      <xsd:element name="ShowVerticalLines" type="xsd:decimal" />
+      <xsd:element name="EnableAlternateRows" type="xsd:decimal" />
+      <xsd:element name="GroupPanelBackColor" type="xsd:string" />
+      <xsd:element name="SelectedRowColor" type="xsd:string" />
+      <xsd:element name="SelectedRowForeColor" type="xsd:string" />
+      <xsd:element name="EvenRowForeColor" type="xsd:string" />
+      <xsd:element name="OddRowForeColor" type="xsd:string" />
+      <xsd:element name="GroupPanelBackColor2" type="xsd:string" />
+      <xsd:element name="GradientMode" type="xsd:decimal" />
+      <xsd:element name="StatusBarBackColor" type="xsd:string" />
+      <xsd:element name="EditForColorBloqueado" type="xsd:string" />
+      <xsd:element name="FontColorLabelObligatorio" type="xsd:string" />
+      <xsd:element name="GradientModeC1Grid" type="xsd:decimal" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

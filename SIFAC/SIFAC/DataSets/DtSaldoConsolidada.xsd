@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DtSaldoConsolidada" targetNamespace="http://tempuri.org/DtSaldoConsolidada.xsd" xmlns:mstns="http://tempuri.org/DtSaldoConsolidada.xsd" xmlns="http://tempuri.org/DtSaldoConsolidada.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMLASTConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUMLASTConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.My.MySettings.GlobalReference.Default.SCCUMLASTConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwCuentaRolesTableAdapter" GeneratorDataComponentClassName="vwCuentaRolesTableAdapter" Name="vwCuentaRoles" UserDataComponentName="vwCuentaRolesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SCCUMLASTConnectionString (MySettings)" DbObjectName="SCCUMLAST.dbo.vwRptCuotasVencidas" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT vwRptCuotasVencidas.objTiendaID,
+Tienda,sum(Mora30) as Mora30,sum(Mora60)as Mora60,sum(MoraOver60) as MoraOver60,
+sum(SccCuentaPorCobrar.Saldo)as Saldo
+FROM vwRptCuotasVencidas,SccCuentaPorCobrar
+where vwRptCuotasVencidas.SccCuentaID = SccCuentaPorCobrar.SccCuentaID
+group by vwRptCuotasVencidas.objTiendaID,
+vwRptCuotasVencidas.Tienda
+order by Tienda
+</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="objTiendaID" DataSetColumn="objTiendaID" />
+              <Mapping SourceColumn="Tienda" DataSetColumn="Tienda" />
+              <Mapping SourceColumn="Mora30" DataSetColumn="Mora30" />
+              <Mapping SourceColumn="Mora60" DataSetColumn="Mora60" />
+              <Mapping SourceColumn="MoraOver60" DataSetColumn="MoraOver60" />
+              <Mapping SourceColumn="Saldo" DataSetColumn="Saldo" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DtSaldoConsolidada" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtSaldoConsolidada" msprop:Generator_DataSetName="DtSaldoConsolidada">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwCuentaRoles" msprop:Generator_UserTableName="vwCuentaRoles" msprop:Generator_RowDeletedName="vwCuentaRolesRowDeleted" msprop:Generator_TableClassName="vwCuentaRolesDataTable" msprop:Generator_RowChangedName="vwCuentaRolesRowChanged" msprop:Generator_RowClassName="vwCuentaRolesRow" msprop:Generator_RowChangingName="vwCuentaRolesRowChanging" msprop:Generator_RowEvArgName="vwCuentaRolesRowChangeEvent" msprop:Generator_RowEvHandlerName="vwCuentaRolesRowChangeEventHandler" msprop:Generator_TablePropName="vwCuentaRoles" msprop:Generator_TableVarName="tablevwCuentaRoles" msprop:Generator_RowDeletingName="vwCuentaRolesRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="objTiendaID" msprop:Generator_UserColumnName="objTiendaID" msprop:Generator_ColumnPropNameInRow="objTiendaID" msprop:Generator_ColumnVarNameInTable="columnobjTiendaID" msprop:Generator_ColumnPropNameInTable="objTiendaIDColumn" type="xs:int" />
+              <xs:element name="Tienda" msprop:Generator_UserColumnName="Tienda" msprop:Generator_ColumnPropNameInRow="Tienda" msprop:Generator_ColumnVarNameInTable="columnTienda" msprop:Generator_ColumnPropNameInTable="TiendaColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Mora30" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Mora30" msprop:Generator_ColumnPropNameInRow="Mora30" msprop:Generator_ColumnVarNameInTable="columnMora30" msprop:Generator_ColumnPropNameInTable="Mora30Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Mora60" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Mora60" msprop:Generator_ColumnPropNameInRow="Mora60" msprop:Generator_ColumnVarNameInTable="columnMora60" msprop:Generator_ColumnPropNameInTable="Mora60Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MoraOver60" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MoraOver60" msprop:Generator_ColumnPropNameInRow="MoraOver60" msprop:Generator_ColumnVarNameInTable="columnMoraOver60" msprop:Generator_ColumnPropNameInTable="MoraOver60Column" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Saldo" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Saldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwCuentaRoles" />
+      <xs:field xpath="mstns:objTiendaID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

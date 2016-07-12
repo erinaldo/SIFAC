@@ -1,0 +1,27 @@
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\bin\Debug\Proyecto.BO.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\bin\Debug\Proyecto.BO.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\bin\Debug\Proyecto.BO.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\ResolveAssemblyReference.cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.Resources.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.vbproj.GenerateResource.Cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS-INTEGRACION\NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.pdb
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\bin\Debug\Proyecto.BO.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\bin\Debug\Proyecto.BO.pdb
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\bin\Debug\Proyecto.BO.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.Resources.resources
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.vbproj.GenerateResource.Cache
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.dll
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.xml
+C:\Sistemas\PlantillasDesarrollo\6-PLANTILLA NET\PLANTILLA .NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.pdb
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.BO\bin\Debug\Proyecto.BO.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.BO\bin\Debug\Proyecto.BO.pdb
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.BO\bin\Debug\Proyecto.BO.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.Resources.resources
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.vbproj.GenerateResource.Cache
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.dll
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.xml
+C:\Sistemas\PlantillasDesarrollo\PLANTILLA NET\3-Fuente\PROYECTO\Proyecto.BO\obj\Debug\Proyecto.BO.pdb

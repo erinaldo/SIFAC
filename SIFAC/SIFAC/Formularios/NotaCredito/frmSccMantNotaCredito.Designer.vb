@@ -1,0 +1,215 @@
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class frmSccMantNotaCredito
+    Inherits System.Windows.Forms.Form
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing AndAlso components IsNot Nothing Then
+            components.Dispose()
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSccMantNotaCredito))
+        Me.tstNotaCredito = New System.Windows.Forms.ToolStrip
+        Me.tsbAgregarNC = New System.Windows.Forms.ToolStripButton
+        Me.tsbModificarNC = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
+        Me.tsbAutorizarNC = New System.Windows.Forms.ToolStripButton
+        Me.tsbAnularNC = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
+        Me.tsbBuscarNC = New System.Windows.Forms.ToolStripButton
+        Me.tsbConsultarNC = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
+        Me.tsbImprimir = New System.Windows.Forms.ToolStripButton
+        Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator
+        Me.tsbSalir = New System.Windows.Forms.ToolStripButton
+        Me.grdNotaCredito = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.tstNotaCredito.SuspendLayout()
+        CType(Me.grdNotaCredito, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'tstNotaCredito
+        '
+        Me.tstNotaCredito.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.tstNotaCredito.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbAgregarNC, Me.tsbModificarNC, Me.ToolStripSeparator1, Me.tsbAutorizarNC, Me.tsbAnularNC, Me.ToolStripSeparator2, Me.tsbBuscarNC, Me.tsbConsultarNC, Me.ToolStripSeparator3, Me.tsbImprimir, Me.tsbRefrescar, Me.ToolStripSeparator4, Me.tsbSalir})
+        Me.tstNotaCredito.Location = New System.Drawing.Point(0, 0)
+        Me.tstNotaCredito.Name = "tstNotaCredito"
+        Me.tstNotaCredito.Size = New System.Drawing.Size(654, 39)
+        Me.tstNotaCredito.TabIndex = 1
+        Me.tstNotaCredito.Text = "ToolStrip1"
+        '
+        'tsbAgregarNC
+        '
+        Me.tsbAgregarNC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbAgregarNC.Image = CType(resources.GetObject("tsbAgregarNC.Image"), System.Drawing.Image)
+        Me.tsbAgregarNC.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAgregarNC.Name = "tsbAgregarNC"
+        Me.tsbAgregarNC.Size = New System.Drawing.Size(36, 36)
+        Me.tsbAgregarNC.Text = "Agregar Nota de Crédito"
+        '
+        'tsbModificarNC
+        '
+        Me.tsbModificarNC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbModificarNC.Image = CType(resources.GetObject("tsbModificarNC.Image"), System.Drawing.Image)
+        Me.tsbModificarNC.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbModificarNC.Name = "tsbModificarNC"
+        Me.tsbModificarNC.Size = New System.Drawing.Size(36, 36)
+        Me.tsbModificarNC.Text = "Modificar Nota de Crédito"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
+        '
+        'tsbAutorizarNC
+        '
+        Me.tsbAutorizarNC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbAutorizarNC.Enabled = False
+        Me.tsbAutorizarNC.Image = CType(resources.GetObject("tsbAutorizarNC.Image"), System.Drawing.Image)
+        Me.tsbAutorizarNC.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAutorizarNC.Name = "tsbAutorizarNC"
+        Me.tsbAutorizarNC.Size = New System.Drawing.Size(36, 36)
+        Me.tsbAutorizarNC.Text = "Autorizar Nota de Crédito"
+        '
+        'tsbAnularNC
+        '
+        Me.tsbAnularNC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbAnularNC.Enabled = False
+        Me.tsbAnularNC.Image = CType(resources.GetObject("tsbAnularNC.Image"), System.Drawing.Image)
+        Me.tsbAnularNC.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAnularNC.Name = "tsbAnularNC"
+        Me.tsbAnularNC.Size = New System.Drawing.Size(36, 36)
+        Me.tsbAnularNC.Text = "Anular Nota de Crédito"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
+        '
+        'tsbBuscarNC
+        '
+        Me.tsbBuscarNC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbBuscarNC.Enabled = False
+        Me.tsbBuscarNC.Image = CType(resources.GetObject("tsbBuscarNC.Image"), System.Drawing.Image)
+        Me.tsbBuscarNC.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbBuscarNC.Name = "tsbBuscarNC"
+        Me.tsbBuscarNC.Size = New System.Drawing.Size(36, 36)
+        Me.tsbBuscarNC.Text = "Buscar Nota de Crédito"
+        Me.tsbBuscarNC.Visible = False
+        '
+        'tsbConsultarNC
+        '
+        Me.tsbConsultarNC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbConsultarNC.Image = CType(resources.GetObject("tsbConsultarNC.Image"), System.Drawing.Image)
+        Me.tsbConsultarNC.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbConsultarNC.Name = "tsbConsultarNC"
+        Me.tsbConsultarNC.Size = New System.Drawing.Size(36, 36)
+        Me.tsbConsultarNC.Text = "Consultar Nota de Crédito"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 39)
+        '
+        'tsbImprimir
+        '
+        Me.tsbImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbImprimir.Enabled = False
+        Me.tsbImprimir.Image = CType(resources.GetObject("tsbImprimir.Image"), System.Drawing.Image)
+        Me.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbImprimir.Name = "tsbImprimir"
+        Me.tsbImprimir.Size = New System.Drawing.Size(36, 36)
+        Me.tsbImprimir.Text = "Imprimir"
+        Me.tsbImprimir.Visible = False
+        '
+        'tsbRefrescar
+        '
+        Me.tsbRefrescar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbRefrescar.Image = CType(resources.GetObject("tsbRefrescar.Image"), System.Drawing.Image)
+        Me.tsbRefrescar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbRefrescar.Name = "tsbRefrescar"
+        Me.tsbRefrescar.Size = New System.Drawing.Size(36, 36)
+        Me.tsbRefrescar.Text = "Refrescar"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 39)
+        '
+        'tsbSalir
+        '
+        Me.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbSalir.Image = CType(resources.GetObject("tsbSalir.Image"), System.Drawing.Image)
+        Me.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbSalir.Name = "tsbSalir"
+        Me.tsbSalir.Size = New System.Drawing.Size(36, 36)
+        Me.tsbSalir.Text = "Salir"
+        '
+        'grdNotaCredito
+        '
+        Me.grdNotaCredito.Caption = "Notas de Crédito"
+        Me.grdNotaCredito.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdNotaCredito.EmptyRows = True
+        Me.grdNotaCredito.ExtendRightColumn = True
+        Me.grdNotaCredito.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
+        Me.grdNotaCredito.Images.Add(CType(resources.GetObject("grdNotaCredito.Images"), System.Drawing.Image))
+        Me.grdNotaCredito.Location = New System.Drawing.Point(0, 39)
+        Me.grdNotaCredito.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
+        Me.grdNotaCredito.Name = "grdNotaCredito"
+        Me.grdNotaCredito.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdNotaCredito.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdNotaCredito.PreviewInfo.ZoomFactor = 75
+        Me.grdNotaCredito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotaCredito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdNotaCredito.Size = New System.Drawing.Size(654, 624)
+        Me.grdNotaCredito.TabIndex = 2
+        Me.grdNotaCredito.Tag = "AGRUPAR"
+        Me.grdNotaCredito.Text = "Notas de Crédito"
+        Me.grdNotaCredito.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
+        Me.grdNotaCredito.PropBag = resources.GetString("grdNotaCredito.PropBag")
+        '
+        'frmSccMantNotaCredito
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(654, 663)
+        Me.Controls.Add(Me.grdNotaCredito)
+        Me.Controls.Add(Me.tstNotaCredito)
+        Me.Name = "frmSccMantNotaCredito"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.Tag = "CATALOGOS"
+        Me.Text = "Notas de Crédito"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.tstNotaCredito.ResumeLayout(False)
+        Me.tstNotaCredito.PerformLayout()
+        CType(Me.grdNotaCredito, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+    Friend WithEvents tstNotaCredito As System.Windows.Forms.ToolStrip
+    Friend WithEvents grdNotaCredito As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents tsbAgregarNC As System.Windows.Forms.ToolStripButton
+    Friend WithEvents tsbModificarNC As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents tsbAutorizarNC As System.Windows.Forms.ToolStripButton
+    Friend WithEvents tsbAnularNC As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents tsbBuscarNC As System.Windows.Forms.ToolStripButton
+    Friend WithEvents tsbConsultarNC As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents tsbRefrescar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
+    Friend WithEvents tsbImprimir As System.Windows.Forms.ToolStripButton
+End Class
