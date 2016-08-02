@@ -7,3 +7,12 @@ D:\meza\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.vbproj.GenerateResource.Cache
 D:\meza\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.dll
 D:\meza\SIFAC\SIFAC.BO\obj\Debug\Proyecto.BO.xml
 D:\meza\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.pdb
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Debug\SCCUM.BO.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Debug\SCCUM.BO.pdb
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Debug\Proyecto.BO.xml
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.vbprojResolveAssemblyReference.cache
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.Resources.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.vbproj.GenerateResource.Cache
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\Proyecto.BO.xml
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.pdb

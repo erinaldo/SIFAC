@@ -54,8 +54,8 @@ Public Class frmSivEntradaBodega
         Dim DiasEntradasRecientes As Integer
         Try
             DiasEntradasRecientes = StbParametro.RetrieveDT("Nombre = 'DiasEntradas'", , "Valor").DefaultView.Item(0)("Valor")
-            dtEntradaBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("NumeroEntrada, convert(varchar,Fecha,103) Fecha, TipoEntrada,objTipoEntradaID, objProveedorID, Proveedor, NumeroFactura, FechaFactura, NumeroPoliza, CostoTotal, Anulada, CAST (0 AS BIT) AS PreliAplicada,PreliquidacionAplicada", "vwSivEntradaBodega", Filtro & " AND Fecha BETWEEN GETDATE()-" & DiasEntradasRecientes + 1 & " AND GETDATE()" & " ORDER BY NumeroEntrada DESC"))
-            dtEntradaBodegaDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objEntradaBodegaID, objRepuestoID, CodigoRepuesto, objProveedorID, DescripcionCorta, Cantidad, Costo, Total", "vwSivEntradaBodegaDetalle", Filtro & " AND Fecha BETWEEN GETDATE()-366 AND GETDATE() ORDER BY objEntradaBodegaID DESC"))
+            dtEntradaBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("NumeroEntrada, convert(varchar,Fecha,103) Fecha, TipoEntrada,objTipoEntradaID, NumeroFactura, FechaFactura, CostoTotal, Anulada", "vwSivEntradaBodega", Filtro & " AND Fecha BETWEEN GETDATE()-" & DiasEntradasRecientes + 1 & " AND GETDATE()" & " ORDER BY NumeroEntrada DESC"))
+            dtEntradaBodegaDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objEntradaBodegaID, SivProductoID, Producto, Cantidad, Costo, Total", "vwSivEntradaBodegaDetalle", Filtro & " AND Fecha BETWEEN GETDATE()-366 AND GETDATE() ORDER BY objEntradaBodegaID DESC"))
             dsEntradaBodega = New DataSet
             dsEntradaBodega.Merge(dtEntradaBodega)
             dsEntradaBodega.Tables(0).TableName = "SivEntradabodega"

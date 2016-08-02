@@ -858,22 +858,22 @@ Public Class frmPrincipal
     '-- Descripcion             :   Cargar la pantalla principal de catálogo de productos
     '----------------------------------------------------------------------------------
     Private Sub CargarProductos()
-        Dim objProductos As frmSivProductos
-        Try
-            '-- Instanciar
-            Me.Cursor = Cursors.WaitCursor
-            If Not clsProyecto.MostrarFormulario("frmSivProductos", Me) Then
-                objProductos = New frmSivProductos
-                objProductos.Width = Me.Width - Me.OutBarPrincipal.Width
-                objProductos.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                objProductos.MdiParent = Me
-                objProductos.Show()
-            End If
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
+        'Dim objProductos As frmSivProductos
+        'Try
+        '    '-- Instanciar
+        '    Me.Cursor = Cursors.WaitCursor
+        '    If Not clsProyecto.MostrarFormulario("frmSivProductos", Me) Then
+        '        objProductos = New frmSivProductos
+        '        objProductos.Width = Me.Width - Me.OutBarPrincipal.Width
+        '        objProductos.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+        '        objProductos.MdiParent = Me
+        '        objProductos.Show()
+        '    End If
+        'Catch ex As Exception
+        '    clsError.CaptarError(ex)
+        'Finally
+        '    Me.Cursor = Cursors.Default
+        'End Try
     End Sub
 #End Region
 

@@ -91,11 +91,11 @@
     <Compile Include="SfaPromocionDetTienda_CF.vb" />
     <Compile Include="SfaPromocion_CF.vb" />
     <Compile Include="SivBodegaRepuestos_CF.vb" />
-    <Compile Include="SivEntradaBodegaDetalle_CF.vb" />
+    <Compile Include="SivEntradaBodega.vb" />
+    <Compile Include="SivEntradaBodegaDetalle.vb" />
     <Compile Include="SivEntradaBodegaPREIMP_CF.vb" />
-    <Compile Include="SivEntradaBodega_CF.vb" />
     <Compile Include="SivEntradaPreliquidacion_CF.vb" />
-    <Compile Include="SivProductos_CF.vb" />
+    <Compile Include="SivProductos.vb" />
     <Compile Include="SivProveedorDetProvision_CF.vb" />
     <Compile Include="SivProveedor_CF.vb" />
     <Compile Include="SivRepuestosDetCompat_CF.vb" />
@@ -110,6 +110,7 @@
     <Compile Include="SrhEmpleado_CF.vb" />
     <Compile Include="StaServicioTaller_CF.vb" />
     <Compile Include="StbBitacoraCliente_CF.vb" />
+    <Compile Include="StbBodegas_CF.vb" />
     <Compile Include="StbCiudad_CF.vb" />
     <Compile Include="StbContactos_CF.vb" />
     <Compile Include="StbPersonaClasificacion_CF.vb" />

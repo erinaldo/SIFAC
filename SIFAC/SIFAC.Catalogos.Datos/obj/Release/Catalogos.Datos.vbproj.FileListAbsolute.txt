@@ -1,0 +1,11 @@
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Release\Proyecto.Catalogos.Datos.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Release\Proyecto.Catalogos.Datos.pdb
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Release\Proyecto.Catalogos.Datos.xml
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Release\SCCUM.BO.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Release\SCCUM.BO.pdb
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Release\Catalogos.Datos.vbprojResolveAssemblyReference.cache
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Release\Proyecto.Catalogos.Datos.Resources.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Release\Catalogos.Datos.vbproj.GenerateResource.Cache
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Release\Proyecto.Catalogos.Datos.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Release\Proyecto.Catalogos.Datos.xml
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Release\Proyecto.Catalogos.Datos.pdb

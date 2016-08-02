@@ -122,14 +122,8 @@ Public Class frmSivEntradaBodegaAnular
                     objSivEntradaBodega.SivEntradaBodegaID = Me.SivEntradaBodegaID
                     objSivEntradaBodega.Retrieve(objSivEntradaBodega.SivEntradaBodegaID)
                     Me.txtNumeroEntrada.Text = objSivEntradaBodega.SivEntradaBodegaID
-                    Me.cmbBodega.SelectedValue = objSivEntradaBodega.objTiendaID
-                    If objSivEntradaBodega.objProveedorID.HasValue = True Then
-                        Me.cmbProveedor.SelectedValue = objSivEntradaBodega.objProveedorID
-                    End If
+                    Me.cmbBodega.SelectedValue = objSivEntradaBodega.objStbBodegaID
                     Me.cmbTipoEntrada.SelectedValue = objSivEntradaBodega.objTipoEntradaID
-                    If objSivEntradaBodega.objTipoAjusteID.HasValue = True Then
-                        Me.cmbTipoAjuste.SelectedValue = objSivEntradaBodega.objTipoAjusteID
-                    End If
                     Me.dtpFechaEntrada.Value = objSivEntradaBodega.FechaEntrada
                     Me.NumCostoTotal.Value = objSivEntradaBodega.CostoTotal
                     If Not IsDBNull(objSivEntradaBodega.NumeroFactura) Then
@@ -137,9 +131,6 @@ Public Class frmSivEntradaBodegaAnular
                     End If
                     If objSivEntradaBodega.FechaFactura.HasValue = True Then
                         dtpFechaFactura.Value = objSivEntradaBodega.FechaFactura
-                    End If
-                    If Not IsDBNull(objSivEntradaBodega.NumeroPoliza) Then
-                        txtNumeroPoliza.Text = objSivEntradaBodega.NumeroPoliza
                     End If
                     If Not IsDBNull(objSivEntradaBodega.Comentarios) Then
                         txtComentarios.Text = objSivEntradaBodega.Comentarios
@@ -431,7 +422,6 @@ Public Class frmSivEntradaBodegaAnular
                 Me.ActualizarEntradaBodega(T)
                 ActualizarSivBodegaRepuesto(T)
                 RecalcularCostoPromedio(T)
-                ActualizarCantidadCostosEntrada(T)
                 boolModificado = False
                 T.CommitTran()
                 MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
@@ -534,28 +524,6 @@ Public Class frmSivEntradaBodegaAnular
             clsError.CaptarError(ex)
         End Try
     End Sub
-
-    Private Sub ActualizarCantidadCostosEntrada(ByVal T As DAL.TransactionManager)
-        Dim objSivEntradaBodegaDetalle As SivEntradaBodegaDetalle
-        Try
-            objSivEntradaBodegaDetalle = New SivEntradaBodegaDetalle
-
-            For I As Integer = 0 To Me.grdDetalleEntradasBodegas.RowCount - 1
-                'Filtrar el los detalle de entrada a modificar
-                objSivEntradaBodegaDetalle.SivEntradaBodegaDetID = Me.grdDetalleEntradasBodegas.Item(I)("SivEntradaBodegaDetID")
-                objSivEntradaBodegaDetalle.Retrieve(objSivEntradaBodegaDetalle.SivEntradaBodegaDetID, T)
-                objSivEntradaBodegaDetalle.Cantidad = 0
-                objSivEntradaBodegaDetalle.Costo = 0
-                objSivEntradaBodegaDetalle.CantidadFactura = 0
-                objSivEntradaBodegaDetalle.Update(T)
-            Next
-
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-    End Sub
-
-
 
 #End Region
 

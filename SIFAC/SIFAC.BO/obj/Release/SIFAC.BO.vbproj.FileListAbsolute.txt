@@ -1,0 +1,8 @@
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Release\SCCUM.BO.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Release\SCCUM.BO.pdb
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Release\Proyecto.BO.xml
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Release\SCCUM.BO.Resources.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Release\SIFAC.BO.vbproj.GenerateResource.Cache
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Release\SCCUM.BO.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Release\Proyecto.BO.xml
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Release\SCCUM.BO.pdb

@@ -42,3 +42,30 @@ D:\meza\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formulari
 D:\meza\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.dll
 D:\meza\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.xml
 D:\meza\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.pdb
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\Proyecto.Catalogos.Formularios.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\Proyecto.Catalogos.Formularios.pdb
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\Proyecto.Catalogos.xml
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\DAL.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\GUI.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\Proyecto.Catalogos.Datos.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\Proyecto.Configuracion.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\SCCUM.BO.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\Proyecto.Catalogos.Datos.pdb
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\Proyecto.Catalogos.Datos.xml
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\bin\Debug\SCCUM.BO.pdb
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Catalogos.Formularios.vbprojResolveAssemblyReference.cache
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.frmCatalogoAdd.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.frmStbEditParametro.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.frmStbEditValorCatalogo.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.frmStbImpresion.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.frmStbMantCatalogo.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.frmStbMantParametro.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.frmStbValAsociados.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.Resources.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.rptEncabezadoReportes.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.rptStbCatalogosValores.resources
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Catalogos.Formularios.vbproj.GenerateResource.Cache
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.dll.licenses
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.dll
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.xml
+C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Formularios\obj\Debug\Proyecto.Catalogos.Formularios.pdb
