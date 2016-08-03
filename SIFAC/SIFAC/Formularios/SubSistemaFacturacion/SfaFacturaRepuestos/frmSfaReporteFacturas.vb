@@ -4,14 +4,14 @@
 ''-- Formulario para Imprimir reporte de Facturas
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.VisualStyles
-Imports SCCUM.BO.clsConsultas
+Imports SIFAC.BO.clsConsultas
 
 Public Class frmSfaReporteFacturas
 

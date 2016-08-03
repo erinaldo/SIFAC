@@ -25,6 +25,9 @@ Partial Public Class SivProductos
 #End Region
 
 #Region " Propiedades "
+	''' <summary>
+	''' ID interno del producto
+	''' </summary>
 	Public Property SivProductoID() As Integer
         Get
             Return (m_SivProductoID)
@@ -34,6 +37,9 @@ Partial Public Class SivProductos
 		End Set
     End Property
 	
+	''' <summary>
+	''' Nombre del Modelo
+	''' </summary>
 	Public Property Nombre() As String
         Get
             Return (m_Nombre)
@@ -62,6 +68,9 @@ Partial Public Class SivProductos
 		End Set
     End Property
 	
+	''' <summary>
+	''' ID de la Marca
+	''' </summary>
 	Public Property objCategoriaID() As Integer
         Get
             Return (m_objCategoriaID)
@@ -71,6 +80,9 @@ Partial Public Class SivProductos
 		End Set
     End Property
 	
+	''' <summary>
+	''' ID del Cilindraje
+	''' </summary>
 	Public Property objMarcaID() As Integer
         Get
             Return (m_objMarcaID)
@@ -134,6 +146,9 @@ Partial Public Class SivProductos
 		End Set
     End Property
 	
+	''' <summary>
+	''' Activo actualmente? Participa en nuevas cuentas?
+	''' </summary>
 	Public Property Activo() As Boolean
         Get
             Return (m_Activo)
@@ -143,6 +158,9 @@ Partial Public Class SivProductos
 		End Set
     End Property
 	
+	''' <summary>
+	''' Fecha de creación del registro
+	''' </summary>
 	Public Property FechaCreacion() As Date
         Get
             Return (m_FechaCreacion)
@@ -152,6 +170,9 @@ Partial Public Class SivProductos
 		End Set
     End Property
 	
+	''' <summary>
+	''' Login del usuario creador del registro
+	''' </summary>
 	Public Property UsuarioCreacion() As String
         Get
             Return (m_UsuarioCreacion)
@@ -166,6 +187,9 @@ Partial Public Class SivProductos
 		End Set
     End Property
 	
+	''' <summary>
+	''' Fecha de modificación del registro
+	''' </summary>
 	Public Property FechaModificacion() As Nullable(Of Date)
         Get
             Return (m_FechaModificacion)
@@ -175,6 +199,9 @@ Partial Public Class SivProductos
 		End Set
     End Property
 	
+	''' <summary>
+	''' Login del usuario modificador del registro
+	''' </summary>
 	Public Property UsuarioModificacion() As String
         Get
             Return (m_UsuarioModificacion)

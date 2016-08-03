@@ -4,7 +4,7 @@
 ''--    Formulario de Edición y Modificación de Trámites legales.
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms

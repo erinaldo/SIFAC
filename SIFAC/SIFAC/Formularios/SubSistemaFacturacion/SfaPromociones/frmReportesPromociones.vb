@@ -2,7 +2,7 @@
 '-- Fecha: 05 Julio 2010, 04:05 pm.
 '-- Formulario para seleccionar parámetros de filtrado del reporte de Promociones 
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
 

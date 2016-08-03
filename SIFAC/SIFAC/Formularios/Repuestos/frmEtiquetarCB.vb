@@ -1,6 +1,6 @@
 Imports System.IO
 Imports System.Drawing.Text
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Proyecto.Configuracion 'uso de clsProyecto
 Imports Proyecto.Catalogos.Datos
 Imports DAL

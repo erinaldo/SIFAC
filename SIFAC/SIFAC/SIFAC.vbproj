@@ -411,6 +411,30 @@
     <Compile Include="Formularios\Principal\frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Productos\frmMarcasEdit.Designer.vb">
+      <DependentUpon>frmMarcasEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Productos\frmMarcasEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Productos\frmSivMarcas.Designer.vb">
+      <DependentUpon>frmSivMarcas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Productos\frmSivMarcas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Productos\frmSivProductos.Designer.vb">
+      <DependentUpon>frmSivProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Productos\frmSivProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Productos\frmSivProductosEditar.Designer.vb">
+      <DependentUpon>frmSivProductosEditar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Productos\frmSivProductosEditar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\ReciboCaja\frmSccBuscarRecibo.Designer.vb">
       <DependentUpon>frmSccBuscarRecibo.vb</DependentUpon>
     </Compile>
@@ -1123,6 +1147,15 @@
     <EmbeddedResource Include="Formularios\Principal\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Productos\frmSivMarcas.resx">
+      <DependentUpon>frmSivMarcas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Productos\frmSivProductos.resx">
+      <DependentUpon>frmSivProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Productos\frmSivProductosEditar.resx">
+      <DependentUpon>frmSivProductosEditar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ReciboCaja\frmSccBuscarRecibo.resx">
       <SubType>Designer</SubType>

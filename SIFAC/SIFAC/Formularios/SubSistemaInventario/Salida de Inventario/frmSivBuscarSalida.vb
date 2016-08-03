@@ -3,8 +3,8 @@ Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.Cursors
-Imports SCCUM.BO
-Imports SCCUM.BO.clsConsultas
+Imports SIFAC.BO
+Imports SIFAC.BO.clsConsultas
 Imports System.IO
 
 Public Class frmSivBuscarSalida

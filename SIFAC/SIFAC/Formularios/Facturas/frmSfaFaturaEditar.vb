@@ -1,7 +1,7 @@
 
 Imports DAL
 Imports Proyecto.Configuracion
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Proyecto.Catalogos.Datos
 Imports System.Data.SqlClient
 

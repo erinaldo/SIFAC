@@ -102,6 +102,7 @@ Partial Class frmPrincipal
         Me.cmdRptEstadisticoServicios = New C1.Win.C1Command.C1Command()
         Me.cmdSolicitudesRepuestoGarantia = New C1.Win.C1Command.C1Command()
         Me.cmdSolicitudesDescuento = New C1.Win.C1Command.C1Command()
+        Me.cmdMarcas = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink7 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink11 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdLinkMuestrasMedicas = New C1.Win.C1Command.C1CommandLink()
@@ -111,6 +112,7 @@ Partial Class frmPrincipal
         Me.C1CommandLink13 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink24 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink34 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
         Me.brCartera = New C1.Win.C1Command.C1OutPage()
         Me.ToolBarCartera = New C1.Win.C1Command.C1ToolBar()
         Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
@@ -330,7 +332,6 @@ Partial Class frmPrincipal
         Me.OutBarPrincipal.Location = New System.Drawing.Point(0, 24)
         Me.OutBarPrincipal.Name = "OutBarPrincipal"
         Me.OutBarPrincipal.PageLayout = C1.Win.C1Command.ButtonLayoutEnum.TextOnLeft
-        Me.OutBarPrincipal.SelectedIndex = 1
         Me.OutBarPrincipal.Size = New System.Drawing.Size(188, 583)
         Me.OutBarPrincipal.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
@@ -348,7 +349,7 @@ Partial Class frmPrincipal
         Me.ToolBarCatalogos.Border.Style = C1.Win.C1Command.BorderStyleEnum.Ridge
         Me.ToolBarCatalogos.ButtonLookVert = CType((C1.Win.C1Command.ButtonLookFlags.Text Or C1.Win.C1Command.ButtonLookFlags.Image), C1.Win.C1Command.ButtonLookFlags)
         Me.ToolBarCatalogos.CommandHolder = Me.C1CommandHolder1
-        Me.ToolBarCatalogos.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink7, Me.C1CommandLink11, Me.cmdLinkMuestrasMedicas, Me.cmdLinkDevolucionDeVencidos, Me.cmdLinkDevolucionDeNoVencidos, Me.cmdRecepcionDeVencidos, Me.C1CommandLink13, Me.C1CommandLink24, Me.C1CommandLink34})
+        Me.ToolBarCatalogos.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink7, Me.C1CommandLink4, Me.C1CommandLink11, Me.cmdLinkMuestrasMedicas, Me.cmdLinkDevolucionDeVencidos, Me.cmdLinkDevolucionDeNoVencidos, Me.cmdRecepcionDeVencidos, Me.C1CommandLink13, Me.C1CommandLink24, Me.C1CommandLink34})
         Me.ToolBarCatalogos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarCatalogos.Horizontal = False
         Me.ToolBarCatalogos.Location = New System.Drawing.Point(0, 0)
@@ -422,6 +423,7 @@ Partial Class frmPrincipal
         Me.C1CommandHolder1.Commands.Add(Me.cmdRptEstadisticoServicios)
         Me.C1CommandHolder1.Commands.Add(Me.cmdSolicitudesRepuestoGarantia)
         Me.C1CommandHolder1.Commands.Add(Me.cmdSolicitudesDescuento)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdMarcas)
         Me.C1CommandHolder1.Owner = Me
         '
         'cmdCatalogoValor
@@ -788,6 +790,12 @@ Partial Class frmPrincipal
         Me.cmdSolicitudesDescuento.Name = "cmdSolicitudesDescuento"
         Me.cmdSolicitudesDescuento.Text = "Solicitudes de Descuentos"
         '
+        'cmdMarcas
+        '
+        Me.cmdMarcas.Image = CType(resources.GetObject("cmdMarcas.Image"), System.Drawing.Image)
+        Me.cmdMarcas.Name = "cmdMarcas"
+        Me.cmdMarcas.Text = "Marcas"
+        '
         'C1CommandLink7
         '
         Me.C1CommandLink7.Command = Me.cmdCatalogoValor
@@ -796,47 +804,53 @@ Partial Class frmPrincipal
         'C1CommandLink11
         '
         Me.C1CommandLink11.Command = Me.cmdPersonas
-        Me.C1CommandLink11.SortOrder = 1
+        Me.C1CommandLink11.SortOrder = 2
         Me.C1CommandLink11.ToolTipText = "Personas"
         '
         'cmdLinkMuestrasMedicas
         '
         Me.cmdLinkMuestrasMedicas.Command = Me.cmdTienda
-        Me.cmdLinkMuestrasMedicas.SortOrder = 2
+        Me.cmdLinkMuestrasMedicas.SortOrder = 3
         Me.cmdLinkMuestrasMedicas.ToolTipText = "Sucursales"
         '
         'cmdLinkDevolucionDeVencidos
         '
         Me.cmdLinkDevolucionDeVencidos.Command = Me.cmdProducto
-        Me.cmdLinkDevolucionDeVencidos.SortOrder = 3
+        Me.cmdLinkDevolucionDeVencidos.SortOrder = 4
         Me.cmdLinkDevolucionDeVencidos.ToolTipText = "Productos"
         '
         'cmdLinkDevolucionDeNoVencidos
         '
         Me.cmdLinkDevolucionDeNoVencidos.Command = Me.cmdTasaCambio
-        Me.cmdLinkDevolucionDeNoVencidos.SortOrder = 4
+        Me.cmdLinkDevolucionDeNoVencidos.SortOrder = 5
         Me.cmdLinkDevolucionDeNoVencidos.ToolTipText = "Tasa de Cambio"
         '
         'cmdRecepcionDeVencidos
         '
         Me.cmdRecepcionDeVencidos.Command = Me.cmdEmpleados
-        Me.cmdRecepcionDeVencidos.SortOrder = 5
+        Me.cmdRecepcionDeVencidos.SortOrder = 6
         Me.cmdRecepcionDeVencidos.ToolTipText = "Empleados"
         '
         'C1CommandLink13
         '
         Me.C1CommandLink13.Command = Me.cmdParametros
-        Me.C1CommandLink13.SortOrder = 6
+        Me.C1CommandLink13.SortOrder = 7
         '
         'C1CommandLink24
         '
         Me.C1CommandLink24.Command = Me.cmdProveedores
-        Me.C1CommandLink24.SortOrder = 7
+        Me.C1CommandLink24.SortOrder = 8
         '
         'C1CommandLink34
         '
         Me.C1CommandLink34.Command = Me.cmdRepuestos
-        Me.C1CommandLink34.SortOrder = 8
+        Me.C1CommandLink34.SortOrder = 9
+        '
+        'C1CommandLink4
+        '
+        Me.C1CommandLink4.Command = Me.cmdMarcas
+        Me.C1CommandLink4.SortOrder = 1
+        Me.C1CommandLink4.ToolTipText = "Marcas"
         '
         'brCartera
         '
@@ -1598,4 +1612,6 @@ Partial Class frmPrincipal
     Friend WithEvents lblFecha As C1.Win.C1Ribbon.RibbonLabel
     Friend WithEvents lblHora As C1.Win.C1Ribbon.RibbonLabel
     Private WithEvents tmrPrincipal As System.Windows.Forms.Timer
+    Friend WithEvents cmdMarcas As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink4 As C1.Win.C1Command.C1CommandLink
 End Class

@@ -4,7 +4,7 @@
 ''-- Formulario de Edición y Modificación de Promociones
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos

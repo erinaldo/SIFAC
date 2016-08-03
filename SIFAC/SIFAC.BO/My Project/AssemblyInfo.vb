@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SCCUM.BO")> 
+<Assembly: AssemblyTitle("SIFAC.BO")> 
 <Assembly: AssemblyDescription("Libreria de BO")> 
-<Assembly: AssemblyCompany("Delphi Networks")> 
-<Assembly: AssemblyProduct("SCCUM.BO")> 
-<Assembly: AssemblyCopyright("Copyright ©  2008")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("SIFAC.BO")> 
+<Assembly: AssemblyCopyright("Copyright ©  2016")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>

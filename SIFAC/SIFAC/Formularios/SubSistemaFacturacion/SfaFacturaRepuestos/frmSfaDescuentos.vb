@@ -4,14 +4,14 @@
 ''-- Formulario de Consulta de Descuentos de Repuestos
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.VisualStyles
-Imports SCCUM.BO.clsConsultas
+Imports SIFAC.BO.clsConsultas
 Imports C1.Win.C1TrueDBGrid
 
 Public Class frmSfaDescuentos

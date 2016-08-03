@@ -6,15 +6,7 @@ Proyecto.Catalogos.Formularios
 </name>
 </assembly>
 <members>
-<member name="M:Proyecto.Catalogos.Formularios.ClsCatalogos.ObtenerValorParametro(System.String,System.String,System.String)">
-	<summary>
- Recupera datos de la Tabla Parámetro
- </summary>
-	<param name="strCampos">Campos a mostrar</param>
-	<param name="strFiltro"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="P:Proyecto.Catalogos.Formularios.My.Resources.Resources.ResourceManager">
+<member name="P:Proyecto.Catalogos.Formularios.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
@@ -59,6 +51,14 @@ Proyecto.Catalogos.Formularios
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
+</member><member name="M:Proyecto.Catalogos.Formularios.ClsCatalogos.ObtenerValorParametro(System.String,System.String,System.String)">
+	<summary>
+ Recupera datos de la Tabla Parámetro
+ </summary>
+	<param name="strCampos">Campos a mostrar</param>
+	<param name="strFiltro"></param>
+	<returns></returns>
+	<remarks></remarks>
 </member>
 </members>
 </doc>

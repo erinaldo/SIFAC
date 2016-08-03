@@ -2,8 +2,8 @@ Imports DAL
 Imports Proyecto
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
-Imports SCCUM.BO.clsConsultas
-Imports SCCUM.BO
+Imports SIFAC.BO.clsConsultas
+Imports SIFAC.BO
 Public Class frmStbTiendaContactos
 
 #Region "Propiedades"

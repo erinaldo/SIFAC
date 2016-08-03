@@ -4,10 +4,10 @@
 '-- de Cotizaciones
 
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
-Imports SCCUM.BO.clsConsultas
+Imports SIFAC.BO.clsConsultas
 
 Public Class frmCriteriosReporteCotizaciones
 

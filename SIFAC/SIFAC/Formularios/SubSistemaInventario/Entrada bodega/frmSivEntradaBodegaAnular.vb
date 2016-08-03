@@ -4,14 +4,14 @@
 ''-- Formulario de Anulación y Consultar de Entrada Bodega
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.VisualStyles
-Imports SCCUM.BO.clsConsultas
+Imports SIFAC.BO.clsConsultas
 Imports C1.Win.C1TrueDBGrid
 
 Public Class frmSivEntradaBodegaAnular
@@ -151,9 +151,9 @@ Public Class frmSivEntradaBodegaAnular
 #Region "Longitudes Maximas"
 
     Private Sub LongitudesMaximas()
-        Me.txtNumeroFactura.MaxLength = BO.SivEntradaBodega.GetMaxLength("NumeroFactura")
-        Me.txtNumeroPoliza.MaxLength = BO.SivEntradaBodega.GetMaxLength("NumeroPoliza")
-        Me.txtComentarios.MaxLength = BO.SivEntradaBodega.GetMaxLength("Comentarios")
+        Me.txtNumeroFactura.MaxLength = SivEntradaBodega.GetMaxLength("NumeroFactura")
+        Me.txtNumeroPoliza.MaxLength = SivEntradaBodega.GetMaxLength("NumeroPoliza")
+        Me.txtComentarios.MaxLength = SivEntradaBodega.GetMaxLength("Comentarios")
     End Sub
 
 #End Region

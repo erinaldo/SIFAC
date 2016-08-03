@@ -1,7 +1,7 @@
 Imports DAL
 Imports Proyecto.Configuracion
-Imports SCCUM.BO.clsConsultas
-Imports SCCUM.BO
+Imports SIFAC.BO.clsConsultas
+Imports SIFAC.BO
 
 Public Class frmSivProductosEditar
 
@@ -109,10 +109,10 @@ Public Class frmSivProductosEditar
         Dim objProducto As SivProductos
         objProducto = New SivProductos
         objProducto.Retrieve(ProductoID)
-        txtModelo.Text = objProducto.Modelo
-        cbxMarca.SelectedValue = objProducto.objMarcaID
-        cbxCilindraje.SelectedValue = objProducto.objCilindrajeID
-        cbxSegmento.SelectedValue = objProducto.objSegmentoID
+        'txtModelo.Text = objProducto.Modelo
+        'cbxMarca.SelectedValue = objProducto.objMarcaID
+        'cbxCilindraje.SelectedValue = objProducto.objCilindrajeID
+        'cbxSegmento.SelectedValue = objProducto.objSegmentoID
         chkActivo.Checked = objProducto.Activo
     End Sub
 
@@ -127,10 +127,10 @@ Public Class frmSivProductosEditar
             objProducto = New SivProductos
             ProductoID = SivProductos.RetrieveDT(, , "ISNULL(MAX(SivProductoID),0)+1 AS ID").DefaultView.Item(0)("ID")
             objProducto.SivProductoID = ProductoID
-            objProducto.Modelo = txtModelo.Text.Trim
+            'objProducto.Modelo = txtModelo.Text.Trim
             objProducto.objMarcaID = cbxMarca.SelectedValue
-            objProducto.objCilindrajeID = cbxCilindraje.SelectedValue
-            objProducto.objSegmentoID = cbxSegmento.SelectedValue
+            'objProducto.objCilindrajeID = cbxCilindraje.SelectedValue
+            'objProducto.objSegmentoID = cbxSegmento.SelectedValue
             objProducto.Activo = chkActivo.Checked
             objProducto.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objProducto.FechaCreacion = clsProyecto.Conexion.FechaServidor
@@ -156,10 +156,10 @@ Public Class frmSivProductosEditar
             T.BeginTran()
             objProducto = New SivProductos
             objProducto.SivProductoID = ProductoID
-            objProducto.Modelo = txtModelo.Text.Trim
+            'objProducto.Modelo = txtModelo.Text.Trim
             objProducto.objMarcaID = cbxMarca.SelectedValue
-            objProducto.objCilindrajeID = cbxCilindraje.SelectedValue
-            objProducto.objSegmentoID = cbxSegmento.SelectedValue
+            'objProducto.objCilindrajeID = cbxCilindraje.SelectedValue
+            'objProducto.objSegmentoID = cbxSegmento.SelectedValue
             objProducto.Activo = chkActivo.Checked
             objProducto.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objProducto.UsuarioModificacion = clsProyecto.Conexion.Servidor

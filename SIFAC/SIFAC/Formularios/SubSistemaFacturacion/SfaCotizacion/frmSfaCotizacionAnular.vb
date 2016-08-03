@@ -4,14 +4,14 @@
 ''-- Formulario de Anulacion y Consulta de Cotización
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.VisualStyles
-Imports SCCUM.BO.clsConsultas
+Imports SIFAC.BO.clsConsultas
 Imports C1.Win.C1TrueDBGrid
 Imports System.Windows.Forms.Cursors
 
@@ -169,9 +169,9 @@ Public Class frmSfaCotizacionAnular
 #Region "Longitudes Maximas"
 
     Private Sub LongitudesMaximas()
-        Me.txtAtencionA.MaxLength = BO.SfaCotizacion.GetMaxLength("AtencionA")
-        Me.txtComentarios.MaxLength = BO.SfaCotizacion.GetMaxLength("Comentario")
-        Me.txtComentariosAnulacion.MaxLength = BO.SfaCotizacion.GetMaxLength("ComentarioAnular")
+        Me.txtAtencionA.MaxLength = SfaCotizacion.GetMaxLength("AtencionA")
+        Me.txtComentarios.MaxLength = SfaCotizacion.GetMaxLength("Comentario")
+        Me.txtComentariosAnulacion.MaxLength = SfaCotizacion.GetMaxLength("ComentarioAnular")
     End Sub
 
 #End Region

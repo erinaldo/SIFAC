@@ -7,7 +7,7 @@
 
 Imports DataDynamics.ActiveReports
 Imports DataDynamics.ActiveReports.Document
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Proyecto.Configuracion
 Imports DAL
 

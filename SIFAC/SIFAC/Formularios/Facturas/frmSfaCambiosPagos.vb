@@ -1,7 +1,7 @@
 
 Imports DAL
 Imports Proyecto.Configuracion
-Imports SCCUM.BO
+Imports SIFAC.BO
 
 Public Class frmSfaCambiosPagos
     Dim m_IDDetalleFactura As Integer

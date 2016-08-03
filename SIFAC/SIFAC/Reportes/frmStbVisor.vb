@@ -1,6 +1,6 @@
 Imports DAL
 Imports Proyecto.Configuracion
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Microsoft.Reporting.WinForms
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos

@@ -4,14 +4,14 @@
 ''-- Formulario de Agregación de Entrada Bodega
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.VisualStyles
-Imports SCCUM.BO.clsConsultas
+Imports SIFAC.BO.clsConsultas
 Imports C1.Win.C1TrueDBGrid
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Base
@@ -81,8 +81,8 @@ Public Class frmSivEntradaBodegaEditar
 #Region "Longitudes Maximas"
 
     Private Sub LongitudesMaximas()
-        Me.txtNumeroFactura.MaxLength = BO.SivEntradaBodega.GetMaxLength("NumeroFactura")
-        Me.txtComentarios.MaxLength = BO.SivEntradaBodega.GetMaxLength("Comentarios")
+        Me.txtNumeroFactura.MaxLength = SivEntradaBodega.GetMaxLength("NumeroFactura")
+        Me.txtComentarios.MaxLength = SivEntradaBodega.GetMaxLength("Comentarios")
     End Sub
 
 #End Region

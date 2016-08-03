@@ -6,8 +6,8 @@ Imports DataDynamics.ActiveReports
 Imports DataDynamics.ActiveReports.Document
 Imports Proyecto.Configuracion
 Imports DAL
-Imports SCCUM.BO.clsConsultas
-Imports SCCUM.BO
+Imports SIFAC.BO.clsConsultas
+Imports SIFAC.BO
 
 Public Class rptSalidaBodega 
 

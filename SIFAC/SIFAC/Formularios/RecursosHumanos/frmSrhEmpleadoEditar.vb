@@ -2,8 +2,8 @@ Imports DAL
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
-Imports SCCUM.BO
-Imports SCCUM.BO.clsConsultas
+Imports SIFAC.BO
+Imports SIFAC.BO.clsConsultas
 Imports Proyecto.Catalogos.Datos.ClsCatalogos
 
 Public Class frmSrhEmpleadoEditar

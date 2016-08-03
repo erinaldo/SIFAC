@@ -4,7 +4,7 @@
 ''-- Formulario de Edición y Modificación de solicitud de transferencia de repuestos.
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
@@ -114,7 +114,7 @@ Public Class frmSivSoliTransferenciaEdit
 #Region "Cargar formulario"
     Private Sub frmSivSoliTransferenciaEdit_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         clsProyecto.CargarTemaDefinido(Me)
-        Me.txtObservaciones.MaxLength = BO.SivTransferencia.GetMaxLength("Observaciones")
+        Me.txtObservaciones.MaxLength = SivTransferencia.GetMaxLength("Observaciones")
         Me.IdSucursalCentral = ClsCatalogos.GetStbTiendaID("C") '-- C=Central
         Me.IdSucursalSession = ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
         Me.IdEstadoSolicitada = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "01") '01=Solicitada

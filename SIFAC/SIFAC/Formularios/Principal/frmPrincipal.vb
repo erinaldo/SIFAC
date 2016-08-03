@@ -5,7 +5,7 @@ Imports Seguridad.Formularios
 Imports Proyecto.Catalogos.Formularios
 Imports System.ComponentModel
 'Imports System.Net.Sockets
-Imports SCCUM.BO 'Uso de clsConsultas
+Imports SIFAC.BO 'Uso de clsConsultas
 Imports Proyecto.Catalogos
 
 Public Class frmPrincipal
@@ -292,13 +292,7 @@ Public Class frmPrincipal
         End Try
     End Sub
 
-    '----------------------------------------------------------------------------------
-    '-- Nombre del Autor        :   Juan Carlos Herrera Amador
-    '-- Fecha de Elaboración    :   25 de Septiembre del 2007
-    '-- Descripcion             :   Levanta la pantalla que permite la autenticación de
-    '--                             de usuario
-    '----------------------------------------------------------------------------------
-    Private Sub IniciarSesion()
+   Private Sub IniciarSesion()
         Dim objfrm As LoginForm
         Try
             objfrm = New LoginForm
@@ -362,6 +356,7 @@ Public Class frmPrincipal
             Me.cmdParametros.Enabled = objSeg.TienePermiso("OpcionParametros")
             Me.cmdProveedores.Enabled = objSeg.TienePermiso("OpcionProveedor")
             Me.cmdRepuestos.Enabled = objSeg.TienePermiso("OpcionRepuestos")
+            Me.cmdMarcas.Enabled = objSeg.TienePermiso("OpcionMarcas")
 
             'Cartera y Cobro
             Me.cmdExpedientes.Enabled = objSeg.TienePermiso("OpcionExpediente")
@@ -548,6 +543,10 @@ Public Class frmPrincipal
 
     Private Sub tsmParámetros_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.CargarParametros()
+    End Sub
+
+    Private Sub cmdMarcas_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdMarcas.Click
+        CargarMarcas()
     End Sub
 
 #End Region
@@ -748,8 +747,6 @@ Public Class frmPrincipal
 #Region "Cargar Catalogos Generales"
 
     '----------------------------------------------------------------------------------
-    '-- Nombre del Autor        :   Michelle Valezka Reyes Tijerino
-    '-- Fecha de Elaboración    :   30 de Abril de 2008.
     '-- Descripcion             :   Cargar la pantalla principal de mantenimiento de 
     '--                         :   Catalogos Valor
     '----------------------------------------------------------------------------------
@@ -773,8 +770,6 @@ Public Class frmPrincipal
     End Sub
 
     '----------------------------------------------------------------------------------
-    '-- Nombre del Autor        :   Michelle Valezka Reyes Tijerino
-    '-- Fecha de Elaboración    :   30 de Abril de 2008.
     '-- Descripcion             :   Cargar la pantalla principal de mantenimiento de 
     '--                         :   Parametros
     '----------------------------------------------------------------------------------
@@ -797,6 +792,28 @@ Public Class frmPrincipal
         End Try
     End Sub
 
+#End Region
+
+#Region "Cargar Marcas"
+
+    Private Sub CargarMarcas()
+        Dim objfrm As frmStbMantParametro
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmSivMarcas", Me) Then
+                objfrm = New frmStbMantParametro
+                objfrm.Width = Me.Width - Me.OutBarPrincipal.Width
+                objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                objfrm.MdiParent = Me
+                objfrm.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
 #End Region
 
 #Region "Cargar Catálogo de Personas - PIM"
@@ -1767,4 +1784,5 @@ Public Class frmPrincipal
 #End Region
 
 
+   
 End Class

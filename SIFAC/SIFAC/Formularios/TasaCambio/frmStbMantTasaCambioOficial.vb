@@ -7,7 +7,7 @@
 Imports DAL
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos
 

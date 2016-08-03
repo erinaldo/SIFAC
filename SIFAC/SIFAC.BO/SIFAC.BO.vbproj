@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C9CC746B-0B3A-4F47-8638-772BC3AA75BD}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SCCUM.BO</RootNamespace>
-    <AssemblyName>SCCUM.BO</AssemblyName>
+    <RootNamespace>SIFAC.BO</RootNamespace>
+    <AssemblyName>SIFAC.BO</AssemblyName>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
@@ -95,6 +95,7 @@
     <Compile Include="SivEntradaBodegaDetalle.vb" />
     <Compile Include="SivEntradaBodegaPREIMP_CF.vb" />
     <Compile Include="SivEntradaPreliquidacion_CF.vb" />
+    <Compile Include="SivMarcas.vb" />
     <Compile Include="SivProductos.vb" />
     <Compile Include="SivProveedorDetProvision_CF.vb" />
     <Compile Include="SivProveedor_CF.vb" />

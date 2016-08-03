@@ -3,7 +3,7 @@
 'Ventana de criterios para el reporte de INVENTARIO
 
 Imports DAL
-Imports SCCUM.BO 'Uso de clsConsultas
+Imports SIFAC.BO 'Uso de clsConsultas
 Imports Proyecto.Configuracion 'uso de clsProyecto
 Imports Proyecto.Catalogos.Datos 'uso de clsCatalogos
 

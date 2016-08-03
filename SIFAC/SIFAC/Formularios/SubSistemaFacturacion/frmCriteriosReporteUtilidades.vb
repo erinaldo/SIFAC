@@ -4,7 +4,7 @@
 '-- de Utilidades
 
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
 

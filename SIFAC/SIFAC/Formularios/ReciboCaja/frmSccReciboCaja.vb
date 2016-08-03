@@ -1,7 +1,7 @@
 Imports DAL
 Imports Proyecto.Catalogos.Datos
 Imports Proyecto.Configuracion
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports C1.C1Excel
 

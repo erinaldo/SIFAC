@@ -6,14 +6,14 @@
 ''------------------------------------------------------------------------------------------------
 
 Imports DAL
-Imports SCCUM.BO
+Imports SIFAC.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.VisualStyles
-Imports SCCUM.BO.clsConsultas
+Imports SIFAC.BO.clsConsultas
 Imports C1.Win.C1TrueDBGrid
 Imports System.Windows.Forms.Cursors
 
@@ -98,8 +98,8 @@ Public Class frmSfaCotizacionEditar
 #Region "Longitudes Maximas"
 
     Private Sub LongitudesMaximas()
-        Me.txtAtencionA.MaxLength = BO.SfaCotizacion.GetMaxLength("AtencionA")
-        Me.txtComentarios.MaxLength = BO.SfaCotizacion.GetMaxLength("Comentario")
+        Me.txtAtencionA.MaxLength = SfaCotizacion.GetMaxLength("AtencionA")
+        Me.txtComentarios.MaxLength = SfaCotizacion.GetMaxLength("Comentario")
     End Sub
 
 #End Region

@@ -3,7 +3,7 @@ Imports DAL
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
 Imports Seguridad.Datos
-Imports SCCUM.BO
+Imports SIFAC.BO
 
 ''' <summary>
 ''' Formulario Principal de Mantenimiento de Trámites legales.
