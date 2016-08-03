@@ -361,7 +361,7 @@ Partial Class frmStbVisor
         '
         'cmdBuscarEstadoCredi
         '
-        Me.cmdBuscarEstadoCredi.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdBuscarEstadoCredi.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdBuscarEstadoCredi.Location = New System.Drawing.Point(697, 6)
         Me.cmdBuscarEstadoCredi.Name = "cmdBuscarEstadoCredi"
         Me.cmdBuscarEstadoCredi.Size = New System.Drawing.Size(24, 23)
@@ -540,7 +540,7 @@ Partial Class frmStbVisor
         '
         'cmdBCuotasV
         '
-        Me.cmdBCuotasV.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdBCuotasV.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdBCuotasV.Location = New System.Drawing.Point(692, 8)
         Me.cmdBCuotasV.Name = "cmdBCuotasV"
         Me.cmdBCuotasV.Size = New System.Drawing.Size(24, 23)
@@ -716,7 +716,7 @@ Partial Class frmStbVisor
         '
         'Button1
         '
-        Me.Button1.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.Button1.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.Button1.Location = New System.Drawing.Point(650, 11)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(24, 23)
@@ -858,7 +858,7 @@ Partial Class frmStbVisor
         '
         'cmdBuscarSeguimientos
         '
-        Me.cmdBuscarSeguimientos.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdBuscarSeguimientos.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdBuscarSeguimientos.Location = New System.Drawing.Point(697, 5)
         Me.cmdBuscarSeguimientos.Name = "cmdBuscarSeguimientos"
         Me.cmdBuscarSeguimientos.Size = New System.Drawing.Size(24, 23)
@@ -1148,7 +1148,7 @@ Partial Class frmStbVisor
         '
         'cmdBuscarEstadoCuenta
         '
-        Me.cmdBuscarEstadoCuenta.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdBuscarEstadoCuenta.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdBuscarEstadoCuenta.Location = New System.Drawing.Point(697, 10)
         Me.cmdBuscarEstadoCuenta.Name = "cmdBuscarEstadoCuenta"
         Me.cmdBuscarEstadoCuenta.Size = New System.Drawing.Size(24, 23)
@@ -1204,7 +1204,7 @@ Partial Class frmStbVisor
         '
         'cmdBuscarSucMor
         '
-        Me.cmdBuscarSucMor.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdBuscarSucMor.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdBuscarSucMor.Location = New System.Drawing.Point(284, 9)
         Me.cmdBuscarSucMor.Name = "cmdBuscarSucMor"
         Me.cmdBuscarSucMor.Size = New System.Drawing.Size(24, 23)
@@ -1270,7 +1270,7 @@ Partial Class frmStbVisor
         '
         'cmdReporte
         '
-        Me.cmdReporte.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdReporte.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdReporte.Location = New System.Drawing.Point(288, 14)
         Me.cmdReporte.Name = "cmdReporte"
         Me.cmdReporte.Size = New System.Drawing.Size(24, 23)
@@ -1336,7 +1336,7 @@ Partial Class frmStbVisor
         '
         'Button2
         '
-        Me.Button2.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.Button2.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.Button2.Location = New System.Drawing.Point(288, 14)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(24, 23)
@@ -1402,7 +1402,7 @@ Partial Class frmStbVisor
         '
         'Button3
         '
-        Me.Button3.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.Button3.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.Button3.Location = New System.Drawing.Point(288, 18)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(24, 23)
@@ -1439,7 +1439,7 @@ Partial Class frmStbVisor
         '
         'cmdCargarRptHistorialCliente
         '
-        Me.cmdCargarRptHistorialCliente.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdCargarRptHistorialCliente.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdCargarRptHistorialCliente.Location = New System.Drawing.Point(516, 6)
         Me.cmdCargarRptHistorialCliente.Name = "cmdCargarRptHistorialCliente"
         Me.cmdCargarRptHistorialCliente.Size = New System.Drawing.Size(24, 23)
@@ -1574,7 +1574,7 @@ Partial Class frmStbVisor
         '
         'cmdCargaComparativoRecuperacion
         '
-        Me.cmdCargaComparativoRecuperacion.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdCargaComparativoRecuperacion.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdCargaComparativoRecuperacion.Location = New System.Drawing.Point(744, 10)
         Me.cmdCargaComparativoRecuperacion.Name = "cmdCargaComparativoRecuperacion"
         Me.cmdCargaComparativoRecuperacion.Size = New System.Drawing.Size(24, 23)
@@ -1811,7 +1811,7 @@ Partial Class frmStbVisor
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 559)
         Me.Panel1.Name = "Panel1"

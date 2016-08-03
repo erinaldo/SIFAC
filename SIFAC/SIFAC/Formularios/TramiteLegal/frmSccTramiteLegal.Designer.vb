@@ -76,7 +76,7 @@ Partial Class frmSccTramiteLegal
         'cmdImprimir
         '
         Me.cmdImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdImprimir.Image = Global.SCCUM.My.Resources.Resources.Reporte_de_Facturas
+        Me.cmdImprimir.Image = Global.SIFAC.My.Resources.Resources.Reporte_de_Facturas
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)

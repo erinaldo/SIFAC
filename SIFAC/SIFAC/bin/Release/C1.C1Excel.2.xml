@@ -591,6 +591,11 @@
             Gets or sets the bottom clipping area of this <see cref="T:C1.C1Excel.XLPictureShape" />, in twips.
             </summary>
     </member>
+    <member name="P:C1.C1Excel.XLPictureShape.ImageSize">
+      <summary>
+            Gets image size in twips.
+            </summary>
+    </member>
     <member name="P:C1.C1Excel.XLPictureShape.FileName">
       <summary>
             Gets or sets the file name of this <see cref="T:C1.C1Excel.XLPictureShape" />.
@@ -1289,14 +1294,14 @@
       <param name="row">Item to be removed from the collection.</param>
       <returns>A reference to the item that was removed.</returns>
     </member>
-    <member name="P:C1.C1Excel.XLRowCollection.Count">
-      <summary>
-            Gets the number of items in the collection.
-            </summary>
-    </member>
     <member name="P:C1.C1Excel.XLRowCollection.Book">
       <summary>
             Gets a reference to the parent <see cref="T:C1.C1Excel.C1XLBook" /> object.
+            </summary>
+    </member>
+    <member name="P:C1.C1Excel.XLRowCollection.Count">
+      <summary>
+            Gets the number of items in the collection.
             </summary>
     </member>
     <member name="P:C1.C1Excel.XLRowCollection.Sheet">

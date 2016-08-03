@@ -275,7 +275,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         'cmdAgregarCliente
         '
-        Me.cmdAgregarCliente.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdAgregarCliente.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdAgregarCliente.Location = New System.Drawing.Point(406, 46)
         Me.cmdAgregarCliente.Name = "cmdAgregarCliente"
         Me.cmdAgregarCliente.Size = New System.Drawing.Size(24, 22)
@@ -654,7 +654,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 661)
         Me.Panel1.Name = "Panel1"
@@ -1229,7 +1229,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         'cmdBuscar
         '
-        Me.cmdBuscar.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdBuscar.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdBuscar.Location = New System.Drawing.Point(778, 220)
         Me.cmdBuscar.Name = "cmdBuscar"
         Me.cmdBuscar.Size = New System.Drawing.Size(40, 23)
@@ -1478,7 +1478,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         'cmdProcesar
         '
-        Me.cmdProcesar.BackgroundImage = Global.SCCUM.My.Resources.Resources.Aprobar
+        Me.cmdProcesar.BackgroundImage = Global.SIFAC.My.Resources.Resources.Aprobar
         Me.cmdProcesar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.cmdProcesar.Enabled = False
         Me.cmdProcesar.Location = New System.Drawing.Point(658, 626)

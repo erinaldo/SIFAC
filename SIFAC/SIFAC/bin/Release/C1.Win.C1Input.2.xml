@@ -152,6 +152,17 @@
             </summary>
             <param name="e">The event arguments.</param>
         </member>
+        <member name="M:C1.Win.C1Input.C1Button.ResetVisualStyleBaseStyle">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.C1Button.ShouldSerializeVisualStyleBaseStyle">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns>True if VisualStyleBaseStyle should be serialized, false otherwise.</returns>
+        </member>
         <member name="P:C1.Win.C1Input.C1Button.VisualStyle">
             <summary>
             Gets or sets the visual style of the control.
@@ -542,6 +553,17 @@
             </summary>
             <returns>True if <see cref="P:C1.Win.C1Input.C1TextBox.VisualStyle"/> should be serialized, false otherwise.</returns>
         </member>
+        <member name="M:C1.Win.C1Input.C1TextBox.ResetVisualStyleBaseStyle">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.C1TextBox.ShouldSerializeVisualStyleBaseStyle">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns>True if VisualStyleBaseStyle should be serialized, false otherwise.</returns>
+        </member>
         <member name="M:C1.Win.C1Input.C1TextBox.ShouldSerializeBackColor">
             <summary>
             This method is for internal use only.
@@ -560,6 +582,17 @@
             <returns></returns>
         </member>
         <member name="M:C1.Win.C1Input.C1TextBox.ResetForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.C1TextBox.ShouldSerializeDisabledForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.C1TextBox.ResetDisabledForeColor">
             <summary>
             This method is for internal use only.
             </summary>
@@ -1217,6 +1250,11 @@
         <member name="P:C1.Win.C1Input.C1TextBox.ForeColor">
             <summary>
             Gets or sets the foreground color of the control.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.C1TextBox.DisabledForeColor">
+            <summary>
+            Gets or sets the foreground color of the disabled control.
             </summary>
         </member>
         <member name="P:C1.Win.C1Input.C1TextBox.UseColumnStyles">
@@ -2200,6 +2238,17 @@
             </summary>
             <returns>True if <see cref="P:C1.Win.C1Input.C1DbNavigator.VisualStyle"/> should be serialized, false otherwise.</returns>
         </member>
+        <member name="M:C1.Win.C1Input.C1DbNavigator.ResetVisualStyleBaseStyle">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.C1DbNavigator.ShouldSerializeVisualStyleBaseStyle">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns>True if VisualStyleBaseStyle should be serialized, false otherwise.</returns>
+        </member>
         <member name="M:C1.Win.C1Input.C1DbNavigator.OnBackColorChanged(System.EventArgs)">
             <summary>
             This method is for internal use only.
@@ -2961,84 +3010,781 @@
             All buttons.
             </summary>
         </member>
-        <member name="M:C1.Win.C1Input.C1MonthCalendar.OnVisualStyleChanged(System.EventArgs)">
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetVisualStyle">
+            <summary>
+            Resets <see cref="P:C1.Win.C1Input.DateEditMonthCalendar.VisualStyle"/> to the default value.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeVisualStyle">
+            <summary>
+            Tests whether <see cref="P:C1.Win.C1Input.DateEditMonthCalendar.VisualStyle"/> should be serialized.
+            </summary>
+            <returns>True if <see cref="P:C1.Win.C1Input.DateEditMonthCalendar.VisualStyle"/> should be serialized, false otherwise.</returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeBackColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetBackColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeSelectionForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetSelectionForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeSelectionBackColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetSelectionBackColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeLineColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetLineColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeArrowColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetArrowColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeTodayBorderColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetTodayBorderColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeTrailingForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetTrailingForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeDayNamesColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetDayNamesColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeTitleBackColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetTitleBackColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeTitleForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetTitleForeColor">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeDayNameLength">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetDayNameLength">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeTitleHeight">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetTitleHeight">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeTitleFont">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetTitleFont">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeDayNamesFont">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetDayNamesFont">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnVisualStyleChanged(System.EventArgs)">
             <summary>
             Invokes the VisualStyleChanged event.
             </summary>
             <param name="e">The event arguments.</param>
         </member>
-        <member name="M:C1.Win.C1Input.C1MonthCalendar.SuspendAllLayout">
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnTodayButtonClick(System.EventArgs)">
             <summary>
-            Calls SuspendLayout on all C1MonthCalendar's child controls.
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.FireTodayButtonClick">
+            <summary>
+            This method is for internal use only.
             </summary>
         </member>
-        <member name="M:C1.Win.C1Input.C1MonthCalendar.ResumeAllLayout(System.Boolean)">
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnClearButtonClick(System.EventArgs)">
             <summary>
-            Calls ResumeLayout on all C1MonthCalendar's child controls.
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.FireClearButtonClick">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnTodayButtonVisibilityChanged(System.EventArgs)">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnClearButtonVisibilityChanged(System.EventArgs)">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnDateValueChanged(C1.Win.C1Input.NullableDateTimeEventArgs)">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnDateValueSelected(C1.Win.C1Input.NullableDateTimeEventArgs)">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.SuspendAllLayout">
+            <summary>
+            Calls SuspendLayout on all DateEditMonthCalendar's child controls.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResumeAllLayout(System.Boolean)">
+            <summary>
+            Calls ResumeLayout on all DateEditMonthCalendar's child controls.
             </summary>
             <param name="performLayout">Indicates whether to invoke the layout logic now.</param>
         </member>
-        <member name="F:C1.Win.C1Input.C1MonthCalendar.components">
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.AddAnnuallyBoldedDate(System.DateTime)">
+            <summary>
+            Adds a day that is displayed in bold on an annual basis in the month calendar.
+            </summary>
+            <param name="date">The date to be displayed in bold.</param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.AddBoldedDate(System.DateTime)">
+            <summary>
+            Adds a day to be displayed in bold in the month calendar.
+            </summary>
+            <param name="date">The date to be displayed in bold.</param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.AddMonthlyBoldedDate(System.DateTime)">
+            <summary>
+            Adds a day that is displayed in bold on a monthly basis in the month calendar.
+            </summary>
+            <param name="date">The date to be displayed in bold.</param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.RemoveAllAnnuallyBoldedDates">
+            <summary>
+            Removes all the annually bold dates.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.RemoveAllBoldedDates">
+            <summary>
+            Removes all the nonrecurring bold dates.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.RemoveAllMonthlyBoldedDates">
+            <summary>
+            Removes all the monthly bold dates.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.RemoveAnnuallyBoldedDate(System.DateTime)">
+            <summary>
+            Removes the specified date from the list of annually bold dates.
+            </summary>
+            <param name="date">The date to remove from the date list.</param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.RemoveBoldedDate(System.DateTime)">
+            <summary>
+            Removes the specified date from the list of nonrecurring bold dates.
+            </summary>
+            <param name="date">The date to remove from the date list.</param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.RemoveMonthlyBoldedDate(System.DateTime)">
+            <summary>
+            Removes the specified date from the list of monthly bolded dates.
+            </summary>
+            <param name="date">The date to remove from the date list.</param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.SetCalendarDimensions(System.Int32,System.Int32)">
+            <summary>
+            Sets the number of columns and rows of months to display.
+            </summary>
+            <param name="x">The number of columns.</param>
+            <param name="y">The number of rows.</param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.SetDate(System.DateTime)">
+            <summary>
+            Sets a date as the currently selected date.
+            </summary>
+            <param name="date">The date to be selected.</param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.GetDisplayRange(System.Boolean)">
+            <summary>
+            Retrieves date information that represents the low and high limits of the displayed dates of the control.
+            </summary>
+            <param name="visible">true to retrieve only the dates that are fully contained in displayed months; otherwise, false.</param>
+            <returns>The begin and end dates of the displayed calendar.</returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.SetSelectionRange(System.DateTime,System.DateTime)">
+            <summary>
+            Sets the selected dates in a month calendar control to the specified date range.
+            </summary>
+            <param name="date1">The beginning date of the selection range.</param>
+            <param name="date2">The end date of the selection range.</param>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.HitTest(System.Drawing.Point)">
+            <summary>
+            Returns an object with information on which portion of a month calendar control
+                is at a location specified by a System.Drawing.Point.
+            </summary>
+            <param name="point">A System.Drawing.Point containing the System.Drawing.Point.X and System.Drawing.Point.Y
+                coordinates of the point to be hit tested.</param>
+            <returns>A System.Windows.Forms.MonthCalendar.HitTestInfo that contains information
+                about the specified point on the month calendar.</returns>
+        </member>
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.HitTest(System.Int32,System.Int32)">
+            <summary>
+            Returns a System.Windows.Forms.MonthCalendar.HitTestInfo with information
+                on which portion of a month calendar control is at a specified x- and y-coordinate.
+            </summary>
+            <param name="x">The System.Drawing.Point.Y coordinate of the point to be hit tested.</param>
+            <param name="y">The System.Drawing.Point.X coordinate of the point to be hit tested.</param>
+            <returns>A System.Windows.Forms.MonthCalendar.HitTestInfo that contains information
+                about the specified point on the month calendar.</returns>
+        </member>
+        <member name="F:C1.Win.C1Input.DateEditMonthCalendar.components">
             <summary> 
             Required designer variable.
             </summary>
         </member>
-        <member name="M:C1.Win.C1Input.C1MonthCalendar.Dispose(System.Boolean)">
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.Dispose(System.Boolean)">
             <summary> 
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:C1.Win.C1Input.C1MonthCalendar.InitializeComponent">
+        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.InitializeComponent">
             <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="E:C1.Win.C1Input.C1MonthCalendar.VisualStyleChanged">
-            <summary>
-            Occurs when the VisualStyle property has changed.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.C1MonthCalendar.VisualStyle">
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.VisualStyle">
             <summary>
             Gets or sets the visual style of the control.
             </summary>
         </member>
-        <member name="P:C1.Win.C1Input.C1MonthCalendar.VisualStyleBaseStyle">
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.VisualStyleBaseStyle">
             <summary>
             Gets or sets the base visual style of the control.
             </summary>
         </member>
-        <member name="P:C1.Win.C1Input.C1MonthCalendar.TodayDate">
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TodayDate">
             <summary>
-            Gets or sets the value that is used by C1MonthCalendar as today's date.
+            Gets or sets the value that is used by DateEditMonthCalendar as today's date.
             The default value is the current system date.
             </summary>
         </member>
-        <member name="P:C1.Win.C1Input.C1MonthCalendar.MinDate">
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.MinDate">
             <summary>
             Gets or sets the minimum allowable date. The default value is DateTime.MinValue (01/01/0001).
             </summary>
         </member>
-        <member name="P:C1.Win.C1Input.C1MonthCalendar.MaxDate">
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.MaxDate">
             <summary>
             Gets or sets the maximum allowable date.
             </summary>
         </member>
-        <member name="P:C1.Win.C1Input.C1MonthCalendar.DateIsNull">
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.DateIsNull">
             <summary>
             Gets or sets the value indicating that no date is currently selected in the calendar.
             </summary>
         </member>
-        <member name="P:C1.Win.C1Input.C1MonthCalendar.FirstMonth">
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.BackColor">
+            <summary>
+            Gets or sets the background color of the control.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ForeColor">
+            <summary>
+            Gets or sets the foreground color of the control.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.SelectionForeColor">
+            <summary>
+            Gets or sets the selection foreground color.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.SelectionBackColor">
+            <summary>
+            Gets or sets the selection background color.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.LineColor">
+            <summary>
+            Gets or sets the line color.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ArrowColor">
+            <summary>
+            Gets or sets the color of the arrows.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TodayBorderColor">
+            <summary>
+            Gets or sets the color of the border around the current date.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TrailingForeColor">
+            <summary>
+             Gets or sets a value indicating the color of days in months that are not
+                fully displayed in the control.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.DayNamesColor">
+            <summary>
+            Gets or sets the day names' text color.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TitleBackColor">
+            <summary>
+            Gets or sets a value indicating the background color of the title area of the calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TitleForeColor">
+            <summary>
+            Gets or sets a value indicating the foreground color of the title area of the calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.FirstMonth">
             <summary>
             Gets the first day of the first fully shown month.
             </summary>
         </member>
-        <member name="P:C1.Win.C1Input.C1MonthCalendar.LastMonth">
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.LastMonth">
             <summary>
             Gets the last day of the last fully shown month.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.SelectedDate">
+            <summary>
+            Gets or sets the selected date.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.CalendarDimensions">
+            <summary>
+            Gets or sets the number of columns and rows of months displayed.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.FirstDayOfWeek">
+            <summary>
+            Gets or sets the first day of the week as displayed in the month calendar.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.CaptionFormat">
+            <summary>
+            Gets or sets the format to use for the calendar caption.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.DayNameLength">
+            <summary>
+            Gets or sets the maximum length of day names.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TitleHeight">
+            <summary>
+            Gets or sets the title height.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TitleFont">
+            <summary>
+            Gets or sets the title font.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.DayNamesFont">
+            <summary>
+            Gets or sets the day names font.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.BoldedDates">
+            <summary>
+            Gets or sets the array of System.DateTime objects that determines which nonrecurring dates are displayed in bold.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.AnnuallyBoldedDates">
+            <summary>
+            Gets or sets the array of System.DateTime objects that determines which annual days are displayed in bold.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.MonthlyBoldedDates">
+            <summary>
+            Gets or sets the array of System.DateTime objects that determine which monthly days to bold.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ShowToday">
+            <summary>
+            Gets or sets a value indicating whether the date represented by the TodayDate property is displayed at the bottom of the control. 
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ShowTodayCircle">
+            <summary>
+            Gets or sets a value indicating whether today's date is circled.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ShowTodayButton">
+            <summary>
+            Determines if the Today button of the dropdown calendar is visible.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ShowClearButton">
+            <summary>
+            Determines if the Clear button of the dropdown calendar is visible.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TodayText">
+            <summary>
+            Gets or sets the text of the "Today" button.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ClearText">
+            <summary>
+            Gets or sets the text of the "Clear" button.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.CalendarWeekRule">
+            <summary>
+            Gets or sets a value that specifies which rule is used to determine the first calendar week of the year.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ShowWeekNumbers">
+            <summary>
+            Gets or sets a value indicating whether the month calendar control displays
+               week numbers (1-52) to the left of each row of days.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.RightToLeft">
+            <summary>
+            Gets or sets a value indicating whether control's elements are aligned to support locales using right-to-left fonts.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.RightToLeftLayout">
+            <summary>
+            Gets or sets a value indicating whether the control is laid out from right to left.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.VisualStyleChanged">
+            <summary>
+            Occurs when the VisualStyle property has changed.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TodayButtonClick">
+            <summary>
+            Occurs when Today button is clicked.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.ClearButtonClick">
+            <summary>
+            Occurs when Clear button is clicked.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TodayButtonVisibilityChanged">
+            <summary>
+            Occurs when Today button visibility is changed.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.ClearButtonVisibilityChanged">
+            <summary>
+            Occurs when Clear button visibility is changed.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DateValueChanged">
+            <summary>
+            Occurs when the value of the Date property is changed.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DateValueSelected">
+            <summary>
+            Occurs when the user selects a new value for the Date property.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.RightToLeftLayoutChanged">
+            <summary>
+            Occurs when the value of the RightToLeftLayout property changes.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Size">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.AllowDrop">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.CausesValidation">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Dock">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Anchor">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Location">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TabIndex">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TabStop">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Tag">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Visible">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.DataBindings">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Controls">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Name">
+            <summary>
+            This property is for internal use only.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.BackgroundImage">
+            <summary>
+            Gets or sets the background image.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.BackgroundImageLayout">
+            <summary>
+            Gets or sets a value indicating the layout for the BackgroundImage.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ImeMode">
+            <summary>
+            Gets or sets the Input Method Editor (IME) mode supported by this control.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Padding">
+            <summary>
+            Gets or sets the space between the edges of a control and its contents.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Text">
+            <summary>
+            Gets or sets the text to display.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.BackgroundImageChanged">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.BindingContextChanged">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.CausesValidationChanged">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DockChanged">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DragDrop">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DragEnter">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DragLeave">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DragOver">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.Enter">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.Leave">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.GiveFeedback">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.ImeModeChanged">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.QueryContinueDrag">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TabIndexChanged">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TabStopChanged">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TextChanged">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.Validating">
+            <summary>
+            This event is for internal use only.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.Validated">
+            <summary>
+            This event is for internal use only.
             </summary>
         </member>
         <member name="M:C1.Win.C1Input.C1OneMonthCalendar.DayOfWeekToAbsIndex(System.DayOfWeek)">
@@ -3103,6 +3849,17 @@
             Tests whether <see cref="P:C1.Win.C1Input.C1Label.VisualStyle"/> should be serialized.
             </summary>
             <returns>True if <see cref="P:C1.Win.C1Input.C1Label.VisualStyle"/> should be serialized, false otherwise.</returns>
+        </member>
+        <member name="M:C1.Win.C1Input.C1Label.ResetVisualStyleBaseStyle">
+            <summary>
+            This method is for internal use only.
+            </summary>
+        </member>
+        <member name="M:C1.Win.C1Input.C1Label.ShouldSerializeVisualStyleBaseStyle">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns>True if VisualStyleBaseStyle should be serialized, false otherwise.</returns>
         </member>
         <member name="M:C1.Win.C1Input.C1Label.ShouldSerializeFormatInfo">
             <summary>
@@ -3673,341 +4430,6 @@
             Occurs when the Image changes.
             </summary>
         </member>
-        <member name="T:C1.Win.C1Input.DateEditMonthCalendar">
-            <summary>
-            The calendar used as a dropdown in the C1DateEdit control.
-            </summary>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.#ctor">
-            <summary>
-            Initializes a new instance of the DateEditMonthCalendar class.
-            </summary>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ShouldSerializeUIStrings">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.ResetUIStrings">
-            <summary>
-            This method is for internal use only.
-            </summary>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnResize(System.EventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.WndProc(System.Windows.Forms.Message@)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="m"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnEnabledChanged(System.EventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnTodayButtonClick(System.EventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.FireTodayButtonClick">
-            <summary>
-            This method is for internal use only.
-            </summary>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnClearButtonClick(System.EventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.FireClearButtonClick">
-            <summary>
-            This method is for internal use only.
-            </summary>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnTodayButtonVisibilityChanged(System.EventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnClearButtonVisibilityChanged(System.EventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnDateValueChanged(C1.Win.C1Input.NullableDateTimeEventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DateEditMonthCalendar.OnDateValueSelected(C1.Win.C1Input.NullableDateTimeEventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ShowTodayButton">
-            <summary>
-            Determines if the Today button of the dropdown calendar is visible.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ShowClearButton">
-            <summary>
-            Determines if the Clear button of the dropdown calendar is visible.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ShowToday">
-            <summary>
-            Gets or sets a value indicating whether the date represented by the TodayDate property is displayed at the bottom of the control. 
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Date">
-            <summary>
-            Currently selected date in the calendar.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.DateIsNull">
-            <summary>
-            Indicates if no date is currently selected.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.UIStrings">
-            <summary>
-            The string collection of user interface strings used in the calendar.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.ContextMenu">
-            <summary>
-            Gets or sets the shortcut menu associated with the control.(inherited from Control)
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TodayButtonClick">
-            <summary>
-            Occurs when Today button is clicked.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.ClearButtonClick">
-            <summary>
-            Occurs when Clear button is clicked.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TodayButtonVisibilityChanged">
-            <summary>
-            Occurs when Today button visibility is changed.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.ClearButtonVisibilityChanged">
-            <summary>
-            Occurs when Clear button visibility is changed.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DateValueChanged">
-            <summary>
-            Occurs when the value of the Date property is changed.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DateValueSelected">
-            <summary>
-            Occurs when the user selects a new value for the Date property.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Size">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.AllowDrop">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.CausesValidation">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Dock">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Anchor">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Location">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.MaxSelectionCount">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TabIndex">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.TabStop">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Tag">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Visible">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.SelectionRange">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.SelectionStart">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.SelectionEnd">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.DataBindings">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Controls">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="P:C1.Win.C1Input.DateEditMonthCalendar.Name">
-            <summary>
-            This property is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DateChanged">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DateSelected">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.BackgroundImageChanged">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.BindingContextChanged">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.CausesValidationChanged">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DockChanged">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DragDrop">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DragEnter">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DragLeave">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.DragOver">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.Enter">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.Leave">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.GiveFeedback">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.ImeModeChanged">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.QueryContinueDrag">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TabIndexChanged">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TabStopChanged">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.TextChanged">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.Validating">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
-        <member name="E:C1.Win.C1Input.DateEditMonthCalendar.Validated">
-            <summary>
-            This event is for internal use only.
-            </summary>
-        </member>
         <member name="T:C1.Win.C1Input.DropDownForm">
             <summary>
             Base class for custom dropdown forms.
@@ -4256,24 +4678,24 @@
             Occurs when OwnerControl.Value property is changed.
             </summary>
         </member>
-        <member name="M:C1.Win.C1Input.Office2007DropDownCalendar.OnPostChanges(System.EventArgs)">
+        <member name="M:C1.Win.C1Input.DropDownCalendar.OnPostChanges(System.EventArgs)">
             <summary>
             This method is for internal use only.
             </summary>
             <param name="e"></param>
         </member>
-        <member name="F:C1.Win.C1Input.Office2007DropDownCalendar.components">
+        <member name="F:C1.Win.C1Input.DropDownCalendar.components">
             <summary>
             Required designer variable.
             </summary>
         </member>
-        <member name="M:C1.Win.C1Input.Office2007DropDownCalendar.Dispose(System.Boolean)">
+        <member name="M:C1.Win.C1Input.DropDownCalendar.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:C1.Win.C1Input.Office2007DropDownCalendar.InitializeComponent">
+        <member name="M:C1.Win.C1Input.DropDownCalendar.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -4419,45 +4841,6 @@
         <member name="P:C1.Win.C1Input.DropDownCalculator.Calculator">
             <summary>
             The calculator used in a DropDownCalculator form.
-            </summary>
-        </member>
-        <member name="T:C1.Win.C1Input.DropDownCalendar">
-            <summary>
-            The dropdown calendar form.
-            </summary>
-        </member>
-        <member name="M:C1.Win.C1Input.DropDownCalendar.#ctor">
-            <summary>
-            Initializes a new instance of the DropDownCalendar class.
-            </summary>
-        </member>
-        <member name="M:C1.Win.C1Input.DropDownCalendar.Dispose(System.Boolean)">
-            <summary>
-            Releases the resources used by the DropDownCalendar.
-            </summary>
-            <param name="disposing"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DropDownCalendar.OnLoad(System.EventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DropDownCalendar.OnPostChanges(System.EventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:C1.Win.C1Input.DropDownCalendar.OnOpen(System.EventArgs)">
-            <summary>
-            This method is for internal use only.
-            </summary>
-            <param name="e"></param>
-        </member>
-        <member name="P:C1.Win.C1Input.DropDownCalendar.Calendar">
-            <summary>
-            The dropdown calendar control placed on this form.
             </summary>
         </member>
         <member name="T:C1.Win.C1Input.DropDownControlButtonFlags">

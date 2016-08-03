@@ -1401,7 +1401,7 @@ Namespace DtEstadoCuentasTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.SCCUM.My.MySettings.Default.SCCUMConnectionString2
+            Me._connection.ConnectionString = Global.SIFAC.My.MySettings.Default.SIFACConnectionString2
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

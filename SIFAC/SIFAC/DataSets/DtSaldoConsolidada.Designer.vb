@@ -909,7 +909,7 @@ Namespace DtSaldoConsolidadaTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.SCCUM.My.MySettings.Default.SCCUMLASTConnectionString
+            Me._connection.ConnectionString = Global.SIFAC.My.MySettings.Default.SIFACLASTConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

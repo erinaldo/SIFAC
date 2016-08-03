@@ -4,18 +4,16 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUMConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.My.MySettings.GlobalReference.Default.SCCUMConnectionString" Provider="System.Data.SqlClient">
-          </Connection>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SIFACConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SIFACConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIFAC.My.MySettings.GlobalReference.Default.SIFACConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AdaptadorSeguimiento" GeneratorDataComponentClassName="AdaptadorSeguimiento" Name="DatosSeguimiento" UserDataComponentName="AdaptadorSeguimiento">
             <MainSource>
-              <DbSource ConnectionRef="SCCUMConnectionString (MySettings)" DbObjectName="SCCUM.dbo.vwRptSeguimiento" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SIFACConnectionString (MySettings)" DbObjectName="SCCUM.dbo.vwRptSeguimiento" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT * FROM vwRptSeguimiento</CommandText>
-                    <Parameters>
-                    </Parameters>
+                    <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
@@ -32,69 +30,67 @@
               <Mapping SourceColumn="StbBitacoraClienteID" DataSetColumn="StbBitacoraClienteID" />
               <Mapping SourceColumn="Expediente" DataSetColumn="Expediente" />
             </Mappings>
-            <Sources>
-            </Sources>
+            <Sources />
           </TableAdapter>
         </Tables>
-        <Sources>
-        </Sources>
+        <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DtDatosSeguimiento" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtDatosSeguimiento" msprop:Generator_DataSetName="DtDatosSeguimiento">
+  <xs:element name="DtDatosSeguimiento" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DtDatosSeguimiento" msprop:Generator_UserDSName="DtDatosSeguimiento">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DatosSeguimiento" msprop:Generator_UserTableName="DatosSeguimiento" msprop:Generator_RowDeletedName="DatosSeguimientoRowDeleted" msprop:Generator_RowChangedName="DatosSeguimientoRowChanged" msprop:Generator_RowClassName="DatosSeguimientoRow" msprop:Generator_RowChangingName="DatosSeguimientoRowChanging" msprop:Generator_RowEvArgName="DatosSeguimientoRowChangeEvent" msprop:Generator_RowEvHandlerName="DatosSeguimientoRowChangeEventHandler" msprop:Generator_TableClassName="DatosSeguimientoDataTable" msprop:Generator_TableVarName="tableDatosSeguimiento" msprop:Generator_RowDeletingName="DatosSeguimientoRowDeleting" msprop:Generator_TablePropName="DatosSeguimiento">
+        <xs:element name="DatosSeguimiento" msprop:Generator_UserTableName="DatosSeguimiento" msprop:Generator_RowEvArgName="DatosSeguimientoRowChangeEvent" msprop:Generator_TableVarName="tableDatosSeguimiento" msprop:Generator_TablePropName="DatosSeguimiento" msprop:Generator_RowDeletingName="DatosSeguimientoRowDeleting" msprop:Generator_RowChangingName="DatosSeguimientoRowChanging" msprop:Generator_RowDeletedName="DatosSeguimientoRowDeleted" msprop:Generator_RowEvHandlerName="DatosSeguimientoRowChangeEventHandler" msprop:Generator_TableClassName="DatosSeguimientoDataTable" msprop:Generator_RowChangedName="DatosSeguimientoRowChanged" msprop:Generator_RowClassName="DatosSeguimientoRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" type="xs:dateTime" />
-              <xs:element name="ObjetivoBitacora" msprop:Generator_UserColumnName="ObjetivoBitacora" msprop:Generator_ColumnVarNameInTable="columnObjetivoBitacora" msprop:Generator_ColumnPropNameInRow="ObjetivoBitacora" msprop:Generator_ColumnPropNameInTable="ObjetivoBitacoraColumn" minOccurs="0">
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" />
+              <xs:element name="ObjetivoBitacora" msprop:Generator_ColumnVarNameInTable="columnObjetivoBitacora" msprop:Generator_ColumnPropNameInRow="ObjetivoBitacora" msprop:Generator_ColumnPropNameInTable="ObjetivoBitacoraColumn" msprop:Generator_UserColumnName="ObjetivoBitacora" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="500" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="DescripcionBitacora" msprop:Generator_UserColumnName="DescripcionBitacora" msprop:Generator_ColumnVarNameInTable="columnDescripcionBitacora" msprop:Generator_ColumnPropNameInRow="DescripcionBitacora" msprop:Generator_ColumnPropNameInTable="DescripcionBitacoraColumn" minOccurs="0">
+              <xs:element name="DescripcionBitacora" msprop:Generator_ColumnVarNameInTable="columnDescripcionBitacora" msprop:Generator_ColumnPropNameInRow="DescripcionBitacora" msprop:Generator_ColumnPropNameInTable="DescripcionBitacoraColumn" msprop:Generator_UserColumnName="DescripcionBitacora" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="500" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CostoSeguimiento" msprop:Generator_UserColumnName="CostoSeguimiento" msprop:Generator_ColumnVarNameInTable="columnCostoSeguimiento" msprop:Generator_ColumnPropNameInRow="CostoSeguimiento" msprop:Generator_ColumnPropNameInTable="CostoSeguimientoColumn" type="xs:decimal" minOccurs="0" />
-              <xs:element name="objTipoSeguimientoID" msprop:Generator_UserColumnName="objTipoSeguimientoID" msprop:Generator_ColumnVarNameInTable="columnobjTipoSeguimientoID" msprop:Generator_ColumnPropNameInRow="objTipoSeguimientoID" msprop:Generator_ColumnPropNameInTable="objTipoSeguimientoIDColumn" type="xs:int" minOccurs="0" />
-              <xs:element name="TipoSeguimiento" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TipoSeguimiento" msprop:Generator_ColumnVarNameInTable="columnTipoSeguimiento" msprop:Generator_ColumnPropNameInRow="TipoSeguimiento" msprop:Generator_ColumnPropNameInTable="TipoSeguimientoColumn" minOccurs="0">
+              <xs:element name="CostoSeguimiento" msprop:Generator_ColumnVarNameInTable="columnCostoSeguimiento" msprop:Generator_ColumnPropNameInRow="CostoSeguimiento" msprop:Generator_ColumnPropNameInTable="CostoSeguimientoColumn" msprop:Generator_UserColumnName="CostoSeguimiento" type="xs:decimal" minOccurs="0" />
+              <xs:element name="objTipoSeguimientoID" msprop:Generator_ColumnVarNameInTable="columnobjTipoSeguimientoID" msprop:Generator_ColumnPropNameInRow="objTipoSeguimientoID" msprop:Generator_ColumnPropNameInTable="objTipoSeguimientoIDColumn" msprop:Generator_UserColumnName="objTipoSeguimientoID" type="xs:int" minOccurs="0" />
+              <xs:element name="TipoSeguimiento" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTipoSeguimiento" msprop:Generator_ColumnPropNameInRow="TipoSeguimiento" msprop:Generator_ColumnPropNameInTable="TipoSeguimientoColumn" msprop:Generator_UserColumnName="TipoSeguimiento" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="StbPersonaID" msprop:Generator_UserColumnName="StbPersonaID" msprop:Generator_ColumnVarNameInTable="columnStbPersonaID" msprop:Generator_ColumnPropNameInRow="StbPersonaID" msprop:Generator_ColumnPropNameInTable="StbPersonaIDColumn">
+              <xs:element name="StbPersonaID" msprop:Generator_ColumnVarNameInTable="columnStbPersonaID" msprop:Generator_ColumnPropNameInRow="StbPersonaID" msprop:Generator_ColumnPropNameInTable="StbPersonaIDColumn" msprop:Generator_UserColumnName="StbPersonaID">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="16" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Cliente" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" minOccurs="0">
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="256" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="StbBitacoraClienteID" msprop:Generator_UserColumnName="StbBitacoraClienteID" msprop:Generator_ColumnVarNameInTable="columnStbBitacoraClienteID" msprop:Generator_ColumnPropNameInRow="StbBitacoraClienteID" msprop:Generator_ColumnPropNameInTable="StbBitacoraClienteIDColumn" type="xs:int" />
-              <xs:element name="UsuarioCreacion" msprop:Generator_UserColumnName="UsuarioCreacion" msprop:Generator_ColumnPropNameInRow="UsuarioCreacion" msprop:Generator_ColumnVarNameInTable="columnUsuarioCreacion" msprop:Generator_ColumnPropNameInTable="UsuarioCreacionColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="Expediente" msprop:Generator_UserColumnName="Expediente" msprop:Generator_ColumnVarNameInTable="columnExpediente" msprop:Generator_ColumnPropNameInRow="Expediente" msprop:Generator_ColumnPropNameInTable="ExpedienteColumn">
+              <xs:element name="StbBitacoraClienteID" msprop:Generator_ColumnVarNameInTable="columnStbBitacoraClienteID" msprop:Generator_ColumnPropNameInRow="StbBitacoraClienteID" msprop:Generator_ColumnPropNameInTable="StbBitacoraClienteIDColumn" msprop:Generator_UserColumnName="StbBitacoraClienteID" type="xs:int" />
+              <xs:element name="UsuarioCreacion" msprop:Generator_ColumnVarNameInTable="columnUsuarioCreacion" msprop:Generator_ColumnPropNameInRow="UsuarioCreacion" msprop:Generator_ColumnPropNameInTable="UsuarioCreacionColumn" msprop:Generator_UserColumnName="UsuarioCreacion" type="xs:string" minOccurs="0" />
+              <xs:element name="Expediente" msprop:Generator_ColumnVarNameInTable="columnExpediente" msprop:Generator_ColumnPropNameInRow="Expediente" msprop:Generator_ColumnPropNameInTable="ExpedienteColumn" msprop:Generator_UserColumnName="Expediente">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Tienda" msprop:Generator_UserColumnName="Tienda" msprop:Generator_ColumnPropNameInRow="Tienda" msprop:Generator_ColumnVarNameInTable="columnTienda" msprop:Generator_ColumnPropNameInTable="TiendaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Tienda" msprop:Generator_ColumnVarNameInTable="columnTienda" msprop:Generator_ColumnPropNameInRow="Tienda" msprop:Generator_ColumnPropNameInTable="TiendaColumn" msprop:Generator_UserColumnName="Tienda" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

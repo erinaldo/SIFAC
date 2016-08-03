@@ -4,6 +4,32 @@
     <name>C1.Win.C1FlexGrid.2</name>
   </assembly>
   <members>
+    <member name="T:C1.C1Zip.ZipFileException">
+      <summary>
+            Exception thrown when trying to open an invalid Zip file.
+            </summary>
+    </member>
+    <member name="M:C1.C1Zip.ZipFileException.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of a <see cref="T:System.IO.FileLoadException" />.
+            </summary>
+      <param name="msg">Message that describes the exception.</param>
+    </member>
+    <member name="M:C1.C1Zip.ZipFileException.#ctor(System.String,System.String)">
+      <summary>
+            Initializes a new instance of a <see cref="T:System.IO.FileLoadException" />.
+            </summary>
+      <param name="msg">Message that describes the exception.</param>
+      <param name="filename">Name of the file that caused the exception.</param>
+    </member>
+    <member name="M:C1.C1Zip.ZipFileException.#ctor(System.String,System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of a <see cref="T:System.IO.FileLoadException" />.
+            </summary>
+      <param name="msg">Message that describes the exception.</param>
+      <param name="filename">Name of the file that caused the exception.</param>
+      <param name="innerException">Inner exception.</param>
+    </member>
     <member name="T:C1.Win.C1FlexGrid.ComboBoxEditor">
       <summary>
             Helper class that provides information about a currently active ComboBox editor.
@@ -920,6 +946,11 @@
             and optionally bring it into view, use the <see cref="M:C1.Win.C1FlexGrid.C1FlexGridBase.Select(C1.Win.C1FlexGrid.CellRange,System.Boolean)" /> method.
             </remarks>
     </member>
+    <member name="M:C1.Win.C1FlexGrid.C1FlexGridBase.Invalidate">
+      <summary>
+            Invalidates the control if the <see cref="P:C1.Win.C1FlexGrid.C1FlexGridBase.Redraw" /> property is set to true.
+            </summary>
+    </member>
     <member name="M:C1.Win.C1FlexGrid.C1FlexGridBase.Invalidate(System.Int32,System.Int32)">
       <summary>
             Invalidates a cell, causing it to be repainted.
@@ -1035,11 +1066,11 @@
     </member>
     <member name="M:C1.Win.C1FlexGrid.C1FlexGridBase.FindRow(System.Object,System.Int32,System.Int32,System.Boolean)">
       <summary>
-            Finds a row that contains a specified <see cref="P:C1.Win.C1FlexGrid.RowCol.UserData" /> value.
+            Finds a row that contains a specified value in a given column.
             </summary>
       <param name="objFind">Object to look for.</param>
       <param name="rowStart">Index of the row where the search should start.</param>
-      <param name="col">Column that contains the objects to be searched.</param>
+      <param name="col">Column to be searched.</param>
       <param name="wrap">Whether the search should stop at the bottom of the grid or wrap around and restart from the first scrollable row.</param>
       <returns>The index of the row that contains the data, or -1 if the string is not found.</returns>
     </member>
@@ -7040,6 +7071,11 @@
             </code>
       </example>
     </member>
+    <member name="P:C1.Win.C1FlexGrid.RowCol.Grid">
+      <summary>
+            Gets a reference to the <see cref="T:C1.Win.C1FlexGrid.C1FlexGridBase" /> control that owns this row or column.
+            </summary>
+    </member>
     <member name="T:C1.Win.C1FlexGrid.Row">
       <summary>
             Class that represents a grid row.
@@ -7729,7 +7765,7 @@
     </member>
     <member name="F:C1.Win.C1FlexGrid.FileFormatEnum.Excel">
       <summary>
-            Microsoft Excel files (Xls, biff-8 format).
+            Microsoft Excel files (Xls/biff-8 or OpenXml formats).
             </summary>
     </member>
     <member name="T:C1.Win.C1FlexGrid.FileFlags">
@@ -7786,6 +7822,11 @@
       <summary>
             Do not freeze rows and columns when exporting to or importing from Excel with the
             <see cref="M:C1.Win.C1FlexGrid.C1FlexGridBase.SaveExcel(System.String,System.String,C1.Win.C1FlexGrid.FileFlags)" /> and <see cref="M:C1.Win.C1FlexGrid.C1FlexGridBase.LoadExcel(System.String,System.String,C1.Win.C1FlexGrid.FileFlags)" /> methods.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1FlexGrid.FileFlags.OpenXml">
+      <summary>
+            Load or save file in OpenXml (Office 2007) format.
             </summary>
     </member>
     <member name="T:C1.Win.C1FlexGrid.SelectionModeEnum">

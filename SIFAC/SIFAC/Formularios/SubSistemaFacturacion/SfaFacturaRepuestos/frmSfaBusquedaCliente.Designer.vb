@@ -82,7 +82,7 @@ Partial Class frmSfaBusquedaCliente
         '
         'Panel3
         '
-        Me.Panel3.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel3.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel3.Location = New System.Drawing.Point(0, 334)
         Me.Panel3.Name = "Panel3"

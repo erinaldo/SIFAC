@@ -1079,7 +1079,7 @@ Namespace dtDatosRptUtilidadesTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.SCCUM.My.MySettings.Default.SCCUMConnectionString
+            Me._connection.ConnectionString = Global.SIFAC.My.MySettings.Default.SIFACConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

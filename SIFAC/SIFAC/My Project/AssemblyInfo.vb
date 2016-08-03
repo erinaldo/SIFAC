@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Sistema de Cartera y Cobro UM")> 
-<Assembly: AssemblyDescription("Sistema de Cartera y Cobro UM")> 
-<Assembly: AssemblyCompany("Grupo Delphi")> 
-<Assembly: AssemblyProduct("SCCUM")> 
-<Assembly: AssemblyCopyright("Copyright ©  2009")> 
+<Assembly: AssemblyTitle("Sistema de Facturacio, Inventario y Cobro")> 
+<Assembly: AssemblyDescription("Sistema de Facturacio, Inventario y Cobro")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("SIFAC")> 
+<Assembly: AssemblyCopyright("Copyright ©  2016")> 
 <Assembly: AssemblyTrademark("Delphi Networks")> 
 
 <Assembly: ComVisible(False)>

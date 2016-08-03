@@ -277,6 +277,221 @@
             C1Localizer contains static methods to load and look up resources
             </summary>
         </member>
+        <member name="F:C1.Util.Win.AmbientComponentPropertyMonitor._pName">
+            <summary>
+            The target property name.
+            </summary>
+        </member>
+        <member name="F:C1.Util.Win.AmbientComponentPropertyMonitor._internalChange">
+            <summary>
+            Prevents raising the _propertySetByUser while we adjust the
+            property ourselves.
+            </summary>
+        </member>
+        <member name="F:C1.Util.Win.AmbientComponentPropertyMonitor._propertySetByUser">
+            <summary>
+            If true, we consider the property to have a value explicitly set
+            ty the user, so we do not update it anymore until reset.
+            </summary>
+        </member>
+        <member name="M:C1.Util.Win.AmbientComponentPropertyMonitor.#ctor(System.ComponentModel.Component,System.String)">
+            <summary>
+            Initializes a new instance of the AmbientPropertyMonitor class.
+            </summary>
+            <param name="host">Control on which the ambient property will be monitored.</param>
+            <param name="propertyName">The name of the monitored property.
+            The type of the property MUST be an enumeration.</param>
+            <remarks>
+            An instance of this class must be created in the constructor 
+            of the host control.
+            It is assumed that the value of the ambient property that will be monitored
+            by the AmbientPropertyMonitor has not been set yet (i.e. has the default value)
+            at the time the AmbientPropertyMonitor is constructed.
+            </remarks>
+        </member>
+        <member name="M:C1.Util.Win.AmbientComponentPropertyMonitor.ResetValue">
+            <summary>
+            Notifies the AmbientPropertyMonitor that the value of the monitored property
+            has been reset. If the host control is currently parented to a container
+            which itself defines the monitored property, the value from that parent
+            is assigned to the property on the host.
+            </summary>
+            <remarks>
+            It is recommended that the host defines a Reset method for the target
+            property, and calls this method from that. E.g.:
+            <code>
+            private AmbientPropertyMonitor __ambientVisualStyleMonitor = null;
+            ...
+            ctor() {
+                __ambientVisualStyleMonitor = new AmbientPropertyMonitor(this, "VisualStyle");
+                ...
+            }
+            public VisualStyle VisualStyle {
+                get { ... }
+                set { ... }
+            }
+            protected void ResetVisualStyle() {
+                ...
+                __ambientVisualStyleMonitor.ResetValue();
+            }
+            </code>
+            </remarks>
+        </member>
+        <member name="P:C1.Util.Win.AmbientComponentPropertyMonitor.IsValueAmbient">
+            <summary>
+            Gets the value indicating whether the monitored property
+            currently has the ambient value, i.e. the value has been set
+            (by the AmbientPropertyMonitor) based on the value of a parent of the host.
+            </summary>
+            <remarks>
+            It is recommended that the host defines a ShouldSerialize method for the target
+            property, tests IsValueAmbient in that method, and returns false if IsValueAmbient
+            returns true. E.g.:
+            <code>
+            private AmbientPropertyMonitor __ambientVisualStyleMonitor = null;
+            ...
+            ctor() {
+                __ambientVisualStyleMonitor = new AmbientPropertyMonitor(this, "VisualStyle");
+                ...
+            }
+            public VisualStyle VisualStyle {
+                get { ... }
+                set { ... }
+            }
+            protected bool ShouldSerializeVisualStyle() {
+                if (__ambientVisualStyleMonitor.IsValueAmbient)
+                    return false;
+                ...
+            }
+            </code>
+            </remarks>
+        </member>
+        <member name="T:C1.Util.Win.AmbientPropertyMonitor">
+            <summary>
+            A helper class for implementing an ambient property on a control.
+            </summary>
+            <remarks>
+            Usage:
+            An instance of AmbientPropertyMonitor must be created by the host control with the reference
+            to that host as the parameter.
+            The AmbientPropertyMonitor subscribes to the following events:
+            <list type="bullet">
+            <item>ParentChanged on the host and the whole parents' chain;
+            </item>
+            <item>(ambient property name)Changed or INotifyPropertyChanged on the host and all parents in the chain.
+            NOTE: For the AmbientPropertyMonitor to work correctly, all controls that have the target property declared
+            must also provide either a property changed event, or implement INotifyPropertyChanged and fire
+            it at appropriate moments.
+            </item>
+            </list>
+            <para>The AmbientPropertyMonitor monitors changes of the ambient property value on the host and all parents,
+            and if a change occurs applies the value of the ambient property on the closest parent
+            to that property on the host control, unless it has been changed independently of the AmbientPropertyMonitor
+            (AmbientPropertyMonitor assumes that when it is created, the ambient property on the host has default,
+            unchanged value).
+            </para>
+            <para>It is recommended that all controls declaring the target property also provide
+            the Reset(property) and ShouldSerialize(property) methods, calling the
+            <see cref="M:C1.Util.Win.AmbientPropertyMonitor.ResetValue"/> and <see cref="P:C1.Util.Win.AmbientPropertyMonitor.IsValueAmbient"/> methods as needed.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:C1.Util.Win.AmbientPropertyMonitor._pName">
+            <summary>
+            The target property name.
+            </summary>
+        </member>
+        <member name="F:C1.Util.Win.AmbientPropertyMonitor._parentChain">
+            <summary>
+            At all times, should contain the up-to-date parent chain,
+            starting with the host itself. Needed to keep track of
+            parent changes, and changes of ambient property on the parents.
+            </summary>
+        </member>
+        <member name="F:C1.Util.Win.AmbientPropertyMonitor._internalChange">
+            <summary>
+            Prevents raising the _propertySetByUser while we adjust the
+            property ourselves.
+            </summary>
+        </member>
+        <member name="F:C1.Util.Win.AmbientPropertyMonitor._propertySetByUser">
+            <summary>
+            If true, we consider the property to have a value explicitly set
+            ty the user, so we do not update it anymore until reset.
+            </summary>
+        </member>
+        <member name="M:C1.Util.Win.AmbientPropertyMonitor.#ctor(System.Windows.Forms.Control,System.String)">
+            <summary>
+            Initializes a new instance of the AmbientPropertyMonitor class.
+            </summary>
+            <param name="host">Control on which the ambient property will be monitored.</param>
+            <param name="propertyName">The name of the monitored property.
+            The type of the property MUST be an enumeration.</param>
+            <remarks>
+            An instance of this class must be created in the constructor 
+            of the host control.
+            It is assumed that the value of the ambient property that will be monitored
+            by the AmbientPropertyMonitor has not been set yet (i.e. has the default value)
+            at the time the AmbientPropertyMonitor is constructed.
+            </remarks>
+        </member>
+        <member name="M:C1.Util.Win.AmbientPropertyMonitor.ResetValue">
+            <summary>
+            Notifies the AmbientPropertyMonitor that the value of the monitored property
+            has been reset. If the host control is currently parented to a container
+            which itself defines the monitored property, the value from that parent
+            is assigned to the property on the host.
+            </summary>
+            <remarks>
+            It is recommended that the host defines a Reset method for the target
+            property, and calls this method from that. E.g.:
+            <code>
+            private AmbientPropertyMonitor __ambientVisualStyleMonitor = null;
+            ...
+            ctor() {
+                __ambientVisualStyleMonitor = new AmbientPropertyMonitor(this, "VisualStyle");
+                ...
+            }
+            public VisualStyle VisualStyle {
+                get { ... }
+                set { ... }
+            }
+            protected void ResetVisualStyle() {
+                ...
+                __ambientVisualStyleMonitor.ResetValue();
+            }
+            </code>
+            </remarks>
+        </member>
+        <member name="P:C1.Util.Win.AmbientPropertyMonitor.IsValueAmbient">
+            <summary>
+            Gets the value indicating whether the monitored property
+            currently has the ambient value, i.e. the value has been set
+            (by the AmbientPropertyMonitor) based on the value of a parent of the host.
+            </summary>
+            <remarks>
+            It is recommended that the host defines a ShouldSerialize method for the target
+            property, tests IsValueAmbient in that method, and returns false if IsValueAmbient
+            returns true. E.g.:
+            <code>
+            private AmbientPropertyMonitor __ambientVisualStyleMonitor = null;
+            ...
+            ctor() {
+                __ambientVisualStyleMonitor = new AmbientPropertyMonitor(this, "VisualStyle");
+                ...
+            }
+            public VisualStyle VisualStyle {
+                get { ... }
+                set { ... }
+            }
+            protected bool ShouldSerializeVisualStyle() {
+                if (__ambientVisualStyleMonitor.IsValueAmbient)
+                    return false;
+                ...
+            }
+            </code>
+            </remarks>
+        </member>
         <member name="T:C1.Util.Win.Win32.DM">
             <summary>
             Fiels of DEVMODE structure.
@@ -3065,6 +3280,11 @@
             <param name="control">The control where the context menu is to be shown.</param>
             <param name="pt">The point in the control client area where the context menu is to be shown.</param>
         </member>
+        <member name="M:C1.Win.C1Command.C1ContextMenu.CloseContextMenu">
+            <summary>
+            Closes the currently open context menu if there is one.
+            </summary>
+        </member>
         <member name="M:C1.Win.C1Command.C1ContextMenu.OnBackColorChanged(System.EventArgs)">
             <summary>
             This method is for internal use only.
@@ -3252,6 +3472,12 @@
             <returns></returns>
         </member>
         <member name="M:C1.Win.C1Command.C1DockingTab.OnResize(System.EventArgs)">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:C1.Win.C1Command.C1DockingTab.OnRightToLeftChanged(System.EventArgs)">
             <summary>
             This method is for internal use only.
             </summary>
@@ -3481,6 +3707,12 @@
             </summary>
             <param name="e"></param>
         </member>
+        <member name="M:C1.Win.C1Command.C1DockingTab.OnRightToLeftLayoutChanged(System.EventArgs)">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
         <member name="M:C1.Win.C1Command.C1DockingTab.OnFloatingChanged(System.EventArgs)">
             <summary>
             This method is for internal use only.
@@ -3698,6 +3930,11 @@
         <member name="E:C1.Win.C1Command.C1DockingTab.FloatingChanged">
             <summary>
             Occurs when the Floating property is changed.
+            </summary>
+        </member>
+        <member name="E:C1.Win.C1Command.C1DockingTab.RightToLeftLayoutChanged">
+            <summary>
+            Occurs when the RightToLeftLayout property is changed.
             </summary>
         </member>
         <member name="E:C1.Win.C1Command.C1DockingTab.VisualStyleChanged">
@@ -3941,6 +4178,11 @@
         <member name="P:C1.Win.C1Command.C1DockingTab.ShowTabList">
             <summary>
             Gets or sets the value indicating whether to show a button with dropdown list of all tabs (ignored in multiline mode).
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Command.C1DockingTab.RightToLeftLayout">
+            <summary>
+            Gets or sets a value indicating whether right-to-left mirror placement is turned on.
             </summary>
         </member>
         <member name="P:C1.Win.C1Command.C1DockingTab.DefaultSize">
@@ -4698,6 +4940,12 @@
             </summary>
             <param name="e"></param>
         </member>
+        <member name="M:C1.Win.C1Command.C1MainMenu.OnRightToLeftChanged(System.EventArgs)">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
         <member name="M:C1.Win.C1Command.C1MainMenu.ResetBackHiColor">
             <summary>
             This method is for internal use only.
@@ -4889,6 +5137,17 @@
             This method is for internal use only.
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Command.C1NavBar.ShouldSerializeUIStrings">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:C1.Win.C1Command.C1NavBar.ResetUIStrings">
+            <summary>
+            This method is for internal use only.
+            </summary>
         </member>
         <member name="M:C1.Win.C1Command.C1NavBar.SaveDefaultArrangement">
             <summary>
@@ -5084,6 +5343,11 @@
         <member name="P:C1.Win.C1Command.C1NavBar.StripHeight">
             <summary>
             Gets or sets the height of the button strip at the bottom of the navigation bar.
+            </summary>
+        </member>
+        <member name="P:C1.Win.C1Command.C1NavBar.UIStrings">
+            <summary>
+            Gets the array of user interface strings.
             </summary>
         </member>
         <member name="E:C1.Win.C1Command.C1NavBar.ButtonClick">
@@ -6418,6 +6682,12 @@
             <param name="e"></param>
         </member>
         <member name="M:C1.Win.C1Command.C1ToolBar.OnCursorChanged(System.EventArgs)">
+            <summary>
+            This method is for internal use only.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:C1.Win.C1Command.C1ToolBar.OnRightToLeftChanged(System.EventArgs)">
             <summary>
             This method is for internal use only.
             </summary>

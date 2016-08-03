@@ -93,7 +93,7 @@ Partial Class frmSrhEmpleadoEditar
         '
         'cmdConsultar
         '
-        Me.cmdConsultar.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdConsultar.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdConsultar.Location = New System.Drawing.Point(544, 21)
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(24, 23)
@@ -421,7 +421,7 @@ Partial Class frmSrhEmpleadoEditar
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 290)
         Me.Panel1.Name = "Panel1"
@@ -430,7 +430,7 @@ Partial Class frmSrhEmpleadoEditar
         '
         'cmdEditarInfo
         '
-        Me.cmdEditarInfo.BackgroundImage = Global.SCCUM.My.Resources.Resources.IniciarSesion1
+        Me.cmdEditarInfo.BackgroundImage = Global.SIFAC.My.Resources.Resources.IniciarSesion1
         Me.cmdEditarInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.cmdEditarInfo.Enabled = False
         Me.cmdEditarInfo.Location = New System.Drawing.Point(376, 256)

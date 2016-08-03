@@ -7,17 +7,18 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{141E0D71-F77A-4743-AE26-1C234515C900}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>SCCUM.My.MyApplication</StartupObject>
-    <RootNamespace>SCCUM</RootNamespace>
-    <AssemblyName>SCCUM</AssemblyName>
+    <StartupObject>SIFAC.My.MyApplication</StartupObject>
+    <RootNamespace>SIFAC</RootNamespace>
+    <AssemblyName>SIFAC</AssemblyName>
     <MyType>WindowsForms</MyType>
-    <ApplicationIcon>VentanaConfiguracion.ico</ApplicationIcon>
+    <ApplicationIcon>sifac-desk-icon.ico</ApplicationIcon>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -30,7 +31,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -40,7 +40,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SCCUM.xml</DocumentationFile>
+    <DocumentationFile>SIFAC.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -49,8 +49,11 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SCCUM.xml</DocumentationFile>
+    <DocumentationFile>SIFAC.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActiveReports.Chart">
@@ -198,11 +201,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dtMinutaCliente.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSets\DtMorosidadS.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DtMorosidadS.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dtRecuperacionComparativo.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1148,6 +1146,9 @@
       <DependentUpon>frmPrincipal.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Productos\frmMarcasEdit.resx">
+      <DependentUpon>frmMarcasEdit.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Productos\frmSivMarcas.resx">
       <DependentUpon>frmSivMarcas.vb</DependentUpon>
     </EmbeddedResource>
@@ -1606,6 +1607,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -1893,7 +1895,6 @@
     <None Include="DataSets\DtMorosidadS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DtMorosidadS.Designer.vb</LastGenOutput>
     </None>
     <None Include="DataSets\DtMorosidadS.xss">
       <DependentUpon>DtMorosidadS.xsd</DependentUpon>
@@ -2068,7 +2069,10 @@
     <None Include="Resources\balanza.bmp" />
     <Content Include="Resources\Banner.jpg" />
     <Content Include="Resources\Bitacora.png" />
+    <None Include="Resources\Cancel16.png" />
     <Content Include="Resources\Fact.png" />
+    <None Include="Resources\Guardar32.png" />
+    <None Include="Resources\Guardar16.png" />
     <Content Include="Resources\Home.ico" />
     <Content Include="Resources\Logo.jpg" />
     <Content Include="Resources\MdiChild.png" />
@@ -2079,6 +2083,7 @@
     <Content Include="Resources\Proveedor.ico" />
     <None Include="Resources\Sello.png" />
     <None Include="Resources\ProveedorEstilo1.jpg" />
+    <Content Include="sifac-desk-icon.ico" />
     <Content Include="VentanaConfiguracion.ico" />
   </ItemGroup>
   <ItemGroup>

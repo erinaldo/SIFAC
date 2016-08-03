@@ -210,7 +210,7 @@ Partial Class frmStbPersonaBuscar
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 183)
         Me.Panel1.Name = "Panel1"

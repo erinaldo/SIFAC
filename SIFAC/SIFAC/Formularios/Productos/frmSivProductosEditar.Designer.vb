@@ -19,25 +19,25 @@ Partial Class frmSivProductosEditar
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivProductosEditar))
-        Me.grbProductos = New System.Windows.Forms.GroupBox
-        Me.cbxSegmento = New C1.Win.C1List.C1Combo
-        Me.cbxCilindraje = New C1.Win.C1List.C1Combo
-        Me.cbxMarca = New C1.Win.C1List.C1Combo
-        Me.txtModelo = New System.Windows.Forms.TextBox
-        Me.chkActivo = New System.Windows.Forms.CheckBox
-        Me.lblSegmento = New System.Windows.Forms.Label
-        Me.lblCilindraje = New System.Windows.Forms.Label
-        Me.lblMarca = New System.Windows.Forms.Label
-        Me.lblModelo = New System.Windows.Forms.Label
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.cmdCancelar = New System.Windows.Forms.Button
+        Me.grbProductos = New System.Windows.Forms.GroupBox()
+        Me.cbxSegmento = New C1.Win.C1List.C1Combo()
+        Me.cbxCilindraje = New C1.Win.C1List.C1Combo()
+        Me.cbxMarca = New C1.Win.C1List.C1Combo()
+        Me.txtModelo = New System.Windows.Forms.TextBox()
+        Me.chkActivo = New System.Windows.Forms.CheckBox()
+        Me.lblSegmento = New System.Windows.Forms.Label()
+        Me.lblCilindraje = New System.Windows.Forms.Label()
+        Me.lblMarca = New System.Windows.Forms.Label()
+        Me.lblModelo = New System.Windows.Forms.Label()
+        Me.cmdAceptar = New System.Windows.Forms.Button()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.grbProductos.SuspendLayout()
         CType(Me.cbxSegmento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbxCilindraje, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -275,7 +275,7 @@ Partial Class frmSivProductosEditar
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 228)
         Me.Panel1.Name = "Panel1"

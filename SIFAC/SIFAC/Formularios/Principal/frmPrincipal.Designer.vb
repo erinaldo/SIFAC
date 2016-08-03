@@ -576,7 +576,7 @@ Partial Class frmPrincipal
         '
         'cmdMinutas
         '
-        Me.cmdMinutas.Image = Global.SCCUM.My.Resources.Resources.Autorizar_Pedido
+        Me.cmdMinutas.Image = Global.SIFAC.My.Resources.Resources.Autorizar_Pedido
         Me.cmdMinutas.Name = "cmdMinutas"
         Me.cmdMinutas.Text = "Minutas de cobro"
         '
@@ -600,7 +600,7 @@ Partial Class frmPrincipal
         '
         'cmdTramiteLegal
         '
-        Me.cmdTramiteLegal.Image = Global.SCCUM.My.Resources.Resources.balanza
+        Me.cmdTramiteLegal.Image = Global.SIFAC.My.Resources.Resources.balanza
         Me.cmdTramiteLegal.Name = "cmdTramiteLegal"
         Me.cmdTramiteLegal.Text = "Trámite Legal"
         '
@@ -1409,7 +1409,7 @@ Partial Class frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.SCCUM.My.Resources.Resources.Fondo
+        Me.BackgroundImage = Global.SIFAC.My.Resources.Resources.Fondo
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(795, 607)
         Me.Controls.Add(Me.stbPrincipal)

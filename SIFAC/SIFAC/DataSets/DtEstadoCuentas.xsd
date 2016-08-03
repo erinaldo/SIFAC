@@ -4,22 +4,18 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUMConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.My.MySettings.GlobalReference.Default.SCCUMConnectionString" Provider="System.Data.SqlClient">
-          </Connection>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUMConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.My.MySettings.GlobalReference.Default.SCCUMConnectionString1" Provider="System.Data.SqlClient">
-          </Connection>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUMConnectionString2 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.My.MySettings.GlobalReference.Default.SCCUMConnectionString2" Provider="System.Data.SqlClient">
-          </Connection>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SCCUMConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIFAC.My.MySettings.GlobalReference.Default.SCCUMConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SCCUMConnectionString1 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIFAC.My.MySettings.GlobalReference.Default.SCCUMConnectionString1" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SIFACConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SIFACConnectionString2 (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIFAC.My.MySettings.GlobalReference.Default.SIFACConnectionString2" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AdaptadorReporte" GeneratorDataComponentClassName="AdaptadorReporte" Name="DatosReporte" UserDataComponentName="AdaptadorReporte">
             <MainSource>
-              <DbSource ConnectionRef="SCCUMConnectionString2 (MySettings)" DbObjectName="SCCUM.dbo.vwRptEstadoCuentasFact" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SIFACConnectionString2 (MySettings)" DbObjectName="SCCUM.dbo.vwRptEstadoCuentasFact" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT * FROM vwRptEstadoCuentasFact </CommandText>
-                    <Parameters>
-                    </Parameters>
+                    <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
@@ -45,94 +41,92 @@
               <Mapping SourceColumn="Cargo" DataSetColumn="Cargo" />
               <Mapping SourceColumn="ResponsableCartera" DataSetColumn="ResponsableCartera" />
             </Mappings>
-            <Sources>
-            </Sources>
+            <Sources />
           </TableAdapter>
         </Tables>
-        <Sources>
-        </Sources>
+        <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DtEstadoCuentas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtEstadoCuentas" msprop:Generator_DataSetName="DtEstadoCuentas">
+  <xs:element name="DtEstadoCuentas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DtEstadoCuentas" msprop:Generator_UserDSName="DtEstadoCuentas">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DatosReporte" msprop:Generator_UserTableName="DatosReporte" msprop:Generator_RowDeletedName="DatosReporteRowDeleted" msprop:Generator_TableClassName="DatosReporteDataTable" msprop:Generator_RowChangedName="DatosReporteRowChanged" msprop:Generator_RowClassName="DatosReporteRow" msprop:Generator_RowChangingName="DatosReporteRowChanging" msprop:Generator_RowEvArgName="DatosReporteRowChangeEvent" msprop:Generator_RowEvHandlerName="DatosReporteRowChangeEventHandler" msprop:Generator_TablePropName="DatosReporte" msprop:Generator_TableVarName="tableDatosReporte" msprop:Generator_RowDeletingName="DatosReporteRowDeleting">
+        <xs:element name="DatosReporte" msprop:Generator_TableClassName="DatosReporteDataTable" msprop:Generator_RowEvArgName="DatosReporteRowChangeEvent" msprop:Generator_TableVarName="tableDatosReporte" msprop:Generator_TablePropName="DatosReporte" msprop:Generator_RowDeletingName="DatosReporteRowDeleting" msprop:Generator_RowChangingName="DatosReporteRowChanging" msprop:Generator_RowEvHandlerName="DatosReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="DatosReporteRowDeleted" msprop:Generator_RowChangedName="DatosReporteRowChanged" msprop:Generator_UserTableName="DatosReporte" msprop:Generator_RowClassName="DatosReporteRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Tipo" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Tipo" msprop:Generator_ColumnPropNameInRow="Tipo" msprop:Generator_ColumnVarNameInTable="columnTipo" msprop:Generator_ColumnPropNameInTable="TipoColumn" minOccurs="0">
+              <xs:element name="Tipo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTipo" msprop:Generator_ColumnPropNameInRow="Tipo" msprop:Generator_ColumnPropNameInTable="TipoColumn" msprop:Generator_UserColumnName="Tipo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="1" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Numero" msprop:Generator_UserColumnName="Numero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInTable="NumeroColumn">
+              <xs:element name="Numero" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnPropNameInTable="NumeroColumn" msprop:Generator_UserColumnName="Numero">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="MontoTotal" msprop:Generator_UserColumnName="MontoTotal" msprop:Generator_ColumnPropNameInRow="MontoTotal" msprop:Generator_ColumnVarNameInTable="columnMontoTotal" msprop:Generator_ColumnPropNameInTable="MontoTotalColumn" type="xs:decimal" />
-              <xs:element name="Concepto" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Concepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" minOccurs="0">
+              <xs:element name="MontoTotal" msprop:Generator_ColumnVarNameInTable="columnMontoTotal" msprop:Generator_ColumnPropNameInRow="MontoTotal" msprop:Generator_ColumnPropNameInTable="MontoTotalColumn" msprop:Generator_UserColumnName="MontoTotal" type="xs:decimal" />
+              <xs:element name="Concepto" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" msprop:Generator_UserColumnName="Concepto" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="108" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Debe" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Debe" msprop:Generator_ColumnPropNameInRow="Debe" msprop:Generator_ColumnVarNameInTable="columnDebe" msprop:Generator_ColumnPropNameInTable="DebeColumn" type="xs:boolean" minOccurs="0" />
-              <xs:element name="Haber" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Haber" msprop:Generator_ColumnPropNameInRow="Haber" msprop:Generator_ColumnVarNameInTable="columnHaber" msprop:Generator_ColumnPropNameInTable="HaberColumn" type="xs:boolean" minOccurs="0" />
-              <xs:element name="Cargos" msprop:Generator_UserColumnName="Cargos" msprop:Generator_ColumnPropNameInRow="Cargos" msprop:Generator_ColumnVarNameInTable="columnCargos" msprop:Generator_ColumnPropNameInTable="CargosColumn" type="xs:decimal" />
-              <xs:element name="Abono" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Abono" msprop:Generator_ColumnPropNameInRow="Abono" msprop:Generator_ColumnVarNameInTable="columnAbono" msprop:Generator_ColumnPropNameInTable="AbonoColumn" type="xs:decimal" minOccurs="0" />
-              <xs:element name="objSccCuentaID" msprop:Generator_UserColumnName="objSccCuentaID" msprop:Generator_ColumnPropNameInRow="objSccCuentaID" msprop:Generator_ColumnVarNameInTable="columnobjSccCuentaID" msprop:Generator_ColumnPropNameInTable="objSccCuentaIDColumn">
+              <xs:element name="Debe" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDebe" msprop:Generator_ColumnPropNameInRow="Debe" msprop:Generator_ColumnPropNameInTable="DebeColumn" msprop:Generator_UserColumnName="Debe" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Haber" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHaber" msprop:Generator_ColumnPropNameInRow="Haber" msprop:Generator_ColumnPropNameInTable="HaberColumn" msprop:Generator_UserColumnName="Haber" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Cargos" msprop:Generator_ColumnVarNameInTable="columnCargos" msprop:Generator_ColumnPropNameInRow="Cargos" msprop:Generator_ColumnPropNameInTable="CargosColumn" msprop:Generator_UserColumnName="Cargos" type="xs:decimal" />
+              <xs:element name="Abono" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAbono" msprop:Generator_ColumnPropNameInRow="Abono" msprop:Generator_ColumnPropNameInTable="AbonoColumn" msprop:Generator_UserColumnName="Abono" type="xs:decimal" minOccurs="0" />
+              <xs:element name="objSccCuentaID" msprop:Generator_ColumnVarNameInTable="columnobjSccCuentaID" msprop:Generator_ColumnPropNameInRow="objSccCuentaID" msprop:Generator_ColumnPropNameInTable="objSccCuentaIDColumn" msprop:Generator_UserColumnName="objSccCuentaID">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="objTiendaID" msprop:Generator_UserColumnName="objTiendaID" msprop:Generator_ColumnPropNameInRow="objTiendaID" msprop:Generator_ColumnVarNameInTable="columnobjTiendaID" msprop:Generator_ColumnPropNameInTable="objTiendaIDColumn" type="xs:int" />
-              <xs:element name="Cliente" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" minOccurs="0">
+              <xs:element name="objTiendaID" msprop:Generator_ColumnVarNameInTable="columnobjTiendaID" msprop:Generator_ColumnPropNameInRow="objTiendaID" msprop:Generator_ColumnPropNameInTable="objTiendaIDColumn" msprop:Generator_UserColumnName="objTiendaID" type="xs:int" />
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="256" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="StbPersonaID" msprop:Generator_UserColumnName="StbPersonaID" msprop:Generator_ColumnPropNameInRow="StbPersonaID" msprop:Generator_ColumnVarNameInTable="columnStbPersonaID" msprop:Generator_ColumnPropNameInTable="StbPersonaIDColumn">
+              <xs:element name="StbPersonaID" msprop:Generator_ColumnVarNameInTable="columnStbPersonaID" msprop:Generator_ColumnPropNameInRow="StbPersonaID" msprop:Generator_ColumnPropNameInTable="StbPersonaIDColumn" msprop:Generator_UserColumnName="StbPersonaID">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="16" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Fecha" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" minOccurs="0">
+              <xs:element name="Fecha" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="SaldoInicial" msprop:Generator_UserColumnName="SaldoInicial" msprop:Generator_ColumnPropNameInRow="SaldoInicial" msprop:Generator_ColumnVarNameInTable="columnSaldoInicial" msprop:Generator_ColumnPropNameInTable="SaldoInicialColumn" type="xs:decimal" minOccurs="0" />
-              <xs:element name="SaldoTotal" msprop:Generator_UserColumnName="SaldoTotal" msprop:Generator_ColumnPropNameInRow="SaldoTotal" msprop:Generator_ColumnVarNameInTable="columnSaldoTotal" msprop:Generator_ColumnPropNameInTable="SaldoTotalColumn" type="xs:decimal" />
-              <xs:element name="FechaActual" msdata:ReadOnly="true" msprop:Generator_UserColumnName="FechaActual" msprop:Generator_ColumnPropNameInRow="FechaActual" msprop:Generator_ColumnVarNameInTable="columnFechaActual" msprop:Generator_ColumnPropNameInTable="FechaActualColumn" minOccurs="0">
+              <xs:element name="SaldoInicial" msprop:Generator_ColumnVarNameInTable="columnSaldoInicial" msprop:Generator_ColumnPropNameInRow="SaldoInicial" msprop:Generator_ColumnPropNameInTable="SaldoInicialColumn" msprop:Generator_UserColumnName="SaldoInicial" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SaldoTotal" msprop:Generator_ColumnVarNameInTable="columnSaldoTotal" msprop:Generator_ColumnPropNameInRow="SaldoTotal" msprop:Generator_ColumnPropNameInTable="SaldoTotalColumn" msprop:Generator_UserColumnName="SaldoTotal" type="xs:decimal" />
+              <xs:element name="FechaActual" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFechaActual" msprop:Generator_ColumnPropNameInRow="FechaActual" msprop:Generator_ColumnPropNameInTable="FechaActualColumn" msprop:Generator_UserColumnName="FechaActual" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Saldo" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Saldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Cargo" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Cargo" msprop:Generator_ColumnPropNameInRow="Cargo" msprop:Generator_ColumnVarNameInTable="columnCargo" msprop:Generator_ColumnPropNameInTable="CargoColumn" minOccurs="0">
+              <xs:element name="Saldo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Cargo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCargo" msprop:Generator_ColumnPropNameInRow="Cargo" msprop:Generator_ColumnPropNameInTable="CargoColumn" msprop:Generator_UserColumnName="Cargo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ResponsableCartera" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ResponsableCartera" msprop:Generator_ColumnPropNameInRow="ResponsableCartera" msprop:Generator_ColumnVarNameInTable="columnResponsableCartera" msprop:Generator_ColumnPropNameInTable="ResponsableCarteraColumn" minOccurs="0">
+              <xs:element name="ResponsableCartera" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnResponsableCartera" msprop:Generator_ColumnPropNameInRow="ResponsableCartera" msprop:Generator_ColumnPropNameInTable="ResponsableCarteraColumn" msprop:Generator_UserColumnName="ResponsableCartera" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />

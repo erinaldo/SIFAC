@@ -173,7 +173,7 @@ Partial Class frmStaServicioTallerEditar
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 596)
         Me.Panel1.Name = "Panel1"
@@ -347,7 +347,7 @@ Partial Class frmStaServicioTallerEditar
         '
         'cmdConsultarCliente
         '
-        Me.cmdConsultarCliente.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdConsultarCliente.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdConsultarCliente.Location = New System.Drawing.Point(442, 77)
         Me.cmdConsultarCliente.Name = "cmdConsultarCliente"
         Me.cmdConsultarCliente.Size = New System.Drawing.Size(23, 23)

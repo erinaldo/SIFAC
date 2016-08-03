@@ -218,6 +218,38 @@
             Saves a Ribbon definition into an <see cref="T:System.Xml.XmlWriter" />.
             </summary>
     </member>
+    <member name="M:C1.Win.C1Ribbon.C1Ribbon.BeginUpdate">
+      <summary>
+            Maintains performance while items are being added or removed from the C1Ribbon.
+            </summary>
+      <remarks>
+            When adding a large number of items to the C1Ribbon, you should use the <b>BeginUpdate</b> 
+            method to prevent item collections from updating their internal state each time an item is added.
+            Once you have completed the task of adding items, call the <see cref="M:C1.Win.C1Ribbon.C1Ribbon.EndUpdate" /> method
+            to resume regular processing.
+            </remarks>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.C1Ribbon.EndUpdate">
+      <summary>
+            Resumes processing after it has been suspended by a call to <see cref="M:C1.Win.C1Ribbon.C1Ribbon.BeginUpdate" />.
+            </summary>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.C1Ribbon.GetHostRibbonItem(System.Windows.Forms.Control)">
+      <summary>
+            Returns the <see cref="T:C1.Win.C1Ribbon.RibbonItem" /> that contains the specified control.
+            </summary>
+      <remarks>
+            For example, the <see cref="T:C1.Win.C1Ribbon.RibbonEditBox" /> item uses the TextBox control
+            internally. If you pass this TextBox to the <b>GetHostRibbonItem</b>
+            method it will return the owner RibbonEditBox item.
+            </remarks>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.C1Ribbon.GetItemByID(System.String)">
+      <summary>
+            Searches for the first RibbonItem or RibbonGroup with
+            the specified ID through the whole C1Ribbon.
+            </summary>
+    </member>
     <member name="M:C1.Win.C1Ribbon.C1Ribbon.GetItemAt(System.Drawing.Point)">
       <summary>
             Returns the item located at the specified point in the client area of the C1Ribbon.
@@ -228,7 +260,7 @@
             Returns the item located at the specified x- and y-coordinates of the C1Ribbon client area.
             </summary>
     </member>
-    <member name="M:C1.Win.C1Ribbon.C1Ribbon.SetTooltip(System.Windows.Forms.Control,System.String)">
+    <member name="M:C1.Win.C1Ribbon.C1Ribbon.SetToolTip(System.Windows.Forms.Control,System.String)">
       <summary>
             Associates a rich ToolTip with a control.
             </summary>
@@ -257,9 +289,29 @@
             Gets the object that represents the toolbar in the upper-right corner of the Ribbon.
             </summary>
     </member>
+    <member name="P:C1.Win.C1Ribbon.C1Ribbon.AllowMinimize">
+      <summary>
+            Gets or sets whether the Ribbon can be minimized.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.C1Ribbon.Minimized">
+      <summary>
+            Gets or sets whether the Ribbon is in minimized state.
+            </summary>
+    </member>
     <member name="P:C1.Win.C1Ribbon.C1Ribbon.MinimumWidth">
       <summary>
-            Gets or sets the minimum width of the Ribbon control.
+            Gets or sets the minimum width of Ribbon's parent container.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.C1Ribbon.MinimumHeight">
+      <summary>
+            Gets or sets the minimum height of Ribbon's parent container.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.C1Ribbon.TabPopupWidth">
+      <summary>
+            Gets or sets the maximum width of the tab popup window when the Ribbon is minimized. If -1, the popup window is stretched to the whole width of the owner window.
             </summary>
     </member>
     <member name="P:C1.Win.C1Ribbon.C1Ribbon.HotTransitionEffect">
@@ -287,17 +339,33 @@
             Gets or sets the selected tab.
             </summary>
     </member>
-    <member name="P:C1.Win.C1Ribbon.C1Ribbon.Minimized">
-      <summary>
-            Gets or sets whether the Ribbon is in minimized state.
-            </summary>
-    </member>
     <member name="P:C1.Win.C1Ribbon.C1Ribbon.SelectedTabIndex">
       <summary>
             Gets or sets the selected tab index.
             </summary>
     </member>
+    <member name="P:C1.Win.C1Ribbon.C1Ribbon.QatItemIDs">
+      <summary>
+            Gets or sets the string that specifies the list of item IDs on the QAT.
+            It allows to preserve QAT items added by the user at runtime.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.C1Ribbon.Anchor">
+      <summary>
+            This property has no effect on C1Ribbon.
+            </summary>
+    </member>
     <member name="P:C1.Win.C1Ribbon.C1Ribbon.AutoSize">
+      <summary>
+            This property has no effect on C1Ribbon.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.C1Ribbon.MaximumSize">
+      <summary>
+            This property has no effect on C1Ribbon.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.C1Ribbon.MinimumSize">
       <summary>
             This property has no effect on C1Ribbon.
             </summary>
@@ -364,6 +432,37 @@
       <summary>
             Creates a new instance of <see cref="T:C1.Win.C1Ribbon.C1StatusBar" />.
             The C1StatusBar is automatically docked at the bottom of the parent container.
+            </summary>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.C1StatusBar.BeginUpdate">
+      <summary>
+            Maintains performance while items are being added or removed from the C1StatusBar.
+            </summary>
+      <remarks>
+            When adding a large number of items to the C1StatusBar, you should use the <b>BeginUpdate</b> 
+            method to prevent item collections from updating their internal state each time an item is added.
+            Once you have completed the task of adding items, call the <see cref="M:C1.Win.C1Ribbon.C1StatusBar.EndUpdate" /> method
+            to resume regular processing.
+            </remarks>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.C1StatusBar.EndUpdate">
+      <summary>
+            Resumes processing after it has been suspended by a call to <see cref="M:C1.Win.C1Ribbon.C1StatusBar.BeginUpdate" />.
+            </summary>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.C1StatusBar.GetItemByID(System.String)">
+      <summary>
+            Searches for the first RibbonItem with the specified ID through the whole C1StatusBar.
+            </summary>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.C1StatusBar.GetItemAt(System.Drawing.Point)">
+      <summary>
+            Returns the item located at the specified point in the client area of the C1StatusBar.
+            </summary>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.C1StatusBar.GetItemAt(System.Int32,System.Int32)">
+      <summary>
+            Returns the item located at the specified x- and y-coordinates of the C1StatusBar client area.
             </summary>
     </member>
     <member name="M:C1.Win.C1Ribbon.C1StatusBar.Load(System.String)">
@@ -439,12 +538,32 @@
             Gets or sets the width of the pane on the right side of the status bar.
             </summary>
     </member>
+    <member name="E:C1.Win.C1Ribbon.C1StatusBar.RibbonEvent">
+      <summary>
+            Occurs when other Ribbon events occur.
+            </summary>
+    </member>
     <member name="E:C1.Win.C1Ribbon.C1StatusBar.VisualStyleChanged">
       <summary>
             Occurs when the value of the <see cref="P:C1.Win.C1Ribbon.C1StatusBar.VisualStyle" /> property changes.
             </summary>
     </member>
+    <member name="P:C1.Win.C1Ribbon.C1StatusBar.Anchor">
+      <summary>
+            This property has no effect on C1StatusBar.
+            </summary>
+    </member>
     <member name="P:C1.Win.C1Ribbon.C1StatusBar.AutoSize">
+      <summary>
+            This property has no effect on C1StatusBar.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.C1StatusBar.MaximumSize">
+      <summary>
+            This property has no effect on C1StatusBar.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.C1StatusBar.MinimumSize">
       <summary>
             This property has no effect on C1StatusBar.
             </summary>
@@ -626,6 +745,11 @@
             Gets or sets the ISite of the <see cref="T:C1.Win.C1Ribbon.RibbonItem" />.
             </summary>
     </member>
+    <member name="P:C1.Win.C1Ribbon.RibbonItem.IsDisposed">
+      <summary>
+            Gets a value indicating whether the <see cref="T:C1.Win.C1Ribbon.RibbonItem" /> has been disposed of.
+            </summary>
+    </member>
     <member name="P:C1.Win.C1Ribbon.RibbonItem.ID">
       <summary>
             Gets or sets the unique ID for this <see cref="T:C1.Win.C1Ribbon.RibbonItem" />.
@@ -664,6 +788,11 @@
     <member name="P:C1.Win.C1Ribbon.RibbonItem.Visible">
       <summary>
             Gets or sets whether this <see cref="T:C1.Win.C1Ribbon.RibbonItem" /> is visible.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.RibbonItem.OwnerControl">
+      <summary>
+            Gets the <see cref="T:C1.Win.C1Ribbon.C1Ribbon" /> or <see cref="T:C1.Win.C1Ribbon.C1StatusBar" /> that this <see cref="T:C1.Win.C1Ribbon.RibbonItem" /> belongs to.
             </summary>
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonItem.Ribbon">
@@ -847,6 +976,11 @@
             Gets the TextBox control contained in this <see cref="T:C1.Win.C1Ribbon.RibbonComboBox" />.
             </summary>
     </member>
+    <member name="P:C1.Win.C1Ribbon.RibbonComboBox.GapBeforeTextArea">
+      <summary>
+            Gets or sets the gap between the label and text area when this <see cref="T:C1.Win.C1Ribbon.RibbonComboBox" /> appears on a <see cref="T:C1.Win.C1Ribbon.RibbonGroup" />.
+            </summary>
+    </member>
     <member name="P:C1.Win.C1Ribbon.RibbonComboBox.TextAreaWidth">
       <summary>
             Gets or sets the width of the text area.
@@ -919,7 +1053,7 @@
     </member>
     <member name="E:C1.Win.C1Ribbon.RibbonComboBox.ChangeCanceled">
       <summary>
-            Occurs when the user cancels changes to the text box.
+            Occurs when the user cancels changes to the combo box.
             </summary>
     </member>
     <member name="M:C1.Win.C1Ribbon.RibbonFontComboBox.#ctor">
@@ -1012,7 +1146,7 @@
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonGalleryItem.Text">
       <summary>
-            Gets or sets the Text used to identify this <see cref="T:C1.Win.C1Ribbon.RibbonGalleryItem" />.
+            Gets or sets the text associated with the <see cref="T:C1.Win.C1Ribbon.RibbonGalleryItem" />.
             </summary>
     </member>
     <member name="E:C1.Win.C1Ribbon.RibbonGalleryItem.Click">
@@ -1110,6 +1244,11 @@
             Removes the first occurrence of the specified <see cref="T:C1.Win.C1Ribbon.RibbonItem" /> from the collection.
             </summary>
       <param name="item"> The Ribbon item to remove. </param>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.RibbonItemCollectionBase.ClearAndDisposeItems">
+      <summary>
+            Removes all items from the collection, then disposes the items.
+            </summary>
     </member>
     <member name="M:C1.Win.C1Ribbon.RibbonGalleryItemCollection.IndexOf(System.String)">
       <summary>
@@ -1341,6 +1480,31 @@
             Occurs when the <see cref="P:C1.Win.C1Ribbon.RibbonColorPicker.Color" /> property has changed.
             </summary>
     </member>
+    <member name="T:C1.Win.C1Ribbon.RibbonQatLinkCollection">
+      <summary>
+            This class is for internal use only.
+            </summary>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.RibbonQatLinkCollection.Add(System.ComponentModel.Component)">
+      <summary>
+            Adds an item to the end of the collection.
+            </summary>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.RibbonQatLinkCollection.Insert(System.Int32,System.ComponentModel.Component)">
+      <summary>
+            Inserts an item into the collection at the specified index.
+            </summary>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.RibbonQatLinkCollection.Sort(System.Collections.IComparer)">
+      <summary>
+            Sorts the items in the collection using the specified comparer.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.RibbonQatLinkCollection.Item(System.Int32)">
+      <summary>
+            Gets or sets the item at the specified index.
+            </summary>
+    </member>
     <member name="T:C1.Win.C1Ribbon.RibbonGroupCollection">
       <summary>
             Represents a collection of <see cref="T:C1.Win.C1Ribbon.RibbonGroup" /> objects in a <see cref="T:C1.Win.C1Ribbon.RibbonTab" />.
@@ -1400,6 +1564,11 @@
             Removes the first occurrence of a specific <see cref="T:C1.Win.C1Ribbon.RibbonGroup" /> from the <see cref="T:C1.Win.C1Ribbon.RibbonGroupCollection" />.
             </summary>
       <param name="group"> The <see cref="T:C1.Win.C1Ribbon.RibbonGroup" /> to remove. </param>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.RibbonGroupCollection.ClearAndDisposeGroups">
+      <summary>
+            Removes all groups from the collection, then disposes the groups.
+            </summary>
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonGroupCollection.Item(System.Int32)">
       <summary>
@@ -1464,6 +1633,11 @@
     <member name="M:C1.Win.C1Ribbon.RibbonProgressBar.#ctor">
       <summary>
             Creates a new instance of <see cref="T:C1.Win.C1Ribbon.RibbonProgressBar" />.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.RibbonProgressBar.Width">
+      <summary>
+            Gets or sets the width of the progress bar.
             </summary>
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonProgressBar.Minimum">
@@ -1531,6 +1705,11 @@
     <member name="M:C1.Win.C1Ribbon.RibbonTabCollection.Contains(C1.Win.C1Ribbon.RibbonTab)">
       <summary>
             Determines whether the <see cref="T:C1.Win.C1Ribbon.RibbonTabCollection" /> contains a specific <see cref="T:C1.Win.C1Ribbon.RibbonTab" />.
+            </summary>
+    </member>
+    <member name="M:C1.Win.C1Ribbon.RibbonTabCollection.ClearAndDisposeTabs">
+      <summary>
+            Removes all tabs from the collection, then disposes the tabs.
             </summary>
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonTabCollection.Item(System.Int32)">
@@ -1631,6 +1810,121 @@
             Indicates the Office2007 color pallete
             </summary>
     </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Standard">
+      <summary>
+            Standard color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Highlight">
+      <summary>
+            Highlight color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Office">
+      <summary>
+            Office color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.GrayScale">
+      <summary>
+            GrayScale color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Apex">
+      <summary>
+            Apex color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Aspect">
+      <summary>
+            Aspect color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Civic">
+      <summary>
+            Civic color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Concourse">
+      <summary>
+            Concourse color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Equity">
+      <summary>
+            Equity color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Flow">
+      <summary>
+            Flow color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Foundry">
+      <summary>
+            Foundry color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Median">
+      <summary>
+            Median color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Metro">
+      <summary>
+            Metro color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Module">
+      <summary>
+            Module color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Opulent">
+      <summary>
+            Opulent color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Oriel">
+      <summary>
+            Oriel color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Origin">
+      <summary>
+            Origin color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Paper">
+      <summary>
+            Paper color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Solstice">
+      <summary>
+            Solstice color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Technic">
+      <summary>
+            Technic color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Trek">
+      <summary>
+            Trek color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Urban">
+      <summary>
+            Urban color theme.
+            </summary>
+    </member>
+    <member name="F:C1.Win.C1Ribbon.Office2007ColorThemes.Verve">
+      <summary>
+            Verve color theme.
+            </summary>
+    </member>
     <member name="T:C1.Win.C1Ribbon.RibbonButton">
       <summary>
             Represents a button element in a <see cref="T:C1.Win.C1Ribbon.C1Ribbon" /> control.
@@ -1685,7 +1979,7 @@
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonButton.Text">
       <summary>
-            Gets or sets the Text used to identify this <see cref="T:C1.Win.C1Ribbon.RibbonButton" />.
+            Gets or sets the text associated with the <see cref="T:C1.Win.C1Ribbon.RibbonButton" />.
             </summary>
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonButton.OwnerDraw">
@@ -1772,6 +2066,11 @@
     <member name="P:C1.Win.C1Ribbon.RibbonGroup.Site">
       <summary>
             Gets or sets the ISite of the <see cref="T:C1.Win.C1Ribbon.RibbonGroup" />.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.RibbonGroup.IsDisposed">
+      <summary>
+            Gets a value indicating whether the <see cref="T:C1.Win.C1Ribbon.RibbonGroup" /> has been disposed of.
             </summary>
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonGroup.ID">
@@ -1900,6 +2199,11 @@
             Gets the TextBox control contained in this <see cref="T:C1.Win.C1Ribbon.RibbonEditBox" />.
             </summary>
     </member>
+    <member name="P:C1.Win.C1Ribbon.RibbonEditBox.GapBeforeTextArea">
+      <summary>
+            Gets or sets the gap between the label and text area when this <see cref="T:C1.Win.C1Ribbon.RibbonEditBox" /> appears on a <see cref="T:C1.Win.C1Ribbon.RibbonGroup" />.
+            </summary>
+    </member>
     <member name="P:C1.Win.C1Ribbon.RibbonEditBox.TextAreaWidth">
       <summary>
             Gets or sets the width of the text area.
@@ -1980,7 +2284,7 @@
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonLabel.Text">
       <summary>
-            Gets or sets the Text used to identify this <see cref="T:C1.Win.C1Ribbon.RibbonLabel" /></summary>
+            Gets or sets the text associated with the <see cref="T:C1.Win.C1Ribbon.RibbonLabel" /></summary>
     </member>
     <member name="T:C1.Win.C1Ribbon.RibbonApplicationMenu">
       <summary>
@@ -2112,6 +2416,11 @@
             Creates a new instance of <see cref="T:C1.Win.C1Ribbon.RibbonTab" />.
             </summary>
       <param name="text"> The initial value for the <see cref="P:C1.Win.C1Ribbon.RibbonTab.Text" /> property. </param>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.RibbonTab.IsDisposed">
+      <summary>
+            Gets a value indicating whether the <see cref="T:C1.Win.C1Ribbon.RibbonTab" /> has been disposed of.
+            </summary>
     </member>
     <member name="P:C1.Win.C1Ribbon.RibbonTab.ID">
       <summary>
@@ -2278,6 +2587,11 @@
     <member name="E:C1.Win.C1Ribbon.C1RibbonForm.VisualStyleChanged">
       <summary>
             Occurs when the value of the VisualStyle property changes.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1Ribbon.C1RibbonForm.TopMost">
+      <summary>
+            Gets or sets a value indicating whether the form should be displayed as a topmost form.
             </summary>
     </member>
     <member name="T:C1.Win.C1Ribbon.RibbonEventType">

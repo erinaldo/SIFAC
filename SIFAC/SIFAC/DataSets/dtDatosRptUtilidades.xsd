@@ -4,18 +4,16 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUMConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUMConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.My.MySettings.GlobalReference.Default.SCCUMConnectionString" Provider="System.Data.SqlClient">
-          </Connection>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SIFACConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SIFACConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIFAC.My.MySettings.GlobalReference.Default.SIFACConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwRptUtilidadesTableAdapter" GeneratorDataComponentClassName="vwRptUtilidadesTableAdapter" Name="vwRptUtilidades" UserDataComponentName="vwRptUtilidadesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SCCUMConnectionString (MySettings)" DbObjectName="SIFUM.dbo.vwRptUtilidades" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SIFACConnectionString (MySettings)" DbObjectName="SIFUM.dbo.vwRptUtilidades" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT FechaFactura, objTiendaID, NombreTienda, CodigoTienda, objRepuestoID, DescripcionCorta, TCantidadFacturada, TPrecio, TDescuento, TCosto, TUtilidad FROM dbo.vwRptUtilidades</CommandText>
-                    <Parameters>
-                    </Parameters>
+                    <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
@@ -33,56 +31,54 @@
               <Mapping SourceColumn="TCosto" DataSetColumn="TCosto" />
               <Mapping SourceColumn="TUtilidad" DataSetColumn="TUtilidad" />
             </Mappings>
-            <Sources>
-            </Sources>
+            <Sources />
           </TableAdapter>
         </Tables>
-        <Sources>
-        </Sources>
+        <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="dtDatosRptUtilidades" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dtDatosRptUtilidades" msprop:Generator_DataSetName="dtDatosRptUtilidades">
+  <xs:element name="dtDatosRptUtilidades" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dtDatosRptUtilidades" msprop:Generator_UserDSName="dtDatosRptUtilidades">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vwRptUtilidades" msprop:Generator_UserTableName="vwRptUtilidades" msprop:Generator_RowDeletedName="vwRptUtilidadesRowDeleted" msprop:Generator_TableClassName="vwRptUtilidadesDataTable" msprop:Generator_RowChangedName="vwRptUtilidadesRowChanged" msprop:Generator_RowClassName="vwRptUtilidadesRow" msprop:Generator_RowChangingName="vwRptUtilidadesRowChanging" msprop:Generator_RowEvArgName="vwRptUtilidadesRowChangeEvent" msprop:Generator_RowEvHandlerName="vwRptUtilidadesRowChangeEventHandler" msprop:Generator_TablePropName="vwRptUtilidades" msprop:Generator_TableVarName="tablevwRptUtilidades" msprop:Generator_RowDeletingName="vwRptUtilidadesRowDeleting">
+        <xs:element name="vwRptUtilidades" msprop:Generator_TableClassName="vwRptUtilidadesDataTable" msprop:Generator_RowEvArgName="vwRptUtilidadesRowChangeEvent" msprop:Generator_TableVarName="tablevwRptUtilidades" msprop:Generator_TablePropName="vwRptUtilidades" msprop:Generator_RowDeletingName="vwRptUtilidadesRowDeleting" msprop:Generator_RowChangingName="vwRptUtilidadesRowChanging" msprop:Generator_RowEvHandlerName="vwRptUtilidadesRowChangeEventHandler" msprop:Generator_RowDeletedName="vwRptUtilidadesRowDeleted" msprop:Generator_RowChangedName="vwRptUtilidadesRowChanged" msprop:Generator_UserTableName="vwRptUtilidades" msprop:Generator_RowClassName="vwRptUtilidadesRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="FechaFactura" msprop:Generator_UserColumnName="FechaFactura" msprop:Generator_ColumnPropNameInRow="FechaFactura" msprop:Generator_ColumnVarNameInTable="columnFechaFactura" msprop:Generator_ColumnPropNameInTable="FechaFacturaColumn" minOccurs="0">
+              <xs:element name="FechaFactura" msprop:Generator_ColumnVarNameInTable="columnFechaFactura" msprop:Generator_ColumnPropNameInRow="FechaFactura" msprop:Generator_ColumnPropNameInTable="FechaFacturaColumn" msprop:Generator_UserColumnName="FechaFactura" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="objTiendaID" msprop:Generator_UserColumnName="objTiendaID" msprop:Generator_ColumnPropNameInRow="objTiendaID" msprop:Generator_ColumnVarNameInTable="columnobjTiendaID" msprop:Generator_ColumnPropNameInTable="objTiendaIDColumn" type="xs:int" />
-              <xs:element name="NombreTienda" msprop:Generator_UserColumnName="NombreTienda" msprop:Generator_ColumnPropNameInRow="NombreTienda" msprop:Generator_ColumnVarNameInTable="columnNombreTienda" msprop:Generator_ColumnPropNameInTable="NombreTiendaColumn">
+              <xs:element name="objTiendaID" msprop:Generator_ColumnVarNameInTable="columnobjTiendaID" msprop:Generator_ColumnPropNameInRow="objTiendaID" msprop:Generator_ColumnPropNameInTable="objTiendaIDColumn" msprop:Generator_UserColumnName="objTiendaID" type="xs:int" />
+              <xs:element name="NombreTienda" msprop:Generator_ColumnVarNameInTable="columnNombreTienda" msprop:Generator_ColumnPropNameInRow="NombreTienda" msprop:Generator_ColumnPropNameInTable="NombreTiendaColumn" msprop:Generator_UserColumnName="NombreTienda">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CodigoTienda" msprop:Generator_UserColumnName="CodigoTienda" msprop:Generator_ColumnPropNameInRow="CodigoTienda" msprop:Generator_ColumnVarNameInTable="columnCodigoTienda" msprop:Generator_ColumnPropNameInTable="CodigoTiendaColumn" minOccurs="0">
+              <xs:element name="CodigoTienda" msprop:Generator_ColumnVarNameInTable="columnCodigoTienda" msprop:Generator_ColumnPropNameInRow="CodigoTienda" msprop:Generator_ColumnPropNameInTable="CodigoTiendaColumn" msprop:Generator_UserColumnName="CodigoTienda" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="4" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="objRepuestoID" msprop:Generator_UserColumnName="objRepuestoID" msprop:Generator_ColumnPropNameInRow="objRepuestoID" msprop:Generator_ColumnVarNameInTable="columnobjRepuestoID" msprop:Generator_ColumnPropNameInTable="objRepuestoIDColumn" type="xs:int" />
-              <xs:element name="DescripcionCorta" msprop:Generator_UserColumnName="DescripcionCorta" msprop:Generator_ColumnPropNameInRow="DescripcionCorta" msprop:Generator_ColumnVarNameInTable="columnDescripcionCorta" msprop:Generator_ColumnPropNameInTable="DescripcionCortaColumn">
+              <xs:element name="objRepuestoID" msprop:Generator_ColumnVarNameInTable="columnobjRepuestoID" msprop:Generator_ColumnPropNameInRow="objRepuestoID" msprop:Generator_ColumnPropNameInTable="objRepuestoIDColumn" msprop:Generator_UserColumnName="objRepuestoID" type="xs:int" />
+              <xs:element name="DescripcionCorta" msprop:Generator_ColumnVarNameInTable="columnDescripcionCorta" msprop:Generator_ColumnPropNameInRow="DescripcionCorta" msprop:Generator_ColumnPropNameInTable="DescripcionCortaColumn" msprop:Generator_UserColumnName="DescripcionCorta">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TCantidadFacturada" msprop:Generator_UserColumnName="TCantidadFacturada" msprop:Generator_ColumnPropNameInRow="TCantidadFacturada" msprop:Generator_ColumnVarNameInTable="columnTCantidadFacturada" msprop:Generator_ColumnPropNameInTable="TCantidadFacturadaColumn" type="xs:int" minOccurs="0" />
-              <xs:element name="TPrecio" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TPrecio" msprop:Generator_ColumnPropNameInRow="TPrecio" msprop:Generator_ColumnVarNameInTable="columnTPrecio" msprop:Generator_ColumnPropNameInTable="TPrecioColumn" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TDescuento" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TDescuento" msprop:Generator_ColumnPropNameInRow="TDescuento" msprop:Generator_ColumnVarNameInTable="columnTDescuento" msprop:Generator_ColumnPropNameInTable="TDescuentoColumn" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TCosto" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TCosto" msprop:Generator_ColumnPropNameInRow="TCosto" msprop:Generator_ColumnVarNameInTable="columnTCosto" msprop:Generator_ColumnPropNameInTable="TCostoColumn" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TUtilidad" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TUtilidad" msprop:Generator_ColumnPropNameInRow="TUtilidad" msprop:Generator_ColumnVarNameInTable="columnTUtilidad" msprop:Generator_ColumnPropNameInTable="TUtilidadColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TCantidadFacturada" msprop:Generator_ColumnVarNameInTable="columnTCantidadFacturada" msprop:Generator_ColumnPropNameInRow="TCantidadFacturada" msprop:Generator_ColumnPropNameInTable="TCantidadFacturadaColumn" msprop:Generator_UserColumnName="TCantidadFacturada" type="xs:int" minOccurs="0" />
+              <xs:element name="TPrecio" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTPrecio" msprop:Generator_ColumnPropNameInRow="TPrecio" msprop:Generator_ColumnPropNameInTable="TPrecioColumn" msprop:Generator_UserColumnName="TPrecio" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TDescuento" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTDescuento" msprop:Generator_ColumnPropNameInRow="TDescuento" msprop:Generator_ColumnPropNameInTable="TDescuentoColumn" msprop:Generator_UserColumnName="TDescuento" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TCosto" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTCosto" msprop:Generator_ColumnPropNameInRow="TCosto" msprop:Generator_ColumnPropNameInTable="TCostoColumn" msprop:Generator_UserColumnName="TCosto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TUtilidad" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTUtilidad" msprop:Generator_ColumnPropNameInRow="TUtilidad" msprop:Generator_ColumnPropNameInTable="TUtilidadColumn" msprop:Generator_UserColumnName="TUtilidad" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

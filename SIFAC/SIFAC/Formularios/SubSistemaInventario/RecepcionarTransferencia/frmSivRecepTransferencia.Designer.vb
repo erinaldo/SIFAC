@@ -47,7 +47,7 @@ Partial Class frmSivRecepTransferencia
         'cmdAprobar
         '
         Me.cmdAprobar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdAprobar.Image = Global.SCCUM.My.Resources.Resources.Autorizar_Pedido
+        Me.cmdAprobar.Image = Global.SIFAC.My.Resources.Resources.Autorizar_Pedido
         Me.cmdAprobar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAprobar.Name = "cmdAprobar"
         Me.cmdAprobar.Size = New System.Drawing.Size(36, 36)

@@ -2,7 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>http://localhost/SCCUM/|http://localhost/prjPROYECTO/</PublishUrlHistory>
+    <PublishUrlHistory>publish\|http://localhost/SCCUM/|http://localhost/prjPROYECTO/</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>

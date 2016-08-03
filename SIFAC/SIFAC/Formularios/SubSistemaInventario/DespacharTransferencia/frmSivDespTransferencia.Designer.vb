@@ -79,7 +79,7 @@ Partial Class frmSivDespTransferencia
         'cmdDespachar
         '
         Me.cmdDespachar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdDespachar.Image = Global.SCCUM.My.Resources.Resources.Autorizar_Pedido
+        Me.cmdDespachar.Image = Global.SIFAC.My.Resources.Resources.Autorizar_Pedido
         Me.cmdDespachar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdDespachar.Name = "cmdDespachar"
         Me.cmdDespachar.Size = New System.Drawing.Size(36, 36)

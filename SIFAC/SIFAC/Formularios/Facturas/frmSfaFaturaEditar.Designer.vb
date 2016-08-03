@@ -528,7 +528,7 @@ Partial Class frmSfaFaturaEditar
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 470)
         Me.Panel1.Name = "Panel1"
@@ -632,7 +632,7 @@ Partial Class frmSfaFaturaEditar
         '
         'cmdConsultar
         '
-        Me.cmdConsultar.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdConsultar.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdConsultar.Location = New System.Drawing.Point(342, 14)
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(24, 23)
@@ -1040,7 +1040,7 @@ Partial Class frmSfaFaturaEditar
         '
         'cmdProcesar
         '
-        Me.cmdProcesar.BackgroundImage = Global.SCCUM.My.Resources.Resources.Aprobar
+        Me.cmdProcesar.BackgroundImage = Global.SIFAC.My.Resources.Resources.Aprobar
         Me.cmdProcesar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.cmdProcesar.Enabled = False
         Me.cmdProcesar.Location = New System.Drawing.Point(525, 430)

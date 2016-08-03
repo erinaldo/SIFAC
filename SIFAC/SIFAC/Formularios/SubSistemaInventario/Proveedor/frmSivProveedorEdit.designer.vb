@@ -182,7 +182,7 @@ Partial Class frmSivProveedorEdit
         '
         'imgProveedor
         '
-        Me.imgProveedor.BackgroundImage = Global.SCCUM.My.Resources.Resources.ProveedorEstilo1
+        Me.imgProveedor.BackgroundImage = Global.SIFAC.My.Resources.Resources.ProveedorEstilo1
         Me.imgProveedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.imgProveedor.Location = New System.Drawing.Point(545, 17)
         Me.imgProveedor.Name = "imgProveedor"
@@ -453,7 +453,7 @@ Partial Class frmSivProveedorEdit
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 479)
         Me.Panel1.Name = "Panel1"
@@ -593,7 +593,7 @@ Partial Class frmSivProveedorEdit
         '
         'mnuEliminarProvision
         '
-        Me.mnuEliminarProvision.Image = Global.SCCUM.My.Resources.Resources.Anular
+        Me.mnuEliminarProvision.Image = Global.SIFAC.My.Resources.Resources.Anular
         Me.mnuEliminarProvision.Name = "mnuEliminarProvision"
         Me.mnuEliminarProvision.ShortcutKeys = System.Windows.Forms.Keys.Delete
         Me.mnuEliminarProvision.Size = New System.Drawing.Size(141, 22)

@@ -106,7 +106,7 @@ Partial Class frmStbBitacoraClienteEdit
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 311)
         Me.Panel1.Name = "Panel1"
@@ -132,7 +132,7 @@ Partial Class frmStbBitacoraClienteEdit
         '
         'cmdConsultar
         '
-        Me.cmdConsultar.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdConsultar.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdConsultar.Location = New System.Drawing.Point(355, 14)
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(24, 23)

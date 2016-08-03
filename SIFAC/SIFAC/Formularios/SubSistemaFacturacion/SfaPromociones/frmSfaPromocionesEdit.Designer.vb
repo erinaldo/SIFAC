@@ -19,47 +19,47 @@ Partial Class frmSfaPromocionesEdit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaPromocionesEdit))
-        Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox
-        Me.lblTipoPromoción = New System.Windows.Forms.Label
-        Me.chkAplicanRestricciones = New System.Windows.Forms.CheckBox
-        Me.gbxTipoPromocion = New System.Windows.Forms.GroupBox
-        Me.rdbGlobalTipo = New System.Windows.Forms.RadioButton
-        Me.rdbPorRepuesto = New System.Windows.Forms.RadioButton
-        Me.dtpFechaFin = New C1.Win.C1Input.C1DateEdit
-        Me.dtpFechaCreacion = New C1.Win.C1Input.C1DateEdit
-        Me.dtpFechaInicio = New C1.Win.C1Input.C1DateEdit
-        Me.chkActivo = New System.Windows.Forms.CheckBox
-        Me.txtDescripcion = New System.Windows.Forms.TextBox
-        Me.txtUsuarioCreacion = New System.Windows.Forms.TextBox
-        Me.txtSfaPromocionID = New System.Windows.Forms.TextBox
-        Me.lblUsuario = New System.Windows.Forms.Label
-        Me.lblFechaCreacion = New System.Windows.Forms.Label
-        Me.lblFechaFin = New System.Windows.Forms.Label
-        Me.lblFechaInicio = New System.Windows.Forms.Label
-        Me.lblDescripcion = New System.Windows.Forms.Label
-        Me.lblSfaPromocionID = New System.Windows.Forms.Label
-        Me.gbxSucursales = New System.Windows.Forms.GroupBox
-        Me.grdSucursales = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.chkTodas = New System.Windows.Forms.CheckBox
-        Me.tcDetallePorTipo = New System.Windows.Forms.TabControl
-        Me.tpGlobalTipo = New System.Windows.Forms.TabPage
-        Me.cneDescuentoTipo = New C1.Win.C1Input.C1NumericEdit
-        Me.cmbTiposRepuestos = New C1.Win.C1List.C1Combo
-        Me.grdDetalleGlobalTipo = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.lblNota = New System.Windows.Forms.Label
+        Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.lblTipoPromoción = New System.Windows.Forms.Label()
+        Me.chkAplicanRestricciones = New System.Windows.Forms.CheckBox()
+        Me.gbxTipoPromocion = New System.Windows.Forms.GroupBox()
+        Me.rdbGlobalTipo = New System.Windows.Forms.RadioButton()
+        Me.rdbPorRepuesto = New System.Windows.Forms.RadioButton()
+        Me.dtpFechaFin = New C1.Win.C1Input.C1DateEdit()
+        Me.dtpFechaCreacion = New C1.Win.C1Input.C1DateEdit()
+        Me.dtpFechaInicio = New C1.Win.C1Input.C1DateEdit()
+        Me.chkActivo = New System.Windows.Forms.CheckBox()
+        Me.txtDescripcion = New System.Windows.Forms.TextBox()
+        Me.txtUsuarioCreacion = New System.Windows.Forms.TextBox()
+        Me.txtSfaPromocionID = New System.Windows.Forms.TextBox()
+        Me.lblUsuario = New System.Windows.Forms.Label()
+        Me.lblFechaCreacion = New System.Windows.Forms.Label()
+        Me.lblFechaFin = New System.Windows.Forms.Label()
+        Me.lblFechaInicio = New System.Windows.Forms.Label()
+        Me.lblDescripcion = New System.Windows.Forms.Label()
+        Me.lblSfaPromocionID = New System.Windows.Forms.Label()
+        Me.gbxSucursales = New System.Windows.Forms.GroupBox()
+        Me.grdSucursales = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.chkTodas = New System.Windows.Forms.CheckBox()
+        Me.tcDetallePorTipo = New System.Windows.Forms.TabControl()
+        Me.tpGlobalTipo = New System.Windows.Forms.TabPage()
+        Me.cneDescuentoTipo = New C1.Win.C1Input.C1NumericEdit()
+        Me.cmbTiposRepuestos = New C1.Win.C1List.C1Combo()
+        Me.grdDetalleGlobalTipo = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
+        Me.cmdAceptar = New System.Windows.Forms.Button()
+        Me.lblNota = New System.Windows.Forms.Label()
         Me.ErrErrores = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.tcDetallePorRepuesto = New System.Windows.Forms.TabControl
-        Me.tpPorRepuesto = New System.Windows.Forms.TabPage
-        Me.cneDescuento = New C1.Win.C1Input.C1NumericEdit
-        Me.cmbDescripcionRepuestos = New C1.Win.C1List.C1Combo
-        Me.grdDetallePorRepuesto = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.tcDetallePorRepuesto = New System.Windows.Forms.TabControl()
+        Me.tpPorRepuesto = New System.Windows.Forms.TabPage()
+        Me.cneDescuento = New C1.Win.C1Input.C1NumericEdit()
+        Me.cmbDescripcionRepuestos = New C1.Win.C1List.C1Combo()
+        Me.grdDetallePorRepuesto = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.gbxDatosGenerales.SuspendLayout()
         Me.gbxTipoPromocion.SuspendLayout()
         CType(Me.dtpFechaFin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -162,6 +162,16 @@ Partial Class frmSfaPromocionesEdit
         'dtpFechaFin
         '
         Me.dtpFechaFin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        '
+        '
+        '
+        Me.dtpFechaFin.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpFechaFin.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpFechaFin.Calendar.ClearText = "&Clear"
+        Me.dtpFechaFin.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpFechaFin.Calendar.SelectedDate = New Date(2016, 8, 3, 0, 0, 0, 0)
+        Me.dtpFechaFin.Calendar.TodayText = "&Today"
+        Me.dtpFechaFin.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaFin.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaFin.Location = New System.Drawing.Point(84, 157)
         Me.dtpFechaFin.Name = "dtpFechaFin"
@@ -174,6 +184,16 @@ Partial Class frmSfaPromocionesEdit
         '
         Me.dtpFechaCreacion.BackColor = System.Drawing.SystemColors.Info
         Me.dtpFechaCreacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        '
+        '
+        '
+        Me.dtpFechaCreacion.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpFechaCreacion.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpFechaCreacion.Calendar.ClearText = "&Clear"
+        Me.dtpFechaCreacion.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpFechaCreacion.Calendar.SelectedDate = New Date(2016, 8, 3, 0, 0, 0, 0)
+        Me.dtpFechaCreacion.Calendar.TodayText = "&Today"
+        Me.dtpFechaCreacion.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaCreacion.EditMask = "##/##/####"
         Me.dtpFechaCreacion.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaCreacion.Location = New System.Drawing.Point(328, 128)
@@ -187,6 +207,16 @@ Partial Class frmSfaPromocionesEdit
         'dtpFechaInicio
         '
         Me.dtpFechaInicio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        '
+        '
+        '
+        Me.dtpFechaInicio.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpFechaInicio.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpFechaInicio.Calendar.ClearText = "&Clear"
+        Me.dtpFechaInicio.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpFechaInicio.Calendar.SelectedDate = New Date(2016, 8, 3, 0, 0, 0, 0)
+        Me.dtpFechaInicio.Calendar.TodayText = "&Today"
+        Me.dtpFechaInicio.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaInicio.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaInicio.Location = New System.Drawing.Point(84, 128)
         Me.dtpFechaInicio.Name = "dtpFechaInicio"
@@ -312,7 +342,7 @@ Partial Class frmSfaPromocionesEdit
         Me.grdSucursales.Name = "grdSucursales"
         Me.grdSucursales.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdSucursales.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdSucursales.PreviewInfo.ZoomFactor = 75
+        Me.grdSucursales.PreviewInfo.ZoomFactor = 75.0R
         Me.grdSucursales.PrintInfo.PageSettings = CType(resources.GetObject("grdSucursales.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdSucursales.Size = New System.Drawing.Size(294, 182)
         Me.grdSucursales.TabIndex = 7
@@ -355,9 +385,9 @@ Partial Class frmSfaPromocionesEdit
         Me.cneDescuentoTipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.cneDescuentoTipo.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.cneDescuentoTipo.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.cneDescuentoTipo.Increment = New Decimal(New Integer() {0, 0, 0, 0})
         Me.cneDescuentoTipo.Location = New System.Drawing.Point(317, 40)
         Me.cneDescuentoTipo.MaxLength = 4
@@ -413,7 +443,7 @@ Partial Class frmSfaPromocionesEdit
         Me.grdDetalleGlobalTipo.Name = "grdDetalleGlobalTipo"
         Me.grdDetalleGlobalTipo.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDetalleGlobalTipo.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdDetalleGlobalTipo.PreviewInfo.ZoomFactor = 75
+        Me.grdDetalleGlobalTipo.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDetalleGlobalTipo.PrintInfo.PageSettings = CType(resources.GetObject("grdDetalleGlobalTipo.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDetalleGlobalTipo.RowHeight = 18
         Me.grdDetalleGlobalTipo.Size = New System.Drawing.Size(796, 225)
@@ -449,7 +479,7 @@ Partial Class frmSfaPromocionesEdit
         Me.lblNota.Size = New System.Drawing.Size(517, 13)
         Me.lblNota.TabIndex = 92
         Me.lblNota.Text = "Nota: De crearse promoción sobre un producto ya promocionado entrará en vigencia " & _
-            "el de mayor descuento"
+    "el de mayor descuento"
         '
         'ErrErrores
         '
@@ -480,7 +510,7 @@ Partial Class frmSfaPromocionesEdit
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 577)
         Me.Panel1.Name = "Panel1"
@@ -514,9 +544,9 @@ Partial Class frmSfaPromocionesEdit
         Me.cneDescuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.cneDescuento.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.cneDescuento.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.cneDescuento.Increment = New Decimal(New Integer() {0, 0, 0, 0})
         Me.cneDescuento.Location = New System.Drawing.Point(524, 32)
         Me.cneDescuento.MaxLength = 4
@@ -572,7 +602,7 @@ Partial Class frmSfaPromocionesEdit
         Me.grdDetallePorRepuesto.Name = "grdDetallePorRepuesto"
         Me.grdDetallePorRepuesto.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDetallePorRepuesto.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdDetallePorRepuesto.PreviewInfo.ZoomFactor = 75
+        Me.grdDetallePorRepuesto.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDetallePorRepuesto.PrintInfo.PageSettings = CType(resources.GetObject("grdDetallePorRepuesto.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDetallePorRepuesto.RowHeight = 18
         Me.grdDetallePorRepuesto.Size = New System.Drawing.Size(797, 225)
@@ -612,6 +642,7 @@ Partial Class frmSfaPromocionesEdit
         CType(Me.grdSucursales, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tcDetallePorTipo.ResumeLayout(False)
         Me.tpGlobalTipo.ResumeLayout(False)
+        Me.tpGlobalTipo.PerformLayout()
         CType(Me.cneDescuentoTipo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbTiposRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDetalleGlobalTipo, System.ComponentModel.ISupportInitialize).EndInit()
@@ -620,6 +651,7 @@ Partial Class frmSfaPromocionesEdit
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tcDetallePorRepuesto.ResumeLayout(False)
         Me.tpPorRepuesto.ResumeLayout(False)
+        Me.tpPorRepuesto.PerformLayout()
         CType(Me.cneDescuento, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbDescripcionRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDetallePorRepuesto, System.ComponentModel.ISupportInitialize).EndInit()

@@ -238,7 +238,6 @@ Public Class frmSivProductosEditar
                 Case 1
                     EditarProducto()
             End Select
-
         End If
     End Sub
 

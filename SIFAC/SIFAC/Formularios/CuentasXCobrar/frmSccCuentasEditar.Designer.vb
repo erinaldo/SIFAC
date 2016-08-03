@@ -453,7 +453,7 @@ Partial Class frmSccCuentasEditar
         '
         'cmdConsultarCliente
         '
-        Me.cmdConsultarCliente.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdConsultarCliente.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdConsultarCliente.Location = New System.Drawing.Point(562, 22)
         Me.cmdConsultarCliente.Name = "cmdConsultarCliente"
         Me.cmdConsultarCliente.Size = New System.Drawing.Size(23, 23)
@@ -643,7 +643,7 @@ Partial Class frmSccCuentasEditar
         'cmdConsultar
         '
         Me.cmdConsultar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdConsultar.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdConsultar.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(23, 22)
@@ -771,7 +771,7 @@ Partial Class frmSccCuentasEditar
         '
         'Panel1
         '
-        Me.Panel1.BackgroundImage = Global.SCCUM.My.Resources.Resources.BackgroundImage
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 539)
         Me.Panel1.Name = "Panel1"

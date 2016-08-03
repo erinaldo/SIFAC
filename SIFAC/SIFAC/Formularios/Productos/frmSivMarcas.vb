@@ -1,6 +1,7 @@
 ﻿Imports Seguridad.Datos
 Imports SIFAC.BO.clsConsultas
 Imports Proyecto.Configuracion
+Imports System.Windows.Forms.Cursors
 
 Public Class frmSivMarcas
 
@@ -45,5 +46,22 @@ Public Class frmSivMarcas
         clsProyecto.CargarTemaDefinido(Me)
         CargarGrid()
         Me.AplicarSeguridad()
+    End Sub
+
+    Private Sub cmdAgregar_Click(sender As Object, e As EventArgs) Handles cmdAgregar.Click
+        Dim editMarcas As frmMarcasEdit
+        Try
+            Me.Cursor = WaitCursor
+            editMarcas = New frmMarcasEdit
+            editMarcas.TypeGui = 0
+            If editMarcas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                CargarGrid()
+                'Me.grdMarcasTabla.SelectRow = Me.dtMarcas.DefaultView.Find(editMarcas.intMarcaID)
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
     End Sub
 End Class

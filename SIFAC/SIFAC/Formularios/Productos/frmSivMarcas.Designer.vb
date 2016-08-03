@@ -26,7 +26,6 @@ Partial Class frmSivMarcas
         Me.toolTramitesLegales = New System.Windows.Forms.ToolStrip()
         Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
         Me.cmdEditar = New System.Windows.Forms.ToolStripButton()
-        Me.cmdAnular = New System.Windows.Forms.ToolStripButton()
         Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
         Me.ToolSeparador1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
@@ -37,6 +36,7 @@ Partial Class frmSivMarcas
         Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
         Me.toolTramitesLegales.SuspendLayout()
         CType(Me.grdMarcas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdMarcasTabla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -45,7 +45,7 @@ Partial Class frmSivMarcas
         'toolTramitesLegales
         '
         Me.toolTramitesLegales.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.toolTramitesLegales.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdAnular, Me.cmdImprimir, Me.ToolSeparador1, Me.tsbRefrescar, Me.tsbSalir})
+        Me.toolTramitesLegales.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.cmdImprimir, Me.ToolSeparador1, Me.tsbRefrescar, Me.tsbSalir})
         Me.toolTramitesLegales.Location = New System.Drawing.Point(0, 0)
         Me.toolTramitesLegales.Name = "toolTramitesLegales"
         Me.toolTramitesLegales.Size = New System.Drawing.Size(835, 39)
@@ -69,16 +69,6 @@ Partial Class frmSivMarcas
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
         Me.cmdEditar.Text = "Editar Proveedor"
-        '
-        'cmdAnular
-        '
-        Me.cmdAnular.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdAnular.Image = CType(resources.GetObject("cmdAnular.Image"), System.Drawing.Image)
-        Me.cmdAnular.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdAnular.Name = "cmdAnular"
-        Me.cmdAnular.Size = New System.Drawing.Size(36, 36)
-        Me.cmdAnular.Text = "Anular Proveedor"
-        Me.cmdAnular.Visible = False
         '
         'cmdImprimir
         '
@@ -178,6 +168,15 @@ Partial Class frmSivMarcas
         Me.colActiva.VisibleIndex = 3
         Me.colActiva.Width = 86
         '
+        'cmdConsultar
+        '
+        Me.cmdConsultar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdConsultar.Image = CType(resources.GetObject("cmdConsultar.Image"), System.Drawing.Image)
+        Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdConsultar.Name = "cmdConsultar"
+        Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
+        Me.cmdConsultar.Text = "ToolStripButton1"
+        '
         'frmSivMarcas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -199,7 +198,6 @@ Partial Class frmSivMarcas
     Friend WithEvents toolTramitesLegales As System.Windows.Forms.ToolStrip
     Friend WithEvents cmdAgregar As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdEditar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cmdAnular As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolSeparador1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tsbRefrescar As System.Windows.Forms.ToolStripButton
@@ -210,4 +208,5 @@ Partial Class frmSivMarcas
     Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colActiva As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmdConsultar As System.Windows.Forms.ToolStripButton
 End Class

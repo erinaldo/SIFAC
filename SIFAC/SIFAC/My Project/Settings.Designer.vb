@@ -57,43 +57,43 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESARROLLO3;Initial Catalog=SCCUM;Integrated Security=True")>  _
-        Public ReadOnly Property SCCUMConnectionString() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=SIFAC;User ID=sa;Password=123")>  _
+        Public ReadOnly Property SIFACConnectionString() As String
             Get
-                Return CType(Me("SCCUMConnectionString"),String)
+                Return CType(Me("SIFACConnectionString"),String)
             End Get
         End Property
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=peter-pc;Initial Catalog=SCCUM;User ID=sa")>  _
-        Public ReadOnly Property SCCUMConnectionString1() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=SIFAC;User ID=sa;Password=123")>  _
+        Public ReadOnly Property SIFACConnectionString1() As String
             Get
-                Return CType(Me("SCCUMConnectionString1"),String)
+                Return CType(Me("SIFACConnectionString1"),String)
             End Get
         End Property
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESARROLLO3;Initial Catalog=SCCUM;User ID=sa")>  _
-        Public ReadOnly Property SCCUMConnectionString2() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=SIFAC;User ID=sa;Password=123")>  _
+        Public ReadOnly Property SIFACConnectionString2() As String
             Get
-                Return CType(Me("SCCUMConnectionString2"),String)
+                Return CType(Me("SIFACConnectionString2"),String)
             End Get
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESARROLLO2;Initial Catalog=SCCUMLAST;Integrated Security=True")>  _
-        Public Property SCCUMLASTConnectionString() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=SIFAC;User ID=sa;Password=123")>  _
+        Public Property SIFACLASTConnectionString() As String
             Get
-                Return CType(Me("SCCUMLASTConnectionString"),String)
+                Return CType(Me("SIFACLASTConnectionString"),String)
             End Get
             Set
-                Me("SCCUMLASTConnectionString") = value
+                Me("SIFACLASTConnectionString") = value
             End Set
         End Property
     End Class
@@ -107,9 +107,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.SCCUM.My.MySettings
+        Friend ReadOnly Property Settings() As Global.SIFAC.My.MySettings
             Get
-                Return Global.SCCUM.My.MySettings.Default
+                Return Global.SIFAC.My.MySettings.Default
             End Get
         End Property
     End Module

@@ -269,6 +269,11 @@
             Gets a collection of images that may be shown in the label.
             </summary>
     </member>
+    <member name="P:C1.Win.C1SuperTooltip.C1SuperLabel.UseMnemonic">
+      <summary>
+            Gets or sets whether ampersands (&amp;) are used to indicate the next character is a hot key.
+            </summary>
+    </member>
     <member name="P:C1.Win.C1SuperTooltip.C1SuperLabel.AutoSize">
       <summary>
             Gets or sets a value indicating whether the control is automatically resized to display its entire contents. 
@@ -323,7 +328,7 @@
     </member>
     <member name="T:C1.Win.C1SuperTooltip.BackgroundGradient">
       <summary>
-            Specifies a background gradient for the tooltip.
+            Specifies a background gradient for the ToolTip.
             </summary>
     </member>
     <member name="F:C1.Win.C1SuperTooltip.BackgroundGradient.None">
@@ -872,6 +877,82 @@
         <para>If you want to use a gradient different from the built-in ones, create an image
             and assign it to the <see cref="P:C1.Win.C1SuperTooltip.C1SuperTooltip.BackgroundImage" /> property.</para>
       </remarks>
+    </member>
+    <member name="P:C1.Win.C1SuperTooltip.C1SuperTooltip.MaximumWidth">
+      <summary>
+            Gets or sets the maximum width of the tooltips.
+            </summary>
+      <remarks>
+        <para>The <see cref="T:C1.Win.C1SuperTooltip.C1SuperTooltip" /> displays Html text. If the tip contains a lot
+            of text without Html tags that cause line breaks (such as &lt;br&gt; or &lt;p&gt;
+            for example), then the text will not wrap and the tooltip window may be too wide.</para>
+        <para>Use this property to force text to wrap within the tooltip so it fits in the
+            given width, even without Html line break tags.</para>
+        <para>Values less than or equal to zero disable the property and cause the tip text 
+            to wrap only at the specified Html break tags.</para>
+        <example>
+            The code below forces all super tooltips to be less than or equal to 200 pixels 
+            wide.
+            <code>
+            c1SuperTooltip1.MaximumWidth = 200;
+            </code></example>
+      </remarks>
+    </member>
+    <member name="E:C1.Win.C1SuperTooltip.C1SuperTooltip.Popup">
+      <summary>
+            Fires before the <see cref="T:C1.Win.C1SuperTooltip.C1SuperTooltip" /> is displayed.
+            </summary>
+      <remarks>
+            This event allows you to modify the location of the tooltip (by adjusting the <see cref="P:C1.Win.C1SuperTooltip.PopupEventArgs.Location" /> 
+            parameter), or to prevent the tooltip from being displayed (by setting the <see cref="P:System.ComponentModel.CancelEventArgs.Cancel" /> parameter.
+            </remarks>
+    </member>
+    <member name="T:C1.Win.C1SuperTooltip.PopupEventHandler">
+      <summary>
+            Represents the method that handles the <see cref="E:C1.Win.C1SuperTooltip.C1SuperTooltip.Popup" /> event.
+            </summary>
+      <param name="sender">
+        <see cref="T:C1.Win.C1SuperTooltip.C1SuperTooltip" /> object that fired the event.</param>
+      <param name="e">
+        <see cref="T:C1.Win.C1SuperTooltip.PopupEventArgs" /> that contains the event data.</param>
+    </member>
+    <member name="T:C1.Win.C1SuperTooltip.PopupEventArgs">
+      <summary>
+            Provides data for the <see cref="E:C1.Win.C1SuperTooltip.C1SuperTooltip.Popup" /> event.
+            </summary>
+    </member>
+    <!-- Badly formed XML comment ignored for member "M:C1.Win.C1SuperTooltip.PopupEventArgs.#ctor(System.Windows.Forms.Form,System.Windows.Forms.Control,System.Drawing.Point,System.String)" -->
+    <member name="P:C1.Win.C1SuperTooltip.PopupEventArgs.Form">
+      <summary>
+            Gets a reference to the <see cref="P:C1.Win.C1SuperTooltip.PopupEventArgs.Form" /> that contains the tooltip.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1SuperTooltip.PopupEventArgs.Control">
+      <summary>
+            Gets a reference to the <see cref="P:C1.Win.C1SuperTooltip.PopupEventArgs.Control" /> that provides the tooltip text and location.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1SuperTooltip.PopupEventArgs.ToolStripItem">
+      <summary>
+            Gets a reference to the <see cref="P:C1.Win.C1SuperTooltip.PopupEventArgs.ToolStripItem" /> that provides the tooltip text.
+            </summary>
+      <remarks>
+        <para>The <see cref="T:C1.Win.C1SuperTooltip.C1SuperTooltip" /> can be used to display information about controls
+            or toolstrip items (see the <see cref="M:C1.Win.C1SuperTooltip.C1SuperTooltip.SetToolTip(System.Windows.Forms.Control,System.String)" /> method).</para>
+        <para>If the tooltip is displaying information about a control, then this property 
+            returns null. If it is displaying information about a <see cref="P:C1.Win.C1SuperTooltip.PopupEventArgs.ToolStripItem" />, then 
+            this property returns a reference to that item.</para>
+      </remarks>
+    </member>
+    <member name="P:C1.Win.C1SuperTooltip.PopupEventArgs.Location">
+      <summary>
+            Gets or sets the location where the tooltip will be displayed.
+            </summary>
+    </member>
+    <member name="P:C1.Win.C1SuperTooltip.PopupEventArgs.Text">
+      <summary>
+            Gets or sets the text that will be displayed in the tooltip.
+            </summary>
     </member>
     <member name="T:C1.Win.C1SuperTooltip.ImageCollection">
       <summary>

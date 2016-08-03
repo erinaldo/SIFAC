@@ -350,7 +350,7 @@ Partial Class frmSfaCotizacionEditar
         '
         'cmdConsultarCliente
         '
-        Me.cmdConsultarCliente.Image = Global.SCCUM.My.Resources.Resources.Buscar
+        Me.cmdConsultarCliente.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdConsultarCliente.Location = New System.Drawing.Point(398, 48)
         Me.cmdConsultarCliente.Name = "cmdConsultarCliente"
         Me.cmdConsultarCliente.Size = New System.Drawing.Size(23, 23)

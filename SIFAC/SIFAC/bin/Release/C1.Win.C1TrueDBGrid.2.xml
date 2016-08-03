@@ -118,15 +118,6 @@
             Gets the number of bytes that were compressed into the stream (uncompressed bytes).
             </summary>
         </member>
-        <member name="P:C1.C1Zip.C1ZStreamReader.ZStream">
-            <summary>
-            Gets the ZStream instance wrapped by this <see cref="T:C1.C1Zip.C1ZStreamWriter"/>.
-            </summary>
-            <remarks>
-            This property is useful only in advanced applications that need to customize 
-            the low-level behavior of the compressor. It is not needed in common applications.
-            </remarks>
-        </member>
         <member name="P:C1.C1Zip.C1ZStreamReader.CanRead">
             <summary>
             Always returns True.
@@ -10909,6 +10900,12 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="M:C1.Win.C1TrueDBGrid.HierarchicalView.RemoveChildRow(C1.Win.C1TrueDBGrid.HierarchicalView.ChildRow)">
+            <summary>
+            Removes the child row and all its children
+            </summary>
+            <param name="cr"></param>
         </member>
         <member name="T:C1.Win.C1TrueDBGrid.GridStyleCollection">
             <summary>

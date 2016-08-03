@@ -4,21 +4,18 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUM2ConnectionString" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUM2ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.MySettings.GlobalReference.Default.SCCUM2ConnectionString" Provider="System.Data.SqlClient">
-          </Connection>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUM3ConnectionString" IsAppSettingsProperty="True" Modifier="Assembly" Name="SCCUM3ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SCCUM.MySettings.GlobalReference.Default.SCCUM3ConnectionString" Provider="System.Data.SqlClient">
-          </Connection>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUM2ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="SCCUM2ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIFAC.MySettings.GlobalReference.Default.SCCUM2ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SCCUM3ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="SCCUM3ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIFAC.MySettings.GlobalReference.Default.SCCUM3ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwRptCarteraRangosTableAdapter" GeneratorDataComponentClassName="vwRptCarteraRangosTableAdapter" Name="vwRptCarteraRangos" UserDataComponentName="vwRptCarteraRangosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SCCUM3ConnectionString (MySettings)" DbObjectName="SCCUM3.dbo.vwRptCarteraRangos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SCCUM3ConnectionString (MySettings)" DbObjectName="SCCUM3.dbo.vwRptCarteraRangos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT     vwRptCarteraRangos.*
 FROM         vwRptCarteraRangos</CommandText>
-                    <Parameters>
-                    </Parameters>
+                    <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
@@ -40,54 +37,52 @@ FROM         vwRptCarteraRangos</CommandText>
               <Mapping SourceColumn="SaldoMoraTramitaLegal" DataSetColumn="SaldoMoraTramitaLegal" />
               <Mapping SourceColumn="Saldo" DataSetColumn="Saldo" />
             </Mappings>
-            <Sources>
-            </Sources>
+            <Sources />
           </TableAdapter>
         </Tables>
-        <Sources>
-        </Sources>
+        <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DtCarteraRangos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DtCarteraRangos" msprop:Generator_DataSetName="DtCarteraRangos">
+  <xs:element name="DtCarteraRangos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DtCarteraRangos" msprop:Generator_UserDSName="DtCarteraRangos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vwRptCarteraRangos" msprop:Generator_UserTableName="vwRptCarteraRangos" msprop:Generator_RowDeletedName="vwRptCarteraRangosRowDeleted" msprop:Generator_RowChangedName="vwRptCarteraRangosRowChanged" msprop:Generator_RowClassName="vwRptCarteraRangosRow" msprop:Generator_RowChangingName="vwRptCarteraRangosRowChanging" msprop:Generator_RowEvArgName="vwRptCarteraRangosRowChangeEvent" msprop:Generator_RowEvHandlerName="vwRptCarteraRangosRowChangeEventHandler" msprop:Generator_TableClassName="vwRptCarteraRangosDataTable" msprop:Generator_TableVarName="tablevwRptCarteraRangos" msprop:Generator_RowDeletingName="vwRptCarteraRangosRowDeleting" msprop:Generator_TablePropName="vwRptCarteraRangos">
+        <xs:element name="vwRptCarteraRangos" msprop:Generator_UserTableName="vwRptCarteraRangos" msprop:Generator_RowEvArgName="vwRptCarteraRangosRowChangeEvent" msprop:Generator_TableVarName="tablevwRptCarteraRangos" msprop:Generator_TablePropName="vwRptCarteraRangos" msprop:Generator_RowDeletingName="vwRptCarteraRangosRowDeleting" msprop:Generator_RowChangingName="vwRptCarteraRangosRowChanging" msprop:Generator_RowDeletedName="vwRptCarteraRangosRowDeleted" msprop:Generator_RowEvHandlerName="vwRptCarteraRangosRowChangeEventHandler" msprop:Generator_TableClassName="vwRptCarteraRangosDataTable" msprop:Generator_RowChangedName="vwRptCarteraRangosRowChanged" msprop:Generator_RowClassName="vwRptCarteraRangosRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="objTiendaID" msprop:Generator_UserColumnName="objTiendaID" msprop:Generator_ColumnPropNameInRow="objTiendaID" msprop:Generator_ColumnVarNameInTable="columnobjTiendaID" msprop:Generator_ColumnPropNameInTable="objTiendaIDColumn" type="xs:int" />
-              <xs:element name="Tienda" msprop:Generator_UserColumnName="Tienda" msprop:Generator_ColumnPropNameInRow="Tienda" msprop:Generator_ColumnVarNameInTable="columnTienda" msprop:Generator_ColumnPropNameInTable="TiendaColumn">
+              <xs:element name="objTiendaID" msprop:Generator_ColumnVarNameInTable="columnobjTiendaID" msprop:Generator_ColumnPropNameInRow="objTiendaID" msprop:Generator_ColumnPropNameInTable="objTiendaIDColumn" msprop:Generator_UserColumnName="objTiendaID" type="xs:int" />
+              <xs:element name="Tienda" msprop:Generator_ColumnVarNameInTable="columnTienda" msprop:Generator_ColumnPropNameInRow="Tienda" msprop:Generator_ColumnPropNameInTable="TiendaColumn" msprop:Generator_UserColumnName="Tienda">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Cliente" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" minOccurs="0">
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="SaldoMora30" msprop:Generator_UserColumnName="SaldoMora30" msprop:Generator_ColumnPropNameInRow="SaldoMora30" msprop:Generator_ColumnVarNameInTable="columnSaldoMora30" msprop:Generator_ColumnPropNameInTable="SaldoMora30Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="SaldoMora60" msprop:Generator_UserColumnName="SaldoMora60" msprop:Generator_ColumnPropNameInRow="SaldoMora60" msprop:Generator_ColumnVarNameInTable="columnSaldoMora60" msprop:Generator_ColumnPropNameInTable="SaldoMora60Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="SaldoMoraOver60" msprop:Generator_UserColumnName="SaldoMoraOver60" msprop:Generator_ColumnPropNameInRow="SaldoMoraOver60" msprop:Generator_ColumnVarNameInTable="columnSaldoMoraOver60" msprop:Generator_ColumnPropNameInTable="SaldoMoraOver60Column" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Moras30" msprop:Generator_UserColumnName="Moras30" msprop:Generator_ColumnPropNameInRow="Moras30" msprop:Generator_ColumnVarNameInTable="columnMoras30" msprop:Generator_ColumnPropNameInTable="Moras30Column" type="xs:int" minOccurs="0" />
-              <xs:element name="Mora60" msprop:Generator_UserColumnName="Mora60" msprop:Generator_ColumnPropNameInRow="Mora60" msprop:Generator_ColumnVarNameInTable="columnMora60" msprop:Generator_ColumnPropNameInTable="Mora60Column" type="xs:int" minOccurs="0" />
-              <xs:element name="MoraOver60" msprop:Generator_UserColumnName="MoraOver60" msprop:Generator_ColumnPropNameInRow="MoraOver60" msprop:Generator_ColumnVarNameInTable="columnMoraOver60" msprop:Generator_ColumnPropNameInTable="MoraOver60Column" type="xs:int" minOccurs="0" />
-              <xs:element name="SfaFacturaID" msprop:Generator_UserColumnName="SfaFacturaID" msprop:Generator_ColumnVarNameInTable="columnSfaFacturaID" msprop:Generator_ColumnPropNameInRow="SfaFacturaID" msprop:Generator_ColumnPropNameInTable="SfaFacturaIDColumn" type="xs:int" />
-              <xs:element name="SccCuentaID" msprop:Generator_UserColumnName="SccCuentaID" msprop:Generator_ColumnVarNameInTable="columnSccCuentaID" msprop:Generator_ColumnPropNameInRow="SccCuentaID" msprop:Generator_ColumnPropNameInTable="SccCuentaIDColumn">
+              <xs:element name="SaldoMora30" msprop:Generator_ColumnVarNameInTable="columnSaldoMora30" msprop:Generator_ColumnPropNameInRow="SaldoMora30" msprop:Generator_ColumnPropNameInTable="SaldoMora30Column" msprop:Generator_UserColumnName="SaldoMora30" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SaldoMora60" msprop:Generator_ColumnVarNameInTable="columnSaldoMora60" msprop:Generator_ColumnPropNameInRow="SaldoMora60" msprop:Generator_ColumnPropNameInTable="SaldoMora60Column" msprop:Generator_UserColumnName="SaldoMora60" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SaldoMoraOver60" msprop:Generator_ColumnVarNameInTable="columnSaldoMoraOver60" msprop:Generator_ColumnPropNameInRow="SaldoMoraOver60" msprop:Generator_ColumnPropNameInTable="SaldoMoraOver60Column" msprop:Generator_UserColumnName="SaldoMoraOver60" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Moras30" msprop:Generator_ColumnVarNameInTable="columnMoras30" msprop:Generator_ColumnPropNameInRow="Moras30" msprop:Generator_ColumnPropNameInTable="Moras30Column" msprop:Generator_UserColumnName="Moras30" type="xs:int" minOccurs="0" />
+              <xs:element name="Mora60" msprop:Generator_ColumnVarNameInTable="columnMora60" msprop:Generator_ColumnPropNameInRow="Mora60" msprop:Generator_ColumnPropNameInTable="Mora60Column" msprop:Generator_UserColumnName="Mora60" type="xs:int" minOccurs="0" />
+              <xs:element name="MoraOver60" msprop:Generator_ColumnVarNameInTable="columnMoraOver60" msprop:Generator_ColumnPropNameInRow="MoraOver60" msprop:Generator_ColumnPropNameInTable="MoraOver60Column" msprop:Generator_UserColumnName="MoraOver60" type="xs:int" minOccurs="0" />
+              <xs:element name="SfaFacturaID" msprop:Generator_ColumnVarNameInTable="columnSfaFacturaID" msprop:Generator_ColumnPropNameInRow="SfaFacturaID" msprop:Generator_ColumnPropNameInTable="SfaFacturaIDColumn" msprop:Generator_UserColumnName="SfaFacturaID" type="xs:int" />
+              <xs:element name="SccCuentaID" msprop:Generator_ColumnVarNameInTable="columnSccCuentaID" msprop:Generator_ColumnPropNameInRow="SccCuentaID" msprop:Generator_ColumnPropNameInTable="SccCuentaIDColumn" msprop:Generator_UserColumnName="SccCuentaID">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="15" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="MoraTramiteLegal" msprop:Generator_UserColumnName="MoraTramiteLegal" msprop:Generator_ColumnPropNameInRow="MoraTramiteLegal" msprop:Generator_ColumnVarNameInTable="columnMoraTramiteLegal" msprop:Generator_ColumnPropNameInTable="MoraTramiteLegalColumn" type="xs:int" minOccurs="0" />
-              <xs:element name="Solventes" msprop:Generator_UserColumnName="Solventes" msprop:Generator_ColumnPropNameInRow="Solventes" msprop:Generator_ColumnVarNameInTable="columnSolventes" msprop:Generator_ColumnPropNameInTable="SolventesColumn" type="xs:int" minOccurs="0" />
-              <xs:element name="SaldoMoraTramitaLegal" msprop:Generator_UserColumnName="SaldoMoraTramitaLegal" msprop:Generator_ColumnPropNameInRow="SaldoMoraTramitaLegal" msprop:Generator_ColumnVarNameInTable="columnSaldoMoraTramitaLegal" msprop:Generator_ColumnPropNameInTable="SaldoMoraTramitaLegalColumn" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Saldo" msprop:Generator_UserColumnName="Saldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" type="xs:decimal" />
+              <xs:element name="MoraTramiteLegal" msprop:Generator_ColumnVarNameInTable="columnMoraTramiteLegal" msprop:Generator_ColumnPropNameInRow="MoraTramiteLegal" msprop:Generator_ColumnPropNameInTable="MoraTramiteLegalColumn" msprop:Generator_UserColumnName="MoraTramiteLegal" type="xs:int" minOccurs="0" />
+              <xs:element name="Solventes" msprop:Generator_ColumnVarNameInTable="columnSolventes" msprop:Generator_ColumnPropNameInRow="Solventes" msprop:Generator_ColumnPropNameInTable="SolventesColumn" msprop:Generator_UserColumnName="Solventes" type="xs:int" minOccurs="0" />
+              <xs:element name="SaldoMoraTramitaLegal" msprop:Generator_ColumnVarNameInTable="columnSaldoMoraTramitaLegal" msprop:Generator_ColumnPropNameInRow="SaldoMoraTramitaLegal" msprop:Generator_ColumnPropNameInTable="SaldoMoraTramitaLegalColumn" msprop:Generator_UserColumnName="SaldoMoraTramitaLegal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:decimal" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

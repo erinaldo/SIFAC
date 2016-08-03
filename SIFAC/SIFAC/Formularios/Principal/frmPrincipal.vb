@@ -797,12 +797,12 @@ Public Class frmPrincipal
 #Region "Cargar Marcas"
 
     Private Sub CargarMarcas()
-        Dim objfrm As frmStbMantParametro
+        Dim objfrm As frmSivMarcas
         Try
             '-- Instanciar
             Me.Cursor = Cursors.WaitCursor
             If Not clsProyecto.MostrarFormulario("frmSivMarcas", Me) Then
-                objfrm = New frmStbMantParametro
+                objfrm = New frmSivMarcas
                 objfrm.Width = Me.Width - Me.OutBarPrincipal.Width
                 objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
                 objfrm.MdiParent = Me
