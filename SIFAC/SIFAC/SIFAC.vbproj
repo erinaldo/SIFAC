@@ -883,70 +883,70 @@
     <Compile Include="Formularios\TramiteLegal\frmSccTramiteLegal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\frmVisorRS.designer.vb">
+    <Compile Include="Reportes SIFAC\frmVisorRS.designer.vb">
       <DependentUpon>frmVisorRS.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\frmVisorRS.vb">
+    <Compile Include="Reportes SIFAC\frmVisorRS.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptEtiquetaBarCode.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptEtiquetaBarCode.Designer.vb">
       <DependentUpon>rptEtiquetaBarCode.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptEtiquetaBarCode.vb">
+    <Compile Include="Reportes SIFAC\rptEtiquetaBarCode.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptFacturacionListadoPrecios.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptFacturacionListadoPrecios.Designer.vb">
       <DependentUpon>rptFacturacionListadoPrecios.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptFacturacionListadoPrecios.vb">
+    <Compile Include="Reportes SIFAC\rptFacturacionListadoPrecios.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporte.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporte.Designer.vb">
       <DependentUpon>rptInventarioReporte.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporte.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporte.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteBodegas.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteBodegas.Designer.vb">
       <DependentUpon>rptInventarioReporteBodegas.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteBodegas.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteBodegas.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteFormato.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteFormato.Designer.vb">
       <DependentUpon>rptInventarioReporteFormato.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteFormato.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteFormato.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteRepuesto.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteRepuesto.Designer.vb">
       <DependentUpon>rptInventarioReporteRepuesto.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteRepuesto.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteRepuesto.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptOrdenCompraActive.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptOrdenCompraActive.Designer.vb">
       <DependentUpon>rptOrdenCompraActive.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptOrdenCompraActive.vb">
+    <Compile Include="Reportes SIFAC\rptOrdenCompraActive.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSalidaBodega.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptSalidaBodega.Designer.vb">
       <DependentUpon>rptSalidaBodega.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSalidaBodega.vb">
+    <Compile Include="Reportes SIFAC\rptSalidaBodega.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSivRepuestos.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptSivRepuestos.Designer.vb">
       <DependentUpon>rptSivRepuestos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSivRepuestos.vb">
+    <Compile Include="Reportes SIFAC\rptSivRepuestos.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSivSalidaFiltrado.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptSivSalidaFiltrado.Designer.vb">
       <DependentUpon>rptSivSalidaFiltrado.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSivSalidaFiltrado.vb">
+    <Compile Include="Reportes SIFAC\rptSivSalidaFiltrado.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\clsReportes.vb" />
@@ -1458,70 +1458,70 @@
       <DependentUpon>frmSccTramiteLegal.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\frmVisorRS.resx">
+    <EmbeddedResource Include="Reportes SIFAC\frmVisorRS.resx">
       <DependentUpon>frmVisorRS.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptComisiones.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptCotizacion.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptCotizaciones.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptEntradas.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptEstadisticoServicioTallerSUCURSAL.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptEstadisticoServicioTallerSucursales.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptEtiquetaBarCode.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptComisiones.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptCotizacion.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptCotizaciones.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptEntradas.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptEstadisticoServicioTallerSUCURSAL.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptEstadisticoServicioTallerSucursales.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptEtiquetaBarCode.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptEtiquetaBarCode.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptFacturacionListadoPrecios.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptFacturacionListadoPrecios.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptFacturacionListadoPrecios.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptHojaEntrada.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptInventarioReporte.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptHojaEntrada.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporte.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporte.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptInventarioReporteBodegas.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporteBodegas.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporteBodegas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptInventarioReporteFormato.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporteFormato.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporteFormato.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptInventarioReporteRepuesto.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporteRepuesto.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporteRepuesto.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptKardex.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptOrdenCompra.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptOrdenCompraActive.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptKardex.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptOrdenCompra.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptOrdenCompraActive.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptOrdenCompraActive.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptPromocion.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptPromociones.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSalidaBodega.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptPromocion.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptPromociones.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSalidaBodega.resx">
       <DependentUpon>rptSalidaBodega.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptServicioTallerBitacoraMoto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSfaFacturaMoto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSfaFacturaRepuesto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSfaReporteFacturas.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSfaRepuestosFacturados.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSivRepuestos.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptServicioTallerBitacoraMoto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSfaFacturaMoto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSfaFacturaRepuesto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSfaReporteFacturas.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSfaRepuestosFacturados.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSivRepuestos.resx">
       <DependentUpon>rptSivRepuestos.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptSivSalidaFiltrado.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptSivSalidaFiltrado.resx">
       <DependentUpon>rptSivSalidaFiltrado.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptTallerHojaEntregaMoto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptTallerHojaRecepcionMoto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptUtilidades.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptVentasRepuestos.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptTallerHojaEntregaMoto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptTallerHojaRecepcionMoto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptUtilidades.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptVentasRepuestos.rdlc" />
     <EmbeddedResource Include="Reportes\frmStbVisor.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmStbVisor.vb</DependentUpon>
