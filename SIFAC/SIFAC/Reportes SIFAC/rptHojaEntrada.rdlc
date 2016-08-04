@@ -51,29 +51,12 @@
   <Body>
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
-      <Textbox Name="NumeroPoliza">
-        <Left>17.43518cm</Left>
-        <Top>7.0678cm</Top>
-        <rd:DefaultName>NumeroPoliza</rd:DefaultName>
-        <ZIndex>26</ZIndex>
-        <Width>1.71958cm</Width>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingBottom>2pt</PaddingBottom>
-          <FontSize>9pt</FontSize>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-        </Style>
-        <CanGrow>true</CanGrow>
-        <Height>0.5cm</Height>
-        <Value>=First(Fields!NumeroPoliza.Value)</Value>
-      </Textbox>
       <Textbox Name="Anulada">
-        <Left>17.43518cm</Left>
-        <Top>5.50695cm</Top>
+        <Left>3cm</Left>
+        <Top>7.36772cm</Top>
         <rd:DefaultName>Anulada</rd:DefaultName>
-        <ZIndex>25</ZIndex>
-        <Width>1.71958cm</Width>
+        <ZIndex>21</ZIndex>
+        <Width>4.25cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
@@ -87,9 +70,9 @@
       </Textbox>
       <Textbox Name="FechaFactura">
         <Left>11.25cm</Left>
-        <Top>7.04134cm</Top>
+        <Top>6.75cm</Top>
         <rd:DefaultName>FechaFactura</rd:DefaultName>
-        <ZIndex>24</ZIndex>
+        <ZIndex>20</ZIndex>
         <Width>3.83598cm</Width>
         <Style>
           <TextAlign>Left</TextAlign>
@@ -107,7 +90,7 @@
         <Left>11.25cm</Left>
         <Top>6.11541cm</Top>
         <rd:DefaultName>FechaEntrada</rd:DefaultName>
-        <ZIndex>23</ZIndex>
+        <ZIndex>19</ZIndex>
         <Width>3.83598cm</Width>
         <Style>
           <TextAlign>Left</TextAlign>
@@ -125,7 +108,7 @@
         <Left>11.25cm</Left>
         <Top>5.5cm</Top>
         <rd:DefaultName>TipoEntrada</rd:DefaultName>
-        <ZIndex>22</ZIndex>
+        <ZIndex>18</ZIndex>
         <Width>3.83598cm</Width>
         <Style>
           <TextAlign>Left</TextAlign>
@@ -141,9 +124,9 @@
       </Textbox>
       <Textbox Name="NumeroFactura">
         <Left>3cm</Left>
-        <Top>7.01885cm</Top>
+        <Top>6.72751cm</Top>
         <rd:DefaultName>NumeroFactura</rd:DefaultName>
-        <ZIndex>21</ZIndex>
+        <ZIndex>17</ZIndex>
         <Width>4.33862cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -156,28 +139,11 @@
         <Height>0.5cm</Height>
         <Value>=First(Fields!NumeroFactura.Value)</Value>
       </Textbox>
-      <Textbox Name="Proveedor">
-        <Left>3cm</Left>
-        <Top>6.51885cm</Top>
-        <rd:DefaultName>Proveedor</rd:DefaultName>
-        <ZIndex>20</ZIndex>
-        <Width>5.291cm</Width>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingBottom>2pt</PaddingBottom>
-          <FontSize>9pt</FontSize>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-        </Style>
-        <CanGrow>true</CanGrow>
-        <Height>0.5cm</Height>
-        <Value>=First(Fields!Proveedor.Value)</Value>
-      </Textbox>
       <Textbox Name="Bodega">
         <Left>3cm</Left>
-        <Top>6.01885cm</Top>
+        <Top>6.12467cm</Top>
         <rd:DefaultName>Bodega</rd:DefaultName>
-        <ZIndex>19</ZIndex>
+        <ZIndex>16</ZIndex>
         <Width>4.25926cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -194,7 +160,7 @@
         <Left>3cm</Left>
         <Top>5.51885cm</Top>
         <rd:DefaultName>NumeroRelleno</rd:DefaultName>
-        <ZIndex>18</ZIndex>
+        <ZIndex>15</ZIndex>
         <Width>3.49206cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -207,27 +173,10 @@
         <Height>0.5cm</Height>
         <Value>=First(Fields!NumeroRelleno.Value, "DtRptEntrada_vwrptSfaEntradaBodega")</Value>
       </Textbox>
-      <Textbox Name="textbox42">
-        <Left>15.50527cm</Left>
-        <Top>7.06085cm</Top>
-        <ZIndex>17</ZIndex>
-        <Width>1.5cm</Width>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingBottom>2pt</PaddingBottom>
-          <FontWeight>700</FontWeight>
-          <FontSize>9pt</FontSize>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-        </Style>
-        <CanGrow>true</CanGrow>
-        <Height>0.5cm</Height>
-        <Value>Póliza:</Value>
-      </Textbox>
       <Textbox Name="textbox40">
-        <Left>15.50527cm</Left>
-        <Top>5.5cm</Top>
-        <ZIndex>16</ZIndex>
+        <Left>0.78173cm</Left>
+        <Top>7.36078cm</Top>
+        <ZIndex>14</ZIndex>
         <Width>1.74473cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -243,8 +192,8 @@
       </Textbox>
       <Textbox Name="textbox38">
         <Left>8.55026cm</Left>
-        <Top>7.03439cm</Top>
-        <ZIndex>15</ZIndex>
+        <Top>6.74305cm</Top>
+        <ZIndex>13</ZIndex>
         <Width>2.58465cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -261,7 +210,7 @@
       <Textbox Name="textbox36">
         <Left>8.52646cm</Left>
         <Top>6.09904cm</Top>
-        <ZIndex>14</ZIndex>
+        <ZIndex>12</ZIndex>
         <Width>2.61111cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -278,7 +227,7 @@
       <Textbox Name="textbox33">
         <Left>8.5cm</Left>
         <Top>5.5cm</Top>
-        <ZIndex>13</ZIndex>
+        <ZIndex>11</ZIndex>
         <Width>2.66403cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -294,8 +243,8 @@
       </Textbox>
       <Textbox Name="textbox31">
         <Left>0.75cm</Left>
-        <Top>7.01885cm</Top>
-        <ZIndex>12</ZIndex>
+        <Top>6.72751cm</Top>
+        <ZIndex>10</ZIndex>
         <Width>1.9418cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -310,28 +259,10 @@
         <Value>Factura:
 </Value>
       </Textbox>
-      <Textbox Name="textbox8">
-        <Left>0.75cm</Left>
-        <Top>6.51885cm</Top>
-        <ZIndex>11</ZIndex>
-        <Width>2.07407cm</Width>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingBottom>2pt</PaddingBottom>
-          <FontWeight>700</FontWeight>
-          <FontSize>9pt</FontSize>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-        </Style>
-        <CanGrow>true</CanGrow>
-        <Height>0.5cm</Height>
-        <Value>Proveedor:
-</Value>
-      </Textbox>
       <Textbox Name="textbox6">
         <Left>0.75cm</Left>
-        <Top>6.01885cm</Top>
-        <ZIndex>10</ZIndex>
+        <Top>6.12467cm</Top>
+        <ZIndex>9</ZIndex>
         <Width>1.88889cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -349,7 +280,7 @@
         <Left>0.75cm</Left>
         <Top>5.51885cm</Top>
         <rd:DefaultName>textbox3</rd:DefaultName>
-        <ZIndex>9</ZIndex>
+        <ZIndex>8</ZIndex>
         <Width>1.91534cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -372,7 +303,7 @@
                   <ReportItems>
                     <Textbox Name="textbox19">
                       <rd:DefaultName>textbox19</rd:DefaultName>
-                      <ZIndex>13</ZIndex>
+                      <ZIndex>9</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -401,65 +332,9 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox10">
-                      <rd:DefaultName>textbox10</rd:DefaultName>
-                      <ZIndex>12</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                          <Top>Solid</Top>
-                        </BorderStyle>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <BorderWidth>
-                          <Bottom>1pt</Bottom>
-                          <Top>1pt</Top>
-                        </BorderWidth>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <BorderColor>
-                          <Bottom>Black</Bottom>
-                          <Top>Black</Top>
-                        </BorderColor>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
                     <Textbox Name="textbox20">
                       <rd:DefaultName>textbox20</rd:DefaultName>
-                      <ZIndex>11</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Bottom>Solid</Bottom>
-                          <Top>Solid</Top>
-                        </BorderStyle>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <BorderWidth>
-                          <Bottom>1pt</Bottom>
-                          <Top>1pt</Top>
-                        </BorderWidth>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <BorderColor>
-                          <Bottom>Black</Bottom>
-                          <Top>Black</Top>
-                        </BorderColor>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox21">
-                      <rd:DefaultName>textbox21</rd:DefaultName>
-                      <ZIndex>10</ZIndex>
+                      <ZIndex>8</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -487,7 +362,7 @@
                   <ReportItems>
                     <Textbox Name="textbox22">
                       <rd:DefaultName>textbox22</rd:DefaultName>
-                      <ZIndex>9</ZIndex>
+                      <ZIndex>7</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -518,7 +393,7 @@
                   <ReportItems>
                     <Textbox Name="textbox35">
                       <rd:DefaultName>textbox35</rd:DefaultName>
-                      <ZIndex>8</ZIndex>
+                      <ZIndex>6</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -549,7 +424,7 @@
                   <ReportItems>
                     <Textbox Name="SubTotal_1">
                       <rd:DefaultName>SubTotal_1</rd:DefaultName>
-                      <ZIndex>7</ZIndex>
+                      <ZIndex>5</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -588,34 +463,7 @@
                   <ReportItems>
                     <Textbox Name="textbox5">
                       <rd:DefaultName>textbox5</rd:DefaultName>
-                      <ZIndex>20</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Top>Solid</Top>
-                        </BorderStyle>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <BorderWidth>
-                          <Top>1pt</Top>
-                        </BorderWidth>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <FontWeight>700</FontWeight>
-                        <FontSize>9pt</FontSize>
-                        <BorderColor>
-                          <Top>Black</Top>
-                        </BorderColor>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox7">
-                      <rd:DefaultName>textbox7</rd:DefaultName>
-                      <ZIndex>19</ZIndex>
+                      <ZIndex>14</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
@@ -642,34 +490,7 @@
                   <ReportItems>
                     <Textbox Name="textbox12">
                       <rd:DefaultName>textbox12</rd:DefaultName>
-                      <ZIndex>18</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Top>Solid</Top>
-                        </BorderStyle>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <BorderWidth>
-                          <Top>1pt</Top>
-                        </BorderWidth>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <FontWeight>700</FontWeight>
-                        <FontSize>9pt</FontSize>
-                        <BorderColor>
-                          <Top>Black</Top>
-                        </BorderColor>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox16">
-                      <rd:DefaultName>textbox16</rd:DefaultName>
-                      <ZIndex>17</ZIndex>
+                      <ZIndex>13</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
@@ -696,7 +517,7 @@
                   <ReportItems>
                     <Textbox Name="textbox17">
                       <rd:DefaultName>textbox17</rd:DefaultName>
-                      <ZIndex>16</ZIndex>
+                      <ZIndex>12</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
@@ -723,7 +544,7 @@
                   <ReportItems>
                     <Textbox Name="textbox18">
                       <rd:DefaultName>textbox18</rd:DefaultName>
-                      <ZIndex>15</ZIndex>
+                      <ZIndex>11</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
@@ -750,7 +571,7 @@
                   <ReportItems>
                     <Textbox Name="textbox24">
                       <rd:DefaultName>textbox24</rd:DefaultName>
-                      <ZIndex>14</ZIndex>
+                      <ZIndex>10</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
@@ -779,10 +600,10 @@
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>7</ColSpan>
+                  <ColSpan>5</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox44">
-                      <ZIndex>21</ZIndex>
+                      <ZIndex>15</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Bottom>Solid</Bottom>
@@ -811,11 +632,11 @@
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>7</ColSpan>
+                  <ColSpan>5</ColSpan>
                   <ReportItems>
                     <Textbox Name="Comentarios">
                       <rd:DefaultName>Comentarios</rd:DefaultName>
-                      <ZIndex>22</ZIndex>
+                      <ZIndex>16</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -837,11 +658,11 @@
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>7</ColSpan>
+                  <ColSpan>5</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox25">
                       <rd:DefaultName>textbox25</rd:DefaultName>
-                      <ZIndex>23</ZIndex>
+                      <ZIndex>17</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
@@ -871,11 +692,11 @@
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>3</ColSpan>
+                  <ColSpan>2</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox4">
                       <rd:DefaultName>textbox4</rd:DefaultName>
-                      <ZIndex>25</ZIndex>
+                      <ZIndex>19</ZIndex>
                       <Style>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -891,11 +712,11 @@
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>4</ColSpan>
+                  <ColSpan>3</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox9">
                       <rd:DefaultName>textbox9</rd:DefaultName>
-                      <ZIndex>24</ZIndex>
+                      <ZIndex>18</ZIndex>
                       <Style>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -916,10 +737,10 @@
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>3</ColSpan>
+                  <ColSpan>2</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox30">
-                      <ZIndex>27</ZIndex>
+                      <ZIndex>21</ZIndex>
                       <Style>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -935,10 +756,10 @@
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>4</ColSpan>
+                  <ColSpan>3</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox29">
-                      <ZIndex>26</ZIndex>
+                      <ZIndex>20</ZIndex>
                       <Style>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -961,8 +782,8 @@
         <Left>0.75cm</Left>
         <DataSetName>DtRptEntrada_vwrptSfaEntradaBodega</DataSetName>
         <Top>8.07175cm</Top>
-        <ZIndex>8</ZIndex>
-        <Width>18.52778cm</Width>
+        <ZIndex>7</ZIndex>
+        <Width>14.22619cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -971,7 +792,7 @@
                   <ReportItems>
                     <Textbox Name="CodigoRepuesto">
                       <rd:DefaultName>CodigoRepuesto</rd:DefaultName>
-                      <ZIndex>6</ZIndex>
+                      <ZIndex>4</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Left>Solid</Left>
@@ -996,27 +817,9 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CodigoProveedor">
-                      <rd:DefaultName>CodigoProveedor</rd:DefaultName>
-                      <ZIndex>5</ZIndex>
-                      <Style>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <FontSize>9pt</FontSize>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!CodigoProveedor.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
                     <Textbox Name="Descripcion">
                       <rd:DefaultName>Descripcion</rd:DefaultName>
-                      <ZIndex>4</ZIndex>
+                      <ZIndex>3</ZIndex>
                       <Style>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingBottom>2pt</PaddingBottom>
@@ -1026,24 +829,6 @@
                       </Style>
                       <CanGrow>true</CanGrow>
                       <Value>=Fields!Descripcion.Value</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="CantidadFactura">
-                      <rd:DefaultName>CantidadFactura</rd:DefaultName>
-                      <ZIndex>3</ZIndex>
-                      <Style>
-                        <TextAlign>Right</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <FontSize>9pt</FontSize>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>=Fields!CantidadFactura.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1122,7 +907,7 @@
                   <ReportItems>
                     <Textbox Name="textbox13">
                       <rd:DefaultName>textbox13</rd:DefaultName>
-                      <ZIndex>34</ZIndex>
+                      <ZIndex>26</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1143,32 +928,9 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox1">
-                      <rd:DefaultName>textbox1</rd:DefaultName>
-                      <ZIndex>33</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <FontFamily>Arial Narrow</FontFamily>
-                        <FontWeight>700</FontWeight>
-                        <BackgroundColor>LightSteelBlue</BackgroundColor>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>Código Proveedor</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
                     <Textbox Name="textbox14">
                       <rd:DefaultName>textbox14</rd:DefaultName>
-                      <ZIndex>32</ZIndex>
+                      <ZIndex>25</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1189,32 +951,9 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox15">
-                      <rd:DefaultName>textbox15</rd:DefaultName>
-                      <ZIndex>31</ZIndex>
-                      <Style>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingBottom>2pt</PaddingBottom>
-                        <FontFamily>Arial Narrow</FontFamily>
-                        <FontWeight>700</FontWeight>
-                        <BackgroundColor>LightSteelBlue</BackgroundColor>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>Cantidad Factura</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
                     <Textbox Name="textbox11">
                       <rd:DefaultName>textbox11</rd:DefaultName>
-                      <ZIndex>30</ZIndex>
+                      <ZIndex>24</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1237,7 +976,7 @@
                   <ReportItems>
                     <Textbox Name="textbox23">
                       <rd:DefaultName>textbox23</rd:DefaultName>
-                      <ZIndex>29</ZIndex>
+                      <ZIndex>23</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1260,7 +999,7 @@
                   <ReportItems>
                     <Textbox Name="textbox26">
                       <rd:DefaultName>textbox26</rd:DefaultName>
-                      <ZIndex>28</ZIndex>
+                      <ZIndex>22</ZIndex>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1289,13 +1028,7 @@
             <Width>3cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.30159cm</Width>
-          </TableColumn>
-          <TableColumn>
             <Width>5.47619cm</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>2cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>2cm</Width>
@@ -1309,10 +1042,10 @@
         </TableColumns>
       </Table>
       <Textbox Name="txtUsuarioFecha">
-        <Left>13.75264cm</Left>
+        <Left>9.5cm</Left>
         <Top>0.25cm</Top>
-        <ZIndex>7</ZIndex>
-        <Width>5.50794cm</Width>
+        <ZIndex>6</ZIndex>
+        <Width>5.5cm</Width>
         <Style>
           <TextAlign>Right</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
@@ -1328,8 +1061,8 @@
       <Textbox Name="txtTelefonoEmpresa">
         <Left>0.75265cm</Left>
         <Top>1.78836cm</Top>
-        <ZIndex>6</ZIndex>
-        <Width>18.52381cm</Width>
+        <ZIndex>5</ZIndex>
+        <Width>14.24735cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
@@ -1343,8 +1076,8 @@
       <Textbox Name="txtDireccionEmpresa">
         <Left>0.75265cm</Left>
         <Top>1.03836cm</Top>
-        <ZIndex>5</ZIndex>
-        <Width>18.52381cm</Width>
+        <ZIndex>4</ZIndex>
+        <Width>14.24735cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
@@ -1358,8 +1091,8 @@
       <Textbox Name="txtEmailEmpres">
         <Left>0.75265cm</Left>
         <Top>2.53836cm</Top>
-        <ZIndex>4</ZIndex>
-        <Width>18.52381cm</Width>
+        <ZIndex>3</ZIndex>
+        <Width>14.24735cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
@@ -1373,8 +1106,8 @@
       <Textbox Name="txtNombreEmpresa">
         <Left>0.75265cm</Left>
         <Top>0.25cm</Top>
-        <ZIndex>3</ZIndex>
-        <Width>12.75cm</Width>
+        <ZIndex>2</ZIndex>
+        <Width>8.49735cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
@@ -1390,8 +1123,8 @@
       <Line Name="line1">
         <Left>0.75cm</Left>
         <Top>4.92064cm</Top>
-        <ZIndex>2</ZIndex>
-        <Width>18.43917cm</Width>
+        <ZIndex>1</ZIndex>
+        <Width>14.25cm</Width>
         <Style>
           <BorderStyle>
             <Default>Solid</Default>
@@ -1405,23 +1138,11 @@
         </Style>
         <Height>0cm</Height>
       </Line>
-      <Image Name="image1">
-        <Sizing>Fit</Sizing>
-        <Left>17.36773cm</Left>
-        <MIMEType>image/jpeg</MIMEType>
-        <Top>4.01191cm</Top>
-        <ZIndex>1</ZIndex>
-        <Width>1.5cm</Width>
-        <Source>Embedded</Source>
-        <Style />
-        <Height>0.75cm</Height>
-        <Value>united_motors</Value>
-      </Image>
       <Textbox Name="textbox2">
         <Left>0.75cm</Left>
         <Top>4.09127cm</Top>
         <rd:DefaultName>textbox2</rd:DefaultName>
-        <Width>18.43917cm</Width>
+        <Width>14.25cm</Width>
         <Style>
           <TextAlign>Center</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
@@ -1902,7 +1623,7 @@ RRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAB
     </DataSet>
   </DataSets>
   <Code />
-  <Width>19.98414cm</Width>
+  <Width>15.5cm</Width>
   <InteractiveHeight>27.94cm</InteractiveHeight>
   <Language>en-US</Language>
   <PageFooter>
@@ -1910,7 +1631,7 @@ RRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAB
       <Textbox Name="lblNumeroPaginas">
         <Left>0.75cm</Left>
         <Top>0.30026cm</Top>
-        <Width>18.43917cm</Width>
+        <Width>14.25cm</Width>
         <Style>
           <BorderStyle>
             <Top>Solid</Top>
