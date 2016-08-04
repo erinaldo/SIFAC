@@ -207,7 +207,7 @@ Public Class frmSivEntradaBodega
 
             With Visor.VisorReportes
                 .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-                .LocalReport.ReportEmbeddedResource = "SCCUM.rptHojaEntrada.rdlc"
+                .LocalReport.ReportEmbeddedResource = "SIFAC.rptHojaEntrada.rdlc"
                 .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("DtRptEntrada_vwrptSfaEntradaBodega", dtDatos))
                 Me.CargarEncabezadoReporte(.LocalReport)
                 .RefreshReport()
