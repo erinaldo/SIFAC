@@ -26,6 +26,7 @@ Partial Class frmSivMarcas
         Me.toolTramitesLegales = New System.Windows.Forms.ToolStrip()
         Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
         Me.cmdEditar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
         Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
         Me.ToolSeparador1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
@@ -36,7 +37,6 @@ Partial Class frmSivMarcas
         Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
         Me.toolTramitesLegales.SuspendLayout()
         CType(Me.grdMarcas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdMarcasTabla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,6 +69,15 @@ Partial Class frmSivMarcas
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
         Me.cmdEditar.Text = "Editar Proveedor"
+        '
+        'cmdConsultar
+        '
+        Me.cmdConsultar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdConsultar.Image = CType(resources.GetObject("cmdConsultar.Image"), System.Drawing.Image)
+        Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdConsultar.Name = "cmdConsultar"
+        Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
+        Me.cmdConsultar.Text = "ToolStripButton1"
         '
         'cmdImprimir
         '
@@ -131,8 +140,6 @@ Partial Class frmSivMarcas
         Me.colNumero.Name = "colNumero"
         Me.colNumero.OptionsColumn.AllowFocus = False
         Me.colNumero.OptionsColumn.ReadOnly = True
-        Me.colNumero.Visible = True
-        Me.colNumero.VisibleIndex = 0
         Me.colNumero.Width = 76
         '
         'colNombre
@@ -143,7 +150,7 @@ Partial Class frmSivMarcas
         Me.colNombre.OptionsColumn.AllowFocus = False
         Me.colNombre.OptionsColumn.ReadOnly = True
         Me.colNombre.Visible = True
-        Me.colNombre.VisibleIndex = 1
+        Me.colNombre.VisibleIndex = 0
         Me.colNombre.Width = 218
         '
         'colDescripcion
@@ -154,7 +161,7 @@ Partial Class frmSivMarcas
         Me.colDescripcion.OptionsColumn.AllowFocus = False
         Me.colDescripcion.OptionsColumn.ReadOnly = True
         Me.colDescripcion.Visible = True
-        Me.colDescripcion.VisibleIndex = 2
+        Me.colDescripcion.VisibleIndex = 1
         Me.colDescripcion.Width = 109
         '
         'colActiva
@@ -165,17 +172,8 @@ Partial Class frmSivMarcas
         Me.colActiva.OptionsColumn.AllowFocus = False
         Me.colActiva.OptionsColumn.ReadOnly = True
         Me.colActiva.Visible = True
-        Me.colActiva.VisibleIndex = 3
+        Me.colActiva.VisibleIndex = 2
         Me.colActiva.Width = 86
-        '
-        'cmdConsultar
-        '
-        Me.cmdConsultar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdConsultar.Image = CType(resources.GetObject("cmdConsultar.Image"), System.Drawing.Image)
-        Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdConsultar.Name = "cmdConsultar"
-        Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdConsultar.Text = "ToolStripButton1"
         '
         'frmSivMarcas
         '

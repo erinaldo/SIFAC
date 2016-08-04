@@ -20,15 +20,15 @@ Partial Class frmSrhEmpleado
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSrhEmpleado))
-        Me.tbEmpleados = New System.Windows.Forms.ToolStrip
-        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton
-        Me.cmdEditar = New System.Windows.Forms.ToolStripButton
-        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdSalir = New System.Windows.Forms.ToolStripButton
-        Me.grdEmpleados = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.tbEmpleados = New System.Windows.Forms.ToolStrip()
+        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdEditar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
+        Me.grdEmpleados = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.tbEmpleados.SuspendLayout()
         CType(Me.grdEmpleados, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -110,7 +110,7 @@ Partial Class frmSrhEmpleado
         Me.grdEmpleados.Name = "grdEmpleados"
         Me.grdEmpleados.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdEmpleados.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdEmpleados.PreviewInfo.ZoomFactor = 75
+        Me.grdEmpleados.PreviewInfo.ZoomFactor = 75.0R
         Me.grdEmpleados.PrintInfo.PageSettings = CType(resources.GetObject("grdEmpleados.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdEmpleados.Size = New System.Drawing.Size(726, 344)
         Me.grdEmpleados.TabIndex = 1

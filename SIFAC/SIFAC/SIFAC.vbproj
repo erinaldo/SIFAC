@@ -307,6 +307,30 @@
     <Compile Include="Formularios\Bitacora\frmStbBuscarBitacora.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Catalogos\frmBodegasEditar.Designer.vb">
+      <DependentUpon>frmBodegasEditar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmBodegasEditar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivCategorias.Designer.vb">
+      <DependentUpon>frmSivCategorias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivCategorias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivCategoriasEditar.Designer.vb">
+      <DependentUpon>frmSivCategoriasEditar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivCategoriasEditar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmStbBodegas.Designer.vb">
+      <DependentUpon>frmStbBodegas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmStbBodegas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\CuentasXCobrar\frmSccBuscarCuentas.Designer.vb">
       <DependentUpon>frmSccBuscarCuentas.vb</DependentUpon>
     </Compile>
@@ -409,28 +433,28 @@
     <Compile Include="Formularios\Principal\frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Productos\frmMarcasEdit.Designer.vb">
+    <Compile Include="Formularios\Catalogos\frmMarcasEdit.Designer.vb">
       <DependentUpon>frmMarcasEdit.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Productos\frmMarcasEdit.vb">
+    <Compile Include="Formularios\Catalogos\frmMarcasEdit.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivMarcas.Designer.vb">
+    <Compile Include="Formularios\Catalogos\frmSivMarcas.Designer.vb">
       <DependentUpon>frmSivMarcas.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivMarcas.vb">
+    <Compile Include="Formularios\Catalogos\frmSivMarcas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivProductos.Designer.vb">
+    <Compile Include="Formularios\Catalogos\frmSivProductos.Designer.vb">
       <DependentUpon>frmSivProductos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivProductos.vb">
+    <Compile Include="Formularios\Catalogos\frmSivProductos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivProductosEditar.Designer.vb">
+    <Compile Include="Formularios\Catalogos\frmSivProductosEditar.Designer.vb">
       <DependentUpon>frmSivProductosEditar.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivProductosEditar.vb">
+    <Compile Include="Formularios\Catalogos\frmSivProductosEditar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\ReciboCaja\frmSccBuscarRecibo.Designer.vb">
@@ -1078,6 +1102,18 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmStbBuscarBitacora.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmBodegasEditar.resx">
+      <DependentUpon>frmBodegasEditar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivCategorias.resx">
+      <DependentUpon>frmSivCategorias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivCategoriasEditar.resx">
+      <DependentUpon>frmSivCategoriasEditar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmStbBodegas.resx">
+      <DependentUpon>frmStbBodegas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\CuentasXCobrar\frmSccBuscarCuentas.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSccBuscarCuentas.vb</DependentUpon>
@@ -1146,16 +1182,16 @@
       <DependentUpon>frmPrincipal.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Productos\frmMarcasEdit.resx">
+    <EmbeddedResource Include="Formularios\Catalogos\frmMarcasEdit.resx">
       <DependentUpon>frmMarcasEdit.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Productos\frmSivMarcas.resx">
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivMarcas.resx">
       <DependentUpon>frmSivMarcas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Productos\frmSivProductos.resx">
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivProductos.resx">
       <DependentUpon>frmSivProductos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Productos\frmSivProductosEditar.resx">
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivProductosEditar.resx">
       <DependentUpon>frmSivProductosEditar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ReciboCaja\frmSccBuscarRecibo.resx">

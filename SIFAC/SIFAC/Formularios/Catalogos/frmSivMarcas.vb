@@ -42,6 +42,46 @@ Public Class frmSivMarcas
 
 #End Region
 
+#Region "Procedimientos"
+    Private Sub Consultar()
+        Dim ConsultarMarcas As New frmMarcasEdit
+        Dim FilaActual As Integer
+        Try
+            Try
+                FilaActual = Me.grdMarcasTabla.FocusedRowHandle
+                ConsultarMarcas.TypeGui = 2
+                ConsultarMarcas.MarcaID = Me.dtMarcas.DefaultView.Item(FilaActual)("MarcaID")
+                ConsultarMarcas.ShowDialog(Me)
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            ConsultarMarcas = Nothing
+        End Try
+    End Sub
+
+    Private Sub Editar()
+        Dim EditarMarcas As New frmMarcasEdit
+        Dim FilaActual As Integer
+        Try
+            Try
+                FilaActual = Me.grdMarcasTabla.FocusedRowHandle
+                EditarMarcas.TypeGui = 1
+                EditarMarcas.MarcaID = Me.dtMarcas.DefaultView.Item(FilaActual)("MarcaID")
+                EditarMarcas.ShowDialog(Me)
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            EditarMarcas = Nothing
+        End Try
+    End Sub
+
+
+#End Region
+
+#Region "Eventos del Formulario"
+
     Private Sub frmSivMarcas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         clsProyecto.CargarTemaDefinido(Me)
         CargarGrid()
@@ -64,4 +104,39 @@ Public Class frmSivMarcas
             Me.Cursor = [Default]
         End Try
     End Sub
+
+    Private Sub cmdEditar_Click(sender As Object, e As EventArgs) Handles cmdEditar.Click
+        Try
+            Me.Cursor = WaitCursor
+            Editar()
+            CargarGrid()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
+
+    End Sub
+
+    Private Sub cmdConsultar_Click(sender As Object, e As EventArgs) Handles cmdConsultar.Click
+        Try
+            Me.Cursor = WaitCursor
+            Consultar()
+            CargarGrid()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
+    End Sub
+
+    Private Sub tsbRefrescar_Click(sender As Object, e As EventArgs) Handles tsbRefrescar.Click
+        CargarGrid()
+    End Sub
+
+    Private Sub tsbSalir_Click(sender As Object, e As EventArgs) Handles tsbSalir.Click
+        Close()
+    End Sub
+#End Region
+
 End Class

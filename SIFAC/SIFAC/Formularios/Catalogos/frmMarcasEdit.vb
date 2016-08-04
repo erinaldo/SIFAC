@@ -45,10 +45,11 @@ Public Class frmMarcasEdit
                 chkActivo.Enabled = False
             Case 1
                 Me.Text = "Editar Marca"
-                CargarDatosProducto()
+                CargarDatosMarca()
                 chkActivo.Enabled = True
             Case 2
-                CargarDatosProducto()
+                Me.Text = "Consultar Marca"
+                CargarDatosMarca()
                 txtNombreMarca.Enabled = False
                 txtDescripcion.Enabled = False
                 chkActivo.Enabled = False
@@ -56,8 +57,8 @@ Public Class frmMarcasEdit
         End Select
     End Sub
 
-    '' Descripción:        Procedimiento encargado de cargar la informacion de un producto
-    Public Sub CargarDatosProducto()
+    '' Descripción:        Procedimiento encargado de cargar la informacion de una marca
+    Public Sub CargarDatosMarca()
         Dim objMarcas As SivMarcas
         objMarcas = New SivMarcas
         objMarcas.Retrieve(MarcaID)
@@ -73,8 +74,6 @@ Public Class frmMarcasEdit
         Try
             T.BeginTran()
             objMarcas = New SivMarcas
-            'objMarcas = SivMarcas.RetrieveDT(, , "ISNULL(MAX(MarcaID),0)+1 AS ID").DefaultView.Item(0)("ID")
-            'objMarcas.MarcaID = MarcaID
             objMarcas.Nombre = txtNombreMarca.Text.Trim
             objMarcas.Descripcion = txtDescripcion.Text.Trim
             objMarcas.Activa = chkActivo.Checked

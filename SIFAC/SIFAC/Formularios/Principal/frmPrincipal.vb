@@ -151,9 +151,7 @@ Public Class frmPrincipal
                     Me.ToolBarInventarioReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Olive
                     Me.ToolBarFacturacionReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Olive
                     Me.ToolBarFacturas.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Olive
-                    Me.ToolBarTaller.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Olive
-                    Me.ToolBarTallerReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Olive
-
+                    
                 Case "Office2007Blue"
                     BkColor = System.Drawing.Color.FromArgb(191, 219, 255)
                     Me.MenuPrincipal.BackColor = BkColor
@@ -167,9 +165,7 @@ Public Class frmPrincipal
                     Me.ToolBarInventarioReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Blue
                     Me.ToolBarFacturacionReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Blue
                     Me.ToolBarFacturas.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Blue
-                    Me.ToolBarTaller.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Blue
-                    Me.ToolBarTallerReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Blue
-
+                   
                 Case "Office2007Silver"
                     BkColor = System.Drawing.Color.FromArgb(208, 212, 221)
                     Me.MenuPrincipal.BackColor = BkColor
@@ -183,9 +179,7 @@ Public Class frmPrincipal
                     Me.ToolBarInventarioReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Silver
                     Me.ToolBarFacturacionReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Silver
                     Me.ToolBarFacturas.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Silver
-                    Me.ToolBarTaller.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Silver
-                    Me.ToolBarTallerReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2003Silver
-
+                   
                 Case "Office2007Black"
                     BkColor = System.Drawing.Color.FromArgb(208, 212, 221)
                     Me.MenuPrincipal.BackColor = BkColor
@@ -199,9 +193,7 @@ Public Class frmPrincipal
                     Me.ToolBarInventarioReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Black
                     Me.ToolBarFacturacionReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Black
                     Me.ToolBarFacturas.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Black
-                    Me.ToolBarTaller.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Black
-                    Me.ToolBarTallerReportes.VisualStyle = C1.Win.C1Command.VisualStyle.Office2007Black
-
+                   
                 Case "Officexp"
                     BkColor = System.Drawing.Color.FromArgb(236, 233, 216)
                     Me.MenuPrincipal.BackColor = BkColor
@@ -215,9 +207,7 @@ Public Class frmPrincipal
                     Me.ToolBarInventarioReportes.VisualStyle = C1.Win.C1Command.VisualStyle.OfficeXP
                     Me.ToolBarFacturacionReportes.VisualStyle = C1.Win.C1Command.VisualStyle.OfficeXP
                     Me.ToolBarFacturas.VisualStyle = C1.Win.C1Command.VisualStyle.OfficeXP
-                    Me.ToolBarTaller.VisualStyle = C1.Win.C1Command.VisualStyle.OfficeXP
-                    Me.ToolBarTallerReportes.VisualStyle = C1.Win.C1Command.VisualStyle.OfficeXP
-
+                   
             End Select
             Me.ImagenFondo = My.Resources.Fondo
             Me.BackgroundImage = Me.ImagenFondo
@@ -549,6 +539,12 @@ Public Class frmPrincipal
         CargarMarcas()
     End Sub
 
+
+    Private Sub cmdBodegas_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdBodegas.Click
+        CargarBodegas()
+
+    End Sub
+
 #End Region
 
 #Region "Cargar Personas"
@@ -803,6 +799,28 @@ Public Class frmPrincipal
             Me.Cursor = Cursors.WaitCursor
             If Not clsProyecto.MostrarFormulario("frmSivMarcas", Me) Then
                 objfrm = New frmSivMarcas
+                objfrm.Width = Me.Width - Me.OutBarPrincipal.Width
+                objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                objfrm.MdiParent = Me
+                objfrm.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+#End Region
+
+#Region "Cargar Bodegas"
+
+    Private Sub CargarBodegas()
+        Dim objfrm As frmStbBodegas
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmStbBodegas", Me) Then
+                objfrm = New frmStbBodegas
                 objfrm.Width = Me.Width - Me.OutBarPrincipal.Width
                 objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
                 objfrm.MdiParent = Me

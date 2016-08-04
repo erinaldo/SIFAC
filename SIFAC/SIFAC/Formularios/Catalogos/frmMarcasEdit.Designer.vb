@@ -74,7 +74,7 @@ Partial Class frmMarcasEdit
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtDescripcion.Size = New System.Drawing.Size(375, 65)
-        Me.txtDescripcion.TabIndex = 0
+        Me.txtDescripcion.TabIndex = 1
         Me.txtDescripcion.Tag = ""
         '
         'txtNombreMarca
@@ -82,7 +82,7 @@ Partial Class frmMarcasEdit
         Me.txtNombreMarca.Location = New System.Drawing.Point(82, 24)
         Me.txtNombreMarca.Name = "txtNombreMarca"
         Me.txtNombreMarca.Size = New System.Drawing.Size(131, 20)
-        Me.txtNombreMarca.TabIndex = 1
+        Me.txtNombreMarca.TabIndex = 0
         Me.txtNombreMarca.TabStop = False
         Me.txtNombreMarca.Tag = "BLOQUEADO"
         '

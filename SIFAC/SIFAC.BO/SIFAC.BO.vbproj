@@ -72,6 +72,7 @@
     <Compile Include="SccCuentaFiador_CF.vb" />
     <Compile Include="SccCuentaPorCobrarDetalle_CF.vb" />
     <Compile Include="SccCuentaPorCobrar_CF.vb" />
+    <Compile Include="SccDescuentoPlazo.vb" />
     <Compile Include="SccDetalleMovimientos_CF.vb" />
     <Compile Include="SccDevolucion_CF.vb" />
     <Compile Include="SccNotaCredito_CF.vb" />
@@ -91,6 +92,7 @@
     <Compile Include="SfaPromocionDetTienda_CF.vb" />
     <Compile Include="SfaPromocion_CF.vb" />
     <Compile Include="SivBodegaRepuestos_CF.vb" />
+    <Compile Include="SivCategorias.vb" />
     <Compile Include="SivEntradaBodega.vb" />
     <Compile Include="SivEntradaBodegaDetalle.vb" />
     <Compile Include="SivEntradaBodegaPREIMP_CF.vb" />
@@ -111,11 +113,13 @@
     <Compile Include="SrhEmpleado_CF.vb" />
     <Compile Include="StaServicioTaller_CF.vb" />
     <Compile Include="StbBitacoraCliente_CF.vb" />
-    <Compile Include="StbBodegas_CF.vb" />
-    <Compile Include="StbCiudad_CF.vb" />
+    <Compile Include="StbBodegas.vb" />
+    <Compile Include="StbCiudad.vb" />
     <Compile Include="StbContactos_CF.vb" />
+    <Compile Include="StbPais.vb" />
     <Compile Include="StbPersonaClasificacion_CF.vb" />
     <Compile Include="StbPersona_CF.vb" />
+    <Compile Include="StbRutas.vb" />
     <Compile Include="StbTasaCambioOficial_CF.vb" />
     <Compile Include="StbTiendaContactos_CF.vb" />
     <Compile Include="StbTienda_CF.vb" />
