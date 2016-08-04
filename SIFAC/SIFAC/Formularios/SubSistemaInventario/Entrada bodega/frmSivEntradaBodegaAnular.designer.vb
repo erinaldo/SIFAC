@@ -19,52 +19,40 @@ Partial Class frmSivEntradaBodegaAnular
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivEntradaBodegaAnular))
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.cmdGuardar = New System.Windows.Forms.Button
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox
-        Me.cmbTipoAjuste = New C1.Win.C1List.C1Combo
-        Me.lblTipoAjuste = New System.Windows.Forms.Label
-        Me.cmbTipoEntrada = New C1.Win.C1List.C1Combo
-        Me.cmbProveedor = New C1.Win.C1List.C1Combo
-        Me.cmbBodega = New C1.Win.C1List.C1Combo
-        Me.lblTipoEntrada = New System.Windows.Forms.Label
-        Me.lblFechaEntrada = New System.Windows.Forms.Label
-        Me.lblProveedor = New System.Windows.Forms.Label
-        Me.lblBodega = New System.Windows.Forms.Label
-        Me.dtpFechaEntrada = New C1.Win.C1Input.C1DateEdit
-        Me.txtNumeroEntrada = New System.Windows.Forms.TextBox
-        Me.lblNoEntrada = New System.Windows.Forms.Label
+        Me.cmdCancelar = New System.Windows.Forms.Button()
+        Me.cmdGuardar = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.cmbTipoEntrada = New C1.Win.C1List.C1Combo()
+        Me.cmbBodega = New C1.Win.C1List.C1Combo()
+        Me.lblTipoEntrada = New System.Windows.Forms.Label()
+        Me.lblFechaEntrada = New System.Windows.Forms.Label()
+        Me.lblBodega = New System.Windows.Forms.Label()
+        Me.dtpFechaEntrada = New C1.Win.C1Input.C1DateEdit()
+        Me.txtNumeroEntrada = New System.Windows.Forms.TextBox()
+        Me.lblNoEntrada = New System.Windows.Forms.Label()
         Me.imgIconos = New System.Windows.Forms.ImageList(Me.components)
         Me.ErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.gbxOtrosDatos = New System.Windows.Forms.GroupBox
-        Me.dtpFechaFactura = New C1.Win.C1Input.C1DateEdit
-        Me.lblFechaFactura = New System.Windows.Forms.Label
-        Me.txtNumeroPoliza = New System.Windows.Forms.TextBox
-        Me.lblNumeroPoliza = New System.Windows.Forms.Label
-        Me.txtNumeroFactura = New System.Windows.Forms.TextBox
-        Me.lblNumeroFactura = New System.Windows.Forms.Label
-        Me.txtComentarios = New System.Windows.Forms.TextBox
-        Me.lblObservaciones = New System.Windows.Forms.Label
-        Me.lblCostoTotal = New System.Windows.Forms.Label
-        Me.lblUsuario = New System.Windows.Forms.Label
-        Me.gbxDetalle = New System.Windows.Forms.GroupBox
-        Me.grdDetalleEntradasBodegas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.NumCostoTotal = New C1.Win.C1Input.C1NumericEdit
-        Me.gbxDatosAnulacion = New System.Windows.Forms.GroupBox
-        Me.lblComentariosAnular = New System.Windows.Forms.Label
-        Me.chkAnulado = New System.Windows.Forms.CheckBox
-        Me.txtComentariosAnular = New System.Windows.Forms.TextBox
-        Me.lblRecordatorio = New System.Windows.Forms.Label
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbxOtrosDatos = New System.Windows.Forms.GroupBox()
+        Me.dtpFechaFactura = New C1.Win.C1Input.C1DateEdit()
+        Me.lblFechaFactura = New System.Windows.Forms.Label()
+        Me.txtNumeroFactura = New System.Windows.Forms.TextBox()
+        Me.lblNumeroFactura = New System.Windows.Forms.Label()
+        Me.txtComentarios = New System.Windows.Forms.TextBox()
+        Me.lblObservaciones = New System.Windows.Forms.Label()
+        Me.lblCostoTotal = New System.Windows.Forms.Label()
+        Me.lblUsuario = New System.Windows.Forms.Label()
+        Me.gbxDetalle = New System.Windows.Forms.GroupBox()
+        Me.grdDetalleEntradasBodegas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.NumCostoTotal = New C1.Win.C1Input.C1NumericEdit()
+        Me.gbxDatosAnulacion = New System.Windows.Forms.GroupBox()
+        Me.lblComentariosAnular = New System.Windows.Forms.Label()
+        Me.chkAnulado = New System.Windows.Forms.CheckBox()
+        Me.txtComentariosAnular = New System.Windows.Forms.TextBox()
         Me.gbxDatosGenerales.SuspendLayout()
-        CType(Me.cmbTipoAjuste, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbTipoEntrada, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbBodega, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaEntrada, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,9 +67,10 @@ Partial Class frmSivEntradaBodegaAnular
         'cmdCancelar
         '
         Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Location = New System.Drawing.Point(761, 716)
+        Me.cmdCancelar.Location = New System.Drawing.Point(1015, 881)
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(74, 30)
+        Me.cmdCancelar.Size = New System.Drawing.Size(99, 37)
         Me.cmdCancelar.TabIndex = 5
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
@@ -89,9 +78,10 @@ Partial Class frmSivEntradaBodegaAnular
         '
         'cmdGuardar
         '
-        Me.cmdGuardar.Location = New System.Drawing.Point(681, 716)
+        Me.cmdGuardar.Location = New System.Drawing.Point(908, 881)
+        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(74, 30)
+        Me.cmdGuardar.Size = New System.Drawing.Size(99, 37)
         Me.cmdGuardar.TabIndex = 4
         Me.cmdGuardar.Tag = "ACEPTAR"
         Me.cmdGuardar.Text = "&Aceptar"
@@ -101,86 +91,32 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.PictureBox1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(852, 32)
+        Me.Panel2.Size = New System.Drawing.Size(1136, 39)
         Me.Panel2.TabIndex = 75
         Me.Panel2.Tag = "LAYOUT"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(787, -1)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(64, 31)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
-        '
         'gbxDatosGenerales
         '
-        Me.gbxDatosGenerales.Controls.Add(Me.cmbTipoAjuste)
-        Me.gbxDatosGenerales.Controls.Add(Me.lblTipoAjuste)
         Me.gbxDatosGenerales.Controls.Add(Me.cmbTipoEntrada)
-        Me.gbxDatosGenerales.Controls.Add(Me.cmbProveedor)
         Me.gbxDatosGenerales.Controls.Add(Me.cmbBodega)
         Me.gbxDatosGenerales.Controls.Add(Me.lblTipoEntrada)
         Me.gbxDatosGenerales.Controls.Add(Me.lblFechaEntrada)
-        Me.gbxDatosGenerales.Controls.Add(Me.lblProveedor)
         Me.gbxDatosGenerales.Controls.Add(Me.lblBodega)
         Me.gbxDatosGenerales.Controls.Add(Me.dtpFechaEntrada)
         Me.gbxDatosGenerales.Controls.Add(Me.txtNumeroEntrada)
         Me.gbxDatosGenerales.Controls.Add(Me.lblNoEntrada)
-        Me.gbxDatosGenerales.Location = New System.Drawing.Point(17, 39)
+        Me.gbxDatosGenerales.Location = New System.Drawing.Point(23, 48)
+        Me.gbxDatosGenerales.Margin = New System.Windows.Forms.Padding(4)
         Me.gbxDatosGenerales.Name = "gbxDatosGenerales"
-        Me.gbxDatosGenerales.Size = New System.Drawing.Size(818, 118)
+        Me.gbxDatosGenerales.Padding = New System.Windows.Forms.Padding(4)
+        Me.gbxDatosGenerales.Size = New System.Drawing.Size(1091, 145)
         Me.gbxDatosGenerales.TabIndex = 73
         Me.gbxDatosGenerales.TabStop = False
         Me.gbxDatosGenerales.Text = "Datos Generales"
-        '
-        'cmbTipoAjuste
-        '
-        Me.cmbTipoAjuste.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbTipoAjuste.Caption = ""
-        Me.cmbTipoAjuste.CaptionHeight = 17
-        Me.cmbTipoAjuste.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbTipoAjuste.ColumnCaptionHeight = 17
-        Me.cmbTipoAjuste.ColumnFooterHeight = 17
-        Me.cmbTipoAjuste.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbTipoAjuste.ContentHeight = 15
-        Me.cmbTipoAjuste.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbTipoAjuste.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbTipoAjuste.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbTipoAjuste.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbTipoAjuste.EditorHeight = 15
-        Me.cmbTipoAjuste.Enabled = False
-        Me.cmbTipoAjuste.Images.Add(CType(resources.GetObject("cmbTipoAjuste.Images"), System.Drawing.Image))
-        Me.cmbTipoAjuste.ItemHeight = 15
-        Me.cmbTipoAjuste.Location = New System.Drawing.Point(632, 84)
-        Me.cmbTipoAjuste.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbTipoAjuste.MaxDropDownItems = CType(5, Short)
-        Me.cmbTipoAjuste.MaxLength = 32767
-        Me.cmbTipoAjuste.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbTipoAjuste.Name = "cmbTipoAjuste"
-        Me.cmbTipoAjuste.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbTipoAjuste.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbTipoAjuste.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbTipoAjuste.Size = New System.Drawing.Size(174, 21)
-        Me.cmbTipoAjuste.TabIndex = 97
-        Me.cmbTipoAjuste.PropBag = resources.GetString("cmbTipoAjuste.PropBag")
-        '
-        'lblTipoAjuste
-        '
-        Me.lblTipoAjuste.AutoSize = True
-        Me.lblTipoAjuste.BackColor = System.Drawing.SystemColors.Control
-        Me.lblTipoAjuste.Location = New System.Drawing.Point(541, 90)
-        Me.lblTipoAjuste.Name = "lblTipoAjuste"
-        Me.lblTipoAjuste.Size = New System.Drawing.Size(71, 13)
-        Me.lblTipoAjuste.TabIndex = 96
-        Me.lblTipoAjuste.Tag = ""
-        Me.lblTipoAjuste.Text = "Tipo Entrada:"
         '
         'cmbTipoEntrada
         '
@@ -191,15 +127,16 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmbTipoEntrada.ColumnCaptionHeight = 17
         Me.cmbTipoEntrada.ColumnFooterHeight = 17
         Me.cmbTipoEntrada.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbTipoEntrada.ContentHeight = 15
+        Me.cmbTipoEntrada.ContentHeight = 18
         Me.cmbTipoEntrada.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbTipoEntrada.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbTipoEntrada.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipoEntrada.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbTipoEntrada.EditorHeight = 15
+        Me.cmbTipoEntrada.EditorHeight = 18
         Me.cmbTipoEntrada.Images.Add(CType(resources.GetObject("cmbTipoEntrada.Images"), System.Drawing.Image))
         Me.cmbTipoEntrada.ItemHeight = 15
-        Me.cmbTipoEntrada.Location = New System.Drawing.Point(632, 53)
+        Me.cmbTipoEntrada.Location = New System.Drawing.Point(843, 65)
+        Me.cmbTipoEntrada.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbTipoEntrada.MatchEntryTimeout = CType(2000, Long)
         Me.cmbTipoEntrada.MaxDropDownItems = CType(5, Short)
         Me.cmbTipoEntrada.MaxLength = 32767
@@ -208,42 +145,9 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmbTipoEntrada.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbTipoEntrada.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbTipoEntrada.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbTipoEntrada.Size = New System.Drawing.Size(174, 21)
+        Me.cmbTipoEntrada.Size = New System.Drawing.Size(232, 24)
         Me.cmbTipoEntrada.TabIndex = 95
         Me.cmbTipoEntrada.PropBag = resources.GetString("cmbTipoEntrada.PropBag")
-        '
-        'cmbProveedor
-        '
-        Me.cmbProveedor.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbProveedor.Caption = ""
-        Me.cmbProveedor.CaptionHeight = 17
-        Me.cmbProveedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbProveedor.ColumnCaptionHeight = 17
-        Me.cmbProveedor.ColumnFooterHeight = 17
-        Me.cmbProveedor.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbProveedor.ContentHeight = 15
-        Me.cmbProveedor.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbProveedor.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbProveedor.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbProveedor.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbProveedor.EditorHeight = 15
-        Me.cmbProveedor.Enabled = False
-        Me.cmbProveedor.Images.Add(CType(resources.GetObject("cmbProveedor.Images"), System.Drawing.Image))
-        Me.cmbProveedor.ItemHeight = 15
-        Me.cmbProveedor.Location = New System.Drawing.Point(133, 84)
-        Me.cmbProveedor.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbProveedor.MaxDropDownItems = CType(5, Short)
-        Me.cmbProveedor.MaxLength = 32767
-        Me.cmbProveedor.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbProveedor.Name = "cmbProveedor"
-        Me.cmbProveedor.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbProveedor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbProveedor.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbProveedor.Size = New System.Drawing.Size(174, 21)
-        Me.cmbProveedor.TabIndex = 94
-        Me.cmbProveedor.TabStop = False
-        Me.cmbProveedor.Tag = ""
-        Me.cmbProveedor.PropBag = resources.GetString("cmbProveedor.PropBag")
         '
         'cmbBodega
         '
@@ -254,16 +158,17 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmbBodega.ColumnCaptionHeight = 17
         Me.cmbBodega.ColumnFooterHeight = 17
         Me.cmbBodega.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbBodega.ContentHeight = 15
+        Me.cmbBodega.ContentHeight = 18
         Me.cmbBodega.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbBodega.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbBodega.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBodega.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbBodega.EditorHeight = 15
+        Me.cmbBodega.EditorHeight = 18
         Me.cmbBodega.Enabled = False
         Me.cmbBodega.Images.Add(CType(resources.GetObject("cmbBodega.Images"), System.Drawing.Image))
         Me.cmbBodega.ItemHeight = 15
-        Me.cmbBodega.Location = New System.Drawing.Point(133, 53)
+        Me.cmbBodega.Location = New System.Drawing.Point(177, 65)
+        Me.cmbBodega.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbBodega.MatchEntryTimeout = CType(2000, Long)
         Me.cmbBodega.MaxDropDownItems = CType(5, Short)
         Me.cmbBodega.MaxLength = 32767
@@ -272,7 +177,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmbBodega.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbBodega.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbBodega.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbBodega.Size = New System.Drawing.Size(174, 21)
+        Me.cmbBodega.Size = New System.Drawing.Size(232, 24)
         Me.cmbBodega.TabIndex = 0
         Me.cmbBodega.Tag = "BLOQUEADO"
         Me.cmbBodega.PropBag = resources.GetString("cmbBodega.PropBag")
@@ -281,9 +186,10 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.lblTipoEntrada.AutoSize = True
         Me.lblTipoEntrada.BackColor = System.Drawing.SystemColors.Control
-        Me.lblTipoEntrada.Location = New System.Drawing.Point(541, 58)
+        Me.lblTipoEntrada.Location = New System.Drawing.Point(721, 71)
+        Me.lblTipoEntrada.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTipoEntrada.Name = "lblTipoEntrada"
-        Me.lblTipoEntrada.Size = New System.Drawing.Size(71, 13)
+        Me.lblTipoEntrada.Size = New System.Drawing.Size(94, 17)
         Me.lblTipoEntrada.TabIndex = 92
         Me.lblTipoEntrada.Tag = ""
         Me.lblTipoEntrada.Text = "Tipo Entrada:"
@@ -292,29 +198,21 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.lblFechaEntrada.AutoSize = True
         Me.lblFechaEntrada.BackColor = System.Drawing.SystemColors.Control
-        Me.lblFechaEntrada.Location = New System.Drawing.Point(541, 24)
+        Me.lblFechaEntrada.Location = New System.Drawing.Point(721, 30)
+        Me.lblFechaEntrada.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFechaEntrada.Name = "lblFechaEntrada"
-        Me.lblFechaEntrada.Size = New System.Drawing.Size(40, 13)
+        Me.lblFechaEntrada.Size = New System.Drawing.Size(51, 17)
         Me.lblFechaEntrada.TabIndex = 88
         Me.lblFechaEntrada.Tag = ""
         Me.lblFechaEntrada.Text = "Fecha:"
         '
-        'lblProveedor
-        '
-        Me.lblProveedor.BackColor = System.Drawing.SystemColors.Control
-        Me.lblProveedor.Location = New System.Drawing.Point(28, 85)
-        Me.lblProveedor.Name = "lblProveedor"
-        Me.lblProveedor.Size = New System.Drawing.Size(83, 18)
-        Me.lblProveedor.TabIndex = 86
-        Me.lblProveedor.Tag = ""
-        Me.lblProveedor.Text = "Proveedor:"
-        '
         'lblBodega
         '
         Me.lblBodega.BackColor = System.Drawing.SystemColors.Control
-        Me.lblBodega.Location = New System.Drawing.Point(28, 53)
+        Me.lblBodega.Location = New System.Drawing.Point(37, 65)
+        Me.lblBodega.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblBodega.Name = "lblBodega"
-        Me.lblBodega.Size = New System.Drawing.Size(83, 18)
+        Me.lblBodega.Size = New System.Drawing.Size(111, 22)
         Me.lblBodega.TabIndex = 86
         Me.lblBodega.Tag = ""
         Me.lblBodega.Text = "Bodega:"
@@ -322,22 +220,34 @@ Partial Class frmSivEntradaBodegaAnular
         'dtpFechaEntrada
         '
         Me.dtpFechaEntrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        '
+        '
+        '
+        Me.dtpFechaEntrada.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpFechaEntrada.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpFechaEntrada.Calendar.ClearText = "&Clear"
+        Me.dtpFechaEntrada.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpFechaEntrada.Calendar.SelectedDate = New Date(2016, 8, 2, 0, 0, 0, 0)
+        Me.dtpFechaEntrada.Calendar.TodayText = "&Today"
+        Me.dtpFechaEntrada.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaEntrada.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaEntrada.EditMask = "##/##/####"
         Me.dtpFechaEntrada.Enabled = False
         Me.dtpFechaEntrada.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaEntrada.Location = New System.Drawing.Point(632, 24)
+        Me.dtpFechaEntrada.Location = New System.Drawing.Point(843, 30)
+        Me.dtpFechaEntrada.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaEntrada.Name = "dtpFechaEntrada"
-        Me.dtpFechaEntrada.Size = New System.Drawing.Size(174, 18)
+        Me.dtpFechaEntrada.Size = New System.Drawing.Size(232, 20)
         Me.dtpFechaEntrada.TabIndex = 0
         Me.dtpFechaEntrada.Tag = Nothing
         Me.dtpFechaEntrada.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
         'txtNumeroEntrada
         '
-        Me.txtNumeroEntrada.Location = New System.Drawing.Point(133, 20)
+        Me.txtNumeroEntrada.Location = New System.Drawing.Point(177, 25)
+        Me.txtNumeroEntrada.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNumeroEntrada.Name = "txtNumeroEntrada"
-        Me.txtNumeroEntrada.Size = New System.Drawing.Size(174, 20)
+        Me.txtNumeroEntrada.Size = New System.Drawing.Size(231, 22)
         Me.txtNumeroEntrada.TabIndex = 0
         Me.txtNumeroEntrada.TabStop = False
         Me.txtNumeroEntrada.Tag = "BLOQUEADO"
@@ -347,9 +257,10 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.lblNoEntrada.AutoSize = True
         Me.lblNoEntrada.BackColor = System.Drawing.SystemColors.Control
-        Me.lblNoEntrada.Location = New System.Drawing.Point(28, 24)
+        Me.lblNoEntrada.Location = New System.Drawing.Point(37, 30)
+        Me.lblNoEntrada.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNoEntrada.Name = "lblNoEntrada"
-        Me.lblNoEntrada.Size = New System.Drawing.Size(87, 13)
+        Me.lblNoEntrada.Size = New System.Drawing.Size(116, 17)
         Me.lblNoEntrada.TabIndex = 19
         Me.lblNoEntrada.Tag = ""
         Me.lblNoEntrada.Text = "Número Entrada:"
@@ -369,13 +280,13 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.gbxOtrosDatos.Controls.Add(Me.dtpFechaFactura)
         Me.gbxOtrosDatos.Controls.Add(Me.lblFechaFactura)
-        Me.gbxOtrosDatos.Controls.Add(Me.txtNumeroPoliza)
-        Me.gbxOtrosDatos.Controls.Add(Me.lblNumeroPoliza)
         Me.gbxOtrosDatos.Controls.Add(Me.txtNumeroFactura)
         Me.gbxOtrosDatos.Controls.Add(Me.lblNumeroFactura)
-        Me.gbxOtrosDatos.Location = New System.Drawing.Point(17, 163)
+        Me.gbxOtrosDatos.Location = New System.Drawing.Point(23, 201)
+        Me.gbxOtrosDatos.Margin = New System.Windows.Forms.Padding(4)
         Me.gbxOtrosDatos.Name = "gbxOtrosDatos"
-        Me.gbxOtrosDatos.Size = New System.Drawing.Size(818, 60)
+        Me.gbxOtrosDatos.Padding = New System.Windows.Forms.Padding(4)
+        Me.gbxOtrosDatos.Size = New System.Drawing.Size(1091, 74)
         Me.gbxOtrosDatos.TabIndex = 82
         Me.gbxOtrosDatos.TabStop = False
         Me.gbxOtrosDatos.Text = "Otros Datos"
@@ -383,13 +294,24 @@ Partial Class frmSivEntradaBodegaAnular
         'dtpFechaFactura
         '
         Me.dtpFechaFactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        '
+        '
+        '
+        Me.dtpFechaFactura.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpFechaFactura.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpFechaFactura.Calendar.ClearText = "&Clear"
+        Me.dtpFechaFactura.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpFechaFactura.Calendar.SelectedDate = New Date(2016, 8, 2, 0, 0, 0, 0)
+        Me.dtpFechaFactura.Calendar.TodayText = "&Today"
+        Me.dtpFechaFactura.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaFactura.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaFactura.EditMask = "##/##/####"
         Me.dtpFechaFactura.Enabled = False
         Me.dtpFechaFactura.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaFactura.Location = New System.Drawing.Point(674, 21)
+        Me.dtpFechaFactura.Location = New System.Drawing.Point(899, 26)
+        Me.dtpFechaFactura.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaFactura.Name = "dtpFechaFactura"
-        Me.dtpFechaFactura.Size = New System.Drawing.Size(130, 18)
+        Me.dtpFechaFactura.Size = New System.Drawing.Size(173, 20)
         Me.dtpFechaFactura.TabIndex = 24
         Me.dtpFechaFactura.Tag = Nothing
         Me.dtpFechaFactura.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
@@ -398,38 +320,20 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.lblFechaFactura.AutoSize = True
         Me.lblFechaFactura.BackColor = System.Drawing.SystemColors.Control
-        Me.lblFechaFactura.Location = New System.Drawing.Point(586, 24)
+        Me.lblFechaFactura.Location = New System.Drawing.Point(781, 30)
+        Me.lblFechaFactura.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFechaFactura.Name = "lblFechaFactura"
-        Me.lblFechaFactura.Size = New System.Drawing.Size(79, 13)
+        Me.lblFechaFactura.Size = New System.Drawing.Size(103, 17)
         Me.lblFechaFactura.TabIndex = 23
         Me.lblFechaFactura.Tag = ""
         Me.lblFechaFactura.Text = "Fecha Factura:"
         '
-        'txtNumeroPoliza
-        '
-        Me.txtNumeroPoliza.Location = New System.Drawing.Point(416, 20)
-        Me.txtNumeroPoliza.Name = "txtNumeroPoliza"
-        Me.txtNumeroPoliza.Size = New System.Drawing.Size(115, 20)
-        Me.txtNumeroPoliza.TabIndex = 20
-        Me.txtNumeroPoliza.TabStop = False
-        Me.txtNumeroPoliza.Tag = ""
-        '
-        'lblNumeroPoliza
-        '
-        Me.lblNumeroPoliza.AutoSize = True
-        Me.lblNumeroPoliza.BackColor = System.Drawing.SystemColors.Control
-        Me.lblNumeroPoliza.Location = New System.Drawing.Point(313, 23)
-        Me.lblNumeroPoliza.Name = "lblNumeroPoliza"
-        Me.lblNumeroPoliza.Size = New System.Drawing.Size(78, 13)
-        Me.lblNumeroPoliza.TabIndex = 21
-        Me.lblNumeroPoliza.Tag = ""
-        Me.lblNumeroPoliza.Text = "Número Poliza:"
-        '
         'txtNumeroFactura
         '
-        Me.txtNumeroFactura.Location = New System.Drawing.Point(131, 21)
+        Me.txtNumeroFactura.Location = New System.Drawing.Point(175, 26)
+        Me.txtNumeroFactura.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNumeroFactura.Name = "txtNumeroFactura"
-        Me.txtNumeroFactura.Size = New System.Drawing.Size(115, 20)
+        Me.txtNumeroFactura.Size = New System.Drawing.Size(152, 22)
         Me.txtNumeroFactura.TabIndex = 0
         Me.txtNumeroFactura.TabStop = False
         Me.txtNumeroFactura.Tag = ""
@@ -438,9 +342,10 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.lblNumeroFactura.AutoSize = True
         Me.lblNumeroFactura.BackColor = System.Drawing.SystemColors.Control
-        Me.lblNumeroFactura.Location = New System.Drawing.Point(28, 24)
+        Me.lblNumeroFactura.Location = New System.Drawing.Point(37, 30)
+        Me.lblNumeroFactura.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumeroFactura.Name = "lblNumeroFactura"
-        Me.lblNumeroFactura.Size = New System.Drawing.Size(86, 13)
+        Me.lblNumeroFactura.Size = New System.Drawing.Size(114, 17)
         Me.lblNumeroFactura.TabIndex = 19
         Me.lblNumeroFactura.Tag = ""
         Me.lblNumeroFactura.Text = "Número Factura:"
@@ -448,12 +353,13 @@ Partial Class frmSivEntradaBodegaAnular
         'txtComentarios
         '
         Me.txtComentarios.AcceptsTab = True
-        Me.txtComentarios.Location = New System.Drawing.Point(17, 655)
+        Me.txtComentarios.Location = New System.Drawing.Point(23, 806)
+        Me.txtComentarios.Margin = New System.Windows.Forms.Padding(4)
         Me.txtComentarios.MaxLength = 250
         Me.txtComentarios.Multiline = True
         Me.txtComentarios.Name = "txtComentarios"
         Me.txtComentarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtComentarios.Size = New System.Drawing.Size(819, 55)
+        Me.txtComentarios.Size = New System.Drawing.Size(1091, 67)
         Me.txtComentarios.TabIndex = 93
         Me.txtComentarios.Tag = ""
         '
@@ -461,9 +367,10 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.lblObservaciones.AutoSize = True
         Me.lblObservaciones.BackColor = System.Drawing.SystemColors.Control
-        Me.lblObservaciones.Location = New System.Drawing.Point(14, 626)
+        Me.lblObservaciones.Location = New System.Drawing.Point(19, 770)
+        Me.lblObservaciones.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblObservaciones.Name = "lblObservaciones"
-        Me.lblObservaciones.Size = New System.Drawing.Size(81, 13)
+        Me.lblObservaciones.Size = New System.Drawing.Size(107, 17)
         Me.lblObservaciones.TabIndex = 94
         Me.lblObservaciones.Tag = ""
         Me.lblObservaciones.Text = "Observaciones:"
@@ -472,9 +379,10 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.lblCostoTotal.AutoSize = True
         Me.lblCostoTotal.BackColor = System.Drawing.SystemColors.Control
-        Me.lblCostoTotal.Location = New System.Drawing.Point(646, 626)
+        Me.lblCostoTotal.Location = New System.Drawing.Point(861, 770)
+        Me.lblCostoTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCostoTotal.Name = "lblCostoTotal"
-        Me.lblCostoTotal.Size = New System.Drawing.Size(81, 13)
+        Me.lblCostoTotal.Size = New System.Drawing.Size(106, 17)
         Me.lblCostoTotal.TabIndex = 96
         Me.lblCostoTotal.Tag = ""
         Me.lblCostoTotal.Text = "Costo Total U$:"
@@ -483,9 +391,10 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.lblUsuario.AutoSize = True
         Me.lblUsuario.BackColor = System.Drawing.SystemColors.Control
-        Me.lblUsuario.Location = New System.Drawing.Point(14, 733)
+        Me.lblUsuario.Location = New System.Drawing.Point(19, 902)
+        Me.lblUsuario.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(43, 13)
+        Me.lblUsuario.Size = New System.Drawing.Size(57, 17)
         Me.lblUsuario.TabIndex = 97
         Me.lblUsuario.Tag = ""
         Me.lblUsuario.Text = "Usuario"
@@ -493,9 +402,11 @@ Partial Class frmSivEntradaBodegaAnular
         'gbxDetalle
         '
         Me.gbxDetalle.Controls.Add(Me.grdDetalleEntradasBodegas)
-        Me.gbxDetalle.Location = New System.Drawing.Point(17, 329)
+        Me.gbxDetalle.Location = New System.Drawing.Point(23, 405)
+        Me.gbxDetalle.Margin = New System.Windows.Forms.Padding(4)
         Me.gbxDetalle.Name = "gbxDetalle"
-        Me.gbxDetalle.Size = New System.Drawing.Size(818, 286)
+        Me.gbxDetalle.Padding = New System.Windows.Forms.Padding(4)
+        Me.gbxDetalle.Size = New System.Drawing.Size(1091, 352)
         Me.gbxDetalle.TabIndex = 101
         Me.gbxDetalle.TabStop = False
         Me.gbxDetalle.Text = "Otros Datos"
@@ -504,13 +415,14 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.grdDetalleEntradasBodegas.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDetalleEntradasBodegas.Images.Add(CType(resources.GetObject("grdDetalleEntradasBodegas.Images"), System.Drawing.Image))
-        Me.grdDetalleEntradasBodegas.Location = New System.Drawing.Point(3, 19)
+        Me.grdDetalleEntradasBodegas.Location = New System.Drawing.Point(4, 23)
+        Me.grdDetalleEntradasBodegas.Margin = New System.Windows.Forms.Padding(4)
         Me.grdDetalleEntradasBodegas.Name = "grdDetalleEntradasBodegas"
         Me.grdDetalleEntradasBodegas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDetalleEntradasBodegas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdDetalleEntradasBodegas.PreviewInfo.ZoomFactor = 75
+        Me.grdDetalleEntradasBodegas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDetalleEntradasBodegas.PrintInfo.PageSettings = CType(resources.GetObject("grdDetalleEntradasBodegas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdDetalleEntradasBodegas.Size = New System.Drawing.Size(815, 267)
+        Me.grdDetalleEntradasBodegas.Size = New System.Drawing.Size(1086, 328)
         Me.grdDetalleEntradasBodegas.TabIndex = 0
         Me.grdDetalleEntradasBodegas.Text = "C1TrueDBGrid1"
         Me.grdDetalleEntradasBodegas.PropBag = resources.GetString("grdDetalleEntradasBodegas.PropBag")
@@ -520,17 +432,18 @@ Partial Class frmSivEntradaBodegaAnular
         Me.NumCostoTotal.DisplayFormat.CustomFormat = "#,##0.00"
         Me.NumCostoTotal.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.Currency
         Me.NumCostoTotal.DisplayFormat.Inherit = CType((((C1.Win.C1Input.FormatInfoInheritFlags.NullText Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.NumCostoTotal.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.Currency
         Me.NumCostoTotal.EditFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.NumCostoTotal.Enabled = False
-        Me.NumCostoTotal.Location = New System.Drawing.Point(728, 622)
+        Me.NumCostoTotal.Location = New System.Drawing.Point(971, 766)
+        Me.NumCostoTotal.Margin = New System.Windows.Forms.Padding(4)
         Me.NumCostoTotal.Name = "NumCostoTotal"
-        Me.NumCostoTotal.Size = New System.Drawing.Size(107, 20)
+        Me.NumCostoTotal.Size = New System.Drawing.Size(143, 22)
         Me.NumCostoTotal.TabIndex = 102
         Me.NumCostoTotal.Tag = "BLOQUEADO"
         Me.NumCostoTotal.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
@@ -540,9 +453,11 @@ Partial Class frmSivEntradaBodegaAnular
         Me.gbxDatosAnulacion.Controls.Add(Me.lblComentariosAnular)
         Me.gbxDatosAnulacion.Controls.Add(Me.chkAnulado)
         Me.gbxDatosAnulacion.Controls.Add(Me.txtComentariosAnular)
-        Me.gbxDatosAnulacion.Location = New System.Drawing.Point(20, 229)
+        Me.gbxDatosAnulacion.Location = New System.Drawing.Point(27, 282)
+        Me.gbxDatosAnulacion.Margin = New System.Windows.Forms.Padding(4)
         Me.gbxDatosAnulacion.Name = "gbxDatosAnulacion"
-        Me.gbxDatosAnulacion.Size = New System.Drawing.Size(818, 94)
+        Me.gbxDatosAnulacion.Padding = New System.Windows.Forms.Padding(4)
+        Me.gbxDatosAnulacion.Size = New System.Drawing.Size(1091, 116)
         Me.gbxDatosAnulacion.TabIndex = 103
         Me.gbxDatosAnulacion.TabStop = False
         Me.gbxDatosAnulacion.Text = "Datos de Anulación"
@@ -551,9 +466,10 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.lblComentariosAnular.AutoSize = True
         Me.lblComentariosAnular.BackColor = System.Drawing.SystemColors.Control
-        Me.lblComentariosAnular.Location = New System.Drawing.Point(3, 39)
+        Me.lblComentariosAnular.Location = New System.Drawing.Point(4, 48)
+        Me.lblComentariosAnular.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblComentariosAnular.Name = "lblComentariosAnular"
-        Me.lblComentariosAnular.Size = New System.Drawing.Size(65, 13)
+        Me.lblComentariosAnular.Size = New System.Drawing.Size(87, 17)
         Me.lblComentariosAnular.TabIndex = 97
         Me.lblComentariosAnular.Tag = ""
         Me.lblComentariosAnular.Text = "Comentarios"
@@ -562,9 +478,10 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.chkAnulado.AutoSize = True
         Me.chkAnulado.Enabled = False
-        Me.chkAnulado.Location = New System.Drawing.Point(6, 19)
+        Me.chkAnulado.Location = New System.Drawing.Point(8, 23)
+        Me.chkAnulado.Margin = New System.Windows.Forms.Padding(4)
         Me.chkAnulado.Name = "chkAnulado"
-        Me.chkAnulado.Size = New System.Drawing.Size(65, 17)
+        Me.chkAnulado.Size = New System.Drawing.Size(82, 21)
         Me.chkAnulado.TabIndex = 96
         Me.chkAnulado.Text = "Anulado"
         Me.chkAnulado.UseVisualStyleBackColor = True
@@ -572,34 +489,21 @@ Partial Class frmSivEntradaBodegaAnular
         'txtComentariosAnular
         '
         Me.txtComentariosAnular.AcceptsTab = True
-        Me.txtComentariosAnular.Location = New System.Drawing.Point(2, 52)
+        Me.txtComentariosAnular.Location = New System.Drawing.Point(3, 64)
+        Me.txtComentariosAnular.Margin = New System.Windows.Forms.Padding(4)
         Me.txtComentariosAnular.MaxLength = 250
         Me.txtComentariosAnular.Multiline = True
         Me.txtComentariosAnular.Name = "txtComentariosAnular"
         Me.txtComentariosAnular.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtComentariosAnular.Size = New System.Drawing.Size(814, 36)
+        Me.txtComentariosAnular.Size = New System.Drawing.Size(1084, 43)
         Me.txtComentariosAnular.TabIndex = 95
         Me.txtComentariosAnular.Tag = ""
         '
-        'lblRecordatorio
-        '
-        Me.lblRecordatorio.AutoSize = True
-        Me.lblRecordatorio.BackColor = System.Drawing.SystemColors.Control
-        Me.lblRecordatorio.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRecordatorio.ForeColor = System.Drawing.Color.Red
-        Me.lblRecordatorio.Location = New System.Drawing.Point(89, 733)
-        Me.lblRecordatorio.Name = "lblRecordatorio"
-        Me.lblRecordatorio.Size = New System.Drawing.Size(483, 17)
-        Me.lblRecordatorio.TabIndex = 104
-        Me.lblRecordatorio.Tag = ""
-        Me.lblRecordatorio.Text = "Recuerde: Si ya está generada la factura, ésta se deberá anular."
-        '
         'frmSivEntradaBodegaAnular
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(852, 772)
-        Me.Controls.Add(Me.lblRecordatorio)
+        Me.ClientSize = New System.Drawing.Size(1136, 950)
         Me.Controls.Add(Me.gbxDatosAnulacion)
         Me.Controls.Add(Me.NumCostoTotal)
         Me.Controls.Add(Me.gbxDetalle)
@@ -612,18 +516,15 @@ Partial Class frmSivEntradaBodegaAnular
         Me.Controls.Add(Me.cmdGuardar)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.gbxDatosGenerales)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSivEntradaBodegaAnular"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Anular/Consultar Entrada de Productos"
-        Me.Panel2.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbxDatosGenerales.ResumeLayout(False)
         Me.gbxDatosGenerales.PerformLayout()
-        CType(Me.cmbTipoAjuste, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbTipoEntrada, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbProveedor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbBodega, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaEntrada, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).EndInit()
@@ -642,7 +543,6 @@ Partial Class frmSivEntradaBodegaAnular
     Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents cmdGuardar As System.Windows.Forms.Button
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents gbxDatosGenerales As System.Windows.Forms.GroupBox
     Friend WithEvents lblTipoEntrada As System.Windows.Forms.Label
     Friend WithEvents lblFechaEntrada As System.Windows.Forms.Label
@@ -650,20 +550,14 @@ Partial Class frmSivEntradaBodegaAnular
     Friend WithEvents dtpFechaEntrada As C1.Win.C1Input.C1DateEdit
     Friend WithEvents txtNumeroEntrada As System.Windows.Forms.TextBox
     Friend WithEvents lblNoEntrada As System.Windows.Forms.Label
-    Friend WithEvents lblProveedor As System.Windows.Forms.Label
     Friend WithEvents imgIconos As System.Windows.Forms.ImageList
     Friend WithEvents ErrorProvider As System.Windows.Forms.ErrorProvider
-    Friend WithEvents cmbProveedor As C1.Win.C1List.C1Combo
     Friend WithEvents cmbBodega As C1.Win.C1List.C1Combo
     Friend WithEvents cmbTipoEntrada As C1.Win.C1List.C1Combo
-    Friend WithEvents lblTipoAjuste As System.Windows.Forms.Label
-    Friend WithEvents cmbTipoAjuste As C1.Win.C1List.C1Combo
     Friend WithEvents gbxOtrosDatos As System.Windows.Forms.GroupBox
     Friend WithEvents txtNumeroFactura As System.Windows.Forms.TextBox
     Friend WithEvents lblNumeroFactura As System.Windows.Forms.Label
     Friend WithEvents lblFechaFactura As System.Windows.Forms.Label
-    Friend WithEvents txtNumeroPoliza As System.Windows.Forms.TextBox
-    Friend WithEvents lblNumeroPoliza As System.Windows.Forms.Label
     Friend WithEvents dtpFechaFactura As C1.Win.C1Input.C1DateEdit
     Friend WithEvents txtComentarios As System.Windows.Forms.TextBox
     Friend WithEvents lblObservaciones As System.Windows.Forms.Label
@@ -676,5 +570,4 @@ Partial Class frmSivEntradaBodegaAnular
     Friend WithEvents txtComentariosAnular As System.Windows.Forms.TextBox
     Friend WithEvents chkAnulado As System.Windows.Forms.CheckBox
     Friend WithEvents lblComentariosAnular As System.Windows.Forms.Label
-    Friend WithEvents lblRecordatorio As System.Windows.Forms.Label
 End Class

@@ -3,8 +3,8 @@ Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.Cursors
-Imports SIFAC.BO
-Imports SIFAC.BO.clsConsultas
+Imports SCCUM.BO
+Imports SCCUM.BO.clsConsultas
 Imports System.IO
 
 Public Class frmSivBuscarEntrada
@@ -36,18 +36,8 @@ Public Class frmSivBuscarEntrada
             End If
         End If
 
-        If Me.cmbProveedor.Text <> "NO APLICA" Then
-            If Me.cmbProveedor.Text.Trim.Length <> 0 Then
-                mFiltro = mFiltro & " AND objProveedorID = " & Me.cmbProveedor.SelectedValue
-            End If
-        End If
-
         If Me.txtNumeroFactura.Text.Trim.Length <> 0 Then
             mFiltro = mFiltro & " AND NumeroFactura = " & Me.txtNumeroFactura.Text
-        End If
-
-        If Me.txtNumeroPoliza.Text.Trim.Length <> 0 Then
-            mFiltro = mFiltro & " AND NumeroPoliza = " & Me.txtNumeroPoliza.Text
         End If
 
         If Me.dtpFechaFactura.Text.Trim.Length <> 0 Then
@@ -82,7 +72,7 @@ Public Class frmSivBuscarEntrada
     Private Sub CargarTipoEntrada()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "StbValorCatalogo", "(objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='TIPOENTRADA'))"))
+            dtDatos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "StbValorCatalogo", "(objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='TIPOENTRADA')) AND Activo=1"))
             With cmbTipoEntrada
                 .DataSource = dtDatos
                 .DisplayMember = "Descripcion"
@@ -98,31 +88,9 @@ Public Class frmSivBuscarEntrada
         End Try
     End Sub
 
-    Private Sub CargarProveedor()
-        Dim dtDatos As New DataTable
-        Try
-            dtDatos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID,RazonSocial", "vwTipoProveedor", "1=1 ORDER BY RazonSocial"))
-            With Me.cmbProveedor
-                .DataSource = dtDatos
-                .DisplayMember = "RazonSocial"
-                .ValueMember = "SivProveedorID"
-                .Splits(0).DisplayColumns("SivProveedorID").Visible = False
-                .ExtendRightColumn = True
-                .ColumnHeaders = False
-            End With
-
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        Finally
-            dtDatos = Nothing
-        End Try
-    End Sub
-
     Private Sub frmSivBuscarSalida_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         clsProyecto.CargarTemaDefinido(Me)
         Me.CargarTipoEntrada()
-        Me.CargarProveedor()
-        Me.cmbProveedor.Text = "NO APLICA"
         Me.cmbTipoEntrada.Text = "NO APLICA"
 
     End Sub

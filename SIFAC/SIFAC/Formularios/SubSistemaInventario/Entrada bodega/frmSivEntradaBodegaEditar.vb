@@ -4,14 +4,14 @@
 ''-- Formulario de Agregación de Entrada Bodega
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SIFAC.BO
+Imports SCCUM.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.VisualStyles
-Imports SIFAC.BO.clsConsultas
+Imports SCCUM.BO.clsConsultas
 Imports C1.Win.C1TrueDBGrid
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Base
@@ -81,8 +81,8 @@ Public Class frmSivEntradaBodegaEditar
 #Region "Longitudes Maximas"
 
     Private Sub LongitudesMaximas()
-        Me.txtNumeroFactura.MaxLength = SivEntradaBodega.GetMaxLength("NumeroFactura")
-        Me.txtComentarios.MaxLength = SivEntradaBodega.GetMaxLength("Comentarios")
+        Me.txtNumeroFactura.MaxLength = BO.SivEntradaBodega.GetMaxLength("NumeroFactura")
+        Me.txtComentarios.MaxLength = BO.SivEntradaBodega.GetMaxLength("Comentarios")
     End Sub
 
 #End Region
@@ -382,7 +382,7 @@ Public Class frmSivEntradaBodegaEditar
     Private Sub LimpiarGridDE()
         If Me.grdDetalleEntradasBodegasDETabla.RowCount > 0 Then
             MsgBox("Se borrará el detalle de Entrada.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-			Me.CargarDescripcionDE("1=1")
+            Me.CargarDescripcionDE("1=1")
             Me.CargarDetalleEntradaBodegaDE()
         End If
         Me.boolModificado = True
@@ -397,8 +397,12 @@ Public Class frmSivEntradaBodegaEditar
             Try
                 T.BeginTran()
 
-                Me.GuardarEntradaBodega(T)
-                Me.GuardarEntradaDetalle(T)
+                GuardarEntradaBodega(T)
+                GuardarEntradaDetalle(T)
+                ActualizarSivBodegaRepuesto(T)
+                If (cmbTipoEntrada.SelectedValue = intTipoEntradaCompraLocal) Or (cmbTipoEntrada.SelectedValue = intTipoEntradaImportacion) Then
+                    ActualizarPrecioProducto(T)
+                End If
 
                 boolModificado = False
                 T.CommitTran()
@@ -474,7 +478,58 @@ Public Class frmSivEntradaBodegaEditar
         End Try
     End Sub
 
-    
+    Private Sub ActualizarSivBodegaRepuesto(ByVal T As DAL.TransactionManager)
+        Dim objSivBodegaProductos As SivBodegaProductos
+        Dim objSivProductos As SivProductos
+
+        Try
+            objSivBodegaProductos = New SivBodegaProductos
+            objSivProductos = New SivProductos
+
+            For Each row As DataRow In Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").Rows
+
+                'Filtrar el repuesto a modificar de Bodega Repuesto
+                If objSivBodegaProductos.RetrieveByFilter("objProductoID='" & row("SivProductoID") & "' AND objBodegaID=" & Me.cmbBodega.SelectedValue) Then
+
+                    objSivBodegaProductos.Cantidad = objSivBodegaProductos.Cantidad + row("Cantidad")
+                    objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    objSivBodegaProductos.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    objSivBodegaProductos.Update()
+
+                    'Filtrar el repuesto para modificar su costoPromedio
+                    objSivProductos.RetrieveByFilter("SivProductoID='" & row("SivProductoID") & "'")
+
+                    'Si costo promedio del repuesto es CERO entonces es la primera entrada por lo tanto queda el costo de esa entrada
+                    If objSivProductos.CostoPromedio = 0 Then
+                        objSivProductos.CostoPromedio = row("Costo")
+                    Else
+                        objSivProductos.CostoPromedio = ((objSivProductos.CostoPromedio + row("Costo")) / 2)
+                    End If
+                    objSivProductos.Update()
+
+                Else
+
+                    objSivBodegaProductos.objProductoID = row("SivProductoID")
+                    objSivBodegaProductos.objBodegaID = Me.cmbBodega.SelectedValue
+                    objSivBodegaProductos.Cantidad = row("Cantidad")
+                    objSivBodegaProductos.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    objSivBodegaProductos.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                    objSivBodegaProductos.Insert(T)
+
+
+                    If objSivProductos.RetrieveByFilter("SivProductoID='" & row("SivProductoID") & "'") Then
+                        objSivProductos.CostoPromedio = ((objSivProductos.CostoPromedio + row("Costo")) / 2)
+                        objSivProductos.Update()
+                    End If
+
+                End If
+
+            Next
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 
     Private Sub ActualizarSivEntradaBodega1(ByVal FilaDetalleEntrada As Integer, ByVal FiltroEntBodDet As Object, ByVal T As DAL.TransactionManager)
         Dim objSivEntradaBodega As SivEntradaBodega
@@ -495,7 +550,7 @@ Public Class frmSivEntradaBodegaEditar
                 If dtEntradaPreliquidacion.Rows.Count = 1 Then
                     objSivEntradaBodega.SivEntradaBodegaID = Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").DefaultView.Item(FilaDetalleEntrada)("SivEntradaBodegaID")
                     objSivEntradaBodega.Retrieve(objSivEntradaBodega.SivEntradaBodegaID, T)
-                  
+
                     objSivEntradaBodega.NumeroFactura = Me.txtNumeroFactura.Text.Trim
                     If Me.dtpFechaFactura.Text.Trim <> "" Then
                         objSivEntradaBodega.FechaFactura = Me.dtpFechaFactura.Value
@@ -541,15 +596,16 @@ Public Class frmSivEntradaBodegaEditar
         End Try
     End Sub
 
-    Private Sub ActualizarPrecioRepuesto(ByVal T As DAL.TransactionManager)
-        Dim objSivRepuesto As SivRepuestos
+    Private Sub ActualizarPrecioProducto(ByVal T As DAL.TransactionManager)
+        Dim objSivProductos As SivProductos
         Try
-            objSivRepuesto = New SivRepuestos
+            objSivProductos = New SivProductos
             For Each row As DataRow In Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").Rows
                 'Filtrar el repuesto para modificar su Precio
-                objSivRepuesto.RetrieveByFilter("SivRepuestoID='" & row("objRepuestoID") & "'")
-                objSivRepuesto.Precio = row("PrecioEstimado")
-                objSivRepuesto.Update(T)
+                objSivProductos.RetrieveByFilter("SivProductoID='" & row("SivProductoID") & "'")
+                objSivProductos.Precio_Contado = (CDec(row("Costo")) * CDec(((StbParametro.RetrieveDT("Nombre = 'PorcentajeUtilidadContado'", , "Valor").DefaultView.Item(0)("Valor")) / 100))) + CDec(row("Costo"))
+                objSivProductos.Precio_Credito = (CDec(row("Costo")) * CDec(((StbParametro.RetrieveDT("Nombre = 'PorcentajeUtilidadCredito'", , "Valor").DefaultView.Item(0)("Valor")) / 100))) + CDec(row("Costo"))
+                objSivProductos.Update(T)
             Next
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -831,7 +887,7 @@ Public Class frmSivEntradaBodegaEditar
             Me.grdDetalleEntradasBodegasDETabla.Columns("Costo").AppearanceCell.BackColor = Color.White
         End If
 
-		CargarDescripcionDE("1=1")
+        CargarDescripcionDE("1=1")
         ErrorProvider.SetError(cmbTipoEntrada, "")
         Me.boolModificado = True
     End Sub

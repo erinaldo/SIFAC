@@ -2,8 +2,8 @@ Imports DAL
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
-Imports SIFAC.BO.clsConsultas
-Imports SIFAC.BO
+Imports SCCUM.BO.clsConsultas
+Imports SCCUM.BO
 Imports proyecto.Catalogos.Datos
 Imports Microsoft.Reporting.WinForms
 
@@ -201,7 +201,7 @@ Public Class frmSivEntradaBodega
 
             strFiltro = "NumeroEntrada=" & Me.grdEntradaBodega.Columns("NumeroEntrada").Value.ToString
 
-            strCampos = "NumeroRelleno, NumeroEntrada, objTiendaID, Bodega, Proveedor, NumeroFactura, objTipoEntradaID, TipoEntrada, FechaEntrada, FechaFactura, Anulada, NumeroPoliza, CodigoRepuesto, CodigoProveedor, Descripcion, CantidadFactura, CantidadEntrante, CostoUnitario, SubTotal, Comentarios"
+            strCampos = "NumeroRelleno, NumeroEntrada, objStbBodegaID, Bodega, NumeroFactura, objTipoEntradaID, TipoEntrada, FechaEntrada, FechaFactura, Anulada, CodigoRepuesto, Descripcion, CantidadEntrante, CostoUnitario, SubTotal, Comentarios"
             strSQL = clsConsultas.ObtenerConsultaGeneral(strCampos, "dbo.vwrptSivEntradaBodega", strFiltro + " ORDER BY NumeroEntrada")
             dtDatos = SqlHelper.ExecuteQueryDT(strSQL)
 

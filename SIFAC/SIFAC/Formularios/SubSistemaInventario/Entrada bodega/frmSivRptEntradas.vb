@@ -6,8 +6,8 @@
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursor
-Imports SIFAC.BO.clsConsultas
-Imports SIFAC.BO
+Imports SCCUM.BO.clsConsultas
+Imports SCCUM.BO
 Imports Proyecto.Catalogos.Datos
 
 Public Class frmSivRptEntradas

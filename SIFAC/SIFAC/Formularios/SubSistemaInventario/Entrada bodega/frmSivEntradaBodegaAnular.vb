@@ -4,20 +4,20 @@
 ''-- Formulario de Anulación y Consultar de Entrada Bodega
 ''------------------------------------------------------------------------------------------------
 Imports DAL
-Imports SIFAC.BO
+Imports SCCUM.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
 Imports System.Data.SqlClient
 Imports Proyecto.Catalogos.Datos
 Imports System.Windows.Forms.VisualStyles
-Imports SIFAC.BO.clsConsultas
+Imports SCCUM.BO.clsConsultas
 Imports C1.Win.C1TrueDBGrid
 
 Public Class frmSivEntradaBodegaAnular
 
 #Region "Variables del formulario"
-    Dim intTipoAjusteSuma, intTipoAjusteResta, intTipoEntradaCompraLocal, intTipoAjuste, intTipoEntradaDevolucion, intTipoEntradaPreliquidacion, intTipoEntradaImportacion, intTipoEntradaCancelacionPreliquidacion As Integer
+    Dim intTipoEntradaCompraLocal, intTipoEntradaDevolucion, intTipoEntradaImportacion As Integer
     Dim dtDetalleEntradaBodega, dtSivBodegaRepuestos As DataTable
     Dim dsDetalleEntradaBodega As DataSet
     Dim boolModificado As Boolean
@@ -50,6 +50,9 @@ Public Class frmSivEntradaBodegaAnular
 #Region "Inicializar Pantalla"
 
 #Region "Inicializar GUI"
+
+    Private Property cmbProveedor As Object
+
     Private Sub InicializarGui()
         Dim objSivEntradaBodega As SivEntradaBodega
 
@@ -59,10 +62,7 @@ Public Class frmSivEntradaBodegaAnular
                 dtpFechaEntrada.Enabled = False
                 cmbBodega.Enabled = False
                 cmbTipoEntrada.Enabled = False
-                cmbProveedor.Enabled = False
-                cmbTipoAjuste.Enabled = False
                 txtNumeroFactura.Enabled = False
-                txtNumeroPoliza.Enabled = False
                 dtpFechaFactura.Enabled = False
                 txtComentarios.Enabled = False
                 'Me.grdDetalleEntradasBodegas.Enabled = False ' REVISAR ESTO
@@ -70,7 +70,6 @@ Public Class frmSivEntradaBodegaAnular
                 grdDetalleEntradasBodegas.Splits(0).DisplayColumns(2).Locked = True
                 grdDetalleEntradasBodegas.Splits(0).DisplayColumns(3).Locked = True
                 grdDetalleEntradasBodegas.Splits(0).DisplayColumns(4).Locked = True
-                grdDetalleEntradasBodegas.Splits(0).DisplayColumns(8).Locked = True
                 chkAnulado.Visible = False
                 txtComentariosAnular.Focus()
 
@@ -79,40 +78,27 @@ Public Class frmSivEntradaBodegaAnular
                 dtpFechaEntrada.Enabled = False
                 cmbBodega.Enabled = False
                 cmbTipoEntrada.Enabled = False
-                cmbProveedor.Enabled = False
-                cmbTipoAjuste.Enabled = False
                 txtNumeroFactura.Enabled = False
-                txtNumeroPoliza.Enabled = False
                 dtpFechaFactura.Enabled = False
                 txtComentarios.Enabled = False
                 txtComentariosAnular.Enabled = False
                 chkAnulado.Enabled = False
-                lblRecordatorio.Visible = False
                 'Me.grdDetalleEntradasBodegas.Enabled = False ' REVISAR ESTO
                 grdDetalleEntradasBodegas.Splits(0).DisplayColumns(1).Locked = True
                 grdDetalleEntradasBodegas.Splits(0).DisplayColumns(2).Locked = True
                 grdDetalleEntradasBodegas.Splits(0).DisplayColumns(3).Locked = True
                 grdDetalleEntradasBodegas.Splits(0).DisplayColumns(4).Locked = True
-                grdDetalleEntradasBodegas.Splits(0).DisplayColumns(8).Locked = True
                 Me.cmdGuardar.Enabled = False
         End Select
 
-
-        Me.intTipoAjusteSuma = ClsCatalogos.GetValorCatalogoID("TIPOAJUSTE", "01")
-        Me.intTipoAjusteResta = ClsCatalogos.GetValorCatalogoID("TIPOAJUSTE", "02")
         Me.intTipoEntradaImportacion = ClsCatalogos.GetValorCatalogoID("TIPOENTRADA", "01")
         Me.intTipoEntradaCompraLocal = ClsCatalogos.GetValorCatalogoID("TIPOENTRADA", "02")
-        Me.intTipoAjuste = ClsCatalogos.GetValorCatalogoID("TIPOENTRADA", "03")
         Me.intTipoEntradaDevolucion = ClsCatalogos.GetValorCatalogoID("TIPOENTRADA", "04") 'REVISAR ESTE
-        Me.intTipoEntradaPreliquidacion = ClsCatalogos.GetValorCatalogoID("TIPOENTRADA", "05")
-        Me.intTipoEntradaCancelacionPreliquidacion = ClsCatalogos.GetValorCatalogoID("TIPOENTRADA", "06")
-
 
         LongitudesMaximas()
         CargarBodegas()
         CargarTipoEntrada()
-        CargarProveedor()
-        CargarTipoAjuste()
+      
         Me.lblUsuario.Text = clsProyecto.Conexion.Usuario
 
         Select Case Me.TypeGui
@@ -151,9 +137,8 @@ Public Class frmSivEntradaBodegaAnular
 #Region "Longitudes Maximas"
 
     Private Sub LongitudesMaximas()
-        Me.txtNumeroFactura.MaxLength = SivEntradaBodega.GetMaxLength("NumeroFactura")
-        Me.txtNumeroPoliza.MaxLength = SivEntradaBodega.GetMaxLength("NumeroPoliza")
-        Me.txtComentarios.MaxLength = SivEntradaBodega.GetMaxLength("Comentarios")
+        Me.txtNumeroFactura.MaxLength = BO.SivEntradaBodega.GetMaxLength("NumeroFactura")
+        Me.txtComentarios.MaxLength = BO.SivEntradaBodega.GetMaxLength("Comentarios")
     End Sub
 
 #End Region
@@ -164,12 +149,12 @@ Public Class frmSivEntradaBodegaAnular
     Private Sub CargarBodegas()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = StbTienda.RetrieveDT("Codigo='C'", "Codigo", "StbTiendaID, Nombre")
+            dtDatos = StbBodegas.RetrieveDT("Codigo='C'", "Codigo", "StbBodegaID, Nombre")
             With Me.cmbBodega
                 .DataSource = dtDatos
                 .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+                .ValueMember = "StbBodegaID"
+                .Splits(0).DisplayColumns("StbBodegaID").Visible = False
                 .ExtendRightColumn = True
                 .SelectedIndex = 0
                 .ColumnHeaders = False
@@ -205,49 +190,8 @@ Public Class frmSivEntradaBodegaAnular
     End Sub
 #End Region
 
-#Region "Proveedor"
-    Private Sub CargarProveedor()
-        Dim dtDatos As New DataTable
-        Try
-            dtDatos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID,RazonSocial", "vwTipoProveedor", "1=1 ORDER BY RazonSocial"))
-            With Me.cmbProveedor
-                .DataSource = dtDatos
-                .DisplayMember = "RazonSocial"
-                .ValueMember = "SivProveedorID"
-                .Splits(0).DisplayColumns("SivProveedorID").Visible = False
-                .ExtendRightColumn = True
-                .ColumnHeaders = False
-            End With
 
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        Finally
-            dtDatos = Nothing
-        End Try
-    End Sub
 
-#End Region
-
-#Region "Tipo de Ajuste"
-    Private Sub CargarTipoAjuste()
-        Dim dtDatos As New DataTable
-        Try
-            dtDatos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "StbValorCatalogo", "objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='TIPOAJUSTE')"))
-            With Me.cmbTipoAjuste
-                .DataSource = dtDatos
-                .DisplayMember = "Descripcion"
-                .ValueMember = "StbValorCatalogoID"
-                .Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
-                .ExtendRightColumn = True
-                .ColumnHeaders = False
-            End With
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        Finally
-            dtDatos = Nothing
-        End Try
-    End Sub
-#End Region
 
 #End Region
 
@@ -259,7 +203,7 @@ Public Class frmSivEntradaBodegaAnular
 
     Private Sub CargarDetalleEntradaBodega()
         Try
-            dtDetalleEntradaBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objRepuestoID,CodigoRepuesto,objProveedorID,DescripcionCorta,CantidadFactura,CantidadEnPreli,CantidaEntrada,CantidadFalta,Costo,Total,objEntradaBodegaID,Cantidad,SiEntradaReal,objTipoEntradaID,SivEntradaBodegaID,SivEntradaBodegaDetID", "vwSivEntradaBodegaDetalle", "objEntradaBodegaID=" & SivEntradaBodegaID & " ORDER BY objRepuestoID,SivEntradaBodegaDetID"))
+            dtDetalleEntradaBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Producto,Cantidad,Costo,Total,SivEntradaBodegaID,SivEntradaBodegaDetID", "vwSivEntradaBodegaDetalle", "objEntradaBodegaID=" & SivEntradaBodegaID & " ORDER BY SivProductoID,SivEntradaBodegaDetID"))
             dsDetalleEntradaBodega = New DataSet
             dsDetalleEntradaBodega.Merge(dtDetalleEntradaBodega)
             dsDetalleEntradaBodega.Tables(0).TableName = "vwSivEntradaBodegaDetalle"
@@ -278,35 +222,14 @@ Public Class frmSivEntradaBodegaAnular
         Grid.FilterBar = False
         Grid.VisualStyle = VisualStyle.Office2007Black
         Grid.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightCell
-        Grid.Splits(0).DisplayColumns("Llave").Visible = False 'No mostrar los campos llave
         Grid.EmptyRows = False
 
         If (Tipo = "Maestro") Then
             Grid.AllowAddNew = False
             Grid.AllowDelete = False
 
-            Grid.Splits(0).DisplayColumns("Cant. Prel.").AllowFocus = False
-            Grid.Splits(0).DisplayColumns("Cant. Prel.").Style.BackColor = Color.LemonChiffon
-
-            Grid.Splits(0).DisplayColumns("Cant. Ent.").AllowFocus = False
-            Grid.Splits(0).DisplayColumns("Cant. Ent.").Style.BackColor = Color.LemonChiffon
-
-            Grid.Splits(0).DisplayColumns("Cant. Falta").AllowFocus = False
-            Grid.Splits(0).DisplayColumns("Cant. Falta").Style.BackColor = Color.LemonChiffon
-
-            ' Muestra la columna cantidad faltante en el caso que el tipo de entrada sea por preliquidación
-            If cmbTipoEntrada.SelectedValue = intTipoEntradaPreliquidacion Then
-                Grid.Splits(0).DisplayColumns("Cant. Falta").Visible = True
-            Else
-                Grid.Splits(0).DisplayColumns("Cant. Falta").Visible = False
-            End If
-
             Grid.Splits(0).DisplayColumns("Total").AllowFocus = False
             Grid.Splits(0).DisplayColumns("Total").Style.BackColor = Color.LemonChiffon
-
-            Grid.Splits(0).DisplayColumns("objTipoEntradaID").Visible = False
-            Grid.Splits(0).DisplayColumns("Cantidad").Visible = False
-            Grid.Splits(0).DisplayColumns("SiEntradaReal").Visible = False
 
             Grid.Splits(0).DisplayColumns("SivEntradaBodegaID").Visible = False
             Grid.Splits(0).DisplayColumns("SivEntradaBodegaDetID").Visible = False
@@ -321,13 +244,8 @@ Public Class frmSivEntradaBodegaAnular
 
 #Region "Entrada Datos"
     Private Function Validaciones() As Boolean
-        Dim strEntradaBodegaDetID, strTiendaID, strRepuestoID As String
-        Dim dtVerificaProdPrel, dtVerificaEntradaPreliquidacion As DataTable
-
+        Dim strBodegaID, strProductoID As String
         Try
-            strEntradaBodegaDetID = ""
-            strTiendaID = ""
-            strRepuestoID = ""
 
             If Me.txtComentariosAnular.Text.Trim = "" Then
                 Me.ErrorProvider.SetError(gbxDatosAnulacion, My.Resources.MsgObligatorio)
@@ -335,52 +253,18 @@ Public Class frmSivEntradaBodegaAnular
                 Exit Function
             End If
 
-            'Verifica si al menos uno de los productos de la entrada se encuentra en preliquidación
-            'y si al menos uno de los productos tienen artículos generados
-            If (cmbTipoEntrada.SelectedValue = intTipoEntradaCompraLocal) Or (cmbTipoEntrada.SelectedValue = intTipoEntradaImportacion) Or (cmbTipoEntrada.SelectedValue = intTipoEntradaCancelacionPreliquidacion) Then
-
-                For I As Integer = 0 To Me.grdDetalleEntradasBodegas.RowCount - 1
-                    strRepuestoID = strRepuestoID & "'" & Me.grdDetalleEntradasBodegas.Item(I)("objRepuestoID") & "',"
-                Next
-                strRepuestoID = "('0'," & strRepuestoID & "'0')"
-
-                dtVerificaProdPrel = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objRepuestoID", "vwEntBodProdPrel", " objRepuestoID IN " & strRepuestoID & " AND SivEntradaBodegaID=" & SivEntradaBodegaID))
-                If dtVerificaProdPrel.DefaultView.Count > 0 Then
-                    MsgBox("No se puede anular la Entrada porque existe al menos un producto en preliquidación", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-                    Return False
-                    Exit Function
-                End If
-            End If
-
-            'Verifica si existe al menos un detalle de la preliquidación en la tabla SivEntradaPreliquidacion
-            If (cmbTipoEntrada.SelectedValue = intTipoEntradaPreliquidacion) Then
-                strEntradaBodegaDetID = ""
-
-                For I As Integer = 0 To Me.grdDetalleEntradasBodegas.RowCount - 1
-                    strEntradaBodegaDetID = strEntradaBodegaDetID & Me.grdDetalleEntradasBodegas.Item(I)("SivEntradaBodegaDetID") & ","
-                Next
-                strEntradaBodegaDetID = "(0," & strEntradaBodegaDetID & "0)"
-
-                dtVerificaEntradaPreliquidacion = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objEntradaBodegaDetPreliID", "vwSivEntradaPreliquidacion", " SivEntradaBodegaDetID IN " & strEntradaBodegaDetID))
-                If dtVerificaEntradaPreliquidacion.DefaultView.Count > 0 Then
-                    MsgBox("No se puede anular por que se han realizados entradas reales", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-                    Return False
-                    Exit Function
-                End If
-            End If
-
-            strTiendaID = ""
-            strRepuestoID = ""
+            strBodegaID = ""
+            strProductoID = ""
 
             'Verifica si la existencia es menor que la cantidad a anular
             For I As Integer = 0 To Me.grdDetalleEntradasBodegas.RowCount - 1
-                strTiendaID = strTiendaID & Me.cmbBodega.SelectedValue & ","
-                strRepuestoID = strRepuestoID & "'" & Me.grdDetalleEntradasBodegas.Item(I)("objRepuestoID") & "',"
+                strBodegaID = strBodegaID & Me.cmbBodega.SelectedValue & ","
+                strProductoID = strProductoID & "'" & Me.grdDetalleEntradasBodegas.Item(I)("SivProductoID") & "',"
             Next
-            strTiendaID = "(0," & strTiendaID & "0)"
-            strRepuestoID = "('0'," & strRepuestoID & "'0')"
+            strBodegaID = "(0," & strBodegaID & "0)"
+            strProductoID = "('0'," & strProductoID & "'0')"
 
-            dtSivBodegaRepuestos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "SivBodegaRepuestos", " objTiendaID IN " & strTiendaID & " AND objRepuestoID IN " & strRepuestoID & " ORDER BY objRepuestoID"))
+            dtSivBodegaRepuestos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "SivBodegaProductos", " objBodegaID IN " & strBodegaID & " AND objProductoID IN " & strProductoID & " ORDER BY objProductoID"))
 
             For J As Integer = 0 To dtSivBodegaRepuestos.DefaultView.Count - 1
                 If dtSivBodegaRepuestos.DefaultView.Item(J)("Cantidad") < grdDetalleEntradasBodegas.Item(J)("Cantidad") Then
@@ -419,9 +303,10 @@ Public Class frmSivEntradaBodegaAnular
         Try
             Try
                 T.BeginTran()
-                Me.ActualizarEntradaBodega(T)
+                ActualizarEntradaBodega(T)
                 ActualizarSivBodegaRepuesto(T)
                 RecalcularCostoPromedio(T)
+                ActualizarCantidadCostosEntrada(T)
                 boolModificado = False
                 T.CommitTran()
                 MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
@@ -451,37 +336,23 @@ Public Class frmSivEntradaBodegaAnular
         End Try
     End Sub
 
+
     Private Sub ActualizarSivBodegaRepuesto(ByVal T As DAL.TransactionManager)
-        Dim objSivBodegaRepuestos As SivBodegaRepuestos
+        Dim objSivBodegaProductos As SivBodegaProductos
         Dim objSivRepuestos As SivRepuestos
 
         Try
-            objSivBodegaRepuestos = New SivBodegaRepuestos
+            objSivBodegaProductos = New SivBodegaProductos
             objSivRepuestos = New SivRepuestos
 
             If dtSivBodegaRepuestos.DefaultView.Count > 0 Then
                 For I As Integer = 0 To Me.grdDetalleEntradasBodegas.RowCount - 1
                     'Filtrar el repuesto a modificar de Bodega Repuesto
-                    If objSivBodegaRepuestos.RetrieveByFilter("objRepuestoID='" & Me.grdDetalleEntradasBodegas.Item(I)("objRepuestoID") & "' AND objTiendaID = " & Me.cmbBodega.SelectedValue, T) Then
-
-                        'En caso  de que el tipo de entrada sea ajuste
-                        If Me.cmbTipoEntrada.SelectedValue = intTipoAjuste Then
-                            'En caso de que el tipo de ajuste sea Suma
-                            If Me.cmbTipoAjuste.SelectedValue = intTipoAjusteSuma Then
-                                objSivBodegaRepuestos.Cantidad = objSivBodegaRepuestos.Cantidad - Me.grdDetalleEntradasBodegas.Item(I)("Cantidad")
-                                objSivBodegaRepuestos.Update(T)
-                            End If
-                        Else
-                            objSivBodegaRepuestos.Cantidad = objSivBodegaRepuestos.Cantidad - Me.grdDetalleEntradasBodegas.Item(I)("Cantidad")
-                        End If
-                        'Filtrar el repuesto para modificar su costoPromedio
-                        'objSivRepuestos.RetrieveByFilter("SivRepuestoID=" & Me.grdDetalleEntradasBodegas.Item(I)("objRepuestoID"), T)
-                        'objSivRepuestos.CostoProm = (objSivRepuestos.CostoProm) - (Me.grdDetalleEntradasBodegas.Item(I)("Costo") - (objSivRepuestos.CostoProm))
-                        'objSivRepuestos.Update(T)
-
-                        objSivBodegaRepuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                        objSivBodegaRepuestos.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                        objSivBodegaRepuestos.Update(T)
+                    If objSivBodegaProductos.RetrieveByFilter("objProductoID='" & Me.grdDetalleEntradasBodegas.Item(I)("SivProductoID") & "' AND objBodegaID = " & Me.cmbBodega.SelectedValue, T) Then
+                        objSivBodegaProductos.Cantidad = objSivBodegaProductos.Cantidad - Me.grdDetalleEntradasBodegas.Item(I)("Cantidad")
+                        objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                        objSivBodegaProductos.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                        objSivBodegaProductos.Update(T)
                     End If
                 Next
             End If
@@ -494,16 +365,16 @@ Public Class frmSivEntradaBodegaAnular
     Private Sub RecalcularCostoPromedio(ByVal T As DAL.TransactionManager)
         Dim dtDatosEntradaDetalle As DataTable
         Dim dbCostoPromedioDolares As Double
-        Dim objSivRepuesto As SivRepuestos
+        Dim objSivProductos As SivProductos
 
         Try
-            objSivRepuesto = New SivRepuestos
+            objSivProductos = New SivProductos
             If (cmbTipoEntrada.SelectedValue = intTipoEntradaCompraLocal) Or (cmbTipoEntrada.SelectedValue = intTipoEntradaImportacion) Then
 
                 For Each row As DataRow In Me.dtDetalleEntradaBodega.Rows
                     dbCostoPromedioDolares = 0
 
-                    dtDatosEntradaDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEntradaBodegaDetID,Costo", "vwSivDatosRecalcularCostoPromedio", "objRepuestoID='" & row("objRepuestoID") & "' ORDER BY SivEntradaBodegaDetID"), T)
+                    dtDatosEntradaDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEntradaBodegaDetID,Costo", "vwSivDatosRecalcularCostoPromedio", "objProductoID='" & row("SivProductoID") & "' ORDER BY SivEntradaBodegaDetID"), T)
 
                     For Each filaEntradaDetalle As DataRow In dtDatosEntradaDetalle.Rows
                         If dbCostoPromedioDolares = 0 Then
@@ -514,12 +385,31 @@ Public Class frmSivEntradaBodegaAnular
                     Next
 
                     'Filtrar el repuesto para modificar su Precio
-                    objSivRepuesto.RetrieveByFilter("SivRepuestoID='" & row("objRepuestoID") & "'")
-                    objSivRepuesto.CostoProm = dbCostoPromedioDolares
-                    objSivRepuesto.Update(T)
+                    objSivProductos.RetrieveByFilter("SivProductoID='" & row("SivProductoID") & "'")
+                    objSivProductos.CostoPromedio = dbCostoPromedioDolares
+                    objSivProductos.Update(T)
                 Next
 
             End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub ActualizarCantidadCostosEntrada(ByVal T As DAL.TransactionManager)
+        Dim objSivEntradaBodegaDetalle As SivEntradaBodegaDetalle
+        Try
+            objSivEntradaBodegaDetalle = New SivEntradaBodegaDetalle
+
+            For I As Integer = 0 To Me.grdDetalleEntradasBodegas.RowCount - 1
+                'Filtrar el los detalle de entrada a modificar
+                objSivEntradaBodegaDetalle.SivEntradaBodegaDetID = Me.grdDetalleEntradasBodegas.Item(I)("SivEntradaBodegaDetID")
+                objSivEntradaBodegaDetalle.Retrieve(objSivEntradaBodegaDetalle.SivEntradaBodegaDetID, T)
+                objSivEntradaBodegaDetalle.Cantidad = 0
+                objSivEntradaBodegaDetalle.Costo = 0
+                objSivEntradaBodegaDetalle.Update(T)
+            Next
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -540,11 +430,6 @@ Public Class frmSivEntradaBodegaAnular
 
         Select Case Me.TypeGui
             Case 1
-                If Me.cmbTipoEntrada.SelectedValue = intTipoEntradaPreliquidacion Then
-                    Me.lblRecordatorio.Visible = True
-                Else
-                    Me.lblRecordatorio.Visible = False
-                End If
                 txtComentariosAnular.Text = ""
         End Select
 
