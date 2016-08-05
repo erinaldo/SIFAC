@@ -36,7 +36,7 @@ Public Class frmSivBuscarSalida
 
         If Me.cmbBodega.Text <> "NO APLICA" Then
             If Me.cmbBodega.Text.Trim.Length <> 0 Then
-                mFiltro = mFiltro & " AND objTiendaID = " & Me.cmbBodega.SelectedValue
+                mFiltro = mFiltro & " AND objStbBodegaID = " & Me.cmbBodega.SelectedValue
             End If
         End If
 
@@ -73,12 +73,12 @@ Public Class frmSivBuscarSalida
     Private Sub CargarBodega()
         dtBodega = New DataTable
         Try
-            dtBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbTiendaID, Codigo, Nombre ", "StbTienda", "Activo = 1 AND ActivoRepuesto=1 order by Nombre"))
+            dtBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbBodegaID, Codigo, Nombre ", "StbBodegas", "Activo = 1 order by Nombre"))
 
             Me.cmbBodega.DataSource = dtBodega
             Me.cmbBodega.DisplayMember = "Nombre"
-            Me.cmbBodega.ValueMember = "StbTiendaID"
-            Me.cmbBodega.Splits(0).DisplayColumns("StbTiendaID").Visible = False
+            Me.cmbBodega.ValueMember = "StbBodegaID"
+            Me.cmbBodega.Splits(0).DisplayColumns("StbBodegaID").Visible = False
             Me.cmbBodega.Splits(0).DisplayColumns("Codigo").Width = 40
             Me.cmbBodega.ExtendRightColumn = True
             Me.cmbBodega.SelectedIndex = 0

@@ -196,9 +196,9 @@ Public Class ClsCatalogos
     Public Shared Function GetStbTiendaID(ByVal sCodigoTienda As String) As Integer
         Dim sSQL As String
         Dim iResultado As Integer
-        sSQL = SIFAC.BO.clsConsultas.ObtenerConsultaGeneral("StbTiendaID", "dbo.StbTienda", "Codigo='" + sCodigoTienda + "'")
+        sSQL = SIFAC.BO.clsConsultas.ObtenerConsultaGeneral("StbBodegaID", "dbo.StbBodegas", "Codigo='" + sCodigoTienda + "'")
         Try
-            iResultado = DAL.SqlHelper.ExecuteQueryDT(sSQL).DefaultView.Item(0)("StbTiendaID")
+            iResultado = DAL.SqlHelper.ExecuteQueryDT(sSQL).DefaultView.Item(0)("StbBodegaID")
         Catch ex As Exception
             iResultado = 0
         End Try

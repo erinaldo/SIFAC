@@ -22,7 +22,6 @@ Partial Public Class rptSalidaBodega
         Me.PageHeader1 = New DataDynamics.ActiveReports.PageHeader
         Me.Detail1 = New DataDynamics.ActiveReports.Detail
         Me.txtCodigoRepuesto1 = New DataDynamics.ActiveReports.TextBox
-        Me.txtobjProveedorID1 = New DataDynamics.ActiveReports.TextBox
         Me.txtDescripcionCorta1 = New DataDynamics.ActiveReports.TextBox
         Me.txtCantidad1 = New DataDynamics.ActiveReports.TextBox
         Me.txtcosto1 = New DataDynamics.ActiveReports.TextBox
@@ -61,7 +60,6 @@ Partial Public Class rptSalidaBodega
         Me.Label12 = New DataDynamics.ActiveReports.Label
         Me.RichTextBox1 = New DataDynamics.ActiveReports.RichTextBox
         CType(Me.txtCodigoRepuesto1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtobjProveedorID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDescripcionCorta1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCantidad1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtcosto1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,7 +97,7 @@ Partial Public Class rptSalidaBodega
         'Detail1
         '
         Me.Detail1.ColumnSpacing = 0.0!
-        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.txtCodigoRepuesto1, Me.txtobjProveedorID1, Me.txtDescripcionCorta1, Me.txtCantidad1, Me.txtcosto1, Me.txtsubtotal1})
+        Me.Detail1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.txtCodigoRepuesto1, Me.txtDescripcionCorta1, Me.txtCantidad1, Me.txtcosto1, Me.txtsubtotal1})
         Me.Detail1.Height = 0.2291667!
         Me.Detail1.Name = "Detail1"
         '
@@ -113,7 +111,7 @@ Partial Public Class rptSalidaBodega
         Me.txtCodigoRepuesto1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.txtCodigoRepuesto1.Border.TopColor = System.Drawing.Color.Black
         Me.txtCodigoRepuesto1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtCodigoRepuesto1.DataField = "CodigoRepuesto"
+        Me.txtCodigoRepuesto1.DataField = "Codigo"
         Me.txtCodigoRepuesto1.Height = 0.1875!
         Me.txtCodigoRepuesto1.Left = 0.3645833!
         Me.txtCodigoRepuesto1.Name = "txtCodigoRepuesto1"
@@ -124,23 +122,7 @@ Partial Public Class rptSalidaBodega
         '
         'txtobjProveedorID1
         '
-        Me.txtobjProveedorID1.Border.BottomColor = System.Drawing.Color.Black
-        Me.txtobjProveedorID1.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtobjProveedorID1.Border.LeftColor = System.Drawing.Color.Black
-        Me.txtobjProveedorID1.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtobjProveedorID1.Border.RightColor = System.Drawing.Color.Black
-        Me.txtobjProveedorID1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtobjProveedorID1.Border.TopColor = System.Drawing.Color.Black
-        Me.txtobjProveedorID1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtobjProveedorID1.DataField = "objProveedorID"
-        Me.txtobjProveedorID1.Height = 0.1875!
-        Me.txtobjProveedorID1.Left = 1.177083!
-        Me.txtobjProveedorID1.Name = "txtobjProveedorID1"
-        Me.txtobjProveedorID1.Style = "text-align: center; "
-        Me.txtobjProveedorID1.Text = "txtobjProveedorID1"
-        Me.txtobjProveedorID1.Top = 0.0!
-        Me.txtobjProveedorID1.Width = 1.125!
-        '
+       
         'txtDescripcionCorta1
         '
         Me.txtDescripcionCorta1.Border.BottomColor = System.Drawing.Color.Black
@@ -151,7 +133,7 @@ Partial Public Class rptSalidaBodega
         Me.txtDescripcionCorta1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.txtDescripcionCorta1.Border.TopColor = System.Drawing.Color.Black
         Me.txtDescripcionCorta1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtDescripcionCorta1.DataField = "DescripcionCorta"
+        Me.txtDescripcionCorta1.DataField = "Producto"
         Me.txtDescripcionCorta1.Height = 0.1875!
         Me.txtDescripcionCorta1.Left = 2.364583!
         Me.txtDescripcionCorta1.Name = "txtDescripcionCorta1"
@@ -437,22 +419,7 @@ Partial Public Class rptSalidaBodega
         '
         'Label2
         '
-        Me.Label2.Border.BottomColor = System.Drawing.Color.Black
-        Me.Label2.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.Label2.Border.LeftColor = System.Drawing.Color.Black
-        Me.Label2.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.Label2.Border.RightColor = System.Drawing.Color.Black
-        Me.Label2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.Label2.Border.TopColor = System.Drawing.Color.Black
-        Me.Label2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.Label2.Height = 0.1875!
-        Me.Label2.HyperLink = Nothing
-        Me.Label2.Left = 1.15625!
-        Me.Label2.Name = "Label2"
-        Me.Label2.Style = "color: Black; ddo-char-set: 0; font-weight: bold; font-size: 8pt; "
-        Me.Label2.Text = "Códigos Proveedores"
-        Me.Label2.Top = 0.8541667!
-        Me.Label2.Width = 1.25!
+        
         '
         'Label3
         '
@@ -814,7 +781,6 @@ Partial Public Class rptSalidaBodega
                     "lic; ", "Heading2", "Normal"))
         Me.StyleSheet.Add(New DDCssLib.StyleSheetRule("font-size: 13pt; font-weight: bold; ", "Heading3", "Normal"))
         CType(Me.txtCodigoRepuesto1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtobjProveedorID1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDescripcionCorta1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCantidad1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtcosto1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -868,7 +834,6 @@ Partial Public Class rptSalidaBodega
     Friend WithEvents txtFechaSalida1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents txtSivSalidaBodegaID1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents txtBodega1 As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents txtobjProveedorID1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents txtDescripcionCorta1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents txtCantidad1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents txtcosto1 As DataDynamics.ActiveReports.TextBox
