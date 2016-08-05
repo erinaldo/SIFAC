@@ -1,0 +1,135 @@
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+C:\Desarrollo_Net\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\Desarrollo_Net\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\Desarrollo_Net\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\Desarrollo_Net\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+C:\Desarrollo_Net\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\Desarrollo_Net\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\Desarrollo_Net\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\Desarrollo_Net\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\Desarrollo_Net\FUENTE_SEGURIDAD_ConEmpleados\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\bin\Debug\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\bin\Debug\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\bin\Debug\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Debug\Seguridad.Datos.Resources.resources
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Debug\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Debug\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Debug\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Debug\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO_RAD\Seguridad.Datos\bin\Debug\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO_RAD\Seguridad.Datos\bin\Debug\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO_RAD\Seguridad.Datos\bin\Debug\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO_RAD\Seguridad.Datos\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO_RAD\Seguridad.Datos\obj\Debug\Seguridad.Datos.Resources.resources
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO_RAD\Seguridad.Datos\obj\Debug\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO_RAD\Seguridad.Datos\obj\Debug\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO_RAD\Seguridad.Datos\obj\Debug\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\My Documents\Visual Studio 2005\Projects\PROYECTO_RAD\Seguridad.Datos\obj\Debug\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD\FUENTE\Seguridad.Datos\bin\Debug\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD\FUENTE\Seguridad.Datos\bin\Debug\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD\FUENTE\Seguridad.Datos\bin\Debug\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD\FUENTE\Seguridad.Datos\obj\Debug\ResolveAssemblyReference.cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.Resources.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD2\FUENTE\Seguridad.Datos\bin\Debug\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD2\FUENTE\Seguridad.Datos\bin\Debug\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD2\FUENTE\Seguridad.Datos\bin\Debug\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD2\FUENTE\Seguridad.Datos\obj\Debug\ResolveAssemblyReference.cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.Resources.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\bin\Debug\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\bin\Debug\Seguridad.Datos.pdb
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\bin\Debug\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Debug\ResolveAssemblyReference.cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.Resources.resources
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.dll
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.xml
+C:\ARCHIVOS_JUAN CARLOS\PROYECTOS_EN_DESARROLLO\_RAD2\FUENTE\Seguridad.Datos\obj\Debug\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\Desktop\_RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\Desktop\_RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\Desktop\_RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\Desktop\_RAD2\FUENTE\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\JHerrera\Desktop\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\Documents and Settings\JHerrera\Desktop\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\Documents and Settings\JHerrera\Desktop\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\Desktop\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\Desktop\_RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\Desktop\RAD\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\Desktop\RAD\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\Desktop\RAD\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\Desktop\RAD\FUENTE\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\JHerrera\Desktop\RAD\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\Documents and Settings\JHerrera\Desktop\RAD\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\Documents and Settings\JHerrera\Desktop\RAD\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\Desktop\RAD\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\Desktop\RAD\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\Desktop\RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\Desktop\RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\Documents and Settings\JHerrera\Desktop\RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\Desktop\RAD2\FUENTE\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\JHerrera\Desktop\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\Documents and Settings\JHerrera\Desktop\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\Documents and Settings\JHerrera\Desktop\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\Documents and Settings\JHerrera\Desktop\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\Documents and Settings\JHerrera\Desktop\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+C:\Users\Milagros Ruiz\Desktop\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\Users\Milagros Ruiz\Desktop\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\Users\Milagros Ruiz\Desktop\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\Users\Milagros Ruiz\Desktop\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Milagros Ruiz\Desktop\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\Users\Milagros Ruiz\Desktop\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\Users\Milagros Ruiz\Desktop\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\Users\Milagros Ruiz\Desktop\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\Users\Milagros Ruiz\Desktop\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+D:\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+D:\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+D:\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+D:\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\ResolveAssemblyReference.cache
+D:\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+D:\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+D:\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+D:\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+D:\RAD2\RAD2\RAD2\FUENTE\Seguridad.Datos\obj\Release\Seguridad.Datos.pdb

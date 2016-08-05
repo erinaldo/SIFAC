@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7A293FDD-5637-4BDF-9A92-A6B37DB742EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Seguridad.Formularios</RootNamespace>
+    <AssemblyName>Seguridad.Formularios</AssemblyName>
+    <MyType>Windows</MyType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Seguridad.Formularios.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Seguridad.Formularios.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.Win.C1Input.2, Version=2.0.20072.33009, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SolucionSeguridad\Seguridad\prjSeguridad\bin\Debug\C1.Win.C1Input.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1List.2, Version=2.1.20072.123, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SolucionSeguridad\Seguridad\prjSeguridad\bin\Debug\C1.Win.C1List.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1Ribbon.2, Version=2.0.20072.46, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20072.18, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SolucionSeguridad\Seguridad\prjSeguridad\bin\Debug\C1.Win.C1Sizer.2.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20072.61122, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SolucionSeguridad\Seguridad\prjSeguridad\bin\Debug\C1.Win.C1TrueDBGrid.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Desarrollo\Librerias\DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="GUI, Version=1.0.2839.20397, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cAppConfig.vb" />
+    <Compile Include="FrmConfig.Designer.vb">
+      <DependentUpon>FrmConfig.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConfig.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSsgEditAccion.designer.vb">
+      <DependentUpon>frmSsgEditAccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSsgEditAccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSsgEditAplicacion.designer.vb">
+      <DependentUpon>frmSsgEditAplicacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSsgEditAplicacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSsgEditCuenta.designer.vb">
+      <DependentUpon>frmSsgEditCuenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSsgEditCuenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSsgEditModulo.designer.vb">
+      <DependentUpon>frmSsgEditModulo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSsgEditModulo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSsgEditRol.Designer.vb">
+      <DependentUpon>frmSsgEditRol.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSsgEditRol.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSsgEditServUsuarios.designer.vb">
+      <DependentUpon>frmSsgEditServUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSsgEditServUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSsgPrincipalSeguridad.Designer.vb">
+      <DependentUpon>frmSsgPrincipalSeguridad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSsgPrincipalSeguridad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.vb">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmConfig.resx">
+      <DependentUpon>FrmConfig.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSsgEditAccion.resx">
+      <DependentUpon>frmSsgEditAccion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSsgEditAplicacion.resx">
+      <DependentUpon>frmSsgEditAplicacion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSsgEditCuenta.resx">
+      <DependentUpon>frmSsgEditCuenta.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSsgEditModulo.resx">
+      <DependentUpon>frmSsgEditModulo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSsgEditRol.resx">
+      <DependentUpon>frmSsgEditRol.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSsgEditServUsuarios.resx">
+      <DependentUpon>frmSsgEditServUsuarios.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSsgPrincipalSeguridad.resx">
+      <DependentUpon>frmSsgPrincipalSeguridad.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackgroundImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Proyecto.BO\Proyecto.BO.vbproj">
+      <Project>{C9CC746B-0B3A-4F47-8638-772BC3AA75BD}</Project>
+      <Name>Proyecto.BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Proyecto.Configuracion\Proyecto.Configuracion.vbproj">
+      <Project>{56A5F0B6-2FAB-419E-AAF1-C98724860924}</Project>
+      <Name>Proyecto.Configuracion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seguridad.Datos\Seguridad.Datos.vbproj">
+      <Project>{1D3E4A0C-F671-4890-9A17-F6B64951CCA2}</Project>
+      <Name>Seguridad.Datos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

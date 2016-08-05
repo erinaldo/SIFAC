@@ -11,6 +11,10 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Catalogos.Datos", "SIFAC.Ca
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Catalogos.Formularios", "SIFAC.Catalogos.Formularios\Catalogos.Formularios.vbproj", "{CAC48429-C201-4E7B-9864-D76B30ED6382}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Seguridad.Datos", "SIFAC.Seguridad.Datos\Seguridad.Datos.vbproj", "{1D3E4A0C-F671-4890-9A17-F6B64951CCA2}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Seguridad.Formularios", "SIFAC.Seguridad.Formularios\Seguridad.Formularios.vbproj", "{7A293FDD-5637-4BDF-9A92-A6B37DB742EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{CAC48429-C201-4E7B-9864-D76B30ED6382}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAC48429-C201-4E7B-9864-D76B30ED6382}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAC48429-C201-4E7B-9864-D76B30ED6382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D3E4A0C-F671-4890-9A17-F6B64951CCA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D3E4A0C-F671-4890-9A17-F6B64951CCA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D3E4A0C-F671-4890-9A17-F6B64951CCA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D3E4A0C-F671-4890-9A17-F6B64951CCA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A293FDD-5637-4BDF-9A92-A6B37DB742EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A293FDD-5637-4BDF-9A92-A6B37DB742EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A293FDD-5637-4BDF-9A92-A6B37DB742EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A293FDD-5637-4BDF-9A92-A6B37DB742EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

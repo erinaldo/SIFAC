@@ -86,14 +86,6 @@ Public Class frmPrincipal
             Me.lblUsuario.Text = " Usuario : " & clsProyecto.Conexion.Usuario
             Me.lblFecha.Text = " Fecha : " + clsProyecto.Conexion.FechaServidor.ToShortDateString()
             Me.lblHora.Text = " Hora : " + clsProyecto.Conexion.FechaServidor.ToShortTimeString
-            Dim sSucursal As String = Proyecto.Catalogos.Datos.ClsCatalogos.GetStbTiendaNombre(clsProyecto.Sucursal)
-            If String.IsNullOrEmpty(sSucursal) Then
-                Me.lblSucursal.Text = " Sucursal : No Configurada"
-            Else
-                Me.lblSucursal.Text = " Sucursal : " + sSucursal
-                glbObjTiendaSessionId = Proyecto.Catalogos.Datos.ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
-                glbObjTiendaCentralID = Proyecto.Catalogos.Datos.ClsCatalogos.GetStbTiendaID("C")
-            End If
 
             Me.tmrPrincipal.Start()
         Catch ex As Exception

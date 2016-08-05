@@ -885,6 +885,30 @@ Represents the connection and commands used to retrieve and save data.
  Fecha 20 de Mayo de 2010, 11:20 am.
  </summary>
 	<remarks></remarks>
+</member><member name="M:SIFAC.rptInventarioReporte.CrearEtiquetas(DataDynamics.ActiveReports.Section@,System.String@,System.Drawing.Font@,System.Drawing.PointF@,System.Single,System.Single@)">
+	<summary>
+ Procedimiento que crea una etiqueta formateada para encabezado de columnas 
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 02:41 pm.
+ <param name="rptSeccion">Sección del reporte en la que se creará la etiqueta</param>
+		<param name="Titulo">Título o captión</param>
+		<param name="objFuente">Tipo de fuente de letra</param>
+		<param name="objPunto">Punto del reporte donde se dibujará</param>
+	</summary>
+</member><member name="M:SIFAC.rptInventarioReporte.CrearCamposTextoDetalle(DataDynamics.ActiveReports.Section@)">
+	<summary>
+ Procedimiento que crea un textbox para datos de detalle 
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 02:41 pm.
+ <param name="rptSeccion">Sección del reporte en la que se creará el textbox</param>
+	</summary>
+</member><member name="M:SIFAC.rptInventarioReporte.ColumnasMostrarDetalle">
+	<summary>
+ Procedimiento encargado de seleccionar solamente aquellas columnas que serán dibujadas en el Detalle
+ Autor : Gelmin Martinez
+ Fecha 15 de Junio de 2010, 09:16 am.
+ <return>Devuelve un arreglo de objetos de tipo DataColumn</return>
+	</summary>
 </member><member name="T:SIFAC.dtDatosRptUtilidades.vwRptUtilidadesDataTable">
 	<summary>
 Represents the strongly named DataTable class.
@@ -1281,30 +1305,6 @@ Represents the connection and commands used to retrieve and save data.
  Fecha 20 de Mayo de 2010, 11:20 am.
  </summary>
 	<remarks></remarks>
-</member><member name="M:SIFAC.rptInventarioReporte.CrearEtiquetas(DataDynamics.ActiveReports.Section@,System.String@,System.Drawing.Font@,System.Drawing.PointF@,System.Single,System.Single@)">
-	<summary>
- Procedimiento que crea una etiqueta formateada para encabezado de columnas 
- Autor : Gelmin Martinez
- Fecha 14 de Junio de 2010, 02:41 pm.
- <param name="rptSeccion">Sección del reporte en la que se creará la etiqueta</param>
-		<param name="Titulo">Título o captión</param>
-		<param name="objFuente">Tipo de fuente de letra</param>
-		<param name="objPunto">Punto del reporte donde se dibujará</param>
-	</summary>
-</member><member name="M:SIFAC.rptInventarioReporte.CrearCamposTextoDetalle(DataDynamics.ActiveReports.Section@)">
-	<summary>
- Procedimiento que crea un textbox para datos de detalle 
- Autor : Gelmin Martinez
- Fecha 14 de Junio de 2010, 02:41 pm.
- <param name="rptSeccion">Sección del reporte en la que se creará el textbox</param>
-	</summary>
-</member><member name="M:SIFAC.rptInventarioReporte.ColumnasMostrarDetalle">
-	<summary>
- Procedimiento encargado de seleccionar solamente aquellas columnas que serán dibujadas en el Detalle
- Autor : Gelmin Martinez
- Fecha 15 de Junio de 2010, 09:16 am.
- <return>Devuelve un arreglo de objetos de tipo DataColumn</return>
-	</summary>
 </member><member name="T:SIFAC.DtDetalleMinuta.vwRptMinutaDetalleDataTable">
 	<summary>
 Represents the strongly named DataTable class.
@@ -1494,30 +1494,6 @@ Represents the connection and commands used to retrieve and save data.
  Fecha 20 de Mayo de 2010, 11:20 am.
  </summary>
 	<remarks></remarks>
-</member><member name="M:SIFAC.rptInventarioReporteBodegas.CrearEtiquetas(DataDynamics.ActiveReports.Section@,System.String@,System.Drawing.Font@,System.Drawing.PointF@,System.Single,System.Single@)">
-	<summary>
- Procedimiento que crea una etiqueta formateada para encabezado de columnas 
- Autor : Gelmin Martinez
- Fecha 14 de Junio de 2010, 02:41 pm.
- <param name="rptSeccion">Sección del reporte en la que se creará la etiqueta</param>
-		<param name="Titulo">Título o captión</param>
-		<param name="objFuente">Tipo de fuente de letra</param>
-		<param name="objPunto">Punto del reporte donde se dibujará</param>
-	</summary>
-</member><member name="M:SIFAC.rptInventarioReporteBodegas.CrearCamposTextoDetalle(DataDynamics.ActiveReports.Section@)">
-	<summary>
- Procedimiento que crea un textbox para datos de detalle 
- Autor : Gelmin Martinez
- Fecha 14 de Junio de 2010, 02:41 pm.
- <param name="rptSeccion">Sección del reporte en la que se creará el textbox</param>
-	</summary>
-</member><member name="M:SIFAC.rptInventarioReporteBodegas.ColumnasMostrarDetalle">
-	<summary>
- Procedimiento encargado de seleccionar solamente aquellas columnas que serán dibujadas en el Detalle
- Autor : Gelmin Martinez
- Fecha 15 de Junio de 2010, 09:16 am.
- <return>Devuelve un arreglo de objetos de tipo DataColumn</return>
-	</summary>
 </member><member name="M:SIFAC.Modulo.ObtenerMaxValor(System.Object@)">
 	<summary>
   Obtine el valor máximo permito según el tipo de dato(Byte,Int16,Int32,int64,Decimal,Double)
@@ -2015,6 +1991,30 @@ Represents a strongly typed in-memory cache of data.
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
+</member><member name="M:SIFAC.rptInventarioReporteBodegas.CrearEtiquetas(DataDynamics.ActiveReports.Section@,System.String@,System.Drawing.Font@,System.Drawing.PointF@,System.Single,System.Single@)">
+	<summary>
+ Procedimiento que crea una etiqueta formateada para encabezado de columnas 
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 02:41 pm.
+ <param name="rptSeccion">Sección del reporte en la que se creará la etiqueta</param>
+		<param name="Titulo">Título o captión</param>
+		<param name="objFuente">Tipo de fuente de letra</param>
+		<param name="objPunto">Punto del reporte donde se dibujará</param>
+	</summary>
+</member><member name="M:SIFAC.rptInventarioReporteBodegas.CrearCamposTextoDetalle(DataDynamics.ActiveReports.Section@)">
+	<summary>
+ Procedimiento que crea un textbox para datos de detalle 
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 02:41 pm.
+ <param name="rptSeccion">Sección del reporte en la que se creará el textbox</param>
+	</summary>
+</member><member name="M:SIFAC.rptInventarioReporteBodegas.ColumnasMostrarDetalle">
+	<summary>
+ Procedimiento encargado de seleccionar solamente aquellas columnas que serán dibujadas en el Detalle
+ Autor : Gelmin Martinez
+ Fecha 15 de Junio de 2010, 09:16 am.
+ <return>Devuelve un arreglo de objetos de tipo DataColumn</return>
+	</summary>
 </member><member name="M:SIFAC.frmStbVisor.CargarTiendas(C1.Win.C1List.C1Combo)">
 	<summary>
  Procedimiento Encargado de Cargar las Tiendas 

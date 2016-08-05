@@ -168,7 +168,6 @@ C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Proyecto.C
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Seguridad.Datos.dll
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Seguridad.Formularios.dll
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\SIFAC.BO.dll
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Proyecto.BO.dll
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\SIFAC.BO.pdb
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Proyecto.Catalogos.Datos.pdb
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Proyecto.Catalogos.Datos.xml
@@ -318,3 +317,11 @@ C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\obj\Release\SIFAC.exe
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\obj\Release\SIFAC.xml
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\obj\Release\SIFAC.pdb
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\obj\Release\SIFAC.frmMarcasEdit.resources
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\obj\Release\SIFAC.frmStbBodegas.resources
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\obj\Release\SIFAC.frmBodegasEditar.resources
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\obj\Release\SIFAC.frmSivCategorias.resources
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\obj\Release\SIFAC.frmSivCategoriasEditar.resources
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Seguridad.Datos.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Seguridad.Datos.xml
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Seguridad.Formularios.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC\bin\Release\Seguridad.Formularios.xml

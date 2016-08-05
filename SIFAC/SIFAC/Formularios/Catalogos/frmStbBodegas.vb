@@ -29,7 +29,7 @@ Public Class frmStbBodegas
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
 
-        objseg.ServicioUsuario = "FRMSTBMARCA"
+        objseg.ServicioUsuario = "FRMSTBBODEGAS"
         objSeg.Usuario = clsProyecto.Conexion.Usuario
         boolAgregar = objseg.TienePermiso("AgregarBodega")
         boolConsultar = objseg.TienePermiso("ConsultarBodega")
@@ -99,7 +99,6 @@ Public Class frmStbBodegas
             editMarcas.TypeGui = 0
             If editMarcas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
-                'Me.grdMarcasTabla.SelectRow = Me.dtMarcas.DefaultView.Find(editMarcas.intMarcaID)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)

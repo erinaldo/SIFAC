@@ -69,6 +69,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="radTecnico_CF.vb" />
     <Compile Include="SccCuentaFiador_CF.vb" />
     <Compile Include="SccCuentaPorCobrarDetalle_CF.vb" />
     <Compile Include="SccCuentaPorCobrar_CF.vb" />
@@ -91,6 +92,7 @@
     <Compile Include="SfaPromocionDetalle_CF.vb" />
     <Compile Include="SfaPromocionDetTienda_CF.vb" />
     <Compile Include="SfaPromocion_CF.vb" />
+    <Compile Include="SivBodegaProductos.vb" />
     <Compile Include="SivBodegaRepuestos_CF.vb" />
     <Compile Include="SivCategorias.vb" />
     <Compile Include="SivEntradaBodega.vb" />

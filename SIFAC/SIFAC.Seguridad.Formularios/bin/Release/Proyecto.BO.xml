@@ -1,0 +1,299 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Proyecto.BO
+</name>
+</assembly>
+<members>
+<member name="M:Proyecto.BO.radOrdenTrabajo.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla radOrdenTrabajo en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla radOrdenTrabajo </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto radOrdenTrabajo
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto radOrdenTrabajo usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radOrdenTrabajo en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radOrdenTrabajo en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radOrdenTrabajo en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase radOrdenTrabajo.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto radOrdenTrabajo en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto radOrdenTrabajo de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto radOrdenTrabajo de la base de datos
+ </summary>
+</member><member name="M:Proyecto.BO.radOrdenTrabajo.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos radOrdenTrabajo de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="P:Proyecto.BO.radReporteDiario.FechaCreacion">
+	<summary>
+ Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite NULL.
+ </summary>
+</member><member name="P:Proyecto.BO.radReporteDiario.UsuarioCreacion">
+	<summary>
+ Login del usuario que cre? el registro. No permite NULL.
+ </summary>
+</member><member name="P:Proyecto.BO.radReporteDiario.FechaModificacion">
+	<summary>
+ Fecha de la ?ltima modificacion del registro. Corresponde a la fecha del servidor de base de datos. Permite NULL.
+ </summary>
+</member><member name="P:Proyecto.BO.radReporteDiario.UsuarioModificacion">
+	<summary>
+ Login del ?ltimo usuario que modific? el registro. Permite NULL.
+ </summary>
+</member><member name="M:Proyecto.BO.radReporteDiario.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla radReporteDiario en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla radReporteDiario </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Proyecto.BO.radReporteDiario.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto radReporteDiario
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.BO.radReporteDiario.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto radReporteDiario usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.BO.radReporteDiario.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radReporteDiario en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radReporteDiario.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radReporteDiario en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radReporteDiario.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radReporteDiario en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radReporteDiario.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase radReporteDiario.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.BO.radReporteDiario.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto radReporteDiario en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.BO.radReporteDiario.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto radReporteDiario de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Proyecto.BO.radReporteDiario.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto radReporteDiario de la base de datos
+ </summary>
+</member><member name="M:Proyecto.BO.radReporteDiario.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos radReporteDiario de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="M:Proyecto.BO.clsConsultas.ObtenerValorParametro(System.String,System.String,System.String)">
+	<summary>
+ Recupera datos de la Tabla Parámetro
+ </summary>
+	<param name="strCampos">Campos a mostrar</param>
+	<param name="strFiltro"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Proyecto.BO.radTecnico.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla radTecnico en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla radTecnico </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Proyecto.BO.radTecnico.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto radTecnico
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.BO.radTecnico.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto radTecnico usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.BO.radTecnico.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radTecnico en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radTecnico.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radTecnico en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radTecnico.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radTecnico en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radTecnico.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase radTecnico.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.BO.radTecnico.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto radTecnico en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.BO.radTecnico.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto radTecnico de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Proyecto.BO.radTecnico.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto radTecnico de la base de datos
+ </summary>
+</member><member name="M:Proyecto.BO.radTecnico.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos radTecnico de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla radReporteDiarioDetalle en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla radReporteDiarioDetalle </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto radReporteDiarioDetalle
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto radReporteDiarioDetalle usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radReporteDiarioDetalle en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radReporteDiarioDetalle en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos radReporteDiarioDetalle en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase radReporteDiarioDetalle.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto radReporteDiarioDetalle en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto radReporteDiarioDetalle de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto radReporteDiarioDetalle de la base de datos
+ </summary>
+</member><member name="M:Proyecto.BO.radReporteDiarioDetalle.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos radReporteDiarioDetalle de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member>
+</members>
+</doc>

@@ -34,14 +34,16 @@ Partial Class frmStbBodegas
         Me.grdBodegas = New DevExpress.XtraGrid.GridControl()
         Me.grdBodegasTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ColJefe = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCiudad = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ColJefe = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.toolTramitesLegales.SuspendLayout()
         CType(Me.grdBodegas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdBodegasTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'toolTramitesLegales
@@ -61,7 +63,7 @@ Partial Class frmStbBodegas
         Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdAgregar.Text = "Agregar Proveedor"
+        Me.cmdAgregar.Text = "Agregar Bodega"
         '
         'cmdEditar
         '
@@ -70,7 +72,7 @@ Partial Class frmStbBodegas
         Me.cmdEditar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdEditar.Text = "Editar Proveedor"
+        Me.cmdEditar.Text = "Editar Bodega"
         '
         'cmdConsultar
         '
@@ -79,7 +81,7 @@ Partial Class frmStbBodegas
         Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdConsultar.Text = "ToolStripButton1"
+        Me.cmdConsultar.Text = "Consultar Bodega"
         '
         'cmdImprimir
         '
@@ -88,7 +90,7 @@ Partial Class frmStbBodegas
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
-        Me.cmdImprimir.Text = "Imprimir Proveedor"
+        Me.cmdImprimir.Text = "Imprimir Bodegas"
         '
         'ToolSeparador1
         '
@@ -119,20 +121,25 @@ Partial Class frmStbBodegas
         Me.grdBodegas.Location = New System.Drawing.Point(0, 39)
         Me.grdBodegas.MainView = Me.grdBodegasTabla
         Me.grdBodegas.Name = "grdBodegas"
+        Me.grdBodegas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
         Me.grdBodegas.Size = New System.Drawing.Size(856, 464)
         Me.grdBodegas.TabIndex = 7
         Me.grdBodegas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdBodegasTabla})
         '
         'grdBodegasTabla
         '
-        Me.grdBodegasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colCodigo, Me.colNombre, Me.colCiudad, Me.ColJefe, Me.colActiva})
+        Me.grdBodegasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colCodigo, Me.colNombre, Me.ColJefe, Me.colCiudad, Me.colActiva})
         Me.grdBodegasTabla.GridControl = Me.grdBodegas
         Me.grdBodegasTabla.Name = "grdBodegasTabla"
+        Me.grdBodegasTabla.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
+        Me.grdBodegasTabla.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
+        Me.grdBodegasTabla.OptionsBehavior.Editable = False
         Me.grdBodegasTabla.OptionsDetail.AllowZoomDetail = False
         Me.grdBodegasTabla.OptionsDetail.EnableMasterViewMode = False
         Me.grdBodegasTabla.OptionsDetail.ShowDetailTabs = False
         Me.grdBodegasTabla.OptionsDetail.SmartDetailExpand = False
         Me.grdBodegasTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdBodegasTabla.OptionsView.ShowFooter = True
         Me.grdBodegasTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '
         'colNumero
@@ -144,54 +151,62 @@ Partial Class frmStbBodegas
         Me.colNumero.OptionsColumn.ReadOnly = True
         Me.colNumero.Width = 76
         '
-        'colNombre
-        '
-        Me.colNombre.Caption = "Nombre"
-        Me.colNombre.FieldName = "Bodega"
-        Me.colNombre.Name = "colNombre"
-        Me.colNombre.OptionsColumn.AllowFocus = False
-        Me.colNombre.OptionsColumn.ReadOnly = True
-        Me.colNombre.Visible = True
-        Me.colNombre.VisibleIndex = 0
-        Me.colNombre.Width = 218
-        '
-        'colCiudad
-        '
-        Me.colCiudad.Caption = "Ciudad"
-        Me.colCiudad.FieldName = "Ciudad"
-        Me.colCiudad.Name = "colCiudad"
-        Me.colCiudad.OptionsColumn.AllowFocus = False
-        Me.colCiudad.OptionsColumn.ReadOnly = True
-        Me.colCiudad.Visible = True
-        Me.colCiudad.VisibleIndex = 1
-        Me.colCiudad.Width = 109
-        '
-        'colActiva
-        '
-        Me.colActiva.Caption = "Activa"
-        Me.colActiva.FieldName = "Activa"
-        Me.colActiva.Name = "colActiva"
-        Me.colActiva.OptionsColumn.AllowFocus = False
-        Me.colActiva.OptionsColumn.ReadOnly = True
-        Me.colActiva.Visible = True
-        Me.colActiva.VisibleIndex = 2
-        Me.colActiva.Width = 86
-        '
         'colCodigo
         '
         Me.colCodigo.Caption = "Codigo"
         Me.colCodigo.FieldName = "Codigo"
         Me.colCodigo.Name = "colCodigo"
+        Me.colCodigo.OptionsColumn.AllowEdit = False
         Me.colCodigo.Visible = True
         Me.colCodigo.VisibleIndex = 0
+        '
+        'colNombre
+        '
+        Me.colNombre.Caption = "Nombre"
+        Me.colNombre.FieldName = "Bodega"
+        Me.colNombre.Name = "colNombre"
+        Me.colNombre.OptionsColumn.AllowEdit = False
+        Me.colNombre.OptionsColumn.ReadOnly = True
+        Me.colNombre.Visible = True
+        Me.colNombre.VisibleIndex = 1
+        Me.colNombre.Width = 218
         '
         'ColJefe
         '
         Me.ColJefe.Caption = "Jefe"
         Me.ColJefe.FieldName = "Jefe"
         Me.ColJefe.Name = "ColJefe"
+        Me.ColJefe.OptionsColumn.AllowEdit = False
         Me.ColJefe.Visible = True
-        Me.ColJefe.VisibleIndex = 3
+        Me.ColJefe.VisibleIndex = 2
+        '
+        'colCiudad
+        '
+        Me.colCiudad.Caption = "Ciudad"
+        Me.colCiudad.FieldName = "Ciudad"
+        Me.colCiudad.Name = "colCiudad"
+        Me.colCiudad.OptionsColumn.AllowEdit = False
+        Me.colCiudad.OptionsColumn.ReadOnly = True
+        Me.colCiudad.Visible = True
+        Me.colCiudad.VisibleIndex = 3
+        Me.colCiudad.Width = 109
+        '
+        'colActiva
+        '
+        Me.colActiva.Caption = "Activa"
+        Me.colActiva.ColumnEdit = Me.RepositoryItemCheckEdit1
+        Me.colActiva.FieldName = "Activa"
+        Me.colActiva.Name = "colActiva"
+        Me.colActiva.OptionsColumn.AllowEdit = False
+        Me.colActiva.OptionsColumn.ReadOnly = True
+        Me.colActiva.Visible = True
+        Me.colActiva.VisibleIndex = 4
+        Me.colActiva.Width = 150
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmStbBodegas
         '
@@ -208,6 +223,7 @@ Partial Class frmStbBodegas
         Me.toolTramitesLegales.PerformLayout()
         CType(Me.grdBodegas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdBodegasTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -228,4 +244,5 @@ Partial Class frmStbBodegas
     Friend WithEvents colActiva As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCodigo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ColJefe As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class
