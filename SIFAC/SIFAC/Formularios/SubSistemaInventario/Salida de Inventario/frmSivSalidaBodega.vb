@@ -31,17 +31,17 @@ Public Class frmSivSalidaBodega
             'Si es central mostrar todas las salidas sino mostrar sólo las de la sucursal logueada
             If glb_SucursalCentralID <> glb_SucursalSessionID Then
                 If Not String.IsNullOrEmpty(Filtro) Then
-                    Filtro += " AND objTiendaID = " & glb_SucursalSessionID.ToString
+                    Filtro += " AND objStbBodegaID = " & glb_SucursalSessionID.ToString
                 Else
-                    Filtro = " objTiendaID = " & glb_SucursalSessionID.ToString
+                    Filtro = " objStbBodegaID = " & glb_SucursalSessionID.ToString
                 End If
             End If
 
-            strCampos = "Numero, dbo.fnRellenarCeros2(Numero, dbo.FnGetParametro('CantidadDigitosSalida')) as NumeroFormato, Estado, TipoSalida, FechaSalida, objTipoSalidaID, Total, Tienda, objEstadoID,objTiendaID"
+            strCampos = "Numero, dbo.fnRellenarCeros2(Numero, dbo.FnGetParametro('CantidadDigitosSalida')) as NumeroFormato, Estado, TipoSalida, FechaSalida, objTipoSalidaID, Total, Bodega, objEstadoID,objStbBodegaID"
             strSQL = ObtenerConsultaGeneral(strCampos, "vwSivSalidaBodega", Filtro & " Order by Numero desc")
             dtSalidas = DAL.SqlHelper.ExecuteQueryDT(strSQL)
 
-            strCampos = "Codigo, DescripcionCorta, Cantidad, costo, subtotal, objSalidaBodegaID, Numero, FechaSalida,objTiendaID,objTipoSalidaID"
+            strCampos = "Codigo, Producto, Cantidad, costo, subtotal, objSalidaBodegaID, Numero, FechaSalida,objStbBodegaID,objTipoSalidaID"
             strSQL = ObtenerConsultaGeneral(strCampos, "vwSivSalidaDetalle", Filtro & " Order by objSalidaBodegaID desc")
 
             dtDetalleSalidas = DAL.SqlHelper.ExecuteQueryDT(strSQL)
@@ -211,7 +211,7 @@ Public Class frmSivSalidaBodega
         objImpresion = New frmOpcionesImpresion
         objReporte = New rptSalidaBodega
 
-        sCampos = "distinct dbo.fnRellenarCeros2(SivSalidaBodegaID,dbo.FnGetParametro('CantidadDigitosSalida')) as SivSalidaBodegaID, FechaSalida, TipoSalida, objEstadoID, objTipoSalidaID, Estado, Bodega, CodigoRepuesto, objProveedorID, DescripcionCorta, Cantidad, costo, subtotal, Comentarios,Anulada,UsuarioCreacion,UsuarioModificacion"
+        sCampos = "distinct dbo.fnRellenarCeros2(SivSalidaBodegaID,dbo.FnGetParametro('CantidadDigitosSalida')) as SivSalidaBodegaID, FechaSalida, TipoSalida, objEstadoID, objTipoSalidaID, Estado, Bodega, Codigo, Producto, Cantidad, costo, subtotal, Comentarios,Anulada,UsuarioCreacion,UsuarioModificacion"
         sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", "SivSalidaBodegaID = " & Me.grdSalida.Columns("Numero").Value)
         dtReporte = SqlHelper.ExecuteQueryDT(sSQL)
         objReporte.DataSource = dtReporte

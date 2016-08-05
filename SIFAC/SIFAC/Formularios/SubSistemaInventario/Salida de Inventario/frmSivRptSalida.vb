@@ -13,12 +13,12 @@ Public Class frmSivRptSalida
     Private Sub CargarBodega()
         Dim SucursalSessionID As Integer
         Try
-            dtBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbTiendaID, Codigo, Nombre", "StbTienda", "Activo = 1 AND ActivoRepuesto=1 Order by Nombre"))
+            dtBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbBodegaID, Codigo, Nombre", "StbBodegas", "Activo = 1 Order by Nombre"))
 
             Me.cmbBodega.DataSource = dtBodega
             Me.cmbBodega.DisplayMember = "Nombre"
-            Me.cmbBodega.ValueMember = "StbTiendaID"
-            Me.cmbBodega.Splits(0).DisplayColumns("StbTiendaID").Visible = False
+            Me.cmbBodega.ValueMember = "StbBodegaID"
+            Me.cmbBodega.Splits(0).DisplayColumns("StbBodegaID").Visible = False
             Me.cmbBodega.Splits(0).DisplayColumns("Codigo").Width = 40
             Me.cmbBodega.ExtendRightColumn = True
             Me.cmbBodega.ColumnHeaders = False
@@ -102,9 +102,9 @@ Public Class frmSivRptSalida
 
         If Me.cmbBodega.Text <> "TODAS" And Me.cmbBodega.Text.Trim.Length <> 0 Then
             If strFiltro.Trim.Length <> 0 Then
-                strFiltro = strFiltro & " AND StbTiendaID = " & Me.cmbBodega.SelectedValue
+                strFiltro = strFiltro & " AND StbBodegaID = " & Me.cmbBodega.SelectedValue
             Else
-                strFiltro = " StbTiendaID = " & Me.cmbBodega.SelectedValue
+                strFiltro = " StbBodegaID = " & Me.cmbBodega.SelectedValue
             End If
         End If
 
@@ -128,7 +128,7 @@ Public Class frmSivRptSalida
         objImpresion = New frmOpcionesImpresion
         objReporte = New rptSivSalidaFiltrado
 
-        sCampos = "distinct dbo.fnRellenarCeros2(SivSalidaBodegaID,dbo.FnGetParametro('CantidadDigitosSalida')) as SivSalidaBodegaID, FechaSalida, StbTiendaID, TipoSalida, objEstadoID, objTipoSalidaID,BodegaCodigo, Estado, Bodega, CodigoRepuesto, objProveedorID, DescripcionCorta, Cantidad, costo, subtotal, Comentarios,Anulada"
+        sCampos = "distinct dbo.fnRellenarCeros2(SivSalidaBodegaID,dbo.FnGetParametro('CantidadDigitosSalida')) as SivSalidaBodegaID, FechaSalida, StbBodegaID, TipoSalida, objEstadoID, objTipoSalidaID,BodegaCodigo, Estado, Bodega, Codigo, Producto, Cantidad, costo, subtotal, Comentarios,Anulada"
         sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", Me.ObtenerFiltro & " ORDER BY Bodega,SivSalidaBodegaID")
         dtReporte = DAL.SqlHelper.ExecuteQueryDT(sSQL)
         objReporte.DataSource = dtReporte

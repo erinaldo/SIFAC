@@ -20,20 +20,20 @@ Partial Class frmSivSalidaBodega
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivSalidaBodega))
-        Me.brSalida = New System.Windows.Forms.ToolStrip
-        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton
-        Me.cmdAutorizar = New System.Windows.Forms.ToolStripButton
-        Me.cmdCancelar = New System.Windows.Forms.ToolStripButton
-        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton
-        Me.cmdBuscar = New System.Windows.Forms.ToolStripButton
-        Me.cmdImprimir = New System.Windows.Forms.ToolStripDropDownButton
-        Me.cmdImprimirHojaSalida = New System.Windows.Forms.ToolStripMenuItem
-        Me.cmdListadoSalidaFiltrado = New System.Windows.Forms.ToolStripMenuItem
-        Me.cmdActualizar = New System.Windows.Forms.ToolStripButton
-        Me.cmdSalir = New System.Windows.Forms.ToolStripButton
-        Me.Contenedor = New C1.Win.C1Sizer.C1Sizer
-        Me.grdSalidaDetalle = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.grdSalida = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.brSalida = New System.Windows.Forms.ToolStrip()
+        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdAutorizar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdCancelar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdBuscar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdImprimir = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.cmdImprimirHojaSalida = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cmdListadoSalidaFiltrado = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cmdActualizar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
+        Me.Contenedor = New C1.Win.C1Sizer.C1Sizer()
+        Me.grdSalidaDetalle = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdSalida = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.brSalida.SuspendLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contenedor.SuspendLayout()
@@ -47,7 +47,7 @@ Partial Class frmSivSalidaBodega
         Me.brSalida.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdAutorizar, Me.cmdCancelar, Me.cmdConsultar, Me.cmdBuscar, Me.cmdImprimir, Me.cmdActualizar, Me.cmdSalir})
         Me.brSalida.Location = New System.Drawing.Point(0, 0)
         Me.brSalida.Name = "brSalida"
-        Me.brSalida.Size = New System.Drawing.Size(719, 39)
+        Me.brSalida.Size = New System.Drawing.Size(959, 39)
         Me.brSalida.TabIndex = 10
         Me.brSalida.Text = "ToolStrip1"
         '
@@ -103,19 +103,19 @@ Partial Class frmSivSalidaBodega
         Me.cmdImprimir.Image = CType(resources.GetObject("cmdImprimir.Image"), System.Drawing.Image)
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
-        Me.cmdImprimir.Size = New System.Drawing.Size(45, 36)
+        Me.cmdImprimir.Size = New System.Drawing.Size(46, 36)
         Me.cmdImprimir.Text = "Imprimir"
         '
         'cmdImprimirHojaSalida
         '
         Me.cmdImprimirHojaSalida.Name = "cmdImprimirHojaSalida"
-        Me.cmdImprimirHojaSalida.Size = New System.Drawing.Size(158, 22)
+        Me.cmdImprimirHojaSalida.Size = New System.Drawing.Size(187, 26)
         Me.cmdImprimirHojaSalida.Text = "Hoja Salida"
         '
         'cmdListadoSalidaFiltrado
         '
         Me.cmdListadoSalidaFiltrado.Name = "cmdListadoSalidaFiltrado"
-        Me.cmdListadoSalidaFiltrado.Size = New System.Drawing.Size(158, 22)
+        Me.cmdListadoSalidaFiltrado.Size = New System.Drawing.Size(187, 26)
         Me.cmdListadoSalidaFiltrado.Text = "Listado Filtrado"
         '
         'cmdActualizar
@@ -141,12 +141,13 @@ Partial Class frmSivSalidaBodega
         Me.Contenedor.Controls.Add(Me.grdSalidaDetalle)
         Me.Contenedor.Controls.Add(Me.grdSalida)
         Me.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Contenedor.GridDefinition = "48.8069414316703:True:False;48.590021691974:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "98.8873435326843:False:F" & _
-            "alse;"
+        Me.Contenedor.GridDefinition = "49.1319444444444:True:False;48.7847222222222:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.1657977059437:False:" & _
+    "False;"
         Me.Contenedor.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.Contenedor.Location = New System.Drawing.Point(0, 39)
+        Me.Contenedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Contenedor.Name = "Contenedor"
-        Me.Contenedor.Size = New System.Drawing.Size(719, 461)
+        Me.Contenedor.Size = New System.Drawing.Size(959, 576)
         Me.Contenedor.TabIndex = 11
         Me.Contenedor.TabStop = False
         '
@@ -157,13 +158,14 @@ Partial Class frmSivSalidaBodega
         Me.grdSalidaDetalle.ExtendRightColumn = True
         Me.grdSalidaDetalle.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdSalidaDetalle.Images.Add(CType(resources.GetObject("grdSalidaDetalle.Images"), System.Drawing.Image))
-        Me.grdSalidaDetalle.Location = New System.Drawing.Point(4, 233)
+        Me.grdSalidaDetalle.Location = New System.Drawing.Point(4, 291)
+        Me.grdSalidaDetalle.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdSalidaDetalle.Name = "grdSalidaDetalle"
         Me.grdSalidaDetalle.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdSalidaDetalle.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdSalidaDetalle.PreviewInfo.ZoomFactor = 75
+        Me.grdSalidaDetalle.PreviewInfo.ZoomFactor = 75.0R
         Me.grdSalidaDetalle.PrintInfo.PageSettings = CType(resources.GetObject("grdSalidaDetalle.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdSalidaDetalle.Size = New System.Drawing.Size(711, 224)
+        Me.grdSalidaDetalle.Size = New System.Drawing.Size(951, 281)
         Me.grdSalidaDetalle.TabIndex = 1
         Me.grdSalidaDetalle.Text = "C1TrueDBGrid2"
         Me.grdSalidaDetalle.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
@@ -177,23 +179,25 @@ Partial Class frmSivSalidaBodega
         Me.grdSalida.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdSalida.Images.Add(CType(resources.GetObject("grdSalida.Images"), System.Drawing.Image))
         Me.grdSalida.Location = New System.Drawing.Point(4, 4)
+        Me.grdSalida.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdSalida.Name = "grdSalida"
         Me.grdSalida.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdSalida.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdSalida.PreviewInfo.ZoomFactor = 75
+        Me.grdSalida.PreviewInfo.ZoomFactor = 75.0R
         Me.grdSalida.PrintInfo.PageSettings = CType(resources.GetObject("grdSalida.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdSalida.Size = New System.Drawing.Size(711, 225)
+        Me.grdSalida.Size = New System.Drawing.Size(951, 283)
         Me.grdSalida.TabIndex = 0
         Me.grdSalida.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
         Me.grdSalida.PropBag = resources.GetString("grdSalida.PropBag")
         '
         'frmSivSalidaBodega
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(719, 500)
+        Me.ClientSize = New System.Drawing.Size(959, 615)
         Me.Controls.Add(Me.Contenedor)
         Me.Controls.Add(Me.brSalida)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmSivSalidaBodega"
         Me.Text = "Salida de Bodega"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

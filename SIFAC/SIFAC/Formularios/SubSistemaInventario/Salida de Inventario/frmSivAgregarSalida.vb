@@ -89,12 +89,12 @@ Public Class frmSivAgregarSalida
 #Region "Cargar combos"
     Private Sub CargarBodega()
         Try
-            dtBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbTiendaID, Codigo, Nombre", "StbTienda", "Activo = 1 AND ActivoRepuesto=1 Order by Nombre"))
+            dtBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbBodegaID, Codigo, Nombre", "StbBodegas", "Activo = 1 Order by Nombre"))
             Me.cmbBodega.DataSource = dtBodega
             Me.cmbBodega.DisplayMember = "Nombre"
-            Me.cmbBodega.ValueMember = "StbTiendaID"
-            Me.cmbBodega.Splits(0).DisplayColumns("StbTiendaID").Visible = False
-            Me.cmbBodega.Splits(0).DisplayColumns("StbTiendaID").Width = 40
+            Me.cmbBodega.ValueMember = "StbBodegaID"
+            Me.cmbBodega.Splits(0).DisplayColumns("StbBodegaID").Visible = False
+            Me.cmbBodega.Splits(0).DisplayColumns("StbBodegaID").Width = 40
             Me.cmbBodega.ExtendRightColumn = True
             Me.cmbBodega.SelectedIndex = 0
             Me.cmbBodega.Text = ""
@@ -148,7 +148,7 @@ Public Class frmSivAgregarSalida
     Private Sub CargarDetalleRepuesto()
         dtDetalle = New DataTable
         Try
-            dtDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, DescripcionCorta, cast(0 as integer) as Existencia, Cantidad, cast(0 as float) as CostoProm, subtotal", "dbo.vwSivSalidaDetalle", "1=0"))
+            dtDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, cast(0 as integer) as Existencia, Cantidad, cast(0 as float) as CostoProm, subtotal", "dbo.vwSivSalidaDetalle", "1=0"))
             Me.grdSalidaDetalle.DataSource = dtDetalle
         Catch ex As Exception
         End Try
@@ -158,7 +158,7 @@ Public Class frmSivAgregarSalida
         Dim riLookComboDescripcion As New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
         'dtRepuestoCombo = New DataTable
         Try
-            dtRepuestoCombo = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivRepuestoID,DescripcionCorta", "dbo.SivRepuestos", "SivRepuestoID NOT IN ('1','2','3')"))
+            dtRepuestoCombo = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Nombre", "dbo.SivProductos"))
             riLookComboDescripcion = Me.grdSalidaDetalle.RepositoryItems(1)
             riLookComboDescripcion.DataSource = dtRepuestoCombo
 
@@ -191,7 +191,7 @@ Public Class frmSivAgregarSalida
     Private Sub CargarDetalleEditar()
         dtDetalle = New DataTable
         Try
-            dtDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, DescripcionCorta, Cantidad, costo as CostoProm, subtotal, Existencia", "dbo.vwSalidaDetalleEditar", "Numero= " & Me.SalidaID))
+            dtDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, Cantidad, costo as CostoProm, subtotal, Existencia", "dbo.vwSalidaDetalleEditar", "Numero= " & Me.SalidaID))
             Me.grdSalidaDetalle.DataSource = dtDetalle
 
         Catch ex As Exception
@@ -205,7 +205,7 @@ Public Class frmSivAgregarSalida
             objSalida.RetrieveByFilter("SivSalidaBodegaID = " & Me.SalidaID)
             Me.txtNumero.Text = objSalida.SivSalidaBodegaID
             Me.txtEstado.Text = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Descripcion", "dbo.StbValorCatalogo", "StbValorCatalogoID = " & objSalida.objEstadoID)).DefaultView.Item(0)("Descripcion")
-            Me.cmbBodega.SelectedValue = objSalida.objTiendaID
+            Me.cmbBodega.SelectedValue = objSalida.objStbBodegaID
             If Not IsDBNull(objSalida.objTipoSalidaID) Then
                 Me.cmbTipoSalida.SelectedValue = objSalida.objTipoSalidaID
             End If
@@ -271,9 +271,9 @@ Public Class frmSivAgregarSalida
         punto.X = Me.grbDetalle.Location.X
         punto.Y = 180
         puntoBoton.X = Me.cmdAceptar.Location.X
-        puntoBoton.Y = 585
+        puntoBoton.Y = 680 '585
         puntoBotonCancelar.X = Me.cmdCancelar.Location.X
-        puntoBotonCancelar.Y = 585
+        puntoBotonCancelar.Y = 680 '585
 
         Me.CargarBodega()
         Me.CargarTipoSalida()
@@ -309,7 +309,7 @@ Public Class frmSivAgregarSalida
                 Me.grbDetalle.Location = punto
                 Me.cmdCancelar.Location = puntoBotonCancelar
                 Me.cmdAceptar.Location = puntoBoton
-                Me.Height = 675
+                Me.Height = 800 '675
                 Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
 
             Case 1
@@ -323,7 +323,7 @@ Public Class frmSivAgregarSalida
                 Me.grbDetalle.Location = punto
                 Me.cmdCancelar.Location = puntoBotonCancelar
                 Me.cmdAceptar.Location = puntoBoton
-                Me.Height = 675
+                Me.Height = 800 '675
                 Me.cmbTipoSalida.Enabled = False
                 Me.grdSalidaDetalle.Enabled = False
 
@@ -357,7 +357,7 @@ Public Class frmSivAgregarSalida
                 Me.grbDetalle.Location = punto
                 Me.cmdCancelar.Location = puntoBotonCancelar
                 Me.cmdAceptar.Location = puntoBoton
-                Me.Height = 675
+                Me.Height = 800 '675
                 Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
                 Me.cmbTipoSalida.Enabled = False
                 Me.cmbTipoSalida.SelectedValue = Me.TipoSalidaGarantiaID
@@ -402,7 +402,7 @@ Public Class frmSivAgregarSalida
         Dim objSalida As SivSalidaBodega
         Try
             objSalida = New SivSalidaBodega
-            objSalida.objTiendaID = Me.cmbBodega.SelectedValue
+            objSalida.objStbBodegaID = Me.cmbBodega.SelectedValue
             objSalida.objTipoAjusteID = Me.cmbAjuste.SelectedValue
             objSalida.objTipoSalidaID = Me.cmbTipoSalida.SelectedValue
             objSalida.objEstadoID = ClsCatalogos.GetValorCatalogoID("ESTADOSALIDA", "01")
@@ -414,11 +414,11 @@ Public Class frmSivAgregarSalida
             End If
             objSalida.FechaSalida = Me.dtpFecha.Value
 
-            If Me.TypeGui = 4 Then '4=El llamado al formulario de salida se hizo desde Servicios de taller
-                If Me.StaServicioTallerID <> 0 Then
-                    objSalida.objServicioTallerID = Me.StaServicioTallerID
-                End If
-            End If
+            'If Me.TypeGui = 4 Then '4=El llamado al formulario de salida se hizo desde Servicios de taller
+            '    If Me.StaServicioTallerID <> 0 Then
+            '        objSalida.objServicioTallerID = Me.StaServicioTallerID
+            '    End If
+            'End If
 
             objSalida.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objSalida.UsuarioCreacion = clsProyecto.Conexion.Usuario
@@ -440,15 +440,17 @@ Public Class frmSivAgregarSalida
             'Isertar detalle de Factura              
             Me.dtDetalle.AcceptChanges()
             For Each row As DataRow In Me.dtDetalle.Rows
-                fila = dtDetalleSalida.NewRow
-                fila("objSalidaBodegaID") = Me.SalidaID
-                fila("objRepuestoID") = row("Codigo")
-                fila("Cantidad") = row("Cantidad")
-                fila("costo") = row("CostoProm")
-                fila("subtotal") = row("Subtotal")
-                fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                dtDetalleSalida.Rows.Add(fila)
+                If Not IsDBNull(row("Codigo")) Then
+                    fila = dtDetalleSalida.NewRow
+                    fila("objSalidaBodegaID") = Me.SalidaID
+                    fila("objSivProductoID") = row("Codigo")
+                    fila("Cantidad") = row("Cantidad")
+                    fila("costo") = row("CostoProm")
+                    fila("subtotal") = row("Subtotal")
+                    fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+                    fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+                    dtDetalleSalida.Rows.Add(fila)
+                End If
             Next
             dtDetalleSalida.TableName = "SivSalidaBodegaDetalle"
             SivSalidaBodegaDetalle.BatchUpdate(dtDetalleSalida.DataSet, T)
@@ -463,14 +465,14 @@ Public Class frmSivAgregarSalida
 #Region "Autorizar"
     Private Sub Autorizar()
         Dim objsalida As New SivSalidaBodega
-        Dim objSivBodegaRepuestos As New SivBodegaRepuestos
+        Dim objSivBodegaProductos As New SivBodegaProductos
         Dim T As New DAL.TransactionManager
         Dim dtDetalleSalida As New DataTable
         Dim fila As DataRow
         Try
             T.BeginTran()
             objsalida.RetrieveByFilter("SivSalidaBodegaID = " & Me.SalidaID)
-            objsalida.objTiendaID = Me.cmbBodega.SelectedValue
+            objsalida.objStbBodegaID = Me.cmbBodega.SelectedValue
             objsalida.objTipoAjusteID = Me.cmbAjuste.SelectedValue
             objsalida.objTipoSalidaID = Me.cmbTipoSalida.SelectedValue
             objsalida.FechaSalida = Me.dtpFecha.Value
@@ -490,7 +492,7 @@ Public Class frmSivAgregarSalida
             For Each row As DataRow In Me.dtDetalle.Rows
                 fila = dtDetalleSalida.NewRow
                 fila("objSalidaBodegaID") = Me.SalidaID
-                fila("objRepuestoID") = row("Codigo")
+                fila("objSivProductoID") = row("Codigo")
                 fila("Cantidad") = row("Cantidad")
                 fila("costo") = row("CostoProm")
                 fila("Subtotal") = row("Subtotal")
@@ -503,11 +505,11 @@ Public Class frmSivAgregarSalida
 
             '---- Actualizar el campo cantidad de la tabla SivBodegaRepuestos
             For Each row As DataRow In Me.dtDetalle.Rows
-                objSivBodegaRepuestos.RetrieveByFilter("objRepuestoID = '" & row("Codigo") & "' AND objTiendaID = " & Me.cmbBodega.SelectedValue)
-                objSivBodegaRepuestos.Cantidad = objSivBodegaRepuestos.Cantidad - row("Cantidad")
-                objSivBodegaRepuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                objSivBodegaRepuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                objSivBodegaRepuestos.Update()
+                objSivBodegaProductos.RetrieveByFilter("objProductoID = '" & row("Codigo") & "' AND objBodegaID = " & Me.cmbBodega.SelectedValue)
+                objSivBodegaProductos.Cantidad = objSivBodegaProductos.Cantidad - row("Cantidad")
+                objSivBodegaProductos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                objSivBodegaProductos.Update()
             Next
             T.CommitTran()
             Me.boolModificado = False
@@ -519,7 +521,7 @@ Public Class frmSivAgregarSalida
             T.RollbackTran()
         Finally
             objsalida = Nothing
-            objSivBodegaRepuestos = Nothing
+            objSivBodegaProductos = Nothing
             dtDetalleSalida = Nothing
         End Try
     End Sub
@@ -530,7 +532,7 @@ Public Class frmSivAgregarSalida
     Private Sub Anular()
         Dim objSalida As New SivSalidaBodega
         Dim objSalidaDetalle As New SivSalidaBodegaDetalle
-        Dim objSivBodegaRepuestos As New SivBodegaRepuestos
+        Dim objSivBodegaProductos As New SivBodegaProductos
         Dim dtDetalleAnular As New DataTable
         Dim fila As DataRow
         Dim t As New TransactionManager
@@ -555,7 +557,7 @@ Public Class frmSivAgregarSalida
                 For Each row As DataRow In Me.dtDetalle.Rows
                     fila = dtDetalleAnular.NewRow
                     fila("objSalidaBodegaID") = Me.SalidaID
-                    fila("objRepuestoID") = row("Codigo")
+                    fila("objSivProductoID") = row("Codigo")
                     fila("Cantidad") = 0
                     fila("costo") = 0.0
                     fila("Subtotal") = 0.0
@@ -582,7 +584,7 @@ Public Class frmSivAgregarSalida
                 For Each row As DataRow In Me.dtDetalle.Rows
                     fila = dtDetalleAnular.NewRow
                     fila("objSalidaBodegaID") = Me.SalidaID
-                    fila("objRepuestoID") = row("Codigo")
+                    fila("objSivProductoID") = row("Codigo")
                     fila("Cantidad") = 0
                     fila("costo") = 0.0
                     fila("Subtotal") = 0.0
@@ -595,11 +597,11 @@ Public Class frmSivAgregarSalida
 
                 '-- Actualiza la cantidad de la tabla SivBodegarepuesto
                 For Each row As DataRow In Me.dtDetalle.Rows
-                    objSivBodegaRepuestos.RetrieveByFilter("objRepuestoID = '" & row("Codigo") & "' AND objTiendaID = " & Me.cmbBodega.SelectedValue)
-                    objSivBodegaRepuestos.Cantidad = objSivBodegaRepuestos.Cantidad + row("Cantidad")
-                    objSivBodegaRepuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                    objSivBodegaRepuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                    objSivBodegaRepuestos.Update()
+                    objSivBodegaProductos.RetrieveByFilter("objProductoID = '" & row("Codigo") & "' AND objBodegaID = " & Me.cmbBodega.SelectedValue)
+                    objSivBodegaProductos.Cantidad = objSivBodegaProductos.Cantidad + row("Cantidad")
+                    objSivBodegaProductos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    objSivBodegaProductos.Update()
                 Next
             End If
 
@@ -614,7 +616,7 @@ Public Class frmSivAgregarSalida
         Finally
             objSalida = Nothing
             objSalidaDetalle = Nothing
-            objSivBodegaRepuestos = Nothing
+            objSivBodegaProductos = Nothing
         End Try
     End Sub
 
@@ -631,7 +633,7 @@ Public Class frmSivAgregarSalida
         objImpresion = New frmOpcionesImpresion
         objReporte = New rptSalidaBodega
 
-        sCampos = "distinct SivSalidaBodegaID, FechaSalida, TipoSalida, objEstadoID, BodegaCodigo,objTipoSalidaID, Estado, Bodega, CodigoRepuesto, objProveedorID, DescripcionCorta, Cantidad, costo, subtotal, Comentarios,Anulada"
+        sCampos = "distinct SivSalidaBodegaID, FechaSalida, TipoSalida, objEstadoID, BodegaCodigo,objTipoSalidaID, Estado, Bodega, Producto, Cantidad, costo, subtotal, Comentarios,Anulada"
         sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", "SivSalidaBodegaID = " & Me.SalidaID)
         dtReporte = SqlHelper.ExecuteQueryDT(sSQL)
         objReporte.DataSource = dtReporte
@@ -1006,16 +1008,24 @@ Public Class frmSivAgregarSalida
                 Exit Sub
             End If
 
-            'Cantidad
-            If Me.grdSalidaDetalleTable.FocusedColumn.Equals(Me.colCantidad) Then '3=Servicio de instalación
+            ''Cantidad
+            'If Me.grdSalidaDetalleTable.FocusedColumn.Equals(Me.colCantidad) Then '3=Servicio de instalación
 
-                blnEnfoque = Me.grdSalidaDetalleTable.FocusedColumn.Equals(Me.colCantidad)
-                If blnEnfoque Then
-                    If Me.grdSalidaDetalleTable.FocusedColumn.View.FocusedValue = 0 Then
-                        Exit Sub
-                    End If
-                End If
+            '    blnEnfoque = Me.grdSalidaDetalleTable.FocusedColumn.Equals(Me.colCantidad)
+            '    If blnEnfoque Then
+            '        If Me.grdSalidaDetalleTable.FocusedColumn.View.FocusedValue = 0 Then
+            '            Exit Sub
+            '        End If
+            '    End If
+            'End If
+
+            'Cantidad
+            If Me.grdSalidaDetalleTable.FocusedColumn.Equals(Me.colCantidad) Then
+                'Me.grdSalidaDetalleTable.FocusedColumn = Me.colCodigo
+                SendKeys.Send("{down}")
+                Exit Sub
             End If
+
         End If
 
         '---- Direccional hacia abajo
@@ -1060,19 +1070,19 @@ Public Class frmSivAgregarSalida
 
 #Region "RellenarDatosGrid"
     Private Sub RellenarDatosGrid(ByVal strFiltro As String, ByVal intFilaActual As Integer)
-        Dim objSivRepuestos As SivRepuestos
-        Dim objSivBodegaRepuestos As SivBodegaRepuestos
-        objSivRepuestos = New SivRepuestos
-        objSivBodegaRepuestos = New SivBodegaRepuestos
+        Dim objSivProductos As SivProductos
+        Dim objSivBodegaProductos As SivBodegaProductos
+        objSivProductos = New SivProductos
+        objSivBodegaProductos = New SivBodegaProductos
 
-        objSivRepuestos.RetrieveByFilter("SivRepuestoID=" & "'" & strFiltro & "'" & " AND Activo=1") 'REVISAR ESTO POR REGLAS DE NEGOCIO
-        objSivBodegaRepuestos.RetrieveByFilter("objRepuestoID=" & "'" & objSivRepuestos.SivRepuestoID & "' AND objTiendaID= " & Me.cmbBodega.SelectedValue)
-        Me.dtDetalle.DefaultView.Item(intFilaActual)("Codigo") = objSivRepuestos.SivRepuestoID
+        objSivProductos.RetrieveByFilter("SivProductoID=" & "'" & strFiltro & "'" & " AND Activo=1") 'REVISAR ESTO POR REGLAS DE NEGOCIO
+        objSivBodegaProductos.RetrieveByFilter("objProductoID=" & "'" & objSivProductos.SivProductoID & "' AND objBodegaID= " & Me.cmbBodega.SelectedValue)
+        Me.dtDetalle.DefaultView.Item(intFilaActual)("Codigo") = objSivProductos.SivProductoID
         Me.dtDetalle.DefaultView.Item(intFilaActual)("Cantidad") = 0
         Me.dtDetalle.DefaultView.Item(intFilaActual)("subtotal") = 0
-        Me.dtDetalle.DefaultView.Item(intFilaActual)("CostoProm") = objSivRepuestos.CostoProm
-        Me.dtDetalle.DefaultView.Item(intFilaActual)("Existencia") = objSivBodegaRepuestos.Cantidad
-        Me.numExistencia.Value = objSivBodegaRepuestos.Cantidad
+        Me.dtDetalle.DefaultView.Item(intFilaActual)("CostoProm") = objSivProductos.CostoPromedio
+        Me.dtDetalle.DefaultView.Item(intFilaActual)("Existencia") = objSivBodegaProductos.Cantidad
+        Me.numExistencia.Value = objSivBodegaProductos.Cantidad
         Me.grdSalidaDetalleTable.FocusedColumn = Me.colCantidad
     End Sub
 
@@ -1092,13 +1102,13 @@ Public Class frmSivAgregarSalida
         Dim FilaActual As Integer
         Dim strIndiceCombo As String
         Dim blnVerificaRepuestoAct, blnVerificaCodRepuesto, blnVerificarExistencia As Boolean
-        Dim objRepuestos As SivRepuestos
-        Dim objBodegaRepuesto As SivBodegaRepuestos
+        Dim objSivProductos As SivProductos
+        Dim objSivBodegaProductos As SivBodegaProductos
 
         FilaActual = Me.grdSalidaDetalleTable.FocusedRowHandle
 
-        objRepuestos = New SivRepuestos
-        objBodegaRepuesto = New SivBodegaRepuestos
+        objSivProductos = New SivProductos
+        objSivBodegaProductos = New SivBodegaProductos
 
         If Me.ValidarSeleccionBodega Then
             'CodigoRepuesto
@@ -1106,27 +1116,27 @@ Public Class frmSivAgregarSalida
                 If Me.dtDetalle.DefaultView.Count <> 0 Then
 
                     'Verifica si el código del repuesto existe
-                    blnVerificaCodRepuesto = objRepuestos.RetrieveByFilter("SivRepuestoID='" & (Me.dtDetalle.DefaultView.Item(FilaActual)("Codigo")) & "'")
+                    blnVerificaCodRepuesto = objSivProductos.RetrieveByFilter("SivProductoID='" & (Me.dtDetalle.DefaultView.Item(FilaActual)("Codigo")) & "'")
                     If (blnVerificaCodRepuesto = False) Then
-                        MsgBox("El código de repuesto no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                        MsgBox("El código de producto no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                         Me.ElminarFilaSinPreguntar()
                         Me.InsertarNuevaFilaGrid()
                         Exit Sub
                     End If
 
                     'Verifica si el Repuesto está activo (REVISAR ESTA VALIDACION POR REGLAS DE NEGOCIO)
-                    blnVerificaRepuestoAct = objRepuestos.RetrieveByFilter("SivRepuestoID='" & objRepuestos.SivRepuestoID & "' AND Activo=0")
+                    blnVerificaRepuestoAct = objSivProductos.RetrieveByFilter("SivProductoID='" & objSivProductos.SivProductoID & "' AND Activo=0")
                     If (blnVerificaRepuestoAct = True) Then
-                        MsgBox("El repuesto está inactivo", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                        MsgBox("El producto está inactivo", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                         Me.ElminarFilaSinPreguntar()
                         Me.InsertarNuevaFilaGrid()
                         Exit Sub
                     End If
 
                     'Verifica que el repuesto este en existencia
-                    blnVerificarExistencia = objBodegaRepuesto.RetrieveByFilter("objRepuestoID = " & "'" & objRepuestos.SivRepuestoID & "'" & " AND objTiendaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
+                    blnVerificarExistencia = objSivBodegaProductos.RetrieveByFilter("objProductoID = " & "'" & objSivProductos.SivProductoID & "'" & " AND objBodegaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
                     If Not blnVerificarExistencia Then
-                        MsgBox("El repuesto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                        MsgBox("El producto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                         Me.ElminarFilaSinPreguntar()
                         Me.InsertarNuevaFilaGrid()
                         Me.grdSalidaDetalleTable.FocusedColumn = Me.colCodigo
@@ -1149,9 +1159,9 @@ Public Class frmSivAgregarSalida
             'Descripción
             If e.Column.Equals(Me.colDescripcion) Then
                 'Verifica que el repuesto este en existencia
-                blnVerificarExistencia = objBodegaRepuesto.RetrieveByFilter("objRepuestoID = " & "'" & Me.grdSalidaDetalleTable.EditingValue & "'" & " AND objTiendaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
+                blnVerificarExistencia = objSivBodegaProductos.RetrieveByFilter("objProductoID = " & "'" & Me.grdSalidaDetalleTable.EditingValue & "'" & " AND objBodegaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
                 If Not blnVerificarExistencia Then
-                    MsgBox("El repuesto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                    MsgBox("El producto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                     Me.ElminarFilaSinPreguntar()
                     Me.InsertarNuevaFilaGrid()
                     Me.grdSalidaDetalleTable.FocusedColumn = Me.colCodigo
