@@ -20,38 +20,37 @@ Partial Class frmBusquedaRepuestos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBusquedaRepuestos))
-        Me.gbxResultados = New System.Windows.Forms.GroupBox
-        Me.grdResultados = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.cmbTipo = New C1.Win.C1List.C1Combo
-        Me.cmbProveedor = New C1.Win.C1List.C1Combo
-        Me.lbltipo = New System.Windows.Forms.Label
-        Me.lblProveedor = New System.Windows.Forms.Label
-        Me.lblMarca = New System.Windows.Forms.Label
-        Me.lblModeloCompatible = New System.Windows.Forms.Label
-        Me.cmbMarca = New C1.Win.C1List.C1Combo
-        Me.cmbModeloCompatible = New C1.Win.C1List.C1Combo
-        Me.cmdFiltrar = New System.Windows.Forms.Button
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.cmdGuardar = New System.Windows.Forms.Button
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.gbxResultados = New System.Windows.Forms.GroupBox()
+        Me.grdResultados = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.cmbTipo = New C1.Win.C1List.C1Combo()
+        Me.cmbProveedor = New C1.Win.C1List.C1Combo()
+        Me.lbltipo = New System.Windows.Forms.Label()
+        Me.lblProveedor = New System.Windows.Forms.Label()
+        Me.lblMarca = New System.Windows.Forms.Label()
+        Me.lblModeloCompatible = New System.Windows.Forms.Label()
+        Me.cmbMarca = New C1.Win.C1List.C1Combo()
+        Me.cmbModeloCompatible = New C1.Win.C1List.C1Combo()
+        Me.cmdFiltrar = New System.Windows.Forms.Button()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
+        Me.cmdGuardar = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.gbxResultados.SuspendLayout()
         CType(Me.grdResultados, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbTipo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbModeloCompatible, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gbxResultados
         '
         Me.gbxResultados.Controls.Add(Me.grdResultados)
-        Me.gbxResultados.Location = New System.Drawing.Point(4, 192)
+        Me.gbxResultados.Location = New System.Drawing.Point(5, 236)
+        Me.gbxResultados.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.gbxResultados.Name = "gbxResultados"
-        Me.gbxResultados.Size = New System.Drawing.Size(758, 249)
+        Me.gbxResultados.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbxResultados.Size = New System.Drawing.Size(1011, 306)
         Me.gbxResultados.TabIndex = 5
         Me.gbxResultados.TabStop = False
         Me.gbxResultados.Text = "Resultado Filtros"
@@ -60,13 +59,14 @@ Partial Class frmBusquedaRepuestos
         '
         Me.grdResultados.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdResultados.Images.Add(CType(resources.GetObject("grdResultados.Images"), System.Drawing.Image))
-        Me.grdResultados.Location = New System.Drawing.Point(14, 24)
+        Me.grdResultados.Location = New System.Drawing.Point(19, 30)
+        Me.grdResultados.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdResultados.Name = "grdResultados"
         Me.grdResultados.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdResultados.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdResultados.PreviewInfo.ZoomFactor = 75
+        Me.grdResultados.PreviewInfo.ZoomFactor = 75.0R
         Me.grdResultados.PrintInfo.PageSettings = CType(resources.GetObject("grdResultados.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdResultados.Size = New System.Drawing.Size(740, 224)
+        Me.grdResultados.Size = New System.Drawing.Size(986, 275)
         Me.grdResultados.TabIndex = 0
         Me.grdResultados.Text = "Resultados"
         Me.grdResultados.PropBag = resources.GetString("grdResultados.PropBag")
@@ -80,15 +80,16 @@ Partial Class frmBusquedaRepuestos
         Me.cmbTipo.ColumnCaptionHeight = 17
         Me.cmbTipo.ColumnFooterHeight = 17
         Me.cmbTipo.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbTipo.ContentHeight = 15
+        Me.cmbTipo.ContentHeight = 18
         Me.cmbTipo.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbTipo.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbTipo.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipo.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbTipo.EditorHeight = 15
+        Me.cmbTipo.EditorHeight = 18
         Me.cmbTipo.Images.Add(CType(resources.GetObject("cmbTipo.Images"), System.Drawing.Image))
         Me.cmbTipo.ItemHeight = 15
-        Me.cmbTipo.Location = New System.Drawing.Point(129, 80)
+        Me.cmbTipo.Location = New System.Drawing.Point(172, 98)
+        Me.cmbTipo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbTipo.MatchEntryTimeout = CType(2000, Long)
         Me.cmbTipo.MaxDropDownItems = CType(5, Short)
         Me.cmbTipo.MaxLength = 32767
@@ -97,7 +98,7 @@ Partial Class frmBusquedaRepuestos
         Me.cmbTipo.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbTipo.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbTipo.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbTipo.Size = New System.Drawing.Size(173, 21)
+        Me.cmbTipo.Size = New System.Drawing.Size(231, 24)
         Me.cmbTipo.TabIndex = 1
         Me.cmbTipo.Tag = ""
         Me.cmbTipo.PropBag = resources.GetString("cmbTipo.PropBag")
@@ -111,15 +112,16 @@ Partial Class frmBusquedaRepuestos
         Me.cmbProveedor.ColumnCaptionHeight = 17
         Me.cmbProveedor.ColumnFooterHeight = 17
         Me.cmbProveedor.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbProveedor.ContentHeight = 15
+        Me.cmbProveedor.ContentHeight = 18
         Me.cmbProveedor.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbProveedor.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbProveedor.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbProveedor.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbProveedor.EditorHeight = 15
+        Me.cmbProveedor.EditorHeight = 18
         Me.cmbProveedor.Images.Add(CType(resources.GetObject("cmbProveedor.Images"), System.Drawing.Image))
         Me.cmbProveedor.ItemHeight = 15
-        Me.cmbProveedor.Location = New System.Drawing.Point(129, 49)
+        Me.cmbProveedor.Location = New System.Drawing.Point(172, 60)
+        Me.cmbProveedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbProveedor.MatchEntryTimeout = CType(2000, Long)
         Me.cmbProveedor.MaxDropDownItems = CType(5, Short)
         Me.cmbProveedor.MaxLength = 32767
@@ -128,16 +130,17 @@ Partial Class frmBusquedaRepuestos
         Me.cmbProveedor.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbProveedor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbProveedor.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbProveedor.Size = New System.Drawing.Size(173, 21)
+        Me.cmbProveedor.Size = New System.Drawing.Size(231, 24)
         Me.cmbProveedor.TabIndex = 0
         Me.cmbProveedor.PropBag = resources.GetString("cmbProveedor.PropBag")
         '
         'lbltipo
         '
         Me.lbltipo.BackColor = System.Drawing.SystemColors.Control
-        Me.lbltipo.Location = New System.Drawing.Point(9, 82)
+        Me.lbltipo.Location = New System.Drawing.Point(12, 101)
+        Me.lbltipo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbltipo.Name = "lbltipo"
-        Me.lbltipo.Size = New System.Drawing.Size(82, 18)
+        Me.lbltipo.Size = New System.Drawing.Size(109, 22)
         Me.lbltipo.TabIndex = 97
         Me.lbltipo.Tag = ""
         Me.lbltipo.Text = "Tipo:"
@@ -145,9 +148,10 @@ Partial Class frmBusquedaRepuestos
         'lblProveedor
         '
         Me.lblProveedor.BackColor = System.Drawing.SystemColors.Control
-        Me.lblProveedor.Location = New System.Drawing.Point(9, 50)
+        Me.lblProveedor.Location = New System.Drawing.Point(12, 62)
+        Me.lblProveedor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblProveedor.Name = "lblProveedor"
-        Me.lblProveedor.Size = New System.Drawing.Size(82, 18)
+        Me.lblProveedor.Size = New System.Drawing.Size(109, 22)
         Me.lblProveedor.TabIndex = 96
         Me.lblProveedor.Tag = ""
         Me.lblProveedor.Text = "Proveedor:"
@@ -155,9 +159,10 @@ Partial Class frmBusquedaRepuestos
         'lblMarca
         '
         Me.lblMarca.BackColor = System.Drawing.SystemColors.Control
-        Me.lblMarca.Location = New System.Drawing.Point(9, 115)
+        Me.lblMarca.Location = New System.Drawing.Point(12, 142)
+        Me.lblMarca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMarca.Name = "lblMarca"
-        Me.lblMarca.Size = New System.Drawing.Size(82, 18)
+        Me.lblMarca.Size = New System.Drawing.Size(109, 22)
         Me.lblMarca.TabIndex = 96
         Me.lblMarca.Tag = ""
         Me.lblMarca.Text = "Marca:"
@@ -165,9 +170,10 @@ Partial Class frmBusquedaRepuestos
         'lblModeloCompatible
         '
         Me.lblModeloCompatible.BackColor = System.Drawing.SystemColors.Control
-        Me.lblModeloCompatible.Location = New System.Drawing.Point(9, 148)
+        Me.lblModeloCompatible.Location = New System.Drawing.Point(12, 182)
+        Me.lblModeloCompatible.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblModeloCompatible.Name = "lblModeloCompatible"
-        Me.lblModeloCompatible.Size = New System.Drawing.Size(103, 18)
+        Me.lblModeloCompatible.Size = New System.Drawing.Size(137, 22)
         Me.lblModeloCompatible.TabIndex = 97
         Me.lblModeloCompatible.Tag = ""
         Me.lblModeloCompatible.Text = "Modelo Compatible:"
@@ -181,15 +187,16 @@ Partial Class frmBusquedaRepuestos
         Me.cmbMarca.ColumnCaptionHeight = 17
         Me.cmbMarca.ColumnFooterHeight = 17
         Me.cmbMarca.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbMarca.ContentHeight = 15
+        Me.cmbMarca.ContentHeight = 18
         Me.cmbMarca.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbMarca.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbMarca.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbMarca.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbMarca.EditorHeight = 15
+        Me.cmbMarca.EditorHeight = 18
         Me.cmbMarca.Images.Add(CType(resources.GetObject("cmbMarca.Images"), System.Drawing.Image))
         Me.cmbMarca.ItemHeight = 15
-        Me.cmbMarca.Location = New System.Drawing.Point(129, 114)
+        Me.cmbMarca.Location = New System.Drawing.Point(172, 140)
+        Me.cmbMarca.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbMarca.MatchEntryTimeout = CType(2000, Long)
         Me.cmbMarca.MaxDropDownItems = CType(5, Short)
         Me.cmbMarca.MaxLength = 32767
@@ -198,7 +205,7 @@ Partial Class frmBusquedaRepuestos
         Me.cmbMarca.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbMarca.Size = New System.Drawing.Size(173, 21)
+        Me.cmbMarca.Size = New System.Drawing.Size(231, 24)
         Me.cmbMarca.TabIndex = 2
         Me.cmbMarca.PropBag = resources.GetString("cmbMarca.PropBag")
         '
@@ -211,15 +218,16 @@ Partial Class frmBusquedaRepuestos
         Me.cmbModeloCompatible.ColumnCaptionHeight = 17
         Me.cmbModeloCompatible.ColumnFooterHeight = 17
         Me.cmbModeloCompatible.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbModeloCompatible.ContentHeight = 15
+        Me.cmbModeloCompatible.ContentHeight = 18
         Me.cmbModeloCompatible.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbModeloCompatible.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbModeloCompatible.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbModeloCompatible.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbModeloCompatible.EditorHeight = 15
+        Me.cmbModeloCompatible.EditorHeight = 18
         Me.cmbModeloCompatible.Images.Add(CType(resources.GetObject("cmbModeloCompatible.Images"), System.Drawing.Image))
         Me.cmbModeloCompatible.ItemHeight = 15
-        Me.cmbModeloCompatible.Location = New System.Drawing.Point(129, 145)
+        Me.cmbModeloCompatible.Location = New System.Drawing.Point(172, 178)
+        Me.cmbModeloCompatible.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbModeloCompatible.MatchEntryTimeout = CType(2000, Long)
         Me.cmbModeloCompatible.MaxDropDownItems = CType(5, Short)
         Me.cmbModeloCompatible.MaxLength = 32767
@@ -228,16 +236,17 @@ Partial Class frmBusquedaRepuestos
         Me.cmbModeloCompatible.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbModeloCompatible.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbModeloCompatible.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbModeloCompatible.Size = New System.Drawing.Size(173, 21)
+        Me.cmbModeloCompatible.Size = New System.Drawing.Size(231, 24)
         Me.cmbModeloCompatible.TabIndex = 3
         Me.cmbModeloCompatible.Tag = ""
         Me.cmbModeloCompatible.PropBag = resources.GetString("cmbModeloCompatible.PropBag")
         '
         'cmdFiltrar
         '
-        Me.cmdFiltrar.Location = New System.Drawing.Point(330, 142)
+        Me.cmdFiltrar.Location = New System.Drawing.Point(440, 175)
+        Me.cmdFiltrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdFiltrar.Name = "cmdFiltrar"
-        Me.cmdFiltrar.Size = New System.Drawing.Size(86, 26)
+        Me.cmdFiltrar.Size = New System.Drawing.Size(115, 32)
         Me.cmdFiltrar.TabIndex = 4
         Me.cmdFiltrar.Text = "Filtrar"
         Me.cmdFiltrar.UseVisualStyleBackColor = True
@@ -245,9 +254,10 @@ Partial Class frmBusquedaRepuestos
         'cmdCancelar
         '
         Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Location = New System.Drawing.Point(684, 447)
+        Me.cmdCancelar.Location = New System.Drawing.Point(912, 550)
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(74, 30)
+        Me.cmdCancelar.Size = New System.Drawing.Size(99, 37)
         Me.cmdCancelar.TabIndex = 7
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
@@ -255,9 +265,10 @@ Partial Class frmBusquedaRepuestos
         '
         'cmdGuardar
         '
-        Me.cmdGuardar.Location = New System.Drawing.Point(604, 447)
+        Me.cmdGuardar.Location = New System.Drawing.Point(805, 550)
+        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(74, 30)
+        Me.cmdGuardar.Size = New System.Drawing.Size(99, 37)
         Me.cmdGuardar.TabIndex = 6
         Me.cmdGuardar.Tag = "ACEPTAR"
         Me.cmdGuardar.Text = "&Aceptar"
@@ -267,38 +278,29 @@ Partial Class frmBusquedaRepuestos
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 483)
+        Me.Panel1.Location = New System.Drawing.Point(0, 594)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(766, 21)
+        Me.Panel1.Size = New System.Drawing.Size(1021, 26)
         Me.Panel1.TabIndex = 102
         '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.PictureBox1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(766, 32)
+        Me.Panel2.Size = New System.Drawing.Size(1021, 39)
         Me.Panel2.TabIndex = 103
         Me.Panel2.Tag = "LAYOUT"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(701, -1)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(64, 31)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
-        '
         'frmBusquedaRepuestos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(766, 504)
+        Me.ClientSize = New System.Drawing.Size(1021, 620)
         Me.ControlBox = False
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
@@ -316,6 +318,7 @@ Partial Class frmBusquedaRepuestos
         Me.Controls.Add(Me.gbxResultados)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmBusquedaRepuestos"
@@ -327,9 +330,8 @@ Partial Class frmBusquedaRepuestos
         CType(Me.cmbProveedor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbMarca, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbModeloCompatible, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents gbxResultados As System.Windows.Forms.GroupBox
@@ -347,5 +349,4 @@ Partial Class frmBusquedaRepuestos
     Friend WithEvents grdResultados As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 End Class

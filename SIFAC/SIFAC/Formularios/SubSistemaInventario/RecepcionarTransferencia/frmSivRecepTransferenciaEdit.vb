@@ -235,7 +235,7 @@ Public Class frmSivRecepTransferenciaEdit
             Try
                 T.BeginTran()
                 With objTransf
-                    .Retrieve(Me.IdSivTransferencia, Integer.Parse(Me.cmbSitioDestino.SelectedValue.ToString), T)
+                    .Retrieve(Me.IdSivTransferencia, T)
                     .Fecharecibido = Me.dtpFechaRecibido.Value
                     .RecibidoPor = Me.txtRecibidoPor.Text.Trim
                     .ObjEstadoID = frmSivRecepTransferencia.gblEstadoRecibidaID
@@ -251,7 +251,7 @@ Public Class frmSivRecepTransferenciaEdit
                 For Each row As DataRow In Me.dtDetalleTransferencia.Rows
                     'Actualizar Cantidad Recibida
                     With objSivTranDetalleUpdate
-                        .Retrieve(Me.IdSivTransferencia.ToString, Me.cmbSitioDestino.SelectedValue.ToString, row("objRepuestoID"), T)
+                        .Retrieve(Me.IdSivTransferencia.ToString, T)
                         .CantidadRecibida = row("CantidadRecibida")
                         .FechaModificacion = clsProyecto.Conexion.FechaServidor
                         .UsuarioModificacion = clsProyecto.Conexion.Usuario

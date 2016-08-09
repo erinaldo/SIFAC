@@ -87,12 +87,12 @@ Public Class frmReportesTransferencias
     Private Sub CargarComboSitioOrigen()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = StbTienda.RetrieveDT("ActivoRepuesto=1", "Nombre", "StbTiendaID,Codigo, Nombre")
+            dtDatos = StbBodegas.RetrieveDT("1=1", "Nombre", "StbBodegaID,Codigo, Nombre")
             With Me.cmbSitioOrigen
                 .DataSource = dtDatos
                 .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+                .ValueMember = "StbBodegaID"
+                .Splits(0).DisplayColumns("StbBodegaID").Visible = False
                 .Splits(0).DisplayColumns("Codigo").Width = 30
                 .ExtendRightColumn = True
                 .ColumnHeaders = False
@@ -117,12 +117,12 @@ Public Class frmReportesTransferencias
     Private Sub CargarComboSitioDestino()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = StbTienda.RetrieveDT("ActivoRepuesto=1", "Nombre", "StbTiendaID,Codigo, Nombre")
+            dtDatos = StbBodegas.RetrieveDT("1=1", "Nombre", "StbBodegaID,Codigo, Nombre")
             With Me.cmbSitioDestino
                 .DataSource = dtDatos
                 .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+                .ValueMember = "StbBodegaID"
+                .Splits(0).DisplayColumns("StbBodegaID").Visible = False
                 .Splits(0).DisplayColumns("Codigo").Width = 30
                 .ExtendRightColumn = True
                 .ColumnHeaders = False
@@ -274,7 +274,7 @@ Public Class frmReportesTransferencias
             Me.DialogResult = Windows.Forms.DialogResult.Cancel
         Else
             If Me.cmbSitioDestino.FindStringExact(Me.IdSucursalSession.ToString, 0, 0) = -1 Then
-                MsgBox("La sucursal configurada en la sesión del sistema, no es una sucursal de Repuestos", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                MsgBox("La sucursal configurada en la sesión del sistema, no es una sucursal de Productos", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                 Me.DialogResult = Windows.Forms.DialogResult.Cancel
             Else
                 If Me.FormLlamado.Equals(frmSivSoliTransferencia.Name) Or Me.FormLlamado.Equals(frmSivRecepTransferencia.Name) Or Me.FormLlamado.Equals(frmSivRecepTransferencia.Name + "1") Then
@@ -317,22 +317,22 @@ Public Class frmReportesTransferencias
             sFiltro = "(CONVERT(VARCHAR,Fechasolicitud,112) >='" + Format(dtpFechaDesde.Value, "yyyyMMdd") + "' AND CONVERT(VARCHAR,Fechasolicitud,112) <='" + Format(Me.dtpFechaHasta.Value, "yyyyMMdd") + "') AND ObjEstadoID=" + Me.cmbEstados.SelectedValue.ToString
             'Si ha seleccionado Tienda Origen
             If Me.cmbSitioOrigen.SelectedValue <> 0 Then
-                sFiltro += " AND ObjTiendaOrigenID=" + Me.cmbSitioOrigen.SelectedValue.ToString
+                sFiltro += " AND ObjBodegaOrigenID=" + Me.cmbSitioOrigen.SelectedValue.ToString
             End If
             'Si ha seleccionado tienda Destino
             If Me.cmbSitioDestino.SelectedValue <> 0 Then
-                sFiltro += " AND ObjTiendaDestinoID=" + Me.cmbSitioDestino.SelectedValue.ToString
+                sFiltro += " AND ObjBodegaDestinoID=" + Me.cmbSitioDestino.SelectedValue.ToString
             End If
         Else
             sFiltro = "1=0"
         End If
 
         'Obtener datos para la generación del reporte
-        sCampos = "ClaveSitios, CodigoTiendaOrigen, CodigoTiendaDestino, SivRepuestoID, " + _
-                  "CodigosProveedores, DescripcionCorta, TipoRepuesto, CantidadSolicitada, " + _
-                  "ObjTiendaOrigenID, ObjTiendaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID," + _
+        sCampos = "ClaveSitios, CodigoTiendaOrigen, CodigoTiendaDestino, SivProductoID, " + _
+                  "Producto, CantidadSolicitada, " + _
+                  "ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID," + _
                   "EstadoTransferencia, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada"
-        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaSolicitud", sFiltro + " ORDER BY SitioOrigen, SivTransferenciaID, SivRepuestoID")
+        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaSolicitud", sFiltro + " ORDER BY SitioOrigen, SivTransferenciaID, SivProductoID")
         dtDatos = SqlHelper.ExecuteQueryDT(sSQL)
 
         'Si hay resultados mostrar opciones para mostrar informe
@@ -359,11 +359,11 @@ Public Class frmReportesTransferencias
 
             'Si ha seleccionado Tienda Origen
             If Me.cmbSitioOrigen.SelectedValue <> 0 Then
-                sFiltro += " AND ObjTiendaOrigenID=" + Me.cmbSitioOrigen.SelectedValue.ToString
+                sFiltro += " AND ObjBodegaOrigenID=" + Me.cmbSitioOrigen.SelectedValue.ToString
             End If
             'Si ha seleccionado tienda Destino
             If Me.cmbSitioDestino.SelectedValue <> 0 Then
-                sFiltro += " AND ObjTiendaDestinoID=" + Me.cmbSitioDestino.SelectedValue.ToString
+                sFiltro += " AND ObjBodegaDestinoID=" + Me.cmbSitioDestino.SelectedValue.ToString
             End If
 
         Else
@@ -371,13 +371,13 @@ Public Class frmReportesTransferencias
         End If
 
             'Obtener datos para la generación del reporte
-        sCampos = "ClaveSitios, SivRepuestoID, CodigosProveedores, DescripcionCorta, TipoRepuesto, " + _
-                  "CantidadSolicitada, ObjTiendaOrigenID, ObjTiendaDestinoID, SolicitadoPor, " + _
+        sCampos = "ClaveSitios, SivProductoID, Producto, " + _
+                  "CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, " + _
                   "Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones, SivTransferenciaID, " + _
                   "SitioDestino, SitioOrigen, Anulada, CodigoTiendaDestino, CodigoTiendaOrigen, " + _
                   "Fechadespacho, DespachadoPor, CantidadDespachada"
 
-        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaDespacho", sFiltro + " ORDER BY SitioDestino, SivTransferenciaID, SivRepuestoID")
+        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaDespacho", sFiltro + " ORDER BY SitioDestino, SivTransferenciaID, SivProductoID")
         dtDatos = SqlHelper.ExecuteQueryDT(sSQL)
 
         If dtDatos.Rows.Count <> 0 Then

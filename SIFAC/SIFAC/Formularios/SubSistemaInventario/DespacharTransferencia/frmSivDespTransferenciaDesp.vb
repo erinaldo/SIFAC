@@ -322,8 +322,8 @@ Public Class frmSivDespTransferenciaDesp
                 T.BeginTran()
                 dtDetalleTransf = SivTransferenciaDetalle.RetrieveDT("1=0")
                 With objTransf
-                    .ObjTiendaOrigenID = Me.cmbSitioOrigen.SelectedValue
-                    .ObjTiendaDestinoID = Me.cmbSitioDestino.SelectedValue
+                    .ObjBodegaOrigenID = Me.cmbSitioOrigen.SelectedValue
+                    .ObjBodegaDestinoID = Me.cmbSitioDestino.SelectedValue
                     .Fechadespacho = Me.dtpFechaDespacho.Value
                     .DespachadoPor = Me.txtDespachadoPor.Text.Trim
                     .Observaciones = Me.txtObservaciones.Text.Trim
@@ -398,7 +398,7 @@ Public Class frmSivDespTransferenciaDesp
                 dtDetalleTransfInsert = SivTransferenciaDetalle.RetrieveDT("1=0")
 
                 With objTransf
-                    .Retrieve(Me.IdSivTransferencia, Integer.Parse(Me.cmbSitioDestino.SelectedValue.ToString))
+                    .Retrieve(Me.IdSivTransferencia)
                     .Fechadespacho = Me.dtpFechaDespacho.Value
                     .DespachadoPor = Me.txtDespachadoPor.Text.Trim
                     .Observaciones = Me.txtObservaciones.Text.Trim
@@ -417,7 +417,7 @@ Public Class frmSivDespTransferenciaDesp
                     'Si fue cargado desde la BD, entonces actualizar sino insertar
                     If Convert.ToBoolean(row("BD")) Then    'ACTUALIZACION
                         With objSivTranDetalleUpdate
-                            .Retrieve(Me.IdSivTransferencia.ToString, Me.cmbSitioDestino.SelectedValue.ToString, row("objRepuestoID"))
+                            .Retrieve(Me.IdSivTransferencia.ToString, T)
                             .CantidadDespachada = row("CantidadDespachada")
                             .FechaModificacion = clsProyecto.Conexion.FechaServidor
                             .UsuarioModificacion = clsProyecto.Conexion.Usuario
@@ -427,8 +427,8 @@ Public Class frmSivDespTransferenciaDesp
                         objSivTranDetalleInsert = New SivTransferenciaDetalle
                         With objSivTranDetalleInsert
                             .objTransferenciaID = Me.IdSivTransferencia
-                            .objTiendaDestinoID = Me.cmbSitioDestino.SelectedValue
-                            .objRepuestoID = row("objRepuestoID")
+                            .objBodegaDestinoID = Me.cmbSitioDestino.SelectedValue
+                            .objSivProductoID = row("objRepuestoID")
                             .CantidadSolicitada = 0
                             .CantidadDespachada = row("CantidadDespachada")
                             .CantidadRecibida = 0

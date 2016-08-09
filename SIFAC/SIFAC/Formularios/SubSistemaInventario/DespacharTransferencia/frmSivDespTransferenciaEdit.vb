@@ -285,8 +285,8 @@ Public Class frmSivDespTransferenciaEdit
                 T.BeginTran()
                 dtDetalleTransf = SivTransferenciaDetalle.RetrieveDT("1=0")
                 With objTransf
-                    .ObjTiendaOrigenID = Me.cmbSitioOrigen.SelectedValue
-                    .ObjTiendaDestinoID = Me.cmbSitioDestino.SelectedValue
+                    .ObjBodegaOrigenID = Me.cmbSitioOrigen.SelectedValue
+                    .ObjBodegaDestinoID = Me.cmbSitioDestino.SelectedValue
                     .Fechadespacho = Me.dtpFecha.Value
                     .DespachadoPor = Me.txtDespachadoPor.Text.Trim
                     .Observaciones = Me.txtObservaciones.Text.Trim

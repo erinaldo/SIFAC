@@ -104,8 +104,8 @@ Public Class frmSivSoliTransferencia
         Dim sSQL, sSQL1, sSQL2, sCampos, sFiltro1, sFiltro2 As String
         Me.DiasTransferenciasRecientes = ClsCatalogos.GetValorParametro("diasTransfRecientes")
 
-        Dim strFiltroSitio As String = " (ObjTiendaOrigenID = " + Me.IdSucursalSession.ToString + " OR ObjTiendaDestinoID = " + Me.IdSucursalSession.ToString + ")"
-        sCampos = "CONVERT(VARCHAR,Fechasolicitud,103) AS Fechasolicitud, SivTransferenciaID, ObjTiendaDestinoID, ObjTiendaOrigenID, SitioOrigen, SitioDestino, SolicitadoPor, ObjEstadoID, Estado"
+        Dim strFiltroSitio As String = " (ObjBodegaOrigenID = " + Me.IdSucursalSession.ToString + " OR ObjBodegaDestinoID = " + Me.IdSucursalSession.ToString + ")"
+        sCampos = "CONVERT(VARCHAR,Fechasolicitud,103) AS Fechasolicitud, SivTransferenciaID, ObjBodegaDestinoID, ObjBodegaOrigenID, SitioOrigen, SitioDestino, SolicitadoPor, ObjEstadoID, Estado"
         sFiltro2 = " (DATEDIFF(DAY, Fechasolicitud, GETDATE()) <= " + Me.DiasTransferenciasRecientes.ToString + ")" 'Filtra por antiguedad
         sFiltro1 = " ObjEstadoID= " + Me.IdEstadoSolicitada.ToString
 
@@ -127,7 +127,7 @@ Public Class frmSivSoliTransferencia
             Me.DtTransferencias.DefaultView.Sort = "SivTransferenciaID"
             Me.grdTransferencias.SetDataBinding(Me.DtTransferencias, "", True)
             Me.grdTransferencias.Splits(0).DisplayColumns("ObjEstadoID").Visible = False
-            Me.grdTransferencias.Splits(0).DisplayColumns("ObjTiendaDestinoID").Visible = False
+            Me.grdTransferencias.Splits(0).DisplayColumns("ObjBodegaDestinoID").Visible = False
             Me.bloquearBotonesBarra(Me.DtTransferencias.Rows.Count = 0)
             Me.grdTransferencias.Caption = "Solicitudes de transferencias (" + Me.grdTransferencias.RowCount.ToString + ")"
             Me.grdTransferencias.Refresh()
@@ -230,7 +230,7 @@ Public Class frmSivSoliTransferencia
                 If MsgBox("¿Seguro que desea anular la solicitud de transferencia?", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                     T.BeginTran()
                     With objTransf
-                        .Retrieve(SivTransferenciaID.ToString, ObjTiendaDestinoID, T)
+                        .Retrieve(SivTransferenciaID.ToString, T)
                         .ObjEstadoID = Me.IdEstadoAnulada
                         .costototal = 0
                         .UsuarioModificacion = clsProyecto.Conexion.Usuario
@@ -238,7 +238,7 @@ Public Class frmSivSoliTransferencia
                         .Update(T)
                     End With
 
-                    strFiltro = "objTransferenciaID=" + SivTransferenciaID.ToString + " AND objTiendaDestinoID=" + ObjTiendaDestinoID.ToString
+                    strFiltro = "objTransferenciaID=" + SivTransferenciaID.ToString + " AND ObjBodegaDestinoID=" + ObjTiendaDestinoID.ToString
                     dtDetalleTransf = SivTransferenciaDetalle.RetrieveDT(strFiltro, , , T)
 
                     'Volver cantidades de detalle a CERO
@@ -307,7 +307,7 @@ Public Class frmSivSoliTransferencia
         If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
             objRptSoliTransf = New rptTransferenciaSolicitud
             sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
-            sCampos = "SivTransferenciaID, SivRepuestoID, CodigosProveedores, DescripcionCorta, TipoRepuesto, CantidadSolicitada, ObjTiendaOrigenID, SitioDestino,SitioOrigen, ObjTiendaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones"
+            sCampos = "SivTransferenciaID, SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, SitioDestino,SitioOrigen, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones"
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaSolicitud", sFiltro)
             objRptSoliTransf.EstadoAnulada = EstadoAnulada
             objRptSoliTransf.DataSource = SqlHelper.ExecuteQueryDT(sSQL)
@@ -353,16 +353,16 @@ Public Class frmSivSoliTransferencia
 
     Private Sub cmdAnularSolicitud_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAnularSolicitud.Click
         Dim iIndiceRegistro, SivTransferenciaID, objTiendaDestinoID As Integer
-        If Me.grdTransferencias.Columns("SivTransferenciaID").Value.ToString.Trim.Length <> 0 And Me.grdTransferencias.Columns("ObjTiendaDestinoID").Value.ToString.Trim.Length <> 0 Then
+        If Me.grdTransferencias.Columns("SivTransferenciaID").Value.ToString.Trim.Length <> 0 And Me.grdTransferencias.Columns("ObjBodegaDestinoID").Value.ToString.Trim.Length <> 0 Then
             SivTransferenciaID = Me.grdTransferencias.Columns("SivTransferenciaID").Value
 
-            objTiendaDestinoID = Me.grdTransferencias.Columns("ObjTiendaDestinoID").Value
+            objTiendaDestinoID = Me.grdTransferencias.Columns("ObjBodegaDestinoID").Value
             Dim Trans As New SivTransferencia
-            Trans.Retrieve(SivTransferenciaID, objTiendaDestinoID)
+            Trans.Retrieve(SivTransferenciaID)
             If Trans.ObjEstadoID = Me.IdEstadoAnulada Then
                 MsgBox("La trasferencia seleccionada ya ha sido anulada, favor refrescar datos.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
             Else
-                If Me.Anular_SolicitudTransf(SivTransferenciaID, Me.grdTransferencias.Columns("ObjTiendaDestinoID").Value) Then
+                If Me.Anular_SolicitudTransf(SivTransferenciaID, Me.grdTransferencias.Columns("ObjBodegaDestinoID").Value) Then
                     Me.CargaDatos()
                     If (Me.DtTransferencias.Rows.Count <> 0) Then
                         iIndiceRegistro = Me.DtTransferencias.DefaultView.Find(SivTransferenciaID)

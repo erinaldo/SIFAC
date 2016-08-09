@@ -300,7 +300,7 @@ Public Class frmSivDespTransferencia
                 If MsgBox("¿Seguro que desea anular el despacho de transferencia?", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                     T.BeginTran()
                     With objTransf
-                        .Retrieve(SivTransferenciaID, ObjTiendaDestinoID, T)
+                        .Retrieve(SivTransferenciaID, T)
                         .ObjEstadoID = Me.IdEstadoAnulada
                         .costototal = 0
                         .UsuarioModificacion = clsProyecto.Conexion.Usuario
@@ -441,7 +441,7 @@ Public Class frmSivDespTransferencia
             objTiendaDestinoID = Me.grdTransferencias.Columns("ObjTiendaDestinoID").Value
 
             Dim Trans As New SivTransferencia
-            Trans.Retrieve(SivTransferenciaID, objTiendaDestinoID)
+            Trans.Retrieve(SivTransferenciaID)
             If Trans.ObjEstadoID = Me.IdEstadoAnulada Then
                 MsgBox("La trasferencia seleccionada ya ha sido anulada, favor refrescar datos.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
             Else
