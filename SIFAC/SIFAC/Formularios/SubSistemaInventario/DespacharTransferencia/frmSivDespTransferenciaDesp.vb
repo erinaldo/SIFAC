@@ -146,15 +146,15 @@ Public Class frmSivDespTransferenciaDesp
     Private Sub CargaDatosSolicitudTransf()
         Dim sSQL, sCampos, sFiltro As String
         Dim dtDatosTransferencia As DataTable
-        sCampos = "SivTransferenciaID, ObjTiendaOrigenID, ObjTiendaDestinoID, Observaciones, Fechasolicitud, SolicitadoPor, Fechadespacho, DespachadoPor, fechaRecibido, RecibidoPor"
+        sCampos = "SivTransferenciaID, ObjBodegaOrigenID, ObjBodegaDestinoID, Observaciones, Fechasolicitud, SolicitadoPor, Fechadespacho, DespachadoPor, fechaRecibido, RecibidoPor"
         sFiltro = "SivTransferenciaID=" + Me.IdSivTransferencia.ToString
         sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.SivTransferencia", sFiltro)
 
         dtDatosTransferencia = SqlHelper.ExecuteQueryDT(sSQL)
         'Cargar datos del proveedor
         Me.txtNoTransferencia.Text = Me.IdSivTransferencia
-        Me.cmbSitioOrigen.SelectedValue = dtDatosTransferencia.DefaultView(0)("ObjTiendaOrigenID")
-        Me.cmbSitioDestino.SelectedValue = dtDatosTransferencia.DefaultView(0)("ObjTiendaDestinoID")
+        Me.cmbSitioOrigen.SelectedValue = dtDatosTransferencia.DefaultView(0)("ObjBodegaOrigenID")
+        Me.cmbSitioDestino.SelectedValue = dtDatosTransferencia.DefaultView(0)("ObjBodegaDestinoID")
         Me.txtObservaciones.Text = dtDatosTransferencia.DefaultView(0)("Observaciones")
         If dtDatosTransferencia.DefaultView(0)("Fechasolicitud").ToString.Length <> 0 Then
             Me.dtpFechaSolicitud.Value = dtDatosTransferencia.DefaultView(0)("Fechasolicitud")
@@ -189,12 +189,12 @@ Public Class frmSivDespTransferenciaDesp
     Private Sub CargarComboSitioOrigen()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = StbTienda.RetrieveDT("ActivoRepuesto=1", "Nombre", "StbTiendaID,Codigo, Nombre")
+            dtDatos = StbBodegas.RetrieveDT("1=1", "Nombre", "StbBodegaID,Codigo, Nombre")
             With Me.cmbSitioOrigen
                 .DataSource = dtDatos
                 .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+                .ValueMember = "StbBodegaID"
+                .Splits(0).DisplayColumns("StbBodegaID").Visible = False
                 .Splits(0).DisplayColumns("Codigo").Width = 30
                 .ExtendRightColumn = True
                 .ColumnHeaders = False
@@ -216,12 +216,12 @@ Public Class frmSivDespTransferenciaDesp
     Private Sub CargarComboSitioDestino()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = StbTienda.RetrieveDT("ActivoRepuesto=1", "Nombre", "StbTiendaID,Codigo, Nombre")
+            dtDatos = StbBodegas.RetrieveDT("1=1", "Nombre", "StbBodegaID,Codigo, Nombre")
             With Me.cmbSitioDestino
                 .DataSource = dtDatos
                 .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+                .ValueMember = "StbBodegaID"
+                .Splits(0).DisplayColumns("StbBodegaID").Visible = False
                 .Splits(0).DisplayColumns("Codigo").Width = 30
                 .ExtendRightColumn = True
                 .ColumnHeaders = False
@@ -240,21 +240,21 @@ Public Class frmSivDespTransferenciaDesp
     Private Sub CargarDetalleTransferencia(ByVal sFiltroTransferencia As String)
         Dim sSQL, sCampos, sFiltro As String
         'configurar combobox para seleccionar repuesto
-        sCampos = " SivRepuestoID as objRepuestoID, DescripcionCorta "
-        sFiltro = " Activo=1 AND SivRepuestoID NOT IN ('1','2','3') ORDER BY DescripcionCorta"
-        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.SivRepuestos", sFiltro)
+        sCampos = " SivProductoID as objSivProductoID, Nombre "
+        sFiltro = " Activo=1 ORDER BY Nombre"
+        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.SivProductos", sFiltro)
         Try
             dtDatosCombosDetalle = SqlHelper.ExecuteQueryDT(sSQL)
             With Me.cmbDescripcionRepuesto
                 .DataSource = dtDatosCombosDetalle
-                .DisplayMember = "DescripcionCorta"
-                .ValueMember = "DescripcionCorta"
+                .DisplayMember = "Nombre"
+                .ValueMember = "Nombre"
                 .DropdownWidth = C1.Win.C1TrueDBGrid.DropdownWidthEnum.Default
                 '.ColumnHeaders = False
                 '.DisplayColumns("objRepuestoID").Visible = False
-                .DisplayColumns("objRepuestoID").Width = 50
-                .Columns("objRepuestoID").Caption = "Código"
-                .Columns("DescripcionCorta").Caption = "Descripción"
+                .DisplayColumns("objSivProductoID").Width = 50
+                .Columns("objSivProductoID").Caption = "Código"
+                .Columns("Nombre").Caption = "Descripción"
                 .ExtendRightColumn = True
                 '.DisplayColumns("DescripcionCorta").Width = Me.cmbDescripcionRepuesto.Width - 10 'Me.grdDetalleTransferencia.Splits(0).DisplayColumns("DescripcionCorta").Width
                 .ValueTranslate = True
@@ -262,7 +262,7 @@ Public Class frmSivDespTransferenciaDesp
             End With
 
             If Me.cmbDescripcionRepuesto.RowCount = 0 Then
-                MsgBox("No hay repuestos registrados...", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                MsgBox("No hay productos registrados...", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                 Close()
                 Exit Sub
             End If
@@ -270,14 +270,14 @@ Public Class frmSivDespTransferenciaDesp
             ''Cargar desplegable para el código
             With Me.cmbDesplegableCodigo
                 .DataSource = dtDatosCombosDetalle
-                .DisplayMember = "objRepuestoID"
-                .ValueMember = "objRepuestoID"
+                .DisplayMember = "objSivProductoID"
+                .ValueMember = "objSivProductoID"
                 .DropdownWidth = C1.Win.C1TrueDBGrid.DropdownWidthEnum.Default
                 '.ColumnHeaders = False
                 '.DisplayColumns("objRepuestoID").Visible = False
-                .DisplayColumns("objRepuestoID").Width = 50
-                .Columns("objRepuestoID").Caption = "Código"
-                .Columns("DescripcionCorta").Caption = "Descripción"
+                .DisplayColumns("objSivProductoID").Width = 50
+                .Columns("objSivProductoID").Caption = "Código"
+                .Columns("Nombre").Caption = "Descripción"
                 .ExtendRightColumn = True
                 '.DisplayColumns("DescripcionCorta").Width = Me.cmbDescripcionRepuesto.Width - 10 'Me.grdDetalleTransferencia.Splits(0).DisplayColumns("DescripcionCorta").Width
                 .ValueTranslate = True
@@ -285,9 +285,9 @@ Public Class frmSivDespTransferenciaDesp
             End With
 
             If Me.TypeGui = DESPACHAR Then
-                sCampos = "objRepuestoID, DescripcionCorta, Marca, CantidadOrigen, CantidadDestino, cast(0 as int) as CantidadDespachada,CantidadTransito, CantidadSolicitada, objTransferenciaID, objMarcaID, objTiendaDestinoID,CAST(1 AS BIT) as BD"
+                sCampos = "objSivProductoID, Producto, Marca, CantidadOrigen, CantidadDestino, cast(0 as int) as CantidadDespachada,CantidadTransito, CantidadSolicitada, objTransferenciaID, objMarcaID, objBodegaDestinoID,CAST(1 AS BIT) as BD"
             Else
-                sCampos = "objRepuestoID, DescripcionCorta, Marca, CantidadOrigen, CantidadDestino, CantidadDespachada,CantidadTransito, CantidadSolicitada, objTransferenciaID, objMarcaID, objTiendaDestinoID, CAST(1 AS BIT) as BD"
+                sCampos = "objSivProductoID, Producto, Marca, CantidadOrigen, CantidadDestino, CantidadDespachada,CantidadTransito, CantidadSolicitada, objTransferenciaID, objMarcaID, objBodegaDestinoID, CAST(1 AS BIT) as BD"
             End If
 
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwSivSolicitudesTransferenciasDet", sFiltroTransferencia)
@@ -314,7 +314,7 @@ Public Class frmSivDespTransferenciaDesp
     Private Function GuardarDespachoTransf() As Boolean
         Dim T As New TransactionManager
         Dim objTransf As New SivTransferencia
-        Dim objSivBodegaRepuesto As New SivBodegaRepuestos
+        Dim objSivBodegaProductos As New SivBodegaProductos
         Dim dtDetalleTransf As New DataTable
         Dim fila As DataRow
         Try
@@ -339,8 +339,8 @@ Public Class frmSivDespTransferenciaDesp
                 For Each row As DataRow In Me.dtDetalleTransferencia.Rows
                     fila = dtDetalleTransf.NewRow
                     fila("objTransferenciaID") = Me.IdSivTransferencia
-                    fila("objTiendaDestinoID") = Me.cmbSitioDestino.SelectedValue
-                    fila("objRepuestoID") = row("objRepuestoID")
+                    fila("objBodegaDestinoID") = Me.cmbSitioDestino.SelectedValue
+                    fila("objSivProductoID") = row("objSivProductoID")
                     fila("CantidadSolicitada") = 0
                     fila("CantidadDespachada") = row("CantidadDespachada")
                     fila("CantidadRecibida") = 0
@@ -348,10 +348,10 @@ Public Class frmSivDespTransferenciaDesp
                     fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
                     dtDetalleTransf.Rows.Add(fila)
                     'Actualizar cantidad en tránsito en SivBodegaRepuesto por cada repuesto
-                    With objSivBodegaRepuesto
-                        .Retrieve(Convert.ToInt32(row("objRepuestoID")), Convert.ToInt32(fila("objTiendaDestinoID").ToString))
+                    With objSivBodegaProductos
+                        .Retrieve(Convert.ToInt32(row("objSivProductoID")), Convert.ToInt32(fila("objBodegaDestinoID").ToString))
                         If .CantidadTransito.HasValue Then
-                            .CantidadTransito = objSivBodegaRepuesto.CantidadTransito.Value + Convert.ToInt32(fila("CantidadDespachada").ToString)
+                            .CantidadTransito = objSivBodegaProductos.CantidadTransito.Value + Convert.ToInt32(fila("CantidadDespachada").ToString)
                         Else
                             .CantidadTransito = Convert.ToInt32(fila("CantidadDespachada").ToString)
                         End If
@@ -385,7 +385,7 @@ Public Class frmSivDespTransferenciaDesp
     Private Function DespacharTransferencia() As Boolean
         Dim T As New TransactionManager
         Dim objTransf As New SivTransferencia
-        Dim objSivBodegaRepuesto As New SivBodegaRepuestos
+        Dim objSivBodegaProductos As New SivBodegaProductos
         Dim objSivTranDetalleUpdate As New SivTransferenciaDetalle
         Dim objSivTranDetalleInsert As New SivTransferenciaDetalle
 
@@ -417,7 +417,7 @@ Public Class frmSivDespTransferenciaDesp
                     'Si fue cargado desde la BD, entonces actualizar sino insertar
                     If Convert.ToBoolean(row("BD")) Then    'ACTUALIZACION
                         With objSivTranDetalleUpdate
-                            .Retrieve(Me.IdSivTransferencia.ToString, T)
+                            .RetrieveByFilter(String.Format("objTransferenciaID={0}",Me.IdSivTransferencia.ToString), T)
                             .CantidadDespachada = row("CantidadDespachada")
                             .FechaModificacion = clsProyecto.Conexion.FechaServidor
                             .UsuarioModificacion = clsProyecto.Conexion.Usuario
@@ -428,7 +428,7 @@ Public Class frmSivDespTransferenciaDesp
                         With objSivTranDetalleInsert
                             .objTransferenciaID = Me.IdSivTransferencia
                             .objBodegaDestinoID = Me.cmbSitioDestino.SelectedValue
-                            .objSivProductoID = row("objRepuestoID")
+                            .objSivProductoID = row("objSivProductoID")
                             .CantidadSolicitada = 0
                             .CantidadDespachada = row("CantidadDespachada")
                             .CantidadRecibida = 0
@@ -449,10 +449,10 @@ Public Class frmSivDespTransferenciaDesp
                     End If
 
                     'Actualizar cantidad en tránsito en SivBodegaRepuesto por cada repuesto
-                    With objSivBodegaRepuesto
-                        .Retrieve((row("objRepuestoID")), Convert.ToInt32(Me.cmbSitioOrigen.SelectedValue.ToString))
+                    With objSivBodegaProductos
+                        .Retrieve((row("objSivProductoID")), Convert.ToInt32(Me.cmbSitioOrigen.SelectedValue.ToString))
                         If .CantidadTransito.HasValue Then
-                            .CantidadTransito = objSivBodegaRepuesto.CantidadTransito.Value + Convert.ToInt32(row("CantidadDespachada").ToString)
+                            .CantidadTransito = objSivBodegaProductos.CantidadTransito.Value + Convert.ToInt32(row("CantidadDespachada").ToString)
                         Else
                             .CantidadTransito = Convert.ToInt32(row("CantidadDespachada").ToString)
                         End If
@@ -487,7 +487,7 @@ Public Class frmSivDespTransferenciaDesp
 
             If Me.dtDetalleTransferencia.Rows.Count <= 0 Then
                 'MsgBox("Debe ingresar al menos un repuesto en detalle de solicitud.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                Me.ErrorProvider.SetError(Me.grdDetalleTransferencia, "Debe ingresar al menos un repuesto en detalle de transferencia.")
+                Me.ErrorProvider.SetError(Me.grdDetalleTransferencia, "Debe ingresar al menos un producto en detalle de transferencia.")
                 Return False
                 Exit Function
             End If
@@ -500,7 +500,7 @@ Public Class frmSivDespTransferenciaDesp
             End If
 
             If Not CodigosRepuestosCorrectos() Then
-                Me.ErrorProvider.SetError(Me.grdDetalleTransferencia, "Hay al menos un código de repuesto ingresado que no existe en la base de datos.")
+                Me.ErrorProvider.SetError(Me.grdDetalleTransferencia, "Hay al menos un código de producto ingresado que no existe en la base de datos.")
                 Return False
                 Exit Function
             End If
@@ -533,7 +533,7 @@ Public Class frmSivDespTransferenciaDesp
         Dim bResultado As Boolean = False
         Try
             If Not String.IsNullOrEmpty(sCodigo) Then
-                bResultado = Me.dtDatosCombosDetalle.Select("objRepuestoID = '" + sCodigo & "'").Length <> 0
+                bResultado = Me.dtDatosCombosDetalle.Select("objSivProductoID = '" + sCodigo & "'").Length <> 0
             End If
             Return bResultado
         Catch ex As Exception
@@ -651,14 +651,14 @@ Public Class frmSivDespTransferenciaDesp
 #Region "Formatear grid detalle Edición - Consulta"
     Private Sub FormatearGridDetalleParaEdicion()
         With Me.grdDetalleTransferencia
-            .Columns("objRepuestoID").DropDown = Me.cmbDesplegableCodigo
-            .Columns("objRepuestoID").ValueItems.Translate = True
-            .Columns("objRepuestoID").DataWidth = 10
-            .Columns("objRepuestoID").SortDirection = C1.Win.C1TrueDBGrid.SortDirEnum.None
+            .Columns("objSivProductoID").DropDown = Me.cmbDesplegableCodigo
+            .Columns("objSivProductoID").ValueItems.Translate = True
+            .Columns("objSivProductoID").DataWidth = 10
+            .Columns("objSivProductoID").SortDirection = C1.Win.C1TrueDBGrid.SortDirEnum.None
 
-            .Columns("DescripcionCorta").DropDown = Me.cmbDescripcionRepuesto
-            .Columns("DescripcionCorta").SortDirection = C1.Win.C1TrueDBGrid.SortDirEnum.None
-            .Columns("DescripcionCorta").DataWidth = SivRepuestos.GetMaxLength("DescripcionCorta")
+            .Columns("Producto").DropDown = Me.cmbDescripcionRepuesto
+            .Columns("Producto").SortDirection = C1.Win.C1TrueDBGrid.SortDirEnum.None
+            .Columns("Producto").DataWidth = SivProductos.GetMaxLength("Nombre")
 
             .Columns("CantidadDespachada").DataWidth = 10 'un entero tiene precisión 10, escala 0
             .Columns("CantidadOrigen").Caption = "Bodega" + vbCrLf + "Cantidad        ."
@@ -670,7 +670,7 @@ Public Class frmSivDespTransferenciaDesp
 
             .Splits(0).DisplayColumns("objTransferenciaID").Visible = False
             .Splits(0).DisplayColumns("objMarcaID").Visible = False
-            .Splits(0).DisplayColumns("objTiendaDestinoID").Visible = False
+            .Splits(0).DisplayColumns("objBodegaDestinoID").Visible = False
             .Splits(0).DisplayColumns("BD").Visible = False
             .Splits(0).DisplayColumns("BD").AllowFocus = False
             .MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightCell
@@ -684,12 +684,12 @@ Public Class frmSivDespTransferenciaDesp
 
     Private Sub FormatearGridDetalleParaConsulta()
         With Me.grdDetalleTransferencia
-            .Splits(0).DisplayColumns("objRepuestoID").Locked = True
-            .Splits(0).DisplayColumns("DescripcionCorta").Locked = True
+            .Splits(0).DisplayColumns("objSivProductoID").Locked = True
+            .Splits(0).DisplayColumns("Producto").Locked = True
             .Splits(0).DisplayColumns("CantidadDespachada").Locked = True
 
-            .Splits(0).DisplayColumns("objRepuestoID").Style.BackColor = .Splits(0).DisplayColumns("Marca").Style.BackColor
-            .Splits(0).DisplayColumns("DescripcionCorta").Style.BackColor = .Splits(0).DisplayColumns("Marca").Style.BackColor
+            .Splits(0).DisplayColumns("objSivProductoID").Style.BackColor = .Splits(0).DisplayColumns("Marca").Style.BackColor
+            .Splits(0).DisplayColumns("Producto").Style.BackColor = .Splits(0).DisplayColumns("Marca").Style.BackColor
             .Splits(0).DisplayColumns("CantidadDespachada").Style.BackColor = .Splits(0).DisplayColumns("Marca").Style.BackColor
 
             '.Columns("DescripcionCorta").SortDirection = C1.Win.C1TrueDBGrid.SortDirEnum.None
@@ -703,7 +703,7 @@ Public Class frmSivDespTransferenciaDesp
 
             .Splits(0).DisplayColumns("objTransferenciaID").Visible = False
             .Splits(0).DisplayColumns("objMarcaID").Visible = False
-            .Splits(0).DisplayColumns("objTiendaDestinoID").Visible = False
+            .Splits(0).DisplayColumns("objBodegaDestinoID").Visible = False
             .Splits(0).DisplayColumns("BD").Visible = False
             .Splits(0).DisplayColumns("BD").AllowFocus = False
 
@@ -735,7 +735,7 @@ Public Class frmSivDespTransferenciaDesp
 
             'Verificar si ya se encuentra el repuesto en Detalle
             If DuplicadoEnDetalle(objRepuestoId, True) Then
-                MsgBox("El repuesto seleccionado ya se encuentra en detalle.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                MsgBox("El producto seleccionado ya se encuentra en detalle.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                 Me.grdDetalleTransferencia.Focus()
                 Me.grdDetalleTransferencia.Col = eCamposGrid.codigo
                 Exit Sub
@@ -902,15 +902,15 @@ Public Class frmSivDespTransferenciaDesp
         Dim bResultado As Boolean = False
         Try
             If Not String.IsNullOrEmpty(sIdRepuesto) Then
-                sCampos = "DescripcionCorta, objMarcaID, Marca, Cantidad, objTiendaID, CantidadTransito"
-                sFiltro = " SivRepuestoID =" + sIdRepuesto + " AND (objTiendaID=" + Me.cmbSitioOrigen.SelectedValue.ToString + " OR objTiendaID=" + Me.cmbSitioDestino.SelectedValue.ToString + ")"
+                sCampos = "Producto, objMarcaID, Marca, Cantidad, objBodegaID, CantidadTransito"
+                sFiltro = " SivProductoID =" + sIdRepuesto + " AND (objBodegaID=" + Me.cmbSitioOrigen.SelectedValue.ToString + " OR objBodegaID=" + Me.cmbSitioDestino.SelectedValue.ToString + ")"
                 sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwSivSolicitudesTransferenciasCargarDet", sFiltro)
 
                 dtDatos = SqlHelper.ExecuteQueryDT(sSQL)
 
                 If dtDatos.Rows.Count > 0 Then
                     'Obteniendo cantidad Origen
-                    dtDatos.DefaultView.RowFilter = "objTiendaID=" + Me.cmbSitioOrigen.SelectedValue.ToString
+                    dtDatos.DefaultView.RowFilter = "objBodegaID=" + Me.cmbSitioOrigen.SelectedValue.ToString
 
                     If dtDatos.DefaultView.Count > 0 Then
                         iCantidadOrigen = Integer.Parse(dtDatos.DefaultView.Item(0)("Cantidad").ToString.Trim)
@@ -920,7 +920,7 @@ Public Class frmSivDespTransferenciaDesp
                         iCantidadOrigen = 0
                     End If
                     'Obteniendo cantidad destino
-                    dtDatos.DefaultView.RowFilter = "objTiendaID=" + Me.cmbSitioDestino.SelectedValue.ToString
+                    dtDatos.DefaultView.RowFilter = "objBodegaID=" + Me.cmbSitioDestino.SelectedValue.ToString
                     If dtDatos.DefaultView.Count > 0 Then
                         iCantidadDestino = Integer.Parse(dtDatos.DefaultView.Item(0)("Cantidad").ToString.Trim)
 
@@ -933,9 +933,9 @@ Public Class frmSivDespTransferenciaDesp
                     If dtDatos.DefaultView.Count > 0 Then
                         With Me.grdDetalleTransferencia
                             .Columns("objTransferenciaID").Value = 0
-                            .Columns("objRepuestoID").Value = sIdRepuesto
-                            .Columns("objTiendaDestinoID").Value = Me.cmbSitioDestino.SelectedValue.ToString
-                            .Columns("DescripcionCorta").Value = dtDatos.DefaultView.Item(0)("DescripcionCorta").ToString.Trim
+                            .Columns("objSivProductoID").Value = sIdRepuesto
+                            .Columns("objBodegaDestinoID").Value = Me.cmbSitioDestino.SelectedValue.ToString
+                            .Columns("Producto").Value = dtDatos.DefaultView.Item(0)("Producto").ToString.Trim
                             .Columns("objMarcaID").Value = dtDatos.DefaultView.Item(0)("objMarcaID").ToString
                             .Columns("Marca").Value = dtDatos.DefaultView.Item(0)("Marca").ToString
                             .Columns("CantidadOrigen").Value = iCantidadOrigen.ToString
@@ -950,7 +950,7 @@ Public Class frmSivDespTransferenciaDesp
                         Me.HuboCambioTransf = True
                     End If
                 Else
-                    MsgBox("El repuesto (" + Me.cmbDescripcionRepuesto.Columns("DescripcionCorta").Value.ToString + _
+                    MsgBox("El producto (" + Me.cmbDescripcionRepuesto.Columns("Producto").Value.ToString + _
                            ") seleccionado aún no ha sido registrado en alguna de las bodegas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                     InicializarDatosFilaDetalle()
                     If Me.grdDetalleTransferencia.Col <> eCamposGrid.codigo Then
@@ -998,8 +998,8 @@ Public Class frmSivDespTransferenciaDesp
     Private Sub InicializarDatosFilaDetalle()
         'Inicializar valores
         With Me.grdDetalleTransferencia
-            .Columns("objRepuestoID").Value = String.Empty
-            .Columns("DescripcionCorta").Value = String.Empty
+            .Columns("objSivProductoID").Value = String.Empty
+            .Columns("Producto").Value = String.Empty
             .Columns("Marca").Value = String.Empty
             .Columns("CantidadOrigen").Value = String.Empty
             .Columns("CantidadDestino").Value = String.Empty
@@ -1065,7 +1065,7 @@ Public Class frmSivDespTransferenciaDesp
                         bResultado = True
                     End If
                 Else 'Si viene desde el campo [Código]
-                    If Me.grdDetalleTransferencia.Columns("objRepuestoID").Text.Trim.Length = 0 And iCont = 1 Then
+                    If Me.grdDetalleTransferencia.Columns("objSivProductoID").Text.Trim.Length = 0 And iCont = 1 Then
                         bResultado = True
                     Else
                         If iCont >= 2 Then
@@ -1125,7 +1125,7 @@ Public Class frmSivDespTransferenciaDesp
             Else
                 If Not bMostroAvisoDetalle Then
                     bMostroAvisoDetalle = True
-                    MsgBox("Código repuesto ingresado no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                    MsgBox("Código producto ingresado no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                 End If
 
                 Me.InicializarDatosFilaDetalle()
@@ -1145,9 +1145,9 @@ Public Class frmSivDespTransferenciaDesp
         Try
             If Not String.IsNullOrEmpty(sCodigoRepuesto) Then
                 If DuplicadoEnDetalle(sCodigoRepuesto, True) Then 'el segundo parámetro 'true' es para notificar que se está validando desde columna [descripción]
-                    MsgBox("El Repuesto (" + Me.cmbDescripcionRepuesto.Columns("DescripcionCorta").Value.ToString + _
+                    MsgBox("El Producto (" + Me.cmbDescripcionRepuesto.Columns("Producto").Value.ToString + _
                                               ") ya está en el detalle de transferencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                    Me.grdDetalleTransferencia.Columns("DescripcionCorta").Value = String.Empty
+                    Me.grdDetalleTransferencia.Columns("Producto").Value = String.Empty
                     Me.grdDetalleTransferencia.Col = eCamposGrid.descripcion
                     SendKeys.Send("{LEFT}") 'Inicializar celda descripción izquierda luego derecha
                     SendKeys.Send("{RIGHT}")
@@ -1193,8 +1193,8 @@ Public Class frmSivDespTransferenciaDesp
 #Region "Restaurar Fila Detalle"
     Private Sub RestaurarFilaDetalle()
         With Me.grdDetalleTransferencia
-            .Columns("objRepuestoID").Value = Me.grdDetalleTransferencia.Columns("objRepuestoID").Value.ToString.Trim
-            .Columns("DescripcionCorta").Value = Me.grdDetalleTransferencia.Columns("DescripcionCorta").Value.ToString.Trim
+            .Columns("objSivProductoID").Value = Me.grdDetalleTransferencia.Columns("objSivProductoID").Value.ToString.Trim
+            .Columns("Producto").Value = Me.grdDetalleTransferencia.Columns("Producto").Value.ToString.Trim
             .Columns("CantidadDespachada").Value = Me.grdDetalleTransferencia.Columns("CantidadDespachada").Value.ToString.Trim
             .UpdateData()
             .Refresh()
@@ -1227,19 +1227,19 @@ Public Class frmSivDespTransferenciaDesp
                 Exit Sub
             End If
 
-            If Me.grdDetalleTransferencia.Columns("objRepuestoID").Text.ToString.Trim.Length = 0 Then 'ha seleccionado del combo sin escribir nada en código
-                VerificarCargarRepuestoDesdeColumnaCodigo(Me.cmbDesplegableCodigo.Columns("objRepuestoID").Value.ToString.Trim)
+            If Me.grdDetalleTransferencia.Columns("objSivProductoID").Text.ToString.Trim.Length = 0 Then 'ha seleccionado del combo sin escribir nada en código
+                VerificarCargarRepuestoDesdeColumnaCodigo(Me.cmbDesplegableCodigo.Columns("objSivProductoID").Value.ToString.Trim)
             Else 'en caso de que el usuario haya escrito parte del código
-                If Not Me.ExisteCodigoRepuesto(Me.grdDetalleTransferencia.Columns("objRepuestoID").Text.ToString.Trim) Then
+                If Not Me.ExisteCodigoRepuesto(Me.grdDetalleTransferencia.Columns("objSivProductoID").Text.ToString.Trim) Then
                     If Not bMostroAvisoDetalle Then
                         bMostroAvisoDetalle = True
-                        MsgBox("Código repuesto ingresado no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                        MsgBox("Código producto ingresado no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                     End If
                     Me.InicializarDatosFilaDetalle()
                     Me.grdDetalleTransferencia.Focus()
                     Me.grdDetalleTransferencia.Col = eCamposGrid.codigo
                 Else
-                    VerificarCargarRepuestoDesdeColumnaCodigo(Me.grdDetalleTransferencia.Columns("objRepuestoID").Value.ToString.Trim)
+                    VerificarCargarRepuestoDesdeColumnaCodigo(Me.grdDetalleTransferencia.Columns("objSivProductoID").Value.ToString.Trim)
                 End If
             End If
         Catch ex As Exception
@@ -1300,7 +1300,7 @@ Public Class frmSivDespTransferenciaDesp
 
                 'Si el registro seleccionado está vacío eliminar sin preguntar
                 If Me.grdDetalleTransferencia.RowCount > 1 Then
-                    If Me.grdDetalleTransferencia.Columns("objRepuestoID").Text.ToString.Trim.Length = 0 Then
+                    If Me.grdDetalleTransferencia.Columns("objSivProductoID").Text.ToString.Trim.Length = 0 Then
                         Try
                             'Me.dtDetalleTransferencia.DefaultView.Delete(Me.grdDetalleTransferencia.Row)
                             Me.grdDetalleTransferencia.Delete(Me.grdDetalleTransferencia.Row)
@@ -1362,8 +1362,8 @@ Public Class frmSivDespTransferenciaDesp
                     'Validaciones en la Cantidades despachadas  
                     If iCantidadDespachada = 0 Then
                         MsgBox("Cantidad a despachar debe ser mayor que CERO.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                    ElseIf Me.grdDetalleTransferencia.Columns("objRepuestoID").Value.ToString.Trim.Length = 0 Then
-                        MsgBox("Debe escribir un código de Repuesto válido.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                    ElseIf Me.grdDetalleTransferencia.Columns("objSivProductoID").Value.ToString.Trim.Length = 0 Then
+                        MsgBox("Debe escribir un código de producto válido.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                         Me.grdDetalleTransferencia.Col = eCamposGrid.codigo
                         bCantidadValida = False
                     ElseIf iCantidadDespachada > iCantidadOrigen Then
@@ -1382,7 +1382,7 @@ Public Class frmSivDespTransferenciaDesp
 
             ''============ Al moverse con teclas direccionales ============================================================
             If (e.KeyCode = Keys.Down Or e.KeyCode = Keys.Up) And (Me.grdDetalleTransferencia.Col = eCamposGrid.codigo Or Me.grdDetalleTransferencia.Col = eCamposGrid.descripcion Or Me.grdDetalleTransferencia.Col = eCamposGrid.cantidadDespachada) Then
-                If Me.grdDetalleTransferencia.Columns("objRepuestoID").Value.ToString.Trim.Length = 0 And Me.grdDetalleTransferencia.Row <> Me.grdDetalleTransferencia.RowCount Then
+                If Me.grdDetalleTransferencia.Columns("objSivProductoID").Value.ToString.Trim.Length = 0 And Me.grdDetalleTransferencia.Row <> Me.grdDetalleTransferencia.RowCount Then
                     Try
                         'Me.dtDetalleTransferencia.DefaultView.Delete(Me.grdDetalleTransferencia.Row)
                         Me.grdDetalleTransferencia.Delete(Me.grdDetalleTransferencia.Row)
@@ -1410,7 +1410,7 @@ Public Class frmSivDespTransferenciaDesp
             e.Cancel = True
         Else
             If e.ColIndex = eCamposGrid.cantidadDespachada Then
-                If Me.grdDetalleTransferencia.Columns("objRepuestoID").Value.ToString().Trim.Length = 0 Then
+                If Me.grdDetalleTransferencia.Columns("objSivProductoID").Value.ToString().Trim.Length = 0 Then
                     Me.grdDetalleTransferencia.Col = eCamposGrid.codigo
                 End If
             Else

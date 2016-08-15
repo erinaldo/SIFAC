@@ -130,8 +130,8 @@ Public Class frmSivDespTransferencia
         Dim sSQL, sSQL1, sSQL2, sCampos, sFiltro1, sFiltro2 As String
         Me.DiasTransferenciasRecientes = ClsCatalogos.GetValorParametro("diasTransfRecientes")
 
-        Dim strFiltroSitio As String = " ObjTiendaOrigenID = " + Me.IdSucursalSession.ToString
-        sCampos = "CONVERT(VARCHAR,Fechasolicitud,103) AS Fechasolicitud, CONVERT(VARCHAR,Fechadespacho,103) AS Fechadespacho, SivTransferenciaID, ObjTiendaDestinoID, ObjTiendaOrigenID, SitioOrigen, SitioDestino, SolicitadoPor, DespachadoPor, ObjEstadoID, Estado"
+        Dim strFiltroSitio As String = " ObjBodegaOrigenID = " + Me.IdSucursalSession.ToString
+        sCampos = "CONVERT(VARCHAR,Fechasolicitud,103) AS Fechasolicitud, CONVERT(VARCHAR,Fechadespacho,103) AS Fechadespacho, SivTransferenciaID, ObjBodegaDestinoID, ObjBodegaOrigenID, SitioOrigen, SitioDestino, SolicitadoPor, DespachadoPor, ObjEstadoID, Estado"
         sFiltro2 = " (DATEDIFF(DAY, Fechadespacho, GETDATE()) <= " + Me.DiasTransferenciasRecientes.ToString + ")"  'Filtra por antiguedad
         sFiltro1 = " (ObjEstadoID= " + Me.IdEstadoSolicitada.ToString + " OR ObjEstadoID = " + Me.IdEstadoDespachada.ToString + ")"
 
@@ -216,8 +216,8 @@ Public Class frmSivDespTransferencia
 #Region "Formatear Grid principal"
     Private Sub FormatearGridPrincipal()
         Me.grdTransferencias.Splits(0).DisplayColumns("ObjEstadoID").Visible = False
-        Me.grdTransferencias.Splits(0).DisplayColumns("ObjTiendaDestinoID").Visible = False
-        Me.grdTransferencias.Splits(0).DisplayColumns("ObjTiendaOrigenID").Visible = False
+        Me.grdTransferencias.Splits(0).DisplayColumns("ObjBodegaDestinoID").Visible = False
+        Me.grdTransferencias.Splits(0).DisplayColumns("ObjBodegaOrigenID").Visible = False
     End Sub
 #End Region
 
@@ -290,7 +290,7 @@ Public Class frmSivDespTransferencia
     Private Function Anular_SolicitudTransf(ByVal SivTransferenciaID As Integer, ByVal ObjTiendaDestinoID As Integer) As Boolean
         Dim T As New TransactionManager
         Dim objTransf As New SivTransferencia
-        Dim objSivBodegaRepuesto As New SivBodegaRepuestos
+        Dim objSivBodegaProductos As New SivBodegaProductos
         Dim strFiltro As String
         Dim dtDetalleTransf As DataTable
         Dim objSitioOrigenID As Integer
@@ -308,26 +308,26 @@ Public Class frmSivDespTransferencia
                         .Update(T)
                     End With
 
-                    strFiltro = "objTransferenciaID=" + SivTransferenciaID.ToString + " AND objTiendaDestinoID=" + ObjTiendaDestinoID.ToString
+                    strFiltro = "objTransferenciaID=" + SivTransferenciaID.ToString + " AND ObjBodegaDestinoID=" + ObjTiendaDestinoID.ToString
                     dtDetalleTransf = SivTransferenciaDetalle.RetrieveDT(strFiltro, , , T)
 
                     'Obtener sitio Origen
-                    If Not IsDBNull(Me.grdTransferencias.Columns("ObjTiendaOrigenID").Value) And Me.grdTransferencias.Columns("ObjTiendaOrigenID").Value.ToString.Trim.Length <> 0 Then
-                        objSitioOrigenID = Me.grdTransferencias.Columns("ObjTiendaOrigenID").Value
+                    If Not IsDBNull(Me.grdTransferencias.Columns("ObjBodegaOrigenID").Value) And Me.grdTransferencias.Columns("ObjBodegaOrigenID").Value.ToString.Trim.Length <> 0 Then
+                        objSitioOrigenID = Me.grdTransferencias.Columns("ObjBodegaOrigenID").Value
                     Else
                         T.RollbackTran()
                         Exit Function
                     End If
                     'Disminuir la cantidad Tránsito que había sido afectada por este despacho de transferencia
                     For Each row As DataRow In dtDetalleTransf.Rows
-                        If Not IsDBNull(row("ObjRepuestoID")) Then
-                            objSivBodegaRepuesto.Retrieve(row("ObjRepuestoID"), objSitioOrigenID, T)
+                        If Not IsDBNull(row("objSivProductoID")) Then
+                            objSivBodegaProductos.Retrieve(row("objSivProductoID"), objSitioOrigenID, T)
                             If Not IsDBNull(row("CantidadDespachada")) And row("CantidadDespachada").ToString.Trim.Length <> 0 Then
-                                If objSivBodegaRepuesto.CantidadTransito.HasValue Then
-                                    objSivBodegaRepuesto.CantidadTransito = objSivBodegaRepuesto.CantidadTransito.Value - Integer.Parse(row("CantidadDespachada"))
-                                    objSivBodegaRepuesto.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                                    objSivBodegaRepuesto.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                                    objSivBodegaRepuesto.Update(T)
+                                If objSivBodegaProductos.CantidadTransito.HasValue Then
+                                    objSivBodegaProductos.CantidadTransito = objSivBodegaProductos.CantidadTransito.Value - Integer.Parse(row("CantidadDespachada"))
+                                    objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                                    objSivBodegaProductos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                                    objSivBodegaProductos.Update(T)
                                 End If
                             End If
                         End If
@@ -399,7 +399,7 @@ Public Class frmSivDespTransferencia
         objImpresion = New frmOpcionesImpresion
         If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
             sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
-            sCampos = "ClaveSitios, SivRepuestoID, CodigosProveedores, DescripcionCorta, TipoRepuesto, CantidadSolicitada, ObjTiendaOrigenID, ObjTiendaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, CodigoTiendaDestino, CodigoTiendaOrigen, Fechadespacho, DespachadoPor, CantidadDespachada"
+            sCampos = "ClaveSitios, SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, CodigoTiendaDestino, CodigoTiendaOrigen, Fechadespacho, DespachadoPor, CantidadDespachada"
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaDespacho", sFiltro)
 
             objRptSoliTransf.EstadoAnulada = EstadoAnulada
@@ -436,16 +436,16 @@ Public Class frmSivDespTransferencia
     Private Sub cmdAnularSolicitud_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAnularSolicitud.Click
         Dim iIndiceRegistro, SivTransferenciaID, objTiendaDestinoID As Integer
 
-        If Me.grdTransferencias.Columns("SivTransferenciaID").Value.ToString.Trim.Length <> 0 And Me.grdTransferencias.Columns("ObjTiendaDestinoID").Value.ToString.Trim.Length <> 0 Then
+        If Me.grdTransferencias.Columns("SivTransferenciaID").Value.ToString.Trim.Length <> 0 And Me.grdTransferencias.Columns("ObjBodegaDestinoID").Value.ToString.Trim.Length <> 0 Then
             SivTransferenciaID = Me.grdTransferencias.Columns("SivTransferenciaID").Value
-            objTiendaDestinoID = Me.grdTransferencias.Columns("ObjTiendaDestinoID").Value
+            objTiendaDestinoID = Me.grdTransferencias.Columns("ObjBodegaDestinoID").Value
 
             Dim Trans As New SivTransferencia
             Trans.Retrieve(SivTransferenciaID)
             If Trans.ObjEstadoID = Me.IdEstadoAnulada Then
                 MsgBox("La trasferencia seleccionada ya ha sido anulada, favor refrescar datos.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
             Else
-                If Me.Anular_SolicitudTransf(SivTransferenciaID, Me.grdTransferencias.Columns("ObjTiendaDestinoID").Value) Then
+                If Me.Anular_SolicitudTransf(SivTransferenciaID, Me.grdTransferencias.Columns("ObjBodegaDestinoID").Value) Then
                     Me.CargaDatos()
                     If (Me.DtTransferencias.Rows.Count <> 0) Then
                         iIndiceRegistro = Me.DtTransferencias.DefaultView.Find(SivTransferenciaID)
