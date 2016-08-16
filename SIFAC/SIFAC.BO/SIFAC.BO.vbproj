@@ -106,12 +106,10 @@
     <Compile Include="SivRepuestosDetCompat_CF.vb" />
     <Compile Include="SivRepuestosDetProv_CF.vb" />
     <Compile Include="SivRepuestos_CF.vb" />
-    <Compile Include="SivSalidaBodegaDetalle_CF.vb" />
-    <Compile Include="SivSalidaBodega_CF.vb">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SivTransferenciaDetalle_CF.vb" />
-    <Compile Include="SivTransferencia_CF.vb" />
+    <Compile Include="SivSalidaBodega.vb" />
+    <Compile Include="SivSalidaBodegaDetalle.vb" />
+    <Compile Include="SivTransferencia.vb" />
+    <Compile Include="SivTransferenciaDetalle.vb" />
     <Compile Include="SrhEmpleado_CF.vb" />
     <Compile Include="StaServicioTaller_CF.vb" />
     <Compile Include="StbBitacoraCliente_CF.vb" />
