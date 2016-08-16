@@ -38,6 +38,7 @@ Public Class frmMarcasEdit
 
     '' Descripción:        Procedimiento encargado de configurar la interfaz del formulario
     Public Sub ConfigurarGUI()
+        txtNombreMarca.Focus()
         Select Case TypeGui
             Case 0
                 Me.Text = "Agregar Marca"
@@ -184,6 +185,26 @@ Public Class frmMarcasEdit
         ErrorProv.SetError(txtDescripcion, "")
         boolEditado = True
     End Sub
+    Private Sub txtNombreMarca_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombreMarca.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.txtNombreMarca.Text.Trim.Length <> 0 Then
+                Me.txtDescripcion.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtDescripcion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDescripcion.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.txtDescripcion.Text.Trim.Length <> 0 Then
+                Me.cmdGuardar.Focus()
+            End If
+
+        End If
+
+    End Sub
+
 #End Region
 
+   
+   
 End Class

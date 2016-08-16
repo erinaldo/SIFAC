@@ -370,13 +370,13 @@ Public Class frmSrhEmpleadoEditar
         Dim objPersonas As frmStbPersonasEditar
         Try
 
-        If Me.txtPersonaID.Text <> "" Then
-                objPersonas = New frmStbPersonasEditar
-                objPersonas.idpersona = Trim(Me.txtCedula.Text)
-                objPersonas.frmLlamado = 3
-                objPersonas.TyGui = 3
-                objPersonas.ShowDialog(Me)
-            End If
+            'If Me.txtPersonaID.Text <> "" Then
+            '        objPersonas = New frmStbPersonasEditar
+            '        objPersonas.idpersona = Trim(Me.txtCedula.Text)
+            '        objPersonas.frmLlamado = 3
+            '        objPersonas.TyGui = 3
+            '        objPersonas.ShowDialog(Me)
+            '    End If
         Finally
             objPersonas = Nothing
         End Try
@@ -402,17 +402,17 @@ Public Class frmSrhEmpleadoEditar
         Dim objPersonas As frmStbPersonasEditar
         Try
 
-            If Me.txtPersonaID.Text <> "" Then
-                objPersonas = New frmStbPersonasEditar
-                objPersonas.idpersona = Trim(Me.txtCedula.Text)
-                objPersonas.frmLlamado = 3
-                objPersonas.TyGui = 2
-                If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Me.CargarPersona()
-                    Me.VincularControles()
-                    Me.CargarDatosEdicion()
-                End If
-            End If
+            'If Me.txtPersonaID.Text <> "" Then
+            '    objPersonas = New frmStbPersonasEditar
+            '    objPersonas.idpersona = Trim(Me.txtCedula.Text)
+            '    objPersonas.frmLlamado = 3
+            '    objPersonas.TyGui = 2
+            '    If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+            '        Me.CargarPersona()
+            '        Me.VincularControles()
+            '        Me.CargarDatosEdicion()
+            '    End If
+            'End If
         Finally
             objPersonas = Nothing
         End Try

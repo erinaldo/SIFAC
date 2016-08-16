@@ -13,19 +13,18 @@ Public Class frmSivProductos
     Public boolAgregar, boolEditar, boolConsultar, boolDesactivar, boolImprimir As Boolean
 #End Region
 
-
 #Region "Procedimientos del formulario"
 
     ''Usuario Creación: Sergio Ordoñez
     ''Fecha Creación:   06/03/2009
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
-        DtProductos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Modelo,Marca,Cilindraje,objSegmentoID,Segmento,Activo", "vwStbProductos", ))
+        DtProductos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Codigo,Nombre,Marca,Categoria,Activo", "vwStbProductos", ))
         DtProductos.PrimaryKey = New DataColumn() {Me.DtProductos.Columns("SivProductoID")}
         DtProductos.DefaultView.Sort = "SivProductoID"
-        Me.grdProductos.SetDataBinding(DtProductos, "", True)
-        Me.grdProductos.Caption = "Productos (" & Me.DtProductos.Rows.Count & ")"
-        Me.grdProductos.Refresh()
+        Me.grdProductos.DataSource = DtProductos
+        Me.grdProductos.Text = "Productos (" & Me.DtProductos.Rows.Count & ")"
+
     End Sub
 
     ''Usuario Creación: Sergio Ordoñez
@@ -76,7 +75,6 @@ Public Class frmSivProductos
             editProducto.TypeGui = 0
             If editProducto.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
-                Me.grdProductos.Row = Me.DtProductos.DefaultView.Find(editProducto.intProductoID)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -87,18 +85,16 @@ Public Class frmSivProductos
 
     Private Sub cmdEditar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEditar.Click
         Dim editProducto As frmSivProductosEditar
+        Dim FilaActual As Integer
         Try
-            If Me.grdProductos.RowCount = 0 Then
-                Exit Sub
-            End If
+            FilaActual = Me.grdProductosTabla.FocusedRowHandle
+           
             Me.Cursor = WaitCursor
             editProducto = New frmSivProductosEditar
             editProducto.TypeGui = 1
-            editProducto.Text = "Producto " + Me.grdProductos.Columns("Modelo").Value
-            editProducto.ProductoID = Me.grdProductos.Columns("SivProductoID").Value
+            editProducto.ProductoID = Me.DtProductos.DefaultView.Item(FilaActual)("SivProductoID")
             If editProducto.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
-                Me.grdProductos.Row = Me.DtProductos.DefaultView.Find(editProducto.intProductoID)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -109,15 +105,14 @@ Public Class frmSivProductos
 
     Private Sub cmdConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultar.Click
         Dim editProducto As frmSivProductosEditar
+        Dim FilaActual As Integer
         Try
-            If Me.grdProductos.RowCount = 0 Then
-                Exit Sub
-            End If
+           FilaActual = Me.grdProductosTabla.FocusedRowHandle
+
             Me.Cursor = WaitCursor
             editProducto = New frmSivProductosEditar
             editProducto.TypeGui = 2
-            editProducto.Text = "Producto " + Me.grdProductos.Columns("Modelo").Value
-            editProducto.ProductoID = Me.grdProductos.Columns("SivProductoID").Value
+            editProducto.ProductoID = Me.DtProductos.DefaultView.Item(FilaActual)("SivProductoID")
             editProducto.ShowDialog(Me)
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -170,13 +165,11 @@ Public Class frmSivProductos
     Private Sub cmdDesactivar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDesactivar.Click
         Dim IDProducto As Integer
         Dim Producto As New SivProductos
-        If Me.grdProductos.RowCount > 0 Then
-            If Me.grdProductos.Columns("Activo").Value = False Then
-                Exit Sub
-            End If
+        Dim FilaActual As Integer
+        FilaActual = Me.grdProductosTabla.FocusedRowHandle
             Select Case MsgBox("¿Está seguro de Inactivar Producto?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
                 Case MsgBoxResult.Yes
-                    IDProducto = Me.grdProductos.Columns("SivProductoID").Value
+                IDProducto = Me.DtProductos.DefaultView.Item(FilaActual)("SivProductoID")
                     Producto.Retrieve(IDProducto)
                     Producto.UsuarioModificacion = clsProyecto.Conexion.Usuario
                     Producto.FechaModificacion = clsProyecto.Conexion.FechaServidor
@@ -185,6 +178,6 @@ Public Class frmSivProductos
                 Case MsgBoxResult.No
                     Exit Sub
             End Select
-        End If
+
     End Sub
 End Class

@@ -31,7 +31,14 @@ Public Class frmPrincipal
     ''' <remarks></remarks>
     Private Sub frmPrincipal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            Me.outBitacora.PageVisible = False
+            'Me.brCartera.PageVisible = False
+
+            Me.brFacturacion.PageVisible = False
+            Me.brFacturacionReportes.PageVisible = False
+
             Me.InicializarPropiedades()
+
             Me.VisualStyle(clsProyecto.TemaDefinido)
             Me.IniciarSesion()
 
@@ -339,6 +346,7 @@ Public Class frmPrincipal
             Me.cmdProveedores.Enabled = objSeg.TienePermiso("OpcionProveedor")
             Me.cmdRepuestos.Enabled = objSeg.TienePermiso("OpcionRepuestos")
             Me.cmdMarcas.Enabled = objSeg.TienePermiso("OpcionMarcas")
+            Me.cmdCategorias.Enabled = objSeg.TienePermiso("OpcionCategorias")
 
             'Cartera y Cobro
             Me.cmdExpedientes.Enabled = objSeg.TienePermiso("OpcionExpediente")
@@ -536,7 +544,9 @@ Public Class frmPrincipal
         CargarBodegas()
 
     End Sub
-
+    Private Sub cmdCategorias_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdCategorias.Click
+        CargarCategorias()
+    End Sub
 #End Region
 
 #Region "Cargar Personas"
@@ -826,6 +836,28 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
+#Region "Cargar Categorias"
+
+    Private Sub CargarCategorias()
+        Dim objfrm As frmSivCategorias
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmSivCategorias", Me) Then
+                objfrm = New frmSivCategorias
+                objfrm.Width = Me.Width - Me.OutBarPrincipal.Width
+                objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                objfrm.MdiParent = Me
+                objfrm.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+#End Region
+
 #Region "Cargar Catálogo de Personas - PIM"
     '----------------------------------------------------------------------------------
     '-- Nombre del Autor        :   Róger Alberto Gutiérrez Mejía
@@ -879,28 +911,26 @@ Public Class frmPrincipal
 #End Region
 
 #Region "Cargar Catálogo de Productos"
-    '----------------------------------------------------------------------------------
-    '-- Nombre del Autor        :   Sergio Ordoñez
-    '-- Fecha de Elaboración    :   06 de Marzo de 2009
+
     '-- Descripcion             :   Cargar la pantalla principal de catálogo de productos
     '----------------------------------------------------------------------------------
     Private Sub CargarProductos()
-        'Dim objProductos As frmSivProductos
-        'Try
-        '    '-- Instanciar
-        '    Me.Cursor = Cursors.WaitCursor
-        '    If Not clsProyecto.MostrarFormulario("frmSivProductos", Me) Then
-        '        objProductos = New frmSivProductos
-        '        objProductos.Width = Me.Width - Me.OutBarPrincipal.Width
-        '        objProductos.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-        '        objProductos.MdiParent = Me
-        '        objProductos.Show()
-        '    End If
-        'Catch ex As Exception
-        '    clsError.CaptarError(ex)
-        'Finally
-        '    Me.Cursor = Cursors.Default
-        'End Try
+        Dim objProductos As frmSivProductos
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmSivProductos", Me) Then
+                objProductos = New frmSivProductos
+                objProductos.Width = Me.Width - Me.OutBarPrincipal.Width
+                objProductos.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                objProductos.MdiParent = Me
+                objProductos.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
     End Sub
 #End Region
 
@@ -1794,5 +1824,6 @@ Public Class frmPrincipal
 #End Region
 
 
+   
    
 End Class

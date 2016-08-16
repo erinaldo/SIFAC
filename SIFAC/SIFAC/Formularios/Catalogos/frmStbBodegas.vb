@@ -47,36 +47,36 @@ Public Class frmStbBodegas
 
 #Region "Procedimientos"
     Private Sub Consultar()
-        Dim ConsultarMarcas As New frmMarcasEdit
+        Dim ConsultarBodegas As New frmBodegasEditar
         Dim FilaActual As Integer
         Try
             Try
                 FilaActual = Me.grdBodegasTabla.FocusedRowHandle
-                ConsultarMarcas.TypeGui = 2
-                ConsultarMarcas.MarcaID = Me.dtBodegas.DefaultView.Item(FilaActual)("StbBodegaID")
-                ConsultarMarcas.ShowDialog(Me)
+                ConsultarBodegas.TypeGui = 3
+                ConsultarBodegas.BodegaID = Me.dtBodegas.DefaultView.Item(FilaActual)("StbBodegaID")
+                ConsultarBodegas.ShowDialog(Me)
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
         Finally
-            ConsultarMarcas = Nothing
+            ConsultarBodegas = Nothing
         End Try
     End Sub
 
     Private Sub Editar()
-        Dim EditarMarcas As New frmMarcasEdit
+        Dim EditarBodega As New frmBodegasEditar
         Dim FilaActual As Integer
         Try
             Try
                 FilaActual = Me.grdBodegasTabla.FocusedRowHandle
-                EditarMarcas.TypeGui = 1
-                EditarMarcas.MarcaID = Me.dtBodegas.DefaultView.Item(FilaActual)("StbBodegaID")
-                EditarMarcas.ShowDialog(Me)
+                EditarBodega.TypeGui = 2
+                EditarBodega.BodegaID = Me.dtBodegas.DefaultView.Item(FilaActual)("StbBodegaID")
+                EditarBodega.ShowDialog(Me)
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
         Finally
-            EditarMarcas = Nothing
+            EditarBodega = Nothing
         End Try
     End Sub
 
@@ -92,12 +92,12 @@ Public Class frmStbBodegas
     End Sub
 
     Private Sub cmdAgregar_Click(sender As Object, e As EventArgs) Handles cmdAgregar.Click
-        Dim editMarcas As frmMarcasEdit
+        Dim editbodega As frmBodegasEditar
         Try
             Me.Cursor = WaitCursor
-            editMarcas = New frmMarcasEdit
-            editMarcas.TypeGui = 0
-            If editMarcas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+            editbodega = New frmBodegasEditar
+            editbodega.TypeGui = 1
+            If editbodega.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
             End If
         Catch ex As Exception

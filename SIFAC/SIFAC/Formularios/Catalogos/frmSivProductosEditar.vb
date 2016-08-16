@@ -35,51 +35,29 @@ Public Class frmSivProductosEditar
 
 #Region "Procedimientos del formulario"
 
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  07/03/2009
     '' Descripción:        Procedimiento encargado de cargar los valores de Marca
     Public Sub CargarMarca()
-        DtMarca = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "vwStbMarcas", " Activo = 1"))
+        DtMarca = SivMarcas.RetrieveDT("Activa=1")
         With cbxMarca
             .DataSource = DtMarca
-            .DisplayMember = "Descripcion"
-            .ValueMember = "StbValorCatalogoID"
-            .Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
+            .DisplayMember = "Nombre"
+            .ValueMember = "MarcaID"
+            .Splits(0).DisplayColumns("MarcaID").Visible = False
             .ExtendRightColumn = True
         End With
     End Sub
 
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  07/03/2009
     '' Descripción:        Procedimiento encargado de cargar los valores de cilindraje
-    Public Sub CargarCilindraje()
-        DtCilindraje = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "vwStbCilindrajes", " Activo = 1"))
-        With cbxCilindraje
+    Public Sub CargarCategorias()
+        DtCilindraje = SivCategorias.RetrieveDT("Activa=1")
+        With cbxCategoria
             .DataSource = DtCilindraje
-            .DisplayMember = "Descripcion"
-            .ValueMember = "StbValorCatalogoID"
-            .Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
+            .DisplayMember = "Nombre"
+            .ValueMember = "CategoriaID"
+            .Splits(0).DisplayColumns("CategoriaID").Visible = False
             .ExtendRightColumn = True
         End With
     End Sub
-
-
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  07/03/2009
-    '' Descripción:        Procedimiento encargado de guardar los datos de una tienda
-    Public Sub CargarSegmento()
-        DtSegmento = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "vwStbSegmentos", " Activo = 1"))
-        With cbxSegmento
-            .DataSource = DtSegmento
-            .DisplayMember = "Descripcion"
-            .ValueMember = "StbValorCatalogoID"
-            .Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
-            .ExtendRightColumn = True
-        End With
-    End Sub
-
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  07/03/2009
     '' Descripción:        Procedimiento encargado de configurar la interfaz del formulario
     Public Sub ConfigurarGUI()
         Select Case TypeGui
@@ -92,32 +70,37 @@ Public Class frmSivProductosEditar
                 chkActivo.Enabled = True
             Case 2
                 CargarDatosProducto()
-                txtModelo.Enabled = False
+                spnCantidadMinima.Enabled = False
+                spnCostoPromedio.Enabled = False
+                spnMargenContado.Enabled = False
+                spnMargenCredito.Enabled = False
+                spnPrecioContado.Enabled = False
+                spnPrecioCredito.Enabled = False
+                txtProducto.Enabled = False
                 cbxMarca.Enabled = False
-                cbxCilindraje.Enabled = False
-                cbxSegmento.Enabled = False
+                cbxCategoria.Enabled = False
                 chkActivo.Enabled = False
-                cmdAceptar.Enabled = False
+                cmdGuardar.Enabled = False
         End Select
     End Sub
-
-
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  09/03/2009
     '' Descripción:        Procedimiento encargado de cargar la informacion de un producto
     Public Sub CargarDatosProducto()
         Dim objProducto As SivProductos
         objProducto = New SivProductos
         objProducto.Retrieve(ProductoID)
-        'txtModelo.Text = objProducto.Modelo
-        'cbxMarca.SelectedValue = objProducto.objMarcaID
-        'cbxCilindraje.SelectedValue = objProducto.objCilindrajeID
-        'cbxSegmento.SelectedValue = objProducto.objSegmentoID
+        txtProducto.Text = objProducto.Codigo
+        txtNombre.Text = objProducto.Nombre
+        cbxCategoria.SelectedValue = objProducto.objCategoriaID
+        cbxMarca.SelectedValue = objProducto.objMarcaID
         chkActivo.Checked = objProducto.Activo
+        spnCantidadMinima.Value = objProducto.Cantidad_Minima
+        spnCostoPromedio.Value = objProducto.CostoPromedio
+        spnMargenContado.Value = objProducto.Margen_Utilidad_Contado
+        spnMargenCredito.Value = objProducto.Margen_Utilidad_Credito
+        spnPrecioContado.Value = objProducto.Precio_Contado
+        spnPrecioCredito.Value = objProducto.Precio_Credito
     End Sub
 
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  07/03/2009
     '' Descripción:        Procedimiento encargado de crear un nuevo registro de producto
     Public Sub GuardarProducto()
         Dim objProducto As SivProductos
@@ -127,11 +110,17 @@ Public Class frmSivProductosEditar
             objProducto = New SivProductos
             ProductoID = SivProductos.RetrieveDT(, , "ISNULL(MAX(SivProductoID),0)+1 AS ID").DefaultView.Item(0)("ID")
             objProducto.SivProductoID = ProductoID
-            'objProducto.Modelo = txtModelo.Text.Trim
+            objProducto.Codigo = txtProducto.Text.Trim
+            objProducto.Nombre = txtNombre.Text.Trim
+            objProducto.objCategoriaID = cbxCategoria.SelectedValue
             objProducto.objMarcaID = cbxMarca.SelectedValue
-            'objProducto.objCilindrajeID = cbxCilindraje.SelectedValue
-            'objProducto.objSegmentoID = cbxSegmento.SelectedValue
             objProducto.Activo = chkActivo.Checked
+            objProducto.Cantidad_Minima = spnCantidadMinima.Value
+            objProducto.CostoPromedio = spnCostoPromedio.Value
+            objProducto.Precio_Contado = spnPrecioContado.Value
+            objProducto.Precio_Credito = spnPrecioCredito.Value
+            objProducto.Margen_Utilidad_Credito = spnMargenCredito.Value
+            objProducto.Margen_Utilidad_Contado = spnMargenContado.Value
             objProducto.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objProducto.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objProducto.Insert()
@@ -145,9 +134,6 @@ Public Class frmSivProductosEditar
         End Try
     End Sub
 
-
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  09/03/2009
     '' Descripción:        Procedimiento encargado de editar la informacion de un producto
     Public Sub EditarProducto()
         Dim objProducto As SivProductos
@@ -156,10 +142,17 @@ Public Class frmSivProductosEditar
             T.BeginTran()
             objProducto = New SivProductos
             objProducto.SivProductoID = ProductoID
-            'objProducto.Modelo = txtModelo.Text.Trim
+            objProducto.Codigo = txtProducto.Text.Trim
+            objProducto.Nombre = txtNombre.Text.Trim
+            objProducto.objCategoriaID = cbxCategoria.SelectedValue
             objProducto.objMarcaID = cbxMarca.SelectedValue
-            'objProducto.objCilindrajeID = cbxCilindraje.SelectedValue
-            'objProducto.objSegmentoID = cbxSegmento.SelectedValue
+            objProducto.Activo = chkActivo.Checked
+            objProducto.Cantidad_Minima = spnCantidadMinima.Value
+            objProducto.CostoPromedio = spnCostoPromedio.Value
+            objProducto.Precio_Contado = spnPrecioContado.Value
+            objProducto.Precio_Credito = spnPrecioCredito.Value
+            objProducto.Margen_Utilidad_Credito = spnMargenCredito.Value
+            objProducto.Margen_Utilidad_Contado = spnMargenContado.Value
             objProducto.Activo = chkActivo.Checked
             objProducto.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objProducto.UsuarioModificacion = clsProyecto.Conexion.Servidor
@@ -179,25 +172,22 @@ Public Class frmSivProductosEditar
 #End Region
 
 #Region "Funciones"
-
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  09/03/2009
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntrada() As Boolean
         Dim objProductosTemp As SivProductos
         objProductosTemp = New SivProductos
-        If txtModelo.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(txtModelo, My.Resources.MsgObligatorio)
+        If txtProducto.Text.Trim.Length = 0 Then
+            ErrorProv.SetError(txtProducto, My.Resources.MsgObligatorio)
             Return False
             Exit Function
         End If
-        If objProductosTemp.RetrieveByFilter("Modelo = '" & txtModelo.Text & "'") And TypeGui = 0 Then
-            ErrorProv.SetError(txtModelo, "Modelo debe ser unico")
+        If objProductosTemp.RetrieveByFilter("Codigo = '" & txtProducto.Text & "'") And TypeGui = 0 Then
+            ErrorProv.SetError(txtProducto, "Codigo debe ser unico")
             Return False
             Exit Function
         End If
-        If objProductosTemp.RetrieveByFilter("Modelo = '" & txtModelo.Text & "' AND SivProductoID <> " & Me.ProductoID) And TypeGui = 1 Then
-            ErrorProv.SetError(txtModelo, "Modelo debe ser unico")
+        If objProductosTemp.RetrieveByFilter("Codigo = '" & txtProducto.Text & "' AND SivProductoID <> " & Me.ProductoID) And TypeGui = 1 Then
+            ErrorProv.SetError(txtProducto, "Codigo debe ser unico")
             Return False
             Exit Function
         End If
@@ -206,16 +196,12 @@ Public Class frmSivProductosEditar
             Return False
             Exit Function
         End If
-        If cbxCilindraje.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(cbxCilindraje, My.Resources.MsgObligatorio)
+        If cbxCategoria.Text.Trim.Length = 0 Then
+            ErrorProv.SetError(cbxCategoria, My.Resources.MsgObligatorio)
             Return False
             Exit Function
         End If
-        If cbxSegmento.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(cbxSegmento, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
+       
         Return True
     End Function
 #End Region
@@ -224,13 +210,12 @@ Public Class frmSivProductosEditar
     Private Sub frmSivProductosEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         clsProyecto.CargarTemaDefinido(Me)
         CargarMarca()
-        CargarCilindraje()
-        CargarSegmento()
+        CargarCategorias()
         ConfigurarGUI()
         Me.boolEditado = False
     End Sub
 
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
         If ValidarEntrada() Then
             Select Case TypeGui
                 Case 0
@@ -255,8 +240,8 @@ Public Class frmSivProductosEditar
         End If
     End Sub
 
-    Private Sub txtModelo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtModelo.TextChanged
-        ErrorProv.SetError(txtModelo, "")
+    Private Sub txtModelo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtProducto.TextChanged
+        ErrorProv.SetError(txtProducto, "")
         boolEditado = True
     End Sub
 
@@ -265,21 +250,31 @@ Public Class frmSivProductosEditar
         boolEditado = True
     End Sub
 
-    Private Sub cbxCilindraje_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbxCilindraje.Change
-        ErrorProv.SetError(cbxCilindraje, "")
+    Private Sub cbxCilindraje_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbxCategoria.Change
+        ErrorProv.SetError(cbxCategoria, "")
         boolEditado = True
     End Sub
 
-    Private Sub cbxSegmento_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbxSegmento.Change
-        ErrorProv.SetError(cbxSegmento, "")
-        boolEditado = True
-    End Sub
 
-#End Region
-  
-    Private Sub txtModelo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtModelo.KeyPress
+    Private Sub txtModelo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtProducto.KeyPress
         If Asc(e.KeyChar) = 13 Then
-            If Me.txtModelo.Text.Trim.Length <> 0 Then
+            If Me.txtProducto.Text.Trim.Length <> 0 Then
+                Me.txtNombre.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.txtNombre.Text.Trim.Length <> 0 Then
+                Me.cbxCategoria.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub cbxCilindraje_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cbxCategoria.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.cbxCategoria.Text.Trim.Length <> 0 Then
                 Me.cbxMarca.Focus()
             End If
         End If
@@ -288,24 +283,93 @@ Public Class frmSivProductosEditar
     Private Sub cbxMarca_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cbxMarca.KeyPress
         If Asc(e.KeyChar) = 13 Then
             If Me.cbxMarca.Text.Trim.Length <> 0 Then
-                Me.cbxCilindraje.Focus()
+                Me.chkActivo.Focus()
             End If
         End If
     End Sub
 
-    Private Sub cbxCilindraje_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cbxCilindraje.KeyPress
+    Private Sub chkActivo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles chkActivo.KeyPress
         If Asc(e.KeyChar) = 13 Then
-            If Me.cbxCilindraje.Text.Trim.Length <> 0 Then
-                Me.cbxSegmento.Focus()
+            Me.spnCostoPromedio.Focus()
+        End If
+    End Sub
+
+    Private Sub spnCostoPromedio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles spnCostoPromedio.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.spnCostoPromedio.Text.Trim.Length <> 0 Then
+                Me.spnPrecioCredito.Focus()
             End If
         End If
     End Sub
 
-    Private Sub cbxSegmento_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cbxSegmento.KeyPress
+    Private Sub spnPrecioCredito_KeyPress(sender As Object, e As KeyPressEventArgs) Handles spnPrecioCredito.KeyPress
         If Asc(e.KeyChar) = 13 Then
-            If cbxSegmento.Text.Trim.Length <> 0 Then
-                Me.cmdAceptar_Click(sender, e)
+            If Me.spnPrecioCredito.Text.Trim.Length <> 0 Then
+                Me.spnPrecioContado.Focus()
             End If
         End If
+    End Sub
+
+    Private Sub spnPrecioContado_KeyPress(sender As Object, e As KeyPressEventArgs) Handles spnPrecioContado.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.spnPrecioContado.Text.Trim.Length <> 0 Then
+                Me.spnMargenCredito.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub spnMargenCredito_KeyPress(sender As Object, e As KeyPressEventArgs) Handles spnMargenCredito.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.spnMargenCredito.Text.Trim.Length <> 0 Then
+                Me.spnMargenContado.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub spnMargenContado_KeyPress(sender As Object, e As KeyPressEventArgs) Handles spnMargenContado.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.spnMargenContado.Text.Trim.Length <> 0 Then
+                Me.spnCantidadMinima.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
+        ErrorProv.SetError(txtNombre, "")
+        boolEditado = True
+    End Sub
+
+#End Region
+
+  
+
+    Private Sub spnPrecioCredito_EditValueChanged(sender As Object, e As EventArgs) Handles spnPrecioCredito.EditValueChanged
+        ErrorProv.SetError(spnPrecioCredito, "0.0")
+        boolEditado = True
+    End Sub
+
+    Private Sub spnCostoPromedio_EditValueChanged(sender As Object, e As EventArgs) Handles spnCostoPromedio.EditValueChanged
+        ErrorProv.SetError(spnCostoPromedio, "0.0")
+        boolEditado = True
+    End Sub
+
+    Private Sub spnPrecioContado_EditValueChanged(sender As Object, e As EventArgs) Handles spnPrecioContado.EditValueChanged
+        ErrorProv.SetError(spnPrecioContado, "0.0")
+        boolEditado = True
+    End Sub
+
+    Private Sub spnMargenCredito_EditValueChanged(sender As Object, e As EventArgs) Handles spnMargenCredito.EditValueChanged
+        ErrorProv.SetError(spnMargenCredito, "0.0")
+        boolEditado = True
+    End Sub
+
+    Private Sub spnMargenContado_EditValueChanged(sender As Object, e As EventArgs) Handles spnMargenContado.EditValueChanged
+        ErrorProv.SetError(spnMargenContado, "0.0")
+        boolEditado = True
+    End Sub
+
+    Private Sub spnCantidadMinima_EditValueChanged(sender As Object, e As EventArgs) Handles spnCantidadMinima.EditValueChanged
+        ErrorProv.SetError(spnCantidadMinima, "0.0")
+        boolEditado = True
     End Sub
 End Class

@@ -19,42 +19,40 @@ Partial Class frmSrhEmpleadoEditar
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSrhEmpleadoEditar))
-        Me.grbDatosGenerales = New System.Windows.Forms.GroupBox
-        Me.cmdConsultar = New System.Windows.Forms.Button
-        Me.txtGenero = New System.Windows.Forms.TextBox
-        Me.txtApellido2 = New System.Windows.Forms.TextBox
-        Me.txtApellido1 = New System.Windows.Forms.TextBox
-        Me.txtCedula = New System.Windows.Forms.TextBox
-        Me.txtNombre2 = New System.Windows.Forms.TextBox
-        Me.txtNombre1 = New System.Windows.Forms.TextBox
-        Me.cmdBuscar = New System.Windows.Forms.Button
-        Me.txtPersonaID = New System.Windows.Forms.TextBox
-        Me.lblGenero = New System.Windows.Forms.Label
-        Me.lblApellido2 = New System.Windows.Forms.Label
-        Me.lblApellido1 = New System.Windows.Forms.Label
-        Me.lblCedula = New System.Windows.Forms.Label
-        Me.lblNombre2 = New System.Windows.Forms.Label
-        Me.lblNombre1 = New System.Windows.Forms.Label
-        Me.lblPersonaID = New System.Windows.Forms.Label
-        Me.grbRH = New System.Windows.Forms.GroupBox
-        Me.spnComision = New DevExpress.XtraEditors.SpinEdit
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.dtpFechaEgreso = New C1.Win.C1Input.C1DateEdit
-        Me.dtpFechaIngreso = New C1.Win.C1Input.C1DateEdit
-        Me.cmbCargo = New C1.Win.C1List.C1Combo
-        Me.lblFechaEgreso = New System.Windows.Forms.Label
-        Me.lblFechaIngreso = New System.Windows.Forms.Label
-        Me.chkActivo = New System.Windows.Forms.CheckBox
-        Me.lblCargo = New System.Windows.Forms.Label
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.cmdCancelar = New System.Windows.Forms.Button
+        Me.grbDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.cmdConsultar = New System.Windows.Forms.Button()
+        Me.txtGenero = New System.Windows.Forms.TextBox()
+        Me.txtApellido2 = New System.Windows.Forms.TextBox()
+        Me.txtApellido1 = New System.Windows.Forms.TextBox()
+        Me.txtCedula = New System.Windows.Forms.TextBox()
+        Me.txtNombre2 = New System.Windows.Forms.TextBox()
+        Me.txtNombre1 = New System.Windows.Forms.TextBox()
+        Me.cmdBuscar = New System.Windows.Forms.Button()
+        Me.txtPersonaID = New System.Windows.Forms.TextBox()
+        Me.lblGenero = New System.Windows.Forms.Label()
+        Me.lblApellido2 = New System.Windows.Forms.Label()
+        Me.lblApellido1 = New System.Windows.Forms.Label()
+        Me.lblCedula = New System.Windows.Forms.Label()
+        Me.lblNombre2 = New System.Windows.Forms.Label()
+        Me.lblNombre1 = New System.Windows.Forms.Label()
+        Me.lblPersonaID = New System.Windows.Forms.Label()
+        Me.grbRH = New System.Windows.Forms.GroupBox()
+        Me.spnComision = New DevExpress.XtraEditors.SpinEdit()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.dtpFechaEgreso = New C1.Win.C1Input.C1DateEdit()
+        Me.dtpFechaIngreso = New C1.Win.C1Input.C1DateEdit()
+        Me.cmbCargo = New C1.Win.C1List.C1Combo()
+        Me.lblFechaEgreso = New System.Windows.Forms.Label()
+        Me.lblFechaIngreso = New System.Windows.Forms.Label()
+        Me.chkActivo = New System.Windows.Forms.CheckBox()
+        Me.lblCargo = New System.Windows.Forms.Label()
+        Me.cmdAceptar = New System.Windows.Forms.Button()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.cmdEditarInfo = New System.Windows.Forms.Button
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cmdEditarInfo = New System.Windows.Forms.Button()
         Me.grbDatosGenerales.SuspendLayout()
         Me.grbRH.SuspendLayout()
         CType(Me.spnComision.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,8 +60,6 @@ Partial Class frmSrhEmpleadoEditar
         CType(Me.dtpFechaIngreso, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grbDatosGenerales
@@ -84,7 +80,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.grbDatosGenerales.Controls.Add(Me.lblNombre2)
         Me.grbDatosGenerales.Controls.Add(Me.lblNombre1)
         Me.grbDatosGenerales.Controls.Add(Me.lblPersonaID)
-        Me.grbDatosGenerales.Location = New System.Drawing.Point(12, 38)
+        Me.grbDatosGenerales.Location = New System.Drawing.Point(12, 28)
         Me.grbDatosGenerales.Name = "grbDatosGenerales"
         Me.grbDatosGenerales.Size = New System.Drawing.Size(571, 127)
         Me.grbDatosGenerales.TabIndex = 0
@@ -256,7 +252,6 @@ Partial Class frmSrhEmpleadoEditar
         Me.spnComision.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.spnComision.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.spnComision.Properties.MaxValue = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.spnComision.Properties.UseCtrlIncrement = False
         Me.spnComision.Size = New System.Drawing.Size(101, 20)
         Me.spnComision.TabIndex = 30
         '
@@ -271,16 +266,26 @@ Partial Class frmSrhEmpleadoEditar
         '
         'dtpFechaEgreso
         '
+        '
+        '
+        '
+        Me.dtpFechaEgreso.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpFechaEgreso.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpFechaEgreso.Calendar.ClearText = "&Clear"
+        Me.dtpFechaEgreso.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpFechaEgreso.Calendar.SelectedDate = New Date(2016, 8, 5, 0, 0, 0, 0)
+        Me.dtpFechaEgreso.Calendar.TodayText = "&Today"
+        Me.dtpFechaEgreso.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaEgreso.DisplayFormat.EmptyAsNull = False
         Me.dtpFechaEgreso.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaEgreso.DisplayFormat.Inherit = CType((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFechaEgreso.EditFormat.EmptyAsNull = False
         Me.dtpFechaEgreso.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaEgreso.EditFormat.Inherit = CType((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFechaEgreso.EmptyAsNull = True
         Me.dtpFechaEgreso.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaEgreso.Location = New System.Drawing.Point(386, 44)
@@ -292,11 +297,21 @@ Partial Class frmSrhEmpleadoEditar
         '
         'dtpFechaIngreso
         '
+        '
+        '
+        '
+        Me.dtpFechaIngreso.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpFechaIngreso.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpFechaIngreso.Calendar.ClearText = "&Clear"
+        Me.dtpFechaIngreso.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpFechaIngreso.Calendar.SelectedDate = New Date(2016, 8, 5, 0, 0, 0, 0)
+        Me.dtpFechaIngreso.Calendar.TodayText = "&Today"
+        Me.dtpFechaIngreso.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaIngreso.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaIngreso.EditFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFechaIngreso.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaIngreso.Location = New System.Drawing.Point(386, 20)
         Me.dtpFechaIngreso.Name = "dtpFechaIngreso"
@@ -397,28 +412,6 @@ Partial Class frmSrhEmpleadoEditar
         Me.ErrorProv.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink
         Me.ErrorProv.ContainerControl = Me
         '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.PictureBox1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(592, 32)
-        Me.Panel2.TabIndex = 27
-        Me.Panel2.Tag = "LAYOUT"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(512, -1)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(70, 31)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 28
-        Me.PictureBox1.TabStop = False
-        '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
@@ -447,7 +440,6 @@ Partial Class frmSrhEmpleadoEditar
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(592, 306)
         Me.Controls.Add(Me.cmdEditarInfo)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmdAceptar)
@@ -468,8 +460,6 @@ Partial Class frmSrhEmpleadoEditar
         CType(Me.dtpFechaIngreso, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -500,8 +490,6 @@ Partial Class frmSrhEmpleadoEditar
     Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
     Friend WithEvents dtpFechaEgreso As C1.Win.C1Input.C1DateEdit
     Friend WithEvents dtpFechaIngreso As C1.Win.C1Input.C1DateEdit
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents cmdConsultar As System.Windows.Forms.Button
     Friend WithEvents cmdEditarInfo As System.Windows.Forms.Button

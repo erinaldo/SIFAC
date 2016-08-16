@@ -20,29 +20,37 @@ Partial Class frmSivProductos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivProductos))
-        Me.tbProductos = New System.Windows.Forms.ToolStrip
-        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton
-        Me.cmdEditar = New System.Windows.Forms.ToolStripButton
-        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton
-        Me.cmdImprimir = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdCerrar = New System.Windows.Forms.ToolStripButton
-        Me.grdProductos = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.mnuProducto = New System.Windows.Forms.MenuStrip
-        Me.mnuAgregar = New System.Windows.Forms.ToolStripMenuItem
-        Me.mnuEditar = New System.Windows.Forms.ToolStripMenuItem
-        Me.mnuConsultar = New System.Windows.Forms.ToolStripMenuItem
-        Me.mnuDesactivar = New System.Windows.Forms.ToolStripMenuItem
-        Me.mnuRefrescar = New System.Windows.Forms.ToolStripMenuItem
-        Me.mnuImprimir = New System.Windows.Forms.ToolStripMenuItem
-        Me.mnuCerrar = New System.Windows.Forms.ToolStripMenuItem
+        Me.tbProductos = New System.Windows.Forms.ToolStrip()
+        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdEditar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
+        Me.mnuProducto = New System.Windows.Forms.MenuStrip()
+        Me.mnuAgregar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuEditar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuConsultar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuDesactivar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuRefrescar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuImprimir = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCerrar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.grdProductos = New DevExpress.XtraGrid.GridControl()
+        Me.grdProductosTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCategoria = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMarca = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tbProductos.SuspendLayout()
-        CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnuProducto.SuspendLayout()
+        CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdProductosTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbProductos
@@ -51,7 +59,7 @@ Partial Class frmSivProductos
         Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdImprimir, Me.ToolStripSeparator3, Me.cmdCerrar})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
-        Me.tbProductos.Size = New System.Drawing.Size(621, 39)
+        Me.tbProductos.Size = New System.Drawing.Size(805, 39)
         Me.tbProductos.TabIndex = 0
         '
         'cmdAgregar
@@ -132,27 +140,6 @@ Partial Class frmSivProductos
         Me.cmdCerrar.Size = New System.Drawing.Size(36, 36)
         Me.cmdCerrar.ToolTipText = "Salir de Catálogo de Productos"
         '
-        'grdProductos
-        '
-        Me.grdProductos.AllowUpdate = False
-        Me.grdProductos.Caption = "Productos"
-        Me.grdProductos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdProductos.FilterBar = True
-        Me.grdProductos.GroupByCaption = "Drag a column header here to group by that column"
-        Me.grdProductos.Images.Add(CType(resources.GetObject("grdProductos.Images"), System.Drawing.Image))
-        Me.grdProductos.Location = New System.Drawing.Point(0, 39)
-        Me.grdProductos.Name = "grdProductos"
-        Me.grdProductos.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdProductos.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdProductos.PreviewInfo.ZoomFactor = 75
-        Me.grdProductos.PrintInfo.PageSettings = CType(resources.GetObject("grdProductos.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdProductos.Size = New System.Drawing.Size(621, 388)
-        Me.grdProductos.TabIndex = 1
-        Me.grdProductos.Tag = "AGRUPAR"
-        Me.grdProductos.Text = "C1TrueDBGrid1"
-        Me.grdProductos.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
-        Me.grdProductos.PropBag = resources.GetString("grdProductos.PropBag")
-        '
         'mnuProducto
         '
         Me.mnuProducto.AllowMerge = False
@@ -167,56 +154,138 @@ Partial Class frmSivProductos
         '
         Me.mnuAgregar.Name = "mnuAgregar"
         Me.mnuAgregar.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.mnuAgregar.Size = New System.Drawing.Size(58, 20)
+        Me.mnuAgregar.Size = New System.Drawing.Size(61, 20)
         Me.mnuAgregar.Text = "Agregar"
         '
         'mnuEditar
         '
         Me.mnuEditar.Name = "mnuEditar"
         Me.mnuEditar.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
-        Me.mnuEditar.Size = New System.Drawing.Size(47, 20)
+        Me.mnuEditar.Size = New System.Drawing.Size(49, 20)
         Me.mnuEditar.Text = "Editar"
         '
         'mnuConsultar
         '
         Me.mnuConsultar.Name = "mnuConsultar"
         Me.mnuConsultar.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.mnuConsultar.Size = New System.Drawing.Size(65, 20)
+        Me.mnuConsultar.Size = New System.Drawing.Size(70, 20)
         Me.mnuConsultar.Text = "Consultar"
         '
         'mnuDesactivar
         '
         Me.mnuDesactivar.Name = "mnuDesactivar"
         Me.mnuDesactivar.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
-        Me.mnuDesactivar.Size = New System.Drawing.Size(70, 20)
+        Me.mnuDesactivar.Size = New System.Drawing.Size(73, 20)
         Me.mnuDesactivar.Text = "Desactivar"
         '
         'mnuRefrescar
         '
         Me.mnuRefrescar.Name = "mnuRefrescar"
         Me.mnuRefrescar.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.mnuRefrescar.Size = New System.Drawing.Size(66, 20)
+        Me.mnuRefrescar.Size = New System.Drawing.Size(67, 20)
         Me.mnuRefrescar.Text = "Refrescar"
         '
         'mnuImprimir
         '
         Me.mnuImprimir.Name = "mnuImprimir"
         Me.mnuImprimir.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.mnuImprimir.Size = New System.Drawing.Size(57, 20)
+        Me.mnuImprimir.Size = New System.Drawing.Size(65, 20)
         Me.mnuImprimir.Text = "Imprimir"
         '
         'mnuCerrar
         '
         Me.mnuCerrar.Name = "mnuCerrar"
         Me.mnuCerrar.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.mnuCerrar.Size = New System.Drawing.Size(50, 20)
+        Me.mnuCerrar.Size = New System.Drawing.Size(51, 20)
         Me.mnuCerrar.Text = "Cerrar"
+        '
+        'grdProductos
+        '
+        Me.grdProductos.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdProductos.Location = New System.Drawing.Point(0, 39)
+        Me.grdProductos.MainView = Me.grdProductosTabla
+        Me.grdProductos.Name = "grdProductos"
+        Me.grdProductos.Size = New System.Drawing.Size(805, 388)
+        Me.grdProductos.TabIndex = 7
+        Me.grdProductos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdProductosTabla})
+        '
+        'grdProductosTabla
+        '
+        Me.grdProductosTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colCodigo, Me.colNombre, Me.colCategoria, Me.colMarca, Me.colActiva})
+        Me.grdProductosTabla.GridControl = Me.grdProductos
+        Me.grdProductosTabla.Name = "grdProductosTabla"
+        Me.grdProductosTabla.OptionsDetail.AllowZoomDetail = False
+        Me.grdProductosTabla.OptionsDetail.EnableMasterViewMode = False
+        Me.grdProductosTabla.OptionsDetail.ShowDetailTabs = False
+        Me.grdProductosTabla.OptionsDetail.SmartDetailExpand = False
+        Me.grdProductosTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdProductosTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
+        '
+        'colNumero
+        '
+        Me.colNumero.Caption = "Número"
+        Me.colNumero.FieldName = "SivProductoID"
+        Me.colNumero.Name = "colNumero"
+        Me.colNumero.OptionsColumn.AllowFocus = False
+        Me.colNumero.OptionsColumn.ReadOnly = True
+        Me.colNumero.Width = 76
+        '
+        'colCodigo
+        '
+        Me.colCodigo.Caption = "Codigo"
+        Me.colCodigo.FieldName = "Codigo"
+        Me.colCodigo.Name = "colCodigo"
+        Me.colCodigo.OptionsColumn.AllowFocus = False
+        Me.colCodigo.OptionsColumn.ReadOnly = True
+        Me.colCodigo.Visible = True
+        Me.colCodigo.VisibleIndex = 0
+        Me.colCodigo.Width = 148
+        '
+        'colNombre
+        '
+        Me.colNombre.Caption = "Nombre"
+        Me.colNombre.FieldName = "Nombre"
+        Me.colNombre.Name = "colNombre"
+        Me.colNombre.OptionsColumn.AllowFocus = False
+        Me.colNombre.OptionsColumn.ReadOnly = True
+        Me.colNombre.Visible = True
+        Me.colNombre.VisibleIndex = 1
+        Me.colNombre.Width = 219
+        '
+        'colActiva
+        '
+        Me.colActiva.Caption = "Activa"
+        Me.colActiva.FieldName = "Activa"
+        Me.colActiva.Name = "colActiva"
+        Me.colActiva.OptionsColumn.AllowFocus = False
+        Me.colActiva.OptionsColumn.ReadOnly = True
+        Me.colActiva.Visible = True
+        Me.colActiva.VisibleIndex = 4
+        Me.colActiva.Width = 101
+        '
+        'colCategoria
+        '
+        Me.colCategoria.Caption = "Categoria"
+        Me.colCategoria.FieldName = "Categoria"
+        Me.colCategoria.Name = "colCategoria"
+        Me.colCategoria.Visible = True
+        Me.colCategoria.VisibleIndex = 2
+        Me.colCategoria.Width = 150
+        '
+        'colMarca
+        '
+        Me.colMarca.Caption = "Marca"
+        Me.colMarca.FieldName = "Marca"
+        Me.colMarca.Name = "colMarca"
+        Me.colMarca.Visible = True
+        Me.colMarca.VisibleIndex = 3
+        Me.colMarca.Width = 169
         '
         'frmSivProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(621, 427)
+        Me.ClientSize = New System.Drawing.Size(805, 427)
         Me.Controls.Add(Me.grdProductos)
         Me.Controls.Add(Me.tbProductos)
         Me.Controls.Add(Me.mnuProducto)
@@ -226,9 +295,10 @@ Partial Class frmSivProductos
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.tbProductos.ResumeLayout(False)
         Me.tbProductos.PerformLayout()
-        CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.mnuProducto.ResumeLayout(False)
         Me.mnuProducto.PerformLayout()
+        CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdProductosTabla, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -244,7 +314,6 @@ Partial Class frmSivProductos
     Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdCerrar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents grdProductos As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents mnuProducto As System.Windows.Forms.MenuStrip
     Friend WithEvents mnuAgregar As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuEditar As System.Windows.Forms.ToolStripMenuItem
@@ -253,4 +322,12 @@ Partial Class frmSivProductos
     Friend WithEvents mnuRefrescar As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuImprimir As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuCerrar As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents grdProductos As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdProductosTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCodigo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCategoria As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colMarca As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colActiva As DevExpress.XtraGrid.Columns.GridColumn
 End Class
