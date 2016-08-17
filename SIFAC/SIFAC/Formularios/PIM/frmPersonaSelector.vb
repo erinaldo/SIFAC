@@ -71,10 +71,10 @@ Public Class frmPersonaSelector
     Private Sub cmdNuevaPersona_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNuevaPersona.Click
         Dim objPers As frmStbPersonasEditar
         objPers = New frmStbPersonasEditar
-        'objPers.TyGui = 1
-        'objPers.frmLlamado = Opcion
+        objPers.TyGui = 1
+        objPers.frmLlamado = Opcion
         If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            'Me.Seleccion = objPers.idpersona
+            Me.Seleccion = objPers.idpersona
             Me.DialogResult = Windows.Forms.DialogResult.OK
         End If
     End Sub

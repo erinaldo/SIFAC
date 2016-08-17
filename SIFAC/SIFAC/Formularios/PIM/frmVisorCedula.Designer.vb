@@ -19,16 +19,22 @@ Partial Class frmVisorCedula
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.grbCedulaAnverso = New System.Windows.Forms.GroupBox()
-        Me.imgCedulaAnverso = New System.Windows.Forms.PictureBox()
-        Me.grbCedulaReverso = New System.Windows.Forms.GroupBox()
-        Me.imgCedulaReverso = New System.Windows.Forms.PictureBox()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVisorCedula))
+        Me.grbCedulaAnverso = New System.Windows.Forms.GroupBox
+        Me.imgCedulaAnverso = New System.Windows.Forms.PictureBox
+        Me.grbCedulaReverso = New System.Windows.Forms.GroupBox
+        Me.imgCedulaReverso = New System.Windows.Forms.PictureBox
+        Me.cmdAceptar = New System.Windows.Forms.Button
+        Me.Panel2 = New System.Windows.Forms.Panel
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.Panel1 = New System.Windows.Forms.Panel
         Me.grbCedulaAnverso.SuspendLayout()
         CType(Me.imgCedulaAnverso, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grbCedulaReverso.SuspendLayout()
         CType(Me.imgCedulaReverso, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grbCedulaAnverso
@@ -81,6 +87,39 @@ Partial Class frmVisorCedula
         Me.cmdAceptar.Text = "&Aceptar"
         Me.cmdAceptar.UseVisualStyleBackColor = True
         '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.PictureBox1)
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(317, 32)
+        Me.Panel2.TabIndex = 27
+        Me.Panel2.Tag = "LAYOUT"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(242, -1)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(70, 31)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 28
+        Me.PictureBox1.TabStop = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(663, 6)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(44, 24)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "UM"
+        '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
@@ -95,6 +134,7 @@ Partial Class frmVisorCedula
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(317, 457)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.grbCedulaReverso)
@@ -109,6 +149,9 @@ Partial Class frmVisorCedula
         CType(Me.imgCedulaAnverso, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grbCedulaReverso.ResumeLayout(False)
         CType(Me.imgCedulaReverso, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -117,5 +160,8 @@ Partial Class frmVisorCedula
     Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents imgCedulaAnverso As System.Windows.Forms.PictureBox
     Friend WithEvents imgCedulaReverso As System.Windows.Forms.PictureBox
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
 End Class

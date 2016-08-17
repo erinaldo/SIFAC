@@ -44,13 +44,15 @@ Partial Class frmSivProductos
         Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCategoria = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colMarca = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.tbProductos.SuspendLayout()
         Me.mnuProducto.SuspendLayout()
         CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdProductosTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbProductos
@@ -205,6 +207,7 @@ Partial Class frmSivProductos
         Me.grdProductos.Location = New System.Drawing.Point(0, 39)
         Me.grdProductos.MainView = Me.grdProductosTabla
         Me.grdProductos.Name = "grdProductos"
+        Me.grdProductos.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
         Me.grdProductos.Size = New System.Drawing.Size(805, 388)
         Me.grdProductos.TabIndex = 7
         Me.grdProductos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdProductosTabla})
@@ -252,17 +255,6 @@ Partial Class frmSivProductos
         Me.colNombre.VisibleIndex = 1
         Me.colNombre.Width = 219
         '
-        'colActiva
-        '
-        Me.colActiva.Caption = "Activa"
-        Me.colActiva.FieldName = "Activa"
-        Me.colActiva.Name = "colActiva"
-        Me.colActiva.OptionsColumn.AllowFocus = False
-        Me.colActiva.OptionsColumn.ReadOnly = True
-        Me.colActiva.Visible = True
-        Me.colActiva.VisibleIndex = 4
-        Me.colActiva.Width = 101
-        '
         'colCategoria
         '
         Me.colCategoria.Caption = "Categoria"
@@ -280,6 +272,23 @@ Partial Class frmSivProductos
         Me.colMarca.Visible = True
         Me.colMarca.VisibleIndex = 3
         Me.colMarca.Width = 169
+        '
+        'colActiva
+        '
+        Me.colActiva.Caption = "Activa"
+        Me.colActiva.ColumnEdit = Me.RepositoryItemCheckEdit1
+        Me.colActiva.FieldName = "Activo"
+        Me.colActiva.Name = "colActiva"
+        Me.colActiva.OptionsColumn.AllowFocus = False
+        Me.colActiva.OptionsColumn.ReadOnly = True
+        Me.colActiva.Visible = True
+        Me.colActiva.VisibleIndex = 4
+        Me.colActiva.Width = 101
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSivProductos
         '
@@ -299,6 +308,7 @@ Partial Class frmSivProductos
         Me.mnuProducto.PerformLayout()
         CType(Me.grdProductos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdProductosTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -330,4 +340,5 @@ Partial Class frmSivProductos
     Friend WithEvents colCategoria As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colMarca As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colActiva As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

@@ -43,11 +43,18 @@ Public Class frmSivProductosEditar
             .DisplayMember = "Nombre"
             .ValueMember = "MarcaID"
             .Splits(0).DisplayColumns("MarcaID").Visible = False
+            .Splits(0).DisplayColumns("Descripcion").Visible = False
+            .Splits(0).DisplayColumns("Activa").Visible = False
+            .Splits(0).DisplayColumns("FechaCreacion").Visible = False
+            .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
+            .Splits(0).DisplayColumns("FechaModificacion").Visible = False
+            .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
+            .ColumnHeaders = False
             .ExtendRightColumn = True
         End With
     End Sub
 
-    '' Descripción:        Procedimiento encargado de cargar los valores de cilindraje
+    '' Descripción:        Procedimiento encargado de cargar los valores de Categorias
     Public Sub CargarCategorias()
         DtCilindraje = SivCategorias.RetrieveDT("Activa=1")
         With cbxCategoria
@@ -55,6 +62,13 @@ Public Class frmSivProductosEditar
             .DisplayMember = "Nombre"
             .ValueMember = "CategoriaID"
             .Splits(0).DisplayColumns("CategoriaID").Visible = False
+            .Splits(0).DisplayColumns("Descripcion").Visible = False
+            .Splits(0).DisplayColumns("Activa").Visible = False
+            .Splits(0).DisplayColumns("FechaCreacion").Visible = False
+            .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
+            .Splits(0).DisplayColumns("FechaModificacion").Visible = False
+            .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
+            .ColumnHeaders = False
             .ExtendRightColumn = True
         End With
     End Sub
@@ -76,6 +90,7 @@ Public Class frmSivProductosEditar
                 spnMargenCredito.Enabled = False
                 spnPrecioContado.Enabled = False
                 spnPrecioCredito.Enabled = False
+                txtNombre.Enabled = False
                 txtProducto.Enabled = False
                 cbxMarca.Enabled = False
                 cbxCategoria.Enabled = False
@@ -94,11 +109,11 @@ Public Class frmSivProductosEditar
         cbxMarca.SelectedValue = objProducto.objMarcaID
         chkActivo.Checked = objProducto.Activo
         spnCantidadMinima.Value = objProducto.Cantidad_Minima
-        spnCostoPromedio.Value = objProducto.CostoPromedio
-        spnMargenContado.Value = objProducto.Margen_Utilidad_Contado
-        spnMargenCredito.Value = objProducto.Margen_Utilidad_Credito
-        spnPrecioContado.Value = objProducto.Precio_Contado
-        spnPrecioCredito.Value = objProducto.Precio_Credito
+        spnCostoPromedio.Value = IIf(IsDBNull(objProducto.CostoPromedio), 0.0, objProducto.CostoPromedio)
+        spnMargenContado.Value = IIf(IsDBNull(objProducto.Margen_Utilidad_Contado), 0.0, objProducto.Margen_Utilidad_Contado)
+        spnMargenCredito.Value = IIf(IsDBNull(objProducto.Margen_Utilidad_Credito), 0.0, objProducto.Margen_Utilidad_Credito)
+        spnPrecioContado.Value = IIf(IsDBNull(objProducto.Precio_Contado), 0.0, objProducto.Precio_Contado)
+        spnPrecioCredito.Value = IIf(IsDBNull(objProducto.Precio_Credito), 0.0, objProducto.Precio_Credito)
     End Sub
 
     '' Descripción:        Procedimiento encargado de crear un nuevo registro de producto
@@ -207,6 +222,7 @@ Public Class frmSivProductosEditar
 #End Region
 
 #Region "Eventos del formulario"
+
     Private Sub frmSivProductosEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         clsProyecto.CargarTemaDefinido(Me)
         CargarMarca()
@@ -341,35 +357,4 @@ Public Class frmSivProductosEditar
 
 #End Region
 
-  
-
-    Private Sub spnPrecioCredito_EditValueChanged(sender As Object, e As EventArgs) Handles spnPrecioCredito.EditValueChanged
-        ErrorProv.SetError(spnPrecioCredito, "0.0")
-        boolEditado = True
-    End Sub
-
-    Private Sub spnCostoPromedio_EditValueChanged(sender As Object, e As EventArgs) Handles spnCostoPromedio.EditValueChanged
-        ErrorProv.SetError(spnCostoPromedio, "0.0")
-        boolEditado = True
-    End Sub
-
-    Private Sub spnPrecioContado_EditValueChanged(sender As Object, e As EventArgs) Handles spnPrecioContado.EditValueChanged
-        ErrorProv.SetError(spnPrecioContado, "0.0")
-        boolEditado = True
-    End Sub
-
-    Private Sub spnMargenCredito_EditValueChanged(sender As Object, e As EventArgs) Handles spnMargenCredito.EditValueChanged
-        ErrorProv.SetError(spnMargenCredito, "0.0")
-        boolEditado = True
-    End Sub
-
-    Private Sub spnMargenContado_EditValueChanged(sender As Object, e As EventArgs) Handles spnMargenContado.EditValueChanged
-        ErrorProv.SetError(spnMargenContado, "0.0")
-        boolEditado = True
-    End Sub
-
-    Private Sub spnCantidadMinima_EditValueChanged(sender As Object, e As EventArgs) Handles spnCantidadMinima.EditValueChanged
-        ErrorProv.SetError(spnCantidadMinima, "0.0")
-        boolEditado = True
-    End Sub
 End Class

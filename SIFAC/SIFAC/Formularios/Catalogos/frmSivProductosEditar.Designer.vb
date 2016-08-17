@@ -82,7 +82,7 @@ Partial Class frmSivProductosEditar
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 269)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(745, 21)
+        Me.Panel1.Size = New System.Drawing.Size(777, 21)
         Me.Panel1.TabIndex = 23
         '
         'PanelControl1
@@ -96,7 +96,7 @@ Partial Class frmSivProductosEditar
         Me.PanelControl1.LookAndFeel.SkinName = "Blue"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(745, 290)
+        Me.PanelControl1.Size = New System.Drawing.Size(777, 290)
         Me.PanelControl1.TabIndex = 24
         '
         'cmdCancelar
@@ -142,7 +142,7 @@ Partial Class frmSivProductosEditar
         Me.GroupControl2.LookAndFeel.SkinName = "Blue"
         Me.GroupControl2.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(278, 201)
+        Me.GroupControl2.Size = New System.Drawing.Size(310, 201)
         Me.GroupControl2.TabIndex = 6
         '
         'spnPrecioContado
@@ -421,7 +421,7 @@ Partial Class frmSivProductosEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(745, 290)
+        Me.ClientSize = New System.Drawing.Size(777, 290)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle

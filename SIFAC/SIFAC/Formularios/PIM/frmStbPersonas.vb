@@ -42,34 +42,34 @@ Public Class frmStbPersonas
         End Try
     End Sub
 
-    'Private Sub CargarGridFiadores()
+    Private Sub CargarGridFiadores()
 
-    '    Try
-    '        Me.dtFiador = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,PersonaJuridica,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,RUC,Genero,objGeneroID,objTipoPersonaID,Nacionalidad", "vwPersonaClasificacion", "Descripcion = 'Fiador'"))
-    '        Me.dtFiador.PrimaryKey = New DataColumn() {Me.dtFiador.Columns("StbPersonaID")}
-    '        Me.dtFiador.DefaultView.Sort = "StbPersonaID"
+        Try
+            Me.dtFiador = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,PersonaJuridica,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,RUC,Genero,objGeneroID,objTipoPersonaID,Nacionalidad", "vwPersonaClasificacion", "Descripcion = 'Fiador'"))
+            Me.dtFiador.PrimaryKey = New DataColumn() {Me.dtFiador.Columns("StbPersonaID")}
+            Me.dtFiador.DefaultView.Sort = "StbPersonaID"
 
-    '        Me.tdgFiador.SetDataBinding(Me.dtFiador, "", True)
-    '        Me.tdgFiador.Caption = "Fiadores (" & Me.dtFiador.Rows.Count & ")"
+            Me.tdgFiador.SetDataBinding(Me.dtFiador, "", True)
+            Me.tdgFiador.Caption = "Fiadores (" & Me.dtFiador.Rows.Count & ")"
 
-    '        If Me.tdgFiador.RowCount = 0 Then
-    '            Me.cmdEditar.Enabled = False
-    '            Me.cmdConsultar.Enabled = False
-    '            Me.cmdEliminar.Enabled = False
-    '            Me.cmdImprimir.Enabled = False
-    '        Else
-    '            If Me.bolEditar Then Me.cmdEditar.Enabled = True
-    '            If Me.bolConsultar Then Me.cmdConsultar.Enabled = True
-    '            If Me.bolEliminar Then Me.cmdEliminar.Enabled = True
-    '            If Me.bolImprimir Then Me.cmdImprimir.Enabled = True
-    '        End If
+            If Me.tdgFiador.RowCount = 0 Then
+                Me.cmdEditar.Enabled = False
+                Me.cmdConsultar.Enabled = False
+                Me.cmdEliminar.Enabled = False
+                Me.cmdImprimir.Enabled = False
+            Else
+                If Me.bolEditar Then Me.cmdEditar.Enabled = True
+                If Me.bolConsultar Then Me.cmdConsultar.Enabled = True
+                If Me.bolEliminar Then Me.cmdEliminar.Enabled = True
+                If Me.bolImprimir Then Me.cmdImprimir.Enabled = True
+            End If
 
-    '        Me.tdgFiador.Refresh()
+            Me.tdgFiador.Refresh()
 
-    '    Catch ex As Exception
-    '        clsError.CaptarError(ex)
-    '    End Try
-    'End Sub
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 #End Region
 
 #Region "Habilitar/Deshabilitar"
@@ -90,7 +90,7 @@ Public Class frmStbPersonas
                         If Me.bolImprimir Then Me.cmdImprimir.Enabled = True
                     End If
                 Case 1
-                    'Me.tdgFiador.Caption = "Fiadores (" & Me.dtCliente.DefaultView.Count & ")"
+                    Me.tdgFiador.Caption = "Fiadores (" & Me.dtCliente.DefaultView.Count & ")"
                     If Me.dtFiador.DefaultView.Count = 0 Then
                         Me.cmdEditar.Enabled = False
                         Me.cmdConsultar.Enabled = False
@@ -162,22 +162,22 @@ Public Class frmStbPersonas
         Try
             Me.Cursor = WaitCursor
             objPersonas = New frmStbPersonasEditar
-            'objPersonas.TyGui = 1
-            'If Me.tbcPersonas.SelectedIndex = 0 Then
-            '    objPersonas.frmLlamado = 4
-            'Else
-            '    objPersonas.frmLlamado = 5
-            'End If
+            objPersonas.TyGui = 1
+            If Me.tbcPersonas.SelectedIndex = 0 Then
+                objPersonas.frmLlamado = 4
+            Else
+                objPersonas.frmLlamado = 5
+            End If
             If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                'If Me.tbcPersonas.SelectedIndex = 0 Then
-                '    CargarGridClientes()
-                '    Seguridad()
-                '    Me.tdgCliente.Row = Me.dtCliente.DefaultView.Find(objPersonas.idpersona)
-                'Else
-                '    CargarGridFiadores()
-                '    Seguridad()
-                '    Me.tdgFiador.Row = Me.dtFiador.DefaultView.Find(objPersonas.idpersona)
-                'End If
+                If Me.tbcPersonas.SelectedIndex = 0 Then
+                    CargarGridClientes()
+                    Seguridad()
+                    Me.tdgCliente.Row = Me.dtCliente.DefaultView.Find(objPersonas.idpersona)
+                Else
+                    CargarGridFiadores()
+                    Seguridad()
+                    Me.tdgFiador.Row = Me.dtFiador.DefaultView.Find(objPersonas.idpersona)
+                End If
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -191,27 +191,27 @@ Public Class frmStbPersonas
     Private Sub Editar()
         Dim objPersonas As frmStbPersonasEditar
         Try
-            'Me.Cursor = WaitCursor
-            'objPersonas = New frmStbPersonasEditar
-            'objPersonas.TyGui = 2
-            'If Me.tbcPersonas.SelectedIndex = 0 Then
-            '    objPersonas.frmLlamado = 4
-            '    objPersonas.idpersona = Me.dtCliente.DefaultView(Me.tdgCliente.Row).Item("StbPersonaID")
-            'Else
-            '    objPersonas.frmLlamado = 5
-            '    objPersonas.idpersona = Me.dtFiador.DefaultView(Me.tdgFiador.Row).Item("StbPersonaID")
-            'End If
-            'If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            '    If Me.tbcPersonas.SelectedIndex = 0 Then
-            '        CargarGridClientes()
-            '        Seguridad()
-            '        Me.tdgCliente.Row = Me.dtCliente.DefaultView.Find(objPersonas.idpersona)
-            '    Else
-            '        CargarGridFiadores()
-            '        Seguridad()
-            '        Me.tdgFiador.Row = Me.dtFiador.DefaultView.Find(objPersonas.idpersona)
-            '    End If
-            'End If
+            Me.Cursor = WaitCursor
+            objPersonas = New frmStbPersonasEditar
+            objPersonas.TyGui = 2
+            If Me.tbcPersonas.SelectedIndex = 0 Then
+                objPersonas.frmLlamado = 4
+                objPersonas.idpersona = Me.dtCliente.DefaultView(Me.tdgCliente.Row).Item("StbPersonaID")
+            Else
+                objPersonas.frmLlamado = 5
+                objPersonas.idpersona = Me.dtFiador.DefaultView(Me.tdgFiador.Row).Item("StbPersonaID")
+            End If
+            If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                If Me.tbcPersonas.SelectedIndex = 0 Then
+                    CargarGridClientes()
+                    Seguridad()
+                    Me.tdgCliente.Row = Me.dtCliente.DefaultView.Find(objPersonas.idpersona)
+                Else
+                    CargarGridFiadores()
+                    Seguridad()
+                    Me.tdgFiador.Row = Me.dtFiador.DefaultView.Find(objPersonas.idpersona)
+                End If
+            End If
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -222,26 +222,26 @@ Public Class frmStbPersonas
 
 #Region "Consultar"
     Private Sub Consultar()
-        'Dim objPersonas As frmStbPersonasEditar
-        'Try
-        '    Me.Cursor = WaitCursor
-        '    objPersonas = New frmStbPersonasEditar
-        '    objPersonas.TyGui = 3
+        Dim objPersonas As frmStbPersonasEditar
+        Try
+            Me.Cursor = WaitCursor
+            objPersonas = New frmStbPersonasEditar
+            objPersonas.TyGui = 3
 
-        '    If Me.tbcPersonas.SelectedIndex = 0 Then
-        '        objPersonas.frmLlamado = 4
-        '        objPersonas.idpersona = Me.dtCliente.DefaultView(Me.tdgCliente.Row).Item("StbPersonaID")
-        '    Else
-        '        objPersonas.frmLlamado = 5
-        '        objPersonas.idpersona = Me.dtFiador.DefaultView(Me.tdgFiador.Row).Item("StbPersonaID")
-        '    End If
+            If Me.tbcPersonas.SelectedIndex = 0 Then
+                objPersonas.frmLlamado = 4
+                objPersonas.idpersona = Me.dtCliente.DefaultView(Me.tdgCliente.Row).Item("StbPersonaID")
+            Else
+                objPersonas.frmLlamado = 5
+                objPersonas.idpersona = Me.dtFiador.DefaultView(Me.tdgFiador.Row).Item("StbPersonaID")
+            End If
 
-        '    objPersonas.ShowDialog(Me)
-        'Catch ex As Exception
-        '    clsError.CaptarError(ex)
-        'Finally
-        '    Me.Cursor = [Default]
-        'End Try
+            objPersonas.ShowDialog(Me)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
     End Sub
 #End Region
 
@@ -260,13 +260,13 @@ Public Class frmStbPersonas
                     MsgBox(My.Resources.MsgEliminado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
                     Me.CargarGridClientes()
                 Else
-                    'T.BeginTran()
-                    'StbContactos.DeleteByFilter("objPersonaID='" & Me.dtFiador.DefaultView(Me.tdgFiador.RowBookmark(Me.tdgFiador.Row)).Item("StbPersonaID") & "'")
-                    'StbPersonaClasificacion.DeleteByFilter("objPersonaID='" & Me.dtFiador.DefaultView(Me.tdgFiador.RowBookmark(Me.tdgFiador.Row)).Item("StbPersonaID") & "'")
-                    'StbPersona.DeleteByFilter("StbPersonaID='" & Me.dtFiador.DefaultView(Me.tdgFiador.RowBookmark(Me.tdgFiador.Row)).Item("StbPersonaID") & "'")
-                    'T.CommitTran()
-                    'MsgBox(My.Resources.MsgEliminado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-                    'Me.CargarGridFiadores()
+                    T.BeginTran()
+                    StbContactos.DeleteByFilter("objPersonaID='" & Me.dtFiador.DefaultView(Me.tdgFiador.RowBookmark(Me.tdgFiador.Row)).Item("StbPersonaID") & "'")
+                    StbPersonaClasificacion.DeleteByFilter("objPersonaID='" & Me.dtFiador.DefaultView(Me.tdgFiador.RowBookmark(Me.tdgFiador.Row)).Item("StbPersonaID") & "'")
+                    StbPersona.DeleteByFilter("StbPersonaID='" & Me.dtFiador.DefaultView(Me.tdgFiador.RowBookmark(Me.tdgFiador.Row)).Item("StbPersonaID") & "'")
+                    T.CommitTran()
+                    MsgBox(My.Resources.MsgEliminado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                    Me.CargarGridFiadores()
                 End If
 
             Else
@@ -396,7 +396,7 @@ Public Class frmStbPersonas
             clsProyecto.CargarTemaDefinido(Me)
             Me.Seguridad()
             Me.CargarGridClientes()
-            'Me.CargarGridFiadores()
+            Me.CargarGridFiadores()
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -426,7 +426,7 @@ Public Class frmStbPersonas
 
     Private Sub cmdActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdActualizar.Click
         Me.CargarGridClientes()
-        'Me.CargarGridFiadores()
+        Me.CargarGridFiadores()
     End Sub
 
     Private Sub cmdImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImprimir.Click
@@ -453,13 +453,13 @@ Public Class frmStbPersonas
     End Sub
 #End Region
 
-    Private Sub ImprimirListadoDeClientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub ImprimirListadoDeClientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImprimirListadoDeClientesToolStripMenuItem.Click
         'Dim objform As New frmRptCliente
         'objform.ShowDialog()
         'ImprimirListado(1)
     End Sub
 
-    Private Sub ImprimirListadoDeFiadoresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub ImprimirListadoDeFiadoresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImprimirListadoDeFiadoresToolStripMenuItem.Click
         ImprimirListado(2)
     End Sub
     

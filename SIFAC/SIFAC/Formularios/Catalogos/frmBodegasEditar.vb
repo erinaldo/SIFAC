@@ -176,7 +176,7 @@ Public Class frmBodegasEditar
 
 #End Region
 
-#Region "Guardar Tienda"
+#Region "Guardar Bodega"
 
     '' Descripción:        Procedimiento encargado de guardar tienda
     Public Sub GuardarTienda()
