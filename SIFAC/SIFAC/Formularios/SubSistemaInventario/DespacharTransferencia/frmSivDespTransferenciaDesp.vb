@@ -417,7 +417,7 @@ Public Class frmSivDespTransferenciaDesp
                     'Si fue cargado desde la BD, entonces actualizar sino insertar
                     If Convert.ToBoolean(row("BD")) Then    'ACTUALIZACION
                         With objSivTranDetalleUpdate
-                            .RetrieveByFilter(String.Format("objTransferenciaID={0}",Me.IdSivTransferencia.ToString), T)
+                            .RetrieveByFilter(String.Format("objTransferenciaID={0} and  objSivProductoID={1}", Me.IdSivTransferencia.ToString, row("objSivProductoID")), T)
                             .CantidadDespachada = row("CantidadDespachada")
                             .FechaModificacion = clsProyecto.Conexion.FechaServidor
                             .UsuarioModificacion = clsProyecto.Conexion.Usuario
