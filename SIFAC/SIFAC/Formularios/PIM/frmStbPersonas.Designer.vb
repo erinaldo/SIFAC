@@ -29,17 +29,23 @@ Partial Class frmStbPersonas
         Me.cmdEliminar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdActualizar = New System.Windows.Forms.ToolStripButton()
-        Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
+        Me.cmdImprimir = New System.Windows.Forms.ToolStripSplitButton()
+        Me.ImprimirListadoDeClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImprimirListadoDeFiadoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
         Me.tbcPersonas = New System.Windows.Forms.TabControl()
         Me.pgCliente = New System.Windows.Forms.TabPage()
         Me.tdgCliente = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.pgFiador = New System.Windows.Forms.TabPage()
+        Me.tdgFiador = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.objUbicacion = New System.Windows.Forms.SaveFileDialog()
         Me.ToolStrip1.SuspendLayout()
         Me.tbcPersonas.SuspendLayout()
         Me.pgCliente.SuspendLayout()
         CType(Me.tdgCliente, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pgFiador.SuspendLayout()
+        CType(Me.tdgFiador, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -55,7 +61,6 @@ Partial Class frmStbPersonas
         'cmdAgregar
         '
         Me.cmdAgregar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdAgregar.Image = CType(resources.GetObject("cmdAgregar.Image"), System.Drawing.Image)
         Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
@@ -65,7 +70,6 @@ Partial Class frmStbPersonas
         'cmdEditar
         '
         Me.cmdEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdEditar.Image = CType(resources.GetObject("cmdEditar.Image"), System.Drawing.Image)
         Me.cmdEditar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
@@ -75,7 +79,6 @@ Partial Class frmStbPersonas
         'cmdConsultar
         '
         Me.cmdConsultar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdConsultar.Image = CType(resources.GetObject("cmdConsultar.Image"), System.Drawing.Image)
         Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
@@ -85,7 +88,6 @@ Partial Class frmStbPersonas
         'cmdBuscar
         '
         Me.cmdBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdBuscar.Image = CType(resources.GetObject("cmdBuscar.Image"), System.Drawing.Image)
         Me.cmdBuscar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdBuscar.Name = "cmdBuscar"
         Me.cmdBuscar.Size = New System.Drawing.Size(36, 36)
@@ -125,12 +127,25 @@ Partial Class frmStbPersonas
         'cmdImprimir
         '
         Me.cmdImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdImprimir.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImprimirListadoDeClientesToolStripMenuItem, Me.ImprimirListadoDeFiadoresToolStripMenuItem})
         Me.cmdImprimir.Image = CType(resources.GetObject("cmdImprimir.Image"), System.Drawing.Image)
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
-        Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
+        Me.cmdImprimir.Size = New System.Drawing.Size(48, 36)
         Me.cmdImprimir.Text = "ToolStripButton6"
         Me.cmdImprimir.ToolTipText = "Imprimir"
+        '
+        'ImprimirListadoDeClientesToolStripMenuItem
+        '
+        Me.ImprimirListadoDeClientesToolStripMenuItem.Name = "ImprimirListadoDeClientesToolStripMenuItem"
+        Me.ImprimirListadoDeClientesToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.ImprimirListadoDeClientesToolStripMenuItem.Text = "Imprimir Listado de Clientes"
+        '
+        'ImprimirListadoDeFiadoresToolStripMenuItem
+        '
+        Me.ImprimirListadoDeFiadoresToolStripMenuItem.Name = "ImprimirListadoDeFiadoresToolStripMenuItem"
+        Me.ImprimirListadoDeFiadoresToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
+        Me.ImprimirListadoDeFiadoresToolStripMenuItem.Text = "Imprimir Listado de Fiadores"
         '
         'ToolStripSeparator3
         '
@@ -150,6 +165,7 @@ Partial Class frmStbPersonas
         'tbcPersonas
         '
         Me.tbcPersonas.Controls.Add(Me.pgCliente)
+        Me.tbcPersonas.Controls.Add(Me.pgFiador)
         Me.tbcPersonas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tbcPersonas.Location = New System.Drawing.Point(0, 39)
         Me.tbcPersonas.Name = "tbcPersonas"
@@ -194,6 +210,44 @@ Partial Class frmStbPersonas
         Me.tdgCliente.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
         Me.tdgCliente.PropBag = resources.GetString("tdgCliente.PropBag")
         '
+        'pgFiador
+        '
+        Me.pgFiador.Controls.Add(Me.tdgFiador)
+        Me.pgFiador.Location = New System.Drawing.Point(4, 22)
+        Me.pgFiador.Name = "pgFiador"
+        Me.pgFiador.Padding = New System.Windows.Forms.Padding(3)
+        Me.pgFiador.Size = New System.Drawing.Size(748, 469)
+        Me.pgFiador.TabIndex = 1
+        Me.pgFiador.Text = "Fiadores"
+        Me.pgFiador.UseVisualStyleBackColor = True
+        '
+        'tdgFiador
+        '
+        Me.tdgFiador.AllowArrows = False
+        Me.tdgFiador.AllowUpdate = False
+        Me.tdgFiador.AllowUpdateOnBlur = False
+        Me.tdgFiador.Caption = "Personas"
+        Me.tdgFiador.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tdgFiador.EmptyRows = True
+        Me.tdgFiador.ExtendRightColumn = True
+        Me.tdgFiador.FilterBar = True
+        Me.tdgFiador.GroupByCaption = "Arrastre hacia acá la columna por la cual desea agrupar"
+        Me.tdgFiador.Images.Add(CType(resources.GetObject("tdgFiador.Images"), System.Drawing.Image))
+        Me.tdgFiador.Location = New System.Drawing.Point(3, 3)
+        Me.tdgFiador.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
+        Me.tdgFiador.Name = "tdgFiador"
+        Me.tdgFiador.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.tdgFiador.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.tdgFiador.PreviewInfo.ZoomFactor = 75.0R
+        Me.tdgFiador.PrintInfo.PageSettings = CType(resources.GetObject("tdgFiador.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.tdgFiador.Size = New System.Drawing.Size(742, 463)
+        Me.tdgFiador.TabIndex = 4
+        Me.tdgFiador.Tag = "AGRUPAR"
+        Me.tdgFiador.Text = "Personas"
+        Me.tdgFiador.Visible = False
+        Me.tdgFiador.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
+        Me.tdgFiador.PropBag = resources.GetString("tdgFiador.PropBag")
+        '
         'objUbicacion
         '
         Me.objUbicacion.Filter = "Microsoft Excel | *.xls"
@@ -214,6 +268,8 @@ Partial Class frmStbPersonas
         Me.tbcPersonas.ResumeLayout(False)
         Me.pgCliente.ResumeLayout(False)
         CType(Me.tdgCliente, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pgFiador.ResumeLayout(False)
+        CType(Me.tdgFiador, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -231,7 +287,11 @@ Partial Class frmStbPersonas
     Friend WithEvents tbcPersonas As System.Windows.Forms.TabControl
     Friend WithEvents pgCliente As System.Windows.Forms.TabPage
     Friend WithEvents tdgCliente As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents pgFiador As System.Windows.Forms.TabPage
+    Friend WithEvents tdgFiador As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripSplitButton
+    Friend WithEvents ImprimirListadoDeClientesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ImprimirListadoDeFiadoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents objUbicacion As System.Windows.Forms.SaveFileDialog
     Friend WithEvents cmdBuscar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripButton
 End Class

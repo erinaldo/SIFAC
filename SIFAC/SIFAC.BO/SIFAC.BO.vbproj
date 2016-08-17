@@ -70,6 +70,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="radTecnico_CF.vb" />
+    <Compile Include="SccClientes.vb" />
     <Compile Include="SccCuentaFiador_CF.vb" />
     <Compile Include="SccCuentaPorCobrarDetalle_CF.vb" />
     <Compile Include="SccCuentaPorCobrar_CF.vb" />
@@ -117,8 +118,8 @@
     <Compile Include="StbCiudad.vb" />
     <Compile Include="StbContactos_CF.vb" />
     <Compile Include="StbPais.vb" />
+    <Compile Include="StbPersona.vb" />
     <Compile Include="StbPersonaClasificacion_CF.vb" />
-    <Compile Include="StbPersona_CF.vb" />
     <Compile Include="StbRutas.vb" />
     <Compile Include="StbTasaCambioOficial_CF.vb" />
     <Compile Include="StbTiendaContactos_CF.vb" />

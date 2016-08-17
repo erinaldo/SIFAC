@@ -15,8 +15,6 @@ Public Class frmSivProductos
 
 #Region "Procedimientos del formulario"
 
-    ''Usuario Creación: Sergio Ordoñez
-    ''Fecha Creación:   06/03/2009
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
         DtProductos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Codigo,Nombre,Marca,Categoria,Activo", "vwStbProductos", ))
@@ -27,8 +25,6 @@ Public Class frmSivProductos
 
     End Sub
 
-    ''Usuario Creación: Sergio Ordoñez
-    ''Fecha Creación:   06/03/2009
     ''Descripción:      Metodo encargado de aplicar la seguridad al formulario
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
@@ -38,7 +34,7 @@ Public Class frmSivProductos
         boolAgregar = objSeg.TienePermiso("AGREGARPRODUCTO")
         boolEditar = objSeg.TienePermiso("EDITARPRODUCTO")
         boolConsultar = objSeg.TienePermiso("CONSULTARPRODUCTO")
-        boolDesactivar = objSeg.TienePermiso("DESACTIVARPRODUCTO")
+        boolDesactivar = objSeg.TienePermiso("INACTIVARPRODUCTO")
         boolImprimir = objSeg.TienePermiso("IMPRIMIRPRODUCTO")
 
         cmdAgregar.Enabled = boolAgregar
@@ -107,8 +103,7 @@ Public Class frmSivProductos
         Dim editProducto As frmSivProductosEditar
         Dim FilaActual As Integer
         Try
-           FilaActual = Me.grdProductosTabla.FocusedRowHandle
-
+            FilaActual = Me.grdProductosTabla.FocusedRowHandle
             Me.Cursor = WaitCursor
             editProducto = New frmSivProductosEditar
             editProducto.TypeGui = 2
@@ -159,25 +154,28 @@ Public Class frmSivProductos
         End If
     End Sub
 
-#End Region
-    
-    
     Private Sub cmdDesactivar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDesactivar.Click
         Dim IDProducto As Integer
         Dim Producto As New SivProductos
         Dim FilaActual As Integer
         FilaActual = Me.grdProductosTabla.FocusedRowHandle
-            Select Case MsgBox("¿Está seguro de Inactivar Producto?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
-                Case MsgBoxResult.Yes
+        Select Case MsgBox("¿Está seguro de Inactivar Producto?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
+            Case MsgBoxResult.Yes
                 IDProducto = Me.DtProductos.DefaultView.Item(FilaActual)("SivProductoID")
-                    Producto.Retrieve(IDProducto)
-                    Producto.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                    Producto.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                    Producto.Activo = False
-                    Producto.Update()
-                Case MsgBoxResult.No
-                    Exit Sub
-            End Select
+                Producto.Retrieve(IDProducto)
+                Producto.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                Producto.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                Producto.Activo = False
+                Producto.Update()
+                CargarGrid()
+            Case MsgBoxResult.No
+                Exit Sub
+        End Select
 
     End Sub
+
+#End Region
+    
+    
+   
 End Class

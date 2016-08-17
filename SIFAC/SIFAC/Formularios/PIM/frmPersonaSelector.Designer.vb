@@ -20,14 +20,19 @@ Partial Class frmPersonaSelector
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPersonaSelector))
-        Me.pnlBotones = New System.Windows.Forms.Panel()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
-        Me.cmdNuevaPersona = New System.Windows.Forms.Button()
-        Me.grdPersonas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.pnlBotones = New System.Windows.Forms.Panel
+        Me.cmdCancelar = New System.Windows.Forms.Button
+        Me.cmdAceptar = New System.Windows.Forms.Button
+        Me.cmdNuevaPersona = New System.Windows.Forms.Button
+        Me.grdPersonas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.Panel2 = New System.Windows.Forms.Panel
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.Panel1 = New System.Windows.Forms.Panel
         Me.pnlBotones.SuspendLayout()
         CType(Me.grdPersonas, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnlBotones
@@ -78,12 +83,45 @@ Partial Class frmPersonaSelector
         Me.grdPersonas.Name = "grdPersonas"
         Me.grdPersonas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdPersonas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdPersonas.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdPersonas.PreviewInfo.ZoomFactor = 75
         Me.grdPersonas.PrintInfo.PageSettings = CType(resources.GetObject("grdPersonas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdPersonas.Size = New System.Drawing.Size(498, 274)
         Me.grdPersonas.TabIndex = 1
         Me.grdPersonas.Text = "grdSeleccionPersona"
         Me.grdPersonas.PropBag = resources.GetString("grdPersonas.PropBag")
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.PictureBox1)
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(502, 32)
+        Me.Panel2.TabIndex = 27
+        Me.Panel2.Tag = "LAYOUT"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(430, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(69, 28)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 28
+        Me.PictureBox1.TabStop = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(663, 6)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(44, 24)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "UM"
         '
         'Panel1
         '
@@ -99,6 +137,7 @@ Partial Class frmPersonaSelector
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(502, 375)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.grdPersonas)
         Me.Controls.Add(Me.pnlBotones)
@@ -110,6 +149,9 @@ Partial Class frmPersonaSelector
         Me.Text = "Selección de Personas"
         Me.pnlBotones.ResumeLayout(False)
         CType(Me.grdPersonas, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -118,5 +160,8 @@ Partial Class frmPersonaSelector
     Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents cmdNuevaPersona As System.Windows.Forms.Button
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
 End Class
