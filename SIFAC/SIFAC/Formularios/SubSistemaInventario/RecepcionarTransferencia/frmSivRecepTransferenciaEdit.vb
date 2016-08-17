@@ -103,15 +103,15 @@ Public Class frmSivRecepTransferenciaEdit
     Private Sub CargaDatosSolicitudTransf()
         Dim sSQL, sCampos, sFiltro As String
         Dim dtDatosTransferencia As DataTable
-        sCampos = "SivTransferenciaID, ObjTiendaOrigenID, ObjTiendaDestinoID, Observaciones, Fechasolicitud, SolicitadoPor, Fechadespacho, DespachadoPor, Fecharecibido, RecibidoPor"
+        sCampos = "SivTransferenciaID, ObjBodegaOrigenID, ObjBodegaDestinoID, Observaciones, Fechasolicitud, SolicitadoPor, Fechadespacho, DespachadoPor, Fecharecibido, RecibidoPor"
         sFiltro = "SivTransferenciaID=" + Me.IdSivTransferencia.ToString
         sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.SivTransferencia", sFiltro)
 
         dtDatosTransferencia = SqlHelper.ExecuteQueryDT(sSQL)
         'Cargar datos del proveedor
         Me.txtNoTransferencia.Text = Me.IdSivTransferencia
-        Me.cmbSitioOrigen.SelectedValue = dtDatosTransferencia.DefaultView(0)("ObjTiendaOrigenID")
-        Me.cmbSitioDestino.SelectedValue = dtDatosTransferencia.DefaultView(0)("ObjTiendaDestinoID")
+        Me.cmbSitioOrigen.SelectedValue = dtDatosTransferencia.DefaultView(0)("ObjBodegaOrigenID")
+        Me.cmbSitioDestino.SelectedValue = dtDatosTransferencia.DefaultView(0)("ObjBodegaDestinoID")
         Me.txtObservaciones.Text = dtDatosTransferencia.DefaultView(0)("Observaciones")
 
         If dtDatosTransferencia.DefaultView(0)("Fechasolicitud").ToString.Length <> 0 Then
@@ -147,12 +147,12 @@ Public Class frmSivRecepTransferenciaEdit
     Private Sub CargarComboSitioOrigen()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = StbTienda.RetrieveDT("ActivoRepuesto=1", "Nombre", "StbTiendaID,Codigo, Nombre")
+            dtDatos = StbBodegas.RetrieveDT("1=1", "Nombre", "StbBodegaID,Codigo, Nombre")
             With Me.cmbSitioOrigen
                 .DataSource = dtDatos
                 .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+                .ValueMember = "StbBodegaID"
+                .Splits(0).DisplayColumns("StbBodegaID").Visible = False
                 .Splits(0).DisplayColumns("Codigo").Width = 30
                 .ExtendRightColumn = True
                 .ColumnHeaders = False
@@ -174,12 +174,12 @@ Public Class frmSivRecepTransferenciaEdit
     Private Sub CargarComboSitioDestino()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = StbTienda.RetrieveDT("ActivoRepuesto=1", "Nombre", "StbTiendaID,Codigo, Nombre")
+            dtDatos = StbBodegas.RetrieveDT("1=1", "Nombre", "StbBodegaID,Codigo, Nombre")
             With Me.cmbSitioDestino
                 .DataSource = dtDatos
                 .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+                .ValueMember = "StbBodegaID"
+                .Splits(0).DisplayColumns("StbBodegaID").Visible = False
                 .Splits(0).DisplayColumns("Codigo").Width = 30
                 .ExtendRightColumn = True
                 .ColumnHeaders = False
@@ -200,9 +200,9 @@ Public Class frmSivRecepTransferenciaEdit
 
         Try
             If Me.TypeGui = RECIBIR Then 'Modo recepción
-                sCampos = "objRepuestoID, DescripcionCorta, Marca, CantidadDespachada, CantidadSolicitada, cast(0 as int) as CantidadRecibida, objTransferenciaID, objMarcaID, objTiendaDestinoID"
+                sCampos = "objSivProductoID, Producto, Marca, CantidadDespachada, CantidadSolicitada, cast(0 as int) as CantidadRecibida, objTransferenciaID, objMarcaID, ObjBodegaDestinoID"
             Else
-                sCampos = "objRepuestoID, DescripcionCorta, Marca, CantidadDespachada, CantidadSolicitada, CantidadRecibida, objTransferenciaID, objMarcaID, objTiendaDestinoID"
+                sCampos = "objSivProductoID, Producto, Marca, CantidadDespachada, CantidadSolicitada, CantidadRecibida, objTransferenciaID, objMarcaID, ObjBodegaDestinoID"
             End If
 
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwSivSolicitudesTransferenciasDet", sFiltroTransferencia)
@@ -228,7 +228,7 @@ Public Class frmSivRecepTransferenciaEdit
     Private Function RecibirTransferencia() As Boolean
         Dim T As New TransactionManager
         Dim objTransf As New SivTransferencia
-        Dim objSivBodegaRepuesto As New SivBodegaRepuestos
+        Dim objSivBodegaProductos As New SivBodegaProductos
         Dim objSivTranDetalleUpdate As New SivTransferenciaDetalle
 
         Try
@@ -251,17 +251,17 @@ Public Class frmSivRecepTransferenciaEdit
                 For Each row As DataRow In Me.dtDetalleTransferencia.Rows
                     'Actualizar Cantidad Recibida
                     With objSivTranDetalleUpdate
-                        .Retrieve(Me.IdSivTransferencia.ToString, T)
+                        .RetrieveByFilter(String.Format("objTransferenciaID={0} AND objSivProductoID={1}", Me.IdSivTransferencia.ToString, row("objSivProductoID")), T)
                         .CantidadRecibida = row("CantidadRecibida")
                         .FechaModificacion = clsProyecto.Conexion.FechaServidor
                         .UsuarioModificacion = clsProyecto.Conexion.Usuario
                         .Update(T)
                     End With
                     'Actualizar cantidad en tránsito en SivBodegaRepuesto por cada repuesto
-                    With objSivBodegaRepuesto
-                        .Retrieve((row("objRepuestoID")), Convert.ToInt32(Me.cmbSitioOrigen.SelectedValue.ToString), T)
+                    With objSivBodegaProductos
+                        .Retrieve((row("objSivProductoID")), Convert.ToInt32(Me.cmbSitioOrigen.SelectedValue.ToString), T)
                         If .CantidadTransito.HasValue Then
-                            .CantidadTransito = objSivBodegaRepuesto.CantidadTransito.Value - Convert.ToInt32(row("CantidadDespachada").ToString)
+                            .CantidadTransito = objSivBodegaProductos.CantidadTransito.Value - Convert.ToInt32(row("CantidadDespachada").ToString)
                         Else
                             .CantidadTransito = 0
                         End If
@@ -270,18 +270,18 @@ Public Class frmSivRecepTransferenciaEdit
                         .Update(T)
                     End With
                     'Actualizar Cantidad de bodega destino
-                    With objSivBodegaRepuesto
-                        .Retrieve((row("objRepuestoID")), Convert.ToInt32(Me.cmbSitioDestino.SelectedValue.ToString), T)
-                        .Cantidad = objSivBodegaRepuesto.Cantidad + Convert.ToInt32(row("CantidadRecibida").ToString)
+                    With objSivBodegaProductos
+                        .Retrieve((row("objSivProductoID")), Convert.ToInt32(Me.cmbSitioDestino.SelectedValue.ToString), T)
+                        .Cantidad = objSivBodegaProductos.Cantidad + Convert.ToInt32(row("CantidadRecibida").ToString)
                         .FechaModificacion = clsProyecto.Conexion.FechaServidor 'Format(clsProyecto.Conexion.FechaServidor, "dd-MM-yyyy")
                         .UsuarioModificacion = clsProyecto.Conexion.Usuario
                         .Update(T)
                     End With
 
                     'Actualizar Cantidad de bodega Origen
-                    With objSivBodegaRepuesto
-                        .Retrieve((row("objRepuestoID")), Convert.ToInt32(Me.cmbSitioOrigen.SelectedValue.ToString), T)
-                        .Cantidad = objSivBodegaRepuesto.Cantidad - Convert.ToInt32(row("CantidadRecibida").ToString)
+                    With objSivBodegaProductos
+                        .Retrieve((row("objSivProductoID")), Convert.ToInt32(Me.cmbSitioOrigen.SelectedValue.ToString), T)
+                        .Cantidad = objSivBodegaProductos.Cantidad - Convert.ToInt32(row("CantidadRecibida").ToString)
                         .FechaModificacion = clsProyecto.Conexion.FechaServidor 'Format(clsProyecto.Conexion.FechaServidor, "dd-MM-yyyy")
                         .UsuarioModificacion = clsProyecto.Conexion.Usuario
                         .Update(T)
@@ -298,7 +298,7 @@ Public Class frmSivRecepTransferenciaEdit
             End Try
         Finally
             objTransf = Nothing
-            objSivBodegaRepuesto = Nothing
+            objSivBodegaProductos = Nothing
             objSivTranDetalleUpdate = Nothing
             T = Nothing
         End Try
@@ -311,7 +311,7 @@ Public Class frmSivRecepTransferenciaEdit
 
             If Me.dtDetalleTransferencia.Rows.Count <= 0 Then
                 'MsgBox("Debe ingresar al menos un repuesto en detalle de solicitud.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                Me.ErrorProvider.SetError(Me.grdDetalleTransferencia, "Debe ingresar al menos un repuesto en detalle de transferencia.")
+                Me.ErrorProvider.SetError(Me.grdDetalleTransferencia, "Debe ingresar al menos un producto en detalle de transferencia.")
                 Return False
                 Exit Function
             End If
@@ -410,7 +410,7 @@ Public Class frmSivRecepTransferenciaEdit
             .Columns("CantidadRecibida").DataWidth = 9 'un entero tiene precisión 10, escala 0
             .Splits(0).DisplayColumns("objTransferenciaID").Visible = False
             .Splits(0).DisplayColumns("objMarcaID").Visible = False
-            .Splits(0).DisplayColumns("objTiendaDestinoID").Visible = False
+            .Splits(0).DisplayColumns("ObjBodegaDestinoID").Visible = False
             .MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.DottedCellBorder
             .DirectionAfterEnter = C1.Win.C1TrueDBGrid.DirectionAfterEnterEnum.MoveDown
             .AllowUpdate = True
@@ -432,7 +432,7 @@ Public Class frmSivRecepTransferenciaEdit
 
             .Splits(0).DisplayColumns("objTransferenciaID").Visible = False
             .Splits(0).DisplayColumns("objMarcaID").Visible = False
-            .Splits(0).DisplayColumns("objTiendaDestinoID").Visible = False
+            .Splits(0).DisplayColumns("ObjBodegaDestinoID").Visible = False
 
             .MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.NoMarquee 'no seleccionar registro
             .FilterBar = False 'no mostrar barra de filtro
@@ -518,7 +518,7 @@ Public Class frmSivRecepTransferenciaEdit
                     Me.DialogResult = Windows.Forms.DialogResult.Cancel
                 Else
                     If Me.cmbSitioDestino.FindStringExact(Me.IdSucursalSession.ToString, 0, 0) = -1 Then
-                        MsgBox("La sucursal configurada en la sesión del sistema, no es una sucursal de Repuestos", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                        MsgBox("La sucursal configurada en la sesión del sistema, no es una sucursal de productos", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                         Me.DialogResult = Windows.Forms.DialogResult.Cancel
                     Else
                         Me.cmbSitioDestino.SelectedValue = Me.IdSucursalSession

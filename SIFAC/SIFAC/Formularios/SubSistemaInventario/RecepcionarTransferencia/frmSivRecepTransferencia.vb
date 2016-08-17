@@ -92,9 +92,9 @@ Public Class frmSivRecepTransferencia
         Dim sSQL, sSQL1, sSQL2, sCampos, sFiltro1, sFiltro2 As String
         Me.DiasTransferenciasRecientes = ClsCatalogos.GetValorParametro("diasTransfRecientes")
 
-        Dim strFiltroSitio As String = " ObjTiendaDestinoID = " + Me.IdSucursalSession.ToString
+        Dim strFiltroSitio As String = " ObjBodegaDestinoID = " + Me.IdSucursalSession.ToString
         sCampos = "CONVERT(VARCHAR,Fechasolicitud,103) AS Fechasolicitud, CONVERT(VARCHAR,Fechadespacho,103) AS Fechadespacho, " + _
-                  "CONVERT(VARCHAR,Fecharecibido,103) AS Fecharecibido, SivTransferenciaID, ObjTiendaDestinoID, ObjTiendaOrigenID, " + _
+                  "CONVERT(VARCHAR,Fecharecibido,103) AS Fecharecibido, SivTransferenciaID, ObjBodegaDestinoID, ObjBodegaOrigenID, " + _
                   "SitioOrigen, SitioDestino, SolicitadoPor, DespachadoPor,RecibidoPor, ObjEstadoID, Estado"
 
         sFiltro2 = " (DATEDIFF(DAY, Fecharecibido, GETDATE()) <= " + Me.DiasTransferenciasRecientes.ToString + ")"  'Filtra por antiguedad
@@ -118,7 +118,7 @@ Public Class frmSivRecepTransferencia
                 Me.DtTransferencias.DefaultView.Sort = "SivTransferenciaID"
                 Me.grdTransferencias.SetDataBinding(Me.DtTransferencias, "", True)
                 Me.grdTransferencias.Splits(0).DisplayColumns("ObjEstadoID").Visible = False
-                Me.grdTransferencias.Splits(0).DisplayColumns("ObjTiendaDestinoID").Visible = False
+            Me.grdTransferencias.Splits(0).DisplayColumns("ObjBodegaDestinoID").Visible = False
                 Me.bloquearBotonesBarra(Me.DtTransferencias.Rows.Count = 0)
                 Me.grdTransferencias.Caption = "Solicitudes de transferencias (" + Me.grdTransferencias.RowCount.ToString + ")"
                 Me.grdTransferencias.Refresh()
@@ -261,7 +261,7 @@ Public Class frmSivRecepTransferencia
         objImpresion = New frmOpcionesImpresion
         If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
             sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
-            sCampos = "SivRepuestoID, CodigosProveedores, DescripcionCorta, CantidadSolicitada, ObjTiendaOrigenID, ObjTiendaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, Fechadespacho, DespachadoPor, CantidadDespachada, Fecharecibido, RecibidoPor, CantidadRecibida"
+            sCampos = "SivRepuestoID, CodigosProveedores, DescripcionCorta, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, Fechadespacho, DespachadoPor, CantidadDespachada, Fecharecibido, RecibidoPor, CantidadRecibida"
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaRecepcion", sFiltro)
 
             objRptSoliTransf.EstadoAnulada = EstadoAnulada
