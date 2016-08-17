@@ -55,9 +55,9 @@ Partial Class frmReportesTransferencias
         Me.gbxPeriodo.Controls.Add(Me.dtpFechaDesde)
         Me.gbxPeriodo.Controls.Add(Me.Label1)
         Me.gbxPeriodo.Location = New System.Drawing.Point(11, 41)
-        Me.gbxPeriodo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbxPeriodo.Margin = New System.Windows.Forms.Padding(4)
         Me.gbxPeriodo.Name = "gbxPeriodo"
-        Me.gbxPeriodo.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbxPeriodo.Padding = New System.Windows.Forms.Padding(4)
         Me.gbxPeriodo.Size = New System.Drawing.Size(437, 132)
         Me.gbxPeriodo.TabIndex = 0
         Me.gbxPeriodo.TabStop = False
@@ -80,7 +80,7 @@ Partial Class frmReportesTransferencias
         Me.dtpFechaHasta.EditMask = "##/##/####"
         Me.dtpFechaHasta.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaHasta.Location = New System.Drawing.Point(125, 82)
-        Me.dtpFechaHasta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpFechaHasta.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaHasta.Name = "dtpFechaHasta"
         Me.dtpFechaHasta.Size = New System.Drawing.Size(232, 20)
         Me.dtpFechaHasta.TabIndex = 1
@@ -114,7 +114,7 @@ Partial Class frmReportesTransferencias
         Me.dtpFechaDesde.EditMask = "##/##/####"
         Me.dtpFechaDesde.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaDesde.Location = New System.Drawing.Point(125, 38)
-        Me.dtpFechaDesde.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpFechaDesde.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaDesde.Name = "dtpFechaDesde"
         Me.dtpFechaDesde.Size = New System.Drawing.Size(232, 20)
         Me.dtpFechaDesde.TabIndex = 0
@@ -140,9 +140,9 @@ Partial Class frmReportesTransferencias
         Me.gbxCriterio.Controls.Add(Me.Label2)
         Me.gbxCriterio.Controls.Add(Me.lblSitioOrigen)
         Me.gbxCriterio.Location = New System.Drawing.Point(11, 180)
-        Me.gbxCriterio.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbxCriterio.Margin = New System.Windows.Forms.Padding(4)
         Me.gbxCriterio.Name = "gbxCriterio"
-        Me.gbxCriterio.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbxCriterio.Padding = New System.Windows.Forms.Padding(4)
         Me.gbxCriterio.Size = New System.Drawing.Size(437, 167)
         Me.gbxCriterio.TabIndex = 0
         Me.gbxCriterio.TabStop = False
@@ -166,7 +166,7 @@ Partial Class frmReportesTransferencias
         Me.cmbEstados.Images.Add(CType(resources.GetObject("cmbEstados.Images"), System.Drawing.Image))
         Me.cmbEstados.ItemHeight = 15
         Me.cmbEstados.Location = New System.Drawing.Point(125, 124)
-        Me.cmbEstados.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbEstados.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbEstados.MatchEntryTimeout = CType(2000, Long)
         Me.cmbEstados.MaxDropDownItems = CType(5, Short)
         Me.cmbEstados.MaxLength = 32767
@@ -197,7 +197,7 @@ Partial Class frmReportesTransferencias
         Me.cmbSitioDestino.Images.Add(CType(resources.GetObject("cmbSitioDestino.Images"), System.Drawing.Image))
         Me.cmbSitioDestino.ItemHeight = 15
         Me.cmbSitioDestino.Location = New System.Drawing.Point(125, 78)
-        Me.cmbSitioDestino.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbSitioDestino.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbSitioDestino.MatchEntryTimeout = CType(2000, Long)
         Me.cmbSitioDestino.MaxDropDownItems = CType(5, Short)
         Me.cmbSitioDestino.MaxLength = 32767
@@ -228,7 +228,7 @@ Partial Class frmReportesTransferencias
         Me.cmbSitioOrigen.Images.Add(CType(resources.GetObject("cmbSitioOrigen.Images"), System.Drawing.Image))
         Me.cmbSitioOrigen.ItemHeight = 15
         Me.cmbSitioOrigen.Location = New System.Drawing.Point(125, 33)
-        Me.cmbSitioOrigen.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbSitioOrigen.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbSitioOrigen.MatchEntryTimeout = CType(2000, Long)
         Me.cmbSitioOrigen.MaxDropDownItems = CType(5, Short)
         Me.cmbSitioOrigen.MaxLength = 32767
@@ -275,7 +275,7 @@ Partial Class frmReportesTransferencias
         '
         Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancelar.Location = New System.Drawing.Point(349, 368)
-        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(99, 37)
         Me.cmdCancelar.TabIndex = 6
@@ -286,7 +286,7 @@ Partial Class frmReportesTransferencias
         'cmdAceptar
         '
         Me.cmdAceptar.Location = New System.Drawing.Point(237, 368)
-        Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(99, 37)
         Me.cmdAceptar.TabIndex = 5
@@ -305,7 +305,7 @@ Partial Class frmReportesTransferencias
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(459, 39)
         Me.Panel2.TabIndex = 94
@@ -316,7 +316,7 @@ Partial Class frmReportesTransferencias
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 416)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(459, 26)
         Me.Panel1.TabIndex = 95
@@ -333,7 +333,7 @@ Partial Class frmReportesTransferencias
         Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.gbxCriterio)
         Me.Controls.Add(Me.gbxPeriodo)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmReportesTransferencias"

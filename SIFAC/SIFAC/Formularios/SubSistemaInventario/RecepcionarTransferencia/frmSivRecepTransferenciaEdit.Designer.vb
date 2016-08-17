@@ -64,7 +64,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1068, 46)
         Me.Panel2.TabIndex = 82
@@ -93,9 +93,9 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.gbxDatosGenerales.Controls.Add(Me.txtNoTransferencia)
         Me.gbxDatosGenerales.Controls.Add(Me.lblNoTransferencia)
         Me.gbxDatosGenerales.Location = New System.Drawing.Point(12, 54)
-        Me.gbxDatosGenerales.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbxDatosGenerales.Margin = New System.Windows.Forms.Padding(4)
         Me.gbxDatosGenerales.Name = "gbxDatosGenerales"
-        Me.gbxDatosGenerales.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbxDatosGenerales.Padding = New System.Windows.Forms.Padding(4)
         Me.gbxDatosGenerales.Size = New System.Drawing.Size(1035, 241)
         Me.gbxDatosGenerales.TabIndex = 83
         Me.gbxDatosGenerales.TabStop = False
@@ -149,7 +149,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.cmbSitioDestino.Images.Add(CType(resources.GetObject("cmbSitioDestino.Images"), System.Drawing.Image))
         Me.cmbSitioDestino.ItemHeight = 15
         Me.cmbSitioDestino.Location = New System.Drawing.Point(160, 107)
-        Me.cmbSitioDestino.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbSitioDestino.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbSitioDestino.MatchEntryTimeout = CType(2000, Long)
         Me.cmbSitioDestino.MaxDropDownItems = CType(5, Short)
         Me.cmbSitioDestino.MaxLength = 32767
@@ -181,7 +181,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.cmbSitioOrigen.Images.Add(CType(resources.GetObject("cmbSitioOrigen.Images"), System.Drawing.Image))
         Me.cmbSitioOrigen.ItemHeight = 15
         Me.cmbSitioOrigen.Location = New System.Drawing.Point(160, 64)
-        Me.cmbSitioOrigen.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbSitioOrigen.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbSitioOrigen.MatchEntryTimeout = CType(2000, Long)
         Me.cmbSitioOrigen.MaxDropDownItems = CType(5, Short)
         Me.cmbSitioOrigen.MaxLength = 32767
@@ -200,7 +200,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         Me.txtObservaciones.AcceptsTab = True
         Me.txtObservaciones.Location = New System.Drawing.Point(163, 154)
-        Me.txtObservaciones.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtObservaciones.Margin = New System.Windows.Forms.Padding(4)
         Me.txtObservaciones.MaxLength = 250
         Me.txtObservaciones.Multiline = True
         Me.txtObservaciones.Name = "txtObservaciones"
@@ -283,7 +283,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'txtSolicitadoPor
         '
         Me.txtSolicitadoPor.Location = New System.Drawing.Point(572, 25)
-        Me.txtSolicitadoPor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtSolicitadoPor.Margin = New System.Windows.Forms.Padding(4)
         Me.txtSolicitadoPor.Name = "txtSolicitadoPor"
         Me.txtSolicitadoPor.Size = New System.Drawing.Size(207, 22)
         Me.txtSolicitadoPor.TabIndex = 0
@@ -307,7 +307,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.dtpFechaRecibido.EditMask = "##/##/####"
         Me.dtpFechaRecibido.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaRecibido.Location = New System.Drawing.Point(804, 106)
-        Me.dtpFechaRecibido.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpFechaRecibido.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaRecibido.Name = "dtpFechaRecibido"
         Me.dtpFechaRecibido.Size = New System.Drawing.Size(207, 20)
         Me.dtpFechaRecibido.TabIndex = 0
@@ -331,7 +331,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.dtpFechaDespacho.EditMask = "##/##/####"
         Me.dtpFechaDespacho.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaDespacho.Location = New System.Drawing.Point(804, 63)
-        Me.dtpFechaDespacho.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpFechaDespacho.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaDespacho.Name = "dtpFechaDespacho"
         Me.dtpFechaDespacho.Size = New System.Drawing.Size(207, 20)
         Me.dtpFechaDespacho.TabIndex = 0
@@ -355,7 +355,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.dtpFechaSolicitud.EditMask = "##/##/####"
         Me.dtpFechaSolicitud.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaSolicitud.Location = New System.Drawing.Point(804, 23)
-        Me.dtpFechaSolicitud.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpFechaSolicitud.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaSolicitud.Name = "dtpFechaSolicitud"
         Me.dtpFechaSolicitud.Size = New System.Drawing.Size(207, 20)
         Me.dtpFechaSolicitud.TabIndex = 0
@@ -365,7 +365,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'txtRecibidoPor
         '
         Me.txtRecibidoPor.Location = New System.Drawing.Point(572, 107)
-        Me.txtRecibidoPor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtRecibidoPor.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRecibidoPor.Name = "txtRecibidoPor"
         Me.txtRecibidoPor.Size = New System.Drawing.Size(207, 22)
         Me.txtRecibidoPor.TabIndex = 0
@@ -375,7 +375,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'txtDespachadoPor
         '
         Me.txtDespachadoPor.Location = New System.Drawing.Point(572, 64)
-        Me.txtDespachadoPor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtDespachadoPor.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDespachadoPor.Name = "txtDespachadoPor"
         Me.txtDespachadoPor.Size = New System.Drawing.Size(207, 22)
         Me.txtDespachadoPor.TabIndex = 0
@@ -385,7 +385,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'txtNoTransferencia
         '
         Me.txtNoTransferencia.Location = New System.Drawing.Point(160, 25)
-        Me.txtNoTransferencia.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNoTransferencia.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNoTransferencia.Name = "txtNoTransferencia"
         Me.txtNoTransferencia.Size = New System.Drawing.Size(231, 22)
         Me.txtNoTransferencia.TabIndex = 0
@@ -413,7 +413,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.grdDetalleTransferencia.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDetalleTransferencia.Images.Add(CType(resources.GetObject("grdDetalleTransferencia.Images"), System.Drawing.Image))
         Me.grdDetalleTransferencia.Location = New System.Drawing.Point(16, 303)
-        Me.grdDetalleTransferencia.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdDetalleTransferencia.Margin = New System.Windows.Forms.Padding(4)
         Me.grdDetalleTransferencia.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightCell
         Me.grdDetalleTransferencia.Name = "grdDetalleTransferencia"
         Me.grdDetalleTransferencia.PreviewInfo.Location = New System.Drawing.Point(0, 0)
@@ -428,7 +428,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancelar.Location = New System.Drawing.Point(948, 597)
-        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(99, 37)
         Me.cmdCancelar.TabIndex = 91
@@ -439,7 +439,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'cmdGuardar
         '
         Me.cmdGuardar.Location = New System.Drawing.Point(841, 597)
-        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(99, 37)
         Me.cmdGuardar.TabIndex = 90
@@ -456,7 +456,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 642)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1068, 26)
         Me.Panel1.TabIndex = 95
@@ -473,7 +473,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.Controls.Add(Me.gbxDatosGenerales)
         Me.Controls.Add(Me.Panel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSivRecepTransferenciaEdit"

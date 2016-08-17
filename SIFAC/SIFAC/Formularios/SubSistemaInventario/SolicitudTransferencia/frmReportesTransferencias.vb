@@ -209,15 +209,15 @@ Public Class frmReportesTransferencias
             tamano.Height = 107
             tamano.Width = Me.gbxCriterio.Size.Width
             punto.X = 182
-            punto.Y = 274
+            punto.Y = 310 '274
             'Reducir tamaño groupbox
             Me.gbxCriterio.Size = tamano
             'Mover botones un poco hacia arriba
             Me.cmdAceptar.Location = punto
-            punto.X = 262
+            punto.X = 310 '262
             Me.cmdCancelar.Location = punto
             'Redimencionar formulario
-            tamano.Height = 366
+            tamano.Height = 430 '366
             tamano.Width = Me.Width
             Me.Size = tamano
         End If
@@ -403,23 +403,23 @@ Public Class frmReportesTransferencias
            
             'Si ha seleccionado Tienda Origen
             If Me.cmbSitioOrigen.SelectedValue <> 0 Then
-                sFiltro += " AND ObjTiendaOrigenID=" + Me.cmbSitioOrigen.SelectedValue.ToString
+                sFiltro += " AND ObjBodegaOrigenID=" + Me.cmbSitioOrigen.SelectedValue.ToString
             End If
             'Si ha seleccionado tienda Destino
             If Me.cmbSitioDestino.SelectedValue <> 0 Then
-                sFiltro += " AND ObjTiendaDestinoID=" + Me.cmbSitioDestino.SelectedValue.ToString
+                sFiltro += " AND ObjBodegaDestinoID=" + Me.cmbSitioDestino.SelectedValue.ToString
             End If
         Else
             sFiltro = "1=0"
         End If
 
         'Obtener datos para la generación del reporte
-        sCampos = "ClaveSitios, SivRepuestoID, CodigosProveedores, DescripcionCorta, TipoRepuesto, " + _
-                  "CantidadSolicitada, ObjTiendaOrigenID, ObjTiendaDestinoID, SolicitadoPor, " + _
+        sCampos = "ClaveSitios, SivProductoID, Producto, " + _
+                  "CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, " + _
                   "Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones, SivTransferenciaID, " + _
                   "SitioDestino, SitioOrigen, Anulada, CodigoTiendaDestino, CodigoTiendaOrigen, " + _
                   " Fechadespacho, DespachadoPor, CantidadDespachada, Fecharecibido, RecibidoPor, CantidadRecibida"
-        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaRecepcion", sFiltro + " ORDER BY SitioOrigen, SivTransferenciaID, SivRepuestoID")
+        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaRecepcion", sFiltro + " ORDER BY SitioOrigen, SivTransferenciaID, SivProductoID")
         dtDatos = SqlHelper.ExecuteQueryDT(sSQL)
 
         If dtDatos.Rows.Count <> 0 Then
@@ -446,19 +446,19 @@ Public Class frmReportesTransferencias
 
             'Si ha seleccionado Tienda Origen
             If Me.cmbSitioOrigen.SelectedValue <> 0 Then
-                sFiltro += " AND ObjTiendaOrigenID=" + Me.cmbSitioOrigen.SelectedValue.ToString
+                sFiltro += " AND ObjBodegaOrigenID=" + Me.cmbSitioOrigen.SelectedValue.ToString
             End If
             'Si ha seleccionado tienda Destino
             If Me.cmbSitioDestino.SelectedValue <> 0 Then
-                sFiltro += " AND ObjTiendaDestinoID=" + Me.cmbSitioDestino.SelectedValue.ToString
+                sFiltro += " AND ObjBodegaDestinoID=" + Me.cmbSitioDestino.SelectedValue.ToString
             End If
         Else
             sFiltro = "1=0"
         End If
 
         'Obtener datos para la generación del reporte
-        sCampos = "SivRepuestoID, CodigosProveedores, DescripcionCorta, CantidadSolicitada, ObjTiendaOrigenID, ObjTiendaDestinoID, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, CodigoTiendaDestino, Anulada, CantidadDespachada, CantidadRecibida, Diferencia, Fecharecibido"
-        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaDiferencias", sFiltro + " ORDER BY SivRepuestoID, Fechasolicitud, SivTransferenciaID")
+        sCampos = "SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, CodigoTiendaDestino, Anulada, CantidadDespachada, CantidadRecibida, Diferencia, Fecharecibido"
+        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaDiferencias", sFiltro + " ORDER BY SivProductoID, Fechasolicitud, SivTransferenciaID")
         dtDatos = SqlHelper.ExecuteQueryDT(sSQL)
 
         If dtDatos.Rows.Count <> 0 Then

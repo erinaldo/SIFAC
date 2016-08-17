@@ -22,10 +22,8 @@ Partial Public Class rptTransferenciaSolicitud
         Me.Encabezado_Pagina = New DataDynamics.ActiveReports.PageHeader
         Me.shpFondo = New DataDynamics.ActiveReports.Shape
         Me.lblCodigo = New DataDynamics.ActiveReports.Label
-        Me.lblCodigoProveedor = New DataDynamics.ActiveReports.Label
         Me.lblDescripcion = New DataDynamics.ActiveReports.Label
         Me.lblCantidadSolicitada = New DataDynamics.ActiveReports.Label
-        Me.lblTipoRepuesto = New DataDynamics.ActiveReports.Label
         Me.Line1 = New DataDynamics.ActiveReports.Line
         Me.Line2 = New DataDynamics.ActiveReports.Line
         Me.Line3 = New DataDynamics.ActiveReports.Line
@@ -39,8 +37,6 @@ Partial Public Class rptTransferenciaSolicitud
         Me.Line10 = New DataDynamics.ActiveReports.Line
         Me.txtSivRepuestoID1 = New DataDynamics.ActiveReports.TextBox
         Me.txtDescripcionCorta1 = New DataDynamics.ActiveReports.TextBox
-        Me.txtCodigosProveedores1 = New DataDynamics.ActiveReports.TextBox
-        Me.txtTipoRepuesto1 = New DataDynamics.ActiveReports.TextBox
         Me.txtCantidadSolicitada1 = New DataDynamics.ActiveReports.TextBox
         Me.Pie_Pagina = New DataDynamics.ActiveReports.PageFooter
         Me.ReportInfo1 = New DataDynamics.ActiveReports.ReportInfo
@@ -72,14 +68,10 @@ Partial Public Class rptTransferenciaSolicitud
         Me.prmFechaDesde = New DataDynamics.ActiveReports.Parameter
         Me.prmFechaHasta = New DataDynamics.ActiveReports.Parameter
         CType(Me.lblCodigo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lblCodigoProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblDescripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblCantidadSolicitada, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lblTipoRepuesto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSivRepuestoID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDescripcionCorta1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCodigosProveedores1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTipoRepuesto1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCantidadSolicitada1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportInfo1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblTitulo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,7 +95,7 @@ Partial Public Class rptTransferenciaSolicitud
         '
         'Encabezado_Pagina
         '
-        Me.Encabezado_Pagina.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.shpFondo, Me.lblCodigo, Me.lblCodigoProveedor, Me.lblDescripcion, Me.lblCantidadSolicitada, Me.lblTipoRepuesto, Me.Line1, Me.Line2, Me.Line3, Me.Line4})
+        Me.Encabezado_Pagina.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.shpFondo, Me.lblCodigo, Me.lblDescripcion, Me.lblCantidadSolicitada, Me.Line1, Me.Line2, Me.Line3, Me.Line4})
         Me.Encabezado_Pagina.Height = 0.4479167!
         Me.Encabezado_Pagina.Name = "Encabezado_Pagina"
         '
@@ -146,22 +138,7 @@ Partial Public Class rptTransferenciaSolicitud
         '
         'lblCodigoProveedor
         '
-        Me.lblCodigoProveedor.Border.BottomColor = System.Drawing.Color.Black
-        Me.lblCodigoProveedor.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.lblCodigoProveedor.Border.LeftColor = System.Drawing.Color.Black
-        Me.lblCodigoProveedor.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.lblCodigoProveedor.Border.RightColor = System.Drawing.Color.Black
-        Me.lblCodigoProveedor.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.lblCodigoProveedor.Border.TopColor = System.Drawing.Color.Black
-        Me.lblCodigoProveedor.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.lblCodigoProveedor.Height = 0.3125!
-        Me.lblCodigoProveedor.HyperLink = ""
-        Me.lblCodigoProveedor.Left = 1.125!
-        Me.lblCodigoProveedor.Name = "lblCodigoProveedor"
-        Me.lblCodigoProveedor.Style = "text-align: center; font-weight: bold; "
-        Me.lblCodigoProveedor.Text = "Código Proveedor"
-        Me.lblCodigoProveedor.Top = 0.0625!
-        Me.lblCodigoProveedor.Width = 1.125!
+       
         '
         'lblDescripcion
         '
@@ -203,22 +180,7 @@ Partial Public Class rptTransferenciaSolicitud
         '
         'lblTipoRepuesto
         '
-        Me.lblTipoRepuesto.Border.BottomColor = System.Drawing.Color.Black
-        Me.lblTipoRepuesto.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.lblTipoRepuesto.Border.LeftColor = System.Drawing.Color.Black
-        Me.lblTipoRepuesto.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.lblTipoRepuesto.Border.RightColor = System.Drawing.Color.Black
-        Me.lblTipoRepuesto.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.lblTipoRepuesto.Border.TopColor = System.Drawing.Color.Black
-        Me.lblTipoRepuesto.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.lblTipoRepuesto.Height = 0.3125!
-        Me.lblTipoRepuesto.HyperLink = ""
-        Me.lblTipoRepuesto.Left = 5.0625!
-        Me.lblTipoRepuesto.Name = "lblTipoRepuesto"
-        Me.lblTipoRepuesto.Style = "text-align: center; font-weight: bold; vertical-align: top; "
-        Me.lblTipoRepuesto.Text = "Tipo Repuesto"
-        Me.lblTipoRepuesto.Top = 0.0625!
-        Me.lblTipoRepuesto.Width = 0.875!
+       
         '
         'Line1
         '
@@ -307,7 +269,7 @@ Partial Public Class rptTransferenciaSolicitud
         'Detalle
         '
         Me.Detalle.ColumnSpacing = 0.0!
-        Me.Detalle.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.lnLeft, Me.lnRight, Me.Line6, Me.Line7, Me.Line8, Me.Line10, Me.txtSivRepuestoID1, Me.txtDescripcionCorta1, Me.txtCodigosProveedores1, Me.txtTipoRepuesto1, Me.txtCantidadSolicitada1})
+        Me.Detalle.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.lnLeft, Me.lnRight, Me.Line6, Me.Line7, Me.Line8, Me.Line10, Me.txtSivRepuestoID1, Me.txtDescripcionCorta1, Me.txtCantidadSolicitada1})
         Me.Detalle.Height = 0.1875!
         Me.Detalle.Name = "Detalle"
         '
@@ -459,7 +421,7 @@ Partial Public Class rptTransferenciaSolicitud
         Me.txtSivRepuestoID1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.txtSivRepuestoID1.Border.TopColor = System.Drawing.Color.Black
         Me.txtSivRepuestoID1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtSivRepuestoID1.DataField = "SivRepuestoID"
+        Me.txtSivRepuestoID1.DataField = "SivProductoID"
         Me.txtSivRepuestoID1.Height = 0.1875!
         Me.txtSivRepuestoID1.Left = 0.1875!
         Me.txtSivRepuestoID1.Name = "txtSivRepuestoID1"
@@ -478,7 +440,7 @@ Partial Public Class rptTransferenciaSolicitud
         Me.txtDescripcionCorta1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
         Me.txtDescripcionCorta1.Border.TopColor = System.Drawing.Color.Black
         Me.txtDescripcionCorta1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtDescripcionCorta1.DataField = "DescripcionCorta"
+        Me.txtDescripcionCorta1.DataField = "Producto"
         Me.txtDescripcionCorta1.Height = 0.1875!
         Me.txtDescripcionCorta1.Left = 2.1875!
         Me.txtDescripcionCorta1.Name = "txtDescripcionCorta1"
@@ -489,41 +451,11 @@ Partial Public Class rptTransferenciaSolicitud
         '
         'txtCodigosProveedores1
         '
-        Me.txtCodigosProveedores1.Border.BottomColor = System.Drawing.Color.Black
-        Me.txtCodigosProveedores1.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtCodigosProveedores1.Border.LeftColor = System.Drawing.Color.Black
-        Me.txtCodigosProveedores1.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtCodigosProveedores1.Border.RightColor = System.Drawing.Color.Black
-        Me.txtCodigosProveedores1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtCodigosProveedores1.Border.TopColor = System.Drawing.Color.Black
-        Me.txtCodigosProveedores1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtCodigosProveedores1.DataField = "CodigosProveedores"
-        Me.txtCodigosProveedores1.Height = 0.1875!
-        Me.txtCodigosProveedores1.Left = 1.1875!
-        Me.txtCodigosProveedores1.Name = "txtCodigosProveedores1"
-        Me.txtCodigosProveedores1.Style = ""
-        Me.txtCodigosProveedores1.Text = "txtCodigosProveedores1"
-        Me.txtCodigosProveedores1.Top = 0.0!
-        Me.txtCodigosProveedores1.Width = 0.875!
+
         '
         'txtTipoRepuesto1
         '
-        Me.txtTipoRepuesto1.Border.BottomColor = System.Drawing.Color.Black
-        Me.txtTipoRepuesto1.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtTipoRepuesto1.Border.LeftColor = System.Drawing.Color.Black
-        Me.txtTipoRepuesto1.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtTipoRepuesto1.Border.RightColor = System.Drawing.Color.Black
-        Me.txtTipoRepuesto1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtTipoRepuesto1.Border.TopColor = System.Drawing.Color.Black
-        Me.txtTipoRepuesto1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
-        Me.txtTipoRepuesto1.DataField = "TipoRepuesto"
-        Me.txtTipoRepuesto1.Height = 0.1875!
-        Me.txtTipoRepuesto1.Left = 4.9375!
-        Me.txtTipoRepuesto1.Name = "txtTipoRepuesto1"
-        Me.txtTipoRepuesto1.Style = "text-align: center; "
-        Me.txtTipoRepuesto1.Text = "txtTipoRepuesto1"
-        Me.txtTipoRepuesto1.Top = 0.0!
-        Me.txtTipoRepuesto1.Width = 1.125!
+       
         '
         'txtCantidadSolicitada1
         '
@@ -1040,14 +972,10 @@ Partial Public Class rptTransferenciaSolicitud
                     "lic; ", "Heading2", "Normal"))
         Me.StyleSheet.Add(New DDCssLib.StyleSheetRule("font-size: 13pt; font-weight: bold; ", "Heading3", "Normal"))
         CType(Me.lblCodigo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lblCodigoProveedor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblDescripcion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblCantidadSolicitada, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lblTipoRepuesto, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSivRepuestoID1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDescripcionCorta1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCodigosProveedores1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTipoRepuesto1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCantidadSolicitada1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ReportInfo1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblTitulo, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1090,10 +1018,8 @@ Partial Public Class rptTransferenciaSolicitud
     Friend WithEvents txtFechasolicitud1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents shpFondo As DataDynamics.ActiveReports.Shape
     Friend WithEvents lblCodigo As DataDynamics.ActiveReports.Label
-    Friend WithEvents lblCodigoProveedor As DataDynamics.ActiveReports.Label
     Friend WithEvents lblDescripcion As DataDynamics.ActiveReports.Label
     Friend WithEvents lblCantidadSolicitada As DataDynamics.ActiveReports.Label
-    Friend WithEvents lblTipoRepuesto As DataDynamics.ActiveReports.Label
     Friend WithEvents Line1 As DataDynamics.ActiveReports.Line
     Friend WithEvents Line2 As DataDynamics.ActiveReports.Line
     Friend WithEvents Line3 As DataDynamics.ActiveReports.Line
@@ -1106,7 +1032,6 @@ Partial Public Class rptTransferenciaSolicitud
     Friend WithEvents Line10 As DataDynamics.ActiveReports.Line
     Friend WithEvents txtSivRepuestoID1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents txtDescripcionCorta1 As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents txtCodigosProveedores1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents lnPieDetalle As DataDynamics.ActiveReports.Line
     Friend WithEvents lblObservaciones As DataDynamics.ActiveReports.Label
     Friend WithEvents shpObservaciones As DataDynamics.ActiveReports.Shape
@@ -1115,7 +1040,6 @@ Partial Public Class rptTransferenciaSolicitud
     Friend WithEvents txtObservaciones1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents txtSolicitadoPor2 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents ReportInfo1 As DataDynamics.ActiveReports.ReportInfo
-    Friend WithEvents txtTipoRepuesto1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents txtCantidadSolicitada1 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents prmFechaDesde As DataDynamics.ActiveReports.Parameter
     Friend WithEvents prmFechaHasta As DataDynamics.ActiveReports.Parameter

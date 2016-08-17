@@ -261,7 +261,7 @@ Public Class frmSivRecepTransferencia
         objImpresion = New frmOpcionesImpresion
         If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
             sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
-            sCampos = "SivRepuestoID, CodigosProveedores, DescripcionCorta, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, Fechadespacho, DespachadoPor, CantidadDespachada, Fecharecibido, RecibidoPor, CantidadRecibida"
+            sCampos = "SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, Fechadespacho, DespachadoPor, CantidadDespachada, Fecharecibido, RecibidoPor, CantidadRecibida"
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaRecepcion", sFiltro)
 
             objRptSoliTransf.EstadoAnulada = EstadoAnulada
