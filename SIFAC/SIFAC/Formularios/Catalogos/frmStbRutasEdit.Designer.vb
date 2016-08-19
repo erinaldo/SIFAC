@@ -24,6 +24,8 @@ Partial Class frmStbRutasEdit
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbRutasEdit))
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.txtCodigo = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.ckdCargaDiferenciada = New System.Windows.Forms.CheckBox()
         Me.chkActivo = New System.Windows.Forms.CheckBox()
         Me.cmbDiaCrobro = New C1.Win.C1List.C1Combo()
@@ -39,8 +41,6 @@ Partial Class frmStbRutasEdit
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtCodigo = New System.Windows.Forms.TextBox()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,11 +69,31 @@ Partial Class frmStbRutasEdit
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Blue"
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(735, 201)
         Me.PanelControl1.TabIndex = 25
+        '
+        'txtCodigo
+        '
+        Me.txtCodigo.Enabled = False
+        Me.txtCodigo.Location = New System.Drawing.Point(107, 29)
+        Me.txtCodigo.Name = "txtCodigo"
+        Me.txtCodigo.Size = New System.Drawing.Size(170, 20)
+        Me.txtCodigo.TabIndex = 29
+        Me.txtCodigo.Tag = "OBLIGATORIO"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(16, 32)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(50, 13)
+        Me.Label4.TabIndex = 28
+        Me.Label4.Tag = "OBLIGATORIO"
+        Me.Label4.Text = "Codigo:"
         '
         'ckdCargaDiferenciada
         '
@@ -289,7 +309,7 @@ Partial Class frmStbRutasEdit
         '
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
-        Me.cmdCancelar.Image = Global.SIFAC.My.Resources.Resources.Cancel16
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(631, 138)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -301,7 +321,7 @@ Partial Class frmStbRutasEdit
         '
         Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdGuardar.Appearance.Options.UseFont = True
-        Me.cmdGuardar.Image = Global.SIFAC.My.Resources.Resources.Guardar16
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(545, 138)
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -318,26 +338,6 @@ Partial Class frmStbRutasEdit
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(735, 21)
         Me.Panel1.TabIndex = 26
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(16, 32)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(50, 13)
-        Me.Label4.TabIndex = 28
-        Me.Label4.Tag = "OBLIGATORIO"
-        Me.Label4.Text = "Codigo:"
-        '
-        'txtCodigo
-        '
-        Me.txtCodigo.Enabled = False
-        Me.txtCodigo.Location = New System.Drawing.Point(107, 29)
-        Me.txtCodigo.Name = "txtCodigo"
-        Me.txtCodigo.Size = New System.Drawing.Size(170, 20)
-        Me.txtCodigo.TabIndex = 29
-        Me.txtCodigo.Tag = "OBLIGATORIO"
         '
         'frmStbRutasEdit
         '

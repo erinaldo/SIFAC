@@ -20,13 +20,13 @@ Partial Class frmSivProductosEditar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivProductosEditar))
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivProductosEditar))
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
@@ -93,7 +93,7 @@ Partial Class frmSivProductosEditar
         Me.PanelControl1.Controls.Add(Me.GroupControl1)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Blue"
+        Me.PanelControl1.LookAndFeel.SkinName = "iMaginary"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(777, 290)
@@ -103,8 +103,8 @@ Partial Class frmSivProductosEditar
         '
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
-        Me.cmdCancelar.Image = Global.SIFAC.My.Resources.Resources.Cancel16
-        Me.cmdCancelar.Location = New System.Drawing.Point(633, 228)
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(674, 228)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
         Me.cmdCancelar.TabIndex = 8
@@ -115,9 +115,9 @@ Partial Class frmSivProductosEditar
         '
         Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdGuardar.Appearance.Options.UseFont = True
-        Me.cmdGuardar.Image = Global.SIFAC.My.Resources.Resources.Guardar16
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(547, 228)
+        Me.cmdGuardar.Location = New System.Drawing.Point(588, 228)
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 7
@@ -139,7 +139,7 @@ Partial Class frmSivProductosEditar
         Me.GroupControl2.Controls.Add(Me.Label3)
         Me.GroupControl2.Controls.Add(Me.Label2)
         Me.GroupControl2.Location = New System.Drawing.Point(443, 14)
-        Me.GroupControl2.LookAndFeel.SkinName = "Blue"
+        Me.GroupControl2.LookAndFeel.SkinName = "iMaginary"
         Me.GroupControl2.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.Size = New System.Drawing.Size(310, 201)
@@ -277,7 +277,7 @@ Partial Class frmSivProductosEditar
         Me.GroupControl1.Controls.Add(Me.lblMarca)
         Me.GroupControl1.Controls.Add(Me.lblModelo)
         Me.GroupControl1.Location = New System.Drawing.Point(12, 14)
-        Me.GroupControl1.LookAndFeel.SkinName = "Blue"
+        Me.GroupControl1.LookAndFeel.SkinName = "iMaginary"
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(416, 201)

@@ -55,7 +55,7 @@ Partial Class frmBodegasEditar
         Me.PanelControl1.Controls.Add(Me.gbxDatosGenerales)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Money Twins"
+        Me.PanelControl1.LookAndFeel.SkinName = "iMaginary"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(563, 261)
@@ -79,7 +79,7 @@ Partial Class frmBodegasEditar
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = Global.SIFAC.My.Resources.Resources.Guardar16
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(375, 201)
+        Me.cmdGuardar.Location = New System.Drawing.Point(382, 201)
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 2

@@ -45,7 +45,7 @@ Partial Class frmSivEntradaBodega
         Me.tbCuentas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdAnular, Me.cmdConsultar, Me.cmdBuscar, Me.cmdImprimir, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdSalir})
         Me.tbCuentas.Location = New System.Drawing.Point(0, 0)
         Me.tbCuentas.Name = "tbCuentas"
-        Me.tbCuentas.Size = New System.Drawing.Size(1151, 39)
+        Me.tbCuentas.Size = New System.Drawing.Size(863, 39)
         Me.tbCuentas.TabIndex = 0
         Me.tbCuentas.Text = "ToolStrip1"
         '
@@ -122,13 +122,12 @@ Partial Class frmSivEntradaBodega
         Me.C1Sizer1.Controls.Add(Me.grdDetalleEntradaBodega)
         Me.C1Sizer1.Controls.Add(Me.grdEntradaBodega)
         Me.C1Sizer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.C1Sizer1.GridDefinition = "73.2558139534884:False:False;24.4186046511628:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.3049522154648:False" & _
+        Me.C1Sizer1.GridDefinition = "72.8155339805825:False:False;24.2718446601942:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.0730011587486:False" & _
     ":False;"
         Me.C1Sizer1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.C1Sizer1.Location = New System.Drawing.Point(0, 39)
-        Me.C1Sizer1.Margin = New System.Windows.Forms.Padding(4)
         Me.C1Sizer1.Name = "C1Sizer1"
-        Me.C1Sizer1.Size = New System.Drawing.Size(1151, 516)
+        Me.C1Sizer1.Size = New System.Drawing.Size(863, 412)
         Me.C1Sizer1.TabIndex = 1
         Me.C1Sizer1.TabStop = False
         '
@@ -137,14 +136,13 @@ Partial Class frmSivEntradaBodega
         Me.grdDetalleEntradaBodega.Caption = "Detalle Entradas"
         Me.grdDetalleEntradaBodega.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDetalleEntradaBodega.Images.Add(CType(resources.GetObject("grdDetalleEntradaBodega.Images"), System.Drawing.Image))
-        Me.grdDetalleEntradaBodega.Location = New System.Drawing.Point(4, 386)
-        Me.grdDetalleEntradaBodega.Margin = New System.Windows.Forms.Padding(4)
+        Me.grdDetalleEntradaBodega.Location = New System.Drawing.Point(4, 308)
         Me.grdDetalleEntradaBodega.Name = "grdDetalleEntradaBodega"
         Me.grdDetalleEntradaBodega.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDetalleEntradaBodega.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdDetalleEntradaBodega.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDetalleEntradaBodega.PrintInfo.PageSettings = CType(resources.GetObject("grdDetalleEntradaBodega.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdDetalleEntradaBodega.Size = New System.Drawing.Size(1143, 126)
+        Me.grdDetalleEntradaBodega.Size = New System.Drawing.Size(855, 100)
         Me.grdDetalleEntradaBodega.TabIndex = 10
         Me.grdDetalleEntradaBodega.Text = "Expedientes-Facturas"
         Me.grdDetalleEntradaBodega.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
@@ -158,13 +156,12 @@ Partial Class frmSivEntradaBodega
         Me.grdEntradaBodega.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.grdEntradaBodega.Images.Add(CType(resources.GetObject("grdEntradaBodega.Images"), System.Drawing.Image))
         Me.grdEntradaBodega.Location = New System.Drawing.Point(4, 4)
-        Me.grdEntradaBodega.Margin = New System.Windows.Forms.Padding(4)
         Me.grdEntradaBodega.Name = "grdEntradaBodega"
         Me.grdEntradaBodega.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdEntradaBodega.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdEntradaBodega.PreviewInfo.ZoomFactor = 75.0R
         Me.grdEntradaBodega.PrintInfo.PageSettings = CType(resources.GetObject("grdEntradaBodega.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdEntradaBodega.Size = New System.Drawing.Size(1143, 508)
+        Me.grdEntradaBodega.Size = New System.Drawing.Size(855, 300)
         Me.grdEntradaBodega.TabIndex = 9
         Me.grdEntradaBodega.Tag = "AGRUPAR"
         Me.grdEntradaBodega.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
@@ -172,12 +169,12 @@ Partial Class frmSivEntradaBodega
         '
         'frmSivEntradaBodega
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1151, 555)
+        Me.ClientSize = New System.Drawing.Size(863, 451)
         Me.Controls.Add(Me.C1Sizer1)
         Me.Controls.Add(Me.tbCuentas)
-        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSivEntradaBodega"
         Me.Text = "Entradas a Bodega Central"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

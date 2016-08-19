@@ -139,6 +139,8 @@ Partial Class frmStbRutas
         '
         Me.grdRutas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdRutas.Location = New System.Drawing.Point(0, 39)
+        Me.grdRutas.LookAndFeel.SkinName = "Caramel"
+        Me.grdRutas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdRutas.MainView = Me.grdRutasTabla
         Me.grdRutas.Name = "grdRutas"
         Me.grdRutas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})

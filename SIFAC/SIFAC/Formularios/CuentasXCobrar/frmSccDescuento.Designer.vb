@@ -139,6 +139,8 @@ Partial Class frmSccDescuento
         '
         Me.grdDescuento.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdDescuento.Location = New System.Drawing.Point(0, 39)
+        Me.grdDescuento.LookAndFeel.SkinName = "Caramel"
+        Me.grdDescuento.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdDescuento.MainView = Me.grdDescuentoTabla
         Me.grdDescuento.Name = "grdDescuento"
         Me.grdDescuento.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})

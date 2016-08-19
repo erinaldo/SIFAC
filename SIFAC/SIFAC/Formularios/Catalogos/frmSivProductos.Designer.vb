@@ -205,6 +205,8 @@ Partial Class frmSivProductos
         '
         Me.grdProductos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdProductos.Location = New System.Drawing.Point(0, 39)
+        Me.grdProductos.LookAndFeel.SkinName = "Caramel"
+        Me.grdProductos.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdProductos.MainView = Me.grdProductosTabla
         Me.grdProductos.Name = "grdProductos"
         Me.grdProductos.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
@@ -298,6 +300,7 @@ Partial Class frmSivProductos
         Me.Controls.Add(Me.grdProductos)
         Me.Controls.Add(Me.tbProductos)
         Me.Controls.Add(Me.mnuProducto)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.mnuProducto
         Me.Name = "frmSivProductos"
         Me.Text = "Catálogo de Productos"

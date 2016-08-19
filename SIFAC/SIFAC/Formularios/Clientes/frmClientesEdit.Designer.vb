@@ -86,7 +86,7 @@ Partial Class frmClientesEdit
         Me.grpDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpDatos.Location = New System.Drawing.Point(5, 5)
         Me.grpDatos.Name = "grpDatos"
-        Me.grpDatos.Size = New System.Drawing.Size(915, 381)
+        Me.grpDatos.Size = New System.Drawing.Size(905, 374)
         Me.grpDatos.TabIndex = 0
         Me.grpDatos.TabStop = False
         '
@@ -100,7 +100,7 @@ Partial Class frmClientesEdit
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.cmbCiudad)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 250)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 240)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(869, 116)
         Me.GroupBox2.TabIndex = 29
@@ -236,7 +236,7 @@ Partial Class frmClientesEdit
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.tabAdicionales)
-        Me.GroupBox1.Location = New System.Drawing.Point(472, 28)
+        Me.GroupBox1.Location = New System.Drawing.Point(472, 14)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(409, 212)
         Me.GroupBox1.TabIndex = 0
@@ -334,7 +334,7 @@ Partial Class frmClientesEdit
         Me.grpPersonaNatural.Controls.Add(Me.lblPrimerApellido)
         Me.grpPersonaNatural.Controls.Add(Me.lblPrimerNombre)
         Me.grpPersonaNatural.Controls.Add(Me.lblSegundoNombre)
-        Me.grpPersonaNatural.Location = New System.Drawing.Point(11, 26)
+        Me.grpPersonaNatural.Location = New System.Drawing.Point(11, 18)
         Me.grpPersonaNatural.Name = "grpPersonaNatural"
         Me.grpPersonaNatural.Size = New System.Drawing.Size(440, 218)
         Me.grpPersonaNatural.TabIndex = 2
@@ -551,9 +551,9 @@ Partial Class frmClientesEdit
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 439)
+        Me.Panel1.Location = New System.Drawing.Point(0, 428)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(931, 16)
+        Me.Panel1.Size = New System.Drawing.Size(922, 16)
         Me.Panel1.TabIndex = 26
         '
         'panelcliente
@@ -563,18 +563,18 @@ Partial Class frmClientesEdit
         Me.panelcliente.Controls.Add(Me.cmdGuardar)
         Me.panelcliente.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelcliente.Location = New System.Drawing.Point(0, 0)
-        Me.panelcliente.LookAndFeel.SkinName = "Blue"
+        Me.panelcliente.LookAndFeel.SkinName = "Caramel"
         Me.panelcliente.LookAndFeel.UseDefaultLookAndFeel = False
         Me.panelcliente.Name = "panelcliente"
-        Me.panelcliente.Size = New System.Drawing.Size(931, 455)
+        Me.panelcliente.Size = New System.Drawing.Size(922, 444)
         Me.panelcliente.TabIndex = 27
         '
         'SimpleButton1
         '
         Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SimpleButton1.Appearance.Options.UseFont = True
-        Me.SimpleButton1.Image = Global.SIFAC.My.Resources.Resources.Cancel16
-        Me.SimpleButton1.Location = New System.Drawing.Point(844, 401)
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(831, 390)
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
         Me.SimpleButton1.TabIndex = 5
@@ -585,9 +585,9 @@ Partial Class frmClientesEdit
         '
         Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdGuardar.Appearance.Options.UseFont = True
-        Me.cmdGuardar.Image = Global.SIFAC.My.Resources.Resources.Guardar16
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(758, 401)
+        Me.cmdGuardar.Location = New System.Drawing.Point(745, 390)
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 4
@@ -598,7 +598,7 @@ Partial Class frmClientesEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(931, 455)
+        Me.ClientSize = New System.Drawing.Size(922, 444)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.panelcliente)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle

@@ -33,6 +33,7 @@ Public Class frmClientesEdit
             DtPersona = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero", "vwPersonaClasificacion", strFiltro))
         Catch ex As Exception
             clsError.CaptarError(ex)
+        End Try
     End Sub
 
     '' Descripción:        Procedimiento encargado de vincular los controles al origen de datos

@@ -119,6 +119,8 @@ Partial Class frmStbBodegas
         '
         Me.grdBodegas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdBodegas.Location = New System.Drawing.Point(0, 39)
+        Me.grdBodegas.LookAndFeel.SkinName = "Caramel"
+        Me.grdBodegas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdBodegas.MainView = Me.grdBodegasTabla
         Me.grdBodegas.Name = "grdBodegas"
         Me.grdBodegas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
@@ -215,6 +217,7 @@ Partial Class frmStbBodegas
         Me.ClientSize = New System.Drawing.Size(856, 503)
         Me.Controls.Add(Me.grdBodegas)
         Me.Controls.Add(Me.toolTramitesLegales)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmStbBodegas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Consulta de Bodegas"

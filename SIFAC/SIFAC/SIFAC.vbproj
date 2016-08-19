@@ -2170,6 +2170,7 @@
     <Content Include="Resources\Proveedor.ico" />
     <None Include="Resources\Sello.png" />
     <None Include="Resources\ProveedorEstilo1.jpg" />
+    <None Include="Resources\save.png" />
     <Content Include="sifac-desk-icon.ico" />
     <Content Include="VentanaConfiguracion.ico" />
   </ItemGroup>

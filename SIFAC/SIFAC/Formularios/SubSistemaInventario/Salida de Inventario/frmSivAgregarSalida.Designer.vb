@@ -21,7 +21,6 @@ Partial Class frmSivAgregarSalida
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivAgregarSalida))
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dtpFecha = New C1.Win.C1Input.C1DateEdit()
         Me.cmbAjuste = New C1.Win.C1List.C1Combo()
@@ -62,6 +61,7 @@ Partial Class frmSivAgregarSalida
         Me.txtComentarioAnular = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblNombreEmpleado = New System.Windows.Forms.Label()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbAjuste, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,19 +79,9 @@ Partial Class frmSivAgregarSalida
         CType(Me.grdSpnSubTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numCostoTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorSalida, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(905, 39)
-        Me.Panel2.TabIndex = 28
-        Me.Panel2.Tag = "LAYOUT"
         '
         'GroupBox1
         '
@@ -107,11 +97,9 @@ Partial Class frmSivAgregarSalida
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(16, 48)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 23)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(876, 169)
+        Me.GroupBox1.Size = New System.Drawing.Size(657, 137)
         Me.GroupBox1.TabIndex = 29
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Dartos Generales"
@@ -134,10 +122,9 @@ Partial Class frmSivAgregarSalida
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFecha.Enabled = False
-        Me.dtpFecha.Location = New System.Drawing.Point(615, 25)
-        Me.dtpFecha.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpFecha.Location = New System.Drawing.Point(461, 20)
         Me.dtpFecha.Name = "dtpFecha"
-        Me.dtpFecha.Size = New System.Drawing.Size(225, 20)
+        Me.dtpFecha.Size = New System.Drawing.Size(169, 18)
         Me.dtpFecha.TabIndex = 11
         Me.dtpFecha.Tag = Nothing
         Me.dtpFecha.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
@@ -151,17 +138,16 @@ Partial Class frmSivAgregarSalida
         Me.cmbAjuste.ColumnCaptionHeight = 17
         Me.cmbAjuste.ColumnFooterHeight = 17
         Me.cmbAjuste.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbAjuste.ContentHeight = 18
+        Me.cmbAjuste.ContentHeight = 15
         Me.cmbAjuste.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbAjuste.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbAjuste.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbAjuste.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbAjuste.EditorHeight = 18
+        Me.cmbAjuste.EditorHeight = 15
         Me.cmbAjuste.Enabled = False
         Me.cmbAjuste.Images.Add(CType(resources.GetObject("cmbAjuste.Images"), System.Drawing.Image))
         Me.cmbAjuste.ItemHeight = 15
-        Me.cmbAjuste.Location = New System.Drawing.Point(615, 101)
-        Me.cmbAjuste.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbAjuste.Location = New System.Drawing.Point(461, 82)
         Me.cmbAjuste.MatchEntryTimeout = CType(2000, Long)
         Me.cmbAjuste.MaxDropDownItems = CType(5, Short)
         Me.cmbAjuste.MaxLength = 32767
@@ -170,7 +156,7 @@ Partial Class frmSivAgregarSalida
         Me.cmbAjuste.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbAjuste.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbAjuste.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbAjuste.Size = New System.Drawing.Size(225, 24)
+        Me.cmbAjuste.Size = New System.Drawing.Size(169, 21)
         Me.cmbAjuste.TabIndex = 10
         Me.cmbAjuste.Tag = "BLOQUEADO"
         Me.cmbAjuste.PropBag = resources.GetString("cmbAjuste.PropBag")
@@ -184,16 +170,15 @@ Partial Class frmSivAgregarSalida
         Me.cmbTipoSalida.ColumnCaptionHeight = 17
         Me.cmbTipoSalida.ColumnFooterHeight = 17
         Me.cmbTipoSalida.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbTipoSalida.ContentHeight = 18
+        Me.cmbTipoSalida.ContentHeight = 15
         Me.cmbTipoSalida.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbTipoSalida.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbTipoSalida.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipoSalida.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbTipoSalida.EditorHeight = 18
+        Me.cmbTipoSalida.EditorHeight = 15
         Me.cmbTipoSalida.Images.Add(CType(resources.GetObject("cmbTipoSalida.Images"), System.Drawing.Image))
         Me.cmbTipoSalida.ItemHeight = 15
-        Me.cmbTipoSalida.Location = New System.Drawing.Point(175, 101)
-        Me.cmbTipoSalida.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbTipoSalida.Location = New System.Drawing.Point(131, 82)
         Me.cmbTipoSalida.MatchEntryTimeout = CType(2000, Long)
         Me.cmbTipoSalida.MaxDropDownItems = CType(5, Short)
         Me.cmbTipoSalida.MaxLength = 32767
@@ -202,7 +187,7 @@ Partial Class frmSivAgregarSalida
         Me.cmbTipoSalida.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbTipoSalida.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbTipoSalida.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbTipoSalida.Size = New System.Drawing.Size(257, 24)
+        Me.cmbTipoSalida.Size = New System.Drawing.Size(193, 21)
         Me.cmbTipoSalida.TabIndex = 9
         Me.cmbTipoSalida.PropBag = resources.GetString("cmbTipoSalida.PropBag")
         '
@@ -215,16 +200,15 @@ Partial Class frmSivAgregarSalida
         Me.cmbBodega.ColumnCaptionHeight = 17
         Me.cmbBodega.ColumnFooterHeight = 17
         Me.cmbBodega.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbBodega.ContentHeight = 18
+        Me.cmbBodega.ContentHeight = 15
         Me.cmbBodega.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbBodega.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbBodega.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBodega.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbBodega.EditorHeight = 18
+        Me.cmbBodega.EditorHeight = 15
         Me.cmbBodega.Images.Add(CType(resources.GetObject("cmbBodega.Images"), System.Drawing.Image))
         Me.cmbBodega.ItemHeight = 15
-        Me.cmbBodega.Location = New System.Drawing.Point(175, 63)
-        Me.cmbBodega.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbBodega.Location = New System.Drawing.Point(131, 51)
         Me.cmbBodega.MatchEntryTimeout = CType(2000, Long)
         Me.cmbBodega.MaxDropDownItems = CType(5, Short)
         Me.cmbBodega.MaxLength = 32767
@@ -233,7 +217,7 @@ Partial Class frmSivAgregarSalida
         Me.cmbBodega.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbBodega.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbBodega.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbBodega.Size = New System.Drawing.Size(257, 24)
+        Me.cmbBodega.Size = New System.Drawing.Size(193, 21)
         Me.cmbBodega.TabIndex = 8
         Me.cmbBodega.PropBag = resources.GetString("cmbBodega.PropBag")
         '
@@ -241,10 +225,9 @@ Partial Class frmSivAgregarSalida
         '
         Me.txtEstado.BackColor = System.Drawing.SystemColors.Window
         Me.txtEstado.Enabled = False
-        Me.txtEstado.Location = New System.Drawing.Point(615, 64)
-        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtEstado.Location = New System.Drawing.Point(461, 52)
         Me.txtEstado.Name = "txtEstado"
-        Me.txtEstado.Size = New System.Drawing.Size(224, 22)
+        Me.txtEstado.Size = New System.Drawing.Size(169, 20)
         Me.txtEstado.TabIndex = 7
         Me.txtEstado.Tag = "BLOQUEADO"
         '
@@ -252,10 +235,9 @@ Partial Class frmSivAgregarSalida
         '
         Me.txtNumero.BackColor = System.Drawing.SystemColors.Window
         Me.txtNumero.Enabled = False
-        Me.txtNumero.Location = New System.Drawing.Point(175, 27)
-        Me.txtNumero.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtNumero.Location = New System.Drawing.Point(131, 22)
         Me.txtNumero.Name = "txtNumero"
-        Me.txtNumero.Size = New System.Drawing.Size(132, 22)
+        Me.txtNumero.Size = New System.Drawing.Size(100, 20)
         Me.txtNumero.TabIndex = 6
         Me.txtNumero.Tag = "BLOQUEADO"
         Me.txtNumero.Text = "(Automático)"
@@ -263,60 +245,60 @@ Partial Class frmSivAgregarSalida
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(488, 111)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(366, 87)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(99, 17)
+        Me.Label6.Size = New System.Drawing.Size(89, 13)
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Tipo de Ajuste"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(488, 73)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(366, 58)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(56, 17)
+        Me.Label5.Size = New System.Drawing.Size(50, 13)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "Estado:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(488, 36)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(366, 27)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 17)
+        Me.Label4.Size = New System.Drawing.Size(46, 13)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Fecha:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(33, 111)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(25, 88)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(99, 17)
+        Me.Label3.Size = New System.Drawing.Size(89, 13)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Tipo de Salida"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(33, 73)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(25, 58)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 17)
+        Me.Label2.Size = New System.Drawing.Size(54, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Bodega:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(33, 36)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(25, 29)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(105, 17)
+        Me.Label1.Size = New System.Drawing.Size(93, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Número Salida:"
         '
@@ -328,34 +310,29 @@ Partial Class frmSivAgregarSalida
         Me.grbDetalle.Controls.Add(Me.Label8)
         Me.grbDetalle.Controls.Add(Me.Label7)
         Me.grbDetalle.Controls.Add(Me.numCostoTotal)
-        Me.grbDetalle.Location = New System.Drawing.Point(16, 299)
-        Me.grbDetalle.Margin = New System.Windows.Forms.Padding(4)
+        Me.grbDetalle.Location = New System.Drawing.Point(12, 235)
         Me.grbDetalle.Name = "grbDetalle"
-        Me.grbDetalle.Padding = New System.Windows.Forms.Padding(4)
-        Me.grbDetalle.Size = New System.Drawing.Size(876, 489)
+        Me.grbDetalle.Size = New System.Drawing.Size(657, 397)
         Me.grbDetalle.TabIndex = 30
         Me.grbDetalle.TabStop = False
         Me.grbDetalle.Text = "Detalle"
         '
         'numExistencia
         '
-        Me.numExistencia.Location = New System.Drawing.Point(17, 347)
-        Me.numExistencia.Margin = New System.Windows.Forms.Padding(4)
+        Me.numExistencia.Location = New System.Drawing.Point(13, 272)
         Me.numExistencia.Name = "numExistencia"
-        Me.numExistencia.Size = New System.Drawing.Size(165, 22)
+        Me.numExistencia.Size = New System.Drawing.Size(124, 20)
         Me.numExistencia.TabIndex = 36
         Me.numExistencia.Tag = Nothing
         Me.numExistencia.Visible = False
         '
         'grdSalidaDetalle
         '
-        Me.grdSalidaDetalle.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
-        Me.grdSalidaDetalle.Location = New System.Drawing.Point(17, 23)
+        Me.grdSalidaDetalle.Location = New System.Drawing.Point(13, 19)
         Me.grdSalidaDetalle.MainView = Me.grdSalidaDetalleTable
-        Me.grdSalidaDetalle.Margin = New System.Windows.Forms.Padding(4)
         Me.grdSalidaDetalle.Name = "grdSalidaDetalle"
         Me.grdSalidaDetalle.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.grptxtCodigo, Me.grdcmbDescripcion, Me.grdSpnExistencia, Me.grdSpnCantidad, Me.grdSpnCosto, Me.grdSpnSubTotal})
-        Me.grdSalidaDetalle.Size = New System.Drawing.Size(845, 297)
+        Me.grdSalidaDetalle.Size = New System.Drawing.Size(634, 241)
         Me.grdSalidaDetalle.TabIndex = 35
         Me.grdSalidaDetalle.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdSalidaDetalleTable})
         '
@@ -512,31 +489,30 @@ Partial Class frmSivAgregarSalida
         '
         'txtcomentarios
         '
-        Me.txtcomentarios.Location = New System.Drawing.Point(17, 410)
-        Me.txtcomentarios.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtcomentarios.Location = New System.Drawing.Point(13, 323)
         Me.txtcomentarios.Multiline = True
         Me.txtcomentarios.Name = "txtcomentarios"
         Me.txtcomentarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtcomentarios.Size = New System.Drawing.Size(835, 64)
+        Me.txtcomentarios.Size = New System.Drawing.Size(627, 53)
         Me.txtcomentarios.TabIndex = 33
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(13, 390)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(10, 307)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(91, 17)
+        Me.Label8.Size = New System.Drawing.Size(80, 13)
         Me.Label8.TabIndex = 32
         Me.Label8.Text = "Comentarios:"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(611, 364)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(450, 285)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(84, 17)
+        Me.Label7.Size = New System.Drawing.Size(76, 13)
         Me.Label7.TabIndex = 2
         Me.Label7.Text = "Costo Total:"
         '
@@ -553,10 +529,9 @@ Partial Class frmSivAgregarSalida
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numCostoTotal.Enabled = False
-        Me.numCostoTotal.Location = New System.Drawing.Point(704, 361)
-        Me.numCostoTotal.Margin = New System.Windows.Forms.Padding(4)
+        Me.numCostoTotal.Location = New System.Drawing.Point(528, 283)
         Me.numCostoTotal.Name = "numCostoTotal"
-        Me.numCostoTotal.Size = New System.Drawing.Size(149, 22)
+        Me.numCostoTotal.Size = New System.Drawing.Size(112, 20)
         Me.numCostoTotal.TabIndex = 1
         Me.numCostoTotal.Tag = "BLOQUEADO"
         Me.numCostoTotal.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
@@ -564,24 +539,30 @@ Partial Class frmSivAgregarSalida
         'cmdCancelar
         '
         Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Location = New System.Drawing.Point(793, 798)
-        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdCancelar.Location = New System.Drawing.Point(589, 638)
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(99, 37)
+        Me.cmdCancelar.Size = New System.Drawing.Size(79, 30)
         Me.cmdCancelar.TabIndex = 32
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
+        Me.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.cmdCancelar.UseVisualStyleBackColor = True
         '
         'cmdAceptar
         '
-        Me.cmdAceptar.Location = New System.Drawing.Point(687, 798)
-        Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(509, 638)
         Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(99, 37)
+        Me.cmdAceptar.Size = New System.Drawing.Size(74, 30)
         Me.cmdAceptar.TabIndex = 31
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
+        Me.cmdAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.cmdAceptar.UseVisualStyleBackColor = True
         '
         'ErrorSalida
@@ -591,58 +572,65 @@ Partial Class frmSivAgregarSalida
         'lblanular
         '
         Me.lblanular.AutoSize = True
-        Me.lblanular.Location = New System.Drawing.Point(48, 233)
-        Me.lblanular.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblanular.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblanular.Location = New System.Drawing.Point(36, 176)
         Me.lblanular.Name = "lblanular"
-        Me.lblanular.Size = New System.Drawing.Size(136, 17)
+        Me.lblanular.Size = New System.Drawing.Size(120, 13)
         Me.lblanular.TabIndex = 33
         Me.lblanular.Text = "Comentarios Anular:"
         '
         'txtComentarioAnular
         '
-        Me.txtComentarioAnular.Location = New System.Drawing.Point(191, 229)
-        Me.txtComentarioAnular.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtComentarioAnular.Location = New System.Drawing.Point(143, 172)
         Me.txtComentarioAnular.Multiline = True
         Me.txtComentarioAnular.Name = "txtComentarioAnular"
         Me.txtComentarioAnular.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtComentarioAnular.Size = New System.Drawing.Size(681, 64)
+        Me.txtComentarioAnular.Size = New System.Drawing.Size(512, 53)
         Me.txtComentarioAnular.TabIndex = 34
         '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 843)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel1.Location = New System.Drawing.Point(0, 678)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(905, 26)
+        Me.Panel1.Size = New System.Drawing.Size(679, 21)
         Me.Panel1.TabIndex = 48
         '
         'lblNombreEmpleado
         '
         Me.lblNombreEmpleado.AutoSize = True
-        Me.lblNombreEmpleado.Location = New System.Drawing.Point(20, 798)
-        Me.lblNombreEmpleado.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblNombreEmpleado.Location = New System.Drawing.Point(15, 648)
         Me.lblNombreEmpleado.Name = "lblNombreEmpleado"
-        Me.lblNombreEmpleado.Size = New System.Drawing.Size(0, 17)
+        Me.lblNombreEmpleado.Size = New System.Drawing.Size(0, 13)
         Me.lblNombreEmpleado.TabIndex = 49
         Me.lblNombreEmpleado.Tag = ""
         '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.GroupBox1)
+        Me.PanelControl1.Controls.Add(Me.grbDetalle)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(679, 699)
+        Me.PanelControl1.TabIndex = 50
+        '
         'frmSivAgregarSalida
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(905, 869)
+        Me.ClientSize = New System.Drawing.Size(679, 699)
         Me.Controls.Add(Me.lblNombreEmpleado)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtComentarioAnular)
         Me.Controls.Add(Me.lblanular)
         Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.grbDetalle)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.cmdAceptar)
-        Me.Controls.Add(Me.Panel2)
-        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Controls.Add(Me.PanelControl1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSivAgregarSalida"
@@ -667,11 +655,12 @@ Partial Class frmSivAgregarSalida
         CType(Me.grdSpnSubTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numCostoTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorSalida, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -712,4 +701,5 @@ Partial Class frmSivAgregarSalida
     Friend WithEvents grdSpnCosto As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
     Friend WithEvents grdSpnSubTotal As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
     Friend WithEvents numExistencia As C1.Win.C1Input.C1NumericEdit
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
 End Class

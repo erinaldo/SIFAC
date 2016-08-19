@@ -589,13 +589,12 @@ Public Class frmStaServicioTallerEditar
 
 #Region "Consultar Datos Cliente"
     Private Sub ConsultarDatosCliente()
-        Dim objPersonas As frmStbPersonasEditar
+        Dim objPersonas As frmClientesEdit
         Try
             Me.Cursor = WaitCursor
-            objPersonas = New frmStbPersonasEditar
+            objPersonas = New frmClientesEdit
             objPersonas.TyGui = 3
 
-            objPersonas.frmLlamado = 4
             objPersonas.idpersona = Me.cmbClientes.EditValue.ToString
 
             objPersonas.ShowDialog(Me)
@@ -609,13 +608,12 @@ Public Class frmStaServicioTallerEditar
 
 #Region "Agregar Datos Cliente"
     Private Sub AgregarCliente()
-        Dim objPersonas As frmStbPersonasEditar
+        Dim objPersonas As frmClientesEdit
         Try
             Me.Cursor = WaitCursor
-            objPersonas = New frmStbPersonasEditar
+            objPersonas = New frmClientesEdit
             objPersonas.TyGui = 1
-            objPersonas.frmLlamado = 4
-
+          
             If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.CargarComboClientes()
                 Me.cmbClientes.EditValue = objPersonas.idpersona

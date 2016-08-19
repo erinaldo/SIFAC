@@ -28,22 +28,22 @@ Partial Class frmSccDescuentoEdit
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.spnDescuentoMaximo = New DevExpress.XtraEditors.SpinEdit()
+        Me.spnDescuentoMinimo = New DevExpress.XtraEditors.SpinEdit()
+        Me.spnPlazo = New DevExpress.XtraEditors.SpinEdit()
         Me.chkActivo = New System.Windows.Forms.CheckBox()
         Me.lblDescripcion = New System.Windows.Forms.Label()
         Me.lblSfaPromocionID = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.spnPlazo = New DevExpress.XtraEditors.SpinEdit()
-        Me.spnDescuentoMinimo = New DevExpress.XtraEditors.SpinEdit()
-        Me.spnDescuentoMaximo = New DevExpress.XtraEditors.SpinEdit()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.gbxDatosGenerales.SuspendLayout()
-        CType(Me.spnPlazo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.spnDescuentoMinimo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spnDescuentoMaximo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.spnDescuentoMinimo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.spnPlazo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -54,7 +54,8 @@ Partial Class frmSccDescuentoEdit
         Me.PanelControl1.Controls.Add(Me.gbxDatosGenerales)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Money Twins"
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(510, 216)
@@ -64,7 +65,7 @@ Partial Class frmSccDescuentoEdit
         '
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
-        Me.cmdCancelar.Image = Global.SIFAC.My.Resources.Resources.Cancel16
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(423, 155)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -76,7 +77,7 @@ Partial Class frmSccDescuentoEdit
         '
         Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdGuardar.Appearance.Options.UseFont = True
-        Me.cmdGuardar.Image = Global.SIFAC.My.Resources.Resources.Guardar16
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(337, 155)
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -100,6 +101,54 @@ Partial Class frmSccDescuentoEdit
         Me.gbxDatosGenerales.Size = New System.Drawing.Size(475, 128)
         Me.gbxDatosGenerales.TabIndex = 1
         Me.gbxDatosGenerales.TabStop = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(9, 87)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(139, 13)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Tag = "OBLIGATORIO"
+        Me.Label2.Text = "Descuento Maximo (%):"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(256, 29)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(43, 13)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Meses"
+        '
+        'spnDescuentoMaximo
+        '
+        Me.spnDescuentoMaximo.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.spnDescuentoMaximo.Location = New System.Drawing.Point(150, 84)
+        Me.spnDescuentoMaximo.Name = "spnDescuentoMaximo"
+        Me.spnDescuentoMaximo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.spnDescuentoMaximo.Size = New System.Drawing.Size(100, 20)
+        Me.spnDescuentoMaximo.TabIndex = 5
+        '
+        'spnDescuentoMinimo
+        '
+        Me.spnDescuentoMinimo.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.spnDescuentoMinimo.Location = New System.Drawing.Point(150, 51)
+        Me.spnDescuentoMinimo.Name = "spnDescuentoMinimo"
+        Me.spnDescuentoMinimo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.spnDescuentoMinimo.Size = New System.Drawing.Size(100, 20)
+        Me.spnDescuentoMinimo.TabIndex = 4
+        '
+        'spnPlazo
+        '
+        Me.spnPlazo.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.spnPlazo.Location = New System.Drawing.Point(150, 25)
+        Me.spnPlazo.Name = "spnPlazo"
+        Me.spnPlazo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.spnPlazo.Size = New System.Drawing.Size(100, 20)
+        Me.spnPlazo.TabIndex = 3
         '
         'chkActivo
         '
@@ -144,54 +193,6 @@ Partial Class frmSccDescuentoEdit
         Me.Panel1.Size = New System.Drawing.Size(510, 21)
         Me.Panel1.TabIndex = 99
         '
-        'spnPlazo
-        '
-        Me.spnPlazo.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.spnPlazo.Location = New System.Drawing.Point(150, 25)
-        Me.spnPlazo.Name = "spnPlazo"
-        Me.spnPlazo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.spnPlazo.Size = New System.Drawing.Size(100, 20)
-        Me.spnPlazo.TabIndex = 3
-        '
-        'spnDescuentoMinimo
-        '
-        Me.spnDescuentoMinimo.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.spnDescuentoMinimo.Location = New System.Drawing.Point(150, 51)
-        Me.spnDescuentoMinimo.Name = "spnDescuentoMinimo"
-        Me.spnDescuentoMinimo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.spnDescuentoMinimo.Size = New System.Drawing.Size(100, 20)
-        Me.spnDescuentoMinimo.TabIndex = 4
-        '
-        'spnDescuentoMaximo
-        '
-        Me.spnDescuentoMaximo.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.spnDescuentoMaximo.Location = New System.Drawing.Point(150, 84)
-        Me.spnDescuentoMaximo.Name = "spnDescuentoMaximo"
-        Me.spnDescuentoMaximo.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.spnDescuentoMaximo.Size = New System.Drawing.Size(100, 20)
-        Me.spnDescuentoMaximo.TabIndex = 5
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(256, 29)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 13)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Meses"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(9, 87)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(139, 13)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Tag = "OBLIGATORIO"
-        Me.Label2.Text = "Descuento Maximo (%):"
-        '
         'ErrorProv
         '
         Me.ErrorProv.ContainerControl = Me
@@ -213,9 +214,9 @@ Partial Class frmSccDescuentoEdit
         Me.PanelControl1.ResumeLayout(False)
         Me.gbxDatosGenerales.ResumeLayout(False)
         Me.gbxDatosGenerales.PerformLayout()
-        CType(Me.spnPlazo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.spnDescuentoMinimo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spnDescuentoMaximo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spnDescuentoMinimo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spnPlazo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

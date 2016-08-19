@@ -163,6 +163,8 @@ Partial Class frmSccClientes
         '
         Me.grdClientes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdClientes.Location = New System.Drawing.Point(0, 39)
+        Me.grdClientes.LookAndFeel.SkinName = "Caramel"
+        Me.grdClientes.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdClientes.MainView = Me.grdClientesTabla
         Me.grdClientes.Name = "grdClientes"
         Me.grdClientes.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2})

@@ -115,6 +115,8 @@ Partial Class frmSivMarcas
         '
         Me.grdMarcas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdMarcas.Location = New System.Drawing.Point(0, 39)
+        Me.grdMarcas.LookAndFeel.SkinName = "Caramel"
+        Me.grdMarcas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdMarcas.MainView = Me.grdMarcasTabla
         Me.grdMarcas.Name = "grdMarcas"
         Me.grdMarcas.Size = New System.Drawing.Size(835, 285)
@@ -182,6 +184,7 @@ Partial Class frmSivMarcas
         Me.ClientSize = New System.Drawing.Size(835, 324)
         Me.Controls.Add(Me.grdMarcas)
         Me.Controls.Add(Me.toolTramitesLegales)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSivMarcas"
         Me.Text = "Consulta Marcas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

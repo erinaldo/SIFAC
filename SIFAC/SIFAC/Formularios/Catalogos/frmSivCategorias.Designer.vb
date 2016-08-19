@@ -117,6 +117,8 @@ Partial Class frmSivCategorias
         '
         Me.grdCategorias.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdCategorias.Location = New System.Drawing.Point(0, 39)
+        Me.grdCategorias.LookAndFeel.SkinName = "Caramel"
+        Me.grdCategorias.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdCategorias.MainView = Me.grdCategoriasTabla
         Me.grdCategorias.Name = "grdCategorias"
         Me.grdCategorias.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
@@ -193,6 +195,7 @@ Partial Class frmSivCategorias
         Me.ClientSize = New System.Drawing.Size(712, 426)
         Me.Controls.Add(Me.grdCategorias)
         Me.Controls.Add(Me.toolTramitesLegales)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSivCategorias"
         Me.Text = "Consulta Categorias"
         Me.TopMost = True

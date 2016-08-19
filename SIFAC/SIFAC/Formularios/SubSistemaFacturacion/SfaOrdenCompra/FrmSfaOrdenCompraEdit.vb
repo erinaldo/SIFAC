@@ -674,18 +674,16 @@ Public Class FrmSfaOrdenCompraEdit
     End Sub
 
     Private Sub CargarConsultaCliente()
-        Dim objPers As frmStbPersonasEditar
+        Dim objPers As frmClientesEdit
         Try
             Try
-                objPers = New frmStbPersonasEditar
+                objPers = New frmClientesEdit
                 If Me.cmbCliente.Text.Trim.Length <> 0 Then
                     objPers.TyGui = 3
-                    objPers.frmLlamado = 4
                     objPers.idpersona = Me.cmbCliente.SelectedValue
                     objPers.ShowDialog(Me)
                 Else
                     objPers.TyGui = 1
-                    objPers.frmLlamado = 4
                     If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                         Me.CargarClientes()
                         Me.cmbCliente.SelectedValue = objPers.idpersona

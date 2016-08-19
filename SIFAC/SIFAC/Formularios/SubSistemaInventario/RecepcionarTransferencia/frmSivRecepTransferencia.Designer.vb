@@ -41,13 +41,13 @@ Partial Class frmSivRecepTransferencia
         Me.toolRecepcionTransf.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAprobar, Me.cmdConsultarSolicitud, Me.cmdImprimir, Me.ToolSeparador1, Me.tsbRefrescar, Me.tsbSalir})
         Me.toolRecepcionTransf.Location = New System.Drawing.Point(0, 0)
         Me.toolRecepcionTransf.Name = "toolRecepcionTransf"
-        Me.toolRecepcionTransf.Size = New System.Drawing.Size(1135, 39)
+        Me.toolRecepcionTransf.Size = New System.Drawing.Size(851, 39)
         Me.toolRecepcionTransf.TabIndex = 6
         '
         'cmdAprobar
         '
         Me.cmdAprobar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdAprobar.Image = Global.SIFAC.My.Resources.Resources.Autorizar_Pedido
+        Me.cmdAprobar.Image = CType(resources.GetObject("cmdAprobar.Image"), System.Drawing.Image)
         Me.cmdAprobar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAprobar.Name = "cmdAprobar"
         Me.cmdAprobar.Size = New System.Drawing.Size(36, 36)
@@ -69,25 +69,25 @@ Partial Class frmSivRecepTransferencia
         Me.cmdImprimir.Image = CType(resources.GetObject("cmdImprimir.Image"), System.Drawing.Image)
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
-        Me.cmdImprimir.Size = New System.Drawing.Size(46, 36)
+        Me.cmdImprimir.Size = New System.Drawing.Size(45, 36)
         Me.cmdImprimir.Text = "Imprimir"
         '
         'cmdImprimirSeleccion
         '
         Me.cmdImprimirSeleccion.Name = "cmdImprimirSeleccion"
-        Me.cmdImprimirSeleccion.Size = New System.Drawing.Size(172, 26)
+        Me.cmdImprimirSeleccion.Size = New System.Drawing.Size(143, 22)
         Me.cmdImprimirSeleccion.Text = "Seleccionada"
         '
         'cmdImprimirFiltro
         '
         Me.cmdImprimirFiltro.Name = "cmdImprimirFiltro"
-        Me.cmdImprimirFiltro.Size = New System.Drawing.Size(172, 26)
+        Me.cmdImprimirFiltro.Size = New System.Drawing.Size(143, 22)
         Me.cmdImprimirFiltro.Text = "Por Filtro"
         '
         'cmdImprimirDiferencias
         '
         Me.cmdImprimirDiferencias.Name = "cmdImprimirDiferencias"
-        Me.cmdImprimirDiferencias.Size = New System.Drawing.Size(172, 26)
+        Me.cmdImprimirDiferencias.Size = New System.Drawing.Size(143, 22)
         Me.cmdImprimirDiferencias.Text = "Diferencias"
         '
         'ToolSeparador1
@@ -123,13 +123,12 @@ Partial Class frmSivRecepTransferencia
         Me.grdTransferencias.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.grdTransferencias.Images.Add(CType(resources.GetObject("grdTransferencias.Images"), System.Drawing.Image))
         Me.grdTransferencias.Location = New System.Drawing.Point(0, 39)
-        Me.grdTransferencias.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdTransferencias.Name = "grdTransferencias"
         Me.grdTransferencias.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdTransferencias.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdTransferencias.PreviewInfo.ZoomFactor = 75.0R
         Me.grdTransferencias.PrintInfo.PageSettings = CType(resources.GetObject("grdTransferencias.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdTransferencias.Size = New System.Drawing.Size(1135, 729)
+        Me.grdTransferencias.Size = New System.Drawing.Size(851, 585)
         Me.grdTransferencias.TabIndex = 8
         Me.grdTransferencias.Tag = "AGRUPAR"
         Me.grdTransferencias.Text = "Solicitudes de transferencias"
@@ -138,12 +137,12 @@ Partial Class frmSivRecepTransferencia
         '
         'frmSivRecepTransferencia
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1135, 768)
+        Me.ClientSize = New System.Drawing.Size(851, 624)
         Me.Controls.Add(Me.grdTransferencias)
         Me.Controls.Add(Me.toolRecepcionTransf)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSivRecepTransferencia"
         Me.Text = "Recepción de transferencia"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

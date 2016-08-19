@@ -87,10 +87,9 @@ Public Class frmSfaBusquedaCliente
     End Sub
 
     Private Sub cmdNuevaPersona_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNuevaPersona.Click
-        Dim objPers As frmStbPersonasEditar
-        objPers = New frmStbPersonasEditar
+        Dim objPers As frmClientesEdit
+        objPers = New frmClientesEdit
         objPers.TyGui = 1
-        objPers.frmLlamado = Opcion
         If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Me.Seleccion = objPers.idpersona
             Me.DialogResult = Windows.Forms.DialogResult.OK
