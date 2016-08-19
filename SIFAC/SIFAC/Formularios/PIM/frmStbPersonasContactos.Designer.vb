@@ -19,25 +19,20 @@ Partial Class frmStbPersonasContactos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbPersonasContactos))
         Me.ErrPrv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.lblTipoContacto = New System.Windows.Forms.Label
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.cmbTipoPersona = New C1.Win.C1List.C1Combo
-        Me.txtValor = New System.Windows.Forms.MaskedTextBox
-        Me.lblValor = New System.Windows.Forms.Label
+        Me.lblTipoContacto = New System.Windows.Forms.Label()
+        Me.cmbTipoPersona = New C1.Win.C1List.C1Combo()
+        Me.txtValor = New System.Windows.Forms.MaskedTextBox()
+        Me.lblValor = New System.Windows.Forms.Label()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.ErrPrv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbTipoPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ErrPrv
@@ -48,31 +43,12 @@ Partial Class frmStbPersonasContactos
         'lblTipoContacto
         '
         Me.lblTipoContacto.AutoSize = True
-        Me.lblTipoContacto.Location = New System.Drawing.Point(15, 35)
+        Me.lblTipoContacto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTipoContacto.Location = New System.Drawing.Point(15, 27)
         Me.lblTipoContacto.Name = "lblTipoContacto"
-        Me.lblTipoContacto.Size = New System.Drawing.Size(92, 13)
+        Me.lblTipoContacto.Size = New System.Drawing.Size(109, 13)
         Me.lblTipoContacto.TabIndex = 0
         Me.lblTipoContacto.Text = "Tipo de Contacto:"
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Location = New System.Drawing.Point(264, 81)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 27)
-        Me.cmdCancelar.TabIndex = 1
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Location = New System.Drawing.Point(183, 81)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(75, 27)
-        Me.cmdAceptar.TabIndex = 2
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
         '
         'cmbTipoPersona
         '
@@ -94,7 +70,7 @@ Partial Class frmStbPersonasContactos
         Me.cmbTipoPersona.EditorHeight = 15
         Me.cmbTipoPersona.Images.Add(CType(resources.GetObject("cmbTipoPersona.Images"), System.Drawing.Image))
         Me.cmbTipoPersona.ItemHeight = 15
-        Me.cmbTipoPersona.Location = New System.Drawing.Point(120, 30)
+        Me.cmbTipoPersona.Location = New System.Drawing.Point(128, 22)
         Me.cmbTipoPersona.MatchEntryTimeout = CType(2000, Long)
         Me.cmbTipoPersona.MaxDropDownItems = CType(5, Short)
         Me.cmbTipoPersona.MaxLength = 32767
@@ -110,7 +86,7 @@ Partial Class frmStbPersonasContactos
         '
         'txtValor
         '
-        Me.txtValor.Location = New System.Drawing.Point(120, 55)
+        Me.txtValor.Location = New System.Drawing.Point(128, 47)
         Me.txtValor.Name = "txtValor"
         Me.txtValor.Size = New System.Drawing.Size(219, 20)
         Me.txtValor.TabIndex = 4
@@ -119,44 +95,12 @@ Partial Class frmStbPersonasContactos
         'lblValor
         '
         Me.lblValor.AutoSize = True
-        Me.lblValor.Location = New System.Drawing.Point(18, 60)
+        Me.lblValor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblValor.Location = New System.Drawing.Point(18, 52)
         Me.lblValor.Name = "lblValor"
-        Me.lblValor.Size = New System.Drawing.Size(34, 13)
+        Me.lblValor.Size = New System.Drawing.Size(40, 13)
         Me.lblValor.TabIndex = 5
         Me.lblValor.Text = "Valor:"
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.PictureBox1)
-        Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(360, 24)
-        Me.Panel2.TabIndex = 27
-        Me.Panel2.Tag = "LAYOUT"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(289, 1)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(70, 21)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 28
-        Me.PictureBox1.TabStop = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(663, 6)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(44, 24)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "UM"
         '
         'Panel1
         '
@@ -164,21 +108,45 @@ Partial Class frmStbPersonasContactos
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 115)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(360, 16)
+        Me.Panel1.Size = New System.Drawing.Size(373, 16)
         Me.Panel1.TabIndex = 26
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SimpleButton1.Appearance.Options.UseFont = True
+        Me.SimpleButton1.Image = Global.SIFAC.My.Resources.Resources.Cancel16
+        Me.SimpleButton1.Location = New System.Drawing.Point(272, 81)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
+        Me.SimpleButton1.TabIndex = 28
+        Me.SimpleButton1.Tag = "CANCELAR"
+        Me.SimpleButton1.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = Global.SIFAC.My.Resources.Resources.Guardar16
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(186, 81)
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 27
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Guardar"
         '
         'frmStbPersonasContactos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(360, 131)
-        Me.Controls.Add(Me.Panel2)
+        Me.ClientSize = New System.Drawing.Size(373, 131)
+        Me.Controls.Add(Me.SimpleButton1)
+        Me.Controls.Add(Me.cmdGuardar)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.lblValor)
         Me.Controls.Add(Me.txtValor)
         Me.Controls.Add(Me.cmbTipoPersona)
-        Me.Controls.Add(Me.cmdAceptar)
-        Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.lblTipoContacto)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
@@ -189,23 +157,17 @@ Partial Class frmStbPersonasContactos
         CType(Me.ErrPrv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbTipoPersona, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents ErrPrv As System.Windows.Forms.ErrorProvider
     Friend WithEvents lblTipoContacto As System.Windows.Forms.Label
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents cmbTipoPersona As C1.Win.C1List.C1Combo
     Friend WithEvents lblValor As System.Windows.Forms.Label
     Friend WithEvents txtValor As System.Windows.Forms.MaskedTextBox
     Friend WithEvents BindingSource1 As System.Windows.Forms.BindingSource
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

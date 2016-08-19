@@ -37,83 +37,103 @@ Public Class frmSivProductosEditar
 
     '' Descripción:        Procedimiento encargado de cargar los valores de Marca
     Public Sub CargarMarca()
-        DtMarca = SivMarcas.RetrieveDT("Activa=1")
-        With cbxMarca
-            .DataSource = DtMarca
-            .DisplayMember = "Nombre"
-            .ValueMember = "MarcaID"
-            .Splits(0).DisplayColumns("MarcaID").Visible = False
-            .Splits(0).DisplayColumns("Descripcion").Visible = False
-            .Splits(0).DisplayColumns("Activa").Visible = False
-            .Splits(0).DisplayColumns("FechaCreacion").Visible = False
-            .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
-            .Splits(0).DisplayColumns("FechaModificacion").Visible = False
-            .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
-            .ColumnHeaders = False
-            .ExtendRightColumn = True
-        End With
+        Try
+            DtMarca = SivMarcas.RetrieveDT("Activa=1")
+            With cbxMarca
+                .DataSource = DtMarca
+                .DisplayMember = "Nombre"
+                .ValueMember = "MarcaID"
+                .Splits(0).DisplayColumns("MarcaID").Visible = False
+                .Splits(0).DisplayColumns("Descripcion").Visible = False
+                .Splits(0).DisplayColumns("Activa").Visible = False
+                .Splits(0).DisplayColumns("FechaCreacion").Visible = False
+                .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
+                .Splits(0).DisplayColumns("FechaModificacion").Visible = False
+                .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
+                .ColumnHeaders = False
+                .ExtendRightColumn = True
+            End With
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            DtMarca = Nothing
+        End Try
     End Sub
 
     '' Descripción:        Procedimiento encargado de cargar los valores de Categorias
     Public Sub CargarCategorias()
-        DtCilindraje = SivCategorias.RetrieveDT("Activa=1")
-        With cbxCategoria
-            .DataSource = DtCilindraje
-            .DisplayMember = "Nombre"
-            .ValueMember = "CategoriaID"
-            .Splits(0).DisplayColumns("CategoriaID").Visible = False
-            .Splits(0).DisplayColumns("Descripcion").Visible = False
-            .Splits(0).DisplayColumns("Activa").Visible = False
-            .Splits(0).DisplayColumns("FechaCreacion").Visible = False
-            .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
-            .Splits(0).DisplayColumns("FechaModificacion").Visible = False
-            .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
-            .ColumnHeaders = False
-            .ExtendRightColumn = True
-        End With
+        Try
+            DtCilindraje = SivCategorias.RetrieveDT("Activa=1")
+            With cbxCategoria
+                .DataSource = DtCilindraje
+                .DisplayMember = "Nombre"
+                .ValueMember = "CategoriaID"
+                .Splits(0).DisplayColumns("CategoriaID").Visible = False
+                .Splits(0).DisplayColumns("Descripcion").Visible = False
+                .Splits(0).DisplayColumns("Activa").Visible = False
+                .Splits(0).DisplayColumns("FechaCreacion").Visible = False
+                .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
+                .Splits(0).DisplayColumns("FechaModificacion").Visible = False
+                .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
+                .ColumnHeaders = False
+                .ExtendRightColumn = True
+            End With
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
     '' Descripción:        Procedimiento encargado de configurar la interfaz del formulario
     Public Sub ConfigurarGUI()
-        Select Case TypeGui
-            Case 0
-                Me.Text = "Agregar Producto"
-                chkActivo.Checked = True
-                chkActivo.Enabled = False
-            Case 1
-                CargarDatosProducto()
-                chkActivo.Enabled = True
-            Case 2
-                CargarDatosProducto()
-                spnCantidadMinima.Enabled = False
-                spnCostoPromedio.Enabled = False
-                spnMargenContado.Enabled = False
-                spnMargenCredito.Enabled = False
-                spnPrecioContado.Enabled = False
-                spnPrecioCredito.Enabled = False
-                txtNombre.Enabled = False
-                txtProducto.Enabled = False
-                cbxMarca.Enabled = False
-                cbxCategoria.Enabled = False
-                chkActivo.Enabled = False
-                cmdGuardar.Enabled = False
-        End Select
+        Try
+            Select Case TypeGui
+                Case 0
+                    Me.Text = "Agregar Producto"
+                    chkActivo.Checked = True
+                    chkActivo.Enabled = False
+                Case 1
+                    CargarDatosProducto()
+                    chkActivo.Enabled = True
+                Case 2
+                    CargarDatosProducto()
+                    spnCantidadMinima.Enabled = False
+                    spnCostoPromedio.Enabled = False
+                    spnMargenContado.Enabled = False
+                    spnMargenCredito.Enabled = False
+                    spnPrecioContado.Enabled = False
+                    spnPrecioCredito.Enabled = False
+                    txtNombre.Enabled = False
+                    txtProducto.Enabled = False
+                    cbxMarca.Enabled = False
+                    cbxCategoria.Enabled = False
+                    chkActivo.Enabled = False
+                    cmdGuardar.Enabled = False
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
     '' Descripción:        Procedimiento encargado de cargar la informacion de un producto
     Public Sub CargarDatosProducto()
         Dim objProducto As SivProductos
-        objProducto = New SivProductos
-        objProducto.Retrieve(ProductoID)
-        txtProducto.Text = objProducto.Codigo
-        txtNombre.Text = objProducto.Nombre
-        cbxCategoria.SelectedValue = objProducto.objCategoriaID
-        cbxMarca.SelectedValue = objProducto.objMarcaID
-        chkActivo.Checked = objProducto.Activo
-        spnCantidadMinima.Value = objProducto.Cantidad_Minima
-        spnCostoPromedio.Value = IIf(IsDBNull(objProducto.CostoPromedio), 0.0, objProducto.CostoPromedio)
-        spnMargenContado.Value = IIf(IsDBNull(objProducto.Margen_Utilidad_Contado), 0.0, objProducto.Margen_Utilidad_Contado)
-        spnMargenCredito.Value = IIf(IsDBNull(objProducto.Margen_Utilidad_Credito), 0.0, objProducto.Margen_Utilidad_Credito)
-        spnPrecioContado.Value = IIf(IsDBNull(objProducto.Precio_Contado), 0.0, objProducto.Precio_Contado)
-        spnPrecioCredito.Value = IIf(IsDBNull(objProducto.Precio_Credito), 0.0, objProducto.Precio_Credito)
+        Try
+            objProducto = New SivProductos
+            objProducto.Retrieve(ProductoID)
+            txtProducto.Text = objProducto.Codigo
+            txtNombre.Text = objProducto.Nombre
+            cbxCategoria.SelectedValue = objProducto.objCategoriaID
+            cbxMarca.SelectedValue = objProducto.objMarcaID
+            chkActivo.Checked = objProducto.Activo
+            spnCantidadMinima.Value = objProducto.Cantidad_Minima
+            spnCostoPromedio.Value = IIf(IsDBNull(objProducto.CostoPromedio), 0.0, objProducto.CostoPromedio)
+            spnMargenContado.Value = IIf(IsDBNull(objProducto.Margen_Utilidad_Contado), 0.0, objProducto.Margen_Utilidad_Contado)
+            spnMargenCredito.Value = IIf(IsDBNull(objProducto.Margen_Utilidad_Credito), 0.0, objProducto.Margen_Utilidad_Credito)
+            spnPrecioContado.Value = IIf(IsDBNull(objProducto.Precio_Contado), 0.0, objProducto.Precio_Contado)
+            spnPrecioCredito.Value = IIf(IsDBNull(objProducto.Precio_Credito), 0.0, objProducto.Precio_Credito)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objProducto = Nothing
+        End Try
     End Sub
 
     '' Descripción:        Procedimiento encargado de crear un nuevo registro de producto
@@ -146,6 +166,8 @@ Public Class frmSivProductosEditar
         Catch ex As Exception
             T.RollbackTran()
             clsError.CaptarError(ex)
+        Finally
+            objProducto = Nothing
         End Try
     End Sub
 
@@ -181,6 +203,8 @@ Public Class frmSivProductosEditar
         Catch ex As Exception
             T.RollbackTran()
             clsError.CaptarError(ex)
+        Finally
+            objProducto = Nothing
         End Try
     End Sub
 
@@ -190,34 +214,40 @@ Public Class frmSivProductosEditar
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntrada() As Boolean
         Dim objProductosTemp As SivProductos
-        objProductosTemp = New SivProductos
-        If txtProducto.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(txtProducto, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
-        If objProductosTemp.RetrieveByFilter("Codigo = '" & txtProducto.Text & "'") And TypeGui = 0 Then
-            ErrorProv.SetError(txtProducto, "Codigo debe ser unico")
-            Return False
-            Exit Function
-        End If
-        If objProductosTemp.RetrieveByFilter("Codigo = '" & txtProducto.Text & "' AND SivProductoID <> " & Me.ProductoID) And TypeGui = 1 Then
-            ErrorProv.SetError(txtProducto, "Codigo debe ser unico")
-            Return False
-            Exit Function
-        End If
-        If cbxMarca.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(cbxMarca, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
-        If cbxCategoria.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(cbxCategoria, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
-       
-        Return True
+        Try
+            objProductosTemp = New SivProductos
+            If txtProducto.Text.Trim.Length = 0 Then
+                ErrorProv.SetError(txtProducto, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
+            If objProductosTemp.RetrieveByFilter("Codigo = '" & txtProducto.Text & "'") And TypeGui = 0 Then
+                ErrorProv.SetError(txtProducto, "Codigo debe ser unico")
+                Return False
+                Exit Function
+            End If
+            If objProductosTemp.RetrieveByFilter("Codigo = '" & txtProducto.Text & "' AND SivProductoID <> " & Me.ProductoID) And TypeGui = 1 Then
+                ErrorProv.SetError(txtProducto, "Codigo debe ser unico")
+                Return False
+                Exit Function
+            End If
+            If cbxMarca.Text.Trim.Length = 0 Then
+                ErrorProv.SetError(cbxMarca, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
+            If cbxCategoria.Text.Trim.Length = 0 Then
+                ErrorProv.SetError(cbxCategoria, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
+
+            Return True
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objProductosTemp = Nothing
+        End Try
     End Function
 #End Region
 

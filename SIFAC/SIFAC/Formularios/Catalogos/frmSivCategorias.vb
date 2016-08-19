@@ -17,28 +17,37 @@ Public Class frmSivCategorias
 
     ''Descripción:      Metodo encargado de cargar la informacion de Bodegas registrados en la grilla
     Public Sub CargarGrid()
-        dtCategorias = BO.SivCategorias.RetrieveDT("1=1")
-        dtCategorias.PrimaryKey = New DataColumn() {Me.dtCategorias.Columns("CategoriaID")}
-        dtCategorias.DefaultView.Sort = "CategoriaID"
-        Me.grdCategorias.DataSource = dtCategorias
-        Me.grdCategorias.Text = "Categorias (" & Me.dtCategorias.Rows.Count & ")"
+        Try
+            dtCategorias = BO.SivCategorias.RetrieveDT("1=1")
+            dtCategorias.PrimaryKey = New DataColumn() {Me.dtCategorias.Columns("CategoriaID")}
+            dtCategorias.DefaultView.Sort = "CategoriaID"
+            Me.grdCategorias.DataSource = dtCategorias
+            Me.grdCategorias.Text = "Categorias (" & Me.dtCategorias.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
+        Try
+            objseg.ServicioUsuario = "FRMSIVCATEGORIAS"
+            objseg.Usuario = clsProyecto.Conexion.Usuario
+            boolAgregar = objseg.TienePermiso("AgregarCategoria")
+            boolConsultar = objseg.TienePermiso("ConsultarCategoria")
+            boolEditar = objseg.TienePermiso("EditarCategoria")
+            boolImprimir = objseg.TienePermiso("ImprimirCategoria")
 
-        objseg.ServicioUsuario = "FRMSIVCATEGORIAS"
-        objSeg.Usuario = clsProyecto.Conexion.Usuario
-        boolAgregar = objseg.TienePermiso("AgregarCategoria")
-        boolConsultar = objseg.TienePermiso("ConsultarCategoria")
-        boolEditar = objseg.TienePermiso("EditarCategoria")
-        boolImprimir = objseg.TienePermiso("ImprimirCategoria")
-
-        cmdAgregar.Enabled = boolAgregar
-        cmdEditar.Enabled = boolEditar And dtCategorias.Rows.Count > 0
-        cmdConsultar.Enabled = boolConsultar And dtCategorias.Rows.Count > 0
-        cmdImprimir.Enabled = boolImprimir And dtCategorias.Rows.Count > 0
+            cmdAgregar.Enabled = boolAgregar
+            cmdEditar.Enabled = boolEditar And dtCategorias.Rows.Count > 0
+            cmdConsultar.Enabled = boolConsultar And dtCategorias.Rows.Count > 0
+            cmdImprimir.Enabled = boolImprimir And dtCategorias.Rows.Count > 0
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objseg = Nothing
+        End Try
 
     End Sub
 
@@ -103,6 +112,7 @@ Public Class frmSivCategorias
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
+            editCategoria = Nothing
             Me.Cursor = [Default]
         End Try
     End Sub

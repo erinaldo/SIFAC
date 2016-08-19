@@ -170,8 +170,12 @@ Public Class frmBodegasEditar
 
     '' Descripción:        Procedimiento encargado de configurar la longitud maxima de los controles de entrada de texto
     Public Sub EstablecerPropiedades()
-        txtNombre.MaxLength = StbTienda.GetMaxLength("Nombre")
-        txtCodigo.MaxLength = StbTienda.GetMaxLength("Codigo")
+        Try
+            txtNombre.MaxLength = StbTienda.GetMaxLength("Nombre")
+            txtCodigo.MaxLength = StbTienda.GetMaxLength("Codigo")
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 #End Region
@@ -256,6 +260,8 @@ Public Class frmBodegasEditar
 
         Catch ex As Exception
             clsError.CaptarError(ex)
+        Finally
+            objBodega = Nothing
         End Try
     End Sub
 

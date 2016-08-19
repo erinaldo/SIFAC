@@ -141,10 +141,10 @@ Public Class frmStbPersonasContactos
             Next
             'Introducir datos al datatable respectivo
             Dim intSecuencialContacto As Integer = 1
-            For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
+            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
                 intSecuencialContacto = dr("SecuencialContacto") + 1
             Next
-            frmStbPersonasEditar.dtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
+            frmClientesEdit.dtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
 
             If MsgBox("¿Desea agregar más contactos?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
                 Me.txtValor.Text = ""
@@ -255,7 +255,7 @@ Public Class frmStbPersonasContactos
 #End Region
 
 #Region "Eventos de los Botones"
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
         Select Case frmLLamado
             Case 0
                 Me.GuardarDatos()
@@ -269,7 +269,7 @@ Public Class frmStbPersonasContactos
 
     End Sub
 
-    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
+    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SimpleButton1.Click
         Me.DialogResult = Windows.Forms.DialogResult.Cancel
         Me.Close()
     End Sub

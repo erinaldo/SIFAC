@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmStbPersonasEditar
+Partial Class frmClientesEdit
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,6 +22,15 @@ Partial Class frmStbPersonasEditar
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmClientesEdit))
         Me.grpDatos = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.spnOrdenCobro = New System.Windows.Forms.NumericUpDown()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cmbRuta = New C1.Win.C1List.C1Combo()
+        Me.txtDireccion = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.tabAdicionales = New System.Windows.Forms.TabControl()
         Me.tabContactos = New System.Windows.Forms.TabPage()
@@ -29,26 +38,9 @@ Partial Class frmStbPersonasEditar
         Me.barContactos = New System.Windows.Forms.ToolStrip()
         Me.cmdAgregarContacto = New System.Windows.Forms.ToolStripButton()
         Me.cmdEliminarContacto = New System.Windows.Forms.ToolStripButton()
-        Me.tabPIM = New System.Windows.Forms.TabPage()
-        Me.tdbPIM = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.barPIM = New System.Windows.Forms.ToolStrip()
-        Me.cmdAgregarPIM = New System.Windows.Forms.ToolStripButton()
-        Me.cmdEliminarPIM = New System.Windows.Forms.ToolStripButton()
-        Me.grpPersonaJuridica = New System.Windows.Forms.GroupBox()
-        Me.dtpFechaConstitucion = New C1.Win.C1Input.C1DateEdit()
-        Me.txtRUC = New System.Windows.Forms.MaskedTextBox()
-        Me.txtRazonSocial = New System.Windows.Forms.TextBox()
-        Me.txtSiglasEmpresa = New System.Windows.Forms.TextBox()
-        Me.lblRazonSocial = New System.Windows.Forms.Label()
-        Me.lblFechaConstitucion = New System.Windows.Forms.Label()
-        Me.lblNumeroRUC = New System.Windows.Forms.Label()
-        Me.lblSiglasEmpresa = New System.Windows.Forms.Label()
         Me.grpPersonaNatural = New System.Windows.Forms.GroupBox()
-        Me.txtDireccion = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.chkCedulaNacionalidad = New System.Windows.Forms.CheckBox()
+        Me.cmdBuscar = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.dtpFechaNacimiento = New C1.Win.C1Input.C1DateEdit()
         Me.cmbGenero = New C1.Win.C1List.C1Combo()
         Me.txtCedula = New System.Windows.Forms.MaskedTextBox()
@@ -56,34 +48,29 @@ Partial Class frmStbPersonasEditar
         Me.txtPrimerApellido = New System.Windows.Forms.TextBox()
         Me.txtSegundoNombre = New System.Windows.Forms.TextBox()
         Me.txtPrimerNombre = New System.Windows.Forms.TextBox()
-        Me.txtPrefijoTrato = New System.Windows.Forms.TextBox()
         Me.lblFechaNacimiento = New System.Windows.Forms.Label()
         Me.lblSegundoApellido = New System.Windows.Forms.Label()
         Me.lblGenero = New System.Windows.Forms.Label()
         Me.lblPrimerApellido = New System.Windows.Forms.Label()
         Me.lblPrimerNombre = New System.Windows.Forms.Label()
         Me.lblSegundoNombre = New System.Windows.Forms.Label()
-        Me.lblPrefijoTrato = New System.Windows.Forms.Label()
         Me.ErrPrv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ArchivoDialogo = New System.Windows.Forms.OpenFileDialog()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.panelcliente = New DevExpress.XtraEditors.PanelControl()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
-        Me.chkPersonaJuridica = New System.Windows.Forms.CheckBox()
         Me.grpDatos.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        CType(Me.spnOrdenCobro, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.tabAdicionales.SuspendLayout()
         Me.tabContactos.SuspendLayout()
         CType(Me.tdbContactos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.barContactos.SuspendLayout()
-        Me.tabPIM.SuspendLayout()
-        CType(Me.tdbPIM, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.barPIM.SuspendLayout()
-        Me.grpPersonaJuridica.SuspendLayout()
-        CType(Me.dtpFechaConstitucion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpPersonaNatural.SuspendLayout()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaNacimiento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrPrv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,32 +80,171 @@ Partial Class frmStbPersonasEditar
         '
         'grpDatos
         '
-        Me.grpDatos.Controls.Add(Me.chkPersonaJuridica)
+        Me.grpDatos.Controls.Add(Me.GroupBox2)
         Me.grpDatos.Controls.Add(Me.GroupBox1)
-        Me.grpDatos.Controls.Add(Me.grpPersonaJuridica)
         Me.grpDatos.Controls.Add(Me.grpPersonaNatural)
         Me.grpDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpDatos.Location = New System.Drawing.Point(5, 5)
         Me.grpDatos.Name = "grpDatos"
-        Me.grpDatos.Size = New System.Drawing.Size(820, 414)
+        Me.grpDatos.Size = New System.Drawing.Size(915, 381)
         Me.grpDatos.TabIndex = 0
         Me.grpDatos.TabStop = False
-        Me.grpDatos.Text = "Datos"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.spnOrdenCobro)
+        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.cmbRuta)
+        Me.GroupBox2.Controls.Add(Me.txtDireccion)
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.Label1)
+        Me.GroupBox2.Controls.Add(Me.cmbCiudad)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 250)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(869, 116)
+        Me.GroupBox2.TabIndex = 29
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Ubicacion"
+        '
+        'spnOrdenCobro
+        '
+        Me.spnOrdenCobro.Location = New System.Drawing.Point(650, 47)
+        Me.spnOrdenCobro.Name = "spnOrdenCobro"
+        Me.spnOrdenCobro.Size = New System.Drawing.Size(120, 20)
+        Me.spnOrdenCobro.TabIndex = 24
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(519, 55)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(100, 13)
+        Me.Label5.TabIndex = 23
+        Me.Label5.Text = "Orden de Cobro:"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(519, 24)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(38, 13)
+        Me.Label4.TabIndex = 21
+        Me.Label4.Text = "Ruta:"
+        '
+        'cmbRuta
+        '
+        Me.cmbRuta.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbRuta.AllowColMove = False
+        Me.cmbRuta.AllowSort = False
+        Me.cmbRuta.Caption = ""
+        Me.cmbRuta.CaptionHeight = 17
+        Me.cmbRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbRuta.ColumnCaptionHeight = 17
+        Me.cmbRuta.ColumnFooterHeight = 17
+        Me.cmbRuta.ColumnHeaders = False
+        Me.cmbRuta.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cmbRuta.ContentHeight = 15
+        Me.cmbRuta.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbRuta.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbRuta.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbRuta.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbRuta.EditorHeight = 15
+        Me.cmbRuta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbRuta.Images.Add(CType(resources.GetObject("cmbRuta.Images"), System.Drawing.Image))
+        Me.cmbRuta.ItemHeight = 15
+        Me.cmbRuta.Location = New System.Drawing.Point(650, 19)
+        Me.cmbRuta.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbRuta.MaxDropDownItems = CType(5, Short)
+        Me.cmbRuta.MaxLength = 32767
+        Me.cmbRuta.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbRuta.Name = "cmbRuta"
+        Me.cmbRuta.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbRuta.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbRuta.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbRuta.Size = New System.Drawing.Size(186, 21)
+        Me.cmbRuta.TabIndex = 22
+        Me.cmbRuta.Tag = "OBLIGATORIO"
+        Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")
+        '
+        'txtDireccion
+        '
+        Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDireccion.Location = New System.Drawing.Point(142, 43)
+        Me.txtDireccion.Multiline = True
+        Me.txtDireccion.Name = "txtDireccion"
+        Me.txtDireccion.Size = New System.Drawing.Size(328, 57)
+        Me.txtDireccion.TabIndex = 20
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(2, 55)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(65, 13)
+        Me.Label2.TabIndex = 19
+        Me.Label2.Text = "Direccion:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(2, 24)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(50, 13)
+        Me.Label1.TabIndex = 17
+        Me.Label1.Text = "Ciudad:"
+        '
+        'cmbCiudad
+        '
+        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCiudad.AllowColMove = False
+        Me.cmbCiudad.AllowSort = False
+        Me.cmbCiudad.Caption = ""
+        Me.cmbCiudad.CaptionHeight = 17
+        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCiudad.ColumnCaptionHeight = 17
+        Me.cmbCiudad.ColumnFooterHeight = 17
+        Me.cmbCiudad.ColumnHeaders = False
+        Me.cmbCiudad.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cmbCiudad.ContentHeight = 15
+        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCiudad.EditorHeight = 15
+        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
+        Me.cmbCiudad.ItemHeight = 15
+        Me.cmbCiudad.Location = New System.Drawing.Point(142, 16)
+        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
+        Me.cmbCiudad.MaxLength = 32767
+        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCiudad.Name = "cmbCiudad"
+        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCiudad.Size = New System.Drawing.Size(186, 21)
+        Me.cmbCiudad.TabIndex = 18
+        Me.cmbCiudad.Tag = "OBLIGATORIO"
+        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.tabAdicionales)
-        Me.GroupBox1.Location = New System.Drawing.Point(390, 180)
+        Me.GroupBox1.Location = New System.Drawing.Point(472, 28)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(409, 212)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Empresa"
         '
         'tabAdicionales
         '
         Me.tabAdicionales.Controls.Add(Me.tabContactos)
-        Me.tabAdicionales.Controls.Add(Me.tabPIM)
         Me.tabAdicionales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabAdicionales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabAdicionales.Location = New System.Drawing.Point(3, 16)
@@ -191,201 +317,10 @@ Partial Class frmStbPersonasEditar
         Me.cmdEliminarContacto.Text = "ToolStripButton2"
         Me.cmdEliminarContacto.ToolTipText = "Eliminar Contacto"
         '
-        'tabPIM
-        '
-        Me.tabPIM.Controls.Add(Me.tdbPIM)
-        Me.tabPIM.Controls.Add(Me.barPIM)
-        Me.tabPIM.Location = New System.Drawing.Point(4, 22)
-        Me.tabPIM.Name = "tabPIM"
-        Me.tabPIM.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPIM.Size = New System.Drawing.Size(395, 167)
-        Me.tabPIM.TabIndex = 1
-        Me.tabPIM.Text = "Clasificaciones PIM"
-        Me.tabPIM.UseVisualStyleBackColor = True
-        '
-        'tdbPIM
-        '
-        Me.tdbPIM.AllowArrows = False
-        Me.tdbPIM.AllowColMove = False
-        Me.tdbPIM.AllowColSelect = False
-        Me.tdbPIM.AllowRowSelect = False
-        Me.tdbPIM.AllowUpdate = False
-        Me.tdbPIM.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tdbPIM.ExtendRightColumn = True
-        Me.tdbPIM.GroupByCaption = "Drag a column header here to group by that column"
-        Me.tdbPIM.Images.Add(CType(resources.GetObject("tdbPIM.Images"), System.Drawing.Image))
-        Me.tdbPIM.Location = New System.Drawing.Point(3, 28)
-        Me.tdbPIM.Name = "tdbPIM"
-        Me.tdbPIM.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.tdbPIM.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.tdbPIM.PreviewInfo.ZoomFactor = 75.0R
-        Me.tdbPIM.PrintInfo.PageSettings = CType(resources.GetObject("tdbPIM.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.tdbPIM.Size = New System.Drawing.Size(389, 136)
-        Me.tdbPIM.TabIndex = 1
-        Me.tdbPIM.Text = "C1TrueDBGrid2"
-        Me.tdbPIM.PropBag = resources.GetString("tdbPIM.PropBag")
-        '
-        'barPIM
-        '
-        Me.barPIM.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.barPIM.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregarPIM, Me.cmdEliminarPIM})
-        Me.barPIM.Location = New System.Drawing.Point(3, 3)
-        Me.barPIM.Name = "barPIM"
-        Me.barPIM.Size = New System.Drawing.Size(389, 25)
-        Me.barPIM.TabIndex = 0
-        Me.barPIM.Text = "ToolStrip2"
-        '
-        'cmdAgregarPIM
-        '
-        Me.cmdAgregarPIM.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdAgregarPIM.Image = CType(resources.GetObject("cmdAgregarPIM.Image"), System.Drawing.Image)
-        Me.cmdAgregarPIM.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.cmdAgregarPIM.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdAgregarPIM.Name = "cmdAgregarPIM"
-        Me.cmdAgregarPIM.Size = New System.Drawing.Size(23, 22)
-        Me.cmdAgregarPIM.Text = "ToolStripButton1"
-        Me.cmdAgregarPIM.ToolTipText = "Agregar Clasificación PIM"
-        '
-        'cmdEliminarPIM
-        '
-        Me.cmdEliminarPIM.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdEliminarPIM.Image = CType(resources.GetObject("cmdEliminarPIM.Image"), System.Drawing.Image)
-        Me.cmdEliminarPIM.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.cmdEliminarPIM.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdEliminarPIM.Name = "cmdEliminarPIM"
-        Me.cmdEliminarPIM.Size = New System.Drawing.Size(23, 22)
-        Me.cmdEliminarPIM.Text = "ToolStripButton2"
-        Me.cmdEliminarPIM.ToolTipText = "Eliminar Clasificación PIM"
-        '
-        'grpPersonaJuridica
-        '
-        Me.grpPersonaJuridica.Controls.Add(Me.dtpFechaConstitucion)
-        Me.grpPersonaJuridica.Controls.Add(Me.txtRUC)
-        Me.grpPersonaJuridica.Controls.Add(Me.txtRazonSocial)
-        Me.grpPersonaJuridica.Controls.Add(Me.txtSiglasEmpresa)
-        Me.grpPersonaJuridica.Controls.Add(Me.lblRazonSocial)
-        Me.grpPersonaJuridica.Controls.Add(Me.lblFechaConstitucion)
-        Me.grpPersonaJuridica.Controls.Add(Me.lblNumeroRUC)
-        Me.grpPersonaJuridica.Controls.Add(Me.lblSiglasEmpresa)
-        Me.grpPersonaJuridica.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpPersonaJuridica.Location = New System.Drawing.Point(390, 41)
-        Me.grpPersonaJuridica.Name = "grpPersonaJuridica"
-        Me.grpPersonaJuridica.Size = New System.Drawing.Size(424, 125)
-        Me.grpPersonaJuridica.TabIndex = 3
-        Me.grpPersonaJuridica.TabStop = False
-        Me.grpPersonaJuridica.Text = "Empresa"
-        '
-        'dtpFechaConstitucion
-        '
-        Me.dtpFechaConstitucion.AllowDrop = True
-        Me.dtpFechaConstitucion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        '
-        '
-        '
-        Me.dtpFechaConstitucion.Calendar.AnnuallyBoldedDates = New Date(-1) {}
-        Me.dtpFechaConstitucion.Calendar.BoldedDates = New Date(-1) {}
-        Me.dtpFechaConstitucion.Calendar.ClearText = "&Clear"
-        Me.dtpFechaConstitucion.Calendar.MonthlyBoldedDates = New Date(-1) {}
-        Me.dtpFechaConstitucion.Calendar.SelectedDate = New Date(2016, 8, 17, 0, 0, 0, 0)
-        Me.dtpFechaConstitucion.Calendar.ShowTodayCircle = False
-        Me.dtpFechaConstitucion.Calendar.TodayText = "&Today"
-        Me.dtpFechaConstitucion.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
-        Me.dtpFechaConstitucion.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaConstitucion.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.dtpFechaConstitucion.DropDownFormAlign = C1.Win.C1Input.DropDownFormAlignmentEnum.Right
-        Me.dtpFechaConstitucion.EmptyAsNull = True
-        Me.dtpFechaConstitucion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpFechaConstitucion.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaConstitucion.Location = New System.Drawing.Point(126, 70)
-        Me.dtpFechaConstitucion.Name = "dtpFechaConstitucion"
-        Me.dtpFechaConstitucion.Size = New System.Drawing.Size(226, 20)
-        Me.dtpFechaConstitucion.TabIndex = 17
-        Me.dtpFechaConstitucion.Tag = Nothing
-        Me.dtpFechaConstitucion.TrimStart = True
-        Me.dtpFechaConstitucion.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
-        Me.dtpFechaConstitucion.VisualStyle = C1.Win.C1Input.VisualStyle.System
-        Me.dtpFechaConstitucion.WrapDateTimeFields = False
-        '
-        'txtRUC
-        '
-        Me.txtRUC.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRUC.Location = New System.Drawing.Point(125, 95)
-        Me.txtRUC.Mask = "000000-0000"
-        Me.txtRUC.Name = "txtRUC"
-        Me.txtRUC.Size = New System.Drawing.Size(170, 20)
-        Me.txtRUC.TabIndex = 4
-        '
-        'txtRazonSocial
-        '
-        Me.txtRazonSocial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRazonSocial.Location = New System.Drawing.Point(125, 45)
-        Me.txtRazonSocial.Name = "txtRazonSocial"
-        Me.txtRazonSocial.Size = New System.Drawing.Size(227, 20)
-        Me.txtRazonSocial.TabIndex = 2
-        Me.txtRazonSocial.Tag = "OBLIGATORIO"
-        '
-        'txtSiglasEmpresa
-        '
-        Me.txtSiglasEmpresa.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSiglasEmpresa.Location = New System.Drawing.Point(125, 20)
-        Me.txtSiglasEmpresa.Name = "txtSiglasEmpresa"
-        Me.txtSiglasEmpresa.Size = New System.Drawing.Size(227, 20)
-        Me.txtSiglasEmpresa.TabIndex = 1
-        Me.txtSiglasEmpresa.Tag = "OBLIGATORIO"
-        '
-        'lblRazonSocial
-        '
-        Me.lblRazonSocial.AutoSize = True
-        Me.lblRazonSocial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRazonSocial.Location = New System.Drawing.Point(10, 50)
-        Me.lblRazonSocial.Name = "lblRazonSocial"
-        Me.lblRazonSocial.Size = New System.Drawing.Size(86, 13)
-        Me.lblRazonSocial.TabIndex = 14
-        Me.lblRazonSocial.Tag = "OBLIGATORIO"
-        Me.lblRazonSocial.Text = "Razón Social:"
-        '
-        'lblFechaConstitucion
-        '
-        Me.lblFechaConstitucion.AutoSize = True
-        Me.lblFechaConstitucion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaConstitucion.Location = New System.Drawing.Point(10, 75)
-        Me.lblFechaConstitucion.Name = "lblFechaConstitucion"
-        Me.lblFechaConstitucion.Size = New System.Drawing.Size(138, 13)
-        Me.lblFechaConstitucion.TabIndex = 13
-        Me.lblFechaConstitucion.Text = "Fecha de Constitución:"
-        '
-        'lblNumeroRUC
-        '
-        Me.lblNumeroRUC.AutoSize = True
-        Me.lblNumeroRUC.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNumeroRUC.Location = New System.Drawing.Point(10, 100)
-        Me.lblNumeroRUC.Name = "lblNumeroRUC"
-        Me.lblNumeroRUC.Size = New System.Drawing.Size(84, 13)
-        Me.lblNumeroRUC.TabIndex = 12
-        Me.lblNumeroRUC.Tag = "OBLIGATORIO"
-        Me.lblNumeroRUC.Text = "Número RUC:"
-        '
-        'lblSiglasEmpresa
-        '
-        Me.lblSiglasEmpresa.AutoSize = True
-        Me.lblSiglasEmpresa.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSiglasEmpresa.Location = New System.Drawing.Point(10, 25)
-        Me.lblSiglasEmpresa.Name = "lblSiglasEmpresa"
-        Me.lblSiglasEmpresa.Size = New System.Drawing.Size(97, 13)
-        Me.lblSiglasEmpresa.TabIndex = 11
-        Me.lblSiglasEmpresa.Tag = "OBLIGATORIO"
-        Me.lblSiglasEmpresa.Text = "Siglas Empresa:"
-        '
         'grpPersonaNatural
         '
-        Me.grpPersonaNatural.Controls.Add(Me.txtDireccion)
-        Me.grpPersonaNatural.Controls.Add(Me.Label2)
-        Me.grpPersonaNatural.Controls.Add(Me.cmbCiudad)
-        Me.grpPersonaNatural.Controls.Add(Me.Label1)
-        Me.grpPersonaNatural.Controls.Add(Me.chkCedulaNacionalidad)
+        Me.grpPersonaNatural.Controls.Add(Me.cmdBuscar)
+        Me.grpPersonaNatural.Controls.Add(Me.Label3)
         Me.grpPersonaNatural.Controls.Add(Me.dtpFechaNacimiento)
         Me.grpPersonaNatural.Controls.Add(Me.cmbGenero)
         Me.grpPersonaNatural.Controls.Add(Me.txtCedula)
@@ -393,97 +328,38 @@ Partial Class frmStbPersonasEditar
         Me.grpPersonaNatural.Controls.Add(Me.txtPrimerApellido)
         Me.grpPersonaNatural.Controls.Add(Me.txtSegundoNombre)
         Me.grpPersonaNatural.Controls.Add(Me.txtPrimerNombre)
-        Me.grpPersonaNatural.Controls.Add(Me.txtPrefijoTrato)
         Me.grpPersonaNatural.Controls.Add(Me.lblFechaNacimiento)
         Me.grpPersonaNatural.Controls.Add(Me.lblSegundoApellido)
         Me.grpPersonaNatural.Controls.Add(Me.lblGenero)
         Me.grpPersonaNatural.Controls.Add(Me.lblPrimerApellido)
         Me.grpPersonaNatural.Controls.Add(Me.lblPrimerNombre)
         Me.grpPersonaNatural.Controls.Add(Me.lblSegundoNombre)
-        Me.grpPersonaNatural.Controls.Add(Me.lblPrefijoTrato)
-        Me.grpPersonaNatural.Location = New System.Drawing.Point(16, 38)
+        Me.grpPersonaNatural.Location = New System.Drawing.Point(11, 26)
         Me.grpPersonaNatural.Name = "grpPersonaNatural"
-        Me.grpPersonaNatural.Size = New System.Drawing.Size(368, 360)
+        Me.grpPersonaNatural.Size = New System.Drawing.Size(440, 218)
         Me.grpPersonaNatural.TabIndex = 2
         Me.grpPersonaNatural.TabStop = False
         Me.grpPersonaNatural.Text = "Persona"
         '
-        'txtDireccion
+        'cmdBuscar
         '
-        Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDireccion.Location = New System.Drawing.Point(150, 255)
-        Me.txtDireccion.Multiline = True
-        Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(201, 89)
-        Me.txtDireccion.TabIndex = 20
+        Me.cmdBuscar.Location = New System.Drawing.Point(326, 23)
+        Me.cmdBuscar.Name = "cmdBuscar"
+        Me.cmdBuscar.Size = New System.Drawing.Size(24, 23)
+        Me.cmdBuscar.TabIndex = 22
+        Me.cmdBuscar.Tag = "Buscar Existente"
+        Me.cmdBuscar.Text = "..."
+        Me.cmdBuscar.UseVisualStyleBackColor = True
         '
-        'Label2
+        'Label3
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 267)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 13)
-        Me.Label2.TabIndex = 19
-        Me.Label2.Text = "Direccion:"
-        '
-        'cmbCiudad
-        '
-        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCiudad.AllowColMove = False
-        Me.cmbCiudad.AllowSort = False
-        Me.cmbCiudad.Caption = ""
-        Me.cmbCiudad.CaptionHeight = 17
-        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbCiudad.ColumnCaptionHeight = 17
-        Me.cmbCiudad.ColumnFooterHeight = 17
-        Me.cmbCiudad.ColumnHeaders = False
-        Me.cmbCiudad.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbCiudad.ContentHeight = 15
-        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCiudad.EditorHeight = 15
-        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
-        Me.cmbCiudad.ItemHeight = 15
-        Me.cmbCiudad.Location = New System.Drawing.Point(150, 228)
-        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
-        Me.cmbCiudad.MaxLength = 32767
-        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbCiudad.Name = "cmbCiudad"
-        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.Size = New System.Drawing.Size(186, 21)
-        Me.cmbCiudad.TabIndex = 18
-        Me.cmbCiudad.Tag = "OBLIGATORIO"
-        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(10, 236)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(50, 13)
-        Me.Label1.TabIndex = 17
-        Me.Label1.Text = "Ciudad:"
-        '
-        'chkCedulaNacionalidad
-        '
-        Me.chkCedulaNacionalidad.AutoSize = True
-        Me.chkCedulaNacionalidad.Checked = True
-        Me.chkCedulaNacionalidad.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCedulaNacionalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkCedulaNacionalidad.Location = New System.Drawing.Point(15, 203)
-        Me.chkCedulaNacionalidad.Name = "chkCedulaNacionalidad"
-        Me.chkCedulaNacionalidad.Size = New System.Drawing.Size(123, 17)
-        Me.chkCedulaNacionalidad.TabIndex = 16
-        Me.chkCedulaNacionalidad.Text = "Cédula Nacional:"
-        Me.chkCedulaNacionalidad.UseVisualStyleBackColor = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(11, 184)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(104, 13)
+        Me.Label3.TabIndex = 21
+        Me.Label3.Text = "Cédula Nacional:"
         '
         'dtpFechaNacimiento
         '
@@ -510,7 +386,7 @@ Partial Class frmStbPersonasEditar
         Me.dtpFechaNacimiento.EmptyAsNull = True
         Me.dtpFechaNacimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaNacimiento.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaNacimiento.Location = New System.Drawing.Point(150, 172)
+        Me.dtpFechaNacimiento.Location = New System.Drawing.Point(150, 154)
         Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
         Me.dtpFechaNacimiento.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.dtpFechaNacimiento.Size = New System.Drawing.Size(170, 20)
@@ -541,7 +417,7 @@ Partial Class frmStbPersonasEditar
         Me.cmbGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbGenero.Images.Add(CType(resources.GetObject("cmbGenero.Images"), System.Drawing.Image))
         Me.cmbGenero.ItemHeight = 15
-        Me.cmbGenero.Location = New System.Drawing.Point(150, 145)
+        Me.cmbGenero.Location = New System.Drawing.Point(150, 125)
         Me.cmbGenero.MatchEntryTimeout = CType(2000, Long)
         Me.cmbGenero.MaxDropDownItems = CType(5, Short)
         Me.cmbGenero.MaxLength = 32767
@@ -558,7 +434,7 @@ Partial Class frmStbPersonasEditar
         'txtCedula
         '
         Me.txtCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCedula.Location = New System.Drawing.Point(150, 202)
+        Me.txtCedula.Location = New System.Drawing.Point(150, 181)
         Me.txtCedula.Mask = "000-000000-0000L"
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(170, 20)
@@ -567,7 +443,7 @@ Partial Class frmStbPersonasEditar
         'txtSegundoApellido
         '
         Me.txtSegundoApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSegundoApellido.Location = New System.Drawing.Point(150, 120)
+        Me.txtSegundoApellido.Location = New System.Drawing.Point(150, 98)
         Me.txtSegundoApellido.Name = "txtSegundoApellido"
         Me.txtSegundoApellido.Size = New System.Drawing.Size(170, 20)
         Me.txtSegundoApellido.TabIndex = 5
@@ -575,7 +451,7 @@ Partial Class frmStbPersonasEditar
         'txtPrimerApellido
         '
         Me.txtPrimerApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrimerApellido.Location = New System.Drawing.Point(150, 95)
+        Me.txtPrimerApellido.Location = New System.Drawing.Point(150, 73)
         Me.txtPrimerApellido.Name = "txtPrimerApellido"
         Me.txtPrimerApellido.Size = New System.Drawing.Size(170, 20)
         Me.txtPrimerApellido.TabIndex = 4
@@ -584,7 +460,7 @@ Partial Class frmStbPersonasEditar
         'txtSegundoNombre
         '
         Me.txtSegundoNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSegundoNombre.Location = New System.Drawing.Point(150, 70)
+        Me.txtSegundoNombre.Location = New System.Drawing.Point(150, 48)
         Me.txtSegundoNombre.Name = "txtSegundoNombre"
         Me.txtSegundoNombre.Size = New System.Drawing.Size(170, 20)
         Me.txtSegundoNombre.TabIndex = 3
@@ -592,25 +468,17 @@ Partial Class frmStbPersonasEditar
         'txtPrimerNombre
         '
         Me.txtPrimerNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrimerNombre.Location = New System.Drawing.Point(150, 45)
+        Me.txtPrimerNombre.Location = New System.Drawing.Point(150, 23)
         Me.txtPrimerNombre.Name = "txtPrimerNombre"
         Me.txtPrimerNombre.Size = New System.Drawing.Size(170, 20)
         Me.txtPrimerNombre.TabIndex = 2
         Me.txtPrimerNombre.Tag = "OBLIGATORIO"
         '
-        'txtPrefijoTrato
-        '
-        Me.txtPrefijoTrato.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrefijoTrato.Location = New System.Drawing.Point(150, 20)
-        Me.txtPrefijoTrato.Name = "txtPrefijoTrato"
-        Me.txtPrefijoTrato.Size = New System.Drawing.Size(170, 20)
-        Me.txtPrefijoTrato.TabIndex = 1
-        '
         'lblFechaNacimiento
         '
         Me.lblFechaNacimiento.AutoSize = True
         Me.lblFechaNacimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaNacimiento.Location = New System.Drawing.Point(10, 175)
+        Me.lblFechaNacimiento.Location = New System.Drawing.Point(10, 157)
         Me.lblFechaNacimiento.Name = "lblFechaNacimiento"
         Me.lblFechaNacimiento.Size = New System.Drawing.Size(131, 13)
         Me.lblFechaNacimiento.TabIndex = 14
@@ -620,7 +488,7 @@ Partial Class frmStbPersonasEditar
         '
         Me.lblSegundoApellido.AutoSize = True
         Me.lblSegundoApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSegundoApellido.Location = New System.Drawing.Point(10, 125)
+        Me.lblSegundoApellido.Location = New System.Drawing.Point(10, 103)
         Me.lblSegundoApellido.Name = "lblSegundoApellido"
         Me.lblSegundoApellido.Size = New System.Drawing.Size(110, 13)
         Me.lblSegundoApellido.TabIndex = 12
@@ -630,7 +498,7 @@ Partial Class frmStbPersonasEditar
         '
         Me.lblGenero.AutoSize = True
         Me.lblGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblGenero.Location = New System.Drawing.Point(10, 150)
+        Me.lblGenero.Location = New System.Drawing.Point(10, 130)
         Me.lblGenero.Name = "lblGenero"
         Me.lblGenero.Size = New System.Drawing.Size(52, 13)
         Me.lblGenero.TabIndex = 11
@@ -641,7 +509,7 @@ Partial Class frmStbPersonasEditar
         '
         Me.lblPrimerApellido.AutoSize = True
         Me.lblPrimerApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrimerApellido.Location = New System.Drawing.Point(10, 100)
+        Me.lblPrimerApellido.Location = New System.Drawing.Point(10, 78)
         Me.lblPrimerApellido.Name = "lblPrimerApellido"
         Me.lblPrimerApellido.Size = New System.Drawing.Size(95, 13)
         Me.lblPrimerApellido.TabIndex = 10
@@ -652,7 +520,7 @@ Partial Class frmStbPersonasEditar
         '
         Me.lblPrimerNombre.AutoSize = True
         Me.lblPrimerNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrimerNombre.Location = New System.Drawing.Point(10, 50)
+        Me.lblPrimerNombre.Location = New System.Drawing.Point(10, 28)
         Me.lblPrimerNombre.Name = "lblPrimerNombre"
         Me.lblPrimerNombre.Size = New System.Drawing.Size(93, 13)
         Me.lblPrimerNombre.TabIndex = 9
@@ -663,21 +531,11 @@ Partial Class frmStbPersonasEditar
         '
         Me.lblSegundoNombre.AutoSize = True
         Me.lblSegundoNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSegundoNombre.Location = New System.Drawing.Point(10, 75)
+        Me.lblSegundoNombre.Location = New System.Drawing.Point(10, 53)
         Me.lblSegundoNombre.Name = "lblSegundoNombre"
         Me.lblSegundoNombre.Size = New System.Drawing.Size(108, 13)
         Me.lblSegundoNombre.TabIndex = 8
         Me.lblSegundoNombre.Text = "Segundo Nombre:"
-        '
-        'lblPrefijoTrato
-        '
-        Me.lblPrefijoTrato.AutoSize = True
-        Me.lblPrefijoTrato.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrefijoTrato.Location = New System.Drawing.Point(10, 25)
-        Me.lblPrefijoTrato.Name = "lblPrefijoTrato"
-        Me.lblPrefijoTrato.Size = New System.Drawing.Size(81, 13)
-        Me.lblPrefijoTrato.TabIndex = 7
-        Me.lblPrefijoTrato.Text = "Prefijo Trato:"
         '
         'ErrPrv
         '
@@ -693,22 +551,22 @@ Partial Class frmStbPersonasEditar
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 468)
+        Me.Panel1.Location = New System.Drawing.Point(0, 439)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(859, 16)
+        Me.Panel1.Size = New System.Drawing.Size(931, 16)
         Me.Panel1.TabIndex = 26
         '
         'panelcliente
         '
+        Me.panelcliente.Controls.Add(Me.grpDatos)
         Me.panelcliente.Controls.Add(Me.SimpleButton1)
         Me.panelcliente.Controls.Add(Me.cmdGuardar)
-        Me.panelcliente.Controls.Add(Me.grpDatos)
         Me.panelcliente.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelcliente.Location = New System.Drawing.Point(0, 0)
         Me.panelcliente.LookAndFeel.SkinName = "Blue"
         Me.panelcliente.LookAndFeel.UseDefaultLookAndFeel = False
         Me.panelcliente.Name = "panelcliente"
-        Me.panelcliente.Size = New System.Drawing.Size(859, 484)
+        Me.panelcliente.Size = New System.Drawing.Size(931, 455)
         Me.panelcliente.TabIndex = 27
         '
         'SimpleButton1
@@ -716,7 +574,7 @@ Partial Class frmStbPersonasEditar
         Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SimpleButton1.Appearance.Options.UseFont = True
         Me.SimpleButton1.Image = Global.SIFAC.My.Resources.Resources.Cancel16
-        Me.SimpleButton1.Location = New System.Drawing.Point(753, 425)
+        Me.SimpleButton1.Location = New System.Drawing.Point(844, 401)
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
         Me.SimpleButton1.TabIndex = 5
@@ -729,37 +587,33 @@ Partial Class frmStbPersonasEditar
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = Global.SIFAC.My.Resources.Resources.Guardar16
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(667, 425)
+        Me.cmdGuardar.Location = New System.Drawing.Point(758, 401)
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 4
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
-        'chkPersonaJuridica
-        '
-        Me.chkPersonaJuridica.AutoSize = True
-        Me.chkPersonaJuridica.Location = New System.Drawing.Point(19, 17)
-        Me.chkPersonaJuridica.Name = "chkPersonaJuridica"
-        Me.chkPersonaJuridica.Size = New System.Drawing.Size(122, 17)
-        Me.chkPersonaJuridica.TabIndex = 28
-        Me.chkPersonaJuridica.Text = "Persona Jurídica"
-        Me.chkPersonaJuridica.UseVisualStyleBackColor = True
-        '
-        'frmStbPersonasEditar
+        'frmClientesEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(859, 484)
+        Me.ClientSize = New System.Drawing.Size(931, 455)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.panelcliente)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frmStbPersonasEditar"
+        Me.Name = "frmClientesEdit"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Clientes"
         Me.grpDatos.ResumeLayout(False)
-        Me.grpDatos.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        CType(Me.spnOrdenCobro, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.tabAdicionales.ResumeLayout(False)
         Me.tabContactos.ResumeLayout(False)
@@ -767,17 +621,8 @@ Partial Class frmStbPersonasEditar
         CType(Me.tdbContactos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.barContactos.ResumeLayout(False)
         Me.barContactos.PerformLayout()
-        Me.tabPIM.ResumeLayout(False)
-        Me.tabPIM.PerformLayout()
-        CType(Me.tdbPIM, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.barPIM.ResumeLayout(False)
-        Me.barPIM.PerformLayout()
-        Me.grpPersonaJuridica.ResumeLayout(False)
-        Me.grpPersonaJuridica.PerformLayout()
-        CType(Me.dtpFechaConstitucion, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpPersonaNatural.ResumeLayout(False)
         Me.grpPersonaNatural.PerformLayout()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaNacimiento, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrPrv, System.ComponentModel.ISupportInitialize).EndInit()
@@ -789,45 +634,28 @@ Partial Class frmStbPersonasEditar
     Friend WithEvents grpDatos As System.Windows.Forms.GroupBox
     Friend WithEvents grpPersonaNatural As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents grpPersonaJuridica As System.Windows.Forms.GroupBox
     Friend WithEvents lblPrimerNombre As System.Windows.Forms.Label
     Friend WithEvents lblSegundoNombre As System.Windows.Forms.Label
-    Friend WithEvents lblPrefijoTrato As System.Windows.Forms.Label
     Friend WithEvents lblSegundoApellido As System.Windows.Forms.Label
     Friend WithEvents lblGenero As System.Windows.Forms.Label
     Friend WithEvents lblPrimerApellido As System.Windows.Forms.Label
     Friend WithEvents lblFechaNacimiento As System.Windows.Forms.Label
-    Friend WithEvents lblRazonSocial As System.Windows.Forms.Label
-    Friend WithEvents lblFechaConstitucion As System.Windows.Forms.Label
-    Friend WithEvents lblNumeroRUC As System.Windows.Forms.Label
-    Friend WithEvents lblSiglasEmpresa As System.Windows.Forms.Label
     Friend WithEvents tabAdicionales As System.Windows.Forms.TabControl
     Friend WithEvents tabContactos As System.Windows.Forms.TabPage
-    Friend WithEvents txtPrefijoTrato As System.Windows.Forms.TextBox
     Friend WithEvents txtPrimerNombre As System.Windows.Forms.TextBox
-    Friend WithEvents tabPIM As System.Windows.Forms.TabPage
     Friend WithEvents barContactos As System.Windows.Forms.ToolStrip
     Friend WithEvents cmdAgregarContacto As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdEliminarContacto As System.Windows.Forms.ToolStripButton
-    Friend WithEvents barPIM As System.Windows.Forms.ToolStrip
-    Friend WithEvents cmdAgregarPIM As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cmdEliminarPIM As System.Windows.Forms.ToolStripButton
     Friend WithEvents tdbContactos As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents tdbPIM As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents txtCedula As System.Windows.Forms.MaskedTextBox
     Friend WithEvents txtSegundoApellido As System.Windows.Forms.TextBox
     Friend WithEvents txtPrimerApellido As System.Windows.Forms.TextBox
     Friend WithEvents txtSegundoNombre As System.Windows.Forms.TextBox
-    Friend WithEvents txtRazonSocial As System.Windows.Forms.TextBox
-    Friend WithEvents txtSiglasEmpresa As System.Windows.Forms.TextBox
-    Friend WithEvents txtRUC As System.Windows.Forms.MaskedTextBox
     Friend WithEvents ErrPrv As System.Windows.Forms.ErrorProvider
     Friend WithEvents cmbGenero As C1.Win.C1List.C1Combo
-    Friend WithEvents dtpFechaConstitucion As C1.Win.C1Input.C1DateEdit
     Friend WithEvents ArchivoDialogo As System.Windows.Forms.OpenFileDialog
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Public WithEvents dtpFechaNacimiento As C1.Win.C1Input.C1DateEdit
-    Friend WithEvents chkCedulaNacionalidad As System.Windows.Forms.CheckBox
     Friend WithEvents panelcliente As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtDireccion As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -835,5 +663,11 @@ Partial Class frmStbPersonasEditar
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents chkPersonaJuridica As System.Windows.Forms.CheckBox
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents cmbRuta As C1.Win.C1List.C1Combo
+    Friend WithEvents spnOrdenCobro As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents cmdBuscar As System.Windows.Forms.Button
 End Class

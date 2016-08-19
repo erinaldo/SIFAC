@@ -33,39 +33,48 @@ Public Class frmMarcasEdit
 
 #End Region
 
-
 #Region "Procedimientos del formulario"
 
     '' Descripción:        Procedimiento encargado de configurar la interfaz del formulario
     Public Sub ConfigurarGUI()
-        txtNombreMarca.Focus()
-        Select Case TypeGui
-            Case 0
-                Me.Text = "Agregar Marca"
-                chkActivo.Checked = True
-                chkActivo.Enabled = False
-            Case 1
-                Me.Text = "Editar Marca"
-                CargarDatosMarca()
-                chkActivo.Enabled = True
-            Case 2
-                Me.Text = "Consultar Marca"
-                CargarDatosMarca()
-                txtNombreMarca.Enabled = False
-                txtDescripcion.Enabled = False
-                chkActivo.Enabled = False
-                cmdGuardar.Enabled = False
-        End Select
+        Try
+            txtNombreMarca.Focus()
+            Select Case TypeGui
+                Case 0
+                    Me.Text = "Agregar Marca"
+                    chkActivo.Checked = True
+                    chkActivo.Enabled = False
+                Case 1
+                    Me.Text = "Editar Marca"
+                    CargarDatosMarca()
+                    chkActivo.Enabled = True
+                Case 2
+                    Me.Text = "Consultar Marca"
+                    CargarDatosMarca()
+                    txtNombreMarca.Enabled = False
+                    txtDescripcion.Enabled = False
+                    chkActivo.Enabled = False
+                    cmdGuardar.Enabled = False
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     '' Descripción:        Procedimiento encargado de cargar la informacion de una marca
     Public Sub CargarDatosMarca()
         Dim objMarcas As SivMarcas
-        objMarcas = New SivMarcas
-        objMarcas.Retrieve(MarcaID)
-        txtNombreMarca.Text = objMarcas.Nombre
-        txtDescripcion.Text = objMarcas.Descripcion
-        chkActivo.Checked = objMarcas.Activa
+        Try
+            objMarcas = New SivMarcas
+            objMarcas.Retrieve(MarcaID)
+            txtNombreMarca.Text = objMarcas.Nombre
+            txtDescripcion.Text = objMarcas.Descripcion
+            chkActivo.Checked = objMarcas.Activa
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objMarcas = Nothing
+        End Try
     End Sub
 
     '' Descripción:        Procedimiento encargado de crear un nuevo registro de marca
@@ -88,6 +97,8 @@ Public Class frmMarcasEdit
         Catch ex As Exception
             T.RollbackTran()
             clsError.CaptarError(ex)
+        Finally
+            objMarcas = Nothing
         End Try
     End Sub
 
@@ -114,6 +125,8 @@ Public Class frmMarcasEdit
         Catch ex As Exception
             T.RollbackTran()
             clsError.CaptarError(ex)
+        Finally
+            objMarcas = Nothing
         End Try
     End Sub
 
@@ -123,9 +136,6 @@ Public Class frmMarcasEdit
 
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntrada() As Boolean
-        Dim objProductosTemp As SivProductos
-        objProductosTemp = New SivProductos
-  
         If txtNombreMarca.Text.Trim.Length = 0 Then
             ErrorProv.SetError(txtNombreMarca, My.Resources.MsgObligatorio)
             Return False
@@ -136,7 +146,7 @@ Public Class frmMarcasEdit
             Return False
             Exit Function
         End If
-      
+
         Return True
     End Function
 #End Region

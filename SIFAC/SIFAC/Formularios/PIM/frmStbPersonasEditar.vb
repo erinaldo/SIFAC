@@ -26,8 +26,8 @@ Public Class frmStbPersonasEditar
     Private Sub CargarCombos()
         Try
             'Género
-            frmStbPersonasEditar.dtGenero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "StbValorCatalogo", "objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='GENERO')"))
-            Me.cmbGenero.DataSource = frmStbPersonasEditar.dtGenero
+            frmClientesEdit.dtGenero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "StbValorCatalogo", "objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='GENERO')"))
+            Me.cmbGenero.DataSource = frmClientesEdit.dtGenero
             Me.cmbGenero.DisplayMember = "Descripcion"
             Me.cmbGenero.ValueMember = "StbValorCatalogoID"
             Me.cmbGenero.Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
@@ -112,14 +112,14 @@ Public Class frmStbPersonasEditar
         Me.intTelefonoCliente = 0
 
         'Validar que se haya ingresado al menos la dirección de la persona
-        For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
+        For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
             If dr("TipoEntrada") = "Dirección" Then
                 Me.intResultado = 0
                 Exit For
             End If
         Next
 
-        If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
+        If frmClientesEdit.dtContactos.Rows.Count = 0 Then
             Return 1
             Exit Function
         End If
@@ -141,22 +141,22 @@ Public Class frmStbPersonasEditar
         '1. Se valida que la persona sea Natural
         If Me.chkPersonaJuridica.Checked = False Then Me.intTelefonoCliente = 1
         '2. Se valida que haya un PIM Cliente
-        If Me.intTelefonoCliente = 1 Then
-            For Each dr As DataRow In frmStbPersonasEditar.dtPIM.Rows
-                If dr("TipoPersona") = "Cliente" Then
-                    Me.intTelefonoCliente = 2
-                End If
-            Next
-        End If
+        'If Me.intTelefonoCliente = 1 Then
+        '    For Each dr As DataRow In frmStbPersonasEditar.Rows
+        '        If dr("TipoPersona") = "Cliente" Then
+        '            Me.intTelefonoCliente = 2
+        '        End If
+        '    Next
+        'End If
 
 
         '3. Se valida que haya al menos un teléfono si es cliente
         If Me.intTelefonoCliente = 2 Then
-            If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
+            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
                 Me.intResultado = 2
             End If
 
-            For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
+            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
                 If dr("TipoEntrada").ToString.Trim.Length >= 8 Then
                     If dr("TipoEntrada").ToString.Substring(0, 8) = "Teléfono" Then
                         Return 0
@@ -238,8 +238,8 @@ Public Class frmStbPersonasEditar
 #Region "Habilitar/Deshabilitar"
     Private Sub tdbContactos_AfterFilter(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.FilterEventArgs) Handles tdbContactos.AfterFilter
         Try
-            Me.tdbContactos.Caption = "Contactos (" & frmStbPersonasEditar.dtContactos.DefaultView.Count & ")"
-            If frmStbPersonasEditar.dtContactos.DefaultView.Count = 0 Then
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.DefaultView.Count & ")"
+            If frmClientesEdit.dtContactos.DefaultView.Count = 0 Then
                 Me.cmdEliminarContacto.Enabled = False
             Else
                 Me.cmdEliminarContacto.Enabled = True
@@ -249,18 +249,18 @@ Public Class frmStbPersonasEditar
         End Try
     End Sub
 
-    Private Sub tdbPIM_AfterFilter(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.FilterEventArgs) Handles tdbPIM.AfterFilter
-        Try
-            Me.tdbPIM.Caption = "Clasificaciones (" & frmStbPersonasEditar.dtPIM.DefaultView.Count & ")"
-            If frmStbPersonasEditar.dtPIM.DefaultView.Count = 0 Then
-                Me.cmdEliminarPIM.Enabled = False
-            Else
-                Me.cmdEliminarPIM.Enabled = True
-            End If
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-    End Sub
+    'Private Sub tdbPIM_AfterFilter(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.FilterEventArgs) Handles tdbPIM.AfterFilter
+    '    Try
+    '        Me.tdbPIM.Caption = "Clasificaciones (" & frmStbPersonasEditar.DefaultView.Count & ")"
+    '        If frmStbPersonasEditar.dtPIM.DefaultView.Count = 0 Then
+    '            Me.cmdEliminarPIM.Enabled = False
+    '        Else
+    '            Me.cmdEliminarPIM.Enabled = True
+    '        End If
+    '    Catch ex As Exception
+    '        clsError.CaptarError(ex)
+    '    End Try
+    'End Sub
 
 #End Region
 
@@ -400,7 +400,7 @@ Public Class frmStbPersonasEditar
                         p_Personas(6).Value = Me.txtCedula.Text.Trim
                     End If
 
-                   
+
                     p_Personas(9) = New SqlParameter("@FechaNacimiento", SqlDbType.DateTime)
                     If Me.dtpFechaNacimiento.Text.Trim.Length <> 0 Then
                         p_Personas(9).Value = Me.dtpFechaNacimiento.Value
@@ -453,7 +453,7 @@ Public Class frmStbPersonasEditar
             objClasifica = New StbPersonaClasificacion
 
             'Guardar Contactos
-            For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
+            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
                 objContactos.objPersonaID = IDGenerado
                 objContactos.SecuencialContacto = CInt(dr("SecuencialContacto").ToString)
                 objContactos.objTipoEntradaID = CInt(dr("objTipoEntradaID").ToString)
@@ -609,7 +609,7 @@ Public Class frmStbPersonasEditar
                     Else
                         objPersonas.FechaNacimiento = Nothing
                     End If
-                   
+
             End Select
 
             objPersonas.Update()
@@ -923,11 +923,11 @@ Public Class frmStbPersonasEditar
                     strFiltro = "objPersonaID='" & Me.idpersona & "'"
             End Select
 
-            frmStbPersonasEditar.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", strFiltro))
-            Me.tdbContactos.SetDataBinding(frmStbPersonasEditar.dtContactos, "", True)
-            Me.tdbContactos.Caption = "Contactos (" & frmStbPersonasEditar.dtContactos.Rows.Count & ")"
+            frmClientesEdit.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", strFiltro))
+            Me.tdbContactos.SetDataBinding(frmClientesEdit.dtContactos, "", True)
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
 
-            If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
+            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
                 Me.cmdEliminarContacto.Enabled = False
             Else
                 Me.cmdEliminarContacto.Enabled = True
@@ -947,14 +947,14 @@ Public Class frmStbPersonasEditar
 #Region "Eliminar Contactos"
     Private Sub EliminarContactos()
         If MsgBox(My.Resources.MsgConfirmarEliminar, MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
-            frmStbPersonasEditar.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
+            frmClientesEdit.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
         Else
             Exit Sub
         End If
-        If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
+        If frmClientesEdit.dtContactos.Rows.Count = 0 Then
             Me.cmdEliminarContacto.Enabled = False
         End If
-        Me.tdbContactos.Caption = "Contactos (" & frmStbPersonasEditar.dtContactos.Rows.Count & ")"
+        Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
     End Sub
 #End Region
 
@@ -964,10 +964,10 @@ Public Class frmStbPersonasEditar
         objContactos = New frmStbPersonasContactos
         objContactos.frmLLamado = 0
         objContactos.ShowDialog()
-        If frmStbPersonasEditar.dtContactos.Rows.Count > 0 Then
+        If frmClientesEdit.dtContactos.Rows.Count > 0 Then
             Me.cmdEliminarContacto.Enabled = True
         End If
-        Me.tdbContactos.Caption = "Contactos (" & frmStbPersonasEditar.dtContactos.Rows.Count & ")"
+        Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
     End Sub
 #End Region
 

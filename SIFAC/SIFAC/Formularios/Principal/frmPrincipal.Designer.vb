@@ -42,7 +42,7 @@ Partial Class frmPrincipal
         Me.ToolBarCatalogos = New C1.Win.C1Command.C1ToolBar()
         Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
         Me.cmdCatalogoValor = New C1.Win.C1Command.C1Command()
-        Me.cmdPersonas = New C1.Win.C1Command.C1Command()
+        Me.cmdClientes = New C1.Win.C1Command.C1Command()
         Me.cmdTienda = New C1.Win.C1Command.C1Command()
         Me.cmdProducto = New C1.Win.C1Command.C1Command()
         Me.cmdTasaCambio = New C1.Win.C1Command.C1Command()
@@ -104,14 +104,17 @@ Partial Class frmPrincipal
         Me.cmdSolicitudesDescuento = New C1.Win.C1Command.C1Command()
         Me.cmdMarcas = New C1.Win.C1Command.C1Command()
         Me.cmdBodegas = New C1.Win.C1Command.C1Command()
+        Me.cmdCategorias = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink7 = New C1.Win.C1Command.C1CommandLink()
         Me.linkParametros = New C1.Win.C1Command.C1CommandLink()
+        Me.linkCategorias = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink5 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdLinkDevolucionDeVencidos = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink11 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdRecepcionDeVencidos = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink24 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink13 = New C1.Win.C1Command.C1CommandLink()
         Me.brCartera = New C1.Win.C1Command.C1OutPage()
         Me.ToolBarCartera = New C1.Win.C1Command.C1ToolBar()
         Me.C1CommandLink1 = New C1.Win.C1Command.C1CommandLink()
@@ -184,8 +187,9 @@ Partial Class frmPrincipal
         Me.RibbonSeparator4 = New C1.Win.C1Ribbon.RibbonSeparator()
         Me.lblFecha = New C1.Win.C1Ribbon.RibbonLabel()
         Me.lblHora = New C1.Win.C1Ribbon.RibbonLabel()
-        Me.linkCategorias = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdCategorias = New C1.Win.C1Command.C1Command()
+        Me.cmdDescuento = New C1.Win.C1Command.C1Command()
+        Me.C1CommandLink34 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdRutas = New C1.Win.C1Command.C1Command()
         Me.MenuPrincipal.SuspendLayout()
         CType(Me.OutBarPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.OutBarPrincipal.SuspendLayout()
@@ -337,7 +341,7 @@ Partial Class frmPrincipal
         Me.ToolBarCatalogos.Border.Style = C1.Win.C1Command.BorderStyleEnum.Ridge
         Me.ToolBarCatalogos.ButtonLookVert = CType((C1.Win.C1Command.ButtonLookFlags.Text Or C1.Win.C1Command.ButtonLookFlags.Image), C1.Win.C1Command.ButtonLookFlags)
         Me.ToolBarCatalogos.CommandHolder = Me.C1CommandHolder1
-        Me.ToolBarCatalogos.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink7, Me.linkParametros, Me.linkCategorias, Me.C1CommandLink4, Me.C1CommandLink5, Me.cmdLinkDevolucionDeVencidos, Me.C1CommandLink11, Me.cmdRecepcionDeVencidos, Me.C1CommandLink24})
+        Me.ToolBarCatalogos.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink7, Me.linkParametros, Me.linkCategorias, Me.C1CommandLink4, Me.C1CommandLink5, Me.cmdLinkDevolucionDeVencidos, Me.C1CommandLink34, Me.C1CommandLink11, Me.cmdRecepcionDeVencidos, Me.C1CommandLink24, Me.C1CommandLink13})
         Me.ToolBarCatalogos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarCatalogos.Horizontal = False
         Me.ToolBarCatalogos.Location = New System.Drawing.Point(0, 0)
@@ -351,7 +355,7 @@ Partial Class frmPrincipal
         'C1CommandHolder1
         '
         Me.C1CommandHolder1.Commands.Add(Me.cmdCatalogoValor)
-        Me.C1CommandHolder1.Commands.Add(Me.cmdPersonas)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdClientes)
         Me.C1CommandHolder1.Commands.Add(Me.cmdTienda)
         Me.C1CommandHolder1.Commands.Add(Me.cmdProducto)
         Me.C1CommandHolder1.Commands.Add(Me.cmdTasaCambio)
@@ -414,6 +418,8 @@ Partial Class frmPrincipal
         Me.C1CommandHolder1.Commands.Add(Me.cmdMarcas)
         Me.C1CommandHolder1.Commands.Add(Me.cmdBodegas)
         Me.C1CommandHolder1.Commands.Add(Me.cmdCategorias)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdDescuento)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdRutas)
         Me.C1CommandHolder1.Owner = Me
         '
         'cmdCatalogoValor
@@ -422,11 +428,11 @@ Partial Class frmPrincipal
         Me.cmdCatalogoValor.Name = "cmdCatalogoValor"
         Me.cmdCatalogoValor.Text = "Catalogo-Valor"
         '
-        'cmdPersonas
+        'cmdClientes
         '
-        Me.cmdPersonas.Icon = CType(resources.GetObject("cmdPersonas.Icon"), System.Drawing.Icon)
-        Me.cmdPersonas.Name = "cmdPersonas"
-        Me.cmdPersonas.Text = "Clientes"
+        Me.cmdClientes.Icon = CType(resources.GetObject("cmdClientes.Icon"), System.Drawing.Icon)
+        Me.cmdClientes.Name = "cmdClientes"
+        Me.cmdClientes.Text = "Clientes"
         '
         'cmdTienda
         '
@@ -797,6 +803,11 @@ Partial Class frmPrincipal
         Me.cmdBodegas.Text = "Bodegas"
         Me.cmdBodegas.ToolTipText = "Bodegas"
         '
+        'cmdCategorias
+        '
+        Me.cmdCategorias.Name = "cmdCategorias"
+        Me.cmdCategorias.Text = "Categorias"
+        '
         'C1CommandLink7
         '
         Me.C1CommandLink7.Command = Me.cmdCatalogoValor
@@ -806,6 +817,12 @@ Partial Class frmPrincipal
         '
         Me.linkParametros.Command = Me.cmdParametros
         Me.linkParametros.SortOrder = 1
+        '
+        'linkCategorias
+        '
+        Me.linkCategorias.Command = Me.cmdCategorias
+        Me.linkCategorias.SortOrder = 2
+        Me.linkCategorias.ToolTipText = "Categorias"
         '
         'C1CommandLink4
         '
@@ -826,20 +843,25 @@ Partial Class frmPrincipal
         '
         'C1CommandLink11
         '
-        Me.C1CommandLink11.Command = Me.cmdPersonas
-        Me.C1CommandLink11.SortOrder = 6
+        Me.C1CommandLink11.Command = Me.cmdClientes
+        Me.C1CommandLink11.SortOrder = 7
         Me.C1CommandLink11.ToolTipText = "Personas"
         '
         'cmdRecepcionDeVencidos
         '
         Me.cmdRecepcionDeVencidos.Command = Me.cmdEmpleados
-        Me.cmdRecepcionDeVencidos.SortOrder = 7
+        Me.cmdRecepcionDeVencidos.SortOrder = 8
         Me.cmdRecepcionDeVencidos.ToolTipText = "Empleados"
         '
         'C1CommandLink24
         '
         Me.C1CommandLink24.Command = Me.cmdProveedores
-        Me.C1CommandLink24.SortOrder = 8
+        Me.C1CommandLink24.SortOrder = 9
+        '
+        'C1CommandLink13
+        '
+        Me.C1CommandLink13.Command = Me.cmdDescuento
+        Me.C1CommandLink13.SortOrder = 10
         '
         'brCartera
         '
@@ -1325,16 +1347,22 @@ Partial Class frmPrincipal
         Me.lblHora.SmallImage = CType(resources.GetObject("lblHora.SmallImage"), System.Drawing.Image)
         Me.lblHora.Text = "Hora :"
         '
-        'linkCategorias
+        'cmdDescuento
         '
-        Me.linkCategorias.Command = Me.cmdCategorias
-        Me.linkCategorias.SortOrder = 2
-        Me.linkCategorias.ToolTipText = "Categorias"
+        Me.cmdDescuento.Image = CType(resources.GetObject("cmdDescuento.Image"), System.Drawing.Image)
+        Me.cmdDescuento.Name = "cmdDescuento"
+        Me.cmdDescuento.Text = "Rango de Descuento"
         '
-        'cmdCategorias
+        'C1CommandLink34
         '
-        Me.cmdCategorias.Name = "cmdCategorias"
-        Me.cmdCategorias.Text = "Categorias"
+        Me.C1CommandLink34.Command = Me.cmdRutas
+        Me.C1CommandLink34.SortOrder = 6
+        '
+        'cmdRutas
+        '
+        Me.cmdRutas.Image = CType(resources.GetObject("cmdRutas.Image"), System.Drawing.Image)
+        Me.cmdRutas.Name = "cmdRutas"
+        Me.cmdRutas.Text = "Rutas"
         '
         'frmPrincipal
         '
@@ -1374,7 +1402,7 @@ Partial Class frmPrincipal
     Friend WithEvents OutBarPrincipal As C1.Win.C1Command.C1OutBar
     Friend WithEvents cmdCatalogoValor As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandHolder1 As C1.Win.C1Command.C1CommandHolder
-    Friend WithEvents cmdPersonas As C1.Win.C1Command.C1Command
+    Friend WithEvents cmdClientes As C1.Win.C1Command.C1Command
     Friend WithEvents cmdTienda As C1.Win.C1Command.C1Command
     Friend WithEvents cmdProducto As C1.Win.C1Command.C1Command
     Friend WithEvents cmdTasaCambio As C1.Win.C1Command.C1Command
@@ -1535,4 +1563,8 @@ Partial Class frmPrincipal
     Friend WithEvents C1CommandLink5 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdCategorias As C1.Win.C1Command.C1Command
     Friend WithEvents linkCategorias As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents C1CommandLink13 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdDescuento As C1.Win.C1Command.C1Command
+    Friend WithEvents cmdRutas As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink34 As C1.Win.C1Command.C1CommandLink
 End Class

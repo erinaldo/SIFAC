@@ -44,9 +44,6 @@ Public Class frmPersonaSelector
 
 #Region "Procedimientos"
 
-    '' Autor:              Sergio Ordoñez
-    '' Modificado por:     Gelmin Martínez,(13/05/2010) Agregación de validación cuando el filtro esté vacío
-    '' Fecha de creación:  13/03/2009
     '' Descripción:        Procedimiento encargado de cargar la informacion de personas 
     ''                     de una determinada clasificacion
     Public Sub CargarDatos()
@@ -62,6 +59,10 @@ Public Class frmPersonaSelector
         Me.grdPersonas.SetDataBinding(DtPersonas, "", True)
         Me.grdPersonas.Text = "Personas (" & DtPersonas.Rows.Count & ")"
         Me.grdPersonas.Refresh()
+
+        If Opcion = 1 Then
+            cmdNuevaPersona.Visible = False
+        End If
     End Sub
 
 #End Region
@@ -79,7 +80,7 @@ Public Class frmPersonaSelector
         End If
     End Sub
 
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
         Dim objPersonaID As New Object
         Dim Cantidad As New Object
 
@@ -97,8 +98,14 @@ Public Class frmPersonaSelector
     End Sub
 
     Private Sub frmPersonaSelector_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
-        CargarDatos()
+        Try
+            clsProyecto.CargarTemaDefinido(Me)
+            CargarDatos()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
     End Sub
 
     Private Sub grdPersonas_AfterColUpdate(ByVal sender As Object, ByVal e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles grdPersonas.AfterColUpdate
@@ -112,7 +119,7 @@ Public Class frmPersonaSelector
         End Try
     End Sub
 
-    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
+    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SimpleButton1.Click
         Close()
     End Sub
 #End Region

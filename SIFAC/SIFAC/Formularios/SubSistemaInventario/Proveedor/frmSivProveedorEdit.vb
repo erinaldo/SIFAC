@@ -580,8 +580,8 @@ Public Class frmSivProveedorEdit
     End Sub
 
     Private Sub cmdNuevoProv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNuevoProv.Click
-        Dim objPers As frmStbPersonasEditar
-        objPers = New frmStbPersonasEditar
+        Dim objPers As frmClientesEdit
+        objPers = New frmClientesEdit
 
         Select Case Me.TypeGui
             Case 0
@@ -593,7 +593,6 @@ Public Class frmSivProveedorEdit
                 objPers.TyGui = 3
                 objPers.idpersona = Me.objPersonaId
         End Select
-        objPers.frmLlamado = 6 'Llamado desde proveedores
         If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Me.objPersonaId = objPers.idpersona
             If objPers.idpersona.Length <> 0 Then
@@ -606,11 +605,10 @@ Public Class frmSivProveedorEdit
     Private Sub cmdBuscarProv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdBuscarProv.Click
         'Si estamos en modo consulta entonces mostrar los datos de persona
         If Me.TypeGui = 2 Then
-            Dim objPers As frmStbPersonasEditar
-            objPers = New frmStbPersonasEditar
+            Dim objPers As frmClientesEdit
+            objPers = New frmClientesEdit
             objPers.TyGui = 3
             objPers.idpersona = Me.objPersonaId
-            objPers.frmLlamado = 6 'Llamado desde proveedores
             If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.objPersonaId = objPers.idpersona
                 If objPers.idpersona.Length <> 0 Then
@@ -643,11 +641,10 @@ Public Class frmSivProveedorEdit
                     End If
                 End If
             Case 2
-                Dim objPers As frmStbPersonasEditar
-                objPers = New frmStbPersonasEditar
+                Dim objPers As frmClientesEdit
+                objPers = New frmClientesEdit
                 objPers.TyGui = 3
                 objPers.idpersona = Me.objContactoId
-                objPers.frmLlamado = 7 'Llamado desde CONCTACTO de proveedor
                 If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Me.objContactoId = objPers.idpersona
                     If objPers.idpersona.Length <> 0 Then
@@ -783,8 +780,8 @@ Public Class frmSivProveedorEdit
     End Sub
 
     Private Sub cmdEditarContactoPrincipal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEditarContactoPrincipal.Click
-        Dim objPers As frmStbPersonasEditar
-        objPers = New frmStbPersonasEditar
+        Dim objPers As frmClientesEdit
+        objPers = New frmClientesEdit
 
         Select Case Me.TypeGui
             Case 0, 1
@@ -793,7 +790,6 @@ Public Class frmSivProveedorEdit
                 objPers.TyGui = 3
         End Select
         objPers.idpersona = Me.objContactoId
-        objPers.frmLlamado = 7 'Llamado desde CONCTACTO de proveedor
         If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             Me.objContactoId = objPers.idpersona
             If objPers.idpersona.Length <> 0 Then

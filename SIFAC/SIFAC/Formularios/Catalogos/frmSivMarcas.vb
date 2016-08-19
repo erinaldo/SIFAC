@@ -17,27 +17,35 @@ Public Class frmSivMarcas
 
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
-        dtMarcas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MarcaID,Nombre,Descripcion,Activa", "vwStbMarcas", ))
-        dtMarcas.PrimaryKey = New DataColumn() {Me.dtMarcas.Columns("MarcaID")}
-        dtMarcas.DefaultView.Sort = "MarcaID"
-        Me.grdMarcas.DataSource = dtMarcas
-        Me.grdMarcas.Text = "Marcas (" & Me.dtMarcas.Rows.Count & ")"
+        Try
+            dtMarcas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MarcaID,Nombre,Descripcion,Activa", "vwStbMarcas", ))
+            dtMarcas.PrimaryKey = New DataColumn() {Me.dtMarcas.Columns("MarcaID")}
+            dtMarcas.DefaultView.Sort = "MarcaID"
+            Me.grdMarcas.DataSource = dtMarcas
+            Me.grdMarcas.Text = "Marcas (" & Me.dtMarcas.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 
       Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
+        Try
+            objseg.ServicioUsuario = "FRMSTBMARCA"
+            objseg.Usuario = clsProyecto.Conexion.Usuario
+            boolAgregar = objseg.TienePermiso("AgregarMarca")
+            boolEditar = objseg.TienePermiso("EditarMarca")
+            boolImprimir = objseg.TienePermiso("ImprimirMarca")
 
-        objseg.ServicioUsuario = "FRMSTBMARCA"
-        objSeg.Usuario = clsProyecto.Conexion.Usuario
-        boolAgregar = objseg.TienePermiso("AgregarMarca")
-        boolEditar = objseg.TienePermiso("EditarMarca")
-        boolImprimir = objseg.TienePermiso("ImprimirMarca")
-
-        cmdAgregar.Enabled = boolAgregar
-        cmdEditar.Enabled = boolEditar And dtMarcas.Rows.Count > 0
-        cmdImprimir.Enabled = boolImprimir And dtMarcas.Rows.Count > 0
-
+            cmdAgregar.Enabled = boolAgregar
+            cmdEditar.Enabled = boolEditar And dtMarcas.Rows.Count > 0
+            cmdImprimir.Enabled = boolImprimir And dtMarcas.Rows.Count > 0
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objseg = Nothing
+        End Try
     End Sub
 
 #End Region

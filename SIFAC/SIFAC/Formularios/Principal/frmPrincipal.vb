@@ -49,7 +49,6 @@ Public Class frmPrincipal
 
 #End Region
 
-
 #Region "Metodos de Configuración"
     ''' <summary>
     ''' Este metodo tiene como objetivo inicializar las propiedades con que 
@@ -337,7 +336,7 @@ Public Class frmPrincipal
             End If
 
             'Catálogos
-            Me.cmdPersonas.Enabled = objSeg.TienePermiso("OpcionPersonas")
+            Me.cmdClientes.Enabled = objSeg.TienePermiso("OpcionPersonas")
             Me.cmdTienda.Enabled = objSeg.TienePermiso("OpcionSucursales")
             Me.cmdProducto.Enabled = objSeg.TienePermiso("OpcionProducto")
             Me.cmdTasaCambio.Enabled = objSeg.TienePermiso("OpcionTasaCambio")
@@ -347,6 +346,7 @@ Public Class frmPrincipal
             Me.cmdRepuestos.Enabled = objSeg.TienePermiso("OpcionRepuestos")
             Me.cmdMarcas.Enabled = objSeg.TienePermiso("OpcionMarcas")
             Me.cmdCategorias.Enabled = objSeg.TienePermiso("OpcionCategorias")
+            Me.cmdRutas.Enabled = objSeg.TienePermiso("OpcionRutas")
 
             'Cartera y Cobro
             Me.cmdExpedientes.Enabled = objSeg.TienePermiso("OpcionExpediente")
@@ -356,6 +356,7 @@ Public Class frmPrincipal
             Me.cmdNotasDebito.Enabled = objSeg.TienePermiso("OpcionNotasDebito")
             Me.cmdDevoluciones.Enabled = objSeg.TienePermiso("OpcionDevoluciones")
             Me.cmdTramiteLegal.Enabled = objSeg.TienePermiso("OpcionTramiteLegal")
+            Me.cmdDescuento.Enabled = objSeg.TienePermiso("OpcionDescuentos")
 
             'Reportes cartera
             Me.cmdRptVencCuotas.Enabled = objSeg.TienePermiso("OpcionReporteVencimientoCuotas")
@@ -434,7 +435,7 @@ Public Class frmPrincipal
             ''-- Barra Lateral
             '-- Catálogos
             Me.cmdCatalogoValor.Enabled = False
-            Me.cmdPersonas.Enabled = False
+            Me.cmdClientes.Enabled = False
             Me.cmdTienda.Enabled = False
             Me.cmdProducto.Enabled = False
             Me.cmdTasaCambio.Enabled = False
@@ -551,7 +552,7 @@ Public Class frmPrincipal
 
 #Region "Cargar Personas"
     Private Sub PersonasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.CargarPersonas()
+        Me.CargarClientes()
     End Sub
 #End Region
 
@@ -613,9 +614,21 @@ Public Class frmPrincipal
 
 #Region "Opciones de la Barra Lateral"
 
-#Region "Personas"
-    Private Sub cmdPersonas_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdPersonas.Click
-        Me.CargarPersonas()
+#Region "Rutas"
+    Private Sub cmdRutas_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdRutas.Click
+        Me.CargarRutas()
+    End Sub
+#End Region
+
+#Region "Descuentos"
+    Private Sub cmdDescuento_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdDescuento.Click
+        Me.CargarDescuentos()
+    End Sub
+#End Region
+
+#Region "Clientes"
+    Private Sub cmdPersonas_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdClientes.Click
+        Me.CargarClientes()
     End Sub
 #End Region
 
@@ -858,23 +871,42 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
-#Region "Cargar Catálogo de Personas - PIM"
-    '----------------------------------------------------------------------------------
-    '-- Nombre del Autor        :   Róger Alberto Gutiérrez Mejía
-    '-- Fecha de Elaboración    :   11 de Febrero de 2009
-    '-- Descripcion             :   Cargar la pantalla principal de catálogo de personas - PIM
-    '----------------------------------------------------------------------------------
-    Private Sub CargarPersonas()
-        Dim objPersonas As frmStbPersonas
+#Region "Cargar Rutas"
+
+    Private Sub CargarRutas()
+        Dim objfrm As frmStbRutas
         Try
             '-- Instanciar
             Me.Cursor = Cursors.WaitCursor
-            If Not clsProyecto.MostrarFormulario("frmStbPersonas", Me) Then
-                objPersonas = New frmStbPersonas
-                objPersonas.Width = Me.Width - Me.OutBarPrincipal.Width
-                objPersonas.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                objPersonas.MdiParent = Me
-                objPersonas.Show()
+            If Not clsProyecto.MostrarFormulario("frmStbRutas", Me) Then
+                objfrm = New frmStbRutas
+                objfrm.Width = Me.Width - Me.OutBarPrincipal.Width
+                objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                objfrm.MdiParent = Me
+                objfrm.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+#End Region
+
+#Region "Cargar Catálogo de Clientes"
+    '-- Descripcion             :   Cargar la pantalla principal de catálogo de Clientes
+    '----------------------------------------------------------------------------------
+    Private Sub CargarClientes()
+        Dim objClientes As frmSccClientes
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmSccClientes", Me) Then
+                objClientes = New frmSccClientes
+                objClientes.Width = Me.Width - Me.OutBarPrincipal.Width
+                objClientes.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                objClientes.MdiParent = Me
+                objClientes.Show()
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -1074,8 +1106,6 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
-
-
 #Region "Cargar Cuentas"
     Private Sub CargarCuentas()
         Dim objCuentas As frmSccCuentas
@@ -1099,6 +1129,28 @@ Public Class frmPrincipal
 
     Private Sub cmdExpedientes_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdExpedientes.Click
         Call Me.CargarCuentas()
+    End Sub
+#End Region
+
+#Region "Cargar Configuracion de Descuentos"
+
+    Private Sub CargarDescuentos()
+        Dim objfrm As frmSccDescuento
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmSccDescuento", Me) Then
+                objfrm = New frmSccDescuento
+                objfrm.Width = Me.Width - Me.OutBarPrincipal.Width
+                objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                objfrm.MdiParent = Me
+                objfrm.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
     End Sub
 #End Region
 
@@ -1826,4 +1878,6 @@ Public Class frmPrincipal
 
    
    
+ 
+ 
 End Class

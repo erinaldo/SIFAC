@@ -700,20 +700,11 @@ Public Class frmSccCuentasEditar
 
 #Region "Consultar Datos de"
     Private Sub Consultar(ByVal IntOpcion As Integer, ByVal IDPersona As String)
-        Dim objPersonas As frmStbPersonasEditar
+        Dim objPersonas As frmClientesEdit
         Try
             Me.Cursor = WaitCursor
-            objPersonas = New frmStbPersonasEditar
+            objPersonas = New frmClientesEdit
             objPersonas.TyGui = 3
-
-            Select Case IntOpcion
-                Case 0
-                    objPersonas.frmLlamado = 4
-                Case 1
-                    objPersonas.frmLlamado = 5
-            End Select
-
-
             objPersonas.idpersona = IDPersona
             objPersonas.ShowDialog(Me)
         Catch ex As Exception

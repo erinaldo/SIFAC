@@ -158,16 +158,11 @@ Public Class frmStbPersonas
 
 #Region "Agregar"
     Private Sub Agregar()
-        Dim objPersonas As frmStbPersonasEditar
+        Dim objPersonas As frmClientesEdit
         Try
             Me.Cursor = WaitCursor
-            objPersonas = New frmStbPersonasEditar
+            objPersonas = New frmClientesEdit
             objPersonas.TyGui = 1
-            If Me.tbcPersonas.SelectedIndex = 0 Then
-                objPersonas.frmLlamado = 4
-            Else
-                objPersonas.frmLlamado = 5
-            End If
             If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 If Me.tbcPersonas.SelectedIndex = 0 Then
                     CargarGridClientes()
@@ -189,18 +184,13 @@ Public Class frmStbPersonas
 
 #Region "Editar"
     Private Sub Editar()
-        Dim objPersonas As frmStbPersonasEditar
+        Dim objPersonas As frmClientesEdit
         Try
             Me.Cursor = WaitCursor
-            objPersonas = New frmStbPersonasEditar
+            objPersonas = New frmClientesEdit
             objPersonas.TyGui = 2
-            If Me.tbcPersonas.SelectedIndex = 0 Then
-                objPersonas.frmLlamado = 4
-                objPersonas.idpersona = Me.dtCliente.DefaultView(Me.tdgCliente.Row).Item("StbPersonaID")
-            Else
-                objPersonas.frmLlamado = 5
-                objPersonas.idpersona = Me.dtFiador.DefaultView(Me.tdgFiador.Row).Item("StbPersonaID")
-            End If
+            objPersonas.idpersona = Me.dtCliente.DefaultView(Me.tdgCliente.Row).Item("StbPersonaID")
+
             If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 If Me.tbcPersonas.SelectedIndex = 0 Then
                     CargarGridClientes()
@@ -222,20 +212,12 @@ Public Class frmStbPersonas
 
 #Region "Consultar"
     Private Sub Consultar()
-        Dim objPersonas As frmStbPersonasEditar
+        Dim objPersonas As frmClientesEdit
         Try
             Me.Cursor = WaitCursor
-            objPersonas = New frmStbPersonasEditar
+            objPersonas = New frmClientesEdit
             objPersonas.TyGui = 3
-
-            If Me.tbcPersonas.SelectedIndex = 0 Then
-                objPersonas.frmLlamado = 4
-                objPersonas.idpersona = Me.dtCliente.DefaultView(Me.tdgCliente.Row).Item("StbPersonaID")
-            Else
-                objPersonas.frmLlamado = 5
-                objPersonas.idpersona = Me.dtFiador.DefaultView(Me.tdgFiador.Row).Item("StbPersonaID")
-            End If
-
+            objPersonas.idpersona = Me.dtCliente.DefaultView(Me.tdgCliente.Row).Item("StbPersonaID")
             objPersonas.ShowDialog(Me)
         Catch ex As Exception
             clsError.CaptarError(ex)

@@ -19,17 +19,17 @@ Partial Class frmStbPersonasTipoPersonas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbPersonasTipoPersonas))
-        Me.lblClasificacion = New System.Windows.Forms.Label
-        Me.cmbTipoPersona = New C1.Win.C1List.C1Combo
+        Me.lblClasificacion = New System.Windows.Forms.Label()
+        Me.cmbTipoPersona = New C1.Win.C1List.C1Combo()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.cmdCancelar = New System.Windows.Forms.Button()
+        Me.cmdAceptar = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.cmbTipoPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()

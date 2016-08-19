@@ -17,32 +17,42 @@ Public Class frmSivProductos
 
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
-        DtProductos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Codigo,Nombre,Marca,Categoria,Activo", "vwStbProductos", ))
-        DtProductos.PrimaryKey = New DataColumn() {Me.DtProductos.Columns("SivProductoID")}
-        DtProductos.DefaultView.Sort = "SivProductoID"
-        Me.grdProductos.DataSource = DtProductos
-        Me.grdProductos.Text = "Productos (" & Me.DtProductos.Rows.Count & ")"
-
+        Try
+            DtProductos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Codigo,Nombre,Marca,Categoria,Activo", "vwStbProductos", ))
+            DtProductos.PrimaryKey = New DataColumn() {Me.DtProductos.Columns("SivProductoID")}
+            DtProductos.DefaultView.Sort = "SivProductoID"
+            Me.grdProductos.DataSource = DtProductos
+            Me.grdProductos.Text = "Productos (" & Me.DtProductos.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
     End Sub
 
     ''Descripción:      Metodo encargado de aplicar la seguridad al formulario
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
+        Try
+            objSeg.ServicioUsuario = "FRMSTBPRODUCTO"
+            objSeg.Usuario = clsProyecto.Conexion.Usuario
+            boolAgregar = objSeg.TienePermiso("AGREGARPRODUCTO")
+            boolEditar = objSeg.TienePermiso("EDITARPRODUCTO")
+            boolConsultar = objSeg.TienePermiso("CONSULTARPRODUCTO")
+            boolDesactivar = objSeg.TienePermiso("INACTIVARPRODUCTO")
+            boolImprimir = objSeg.TienePermiso("IMPRIMIRPRODUCTO")
 
-        objSeg.ServicioUsuario = "FRMSTBPRODUCTO"
-        objSeg.Usuario = clsProyecto.Conexion.Usuario
-        boolAgregar = objSeg.TienePermiso("AGREGARPRODUCTO")
-        boolEditar = objSeg.TienePermiso("EDITARPRODUCTO")
-        boolConsultar = objSeg.TienePermiso("CONSULTARPRODUCTO")
-        boolDesactivar = objSeg.TienePermiso("INACTIVARPRODUCTO")
-        boolImprimir = objSeg.TienePermiso("IMPRIMIRPRODUCTO")
-
-        cmdAgregar.Enabled = boolAgregar
-        cmdEditar.Enabled = boolEditar And DtProductos.Rows.Count > 0
-        cmdConsultar.Enabled = boolConsultar And DtProductos.Rows.Count > 0
-        cmdDesactivar.Enabled = boolDesactivar And DtProductos.Rows.Count > 0
-        cmdImprimir.Enabled = boolImprimir And DtProductos.Rows.Count > 0
-
+            cmdAgregar.Enabled = boolAgregar
+            cmdEditar.Enabled = boolEditar And DtProductos.Rows.Count > 0
+            cmdConsultar.Enabled = boolConsultar And DtProductos.Rows.Count > 0
+            cmdDesactivar.Enabled = boolDesactivar And DtProductos.Rows.Count > 0
+            cmdImprimir.Enabled = boolImprimir And DtProductos.Rows.Count > 0
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objSeg = Nothing
+            Me.Cursor = [Default]
+        End Try
     End Sub
 
 #End Region
@@ -75,6 +85,7 @@ Public Class frmSivProductos
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
+            editProducto = Nothing
             Me.Cursor = [Default]
         End Try
     End Sub
@@ -95,6 +106,7 @@ Public Class frmSivProductos
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
+            editProducto = Nothing
             Me.Cursor = [Default]
         End Try
     End Sub
@@ -112,6 +124,7 @@ Public Class frmSivProductos
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
+            editProducto = Nothing
             Me.Cursor = [Default]
         End Try
     End Sub
@@ -140,38 +153,52 @@ Public Class frmSivProductos
         Dim objRptProducto As rptProducto
         Dim objImpresion As frmOpcionesImpresion
         objImpresion = New frmOpcionesImpresion
-        If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            objRptProducto = New rptProducto
-            objRptProducto.DataSource = Me.DtProductos
-            Select Case objImpresion.Seleccion
-                Case 1
-                    clsProyecto.ImprimirEnPantalla(objRptProducto)
-                Case 2
-                    clsProyecto.ImprimirEnImpresora(objRptProducto, True)
-                Case 3
-                    clsProyecto.ImprimirEnArchivo(objRptProducto, Me)
-            End Select
-        End If
+        Try
+            If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                objRptProducto = New rptProducto
+                objRptProducto.DataSource = Me.DtProductos
+                Select Case objImpresion.Seleccion
+                    Case 1
+                        clsProyecto.ImprimirEnPantalla(objRptProducto)
+                    Case 2
+                        clsProyecto.ImprimirEnImpresora(objRptProducto, True)
+                    Case 3
+                        clsProyecto.ImprimirEnArchivo(objRptProducto, Me)
+                End Select
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objRptProducto = Nothing
+            objImpresion = Nothing
+            Me.Cursor = [Default]
+        End Try
     End Sub
 
     Private Sub cmdDesactivar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDesactivar.Click
         Dim IDProducto As Integer
         Dim Producto As New SivProductos
         Dim FilaActual As Integer
-        FilaActual = Me.grdProductosTabla.FocusedRowHandle
-        Select Case MsgBox("¿Está seguro de Inactivar Producto?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
-            Case MsgBoxResult.Yes
-                IDProducto = Me.DtProductos.DefaultView.Item(FilaActual)("SivProductoID")
-                Producto.Retrieve(IDProducto)
-                Producto.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                Producto.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                Producto.Activo = False
-                Producto.Update()
-                CargarGrid()
-            Case MsgBoxResult.No
-                Exit Sub
-        End Select
-
+        Try
+            FilaActual = Me.grdProductosTabla.FocusedRowHandle
+            Select Case MsgBox("¿Está seguro de Inactivar Producto?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
+                Case MsgBoxResult.Yes
+                    IDProducto = Me.DtProductos.DefaultView.Item(FilaActual)("SivProductoID")
+                    Producto.Retrieve(IDProducto)
+                    Producto.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    Producto.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    Producto.Activo = False
+                    Producto.Update()
+                    CargarGrid()
+                Case MsgBoxResult.No
+                    Exit Sub
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Producto = Nothing
+            Me.Cursor = [Default]
+        End Try
     End Sub
 
 #End Region

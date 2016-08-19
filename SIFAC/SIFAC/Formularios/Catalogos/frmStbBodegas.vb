@@ -18,29 +18,37 @@ Public Class frmStbBodegas
 
     ''Descripción:      Metodo encargado de cargar la informacion de Bodegas registrados en la grilla
     Public Sub CargarGrid()
-        dtBodegas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbBodegaID,Bodega,Codigo,Activo,Ciudad,Jefe", "vwBodegas", ))
-        dtBodegas.PrimaryKey = New DataColumn() {Me.dtBodegas.Columns("StbBodegaID")}
-        dtBodegas.DefaultView.Sort = "StbBodegaID"
-        Me.grdBodegas.DataSource = dtBodegas
-        Me.grdBodegas.Text = "Bodegas (" & Me.dtBodegas.Rows.Count & ")"
+        Try
+            dtBodegas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbBodegaID,Bodega,Codigo,Activo,Ciudad,Jefe", "vwBodegas", ))
+            dtBodegas.PrimaryKey = New DataColumn() {Me.dtBodegas.Columns("StbBodegaID")}
+            dtBodegas.DefaultView.Sort = "StbBodegaID"
+            Me.grdBodegas.DataSource = dtBodegas
+            Me.grdBodegas.Text = "Bodegas (" & Me.dtBodegas.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
+        Try
+            objseg.ServicioUsuario = "FRMSTBBODEGAS"
+            objseg.Usuario = clsProyecto.Conexion.Usuario
+            boolAgregar = objseg.TienePermiso("AgregarBodega")
+            boolConsultar = objseg.TienePermiso("ConsultarBodega")
+            boolEditar = objseg.TienePermiso("EditarBodega")
+            boolImprimir = objseg.TienePermiso("ImprimirBodegas")
 
-        objseg.ServicioUsuario = "FRMSTBBODEGAS"
-        objSeg.Usuario = clsProyecto.Conexion.Usuario
-        boolAgregar = objseg.TienePermiso("AgregarBodega")
-        boolConsultar = objseg.TienePermiso("ConsultarBodega")
-        boolEditar = objseg.TienePermiso("EditarBodega")
-        boolImprimir = objseg.TienePermiso("ImprimirBodegas")
-
-        cmdAgregar.Enabled = boolAgregar
-        cmdEditar.Enabled = boolEditar And dtBodegas.Rows.Count > 0
-        cmdConsultar.Enabled = boolConsultar And dtBodegas.Rows.Count > 0
-        cmdImprimir.Enabled = boolImprimir And dtBodegas.Rows.Count > 0
-
+            cmdAgregar.Enabled = boolAgregar
+            cmdEditar.Enabled = boolEditar And dtBodegas.Rows.Count > 0
+            cmdConsultar.Enabled = boolConsultar And dtBodegas.Rows.Count > 0
+            cmdImprimir.Enabled = boolImprimir And dtBodegas.Rows.Count > 0
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objseg = Nothing
+        End Try
     End Sub
 
 #End Region

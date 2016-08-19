@@ -38,33 +38,43 @@ Public Class frmSivCategoriasEditar
 
     '' Descripción:        Procedimiento encargado de configurar la interfaz del formulario
     Public Sub ConfigurarGUI()
-        Select Case TypeGui
-            Case 0
-                Me.Text = "Agregar Categoria"
-                chkActivo.Checked = True
-                chkActivo.Enabled = False
-            Case 1
-                Me.Text = "Editar Categoria"
-                CargarDatosCategoria()
-                chkActivo.Enabled = True
-            Case 2
-                Me.Text = "Consultar Categoria"
-                CargarDatosCategoria()
-                txtNombre.Enabled = False
-                txtDescripcion.Enabled = False
-                chkActivo.Enabled = False
-                cmdGuardar.Enabled = False
-        End Select
+        Try
+            Select Case TypeGui
+                Case 0
+                    Me.Text = "Agregar Categoria"
+                    chkActivo.Checked = True
+                    chkActivo.Enabled = False
+                Case 1
+                    Me.Text = "Editar Categoria"
+                    CargarDatosCategoria()
+                    chkActivo.Enabled = True
+                Case 2
+                    Me.Text = "Consultar Categoria"
+                    CargarDatosCategoria()
+                    txtNombre.Enabled = False
+                    txtDescripcion.Enabled = False
+                    chkActivo.Enabled = False
+                    cmdGuardar.Enabled = False
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     '' Descripción:        Procedimiento encargado de cargar la informacion de una marca
     Public Sub CargarDatosCategoria()
         Dim objCategorias As SivCategorias
-        objCategorias = New SivCategorias
-        objCategorias.Retrieve(CategoriaID)
-        txtNombre.Text = objCategorias.Nombre
-        txtDescripcion.Text = objCategorias.Descripcion
-        chkActivo.Checked = objCategorias.Activa
+        Try
+            objCategorias = New SivCategorias
+            objCategorias.Retrieve(CategoriaID)
+            txtNombre.Text = objCategorias.Nombre
+            txtDescripcion.Text = objCategorias.Descripcion
+            chkActivo.Checked = objCategorias.Activa
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objCategorias = Nothing
+        End Try
     End Sub
 
     '' Descripción:        Procedimiento encargado de crear un nuevo registro de marca
@@ -87,6 +97,8 @@ Public Class frmSivCategoriasEditar
         Catch ex As Exception
             T.RollbackTran()
             clsError.CaptarError(ex)
+        Finally
+            objCategorias = Nothing
         End Try
     End Sub
 
@@ -113,6 +125,8 @@ Public Class frmSivCategoriasEditar
         Catch ex As Exception
             T.RollbackTran()
             clsError.CaptarError(ex)
+        Finally
+            objCategorias = Nothing
         End Try
     End Sub
 
@@ -122,9 +136,6 @@ Public Class frmSivCategoriasEditar
 
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntrada() As Boolean
-        Dim objProductosTemp As SivProductos
-        objProductosTemp = New SivProductos
-
         If txtNombre.Text.Trim.Length = 0 Then
             ErrorProv.SetError(txtNombre, My.Resources.MsgObligatorio)
             Return False
