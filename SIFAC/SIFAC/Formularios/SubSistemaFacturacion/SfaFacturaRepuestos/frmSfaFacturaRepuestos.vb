@@ -144,8 +144,8 @@ Public Class frmSfaFacturaRepuestos
     Private Sub CargarFacturas(ByVal strFiltro As String)
         Try
 
-            dtFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SfaFacturaID, Numero,objSccClienteID,TotalDolares, SolicAutorDescuento, SolicitudDescuento, AutorizaDescuento, Fecha, Estado, Vendedor, Cliente, Anulada, OrdenCompra,objEstadoID", "vwSfaFacturaMaster", strFiltro & " ORDER BY Numero DESC"), Me.SqlParametros)
-            dtDetalleFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objFacturaRepuestoID,objRepuestoID, Cantidad, Precio, Subtotal, Descuento, Impuesto, Total, DescripcionCorta,Fecha", "vwSafaFacturaDetalle", strFiltro), Me.SqlParametros)
+            dtFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SfaFacturaID, Numero,objSccClienteID,TotalDolares, Fecha, Estado, Vendedor, Cliente, Anulada,objEstadoID", "vwSfaFacturaMaster", strFiltro & " ORDER BY Numero DESC"), Me.SqlParametros)
+            dtDetalleFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSfaFacturaID,objSivProductoID, Cantidad, Precio, Subtotal, Descuento, Impuesto, Total, Producto,Fecha", "vwSafaFacturaDetalle", strFiltro), Me.SqlParametros)
 
             dsFactura = New DataSet
 
@@ -155,7 +155,7 @@ Public Class frmSfaFacturaRepuestos
             dsFactura.Merge(dtDetalleFactura)
             dsFactura.Tables(1).TableName = "SfaFacturaDetalle"
 
-            dsFactura.Relations.Add("SfaFactura_SfaFacturaDetalle", dsFactura.Tables(0).Columns("SfaFacturaRepuestoID"), dsFactura.Tables(1).Columns("objFacturaRepuestoID"), False)
+            dsFactura.Relations.Add("SfaFactura_SfaFacturaDetalle", dsFactura.Tables(0).Columns("SfaFacturaID"), dsFactura.Tables(1).Columns("objSfaFacturaID"), False)
 
             Me.grdFacturaMaster.DataSource = dsFactura
             Me.grdFacturaMaster.DataMember = "SfaFactura"

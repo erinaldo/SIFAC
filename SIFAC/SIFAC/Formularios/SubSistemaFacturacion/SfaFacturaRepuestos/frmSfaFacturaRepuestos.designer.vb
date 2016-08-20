@@ -20,39 +20,37 @@ Partial Class frmSfaFacturaRepuestos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaFacturaRepuestos))
-        Me.barFacturaRepuesto = New System.Windows.Forms.ToolStrip
-        Me.cmdAgregar = New System.Windows.Forms.ToolStripSplitButton
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.AgregaDesdeCotizaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.cmdProcesar = New System.Windows.Forms.ToolStripButton
-        Me.cmdAnular = New System.Windows.Forms.ToolStripButton
-        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton
-        Me.cmdBuscar = New System.Windows.Forms.ToolStripButton
-        Me.cmdImprimir = New System.Windows.Forms.ToolStripButton
-        Me.cmdActualizar = New System.Windows.Forms.ToolStripButton
-        Me.cmdSalir = New System.Windows.Forms.ToolStripButton
-        Me.Contenedor = New C1.Win.C1Sizer.C1Sizer
-        Me.grdFacturaDetalle = New DevExpress.XtraGrid.GridControl
-        Me.grdFacturaDetalleTable = New DevExpress.XtraGrid.Views.Grid.GridView
-        Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colCantidad = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colPrecio = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colSubTotal = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colDesc = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colIVA = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colTotalDetalle = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.grdFacturaMaster = New DevExpress.XtraGrid.GridControl
-        Me.grdFacturaMasterTabla = New DevExpress.XtraGrid.Views.Grid.GridView
-        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colVendedor = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colSolicitud = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colDescAutorizado = New DevExpress.XtraGrid.Columns.GridColumn
-        Me.colAnulada = New DevExpress.XtraGrid.Columns.GridColumn
+        Me.barFacturaRepuesto = New System.Windows.Forms.ToolStrip()
+        Me.cmdAgregar = New System.Windows.Forms.ToolStripSplitButton()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgregaDesdeCotizaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cmdProcesar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdAnular = New System.Windows.Forms.ToolStripButton()
+        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdBuscar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
+        Me.cmdActualizar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
+        Me.Contenedor = New C1.Win.C1Sizer.C1Sizer()
+        Me.grdFacturaDetalle = New DevExpress.XtraGrid.GridControl()
+        Me.grdFacturaDetalleTable = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCantidad = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colPrecio = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSubTotal = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDesc = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colIVA = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colTotalDetalle = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.grdFacturaMaster = New DevExpress.XtraGrid.GridControl()
+        Me.grdFacturaMasterTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colVendedor = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colAnulada = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.barFacturaRepuesto.SuspendLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contenedor.SuspendLayout()
@@ -68,7 +66,7 @@ Partial Class frmSfaFacturaRepuestos
         Me.barFacturaRepuesto.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdProcesar, Me.cmdAnular, Me.cmdConsultar, Me.cmdBuscar, Me.cmdImprimir, Me.cmdActualizar, Me.cmdSalir})
         Me.barFacturaRepuesto.Location = New System.Drawing.Point(0, 0)
         Me.barFacturaRepuesto.Name = "barFacturaRepuesto"
-        Me.barFacturaRepuesto.Size = New System.Drawing.Size(943, 39)
+        Me.barFacturaRepuesto.Size = New System.Drawing.Size(1257, 39)
         Me.barFacturaRepuesto.TabIndex = 0
         Me.barFacturaRepuesto.Text = "ToolStrip1"
         '
@@ -79,18 +77,18 @@ Partial Class frmSfaFacturaRepuestos
         Me.cmdAgregar.Image = CType(resources.GetObject("cmdAgregar.Image"), System.Drawing.Image)
         Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAgregar.Name = "cmdAgregar"
-        Me.cmdAgregar.Size = New System.Drawing.Size(48, 36)
+        Me.cmdAgregar.Size = New System.Drawing.Size(51, 36)
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(208, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(256, 26)
         Me.ToolStripMenuItem1.Text = "Agregar"
         '
         'AgregaDesdeCotizaciónToolStripMenuItem
         '
         Me.AgregaDesdeCotizaciónToolStripMenuItem.Name = "AgregaDesdeCotizaciónToolStripMenuItem"
-        Me.AgregaDesdeCotizaciónToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.AgregaDesdeCotizaciónToolStripMenuItem.Size = New System.Drawing.Size(256, 26)
         Me.AgregaDesdeCotizaciónToolStripMenuItem.Text = "Agregar desde Cotización"
         '
         'cmdProcesar
@@ -154,25 +152,24 @@ Partial Class frmSfaFacturaRepuestos
         Me.Contenedor.Controls.Add(Me.grdFacturaDetalle)
         Me.Contenedor.Controls.Add(Me.grdFacturaMaster)
         Me.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Contenedor.GridDefinition = "48.6284289276808:False:False;48.3790523690773:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.1516436903499:False" & _
-            ":False;"
+        Me.Contenedor.GridDefinition = "48.9065606361829:False:False;48.7077534791253:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.3635640413683:False" & _
+    ":False;"
         Me.Contenedor.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.Contenedor.Location = New System.Drawing.Point(0, 39)
+        Me.Contenedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Contenedor.Name = "Contenedor"
-        Me.Contenedor.Size = New System.Drawing.Size(943, 401)
+        Me.Contenedor.Size = New System.Drawing.Size(1257, 503)
         Me.Contenedor.TabIndex = 1
         Me.Contenedor.TabStop = False
         '
         'grdFacturaDetalle
         '
-        '
-        '
-        '
-        Me.grdFacturaDetalle.EmbeddedNavigator.Name = ""
-        Me.grdFacturaDetalle.Location = New System.Drawing.Point(4, 203)
+        Me.grdFacturaDetalle.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdFacturaDetalle.Location = New System.Drawing.Point(4, 254)
         Me.grdFacturaDetalle.MainView = Me.grdFacturaDetalleTable
+        Me.grdFacturaDetalle.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdFacturaDetalle.Name = "grdFacturaDetalle"
-        Me.grdFacturaDetalle.Size = New System.Drawing.Size(935, 194)
+        Me.grdFacturaDetalle.Size = New System.Drawing.Size(1249, 245)
         Me.grdFacturaDetalle.TabIndex = 3
         Me.grdFacturaDetalle.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdFacturaDetalleTable})
         '
@@ -185,7 +182,7 @@ Partial Class frmSfaFacturaRepuestos
         'colCodigo
         '
         Me.colCodigo.Caption = "Código"
-        Me.colCodigo.FieldName = "objRepuestoID"
+        Me.colCodigo.FieldName = "objSivProductoID"
         Me.colCodigo.Name = "colCodigo"
         Me.colCodigo.OptionsColumn.AllowFocus = False
         Me.colCodigo.OptionsColumn.ReadOnly = True
@@ -195,7 +192,7 @@ Partial Class frmSfaFacturaRepuestos
         'colDescripcion
         '
         Me.colDescripcion.Caption = "Descripción"
-        Me.colDescripcion.FieldName = "DescripcionCorta"
+        Me.colDescripcion.FieldName = "Producto"
         Me.colDescripcion.Name = "colDescripcion"
         Me.colDescripcion.OptionsColumn.AllowFocus = False
         Me.colDescripcion.OptionsColumn.ReadOnly = True
@@ -264,27 +261,25 @@ Partial Class frmSfaFacturaRepuestos
         '
         'grdFacturaMaster
         '
-        '
-        '
-        '
-        Me.grdFacturaMaster.EmbeddedNavigator.Name = ""
+        Me.grdFacturaMaster.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdFacturaMaster.Location = New System.Drawing.Point(4, 4)
         Me.grdFacturaMaster.MainView = Me.grdFacturaMasterTabla
+        Me.grdFacturaMaster.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdFacturaMaster.Name = "grdFacturaMaster"
-        Me.grdFacturaMaster.Size = New System.Drawing.Size(935, 195)
+        Me.grdFacturaMaster.Size = New System.Drawing.Size(1249, 246)
         Me.grdFacturaMaster.TabIndex = 2
         Me.grdFacturaMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdFacturaMasterTabla})
         '
         'grdFacturaMasterTabla
         '
-        Me.grdFacturaMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colCliente, Me.colVendedor, Me.colTotal, Me.colEstado, Me.colSolicitud, Me.colDescAutorizado, Me.colAnulada})
+        Me.grdFacturaMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colCliente, Me.colVendedor, Me.colTotal, Me.colEstado, Me.colAnulada})
         Me.grdFacturaMasterTabla.GridControl = Me.grdFacturaMaster
         Me.grdFacturaMasterTabla.Name = "grdFacturaMasterTabla"
         Me.grdFacturaMasterTabla.OptionsDetail.AllowZoomDetail = False
         Me.grdFacturaMasterTabla.OptionsDetail.EnableMasterViewMode = False
         Me.grdFacturaMasterTabla.OptionsDetail.ShowDetailTabs = False
         Me.grdFacturaMasterTabla.OptionsDetail.SmartDetailExpand = False
-        Me.grdFacturaMasterTabla.OptionsDetail.SmartDetailExpandButton = False
+        Me.grdFacturaMasterTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
         Me.grdFacturaMasterTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '
         'colNumero
@@ -353,28 +348,6 @@ Partial Class frmSfaFacturaRepuestos
         Me.colEstado.VisibleIndex = 5
         Me.colEstado.Width = 86
         '
-        'colSolicitud
-        '
-        Me.colSolicitud.Caption = "Solic Desc"
-        Me.colSolicitud.FieldName = "SolicAutorDescuento"
-        Me.colSolicitud.Name = "colSolicitud"
-        Me.colSolicitud.OptionsColumn.AllowFocus = False
-        Me.colSolicitud.OptionsColumn.ReadOnly = True
-        Me.colSolicitud.Visible = True
-        Me.colSolicitud.VisibleIndex = 6
-        Me.colSolicitud.Width = 86
-        '
-        'colDescAutorizado
-        '
-        Me.colDescAutorizado.Caption = "Desc Autor"
-        Me.colDescAutorizado.FieldName = "AutorizaDescuento"
-        Me.colDescAutorizado.Name = "colDescAutorizado"
-        Me.colDescAutorizado.OptionsColumn.AllowFocus = False
-        Me.colDescAutorizado.OptionsColumn.ReadOnly = True
-        Me.colDescAutorizado.Visible = True
-        Me.colDescAutorizado.VisibleIndex = 7
-        Me.colDescAutorizado.Width = 86
-        '
         'colAnulada
         '
         Me.colAnulada.Caption = "Anulada"
@@ -383,16 +356,17 @@ Partial Class frmSfaFacturaRepuestos
         Me.colAnulada.OptionsColumn.AllowFocus = False
         Me.colAnulada.OptionsColumn.ReadOnly = True
         Me.colAnulada.Visible = True
-        Me.colAnulada.VisibleIndex = 8
+        Me.colAnulada.VisibleIndex = 6
         Me.colAnulada.Width = 86
         '
         'frmSfaFacturaRepuestos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(943, 440)
+        Me.ClientSize = New System.Drawing.Size(1257, 542)
         Me.Controls.Add(Me.Contenedor)
         Me.Controls.Add(Me.barFacturaRepuesto)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmSfaFacturaRepuestos"
         Me.Text = "Consulta de Facturas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -438,7 +412,5 @@ Partial Class frmSfaFacturaRepuestos
     Friend WithEvents colVendedor As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTotal As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colSolicitud As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colDescAutorizado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colAnulada As DevExpress.XtraGrid.Columns.GridColumn
 End Class
