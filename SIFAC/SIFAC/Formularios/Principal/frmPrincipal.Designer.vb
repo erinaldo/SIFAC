@@ -105,12 +105,15 @@ Partial Class frmPrincipal
         Me.cmdMarcas = New C1.Win.C1Command.C1Command()
         Me.cmdBodegas = New C1.Win.C1Command.C1Command()
         Me.cmdCategorias = New C1.Win.C1Command.C1Command()
+        Me.cmdDescuento = New C1.Win.C1Command.C1Command()
+        Me.cmdRutas = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink7 = New C1.Win.C1Command.C1CommandLink()
         Me.linkParametros = New C1.Win.C1Command.C1CommandLink()
         Me.linkCategorias = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink4 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink5 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdLinkDevolucionDeVencidos = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink34 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink11 = New C1.Win.C1Command.C1CommandLink()
         Me.cmdRecepcionDeVencidos = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink24 = New C1.Win.C1Command.C1CommandLink()
@@ -187,9 +190,6 @@ Partial Class frmPrincipal
         Me.RibbonSeparator4 = New C1.Win.C1Ribbon.RibbonSeparator()
         Me.lblFecha = New C1.Win.C1Ribbon.RibbonLabel()
         Me.lblHora = New C1.Win.C1Ribbon.RibbonLabel()
-        Me.cmdDescuento = New C1.Win.C1Command.C1Command()
-        Me.C1CommandLink34 = New C1.Win.C1Command.C1CommandLink()
-        Me.cmdRutas = New C1.Win.C1Command.C1Command()
         Me.MenuPrincipal.SuspendLayout()
         CType(Me.OutBarPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.OutBarPrincipal.SuspendLayout()
@@ -211,11 +211,13 @@ Partial Class frmPrincipal
         'MenuPrincipal
         '
         Me.MenuPrincipal.BackColor = System.Drawing.SystemColors.Control
+        Me.MenuPrincipal.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WindowsMenu, Me.HelpMenu, Me.tsmSalir})
         Me.MenuPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.MenuPrincipal.MdiWindowListItem = Me.WindowsMenu
         Me.MenuPrincipal.Name = "MenuPrincipal"
-        Me.MenuPrincipal.Size = New System.Drawing.Size(795, 24)
+        Me.MenuPrincipal.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
+        Me.MenuPrincipal.Size = New System.Drawing.Size(1060, 28)
         Me.MenuPrincipal.TabIndex = 6
         Me.MenuPrincipal.Text = "MenuStrip"
         '
@@ -224,68 +226,68 @@ Partial Class frmPrincipal
         Me.WindowsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CascadeToolStripMenuItem, Me.TileVerticalToolStripMenuItem, Me.TileHorizontalToolStripMenuItem, Me.CloseAllToolStripMenuItem, Me.tsmEstiloVisual})
         Me.WindowsMenu.ForeColor = System.Drawing.Color.Black
         Me.WindowsMenu.Name = "WindowsMenu"
-        Me.WindowsMenu.Size = New System.Drawing.Size(67, 20)
+        Me.WindowsMenu.Size = New System.Drawing.Size(81, 24)
         Me.WindowsMenu.Text = "&Ventanas"
         '
         'CascadeToolStripMenuItem
         '
         Me.CascadeToolStripMenuItem.Name = "CascadeToolStripMenuItem"
-        Me.CascadeToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.CascadeToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
         Me.CascadeToolStripMenuItem.Text = "&Cascada"
         '
         'TileVerticalToolStripMenuItem
         '
         Me.TileVerticalToolStripMenuItem.Name = "TileVerticalToolStripMenuItem"
-        Me.TileVerticalToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.TileVerticalToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
         Me.TileVerticalToolStripMenuItem.Text = "Titulo &Vertical"
         '
         'TileHorizontalToolStripMenuItem
         '
         Me.TileHorizontalToolStripMenuItem.Name = "TileHorizontalToolStripMenuItem"
-        Me.TileHorizontalToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.TileHorizontalToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
         Me.TileHorizontalToolStripMenuItem.Text = "Titulo &Horizontal"
         '
         'CloseAllToolStripMenuItem
         '
         Me.CloseAllToolStripMenuItem.Name = "CloseAllToolStripMenuItem"
-        Me.CloseAllToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.CloseAllToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
         Me.CloseAllToolStripMenuItem.Text = "C&errar todas"
         '
         'tsmEstiloVisual
         '
         Me.tsmEstiloVisual.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmOfficexp, Me.tsmOffice2003Olive, Me.tsmOffice2007Blue, Me.tsmOffice2007Silver, Me.tsmOffice2007Black})
         Me.tsmEstiloVisual.Name = "tsmEstiloVisual"
-        Me.tsmEstiloVisual.Size = New System.Drawing.Size(163, 22)
+        Me.tsmEstiloVisual.Size = New System.Drawing.Size(196, 26)
         Me.tsmEstiloVisual.Text = "Estilo Visual"
         '
         'tsmOfficexp
         '
         Me.tsmOfficexp.Name = "tsmOfficexp"
-        Me.tsmOfficexp.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOfficexp.Size = New System.Drawing.Size(192, 26)
         Me.tsmOfficexp.Text = "Officexp"
         '
         'tsmOffice2003Olive
         '
         Me.tsmOffice2003Olive.Name = "tsmOffice2003Olive"
-        Me.tsmOffice2003Olive.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOffice2003Olive.Size = New System.Drawing.Size(192, 26)
         Me.tsmOffice2003Olive.Text = "Office2003Olive"
         '
         'tsmOffice2007Blue
         '
         Me.tsmOffice2007Blue.Name = "tsmOffice2007Blue"
-        Me.tsmOffice2007Blue.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOffice2007Blue.Size = New System.Drawing.Size(192, 26)
         Me.tsmOffice2007Blue.Text = "Office2007Blue"
         '
         'tsmOffice2007Silver
         '
         Me.tsmOffice2007Silver.Name = "tsmOffice2007Silver"
-        Me.tsmOffice2007Silver.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOffice2007Silver.Size = New System.Drawing.Size(192, 26)
         Me.tsmOffice2007Silver.Text = "Office2007Silver"
         '
         'tsmOffice2007Black
         '
         Me.tsmOffice2007Black.Name = "tsmOffice2007Black"
-        Me.tsmOffice2007Black.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOffice2007Black.Size = New System.Drawing.Size(192, 26)
         Me.tsmOffice2007Black.Text = "Office2007Black"
         '
         'HelpMenu
@@ -293,21 +295,21 @@ Partial Class frmPrincipal
         Me.HelpMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAyuda})
         Me.HelpMenu.ForeColor = System.Drawing.Color.Black
         Me.HelpMenu.Name = "HelpMenu"
-        Me.HelpMenu.Size = New System.Drawing.Size(53, 20)
+        Me.HelpMenu.Size = New System.Drawing.Size(63, 24)
         Me.HelpMenu.Text = "&Ayuda"
         '
         'tsmAyuda
         '
         Me.tsmAyuda.Name = "tsmAyuda"
         Me.tsmAyuda.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F1), System.Windows.Forms.Keys)
-        Me.tsmAyuda.Size = New System.Drawing.Size(176, 22)
+        Me.tsmAyuda.Size = New System.Drawing.Size(210, 26)
         Me.tsmAyuda.Text = "&Contenido"
         '
         'tsmSalir
         '
         Me.tsmSalir.ForeColor = System.Drawing.Color.Black
         Me.tsmSalir.Name = "tsmSalir"
-        Me.tsmSalir.Size = New System.Drawing.Size(41, 20)
+        Me.tsmSalir.Size = New System.Drawing.Size(50, 24)
         Me.tsmSalir.Text = "&Salir"
         '
         'OutBarPrincipal
@@ -321,17 +323,19 @@ Partial Class frmPrincipal
         Me.OutBarPrincipal.Controls.Add(Me.brFacturacion)
         Me.OutBarPrincipal.Controls.Add(Me.brFacturacionReportes)
         Me.OutBarPrincipal.Dock = System.Windows.Forms.DockStyle.Left
-        Me.OutBarPrincipal.Location = New System.Drawing.Point(0, 24)
+        Me.OutBarPrincipal.Location = New System.Drawing.Point(0, 28)
         Me.OutBarPrincipal.Name = "OutBarPrincipal"
         Me.OutBarPrincipal.PageLayout = C1.Win.C1Command.ButtonLayoutEnum.TextOnLeft
-        Me.OutBarPrincipal.Size = New System.Drawing.Size(188, 583)
+        Me.OutBarPrincipal.SelectedIndex = 6
+        Me.OutBarPrincipal.Size = New System.Drawing.Size(251, 719)
         Me.OutBarPrincipal.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
         'brCatalogos
         '
         Me.brCatalogos.Controls.Add(Me.ToolBarCatalogos)
+        Me.brCatalogos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.brCatalogos.Name = "brCatalogos"
-        Me.brCatalogos.Size = New System.Drawing.Size(188, 439)
+        Me.brCatalogos.Size = New System.Drawing.Size(251, 559)
         Me.brCatalogos.Text = "Catálogos"
         '
         'ToolBarCatalogos
@@ -345,9 +349,10 @@ Partial Class frmPrincipal
         Me.ToolBarCatalogos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarCatalogos.Horizontal = False
         Me.ToolBarCatalogos.Location = New System.Drawing.Point(0, 0)
+        Me.ToolBarCatalogos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ToolBarCatalogos.Movable = False
         Me.ToolBarCatalogos.Name = "ToolBarCatalogos"
-        Me.ToolBarCatalogos.Size = New System.Drawing.Size(188, 439)
+        Me.ToolBarCatalogos.Size = New System.Drawing.Size(251, 559)
         Me.ToolBarCatalogos.Text = "Toolbar Categoria 1"
         Me.ToolBarCatalogos.VisualStyle = C1.Win.C1Command.VisualStyle.WindowsXP
         Me.ToolBarCatalogos.VisualStyleBase = C1.Win.C1Command.VisualStyle.WindowsXP
@@ -808,6 +813,18 @@ Partial Class frmPrincipal
         Me.cmdCategorias.Name = "cmdCategorias"
         Me.cmdCategorias.Text = "Categorias"
         '
+        'cmdDescuento
+        '
+        Me.cmdDescuento.Image = CType(resources.GetObject("cmdDescuento.Image"), System.Drawing.Image)
+        Me.cmdDescuento.Name = "cmdDescuento"
+        Me.cmdDescuento.Text = "Rango de Descuento"
+        '
+        'cmdRutas
+        '
+        Me.cmdRutas.Image = CType(resources.GetObject("cmdRutas.Image"), System.Drawing.Image)
+        Me.cmdRutas.Name = "cmdRutas"
+        Me.cmdRutas.Text = "Rutas"
+        '
         'C1CommandLink7
         '
         Me.C1CommandLink7.Command = Me.cmdCatalogoValor
@@ -841,6 +858,11 @@ Partial Class frmPrincipal
         Me.cmdLinkDevolucionDeVencidos.SortOrder = 5
         Me.cmdLinkDevolucionDeVencidos.ToolTipText = "Productos"
         '
+        'C1CommandLink34
+        '
+        Me.C1CommandLink34.Command = Me.cmdRutas
+        Me.C1CommandLink34.SortOrder = 6
+        '
         'C1CommandLink11
         '
         Me.C1CommandLink11.Command = Me.cmdClientes
@@ -866,8 +888,9 @@ Partial Class frmPrincipal
         'brCartera
         '
         Me.brCartera.Controls.Add(Me.ToolBarCartera)
+        Me.brCartera.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.brCartera.Name = "brCartera"
-        Me.brCartera.Size = New System.Drawing.Size(188, 439)
+        Me.brCartera.Size = New System.Drawing.Size(251, 559)
         Me.brCartera.Text = "Cartera y Cobro"
         '
         'ToolBarCartera
@@ -881,9 +904,10 @@ Partial Class frmPrincipal
         Me.ToolBarCartera.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarCartera.Horizontal = False
         Me.ToolBarCartera.Location = New System.Drawing.Point(0, 0)
+        Me.ToolBarCartera.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ToolBarCartera.Movable = False
         Me.ToolBarCartera.Name = "ToolBarCartera"
-        Me.ToolBarCartera.Size = New System.Drawing.Size(188, 439)
+        Me.ToolBarCartera.Size = New System.Drawing.Size(251, 559)
         Me.ToolBarCartera.Text = "Toolbar Categoria 1"
         Me.ToolBarCartera.VisualStyle = C1.Win.C1Command.VisualStyle.WindowsXP
         Me.ToolBarCartera.VisualStyleBase = C1.Win.C1Command.VisualStyle.WindowsXP
@@ -915,9 +939,10 @@ Partial Class frmPrincipal
         'outReportes
         '
         Me.outReportes.Controls.Add(Me.ToolBReportes)
+        Me.outReportes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.outReportes.Name = "outReportes"
         Me.outReportes.PageVisible = False
-        Me.outReportes.Size = New System.Drawing.Size(188, 439)
+        Me.outReportes.Size = New System.Drawing.Size(251, 559)
         Me.outReportes.Text = "Cartera y Cobro - Reportes "
         '
         'ToolBReportes
@@ -931,9 +956,10 @@ Partial Class frmPrincipal
         Me.ToolBReportes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBReportes.Horizontal = False
         Me.ToolBReportes.Location = New System.Drawing.Point(0, 0)
+        Me.ToolBReportes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ToolBReportes.Movable = False
         Me.ToolBReportes.Name = "ToolBReportes"
-        Me.ToolBReportes.Size = New System.Drawing.Size(188, 439)
+        Me.ToolBReportes.Size = New System.Drawing.Size(251, 559)
         Me.ToolBReportes.Text = "Toolbar Categoria 1"
         Me.ToolBReportes.VisualStyle = C1.Win.C1Command.VisualStyle.WindowsXP
         Me.ToolBReportes.VisualStyleBase = C1.Win.C1Command.VisualStyle.WindowsXP
@@ -995,8 +1021,9 @@ Partial Class frmPrincipal
         'outBitacora
         '
         Me.outBitacora.Controls.Add(Me.ToolBarBitacora)
+        Me.outBitacora.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.outBitacora.Name = "outBitacora"
-        Me.outBitacora.Size = New System.Drawing.Size(188, 439)
+        Me.outBitacora.Size = New System.Drawing.Size(251, 559)
         Me.outBitacora.Text = "Cobranza"
         '
         'ToolBarBitacora
@@ -1009,9 +1036,10 @@ Partial Class frmPrincipal
         Me.ToolBarBitacora.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarBitacora.Horizontal = False
         Me.ToolBarBitacora.Location = New System.Drawing.Point(0, 0)
+        Me.ToolBarBitacora.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ToolBarBitacora.Movable = False
         Me.ToolBarBitacora.Name = "ToolBarBitacora"
-        Me.ToolBarBitacora.Size = New System.Drawing.Size(188, 439)
+        Me.ToolBarBitacora.Size = New System.Drawing.Size(251, 559)
         Me.ToolBarBitacora.Text = "Page1"
         Me.ToolBarBitacora.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
@@ -1029,8 +1057,9 @@ Partial Class frmPrincipal
         'brInventario
         '
         Me.brInventario.Controls.Add(Me.toolBarInventario)
+        Me.brInventario.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.brInventario.Name = "brInventario"
-        Me.brInventario.Size = New System.Drawing.Size(188, 439)
+        Me.brInventario.Size = New System.Drawing.Size(251, 559)
         Me.brInventario.Text = "Inventario"
         '
         'toolBarInventario
@@ -1043,9 +1072,10 @@ Partial Class frmPrincipal
         Me.toolBarInventario.Dock = System.Windows.Forms.DockStyle.Fill
         Me.toolBarInventario.Horizontal = False
         Me.toolBarInventario.Location = New System.Drawing.Point(0, 0)
+        Me.toolBarInventario.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.toolBarInventario.Movable = False
         Me.toolBarInventario.Name = "toolBarInventario"
-        Me.toolBarInventario.Size = New System.Drawing.Size(188, 439)
+        Me.toolBarInventario.Size = New System.Drawing.Size(251, 559)
         Me.toolBarInventario.Text = "Page1"
         Me.toolBarInventario.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
@@ -1081,9 +1111,10 @@ Partial Class frmPrincipal
         'brInventarioReportes
         '
         Me.brInventarioReportes.Controls.Add(Me.ToolBarInventarioReportes)
+        Me.brInventarioReportes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.brInventarioReportes.Name = "brInventarioReportes"
         Me.brInventarioReportes.PageVisible = False
-        Me.brInventarioReportes.Size = New System.Drawing.Size(188, 439)
+        Me.brInventarioReportes.Size = New System.Drawing.Size(251, 559)
         Me.brInventarioReportes.Text = "Inventario - Reportes"
         '
         'ToolBarInventarioReportes
@@ -1096,9 +1127,10 @@ Partial Class frmPrincipal
         Me.ToolBarInventarioReportes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarInventarioReportes.Horizontal = False
         Me.ToolBarInventarioReportes.Location = New System.Drawing.Point(0, 0)
+        Me.ToolBarInventarioReportes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ToolBarInventarioReportes.Movable = False
         Me.ToolBarInventarioReportes.Name = "ToolBarInventarioReportes"
-        Me.ToolBarInventarioReportes.Size = New System.Drawing.Size(188, 439)
+        Me.ToolBarInventarioReportes.Size = New System.Drawing.Size(251, 559)
         Me.ToolBarInventarioReportes.Text = "Page1"
         Me.ToolBarInventarioReportes.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
@@ -1147,9 +1179,10 @@ Partial Class frmPrincipal
         'brFacturacion
         '
         Me.brFacturacion.Controls.Add(Me.ToolBarFacturas)
+        Me.brFacturacion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.brFacturacion.Name = "brFacturacion"
         Me.brFacturacion.PageVisible = False
-        Me.brFacturacion.Size = New System.Drawing.Size(188, 439)
+        Me.brFacturacion.Size = New System.Drawing.Size(251, 559)
         Me.brFacturacion.Text = "Facturación"
         '
         'ToolBarFacturas
@@ -1162,9 +1195,10 @@ Partial Class frmPrincipal
         Me.ToolBarFacturas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarFacturas.Horizontal = False
         Me.ToolBarFacturas.Location = New System.Drawing.Point(0, 0)
+        Me.ToolBarFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ToolBarFacturas.Movable = False
         Me.ToolBarFacturas.Name = "ToolBarFacturas"
-        Me.ToolBarFacturas.Size = New System.Drawing.Size(188, 439)
+        Me.ToolBarFacturas.Size = New System.Drawing.Size(251, 559)
         Me.ToolBarFacturas.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
         'C1CommandLink25
@@ -1195,8 +1229,9 @@ Partial Class frmPrincipal
         'brFacturacionReportes
         '
         Me.brFacturacionReportes.Controls.Add(Me.ToolBarFacturacionReportes)
+        Me.brFacturacionReportes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.brFacturacionReportes.Name = "brFacturacionReportes"
-        Me.brFacturacionReportes.Size = New System.Drawing.Size(188, 421)
+        Me.brFacturacionReportes.Size = New System.Drawing.Size(251, 539)
         Me.brFacturacionReportes.Text = "Facturación - Reportes"
         '
         'ToolBarFacturacionReportes
@@ -1209,9 +1244,10 @@ Partial Class frmPrincipal
         Me.ToolBarFacturacionReportes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarFacturacionReportes.Horizontal = False
         Me.ToolBarFacturacionReportes.Location = New System.Drawing.Point(0, 0)
+        Me.ToolBarFacturacionReportes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ToolBarFacturacionReportes.Movable = False
         Me.ToolBarFacturacionReportes.Name = "ToolBarFacturacionReportes"
-        Me.ToolBarFacturacionReportes.Size = New System.Drawing.Size(188, 421)
+        Me.ToolBarFacturacionReportes.Size = New System.Drawing.Size(251, 539)
         Me.ToolBarFacturacionReportes.Text = "Page1"
         Me.ToolBarFacturacionReportes.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
@@ -1266,12 +1302,13 @@ Partial Class frmPrincipal
         Me.stbPrincipal.LeftPaneItems.Add(Me.RibbonSeparator3)
         Me.stbPrincipal.LeftPaneItems.Add(Me.RibbonMenu1)
         Me.stbPrincipal.LeftPaneItems.Add(Me.RibbonSeparator4)
-        Me.stbPrincipal.Location = New System.Drawing.Point(188, 585)
+        Me.stbPrincipal.Location = New System.Drawing.Point(251, 725)
+        Me.stbPrincipal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.stbPrincipal.Name = "stbPrincipal"
         Me.stbPrincipal.RightPaneItems.Add(Me.lblFecha)
         Me.stbPrincipal.RightPaneItems.Add(Me.lblHora)
         Me.stbPrincipal.RightPaneWidth = 240
-        Me.stbPrincipal.Size = New System.Drawing.Size(607, 22)
+        Me.stbPrincipal.Size = New System.Drawing.Size(809, 22)
         Me.stbPrincipal.TabIndex = 14
         Me.stbPrincipal.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Silver
         '
@@ -1347,36 +1384,20 @@ Partial Class frmPrincipal
         Me.lblHora.SmallImage = CType(resources.GetObject("lblHora.SmallImage"), System.Drawing.Image)
         Me.lblHora.Text = "Hora :"
         '
-        'cmdDescuento
-        '
-        Me.cmdDescuento.Image = CType(resources.GetObject("cmdDescuento.Image"), System.Drawing.Image)
-        Me.cmdDescuento.Name = "cmdDescuento"
-        Me.cmdDescuento.Text = "Rango de Descuento"
-        '
-        'C1CommandLink34
-        '
-        Me.C1CommandLink34.Command = Me.cmdRutas
-        Me.C1CommandLink34.SortOrder = 6
-        '
-        'cmdRutas
-        '
-        Me.cmdRutas.Image = CType(resources.GetObject("cmdRutas.Image"), System.Drawing.Image)
-        Me.cmdRutas.Name = "cmdRutas"
-        Me.cmdRutas.Text = "Rutas"
-        '
         'frmPrincipal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.SIFAC.My.Resources.Resources.Fondo
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(795, 607)
+        Me.ClientSize = New System.Drawing.Size(1060, 747)
         Me.Controls.Add(Me.stbPrincipal)
         Me.Controls.Add(Me.OutBarPrincipal)
         Me.Controls.Add(Me.MenuPrincipal)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuPrincipal
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmPrincipal"
         Me.Text = "Sistema SIFAC"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

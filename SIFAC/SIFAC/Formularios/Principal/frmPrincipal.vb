@@ -34,10 +34,10 @@ Public Class frmPrincipal
             Me.outBitacora.PageVisible = False
             'Me.brCartera.PageVisible = False
 
-            Me.brFacturacion.PageVisible = False
+            Me.brFacturacion.PageVisible = True
             Me.brFacturacionReportes.PageVisible = False
 
-            Me.InicializarPropiedades()
+            'Me.InicializarPropiedades()
 
             Me.VisualStyle(clsProyecto.TemaDefinido)
             Me.IniciarSesion()
@@ -418,8 +418,8 @@ Public Class frmPrincipal
             Me.cmdReporteBitacoraMoto.Enabled = objSeg.TienePermiso("OpcionRptBitacoraMoto") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
 
             'Habilitar/Deshabilitar FacturaRepuesto - OrdenCompra
-            Me.cmdFacturasRepuestos.Visible = glbObjTiendaSessionId <> glbObjTiendaCentralID
-            Me.cmdOrdenCompra.Visible = glbObjTiendaSessionId = glbObjTiendaCentralID
+            'Me.cmdFacturasRepuestos.Visible = glbObjTiendaSessionId <> glbObjTiendaCentralID
+            'Me.cmdOrdenCompra.Visible = glbObjTiendaSessionId = glbObjTiendaCentralID
 
         Catch ex As Exception
             clsError.CaptarError(ex)

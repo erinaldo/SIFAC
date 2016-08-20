@@ -144,7 +144,7 @@ Public Class frmSfaFacturaRepuestos
     Private Sub CargarFacturas(ByVal strFiltro As String)
         Try
 
-            dtFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SfaFacturaRepuestoID, Numero, objTiendaID,objClienteID,TotalDolares, SolicAutorDescuento, SolicitudDescuento, AutorizaDescuento, Fecha, Estado, Vendedor, Cliente, Anulada, OrdenCompra,objEstadoID", "vwSfaFacturaMaster", strFiltro & " ORDER BY Numero DESC"), Me.SqlParametros)
+            dtFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SfaFacturaID, Numero,objSccClienteID,TotalDolares, SolicAutorDescuento, SolicitudDescuento, AutorizaDescuento, Fecha, Estado, Vendedor, Cliente, Anulada, OrdenCompra,objEstadoID", "vwSfaFacturaMaster", strFiltro & " ORDER BY Numero DESC"), Me.SqlParametros)
             dtDetalleFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objFacturaRepuestoID,objRepuestoID, Cantidad, Precio, Subtotal, Descuento, Impuesto, Total, DescripcionCorta,Fecha", "vwSafaFacturaDetalle", strFiltro), Me.SqlParametros)
 
             dsFactura = New DataSet
