@@ -37,7 +37,7 @@ Public Class frmPrincipal
             Me.brFacturacion.PageVisible = True
             Me.brFacturacionReportes.PageVisible = False
 
-            'Me.InicializarPropiedades()
+            Me.InicializarPropiedades()
 
             Me.VisualStyle(clsProyecto.TemaDefinido)
             Me.IniciarSesion()
