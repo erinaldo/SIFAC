@@ -217,7 +217,7 @@ Public Class frmSivEditRepuestos
         Dim fila As DataRow
         Dim dtDetalleBodega As New DataTable
 
-        dtDetalleBodega = SivBodegaRepuestos.RetrieveDT("1=0")
+        dtDetalleBodega = SivBodegaProductos.RetrieveDT("1=0")
 
         Me.dtExistenciaBodega.AcceptChanges()
         For Each drBodega As DataRow In Me.dtExistenciaBodega.Rows
@@ -231,7 +231,7 @@ Public Class frmSivEditRepuestos
             dtDetalleBodega.Rows.Add(fila)
         Next
         dtDetalleBodega.TableName = "SivBodegaRepuestos"
-        SivBodegaRepuestos.BatchUpdate(dtDetalleBodega.DataSet, T)
+        SivBodegaProductos.BatchUpdate(dtDetalleBodega.DataSet, T)
 
     End Sub
 
@@ -343,8 +343,8 @@ Public Class frmSivEditRepuestos
                 'Next
 
                 '--Actualizamos bodega
-                dtDetalleBodega = SivBodegaRepuestos.RetrieveDT("1=0")
-                SivBodegaRepuestos.DeleteByFilter("objRepuestoID = '" & Me.RepuestosID & "'")
+                dtDetalleBodega = SivBodegaProductos.RetrieveDT("1=0")
+                SivBodegaProductos.DeleteByFilter("objRepuestoID = '" & Me.RepuestosID & "'")
 
                 Me.dtExistenciaBodega.AcceptChanges()
                 For Each drBodega As DataRow In Me.dtExistenciaBodega.Rows
@@ -358,7 +358,7 @@ Public Class frmSivEditRepuestos
                     dtDetalleBodega.Rows.Add(fila)
                 Next
                 dtDetalleBodega.TableName = "SivBodegaRepuestos"
-                SivBodegaRepuestos.BatchUpdate(dtDetalleBodega.DataSet, T)
+                SivBodegaProductos.BatchUpdate(dtDetalleBodega.DataSet, T)
 
                 T.CommitTran()
                 Me.boolModificado = False

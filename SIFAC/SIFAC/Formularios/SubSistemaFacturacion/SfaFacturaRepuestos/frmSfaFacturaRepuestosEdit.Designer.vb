@@ -996,6 +996,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.chkSolicitudDescuento.TabIndex = 17
         Me.chkSolicitudDescuento.Text = "Solicitud Autor. Descuento"
         Me.chkSolicitudDescuento.UseVisualStyleBackColor = True
+        Me.chkSolicitudDescuento.Visible = False
         '
         'numExistencia
         '
@@ -1059,6 +1060,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.txtSolicitudDescuento.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtSolicitudDescuento.Size = New System.Drawing.Size(256, 51)
         Me.txtSolicitudDescuento.TabIndex = 21
+        Me.txtSolicitudDescuento.Visible = False
         '
         'TabDescuento
         '
@@ -1069,6 +1071,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.TabDescuento.SelectedIndex = 0
         Me.TabDescuento.Size = New System.Drawing.Size(188, 106)
         Me.TabDescuento.TabIndex = 22
+        Me.TabDescuento.Visible = False
         '
         'TabPageDescuento
         '
