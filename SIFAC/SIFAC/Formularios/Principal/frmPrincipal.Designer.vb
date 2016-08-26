@@ -431,7 +431,7 @@ Partial Class frmPrincipal
         '
         'cmdClientes
         '
-        Me.cmdClientes.Icon = CType(resources.GetObject("cmdClientes.Icon"), System.Drawing.Icon)
+        Me.cmdClientes.Image = CType(resources.GetObject("cmdClientes.Image"), System.Drawing.Image)
         Me.cmdClientes.Name = "cmdClientes"
         Me.cmdClientes.Text = "Clientes"
         '
@@ -455,7 +455,7 @@ Partial Class frmPrincipal
         '
         'cmdEmpleados
         '
-        Me.cmdEmpleados.Icon = CType(resources.GetObject("cmdEmpleados.Icon"), System.Drawing.Icon)
+        Me.cmdEmpleados.Image = CType(resources.GetObject("cmdEmpleados.Image"), System.Drawing.Image)
         Me.cmdEmpleados.Name = "cmdEmpleados"
         Me.cmdEmpleados.Text = "&Empleados"
         '
@@ -1285,12 +1285,12 @@ Partial Class frmPrincipal
         Me.stbPrincipal.LeftPaneItems.Add(Me.RibbonSeparator3)
         Me.stbPrincipal.LeftPaneItems.Add(Me.RibbonMenu1)
         Me.stbPrincipal.LeftPaneItems.Add(Me.RibbonSeparator4)
-        Me.stbPrincipal.Location = New System.Drawing.Point(188, 589)
+        Me.stbPrincipal.Location = New System.Drawing.Point(188, 585)
         Me.stbPrincipal.Name = "stbPrincipal"
         Me.stbPrincipal.RightPaneItems.Add(Me.lblFecha)
         Me.stbPrincipal.RightPaneItems.Add(Me.lblHora)
         Me.stbPrincipal.RightPaneWidth = 240
-        Me.stbPrincipal.Size = New System.Drawing.Size(607, 18)
+        Me.stbPrincipal.Size = New System.Drawing.Size(607, 22)
         Me.stbPrincipal.TabIndex = 14
         Me.stbPrincipal.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Silver
         '

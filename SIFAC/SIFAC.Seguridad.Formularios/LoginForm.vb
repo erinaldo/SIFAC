@@ -38,7 +38,7 @@ Public Class LoginForm
 #Region "Eventos del formulario"
 
     Private Sub LoginForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.txtNombreSistema.Text = clsProyecto.SiglasSistema
+        'Me.txtNombreSistema.Text = clsProyecto.SiglasSistema
     End Sub
 #End Region
 
