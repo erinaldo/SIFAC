@@ -24,24 +24,23 @@ Partial Class frmStbPersonasTipoPersonas
         Me.lblClasificacion = New System.Windows.Forms.Label()
         Me.cmbTipoPersona = New C1.Win.C1List.C1Combo()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.cmbTipoPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblClasificacion
         '
         Me.lblClasificacion.AutoSize = True
-        Me.lblClasificacion.Location = New System.Drawing.Point(15, 45)
+        Me.lblClasificacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblClasificacion.Location = New System.Drawing.Point(7, 35)
         Me.lblClasificacion.Name = "lblClasificacion"
-        Me.lblClasificacion.Size = New System.Drawing.Size(69, 13)
+        Me.lblClasificacion.Size = New System.Drawing.Size(83, 13)
         Me.lblClasificacion.TabIndex = 0
         Me.lblClasificacion.Tag = "OBLIGATORIO"
         Me.lblClasificacion.Text = "Clasificación:"
@@ -66,7 +65,7 @@ Partial Class frmStbPersonasTipoPersonas
         Me.cmbTipoPersona.EditorHeight = 15
         Me.cmbTipoPersona.Images.Add(CType(resources.GetObject("cmbTipoPersona.Images"), System.Drawing.Image))
         Me.cmbTipoPersona.ItemHeight = 15
-        Me.cmbTipoPersona.Location = New System.Drawing.Point(90, 40)
+        Me.cmbTipoPersona.Location = New System.Drawing.Point(90, 31)
         Me.cmbTipoPersona.MatchEntryTimeout = CType(2000, Long)
         Me.cmbTipoPersona.MaxDropDownItems = CType(5, Short)
         Me.cmbTipoPersona.MaxLength = 32767
@@ -85,59 +84,6 @@ Partial Class frmStbPersonasTipoPersonas
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Location = New System.Drawing.Point(235, 71)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 2
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Location = New System.Drawing.Point(154, 71)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdAceptar.TabIndex = 3
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.PictureBox1)
-        Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(329, 27)
-        Me.Panel2.TabIndex = 27
-        Me.Panel2.Tag = "LAYOUT"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(258, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(68, 24)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 28
-        Me.PictureBox1.TabStop = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(663, 6)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(44, 24)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "UM"
-        '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
@@ -147,18 +93,58 @@ Partial Class frmStbPersonasTipoPersonas
         Me.Panel1.Size = New System.Drawing.Size(329, 16)
         Me.Panel1.TabIndex = 26
         '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.SimpleButton1)
+        Me.PanelControl1.Controls.Add(Me.cmdGuardar)
+        Me.PanelControl1.Controls.Add(Me.lblClasificacion)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(329, 123)
+        Me.PanelControl1.TabIndex = 27
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SimpleButton1.Appearance.Options.UseFont = True
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(233, 71)
+        Me.SimpleButton1.LookAndFeel.SkinName = "Caramel"
+        Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
+        Me.SimpleButton1.TabIndex = 9
+        Me.SimpleButton1.Tag = "CANCELAR"
+        Me.SimpleButton1.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(147, 71)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 8
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Aceptar"
+        '
         'frmStbPersonasTipoPersonas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(329, 123)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.cmdAceptar)
-        Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmbTipoPersona)
-        Me.Controls.Add(Me.lblClasificacion)
+        Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmStbPersonasTipoPersonas"
@@ -166,9 +152,9 @@ Partial Class frmStbPersonasTipoPersonas
         Me.Text = "Agregar Clasificación"
         CType(Me.cmbTipoPersona, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -176,10 +162,8 @@ Partial Class frmStbPersonasTipoPersonas
     Friend WithEvents lblClasificacion As System.Windows.Forms.Label
     Friend WithEvents cmbTipoPersona As C1.Win.C1List.C1Combo
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

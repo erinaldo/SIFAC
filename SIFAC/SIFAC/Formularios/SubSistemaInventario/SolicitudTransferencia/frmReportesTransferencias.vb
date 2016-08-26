@@ -226,11 +226,11 @@ Public Class frmReportesTransferencias
 #End Region
 
 #Region "Eventos controles"
-    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
+    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Close()
     End Sub
 
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Imprimir()
     End Sub
 

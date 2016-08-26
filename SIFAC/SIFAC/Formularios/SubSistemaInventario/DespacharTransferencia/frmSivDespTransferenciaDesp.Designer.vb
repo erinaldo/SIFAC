@@ -79,6 +79,7 @@ Partial Class frmSivDespTransferenciaDesp
         CType(Me.grdDetalleTransferencia, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'gbxDatosGenerales
@@ -103,7 +104,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.gbxDatosGenerales.Controls.Add(Me.txtDespachadoPor)
         Me.gbxDatosGenerales.Controls.Add(Me.txtNoTransferencia)
         Me.gbxDatosGenerales.Controls.Add(Me.lblNoTransferencia)
-        Me.gbxDatosGenerales.Location = New System.Drawing.Point(9, 15)
+        Me.gbxDatosGenerales.Location = New System.Drawing.Point(9, 17)
         Me.gbxDatosGenerales.Name = "gbxDatosGenerales"
         Me.gbxDatosGenerales.Size = New System.Drawing.Size(818, 186)
         Me.gbxDatosGenerales.TabIndex = 82
@@ -552,6 +553,7 @@ Partial Class frmSivDespTransferenciaDesp
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.gbxDatosGenerales)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
@@ -572,7 +574,6 @@ Partial Class frmSivDespTransferenciaDesp
         Me.Controls.Add(Me.cmbDescripcionRepuesto)
         Me.Controls.Add(Me.cmdBuscarRepuesto)
         Me.Controls.Add(Me.grdDetalleTransferencia)
-        Me.Controls.Add(Me.gbxDatosGenerales)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -594,6 +595,7 @@ Partial Class frmSivDespTransferenciaDesp
         CType(Me.grdDetalleTransferencia, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

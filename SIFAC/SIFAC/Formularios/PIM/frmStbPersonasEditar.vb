@@ -6,6 +6,7 @@ Imports SIFAC.BO.clsConsultas
 Imports SIFAC.BO
 Imports System.Data.SqlClient
 Imports System.IO
+Imports Proyecto.Catalogos.Datos
 
 
 Public Class frmStbPersonasEditar
@@ -26,8 +27,8 @@ Public Class frmStbPersonasEditar
     Private Sub CargarCombos()
         Try
             'Género
-            frmClientesEdit.dtGenero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "StbValorCatalogo", "objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='GENERO')"))
-            Me.cmbGenero.DataSource = frmClientesEdit.dtGenero
+            frmStbPersonasEditar.dtGenero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "StbValorCatalogo", "objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='GENERO')"))
+            Me.cmbGenero.DataSource = frmStbPersonasEditar.dtGenero
             Me.cmbGenero.DisplayMember = "Descripcion"
             Me.cmbGenero.ValueMember = "StbValorCatalogoID"
             Me.cmbGenero.Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
@@ -40,6 +41,32 @@ Public Class frmStbPersonasEditar
         End Try
     End Sub
 
+    Private Sub CargarCiudad()
+        Dim objparametro As StbParametro
+        Dim objPais As StbPais
+        Try
+            objparametro = New StbParametro
+            objPais = New StbPais
+
+            'Ciudad
+            objparametro.RetrieveByFilter("Nombre='Pais'")
+            objPais.RetrieveByFilter("Nombre='" & objparametro.Valor & "'")
+
+            frmClientesEdit.dtCiudad = StbCiudad.RetrieveDT("objPaisID=" & objPais.StbPaisID, "", "StbCiudadID,Nombre")
+            Me.cmbCiudad.DataSource = frmClientesEdit.dtCiudad
+            Me.cmbCiudad.DisplayMember = "Nombre"
+            Me.cmbCiudad.ValueMember = "StbCiudadID"
+            Me.cmbCiudad.Splits(0).DisplayColumns("StbCiudadID").Visible = False
+            Me.cmbCiudad.ExtendRightColumn = True
+            Me.cmbCiudad.SelectedValue = -1
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objPais = Nothing
+            objparametro = Nothing
+            Me.Cursor = [Default]
+        End Try
+    End Sub
 
 #End Region
 
@@ -52,7 +79,7 @@ Public Class frmStbPersonasEditar
                 Me.ErrPrv.SetError(Me.cmbGenero, "")
                 Me.ErrPrv.SetError(Me.dtpFechaNacimiento, "")
                 Me.ErrPrv.SetError(Me.txtCedula, "")
-                Me.txtPrefijoTrato.Text = ""
+                cmbCiudad.SelectedValue = 0
                 Me.txtPrimerNombre.Text = ""
                 Me.txtSegundoNombre.Text = ""
                 Me.txtPrimerApellido.Text = ""
@@ -64,18 +91,20 @@ Public Class frmStbPersonasEditar
                 Me.grpPersonaNatural.Enabled = False
                 Me.txtSiglasEmpresa.Focus()
                 Me.chkCedulaNacionalidad.Enabled = False
+                Me.txtDireccion.Text = ""
             Case False
                 Me.ErrPrv.SetError(Me.txtSiglasEmpresa, "")
                 Me.ErrPrv.SetError(Me.txtRazonSocial, "")
-                Me.ErrPrv.SetError(Me.dtpFechaConstitucion, "")
                 Me.ErrPrv.SetError(Me.txtRUC, "")
+                Me.ErrPrv.SetError(Me.txtDireccion, "")
                 Me.txtSiglasEmpresa.Text = ""
                 Me.txtRazonSocial.Text = ""
                 Me.txtRUC.Text = ""
-                Me.dtpFechaConstitucion.Value = Nothing
+                Me.txtDireccion.Text = ""
+                cmbCiudad.SelectedValue = 0
                 Me.grpPersonaJuridica.Enabled = False
                 Me.grpPersonaNatural.Enabled = True
-                Me.txtPrefijoTrato.Focus()
+                Me.txtSiglasEmpresa.Focus()
                 Me.chkCedulaNacionalidad.Enabled = True
         End Select
     End Sub
@@ -84,13 +113,13 @@ Public Class frmStbPersonasEditar
 #Region "Cargar Longitudes Máximas"
     Private Sub CargarLongitudesMaximas()
         Try
-            Me.txtPrefijoTrato.MaxLength = StbPersona.GetMaxLength("PrefijoTrato")
             Me.txtPrimerNombre.MaxLength = StbPersona.GetMaxLength("Nombre1")
             Me.txtSegundoNombre.MaxLength = StbPersona.GetMaxLength("Nombre2")
             Me.txtPrimerApellido.MaxLength = StbPersona.GetMaxLength("Apellido1")
             Me.txtSegundoApellido.MaxLength = StbPersona.GetMaxLength("Apellido2")
             Me.txtSiglasEmpresa.MaxLength = StbPersona.GetMaxLength("SiglasEmpresa")
             Me.txtRazonSocial.MaxLength = StbPersona.GetMaxLength("RazonSocial")
+            Me.txtDireccion.MaxLength = StbPersona.GetMaxLength("Direccion")
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -112,14 +141,14 @@ Public Class frmStbPersonasEditar
         Me.intTelefonoCliente = 0
 
         'Validar que se haya ingresado al menos la dirección de la persona
-        For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+        For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
             If dr("TipoEntrada") = "Dirección" Then
                 Me.intResultado = 0
                 Exit For
             End If
         Next
 
-        If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+        If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
             Return 1
             Exit Function
         End If
@@ -141,22 +170,22 @@ Public Class frmStbPersonasEditar
         '1. Se valida que la persona sea Natural
         If Me.chkPersonaJuridica.Checked = False Then Me.intTelefonoCliente = 1
         '2. Se valida que haya un PIM Cliente
-        'If Me.intTelefonoCliente = 1 Then
-        '    For Each dr As DataRow In frmStbPersonasEditar.Rows
-        '        If dr("TipoPersona") = "Cliente" Then
-        '            Me.intTelefonoCliente = 2
-        '        End If
-        '    Next
-        'End If
+        If Me.intTelefonoCliente = 1 Then
+            For Each dr As DataRow In frmStbPersonasEditar.dtPIM.Rows
+                If dr("TipoPersona") = "Cliente" Then
+                    Me.intTelefonoCliente = 2
+                End If
+            Next
+        End If
 
 
         '3. Se valida que haya al menos un teléfono si es cliente
         If Me.intTelefonoCliente = 2 Then
-            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+            If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
                 Me.intResultado = 2
             End If
 
-            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+            For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
                 If dr("TipoEntrada").ToString.Trim.Length >= 8 Then
                     If dr("TipoEntrada").ToString.Substring(0, 8) = "Teléfono" Then
                         Return 0
@@ -210,7 +239,6 @@ Public Class frmStbPersonasEditar
 
 #Region "Bloquear Controles"
     Private Sub BloquearControlesPersonaNatural()
-        Me.txtPrefijoTrato.Enabled = False
         Me.txtPrimerNombre.Enabled = False
         Me.txtSegundoNombre.Enabled = False
         Me.txtPrimerApellido.Enabled = False
@@ -218,12 +246,15 @@ Public Class frmStbPersonasEditar
         Me.cmbGenero.Enabled = False
         Me.dtpFechaNacimiento.Enabled = False
         Me.txtCedula.Enabled = False
+        Me.cmbCiudad.Enabled = False
+        Me.txtDireccion.Enabled = False
     End Sub
     Private Sub BloquearControlesPersonaJuridica()
         Me.txtSiglasEmpresa.Enabled = False
         Me.txtRazonSocial.Enabled = False
-        Me.dtpFechaConstitucion.Enabled = False
         Me.txtRUC.Enabled = False
+        Me.cmbCiudad.Enabled = False
+        Me.txtDireccion.Enabled = False
     End Sub
     Private Sub BloquearAdicional()
         Me.tdbContactos.Enabled = False
@@ -238,8 +269,8 @@ Public Class frmStbPersonasEditar
 #Region "Habilitar/Deshabilitar"
     Private Sub tdbContactos_AfterFilter(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.FilterEventArgs) Handles tdbContactos.AfterFilter
         Try
-            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.DefaultView.Count & ")"
-            If frmClientesEdit.dtContactos.DefaultView.Count = 0 Then
+            Me.tdbContactos.Caption = "Contactos (" & frmStbPersonasEditar.dtContactos.DefaultView.Count & ")"
+            If frmStbPersonasEditar.dtContactos.DefaultView.Count = 0 Then
                 Me.cmdEliminarContacto.Enabled = False
             Else
                 Me.cmdEliminarContacto.Enabled = True
@@ -249,18 +280,18 @@ Public Class frmStbPersonasEditar
         End Try
     End Sub
 
-    'Private Sub tdbPIM_AfterFilter(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.FilterEventArgs) Handles tdbPIM.AfterFilter
-    '    Try
-    '        Me.tdbPIM.Caption = "Clasificaciones (" & frmStbPersonasEditar.DefaultView.Count & ")"
-    '        If frmStbPersonasEditar.dtPIM.DefaultView.Count = 0 Then
-    '            Me.cmdEliminarPIM.Enabled = False
-    '        Else
-    '            Me.cmdEliminarPIM.Enabled = True
-    '        End If
-    '    Catch ex As Exception
-    '        clsError.CaptarError(ex)
-    '    End Try
-    'End Sub
+    Private Sub tdbPIM_AfterFilter(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.FilterEventArgs) Handles tdbPIM.AfterFilter
+        Try
+            Me.tdbPIM.Caption = "Clasificaciones (" & frmStbPersonasEditar.dtPIM.DefaultView.Count & ")"
+            If frmStbPersonasEditar.dtPIM.DefaultView.Count = 0 Then
+                Me.cmdEliminarPIM.Enabled = False
+            Else
+                Me.cmdEliminarPIM.Enabled = True
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 
 #End Region
 
@@ -311,9 +342,7 @@ Public Class frmStbPersonasEditar
         Dim objPersonas, objPCompara As StbPersona
         Dim T As New DAL.TransactionManager
         Dim p_Personas(14), p_Empresas(9) As SqlParameter
-
         Try
-
             T.BeginTran()
 
             objPersonas = New StbPersona
@@ -334,42 +363,25 @@ Public Class frmStbPersonasEditar
                         Me.txtRUC.Focus()
                         Exit Sub
                     End If
-                    'PROCEDER A INGRESAR
-                    p_Empresas(0) = New SqlParameter("@nombre1", SqlDbType.VarChar, 20)
-                    p_Empresas(0).Value = ""
-                    p_Empresas(1) = New SqlParameter("@apellido1", SqlDbType.VarChar, 20)
-                    p_Empresas(1).Value = ""
+                    objPersonas.Nombre1 = ""
+                    objPersonas.Apellido1 = ""
+                    objPersonas.PersonaJuridica = Me.chkPersonaJuridica.Checked
+                    objPersonas.RazonSocial = Me.txtRazonSocial.Text.Trim
+                    objPersonas.SiglasEmpresa = Me.txtSiglasEmpresa.Text.Trim
 
-                    p_Empresas(2) = New SqlParameter("@FechaNacimiento", SqlDbType.DateTime)
-                    If Me.dtpFechaConstitucion.Text.Trim.Length <> 0 Then
-                        p_Empresas(2).Value = Me.dtpFechaConstitucion.Value
-                    Else
-                        p_Empresas(2).Value = DBNull.Value
-                    End If
-
-                    p_Empresas(3) = New SqlParameter("@PersonaJuridica", SqlDbType.Bit)
-                    p_Empresas(3).Value = Me.chkPersonaJuridica.Checked
-                    p_Personas(4) = New SqlParameter("@Exonerado", SqlDbType.Bit)
-                    p_Empresas(5) = New SqlParameter("@RazonSocial", SqlDbType.VarChar, 256)
-                    p_Empresas(5).Value = Me.txtRazonSocial.Text.Trim
-                    p_Empresas(6) = New SqlParameter("@SiglasEmpresa", SqlDbType.VarChar, 20)
-                    p_Empresas(6).Value = Me.txtSiglasEmpresa.Text.Trim
-
-                    p_Empresas(7) = New SqlParameter("@RUC", SqlDbType.VarChar, 11)
                     If Me.txtRUC.Text.Trim = "-" Then
-                        p_Empresas(7).Value = DBNull.Value
+                        objPersonas.RUC = ""
                     Else
-                        p_Empresas(7).Value = Me.txtRUC.Text.Trim
+                        objPersonas.RUC = Me.txtRUC.Text.Trim
                     End If
 
-                    p_Empresas(8) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar, 30)
-                    p_Empresas(8).Value = clsProyecto.Conexion.Usuario
-                    p_Empresas(9) = New SqlParameter("@IDGenerado", SqlDbType.VarChar, 16)
-                    p_Empresas(9).Direction = ParameterDirection.InputOutput
-                    p_Empresas(9).Value = ""
-
-                    DAL.SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "usp_InsertarPersonas", p_Empresas)
-                    Me.idpersona = p_Empresas(8).Value.ToString
+                    objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                    objPersonas.objCiudadID = cmbCiudad.SelectedValue
+                    objPersonas.Direccion = txtDireccion.Text
+                    objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                    objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    objPersonas.Insert()
+                    Me.idpersona = objPersonas.StbPersonaID
 
                 Case False
                     '1.2 Validar que no exista  una persona con la misma cédula
@@ -380,44 +392,32 @@ Public Class frmStbPersonasEditar
                         Exit Sub
                     End If
                     'PROCEDER A INGRESAR
-                    p_Personas(0) = New SqlParameter("@prefijotrato", SqlDbType.VarChar, 5)
-                    p_Personas(0).Value = Me.txtPrefijoTrato.Text.Trim
-                    p_Personas(1) = New SqlParameter("@nombre1", SqlDbType.VarChar, 20)
-                    p_Personas(1).Value = Me.txtPrimerNombre.Text.Trim
-                    p_Personas(2) = New SqlParameter("@nombre2", SqlDbType.VarChar, 20)
-                    p_Personas(2).Value = Me.txtSegundoNombre.Text.Trim
-                    p_Personas(3) = New SqlParameter("@apellido1", SqlDbType.VarChar, 20)
-                    p_Personas(3).Value = Me.txtPrimerApellido.Text.Trim
-                    p_Personas(4) = New SqlParameter("@apellido2", SqlDbType.VarChar, 20)
-                    p_Personas(4).Value = Me.txtSegundoApellido.Text.Trim
-                    p_Personas(5) = New SqlParameter("@objGeneroID", SqlDbType.Int)
-                    p_Personas(5).Value = Me.cmbGenero.SelectedValue
+                    objPersonas.Nombre1 = txtPrimerNombre.Text
+                    objPersonas.Nombre2 = txtSegundoNombre.Text
+                    objPersonas.Apellido1 = txtPrimerApellido.Text
+                    objPersonas.Apellido2 = txtSegundoApellido.Text
+                    objPersonas.objGeneroID = cmbGenero.SelectedValue
 
-                    p_Personas(6) = New SqlParameter("@cedula", SqlDbType.VarChar, 16)
-                    If Me.txtCedula.Text.Trim = "-      -" Then
-                        p_Personas(6).Value = DBNull.Value
+                    If Me.txtCedula.Text.Trim <> "-      -" Then
+                        objPersonas.Cedula = Me.txtCedula.Text
                     Else
-                        p_Personas(6).Value = Me.txtCedula.Text.Trim
+                        objPersonas.Cedula = Nothing
                     End If
-
-
-                    p_Personas(9) = New SqlParameter("@FechaNacimiento", SqlDbType.DateTime)
                     If Me.dtpFechaNacimiento.Text.Trim.Length <> 0 Then
-                        p_Personas(9).Value = Me.dtpFechaNacimiento.Value
+                        objPersonas.FechaNacimiento = Me.dtpFechaNacimiento.Text
                     Else
-                        p_Personas(9).Value = DBNull.Value
+                        objPersonas.FechaNacimiento = Nothing
                     End If
 
-                    p_Personas(11) = New SqlParameter("@PersonaJuridica", SqlDbType.Bit)
-                    p_Personas(11).Value = Me.chkPersonaJuridica.Checked
-                    p_Personas(13) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar, 30)
-                    p_Personas(13).Value = clsProyecto.Conexion.Usuario
-                    p_Personas(14) = New SqlParameter("@IDGenerado", SqlDbType.VarChar, 16)
-                    p_Personas(14).Direction = ParameterDirection.InputOutput
-                    p_Personas(14).Value = ""
+                    objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                    objPersonas.objCiudadID = cmbCiudad.SelectedValue
+                    objPersonas.Direccion = txtDireccion.Text
+                    objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                    objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    objPersonas.Insert()
+                    Me.idpersona = objPersonas.StbPersonaID
+                    Me.InsertarDetalle(Me.idpersona)
 
-                    DAL.SqlHelper.ExecuteScalar(CommandType.StoredProcedure, "usp_InsertarPersonas", p_Personas)
-                    Me.idpersona = p_Personas(14).Value.ToString
             End Select
             ValidarLlamados()
             Me.InsertarDetalle(Me.idpersona)
@@ -453,7 +453,7 @@ Public Class frmStbPersonasEditar
             objClasifica = New StbPersonaClasificacion
 
             'Guardar Contactos
-            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+            For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
                 objContactos.objPersonaID = IDGenerado
                 objContactos.SecuencialContacto = CInt(dr("SecuencialContacto").ToString)
                 objContactos.objTipoEntradaID = CInt(dr("objTipoEntradaID").ToString)
@@ -490,7 +490,6 @@ Public Class frmStbPersonasEditar
     Private Sub CargarDatosEditar()
 
         Dim objPersonas As StbPersona
-
         Try
 
             objPersonas = New StbPersona
@@ -503,9 +502,6 @@ Public Class frmStbPersonasEditar
                 Case True
                     Me.txtSiglasEmpresa.Text = objPersonas.SiglasEmpresa
                     Me.txtRazonSocial.Text = objPersonas.RazonSocial
-                    If objPersonas.FechaNacimiento.ToString.Length <> 0 Then
-                        Me.dtpFechaConstitucion.Value = objPersonas.FechaNacimiento
-                    End If
                     Me.txtRUC.Text = objPersonas.RUC
                 Case False
                     Me.txtPrimerNombre.Text = objPersonas.Nombre1
@@ -513,6 +509,9 @@ Public Class frmStbPersonasEditar
                     Me.txtPrimerApellido.Text = objPersonas.Apellido1
                     Me.txtSegundoApellido.Text = objPersonas.Apellido2
                     Me.cmbGenero.SelectedValue = objPersonas.objGeneroID
+                    Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
+                    Me.txtDireccion.Text = objPersonas.Direccion
+
                     If objPersonas.Cedula.Trim.Length = 16 Then
                         Me.chkCedulaNacionalidad.Checked = True
                     Else
@@ -524,7 +523,6 @@ Public Class frmStbPersonasEditar
                     If objPersonas.FechaNacimiento.ToString.Length <> 0 Then
                         Me.dtpFechaNacimiento.Value = objPersonas.FechaNacimiento
                     End If
-
             End Select
 
         Catch ex As Exception
@@ -587,17 +585,15 @@ Public Class frmStbPersonasEditar
                     Else
                         objPersonas.RUC = Nothing
                     End If
-                    If Me.dtpFechaConstitucion.Text.Trim.Length <> 0 Then
-                        objPersonas.FechaNacimiento = Me.dtpFechaConstitucion.Text
-                    Else
-                        objPersonas.FechaNacimiento = Nothing
-                    End If
+
                 Case False
                     objPersonas.Nombre1 = Me.txtPrimerNombre.Text.Trim
                     objPersonas.Nombre2 = Me.txtSegundoNombre.Text.Trim
                     objPersonas.Apellido1 = Me.txtPrimerApellido.Text.Trim
                     objPersonas.Apellido2 = Me.txtSegundoApellido.Text.Trim
                     objPersonas.objGeneroID = Me.cmbGenero.SelectedValue
+                    objPersonas.objCiudadID = cmbCiudad.SelectedValue
+                    objPersonas.Direccion = txtDireccion.Text
 
                     If Me.txtCedula.Text.Trim <> "-      -" Then
                         objPersonas.Cedula = Me.txtCedula.Text
@@ -893,15 +889,7 @@ Public Class frmStbPersonasEditar
             Return False
             Exit Function
         End If
-        'Validar que la fecha de constitución sea igual al número RUC
-        If Me.dtpFechaConstitucion.Text.Trim.Length <> 0 And Me.txtRUC.Text.Trim.Length = 11 Then
-            If Me.dtpFechaConstitucion.Text.Substring(0, 6) & Me.dtpFechaConstitucion.Text.Substring(8, 2) <> (Me.txtRUC.Text.Substring(0, 2) & "/" & Me.txtRUC.Text.Substring(2, 2) & "/" & Me.txtRUC.Text.Substring(4, 2)) Then
-                Me.ErrPrv.SetError(Me.dtpFechaConstitucion, "La fecha de constitución debe coincidir con el RUC")
-                Me.dtpFechaConstitucion.Focus()
-                Return False
-                Exit Function
-            End If
-        End If
+       
         Return True
 
     End Function
@@ -923,11 +911,11 @@ Public Class frmStbPersonasEditar
                     strFiltro = "objPersonaID='" & Me.idpersona & "'"
             End Select
 
-            frmClientesEdit.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", strFiltro))
-            Me.tdbContactos.SetDataBinding(frmClientesEdit.dtContactos, "", True)
-            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+            frmStbPersonasEditar.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", strFiltro))
+            Me.tdbContactos.SetDataBinding(frmStbPersonasEditar.dtContactos, "", True)
+            Me.tdbContactos.Caption = "Contactos (" & frmStbPersonasEditar.dtContactos.Rows.Count & ")"
 
-            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+            If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
                 Me.cmdEliminarContacto.Enabled = False
             Else
                 Me.cmdEliminarContacto.Enabled = True
@@ -947,14 +935,14 @@ Public Class frmStbPersonasEditar
 #Region "Eliminar Contactos"
     Private Sub EliminarContactos()
         If MsgBox(My.Resources.MsgConfirmarEliminar, MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
-            frmClientesEdit.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
+            frmStbPersonasEditar.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
         Else
             Exit Sub
         End If
-        If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+        If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
             Me.cmdEliminarContacto.Enabled = False
         End If
-        Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Me.tdbContactos.Caption = "Contactos (" & frmStbPersonasEditar.dtContactos.Rows.Count & ")"
     End Sub
 #End Region
 
@@ -964,10 +952,10 @@ Public Class frmStbPersonasEditar
         objContactos = New frmStbPersonasContactos
         objContactos.frmLLamado = 0
         objContactos.ShowDialog()
-        If frmClientesEdit.dtContactos.Rows.Count > 0 Then
+        If frmStbPersonasEditar.dtContactos.Rows.Count > 0 Then
             Me.cmdEliminarContacto.Enabled = True
         End If
-        Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Me.tdbContactos.Caption = "Contactos (" & frmStbPersonasEditar.dtContactos.Rows.Count & ")"
     End Sub
 #End Region
 
@@ -1116,13 +1104,6 @@ Public Class frmStbPersonasEditar
 #Region "Eventos de los Controles"
 
 #Region "Poner en mayúscula la primer letra"
-    Private Sub txtPrefijoTrato_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPrefijoTrato.Leave
-        Me.txtPrefijoTrato.Text = Me.txtPrefijoTrato.Text.Trim
-        If Me.txtPrefijoTrato.Text.Trim.Length > 0 Then
-            Me.txtPrefijoTrato.Text = Me.txtPrefijoTrato.Text.Substring(0, 1).ToUpper & Me.txtPrefijoTrato.Text.Substring(1, Me.txtPrefijoTrato.Text.Length - 1)
-        End If
-    End Sub
-
 
     Private Sub txtPrimerNombre_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPrimerNombre.Leave
         Me.txtPrimerNombre.Text = Me.txtPrimerNombre.Text.Trim
@@ -1168,19 +1149,6 @@ Public Class frmStbPersonasEditar
 #End Region
 
 #Region "Pasar enfoques y quitar errores"
-    Private Sub txtPrefijoTrato_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPrefijoTrato.KeyPress
-        If (Asc(e.KeyChar) = 32 And Me.txtPrefijoTrato.Text.Length = 0) Then
-            e.KeyChar = Convert.ToChar(0)
-        End If
-        If Asc(e.KeyChar) = 13 Then
-            Me.txtPrimerNombre.Focus()
-        End If
-        If Not clsProyecto.LetrasYEspacio(e.KeyChar) Then
-            e.KeyChar = Convert.ToChar(0)
-        Else
-            Me.ErrPrv.SetError(Me.txtPrefijoTrato, "")
-        End If
-    End Sub
 
     Private Sub txtPrimerNombre_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPrimerNombre.KeyPress
         If (Asc(e.KeyChar) = 32 And Me.txtPrimerNombre.Text.Length = 0) Then
@@ -1262,15 +1230,6 @@ Public Class frmStbPersonasEditar
         Me.ErrPrv.SetError(Me.txtCedula, "")
     End Sub
 
-    Private Sub txtCedula_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCedula.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            Me.cmdGuardar.Focus()
-        End If
-        Me.ErrPrv.SetError(Me.txtCedula, "")
-        Me.ErrPrv.SetError(Me.dtpFechaNacimiento, "")
-        Me.txtCedula.Text = Me.txtCedula.Text.ToUpper
-    End Sub
-
     Private Sub txtCedula_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtCedula.KeyUp
         Me.txtCedula.Text = Me.txtCedula.Text.ToUpper
     End Sub
@@ -1287,24 +1246,8 @@ Public Class frmStbPersonasEditar
         If (Asc(e.KeyChar) = 32 And Me.txtRazonSocial.Text.Length = 0) Then
             e.KeyChar = Convert.ToChar(0)
         End If
-        If Asc(e.KeyChar) = 13 Then
-            Me.dtpFechaConstitucion.Focus()
-        End If
+        
     End Sub
-
-    Private Sub dtpFechaConstitucion_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
-        Me.ErrPrv.SetError(Me.dtpFechaConstitucion, "")
-        Me.ErrPrv.SetError(Me.txtRUC, "")
-        If Asc(e.KeyChar) = 13 Then
-            Me.txtRUC.Focus()
-        End If
-    End Sub
-
-    Private Sub dtpFechaConstitucion_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs)
-        Me.ErrPrv.SetError(Me.dtpFechaConstitucion, "")
-        Me.ErrPrv.SetError(Me.txtRUC, "")
-    End Sub
-
     Private Sub dtpFechaNacimiento_KeyPress_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         Me.ErrPrv.SetError(Me.dtpFechaNacimiento, "")
         Me.ErrPrv.SetError(Me.txtCedula, "")
@@ -1317,25 +1260,11 @@ Public Class frmStbPersonasEditar
         Me.ErrPrv.SetError(Me.txtCedula, "")
     End Sub
 
-    Private Sub dtpFechaConstitucion_KeyPress_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
-        Me.ErrPrv.SetError(Me.dtpFechaConstitucion, "")
-        Me.ErrPrv.SetError(Me.txtRUC, "")
-        If Asc(e.KeyChar) = 13 Then
-            Me.txtRUC.Focus()
-        End If
-    End Sub
-
-    Private Sub dtpFechaConstitucion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.ErrPrv.SetError(Me.dtpFechaConstitucion, "")
-        Me.ErrPrv.SetError(Me.txtRUC, "")
-    End Sub
-
     Private Sub txtRUC_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtRUC.KeyPress
         If Asc(e.KeyChar) = 13 Then
             Me.cmdGuardar.Focus()
         End If
         Me.ErrPrv.SetError(Me.txtRUC, "")
-        Me.ErrPrv.SetError(Me.dtpFechaConstitucion, "")
     End Sub
 
     Private Sub cmbGenero_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbGenero.Click
@@ -1367,12 +1296,6 @@ Public Class frmStbPersonasEditar
         End If
     End Sub
 
-    Private Sub dtpFechaConstitucion_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Me.dtpFechaConstitucion.Text.Trim.Length = 0 Then
-            Me.dtpFechaConstitucion.Value = Nothing
-        End If
-    End Sub
-
 #End Region
 
 #End Region
@@ -1387,7 +1310,7 @@ Public Class frmStbPersonasEditar
         End Select
     End Sub
 
-    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SimpleButton1.Click
+    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
         Me.DialogResult = Windows.Forms.DialogResult.Cancel
     End Sub
 
@@ -1410,91 +1333,97 @@ Public Class frmStbPersonasEditar
 #Region "Cargar el Formulario"
 
     Private Sub frmStbPersonasEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
-        Me.CargarLongitudesMaximas()
-        Me.CargarCombos()
-        Me.CargarGridContactos()
-        Me.CargarGridPIM()
-        Me.ManejarPersonaJuridica()
+        Try
+            clsProyecto.CargarTemaDefinido(Me)
+            Me.CargarLongitudesMaximas()
+            Me.CargarCombos()
+            CargarCiudad()
+            Me.CargarGridContactos()
+            Me.CargarGridPIM()
+            Me.ManejarPersonaJuridica()
 
-        Select Case Me.TyGui
-            Case 1
-                Select Case frmLlamado
-                    Case 3
-                        Me.Text = "Agregar Nuevo Empleado"
-                    Case 4
-                        Me.Text = "Agregar Nuevo Cliente"
-                    Case 5
-                        Me.Text = "Agregar Nuevo Fiador"
-                    Case 6
-                        Me.Text = "Agregar Nuevo Proveedor"
-                    Case 7
-                        Me.Text = "Agregar Nuevo Contacto de Proveedor"
-                End Select
-                Me.ValidarLlamados()
-                Me.txtPrefijoTrato.Focus()
-            Case 2
-                Select Case frmLlamado
-                    Case 3
-                        Me.Text = "Editanto datos de Empleado: " & Me.idpersona
-                    Case 4
-                        Me.Text = "Editanto datos de Cliente: " & Me.idpersona
-                    Case 5
-                        Me.Text = "Editanto datos de Fiador: " & Me.idpersona
-                    Case 6
-                        Me.Text = "Editanto datos de Proveedor: " & Me.idpersona
-                    Case 7
-                        Me.Text = "Editanto datos de Contacto de Proveedor"
-                End Select
-                Me.CargarDatosEditar()
-                Me.txtPrefijoTrato.Focus()
-            Case 3
-                Select Case frmLlamado
-                    Case 3
-                        Me.Text = "Consultando datos de Empleado: " & Me.idpersona
-                    Case 4
-                        Me.Text = "Consultando datos de Cliente: " & Me.idpersona
-                    Case 5
-                        Me.Text = "Consultando datos de Fiador: " & Me.idpersona
-                    Case 6
-                        Me.Text = "Consultando datos de Proveedor: " & Me.idpersona
-                    Case 7
-                        Me.Text = "Consultando datos de Contacto de Proveedor"
-                End Select
-                Me.CargarDatosEditar()
-                Me.tdbPIM.Enabled = False
-                Me.barContactos.Enabled = False
-                Me.barPIM.Enabled = False
-                Me.cmdGuardar.Enabled = False
-                Me.cmbGenero.Enabled = False
-                Me.dtpFechaNacimiento.Enabled = False
-                Me.txtCedula.Enabled = False
-                Me.dtpFechaConstitucion.Enabled = False
-                Me.txtRUC.Enabled = False
-                Me.txtSiglasEmpresa.Enabled = False
-                Me.txtRazonSocial.Enabled = False
-                Me.chkCedulaNacionalidad.Enabled = False
+            Select Case Me.TyGui
+                Case 1
+                    Select Case frmLlamado
+                        Case 3
+                            Me.Text = "Agregar Nuevo Empleado"
+                        Case 4
+                            Me.Text = "Agregar Nuevo Cliente"
+                        Case 5
+                            Me.Text = "Agregar Nuevo Fiador"
+                        Case 6
+                            Me.Text = "Agregar Nuevo Proveedor"
+                        Case 7
+                            Me.Text = "Agregar Nuevo Contacto de Proveedor"
+                    End Select
+                    Me.ValidarLlamados()
+                    Me.txtPrimerNombre.Focus()
+                Case 2
+                    Select Case frmLlamado
+                        Case 3
+                            Me.Text = "Editanto datos de Empleado: " & Me.idpersona
+                        Case 4
+                            Me.Text = "Editanto datos de Cliente: " & Me.idpersona
+                        Case 5
+                            Me.Text = "Editanto datos de Fiador: " & Me.idpersona
+                        Case 6
+                            Me.Text = "Editanto datos de Proveedor: " & Me.idpersona
+                        Case 7
+                            Me.Text = "Editanto datos de Contacto de Proveedor"
+                    End Select
+                    Me.CargarDatosEditar()
+                    Me.txtPrimerNombre.Focus()
+                Case 3
+                    Select Case frmLlamado
+                        Case 3
+                            Me.Text = "Consultando datos de Empleado: " & Me.idpersona
+                        Case 4
+                            Me.Text = "Consultando datos de Cliente: " & Me.idpersona
+                        Case 5
+                            Me.Text = "Consultando datos de Fiador: " & Me.idpersona
+                        Case 6
+                            Me.Text = "Consultando datos de Proveedor: " & Me.idpersona
+                        Case 7
+                            Me.Text = "Consultando datos de Contacto de Proveedor"
+                    End Select
+                    Me.CargarDatosEditar()
+                    Me.tdbPIM.Enabled = False
+                    Me.barContactos.Enabled = False
+                    Me.barPIM.Enabled = False
+                    Me.cmdGuardar.Enabled = False
+                    Me.cmbGenero.Enabled = False
+                    Me.dtpFechaNacimiento.Enabled = False
+                    Me.txtCedula.Enabled = False
+                    Me.txtRUC.Enabled = False
+                    Me.cmbCiudad.Enabled = False
+                    Me.txtDireccion.Enabled = False
+                    Me.txtSiglasEmpresa.Enabled = False
+                    Me.txtRazonSocial.Enabled = False
+                    Me.chkCedulaNacionalidad.Enabled = False
 
-                Me.txtPrefijoTrato.Enabled = False
-                Me.txtPrimerNombre.Enabled = False
-                Me.txtSegundoNombre.Enabled = False
-                Me.txtPrimerApellido.Enabled = False
-                Me.txtSegundoApellido.Enabled = False
+                    Me.txtPrimerNombre.Enabled = False
+                    Me.txtSegundoNombre.Enabled = False
+                    Me.txtPrimerApellido.Enabled = False
+                    Me.txtSegundoApellido.Enabled = False
 
-                Me.chkPersonaJuridica.Tag = "BLOQUEADO"
-                Me.txtPrefijoTrato.Tag = "BLOQUEADO"
-                Me.txtPrimerNombre.Tag = "BLOQUEADO"
-                Me.txtSegundoNombre.Tag = "BLOQUEADO"
-                Me.txtPrimerApellido.Tag = "BLOQUEADO"
-                Me.txtSegundoApellido.Tag = "BLOQUEADO"
-                Me.txtRazonSocial.Tag = "BLOQUEADO"
-                Me.txtSiglasEmpresa.Tag = "BLOQUEADO"
+                    Me.txtDireccion.Tag = "BLOQUEADO"
+                    Me.cmbCiudad.Tag = "BLOQUEADO"
+                    Me.chkPersonaJuridica.Tag = "BLOQUEADO"
+                    Me.txtPrimerNombre.Tag = "BLOQUEADO"
+                    Me.txtSegundoNombre.Tag = "BLOQUEADO"
+                    Me.txtPrimerApellido.Tag = "BLOQUEADO"
+                    Me.txtSegundoApellido.Tag = "BLOQUEADO"
+                    Me.txtRazonSocial.Tag = "BLOQUEADO"
+                    Me.txtSiglasEmpresa.Tag = "BLOQUEADO"
+            End Select
+            Me.tabAdicionales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8, FontStyle.Regular)
+            Me.tdbContactos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8, FontStyle.Regular)
+            Me.tdbPIM.Font = New System.Drawing.Font("Microsoft Sans Serif", 8, FontStyle.Regular)
 
-                '' clsProyecto.CargarTemaDefinido(Me)
-        End Select
-        Me.tabAdicionales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8, FontStyle.Regular)
-        Me.tdbContactos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8, FontStyle.Regular)
-        Me.tdbPIM.Font = New System.Drawing.Font("Microsoft Sans Serif", 8, FontStyle.Regular)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
     End Sub
 
 #End Region

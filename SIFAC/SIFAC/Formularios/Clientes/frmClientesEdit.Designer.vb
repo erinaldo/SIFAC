@@ -182,7 +182,7 @@ Partial Class frmClientesEdit
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(2, 55)
+        Me.Label2.Location = New System.Drawing.Point(9, 55)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(65, 13)
         Me.Label2.TabIndex = 19
@@ -192,7 +192,7 @@ Partial Class frmClientesEdit
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(2, 24)
+        Me.Label1.Location = New System.Drawing.Point(9, 24)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(50, 13)
         Me.Label1.TabIndex = 17
@@ -575,6 +575,8 @@ Partial Class frmClientesEdit
         Me.SimpleButton1.Appearance.Options.UseFont = True
         Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
         Me.SimpleButton1.Location = New System.Drawing.Point(831, 390)
+        Me.SimpleButton1.LookAndFeel.SkinName = "Caramel"
+        Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
         Me.SimpleButton1.TabIndex = 5
@@ -588,6 +590,8 @@ Partial Class frmClientesEdit
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(745, 390)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 4

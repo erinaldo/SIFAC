@@ -20,24 +20,22 @@ Partial Class frmStbPersonaBuscar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbPersonaBuscar))
-        Me.grbOpciones = New System.Windows.Forms.GroupBox
-        Me.cmbGenero = New C1.Win.C1List.C1Combo
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.cmbTipoPersona = New C1.Win.C1List.C1Combo
-        Me.lblTipoPersona = New System.Windows.Forms.Label
-        Me.txtCedula = New System.Windows.Forms.MaskedTextBox
-        Me.chkCedula = New System.Windows.Forms.CheckBox
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.grbOpciones = New System.Windows.Forms.GroupBox()
+        Me.cmbGenero = New C1.Win.C1List.C1Combo()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmbTipoPersona = New C1.Win.C1List.C1Combo()
+        Me.lblTipoPersona = New System.Windows.Forms.Label()
+        Me.txtCedula = New System.Windows.Forms.MaskedTextBox()
+        Me.chkCedula = New System.Windows.Forms.CheckBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.grbOpciones.SuspendLayout()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbTipoPersona, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'grbOpciones
@@ -48,7 +46,8 @@ Partial Class frmStbPersonaBuscar
         Me.grbOpciones.Controls.Add(Me.lblTipoPersona)
         Me.grbOpciones.Controls.Add(Me.txtCedula)
         Me.grbOpciones.Controls.Add(Me.chkCedula)
-        Me.grbOpciones.Location = New System.Drawing.Point(3, 38)
+        Me.grbOpciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grbOpciones.Location = New System.Drawing.Point(5, 21)
         Me.grbOpciones.Name = "grbOpciones"
         Me.grbOpciones.Size = New System.Drawing.Size(292, 108)
         Me.grbOpciones.TabIndex = 0
@@ -71,9 +70,10 @@ Partial Class frmStbPersonaBuscar
         Me.cmbGenero.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbGenero.EditorHeight = 15
         Me.cmbGenero.Enabled = False
+        Me.cmbGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbGenero.Images.Add(CType(resources.GetObject("cmbGenero.Images"), System.Drawing.Image))
         Me.cmbGenero.ItemHeight = 15
-        Me.cmbGenero.Location = New System.Drawing.Point(80, 76)
+        Me.cmbGenero.Location = New System.Drawing.Point(97, 76)
         Me.cmbGenero.MatchEntryTimeout = CType(2000, Long)
         Me.cmbGenero.MaxDropDownItems = CType(5, Short)
         Me.cmbGenero.MaxLength = 32767
@@ -91,7 +91,7 @@ Partial Class frmStbPersonaBuscar
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(10, 76)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(42, 13)
+        Me.Label1.Size = New System.Drawing.Size(48, 13)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Genero"
         '
@@ -111,9 +111,10 @@ Partial Class frmStbPersonaBuscar
         Me.cmbTipoPersona.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbTipoPersona.EditorHeight = 15
         Me.cmbTipoPersona.Enabled = False
+        Me.cmbTipoPersona.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipoPersona.Images.Add(CType(resources.GetObject("cmbTipoPersona.Images"), System.Drawing.Image))
         Me.cmbTipoPersona.ItemHeight = 15
-        Me.cmbTipoPersona.Location = New System.Drawing.Point(80, 47)
+        Me.cmbTipoPersona.Location = New System.Drawing.Point(97, 47)
         Me.cmbTipoPersona.MatchEntryTimeout = CType(2000, Long)
         Me.cmbTipoPersona.MaxDropDownItems = CType(5, Short)
         Me.cmbTipoPersona.MaxLength = 32767
@@ -131,13 +132,14 @@ Partial Class frmStbPersonaBuscar
         Me.lblTipoPersona.AutoSize = True
         Me.lblTipoPersona.Location = New System.Drawing.Point(10, 50)
         Me.lblTipoPersona.Name = "lblTipoPersona"
-        Me.lblTipoPersona.Size = New System.Drawing.Size(69, 13)
+        Me.lblTipoPersona.Size = New System.Drawing.Size(81, 13)
         Me.lblTipoPersona.TabIndex = 2
         Me.lblTipoPersona.Text = "Tipo persona"
         '
         'txtCedula
         '
-        Me.txtCedula.Location = New System.Drawing.Point(80, 18)
+        Me.txtCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCedula.Location = New System.Drawing.Point(97, 18)
         Me.txtCedula.Mask = "000-000000-0000L"
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(191, 20)
@@ -150,63 +152,10 @@ Partial Class frmStbPersonaBuscar
         Me.chkCedula.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkCedula.Location = New System.Drawing.Point(13, 21)
         Me.chkCedula.Name = "chkCedula"
-        Me.chkCedula.Size = New System.Drawing.Size(59, 17)
+        Me.chkCedula.Size = New System.Drawing.Size(65, 17)
         Me.chkCedula.TabIndex = 0
         Me.chkCedula.Text = "Cedula"
         Me.chkCedula.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Location = New System.Drawing.Point(139, 151)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(75, 25)
-        Me.cmdAceptar.TabIndex = 1
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Location = New System.Drawing.Point(220, 151)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 25)
-        Me.cmdCancelar.TabIndex = 2
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.PictureBox1)
-        Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(305, 28)
-        Me.Panel2.TabIndex = 27
-        Me.Panel2.Tag = "LAYOUT"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(233, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(70, 26)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 28
-        Me.PictureBox1.TabStop = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(663, 6)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 24)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "UM"
         '
         'Panel1
         '
@@ -217,17 +166,57 @@ Partial Class frmStbPersonaBuscar
         Me.Panel1.Size = New System.Drawing.Size(305, 16)
         Me.Panel1.TabIndex = 26
         '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdAceptar)
+        Me.PanelControl1.Controls.Add(Me.grbOpciones)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(305, 199)
+        Me.PanelControl1.TabIndex = 27
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(218, 142)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 9
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(132, 142)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 8
+        Me.cmdAceptar.Tag = "ACEPTAR"
+        Me.cmdAceptar.Text = "&Aceptar"
+        '
         'frmStbPersonaBuscar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(305, 199)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.grbOpciones)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdAceptar)
+        Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmStbPersonaBuscar"
@@ -237,23 +226,20 @@ Partial Class frmStbPersonaBuscar
         Me.grbOpciones.PerformLayout()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbTipoPersona, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents grbOpciones As System.Windows.Forms.GroupBox
     Friend WithEvents txtCedula As System.Windows.Forms.MaskedTextBox
     Friend WithEvents chkCedula As System.Windows.Forms.CheckBox
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents cmbTipoPersona As C1.Win.C1List.C1Combo
     Friend WithEvents lblTipoPersona As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cmbGenero As C1.Win.C1List.C1Combo
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
 End Class

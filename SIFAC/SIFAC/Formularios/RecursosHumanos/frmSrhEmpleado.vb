@@ -15,17 +15,14 @@ Public Class frmSrhEmpleado
 
 #Region "Procedimientos"
 
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  13/03/2009
     '' Descripción:        Procedimiento encargado de cargar la informacion de los empleados existentes
     Public Sub CargarGrid()
         Try
             DtEmpleados = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SrhEmpleadoID,objPersonaID,Nombre1,Nombre2,Apellido1,Apellido2,Genero,Cargo,Activo", "vwSrhEmpleado"))
             DtEmpleados.PrimaryKey = New DataColumn() {Me.DtEmpleados.Columns("SrhEmpleadoID")}
             DtEmpleados.DefaultView.Sort = "SrhEmpleadoID"
-            Me.grdEmpleados.SetDataBinding(DtEmpleados, "", True)
-            Me.grdEmpleados.Caption = "Empleados (" & DtEmpleados.Rows.Count & ")"
-            Me.grdEmpleados.Refresh()
+            Me.grdvwEmpleados.DataSource = DtEmpleados
+            Me.grdvwEmpleados.Text = "Empleados (" & Me.DtEmpleados.Rows.Count & ")"
             Me.AplicarSeguridad()
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -33,8 +30,6 @@ Public Class frmSrhEmpleado
     End Sub
 
 
-    '' Autor:              Sergio Ordoñez
-    '' Fecha de creación:  13/03/2009
     '' Descripción:        Procedimiento encargado de aplicar la seguridad al formulario
     Private Sub AplicarSeguridad()
         Try
@@ -68,7 +63,6 @@ Public Class frmSrhEmpleado
     End Sub
 
     Private Sub cmdSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSalir.Click
-        Me.grdEmpleados = Nothing
         Me.DtEmpleados = Nothing
         objSeg = Nothing
         boolAgregar = Nothing
@@ -90,7 +84,6 @@ Public Class frmSrhEmpleado
            
             If editEmpleado.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
-                Me.grdEmpleados.Row = DtEmpleados.DefaultView.Find(editEmpleado.intEmpleadoID)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -101,16 +94,18 @@ Public Class frmSrhEmpleado
 
     Private Sub cmdEditar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEditar.Click
         Dim editEmpleado As frmSrhEmpleadoEditar
+        Dim FilaActual As Integer
         Try
             Me.Cursor = WaitCursor
+            FilaActual = Me.grdvwEmpleadosTabla.FocusedRowHandle
             editEmpleado = New frmSrhEmpleadoEditar
             editEmpleado.TypeGUI = 1
-            editEmpleado.EmpleadoID = Me.grdEmpleados.Columns("SrhEmpleadoID").Value
-            editEmpleado.PersonaID = Me.grdEmpleados.Columns("objPersonaID").Value
+            editEmpleado.EmpleadoID = Me.DtEmpleados.DefaultView.Item(FilaActual)("SrhEmpleadoID")
+            editEmpleado.PersonaID = Me.DtEmpleados.DefaultView.Item(FilaActual)("objPersonaID")
             editEmpleado.Text = "Editar Empleado"
             If editEmpleado.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
-                Me.grdEmpleados.Row = DtEmpleados.DefaultView.Find(editEmpleado.intEmpleadoID)
+                'Me.grdEmpleados.Row = DtEmpleados.DefaultView.Find(editEmpleado.intEmpleadoID)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -121,12 +116,14 @@ Public Class frmSrhEmpleado
 
     Private Sub cmdConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultar.Click
         Dim editEmpleado As frmSrhEmpleadoEditar
+        Dim FilaActual As Integer
         Try
             Me.Cursor = WaitCursor
+            FilaActual = Me.grdvwEmpleadosTabla.FocusedRowHandle
             editEmpleado = New frmSrhEmpleadoEditar
             editEmpleado.TypeGUI = 2
-            editEmpleado.EmpleadoID = Me.grdEmpleados.Columns("SrhEmpleadoID").Value
-            editEmpleado.PersonaID = Me.grdEmpleados.Columns("objPersonaID").Value
+            editEmpleado.EmpleadoID = Me.DtEmpleados.DefaultView.Item(FilaActual)("SrhEmpleadoID")
+            editEmpleado.PersonaID = Me.DtEmpleados.DefaultView.Item(FilaActual)("objPersonaID")
             editEmpleado.Text = "Consultar Empleado"
             editEmpleado.ShowDialog(Me)
         Catch ex As Exception
@@ -136,7 +133,7 @@ Public Class frmSrhEmpleado
         End Try
     End Sub
 
-    Private Sub grdEmpleados_FilterChange(ByVal sender As Object, ByVal e As System.EventArgs) Handles grdEmpleados.FilterChange
-        Me.grdEmpleados.Caption = "Empleados (" & DtEmpleados.Rows.Count & ")"
+    Private Sub grdEmpleados_FilterChange(ByVal sender As Object, ByVal e As System.EventArgs)
+        'Me.grdEmpleados.Caption = "Empleados (" & DtEmpleados.Rows.Count & ")"
     End Sub
 End Class

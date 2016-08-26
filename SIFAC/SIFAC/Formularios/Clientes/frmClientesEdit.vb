@@ -11,7 +11,6 @@ Imports Proyecto.Catalogos.Datos
 
 Public Class frmClientesEdit
 
-    '******************************************
 #Region "Declaración de Variables propias del formulario"
     Public Shared dtContactos, dtGenero, dtCiudad, dtRutas As DataTable
     Public dtOcupacion As DataTable
@@ -19,11 +18,7 @@ Public Class frmClientesEdit
     Dim intTelefonoCliente, intResultado As Integer
     Dim imgCedulaAnverso, imgCedulaReverso As Byte()
 #End Region
-    '******************************************
-
-    'GENERALES
-    '*****************************************
-
+   
 #Region "Busqueda"
     '' Descripción:        Procedimiento encargado de cargar la informacion de personas con clasificacion empleado que aun no han sido ingresadas en empleado
     Public Sub CargarPersona()
@@ -52,16 +47,29 @@ Public Class frmClientesEdit
             Me.cmbRuta.DataBindings.Clear()
             Me.spnOrdenCobro.DataBindings.Clear()
 
+            Me.idpersona = DtPersona.Rows(0)("StbPersonaID")
             Me.txtPrimerNombre.DataBindings.Add("text", DtPersona, "Nombre1", False, DataSourceUpdateMode.OnPropertyChanged)
             Me.txtSegundoNombre.DataBindings.Add("text", DtPersona, "Nombre2", False, DataSourceUpdateMode.OnPropertyChanged)
             Me.txtCedula.DataBindings.Add("text", DtPersona, "Cedula", False, DataSourceUpdateMode.OnPropertyChanged)
             Me.txtPrimerApellido.DataBindings.Add("text", DtPersona, "Apellido1", False, DataSourceUpdateMode.OnPropertyChanged)
             Me.txtSegundoApellido.DataBindings.Add("text", DtPersona, "Apellido2", False, DataSourceUpdateMode.OnPropertyChanged)
             Me.txtDireccion.DataBindings.Add("text", DtPersona, "Direccion", False, DataSourceUpdateMode.OnPropertyChanged)
-            Me.cmbGenero.SelectedValue = DtPersona.Rows(0)("Genero")
+            Me.cmbGenero.SelectedValue = DtPersona.Rows(0)("objGeneroID")
             Me.cmbCiudad.SelectedValue = DtPersona.Rows(0)("objCiudadID")
-            'Me.cmbGenero.DataBindings.Add("SelectedValue", DtPersona, "Genero", False, DataSourceUpdateMode.OnPropertyChanged)
-            'Me.cmbCiudad.DataBindings.Add("SelectedValue", DtPersona, "objCiudadID", False, DataSourceUpdateMode.OnPropertyChanged)
+            Me.dtpFechaNacimiento.Value = DtPersona.Rows(0)("FechaNacimiento")
+
+            'Cargar Contactos
+            frmClientesEdit.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", "objPersonaID=" & Me.idpersona))
+            Me.tdbContactos.SetDataBinding(frmClientesEdit.dtContactos, "", True)
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+
+            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+                Me.cmdEliminarContacto.Enabled = False
+            Else
+                Me.cmdEliminarContacto.Enabled = True
+            End If
+
+            Me.tdbContactos.Refresh()
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -154,35 +162,34 @@ Public Class frmClientesEdit
     End Sub
 #End Region
 
-#Region "Seguridad"
-    Private Sub Seguridad()
-
-    End Sub
-#End Region
-
 #Region "Validar Ingresos"
     Public Function ValidarNumeroTelefono()
-        Me.intResultado = 0
+        Try
+            Me.intResultado = 0
 
-        'Se valida que haya al menos un teléfono si es cliente
-        If frmClientesEdit.dtContactos.Rows.Count = 0 Then
-            Me.intResultado = 1
-        End If
+            'Se valida que haya al menos un teléfono si es cliente
+            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+                Me.intResultado = 1
+            End If
 
 
-        For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
-            Dim s As String = dr("TipoEntrada").ToString.Substring(0, 8)
-            If dr("TipoEntrada").ToString.Trim.Length >= 8 Then
-                If dr("TipoEntrada").ToString.Substring(0, 8) = "Teléfono" Then
-                    Return 0
-                    Exit Function
+            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+                Dim s As String = dr("TipoEntrada").ToString.Substring(0, 8)
+                If dr("TipoEntrada").ToString.Trim.Length >= 8 Then
+                    If dr("TipoEntrada").ToString.Substring(0, 8) = "Teléfono" Then
+                        Return 0
+                        Exit Function
+                    Else
+                        Me.intResultado = 1
+                    End If
                 Else
                     Me.intResultado = 1
                 End If
-            Else
-                Me.intResultado = 1
-            End If
-        Next
+            Next
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
         Return intResultado
     End Function
 #End Region
@@ -219,33 +226,20 @@ Public Class frmClientesEdit
     End Sub
 #End Region
 
-
-#Region "ImagenCedula"
-
-    Private Function Ficheros(ByVal SRuta As String) As Byte()
-        Dim fs As System.IO.FileStream
-        fs = New FileStream(SRuta, FileMode.Open, FileAccess.Read, FileShare.Read)
-        Dim Datos(fs.Length) As Byte
-        fs.Read(Datos, 0, Convert.ToInt32(fs.Length))
-        Return Datos
-    End Function
-#End Region
-
-
-    'AGREGAR
-    '*****************************************
-
 #Region "Agregar Personas"
     Private Sub AgregarPersonas()
-
-        Select Case Me.ValidarNumeroTelefono
-            Case 0
-                Me.ValidarPersonasNaturales()
-                Me.InsertarPersonas()
-            Case 1
-                MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos un teléfono como Contacto del Cliente", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                Me.GuardarContactosTemp()
-        End Select
+        Try
+            Select Case Me.ValidarNumeroTelefono
+                Case 0
+                    Me.ValidarPersonasNaturales()
+                    Me.InsertarPersonas()
+                Case 1
+                    MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos un teléfono como Contacto del Cliente", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+                    Me.GuardarContactosTemp()
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 #End Region
 
@@ -350,9 +344,6 @@ Public Class frmClientesEdit
 
 #End Region
 
-    'EDITAR
-    '*****************************************
-
 #Region "Cargar Datos a Editar"
 
     Private Sub CargarDatosEditar()
@@ -397,14 +388,17 @@ Public Class frmClientesEdit
 #Region "Editar Personas"
 
     Private Sub EditarPersonas()
-
-        Select Case Me.ValidarNumeroTelefono
-            Case 0
-                Me.ModificarPersonas()
-            Case 1
-                MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos un teléfono como Contacto del Cliente", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                Me.GuardarContactosTemp()
-        End Select
+        Try
+            Select Case Me.ValidarNumeroTelefono
+                Case 0
+                    Me.ModificarPersonas()
+                Case 1
+                    MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos un teléfono como Contacto del Cliente", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+                    Me.GuardarContactosTemp()
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 #End Region
@@ -419,7 +413,6 @@ Public Class frmClientesEdit
             objPersonas.Retrieve(Me.idpersona)
             objPersonas.UsuarioModificacion = clsProyecto.Conexion.Usuario
             objPersonas.FechaModificacion = clsProyecto.Conexion.FechaServidor
-
 
             objPersonas.Nombre1 = Me.txtPrimerNombre.Text.Trim
             objPersonas.Nombre2 = Me.txtSegundoNombre.Text.Trim
@@ -437,10 +430,10 @@ Public Class frmClientesEdit
             Else
                 objPersonas.FechaNacimiento = Nothing
             End If
+
             objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
             objPersonas.objCiudadID = cmbCiudad.SelectedValue
             objPersonas.Direccion = txtDireccion.Text
-
 
             objPersonas.Update()
             Me.ModificarDetalle()
@@ -464,8 +457,7 @@ Public Class frmClientesEdit
     Private Sub ModificarDetalle()
 
         Try
-
-            StbPersonaClasificacion.DeleteByFilter("objPersonaID='" + Me.idpersona + "'")
+            StbPersonaClasificacion.DeleteByFilter("objTipoPersonaID = (SELECT StbTipoPersonaID FROM StbTipoPersona WHERE Descripcion='Cliente') AND objPersonaID=" + Me.idpersona)
             StbContactos.DeleteByFilter("objPersonaID='" + Me.idpersona + "'")
 
         Catch ex As Exception
@@ -476,63 +468,56 @@ Public Class frmClientesEdit
     End Sub
 #End Region
 
-    'Validaciones
-    '*****************************************
-
 #Region "Validar Fechas en General"
-    ' -----------------------------------------------------------------------------------------
-    ' Nombre del Autor    		:	Róger Alberto Gutiérrez Mejía
-    ' Fecha de Elaboración 		:	16 de Febrero de 2009
     ' Descripción			   	:	Función para verificar la validez de una fecha
     ' -----------------------------------------------------------------------------------------
     Private Function FechaValida(ByVal day As Integer, ByVal month As Integer, ByVal year As Integer)
-
-        If month > 12 Or month = 0 Or day > 31 Or day = 0 Then
-            Return False
-            Exit Function
-        Else
-            Select Case month
-                Case 2
-                    If year Mod 4 = 0 Then
-                        If day > 29 Then
+        Try
+            If month > 12 Or month = 0 Or day > 31 Or day = 0 Then
+                Return False
+                Exit Function
+            Else
+                Select Case month
+                    Case 2
+                        If year Mod 4 = 0 Then
+                            If day > 29 Then
+                                Return False
+                                Exit Function
+                            Else
+                                Return True
+                                Exit Function
+                            End If
+                        Else
+                            If day > 28 Then
+                                Return False
+                                Exit Function
+                            Else
+                                Return True
+                                Exit Function
+                            End If
+                        End If
+                    Case 4, 6, 9, 11
+                        If day > 30 Then
                             Return False
                             Exit Function
                         Else
                             Return True
                             Exit Function
                         End If
-                    Else
-                        If day > 28 Then
-                            Return False
-                            Exit Function
-                        Else
-                            Return True
-                            Exit Function
-                        End If
-                    End If
-                Case 4, 6, 9, 11
-                    If day > 30 Then
-                        Return False
-                        Exit Function
-                    Else
+                    Case 1, 3, 5, 7, 8, 10, 12
                         Return True
                         Exit Function
-                    End If
-                Case 1, 3, 5, 7, 8, 10, 12
-                    Return True
-                    Exit Function
-            End Select
-        End If
-
+                End Select
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
         Return True
 
     End Function
 #End Region
 
 #Region "Validar Cédulas en General"
-    ' -----------------------------------------------------------------------------------------
-    ' Nombre del Autor    		:	Róger Alberto Gutiérrez Mejía
-    ' Fecha de Elaboración 		:	16 de Febrero de 2009
     ' Descripción			   	:	Función para verificar la validez de una cédula
     ' -----------------------------------------------------------------------------------------
     Private Function CedulaValida(ByVal cedula As String)
@@ -550,34 +535,38 @@ Public Class frmClientesEdit
 
 #Region "Validar Cédulas"
     Private Function ValidarCedula()
-        'Validar que haya algo en la cédula
-        If Me.txtCedula.Text.Trim.Replace(" ", "").Replace("-", "").Trim.Length = 0 Then
-            Me.ErrPrv.SetError(Me.txtCedula, My.Resources.MsgObligatorio)
-            Me.txtCedula.Focus()
-            Return False
-            Exit Function
-        End If
-        'Validar que no haya espacios intermedios
-        For intCaracter As Integer = 0 To Me.txtCedula.Text.Trim.Length - 1
-            If Me.txtCedula.Text.Substring(intCaracter, 1).Trim.Length = 0 Then
-                Me.ErrPrv.SetError(Me.txtCedula, "Número de Cédula no válido")
+        Try
+            'Validar que haya algo en la cédula
+            If Me.txtCedula.Text.Trim.Replace(" ", "").Replace("-", "").Trim.Length = 0 Then
+                Me.ErrPrv.SetError(Me.txtCedula, My.Resources.MsgObligatorio)
                 Me.txtCedula.Focus()
                 Return False
                 Exit Function
             End If
-        Next
-        'Validar que la fecha de la cédula sea válida
-        If Me.txtCedula.Text.Trim.Length = 16 Then
-            If Me.CedulaValida(Me.txtCedula.Text) = False Then
-                Me.ErrPrv.SetError(Me.txtCedula, "Número de Cédula no válido")
-                Me.txtCedula.Focus()
+            'Validar que no haya espacios intermedios
+            For intCaracter As Integer = 0 To Me.txtCedula.Text.Trim.Length - 1
+                If Me.txtCedula.Text.Substring(intCaracter, 1).Trim.Length = 0 Then
+                    Me.ErrPrv.SetError(Me.txtCedula, "Número de Cédula no válido")
+                    Me.txtCedula.Focus()
+                    Return False
+                    Exit Function
+                End If
+            Next
+            'Validar que la fecha de la cédula sea válida
+            If Me.txtCedula.Text.Trim.Length = 16 Then
+                If Me.CedulaValida(Me.txtCedula.Text) = False Then
+                    Me.ErrPrv.SetError(Me.txtCedula, "Número de Cédula no válido")
+                    Me.txtCedula.Focus()
+                    Return False
+                    Exit Function
+                End If
+            Else
                 Return False
                 Exit Function
             End If
-        Else
-            Return False
-            Exit Function
-        End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
         Return True
     End Function
 #End Region
@@ -642,10 +631,6 @@ Public Class frmClientesEdit
     End Function
 #End Region
 
-
-    'Contactos
-    '*****************************************
-
 #Region "Cargar Grid Contactos"
     Private Sub CargarGridContactos()
         Try
@@ -681,34 +666,40 @@ Public Class frmClientesEdit
 
 #Region "Eliminar Contactos"
     Private Sub EliminarContactos()
-        If MsgBox(My.Resources.MsgConfirmarEliminar, MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
-            frmClientesEdit.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
-        Else
-            Exit Sub
-        End If
-        If frmClientesEdit.dtContactos.Rows.Count = 0 Then
-            Me.cmdEliminarContacto.Enabled = False
-        End If
-        Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Try
+            If MsgBox(My.Resources.MsgConfirmarEliminar, MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
+                frmClientesEdit.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
+            Else
+                Exit Sub
+            End If
+            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+                Me.cmdEliminarContacto.Enabled = False
+            End If
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 #End Region
 
 #Region "Guardar Contactos Temporalmente"
     Private Sub GuardarContactosTemp()
-        Dim objContactos As frmStbPersonasContactos
-        objContactos = New frmStbPersonasContactos
-        objContactos.frmLLamado = 0
-        objContactos.ShowDialog()
-        If frmClientesEdit.dtContactos.Rows.Count > 0 Then
-            Me.cmdEliminarContacto.Enabled = True
-        End If
-        Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Try
+            Dim objContactos As frmStbPersonasContactos
+            objContactos = New frmStbPersonasContactos
+            objContactos.frmLLamado = 0
+            objContactos.ShowDialog()
+            If frmClientesEdit.dtContactos.Rows.Count > 0 Then
+                Me.cmdEliminarContacto.Enabled = True
+            End If
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 #End Region
 
-    'OTROS
-    '*****************************************
-#Region "Propertys"
+ #Region "Propertys"
     Dim id_perLec As String
     Dim TyGui_Lec, TyGuiEsc, Llamado_Lec As Integer
 
@@ -903,12 +894,16 @@ Public Class frmClientesEdit
 
 #Region "Eventos de los botones"
     Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
-        Select Case Me.TyGui
-            Case 1
-                Me.AgregarPersonas()
-            Case 2
-                Me.EditarPersonas()
-        End Select
+        Try
+            Select Case Me.TyGui
+                Case 1
+                    Me.AgregarPersonas()
+                Case 2
+                    Me.EditarPersonas()
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SimpleButton1.Click
@@ -916,11 +911,19 @@ Public Class frmClientesEdit
     End Sub
 
     Private Sub cmdEliminarContacto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEliminarContacto.Click
-        Me.EliminarContactos()
+        try
+            Me.EliminarContactos()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdAgregarContacto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAgregarContacto.Click
-        Me.GuardarContactosTemp()
+        Try
+            Me.GuardarContactosTemp()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 #End Region
@@ -928,68 +931,76 @@ Public Class frmClientesEdit
 #Region "Cargar el Formulario"
 
     Private Sub frmStbPersonasEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
-        Me.CargarLongitudesMaximas()
-        CargarGenero()
-        CargarCiudad()
-        CargarRuta()
-        Me.CargarGridContactos()
+        Try
+            clsProyecto.CargarTemaDefinido(Me)
+            Me.CargarLongitudesMaximas()
+            CargarGenero()
+            CargarCiudad()
+            CargarRuta()
+            Me.CargarGridContactos()
 
-        Select Case Me.TyGui
-            Case 1
-                Me.Text = "Agregar Nuevo Cliente"
-            Case 2
-                Me.Text = "Editanto datos de Cliente: " & Me.idpersona
-                Me.CargarDatosEditar()
-                Me.txtPrimerNombre.Focus()
-            Case 3
-                Me.Text = "Consultando datos de Cliente: " & Me.idpersona
+            Select Case Me.TyGui
+                Case 1
+                    Me.Text = "Agregar Nuevo Cliente"
+                Case 2
+                    Me.Text = "Editanto datos de Cliente: " & Me.idpersona
+                    Me.CargarDatosEditar()
+                    Me.txtPrimerNombre.Focus()
+                Case 3
+                    Me.Text = "Consultando datos de Cliente: " & Me.idpersona
 
-                Me.CargarDatosEditar()
+                    Me.CargarDatosEditar()
 
-                Me.barContactos.Enabled = False
-                Me.cmdGuardar.Enabled = False
-                Me.cmbGenero.Enabled = False
-                Me.dtpFechaNacimiento.Enabled = False
-                Me.txtCedula.Enabled = False
-                Me.txtPrimerNombre.Enabled = False
-                Me.txtSegundoNombre.Enabled = False
-                Me.txtPrimerApellido.Enabled = False
-                Me.txtSegundoApellido.Enabled = False
-                Me.cmbGenero.Enabled = False
-                Me.cmbCiudad.Enabled = False
-                Me.txtDireccion.Enabled = False
-                Me.spnOrdenCobro.Enabled = False
-                Me.cmbRuta.Enabled = False
-                Me.cmdBuscar.Enabled = False
+                    Me.barContactos.Enabled = False
+                    Me.cmdGuardar.Enabled = False
+                    Me.cmbGenero.Enabled = False
+                    Me.dtpFechaNacimiento.Enabled = False
+                    Me.txtCedula.Enabled = False
+                    Me.txtPrimerNombre.Enabled = False
+                    Me.txtSegundoNombre.Enabled = False
+                    Me.txtPrimerApellido.Enabled = False
+                    Me.txtSegundoApellido.Enabled = False
+                    Me.cmbGenero.Enabled = False
+                    Me.cmbCiudad.Enabled = False
+                    Me.txtDireccion.Enabled = False
+                    Me.spnOrdenCobro.Enabled = False
+                    Me.cmbRuta.Enabled = False
+                    Me.cmdBuscar.Enabled = False
 
-                Me.txtPrimerNombre.Tag = "BLOQUEADO"
-                Me.txtSegundoNombre.Tag = "BLOQUEADO"
-                Me.txtPrimerApellido.Tag = "BLOQUEADO"
-                Me.txtSegundoApellido.Tag = "BLOQUEADO"
-                Me.txtCedula.Tag = "BLOQUEADO"
-                Me.cmbGenero.Tag = "BLOQUEADO"
-                Me.cmbCiudad.Tag = "BLOQUEADO"
-                Me.txtDireccion.Tag = "BLOQUEADO"
-                Me.spnOrdenCobro.Tag = "BLOQUEADO"
-                Me.cmbRuta.Tag = "BLOQUEADO"
+                    Me.txtPrimerNombre.Tag = "BLOQUEADO"
+                    Me.txtSegundoNombre.Tag = "BLOQUEADO"
+                    Me.txtPrimerApellido.Tag = "BLOQUEADO"
+                    Me.txtSegundoApellido.Tag = "BLOQUEADO"
+                    Me.txtCedula.Tag = "BLOQUEADO"
+                    Me.cmbGenero.Tag = "BLOQUEADO"
+                    Me.cmbCiudad.Tag = "BLOQUEADO"
+                    Me.txtDireccion.Tag = "BLOQUEADO"
+                    Me.spnOrdenCobro.Tag = "BLOQUEADO"
+                    Me.cmbRuta.Tag = "BLOQUEADO"
 
-                clsProyecto.CargarTemaDefinido(Me)
-        End Select
+                    clsProyecto.CargarTemaDefinido(Me)
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
 
     End Sub
 
     Private Sub cmdBuscar_Click(sender As Object, e As EventArgs) Handles cmdBuscar.Click
-        Dim objSeleccion As frmPersonaSelector
-        objSeleccion = New frmPersonaSelector
-        objSeleccion.Filtro = " Descripcion = 'Cliente' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SccClientes)"
-        objSeleccion.Opcion = 1
-        If objSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            Me.idpersona = objSeleccion.Seleccion
-            CargarPersona()
-            VincularControles()
-            ErrPrv.SetError(cmdBuscar, "")
-        End If
+        Try
+            Dim objSeleccion As frmPersonaSelector
+            objSeleccion = New frmPersonaSelector
+            objSeleccion.Filtro = " Descripcion = 'Cliente' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SccClientes)"
+            objSeleccion.Opcion = 1
+            If objSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Me.idpersona = objSeleccion.Seleccion
+                CargarPersona()
+                VincularControles()
+                ErrPrv.SetError(cmdBuscar, "")
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 #End Region
 

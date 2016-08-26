@@ -20,16 +20,19 @@ Partial Class frmSivReporteProveedor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivReporteProveedor))
-        Me.gbCriterios = New System.Windows.Forms.GroupBox
-        Me.cmbProveedor = New C1.Win.C1List.C1Combo
-        Me.rbInactivos = New System.Windows.Forms.RadioButton
-        Me.rbActivos = New System.Windows.Forms.RadioButton
-        Me.rbTodos = New System.Windows.Forms.RadioButton
-        Me.rbProveedor = New System.Windows.Forms.RadioButton
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.cmdCancelar = New System.Windows.Forms.Button
+        Me.gbCriterios = New System.Windows.Forms.GroupBox()
+        Me.cmbProveedor = New C1.Win.C1List.C1Combo()
+        Me.rbInactivos = New System.Windows.Forms.RadioButton()
+        Me.rbActivos = New System.Windows.Forms.RadioButton()
+        Me.rbTodos = New System.Windows.Forms.RadioButton()
+        Me.rbProveedor = New System.Windows.Forms.RadioButton()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbCriterios.SuspendLayout()
         CType(Me.cmbProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'gbCriterios
@@ -39,9 +42,10 @@ Partial Class frmSivReporteProveedor
         Me.gbCriterios.Controls.Add(Me.rbActivos)
         Me.gbCriterios.Controls.Add(Me.rbTodos)
         Me.gbCriterios.Controls.Add(Me.rbProveedor)
-        Me.gbCriterios.Location = New System.Drawing.Point(12, 12)
+        Me.gbCriterios.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbCriterios.Location = New System.Drawing.Point(12, 11)
         Me.gbCriterios.Name = "gbCriterios"
-        Me.gbCriterios.Size = New System.Drawing.Size(328, 129)
+        Me.gbCriterios.Size = New System.Drawing.Size(328, 121)
         Me.gbCriterios.TabIndex = 0
         Me.gbCriterios.TabStop = False
         Me.gbCriterios.Text = "Criterios"
@@ -84,7 +88,7 @@ Partial Class frmSivReporteProveedor
         Me.rbInactivos.AutoSize = True
         Me.rbInactivos.Location = New System.Drawing.Point(16, 97)
         Me.rbInactivos.Name = "rbInactivos"
-        Me.rbInactivos.Size = New System.Drawing.Size(68, 17)
+        Me.rbInactivos.Size = New System.Drawing.Size(77, 17)
         Me.rbInactivos.TabIndex = 3
         Me.rbInactivos.Text = "Inactivos"
         Me.rbInactivos.UseVisualStyleBackColor = True
@@ -94,7 +98,7 @@ Partial Class frmSivReporteProveedor
         Me.rbActivos.AutoSize = True
         Me.rbActivos.Location = New System.Drawing.Point(16, 74)
         Me.rbActivos.Name = "rbActivos"
-        Me.rbActivos.Size = New System.Drawing.Size(60, 17)
+        Me.rbActivos.Size = New System.Drawing.Size(67, 17)
         Me.rbActivos.TabIndex = 2
         Me.rbActivos.Text = "Activos"
         Me.rbActivos.UseVisualStyleBackColor = True
@@ -104,7 +108,7 @@ Partial Class frmSivReporteProveedor
         Me.rbTodos.AutoSize = True
         Me.rbTodos.Location = New System.Drawing.Point(16, 51)
         Me.rbTodos.Name = "rbTodos"
-        Me.rbTodos.Size = New System.Drawing.Size(55, 17)
+        Me.rbTodos.Size = New System.Drawing.Size(60, 17)
         Me.rbTodos.TabIndex = 1
         Me.rbTodos.Text = "Todos"
         Me.rbTodos.UseVisualStyleBackColor = True
@@ -115,41 +119,62 @@ Partial Class frmSivReporteProveedor
         Me.rbProveedor.Checked = True
         Me.rbProveedor.Location = New System.Drawing.Point(16, 28)
         Me.rbProveedor.Name = "rbProveedor"
-        Me.rbProveedor.Size = New System.Drawing.Size(74, 17)
+        Me.rbProveedor.Size = New System.Drawing.Size(83, 17)
         Me.rbProveedor.TabIndex = 0
         Me.rbProveedor.TabStop = True
         Me.rbProveedor.Text = "Proveedor"
         Me.rbProveedor.UseVisualStyleBackColor = True
         '
-        'cmdAceptar
+        'PanelControl1
         '
-        Me.cmdAceptar.Location = New System.Drawing.Point(184, 147)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdAceptar.TabIndex = 1
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdGuardar)
+        Me.PanelControl1.Controls.Add(Me.gbCriterios)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(354, 180)
+        Me.PanelControl1.TabIndex = 3
         '
         'cmdCancelar
         '
-        Me.cmdCancelar.Location = New System.Drawing.Point(265, 147)
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(254, 144)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 2
+        Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdCancelar.TabIndex = 76
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(168, 144)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 75
+        Me.cmdGuardar.Tag = "ACEPTAR"
+        Me.cmdGuardar.Text = "&Aceptar"
         '
         'frmSivReporteProveedor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(354, 180)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdAceptar)
-        Me.Controls.Add(Me.gbCriterios)
+        Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSivReporteProveedor"
@@ -158,6 +183,8 @@ Partial Class frmSivReporteProveedor
         Me.gbCriterios.ResumeLayout(False)
         Me.gbCriterios.PerformLayout()
         CType(Me.cmbProveedor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -167,6 +194,7 @@ Partial Class frmSivReporteProveedor
     Friend WithEvents rbInactivos As System.Windows.Forms.RadioButton
     Friend WithEvents rbActivos As System.Windows.Forms.RadioButton
     Friend WithEvents cmbProveedor As C1.Win.C1List.C1Combo
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

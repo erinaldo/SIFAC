@@ -10,8 +10,7 @@ Partial Public Class SrhEmpleado
 
 #Region " Variables Miembro " 
 	Protected m_SrhEmpleadoID As Integer 
-	Protected m_objPersonaID As String = Nothing 
-	Protected m_objCargoID As Integer 
+	Protected m_objPersonaID As Integer 
 	Protected m_FechaIngreso As Nullable(Of Date) 
 	Protected m_FechaEgreso As Nullable(Of Date) 
 	Protected m_Activo As Boolean 
@@ -19,12 +18,13 @@ Partial Public Class SrhEmpleado
 	Protected m_FechaCreacion As Date 
 	Protected m_UsuarioModificacion As String = Nothing 
 	Protected m_FechaModificacion As Nullable(Of Date) 
-	Protected m_PorcentajeComision As Nullable(Of Decimal) 
+	Protected m_Imei As String = Nothing 
+	Protected m_objCargoID As Nullable(Of Integer) 
 #End Region
 
 #Region " Propiedades "
 	''' <summary>
-	''' ID ?nico del empleado
+	''' ID único del empleado
 	''' </summary>
 	Public Property SrhEmpleadoID() As Integer
         Get
@@ -38,29 +38,12 @@ Partial Public Class SrhEmpleado
 	''' <summary>
 	''' ID de la persona.
 	''' </summary>
-	Public Property objPersonaID() As String
+	Public Property objPersonaID() As Integer
         Get
             Return (m_objPersonaID)
         End Get
-		Set(ByVal Value As String)		
-			If Not Value Is Nothing Then
-				If Value.Length > 16 Then
-					Throw New ArgumentOutOfRangeException("objPersonaID", Value.ToString(), "Valor inv?lido para SrhEmpleado.objPersonaID. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (16).")
-				End If
-			End If
-			m_objPersonaID = Value
-		End Set
-    End Property
-	
-	''' <summary>
-	''' ID del cargo
-	''' </summary>
-	Public Property objCargoID() As Integer
-        Get
-            Return (m_objCargoID)
-        End Get
 		Set(ByVal Value As Integer)					
-			m_objCargoID = Value
+			m_objPersonaID = Value
 		End Set
     End Property
 	
@@ -101,7 +84,7 @@ Partial Public Class SrhEmpleado
     End Property
 	
 	''' <summary>
-	''' Login del Usuario que cre? el registro. Varchar (30). No permite Null.
+	''' Login del Usuario que creó el registro. Varchar (30). No permite Null.
 	''' </summary>
 	Public Property UsuarioCreacion() As String
         Get
@@ -130,7 +113,7 @@ Partial Public Class SrhEmpleado
     End Property
 	
 	''' <summary>
-	''' Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
+	''' Login del último usuario que modificó el registro. Varchar (30). Permite Null.
 	''' </summary>
 	Public Property UsuarioModificacion() As String
         Get
@@ -147,7 +130,7 @@ Partial Public Class SrhEmpleado
     End Property
 	
 	''' <summary>
-	''' ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
+	''' Última fecha en que se modificó el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse éste también.
 	''' </summary>
 	Public Property FechaModificacion() As Nullable(Of Date)
         Get
@@ -158,26 +141,38 @@ Partial Public Class SrhEmpleado
 		End Set
     End Property
 	
-	Public Property PorcentajeComision() As Nullable(Of Decimal)
+	Public Property Imei() As String
         Get
-            Return (m_PorcentajeComision)
+            Return (m_Imei)
         End Get
-		Set(ByVal Value As Nullable(Of Decimal))					
-			m_PorcentajeComision = Value
+		Set(ByVal Value As String)		
+			If Not Value Is Nothing Then
+				If Value.Length > 100 Then
+					Throw New ArgumentOutOfRangeException("Imei", Value.ToString(), "Valor inv?lido para SrhEmpleado.Imei. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (100).")
+				End If
+			End If
+			m_Imei = Value
+		End Set
+    End Property
+	
+	Public Property objCargoID() As Nullable(Of Integer)
+        Get
+            Return (m_objCargoID)
+        End Get
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_objCargoID = Value
 		End Set
     End Property
 	
 
 	Public Shared Function GetMaxLength(ProperyName as String) as Integer
 		Select Case ProperyName
-			Case "objPersonaID"
-				Return	16
 			Case "UsuarioCreacion"
 				Return	30
 			Case "UsuarioModificacion"
 				Return	30
-			Case "PorcentajeComision"
-				Return	11
+			Case "Imei"
+				Return	100
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
 		End Select
@@ -185,8 +180,6 @@ Partial Public Class SrhEmpleado
 	
 	Public Shared Function GetScale(ProperyName as String) as Integer
 		Select Case ProperyName
-			Case "PorcentajeComision"
-				Return	2
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
 		End Select
@@ -214,8 +207,7 @@ Partial Public Class SrhEmpleado
 			cmdDelete.CommandText = "DELETE FROM  SrhEmpleado WHERE SrhEmpleadoID= @SrhEmpleadoID" 	
 
 			'CREACION DEL COMANDO INSERT
-			cmdInsert.Parameters.Add("@objPersonaID", SqlDbType.VarChar, 16, "objPersonaID")
-			cmdInsert.Parameters.Add("@objCargoID", SqlDbType.Int, 4, "objCargoID")
+			cmdInsert.Parameters.Add("@objPersonaID", SqlDbType.Int, 4, "objPersonaID")
 			cmdInsert.Parameters.Add("@FechaIngreso", SqlDbType.DateTime, 8, "FechaIngreso")
 			cmdInsert.Parameters.Add("@FechaEgreso", SqlDbType.DateTime, 8, "FechaEgreso")
 			cmdInsert.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
@@ -223,12 +215,12 @@ Partial Public Class SrhEmpleado
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
-			cmdInsert.Parameters.Add("@PorcentajeComision", SqlDbType.Decimal, 9, "PorcentajeComision")
-			cmdInsert.CommandText = "INSERT INTO SrhEmpleado ( objPersonaID, objCargoID, FechaIngreso, FechaEgreso, Activo, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion, PorcentajeComision) VALUES ( @objPersonaID, @objCargoID, @FechaIngreso, @FechaEgreso, @Activo, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion, @PorcentajeComision)"
+			cmdInsert.Parameters.Add("@Imei", SqlDbType.VarChar, 100, "Imei")
+			cmdInsert.Parameters.Add("@objCargoID", SqlDbType.Int, 4, "objCargoID")
+			cmdInsert.CommandText = "INSERT INTO SrhEmpleado ( objPersonaID, FechaIngreso, FechaEgreso, Activo, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion, Imei, objCargoID) VALUES ( @objPersonaID, @FechaIngreso, @FechaEgreso, @Activo, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion, @Imei, @objCargoID)"
 
 			'CREACION DEL COMANDO UPDATE
-			cmdUpdate.Parameters.Add("@objPersonaID", SqlDbType.VarChar, 16, "objPersonaID")
-			cmdUpdate.Parameters.Add("@objCargoID", SqlDbType.Int, 4, "objCargoID")
+			cmdUpdate.Parameters.Add("@objPersonaID", SqlDbType.Int, 4, "objPersonaID")
 			cmdUpdate.Parameters.Add("@FechaIngreso", SqlDbType.DateTime, 8, "FechaIngreso")
 			cmdUpdate.Parameters.Add("@FechaEgreso", SqlDbType.DateTime, 8, "FechaEgreso")
 			cmdUpdate.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
@@ -236,9 +228,10 @@ Partial Public Class SrhEmpleado
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
-			cmdUpdate.Parameters.Add("@PorcentajeComision", SqlDbType.Decimal, 9, "PorcentajeComision")
+			cmdUpdate.Parameters.Add("@Imei", SqlDbType.VarChar, 100, "Imei")
+			cmdUpdate.Parameters.Add("@objCargoID", SqlDbType.Int, 4, "objCargoID")
 			cmdUpdate.Parameters.Add("@wSrhEmpleadoID", SqlDbType.Int, 4, "SrhEmpleadoID")
-			cmdUpdate.CommandText = "UPDATE SrhEmpleado SET objPersonaID=@objPersonaID, objCargoID=@objCargoID, FechaIngreso=@FechaIngreso, FechaEgreso=@FechaEgreso, Activo=@Activo, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion, PorcentajeComision=@PorcentajeComision WHERE SrhEmpleadoID= @wSrhEmpleadoID"
+			cmdUpdate.CommandText = "UPDATE SrhEmpleado SET objPersonaID=@objPersonaID, FechaIngreso=@FechaIngreso, FechaEgreso=@FechaEgreso, Activo=@Activo, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion, Imei=@Imei, objCargoID=@objCargoID WHERE SrhEmpleadoID= @wSrhEmpleadoID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -286,7 +279,6 @@ Partial Public Class SrhEmpleado
 			If dr.Read() Then		
 				m_SrhEmpleadoID = dr("SrhEmpleadoID")
 				m_objPersonaID = IIf(IsDBNull(dr("objPersonaID")), Nothing, dr("objPersonaID"))					
-				m_objCargoID = IIf(IsDBNull(dr("objCargoID")), Nothing, dr("objCargoID"))					
 				m_FechaIngreso = IIf(IsDBNull(dr("FechaIngreso")), Nothing, dr("FechaIngreso"))					
 				m_FechaEgreso = IIf(IsDBNull(dr("FechaEgreso")), Nothing, dr("FechaEgreso"))					
 				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
@@ -294,7 +286,8 @@ Partial Public Class SrhEmpleado
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
-				m_PorcentajeComision = IIf(IsDBNull(dr("PorcentajeComision")), Nothing, dr("PorcentajeComision"))					
+				m_Imei = IIf(IsDBNull(dr("Imei")), Nothing, dr("Imei"))					
+				m_objCargoID = IIf(IsDBNull(dr("objCargoID")), Nothing, dr("objCargoID"))					
 				Return True
 			Else
 				Return False
@@ -330,7 +323,6 @@ Partial Public Class SrhEmpleado
 			If dr.Read() Then
 				m_SrhEmpleadoID = dr("SrhEmpleadoID")
 				m_objPersonaID = IIf(IsDBNull(dr("objPersonaID")), Nothing, dr("objPersonaID"))					
-				m_objCargoID = IIf(IsDBNull(dr("objCargoID")), Nothing, dr("objCargoID"))					
 				m_FechaIngreso = IIf(IsDBNull(dr("FechaIngreso")), Nothing, dr("FechaIngreso"))					
 				m_FechaEgreso = IIf(IsDBNull(dr("FechaEgreso")), Nothing, dr("FechaEgreso"))					
 				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
@@ -338,7 +330,8 @@ Partial Public Class SrhEmpleado
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
-				m_PorcentajeComision = IIf(IsDBNull(dr("PorcentajeComision")), Nothing, dr("PorcentajeComision"))					
+				m_Imei = IIf(IsDBNull(dr("Imei")), Nothing, dr("Imei"))					
+				m_objCargoID = IIf(IsDBNull(dr("objCargoID")), Nothing, dr("objCargoID"))					
 				Return True
 			Else
 				Return False
@@ -465,7 +458,6 @@ Partial Public Class SrhEmpleado
 	Public Sub Insert(Optional ByRef pTransac As TransactionManager = Nothing)
 		Dim sCommand As String = "insert into SrhEmpleado("
 		sCommand &= "objPersonaID,"
-		sCommand &= "objCargoID,"
 		sCommand &= "FechaIngreso,"
 		sCommand &= "FechaEgreso,"
 		sCommand &= "Activo,"
@@ -473,9 +465,9 @@ Partial Public Class SrhEmpleado
 		sCommand &= "FechaCreacion,"
 		sCommand &= "UsuarioModificacion,"
 		sCommand &= "FechaModificacion,"
-		sCommand &= "PorcentajeComision) values ("		
+		sCommand &= "Imei,"
+		sCommand &= "objCargoID) values ("		
 		sCommand &= "@objPersonaID,"
-		sCommand &= "@objCargoID,"
 		sCommand &= "@FechaIngreso,"
 		sCommand &= "@FechaEgreso,"
 		sCommand &= "@Activo,"
@@ -483,7 +475,8 @@ Partial Public Class SrhEmpleado
 		sCommand &= "@FechaCreacion,"
 		sCommand &= "@UsuarioModificacion,"
 		sCommand &= "@FechaModificacion,"
-		sCommand &= "@PorcentajeComision)"		
+		sCommand &= "@Imei,"
+		sCommand &= "@objCargoID)"		
 	
 		sCommand &= " select "
 		sCommand &= "@SrhEmpleadoID = SrhEmpleadoID from SrhEmpleado where "		
@@ -493,65 +486,65 @@ Partial Public Class SrhEmpleado
 		Dim arParams(10) As SqlParameter
 		arParams(0) = New SqlParameter("@SrhEmpleadoID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
-		arParams(1) = New SqlParameter("@objPersonaID", SqlDbType.VarChar)		
+		arParams(1) = New SqlParameter("@objPersonaID", SqlDbType.Int)		
 		If IsDBNull(m_objPersonaID) Then
             arParams(1).Value = DBNull.Value
         Else
             arParams(1).Value = m_objPersonaID
         End If
-		arParams(2) = New SqlParameter("@objCargoID", SqlDbType.Int)		
-		If IsDBNull(m_objCargoID) Then
+		arParams(2) = New SqlParameter("@FechaIngreso", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaIngreso) Then
             arParams(2).Value = DBNull.Value
         Else
-            arParams(2).Value = m_objCargoID
+            arParams(2).Value = m_FechaIngreso
         End If
-		arParams(3) = New SqlParameter("@FechaIngreso", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaIngreso) Then
+		arParams(3) = New SqlParameter("@FechaEgreso", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaEgreso) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_FechaIngreso
+            arParams(3).Value = m_FechaEgreso
         End If
-		arParams(4) = New SqlParameter("@FechaEgreso", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaEgreso) Then
+		arParams(4) = New SqlParameter("@Activo", SqlDbType.Bit)		
+		If IsDBNull(m_Activo) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_FechaEgreso
+            arParams(4).Value = m_Activo
         End If
-		arParams(5) = New SqlParameter("@Activo", SqlDbType.Bit)		
-		If IsDBNull(m_Activo) Then
+		arParams(5) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_Activo
+            arParams(5).Value = m_UsuarioCreacion
         End If
-		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(6) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioCreacion
+            arParams(6).Value = m_FechaCreacion
         End If
-		arParams(7) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(7) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_FechaCreacion
+            arParams(7).Value = m_UsuarioModificacion
         End If
-		arParams(8) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(8) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_UsuarioModificacion
+            arParams(8).Value = m_FechaModificacion
         End If
-		arParams(9) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(9) = New SqlParameter("@Imei", SqlDbType.VarChar)		
+		If IsDBNull(m_Imei) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_FechaModificacion
+            arParams(9).Value = m_Imei
         End If
-		arParams(10) = New SqlParameter("@PorcentajeComision", SqlDbType.Decimal)		
-		If IsDBNull(m_PorcentajeComision) Then
+		arParams(10) = New SqlParameter("@objCargoID", SqlDbType.Int)		
+		If IsDBNull(m_objCargoID) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_PorcentajeComision
+            arParams(10).Value = m_objCargoID
         End If
 	
 		Try
@@ -578,7 +571,6 @@ Partial Public Class SrhEmpleado
 	Public Sub Update(Optional ByRef pTransac As TransactionManager = Nothing)        		
 		Dim sCommand As String = "update SrhEmpleado set "		
 		sCommand &= "objPersonaID = @objPersonaID,"
-		sCommand &= "objCargoID = @objCargoID,"
 		sCommand &= "FechaIngreso = @FechaIngreso,"
 		sCommand &= "FechaEgreso = @FechaEgreso,"
 		sCommand &= "Activo = @Activo,"
@@ -586,7 +578,8 @@ Partial Public Class SrhEmpleado
 		sCommand &= "FechaCreacion = @FechaCreacion,"
 		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
 		sCommand &= "FechaModificacion = @FechaModificacion,"
-		sCommand &= "PorcentajeComision = @PorcentajeComision"		
+		sCommand &= "Imei = @Imei,"
+		sCommand &= "objCargoID = @objCargoID"		
 		sCommand &= " where "	
 		sCommand &= "SrhEmpleadoID = @SrhEmpleadoID"					
 		
@@ -597,65 +590,65 @@ Partial Public Class SrhEmpleado
         Else
             arParams(0).Value = m_SrhEmpleadoID
         End If
-		arParams(1) = New SqlParameter("@objPersonaID", SqlDbType.VarChar)		
+		arParams(1) = New SqlParameter("@objPersonaID", SqlDbType.Int)		
 		If IsDBNull(m_objPersonaID) Then
             arParams(1).Value = DBNull.Value
         Else
             arParams(1).Value = m_objPersonaID
         End If
-		arParams(2) = New SqlParameter("@objCargoID", SqlDbType.Int)		
-		If IsDBNull(m_objCargoID) Then
+		arParams(2) = New SqlParameter("@FechaIngreso", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaIngreso) Then
             arParams(2).Value = DBNull.Value
         Else
-            arParams(2).Value = m_objCargoID
+            arParams(2).Value = m_FechaIngreso
         End If
-		arParams(3) = New SqlParameter("@FechaIngreso", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaIngreso) Then
+		arParams(3) = New SqlParameter("@FechaEgreso", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaEgreso) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_FechaIngreso
+            arParams(3).Value = m_FechaEgreso
         End If
-		arParams(4) = New SqlParameter("@FechaEgreso", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaEgreso) Then
+		arParams(4) = New SqlParameter("@Activo", SqlDbType.Bit)		
+		If IsDBNull(m_Activo) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_FechaEgreso
+            arParams(4).Value = m_Activo
         End If
-		arParams(5) = New SqlParameter("@Activo", SqlDbType.Bit)		
-		If IsDBNull(m_Activo) Then
+		arParams(5) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_Activo
+            arParams(5).Value = m_UsuarioCreacion
         End If
-		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(6) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioCreacion
+            arParams(6).Value = m_FechaCreacion
         End If
-		arParams(7) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(7) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_FechaCreacion
+            arParams(7).Value = m_UsuarioModificacion
         End If
-		arParams(8) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(8) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_UsuarioModificacion
+            arParams(8).Value = m_FechaModificacion
         End If
-		arParams(9) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(9) = New SqlParameter("@Imei", SqlDbType.VarChar)		
+		If IsDBNull(m_Imei) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_FechaModificacion
+            arParams(9).Value = m_Imei
         End If
-		arParams(10) = New SqlParameter("@PorcentajeComision", SqlDbType.Decimal)		
-		If IsDBNull(m_PorcentajeComision) Then
+		arParams(10) = New SqlParameter("@objCargoID", SqlDbType.Int)		
+		If IsDBNull(m_objCargoID) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_PorcentajeComision
+            arParams(10).Value = m_objCargoID
         End If
 	
 		Try

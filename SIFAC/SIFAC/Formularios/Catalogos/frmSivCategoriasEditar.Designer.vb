@@ -48,7 +48,7 @@ Partial Class frmSivCategoriasEditar
         Me.PanelControl1.Controls.Add(Me.gbxDatosGenerales)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "iMaginary"
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(523, 220)
@@ -60,6 +60,8 @@ Partial Class frmSivCategoriasEditar
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(423, 155)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
         Me.cmdCancelar.TabIndex = 3
@@ -73,6 +75,8 @@ Partial Class frmSivCategoriasEditar
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(337, 155)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 2

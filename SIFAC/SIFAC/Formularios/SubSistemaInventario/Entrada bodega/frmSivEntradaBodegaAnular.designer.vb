@@ -72,7 +72,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancelar.Location = New System.Drawing.Point(756, 719)
+        Me.cmdCancelar.Location = New System.Drawing.Point(756, 708)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(79, 30)
         Me.cmdCancelar.TabIndex = 5
@@ -86,7 +86,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmdGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(676, 719)
+        Me.cmdGuardar.Location = New System.Drawing.Point(676, 708)
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(74, 30)
         Me.cmdGuardar.TabIndex = 4
@@ -105,9 +105,10 @@ Partial Class frmSivEntradaBodegaAnular
         Me.gbxDatosGenerales.Controls.Add(Me.dtpFechaEntrada)
         Me.gbxDatosGenerales.Controls.Add(Me.txtNumeroEntrada)
         Me.gbxDatosGenerales.Controls.Add(Me.lblNoEntrada)
-        Me.gbxDatosGenerales.Location = New System.Drawing.Point(17, 28)
+        Me.gbxDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbxDatosGenerales.Location = New System.Drawing.Point(17, 16)
         Me.gbxDatosGenerales.Name = "gbxDatosGenerales"
-        Me.gbxDatosGenerales.Size = New System.Drawing.Size(818, 118)
+        Me.gbxDatosGenerales.Size = New System.Drawing.Size(818, 97)
         Me.gbxDatosGenerales.TabIndex = 73
         Me.gbxDatosGenerales.TabStop = False
         Me.gbxDatosGenerales.Text = "Datos Generales"
@@ -127,6 +128,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmbTipoEntrada.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipoEntrada.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbTipoEntrada.EditorHeight = 15
+        Me.cmbTipoEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipoEntrada.Images.Add(CType(resources.GetObject("cmbTipoEntrada.Images"), System.Drawing.Image))
         Me.cmbTipoEntrada.ItemHeight = 15
         Me.cmbTipoEntrada.Location = New System.Drawing.Point(632, 53)
@@ -158,6 +160,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmbBodega.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbBodega.EditorHeight = 15
         Me.cmbBodega.Enabled = False
+        Me.cmbBodega.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBodega.Images.Add(CType(resources.GetObject("cmbBodega.Images"), System.Drawing.Image))
         Me.cmbBodega.ItemHeight = 15
         Me.cmbBodega.Location = New System.Drawing.Point(133, 53)
@@ -177,7 +180,7 @@ Partial Class frmSivEntradaBodegaAnular
         'lblTipoEntrada
         '
         Me.lblTipoEntrada.AutoSize = True
-        Me.lblTipoEntrada.BackColor = System.Drawing.SystemColors.Control
+        Me.lblTipoEntrada.BackColor = System.Drawing.Color.Transparent
         Me.lblTipoEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTipoEntrada.Location = New System.Drawing.Point(541, 58)
         Me.lblTipoEntrada.Name = "lblTipoEntrada"
@@ -189,7 +192,7 @@ Partial Class frmSivEntradaBodegaAnular
         'lblFechaEntrada
         '
         Me.lblFechaEntrada.AutoSize = True
-        Me.lblFechaEntrada.BackColor = System.Drawing.SystemColors.Control
+        Me.lblFechaEntrada.BackColor = System.Drawing.Color.Transparent
         Me.lblFechaEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFechaEntrada.Location = New System.Drawing.Point(541, 24)
         Me.lblFechaEntrada.Name = "lblFechaEntrada"
@@ -200,7 +203,7 @@ Partial Class frmSivEntradaBodegaAnular
         '
         'lblBodega
         '
-        Me.lblBodega.BackColor = System.Drawing.SystemColors.Control
+        Me.lblBodega.BackColor = System.Drawing.Color.Transparent
         Me.lblBodega.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBodega.Location = New System.Drawing.Point(28, 53)
         Me.lblBodega.Name = "lblBodega"
@@ -225,6 +228,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.dtpFechaEntrada.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaEntrada.EditMask = "##/##/####"
         Me.dtpFechaEntrada.Enabled = False
+        Me.dtpFechaEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaEntrada.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaEntrada.Location = New System.Drawing.Point(632, 24)
         Me.dtpFechaEntrada.Name = "dtpFechaEntrada"
@@ -235,6 +239,7 @@ Partial Class frmSivEntradaBodegaAnular
         '
         'txtNumeroEntrada
         '
+        Me.txtNumeroEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumeroEntrada.Location = New System.Drawing.Point(133, 20)
         Me.txtNumeroEntrada.Name = "txtNumeroEntrada"
         Me.txtNumeroEntrada.Size = New System.Drawing.Size(174, 20)
@@ -246,7 +251,7 @@ Partial Class frmSivEntradaBodegaAnular
         'lblNoEntrada
         '
         Me.lblNoEntrada.AutoSize = True
-        Me.lblNoEntrada.BackColor = System.Drawing.SystemColors.Control
+        Me.lblNoEntrada.BackColor = System.Drawing.Color.Transparent
         Me.lblNoEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNoEntrada.Location = New System.Drawing.Point(28, 24)
         Me.lblNoEntrada.Name = "lblNoEntrada"
@@ -272,7 +277,8 @@ Partial Class frmSivEntradaBodegaAnular
         Me.gbxOtrosDatos.Controls.Add(Me.lblFechaFactura)
         Me.gbxOtrosDatos.Controls.Add(Me.txtNumeroFactura)
         Me.gbxOtrosDatos.Controls.Add(Me.lblNumeroFactura)
-        Me.gbxOtrosDatos.Location = New System.Drawing.Point(18, 152)
+        Me.gbxOtrosDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbxOtrosDatos.Location = New System.Drawing.Point(18, 122)
         Me.gbxOtrosDatos.Name = "gbxOtrosDatos"
         Me.gbxOtrosDatos.Size = New System.Drawing.Size(818, 60)
         Me.gbxOtrosDatos.TabIndex = 82
@@ -295,6 +301,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.dtpFechaFactura.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaFactura.EditMask = "##/##/####"
         Me.dtpFechaFactura.Enabled = False
+        Me.dtpFechaFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaFactura.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaFactura.Location = New System.Drawing.Point(674, 21)
         Me.dtpFechaFactura.Name = "dtpFechaFactura"
@@ -306,9 +313,9 @@ Partial Class frmSivEntradaBodegaAnular
         'lblFechaFactura
         '
         Me.lblFechaFactura.AutoSize = True
-        Me.lblFechaFactura.BackColor = System.Drawing.SystemColors.Control
+        Me.lblFechaFactura.BackColor = System.Drawing.Color.Transparent
         Me.lblFechaFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaFactura.Location = New System.Drawing.Point(580, 23)
+        Me.lblFechaFactura.Location = New System.Drawing.Point(577, 23)
         Me.lblFechaFactura.Name = "lblFechaFactura"
         Me.lblFechaFactura.Size = New System.Drawing.Size(93, 13)
         Me.lblFechaFactura.TabIndex = 23
@@ -317,6 +324,7 @@ Partial Class frmSivEntradaBodegaAnular
         '
         'txtNumeroFactura
         '
+        Me.txtNumeroFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumeroFactura.Location = New System.Drawing.Point(131, 21)
         Me.txtNumeroFactura.Name = "txtNumeroFactura"
         Me.txtNumeroFactura.Size = New System.Drawing.Size(115, 20)
@@ -327,7 +335,7 @@ Partial Class frmSivEntradaBodegaAnular
         'lblNumeroFactura
         '
         Me.lblNumeroFactura.AutoSize = True
-        Me.lblNumeroFactura.BackColor = System.Drawing.SystemColors.Control
+        Me.lblNumeroFactura.BackColor = System.Drawing.Color.Transparent
         Me.lblNumeroFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNumeroFactura.Location = New System.Drawing.Point(28, 24)
         Me.lblNumeroFactura.Name = "lblNumeroFactura"
@@ -339,7 +347,7 @@ Partial Class frmSivEntradaBodegaAnular
         'txtComentarios
         '
         Me.txtComentarios.AcceptsTab = True
-        Me.txtComentarios.Location = New System.Drawing.Point(17, 655)
+        Me.txtComentarios.Location = New System.Drawing.Point(17, 640)
         Me.txtComentarios.MaxLength = 250
         Me.txtComentarios.Multiline = True
         Me.txtComentarios.Name = "txtComentarios"
@@ -351,9 +359,9 @@ Partial Class frmSivEntradaBodegaAnular
         'lblObservaciones
         '
         Me.lblObservaciones.AutoSize = True
-        Me.lblObservaciones.BackColor = System.Drawing.SystemColors.Control
+        Me.lblObservaciones.BackColor = System.Drawing.Color.Transparent
         Me.lblObservaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblObservaciones.Location = New System.Drawing.Point(14, 626)
+        Me.lblObservaciones.Location = New System.Drawing.Point(17, 622)
         Me.lblObservaciones.Name = "lblObservaciones"
         Me.lblObservaciones.Size = New System.Drawing.Size(95, 13)
         Me.lblObservaciones.TabIndex = 94
@@ -363,9 +371,9 @@ Partial Class frmSivEntradaBodegaAnular
         'lblCostoTotal
         '
         Me.lblCostoTotal.AutoSize = True
-        Me.lblCostoTotal.BackColor = System.Drawing.SystemColors.Control
+        Me.lblCostoTotal.BackColor = System.Drawing.Color.Transparent
         Me.lblCostoTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCostoTotal.Location = New System.Drawing.Point(622, 625)
+        Me.lblCostoTotal.Location = New System.Drawing.Point(617, 601)
         Me.lblCostoTotal.Name = "lblCostoTotal"
         Me.lblCostoTotal.Size = New System.Drawing.Size(96, 13)
         Me.lblCostoTotal.TabIndex = 96
@@ -375,9 +383,9 @@ Partial Class frmSivEntradaBodegaAnular
         'lblUsuario
         '
         Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.BackColor = System.Drawing.SystemColors.Control
+        Me.lblUsuario.BackColor = System.Drawing.Color.Transparent
         Me.lblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(14, 733)
+        Me.lblUsuario.Location = New System.Drawing.Point(21, 709)
         Me.lblUsuario.Name = "lblUsuario"
         Me.lblUsuario.Size = New System.Drawing.Size(50, 13)
         Me.lblUsuario.TabIndex = 97
@@ -387,7 +395,8 @@ Partial Class frmSivEntradaBodegaAnular
         'gbxDetalle
         '
         Me.gbxDetalle.Controls.Add(Me.grdDetalleEntradasBodegas)
-        Me.gbxDetalle.Location = New System.Drawing.Point(12, 330)
+        Me.gbxDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbxDetalle.Location = New System.Drawing.Point(12, 297)
         Me.gbxDetalle.Name = "gbxDetalle"
         Me.gbxDetalle.Size = New System.Drawing.Size(818, 286)
         Me.gbxDetalle.TabIndex = 101
@@ -396,6 +405,7 @@ Partial Class frmSivEntradaBodegaAnular
         '
         'grdDetalleEntradasBodegas
         '
+        Me.grdDetalleEntradasBodegas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdDetalleEntradasBodegas.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDetalleEntradasBodegas.Images.Add(CType(resources.GetObject("grdDetalleEntradasBodegas.Images"), System.Drawing.Image))
         Me.grdDetalleEntradasBodegas.Location = New System.Drawing.Point(3, 19)
@@ -422,7 +432,7 @@ Partial Class frmSivEntradaBodegaAnular
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.NumCostoTotal.Enabled = False
-        Me.NumCostoTotal.Location = New System.Drawing.Point(728, 622)
+        Me.NumCostoTotal.Location = New System.Drawing.Point(723, 598)
         Me.NumCostoTotal.Name = "NumCostoTotal"
         Me.NumCostoTotal.Size = New System.Drawing.Size(107, 20)
         Me.NumCostoTotal.TabIndex = 102
@@ -434,7 +444,8 @@ Partial Class frmSivEntradaBodegaAnular
         Me.gbxDatosAnulacion.Controls.Add(Me.lblComentariosAnular)
         Me.gbxDatosAnulacion.Controls.Add(Me.chkAnulado)
         Me.gbxDatosAnulacion.Controls.Add(Me.txtComentariosAnular)
-        Me.gbxDatosAnulacion.Location = New System.Drawing.Point(18, 220)
+        Me.gbxDatosAnulacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbxDatosAnulacion.Location = New System.Drawing.Point(18, 194)
         Me.gbxDatosAnulacion.Name = "gbxDatosAnulacion"
         Me.gbxDatosAnulacion.Size = New System.Drawing.Size(818, 94)
         Me.gbxDatosAnulacion.TabIndex = 103
@@ -444,7 +455,7 @@ Partial Class frmSivEntradaBodegaAnular
         'lblComentariosAnular
         '
         Me.lblComentariosAnular.AutoSize = True
-        Me.lblComentariosAnular.BackColor = System.Drawing.SystemColors.Control
+        Me.lblComentariosAnular.BackColor = System.Drawing.Color.Transparent
         Me.lblComentariosAnular.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblComentariosAnular.Location = New System.Drawing.Point(3, 39)
         Me.lblComentariosAnular.Name = "lblComentariosAnular"
@@ -468,7 +479,8 @@ Partial Class frmSivEntradaBodegaAnular
         'txtComentariosAnular
         '
         Me.txtComentariosAnular.AcceptsTab = True
-        Me.txtComentariosAnular.Location = New System.Drawing.Point(2, 52)
+        Me.txtComentariosAnular.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtComentariosAnular.Location = New System.Drawing.Point(2, 53)
         Me.txtComentariosAnular.MaxLength = 250
         Me.txtComentariosAnular.Multiline = True
         Me.txtComentariosAnular.Name = "txtComentariosAnular"
@@ -479,28 +491,28 @@ Partial Class frmSivEntradaBodegaAnular
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.lblUsuario)
+        Me.PanelControl1.Controls.Add(Me.NumCostoTotal)
         Me.PanelControl1.Controls.Add(Me.gbxDatosAnulacion)
+        Me.PanelControl1.Controls.Add(Me.lblCostoTotal)
         Me.PanelControl1.Controls.Add(Me.gbxDetalle)
         Me.PanelControl1.Controls.Add(Me.gbxDatosGenerales)
         Me.PanelControl1.Controls.Add(Me.gbxOtrosDatos)
+        Me.PanelControl1.Controls.Add(Me.lblObservaciones)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(852, 772)
+        Me.PanelControl1.Size = New System.Drawing.Size(852, 754)
         Me.PanelControl1.TabIndex = 104
         '
         'frmSivEntradaBodegaAnular
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(852, 772)
-        Me.Controls.Add(Me.NumCostoTotal)
-        Me.Controls.Add(Me.lblUsuario)
-        Me.Controls.Add(Me.lblCostoTotal)
+        Me.ClientSize = New System.Drawing.Size(852, 754)
         Me.Controls.Add(Me.txtComentarios)
-        Me.Controls.Add(Me.lblObservaciones)
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmdGuardar)
         Me.Controls.Add(Me.PanelControl1)
@@ -526,6 +538,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.gbxDatosAnulacion.PerformLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

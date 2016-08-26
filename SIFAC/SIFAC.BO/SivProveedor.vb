@@ -10,7 +10,6 @@ Partial Public Class SivProveedor
 	Protected m_objPersonaID As Integer 
 	Protected m_objContactoID As Nullable(Of Integer) 
 	Protected m_FechaIngreso As Nullable(Of Date) 
-	Protected m_FechaEgreso As Nullable(Of Date) 
 	Protected m_Activo As Boolean 
 	Protected m_UsuarioCreacion As String = Nothing 
 	Protected m_FechaCreacion As Date 
@@ -52,15 +51,6 @@ Partial Public Class SivProveedor
         End Get
 		Set(ByVal Value As Nullable(Of Date))					
 			m_FechaIngreso = Value
-		End Set
-    End Property
-	
-	Public Property FechaEgreso() As Nullable(Of Date)
-        Get
-            Return (m_FechaEgreso)
-        End Get
-		Set(ByVal Value As Nullable(Of Date))					
-			m_FechaEgreso = Value
 		End Set
     End Property
 	
@@ -163,26 +153,24 @@ Partial Public Class SivProveedor
 			cmdInsert.Parameters.Add("@objPersonaID", SqlDbType.Int, 4, "objPersonaID")
 			cmdInsert.Parameters.Add("@objContactoID", SqlDbType.Int, 4, "objContactoID")
 			cmdInsert.Parameters.Add("@FechaIngreso", SqlDbType.DateTime, 8, "FechaIngreso")
-			cmdInsert.Parameters.Add("@FechaEgreso", SqlDbType.DateTime, 8, "FechaEgreso")
 			cmdInsert.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
 			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 30, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
-			cmdInsert.CommandText = "INSERT INTO SivProveedor ( objPersonaID, objContactoID, FechaIngreso, FechaEgreso, Activo, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion) VALUES ( @objPersonaID, @objContactoID, @FechaIngreso, @FechaEgreso, @Activo, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion)"
+			cmdInsert.CommandText = "INSERT INTO SivProveedor ( objPersonaID, objContactoID, FechaIngreso, Activo, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion) VALUES ( @objPersonaID, @objContactoID, @FechaIngreso, @Activo, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@objPersonaID", SqlDbType.Int, 4, "objPersonaID")
 			cmdUpdate.Parameters.Add("@objContactoID", SqlDbType.Int, 4, "objContactoID")
 			cmdUpdate.Parameters.Add("@FechaIngreso", SqlDbType.DateTime, 8, "FechaIngreso")
-			cmdUpdate.Parameters.Add("@FechaEgreso", SqlDbType.DateTime, 8, "FechaEgreso")
 			cmdUpdate.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
 			cmdUpdate.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 30, "UsuarioCreacion")
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@wSivProveedorID", SqlDbType.Int, 4, "SivProveedorID")
-			cmdUpdate.CommandText = "UPDATE SivProveedor SET objPersonaID=@objPersonaID, objContactoID=@objContactoID, FechaIngreso=@FechaIngreso, FechaEgreso=@FechaEgreso, Activo=@Activo, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion WHERE SivProveedorID= @wSivProveedorID"
+			cmdUpdate.CommandText = "UPDATE SivProveedor SET objPersonaID=@objPersonaID, objContactoID=@objContactoID, FechaIngreso=@FechaIngreso, Activo=@Activo, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion WHERE SivProveedorID= @wSivProveedorID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -232,7 +220,6 @@ Partial Public Class SivProveedor
 				m_objPersonaID = IIf(IsDBNull(dr("objPersonaID")), Nothing, dr("objPersonaID"))					
 				m_objContactoID = IIf(IsDBNull(dr("objContactoID")), Nothing, dr("objContactoID"))					
 				m_FechaIngreso = IIf(IsDBNull(dr("FechaIngreso")), Nothing, dr("FechaIngreso"))					
-				m_FechaEgreso = IIf(IsDBNull(dr("FechaEgreso")), Nothing, dr("FechaEgreso"))					
 				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -275,7 +262,6 @@ Partial Public Class SivProveedor
 				m_objPersonaID = IIf(IsDBNull(dr("objPersonaID")), Nothing, dr("objPersonaID"))					
 				m_objContactoID = IIf(IsDBNull(dr("objContactoID")), Nothing, dr("objContactoID"))					
 				m_FechaIngreso = IIf(IsDBNull(dr("FechaIngreso")), Nothing, dr("FechaIngreso"))					
-				m_FechaEgreso = IIf(IsDBNull(dr("FechaEgreso")), Nothing, dr("FechaEgreso"))					
 				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -409,7 +395,6 @@ Partial Public Class SivProveedor
 		sCommand &= "objPersonaID,"
 		sCommand &= "objContactoID,"
 		sCommand &= "FechaIngreso,"
-		sCommand &= "FechaEgreso,"
 		sCommand &= "Activo,"
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaCreacion,"
@@ -418,7 +403,6 @@ Partial Public Class SivProveedor
 		sCommand &= "@objPersonaID,"
 		sCommand &= "@objContactoID,"
 		sCommand &= "@FechaIngreso,"
-		sCommand &= "@FechaEgreso,"
 		sCommand &= "@Activo,"
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaCreacion,"
@@ -430,7 +414,7 @@ Partial Public Class SivProveedor
 		sCommand &= "SivProveedorID = SCOPE_IDENTITY()"
 		
 		
-		Dim arParams(9) As SqlParameter
+		Dim arParams(8) As SqlParameter
 		arParams(0) = New SqlParameter("@SivProveedorID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@objPersonaID", SqlDbType.Int)		
@@ -451,41 +435,35 @@ Partial Public Class SivProveedor
         Else
             arParams(3).Value = m_FechaIngreso
         End If
-		arParams(4) = New SqlParameter("@FechaEgreso", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaEgreso) Then
+		arParams(4) = New SqlParameter("@Activo", SqlDbType.Bit)		
+		If IsDBNull(m_Activo) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_FechaEgreso
+            arParams(4).Value = m_Activo
         End If
-		arParams(5) = New SqlParameter("@Activo", SqlDbType.Bit)		
-		If IsDBNull(m_Activo) Then
+		arParams(5) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_Activo
+            arParams(5).Value = m_UsuarioCreacion
         End If
-		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(6) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioCreacion
+            arParams(6).Value = m_FechaCreacion
         End If
-		arParams(7) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(7) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_FechaCreacion
+            arParams(7).Value = m_UsuarioModificacion
         End If
-		arParams(8) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(8) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_UsuarioModificacion
-        End If
-		arParams(9) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
-            arParams(9).Value = DBNull.Value
-        Else
-            arParams(9).Value = m_FechaModificacion
+            arParams(8).Value = m_FechaModificacion
         End If
 	
 		Try
@@ -514,7 +492,6 @@ Partial Public Class SivProveedor
 		sCommand &= "objPersonaID = @objPersonaID,"
 		sCommand &= "objContactoID = @objContactoID,"
 		sCommand &= "FechaIngreso = @FechaIngreso,"
-		sCommand &= "FechaEgreso = @FechaEgreso,"
 		sCommand &= "Activo = @Activo,"
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
@@ -523,7 +500,7 @@ Partial Public Class SivProveedor
 		sCommand &= " where "	
 		sCommand &= "SivProveedorID = @SivProveedorID"					
 		
-		Dim arParams(9) As SqlParameter
+		Dim arParams(8) As SqlParameter
 		arParams(0) = New SqlParameter("@SivProveedorID", SqlDbType.Int)		
 		If IsDBNull(m_SivProveedorID) Then
             arParams(0).Value = DBNull.Value
@@ -548,41 +525,35 @@ Partial Public Class SivProveedor
         Else
             arParams(3).Value = m_FechaIngreso
         End If
-		arParams(4) = New SqlParameter("@FechaEgreso", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaEgreso) Then
+		arParams(4) = New SqlParameter("@Activo", SqlDbType.Bit)		
+		If IsDBNull(m_Activo) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_FechaEgreso
+            arParams(4).Value = m_Activo
         End If
-		arParams(5) = New SqlParameter("@Activo", SqlDbType.Bit)		
-		If IsDBNull(m_Activo) Then
+		arParams(5) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_Activo
+            arParams(5).Value = m_UsuarioCreacion
         End If
-		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(6) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioCreacion
+            arParams(6).Value = m_FechaCreacion
         End If
-		arParams(7) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(7) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_FechaCreacion
+            arParams(7).Value = m_UsuarioModificacion
         End If
-		arParams(8) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(8) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_UsuarioModificacion
-        End If
-		arParams(9) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
-            arParams(9).Value = DBNull.Value
-        Else
-            arParams(9).Value = m_FechaModificacion
+            arParams(8).Value = m_FechaModificacion
         End If
 	
 		Try

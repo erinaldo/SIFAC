@@ -54,14 +54,14 @@ Partial Class frmSivAgregarSalida
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.numCostoTotal = New C1.Win.C1Input.C1NumericEdit()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
         Me.ErrorSalida = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.lblanular = New System.Windows.Forms.Label()
         Me.txtComentarioAnular = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblNombreEmpleado = New System.Windows.Forms.Label()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbAjuste, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,7 +97,8 @@ Partial Class frmSivAgregarSalida
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 23)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 17)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(657, 137)
         Me.GroupBox1.TabIndex = 29
@@ -122,6 +123,7 @@ Partial Class frmSivAgregarSalida
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFecha.Enabled = False
+        Me.dtpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFecha.Location = New System.Drawing.Point(461, 20)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(169, 18)
@@ -145,6 +147,7 @@ Partial Class frmSivAgregarSalida
         Me.cmbAjuste.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbAjuste.EditorHeight = 15
         Me.cmbAjuste.Enabled = False
+        Me.cmbAjuste.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbAjuste.Images.Add(CType(resources.GetObject("cmbAjuste.Images"), System.Drawing.Image))
         Me.cmbAjuste.ItemHeight = 15
         Me.cmbAjuste.Location = New System.Drawing.Point(461, 82)
@@ -176,6 +179,7 @@ Partial Class frmSivAgregarSalida
         Me.cmbTipoSalida.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipoSalida.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbTipoSalida.EditorHeight = 15
+        Me.cmbTipoSalida.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipoSalida.Images.Add(CType(resources.GetObject("cmbTipoSalida.Images"), System.Drawing.Image))
         Me.cmbTipoSalida.ItemHeight = 15
         Me.cmbTipoSalida.Location = New System.Drawing.Point(131, 82)
@@ -206,6 +210,7 @@ Partial Class frmSivAgregarSalida
         Me.cmbBodega.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBodega.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbBodega.EditorHeight = 15
+        Me.cmbBodega.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBodega.Images.Add(CType(resources.GetObject("cmbBodega.Images"), System.Drawing.Image))
         Me.cmbBodega.ItemHeight = 15
         Me.cmbBodega.Location = New System.Drawing.Point(131, 51)
@@ -225,6 +230,7 @@ Partial Class frmSivAgregarSalida
         '
         Me.txtEstado.BackColor = System.Drawing.SystemColors.Window
         Me.txtEstado.Enabled = False
+        Me.txtEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEstado.Location = New System.Drawing.Point(461, 52)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.Size = New System.Drawing.Size(169, 20)
@@ -235,6 +241,7 @@ Partial Class frmSivAgregarSalida
         '
         Me.txtNumero.BackColor = System.Drawing.SystemColors.Window
         Me.txtNumero.Enabled = False
+        Me.txtNumero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumero.Location = New System.Drawing.Point(131, 22)
         Me.txtNumero.Name = "txtNumero"
         Me.txtNumero.Size = New System.Drawing.Size(100, 20)
@@ -310,6 +317,7 @@ Partial Class frmSivAgregarSalida
         Me.grbDetalle.Controls.Add(Me.Label8)
         Me.grbDetalle.Controls.Add(Me.Label7)
         Me.grbDetalle.Controls.Add(Me.numCostoTotal)
+        Me.grbDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbDetalle.Location = New System.Drawing.Point(12, 235)
         Me.grbDetalle.Name = "grbDetalle"
         Me.grbDetalle.Size = New System.Drawing.Size(657, 397)
@@ -319,6 +327,7 @@ Partial Class frmSivAgregarSalida
         '
         'numExistencia
         '
+        Me.numExistencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numExistencia.Location = New System.Drawing.Point(13, 272)
         Me.numExistencia.Name = "numExistencia"
         Me.numExistencia.Size = New System.Drawing.Size(124, 20)
@@ -328,7 +337,10 @@ Partial Class frmSivAgregarSalida
         '
         'grdSalidaDetalle
         '
+        Me.grdSalidaDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdSalidaDetalle.Location = New System.Drawing.Point(13, 19)
+        Me.grdSalidaDetalle.LookAndFeel.SkinName = "Caramel"
+        Me.grdSalidaDetalle.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdSalidaDetalle.MainView = Me.grdSalidaDetalleTable
         Me.grdSalidaDetalle.Name = "grdSalidaDetalle"
         Me.grdSalidaDetalle.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.grptxtCodigo, Me.grdcmbDescripcion, Me.grdSpnExistencia, Me.grdSpnCantidad, Me.grdSpnCosto, Me.grdSpnSubTotal})
@@ -489,6 +501,7 @@ Partial Class frmSivAgregarSalida
         '
         'txtcomentarios
         '
+        Me.txtcomentarios.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtcomentarios.Location = New System.Drawing.Point(13, 323)
         Me.txtcomentarios.Multiline = True
         Me.txtcomentarios.Name = "txtcomentarios"
@@ -529,41 +542,13 @@ Partial Class frmSivAgregarSalida
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numCostoTotal.Enabled = False
+        Me.numCostoTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numCostoTotal.Location = New System.Drawing.Point(528, 283)
         Me.numCostoTotal.Name = "numCostoTotal"
         Me.numCostoTotal.Size = New System.Drawing.Size(112, 20)
         Me.numCostoTotal.TabIndex = 1
         Me.numCostoTotal.Tag = "BLOQUEADO"
         Me.numCostoTotal.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancelar.Location = New System.Drawing.Point(589, 638)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(79, 30)
-        Me.cmdCancelar.TabIndex = 32
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
-        Me.cmdAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(509, 638)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdAceptar.TabIndex = 31
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdAceptar.UseVisualStyleBackColor = True
         '
         'ErrorSalida
         '
@@ -573,7 +558,7 @@ Partial Class frmSivAgregarSalida
         '
         Me.lblanular.AutoSize = True
         Me.lblanular.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblanular.Location = New System.Drawing.Point(36, 176)
+        Me.lblanular.Location = New System.Drawing.Point(17, 175)
         Me.lblanular.Name = "lblanular"
         Me.lblanular.Size = New System.Drawing.Size(120, 13)
         Me.lblanular.TabIndex = 33
@@ -608,8 +593,11 @@ Partial Class frmSivAgregarSalida
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Controls.Add(Me.grbDetalle)
+        Me.PanelControl1.Controls.Add(Me.lblanular)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
@@ -617,6 +605,35 @@ Partial Class frmSivAgregarSalida
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(679, 699)
         Me.PanelControl1.TabIndex = 50
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(580, 642)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdCancelar.TabIndex = 87
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(489, 642)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 86
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Guardar"
         '
         'frmSivAgregarSalida
         '
@@ -626,9 +643,6 @@ Partial Class frmSivAgregarSalida
         Me.Controls.Add(Me.lblNombreEmpleado)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtComentarioAnular)
-        Me.Controls.Add(Me.lblanular)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -657,6 +671,7 @@ Partial Class frmSivAgregarSalida
         CType(Me.ErrorSalida, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -679,8 +694,6 @@ Partial Class frmSivAgregarSalida
     Friend WithEvents numCostoTotal As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents txtcomentarios As System.Windows.Forms.TextBox
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents ErrorSalida As System.Windows.Forms.ErrorProvider
     Friend WithEvents txtComentarioAnular As System.Windows.Forms.TextBox
     Friend WithEvents lblanular As System.Windows.Forms.Label
@@ -702,4 +715,6 @@ Partial Class frmSivAgregarSalida
     Friend WithEvents grdSpnSubTotal As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
     Friend WithEvents numExistencia As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

@@ -126,7 +126,7 @@ Public Class frmBusquedaRepuestos
 #End Region
 
 #Region "Eventos controles"
-    Private Sub cmdGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
+    Private Sub cmdGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
         Me.CargarRepuestoSeleccionado()
     End Sub
 

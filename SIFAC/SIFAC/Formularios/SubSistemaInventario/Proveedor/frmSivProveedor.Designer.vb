@@ -23,18 +23,29 @@ Partial Class frmSivProveedor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivProveedor))
-        Me.toolTramitesLegales = New System.Windows.Forms.ToolStrip
-        Me.cmdAgregarProveedor = New System.Windows.Forms.ToolStripButton
-        Me.cmdEditarProveedor = New System.Windows.Forms.ToolStripButton
-        Me.cmdAnularProveedor = New System.Windows.Forms.ToolStripButton
-        Me.cmdConsultarProveedor = New System.Windows.Forms.ToolStripButton
-        Me.cmdImprimir = New System.Windows.Forms.ToolStripButton
-        Me.ToolSeparador1 = New System.Windows.Forms.ToolStripSeparator
-        Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton
-        Me.tsbSalir = New System.Windows.Forms.ToolStripButton
-        Me.grdProveedores = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.toolTramitesLegales = New System.Windows.Forms.ToolStrip()
+        Me.cmdAgregarProveedor = New System.Windows.Forms.ToolStripButton()
+        Me.cmdEditarProveedor = New System.Windows.Forms.ToolStripButton()
+        Me.cmdAnularProveedor = New System.Windows.Forms.ToolStripButton()
+        Me.cmdConsultarProveedor = New System.Windows.Forms.ToolStripButton()
+        Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
+        Me.ToolSeparador1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
+        Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
+        Me.grdvwProveedores = New DevExpress.XtraGrid.GridControl()
+        Me.grdvwProveedoresTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colNombre1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNombre2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colApellido1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colApellido2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colTelefonos = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colActivo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSivProveedorID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.toolTramitesLegales.SuspendLayout()
-        CType(Me.grdProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdvwProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdvwProveedoresTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'toolTramitesLegales
@@ -116,42 +127,102 @@ Partial Class frmSivProveedor
         Me.tsbSalir.Size = New System.Drawing.Size(36, 36)
         Me.tsbSalir.Text = "Salir"
         '
-        'grdProveedores
+        'grdvwProveedores
         '
-        Me.grdProveedores.Caption = "Proveedores"
-        Me.grdProveedores.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdProveedores.EmptyRows = True
-        Me.grdProveedores.ExtendRightColumn = True
-        Me.grdProveedores.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
-        Me.grdProveedores.Images.Add(CType(resources.GetObject("grdProveedores.Images"), System.Drawing.Image))
-        Me.grdProveedores.Location = New System.Drawing.Point(0, 39)
-        Me.grdProveedores.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
-        Me.grdProveedores.Name = "grdProveedores"
-        Me.grdProveedores.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdProveedores.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdProveedores.PreviewInfo.ZoomFactor = 75
-        Me.grdProveedores.PrintInfo.PageSettings = CType(resources.GetObject("grdProveedores.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdProveedores.Size = New System.Drawing.Size(731, 513)
-        Me.grdProveedores.TabIndex = 3
-        Me.grdProveedores.Tag = "AGRUPAR"
-        Me.grdProveedores.Text = "Devoluciones"
-        Me.grdProveedores.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
-        Me.grdProveedores.PropBag = resources.GetString("grdProveedores.PropBag")
+        Me.grdvwProveedores.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdvwProveedores.Location = New System.Drawing.Point(0, 39)
+        Me.grdvwProveedores.MainView = Me.grdvwProveedoresTabla
+        Me.grdvwProveedores.Name = "grdvwProveedores"
+        Me.grdvwProveedores.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
+        Me.grdvwProveedores.Size = New System.Drawing.Size(731, 513)
+        Me.grdvwProveedores.TabIndex = 4
+        Me.grdvwProveedores.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdvwProveedoresTabla})
+        '
+        'grdvwProveedoresTabla
+        '
+        Me.grdvwProveedoresTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNombre1, Me.colNombre2, Me.colApellido1, Me.colApellido2, Me.colTelefonos, Me.colActivo, Me.colSivProveedorID})
+        Me.grdvwProveedoresTabla.GridControl = Me.grdvwProveedores
+        Me.grdvwProveedoresTabla.Name = "grdvwProveedoresTabla"
+        Me.grdvwProveedoresTabla.OptionsBehavior.Editable = False
+        '
+        'colNombre1
+        '
+        Me.colNombre1.Caption = "Primer Nombre / Razón Social"
+        Me.colNombre1.FieldName = "Nombre1"
+        Me.colNombre1.Name = "colNombre1"
+        Me.colNombre1.Visible = True
+        Me.colNombre1.VisibleIndex = 0
+        '
+        'colNombre2
+        '
+        Me.colNombre2.Caption = "Segundo Nombre"
+        Me.colNombre2.FieldName = "Nombre2"
+        Me.colNombre2.Name = "colNombre2"
+        Me.colNombre2.Visible = True
+        Me.colNombre2.VisibleIndex = 1
+        '
+        'colApellido1
+        '
+        Me.colApellido1.Caption = "Primer Apellidos / Siglas"
+        Me.colApellido1.FieldName = "Apellido1"
+        Me.colApellido1.Name = "colApellido1"
+        Me.colApellido1.Visible = True
+        Me.colApellido1.VisibleIndex = 2
+        '
+        'colApellido2
+        '
+        Me.colApellido2.Caption = "Segundo Apellido"
+        Me.colApellido2.FieldName = "Apellido2"
+        Me.colApellido2.Name = "colApellido2"
+        Me.colApellido2.Visible = True
+        Me.colApellido2.VisibleIndex = 3
+        '
+        'colTelefonos
+        '
+        Me.colTelefonos.Caption = "Teléfono(s)"
+        Me.colTelefonos.FieldName = "Telefonos"
+        Me.colTelefonos.Name = "colTelefonos"
+        Me.colTelefonos.Visible = True
+        Me.colTelefonos.VisibleIndex = 4
+        '
+        'colActivo
+        '
+        Me.colActivo.Caption = "Activo"
+        Me.colActivo.ColumnEdit = Me.RepositoryItemCheckEdit1
+        Me.colActivo.FieldName = "Activo"
+        Me.colActivo.Name = "colActivo"
+        Me.colActivo.Visible = True
+        Me.colActivo.VisibleIndex = 5
+        Me.colActivo.Width = 86
+        '
+        'colSivProveedorID
+        '
+        Me.colSivProveedorID.Caption = "SivProveedorID"
+        Me.colSivProveedorID.FieldName = "SivProveedorID"
+        Me.colSivProveedorID.Name = "colSivProveedorID"
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSivProveedor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(731, 552)
-        Me.Controls.Add(Me.grdProveedores)
+        Me.Controls.Add(Me.grdvwProveedores)
         Me.Controls.Add(Me.toolTramitesLegales)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSivProveedor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Mantenimiento de Proveedores"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.toolTramitesLegales.ResumeLayout(False)
         Me.toolTramitesLegales.PerformLayout()
-        CType(Me.grdProveedores, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdvwProveedores, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdvwProveedoresTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -162,8 +233,17 @@ Partial Class frmSivProveedor
     Friend WithEvents tsbRefrescar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolSeparador1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
-    Friend WithEvents grdProveedores As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents cmdAnularProveedor As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdEditarProveedor As System.Windows.Forms.ToolStripButton
+    Friend WithEvents grdvwProveedores As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdvwProveedoresTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colNombre1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNombre2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colApellido1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colApellido2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colTelefonos As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colActivo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSivProveedorID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

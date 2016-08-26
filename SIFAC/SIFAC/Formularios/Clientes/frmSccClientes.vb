@@ -112,11 +112,13 @@ Public Class frmSccClientes
 #Region "Editar"
     Private Sub Editar()
         Dim objPersonas As frmClientesEdit
+        Dim FilaActual As Integer
         Try
             Me.Cursor = WaitCursor
+            FilaActual = Me.grdClientesTabla.FocusedRowHandle
             objPersonas = New frmClientesEdit
             objPersonas.TyGui = 2
-            objPersonas.idpersona = Me.dtCliente.DefaultView(0).Item("StbPersonaID")
+            objPersonas.idpersona = Me.dtCliente.DefaultView(FilaActual).Item("StbPersonaID")
            
             If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     CargarGridClientes()
@@ -134,11 +136,13 @@ Public Class frmSccClientes
 #Region "Consultar"
     Private Sub Consultar()
         Dim objPersonas As frmClientesEdit
+        Dim FilaActual As Integer
         Try
             Me.Cursor = WaitCursor
+            FilaActual = Me.grdClientesTabla.FocusedRowHandle
             objPersonas = New frmClientesEdit
             objPersonas.TyGui = 3
-            objPersonas.idpersona = Me.dtCliente.DefaultView(0).Item("StbPersonaID")
+            objPersonas.idpersona = Me.dtCliente.DefaultView(FilaActual).Item("StbPersonaID")
            
             objPersonas.ShowDialog(Me)
         Catch ex As Exception

@@ -52,7 +52,7 @@ Partial Class frmSivRptEntradas
         Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancelar.Location = New System.Drawing.Point(209, 242)
+        Me.cmdCancelar.Location = New System.Drawing.Point(209, 232)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(79, 26)
         Me.cmdCancelar.TabIndex = 7
@@ -65,7 +65,7 @@ Partial Class frmSivRptEntradas
         Me.cmdAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
         Me.cmdAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(128, 242)
+        Me.cmdAceptar.Location = New System.Drawing.Point(128, 232)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(75, 26)
         Me.cmdAceptar.TabIndex = 6
@@ -79,7 +79,8 @@ Partial Class frmSivRptEntradas
         Me.GroupBox2.Controls.Add(Me.cmbBodega)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Location = New System.Drawing.Point(11, 131)
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Location = New System.Drawing.Point(9, 122)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(278, 100)
         Me.GroupBox2.TabIndex = 5
@@ -101,6 +102,7 @@ Partial Class frmSivRptEntradas
         Me.cmbTipoEntrada.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipoEntrada.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbTipoEntrada.EditorHeight = 15
+        Me.cmbTipoEntrada.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipoEntrada.Images.Add(CType(resources.GetObject("cmbTipoEntrada.Images"), System.Drawing.Image))
         Me.cmbTipoEntrada.ItemHeight = 15
         Me.cmbTipoEntrada.Location = New System.Drawing.Point(90, 63)
@@ -131,6 +133,7 @@ Partial Class frmSivRptEntradas
         Me.cmbBodega.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBodega.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbBodega.EditorHeight = 15
+        Me.cmbBodega.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBodega.Images.Add(CType(resources.GetObject("cmbBodega.Images"), System.Drawing.Image))
         Me.cmbBodega.ItemHeight = 15
         Me.cmbBodega.Location = New System.Drawing.Point(90, 23)
@@ -149,18 +152,18 @@ Partial Class frmSivRptEntradas
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(17, 63)
+        Me.Label4.Location = New System.Drawing.Point(5, 68)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(71, 13)
+        Me.Label4.Size = New System.Drawing.Size(84, 13)
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "Tipo Entrada:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(17, 31)
+        Me.Label3.Location = New System.Drawing.Point(5, 31)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(47, 13)
+        Me.Label3.Size = New System.Drawing.Size(54, 13)
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "Bodega:"
         '
@@ -170,7 +173,8 @@ Partial Class frmSivRptEntradas
         Me.GroupBox1.Controls.Add(Me.dtpFechaDesde)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 23)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 15)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(278, 100)
         Me.GroupBox1.TabIndex = 4
@@ -192,6 +196,7 @@ Partial Class frmSivRptEntradas
         Me.dtpFechaHasta.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaHasta.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaHasta.EditMask = "##/##/####"
+        Me.dtpFechaHasta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaHasta.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaHasta.Location = New System.Drawing.Point(71, 65)
         Me.dtpFechaHasta.Name = "dtpFechaHasta"
@@ -215,6 +220,7 @@ Partial Class frmSivRptEntradas
         Me.dtpFechaDesde.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaDesde.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaDesde.EditMask = "##/##/####"
+        Me.dtpFechaDesde.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaDesde.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaDesde.Location = New System.Drawing.Point(71, 31)
         Me.dtpFechaDesde.Name = "dtpFechaDesde"
@@ -228,7 +234,7 @@ Partial Class frmSivRptEntradas
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(17, 65)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(38, 13)
+        Me.Label2.Size = New System.Drawing.Size(44, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Hasta:"
         '
@@ -237,7 +243,7 @@ Partial Class frmSivRptEntradas
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(17, 31)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(41, 13)
+        Me.Label1.Size = New System.Drawing.Size(47, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Desde:"
         '
@@ -245,7 +251,7 @@ Partial Class frmSivRptEntradas
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 284)
+        Me.Panel1.Location = New System.Drawing.Point(0, 273)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(296, 21)
         Me.Panel1.TabIndex = 97
@@ -263,19 +269,21 @@ Partial Class frmSivRptEntradas
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(296, 305)
+        Me.PanelControl1.Size = New System.Drawing.Size(296, 294)
         Me.PanelControl1.TabIndex = 98
         '
         'frmSivRptEntradas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(296, 305)
+        Me.ClientSize = New System.Drawing.Size(296, 294)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmSivRptEntradas"
         Me.Text = "Reporte de Entradas"
         Me.GroupBox2.ResumeLayout(False)

@@ -270,7 +270,7 @@ Public Class frmSivAgregarSalida
 
         punto.X = Me.grbDetalle.Location.X
         punto.Y = 180
-        puntoBoton.X = Me.cmdAceptar.Location.X
+        puntoBoton.X = Me.cmdGuardar.Location.X
         puntoBoton.Y = 680 '585
         puntoBotonCancelar.X = Me.cmdCancelar.Location.X
         puntoBotonCancelar.Y = 680 '585
@@ -308,7 +308,7 @@ Public Class frmSivAgregarSalida
                 Me.lblanular.Visible = False
                 Me.grbDetalle.Location = punto
                 Me.cmdCancelar.Location = puntoBotonCancelar
-                Me.cmdAceptar.Location = puntoBoton
+                Me.cmdGuardar.Location = puntoBoton
                 Me.Height = 800 '675
                 Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
 
@@ -322,7 +322,7 @@ Public Class frmSivAgregarSalida
                 Me.lblanular.Visible = False
                 Me.grbDetalle.Location = punto
                 Me.cmdCancelar.Location = puntoBotonCancelar
-                Me.cmdAceptar.Location = puntoBoton
+                Me.cmdGuardar.Location = puntoBoton
                 Me.Height = 800 '675
                 Me.cmbTipoSalida.Enabled = False
                 Me.grdSalidaDetalle.Enabled = False
@@ -336,7 +336,7 @@ Public Class frmSivAgregarSalida
                 Me.grdSalidaDetalle.Enabled = False
                 'Me.grdDetalleProductos.Enabled = False
                 Me.txtComentarioAnular.Enabled = True
-                Me.cmdAceptar.Enabled = True
+                Me.cmdGuardar.Enabled = True
 
             Case 3
                 Me.Text = "Consultar Salida"
@@ -356,7 +356,7 @@ Public Class frmSivAgregarSalida
                 Me.lblanular.Visible = False
                 Me.grbDetalle.Location = punto
                 Me.cmdCancelar.Location = puntoBotonCancelar
-                Me.cmdAceptar.Location = puntoBoton
+                Me.cmdGuardar.Location = puntoBoton
                 Me.Height = 800 '675
                 Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
                 Me.cmbTipoSalida.Enabled = False
@@ -375,7 +375,7 @@ Public Class frmSivAgregarSalida
         Me.txtComentarioAnular.Enabled = False
         Me.txtcomentarios.Enabled = False
         Me.txtcomentarios.Tag = "BLOQUEADO"
-        Me.cmdAceptar.Enabled = False
+        Me.cmdGuardar.Enabled = False
     End Sub
 #End Region
 
@@ -859,7 +859,7 @@ Public Class frmSivAgregarSalida
 #End Region
 
 #Region "Botones"
-    Private Sub cmdGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
 
         If Me.ValidarEntrada Then
             Select Case Me.TypeGui
@@ -1264,5 +1264,9 @@ Public Class frmSivAgregarSalida
                 e.Valid = True
             End If
         End If
+    End Sub
+
+    Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
+        Close()
     End Sub
 End Class

@@ -98,7 +98,7 @@ Public Class frmSivReporteProveedor
         CargarProveedor()
     End Sub
 
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
         If Me.rbProveedor.Checked And Me.cmbProveedor.Text = "" Then
             MsgBox("Seleccione un proveedor", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.cmbProveedor.Focus()

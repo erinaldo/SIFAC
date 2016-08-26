@@ -28,9 +28,22 @@ Partial Class frmSrhEmpleado
         Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
-        Me.grdEmpleados = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdvwEmpleados = New DevExpress.XtraGrid.GridControl()
+        Me.grdvwEmpleadosTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colSrhEmpleadoID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colobjPersonaID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNombre1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNombre2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colApellido1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colApellido2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colGenero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCargo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colActivo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.tbEmpleados.SuspendLayout()
-        CType(Me.grdEmpleados, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdvwEmpleados, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdvwEmpleadosTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbEmpleados
@@ -98,40 +111,115 @@ Partial Class frmSrhEmpleado
         Me.cmdSalir.Size = New System.Drawing.Size(36, 36)
         Me.cmdSalir.ToolTipText = "Salir de Mantenimiento de Empleados"
         '
-        'grdEmpleados
+        'grdvwEmpleados
         '
-        Me.grdEmpleados.AllowUpdate = False
-        Me.grdEmpleados.Caption = "Empleados"
-        Me.grdEmpleados.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdEmpleados.FilterBar = True
-        Me.grdEmpleados.GroupByCaption = "Arrastre hacia acá la columna por la cual desea agrupar"
-        Me.grdEmpleados.Images.Add(CType(resources.GetObject("grdEmpleados.Images"), System.Drawing.Image))
-        Me.grdEmpleados.Location = New System.Drawing.Point(0, 39)
-        Me.grdEmpleados.Name = "grdEmpleados"
-        Me.grdEmpleados.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdEmpleados.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdEmpleados.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdEmpleados.PrintInfo.PageSettings = CType(resources.GetObject("grdEmpleados.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdEmpleados.Size = New System.Drawing.Size(726, 344)
-        Me.grdEmpleados.TabIndex = 1
-        Me.grdEmpleados.Tag = "AGRUPAR"
-        Me.grdEmpleados.Text = "Empleados"
-        Me.grdEmpleados.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
-        Me.grdEmpleados.PropBag = resources.GetString("grdEmpleados.PropBag")
+        Me.grdvwEmpleados.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdvwEmpleados.Location = New System.Drawing.Point(0, 39)
+        Me.grdvwEmpleados.MainView = Me.grdvwEmpleadosTabla
+        Me.grdvwEmpleados.Name = "grdvwEmpleados"
+        Me.grdvwEmpleados.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
+        Me.grdvwEmpleados.Size = New System.Drawing.Size(726, 344)
+        Me.grdvwEmpleados.TabIndex = 2
+        Me.grdvwEmpleados.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdvwEmpleadosTabla})
+        '
+        'grdvwEmpleadosTabla
+        '
+        Me.grdvwEmpleadosTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colSrhEmpleadoID, Me.colobjPersonaID, Me.colNombre1, Me.colNombre2, Me.colApellido1, Me.colApellido2, Me.colGenero, Me.colCargo, Me.colActivo})
+        Me.grdvwEmpleadosTabla.GridControl = Me.grdvwEmpleados
+        Me.grdvwEmpleadosTabla.Name = "grdvwEmpleadosTabla"
+        Me.grdvwEmpleadosTabla.OptionsBehavior.Editable = False
+        Me.grdvwEmpleadosTabla.OptionsView.ShowFooter = True
+        '
+        'colSrhEmpleadoID
+        '
+        Me.colSrhEmpleadoID.Caption = "SrhEmpleadoID"
+        Me.colSrhEmpleadoID.FieldName = "SrhEmpleadoID"
+        Me.colSrhEmpleadoID.Name = "colSrhEmpleadoID"
+        '
+        'colobjPersonaID
+        '
+        Me.colobjPersonaID.Caption = "objPersonaID"
+        Me.colobjPersonaID.FieldName = "objPersonaID"
+        Me.colobjPersonaID.Name = "colobjPersonaID"
+        '
+        'colNombre1
+        '
+        Me.colNombre1.Caption = "Primer Nombre"
+        Me.colNombre1.FieldName = "Nombre1"
+        Me.colNombre1.Name = "colNombre1"
+        Me.colNombre1.Visible = True
+        Me.colNombre1.VisibleIndex = 0
+        '
+        'colNombre2
+        '
+        Me.colNombre2.Caption = "Segundo Nombre"
+        Me.colNombre2.FieldName = "Nombre2"
+        Me.colNombre2.Name = "colNombre2"
+        Me.colNombre2.Visible = True
+        Me.colNombre2.VisibleIndex = 1
+        '
+        'colApellido1
+        '
+        Me.colApellido1.Caption = "Primer Apellido"
+        Me.colApellido1.FieldName = "Apellido1"
+        Me.colApellido1.Name = "colApellido1"
+        Me.colApellido1.Visible = True
+        Me.colApellido1.VisibleIndex = 2
+        '
+        'colApellido2
+        '
+        Me.colApellido2.Caption = "Segundo Apellido"
+        Me.colApellido2.FieldName = "Apellido2"
+        Me.colApellido2.Name = "colApellido2"
+        Me.colApellido2.Visible = True
+        Me.colApellido2.VisibleIndex = 3
+        '
+        'colGenero
+        '
+        Me.colGenero.Caption = "Género"
+        Me.colGenero.FieldName = "Genero"
+        Me.colGenero.Name = "colGenero"
+        Me.colGenero.Visible = True
+        Me.colGenero.VisibleIndex = 4
+        '
+        'colCargo
+        '
+        Me.colCargo.Caption = "Cargo"
+        Me.colCargo.FieldName = "Cargo"
+        Me.colCargo.Name = "colCargo"
+        Me.colCargo.Visible = True
+        Me.colCargo.VisibleIndex = 5
+        '
+        'colActivo
+        '
+        Me.colActivo.Caption = "Activo"
+        Me.colActivo.ColumnEdit = Me.RepositoryItemCheckEdit1
+        Me.colActivo.FieldName = "Activo"
+        Me.colActivo.Name = "colActivo"
+        Me.colActivo.Visible = True
+        Me.colActivo.VisibleIndex = 6
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSrhEmpleado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(726, 383)
-        Me.Controls.Add(Me.grdEmpleados)
+        Me.Controls.Add(Me.grdvwEmpleados)
         Me.Controls.Add(Me.tbEmpleados)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSrhEmpleado"
         Me.Text = "Empleados"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.tbEmpleados.ResumeLayout(False)
         Me.tbEmpleados.PerformLayout()
-        CType(Me.grdEmpleados, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdvwEmpleados, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdvwEmpleadosTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -144,5 +232,16 @@ Partial Class frmSrhEmpleado
     Friend WithEvents cmdRefrescar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdSalir As System.Windows.Forms.ToolStripButton
-    Friend WithEvents grdEmpleados As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents grdvwEmpleados As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdvwEmpleadosTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colSrhEmpleadoID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colobjPersonaID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNombre1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNombre2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colApellido1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colApellido2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colGenero As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCargo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colActivo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

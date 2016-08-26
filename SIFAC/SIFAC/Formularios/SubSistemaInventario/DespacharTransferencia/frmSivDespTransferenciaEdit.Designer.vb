@@ -219,7 +219,7 @@ Partial Class frmSivDespTransferenciaEdit
         'lblDespachadopor
         '
         Me.lblDespachadopor.AutoSize = True
-        Me.lblDespachadopor.BackColor = System.Drawing.SystemColors.Control
+        Me.lblDespachadopor.BackColor = System.Drawing.Color.Transparent
         Me.lblDespachadopor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDespachadopor.Location = New System.Drawing.Point(535, 54)
         Me.lblDespachadopor.Name = "lblDespachadopor"
@@ -231,7 +231,7 @@ Partial Class frmSivDespTransferenciaEdit
         'lblObservaciones
         '
         Me.lblObservaciones.AutoSize = True
-        Me.lblObservaciones.BackColor = System.Drawing.SystemColors.Control
+        Me.lblObservaciones.BackColor = System.Drawing.Color.Transparent
         Me.lblObservaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblObservaciones.Location = New System.Drawing.Point(10, 115)
         Me.lblObservaciones.Name = "lblObservaciones"
@@ -243,7 +243,7 @@ Partial Class frmSivDespTransferenciaEdit
         'lblFechaIngreso
         '
         Me.lblFechaIngreso.AutoSize = True
-        Me.lblFechaIngreso.BackColor = System.Drawing.SystemColors.Control
+        Me.lblFechaIngreso.BackColor = System.Drawing.Color.Transparent
         Me.lblFechaIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFechaIngreso.Location = New System.Drawing.Point(535, 22)
         Me.lblFechaIngreso.Name = "lblFechaIngreso"
@@ -254,7 +254,7 @@ Partial Class frmSivDespTransferenciaEdit
         '
         'lblSitioDestino
         '
-        Me.lblSitioDestino.BackColor = System.Drawing.SystemColors.Control
+        Me.lblSitioDestino.BackColor = System.Drawing.Color.Transparent
         Me.lblSitioDestino.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSitioDestino.Location = New System.Drawing.Point(10, 83)
         Me.lblSitioDestino.Name = "lblSitioDestino"
@@ -265,7 +265,7 @@ Partial Class frmSivDespTransferenciaEdit
         '
         'lblSitioOrigen
         '
-        Me.lblSitioOrigen.BackColor = System.Drawing.SystemColors.Control
+        Me.lblSitioOrigen.BackColor = System.Drawing.Color.Transparent
         Me.lblSitioOrigen.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSitioOrigen.Location = New System.Drawing.Point(10, 51)
         Me.lblSitioOrigen.Name = "lblSitioOrigen"
@@ -320,7 +320,7 @@ Partial Class frmSivDespTransferenciaEdit
         'lblNoTransferencia
         '
         Me.lblNoTransferencia.AutoSize = True
-        Me.lblNoTransferencia.BackColor = System.Drawing.SystemColors.Control
+        Me.lblNoTransferencia.BackColor = System.Drawing.Color.Transparent
         Me.lblNoTransferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNoTransferencia.Location = New System.Drawing.Point(10, 22)
         Me.lblNoTransferencia.Name = "lblNoTransferencia"

@@ -5,13 +5,11 @@ Imports Proyecto.Catalogos.Datos
 Imports Seguridad.Datos
 Imports SIFAC.BO
 
-''' <summary>
-''' Formulario Principal de Mantenimiento de Proveedores
-''' Autor : Gelmin Martínez
-''' Fecha : 12 de Mayo de 2010.
-''' </summary>
-''' <remarks></remarks>
+
 Public Class frmSivProveedor
+
+#Region "Declaracion de Variables Globales"
+
     Dim m_IDProveedor As Integer
     Dim DtProveedores As DataTable
 
@@ -21,6 +19,8 @@ Public Class frmSivProveedor
     Dim blnEditar As Boolean
     Dim blnConsultar As Boolean
     Dim blnImprimir As Boolean
+
+#End Region
 
 #Region "Propiedades"
     Property IDProveedor() As Integer
@@ -34,12 +34,7 @@ Public Class frmSivProveedor
 #End Region
 
 #Region "Cargar Datos"
-    ''' <summary>
-    ''' Procedimiento encargado de cargar los datos correspondientes a los proveedores.
-    ''' Autor : Gelmin Martínez.
-    ''' Fecha : 12 de Mayo de 2010
-    ''' </summary>
-    ''' <remarks></remarks>
+
     Private Sub CargaDatos()
         Dim sSQL, sCampos, sFiltro As String
 
@@ -52,7 +47,8 @@ Public Class frmSivProveedor
             Me.DtProveedores = SqlHelper.ExecuteQueryDT(sSQL)
             Me.DtProveedores.PrimaryKey = New DataColumn() {Me.DtProveedores.Columns("SivProveedorID")}
             Me.DtProveedores.DefaultView.Sort = "SivProveedorID"
-            Me.grdProveedores.SetDataBinding(Me.DtProveedores, "", True)
+            grdvwProveedores.DataSource = DtProveedores
+            'Me.grdProveedores.SetDataBinding(Me.DtProveedores, "", True)
             Me.bloquearBotonesBarra(Me.DtProveedores.Rows.Count = 0)
 
         Catch ex As Exception
@@ -63,9 +59,6 @@ Public Class frmSivProveedor
 
 #Region "Seguridad"
 
-    ''' <summary>
-    ''' Autor : Gelmin Martínez.
-    ''' Fecha : 12 de Mayo de 2010.
     ''' Procedimiento Encargado de Aplicar Seguridad.
     ''' </summary>
     ''' <remarks></remarks>
@@ -99,12 +92,6 @@ Public Class frmSivProveedor
 #Region "Procedimientos"
 
 #Region " Nuevo Proveedor"
-    ''' <summary>
-    ''' Procedimiento encargado de crear un nuevo Proveedor
-    ''' Autor : Gelmin Martinez.
-    ''' Fecha : 12 de Mayo de 2010.
-    ''' </summary>
-    ''' <remarks></remarks>
     Private Sub Nuevo_Proveedor()
         Dim objProveedorEditar As frmSivProveedorEdit
         Dim iIndiceRegistro As Integer
@@ -116,7 +103,7 @@ Public Class frmSivProveedor
                 Me.CargaDatos()
                 If (Me.DtProveedores.Rows.Count <> 0) Then
                     iIndiceRegistro = Me.DtProveedores.DefaultView.Find(objProveedorEditar.IDProveedor)
-                    Me.grdProveedores.Row = iIndiceRegistro
+                    'Me.grdProveedores.Row = iIndiceRegistro
                 End If
             End If
         Catch ex As Exception
@@ -129,19 +116,19 @@ Public Class frmSivProveedor
     Private Sub Editar_Proveedor()
         Dim objProveedorEditar As frmSivProveedorEdit
         Dim iIndiceRegistro As Integer
-
+        Dim FilaActual As Integer
         Try
+            FilaActual = Me.grdvwProveedoresTabla.FocusedRowHandle
             If Me.DtProveedores.Rows.Count > 0 Then
                 objProveedorEditar = New frmSivProveedorEdit
                 objProveedorEditar.TypeGui = 1
-                If Not String.IsNullOrEmpty(Me.grdProveedores.Columns("SivProveedorID").Value.ToString) Then
-                    objProveedorEditar.IDProveedor = Int32.Parse(Me.grdProveedores.Columns("SivProveedorID").Value.ToString)
+                If Not String.IsNullOrEmpty(Me.DtProveedores.DefaultView.Item(FilaActual)("SivProveedorID")) Then
+                    objProveedorEditar.IDProveedor = Int32.Parse(Me.DtProveedores.DefaultView.Item(FilaActual)("SivProveedorID"))
                 End If
                 If objProveedorEditar.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Me.CargaDatos()
                     If (Me.DtProveedores.Rows.Count <> 0) Then
                         iIndiceRegistro = Me.DtProveedores.DefaultView.Find(objProveedorEditar.IDProveedor)
-                        Me.grdProveedores.Row = iIndiceRegistro
                     End If
                 End If
             End If
@@ -149,29 +136,6 @@ Public Class frmSivProveedor
             clsError.CaptarError(ex)
         End Try
     End Sub
-#End Region
-
-#Region "Anular Proveedor"
-    Private Function AnularProveedor() As Boolean
-        'Dim T As New TransactionManager
-        'Try
-        '    Try
-
-        '        T.BeginTran()
-        '        SqlHelper.ExecuteCommand(sComando, T)
-        '        T.CommitTran()
-
-        '        Return True
-        '    Catch ex As Exception
-        '        T.RollbackTran()
-        '        clsError.CaptarError(ex)
-        '        Return False
-        '    End Try
-        'Finally
-        '    T = Nothing
-        'End Try
-
-    End Function
 #End Region
 
 #Region "Consultar Proveedor"
@@ -240,20 +204,42 @@ Public Class frmSivProveedor
     End Sub
 
     Private Sub cmdAnularProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAnularProveedor.Click
-        'If MsgBox("¿Seguro que desea anular el proveedor?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
-        '    Me.IDProveedor = Me.grdProveedores.Columns("SivProveedorID").Value
-        '    If Me.AnularProveedor() Then
-        '        MsgBox("Proveedor Anulado correctamente.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-        '        Me.CargaDatos()
-        '    End If
-        'End If
+        Dim IDProveedor As Integer
+        Dim Proveedor As New SivProveedor
+        Dim FilaActual As Integer
+        Try
+            FilaActual = Me.grdvwProveedoresTabla.FocusedRowHandle
+            Select Case MsgBox("¿Está seguro de Inactivar el Proveedor?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
+                Case MsgBoxResult.Yes
+                    Proveedor = Me.DtProveedores.DefaultView.Item(FilaActual)("SivProveedorID")
+                    Proveedor.Retrieve(IDProveedor)
+                    Proveedor.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    Proveedor.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    Proveedor.Activo = False
+                    Proveedor.Update()
+                    Me.CargaDatos()
+                Case MsgBoxResult.No
+                    Exit Sub
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Proveedor = Nothing
+        End Try
     End Sub
 
     Private Sub cmdConsultarProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultarProveedor.Click
-        If Me.grdProveedores.RowCount > 0 Then
-            Me.IDProveedor = Me.grdProveedores.Columns("SivProveedorID").Value
-            Me.Consultar_Proveedor()
-        End If
+        Dim FilaActual As Integer
+        Try
+            FilaActual = Me.grdvwProveedoresTabla.FocusedRowHandle
+
+            If Me.grdvwProveedoresTabla.RowCount > 0 Then
+                Me.IDProveedor = Me.DtProveedores.DefaultView.Item(FilaActual)("SivProveedorID")
+                Me.Consultar_Proveedor()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImprimir.Click
@@ -268,8 +254,12 @@ Public Class frmSivProveedor
         Me.Close()
     End Sub
 
-    Private Sub grdProveedores_FilterChange(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles grdProveedores.FilterChange
-        Me.grdProveedores.Caption = "Proveedores (" & Me.DtProveedores.Rows.Count & ")"
+    Private Sub grdProveedores_FilterChange(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Try
+            Me.grdvwProveedores.Text = "Proveedores (" & Me.DtProveedores.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 #End Region

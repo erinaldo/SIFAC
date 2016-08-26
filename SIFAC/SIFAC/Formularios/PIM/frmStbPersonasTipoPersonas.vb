@@ -75,11 +75,11 @@ Public Class frmStbPersonasTipoPersonas
 #End Region
 
 #Region "Eventos de los Botones"
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
         Me.GuardarDatos()
     End Sub
 
-    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
+    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SimpleButton1.Click
         Me.DialogResult = Windows.Forms.DialogResult.Cancel
     End Sub
 #End Region

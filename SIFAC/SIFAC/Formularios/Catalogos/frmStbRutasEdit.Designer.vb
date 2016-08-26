@@ -22,6 +22,7 @@ Partial Class frmStbRutasEdit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbRutasEdit))
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.txtCodigo = New System.Windows.Forms.TextBox()
@@ -41,16 +42,22 @@ Partial Class frmStbRutasEdit
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtDescripcion = New System.Windows.Forms.TextBox()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbSupervisor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbxCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.txtDescripcion)
+        Me.PanelControl1.Controls.Add(Me.Label5)
         Me.PanelControl1.Controls.Add(Me.txtCodigo)
         Me.PanelControl1.Controls.Add(Me.Label4)
         Me.PanelControl1.Controls.Add(Me.ckdCargaDiferenciada)
@@ -72,7 +79,7 @@ Partial Class frmStbRutasEdit
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(735, 201)
+        Me.PanelControl1.Size = New System.Drawing.Size(735, 250)
         Me.PanelControl1.TabIndex = 25
         '
         'txtCodigo
@@ -99,7 +106,7 @@ Partial Class frmStbRutasEdit
         '
         Me.ckdCargaDiferenciada.AutoSize = True
         Me.ckdCargaDiferenciada.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ckdCargaDiferenciada.Location = New System.Drawing.Point(422, 88)
+        Me.ckdCargaDiferenciada.Location = New System.Drawing.Point(430, 119)
         Me.ckdCargaDiferenciada.Name = "ckdCargaDiferenciada"
         Me.ckdCargaDiferenciada.Size = New System.Drawing.Size(135, 17)
         Me.ckdCargaDiferenciada.TabIndex = 27
@@ -110,7 +117,7 @@ Partial Class frmStbRutasEdit
         '
         Me.chkActivo.AutoSize = True
         Me.chkActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkActivo.Location = New System.Drawing.Point(422, 60)
+        Me.chkActivo.Location = New System.Drawing.Point(430, 91)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
         Me.chkActivo.TabIndex = 26
@@ -134,7 +141,7 @@ Partial Class frmStbRutasEdit
         Me.cmbDiaCrobro.EditorHeight = 15
         Me.cmbDiaCrobro.Images.Add(CType(resources.GetObject("cmbDiaCrobro.Images"), System.Drawing.Image))
         Me.cmbDiaCrobro.ItemHeight = 15
-        Me.cmbDiaCrobro.Location = New System.Drawing.Point(510, 29)
+        Me.cmbDiaCrobro.Location = New System.Drawing.Point(518, 57)
         Me.cmbDiaCrobro.MatchEntryTimeout = CType(2000, Long)
         Me.cmbDiaCrobro.MaxDropDownItems = CType(5, Short)
         Me.cmbDiaCrobro.MaxLength = 32767
@@ -152,7 +159,7 @@ Partial Class frmStbRutasEdit
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(419, 33)
+        Me.Label3.Location = New System.Drawing.Point(427, 61)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(85, 13)
         Me.Label3.TabIndex = 24
@@ -176,7 +183,7 @@ Partial Class frmStbRutasEdit
         Me.cmbSupervisor.EditorHeight = 15
         Me.cmbSupervisor.Images.Add(CType(resources.GetObject("cmbSupervisor.Images"), System.Drawing.Image))
         Me.cmbSupervisor.ItemHeight = 15
-        Me.cmbSupervisor.Location = New System.Drawing.Point(107, 138)
+        Me.cmbSupervisor.Location = New System.Drawing.Point(107, 180)
         Me.cmbSupervisor.MatchEntryTimeout = CType(2000, Long)
         Me.cmbSupervisor.MaxDropDownItems = CType(5, Short)
         Me.cmbSupervisor.MaxLength = 32767
@@ -194,7 +201,7 @@ Partial Class frmStbRutasEdit
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(16, 142)
+        Me.Label2.Location = New System.Drawing.Point(16, 184)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(71, 13)
         Me.Label2.TabIndex = 23
@@ -238,7 +245,7 @@ Partial Class frmStbRutasEdit
         Me.cbxCiudad.EditorHeight = 15
         Me.cbxCiudad.Images.Add(CType(resources.GetObject("cbxCiudad.Images"), System.Drawing.Image))
         Me.cbxCiudad.ItemHeight = 15
-        Me.cbxCiudad.Location = New System.Drawing.Point(107, 84)
+        Me.cbxCiudad.Location = New System.Drawing.Point(518, 28)
         Me.cbxCiudad.MatchEntryTimeout = CType(2000, Long)
         Me.cbxCiudad.MaxDropDownItems = CType(5, Short)
         Me.cbxCiudad.MaxLength = 32767
@@ -247,7 +254,7 @@ Partial Class frmStbRutasEdit
         Me.cbxCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cbxCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cbxCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cbxCiudad.Size = New System.Drawing.Size(279, 21)
+        Me.cbxCiudad.Size = New System.Drawing.Size(172, 21)
         Me.cbxCiudad.TabIndex = 18
         Me.cbxCiudad.Tag = "OBLIGATORIO"
         Me.cbxCiudad.PropBag = resources.GetString("cbxCiudad.PropBag")
@@ -269,7 +276,7 @@ Partial Class frmStbRutasEdit
         Me.cbxCobrador.EditorHeight = 15
         Me.cbxCobrador.Images.Add(CType(resources.GetObject("cbxCobrador.Images"), System.Drawing.Image))
         Me.cbxCobrador.ItemHeight = 15
-        Me.cbxCobrador.Location = New System.Drawing.Point(107, 111)
+        Me.cbxCobrador.Location = New System.Drawing.Point(107, 153)
         Me.cbxCobrador.MatchEntryTimeout = CType(2000, Long)
         Me.cbxCobrador.MaxDropDownItems = CType(5, Short)
         Me.cbxCobrador.MaxLength = 32767
@@ -287,7 +294,7 @@ Partial Class frmStbRutasEdit
         '
         Me.lblCilindraje.AutoSize = True
         Me.lblCilindraje.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCilindraje.Location = New System.Drawing.Point(16, 88)
+        Me.lblCilindraje.Location = New System.Drawing.Point(427, 29)
         Me.lblCilindraje.Name = "lblCilindraje"
         Me.lblCilindraje.Size = New System.Drawing.Size(50, 13)
         Me.lblCilindraje.TabIndex = 19
@@ -298,7 +305,7 @@ Partial Class frmStbRutasEdit
         '
         Me.lblMarca.AutoSize = True
         Me.lblMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMarca.Location = New System.Drawing.Point(16, 115)
+        Me.lblMarca.Location = New System.Drawing.Point(16, 157)
         Me.lblMarca.Name = "lblMarca"
         Me.lblMarca.Size = New System.Drawing.Size(62, 13)
         Me.lblMarca.TabIndex = 17
@@ -310,7 +317,9 @@ Partial Class frmStbRutasEdit
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(631, 138)
+        Me.cmdCancelar.Location = New System.Drawing.Point(636, 184)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
         Me.cmdCancelar.TabIndex = 8
@@ -323,7 +332,9 @@ Partial Class frmStbRutasEdit
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(545, 138)
+        Me.cmdGuardar.Location = New System.Drawing.Point(550, 184)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 7
@@ -334,16 +345,41 @@ Partial Class frmStbRutasEdit
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 180)
+        Me.Panel1.Location = New System.Drawing.Point(0, 229)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(735, 21)
         Me.Panel1.TabIndex = 26
+        '
+        'ErrorProv
+        '
+        Me.ErrorProv.ContainerControl = Me
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(16, 92)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(78, 13)
+        Me.Label5.TabIndex = 30
+        Me.Label5.Tag = ""
+        Me.Label5.Text = "Descripcion:"
+        '
+        'txtDescripcion
+        '
+        Me.txtDescripcion.Enabled = False
+        Me.txtDescripcion.Location = New System.Drawing.Point(107, 88)
+        Me.txtDescripcion.Multiline = True
+        Me.txtDescripcion.Name = "txtDescripcion"
+        Me.txtDescripcion.Size = New System.Drawing.Size(279, 48)
+        Me.txtDescripcion.TabIndex = 31
+        Me.txtDescripcion.Tag = "OBLIGATORIO"
         '
         'frmStbRutasEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(735, 201)
+        Me.ClientSize = New System.Drawing.Size(735, 250)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -357,6 +393,7 @@ Partial Class frmStbRutasEdit
         CType(Me.cmbSupervisor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbxCiudad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -378,4 +415,7 @@ Partial Class frmStbRutasEdit
     Friend WithEvents chkActivo As System.Windows.Forms.CheckBox
     Friend WithEvents txtCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtDescripcion As System.Windows.Forms.TextBox
 End Class

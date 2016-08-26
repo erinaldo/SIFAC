@@ -102,8 +102,8 @@
     <Compile Include="SivEntradaPreliquidacion_CF.vb" />
     <Compile Include="SivMarcas.vb" />
     <Compile Include="SivProductos.vb" />
+    <Compile Include="SivProveedor.vb" />
     <Compile Include="SivProveedorDetProvision_CF.vb" />
-    <Compile Include="SivProveedor_CF.vb" />
     <Compile Include="SivRepuestosDetCompat_CF.vb" />
     <Compile Include="SivRepuestosDetProv_CF.vb" />
     <Compile Include="SivRepuestos_CF.vb" />
@@ -111,7 +111,7 @@
     <Compile Include="SivSalidaBodegaDetalle.vb" />
     <Compile Include="SivTransferencia.vb" />
     <Compile Include="SivTransferenciaDetalle.vb" />
-    <Compile Include="SrhEmpleado_CF.vb" />
+    <Compile Include="SrhEmpleado.vb" />
     <Compile Include="StaServicioTaller_CF.vb" />
     <Compile Include="StbBitacoraCliente_CF.vb" />
     <Compile Include="StbBodegas.vb" />

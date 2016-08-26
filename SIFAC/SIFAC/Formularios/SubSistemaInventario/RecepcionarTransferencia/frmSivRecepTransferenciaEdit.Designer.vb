@@ -43,11 +43,11 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.txtNoTransferencia = New System.Windows.Forms.TextBox()
         Me.lblNoTransferencia = New System.Windows.Forms.Label()
         Me.grdDetalleTransferencia = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdGuardar = New System.Windows.Forms.Button()
         Me.ErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbxDatosGenerales.SuspendLayout()
         CType(Me.cmbSitioDestino, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbSitioOrigen, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,6 +82,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.gbxDatosGenerales.Controls.Add(Me.txtDespachadoPor)
         Me.gbxDatosGenerales.Controls.Add(Me.txtNoTransferencia)
         Me.gbxDatosGenerales.Controls.Add(Me.lblNoTransferencia)
+        Me.gbxDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbxDatosGenerales.Location = New System.Drawing.Point(9, 22)
         Me.gbxDatosGenerales.Name = "gbxDatosGenerales"
         Me.gbxDatosGenerales.Size = New System.Drawing.Size(776, 196)
@@ -94,7 +95,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(589, 91)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(10, 13)
+        Me.Label2.Size = New System.Drawing.Size(11, 13)
         Me.Label2.TabIndex = 93
         Me.Label2.Text = "-"
         '
@@ -103,7 +104,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.LblGuion2.AutoSize = True
         Me.LblGuion2.Location = New System.Drawing.Point(589, 56)
         Me.LblGuion2.Name = "LblGuion2"
-        Me.LblGuion2.Size = New System.Drawing.Size(10, 13)
+        Me.LblGuion2.Size = New System.Drawing.Size(11, 13)
         Me.LblGuion2.TabIndex = 93
         Me.LblGuion2.Text = "-"
         '
@@ -112,7 +113,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.lblGuion1.AutoSize = True
         Me.lblGuion1.Location = New System.Drawing.Point(589, 24)
         Me.lblGuion1.Name = "lblGuion1"
-        Me.lblGuion1.Size = New System.Drawing.Size(10, 13)
+        Me.lblGuion1.Size = New System.Drawing.Size(11, 13)
         Me.lblGuion1.TabIndex = 93
         Me.lblGuion1.Text = "-"
         '
@@ -131,6 +132,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.cmbSitioDestino.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSitioDestino.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbSitioDestino.EditorHeight = 15
+        Me.cmbSitioDestino.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSitioDestino.Images.Add(CType(resources.GetObject("cmbSitioDestino.Images"), System.Drawing.Image))
         Me.cmbSitioDestino.ItemHeight = 15
         Me.cmbSitioDestino.Location = New System.Drawing.Point(120, 87)
@@ -162,6 +164,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.cmbSitioOrigen.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSitioOrigen.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbSitioOrigen.EditorHeight = 15
+        Me.cmbSitioOrigen.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSitioOrigen.Images.Add(CType(resources.GetObject("cmbSitioOrigen.Images"), System.Drawing.Image))
         Me.cmbSitioOrigen.ItemHeight = 15
         Me.cmbSitioOrigen.Location = New System.Drawing.Point(120, 52)
@@ -182,6 +185,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'txtObservaciones
         '
         Me.txtObservaciones.AcceptsTab = True
+        Me.txtObservaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtObservaciones.Location = New System.Drawing.Point(122, 125)
         Me.txtObservaciones.MaxLength = 250
         Me.txtObservaciones.Multiline = True
@@ -195,7 +199,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'lblSolicitadoPor
         '
         Me.lblSolicitadoPor.AutoSize = True
-        Me.lblSolicitadoPor.BackColor = System.Drawing.SystemColors.Control
+        Me.lblSolicitadoPor.BackColor = System.Drawing.Color.Transparent
         Me.lblSolicitadoPor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSolicitadoPor.Location = New System.Drawing.Point(323, 22)
         Me.lblSolicitadoPor.Name = "lblSolicitadoPor"
@@ -207,7 +211,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'lblRecibidoPor
         '
         Me.lblRecibidoPor.AutoSize = True
-        Me.lblRecibidoPor.BackColor = System.Drawing.SystemColors.Control
+        Me.lblRecibidoPor.BackColor = System.Drawing.Color.Transparent
         Me.lblRecibidoPor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRecibidoPor.Location = New System.Drawing.Point(323, 89)
         Me.lblRecibidoPor.Name = "lblRecibidoPor"
@@ -219,7 +223,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'lblDespachadopor
         '
         Me.lblDespachadopor.AutoSize = True
-        Me.lblDespachadopor.BackColor = System.Drawing.SystemColors.Control
+        Me.lblDespachadopor.BackColor = System.Drawing.Color.Transparent
         Me.lblDespachadopor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDespachadopor.Location = New System.Drawing.Point(323, 54)
         Me.lblDespachadopor.Name = "lblDespachadopor"
@@ -231,7 +235,7 @@ Partial Class frmSivRecepTransferenciaEdit
         'lblObservaciones
         '
         Me.lblObservaciones.AutoSize = True
-        Me.lblObservaciones.BackColor = System.Drawing.SystemColors.Control
+        Me.lblObservaciones.BackColor = System.Drawing.Color.Transparent
         Me.lblObservaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblObservaciones.Location = New System.Drawing.Point(9, 123)
         Me.lblObservaciones.Name = "lblObservaciones"
@@ -242,7 +246,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         'lblSitioDestino
         '
-        Me.lblSitioDestino.BackColor = System.Drawing.SystemColors.Control
+        Me.lblSitioDestino.BackColor = System.Drawing.Color.Transparent
         Me.lblSitioDestino.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSitioDestino.Location = New System.Drawing.Point(9, 86)
         Me.lblSitioDestino.Name = "lblSitioDestino"
@@ -253,7 +257,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         'lblSitioOrigen
         '
-        Me.lblSitioOrigen.BackColor = System.Drawing.SystemColors.Control
+        Me.lblSitioOrigen.BackColor = System.Drawing.Color.Transparent
         Me.lblSitioOrigen.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSitioOrigen.Location = New System.Drawing.Point(9, 51)
         Me.lblSitioOrigen.Name = "lblSitioOrigen"
@@ -264,6 +268,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         'txtSolicitadoPor
         '
+        Me.txtSolicitadoPor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSolicitadoPor.Location = New System.Drawing.Point(429, 20)
         Me.txtSolicitadoPor.Name = "txtSolicitadoPor"
         Me.txtSolicitadoPor.Size = New System.Drawing.Size(156, 20)
@@ -286,6 +291,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.dtpFechaRecibido.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaRecibido.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaRecibido.EditMask = "##/##/####"
+        Me.dtpFechaRecibido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaRecibido.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaRecibido.Location = New System.Drawing.Point(603, 86)
         Me.dtpFechaRecibido.Name = "dtpFechaRecibido"
@@ -309,6 +315,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.dtpFechaDespacho.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaDespacho.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaDespacho.EditMask = "##/##/####"
+        Me.dtpFechaDespacho.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaDespacho.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaDespacho.Location = New System.Drawing.Point(603, 51)
         Me.dtpFechaDespacho.Name = "dtpFechaDespacho"
@@ -332,6 +339,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.dtpFechaSolicitud.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaSolicitud.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaSolicitud.EditMask = "##/##/####"
+        Me.dtpFechaSolicitud.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaSolicitud.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaSolicitud.Location = New System.Drawing.Point(603, 19)
         Me.dtpFechaSolicitud.Name = "dtpFechaSolicitud"
@@ -342,6 +350,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         'txtRecibidoPor
         '
+        Me.txtRecibidoPor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRecibidoPor.Location = New System.Drawing.Point(429, 87)
         Me.txtRecibidoPor.Name = "txtRecibidoPor"
         Me.txtRecibidoPor.Size = New System.Drawing.Size(156, 20)
@@ -351,6 +360,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         'txtDespachadoPor
         '
+        Me.txtDespachadoPor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDespachadoPor.Location = New System.Drawing.Point(429, 52)
         Me.txtDespachadoPor.Name = "txtDespachadoPor"
         Me.txtDespachadoPor.Size = New System.Drawing.Size(156, 20)
@@ -360,6 +370,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         'txtNoTransferencia
         '
+        Me.txtNoTransferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNoTransferencia.Location = New System.Drawing.Point(120, 20)
         Me.txtNoTransferencia.Name = "txtNoTransferencia"
         Me.txtNoTransferencia.Size = New System.Drawing.Size(174, 20)
@@ -371,9 +382,9 @@ Partial Class frmSivRecepTransferenciaEdit
         'lblNoTransferencia
         '
         Me.lblNoTransferencia.AutoSize = True
-        Me.lblNoTransferencia.BackColor = System.Drawing.SystemColors.Control
+        Me.lblNoTransferencia.BackColor = System.Drawing.Color.Transparent
         Me.lblNoTransferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNoTransferencia.Location = New System.Drawing.Point(9, 22)
+        Me.lblNoTransferencia.Location = New System.Drawing.Point(9, 24)
         Me.lblNoTransferencia.Name = "lblNoTransferencia"
         Me.lblNoTransferencia.Size = New System.Drawing.Size(113, 13)
         Me.lblNoTransferencia.TabIndex = 19
@@ -398,35 +409,6 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.grdDetalleTransferencia.TabIndex = 0
         Me.grdDetalleTransferencia.PropBag = resources.GetString("grdDetalleTransferencia.PropBag")
         '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancelar.Location = New System.Drawing.Point(705, 469)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(79, 30)
-        Me.cmdCancelar.TabIndex = 91
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdGuardar
-        '
-        Me.cmdGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
-        Me.cmdGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(625, 469)
-        Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdGuardar.TabIndex = 90
-        Me.cmdGuardar.Tag = "ACEPTAR"
-        Me.cmdGuardar.Text = "&Aceptar"
-        Me.cmdGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdGuardar.UseVisualStyleBackColor = True
-        '
         'ErrorProvider
         '
         Me.ErrorProvider.ContainerControl = Me
@@ -442,6 +424,8 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.gbxDatosGenerales)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
@@ -451,14 +435,41 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.PanelControl1.Size = New System.Drawing.Size(801, 524)
         Me.PanelControl1.TabIndex = 96
         '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(705, 469)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdCancelar.TabIndex = 85
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(614, 469)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 84
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Guardar"
+        '
         'frmSivRecepTransferenciaEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(801, 524)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdGuardar)
         Me.Controls.Add(Me.grdDetalleTransferencia)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -504,9 +515,9 @@ Partial Class frmSivRecepTransferenciaEdit
     Friend WithEvents dtpFechaRecibido As C1.Win.C1Input.C1DateEdit
     Friend WithEvents txtRecibidoPor As System.Windows.Forms.TextBox
     Friend WithEvents grdDetalleTransferencia As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdGuardar As System.Windows.Forms.Button
     Friend WithEvents ErrorProvider As System.Windows.Forms.ErrorProvider
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

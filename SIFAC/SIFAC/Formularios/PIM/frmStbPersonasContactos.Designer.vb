@@ -30,9 +30,12 @@ Partial Class frmStbPersonasContactos
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         CType(Me.ErrPrv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbTipoPersona, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ErrPrv
@@ -44,7 +47,7 @@ Partial Class frmStbPersonasContactos
         '
         Me.lblTipoContacto.AutoSize = True
         Me.lblTipoContacto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTipoContacto.Location = New System.Drawing.Point(15, 27)
+        Me.lblTipoContacto.Location = New System.Drawing.Point(13, 25)
         Me.lblTipoContacto.Name = "lblTipoContacto"
         Me.lblTipoContacto.Size = New System.Drawing.Size(109, 13)
         Me.lblTipoContacto.TabIndex = 0
@@ -96,7 +99,7 @@ Partial Class frmStbPersonasContactos
         '
         Me.lblValor.AutoSize = True
         Me.lblValor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblValor.Location = New System.Drawing.Point(18, 52)
+        Me.lblValor.Location = New System.Drawing.Point(16, 50)
         Me.lblValor.Name = "lblValor"
         Me.lblValor.Size = New System.Drawing.Size(40, 13)
         Me.lblValor.TabIndex = 5
@@ -115,8 +118,10 @@ Partial Class frmStbPersonasContactos
         '
         Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SimpleButton1.Appearance.Options.UseFont = True
-        Me.SimpleButton1.Image = Global.SIFAC.My.Resources.Resources.Cancel16
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
         Me.SimpleButton1.Location = New System.Drawing.Point(272, 81)
+        Me.SimpleButton1.LookAndFeel.SkinName = "Caramel"
+        Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
         Me.SimpleButton1.TabIndex = 28
@@ -127,14 +132,28 @@ Partial Class frmStbPersonasContactos
         '
         Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdGuardar.Appearance.Options.UseFont = True
-        Me.cmdGuardar.Image = Global.SIFAC.My.Resources.Resources.Guardar16
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(186, 81)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 27
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
+        '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.lblTipoContacto)
+        Me.PanelControl1.Controls.Add(Me.lblValor)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(373, 131)
+        Me.PanelControl1.TabIndex = 29
         '
         'frmStbPersonasContactos
         '
@@ -144,11 +163,11 @@ Partial Class frmStbPersonasContactos
         Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.cmdGuardar)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.lblValor)
         Me.Controls.Add(Me.txtValor)
         Me.Controls.Add(Me.cmbTipoPersona)
-        Me.Controls.Add(Me.lblTipoContacto)
+        Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmStbPersonasContactos"
@@ -157,6 +176,9 @@ Partial Class frmStbPersonasContactos
         CType(Me.ErrPrv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbTipoPersona, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -170,4 +192,5 @@ Partial Class frmStbPersonasContactos
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
 End Class
