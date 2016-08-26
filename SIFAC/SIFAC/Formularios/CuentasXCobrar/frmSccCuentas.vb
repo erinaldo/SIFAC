@@ -283,21 +283,21 @@ Public Class frmSccCuentas
     ''' Crea la factura nueva para concluir el proceso de reestructuración 
     ''' </summary>
     ''' <remarks></remarks>
-    Private Function CrearFactura_Step4() As Boolean
-        Dim objFacturaEdit As New frmSfaFaturaEditar
-        Try
-            objFacturaEdit.TypGui = 0
-            objFacturaEdit.blnReestructurarCuenta = True
-            objFacturaEdit.IDCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
-            objFacturaEdit.IDTienda = Me.grdCuentas.Columns("objTiendaID").Value
-            objFacturaEdit.Cliente = Me.grdCuentas.Columns("Cliente").Value
+    'Private Function CrearFactura_Step4() As Boolean
+    '    Dim objFacturaEdit As New frmSfaFaturaEditar
+    '    Try
+    '        objFacturaEdit.TypGui = 0
+    '        objFacturaEdit.blnReestructurarCuenta = True
+    '        objFacturaEdit.IDCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
+    '        objFacturaEdit.IDTienda = Me.grdCuentas.Columns("objTiendaID").Value
+    '        objFacturaEdit.Cliente = Me.grdCuentas.Columns("Cliente").Value
 
-            Return objFacturaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK
+    '        Return objFacturaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK
 
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try        
-    End Function
+    '    Catch ex As Exception
+    '        clsError.CaptarError(ex)
+    '    End Try        
+    'End Function
 
     Private Function HayTasaCambio(ByVal idConfirmada As Integer) As String
         Dim objTasaCambio As New StbTasaCambioOficial

@@ -90,6 +90,7 @@ Partial Class frmSfaFacturaRepuestos
         Me.AgregaDesdeCotizaciónToolStripMenuItem.Name = "AgregaDesdeCotizaciónToolStripMenuItem"
         Me.AgregaDesdeCotizaciónToolStripMenuItem.Size = New System.Drawing.Size(256, 26)
         Me.AgregaDesdeCotizaciónToolStripMenuItem.Text = "Agregar desde Cotización"
+        Me.AgregaDesdeCotizaciónToolStripMenuItem.Visible = False
         '
         'cmdProcesar
         '
@@ -156,7 +157,7 @@ Partial Class frmSfaFacturaRepuestos
     ":False;"
         Me.Contenedor.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.Contenedor.Location = New System.Drawing.Point(0, 39)
-        Me.Contenedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Contenedor.Margin = New System.Windows.Forms.Padding(4)
         Me.Contenedor.Name = "Contenedor"
         Me.Contenedor.Size = New System.Drawing.Size(1257, 503)
         Me.Contenedor.TabIndex = 1
@@ -164,10 +165,10 @@ Partial Class frmSfaFacturaRepuestos
         '
         'grdFacturaDetalle
         '
-        Me.grdFacturaDetalle.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdFacturaDetalle.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.grdFacturaDetalle.Location = New System.Drawing.Point(4, 254)
         Me.grdFacturaDetalle.MainView = Me.grdFacturaDetalleTable
-        Me.grdFacturaDetalle.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdFacturaDetalle.Margin = New System.Windows.Forms.Padding(4)
         Me.grdFacturaDetalle.Name = "grdFacturaDetalle"
         Me.grdFacturaDetalle.Size = New System.Drawing.Size(1249, 245)
         Me.grdFacturaDetalle.TabIndex = 3
@@ -261,10 +262,10 @@ Partial Class frmSfaFacturaRepuestos
         '
         'grdFacturaMaster
         '
-        Me.grdFacturaMaster.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdFacturaMaster.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.grdFacturaMaster.Location = New System.Drawing.Point(4, 4)
         Me.grdFacturaMaster.MainView = Me.grdFacturaMasterTabla
-        Me.grdFacturaMaster.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdFacturaMaster.Margin = New System.Windows.Forms.Padding(4)
         Me.grdFacturaMaster.Name = "grdFacturaMaster"
         Me.grdFacturaMaster.Size = New System.Drawing.Size(1249, 246)
         Me.grdFacturaMaster.TabIndex = 2
@@ -366,7 +367,7 @@ Partial Class frmSfaFacturaRepuestos
         Me.ClientSize = New System.Drawing.Size(1257, 542)
         Me.Controls.Add(Me.Contenedor)
         Me.Controls.Add(Me.barFacturaRepuesto)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmSfaFacturaRepuestos"
         Me.Text = "Consulta de Facturas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

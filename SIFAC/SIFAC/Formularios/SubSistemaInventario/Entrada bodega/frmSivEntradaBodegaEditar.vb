@@ -641,82 +641,82 @@ Public Class frmSivEntradaBodegaEditar
         End Try
     End Sub
 
-    Private Sub ActualizarCostoPreliquidacion(ByVal T As DAL.TransactionManager)
-        Dim dtProductosPreliquidados, dtEntradaBodegaCosto, dtFacturaDetale As DataTable
-        Dim objSivEntradaBodegaDetalle As SivEntradaBodegaDetalle
-        Dim objSivEntradaBodega As SivEntradaBodega
-        Dim objSfaFacturaRepuestoDetalle As SfaFacturaRepuestoDetalle
-        Dim dlbSumaCostoDol, dlbPromedioCostoDol, dblTotalCostoDol As Double
+    'Private Sub ActualizarCostoPreliquidacion(ByVal T As DAL.TransactionManager)
+    '    Dim dtProductosPreliquidados, dtEntradaBodegaCosto, dtFacturaDetale As DataTable
+    '    Dim objSivEntradaBodegaDetalle As SivEntradaBodegaDetalle
+    '    Dim objSivEntradaBodega As SivEntradaBodega
+    '    Dim objSfaFacturaRepuestoDetalle As SfaFacturasDetalle
+    '    Dim dlbSumaCostoDol, dlbPromedioCostoDol, dblTotalCostoDol As Double
 
-        Try
-            dlbSumaCostoDol = 0
-            dlbPromedioCostoDol = 0
-            dblTotalCostoDol = 0
+    '    Try
+    '        dlbSumaCostoDol = 0
+    '        dlbPromedioCostoDol = 0
+    '        dblTotalCostoDol = 0
 
-            objSivEntradaBodegaDetalle = New SivEntradaBodegaDetalle
-            objSivEntradaBodega = New SivEntradaBodega
-            objSfaFacturaRepuestoDetalle = New SfaFacturaRepuestoDetalle
+    '        objSivEntradaBodegaDetalle = New SivEntradaBodegaDetalle
+    '        objSivEntradaBodega = New SivEntradaBodega
+    '        objSfaFacturaRepuestoDetalle = New SfaFacturasDetalle
 
-            ' Posicionar el maestro en el primer registro del maestro
-            Me.grdDetalleEntradasBodegasDETabla.MoveFirst()
-            ' Recorrer el grid de Entrada
-            For FilaDetalleEntrada As Integer = 0 To Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").DefaultView.Count - 1
-                If Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").DefaultView.Item(FilaDetalleEntrada)("CantidadEnPreli") > 0 Then
-                    'Recorrer el grid de Entrada Detalle
-                    For FilaPreliquidacion As Integer = 0 To Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Count - 1
-                        If Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("CantidadFalta") <> Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("CantidadFaltaAnt") Then
-                            dtProductosPreliquidados = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objentradabodegaPRE,objentradabodegaIMP,objrepuestoid", "SivEntradaBodegaPREIMP", "objentradabodegaPRE=" & Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("SivEntradaBodegaID")), T)
-                            For K As Integer = 0 To dtProductosPreliquidados.DefaultView.Count - 1
-                                objSivEntradaBodegaDetalle.RetrieveByFilter("objEntradaBodegaID=" & dtProductosPreliquidados.DefaultView.Item(K)("objentradabodegaIMP") & " AND objrepuestoid=" & dtProductosPreliquidados.DefaultView.Item(K)("objrepuestoid"), T)
-                                dlbSumaCostoDol = dlbSumaCostoDol + objSivEntradaBodegaDetalle.Costo
-                            Next
-                            dlbPromedioCostoDol = (dlbSumaCostoDol) / (dtProductosPreliquidados.Rows.Count)
+    '        ' Posicionar el maestro en el primer registro del maestro
+    '        Me.grdDetalleEntradasBodegasDETabla.MoveFirst()
+    '        ' Recorrer el grid de Entrada
+    '        For FilaDetalleEntrada As Integer = 0 To Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").DefaultView.Count - 1
+    '            If Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").DefaultView.Item(FilaDetalleEntrada)("CantidadEnPreli") > 0 Then
+    '                'Recorrer el grid de Entrada Detalle
+    '                For FilaPreliquidacion As Integer = 0 To Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Count - 1
+    '                    If Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("CantidadFalta") <> Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("CantidadFaltaAnt") Then
+    '                        dtProductosPreliquidados = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objentradabodegaPRE,objentradabodegaIMP,objrepuestoid", "SivEntradaBodegaPREIMP", "objentradabodegaPRE=" & Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("SivEntradaBodegaID")), T)
+    '                        For K As Integer = 0 To dtProductosPreliquidados.DefaultView.Count - 1
+    '                            objSivEntradaBodegaDetalle.RetrieveByFilter("objEntradaBodegaID=" & dtProductosPreliquidados.DefaultView.Item(K)("objentradabodegaIMP") & " AND objrepuestoid=" & dtProductosPreliquidados.DefaultView.Item(K)("objrepuestoid"), T)
+    '                            dlbSumaCostoDol = dlbSumaCostoDol + objSivEntradaBodegaDetalle.Costo
+    '                        Next
+    '                        dlbPromedioCostoDol = (dlbSumaCostoDol) / (dtProductosPreliquidados.Rows.Count)
 
-                            For K As Integer = 0 To dtProductosPreliquidados.DefaultView.Count - 1 'REVISAR ESTO
-                                objSivEntradaBodegaDetalle.RetrieveByFilter("objEntradaBodegaID=" & dtProductosPreliquidados.DefaultView.Item(K)("objentradabodegaPRE") & " AND objrepuestoid=" & dtProductosPreliquidados.DefaultView.Item(K)("objrepuestoid"), T)
-                                objSivEntradaBodegaDetalle.Costo = dlbPromedioCostoDol
-                                objSivEntradaBodegaDetalle.Update(T)
-                            Next
+    '                        For K As Integer = 0 To dtProductosPreliquidados.DefaultView.Count - 1 'REVISAR ESTO
+    '                            objSivEntradaBodegaDetalle.RetrieveByFilter("objEntradaBodegaID=" & dtProductosPreliquidados.DefaultView.Item(K)("objentradabodegaPRE") & " AND objrepuestoid=" & dtProductosPreliquidados.DefaultView.Item(K)("objrepuestoid"), T)
+    '                            objSivEntradaBodegaDetalle.Costo = dlbPromedioCostoDol
+    '                            objSivEntradaBodegaDetalle.Update(T)
+    '                        Next
 
-                            'Actualizar el costo total relacionado a la entrada por preliquidación
-                            dtEntradaBodegaCosto = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Cantidad,Costo,objEntradaBodegaID,objrepuestoid", "SivEntradaBodegaDetalle", "objEntradaBodegaID=" & Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("SivEntradaBodegaID")), T)
-                            For L As Integer = 0 To dtEntradaBodegaCosto.DefaultView.Count - 1 'REVISAR ESTO
-                                dblTotalCostoDol = dblTotalCostoDol + (dtEntradaBodegaCosto.DefaultView.Item(L)("Cantidad") * dtEntradaBodegaCosto.DefaultView.Item(L)("Costo"))
-                            Next
+    '                        'Actualizar el costo total relacionado a la entrada por preliquidación
+    '                        dtEntradaBodegaCosto = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Cantidad,Costo,objEntradaBodegaID,objrepuestoid", "SivEntradaBodegaDetalle", "objEntradaBodegaID=" & Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("SivEntradaBodegaID")), T)
+    '                        For L As Integer = 0 To dtEntradaBodegaCosto.DefaultView.Count - 1 'REVISAR ESTO
+    '                            dblTotalCostoDol = dblTotalCostoDol + (dtEntradaBodegaCosto.DefaultView.Item(L)("Cantidad") * dtEntradaBodegaCosto.DefaultView.Item(L)("Costo"))
+    '                        Next
 
-                            objSivEntradaBodega.SivEntradaBodegaID = Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("SivEntradaBodegaID")
-                            objSivEntradaBodega.Retrieve(objSivEntradaBodega.SivEntradaBodegaID, T)
-                            objSivEntradaBodega.CostoTotal = dblTotalCostoDol
-                            objSivEntradaBodega.Update(T)
+    '                        objSivEntradaBodega.SivEntradaBodegaID = Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("SivEntradaBodegaID")
+    '                        objSivEntradaBodega.Retrieve(objSivEntradaBodega.SivEntradaBodegaID, T)
+    '                        objSivEntradaBodega.CostoTotal = dblTotalCostoDol
+    '                        objSivEntradaBodega.Update(T)
 
-                            'Actualizar el costo dolares de Fatura Detalle REVISAR ESTO 
-                            dtFacturaDetale = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SfaFacturaRepuestoDetalleID,objEntradaBodegaID,objRepuestoID", "SfaFacturaRepuestoDetalle", "objEntradaBodegaID=" & dtProductosPreliquidados.DefaultView.Item(0)("objentradabodegaPRE") & " AND objRepuestoID=" & Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("objRepuestoID")), T)
+    '                        'Actualizar el costo dolares de Fatura Detalle REVISAR ESTO 
+    '                        dtFacturaDetale = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SfaFacturaRepuestoDetalleID,objEntradaBodegaID,objRepuestoID", "SfaFacturaRepuestoDetalle", "objEntradaBodegaID=" & dtProductosPreliquidados.DefaultView.Item(0)("objentradabodegaPRE") & " AND objRepuestoID=" & Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradabodegaProdPreli").DefaultView.Item(FilaPreliquidacion)("objRepuestoID")), T)
 
-                            For M As Integer = 0 To dtFacturaDetale.DefaultView.Count - 1
-                                objSfaFacturaRepuestoDetalle.SfaFacturaRepuestoDetalleID = dtEntradaBodegaCosto.DefaultView.Item(M)("SfaFacturaRepuestoDetalleID")
-                                objSfaFacturaRepuestoDetalle.Retrieve(objSfaFacturaRepuestoDetalle.SfaFacturaRepuestoDetalleID, T)
-                                If objSfaFacturaRepuestoDetalle.SfaFacturaRepuestoDetalleID <> 0 Then
-                                    objSfaFacturaRepuestoDetalle.CostoDolares = dlbPromedioCostoDol
-                                    objSfaFacturaRepuestoDetalle.Update(T)
-                                End If
-                            Next
+    '                        For M As Integer = 0 To dtFacturaDetale.DefaultView.Count - 1
+    '                            objSfaFacturaRepuestoDetalle.SfaFacturaRepuestoDetalleID = dtEntradaBodegaCosto.DefaultView.Item(M)("SfaFacturaRepuestoDetalleID")
+    '                            objSfaFacturaRepuestoDetalle.Retrieve(objSfaFacturaRepuestoDetalle.SfaFacturaRepuestoDetalleID, T)
+    '                            If objSfaFacturaRepuestoDetalle.SfaFacturaRepuestoDetalleID <> 0 Then
+    '                                objSfaFacturaRepuestoDetalle.CostoDolares = dlbPromedioCostoDol
+    '                                objSfaFacturaRepuestoDetalle.Update(T)
+    '                            End If
+    '                        Next
 
-                        End If
+    '                    End If
 
-                        dlbSumaCostoDol = 0
-                        dlbPromedioCostoDol = 0
-                        dblTotalCostoDol = 0
-                    Next
-                End If
-                ' Posicionarse en el siguiente registro del maestro
-                Me.grdDetalleEntradasBodegasDETabla.MoveNext()
-            Next
+    '                    dlbSumaCostoDol = 0
+    '                    dlbPromedioCostoDol = 0
+    '                    dblTotalCostoDol = 0
+    '                Next
+    '            End If
+    '            ' Posicionarse en el siguiente registro del maestro
+    '            Me.grdDetalleEntradasBodegasDETabla.MoveNext()
+    '        Next
 
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
+    '    Catch ex As Exception
+    '        clsError.CaptarError(ex)
+    '    End Try
 
-    End Sub
+    'End Sub
 
 
 #End Region

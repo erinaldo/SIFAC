@@ -223,35 +223,35 @@ Public Class frmSfaFacturaRepuestos
     End Sub
 #End Region
 
-#Region "Validar Datos"
-    Private Function BoolConTasaCambio() As Boolean
-        Dim dtTasaCambio As DataTable
-        Dim MesFormateado As Integer
-        Dim AnioFormateado As Integer
-        Dim strFiltro As String
+    '#Region "Validar Datos"
+    '    Private Function BoolConTasaCambio() As Boolean
+    '        Dim dtTasaCambio As DataTable
+    '        Dim MesFormateado As Integer
+    '        Dim AnioFormateado As Integer
+    '        Dim strFiltro As String
 
-        MesFormateado = Month(clsProyecto.Conexion.FechaServidor)
-        AnioFormateado = Year(clsProyecto.Conexion.FechaServidor)
-        Try
-            Try
-                strFiltro = "Mes=" & MesFormateado & " AND Anio=" & AnioFormateado & " AND objMonedaID=(SELECT StbValorCatalogoID FROM StbValorCatalogo WHERE objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='MONEDA') AND Codigo='USD')"
-                dtTasaCambio = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Monto", "StbTasaCambioOficial", strFiltro))
+    '        MesFormateado = Month(clsProyecto.Conexion.FechaServidor)
+    '        AnioFormateado = Year(clsProyecto.Conexion.FechaServidor)
+    '        Try
+    '            Try
+    '                strFiltro = "Mes=" & MesFormateado & " AND Anio=" & AnioFormateado & " AND objMonedaID=(SELECT StbValorCatalogoID FROM StbValorCatalogo WHERE objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='MONEDA') AND Codigo='USD')"
+    '                dtTasaCambio = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Monto", "StbTasaCambioOficial", strFiltro))
 
-                If dtTasaCambio.DefaultView.Count > 0 Then
-                    dblTasaCambio = dtTasaCambio.DefaultView.Item(0)("Monto")
-                    Return True
-                Else
-                    Return False
-                End If
+    '                If dtTasaCambio.DefaultView.Count > 0 Then
+    '                    dblTasaCambio = dtTasaCambio.DefaultView.Item(0)("Monto")
+    '                    Return True
+    '                Else
+    '                    Return False
+    '                End If
 
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            dtTasaCambio = Nothing
-        End Try
-    End Function
-#End Region
+    '            Catch ex As Exception
+    '                clsError.CaptarError(ex)
+    '            End Try
+    '        Finally
+    '            dtTasaCambio = Nothing
+    '        End Try
+    '    End Function
+    '#End Region
 
 #Region "Operaciones"
 
@@ -259,29 +259,29 @@ Public Class frmSfaFacturaRepuestos
 
     Private Sub Agregar()
         Dim AgregarFactura As frmSfaFacturaRepuestosEditar
-        Dim objTienda As New StbTienda
+        'Dim objTienda As New StbTienda
         Dim objseg As New SsgSeguridad
         Try
             Try
                 objseg.Usuario = clsProyecto.Conexion.Usuario
                 objseg.ServicioUsuario = "frmPrincipal"
-                If BoolConTasaCambio() Then
-                    If Not objTienda.RetrieveByFilter("StbTiendaID = " & ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal) & " AND Codigo = 'C'") Then
-                        AgregarFactura = New frmSfaFacturaRepuestosEditar
-                        AgregarFactura.TypeGUI = 1
+                'If BoolConTasaCambio() Then
+                'If Not objTienda.RetrieveByFilter("StbTiendaID = " & ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal) & " AND Codigo = 'C'") Then
+                AgregarFactura = New frmSfaFacturaRepuestosEditar
+                AgregarFactura.TypeGUI = 1
 
-                        AgregarFactura.MontoTasaCambio = Me.dblTasaCambio
-                        If AgregarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                            Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
-                            dtFactura.DefaultView.Sort = "SfaFacturaRepuestoID"
-                            Me.dtFactura.DefaultView.Find(AgregarFactura.SfaFacturaID)
-                        End If
-                    Else
-                        MsgBox("Central no puede realizar facturación, ir a Orden de Compra", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
-                    End If
-                Else
-                    MsgBox("Debe ingresar la tasa de cambio del mes actual.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+                AgregarFactura.MontoTasaCambio = Me.dblTasaCambio
+                If AgregarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
+                    dtFactura.DefaultView.Sort = "SfaFacturaID"
+                    Me.dtFactura.DefaultView.Find(AgregarFactura.SfaFacturaID)
                 End If
+                'Else
+                'MsgBox("Central no puede realizar facturación, ir a Orden de Compra", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+                'End If
+                'Else
+                '    MsgBox("Debe ingresar la tasa de cambio del mes actual.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+                'End If
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
@@ -290,53 +290,53 @@ Public Class frmSfaFacturaRepuestos
         End Try
     End Sub
 
-    Private Sub AgregarCotizacion()
-        Dim BuscarCotizacion As frmSfaBusquedaCotizacion
-        Dim AgregarFactura As frmSfaFacturaRepuestosEditar
-        Dim objTienda As New StbTienda
-        Dim objseg As New SsgSeguridad
-        Dim objCotizacionID As Integer
-        Try
-            Try
-                objseg.Usuario = clsProyecto.Conexion.Usuario
-                objseg.ServicioUsuario = "frmPrincipal"
+    'Private Sub AgregarCotizacion()
+    '    Dim BuscarCotizacion As frmSfaBusquedaCotizacion
+    '    Dim AgregarFactura As frmSfaFacturaRepuestosEditar
+    '    Dim objTienda As New StbTienda
+    '    Dim objseg As New SsgSeguridad
+    '    Dim objCotizacionID As Integer
+    '    Try
+    '        Try
+    '            objseg.Usuario = clsProyecto.Conexion.Usuario
+    '            objseg.ServicioUsuario = "frmPrincipal"
 
-                If BoolConTasaCambio() Then
-                    If Not objTienda.RetrieveByFilter("StbTiendaID = " & ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal) & " AND Codigo = 'C'") Then
+    '            'If BoolConTasaCambio() Then
+    '            'If Not objTienda.RetrieveByFilter("StbTiendaID = " & ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal) & " AND Codigo = 'C'") Then
 
-                        BuscarCotizacion = New frmSfaBusquedaCotizacion
-                        If Not String.IsNullOrEmpty(clsProyecto.Sucursal) Then
-                            BuscarCotizacion.StrFiltroCotizaciones = " objTiendaID = " & ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
-                        Else
-                            MsgBox("No se ha configurado la sucursal", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
-                            Exit Sub
-                        End If
-                        If BuscarCotizacion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                            objCotizacionID = BuscarCotizacion.Seleccion
-                            AgregarFactura = New frmSfaFacturaRepuestosEditar
-                            AgregarFactura.TypeGUI = 6
-                            AgregarFactura.SfaCotizacionID = objCotizacionID
+    '            BuscarCotizacion = New frmSfaBusquedaCotizacion
+    '            If Not String.IsNullOrEmpty(clsProyecto.Sucursal) Then
+    '                BuscarCotizacion.StrFiltroCotizaciones = " objTiendaID = " & ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
+    '            Else
+    '                MsgBox("No se ha configurado la sucursal", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+    '                Exit Sub
+    '            End If
+    '            If BuscarCotizacion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+    '                objCotizacionID = BuscarCotizacion.Seleccion
+    '                AgregarFactura = New frmSfaFacturaRepuestosEditar
+    '                AgregarFactura.TypeGUI = 6
+    '                AgregarFactura.SfaCotizacionID = objCotizacionID
 
-                            If AgregarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                                Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
-                                dtFactura.DefaultView.Sort = "SfaFacturaRepuestoID"
-                                Me.dtFactura.DefaultView.Find(AgregarFactura.SfaFacturaID)
-                            End If
-                        End If
+    '                If AgregarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+    '                    Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
+    '                    dtFactura.DefaultView.Sort = "SfaFacturaID"
+    '                    Me.dtFactura.DefaultView.Find(AgregarFactura.SfaFacturaID)
+    '                End If
+    '            End If
 
-                    Else
-                        MsgBox("Central no puede realizar facturación, ir a Orden de Compra", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
-                    End If
-                Else
-                    MsgBox("Debe ingresar la tasa de cambio del mes actual.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
-                End If
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            AgregarFactura = Nothing
-        End Try
-    End Sub
+    '            'Else
+    '            '    MsgBox("Central no puede realizar facturación, ir a Orden de Compra", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+    '            'End If
+    '            'Else
+    '            '    MsgBox("Debe ingresar la tasa de cambio del mes actual.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+    '            'End If
+    '        Catch ex As Exception
+    '            clsError.CaptarError(ex)
+    '        End Try
+    '    Finally
+    '        AgregarFactura = Nothing
+    '    End Try
+    'End Sub
 #End Region
 
 #Region "Procesar"
@@ -356,10 +356,10 @@ Public Class frmSfaFacturaRepuestos
                     ProcesarFactura.TypeGUI = 2
                 End If
 
-                ProcesarFactura.SfaFacturaID = Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaRepuestoID")
+                ProcesarFactura.SfaFacturaID = Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaID")
                 If ProcesarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
-                    dtFactura.DefaultView.Sort = "SfaFacturaRepuestoID"
+                    dtFactura.DefaultView.Sort = "SfaFacturaID"
                     Me.dtFactura.DefaultView.Find(ProcesarFactura.SfaFacturaID)
                     Me.AplicarSeguridad()
                 End If
@@ -381,7 +381,7 @@ Public Class frmSfaFacturaRepuestos
             Try
                 FilaActual = Me.grdFacturaMasterTabla.FocusedRowHandle
                 ConsultarFactura.TypeGUI = 4
-                ConsultarFactura.SfaFacturaID = Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaRepuestoID")
+                ConsultarFactura.SfaFacturaID = Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaID")
                 ConsultarFactura.ShowDialog(Me)
             Catch ex As Exception
                 clsError.CaptarError(ex)
@@ -402,10 +402,10 @@ Public Class frmSfaFacturaRepuestos
             Try
                 FilaActual = Me.grdFacturaMasterTabla.FocusedRowHandle
                 AnularFactura.TypeGUI = 5
-                AnularFactura.SfaFacturaID = Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaRepuestoID")
+                AnularFactura.SfaFacturaID = Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaID")
                 If AnularFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
-                    dtFactura.DefaultView.Sort = "SfaFacturaRepuestoID"
+                    dtFactura.DefaultView.Sort = "SfaFacturaID"
                     Me.dtFactura.DefaultView.Find(AnularFactura.SfaFacturaID)
                     Me.AplicarSeguridad()
                 End If
@@ -422,8 +422,8 @@ Public Class frmSfaFacturaRepuestos
 
     Private Sub Eliminar()
         Dim FilaActual As Integer
-        Dim objSfaFactura As New SfaFacturaRepuesto
-        Dim objSfaFacturaDetalle As New SfaFacturaRepuestoDetalle
+        Dim objSfaFactura As New SfaFacturas
+        Dim objSfaFacturaDetalle As New SfaFacturasDetalle
         Dim T As New TransactionManager
         Try
             Try
@@ -431,8 +431,8 @@ Public Class frmSfaFacturaRepuestos
                 Select Case MsgBox("¿Seguro que desea eliminar la pre-factura?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
                     Case MsgBoxResult.Yes
                         T.BeginTran()
-                        SfaFacturaRepuestoDetalle.DeleteByFilter("objFacturaRepuestoID = " & Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaRepuestoID"))
-                        SfaFacturaRepuesto.DeleteByFilter("SfaFacturaRepuestoID = " & Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaRepuestoID"))
+                        SfaFacturasDetalle.DeleteByFilter("objSfaFacturaID = " & Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaID"))
+                        SfaFacturas.DeleteByFilter("SfaFacturaID = " & Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaID"))
                         T.CommitTran()
                         MsgBox("La pre-factura ha sido eliminada.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
                 End Select
@@ -452,18 +452,17 @@ Public Class frmSfaFacturaRepuestos
     Private Sub Buscar()
         Dim BuscarFactura As New frmSfaBuscarFactura
         Dim objseg As New SsgSeguridad
-        Dim objTienda As New StbTienda
+        'Dim objStbBodegas As New StbBodegas
         Try
             Try
-                If Not objTienda.RetrieveByFilter("StbTiendaID = " & ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal) & " AND Codigo = 'C'") Then
-                    If BuscarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                        Me.SqlParametros = BuscarFactura.Parametro
-                        Me.CargarFacturas(BuscarFactura.strFiltro)
-                    End If
-                Else
-                    MsgBox("Central no puede realizar facturación, ir a Orden de Compra", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+                'If Not objStbBodegas.RetrieveByFilter("StbBodegaID = " & ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal) & " AND Codigo = 'C'") Then
+                If BuscarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    Me.SqlParametros = BuscarFactura.Parametro
+                    Me.CargarFacturas(BuscarFactura.strFiltro)
                 End If
-
+                'Else
+                '    MsgBox("Central no puede realizar facturación, ir a Orden de Compra", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+                'End If
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
@@ -545,7 +544,7 @@ Public Class frmSfaFacturaRepuestos
         fila("Vendedor") = String.Empty
         fila("Cliente") = String.Empty
         fila("Estado") = String.Empty
-        fila("SfaFacturaRepuestoID") = 0
+        fila("SfaFacturaID") = 0
         fila("Numero") = 0
         fila("Fecha") = clsProyecto.Conexion.FechaServidor
         fila("Contado") = 0
@@ -1267,7 +1266,7 @@ Public Class frmSfaFacturaRepuestos
         Me.Imprimir()
     End Sub
     Private Sub AgregaDesdeCotizaciónToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AgregaDesdeCotizaciónToolStripMenuItem.Click
-        AgregarCotizacion()
+        'AgregarCotizacion()
     End Sub
 #End Region
 

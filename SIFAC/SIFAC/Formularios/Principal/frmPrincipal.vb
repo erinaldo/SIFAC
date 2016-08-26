@@ -707,13 +707,13 @@ Public Class frmPrincipal
 
 #Region "Promociones"
     Private Sub cmdPromociones_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdPromociones.Click
-        Me.CargarPromociones()
+        'Me.CargarPromociones()
     End Sub
 #End Region
 
 #Region "Cotizaciones"
     Private Sub cmdCotizaciones_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdCotizaciones.Click
-        Me.CargarCotizaciones()
+        'Me.CargarCotizaciones()
     End Sub
 #End Region
 
@@ -725,7 +725,7 @@ Public Class frmPrincipal
 
 #Region "Orden de Compra"
     Private Sub cmdOrdenCompra_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdOrdenCompra.Click
-        Me.CargarOrdenesCompra()
+        'Me.CargarOrdenesCompra()
     End Sub
 #End Region
 
@@ -1079,30 +1079,30 @@ Public Class frmPrincipal
 #End Region
 
 #Region "Cargar Facturas"
-    Private Sub CargarFacturas()
-        Dim objFactura As frmSfaFactura
-        Try
-            Try
+    'Private Sub CargarFacturas()
+    '    Dim objFactura As frmSfaFactura
+    '    Try
+    '        Try
 
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario("frmSfaFactura", Me) Then
-                    objFactura = New frmSfaFactura
-                    objFactura.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objFactura.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objFactura.MdiParent = Me
-                    objFactura.Show()
-                End If
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
+    '            Me.Cursor = Cursors.WaitCursor
+    '            If Not clsProyecto.MostrarFormulario("frmSfaFactura", Me) Then
+    '                objFactura = New frmSfaFactura
+    '                objFactura.Width = Me.Width - Me.OutBarPrincipal.Width
+    '                objFactura.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+    '                objFactura.MdiParent = Me
+    '                objFactura.Show()
+    '            End If
+    '        Catch ex As Exception
+    '            clsError.CaptarError(ex)
+    '        End Try
+    '    Finally
+    '        Me.Cursor = Cursors.Default
+    '    End Try
 
-    End Sub
+    'End Sub
 
     Private Sub cmdFactura_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdFactura.Click
-        Call CargarFacturas()
+        'Call CargarFacturas()
     End Sub
 #End Region
 
@@ -1273,24 +1273,24 @@ Public Class frmPrincipal
 #End Region
 
 #Region "Cargar Promociones"
-    Private Sub CargarPromociones()
-        Dim objPromociones As New frmSfaPromociones
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario(frmSfaPromociones.Name, Me) Then
-                    objPromociones.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objPromociones.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objPromociones.MdiParent = Me
-                    objPromociones.Show()
-                End If
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
+    'Private Sub CargarPromociones()
+    '    Dim objPromociones As New frmSfaPromociones
+    '    Try
+    '        Try
+    '            Me.Cursor = Cursors.WaitCursor
+    '            If Not clsProyecto.MostrarFormulario(frmSfaPromociones.Name, Me) Then
+    '                objPromociones.Width = Me.Width - Me.OutBarPrincipal.Width
+    '                objPromociones.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+    '                objPromociones.MdiParent = Me
+    '                objPromociones.Show()
+    '            End If
+    '        Catch ex As Exception
+    '            clsError.CaptarError(ex)
+    '        End Try
+    '    Finally
+    '        Me.Cursor = Cursors.Default
+    '    End Try
+    'End Sub
 #End Region
 
 #Region "Cargar Salida Bodega"
@@ -1336,24 +1336,24 @@ Public Class frmPrincipal
 #End Region
 
 #Region "Cargar Cotizaciones"
-    Private Sub CargarCotizaciones()
-        Dim objForm As New frmSfaCotizacion
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario(frmSfaCotizacion.Name, Me) Then
-                    objForm.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objForm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objForm.MdiParent = Me
-                    objForm.Show()
-                End If
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
+    'Private Sub CargarCotizaciones()
+    '    Dim objForm As New frmSfaCotizacion
+    '    Try
+    '        Try
+    '            Me.Cursor = Cursors.WaitCursor
+    '            If Not clsProyecto.MostrarFormulario(frmSfaCotizacion.Name, Me) Then
+    '                objForm.Width = Me.Width - Me.OutBarPrincipal.Width
+    '                objForm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+    '                objForm.MdiParent = Me
+    '                objForm.Show()
+    '            End If
+    '        Catch ex As Exception
+    '            clsError.CaptarError(ex)
+    '        End Try
+    '    Finally
+    '        Me.Cursor = Cursors.Default
+    '    End Try
+    'End Sub
 #End Region
 
 #Region "Cargar Facturas Repuestos"
@@ -1378,24 +1378,24 @@ Public Class frmPrincipal
 #End Region
 
 #Region "Cargar Ordenes de Compra"
-    Private Sub CargarOrdenesCompra()
-        Dim objForm As New frmSfaOrdenesCompra
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario(frmSfaOrdenesCompra.Name, Me) Then
-                    objForm.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objForm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objForm.MdiParent = Me
-                    objForm.Show()
-                End If
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
+    'Private Sub CargarOrdenesCompra()
+    '    Dim objForm As New frmSfaOrdenesCompra
+    '    Try
+    '        Try
+    '            Me.Cursor = Cursors.WaitCursor
+    '            If Not clsProyecto.MostrarFormulario(frmSfaOrdenesCompra.Name, Me) Then
+    '                objForm.Width = Me.Width - Me.OutBarPrincipal.Width
+    '                objForm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+    '                objForm.MdiParent = Me
+    '                objForm.Show()
+    '            End If
+    '        Catch ex As Exception
+    '            clsError.CaptarError(ex)
+    '        End Try
+    '    Finally
+    '        Me.Cursor = Cursors.Default
+    '    End Try
+    'End Sub
 #End Region
 
 #Region "Cargar Servicio Taller"
@@ -1739,8 +1739,8 @@ Public Class frmPrincipal
 
     'Promociones
     Private Sub cmdRptPromociones_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdRptPromociones.Click
-        Dim frmCriteriosReporte As New frmReportesPromociones
-        frmCriteriosReporte.ShowDialog()
+        'Dim frmCriteriosReporte As New frmReportesPromociones
+        'frmCriteriosReporte.ShowDialog()
     End Sub
 
     'Utilidades

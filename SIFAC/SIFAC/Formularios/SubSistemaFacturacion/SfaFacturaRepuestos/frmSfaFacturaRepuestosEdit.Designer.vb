@@ -26,12 +26,6 @@ Partial Class frmSfaFacturaRepuestosEditar
         Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.tabFacturas = New System.Windows.Forms.TabControl()
         Me.TabPageGenerales = New System.Windows.Forms.TabPage()
         Me.txtCodigoCliente = New System.Windows.Forms.TextBox()
@@ -54,7 +48,6 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPageCliente = New System.Windows.Forms.TabPage()
-        Me.chkExonerado = New System.Windows.Forms.CheckBox()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.txtTelefono = New System.Windows.Forms.TextBox()
@@ -66,32 +59,8 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.grpDetalle = New System.Windows.Forms.GroupBox()
-        Me.grdDetalleMoto = New DevExpress.XtraGrid.GridControl()
-        Me.grdDetalleMototabla = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colCodigoBar = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSpnBarCode = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSpnCodigo = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
-        Me.colDescripcionMoto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSpnDescripcion = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
-        Me.ColCantidadMoto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSpnCantidad = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
-        Me.colPrecioMoto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSpnPrecio = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
-        Me.colSubtotalMoto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSpnSubtotal = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
-        Me.colDescuentoMoto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSpnDescuento = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
-        Me.colPorcentajeMoto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSnpPorcentajeDescuento = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
-        Me.colIVAMoto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSpnIVA = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
-        Me.colTotalMoto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdMotoSpnTotal = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.grdDetalleFactura = New DevExpress.XtraGrid.GridControl()
         Me.grdDetalleFacturaTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colBarCode = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdtxtBarCode = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.colCodigoRepuesto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdspnCodigoRepuesto = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -104,12 +73,11 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.grdspnSubTotal = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.colDescuento = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdSpnDescuento = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
-        Me.colPorcentajeDescuento = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdspnPorcentajeDescuento = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.colImpuesto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdspnTotal = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.chkAgregarMoto = New System.Windows.Forms.CheckBox()
+        Me.grdtxtBarCode = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.grdspnPorcentajeDescuento = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.cmdBuscar = New System.Windows.Forms.Button()
@@ -154,29 +122,17 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.GroupBox1.SuspendLayout()
         CType(Me.grdExpedienteCliente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpDetalle.SuspendLayout()
-        CType(Me.grdDetalleMoto, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdDetalleMototabla, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSpnBarCode, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSpnCodigo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSpnDescripcion, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSpnCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSpnPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSpnSubtotal, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSpnDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSnpPorcentajeDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSpnIVA, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMotoSpnTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDetalleFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDetalleFacturaTabla, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdtxtBarCode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdspnCodigoRepuesto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdcmbDescripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdSpnPrecioUnitario, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdspnSubTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdSpnDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdspnPorcentajeDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdspnTotal, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdtxtBarCode, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdspnPorcentajeDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numSaldo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numPrima, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numExistencia, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -197,7 +153,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.tabFacturas.Controls.Add(Me.TabPageGenerales)
         Me.tabFacturas.Controls.Add(Me.TabPageCliente)
         Me.tabFacturas.Location = New System.Drawing.Point(5, 47)
-        Me.tabFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tabFacturas.Margin = New System.Windows.Forms.Padding(4)
         Me.tabFacturas.Name = "tabFacturas"
         Me.tabFacturas.SelectedIndex = 0
         Me.tabFacturas.Size = New System.Drawing.Size(1089, 198)
@@ -225,9 +181,9 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.TabPageGenerales.Controls.Add(Me.Label2)
         Me.TabPageGenerales.Controls.Add(Me.Label1)
         Me.TabPageGenerales.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageGenerales.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPageGenerales.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPageGenerales.Name = "TabPageGenerales"
-        Me.TabPageGenerales.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPageGenerales.Padding = New System.Windows.Forms.Padding(4)
         Me.TabPageGenerales.Size = New System.Drawing.Size(1081, 169)
         Me.TabPageGenerales.TabIndex = 0
         Me.TabPageGenerales.Text = "Datos Generales"
@@ -236,7 +192,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'txtCodigoCliente
         '
         Me.txtCodigoCliente.Location = New System.Drawing.Point(103, 59)
-        Me.txtCodigoCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCodigoCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigoCliente.Name = "txtCodigoCliente"
         Me.txtCodigoCliente.Size = New System.Drawing.Size(136, 22)
         Me.txtCodigoCliente.TabIndex = 20
@@ -261,7 +217,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbMotivoAnular.Images.Add(CType(resources.GetObject("cmbMotivoAnular.Images"), System.Drawing.Image))
         Me.cmbMotivoAnular.ItemHeight = 15
         Me.cmbMotivoAnular.Location = New System.Drawing.Point(696, 97)
-        Me.cmbMotivoAnular.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbMotivoAnular.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbMotivoAnular.MatchEntryTimeout = CType(2000, Long)
         Me.cmbMotivoAnular.MaxDropDownItems = CType(5, Short)
         Me.cmbMotivoAnular.MaxLength = 32767
@@ -290,7 +246,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         Me.cmdAgregarCliente.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdAgregarCliente.Location = New System.Drawing.Point(541, 57)
-        Me.cmdAgregarCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdAgregarCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdAgregarCliente.Name = "cmdAgregarCliente"
         Me.cmdAgregarCliente.Size = New System.Drawing.Size(32, 27)
         Me.cmdAgregarCliente.TabIndex = 16
@@ -300,7 +256,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'cmdCliente
         '
         Me.cmdCliente.Location = New System.Drawing.Point(508, 57)
-        Me.cmdCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdCliente.Name = "cmdCliente"
         Me.cmdCliente.Size = New System.Drawing.Size(32, 27)
         Me.cmdCliente.TabIndex = 15
@@ -329,7 +285,7 @@ Partial Class frmSfaFacturaRepuestosEditar
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFecha.Enabled = False
         Me.dtpFecha.Location = New System.Drawing.Point(663, 16)
-        Me.dtpFecha.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpFecha.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(161, 22)
         Me.dtpFecha.TabIndex = 14
@@ -355,7 +311,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbTPago.Images.Add(CType(resources.GetObject("cmbTPago.Images"), System.Drawing.Image))
         Me.cmbTPago.ItemHeight = 15
         Me.cmbTPago.Location = New System.Drawing.Point(900, 15)
-        Me.cmbTPago.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbTPago.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbTPago.MatchEntryTimeout = CType(2000, Long)
         Me.cmbTPago.MaxDropDownItems = CType(5, Short)
         Me.cmbTPago.MaxLength = 32767
@@ -388,7 +344,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbBodega.Images.Add(CType(resources.GetObject("cmbBodega.Images"), System.Drawing.Image))
         Me.cmbBodega.ItemHeight = 15
         Me.cmbBodega.Location = New System.Drawing.Point(329, 16)
-        Me.cmbBodega.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbBodega.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbBodega.MatchEntryTimeout = CType(2000, Long)
         Me.cmbBodega.MaxDropDownItems = CType(5, Short)
         Me.cmbBodega.MaxLength = 32767
@@ -421,7 +377,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbVendedor.Images.Add(CType(resources.GetObject("cmbVendedor.Images"), System.Drawing.Image))
         Me.cmbVendedor.ItemHeight = 15
         Me.cmbVendedor.Location = New System.Drawing.Point(696, 57)
-        Me.cmbVendedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbVendedor.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbVendedor.MatchEntryTimeout = CType(2000, Long)
         Me.cmbVendedor.MaxDropDownItems = CType(5, Short)
         Me.cmbVendedor.MaxLength = 32767
@@ -453,7 +409,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbCliente.Images.Add(CType(resources.GetObject("cmbCliente.Images"), System.Drawing.Image))
         Me.cmbCliente.ItemHeight = 15
         Me.cmbCliente.Location = New System.Drawing.Point(248, 59)
-        Me.cmbCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbCliente.MatchEntryTimeout = CType(2000, Long)
         Me.cmbCliente.MaxDropDownItems = CType(5, Short)
         Me.cmbCliente.MaxLength = 32767
@@ -469,7 +425,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'txtAtencionA
         '
         Me.txtAtencionA.Location = New System.Drawing.Point(103, 97)
-        Me.txtAtencionA.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtAtencionA.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAtencionA.Name = "txtAtencionA"
         Me.txtAtencionA.Size = New System.Drawing.Size(399, 22)
         Me.txtAtencionA.TabIndex = 9
@@ -478,7 +434,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         Me.txtNumero.Enabled = False
         Me.txtNumero.Location = New System.Drawing.Point(103, 16)
-        Me.txtNumero.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNumero.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNumero.Name = "txtNumero"
         Me.txtNumero.Size = New System.Drawing.Size(107, 22)
         Me.txtNumero.TabIndex = 7
@@ -556,7 +512,6 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         'TabPageCliente
         '
-        Me.TabPageCliente.Controls.Add(Me.chkExonerado)
         Me.TabPageCliente.Controls.Add(Me.txtDireccion)
         Me.TabPageCliente.Controls.Add(Me.txtEmail)
         Me.TabPageCliente.Controls.Add(Me.txtTelefono)
@@ -565,31 +520,19 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.TabPageCliente.Controls.Add(Me.Label9)
         Me.TabPageCliente.Controls.Add(Me.Label8)
         Me.TabPageCliente.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPageCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPageCliente.Name = "TabPageCliente"
-        Me.TabPageCliente.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPageCliente.Padding = New System.Windows.Forms.Padding(4)
         Me.TabPageCliente.Size = New System.Drawing.Size(1081, 169)
         Me.TabPageCliente.TabIndex = 1
         Me.TabPageCliente.Text = "Datos del Cliente"
         Me.TabPageCliente.UseVisualStyleBackColor = True
         '
-        'chkExonerado
-        '
-        Me.chkExonerado.AutoSize = True
-        Me.chkExonerado.Enabled = False
-        Me.chkExonerado.Location = New System.Drawing.Point(453, 23)
-        Me.chkExonerado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.chkExonerado.Name = "chkExonerado"
-        Me.chkExonerado.Size = New System.Drawing.Size(98, 21)
-        Me.chkExonerado.TabIndex = 7
-        Me.chkExonerado.Text = "Exonerado"
-        Me.chkExonerado.UseVisualStyleBackColor = True
-        '
         'txtDireccion
         '
         Me.txtDireccion.Enabled = False
         Me.txtDireccion.Location = New System.Drawing.Point(125, 86)
-        Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDireccion.Multiline = True
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -601,7 +544,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         Me.txtEmail.Enabled = False
         Me.txtEmail.Location = New System.Drawing.Point(125, 54)
-        Me.txtEmail.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtEmail.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(307, 22)
         Me.txtEmail.TabIndex = 5
@@ -611,7 +554,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         Me.txtTelefono.Enabled = False
         Me.txtTelefono.Location = New System.Drawing.Point(125, 21)
-        Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(307, 22)
         Me.txtTelefono.TabIndex = 4
@@ -621,9 +564,9 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         Me.GroupBox1.Controls.Add(Me.grdExpedienteCliente)
         Me.GroupBox1.Location = New System.Drawing.Point(572, 7)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(492, 151)
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
@@ -638,7 +581,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.grdExpedienteCliente.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdExpedienteCliente.Images.Add(CType(resources.GetObject("grdExpedienteCliente.Images"), System.Drawing.Image))
         Me.grdExpedienteCliente.Location = New System.Drawing.Point(4, 19)
-        Me.grdExpedienteCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdExpedienteCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.grdExpedienteCliente.Name = "grdExpedienteCliente"
         Me.grdExpedienteCliente.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdExpedienteCliente.PreviewInfo.Size = New System.Drawing.Size(0, 0)
@@ -686,7 +629,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1108, 39)
         Me.Panel2.TabIndex = 5
@@ -697,295 +640,32 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 814)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1108, 27)
         Me.Panel1.TabIndex = 6
         '
         'grpDetalle
         '
-        Me.grpDetalle.Controls.Add(Me.grdDetalleMoto)
         Me.grpDetalle.Controls.Add(Me.grdDetalleFactura)
         Me.grpDetalle.Location = New System.Drawing.Point(11, 297)
-        Me.grpDetalle.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpDetalle.Margin = New System.Windows.Forms.Padding(4)
         Me.grpDetalle.Name = "grpDetalle"
-        Me.grpDetalle.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpDetalle.Padding = New System.Windows.Forms.Padding(4)
         Me.grpDetalle.Size = New System.Drawing.Size(1084, 292)
         Me.grpDetalle.TabIndex = 7
         Me.grpDetalle.TabStop = False
         Me.grpDetalle.Text = "Detalle"
         '
-        'grdDetalleMoto
-        '
-        Me.grdDetalleMoto.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grdDetalleMoto.Location = New System.Drawing.Point(104, 20)
-        Me.grdDetalleMoto.LookAndFeel.SkinName = "Glass Oceans"
-        Me.grdDetalleMoto.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
-        Me.grdDetalleMoto.MainView = Me.grdDetalleMototabla
-        Me.grdDetalleMoto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grdDetalleMoto.Name = "grdDetalleMoto"
-        Me.grdDetalleMoto.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.grdMotoSpnBarCode, Me.grdMotoSpnDescripcion, Me.grdMotoSpnCantidad, Me.grdMotoSpnPrecio, Me.grdMotoSpnSubtotal, Me.grdMotoSpnDescuento, Me.grdMotoSnpPorcentajeDescuento, Me.grdMotoSpnIVA, Me.grdMotoSpnTotal, Me.grdMotoSpnCodigo})
-        Me.grdDetalleMoto.Size = New System.Drawing.Size(755, 265)
-        Me.grdDetalleMoto.TabIndex = 1
-        Me.grdDetalleMoto.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDetalleMototabla})
-        Me.grdDetalleMoto.Visible = False
-        '
-        'grdDetalleMototabla
-        '
-        Me.grdDetalleMototabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCodigoBar, Me.colCodigo, Me.colDescripcionMoto, Me.ColCantidadMoto, Me.colPrecioMoto, Me.colSubtotalMoto, Me.colDescuentoMoto, Me.colPorcentajeMoto, Me.colIVAMoto, Me.colTotalMoto})
-        Me.grdDetalleMototabla.GridControl = Me.grdDetalleMoto
-        Me.grdDetalleMototabla.Name = "grdDetalleMototabla"
-        Me.grdDetalleMototabla.OptionsView.ShowGroupPanel = False
-        '
-        'colCodigoBar
-        '
-        Me.colCodigoBar.Caption = "BarCode"
-        Me.colCodigoBar.ColumnEdit = Me.grdMotoSpnBarCode
-        Me.colCodigoBar.FieldName = "CodigoBarras"
-        Me.colCodigoBar.Name = "colCodigoBar"
-        Me.colCodigoBar.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colCodigoBar.OptionsFilter.AllowAutoFilter = False
-        Me.colCodigoBar.OptionsFilter.AllowFilter = False
-        Me.colCodigoBar.Visible = True
-        Me.colCodigoBar.VisibleIndex = 0
-        Me.colCodigoBar.Width = 68
-        '
-        'grdMotoSpnBarCode
-        '
-        Me.grdMotoSpnBarCode.AutoHeight = False
-        Me.grdMotoSpnBarCode.Name = "grdMotoSpnBarCode"
-        '
-        'colCodigo
-        '
-        Me.colCodigo.Caption = "Código"
-        Me.colCodigo.ColumnEdit = Me.grdMotoSpnCodigo
-        Me.colCodigo.FieldName = "Codigo"
-        Me.colCodigo.Name = "colCodigo"
-        Me.colCodigo.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colCodigo.OptionsFilter.AllowAutoFilter = False
-        Me.colCodigo.OptionsFilter.AllowFilter = False
-        Me.colCodigo.Visible = True
-        Me.colCodigo.VisibleIndex = 1
-        Me.colCodigo.Width = 66
-        '
-        'grdMotoSpnCodigo
-        '
-        Me.grdMotoSpnCodigo.AutoHeight = False
-        Me.grdMotoSpnCodigo.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.grdMotoSpnCodigo.Name = "grdMotoSpnCodigo"
-        '
-        'colDescripcionMoto
-        '
-        Me.colDescripcionMoto.Caption = "Descripción"
-        Me.colDescripcionMoto.ColumnEdit = Me.grdMotoSpnDescripcion
-        Me.colDescripcionMoto.FieldName = "Codigo"
-        Me.colDescripcionMoto.Name = "colDescripcionMoto"
-        Me.colDescripcionMoto.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colDescripcionMoto.OptionsFilter.AllowAutoFilter = False
-        Me.colDescripcionMoto.OptionsFilter.AllowFilter = False
-        Me.colDescripcionMoto.Visible = True
-        Me.colDescripcionMoto.VisibleIndex = 2
-        Me.colDescripcionMoto.Width = 213
-        '
-        'grdMotoSpnDescripcion
-        '
-        Me.grdMotoSpnDescripcion.AutoHeight = False
-        Me.grdMotoSpnDescripcion.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.grdMotoSpnDescripcion.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("SivRepuestoID", "Código"), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("DescripcionCorta", "Descripción")})
-        Me.grdMotoSpnDescripcion.DisplayMember = "DescripcionCorta"
-        Me.grdMotoSpnDescripcion.Name = "grdMotoSpnDescripcion"
-        Me.grdMotoSpnDescripcion.NullText = ""
-        Me.grdMotoSpnDescripcion.ValueMember = "SivRepuestoID"
-        '
-        'ColCantidadMoto
-        '
-        Me.ColCantidadMoto.Caption = "Cantidad"
-        Me.ColCantidadMoto.ColumnEdit = Me.grdMotoSpnCantidad
-        Me.ColCantidadMoto.FieldName = "Cantidad"
-        Me.ColCantidadMoto.Name = "ColCantidadMoto"
-        Me.ColCantidadMoto.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.ColCantidadMoto.OptionsFilter.AllowAutoFilter = False
-        Me.ColCantidadMoto.OptionsFilter.AllowFilter = False
-        Me.ColCantidadMoto.Visible = True
-        Me.ColCantidadMoto.VisibleIndex = 3
-        Me.ColCantidadMoto.Width = 76
-        '
-        'grdMotoSpnCantidad
-        '
-        Me.grdMotoSpnCantidad.AutoHeight = False
-        Me.grdMotoSpnCantidad.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.grdMotoSpnCantidad.EditFormat.FormatString = "#"
-        Me.grdMotoSpnCantidad.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.grdMotoSpnCantidad.Increment = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.grdMotoSpnCantidad.IsFloatValue = False
-        Me.grdMotoSpnCantidad.Name = "grdMotoSpnCantidad"
-        '
-        'colPrecioMoto
-        '
-        Me.colPrecioMoto.AppearanceCell.BackColor = System.Drawing.Color.White
-        Me.colPrecioMoto.AppearanceCell.Options.UseBackColor = True
-        Me.colPrecioMoto.Caption = "Precio U."
-        Me.colPrecioMoto.ColumnEdit = Me.grdMotoSpnPrecio
-        Me.colPrecioMoto.FieldName = "Precio"
-        Me.colPrecioMoto.Name = "colPrecioMoto"
-        Me.colPrecioMoto.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colPrecioMoto.OptionsFilter.AllowAutoFilter = False
-        Me.colPrecioMoto.OptionsFilter.AllowFilter = False
-        Me.colPrecioMoto.Visible = True
-        Me.colPrecioMoto.VisibleIndex = 4
-        Me.colPrecioMoto.Width = 61
-        '
-        'grdMotoSpnPrecio
-        '
-        Me.grdMotoSpnPrecio.AutoHeight = False
-        Me.grdMotoSpnPrecio.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, False)})
-        Me.grdMotoSpnPrecio.Increment = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.grdMotoSpnPrecio.Name = "grdMotoSpnPrecio"
-        '
-        'colSubtotalMoto
-        '
-        Me.colSubtotalMoto.AppearanceCell.BackColor = System.Drawing.Color.LemonChiffon
-        Me.colSubtotalMoto.AppearanceCell.Options.UseBackColor = True
-        Me.colSubtotalMoto.Caption = "Subtotal"
-        Me.colSubtotalMoto.ColumnEdit = Me.grdMotoSpnSubtotal
-        Me.colSubtotalMoto.FieldName = "Subtotal"
-        Me.colSubtotalMoto.Name = "colSubtotalMoto"
-        Me.colSubtotalMoto.OptionsColumn.AllowFocus = False
-        Me.colSubtotalMoto.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colSubtotalMoto.OptionsColumn.ReadOnly = True
-        Me.colSubtotalMoto.OptionsFilter.AllowAutoFilter = False
-        Me.colSubtotalMoto.OptionsFilter.AllowFilter = False
-        Me.colSubtotalMoto.Visible = True
-        Me.colSubtotalMoto.VisibleIndex = 5
-        Me.colSubtotalMoto.Width = 61
-        '
-        'grdMotoSpnSubtotal
-        '
-        Me.grdMotoSpnSubtotal.AutoHeight = False
-        Me.grdMotoSpnSubtotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, False)})
-        Me.grdMotoSpnSubtotal.DisplayFormat.FormatString = "#0.#0"
-        Me.grdMotoSpnSubtotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSpnSubtotal.EditFormat.FormatString = "#0.#0"
-        Me.grdMotoSpnSubtotal.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSpnSubtotal.Name = "grdMotoSpnSubtotal"
-        '
-        'colDescuentoMoto
-        '
-        Me.colDescuentoMoto.AppearanceCell.BackColor = System.Drawing.Color.LemonChiffon
-        Me.colDescuentoMoto.AppearanceCell.Options.UseBackColor = True
-        Me.colDescuentoMoto.Caption = "Descuento"
-        Me.colDescuentoMoto.ColumnEdit = Me.grdMotoSpnDescuento
-        Me.colDescuentoMoto.FieldName = "Descuento"
-        Me.colDescuentoMoto.Name = "colDescuentoMoto"
-        Me.colDescuentoMoto.OptionsColumn.AllowFocus = False
-        Me.colDescuentoMoto.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colDescuentoMoto.OptionsColumn.ReadOnly = True
-        Me.colDescuentoMoto.OptionsFilter.AllowAutoFilter = False
-        Me.colDescuentoMoto.OptionsFilter.AllowFilter = False
-        Me.colDescuentoMoto.Visible = True
-        Me.colDescuentoMoto.VisibleIndex = 6
-        Me.colDescuentoMoto.Width = 61
-        '
-        'grdMotoSpnDescuento
-        '
-        Me.grdMotoSpnDescuento.AutoHeight = False
-        Me.grdMotoSpnDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, False)})
-        Me.grdMotoSpnDescuento.DisplayFormat.FormatString = "#0.#0"
-        Me.grdMotoSpnDescuento.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSpnDescuento.EditFormat.FormatString = "#0.#0"
-        Me.grdMotoSpnDescuento.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSpnDescuento.Name = "grdMotoSpnDescuento"
-        '
-        'colPorcentajeMoto
-        '
-        Me.colPorcentajeMoto.AppearanceCell.BackColor = System.Drawing.Color.LemonChiffon
-        Me.colPorcentajeMoto.AppearanceCell.Options.UseBackColor = True
-        Me.colPorcentajeMoto.Caption = "% Desc."
-        Me.colPorcentajeMoto.ColumnEdit = Me.grdMotoSnpPorcentajeDescuento
-        Me.colPorcentajeMoto.FieldName = "DescuentoPor"
-        Me.colPorcentajeMoto.Name = "colPorcentajeMoto"
-        Me.colPorcentajeMoto.OptionsColumn.AllowFocus = False
-        Me.colPorcentajeMoto.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colPorcentajeMoto.OptionsColumn.ReadOnly = True
-        Me.colPorcentajeMoto.OptionsFilter.AllowAutoFilter = False
-        Me.colPorcentajeMoto.OptionsFilter.AllowFilter = False
-        Me.colPorcentajeMoto.Visible = True
-        Me.colPorcentajeMoto.VisibleIndex = 7
-        Me.colPorcentajeMoto.Width = 73
-        '
-        'grdMotoSnpPorcentajeDescuento
-        '
-        Me.grdMotoSnpPorcentajeDescuento.AutoHeight = False
-        Me.grdMotoSnpPorcentajeDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinRight, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, False), New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.grdMotoSnpPorcentajeDescuento.DisplayFormat.FormatString = "#0.#0"
-        Me.grdMotoSnpPorcentajeDescuento.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSnpPorcentajeDescuento.EditFormat.FormatString = "#0.#0"
-        Me.grdMotoSnpPorcentajeDescuento.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSnpPorcentajeDescuento.Name = "grdMotoSnpPorcentajeDescuento"
-        '
-        'colIVAMoto
-        '
-        Me.colIVAMoto.AppearanceCell.BackColor = System.Drawing.Color.LemonChiffon
-        Me.colIVAMoto.AppearanceCell.Options.UseBackColor = True
-        Me.colIVAMoto.Caption = "IVA"
-        Me.colIVAMoto.ColumnEdit = Me.grdMotoSpnIVA
-        Me.colIVAMoto.FieldName = "Impuesto"
-        Me.colIVAMoto.Name = "colIVAMoto"
-        Me.colIVAMoto.OptionsColumn.AllowFocus = False
-        Me.colIVAMoto.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colIVAMoto.OptionsColumn.ReadOnly = True
-        Me.colIVAMoto.OptionsFilter.AllowAutoFilter = False
-        Me.colIVAMoto.OptionsFilter.AllowFilter = False
-        Me.colIVAMoto.Visible = True
-        Me.colIVAMoto.VisibleIndex = 8
-        Me.colIVAMoto.Width = 46
-        '
-        'grdMotoSpnIVA
-        '
-        Me.grdMotoSpnIVA.AutoHeight = False
-        Me.grdMotoSpnIVA.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, False)})
-        Me.grdMotoSpnIVA.DisplayFormat.FormatString = "#0.#0"
-        Me.grdMotoSpnIVA.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSpnIVA.EditFormat.FormatString = "#0.#0"
-        Me.grdMotoSpnIVA.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSpnIVA.Name = "grdMotoSpnIVA"
-        '
-        'colTotalMoto
-        '
-        Me.colTotalMoto.AppearanceCell.BackColor = System.Drawing.Color.LemonChiffon
-        Me.colTotalMoto.AppearanceCell.Options.UseBackColor = True
-        Me.colTotalMoto.Caption = "Total"
-        Me.colTotalMoto.ColumnEdit = Me.grdMotoSpnTotal
-        Me.colTotalMoto.FieldName = "Total"
-        Me.colTotalMoto.Name = "colTotalMoto"
-        Me.colTotalMoto.OptionsColumn.AllowFocus = False
-        Me.colTotalMoto.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colTotalMoto.OptionsColumn.ReadOnly = True
-        Me.colTotalMoto.OptionsFilter.AllowAutoFilter = False
-        Me.colTotalMoto.OptionsFilter.AllowFilter = False
-        Me.colTotalMoto.Visible = True
-        Me.colTotalMoto.VisibleIndex = 9
-        Me.colTotalMoto.Width = 68
-        '
-        'grdMotoSpnTotal
-        '
-        Me.grdMotoSpnTotal.AutoHeight = False
-        Me.grdMotoSpnTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject6, "", Nothing, Nothing, False)})
-        Me.grdMotoSpnTotal.DisplayFormat.FormatString = "#0.#0"
-        Me.grdMotoSpnTotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSpnTotal.EditFormat.FormatString = "#0.#0"
-        Me.grdMotoSpnTotal.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdMotoSpnTotal.Name = "grdMotoSpnTotal"
-        '
         'grdDetalleFactura
         '
         Me.grdDetalleFactura.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdDetalleFactura.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdDetalleFactura.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.grdDetalleFactura.Location = New System.Drawing.Point(4, 19)
         Me.grdDetalleFactura.LookAndFeel.SkinName = "Glass Oceans"
         Me.grdDetalleFactura.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
         Me.grdDetalleFactura.MainView = Me.grdDetalleFacturaTabla
-        Me.grdDetalleFactura.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdDetalleFactura.Margin = New System.Windows.Forms.Padding(4)
         Me.grdDetalleFactura.Name = "grdDetalleFactura"
         Me.grdDetalleFactura.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.grdtxtBarCode, Me.grdcmbDescripcion, Me.grdspnCantidad, Me.grdSpnPrecioUnitario, Me.grdspnSubTotal, Me.grdSpnDescuento, Me.grdspnPorcentajeDescuento, Me.grdspnTotal, Me.grdspnCodigoRepuesto})
         Me.grdDetalleFactura.Size = New System.Drawing.Size(1076, 269)
@@ -994,28 +674,10 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         'grdDetalleFacturaTabla
         '
-        Me.grdDetalleFacturaTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colBarCode, Me.colCodigoRepuesto, Me.colDescripcion, Me.colCantidad, Me.colPrecioUnitario, Me.colSubtotal, Me.colDescuento, Me.colPorcentajeDescuento, Me.colImpuesto, Me.colTotal})
+        Me.grdDetalleFacturaTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCodigoRepuesto, Me.colDescripcion, Me.colCantidad, Me.colPrecioUnitario, Me.colSubtotal, Me.colDescuento, Me.colImpuesto, Me.colTotal})
         Me.grdDetalleFacturaTabla.GridControl = Me.grdDetalleFactura
         Me.grdDetalleFacturaTabla.Name = "grdDetalleFacturaTabla"
         Me.grdDetalleFacturaTabla.OptionsView.ShowGroupPanel = False
-        '
-        'colBarCode
-        '
-        Me.colBarCode.Caption = "BarCode"
-        Me.colBarCode.ColumnEdit = Me.grdtxtBarCode
-        Me.colBarCode.FieldName = "CodigoBarras"
-        Me.colBarCode.Name = "colBarCode"
-        Me.colBarCode.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colBarCode.OptionsFilter.AllowAutoFilter = False
-        Me.colBarCode.OptionsFilter.AllowFilter = False
-        Me.colBarCode.Visible = True
-        Me.colBarCode.VisibleIndex = 0
-        Me.colBarCode.Width = 68
-        '
-        'grdtxtBarCode
-        '
-        Me.grdtxtBarCode.AutoHeight = False
-        Me.grdtxtBarCode.Name = "grdtxtBarCode"
         '
         'colCodigoRepuesto
         '
@@ -1027,7 +689,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.colCodigoRepuesto.OptionsFilter.AllowAutoFilter = False
         Me.colCodigoRepuesto.OptionsFilter.AllowFilter = False
         Me.colCodigoRepuesto.Visible = True
-        Me.colCodigoRepuesto.VisibleIndex = 1
+        Me.colCodigoRepuesto.VisibleIndex = 0
         Me.colCodigoRepuesto.Width = 66
         '
         'grdspnCodigoRepuesto
@@ -1046,18 +708,18 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.colDescripcion.OptionsFilter.AllowAutoFilter = False
         Me.colDescripcion.OptionsFilter.AllowFilter = False
         Me.colDescripcion.Visible = True
-        Me.colDescripcion.VisibleIndex = 2
+        Me.colDescripcion.VisibleIndex = 1
         Me.colDescripcion.Width = 213
         '
         'grdcmbDescripcion
         '
         Me.grdcmbDescripcion.AutoHeight = False
         Me.grdcmbDescripcion.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.grdcmbDescripcion.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("SivRepuestoID", "Código"), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("DescripcionCorta", "Descripción")})
-        Me.grdcmbDescripcion.DisplayMember = "DescripcionCorta"
+        Me.grdcmbDescripcion.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("SivProductoID", "Código"), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Descripción")})
+        Me.grdcmbDescripcion.DisplayMember = "Nombre"
         Me.grdcmbDescripcion.Name = "grdcmbDescripcion"
         Me.grdcmbDescripcion.NullText = ""
-        Me.grdcmbDescripcion.ValueMember = "SivRepuestoID"
+        Me.grdcmbDescripcion.ValueMember = "SivProductoID"
         '
         'colCantidad
         '
@@ -1069,7 +731,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.colCantidad.OptionsFilter.AllowAutoFilter = False
         Me.colCantidad.OptionsFilter.AllowFilter = False
         Me.colCantidad.Visible = True
-        Me.colCantidad.VisibleIndex = 3
+        Me.colCantidad.VisibleIndex = 2
         Me.colCantidad.Width = 76
         '
         'grdspnCantidad
@@ -1096,13 +758,13 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.colPrecioUnitario.OptionsFilter.AllowAutoFilter = False
         Me.colPrecioUnitario.OptionsFilter.AllowFilter = False
         Me.colPrecioUnitario.Visible = True
-        Me.colPrecioUnitario.VisibleIndex = 4
+        Me.colPrecioUnitario.VisibleIndex = 3
         Me.colPrecioUnitario.Width = 61
         '
         'grdSpnPrecioUnitario
         '
         Me.grdSpnPrecioUnitario.AutoHeight = False
-        Me.grdSpnPrecioUnitario.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject7, "", Nothing, Nothing, False)})
+        Me.grdSpnPrecioUnitario.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, False)})
         Me.grdSpnPrecioUnitario.Increment = New Decimal(New Integer() {0, 0, 0, 0})
         Me.grdSpnPrecioUnitario.Name = "grdSpnPrecioUnitario"
         '
@@ -1120,13 +782,13 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.colSubtotal.OptionsFilter.AllowAutoFilter = False
         Me.colSubtotal.OptionsFilter.AllowFilter = False
         Me.colSubtotal.Visible = True
-        Me.colSubtotal.VisibleIndex = 5
+        Me.colSubtotal.VisibleIndex = 4
         Me.colSubtotal.Width = 61
         '
         'grdspnSubTotal
         '
         Me.grdspnSubTotal.AutoHeight = False
-        Me.grdspnSubTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject8, "", Nothing, Nothing, False)})
+        Me.grdspnSubTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, False)})
         Me.grdspnSubTotal.DisplayFormat.FormatString = "#0.#0"
         Me.grdspnSubTotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.grdspnSubTotal.EditFormat.FormatString = "#0.#0"
@@ -1147,45 +809,18 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.colDescuento.OptionsFilter.AllowAutoFilter = False
         Me.colDescuento.OptionsFilter.AllowFilter = False
         Me.colDescuento.Visible = True
-        Me.colDescuento.VisibleIndex = 6
+        Me.colDescuento.VisibleIndex = 5
         Me.colDescuento.Width = 61
         '
         'grdSpnDescuento
         '
         Me.grdSpnDescuento.AutoHeight = False
-        Me.grdSpnDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, "", Nothing, Nothing, False)})
+        Me.grdSpnDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, False)})
         Me.grdSpnDescuento.DisplayFormat.FormatString = "#0.#0"
         Me.grdSpnDescuento.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.grdSpnDescuento.EditFormat.FormatString = "#0.#0"
         Me.grdSpnDescuento.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.grdSpnDescuento.Name = "grdSpnDescuento"
-        '
-        'colPorcentajeDescuento
-        '
-        Me.colPorcentajeDescuento.AppearanceCell.BackColor = System.Drawing.Color.LemonChiffon
-        Me.colPorcentajeDescuento.AppearanceCell.Options.UseBackColor = True
-        Me.colPorcentajeDescuento.Caption = "% Desc."
-        Me.colPorcentajeDescuento.ColumnEdit = Me.grdspnPorcentajeDescuento
-        Me.colPorcentajeDescuento.FieldName = "DescuentoPor"
-        Me.colPorcentajeDescuento.Name = "colPorcentajeDescuento"
-        Me.colPorcentajeDescuento.OptionsColumn.AllowFocus = False
-        Me.colPorcentajeDescuento.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colPorcentajeDescuento.OptionsColumn.ReadOnly = True
-        Me.colPorcentajeDescuento.OptionsFilter.AllowAutoFilter = False
-        Me.colPorcentajeDescuento.OptionsFilter.AllowFilter = False
-        Me.colPorcentajeDescuento.Visible = True
-        Me.colPorcentajeDescuento.VisibleIndex = 7
-        Me.colPorcentajeDescuento.Width = 73
-        '
-        'grdspnPorcentajeDescuento
-        '
-        Me.grdspnPorcentajeDescuento.AutoHeight = False
-        Me.grdspnPorcentajeDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinRight, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject10, "", Nothing, Nothing, False), New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.grdspnPorcentajeDescuento.DisplayFormat.FormatString = "#0.#0"
-        Me.grdspnPorcentajeDescuento.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdspnPorcentajeDescuento.EditFormat.FormatString = "#0.#0"
-        Me.grdspnPorcentajeDescuento.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.grdspnPorcentajeDescuento.Name = "grdspnPorcentajeDescuento"
         '
         'colImpuesto
         '
@@ -1201,13 +836,13 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.colImpuesto.OptionsFilter.AllowAutoFilter = False
         Me.colImpuesto.OptionsFilter.AllowFilter = False
         Me.colImpuesto.Visible = True
-        Me.colImpuesto.VisibleIndex = 8
+        Me.colImpuesto.VisibleIndex = 6
         Me.colImpuesto.Width = 46
         '
         'grdspnTotal
         '
         Me.grdspnTotal.AutoHeight = False
-        Me.grdspnTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject11, "", Nothing, Nothing, False)})
+        Me.grdspnTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, False)})
         Me.grdspnTotal.DisplayFormat.FormatString = "#0.#0"
         Me.grdspnTotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.grdspnTotal.EditFormat.FormatString = "#0.#0"
@@ -1228,19 +863,23 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.colTotal.OptionsFilter.AllowAutoFilter = False
         Me.colTotal.OptionsFilter.AllowFilter = False
         Me.colTotal.Visible = True
-        Me.colTotal.VisibleIndex = 9
+        Me.colTotal.VisibleIndex = 7
         Me.colTotal.Width = 68
         '
-        'chkAgregarMoto
+        'grdtxtBarCode
         '
-        Me.chkAgregarMoto.AutoSize = True
-        Me.chkAgregarMoto.Location = New System.Drawing.Point(16, 266)
-        Me.chkAgregarMoto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.chkAgregarMoto.Name = "chkAgregarMoto"
-        Me.chkAgregarMoto.Size = New System.Drawing.Size(253, 21)
-        Me.chkAgregarMoto.TabIndex = 8
-        Me.chkAgregarMoto.Text = "Agregar Moto o Garantía Extendida"
-        Me.chkAgregarMoto.UseVisualStyleBackColor = True
+        Me.grdtxtBarCode.AutoHeight = False
+        Me.grdtxtBarCode.Name = "grdtxtBarCode"
+        '
+        'grdspnPorcentajeDescuento
+        '
+        Me.grdspnPorcentajeDescuento.AutoHeight = False
+        Me.grdspnPorcentajeDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinRight, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, False), New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.grdspnPorcentajeDescuento.DisplayFormat.FormatString = "#0.#0"
+        Me.grdspnPorcentajeDescuento.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.grdspnPorcentajeDescuento.EditFormat.FormatString = "#0.#0"
+        Me.grdspnPorcentajeDescuento.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.grdspnPorcentajeDescuento.Name = "grdspnPorcentajeDescuento"
         '
         'Label11
         '
@@ -1266,7 +905,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         Me.cmdBuscar.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdBuscar.Location = New System.Drawing.Point(1037, 271)
-        Me.cmdBuscar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdBuscar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdBuscar.Name = "cmdBuscar"
         Me.cmdBuscar.Size = New System.Drawing.Size(53, 28)
         Me.cmdBuscar.TabIndex = 11
@@ -1287,7 +926,7 @@ Partial Class frmSfaFacturaRepuestosEditar
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numSaldo.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numSaldo.Location = New System.Drawing.Point(620, 265)
-        Me.numSaldo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numSaldo.Margin = New System.Windows.Forms.Padding(4)
         Me.numSaldo.Name = "numSaldo"
         Me.numSaldo.Size = New System.Drawing.Size(144, 22)
         Me.numSaldo.TabIndex = 12
@@ -1309,7 +948,7 @@ Partial Class frmSfaFacturaRepuestosEditar
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numPrima.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numPrima.Location = New System.Drawing.Point(389, 265)
-        Me.numPrima.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numPrima.Margin = New System.Windows.Forms.Padding(4)
         Me.numPrima.Name = "numPrima"
         Me.numPrima.Size = New System.Drawing.Size(139, 22)
         Me.numPrima.TabIndex = 13
@@ -1351,7 +990,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         Me.chkSolicitudDescuento.AutoSize = True
         Me.chkSolicitudDescuento.Location = New System.Drawing.Point(553, 596)
-        Me.chkSolicitudDescuento.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.chkSolicitudDescuento.Margin = New System.Windows.Forms.Padding(4)
         Me.chkSolicitudDescuento.Name = "chkSolicitudDescuento"
         Me.chkSolicitudDescuento.Size = New System.Drawing.Size(197, 21)
         Me.chkSolicitudDescuento.TabIndex = 17
@@ -1372,7 +1011,7 @@ Partial Class frmSfaFacturaRepuestosEditar
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numExistencia.Enabled = False
         Me.numExistencia.Location = New System.Drawing.Point(111, 597)
-        Me.numExistencia.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numExistencia.Margin = New System.Windows.Forms.Padding(4)
         Me.numExistencia.Name = "numExistencia"
         Me.numExistencia.Size = New System.Drawing.Size(133, 22)
         Me.numExistencia.TabIndex = 18
@@ -1393,7 +1032,7 @@ Partial Class frmSfaFacturaRepuestosEditar
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numTasa.Enabled = False
         Me.numTasa.Location = New System.Drawing.Point(312, 597)
-        Me.numTasa.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numTasa.Margin = New System.Windows.Forms.Padding(4)
         Me.numTasa.Name = "numTasa"
         Me.numTasa.Size = New System.Drawing.Size(143, 22)
         Me.numTasa.TabIndex = 19
@@ -1403,7 +1042,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'txtObervaciones
         '
         Me.txtObervaciones.Location = New System.Drawing.Point(35, 665)
-        Me.txtObervaciones.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtObervaciones.Margin = New System.Windows.Forms.Padding(4)
         Me.txtObervaciones.Multiline = True
         Me.txtObervaciones.Name = "txtObervaciones"
         Me.txtObervaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1414,7 +1053,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         Me.txtSolicitudDescuento.Enabled = False
         Me.txtSolicitudDescuento.Location = New System.Drawing.Point(528, 624)
-        Me.txtSolicitudDescuento.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtSolicitudDescuento.Margin = New System.Windows.Forms.Padding(4)
         Me.txtSolicitudDescuento.Multiline = True
         Me.txtSolicitudDescuento.Name = "txtSolicitudDescuento"
         Me.txtSolicitudDescuento.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -1425,7 +1064,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         Me.TabDescuento.Controls.Add(Me.TabPageDescuento)
         Me.TabDescuento.Location = New System.Drawing.Point(528, 683)
-        Me.TabDescuento.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabDescuento.Margin = New System.Windows.Forms.Padding(4)
         Me.TabDescuento.Name = "TabDescuento"
         Me.TabDescuento.SelectedIndex = 0
         Me.TabDescuento.Size = New System.Drawing.Size(188, 106)
@@ -1436,9 +1075,9 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.TabPageDescuento.Controls.Add(Me.NumDescuento)
         Me.TabPageDescuento.Controls.Add(Me.chkAutorizar)
         Me.TabPageDescuento.Location = New System.Drawing.Point(4, 25)
-        Me.TabPageDescuento.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPageDescuento.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPageDescuento.Name = "TabPageDescuento"
-        Me.TabPageDescuento.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPageDescuento.Padding = New System.Windows.Forms.Padding(4)
         Me.TabPageDescuento.Size = New System.Drawing.Size(180, 77)
         Me.TabPageDescuento.TabIndex = 0
         Me.TabPageDescuento.Text = "Descuento"
@@ -1449,7 +1088,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.NumDescuento.AllowDrop = True
         Me.NumDescuento.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.NumDescuento.Location = New System.Drawing.Point(9, 25)
-        Me.NumDescuento.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NumDescuento.Margin = New System.Windows.Forms.Padding(4)
         Me.NumDescuento.Name = "NumDescuento"
         Me.NumDescuento.Properties.DisplayFormat.FormatString = "$#,##0.00"
         Me.NumDescuento.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
@@ -1463,7 +1102,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.chkAutorizar.AutoSize = True
         Me.chkAutorizar.Enabled = False
         Me.chkAutorizar.Location = New System.Drawing.Point(9, 49)
-        Me.chkAutorizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.chkAutorizar.Margin = New System.Windows.Forms.Padding(4)
         Me.chkAutorizar.Name = "chkAutorizar"
         Me.chkAutorizar.Size = New System.Drawing.Size(87, 21)
         Me.chkAutorizar.TabIndex = 21
@@ -1523,7 +1162,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'cmdAceptar
         '
         Me.cmdAceptar.Location = New System.Drawing.Point(769, 770)
-        Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(100, 34)
         Me.cmdAceptar.TabIndex = 28
@@ -1537,7 +1176,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmdProcesar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.cmdProcesar.Enabled = False
         Me.cmdProcesar.Location = New System.Drawing.Point(877, 770)
-        Me.cmdProcesar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdProcesar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdProcesar.Name = "cmdProcesar"
         Me.cmdProcesar.Size = New System.Drawing.Size(100, 34)
         Me.cmdProcesar.TabIndex = 29
@@ -1547,7 +1186,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'cmdCancelar
         '
         Me.cmdCancelar.Location = New System.Drawing.Point(985, 770)
-        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(100, 34)
         Me.cmdCancelar.TabIndex = 30
@@ -1566,7 +1205,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numSubTotal.Enabled = False
         Me.numSubTotal.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numSubTotal.Location = New System.Drawing.Point(973, 597)
-        Me.numSubTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numSubTotal.Margin = New System.Windows.Forms.Padding(4)
         Me.numSubTotal.Name = "numSubTotal"
         Me.numSubTotal.Size = New System.Drawing.Size(111, 22)
         Me.numSubTotal.TabIndex = 31
@@ -1586,7 +1225,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numTotalDescuento.Enabled = False
         Me.numTotalDescuento.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numTotalDescuento.Location = New System.Drawing.Point(973, 629)
-        Me.numTotalDescuento.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numTotalDescuento.Margin = New System.Windows.Forms.Padding(4)
         Me.numTotalDescuento.Name = "numTotalDescuento"
         Me.numTotalDescuento.Size = New System.Drawing.Size(111, 22)
         Me.numTotalDescuento.TabIndex = 32
@@ -1606,7 +1245,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numIVA.Enabled = False
         Me.numIVA.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numIVA.Location = New System.Drawing.Point(973, 661)
-        Me.numIVA.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numIVA.Margin = New System.Windows.Forms.Padding(4)
         Me.numIVA.Name = "numIVA"
         Me.numIVA.Size = New System.Drawing.Size(111, 22)
         Me.numIVA.TabIndex = 33
@@ -1626,7 +1265,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numTotalC.Enabled = False
         Me.numTotalC.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numTotalC.Location = New System.Drawing.Point(973, 690)
-        Me.numTotalC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numTotalC.Margin = New System.Windows.Forms.Padding(4)
         Me.numTotalC.Name = "numTotalC"
         Me.numTotalC.Size = New System.Drawing.Size(111, 22)
         Me.numTotalC.TabIndex = 34
@@ -1646,7 +1285,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numTotalD.Enabled = False
         Me.numTotalD.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numTotalD.Location = New System.Drawing.Point(973, 721)
-        Me.numTotalD.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numTotalD.Margin = New System.Windows.Forms.Padding(4)
         Me.numTotalD.Name = "numTotalD"
         Me.numTotalD.Size = New System.Drawing.Size(111, 22)
         Me.numTotalD.TabIndex = 35
@@ -1705,13 +1344,12 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Controls.Add(Me.cmdBuscar)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.chkAgregarMoto)
         Me.Controls.Add(Me.grpDetalle)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.tabFacturas)
         Me.Controls.Add(Me.Panel2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSfaFacturaRepuestosEditar"
@@ -1731,29 +1369,17 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.grdExpedienteCliente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpDetalle.ResumeLayout(False)
-        CType(Me.grdDetalleMoto, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdDetalleMototabla, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSpnBarCode, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSpnCodigo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSpnDescripcion, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSpnCantidad, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSpnPrecio, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSpnSubtotal, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSpnDescuento, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSnpPorcentajeDescuento, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSpnIVA, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMotoSpnTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDetalleFactura, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDetalleFacturaTabla, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdtxtBarCode, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdspnCodigoRepuesto, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdcmbDescripcion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdSpnPrecioUnitario, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdspnSubTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdSpnDescuento, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdspnPorcentajeDescuento, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdspnTotal, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdtxtBarCode, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdspnPorcentajeDescuento, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numSaldo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numPrima, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numExistencia, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1799,10 +1425,8 @@ Partial Class frmSfaFacturaRepuestosEditar
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents chkExonerado As System.Windows.Forms.CheckBox
     Friend WithEvents grdExpedienteCliente As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents grpDetalle As System.Windows.Forms.GroupBox
-    Friend WithEvents chkAgregarMoto As System.Windows.Forms.CheckBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cmdBuscar As System.Windows.Forms.Button
@@ -1838,14 +1462,12 @@ Partial Class frmSfaFacturaRepuestosEditar
     Friend WithEvents lblMotivo As System.Windows.Forms.Label
     Friend WithEvents grdDetalleFactura As DevExpress.XtraGrid.GridControl
     Friend WithEvents grdDetalleFacturaTabla As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents colBarCode As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCodigoRepuesto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCantidad As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colPrecioUnitario As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colSubtotal As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colDescuento As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colPorcentajeDescuento As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colImpuesto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTotal As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents grdtxtBarCode As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
@@ -1857,29 +1479,7 @@ Partial Class frmSfaFacturaRepuestosEditar
     Friend WithEvents grdspnPorcentajeDescuento As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
     Friend WithEvents grdspnTotal As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
     Friend WithEvents lblCantidadMaxItems As System.Windows.Forms.Label
-    Friend WithEvents grdDetalleMoto As DevExpress.XtraGrid.GridControl
-    Friend WithEvents grdDetalleMototabla As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents colCodigoBar As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdMotoSpnBarCode As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents colCodigo As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colDescripcionMoto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdMotoSpnDescripcion As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
-    Friend WithEvents ColCantidadMoto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdMotoSpnCantidad As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
-    Friend WithEvents colPrecioMoto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdMotoSpnPrecio As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
-    Friend WithEvents colSubtotalMoto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdMotoSpnSubtotal As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
-    Friend WithEvents colDescuentoMoto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdMotoSpnDescuento As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
-    Friend WithEvents colPorcentajeMoto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdMotoSnpPorcentajeDescuento As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
-    Friend WithEvents colIVAMoto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdMotoSpnTotal As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
-    Friend WithEvents colTotalMoto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdMotoSpnIVA As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
     Friend WithEvents txtCodigoCliente As System.Windows.Forms.TextBox
     Friend WithEvents NumDescuento As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents grdspnCodigoRepuesto As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
-    Friend WithEvents grdMotoSpnCodigo As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
 End Class

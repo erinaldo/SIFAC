@@ -203,8 +203,8 @@ Public Class FrmSfaOrdenCompraEdit
     End Function
 
     Private Sub AutorizarDescuento()
-        Dim objSfaFactura As New SfaFacturaRepuesto
-        Dim objSfaFacturaDetalle As New SfaFacturaRepuestoDetalle
+        Dim objSfaFactura As New SfaFacturas
+        Dim objSfaFacturaDetalle As New SfaFacturasDetalle
         Dim objseg As New SsgSeguridad
         Dim dtDetalleFact As New DataTable
         Dim t As New TransactionManager
@@ -373,11 +373,11 @@ Public Class FrmSfaOrdenCompraEdit
 
 #Region "Cargar Datos Consulta"
     Private Sub CargarDatosConsulta()
-        Dim objSfaFactura As New SfaFacturaRepuesto
+        Dim objSfaFactura As New SfaFacturas
         Try
             Try
                 objSfaFactura.Retrieve(Me.SfaFacturaID)
-                Me.cmbCliente.SelectedValue = objSfaFactura.objClienteID
+                Me.cmbCliente.SelectedValue = objSfaFactura.objSccClienteID
 
                 If (IsDBNull(objSfaFactura.serie)) And (IsDBNull(objSfaFactura.Numero)) Then
                     Me.txtNumero.Text = objSfaFactura.serie.Trim + objSfaFactura.Numero.ToString.Trim
@@ -1931,16 +1931,15 @@ Public Class FrmSfaOrdenCompraEdit
 
     'Guarda el encabezado de la factura de Orden de compra
     Private Sub GuardarFactura(ByVal t As TransactionManager)
-        Dim objSfaFactura As SfaFacturaRepuesto
+        Dim objSfaFactura As SfaFacturas
         Try
-            objSfaFactura = New SfaFacturaRepuesto
+            objSfaFactura = New SfaFacturas
 
             objSfaFactura.Fecha = Me.dtpFecha.Value
-            objSfaFactura.objTiendaID = Me.cmbBodega.SelectedValue
-            objSfaFactura.OrdenCompra = Me.GenerarNumeroOrden()
+            objSfaFactura.objStbBodegaID = Me.cmbBodega.SelectedValue
 
             If Me.cmbCliente.Text.Trim.Length <> 0 Then
-                objSfaFactura.objClienteID = Me.cmbCliente.SelectedValue
+                objSfaFactura.objSccClienteID = Me.cmbCliente.SelectedValue
             End If
 
             If Me.cmbVendedor.Text.Trim.Length <> 0 Then
@@ -1985,13 +1984,13 @@ Public Class FrmSfaOrdenCompraEdit
 
     'Guarda el Detalle de la factura de orden de compra.
     Private Sub GuardarDetallefactura(ByVal T As TransactionManager)
-        Dim objSfaFacturaDetalle As SfaFacturaRepuestoDetalle
+        Dim objSfaFacturaDetalle As SfaFacturasDetalle
         Dim dtDetalleFact As New DataTable
         Dim fila As DataRow
 
         Try
-            objSfaFacturaDetalle = New SfaFacturaRepuestoDetalle
-            dtDetalleFact = SfaFacturaRepuestoDetalle.RetrieveDT("1=0")
+            objSfaFacturaDetalle = New SfaFacturasDetalle
+            dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
 
             'Isertar detalle de Factura              
             Me.dtDetalleFactura.AcceptChanges()
@@ -2022,8 +2021,8 @@ Public Class FrmSfaOrdenCompraEdit
 
 #Region "Procesar Orden Compra"
     Private Sub ProcesarOrdenCompra(ByVal T As TransactionManager)
-        Dim objSfaFactura As New SfaFacturaRepuesto
-        Dim objSfaFacturaDetalle As New SfaFacturaRepuestoDetalle
+        Dim objSfaFactura As New SfaFacturas
+        Dim objSfaFacturaDetalle As New SfaFacturasDetalle
         Dim objSivBodegaRpuestos As New SivBodegaRepuestos
         Dim dtDetalleFact As New DataTable
         Dim fila As DataRow
@@ -2146,8 +2145,8 @@ Public Class FrmSfaOrdenCompraEdit
 
 #Region "Anular Orden Compra"
     Private Sub AnularOrdenCompra()
-        Dim objSfaFactura As New SfaFacturaRepuesto
-        Dim objSfaFacturaDetalle As New SfaFacturaRepuestoDetalle
+        Dim objSfaFactura As New SfaFacturas
+        Dim objSfaFacturaDetalle As New SfaFacturasDetalle
         Dim objSivBodegaRpuestos As New SivBodegaRepuestos
         Dim dtDetalleFact As New DataTable
         Dim fila As DataRow

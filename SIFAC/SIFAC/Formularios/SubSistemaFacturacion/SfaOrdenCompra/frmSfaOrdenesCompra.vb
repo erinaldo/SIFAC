@@ -400,16 +400,16 @@ Public Class frmSfaOrdenesCompra
 #Region "Eliminar"
 
     Private Sub Eliminar()
-        Dim objSfaFactura As New SfaFacturaRepuesto
-        Dim objSfaFacturaDetalle As New SfaFacturaRepuestoDetalle
+        Dim objSfaFactura As New SfaFacturas
+        Dim objSfaFacturaDetalle As New SfaFacturasDetalle
         Dim T As New TransactionManager
         Try
             Try
                 Select Case MsgBox("¿Seguro que desea eliminar la pre-factura?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
                     Case MsgBoxResult.Yes
                         T.BeginTran()
-                        SfaFacturaRepuestoDetalle.DeleteByFilter("objFacturaRepuestoID = " & Me.grdFacturaMaster.Columns("SfaFacturaRepuestoID").Value)
-                        SfaFacturaRepuesto.DeleteByFilter("SfaFacturaRepuestoID = " & Me.grdFacturaMaster.Columns("SfaFacturaRepuestoID").Value)
+                        SfaFacturasDetalle.DeleteByFilter("objFacturaRepuestoID = " & Me.grdFacturaMaster.Columns("SfaFacturaRepuestoID").Value)
+                        SfaFacturas.DeleteByFilter("SfaFacturaRepuestoID = " & Me.grdFacturaMaster.Columns("SfaFacturaRepuestoID").Value)
                         T.CommitTran()
                         MsgBox("La pre-factura ha sido eliminada.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
                 End Select

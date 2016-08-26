@@ -87,9 +87,8 @@
     <Compile Include="SccTramiteLegal_CF.vb" />
     <Compile Include="SfaCotizacionDetalle_CF.vb" />
     <Compile Include="SfaCotizacion_CF.vb" />
-    <Compile Include="SfaFacturaRepuestoDetalle_CF.vb" />
-    <Compile Include="SfaFacturaRepuesto_CF.vb" />
-    <Compile Include="SfaFactura_CF.vb" />
+    <Compile Include="SfaFacturas.vb" />
+    <Compile Include="SfaFacturasDetalle.vb" />
     <Compile Include="SfaPromocionDetalle_CF.vb" />
     <Compile Include="SfaPromocionDetTienda_CF.vb" />
     <Compile Include="SfaPromocion_CF.vb" />

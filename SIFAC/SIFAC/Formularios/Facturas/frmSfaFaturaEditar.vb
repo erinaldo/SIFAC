@@ -20,7 +20,7 @@ Public Class frmSfaFaturaEditar
     Dim DtDatosConcepto As DataTable
     Dim DtEmpleados As DataTable
     Dim DtTienda As New DataTable
-    Dim objFact As SfaFactura
+    Dim objFact As SfaFacturas
     Dim m_ConceptoMoto As Integer
     Dim m_IDCuenta As String
     Dim m_IDTienda As Integer
@@ -363,14 +363,13 @@ Public Class frmSfaFaturaEditar
                 Me.cmbPlazo.Enabled = True
 
                 'Cargar demás datos de factura
-                Me.objFact = New SfaFactura
+                Me.objFact = New SfaFacturas
                 Me.objFact.Retrieve(Me.IDFactura)
-                Me.txtNumMotor.Text = objFact.NoMotor
-                Me.txtChasis.Text = objFact.Chasis
+
                 Me.dtpFechaCredito.Value = clsProyecto.Conexion.FechaServidor
 
                 Me.NUmCreditoUtilizado.Value = 0.0
-                If objFact.objProductoID.HasValue Then
+                If objFact.p.HasValue Then
                     Me.cmbModelos.SelectedValue = objFact.objProductoID
                 End If
             End If

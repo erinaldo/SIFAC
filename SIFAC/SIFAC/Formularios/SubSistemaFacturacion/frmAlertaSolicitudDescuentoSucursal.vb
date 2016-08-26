@@ -46,7 +46,7 @@ Public Class frmAlertaSolicitudDescuentoSucursal
     Private Sub grdDatos_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles grdDatos.DoubleClick
         If Me.dtDatos.Rows.Count > 0 Then
             If Not IsDBNull(Me.grdDatos.Columns("SfaFacturaRepuestoID").Value) AndAlso Me.grdDatos.Columns("SfaFacturaRepuestoID").Value.ToString.Trim.Length <> 0 Then
-                Me.MostrarFactura(Me.grdDatos.Columns("SfaFacturaRepuestoID").Value)
+                'Me.MostrarFactura(Me.grdDatos.Columns("SfaFacturaRepuestoID").Value)
             End If
         End If
     End Sub
@@ -76,41 +76,41 @@ Public Class frmAlertaSolicitudDescuentoSucursal
 #End Region
 
 #Region "Mostrar Factura"
-    Private Sub MostrarFactura(ByVal sfaFacturaRepuestoID As Integer)
-        Dim frmFactura As New frmSfaFacturaRepuestosEditar
-        Dim frmOrden As New FrmSfaOrdenCompraEdit
-        Dim blnEsOrdenCompra As Boolean
-        Try
-            Try
-                If Not IsDBNull(Me.grdDatos.Columns("EsOrdenCompra").Value) Then
-                    Try
-                        blnEsOrdenCompra = Me.grdDatos.Columns("EsOrdenCompra").Value
-                    Catch ex As Exception
-                        blnEsOrdenCompra = False
-                    End Try
+    'Private Sub MostrarFactura(ByVal sfaFacturaRepuestoID As Integer)
+    '    Dim frmFactura As New frmSfaFacturaRepuestosEditar
+    '    Dim frmOrden As New FrmSfaOrdenCompraEdit
+    '    Dim blnEsOrdenCompra As Boolean
+    '    Try
+    '        Try
+    '            If Not IsDBNull(Me.grdDatos.Columns("EsOrdenCompra").Value) Then
+    '                Try
+    '                    blnEsOrdenCompra = Me.grdDatos.Columns("EsOrdenCompra").Value
+    '                Catch ex As Exception
+    '                    blnEsOrdenCompra = False
+    '                End Try
 
-                    If blnEsOrdenCompra Then
-                        frmOrden.TypeGUI = 2 '2= Procesar Orden compra
-                        frmOrden.SfaFacturaID = sfaFacturaRepuestoID
-                        If frmOrden.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                            Me.CargarGrid()
-                        End If
-                    Else
-                        frmFactura.TypeGUI = 2 '2= Procesar Factura
-                        frmFactura.SfaFacturaID = sfaFacturaRepuestoID
-                        If frmFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                            Me.CargarGrid()
-                        End If
-                    End If
-                End If
+    '                If blnEsOrdenCompra Then
+    '                    frmOrden.TypeGUI = 2 '2= Procesar Orden compra
+    '                    frmOrden.SfaFacturaID = sfaFacturaRepuestoID
+    '                    If frmOrden.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+    '                        Me.CargarGrid()
+    '                    End If
+    '                Else
+    '                    frmFactura.TypeGUI = 2 '2= Procesar Factura
+    '                    frmFactura.SfaFacturaID = sfaFacturaRepuestoID
+    '                    If frmFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+    '                        Me.CargarGrid()
+    '                    End If
+    '                End If
+    '            End If
 
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            frmFactura = Nothing
-        End Try
-    End Sub
+    '        Catch ex As Exception
+    '            clsError.CaptarError(ex)
+    '        End Try
+    '    Finally
+    '        frmFactura = Nothing
+    '    End Try
+    'End Sub
 #End Region
 
 End Class

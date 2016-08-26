@@ -393,30 +393,6 @@
     <Compile Include="Formularios\Devoluciones\frmSccDevoluciones.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Facturas\frmSfaBuscarFacturaExp.Designer.vb">
-      <DependentUpon>frmSfaBuscarFacturaExp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Facturas\frmSfaBuscarFacturaExp.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Facturas\frmSfaCambiosPagos.Designer.vb">
-      <DependentUpon>frmSfaCambiosPagos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Facturas\frmSfaCambiosPagos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Facturas\frmSfaFactura.Designer.vb">
-      <DependentUpon>frmSfaFactura.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Facturas\frmSfaFactura.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Facturas\frmSfaFaturaEditar.Designer.vb">
-      <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Facturas\frmSfaFaturaEditar.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\PIM\frmPersonaSelector.Designer.vb">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
     </Compile>
@@ -585,36 +561,6 @@
     <Compile Include="Formularios\SubSistemaFacturacion\frmCriteriosReporteUtilidades.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacion.Designer.vb">
-      <DependentUpon>frmSfaCotizacion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacion.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionAnular.designer.vb">
-      <DependentUpon>frmSfaCotizacionAnular.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionAnular.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionBodegaRepuestoConsultar.designer.vb">
-      <DependentUpon>frmSfaCotizacionBodegaRepuestoConsultar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionBodegaRepuestoConsultar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionDescuentoConsultar.designer.vb">
-      <DependentUpon>frmSfaCotizacionDescuentoConsultar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionDescuentoConsultar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionEditar.designer.vb">
-      <DependentUpon>frmSfaCotizacionEditar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionEditar.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\SubSistemaFacturacion\SfaFacturaRepuestos\frmSfaAgregarDescripcion.Designer.vb">
       <DependentUpon>frmSfaAgregarDescripcion.vb</DependentUpon>
     </Compile>
@@ -673,48 +619,6 @@
       <DependentUpon>frmSfaRptFacturaRepuestos.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\SubSistemaFacturacion\SfaFacturaRepuestos\frmSfaRptFacturaRepuestos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmBuscarOrdenCompra.Designer.vb">
-      <DependentUpon>frmBuscarOrdenCompra.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmBuscarOrdenCompra.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\FrmSfaOrdenCompraEdit.Designer.vb">
-      <DependentUpon>FrmSfaOrdenCompraEdit.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\FrmSfaOrdenCompraEdit.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmSfaOrdenesCompra.Designer.vb">
-      <DependentUpon>frmSfaOrdenesCompra.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmSfaOrdenesCompra.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmConsultaDescuentoPromociones.Designer.vb">
-      <DependentUpon>frmConsultaDescuentoPromociones.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmConsultaDescuentoPromociones.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmReportesPromociones.Designer.vb">
-      <DependentUpon>frmReportesPromociones.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmReportesPromociones.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromociones.Designer.vb">
-      <DependentUpon>frmSfaPromociones.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromociones.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromocionesEdit.Designer.vb">
-      <DependentUpon>frmSfaPromocionesEdit.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromocionesEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\SubSistemaInventario\DespacharTransferencia\frmSivDespTransferencia.Designer.vb">
@@ -1185,22 +1089,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Facturas\frmSfaBuscarFacturaExp.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmSfaBuscarFacturaExp.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Facturas\frmSfaCambiosPagos.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmSfaCambiosPagos.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Facturas\frmSfaFactura.resx">
-      <DependentUpon>frmSfaFactura.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Facturas\frmSfaFaturaEditar.resx">
-      <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PIM\frmPersonaSelector.resx">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1309,26 +1197,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmCriteriosReporteUtilidades.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacion.resx">
-      <DependentUpon>frmSfaCotizacion.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionAnular.resx">
-      <DependentUpon>frmSfaCotizacionAnular.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionBodegaRepuestoConsultar.resx">
-      <DependentUpon>frmSfaCotizacionBodegaRepuestoConsultar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionDescuentoConsultar.resx">
-      <DependentUpon>frmSfaCotizacionDescuentoConsultar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionEditar.resx">
-      <DependentUpon>frmSfaCotizacionEditar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaFacturaRepuestos\frmSfaAgregarDescripcion.resx">
       <DependentUpon>frmSfaAgregarDescripcion.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1367,34 +1235,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaFacturaRepuestos\frmSfaRptFacturaRepuestos.resx">
       <DependentUpon>frmSfaRptFacturaRepuestos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmBuscarOrdenCompra.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmBuscarOrdenCompra.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\FrmSfaOrdenCompraEdit.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FrmSfaOrdenCompraEdit.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmSfaOrdenesCompra.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmSfaOrdenesCompra.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmConsultaDescuentoPromociones.resx">
-      <DependentUpon>frmConsultaDescuentoPromociones.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmReportesPromociones.resx">
-      <DependentUpon>frmReportesPromociones.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromociones.resx">
-      <DependentUpon>frmSfaPromociones.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromocionesEdit.resx">
-      <DependentUpon>frmSfaPromocionesEdit.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubSistemaInventario\DespacharTransferencia\frmSivDespTransferencia.resx">
@@ -2207,6 +2047,9 @@
       <Project>{7a293fdd-5637-4bdf-9a92-a6b37db742ee}</Project>
       <Name>Seguridad.Formularios</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

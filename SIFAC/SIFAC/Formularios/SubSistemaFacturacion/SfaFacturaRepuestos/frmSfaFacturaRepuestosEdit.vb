@@ -99,12 +99,12 @@ Public Class frmSfaFacturaRepuestosEditar
 #Region "Cargar Tiendas"
 
     Private Sub CargarTienda()
-        dtTienda = StbTienda.RetrieveDT("Activo = 1 AND Codigo <> 'C' AND Codigo <> 'ME' ", , "StbTiendaID, Codigo,Nombre")
+        dtTienda = StbBodegas.RetrieveDT("Activo = 1", , "StbBodegaID, Codigo,Nombre")
         With Me.cmbBodega
             .DataSource = Me.dtTienda
-            .ValueMember = "StbTiendaID"
+            .ValueMember = "StbBodegaID"
             .DisplayMember = "Nombre"
-            .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+            .Splits(0).DisplayColumns("StbBodegaID").Visible = False
             .Splits(0).DisplayColumns("Codigo").Visible = False
             .ExtendRightColumn = True
         End With
@@ -128,13 +128,13 @@ Public Class frmSfaFacturaRepuestosEditar
 
 #Region "Cargar Clientes"
     Private Sub CargarClientes()
-        dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto", "vwSfaClienteFactura", "Descripcion = 'Cliente' AND StbPersonaID NOT IN (SELECT objFiadorID FROM vwSccCuentaFiador WHERE Estado = 'VIGENTE')"))
+        dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ClienteID,NombreCompleto", "vwSfaClienteFactura", "Descripcion = 'Cliente'"))
         dtCliente.DefaultView.Sort = "NombreCompleto"
         With Me.cmbCliente
             .DataSource = dtCliente
-            .ValueMember = "StbPersonaID"
+            .ValueMember = "ClienteID"
             .DisplayMember = "NombreCompleto"
-            .Splits(0).DisplayColumns("StbPersonaID").Visible = False
+            .Splits(0).DisplayColumns("ClienteID").Visible = False
             .ExtendRightColumn = True
         End With
     End Sub
@@ -175,7 +175,7 @@ Public Class frmSfaFacturaRepuestosEditar
     Private Sub CargarDescripcion(ByVal strFiltro As String)
         Dim riLookComboDescripcion As New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
         Try
-            dtDescripcionFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivRepuestoID,DescripcionCorta", "vwSivRepuestos", strFiltro & " AND SivRepuestoID NOT IN('1','2') " & " ORDER BY DescripcionCorta"))
+            dtDescripcionFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Nombre", "vwStbProductos", strFiltro & " ORDER BY Nombre"))
             riLookComboDescripcion = Me.grdDetalleFactura.RepositoryItems(1)
             riLookComboDescripcion.DataSource = dtDescripcionFactura
         Catch ex As Exception
@@ -193,7 +193,7 @@ Public Class frmSfaFacturaRepuestosEditar
     Private Sub CargarDetalleFactura(ByVal strFiltro As String)
         dtDetalleFactura = New DataTable
         Try
-            dtDetalleFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CodigoBarras,objFacturaRepuestoID, Codigo, DescripcionCorta, Cantidad, CostoProm,Precio,cast(0 as float) as DescuentoPor, Descuento, Subtotal, Impuesto, Total", "vwSfaDetalleRepuestos", strFiltro))
+            dtDetalleFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSfaFacturaID, Codigo, Producto, Cantidad, CostoPromedio,Precio, Descuento, Subtotal, Impuesto, Total", "vwSfaDetalleRepuestos", strFiltro))
             Me.grdDetalleFactura.DataSource = dtDetalleFactura
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -231,94 +231,92 @@ Public Class frmSfaFacturaRepuestosEditar
         Return False
     End Function
 
-    Private Sub AutorizarDescuento()
-        Dim objSfaFactura As New SfaFacturaRepuesto
-        Dim objSfaFacturaDetalle As New SfaFacturaRepuestoDetalle
-        Dim objseg As New SsgSeguridad
-        Dim dtDetalleFact As New DataTable
-        Dim t As New TransactionManager
-        Dim fila As DataRow
-        Try
-            Try
-                t.BeginTran()
-                objseg.Usuario = clsProyecto.Conexion.Usuario
-                objseg.ServicioUsuario = "frmPrincipal"
-                If objseg.TienePermiso("AUTORIZACIONGERENTE") Then
-                    objSfaFactura.Retrieve(Me.SfaFacturaID)
-                    objSfaFactura.AutorizaDescuento = Me.chkAutorizar.Checked
-                    objSfaFactura.DescuentoAutorizado = Me.NumDescuento.Value
-                    objSfaFactura.Descuento = Me.numTotalDescuento.Value
-                    objSfaFactura.TotalCordobas = Me.numTotalC.Value
-                    objSfaFactura.TotalDolares = Me.numTotalD.Value
-                    objSfaFactura.Impuesto = Me.numIVA.Value
-                    objSfaFactura.Subtotal = Me.numSubTotal.Value
-                    objSfaFactura.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                    objSfaFactura.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                    objSfaFactura.Update()
+    'Private Sub AutorizarDescuento()
+    '    Dim objSfaFactura As New SfaFacturas
+    '    Dim objSfaFacturaDetalle As New SfaFacturasDetalle
+    '    Dim objseg As New SsgSeguridad
+    '    Dim dtDetalleFact As New DataTable
+    '    Dim t As New TransactionManager
+    '    Dim fila As DataRow
+    '    Try
+    '        Try
+    '            t.BeginTran()
+    '            objseg.Usuario = clsProyecto.Conexion.Usuario
+    '            objseg.ServicioUsuario = "frmPrincipal"
+    '            If objseg.TienePermiso("AUTORIZACIONGERENTE") Then
+    '                objSfaFactura.Retrieve(Me.SfaFacturaID)
+    '                objSfaFactura.Descuento = Me.numTotalDescuento.Value
+    '                objSfaFactura.TotalCordobas = Me.numTotalC.Value
+    '                objSfaFactura.TotalDolares = Me.numTotalD.Value
+    '                objSfaFactura.Impuesto = Me.numIVA.Value
+    '                objSfaFactura.Subtotal = Me.numSubTotal.Value
+    '                objSfaFactura.UsuarioModificacion = clsProyecto.Conexion.Usuario
+    '                objSfaFactura.FechaModificacion = clsProyecto.Conexion.FechaServidor
+    '                objSfaFactura.Update()
 
-                    '--Actualizar el detalle de la factura
-                    SfaFacturaRepuestoDetalle.DeleteByFilter("objFacturaRepuestoID = " & Me.SfaFacturaID)
+    '                '--Actualizar el detalle de la factura
+    '                SfaFacturasDetalle.DeleteByFilter("objSfaFacturaID = " & Me.SfaFacturaID)
 
-                    If Me.chkAgregarMoto.Checked Then
-                        dtDetalleFact = SfaFacturaRepuestoDetalle.RetrieveDT("1=0")
+    '                If Me.chkAgregarMoto.Checked Then
+    '                    dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
 
-                        'Isertar detalle de Factura              
+    '                    'Isertar detalle de Factura              
 
-                        For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
-                            fila = dtDetalleFact.NewRow
-                            fila("objFacturaRepuestoID") = Me.SfaFacturaID
-                            fila("objRepuestoID") = row("Codigo")
-                            fila("Cantidad") = row("Cantidad")
-                            fila("Precio") = row("Precio")
-                            fila("Subtotal") = row("Subtotal")
-                            fila("Descuento") = row("Descuento")
-                            fila("Impuesto") = row("Impuesto")
-                            fila("Total") = row("Total")
-                            fila("CostoDolares") = row("CostoProm")
-                            fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                            fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                            dtDetalleFact.Rows.Add(fila)
-                        Next
-                        dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-                        SfaFacturaRepuestoDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
+    '                    For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
+    '                        fila = dtDetalleFact.NewRow
+    '                        fila("objFacturaRepuestoID") = Me.SfaFacturaID
+    '                        fila("objRepuestoID") = row("Codigo")
+    '                        fila("Cantidad") = row("Cantidad")
+    '                        fila("Precio") = row("Precio")
+    '                        fila("Subtotal") = row("Subtotal")
+    '                        fila("Descuento") = row("Descuento")
+    '                        fila("Impuesto") = row("Impuesto")
+    '                        fila("Total") = row("Total")
+    '                        fila("CostoDolares") = row("CostoProm")
+    '                        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+    '                        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+    '                        dtDetalleFact.Rows.Add(fila)
+    '                    Next
+    '                    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
+    '                    SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
 
-                    Else
-                        dtDetalleFact = SfaFacturaRepuestoDetalle.RetrieveDT("1=0")
+    '                Else
+    '                    dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
 
-                        'Isertar detalle de Factura              
+    '                    'Isertar detalle de Factura              
 
-                        For Each row As DataRow In Me.dtDetalleFactura.Rows
-                            fila = dtDetalleFact.NewRow
-                            fila("objFacturaRepuestoID") = Me.SfaFacturaID
-                            fila("objRepuestoID") = row("Codigo")
-                            fila("Cantidad") = row("Cantidad")
-                            fila("Precio") = row("Precio")
-                            fila("Subtotal") = row("Subtotal")
-                            fila("Descuento") = row("Descuento")
-                            fila("Impuesto") = row("Impuesto")
-                            fila("Total") = row("Total")
-                            fila("CostoDolares") = row("CostoProm")
-                            fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                            fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                            dtDetalleFact.Rows.Add(fila)
-                        Next
-                        dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-                        SfaFacturaRepuestoDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
-                    End If
+    '                    For Each row As DataRow In Me.dtDetalleFactura.Rows
+    '                        fila = dtDetalleFact.NewRow
+    '                        fila("objFacturaRepuestoID") = Me.SfaFacturaID
+    '                        fila("objRepuestoID") = row("Codigo")
+    '                        fila("Cantidad") = row("Cantidad")
+    '                        fila("Precio") = row("Precio")
+    '                        fila("Subtotal") = row("Subtotal")
+    '                        fila("Descuento") = row("Descuento")
+    '                        fila("Impuesto") = row("Impuesto")
+    '                        fila("Total") = row("Total")
+    '                        fila("CostoDolares") = row("CostoProm")
+    '                        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+    '                        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+    '                        dtDetalleFact.Rows.Add(fila)
+    '                    Next
+    '                    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
+    '                    SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
+    '                End If
 
-                    t.CommitTran()
-                    MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                    Me.DialogResult = Windows.Forms.DialogResult.OK
-                End If
-            Catch ex As Exception
-                t.RollbackTran()
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            objSfaFactura = Nothing
-            objseg = Nothing
-        End Try
-    End Sub
+    '                t.CommitTran()
+    '                MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+    '                Me.DialogResult = Windows.Forms.DialogResult.OK
+    '            End If
+    '        Catch ex As Exception
+    '            t.RollbackTran()
+    '            clsError.CaptarError(ex)
+    '        End Try
+    '    Finally
+    '        objSfaFactura = Nothing
+    '        objseg = Nothing
+    '    End Try
+    'End Sub
 #End Region
 
 #Region "Configurar GUI"
@@ -350,29 +348,29 @@ Public Class frmSfaFacturaRepuestosEditar
                 Me.cmbVendedor.SelectedValue = SsgCuenta.RetrieveDT("Login = '" & clsProyecto.Conexion.Usuario & "'", "", "objEmpleadoID").DefaultView.Item(0)("objEmpleadoID")
                 Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
                 Me.CargarDetalleFactura("1=0")
-                CargarDetalleFacturaMoto("1=0")
+                'CargarDetalleFacturaMoto("1=0")
                 Me.CargarDescripcion("1=1")
-                Me.CargarDescripcionMoto("1=1")
+                'Me.CargarDescripcionMoto("1=1")
                 Me.numTasa.Value = Me.MontoTasaCambio
                 Me.MaxItemDetalle = ClsCatalogos.GetValorParametro("MaxItemsDetalleFactura")
                 Me.lblCantidadMaxItems.Text = Me.lblCantidadMaxItems.Text + " " + Me.MaxItemDetalle.ToString
 
                 Me.Text = "Agregar Factura"
                 Me.txtNumero.Text = Me.GenerarCodigo
-                Me.txtObervaciones.MaxLength = SfaFacturaRepuesto.GetMaxLength("observaciones")
+                Me.txtObervaciones.MaxLength = SfaFacturas.GetMaxLength("observaciones")
 
             Case 2
                 Me.Text = "Procesar Factura"
                 Me.txtNumero.Text = Me.GenerarCodigo
                 CargarDatosConsulta()
 
-                If Me.chkAgregarMoto.Checked Then
-                    Me.CargarDetalleFacturaMoto("objFacturaRepuestoID = " & Me.SfaFacturaID)
-                    Me.CargarDescripcionMoto("1=1")
-                Else
-                    Me.CargarDetalleFactura("objFacturaRepuestoID = " & Me.SfaFacturaID)
-                    Me.CargarDescripcion("1=1")
-                End If
+                'If Me.chkAgregarMoto.Checked Then
+                '    Me.CargarDetalleFacturaMoto("objSfaFacturaID = " & Me.SfaFacturaID)
+                '    Me.CargarDescripcionMoto("1=1")
+                'Else
+                Me.CargarDetalleFactura("objSfaFacturaID = " & Me.SfaFacturaID)
+                Me.CargarDescripcion("1=1")
+                'End If
                 Me.BloquearControles()
 
                 If (Me.chkSolicitudDescuento.Checked) And (Me.chkAutorizar.Checked) Then
@@ -380,7 +378,7 @@ Public Class frmSfaFacturaRepuestosEditar
                     Me.cmdAceptar.Enabled = False
                 End If
                 Me.grdDetalleFactura.Enabled = False
-                Me.grdDetalleMoto.Enabled = False
+                'Me.grdDetalleMoto.Enabled = False
 
                 Me.MaxItemDetalle = ClsCatalogos.GetValorParametro("MaxItemsDetalleFactura")
                 Me.lblCantidadMaxItems.Text = Me.lblCantidadMaxItems.Text + " " + Me.MaxItemDetalle.ToString
@@ -390,13 +388,13 @@ Public Class frmSfaFacturaRepuestosEditar
                 Me.txtNumero.Text = Me.GenerarCodigo
                 CargarDatosConsulta()
 
-                If Me.chkAgregarMoto.Checked Then
-                    Me.CargarDetalleFacturaMoto("objFacturaRepuestoID = " & Me.SfaFacturaID)
-                    Me.CargarDescripcionMoto("1=1")
-                Else
-                    Me.CargarDetalleFactura("objFacturaRepuestoID = " & Me.SfaFacturaID)
-                    Me.CargarDescripcion("1=1")
-                End If
+                'If Me.chkAgregarMoto.Checked Then
+                '    Me.CargarDetalleFacturaMoto("objSfaFacturaID = " & Me.SfaFacturaID)
+                '    Me.CargarDescripcionMoto("1=1")
+                'Else
+                Me.CargarDetalleFactura("objSfaFacturaID = " & Me.SfaFacturaID)
+                Me.CargarDescripcion("1=1")
+                'End If
                 Me.BloquearControles()
 
                 If (Me.chkSolicitudDescuento.Checked) And (Me.chkAutorizar.Checked) Then
@@ -412,43 +410,43 @@ Public Class frmSfaFacturaRepuestosEditar
                 End If
 
                 Me.grdDetalleFactura.Enabled = False
-                Me.grdDetalleMoto.Enabled = False
+                'Me.grdDetalleMoto.Enabled = False
 
-                Me.numDescuento.Enabled = True
+                Me.NumDescuento.Enabled = True
                 Me.chkAutorizar.Enabled = True
                 Me.grdDetalleFactura.Enabled = False
-                Me.grdDetalleMoto.Enabled = False
+                'Me.grdDetalleMoto.Enabled = False
                 Me.numPrima.Enabled = True
                 Me.numSaldo.Enabled = True
 
                 Me.MaxItemDetalle = ClsCatalogos.GetValorParametro("MaxItemsDetalleFactura")
                 Me.lblCantidadMaxItems.Text = Me.lblCantidadMaxItems.Text + " " + Me.MaxItemDetalle.ToString
-               
+
             Case 4
                 Me.Text = "Consultando Factura"
                 CargarDatosConsulta()
-                If Me.chkAgregarMoto.Checked Then
-                    Me.CargarDetalleFacturaMoto("objFacturaRepuestoID = " & Me.SfaFacturaID)
-                    Me.CargarDescripcionMoto("1=1")
-                Else
-                    Me.CargarDetalleFactura("objFacturaRepuestoID = " & Me.SfaFacturaID)
-                    Me.CargarDescripcion("1=1")
-                End If
+                'If Me.chkAgregarMoto.Checked Then
+                '    Me.CargarDetalleFacturaMoto("objSfaFacturaID = " & Me.SfaFacturaID)
+                '    Me.CargarDescripcionMoto("1=1")
+                'Else
+                Me.CargarDetalleFactura("objSfaFacturaID = " & Me.SfaFacturaID)
+                Me.CargarDescripcion("1=1")
+                'End If
                 Me.BloquearControles()
                 Me.grdDetalleFactura.Enabled = False
-                Me.grdDetalleMoto.Enabled = False
+                'Me.grdDetalleMoto.Enabled = False
 
             Case 5
                 Me.Text = "Anulando Factura"
                 CargarDatosConsulta()
 
-                If Me.chkAgregarMoto.Checked Then
-                    Me.CargarDetalleFacturaMoto("objFacturaRepuestoID = " & Me.SfaFacturaID)
-                    Me.CargarDescripcionMoto("1=1")
-                Else
-                    Me.CargarDetalleFactura("objFacturaRepuestoID = " & Me.SfaFacturaID)
-                    Me.CargarDescripcion("1=1")
-                End If
+                'If Me.chkAgregarMoto.Checked Then
+                '    Me.CargarDetalleFacturaMoto("objSfaFacturaID = " & Me.SfaFacturaID)
+                '    Me.CargarDescripcionMoto("1=1")
+                'Else
+                Me.CargarDetalleFactura("objSfaFacturaID = " & Me.SfaFacturaID)
+                Me.CargarDescripcion("1=1")
+                'End If
 
                 Me.BloquearControles()
                 Me.lblMotivo.Visible = True
@@ -459,7 +457,7 @@ Public Class frmSfaFacturaRepuestosEditar
                 Me.cmbMotivoAnular.Enabled = True
                 Me.cmdAceptar.Enabled = True
                 Me.grdDetalleFactura.Enabled = False
-                Me.grdDetalleMoto.Enabled = False
+                'Me.grdDetalleMoto.Enabled = False
 
             Case 6
                 Me.Text = "Agregar Factura"
@@ -470,7 +468,7 @@ Public Class frmSfaFacturaRepuestosEditar
                 Me.MaxItemDetalle = ClsCatalogos.GetValorParametro("MaxItemsDetalleFactura")
                 Me.lblCantidadMaxItems.Text = Me.lblCantidadMaxItems.Text + " " + Me.MaxItemDetalle.ToString
                 Me.grdDetalleFactura.Enabled = False
-                Me.grdDetalleMoto.Enabled = False
+                'Me.grdDetalleMoto.Enabled = False
                 Me.BloquearControles()
                 Me.cmdAceptar.Enabled = True
                 Me.cmdProcesar.Enabled = True
@@ -481,23 +479,19 @@ Public Class frmSfaFacturaRepuestosEditar
 #Region "Cargar Datos Consulta"
 
     Private Sub CargarDatosConsulta()
-        Dim objSfaFactura As New SfaFacturaRepuesto
+        Dim objSfaFactura As New SfaFacturas
         Try
             Try
                 objSfaFactura.Retrieve(Me.SfaFacturaID)
 
-                Me.cmbBodega.SelectedValue = objSfaFactura.objTiendaID
+                Me.cmbBodega.SelectedValue = objSfaFactura.objStbBodegaID
 
-                If Not String.IsNullOrEmpty(objSfaFactura.objClienteID) Then
-                    Me.cmbCliente.SelectedValue = objSfaFactura.objClienteID
+                If Not String.IsNullOrEmpty(objSfaFactura.objSccClienteID) Then
+                    Me.cmbCliente.SelectedValue = objSfaFactura.objSccClienteID
                 End If
 
-                If (IsDBNull(objSfaFactura.serie)) And (IsDBNull(objSfaFactura.Numero)) Then
-                    Me.txtNumero.Text = objSfaFactura.serie.Trim + objSfaFactura.Numero.ToString.Trim
-                End If
-
-                If Not String.IsNullOrEmpty(objSfaFactura.objClienteID) Then
-                    Me.txtCodigoCliente.Text = objSfaFactura.objClienteID
+                If Not String.IsNullOrEmpty(objSfaFactura.objSccClienteID) Then
+                    Me.txtCodigoCliente.Text = objSfaFactura.objSccClienteID
                 End If
 
                 If Not IsDBNull(objSfaFactura.AtencionA) Then
@@ -512,18 +506,13 @@ Public Class frmSfaFacturaRepuestosEditar
 
                 Me.cmbTPago.SelectedValue = objSfaFactura.objTerminoPagoID
                 Me.numTasa.Value = objSfaFactura.TasaCambio
-                Me.chkSolicitudDescuento.Checked = objSfaFactura.SolicAutorDescuento
-
-                If Not String.IsNullOrEmpty(objSfaFactura.SolicitudDescuento) Then
-                    Me.txtSolicitudDescuento.Text = objSfaFactura.SolicitudDescuento
-                End If
+                
 
                 If Not String.IsNullOrEmpty(objSfaFactura.observaciones) Then
                     Me.txtObervaciones.Text = objSfaFactura.observaciones
                 End If
                 Me.numSubTotal.Value = objSfaFactura.Subtotal
 
-                Me.chkAutorizar.Checked = objSfaFactura.AutorizaDescuento
 
                 Select Case Me.TypeGUI
                     Case 2, 3
@@ -539,9 +528,9 @@ Public Class frmSfaFacturaRepuestosEditar
                         '    Me.numTotalD.Value = Me.numTotalC.Value / Me.numTasa.Value
                         'Else
 
-                        If Not String.IsNullOrEmpty(objSfaFactura.DescuentoAutorizado.ToString) Then
-                            Me.NumDescuento.Value = objSfaFactura.DescuentoAutorizado
-                        End If
+                        'If Not String.IsNullOrEmpty(objSfaFactura.DescuentoAutorizado.ToString) Then
+                        '    Me.NumDescuento.Value = objSfaFactura.DescuentoAutorizado
+                        'End If
 
                         Me.numTotalC.Value = objSfaFactura.TotalCordobas
                         Me.numTotalDescuento.Value = objSfaFactura.Descuento
@@ -555,20 +544,20 @@ Public Class frmSfaFacturaRepuestosEditar
                         Me.numIVA.Value = objSfaFactura.Impuesto
                 End Select
 
-                Me.chkAgregarMoto.Checked = objSfaFactura.FacturaMoto
-                If objSfaFactura.FacturaMoto Then
-                    Me.numPrima.Value = objSfaFactura.Prima
-                    Me.numSaldo.Value = objSfaFactura.Saldo
-                End If
+                'Me.chkAgregarMoto.Checked = objSfaFactura.FacturaMoto
+                'If objSfaFactura.FacturaMoto Then
+                '    Me.numPrima.Value = objSfaFactura.Prima
+                '    Me.numSaldo.Value = objSfaFactura.Saldo
+                'End If
 
-                If (objSfaFactura.SolicAutorDescuento) And (objSfaFactura.AutorizaDescuento) Then
-                    Me.cmdProcesar.Enabled = True
-                    Me.cmdAceptar.Enabled = False
-                End If
+                'If (objSfaFactura.SolicAutorDescuento) And (objSfaFactura.AutorizaDescuento) Then
+                '    Me.cmdProcesar.Enabled = True
+                '    Me.cmdAceptar.Enabled = False
+                'End If
 
-                If Not String.IsNullOrEmpty(objSfaFactura.DescuentoAutorizado.ToString) Then
-                    Me.numDescuento.Value = objSfaFactura.DescuentoAutorizado
-                End If
+                'If Not String.IsNullOrEmpty(objSfaFactura.DescuentoAutorizado.ToString) Then
+                '    Me.numDescuento.Value = objSfaFactura.DescuentoAutorizado
+                'End If
 
             Catch ex As Exception
                 clsError.CaptarError(ex)
@@ -584,7 +573,7 @@ Public Class frmSfaFacturaRepuestosEditar
         Me.txtCodigoCliente.Enabled = False
         Me.txtAtencionA.Enabled = False
         Me.cmbTPago.Enabled = False
-        Me.chkAgregarMoto.Enabled = False
+        'Me.chkAgregarMoto.Enabled = False
         Me.cmdBuscar.Enabled = False
         Me.chkSolicitudDescuento.Enabled = False
         Me.txtObervaciones.Enabled = False
@@ -604,19 +593,19 @@ Public Class frmSfaFacturaRepuestosEditar
 
 #Region "Cargar Descripcion Grid"
 
-    Private Sub CargarDescripcionMoto(ByVal strFiltro As String)
-        Dim riLookComboDescripcion As New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
-        Try
-            dtDescripcionMoto = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivRepuestoID,DescripcionCorta", "vwSivRepuestos", strFiltro & " AND SivRepuestoID IN('1','2') " & " ORDER BY DescripcionCorta"))
-            riLookComboDescripcion = Me.grdDetalleMoto.RepositoryItems(1)
-            riLookComboDescripcion.DataSource = dtDescripcionMoto
+    'Private Sub CargarDescripcionMoto(ByVal strFiltro As String)
+    '    Dim riLookComboDescripcion As New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    '    Try
+    '        dtDescripcionMoto = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Nombre", "vwStbProductos", strFiltro & " ORDER BY Nombre"))
+    '        riLookComboDescripcion = Me.grdDetalleMoto.RepositoryItems(1)
+    '        riLookComboDescripcion.DataSource = dtDescripcionMoto
 
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        Finally
-            dtDescripcionMoto = Nothing
-        End Try
-    End Sub
+    '    Catch ex As Exception
+    '        clsError.CaptarError(ex)
+    '    Finally
+    '        dtDescripcionMoto = Nothing
+    '    End Try
+    'End Sub
 
 #End Region
 
@@ -672,11 +661,11 @@ Public Class frmSfaFacturaRepuestosEditar
                 descuento = row("Descuento")
                 row("Subtotal") = (row("Cantidad")) * (row("Precio"))
 
-                If Me.chkExonerado.Checked = True Then
-                    row("Impuesto") = 0
-                Else
-                    row("Impuesto") = (row("Subtotal") - row("Descuento")) * (ClsCatalogos.GetValorParametro("PORCENTAJEIMPUESTO") / 100)
-                End If
+                'If Me.chkExonerado.Checked = True Then
+                '    row("Impuesto") = 0
+                'Else
+                row("Impuesto") = (row("Subtotal") - row("Descuento")) * (ClsCatalogos.GetValorParametro("PORCENTAJEIMPUESTO") / 100)
+                'End If
                 row("Total") = (row("Subtotal")) - (row("Descuento")) + (row("Impuesto"))
 
             End If
@@ -732,145 +721,145 @@ Public Class frmSfaFacturaRepuestosEditar
         Me.dtDetalleFacturaMoto.DefaultView.Item(intFilaActual)("CostoProm") = objSivRepuestos.CostoProm
         Me.numExistencia.Value = objSivBodegaRepuestos.Cantidad
         'Mover el foco a columna Cantidad
-        Me.grdDetalleMototabla.FocusedColumn = Me.ColCantidadMoto
+        'Me.grdDetalleMototabla.FocusedColumn = Me.ColCantidadMoto
     End Sub
 
 #End Region
 
 #Region "KeyDown"
 
-    Private Sub grdDetalleMototabla_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles grdDetalleMototabla.KeyDown
-        Dim blnEnfoque As Boolean
+    'Private Sub grdDetalleMototabla_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
+    '    Dim blnEnfoque As Boolean
 
-        '---- Delete
-        If e.KeyCode = Keys.Delete Then
-            Dim view As GridView = CType(sender, GridView)
-            If view.RowCount <> 0 Then
-                If Me.EsFilaVaciaMoto Then
-                    Me.ElminarFilaSinPreguntarMoto()
-                Else
-                    Me.EliminarFilaMoto()
-                    Me.CalcularTotalesMoto()
-                End If
-            End If
-        End If
+    '    '---- Delete
+    '    If e.KeyCode = Keys.Delete Then
+    '        Dim view As GridView = CType(sender, GridView)
+    '        If view.RowCount <> 0 Then
+    '            If Me.EsFilaVaciaMoto Then
+    '                Me.ElminarFilaSinPreguntarMoto()
+    '            Else
+    '                Me.EliminarFilaMoto()
+    '                Me.CalcularTotalesMoto()
+    '            End If
+    '        End If
+    '    End If
 
-        '---- Enter
-        If e.KeyCode = Keys.Enter Then
-            'Si no hay filas
-            If Me.grdDetalleMototabla.RowCount = 0 Then
-                Me.InsertarNuevaFilaGridMoto()
-                Exit Sub
-            End If
+    '    '---- Enter
+    '    If e.KeyCode = Keys.Enter Then
+    '        'Si no hay filas
+    '        If Me.grdDetalleMototabla.RowCount = 0 Then
+    '            Me.InsertarNuevaFilaGridMoto()
+    '            Exit Sub
+    '        End If
 
-            'Cantidad
-            If Me.grdDetalleMototabla.FocusedColumn.Equals(Me.ColCantidadMoto) OrElse Me.grdDetalleMototabla.FocusedColumn.Equals(Me.colPorcentajeMoto) Then '3=Servicio de instalación
+    '        'Cantidad
+    '        If Me.grdDetalleMototabla.FocusedColumn.Equals(Me.ColCantidadMoto) OrElse Me.grdDetalleMototabla.FocusedColumn.Equals(Me.colPorcentajeMoto) Then '3=Servicio de instalación
 
-                blnEnfoque = Me.grdDetalleMototabla.FocusedColumn.Equals(Me.colCantidad)
-                If blnEnfoque Then
-                    If Me.grdDetalleMototabla.FocusedColumn.View.FocusedValue = 0 Then
-                        Exit Sub
-                    End If
-                End If
-            End If
-        End If
+    '            blnEnfoque = Me.grdDetalleMototabla.FocusedColumn.Equals(Me.colCantidad)
+    '            If blnEnfoque Then
+    '                If Me.grdDetalleMototabla.FocusedColumn.View.FocusedValue = 0 Then
+    '                    Exit Sub
+    '                End If
+    '            End If
+    '        End If
+    '    End If
 
-        '---- Direccional hacia abajo
-        If (e.KeyCode = Keys.Down) And (boolExisteErroresGrid = False) Then
-            If Me.grdDetalleMototabla.RowCount <> 0 Then
-                Dim valor As Object = Me.grdDetalleMototabla.Columns("Cantidad").View.GetRowCellValue(Me.grdDetalleMototabla.FocusedRowHandle, "Cantidad")
-                If Me.EstaEnUltimaFilaMoto And Me.NumeroValido(valor) And (Not Me.EsFilaVaciaMoto) Then
-                    Me.InsertarNuevaFilaGridMoto()
-                End If
-            Else
-                Me.InsertarNuevaFilaGridMoto()
-            End If
-        End If
+    '    '---- Direccional hacia abajo
+    '    If (e.KeyCode = Keys.Down) And (boolExisteErroresGrid = False) Then
+    '        If Me.grdDetalleMototabla.RowCount <> 0 Then
+    '            Dim valor As Object = Me.grdDetalleMototabla.Columns("Cantidad").View.GetRowCellValue(Me.grdDetalleMototabla.FocusedRowHandle, "Cantidad")
+    '            If Me.EstaEnUltimaFilaMoto And Me.NumeroValido(valor) And (Not Me.EsFilaVaciaMoto) Then
+    '                Me.InsertarNuevaFilaGridMoto()
+    '            End If
+    '        Else
+    '            Me.InsertarNuevaFilaGridMoto()
+    '        End If
+    '    End If
 
-        '----- Direccional hacia arriba
-        If e.KeyCode = Keys.Up Then
-            If Me.EsFilaVaciaMoto And Me.grdDetalleMototabla.RowCount <> 1 Then
-                e.SuppressKeyPress = True
-                Me.ElminarFilaSinPreguntarMoto()
-            End If
-        End If
+    '    '----- Direccional hacia arriba
+    '    If e.KeyCode = Keys.Up Then
+    '        If Me.EsFilaVaciaMoto And Me.grdDetalleMototabla.RowCount <> 1 Then
+    '            e.SuppressKeyPress = True
+    '            Me.ElminarFilaSinPreguntarMoto()
+    '        End If
+    '    End If
 
-        '--- Direccional hacia derecha
-        Try
-            If e.KeyCode = Keys.Right AndAlso Me.grdDetalleMototabla.FocusedColumn.Equals(Me.ColCantidadMoto) And (boolExisteErroresGrid = False) Then
-                Dim Cantidad As Object = Me.grdDetalleMototabla.Columns("Cantidad").View.GetRowCellValue(Me.grdDetalleMototabla.FocusedRowHandle, "Cantidad")
-                If Cantidad <> Nothing Then
-                    If Me.EstaEnUltimaFilaMoto AndAlso Me.NumeroValido(Cantidad) AndAlso (Not Me.EsFilaVacia) AndAlso (IdRepuestoSeleccionado() <> 3) Then
-                        e.SuppressKeyPress = True
-                        Me.InsertarNuevaFilaGridMoto()
-                    End If
-                End If
-            End If
-        Catch ex As Exception
-        End Try
+    '    '--- Direccional hacia derecha
+    '    Try
+    '        If e.KeyCode = Keys.Right AndAlso Me.grdDetalleMototabla.FocusedColumn.Equals(Me.ColCantidadMoto) And (boolExisteErroresGrid = False) Then
+    '            Dim Cantidad As Object = Me.grdDetalleMototabla.Columns("Cantidad").View.GetRowCellValue(Me.grdDetalleMototabla.FocusedRowHandle, "Cantidad")
+    '            If Cantidad <> Nothing Then
+    '                If Me.EstaEnUltimaFilaMoto AndAlso Me.NumeroValido(Cantidad) AndAlso (Not Me.EsFilaVacia) AndAlso (IdRepuestoSeleccionado() <> 3) Then
+    '                    e.SuppressKeyPress = True
+    '                    Me.InsertarNuevaFilaGridMoto()
+    '                End If
+    '            End If
+    '        End If
+    '    Catch ex As Exception
+    '    End Try
 
-        'Si presiona control + B abre buscar repuesto.
-        If e.KeyCode = Keys.B And e.Modifiers = Keys.Control Then
-            Me.CargarBuscarRepuesto()
-        End If
+    '    'Si presiona control + B abre buscar repuesto.
+    '    If e.KeyCode = Keys.B And e.Modifiers = Keys.Control Then
+    '        Me.CargarBuscarRepuesto()
+    '    End If
 
-        'Si se preciona TAB estando en la última Celda editable
-        If e.KeyCode = Keys.Tab AndAlso Me.grdDetalleMototabla.FocusedColumn.Equals(Me.colPorcentajeMoto) Then
-            Me.txtObervaciones.Focus()
-        End If
-    End Sub
+    '    'Si se preciona TAB estando en la última Celda editable
+    '    If e.KeyCode = Keys.Tab AndAlso Me.grdDetalleMototabla.FocusedColumn.Equals(Me.colPorcentajeMoto) Then
+    '        Me.txtObervaciones.Focus()
+    '    End If
+    'End Sub
 
 
 #End Region
 
 #Region "Eliminar Fila"
-    Private Sub EliminarFilaMoto()
-        If MsgBox("¿Seguro que desea eliminar la fila seleccionada?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Sistema") = MsgBoxResult.Yes Then
-            Try
-                Me.dtDetalleFacturaMoto.Rows.RemoveAt(Me.grdDetalleMototabla.FocusedRowHandle) 'Borra la fila del datatable directo
-            Catch ex As Exception
-            End Try
-        End If
-    End Sub
+    'Private Sub EliminarFilaMoto()
+    '    If MsgBox("¿Seguro que desea eliminar la fila seleccionada?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Sistema") = MsgBoxResult.Yes Then
+    '        Try
+    '            Me.dtDetalleFacturaMoto.Rows.RemoveAt(Me.grdDetalleMototabla.FocusedRowHandle) 'Borra la fila del datatable directo
+    '        Catch ex As Exception
+    '        End Try
+    '    End If
+    'End Sub
 #End Region
 
 #Region "Eliminar sin Preguntar"
-    Private Sub ElminarFilaSinPreguntarMoto()
-        Try
-            If Me.dtDetalleFacturaMoto.Rows.Count <> 0 Then
-                Me.dtDetalleFacturaMoto.Rows.RemoveAt(Me.grdDetalleMototabla.FocusedRowHandle) 'Borra la fila del datatable directo
-            End If
-        Catch ex As Exception
-        End Try
-    End Sub
+    'Private Sub ElminarFilaSinPreguntarMoto()
+    '    Try
+    '        If Me.dtDetalleFacturaMoto.Rows.Count <> 0 Then
+    '            Me.dtDetalleFacturaMoto.Rows.RemoveAt(Me.grdDetalleMototabla.FocusedRowHandle) 'Borra la fila del datatable directo
+    '        End If
+    '    Catch ex As Exception
+    '    End Try
+    'End Sub
 #End Region
 
 #Region "Insertar Nueva Fila"
-    Private Sub InsertarNuevaFilaGridMoto()
-        Try
-            If Me.grdDetalleMototabla.RowCount = 0 Then
-                Me.dtDetalleFacturaMoto.Rows.Add()
-                Me.grdDetalleMototabla.MoveLast()
-                Me.grdDetalleMototabla.FocusedColumn = Me.colBarCode
-            End If
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-    End Sub
+    'Private Sub InsertarNuevaFilaGridMoto()
+    '    Try
+    '        If Me.grdDetalleMototabla.RowCount = 0 Then
+    '            Me.dtDetalleFacturaMoto.Rows.Add()
+    '            Me.grdDetalleMototabla.MoveLast()
+    '            'Me.grdDetalleMototabla.FocusedColumn = Me.colBarCode
+    '        End If
+    '    Catch ex As Exception
+    '        clsError.CaptarError(ex)
+    '    End Try
+    'End Sub
 #End Region
 
 #Region "Es fila vacía"
-    Private Function EsFilaVaciaMoto() As Boolean
-        Dim blnRetorno As Boolean = False
-        Dim Valor As New Object
-        Try
-            Valor = Me.grdDetalleMototabla.Columns("Codigo").View.GetRowCellValue(Me.grdDetalleMototabla.FocusedRowHandle, "Codigo")
-            blnRetorno = Not Me.TieneValor(Valor)
-        Catch ex As Exception
-            blnRetorno = False
-        End Try
-        Return blnRetorno
-    End Function
+    'Private Function EsFilaVaciaMoto() As Boolean
+    '    Dim blnRetorno As Boolean = False
+    '    Dim Valor As New Object
+    '    Try
+    '        Valor = Me.grdDetalleMototabla.Columns("Codigo").View.GetRowCellValue(Me.grdDetalleMototabla.FocusedRowHandle, "Codigo")
+    '        blnRetorno = Not Me.TieneValor(Valor)
+    '    Catch ex As Exception
+    '        blnRetorno = False
+    '    End Try
+    '    Return blnRetorno
+    'End Function
 #End Region
 
 #Region "Existe en detalle"
@@ -888,9 +877,9 @@ Public Class frmSfaFacturaRepuestosEditar
 #End Region
 
 #Region "Está en última fila"
-    Private Function EstaEnUltimaFilaMoto() As Boolean
-        Return Me.grdDetalleMototabla.FocusedRowHandle = Me.grdDetalleMototabla.RowCount - 1
-    End Function
+    'Private Function EstaEnUltimaFilaMoto() As Boolean
+    '    Return Me.grdDetalleMototabla.FocusedRowHandle = Me.grdDetalleMototabla.RowCount - 1
+    'End Function
 #End Region
 
 #Region "Buscar Duplicados en Grid"
@@ -917,35 +906,35 @@ Public Class frmSfaFacturaRepuestosEditar
 #End Region
 
 #Region "Habilitar Precio y Descuento"
-    Private Sub HabilitarPrecioDescuentoMoto(ByVal Habilitar As Boolean)
-        If Habilitar Then
-            Me.grdDetalleMototabla.Columns("DescuentoPor").OptionsColumn.AllowFocus = True
-            Me.grdDetalleMototabla.Columns("DescuentoPor").AppearanceCell.BackColor = Color.White
-            Me.grdDetalleMototabla.Columns("DescuentoPor").OptionsColumn.ReadOnly = False
+    'Private Sub HabilitarPrecioDescuentoMoto(ByVal Habilitar As Boolean)
+    '    If Habilitar Then
+    '        Me.grdDetalleMototabla.Columns("DescuentoPor").OptionsColumn.AllowFocus = True
+    '        Me.grdDetalleMototabla.Columns("DescuentoPor").AppearanceCell.BackColor = Color.White
+    '        Me.grdDetalleMototabla.Columns("DescuentoPor").OptionsColumn.ReadOnly = False
 
-            Me.grdDetalleMototabla.Columns("Precio").OptionsColumn.AllowFocus = True
-            Me.grdDetalleMototabla.Columns("Precio").AppearanceCell.BackColor = Color.White
-            Me.grdDetalleMototabla.Columns("Precio").OptionsColumn.ReadOnly = False
-        Else
-            Me.grdDetalleMototabla.Columns("DescuentoPor").OptionsColumn.AllowFocus = True
-            Me.grdDetalleMototabla.Columns("DescuentoPor").AppearanceCell.BackColor = Color.LemonChiffon
-            Me.grdDetalleMototabla.Columns("DescuentoPor").OptionsColumn.ReadOnly = True
+    '        Me.grdDetalleMototabla.Columns("Precio").OptionsColumn.AllowFocus = True
+    '        Me.grdDetalleMototabla.Columns("Precio").AppearanceCell.BackColor = Color.White
+    '        Me.grdDetalleMototabla.Columns("Precio").OptionsColumn.ReadOnly = False
+    '    Else
+    '        Me.grdDetalleMototabla.Columns("DescuentoPor").OptionsColumn.AllowFocus = True
+    '        Me.grdDetalleMototabla.Columns("DescuentoPor").AppearanceCell.BackColor = Color.LemonChiffon
+    '        Me.grdDetalleMototabla.Columns("DescuentoPor").OptionsColumn.ReadOnly = True
 
-            Me.grdDetalleMototabla.Columns("Precio").OptionsColumn.AllowFocus = False
-            Me.grdDetalleMototabla.Columns("Precio").AppearanceCell.BackColor = Color.LemonChiffon
-            Me.grdDetalleMototabla.Columns("Precio").OptionsColumn.ReadOnly = True
-        End If
-    End Sub
+    '        Me.grdDetalleMototabla.Columns("Precio").OptionsColumn.AllowFocus = False
+    '        Me.grdDetalleMototabla.Columns("Precio").AppearanceCell.BackColor = Color.LemonChiffon
+    '        Me.grdDetalleMototabla.Columns("Precio").OptionsColumn.ReadOnly = True
+    '    End If
+    'End Sub
 #End Region
 
 #Region "Id Respuesto Seleccionado"
-    Private Function IdRepuestoSeleccionadoMoto() As Integer
-        Dim CodigoRepuesto As Object = Me.grdDetalleMototabla.Columns("Codigo").View.GetRowCellValue(Me.grdDetalleMototabla.FocusedRowHandle, "Codigo")
-        If Not Me.NumeroValido(CodigoRepuesto) Then
-            CodigoRepuesto = 0
-        End If
-        Return CodigoRepuesto
-    End Function
+    'Private Function IdRepuestoSeleccionadoMoto() As Integer
+    '    Dim CodigoRepuesto As Object = Me.grdDetalleMototabla.Columns("Codigo").View.GetRowCellValue(Me.grdDetalleMototabla.FocusedRowHandle, "Codigo")
+    '    If Not Me.NumeroValido(CodigoRepuesto) Then
+    '        CodigoRepuesto = 0
+    '    End If
+    '    Return CodigoRepuesto
+    'End Function
 #End Region
 
 
@@ -959,7 +948,7 @@ Public Class frmSfaFacturaRepuestosEditar
             If Me.grdDetalleFacturaTabla.RowCount < Me.MaxItemDetalle Then
                 Me.dtDetalleFactura.Rows.Add()
                 Me.grdDetalleFacturaTabla.MoveLast()
-                Me.grdDetalleFacturaTabla.FocusedColumn = Me.colBarCode
+                Me.grdDetalleFacturaTabla.FocusedColumn = Me.colCodigoRepuesto
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -1190,11 +1179,11 @@ Public Class frmSfaFacturaRepuestosEditar
                     descuento = row("Descuento")
                     row("Subtotal") = (row("Cantidad")) * (Decimal.Round(row("Precio"), 2))
 
-                    If Me.chkExonerado.Checked = True Then
-                        row("Impuesto") = 0
-                    Else
-                        row("Impuesto") = (Decimal.Round(row("Subtotal"), 2) - Decimal.Round(row("Descuento"), 2)) * (ClsCatalogos.GetValorParametro("PORCENTAJEIMPUESTO") / 100)
-                    End If
+                    'If Me.chkExonerado.Checked = True Then
+                    '    row("Impuesto") = 0
+                    'Else
+                    row("Impuesto") = (Decimal.Round(row("Subtotal"), 2) - Decimal.Round(row("Descuento"), 2)) * (ClsCatalogos.GetValorParametro("PORCENTAJEIMPUESTO") / 100)
+                    'End If
                     row("Total") = (Decimal.Round(row("Subtotal"), 2)) - (Decimal.Round(row("Descuento"), 2)) + (row("Impuesto"))
 
                 End If
@@ -1279,7 +1268,7 @@ Public Class frmSfaFacturaRepuestosEditar
                 End If
 
                 Me.txtNumero.Text = Me.GenerarCodigo
-                Me.txtObervaciones.MaxLength = SfaFacturaRepuesto.GetMaxLength("observaciones")
+                Me.txtObervaciones.MaxLength = SfaFacturas.GetMaxLength("observaciones")
 
                 Me.cmbTPago.SelectedValue = objSfaCotizacion.objTerminoPagoID
                 Me.numTasa.Value = objSfaCotizacion.TasaCambio
@@ -1290,7 +1279,7 @@ Public Class frmSfaFacturaRepuestosEditar
                 Me.NumDescuento.Value = objSfaCotizacion.Descuento
                 Me.numIVA.Value = objSfaCotizacion.Impuesto
 
-                Me.chkAgregarMoto.Enabled = False
+                'Me.chkAgregarMoto.Enabled = False
 
             Catch ex As Exception
                 clsError.CaptarError(ex)
@@ -1304,14 +1293,14 @@ Public Class frmSfaFacturaRepuestosEditar
         dtDetalleFactura = New DataTable
         dtDetalleFacturaMoto = New DataTable
         Try
-            If Me.chkAgregarMoto.Checked Then
-                dtDetalleFacturaMoto = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CodigoBarras,objCotizacionID, Codigo, DescripcionCorta, Cantidad, CostoProm,Precio,Descuento, Subtotal, Impuesto, Total", "vwSfaDetalleRepuestosCotizacion", strFiltro))
-                Me.grdDetalleMoto.DataSource = dtDetalleFacturaMoto
-            Else
-                dtDetalleFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CodigoBarras,objCotizacionID, Codigo, DescripcionCorta, Cantidad, CostoProm,Precio,Descuento, Subtotal, Impuesto, Total", "vwSfaDetalleRepuestosCotizacion", strFiltro))
-                Me.grdDetalleFactura.DataSource = dtDetalleFactura
-            End If
-           
+            'If Me.chkAgregarMoto.Checked Then
+            '    dtDetalleFacturaMoto = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CodigoBarras,objCotizacionID, Codigo, DescripcionCorta, Cantidad, CostoProm,Precio,Descuento, Subtotal, Impuesto, Total", "vwSfaDetalleRepuestosCotizacion", strFiltro))
+            '    Me.grdDetalleMoto.DataSource = dtDetalleFacturaMoto
+            'Else
+            dtDetalleFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CodigoBarras,objCotizacionID, Codigo, DescripcionCorta, Cantidad, CostoProm,Precio,Descuento, Subtotal, Impuesto, Total", "vwSfaDetalleRepuestosCotizacion", strFiltro))
+            Me.grdDetalleFactura.DataSource = dtDetalleFactura
+            'End If
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -1327,7 +1316,7 @@ Public Class frmSfaFacturaRepuestosEditar
         Try
             Try
                 If Not String.IsNullOrEmpty(Me.cmbCliente.Text) Then
-                    dtDatosCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID, NombreCompleto, Direccion, Email, TelefonoParticular,TelefonoTrabajo, Celular, Exonerado", "vwSfaClienteFactura", "StbPersonaID = '" & Me.cmbCliente.SelectedValue & "'"))
+                    dtDatosCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID, NombreCompleto, Direccion, Email, TelefonoParticular,TelefonoTrabajo, Celular", "vwSfaClienteFactura", "ClienteID = '" & Me.cmbCliente.SelectedValue & "'"))
 
                     If IsDBNull(dtDatosCliente.DefaultView.Item(0)("TelefonoParticular")) Then
                         If Not IsDBNull(dtDatosCliente.DefaultView.Item(0)("TelefonoTrabajo")) Then
@@ -1352,7 +1341,7 @@ Public Class frmSfaFacturaRepuestosEditar
                     Else
                         Me.txtEmail.Text = dtDatosCliente.DefaultView.Item(0)("Email")
                     End If
-                    Me.chkExonerado.Checked = dtDatosCliente.DefaultView.Item(0)("Exonerado")
+                    'Me.chkExonerado.Checked = dtDatosCliente.DefaultView.Item(0)("Exonerado")
 
                     If Me.cmbCliente.Text.Trim.Length <> 0 Then
                         Me.txtCodigoCliente.Text = Me.cmbCliente.SelectedValue
@@ -1361,7 +1350,7 @@ Public Class frmSfaFacturaRepuestosEditar
                     Me.txtDireccion.Text = ""
                     Me.txtEmail.Text = ""
                     Me.txtTelefono.Text = ""
-                    Me.chkExonerado.Checked = False
+                    'Me.chkExonerado.Checked = False
                 End If
 
             Catch ex As Exception
@@ -1380,9 +1369,9 @@ Public Class frmSfaFacturaRepuestosEditar
         Try
             Try
                 If Not String.IsNullOrEmpty(Me.cmbCliente.Text) Then
-                    dtExpediente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objClienteID, SccCuentaID, objProductoID, ModeloMarca, Saldo", "vwSfaExpedienteCliente", "objClienteID ='" & Me.cmbCliente.SelectedValue) & "'")
+                    dtExpediente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objClienteID, SccCuentaID, objSivProductoID, ModeloMarca, Saldo", "vwSfaExpedienteCliente", "objClienteID ='" & Me.cmbCliente.SelectedValue) & "'")
                 Else
-                    dtExpediente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objClienteID, SccCuentaID, objProductoID, ModeloMarca, Saldo", "vwSfaExpedienteCliente", "1 =0"))
+                    dtExpediente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objClienteID, SccCuentaID, objSivProductoID, ModeloMarca, Saldo", "vwSfaExpedienteCliente", "1=0"))
                 End If
 
                 Me.grdExpedienteCliente.SetDataBinding(Me.dtExpediente, "", True)
@@ -1411,24 +1400,24 @@ Public Class frmSfaFacturaRepuestosEditar
 
         Try
             Try
-                If Not Me.chkAgregarMoto.Checked Then
-                    FilaActual = Me.grdDetalleFacturaTabla.FocusedRowHandle
-                    If Not IsDBNull(Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Codigo")) Then
-                        objConsulta = New frmSfaExistencia
-                        objConsulta.strCodigo = Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Codigo")
-                        objConsulta.bolAgregarMoto = False
-                        objConsulta.ShowDialog(Me)
-                    End If
-                Else
-                    FilaActual = Me.grdDetalleMototabla.FocusedRowHandle
-                    If Not IsDBNull(Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Codigo")) Then
-                        objConsulta = New frmSfaExistencia
-                        objConsulta.strCodigo = Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Codigo")
-                        objConsulta.bolAgregarMoto = True
-                        objConsulta.ShowDialog(Me)
-                    End If
+                'If Not Me.chkAgregarMoto.Checked Then
+                FilaActual = Me.grdDetalleFacturaTabla.FocusedRowHandle
+                If Not IsDBNull(Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Codigo")) Then
+                    objConsulta = New frmSfaExistencia
+                    objConsulta.strCodigo = Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Codigo")
+                    objConsulta.bolAgregarMoto = False
+                    objConsulta.ShowDialog(Me)
                 End If
-                
+                'Else
+                'FilaActual = Me.grdDetalleMototabla.FocusedRowHandle
+                'If Not IsDBNull(Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Codigo")) Then
+                '    objConsulta = New frmSfaExistencia
+                '    objConsulta.strCodigo = Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Codigo")
+                '    objConsulta.bolAgregarMoto = True
+                '    objConsulta.ShowDialog(Me)
+                'End If
+                'End If
+
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
@@ -1448,11 +1437,11 @@ Public Class frmSfaFacturaRepuestosEditar
                     objDescuento.intCodigo = Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Codigo")
                     If objDescuento.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
-                        If objDescuento.Descuento <> 0 Then
-                            If Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colPorcentajeDescuento) Then
-                                Me.grdDetalleFacturaTabla.EditingValue = objDescuento.Descuento * 100
-                            End If
-                        End If
+                        'If objDescuento.Descuento <> 0 Then
+                        '    If Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colPorcentajeDescuento) Then
+                        '        Me.grdDetalleFacturaTabla.EditingValue = objDescuento.Descuento * 100
+                        '    End If
+                        'End If
                         'Me.grdDetalleFactura.Columns("DescuentoPor").Value = objDescuento.Descuento
                         'Me.grdDetalleFactura.Columns("Descuento").Value = objDescuento.Descuento * Me.grdDetalleFactura.Columns("SubTotal").Value
                         'Me.grdDetalleFactura.Columns("Impuesto").Value = Me.grdDetalleFactura.Columns("SubTotal").Value * 0.15
@@ -1473,50 +1462,50 @@ Public Class frmSfaFacturaRepuestosEditar
         Try
             Try
                 objBuscarRepuestos = New frmBusquedaRepuestos
-                If Me.chkAgregarMoto.Checked Then
-                    objBuscarRepuestos.strFiltro = " SivRepuestoID IN (1,2)"
+                'If Me.chkAgregarMoto.Checked Then
+                '    objBuscarRepuestos.strFiltro = " SivRepuestoID IN (1,2)"
 
-                Else
-                    objBuscarRepuestos.strFiltro = " SivRepuestoID NOT IN (1,2)"
-                End If
+                'Else
+                'objBuscarRepuestos.strFiltro = " SivRepuestoID NOT IN (1,2)"
+                'End If
 
                 If objBuscarRepuestos.ShowDialog = Windows.Forms.DialogResult.OK Then
                     Me.SivRepuestosID = objBuscarRepuestos.objRepuestoIdSeleccionado
 
-                    If Me.chkAgregarMoto.Checked Then
-                        'Verificar si ya se encuentra el repuesto en Detalle
-                        If ExisteEnDetalleMoto(SivRepuestosID, "Codigo") Then
-                            MsgBox("El repuesto seleccionado ya se encuentra en detalle de Factura.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
-                            Me.grdDetalleMoto.Focus()
-                            Exit Sub
-                        End If
+                    'If Me.chkAgregarMoto.Checked Then
+                    '    'Verificar si ya se encuentra el repuesto en Detalle
+                    '    If ExisteEnDetalleMoto(SivRepuestosID, "Codigo") Then
+                    '        MsgBox("El repuesto seleccionado ya se encuentra en detalle de Factura.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+                    '        Me.grdDetalleMoto.Focus()
+                    '        Exit Sub
+                    '    End If
 
-                        'Cargar los datos del repuesto en el grid de detalle de cotización
-                        Me.grdDetalleMoto.Focus()
-                        If Not Me.EsFilaVaciaMoto Then
-                            Me.InsertarNuevaFilaGridMoto()
-                        End If
-                        Me.RellenarDatosGridMoto(SivRepuestosID, Me.grdDetalleMototabla.FocusedRowHandle)
-                        Me.boolModificado = True
-                        Me.grdDetalleMototabla.RefreshData()
+                    '    'Cargar los datos del repuesto en el grid de detalle de cotización
+                    '    Me.grdDetalleMoto.Focus()
+                    '    If Not Me.EsFilaVaciaMoto Then
+                    '        Me.InsertarNuevaFilaGridMoto()
+                    '    End If
+                    '    Me.RellenarDatosGridMoto(SivRepuestosID, Me.grdDetalleMototabla.FocusedRowHandle)
+                    '    Me.boolModificado = True
+                    '    Me.grdDetalleMototabla.RefreshData()
 
-                    Else
-                        'Verificar si ya se encuentra el repuesto en Detalle
-                        If ExisteEnDetalle(SivRepuestosID, "Codigo") Then
-                            MsgBox("El repuesto seleccionado ya se encuentra en detalle de Factura.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
-                            Me.grdDetalleFactura.Focus()
-                            Exit Sub
-                        End If
-
-                        'Cargar los datos del repuesto en el grid de detalle de cotización
+                    'Else
+                    'Verificar si ya se encuentra el repuesto en Detalle
+                    If ExisteEnDetalle(SivRepuestosID, "Codigo") Then
+                        MsgBox("El producto seleccionado ya se encuentra en detalle de Factura.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
                         Me.grdDetalleFactura.Focus()
-                        If Not Me.EsFilaVacia Then
-                            Me.InsertarNuevaFilaGrid()
-                        End If
-                        Me.RellenarDatosGrid(SivRepuestosID, Me.grdDetalleFacturaTabla.FocusedRowHandle)
-                        Me.boolModificado = True
-                        Me.grdDetalleFacturaTabla.RefreshData()
+                        Exit Sub
                     End If
+
+                    'Cargar los datos del repuesto en el grid de detalle de cotización
+                    Me.grdDetalleFactura.Focus()
+                    If Not Me.EsFilaVacia Then
+                        Me.InsertarNuevaFilaGrid()
+                    End If
+                    Me.RellenarDatosGrid(SivRepuestosID, Me.grdDetalleFacturaTabla.FocusedRowHandle)
+                    Me.boolModificado = True
+                    Me.grdDetalleFacturaTabla.RefreshData()
+                    'End If
 
 
                 End If
@@ -1736,56 +1725,56 @@ Public Class frmSfaFacturaRepuestosEditar
 
     Private Function GenerarCodigo() As String
         Dim strNumero As String = ""
-        Dim strSerie As String = ""
+        'Dim strSerie As String = ""
         Dim dtMaximoNumero As New DataTable
-        Dim dtTiendaMaximo As New DataTable
+        'Dim dtTiendaMaximo As New DataTable
         Try
             Try
-                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero)+ 1 as NumeroMaximo", "SfaFacturaRepuesto", "objTiendaID = " & Me.cmbBodega.SelectedValue.ToString))
-                If dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo").ToString.Trim.Length = 0 Then
-                    dtTiendaMaximo = StbTienda.RetrieveDT("StbTiendaID =" & Me.cmbBodega.SelectedValue, "", "ProximaFactura,Seriefactura")
-                    strSerie = dtTiendaMaximo.DefaultView.Item(0)("Seriefactura")
-                    strNumero = RellenarConCeros(dtTiendaMaximo.DefaultView.Item(0)("ProximaFactura"), 4)
-                Else
-                    strSerie = StbTienda.RetrieveDT("StbTiendaID = " & Me.cmbBodega.SelectedValue, "", "Seriefactura").DefaultView.Item(0)("Seriefactura")
-                    strNumero = RellenarConCeros(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"), 4)
-                End If
+                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero)+ 1 as NumeroMaximo", "SfaFacturas", "objStbBodegaID = " & Me.cmbBodega.SelectedValue.ToString))
+                'If dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo").ToString.Trim.Length = 0 Then
+                '    dtTiendaMaximo = StbTienda.RetrieveDT("StbTiendaID =" & Me.cmbBodega.SelectedValue, "", "ProximaFactura,Seriefactura")
+                '    strSerie = dtTiendaMaximo.DefaultView.Item(0)("Seriefactura")
+                '    strNumero = RellenarConCeros(dtTiendaMaximo.DefaultView.Item(0)("ProximaFactura"), 4)
+                'Else
+                'strSerie = StbTienda.RetrieveDT("StbTiendaID = " & Me.cmbBodega.SelectedValue, "", "Seriefactura").DefaultView.Item(0)("Seriefactura")
+                strNumero = RellenarConCeros(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"), 4)
+                'End If
 
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
         Finally
             dtMaximoNumero = Nothing
-            dtTiendaMaximo = Nothing
-        End Try
-
-        Return strSerie.Trim + strNumero.Trim
-
-    End Function
-    Private Function GenerarNumero() As String
-        Dim strNumero As String = ""
-        Dim dtMaximoNumero As New DataTable
-        Dim dtTiendaMaximo As New DataTable
-        Try
-            Try
-                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero) + 1 as NumeroMaximo", "SfaFacturaRepuesto", "objTiendaID = " & Me.cmbBodega.SelectedValue.ToString))
-                If dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo").ToString.Trim.Length = 0 Then
-                    dtTiendaMaximo = StbTienda.RetrieveDT("StbTiendaID =" & Me.cmbBodega.SelectedValue, "", "ProximaFactura,Seriefactura")
-                    strNumero = RellenarConCeros(dtTiendaMaximo.DefaultView.Item(0)("ProximaFactura"), 4)
-                Else
-                    strNumero = RellenarConCeros(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"), 4)
-                End If
-
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            dtMaximoNumero = Nothing
-            dtTiendaMaximo = Nothing
+            'dtTiendaMaximo = Nothing
         End Try
 
         Return strNumero.Trim
+
     End Function
+    'Private Function GenerarNumero() As String
+    '    Dim strNumero As String = ""
+    '    Dim dtMaximoNumero As New DataTable
+    '    Dim dtTiendaMaximo As New DataTable
+    '    Try
+    '        Try
+    '            dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero) + 1 as NumeroMaximo", "SfaFacturas", "objStbBodegaID = " & Me.cmbBodega.SelectedValue.ToString))
+    '            If dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo").ToString.Trim.Length = 0 Then
+    '                dtTiendaMaximo = StbBodegas.RetrieveDT("StbBodegaID =" & Me.cmbBodega.SelectedValue, "", "ProximaFactura,Seriefactura")
+    '                strNumero = RellenarConCeros(dtTiendaMaximo.DefaultView.Item(0)("ProximaFactura"), 4)
+    '            Else
+    '                strNumero = RellenarConCeros(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"), 4)
+    '            End If
+
+    '        Catch ex As Exception
+    '            clsError.CaptarError(ex)
+    '        End Try
+    '    Finally
+    '        dtMaximoNumero = Nothing
+    '        dtTiendaMaximo = Nothing
+    '    End Try
+
+    '    Return strNumero.Trim
+    'End Function
 
 
     Private Function ValidarEntradaDatos() As Boolean
@@ -1807,33 +1796,33 @@ Public Class frmSfaFacturaRepuestosEditar
             Exit Function
         End If
 
-        If Not Me.chkAgregarMoto.Checked Then
-            'If Me.grdDetalleFactura.RowCount = 0 Then
-            '    MsgBox("Debe especificar al menos un detalle en la factura.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-            '    Return False
-            '    Exit Function
-            'End If
-        Else
-            'If Me.grdDetalleFacturaMoto.RowCount = 0 Then
-            '    MsgBox("Debe especificar al menos un detalle en la factura.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-            '    Return False
-            '    Exit Function
-            'End If
+        'If Not Me.chkAgregarMoto.Checked Then
+        '    'If Me.grdDetalleFactura.RowCount = 0 Then
+        '    '    MsgBox("Debe especificar al menos un detalle en la factura.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+        '    '    Return False
+        '    '    Exit Function
+        '    'End If
+        'Else
+        '    'If Me.grdDetalleFacturaMoto.RowCount = 0 Then
+        '    '    MsgBox("Debe especificar al menos un detalle en la factura.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+        '    '    Return False
+        '    '    Exit Function
+        '    'End If
+        'End If
+
+        'If Not Me.chkAgregarMoto.Checked Then
+        If Me.ExistenCantidadesEnCero Then
+            Me.ErrorFactura.SetError(Me.grpDetalle, "Hay al menos un valor de cantidad en CERO.")
+            Exit Function
         End If
 
-        If Not Me.chkAgregarMoto.Checked Then
-            If Me.ExistenCantidadesEnCero Then
-                Me.ErrorFactura.SetError(Me.grpDetalle, "Hay al menos un valor de cantidad en CERO.")
-                Exit Function
-            End If
-
-        Else
-            If Me.ExistenCantidadesEnCeroMoto Then
-                Me.ErrorFactura.SetError(Me.grpDetalle, "Hay al menos un valor de cantidad en CERO.")
-                Return False
-                Exit Function
-            End If
-        End If
+        'Else
+        '    If Me.ExistenCantidadesEnCeroMoto Then
+        '        Me.ErrorFactura.SetError(Me.grpDetalle, "Hay al menos un valor de cantidad en CERO.")
+        '        Return False
+        '        Exit Function
+        '    End If
+        'End If
         Return True
     End Function
 
@@ -1885,42 +1874,42 @@ Public Class frmSfaFacturaRepuestosEditar
         CargarDatosGrid()
     End Sub
 
-    Private Sub chkAgregarMoto_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkAgregarMoto.CheckedChanged
+    'Private Sub chkAgregarMoto_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
-        If Me.chkAgregarMoto.Checked Then
-            Me.numPrima.Enabled = True
-            Me.numSaldo.Enabled = True
-            Me.chkSolicitudDescuento.Checked = False
-            Me.chkSolicitudDescuento.Enabled = False
-            Me.grdDetalleFactura.Visible = False
-            Me.grdDetalleMoto.Visible = True
-            Me.grdDetalleMoto.Dock = DockStyle.Fill
+    '    If Me.chkAgregarMoto.Checked Then
+    '        Me.numPrima.Enabled = True
+    '        Me.numSaldo.Enabled = True
+    '        Me.chkSolicitudDescuento.Checked = False
+    '        Me.chkSolicitudDescuento.Enabled = False
+    '        Me.grdDetalleFactura.Visible = False
+    '        Me.grdDetalleMoto.Visible = True
+    '        Me.grdDetalleMoto.Dock = DockStyle.Fill
 
-            If Not (Me.dtDetalleFactura Is Nothing) Then
-                Me.dtDetalleFactura.Rows.Clear()
-            End If
+    '        If Not (Me.dtDetalleFactura Is Nothing) Then
+    '            Me.dtDetalleFactura.Rows.Clear()
+    '        End If
 
-            If Me.TypeGUI = 1 Then
-                Me.CalcularTotalesMoto()
-            End If
+    '        If Me.TypeGUI = 1 Then
+    '            Me.CalcularTotalesMoto()
+    '        End If
 
-        Else
-            Me.numPrima.Enabled = False
-            Me.numSaldo.Enabled = False
-            Me.chkSolicitudDescuento.Enabled = True
-            Me.grdDetalleFactura.Visible = True
-            Me.grdDetalleMoto.Visible = False
+    '    Else
+    '        Me.numPrima.Enabled = False
+    '        Me.numSaldo.Enabled = False
+    '        Me.chkSolicitudDescuento.Enabled = True
+    '        Me.grdDetalleFactura.Visible = True
+    '        Me.grdDetalleMoto.Visible = False
 
-            If Not (Me.dtDetalleFacturaMoto Is Nothing) Then
-                Me.dtDetalleFacturaMoto.Rows.Clear()
-            End If
+    '        If Not (Me.dtDetalleFacturaMoto Is Nothing) Then
+    '            Me.dtDetalleFacturaMoto.Rows.Clear()
+    '        End If
 
-            If Me.TypeGUI = 1 Then
-                Me.CalcularTotales()
-            End If
+    '        If Me.TypeGUI = 1 Then
+    '            Me.CalcularTotales()
+    '        End If
 
-        End If
-    End Sub
+    '    End If
+    'End Sub
 
     Private Sub chkSolicitudDescuento_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkSolicitudDescuento.CheckedChanged
         If Me.chkSolicitudDescuento.Checked Then
@@ -2030,7 +2019,7 @@ Public Class frmSfaFacturaRepuestosEditar
                 Case 1, 6
                     Me.AgregarFactura()
                 Case 3
-                    Me.AutorizarDescuento()
+                    'Me.AutorizarDescuento()
                 Case 5
                     Select Case MsgBox("¿Seguro que desea anular la factura?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
                         Case MsgBoxResult.Yes
@@ -2077,15 +2066,15 @@ Public Class frmSfaFacturaRepuestosEditar
 #Region "Guardar Factura"
 
     Private Sub GuardarFactura(ByVal t As TransactionManager)
-        Dim objSfaFactura As SfaFacturaRepuesto
+        Dim objSfaFactura As SfaFacturas
         Try
-            objSfaFactura = New SfaFacturaRepuesto
+            objSfaFactura = New SfaFacturas
 
             objSfaFactura.Fecha = Me.dtpFecha.Value
-            objSfaFactura.objTiendaID = Me.cmbBodega.SelectedValue
+            objSfaFactura.objStbBodegaID = Me.cmbBodega.SelectedValue
 
             If Me.cmbCliente.Text.Trim.Length <> 0 Then
-                objSfaFactura.objClienteID = Me.cmbCliente.SelectedValue
+                objSfaFactura.objSccClienteID = Me.cmbCliente.SelectedValue
             End If
 
             If Me.cmbVendedor.Text.Trim.Length <> 0 Then
@@ -2105,33 +2094,33 @@ Public Class frmSfaFacturaRepuestosEditar
             objSfaFactura.TotalCordobas = Me.numTotalC.Value
             objSfaFactura.TotalDolares = Me.numTotalD.Value
             objSfaFactura.TasaCambio = Me.numTasa.Value
-            objSfaFactura.FacturaMoto = Me.chkAgregarMoto.Checked
+            'objSfaFactura.FacturaMoto = Me.chkAgregarMoto.Checked
 
-            If Me.chkAgregarMoto.Checked Then
-                objSfaFactura.Prima = Me.numPrima.Value
-                objSfaFactura.Saldo = Me.numSaldo.Value
-            End If
+            'If Me.chkAgregarMoto.Checked Then
+            '    objSfaFactura.Prima = Me.numPrima.Value
+            '    objSfaFactura.Saldo = Me.numSaldo.Value
+            'End If
 
             If Me.txtObervaciones.Text.Trim.Length <> 0 Then
                 objSfaFactura.observaciones = Me.txtObervaciones.Text
             End If
 
-            objSfaFactura.SolicAutorDescuento = Me.chkSolicitudDescuento.Checked
+            'objSfaFactura.SolicAutorDescuento = Me.chkSolicitudDescuento.Checked
 
-            If Me.txtSolicitudDescuento.Text.Trim.Length <> 0 Then
-                objSfaFactura.SolicitudDescuento = Me.txtSolicitudDescuento.Text
-            End If
+            'If Me.txtSolicitudDescuento.Text.Trim.Length <> 0 Then
+            '    objSfaFactura.SolicitudDescuento = Me.txtSolicitudDescuento.Text
+            'End If
 
-            If Me.chkAutorizar.Checked Then
-                objSfaFactura.DescuentoAutorizado = Me.numDescuento.Value
-            End If
+            'If Me.chkAutorizar.Checked Then
+            '    objSfaFactura.DescuentoAutorizado = Me.numDescuento.Value
+            'End If
 
-            objSfaFactura.AutorizaDescuento = Me.chkAutorizar.Checked
+            'objSfaFactura.AutorizaDescuento = Me.chkAutorizar.Checked
             objSfaFactura.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objSfaFactura.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objSfaFactura.Insert(t)
 
-            Me.SfaFacturaID = objSfaFactura.SfaFacturaRepuestoID
+            Me.SfaFacturaID = objSfaFactura.SfaFacturaID
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -2204,62 +2193,62 @@ Public Class frmSfaFacturaRepuestosEditar
 #Region "GuardarDetallefactura"
 
     Private Sub GuardarDetallefactura(ByVal T As TransactionManager)
-        Dim objSfaFacturaDetalle As SfaFacturaRepuestoDetalle
+        Dim objSfaFacturaDetalle As SfaFacturasDetalle
         Dim dtDetalleFact As New DataTable
         Dim fila As DataRow
 
         Try
-            objSfaFacturaDetalle = New SfaFacturaRepuestoDetalle
+            objSfaFacturaDetalle = New SfaFacturasDetalle
 
-            If Me.chkAgregarMoto.Checked Then
-                dtDetalleFact = SfaFacturaRepuestoDetalle.RetrieveDT("1=0")
+            'If Me.chkAgregarMoto.Checked Then
+            '    dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
 
-                'Isertar detalle de Factura              
-                Me.dtDetalleFacturaMoto.AcceptChanges()
-                For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
-                    fila = dtDetalleFact.NewRow
-                    fila("objFacturaRepuestoID") = Me.SfaFacturaID
-                    fila("objRepuestoID") = row("Codigo")
-                    fila("DescripcionMoto") = Me.ObtenerDescripcionMoto
-                    fila("Cantidad") = row("Cantidad")
-                    fila("Precio") = row("Precio")
-                    fila("Subtotal") = row("Subtotal")
-                    fila("Descuento") = row("Descuento")
-                    fila("Impuesto") = row("Impuesto")
-                    fila("Total") = row("Total")
-                    fila("CostoDolares") = row("CostoProm")
-                    fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                    fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                    dtDetalleFact.Rows.Add(fila)
-                Next
+            '    'Isertar detalle de Factura              
+            '    Me.dtDetalleFacturaMoto.AcceptChanges()
+            '    For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
+            '        fila = dtDetalleFact.NewRow
+            '        fila("objFacturaRepuestoID") = Me.SfaFacturaID
+            '        fila("objRepuestoID") = row("Codigo")
+            '        fila("DescripcionMoto") = Me.ObtenerDescripcionMoto
+            '        fila("Cantidad") = row("Cantidad")
+            '        fila("Precio") = row("Precio")
+            '        fila("Subtotal") = row("Subtotal")
+            '        fila("Descuento") = row("Descuento")
+            '        fila("Impuesto") = row("Impuesto")
+            '        fila("Total") = row("Total")
+            '        fila("CostoDolares") = row("CostoProm")
+            '        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+            '        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+            '        dtDetalleFact.Rows.Add(fila)
+            '    Next
 
-                dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-                SfaFacturaRepuestoDetalle.BatchUpdate(dtDetalleFact.DataSet, T)
+            '    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
+            '    SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, T)
 
-            Else
-                dtDetalleFact = SfaFacturaRepuestoDetalle.RetrieveDT("1=0")
+            'Else
+            dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
 
-                'Isertar detalle de Factura              
-                Me.dtDetalleFactura.AcceptChanges()
-                For Each row As DataRow In Me.dtDetalleFactura.Rows
-                    fila = dtDetalleFact.NewRow
-                    fila("objFacturaRepuestoID") = Me.SfaFacturaID
-                    fila("objRepuestoID") = row("Codigo")
-                    fila("Cantidad") = row("Cantidad")
-                    fila("Precio") = row("Precio")
-                    fila("Subtotal") = row("Subtotal")
-                    fila("Descuento") = row("Descuento")
-                    fila("Impuesto") = row("Impuesto")
-                    fila("Total") = row("Total")
-                    fila("CostoDolares") = row("CostoProm")
-                    fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                    fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                    dtDetalleFact.Rows.Add(fila)
-                Next
+            'Isertar detalle de Factura              
+            Me.dtDetalleFactura.AcceptChanges()
+            For Each row As DataRow In Me.dtDetalleFactura.Rows
+                fila = dtDetalleFact.NewRow
+                fila("objSfaFacturaID") = Me.SfaFacturaID
+                fila("objSivProductoID") = row("Codigo")
+                fila("Cantidad") = row("Cantidad")
+                fila("Precio") = row("Precio")
+                fila("Subtotal") = row("Subtotal")
+                fila("Descuento") = row("Descuento")
+                fila("Impuesto") = row("Impuesto")
+                fila("Total") = row("Total")
+                fila("CostoDolares") = row("CostoPromedio")
+                fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+                fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+                dtDetalleFact.Rows.Add(fila)
+            Next
 
-                dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-                SfaFacturaRepuestoDetalle.BatchUpdate(dtDetalleFact.DataSet, T)
-            End If
+            dtDetalleFact.TableName = "SfaFacturasDetalle"
+            SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, T)
+            'End If
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -2270,9 +2259,9 @@ Public Class frmSfaFacturaRepuestosEditar
 #Region "Procesar"
 
     Private Sub Procesar(ByVal T As TransactionManager)
-        Dim objSfaFactura As New SfaFacturaRepuesto
-        Dim objSfaFacturaDetalle As New SfaFacturaRepuestoDetalle
-        Dim objSivBodegaRpuestos As New SivBodegaRepuestos
+        Dim objSfaFactura As New SfaFacturas
+        Dim objSfaFacturaDetalle As New SfaFacturasDetalle
+        Dim objSivBodegaProductos As New SivBodegaProductos
         Dim dtDetalleFact As New DataTable
         Dim fila As DataRow
         Try
@@ -2280,8 +2269,8 @@ Public Class frmSfaFacturaRepuestosEditar
                 T.BeginTran()
                 '---Actualizar el maestro de la factura
                 objSfaFactura.Retrieve(Me.SfaFacturaID)
-                objSfaFactura.serie = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo", "StbTienda", "StbTiendaID = " & Me.cmbBodega.SelectedValue)).DefaultView.Item(0)("Codigo").ToString.Trim
-                objSfaFactura.Numero = Me.GenerarNumero
+                'objSfaFactura.serie = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo", "StbTienda", "StbTiendaID = " & Me.cmbBodega.SelectedValue)).DefaultView.Item(0)("Codigo").ToString.Trim
+                objSfaFactura.Numero = Me.SfaFacturaID 'Me.GenerarNumero
                 objSfaFactura.objEstadoID = ClsCatalogos.GetValorCatalogoID("ESTADOFACT", "PROCESADA")
                 objSfaFactura.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objSfaFactura.UsuarioModificacion = clsProyecto.Conexion.Usuario
@@ -2293,71 +2282,71 @@ Public Class frmSfaFacturaRepuestosEditar
                 objSfaFactura.Update()
 
                 '---Actualizar el detalle de la factura
-                SfaFacturaRepuestoDetalle.DeleteByFilter("objFacturaRepuestoID = " & Me.SfaFacturaID)
+                SfaFacturasDetalle.DeleteByFilter("objSfaFacturaID = " & Me.SfaFacturaID)
 
-                If Me.chkAgregarMoto.Checked Then
-                    dtDetalleFact = SfaFacturaRepuestoDetalle.RetrieveDT("1=0")
+                'If Me.chkAgregarMoto.Checked Then
+                '    dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
 
-                    'Isertar detalle de Factura              
+                '    'Isertar detalle de Factura              
 
-                    For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
-                        fila = dtDetalleFact.NewRow
-                        fila("objFacturaRepuestoID") = Me.SfaFacturaID
-                        fila("objRepuestoID") = row("Codigo")
-                        fila("Cantidad") = row("Cantidad")
-                        fila("Precio") = row("Precio")
-                        fila("Subtotal") = row("Subtotal")
-                        fila("Descuento") = row("Descuento")
-                        fila("Impuesto") = row("Impuesto")
-                        fila("Total") = row("Total")
-                        fila("CostoDolares") = row("CostoProm")
-                        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                        dtDetalleFact.Rows.Add(fila)
-                    Next
-                    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-                    SfaFacturaRepuestoDetalle.BatchUpdate(dtDetalleFact.DataSet, T)
+                '    For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
+                '        fila = dtDetalleFact.NewRow
+                '        fila("objFacturaRepuestoID") = Me.SfaFacturaID
+                '        fila("objRepuestoID") = row("Codigo")
+                '        fila("Cantidad") = row("Cantidad")
+                '        fila("Precio") = row("Precio")
+                '        fila("Subtotal") = row("Subtotal")
+                '        fila("Descuento") = row("Descuento")
+                '        fila("Impuesto") = row("Impuesto")
+                '        fila("Total") = row("Total")
+                '        fila("CostoDolares") = row("CostoProm")
+                '        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+                '        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+                '        dtDetalleFact.Rows.Add(fila)
+                '    Next
+                '    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
+                '    SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, T)
 
-                    '--Actualizar la cantidad en SivBodegaRepuestos
-                    For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
-                        objSivBodegaRpuestos.RetrieveByFilter("objTiendaID = " & Me.cmbBodega.SelectedValue & " AND objRepuestoID = " & row("Codigo"))
-                        objSivBodegaRpuestos.Cantidad = objSivBodegaRpuestos.Cantidad - row("Cantidad")
-                        objSivBodegaRpuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                        objSivBodegaRpuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                        objSivBodegaRpuestos.Update()
-                    Next
-                Else
-                    dtDetalleFact = SfaFacturaRepuestoDetalle.RetrieveDT("1=0")
+                '    '--Actualizar la cantidad en SivBodegaRepuestos
+                '    For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
+                '        objSivBodegaRpuestos.RetrieveByFilter("objTiendaID = " & Me.cmbBodega.SelectedValue & " AND objRepuestoID = " & row("Codigo"))
+                '        objSivBodegaRpuestos.Cantidad = objSivBodegaRpuestos.Cantidad - row("Cantidad")
+                '        objSivBodegaRpuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                '        objSivBodegaRpuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                '        objSivBodegaRpuestos.Update()
+                '    Next
+                'Else
+                dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
 
-                    'Isertar detalle de Factura              
+                'Isertar detalle de Factura              
 
-                    For Each row As DataRow In Me.dtDetalleFactura.Rows
-                        fila = dtDetalleFact.NewRow
-                        fila("objFacturaRepuestoID") = Me.SfaFacturaID
-                        fila("objRepuestoID") = row("Codigo")
-                        fila("Cantidad") = row("Cantidad")
-                        fila("Precio") = row("Precio")
-                        fila("Subtotal") = row("Subtotal")
-                        fila("Descuento") = row("Descuento")
-                        fila("Impuesto") = row("Impuesto")
-                        fila("Total") = row("Total")
-                        fila("CostoDolares") = row("CostoProm")
-                        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                        dtDetalleFact.Rows.Add(fila)
-                    Next
-                    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-                    SfaFacturaRepuestoDetalle.BatchUpdate(dtDetalleFact.DataSet, T)
+                For Each row As DataRow In Me.dtDetalleFactura.Rows
+                    fila = dtDetalleFact.NewRow
+                    fila("objSfaFacturaID") = Me.SfaFacturaID
+                    fila("objSivProductoID") = row("Codigo")
+                    fila("Cantidad") = row("Cantidad")
+                    fila("Precio") = row("Precio")
+                    fila("Subtotal") = row("Subtotal")
+                    fila("Descuento") = row("Descuento")
+                    fila("Impuesto") = row("Impuesto")
+                    fila("Total") = row("Total")
+                    fila("CostoDolares") = row("CostoPromedio")
+                    fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+                    fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+                    dtDetalleFact.Rows.Add(fila)
+                Next
+                dtDetalleFact.TableName = "SfaFacturasDetalle"
+                SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, T)
 
-                    '--Actualizar la cantidad en SivBodegaRepuestos
-                    For Each row As DataRow In Me.dtDetalleFactura.Rows
-                        objSivBodegaRpuestos.RetrieveByFilter("objTiendaID = " & Me.cmbBodega.SelectedValue & " AND objRepuestoID = '" & row("Codigo") & "'")
-                        objSivBodegaRpuestos.Cantidad = objSivBodegaRpuestos.Cantidad - row("Cantidad")
-                        objSivBodegaRpuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                        objSivBodegaRpuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                        objSivBodegaRpuestos.Update()
-                    Next
-                End If
+                '--Actualizar la cantidad en SivBodegaRepuestos
+                For Each row As DataRow In Me.dtDetalleFactura.Rows
+                    objSivBodegaProductos.RetrieveByFilter("objBodegaID = " & Me.cmbBodega.SelectedValue & " AND objProductoID = '" & row("Codigo") & "'")
+                    objSivBodegaProductos.Cantidad = objSivBodegaProductos.Cantidad - row("Cantidad")
+                    objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    objSivBodegaProductos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    objSivBodegaProductos.Update()
+                Next
+                'End If
 
                 T.CommitTran()
                 MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
@@ -2372,7 +2361,7 @@ Public Class frmSfaFacturaRepuestosEditar
         Finally
             objSfaFactura = Nothing
             objSfaFacturaDetalle = Nothing
-            objSivBodegaRpuestos = Nothing
+            objSivBodegaProductos = Nothing
         End Try
     End Sub
 
@@ -2901,78 +2890,78 @@ Public Class frmSfaFacturaRepuestosEditar
         parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Cedula", strCedula, False))
         parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("SubTotalVenta", dblSubTotalVentas, False))
 
-        If Me.chkAgregarMoto.Checked Then
+        'If Me.chkAgregarMoto.Checked Then
 
-            FilaModelo = dtDatos.NewRow
-            filaMarca = dtDatos.NewRow
-            FilaColor = dtDatos.NewRow
-            FilaAno = dtDatos.NewRow
-            FilaMotor = dtDatos.NewRow
-            FilaChasis = dtDatos.NewRow
-            FilaCilindraje = dtDatos.NewRow
-            FilaCilindro = dtDatos.NewRow
-            FilaTipo = dtDatos.NewRow
-            FilaCombustible = dtDatos.NewRow
-            FilaVelocidades = dtDatos.NewRow
-            FilaPasajeros = dtDatos.NewRow
-            FilaPoliza = dtDatos.NewRow
-            FilaCasco = dtDatos.NewRow
+        '    FilaModelo = dtDatos.NewRow
+        '    filaMarca = dtDatos.NewRow
+        '    FilaColor = dtDatos.NewRow
+        '    FilaAno = dtDatos.NewRow
+        '    FilaMotor = dtDatos.NewRow
+        '    FilaChasis = dtDatos.NewRow
+        '    FilaCilindraje = dtDatos.NewRow
+        '    FilaCilindro = dtDatos.NewRow
+        '    FilaTipo = dtDatos.NewRow
+        '    FilaCombustible = dtDatos.NewRow
+        '    FilaVelocidades = dtDatos.NewRow
+        '    FilaPasajeros = dtDatos.NewRow
+        '    FilaPoliza = dtDatos.NewRow
+        '    FilaCasco = dtDatos.NewRow
 
-            Me.InicializarModelo(FilaModelo)
-            dtDatos.Rows.Add(FilaModelo)
+        '    Me.InicializarModelo(FilaModelo)
+        '    dtDatos.Rows.Add(FilaModelo)
 
-            Me.InicializarMarca(filaMarca)
-            dtDatos.Rows.Add(filaMarca)
+        '    Me.InicializarMarca(filaMarca)
+        '    dtDatos.Rows.Add(filaMarca)
 
-            Me.InicializarColor(FilaColor)
-            dtDatos.Rows.Add(FilaColor)
+        '    Me.InicializarColor(FilaColor)
+        '    dtDatos.Rows.Add(FilaColor)
 
-            Me.InicializarAno(FilaAno)
-            dtDatos.Rows.Add(FilaAno)
+        '    Me.InicializarAno(FilaAno)
+        '    dtDatos.Rows.Add(FilaAno)
 
-            Me.InicializarMotor(FilaMotor)
-            dtDatos.Rows.Add(FilaMotor)
+        '    Me.InicializarMotor(FilaMotor)
+        '    dtDatos.Rows.Add(FilaMotor)
 
-            Me.InicializarChasis(FilaChasis)
-            dtDatos.Rows.Add(FilaChasis)
+        '    Me.InicializarChasis(FilaChasis)
+        '    dtDatos.Rows.Add(FilaChasis)
 
-            Me.InicializarCilindraje(FilaCilindraje)
-            dtDatos.Rows.Add(FilaCilindraje)
+        '    Me.InicializarCilindraje(FilaCilindraje)
+        '    dtDatos.Rows.Add(FilaCilindraje)
 
-            Me.InicializarCilindro(FilaCilindro)
-            dtDatos.Rows.Add(FilaCilindro)
+        '    Me.InicializarCilindro(FilaCilindro)
+        '    dtDatos.Rows.Add(FilaCilindro)
 
-            Me.InicializarTipo(FilaTipo)
-            dtDatos.Rows.Add(FilaTipo)
+        '    Me.InicializarTipo(FilaTipo)
+        '    dtDatos.Rows.Add(FilaTipo)
 
-            Me.InicializarCombustible(FilaCombustible)
-            dtDatos.Rows.Add(FilaCombustible)
+        '    Me.InicializarCombustible(FilaCombustible)
+        '    dtDatos.Rows.Add(FilaCombustible)
 
-            Me.InicializarVelocidades(FilaVelocidades)
-            dtDatos.Rows.Add(FilaVelocidades)
+        '    Me.InicializarVelocidades(FilaVelocidades)
+        '    dtDatos.Rows.Add(FilaVelocidades)
 
-            Me.InicializarPasajeros(FilaPasajeros)
-            dtDatos.Rows.Add(FilaPasajeros)
+        '    Me.InicializarPasajeros(FilaPasajeros)
+        '    dtDatos.Rows.Add(FilaPasajeros)
 
-            Me.InicializarPoliza(FilaPoliza)
-            dtDatos.Rows.Add(FilaPoliza)
+        '    Me.InicializarPoliza(FilaPoliza)
+        '    dtDatos.Rows.Add(FilaPoliza)
 
-            With visor.VisorReportes
-                .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-                .LocalReport.ReportEmbeddedResource = "SCCUM.rptSfaFacturaMoto.rdlc"
-                .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtRptFacturaRepuestos_vwRptSfaFacturaRepuesto", dtDatos))
-                .LocalReport.SetParameters(parametros)
-                .RefreshReport()
-            End With
-        Else
-            With visor.VisorReportes
-                .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-                .LocalReport.ReportEmbeddedResource = "SCCUM.rptSfaFacturaRepuesto.rdlc"
-                .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtRptFacturaRepuestos_vwRptSfaFacturaRepuesto", dtDatos))
-                .LocalReport.SetParameters(parametros)
-                .RefreshReport()
-            End With
-        End If
+        '    With visor.VisorReportes
+        '        .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+        '        .LocalReport.ReportEmbeddedResource = "SCCUM.rptSfaFacturaMoto.rdlc"
+        '        .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtRptFacturaRepuestos_vwRptSfaFacturaRepuesto", dtDatos))
+        '        .LocalReport.SetParameters(parametros)
+        '        .RefreshReport()
+        '    End With
+        'Else
+        With visor.VisorReportes
+            .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+            .LocalReport.ReportEmbeddedResource = "SCCUM.rptSfaFacturaRepuesto.rdlc"
+            .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtRptFacturaRepuestos_vwRptSfaFacturaRepuesto", dtDatos))
+            .LocalReport.SetParameters(parametros)
+            .RefreshReport()
+        End With
+        'End If
         visor.ShowDialog()
     End Sub
 
@@ -2981,8 +2970,8 @@ Public Class frmSfaFacturaRepuestosEditar
 #Region "Anular"
 
     Private Sub Anular()
-        Dim objSfaFactura As New SfaFacturaRepuesto
-        Dim objSfaFacturaDetalle As New SfaFacturaRepuestoDetalle
+        Dim objSfaFactura As New SfaFacturas
+        Dim objSfaFacturaDetalle As New SfaFacturasDetalle
         Dim objSivBodegaRpuestos As New SivBodegaRepuestos
         Dim dtDetalleFact As New DataTable
         Dim fila As DataRow
@@ -3006,74 +2995,74 @@ Public Class frmSfaFacturaRepuestosEditar
                     objSfaFactura.Update()
 
                     '---Actualizar el detalle de la factura
-                    SfaFacturaRepuestoDetalle.DeleteByFilter("objFacturaRepuestoID = " & Me.SfaFacturaID)
+                    SfaFacturasDetalle.DeleteByFilter("objFacturaRepuestoID = " & Me.SfaFacturaID)
 
-                    If Not Me.chkAgregarMoto.Checked Then
+                    'If Not Me.chkAgregarMoto.Checked Then
 
-                        '---Actualizar el detalle de la factura
-                        dtDetalleFact = SfaFacturaRepuestoDetalle.RetrieveDT("1=0")
+                    '---Actualizar el detalle de la factura
+                    dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
 
-                        'Isertar detalle de Factura            
+                    'Isertar detalle de Factura            
 
-                        For Each row As DataRow In Me.dtDetalleFactura.Rows
-                            fila = dtDetalleFact.NewRow
-                            fila("objFacturaRepuestoID") = Me.SfaFacturaID
-                            fila("objRepuestoID") = row("Codigo")
-                            fila("Cantidad") = 0
-                            fila("Precio") = row("Precio")
-                            fila("Subtotal") = 0.0
-                            fila("Descuento") = 0.0
-                            fila("Impuesto") = 0.0
-                            fila("Total") = 0.0
-                            fila("CostoDolares") = 0.0
-                            fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                            fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                            dtDetalleFact.Rows.Add(fila)
-                        Next
-                        dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-                        SfaFacturaRepuestoDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
+                    For Each row As DataRow In Me.dtDetalleFactura.Rows
+                        fila = dtDetalleFact.NewRow
+                        fila("objFacturaRepuestoID") = Me.SfaFacturaID
+                        fila("objRepuestoID") = row("Codigo")
+                        fila("Cantidad") = 0
+                        fila("Precio") = row("Precio")
+                        fila("Subtotal") = 0.0
+                        fila("Descuento") = 0.0
+                        fila("Impuesto") = 0.0
+                        fila("Total") = 0.0
+                        fila("CostoDolares") = 0.0
+                        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+                        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+                        dtDetalleFact.Rows.Add(fila)
+                    Next
+                    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
+                    SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
 
-                        '--Actualizar la cantidad en SivBodegaRepuestos
-                        For Each row As DataRow In Me.dtDetalleFactura.Rows
-                            objSivBodegaRpuestos.RetrieveByFilter("objTiendaID = " & Me.cmbBodega.SelectedValue & " AND objRepuestoID = " & row("Codigo"))
-                            objSivBodegaRpuestos.Cantidad = objSivBodegaRpuestos.Cantidad + row("Cantidad")
-                            objSivBodegaRpuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                            objSivBodegaRpuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                            objSivBodegaRpuestos.Update()
-                        Next
-                    Else
-                        '---Actualizar el detalle de la factura
-                        dtDetalleFact = SfaFacturaRepuestoDetalle.RetrieveDT("1=0")
+                    '--Actualizar la cantidad en SivBodegaRepuestos
+                    For Each row As DataRow In Me.dtDetalleFactura.Rows
+                        objSivBodegaRpuestos.RetrieveByFilter("objTiendaID = " & Me.cmbBodega.SelectedValue & " AND objRepuestoID = " & row("Codigo"))
+                        objSivBodegaRpuestos.Cantidad = objSivBodegaRpuestos.Cantidad + row("Cantidad")
+                        objSivBodegaRpuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                        objSivBodegaRpuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                        objSivBodegaRpuestos.Update()
+                    Next
+                    'Else
+                    '    '---Actualizar el detalle de la factura
+                    '    dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
 
-                        'Isertar detalle de Factura           
+                    '    'Isertar detalle de Factura           
 
-                        For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
-                            fila = dtDetalleFact.NewRow
-                            fila("objFacturaRepuestoID") = Me.SfaFacturaID
-                            fila("objRepuestoID") = row("Codigo")
-                            fila("Cantidad") = 0
-                            fila("Precio") = row("Precio")
-                            fila("Subtotal") = 0.0
-                            fila("Descuento") = 0.0
-                            fila("Impuesto") = 0.0
-                            fila("Total") = 0.0
-                            fila("CostoDolares") = 0.0
-                            fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                            fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                            dtDetalleFact.Rows.Add(fila)
-                        Next
-                        dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-                        SfaFacturaRepuestoDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
+                    '    For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
+                    '        fila = dtDetalleFact.NewRow
+                    '        fila("objFacturaRepuestoID") = Me.SfaFacturaID
+                    '        fila("objRepuestoID") = row("Codigo")
+                    '        fila("Cantidad") = 0
+                    '        fila("Precio") = row("Precio")
+                    '        fila("Subtotal") = 0.0
+                    '        fila("Descuento") = 0.0
+                    '        fila("Impuesto") = 0.0
+                    '        fila("Total") = 0.0
+                    '        fila("CostoDolares") = 0.0
+                    '        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+                    '        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+                    '        dtDetalleFact.Rows.Add(fila)
+                    '    Next
+                    '    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
+                    '    SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
 
-                        '--Actualizar la cantidad en SivBodegaRepuestos
-                        For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
-                            objSivBodegaRpuestos.RetrieveByFilter("objTiendaID = " & Me.cmbBodega.SelectedValue & " AND objRepuestoID = '" & row("Codigo") & "'")
-                            objSivBodegaRpuestos.Cantidad = objSivBodegaRpuestos.Cantidad + row("Cantidad")
-                            objSivBodegaRpuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                            objSivBodegaRpuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                            objSivBodegaRpuestos.Update()
-                        Next
-                    End If
+                    '    '--Actualizar la cantidad en SivBodegaRepuestos
+                    '    For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
+                    '        objSivBodegaRpuestos.RetrieveByFilter("objTiendaID = " & Me.cmbBodega.SelectedValue & " AND objRepuestoID = '" & row("Codigo") & "'")
+                    '        objSivBodegaRpuestos.Cantidad = objSivBodegaRpuestos.Cantidad + row("Cantidad")
+                    '        objSivBodegaRpuestos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    '        objSivBodegaRpuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    '        objSivBodegaRpuestos.Update()
+                    '    Next
+                    'End If
                     t.CommitTran()
                     MsgBox(" Factura Anulada satisfactoriamente.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
                     Me.DialogResult = Windows.Forms.DialogResult.OK
@@ -3219,15 +3208,15 @@ Public Class frmSfaFacturaRepuestosEditar
 
 #Region "Cargar Grid"
 
-    Private Sub CargarDetalleFacturaMoto(ByVal strFiltro As String)
-        dtDetalleFacturaMoto = New DataTable
-        Try
-            dtDetalleFacturaMoto = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CodigoBarras,objFacturaRepuestoID, Codigo, DescripcionCorta, Cantidad, CostoProm,Precio,cast(0 as float) as DescuentoPor, Descuento, Subtotal, Impuesto, Total", "vwSfaDetalleRepuestos", strFiltro))
-            Me.grdDetalleMoto.DataSource = dtDetalleFacturaMoto
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-    End Sub
+    'Private Sub CargarDetalleFacturaMoto(ByVal strFiltro As String)
+    '    dtDetalleFacturaMoto = New DataTable
+    '    Try
+    '        dtDetalleFacturaMoto = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSfaFacturaID, Codigo, Producto, Cantidad, CostoPromedio,Precio, Descuento, Subtotal, Impuesto, Total", "vwSfaDetalleRepuestos", strFiltro))
+    '        Me.grdDetalleMoto.DataSource = dtDetalleFacturaMoto
+    '    Catch ex As Exception
+    '        clsError.CaptarError(ex)
+    '    End Try
+    'End Sub
 
 #End Region
 
@@ -3346,47 +3335,43 @@ Public Class frmSfaFacturaRepuestosEditar
 
 #Region "RellenarDatosGrid"
     Private Sub RellenarDatosGrid(ByVal strFiltro As String, ByVal intFilaActual As Integer)
-        Dim objSivRepuestos As SivRepuestos
-        Dim objSivBodegaRepuestos As SivBodegaRepuestos
+        Dim objSivRepuestos As SivProductos
+        Dim objSivBodegaRepuestos As SivBodegaProductos
         Dim dtProductoDescuento As DataTable
         Dim strCampos, strFiltroFecha As String
 
-        objSivRepuestos = New SivRepuestos
-        objSivBodegaRepuestos = New SivBodegaRepuestos
+        objSivRepuestos = New SivProductos
+        objSivBodegaRepuestos = New SivBodegaProductos
 
         'Cargar los datos del Repuesto, Detalle Repuesto Proveedor y Bodega Repuestos
-        objSivRepuestos.RetrieveByFilter("SivRepuestoID=" & "'" & strFiltro & "'" & " AND Activo=1") 'REVISAR ESTO POR REGLAS DE NEGOCIO
-        objSivBodegaRepuestos.RetrieveByFilter("objRepuestoID=" & "'" & objSivRepuestos.SivRepuestoID & "' AND objTiendaID= " & Me.cmbBodega.SelectedValue)
-        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("CodigoBarras") = objSivRepuestos.CodigoBarras
-        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Codigo") = objSivRepuestos.SivRepuestoID
-        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Codigo") = objSivRepuestos.SivRepuestoID
+        objSivRepuestos.RetrieveByFilter("SivProductoID=" & "'" & strFiltro & "'" & " AND Activo=1") 'REVISAR ESTO POR REGLAS DE NEGOCIO
+        objSivBodegaRepuestos.RetrieveByFilter("objProductoID=" & "'" & objSivRepuestos.SivProductoID & "' AND objBodegaID= " & Me.cmbBodega.SelectedValue)
+        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Codigo") = objSivRepuestos.SivProductoID
+        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Codigo") = objSivRepuestos.SivProductoID
 
-        If objSivRepuestos.SivRepuestoID = "3" Then 'Servicio de instalación
-            Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Cantidad") = 1
-        Else
-            Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Cantidad") = 0
-        End If
+       
+        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Cantidad") = 0
 
-        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Precio") = objSivRepuestos.Precio
+        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Precio") = objSivRepuestos.Precio_Credito
         Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Subtotal") = 0
         Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Descuento") = 0
 
-        Try
-            strCampos = "ISNULL(MAX(Descuento),0) AS MaximoDescuento"
-            strFiltroFecha = " fechafin >= GETDATE() AND objRepuestoID= " & objSivRepuestos.SivRepuestoID
+        'Try
+        'strCampos = "ISNULL(MAX(Descuento),0) AS MaximoDescuento"
+        'strFiltroFecha = " fechafin >= GETDATE() AND objRepuestoID= " & objSivRepuestos.SivRepuestoID
 
-            dtProductoDescuento = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral(strCampos, "vwSfaDescuentosFactura", strFiltroFecha))
-            If dtProductoDescuento.Rows.Count <> 0 Then
-                Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("DescuentoPor") = dtProductoDescuento.DefaultView.Item(0)("MaximoDescuento") * 100
-            End If
-        Catch ex As Exception
-            'Si hay error que no asigne descuento, dejando que el usuario lo seleccione
-        End Try
+        'dtProductoDescuento = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral(strCampos, "vwSfaDescuentosFactura", strFiltroFecha))
+        'If dtProductoDescuento.Rows.Count <> 0 Then
+        '    Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("DescuentoPor") = dtProductoDescuento.DefaultView.Item(0)("MaximoDescuento") * 100
+        'End If
+        'Catch ex As Exception
+        'Si hay error que no asigne descuento, dejando que el usuario lo seleccione
+        'End Try
 
         Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Impuesto") = 0
         Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Total") = 0
         'Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Existencia") = objSivBodegaRepuestos.Cantidad
-        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("CostoProm") = objSivRepuestos.CostoProm
+        Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("CostoPromedio") = objSivRepuestos.CostoPromedio
         Me.numExistencia.Value = objSivBodegaRepuestos.Cantidad
         'Mover el foco a columna Cantidad
         Me.grdDetalleFacturaTabla.FocusedColumn = Me.colCantidad
@@ -3432,7 +3417,7 @@ Public Class frmSfaFacturaRepuestosEditar
             End If
 
             'Cantidad
-            If Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colCantidad) OrElse Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colPorcentajeDescuento) Then '3=Servicio de instalación
+            If Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colCantidad) Then '3=Servicio de instalación
 
                 blnEnfoque = Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colCantidad)
                 If blnEnfoque Then
@@ -3448,7 +3433,7 @@ Public Class frmSfaFacturaRepuestosEditar
                     Me.HabilitarPrecioDescuento(False)
                     If Me.TieneValor(Me.grdDetalleFacturaTabla.FocusedColumn.View.FocusedValue) Then
                         If Me.NumeroValido(Me.grdDetalleFacturaTabla.FocusedColumn.View.FocusedValue) Then
-                            Me.grdDetalleFacturaTabla.FocusedColumn = Me.colBarCode
+                            'Me.grdDetalleFacturaTabla.FocusedColumn = Me.colBarCode
                             SendKeys.Send("{down}")
                             Exit Sub
                         End If
@@ -3497,9 +3482,9 @@ Public Class frmSfaFacturaRepuestosEditar
         End If
 
         'Si se preciona TAB estando en la última Celda editable
-        If e.KeyCode = Keys.Tab AndAlso Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colPorcentajeDescuento) Then
-            Me.txtObervaciones.Focus()
-        End If
+        'If e.KeyCode = Keys.Tab AndAlso Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colPorcentajeDescuento) Then
+        '    Me.txtObervaciones.Focus()
+        'End If
     End Sub
 
     Private Sub grdDetalleFactura_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles grdDetalleFactura.Leave
@@ -3523,9 +3508,9 @@ Public Class frmSfaFacturaRepuestosEditar
             If Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colCodigoRepuesto) Then
                 Me.CargarConsultaExistencia()
             End If
-            If Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colPorcentajeDescuento) Then
-                Me.CargarDescuentos()
-            End If
+            'If Me.grdDetalleFacturaTabla.FocusedColumn.Equals(Me.colPorcentajeDescuento) Then
+            '    Me.CargarDescuentos()
+            'End If
         End If
     End Sub
 
@@ -3640,13 +3625,13 @@ Public Class frmSfaFacturaRepuestosEditar
         Dim FilaActual As Integer
         Dim strIndiceCombo As String
         Dim blnVerificaRepuestoAct, blnVerificaCodRepuesto, blnVerificarExistencia As Boolean
-        Dim objRepuestos As SivRepuestos
-        Dim objBodegaRepuesto As SivBodegaRepuestos
+        Dim objSivProductos As SivProductos
+        Dim objSivBodegaProductos As SivBodegaProductos
         Dim CodigoRepuesto As String = "0"
 
         FilaActual = Me.grdDetalleFacturaTabla.FocusedRowHandle
-        objRepuestos = New SivRepuestos
-        objBodegaRepuesto = New SivBodegaRepuestos
+        objSivProductos = New SivProductos
+        objSivBodegaProductos = New SivBodegaProductos
 
         '============== Este código fué sustituido por error al colocar comillas sobre el código de barras. ==
         'Codigo de Barras
@@ -3689,61 +3674,61 @@ Public Class frmSfaFacturaRepuestosEditar
         '============================================================================
 
         'Codigo de Barras
-        If e.Column.Equals(Me.colBarCode) Then
-            'Verificando si el código de barras existe
-            If Me.dtDetalleFactura.DefaultView.Item(FilaActual)("CodigoBarras").ToString.Trim.Length > 0 Then
-                CodigoRepuesto = ClsCatalogos.GetCodigoRepuestoByCodigoBarras(Me.dtDetalleFactura.DefaultView.Item(FilaActual)("CodigoBarras").ToString.Trim)
-                If CodigoRepuesto = "0" Then
-                    MsgBox("El código de barras no existe", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
-                    Me.ElminarFilaSinPreguntar()
-                    Me.InsertarNuevaFilaGrid()
-                    Exit Sub
-                End If
+        'If e.Column.Equals(Me.colBarCode) Then
+        '    'Verificando si el código de barras existe
+        '    If Me.dtDetalleFactura.DefaultView.Item(FilaActual)("CodigoBarras").ToString.Trim.Length > 0 Then
+        '        CodigoRepuesto = ClsCatalogos.GetCodigoRepuestoByCodigoBarras(Me.dtDetalleFactura.DefaultView.Item(FilaActual)("CodigoBarras").ToString.Trim)
+        '        If CodigoRepuesto = "0" Then
+        '            MsgBox("El código de barras no existe", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+        '            Me.ElminarFilaSinPreguntar()
+        '            Me.InsertarNuevaFilaGrid()
+        '            Exit Sub
+        '        End If
 
-                objRepuestos.Retrieve(CodigoRepuesto)
-                'Verificar si el repuesto está activo
-                If Not objRepuestos.Activo Then
-                    If (blnVerificaRepuestoAct = True) Then
-                        MsgBox("El repuesto está inactivo", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
-                        Me.ElminarFilaSinPreguntar()
-                        Me.InsertarNuevaFilaGrid()
-                        Me.grdDetalleFacturaTabla.FocusedColumn = Me.colCodigoRepuesto
-                        Exit Sub
-                    End If
-                End If
+        '        objRepuestos.Retrieve(CodigoRepuesto)
+        '        'Verificar si el repuesto está activo
+        '        If Not objRepuestos.Activo Then
+        '            If (blnVerificaRepuestoAct = True) Then
+        '                MsgBox("El repuesto está inactivo", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+        '                Me.ElminarFilaSinPreguntar()
+        '                Me.InsertarNuevaFilaGrid()
+        '                Me.grdDetalleFacturaTabla.FocusedColumn = Me.colCodigoRepuesto
+        '                Exit Sub
+        '            End If
+        '        End If
 
-                'Si todo está bien se rellenan los datos
-                If (CodigoRepuesto <> "0") Then
-                    RellenarDatosGrid(objRepuestos.SivRepuestoID.ToString, FilaActual)
-                End If
-            End If
-        End If
+        '        'Si todo está bien se rellenan los datos
+        '        If (CodigoRepuesto <> "0") Then
+        '            RellenarDatosGrid(objRepuestos.SivRepuestoID.ToString, FilaActual)
+        '        End If
+        '    End If
+        'End If
 
         'CodigoRepuesto
         If e.Column.Equals(Me.colCodigoRepuesto) Then
             If Me.dtDetalleFactura.DefaultView.Count <> 0 Then
-                'Verifica si el código del repuesto existe
-                blnVerificaCodRepuesto = objRepuestos.RetrieveByFilter("SivRepuestoID='" & (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Codigo")) & "' AND SivRepuestoID NOT IN ('1','2')")
+                'Verifica si el código del producto existe
+                blnVerificaCodRepuesto = objSivProductos.RetrieveByFilter("SivProductoID='" & (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Codigo")) & "'")
                 If (blnVerificaCodRepuesto = False) Then
-                    MsgBox("El código de repuesto no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                    MsgBox("El código de producto no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                     Me.ElminarFilaSinPreguntar()
                     Me.InsertarNuevaFilaGrid()
                     Exit Sub
                 End If
 
-                'Verifica si el Repuesto está activo (REVISAR ESTA VALIDACION POR REGLAS DE NEGOCIO)
-                blnVerificaRepuestoAct = objRepuestos.RetrieveByFilter("SivRepuestoID='" & objRepuestos.SivRepuestoID & " 'AND Activo=0")
+                'Verifica si el producto está activo (REVISAR ESTA VALIDACION POR REGLAS DE NEGOCIO)
+                blnVerificaRepuestoAct = objSivProductos.RetrieveByFilter("SivProductoID='" & objSivProductos.SivProductoID & "'AND Activo=0")
                 If (blnVerificaRepuestoAct = True) Then
-                    MsgBox("El repuesto está inactivo", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                    MsgBox("El producto está inactivo", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                     Me.ElminarFilaSinPreguntar()
                     Me.InsertarNuevaFilaGrid()
                     Exit Sub
                 End If
 
                 'Verifica que el repuesto este en existencia
-                blnVerificarExistencia = objBodegaRepuesto.RetrieveByFilter("objRepuestoID = " & "'" & objRepuestos.SivRepuestoID & "'" & " AND objTiendaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
+                blnVerificarExistencia = objSivBodegaProductos.RetrieveByFilter("objProductoID = " & "'" & objSivProductos.SivProductoID & "'" & " AND objBodegaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
                 If Not blnVerificarExistencia Then
-                    MsgBox("El repuesto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                    MsgBox("El producto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                     Me.ElminarFilaSinPreguntar()
                     Me.InsertarNuevaFilaGrid()
                     Me.grdDetalleFacturaTabla.FocusedColumn = Me.colCodigoRepuesto
@@ -3759,9 +3744,9 @@ Public Class frmSfaFacturaRepuestosEditar
         If e.Column.Equals(Me.colDescripcion) Then
 
             'Verifica que el repuesto este en existencia
-            blnVerificarExistencia = objBodegaRepuesto.RetrieveByFilter("objRepuestoID = " & "'" & Me.grdDetalleFacturaTabla.EditingValue & "'" & " AND objTiendaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
+            blnVerificarExistencia = objSivBodegaProductos.RetrieveByFilter("objProductoID = " & "'" & Me.grdDetalleFacturaTabla.EditingValue & "'" & " AND objBodegaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
             If Not blnVerificarExistencia Then
-                MsgBox("El repuesto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                MsgBox("El producto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                 Me.ElminarFilaSinPreguntar()
                 Me.InsertarNuevaFilaGrid()
                 Me.grdDetalleFacturaTabla.FocusedColumn = Me.colCodigoRepuesto
@@ -3773,8 +3758,8 @@ Public Class frmSfaFacturaRepuestosEditar
         End If
 
         'Validacion del repetido
-        If e.Column.Equals(Me.colBarCode) Or e.Column.Equals(Me.colCodigoRepuesto) Or e.Column.Equals(Me.colDescripcion) Then
-            If Me.BuscarDuplicados(Me.grdDetalleFacturaTabla.EditingValue, Me.colCodigoRepuesto.FieldName) Or Me.BuscarDuplicados(Me.grdDetalleFacturaTabla.EditingValue, Me.colBarCode.FieldName) Then
+        If e.Column.Equals(Me.colCodigoRepuesto) Or e.Column.Equals(Me.colDescripcion) Then
+            If Me.BuscarDuplicados(Me.grdDetalleFacturaTabla.EditingValue, Me.colCodigoRepuesto.FieldName) Then
                 MsgBox("Este valor ya se encuentra en la lista", MsgBoxStyle.Exclamation, "Sistema")
                 Me.ElminarFilaSinPreguntar()
                 Me.InsertarNuevaFilaGrid()
@@ -3782,8 +3767,8 @@ Public Class frmSfaFacturaRepuestosEditar
         End If
 
         'Cantidad
-        If e.Column.Equals(Me.colCantidad) Or e.Column.Equals(Me.colPorcentajeDescuento) Then
-
+        'If e.Column.Equals(Me.colCantidad) Or e.Column.Equals(Me.colPorcentajeDescuento) Then
+        If e.Column.Equals(Me.colCantidad) Then
             'Valida si primero se digitó la cantidad
             If (IsDBNull(dtDetalleFactura.DefaultView.Item(FilaActual)("Codigo"))) Then
                 Me.ElminarFilaSinPreguntar()
@@ -3799,17 +3784,17 @@ Public Class frmSfaFacturaRepuestosEditar
 
                 Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Subtotal") = (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Cantidad")) * (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Precio"))
 
-                If IsDBNull(Me.dtDetalleFactura.DefaultView.Item(FilaActual)("DescuentoPor")) Then
-                    Me.dtDetalleFactura.DefaultView.Item(FilaActual)("DescuentoPor") = 0
-                End If
+                'If IsDBNull(Me.dtDetalleFactura.DefaultView.Item(FilaActual)("DescuentoPor")) Then
+                '    Me.dtDetalleFactura.DefaultView.Item(FilaActual)("DescuentoPor") = 0
+                'End If
 
-                Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Descuento") = (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Subtotal")) * (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("DescuentoPor") / 100)
+                'Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Descuento") = (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Subtotal")) * (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("DescuentoPor") / 100)
 
-                If Me.chkExonerado.Checked = True Then
-                    Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Impuesto") = 0
-                Else
-                    Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Impuesto") = ((Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Subtotal")) - (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Descuento"))) * (ClsCatalogos.GetValorParametro("PORCENTAJEIMPUESTO") / 100)
-                End If
+                'If Me.chkExonerado.Checked = True Then
+                '    Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Impuesto") = 0
+                'Else
+                Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Impuesto") = ((Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Subtotal")) - (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Descuento"))) * (ClsCatalogos.GetValorParametro("PORCENTAJEIMPUESTO") / 100)
+                'End If
                 Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Total") = (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Subtotal")) - (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Descuento")) + (Me.dtDetalleFactura.DefaultView.Item(FilaActual)("Impuesto"))
             End If
 
@@ -3824,361 +3809,6 @@ Public Class frmSfaFacturaRepuestosEditar
 
 #End Region
 
-#Region "Eventos del Grid de Motos"
-
-#Region "Botones en el grid"
-
-    Private Sub grdMotoSpnDescripcion_ButtonClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles grdMotoSpnDescripcion.ButtonClick
-        If e.Button.Index = 1 Then
-            Me.CargarDescripcionExtendida()
-        End If
-    End Sub
-#End Region
-
-#Region "CellValueChanged, CellValueChanging"
-
-    Private Sub grdDetalleMototabla_CellValueChanged(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles grdDetalleMototabla.CellValueChanged
-        Dim FilaActual As Integer
-        Dim strIndiceCombo As String
-        Dim blnVerificaBarCode, blnVerificaRepuestoAct, blnVerificaCodRepuesto, blnVerificarExistencia As Boolean
-        Dim objRepuestos As SivRepuestos
-        Dim objBodegaRepuesto As SivBodegaRepuestos
-
-        FilaActual = Me.grdDetalleMototabla.FocusedRowHandle
-        objRepuestos = New SivRepuestos
-        objBodegaRepuesto = New SivBodegaRepuestos
-
-        'Codigo de Barras
-        If e.Column.Equals(Me.colCodigoBar) Then
-            'Verifica si el código de barras existe (REVISAR ESTA VALIDACION POR REGLAS DE NEGOCIO)
-            blnVerificaBarCode = objRepuestos.RetrieveByFilter("CodigoBarras=" & "'" & (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("CodigoBarras")) & "'")
-            If (blnVerificaBarCode = False) AndAlso (Not IsDBNull(Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("CodigoBarras"))) Then
-                MsgBox("El código de barras no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                Me.ElminarFilaSinPreguntarMoto()
-                Me.InsertarNuevaFilaGridMoto()
-                Exit Sub
-            End If
-
-            'Verifica si el Repuesto está activo (REVISAR ESTA VALIDACION POR REGLAS DE NEGOCIO)
-            blnVerificaRepuestoAct = objRepuestos.RetrieveByFilter("SivRepuestoID=" & "'" & objRepuestos.SivRepuestoID & "'" & " AND Activo=0")
-            If (blnVerificaRepuestoAct = True) Then
-                MsgBox("El repuesto está inactivo", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                Me.ElminarFilaSinPreguntarMoto()
-                Me.InsertarNuevaFilaGridMoto()
-                Me.grdDetalleMototabla.FocusedColumn = Me.colCodigo
-                Exit Sub
-            End If
-
-            'Verifica que el repuesto este en existencia
-            blnVerificarExistencia = objBodegaRepuesto.RetrieveByFilter("objRepuestoID = " & "'" & objRepuestos.SivRepuestoID & "'" & " AND objTiendaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
-            If Not blnVerificarExistencia Then
-                MsgBox("El repuesto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                Me.ElminarFilaSinPreguntarMoto()
-                Me.InsertarNuevaFilaGridMoto()
-                Me.grdDetalleMototabla.FocusedColumn = Me.colCodigo
-                Exit Sub
-            End If
-
-            'Si todo está bien se rellenan los datos
-            blnVerificaBarCode = objRepuestos.RetrieveByFilter("CodigoBarras=" & "'" & (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("CodigoBarras")) & "'")
-            If (blnVerificaBarCode = True) Then
-                RellenarDatosGridMoto(objRepuestos.SivRepuestoID.ToString, FilaActual)
-            End If
-        End If
-
-        'CodigoRepuesto
-        If e.Column.Equals(Me.colCodigo) Then
-            If Me.dtDetalleFacturaMoto.DefaultView.Count <> 0 Then
-                'Verifica si el código del repuesto existe
-                blnVerificaCodRepuesto = objRepuestos.RetrieveByFilter("SivRepuestoID='" & (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Codigo")) & "' AND SivRepuestoID IN ('1','2')")
-                If (blnVerificaCodRepuesto = False) Then
-                    MsgBox("El código de repuesto no existe", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                    Me.ElminarFilaSinPreguntarMoto()
-                    Me.InsertarNuevaFilaGridMoto()
-                    Exit Sub
-                End If
-
-                'Verifica si el Repuesto está activo (REVISAR ESTA VALIDACION POR REGLAS DE NEGOCIO)
-                blnVerificaRepuestoAct = objRepuestos.RetrieveByFilter("SivRepuestoID='" & objRepuestos.SivRepuestoID & "' AND Activo=0")
-                If (blnVerificaRepuestoAct = True) Then
-                    MsgBox("El repuesto está inactivo", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                    Me.ElminarFilaSinPreguntarMoto()
-                    Me.InsertarNuevaFilaGridMoto()
-                    Exit Sub
-                End If
-
-                'Verifica que el repuesto este en existencia
-                blnVerificarExistencia = objBodegaRepuesto.RetrieveByFilter("objRepuestoID = " & "'" & objRepuestos.SivRepuestoID & "'" & " AND objTiendaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
-                If Not blnVerificarExistencia Then
-                    MsgBox("El repuesto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                    Me.ElminarFilaSinPreguntarMoto()
-                    Me.InsertarNuevaFilaGridMoto()
-                    Me.grdDetalleMototabla.FocusedColumn = Me.colCodigo
-                    Exit Sub
-                End If
-
-                'Si todo está bien se rellenan los datos
-                RellenarDatosGridMoto(Me.grdDetalleMototabla.EditingValue, FilaActual)
-            End If
-        End If
-
-        'Descripción
-        If e.Column.Equals(Me.colDescripcionMoto) Then
-
-            'Verifica que el repuesto este en existencia
-            blnVerificarExistencia = objBodegaRepuesto.RetrieveByFilter("objRepuestoID = " & "'" & Me.grdDetalleMototabla.EditingValue & "'" & " AND objTiendaID = " & Me.cmbBodega.SelectedValue & " AND Cantidad <> 0")
-            If Not blnVerificarExistencia Then
-                MsgBox("El repuesto no tiene existencia.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                Me.ElminarFilaSinPreguntarMoto()
-                Me.InsertarNuevaFilaGridMoto()
-                Me.grdDetalleMototabla.FocusedColumn = Me.colCodigo
-                Exit Sub
-            End If
-
-            strIndiceCombo = grdDetalleMototabla.ActiveEditor.EditValue.ToString
-            RellenarDatosGridMoto(strIndiceCombo, FilaActual)
-        End If
-
-        'Validacion del repetido
-        If e.Column.Equals(Me.colCodigoBar) Or e.Column.Equals(Me.colCodigo) Or e.Column.Equals(Me.colDescripcionMoto) Then
-            If Me.BuscarDuplicados(Me.grdDetalleFacturaTabla.EditingValue, Me.colCodigoRepuesto.FieldName) Or Me.BuscarDuplicados(Me.grdDetalleMototabla.EditingValue, Me.colCodigoBar.FieldName) Then
-                MsgBox("Este valor ya se encuentra en la lista", MsgBoxStyle.Exclamation, "Sistema")
-                Me.ElminarFilaSinPreguntarMoto()
-                Me.InsertarNuevaFilaGridMoto()
-            End If
-        End If
-
-        'Cantidad
-        If e.Column.Equals(Me.ColCantidadMoto) Or e.Column.Equals(Me.colPorcentajeMoto) Then
-
-            'Valida si primero se digitó la cantidad
-            If (IsDBNull(dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Codigo"))) Then
-                Me.ElminarFilaSinPreguntarMoto()
-                Me.InsertarNuevaFilaGridMoto()
-                Exit Sub
-            End If
-
-            'Realizar cálculos en grid
-            If Me.dtDetalleFacturaMoto.Rows.Count <> 0 Then
-                If IsDBNull(Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Precio")) Then
-                    Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Precio") = 0
-                End If
-
-                Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Subtotal") = (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Cantidad")) * (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Precio"))
-
-                If IsDBNull(Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("DescuentoPor")) Then
-                    Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("DescuentoPor") = 0
-                End If
-
-                Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Descuento") = (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Subtotal")) * (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("DescuentoPor") / 100)
-
-                If Me.chkExonerado.Checked = True Then
-                    Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Impuesto") = 0
-                Else
-                    Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Impuesto") = ((Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Subtotal")) - (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Descuento"))) * (ClsCatalogos.GetValorParametro("PORCENTAJEIMPUESTO") / 100)
-                End If
-                Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Total") = (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Subtotal")) - (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Descuento")) + (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Impuesto"))
-            End If
-
-            'Calcular los totales
-            CalcularTotalesMoto()
-        End If
-
-        'Precio
-        If e.Column.Equals(Me.colPrecioMoto) Or e.Column.Equals(Me.colPorcentajeMoto) Then
-
-            'Valida si primero se digitó la cantidad
-            If (IsDBNull(dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Codigo"))) Then
-                Me.ElminarFilaSinPreguntarMoto()
-                Me.InsertarNuevaFilaGridMoto()
-                Exit Sub
-            End If
-
-            'Realizar cálculos en grid
-            If Me.dtDetalleFacturaMoto.Rows.Count <> 0 Then
-                If IsDBNull(Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Precio")) Then
-                    Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Precio") = 0
-                End If
-
-                Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Subtotal") = (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Cantidad")) * (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Precio"))
-
-                If IsDBNull(Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("DescuentoPor")) Then
-                    Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("DescuentoPor") = 0
-                End If
-
-                Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Descuento") = (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Subtotal")) * (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("DescuentoPor") / 100)
-
-                If Me.chkExonerado.Checked = True Then
-                    Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Impuesto") = 0
-                Else
-                    Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Impuesto") = ((Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Subtotal")) - (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Descuento"))) * (ClsCatalogos.GetValorParametro("PORCENTAJEIMPUESTO") / 100)
-                End If
-                Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Total") = (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Subtotal")) - (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Descuento")) + (Me.dtDetalleFacturaMoto.DefaultView.Item(FilaActual)("Impuesto"))
-            End If
-
-            'Calcular los totales
-            CalcularTotalesMoto()
-        End If
-
-
-        Me.boolModificado = True
-    End Sub
-
-    Private Sub grdDetalleMototabla_CellValueChanging(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles grdDetalleMototabla.CellValueChanging
-        'Limpiar los íconos de error en el momento de modificar las celdas
-        Dim view As ColumnView = sender
-
-        Select Case e.Column.Name
-            Case Me.colCodigo.Name, Me.colDescripcionMoto.Name, Me.ColCantidadMoto.Name
-                view.ClearColumnErrors()
-        End Select
-    End Sub
-#End Region
-
-#Region "EditorKeyDown, Enter, InvalidRowException"
-
-    Private Sub grdDetalleMoto_EditorKeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles grdDetalleMoto.EditorKeyDown
-        'Borra en modo de edición del grid, para ello se debe presionar la tecla control + delete
-        If (e.KeyCode = Keys.Delete And e.Modifiers = Keys.Control) Then
-            Me.EliminarFilaMoto()
-        End If
-    End Sub
-
-    Private Sub grdDetalleMoto_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles grdDetalleMoto.Enter
-        Me.ErrorFactura.SetError(Me.grpDetalle, "")
-        If Me.grdDetalleMototabla.RowCount = 0 Then
-            Me.InsertarNuevaFilaGridMoto()
-            Exit Sub
-        End If
-    End Sub
-
-    Private Sub grdDetalleMototabla_InvalidRowException(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs) Handles grdDetalleMototabla.InvalidRowException
-        'Evitar el popup de error de la celda
-        e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.NoAction
-    End Sub
-#End Region
-
-#Region "ValidateRow,ValidatingEditor"
-
-    Private Sub grdDetalleMototabla_ValidateRow(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs) Handles grdDetalleMototabla.ValidateRow
-        Dim viewCodigoRepuesto As ColumnView = CType(sender, ColumnView)
-        Dim viewDescripcion As ColumnView = CType(sender, ColumnView)
-        Dim viewCantidad As ColumnView = CType(sender, ColumnView)
-        Dim viewPrecio As ColumnView = CType(sender, ColumnView)
-        Dim columnCodigoRepuesto As GridColumn = viewCodigoRepuesto.Columns("Codigo")
-        Dim columnDescripcion As GridColumn = viewDescripcion.Columns("Codigo")
-        Dim columnCantidad As GridColumn = viewCantidad.Columns("Cantidad")
-        Dim columnPrecio As GridColumn = viewPrecio.Columns("Precio")
-
-        If IsDBNull(viewCodigoRepuesto.GetRowCellValue(e.RowHandle, columnCodigoRepuesto)) Then
-            e.Valid = False
-            viewCodigoRepuesto.SetColumnError(columnCodigoRepuesto, "El Código no puede ser nulo.")
-            boolExisteErroresGrid = True
-        Else
-            'If viewCodigoRepuesto.GetRowCellValue(e.RowHandle, columnCodigoRepuesto) >= Int32.MaxValue Then
-            '    e.Valid = False
-            '    viewCodigoRepuesto.SetColumnError(columnCodigoRepuesto, "El Código ingresado no es soportado.")
-            '    boolExisteErroresGrid = True
-            'Else
-            '    boolExisteErroresGrid = False
-            'End If
-        End If
-
-        If IsDBNull(viewDescripcion.GetRowCellValue(e.RowHandle, columnDescripcion)) Then
-            e.Valid = False
-            viewDescripcion.SetColumnError(columnDescripcion, "La descripcion no puede ser nula.")
-            boolExisteErroresGrid = True
-        Else
-            boolExisteErroresGrid = False
-        End If
-
-        If IsDBNull(viewCantidad.GetRowCellValue(e.RowHandle, columnCantidad)) OrElse viewCantidad.GetRowCellValue(e.RowHandle, columnCantidad) <= 0 Then
-            e.Valid = False
-            viewCantidad.SetColumnError(columnCantidad, "La Cantidad no puede contener un valor NULO, CERO o NEGATIVO.")
-            boolExisteErroresGrid = True
-        Else
-            boolExisteErroresGrid = False
-        End If
-
-        If IsDBNull(viewPrecio.GetRowCellValue(e.RowHandle, columnPrecio)) OrElse viewPrecio.GetRowCellValue(e.RowHandle, columnPrecio) <= 0 Then
-            e.Valid = False
-            viewPrecio.SetColumnError(columnCantidad, "El precio no puede contener un valor NULO, CERO o NEGATIVO.")
-            boolExisteErroresGrid = True
-        Else
-            boolExisteErroresGrid = False
-        End If
-    End Sub
-
-    Private Sub grdDetalleMototabla_ValidatingEditor(ByVal sender As System.Object, ByVal e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs) Handles grdDetalleMototabla.ValidatingEditor
-        Dim View As GridView = sender
-        Dim Valor As Double
-        Dim bValidarEntero As Boolean = False
-        Dim codigo As String
-
-        '[CodigoRepuesto]
-        If View.FocusedColumn.FieldName = "Codigo" Then
-            'Obtener el valor actualmente editado
-            codigo = Convert.ToString(e.Value)
-            bValidarEntero = True
-        End If
-        '[Cantidad]
-        If View.FocusedColumn.FieldName = "Cantidad" Then
-            'Obtener el valor actualmente editado
-            Valor = Convert.ToDouble(e.Value)
-            bValidarEntero = True
-        End If
-
-        If bValidarEntero Then
-            'Si es negativo, asignar cero
-            If Valor < 0 Then
-                e.Valid = True
-                e.Value = 0
-                'e.ErrorText = "Debe ingresar un valor positivo"
-            End If
-            'Si es mayor que un entero, asignar cero.
-            If Valor >= Integer.MaxValue Then
-                e.Value = 0
-                e.Valid = True
-            End If
-        End If
-
-        If View.FocusedColumn.FieldName = "Cantidad" Then
-            Valor = Convert.ToDouble(e.Value)
-            'Debe ser menor o igual a la cantidad existente
-            If Not IsDBNull(Me.numExistencia.Value) Then
-                If Valor > Me.numExistencia.Value Then
-                    MsgBox("La cantidad debe ser menor a la existente.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                    e.Value = 0
-                    e.Valid = True
-                End If
-            End If
-        End If
-
-        '[Precio]
-        If View.FocusedColumn.FieldName = "Precio" Then
-            'Obtener el valor actualmente editado
-            Valor = Convert.ToDouble(e.Value)
-            bValidarEntero = True
-        End If
-
-        If bValidarEntero Then
-            'Si es negativo, asignar cero
-            If Valor < 0 Then
-                e.Valid = True
-                e.Value = 0
-                'e.ErrorText = "Debe ingresar un valor positivo"
-            End If
-            'Si es mayor que un entero, asignar cero.
-            If Valor >= Integer.MaxValue Then
-                e.Value = 0
-                e.Valid = True
-            End If
-        End If
-    End Sub
-
-#End Region
-
-#End Region
 
     Private Sub txtCodigoCliente_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCodigoCliente.KeyPress
         If Asc(e.KeyChar) = 13 Then
@@ -4195,7 +3825,7 @@ Public Class frmSfaFacturaRepuestosEditar
             Me.CargarConsultaExistencia()
         End If
     End Sub
-    Private Sub grdMotoSpnCodigo_ButtonClick_1(ByVal sender As System.Object, ByVal e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles grdMotoSpnCodigo.ButtonClick
+    Private Sub grdMotoSpnCodigo_ButtonClick_1(ByVal sender As System.Object, ByVal e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs)
         Me.CargarConsultaExistencia()
     End Sub
 
