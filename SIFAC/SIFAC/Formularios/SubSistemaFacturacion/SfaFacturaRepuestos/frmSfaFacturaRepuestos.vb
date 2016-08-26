@@ -1006,9 +1006,6 @@ Public Class frmSfaFacturaRepuestos
         Dim parametros As New List(Of Microsoft.Reporting.WinForms.ReportParameter)
         Dim dblSubTotal, dblSubTotalVentas, dblTotalDolares, dblPrima, dblSaldo, dblTotalCordobas, dblTasa, dblImpuesto, dblDescuento As Double
         Dim strObservaciones, strEslogan, strCedula As String
-        Dim FilaModelo, filaMarca, FilaColor, FilaAno, FilaMotor, FilaChasis As DataRow
-        Dim FilaCilindraje, FilaCilindro, FilaTipo, FilaCombustible, FilaVelocidades As DataRow
-        Dim FilaPasajeros, FilaPoliza, FilaCasco As DataRow
 
         strObservaciones = ""
         strCedula = ""
@@ -1016,8 +1013,8 @@ Public Class frmSfaFacturaRepuestos
 
         FilaActual = Me.grdFacturaMasterTabla.FocusedRowHandle
 
-        sFiltro = "SfaFacturaRepuestoID = " & Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaRepuestoID")
-        sCampos = "Vendedor, Cliente, Estado, SfaFacturaRepuestoID, Numero, cast('' as varchar(50)) as DescripcionMoto, SubTotalVentas,Fecha, Contado, Credito, Precio, Cantidad, objRepuestoID, Subtotal, Descripcion, SubTotalMaestro, DescuentoMaestro, ImpuestoMaestro, TotalDolares, TotalCordobas, TasaCambio, Prima, Saldo, observaciones, objEstadoID, SerieNumero, DGI, objFacturaRepuestoID, Dia, Mes, Ano,Eslogan, Cedula, Direccion,FacturaMoto,DescripcionMoto as DescriMoto"
+        sFiltro = "SfaFacturaID = " & Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaID")
+        sCampos = "Vendedor, Cliente, Estado, SfaFacturaID, Numero, SubTotalVentas,Fecha, Contado, Credito, Precio, Cantidad, objSivProductoID, Subtotal, Descripcion, SubTotalMaestro, DescuentoMaestro, ImpuestoMaestro, TotalDolares, TotalCordobas, TasaCambio, Prima, Saldo, observaciones, objEstadoID, DGI, objSfaFacturaID, Dia, Mes, Ano,Eslogan, Cedula, Direccion"
         sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSfaFacturaRepuesto", sFiltro)
         dtDatos = DAL.SqlHelper.ExecuteQueryDT(sSQL)
 
@@ -1072,80 +1069,15 @@ Public Class frmSfaFacturaRepuestos
         parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Cedula", strCedula, False))
         parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("SubTotalVenta", dblSubTotalVentas, False))
 
-        If dtDatos.DefaultView.Item(0)("FacturaMoto") Then
 
-            Me.SepararDescripcion(dtDatos.DefaultView.Item(0)("DescriMoto"))
+        With visor.VisorReportes
+            .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+            .LocalReport.ReportEmbeddedResource = "SIFAC.rptSfaFacturaRepuesto.rdlc"
+            .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtRptFacturaRepuestos_vwRptSfaFacturaRepuesto", dtDatos))
+            .LocalReport.SetParameters(parametros)
+            .RefreshReport()
+        End With
 
-            FilaModelo = dtDatos.NewRow
-            filaMarca = dtDatos.NewRow
-            FilaColor = dtDatos.NewRow
-            FilaAno = dtDatos.NewRow
-            FilaMotor = dtDatos.NewRow
-            FilaChasis = dtDatos.NewRow
-            FilaCilindraje = dtDatos.NewRow
-            FilaCilindro = dtDatos.NewRow
-            FilaTipo = dtDatos.NewRow
-            FilaCombustible = dtDatos.NewRow
-            FilaVelocidades = dtDatos.NewRow
-            FilaPasajeros = dtDatos.NewRow
-            FilaPoliza = dtDatos.NewRow
-            FilaCasco = dtDatos.NewRow
-
-            Me.InicializarModelo(FilaModelo)
-            dtDatos.Rows.Add(FilaModelo)
-
-            Me.InicializarMarca(filaMarca)
-            dtDatos.Rows.Add(filaMarca)
-
-            Me.InicializarColor(FilaColor)
-            dtDatos.Rows.Add(FilaColor)
-
-            Me.InicializarAno(FilaAno)
-            dtDatos.Rows.Add(FilaAno)
-
-            Me.InicializarMotor(FilaMotor)
-            dtDatos.Rows.Add(FilaMotor)
-
-            Me.InicializarChasis(FilaChasis)
-            dtDatos.Rows.Add(FilaChasis)
-
-            Me.InicializarCilindraje(FilaCilindraje)
-            dtDatos.Rows.Add(FilaCilindraje)
-
-            Me.InicializarCilindro(FilaCilindro)
-            dtDatos.Rows.Add(FilaCilindro)
-
-            Me.InicializarTipo(FilaTipo)
-            dtDatos.Rows.Add(FilaTipo)
-
-            Me.InicializarCombustible(FilaCombustible)
-            dtDatos.Rows.Add(FilaCombustible)
-
-            Me.InicializarVelocidades(FilaVelocidades)
-            dtDatos.Rows.Add(FilaVelocidades)
-
-            Me.InicializarPasajeros(FilaPasajeros)
-            dtDatos.Rows.Add(FilaPasajeros)
-
-            Me.InicializarPoliza(FilaPoliza)
-            dtDatos.Rows.Add(FilaPoliza)
-
-            With visor.VisorReportes
-                .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-                .LocalReport.ReportEmbeddedResource = "SCCUM.rptSfaFacturaMoto.rdlc"
-                .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtRptFacturaRepuestos_vwRptSfaFacturaRepuesto", dtDatos))
-                .LocalReport.SetParameters(parametros)
-                .RefreshReport()
-            End With
-        Else
-            With visor.VisorReportes
-                .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-                .LocalReport.ReportEmbeddedResource = "SCCUM.rptSfaFacturaRepuesto.rdlc"
-                .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtRptFacturaRepuestos_vwRptSfaFacturaRepuesto", dtDatos))
-                .LocalReport.SetParameters(parametros)
-                .RefreshReport()
-            End With
-        End If
 
         visor.ShowDialog()
     End Sub

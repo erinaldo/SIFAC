@@ -36,7 +36,7 @@ Public Class frmSfaBuscarFactura
 
 #Region "Cargar Clientes"
     Private Sub CargarClientes()
-        dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto", "vwSfaClienteFactura", "Descripcion = 'Cliente' AND StbPersonaID NOT IN (SELECT objFiadorID FROM vwSccCuentaFiador WHERE Estado = 'VIGENTE')"))
+        dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto", "vwSfaClienteFactura", "Descripcion = 'Cliente'"))
         dtCliente.DefaultView.Sort = "NombreCompleto"
         With Me.cmbCliente
             .DataSource = dtCliente
@@ -52,12 +52,12 @@ Public Class frmSfaBuscarFactura
 #Region "Cargar Tiendas"
 
     Private Sub CargarTienda()
-        dtTienda = StbTienda.RetrieveDT("Activo = 1 AND Codigo <> 'C' AND Codigo <> 'ME' AND ActivoRepuesto = 1 ", , "StbTiendaID, Codigo,Nombre")
+        dtTienda = StbBodegas.RetrieveDT("Activo = 1", , "StbBodegaID, Codigo,Nombre")
         With Me.cmbSucursal
             .DataSource = Me.dtTienda
-            .ValueMember = "StbTiendaID"
+            .ValueMember = "StbBodegaID"
             .DisplayMember = "Nombre"
-            .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+            .Splits(0).DisplayColumns("StbBodegaID").Visible = False
             .Splits(0).DisplayColumns("Codigo").Visible = False
             .ExtendRightColumn = True
         End With
@@ -135,9 +135,9 @@ Public Class frmSfaBuscarFactura
                     If Me.cmbSucursal.Text.Trim.Length <> 0 Then
                         Parametro(1).Value = Me.cmbSucursal.SelectedValue
                         If m_strFiltro.Trim.Length <> 0 Then
-                            m_strFiltro = m_strFiltro & " AND objtiendaID = @Sucursal"
+                            m_strFiltro = m_strFiltro & " AND objStbBodegaID = @Sucursal"
                         Else
-                            m_strFiltro = " objtiendaID = @Sucursal"
+                            m_strFiltro = " objStbBodegaID = @Sucursal"
                         End If
                     End If
                 End If
@@ -146,9 +146,9 @@ Public Class frmSfaBuscarFactura
                     If Me.cmbCliente.Text.Trim.Length <> 0 Then
                         Parametro(2).Value = Me.cmbCliente.SelectedValue
                         If m_strFiltro.Length <> 0 Then
-                            m_strFiltro = m_strFiltro & " AND objClienteID = @Cliente"
+                            m_strFiltro = m_strFiltro & " AND objSccClienteID = @Cliente"
                         Else
-                            m_strFiltro = " objClienteID = @Cliente"
+                            m_strFiltro = " objSccClienteID = @Cliente"
                         End If
                     End If
                 End If
