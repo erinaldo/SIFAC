@@ -90,7 +90,6 @@ Public Class frmStbBitacoraClienteEdit
         Dim objfrmCuentaEdit As frmSccCuentasEditar
         objfrmCuentaEdit = New frmSccCuentasEditar
         objfrmCuentaEdit.CuentaID = Me.IDCuenta
-        objfrmCuentaEdit.TiendaID = Me.IdTienda
         objfrmCuentaEdit.TypeGUI = 2
         objfrmCuentaEdit.ShowDialog(Me)
     End Sub

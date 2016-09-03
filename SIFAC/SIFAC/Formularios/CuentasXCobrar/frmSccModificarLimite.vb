@@ -52,8 +52,7 @@ Public Class frmSccModificarLimite
                     Exit Sub
                 End If
                 t.BeginTran()
-                objSccCuenta.Retrieve(Me.IDCuenta, Me.IDTienda)
-                objSccCuenta.LimiteCredito = Me.NumNuevolimite.Value
+                objSccCuenta.Retrieve(Me.IDCuenta)
                 objSccCuenta.UsuarioModificacion = clsProyecto.Conexion.Usuario
                 objSccCuenta.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objSccCuenta.Update(t)

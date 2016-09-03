@@ -143,7 +143,7 @@ Public Class frmSccDevoluciones
                 DtDatosNC.TableName = "SccNotaCredito"
                 SccNotaCredito.BatchUpdate(DtDatosNC.DataSet, T)
 
-                objSccCuentaCobrar.Retrieve(objDevolucion.objSccCuentaID, objDevolucion.ObjSucursalID, T)
+                objSccCuentaCobrar.Retrieve(objDevolucion.objSccCuentaID, T)
                 objSccCuentaCobrar.UsuarioModificacion = clsProyecto.Conexion.Usuario
                 objSccCuentaCobrar.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objSccCuentaCobrar.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "DEVOLUCION")

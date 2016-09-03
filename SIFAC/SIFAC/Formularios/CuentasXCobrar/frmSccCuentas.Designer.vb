@@ -20,21 +20,21 @@ Partial Class frmSccCuentas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSccCuentas))
-        Me.tbCuentas = New System.Windows.Forms.ToolStrip
-        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton
-        Me.cmdEditar = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdModificarLimite = New System.Windows.Forms.ToolStripButton
-        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton
-        Me.cmdBuscarExpedientes = New System.Windows.Forms.ToolStripButton
-        Me.cmdReestructurarCuenta = New System.Windows.Forms.ToolStripButton
-        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton
-        Me.cmdSalir = New System.Windows.Forms.ToolStripButton
-        Me.C1Sizer1 = New C1.Win.C1Sizer.C1Sizer
-        Me.grdDetalleExpedientes = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.grdCuentas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
+        Me.tbCuentas = New System.Windows.Forms.ToolStrip()
+        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdEditar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdModificarLimite = New System.Windows.Forms.ToolStripButton()
+        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdBuscarExpedientes = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdReestructurarCuenta = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
+        Me.C1Sizer1 = New C1.Win.C1Sizer.C1Sizer()
+        Me.grdDetalleExpedientes = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdCuentas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.tbCuentas.SuspendLayout()
         CType(Me.C1Sizer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.C1Sizer1.SuspendLayout()
@@ -48,7 +48,7 @@ Partial Class frmSccCuentas
         Me.tbCuentas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.ToolStripSeparator1, Me.cmdModificarLimite, Me.cmdConsultar, Me.cmdBuscarExpedientes, Me.ToolStripSeparator2, Me.cmdReestructurarCuenta, Me.ToolStripSeparator3, Me.cmdRefrescar, Me.cmdSalir})
         Me.tbCuentas.Location = New System.Drawing.Point(0, 0)
         Me.tbCuentas.Name = "tbCuentas"
-        Me.tbCuentas.Size = New System.Drawing.Size(863, 39)
+        Me.tbCuentas.Size = New System.Drawing.Size(1151, 39)
         Me.tbCuentas.TabIndex = 0
         Me.tbCuentas.Text = "ToolStrip1"
         '
@@ -83,6 +83,7 @@ Partial Class frmSccCuentas
         Me.cmdModificarLimite.Name = "cmdModificarLimite"
         Me.cmdModificarLimite.Size = New System.Drawing.Size(36, 36)
         Me.cmdModificarLimite.ToolTipText = "Modificar Limite de Crédito"
+        Me.cmdModificarLimite.Visible = False
         '
         'cmdConsultar
         '
@@ -102,6 +103,11 @@ Partial Class frmSccCuentas
         Me.cmdBuscarExpedientes.Size = New System.Drawing.Size(36, 36)
         Me.cmdBuscarExpedientes.Text = "Buscar Expedientes"
         '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
+        '
         'cmdReestructurarCuenta
         '
         Me.cmdReestructurarCuenta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -111,6 +117,12 @@ Partial Class frmSccCuentas
         Me.cmdReestructurarCuenta.Size = New System.Drawing.Size(36, 36)
         Me.cmdReestructurarCuenta.Text = "Reestructurar Cuenta"
         Me.cmdReestructurarCuenta.ToolTipText = "Reestructurar Cuenta"
+        Me.cmdReestructurarCuenta.Visible = False
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 39)
         '
         'cmdRefrescar
         '
@@ -135,12 +147,13 @@ Partial Class frmSccCuentas
         Me.C1Sizer1.Controls.Add(Me.grdDetalleExpedientes)
         Me.C1Sizer1.Controls.Add(Me.grdCuentas)
         Me.C1Sizer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.C1Sizer1.GridDefinition = "72.8155339805825:False:False;24.2718446601942:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.0730011587486:False" & _
-            ":False;"
+        Me.C1Sizer1.GridDefinition = "73.2558139534884:False:False;24.4186046511628:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.3049522154648:False" & _
+    ":False;"
         Me.C1Sizer1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.C1Sizer1.Location = New System.Drawing.Point(0, 39)
+        Me.C1Sizer1.Margin = New System.Windows.Forms.Padding(4)
         Me.C1Sizer1.Name = "C1Sizer1"
-        Me.C1Sizer1.Size = New System.Drawing.Size(863, 412)
+        Me.C1Sizer1.Size = New System.Drawing.Size(1151, 516)
         Me.C1Sizer1.TabIndex = 1
         Me.C1Sizer1.TabStop = False
         '
@@ -149,13 +162,14 @@ Partial Class frmSccCuentas
         Me.grdDetalleExpedientes.Caption = "Expedientes-Facturas"
         Me.grdDetalleExpedientes.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDetalleExpedientes.Images.Add(CType(resources.GetObject("grdDetalleExpedientes.Images"), System.Drawing.Image))
-        Me.grdDetalleExpedientes.Location = New System.Drawing.Point(4, 308)
+        Me.grdDetalleExpedientes.Location = New System.Drawing.Point(4, 386)
+        Me.grdDetalleExpedientes.Margin = New System.Windows.Forms.Padding(4)
         Me.grdDetalleExpedientes.Name = "grdDetalleExpedientes"
         Me.grdDetalleExpedientes.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDetalleExpedientes.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdDetalleExpedientes.PreviewInfo.ZoomFactor = 75
+        Me.grdDetalleExpedientes.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDetalleExpedientes.PrintInfo.PageSettings = CType(resources.GetObject("grdDetalleExpedientes.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdDetalleExpedientes.Size = New System.Drawing.Size(855, 100)
+        Me.grdDetalleExpedientes.Size = New System.Drawing.Size(1143, 126)
         Me.grdDetalleExpedientes.TabIndex = 10
         Me.grdDetalleExpedientes.Text = "Expedientes-Facturas"
         Me.grdDetalleExpedientes.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
@@ -169,34 +183,26 @@ Partial Class frmSccCuentas
         Me.grdCuentas.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.grdCuentas.Images.Add(CType(resources.GetObject("grdCuentas.Images"), System.Drawing.Image))
         Me.grdCuentas.Location = New System.Drawing.Point(4, 4)
+        Me.grdCuentas.Margin = New System.Windows.Forms.Padding(4)
         Me.grdCuentas.Name = "grdCuentas"
         Me.grdCuentas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdCuentas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdCuentas.PreviewInfo.ZoomFactor = 75
+        Me.grdCuentas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdCuentas.PrintInfo.PageSettings = CType(resources.GetObject("grdCuentas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdCuentas.Size = New System.Drawing.Size(855, 300)
+        Me.grdCuentas.Size = New System.Drawing.Size(1143, 508)
         Me.grdCuentas.TabIndex = 9
         Me.grdCuentas.Tag = "AGRUPAR"
         Me.grdCuentas.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
         Me.grdCuentas.PropBag = resources.GetString("grdCuentas.PropBag")
         '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 39)
-        '
         'frmSccCuentas
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(863, 451)
+        Me.ClientSize = New System.Drawing.Size(1151, 555)
         Me.Controls.Add(Me.C1Sizer1)
         Me.Controls.Add(Me.tbCuentas)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmSccCuentas"
         Me.Text = "Expedientes"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
