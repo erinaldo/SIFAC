@@ -53,10 +53,12 @@ Public Class frmStbRutasEdit
                     CargarDatosRuta()
                     txtNombre.Enabled = False
                     cbxCiudad.Enabled = False
+                    txtDescripcion.Enabled = False
                     cmbDiaCrobro.Enabled = False
                     cmbSupervisor.Enabled = False
                     cbxCobrador.Enabled = False
                     chkActivo.Enabled = False
+                    ckdCargaDiferenciada.Enabled = False
                     cmdGuardar.Enabled = False
             End Select
         Catch ex As Exception
@@ -96,7 +98,6 @@ Public Class frmStbRutasEdit
             objRutas.Nombre = txtNombre.Text.Trim
             objRutas.Descripcion = txtDescripcion.Text.Trim
             objRutas.Activa = chkActivo.Checked
-            objRutas.Codigo = txtCodigo.Text
             objRutas.objCobradorID = cbxCobrador.SelectedValue
             objRutas.objSupervisor = cmbSupervisor.SelectedValue
             objRutas.objCiudadID = cbxCiudad.SelectedValue
@@ -107,6 +108,9 @@ Public Class frmStbRutasEdit
             objRutas.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objRutas.Insert()
             T.CommitTran()
+
+            objRutas.Codigo = "RUT" + cbxCiudad.Text.Substring(0, 3) + objRutas.StbRutaID
+            txtCodigo.Text = objRutas.Codigo
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.boolEditado = False
             Me.DialogResult = Windows.Forms.DialogResult.OK
@@ -155,8 +159,10 @@ Public Class frmStbRutasEdit
 
 #Region "Funciones"
 
+
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntrada() As Boolean
+        try
         If txtNombre.Text.Trim.Length = 0 Then
             ErrorProv.SetError(txtNombre, My.Resources.MsgObligatorio)
             Return False
@@ -181,22 +187,31 @@ Public Class frmStbRutasEdit
             Exit Function
         End If
 
-  
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
 
         Return True
     End Function
 #End Region
 
-    Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
-        If ValidarEntrada() Then
-            Select Case TypeGui
-                Case 0
-                    GuardarRuta()
-                Case 1
-                    EditarRuta()
-            End Select
+#Region "Eventos del Formulario"
 
-        End If
+    Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
+        Try
+            If ValidarEntrada() Then
+                Select Case TypeGui
+                    Case 0
+                        GuardarRuta()
+                    Case 1
+                        EditarRuta()
+                End Select
+
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
@@ -204,9 +219,14 @@ Public Class frmStbRutasEdit
     End Sub
 
     Private Sub frmStbRutasEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
-        ConfigurarGUI()
-        Me.boolEditado = False
+        Try
+            clsProyecto.CargarTemaDefinido(Me)
+            ConfigurarGUI()
+            Me.boolEditado = False
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub frmStbRutasEdit_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -218,4 +238,6 @@ Public Class frmStbRutasEdit
             End If
         End If
     End Sub
+#End Region
+
 End Class

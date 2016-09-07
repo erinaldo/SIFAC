@@ -20,20 +20,20 @@ Partial Class frmStbMantCatalogo
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbMantCatalogo))
-        Me.C1ToolBar1 = New C1.Win.C1Command.C1ToolBar
-        Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton
-        Me.cmdEditar = New System.Windows.Forms.ToolStripButton
-        Me.cmdEliminar = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdimprimir = New System.Windows.Forms.ToolStripButton
-        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdSalir = New System.Windows.Forms.ToolStripButton
-        Me.CzContenedor = New C1.Win.C1Sizer.C1Sizer
-        Me.grdDatosvalores = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.grdDatosCatalogos = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.C1ToolBar1 = New C1.Win.C1Command.C1ToolBar()
+        Me.C1CommandHolder1 = New C1.Win.C1Command.C1CommandHolder()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdEditar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdEliminar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdimprimir = New System.Windows.Forms.ToolStripButton()
+        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
+        Me.CzContenedor = New C1.Win.C1Sizer.C1Sizer()
+        Me.grdDatosvalores = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdDatosCatalogos = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         CType(Me.C1CommandHolder1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.CzContenedor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,6 +50,7 @@ Partial Class frmStbMantCatalogo
         Me.C1ToolBar1.Name = "C1ToolBar1"
         Me.C1ToolBar1.Size = New System.Drawing.Size(24, 24)
         Me.C1ToolBar1.Text = "C1ToolBar1"
+        Me.C1ToolBar1.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
         'C1CommandHolder1
         '
@@ -57,6 +58,7 @@ Partial Class frmStbMantCatalogo
         '
         'ToolStrip1
         '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdEliminar, Me.ToolStripSeparator1, Me.cmdimprimir, Me.cmdRefrescar, Me.ToolStripSeparator2, Me.cmdSalir})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
@@ -132,7 +134,7 @@ Partial Class frmStbMantCatalogo
         Me.CzContenedor.Controls.Add(Me.grdDatosCatalogos)
         Me.CzContenedor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CzContenedor.GridDefinition = "98.8059701492537:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "32.96853625171:False:False;65.389876880985:False:Fa" & _
-            "lse;"
+    "lse;"
         Me.CzContenedor.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.CzContenedor.Location = New System.Drawing.Point(0, 25)
         Me.CzContenedor.Name = "CzContenedor"
@@ -153,7 +155,7 @@ Partial Class frmStbMantCatalogo
         Me.grdDatosvalores.Name = "grdDatosvalores"
         Me.grdDatosvalores.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDatosvalores.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdDatosvalores.PreviewInfo.ZoomFactor = 75
+        Me.grdDatosvalores.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDatosvalores.PrintInfo.PageSettings = CType(resources.GetObject("grdDatosvalores.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDatosvalores.Size = New System.Drawing.Size(478, 662)
         Me.grdDatosvalores.TabIndex = 4
@@ -174,7 +176,7 @@ Partial Class frmStbMantCatalogo
         Me.grdDatosCatalogos.Name = "grdDatosCatalogos"
         Me.grdDatosCatalogos.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDatosCatalogos.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdDatosCatalogos.PreviewInfo.ZoomFactor = 75
+        Me.grdDatosCatalogos.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDatosCatalogos.PrintInfo.PageSettings = CType(resources.GetObject("grdDatosCatalogos.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDatosCatalogos.Size = New System.Drawing.Size(241, 662)
         Me.grdDatosCatalogos.TabIndex = 3
@@ -190,6 +192,7 @@ Partial Class frmStbMantCatalogo
         Me.Controls.Add(Me.CzContenedor)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.C1ToolBar1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmStbMantCatalogo"
         Me.Tag = "CATALOGOS"
         Me.Text = "Mantenimiento Catálogos"

@@ -53,8 +53,6 @@ Public Class frmSsgEditCuenta
     End Sub
 
     '--------------------------------------------------------------------------------
-    '-- Implementado Por        :   Juan Carlos Herrera Amador
-    '-- Fecha de Implementacion :   10 de Septiembre del 2007
     '-- Descripcion             :   Configura propiedades al form y ciertos controles
     '---------------------------------------------------------------------------------
     Private Sub EstablecerPropiedades()
@@ -133,17 +131,19 @@ Public Class frmSsgEditCuenta
 
     Private Sub CargarEmpleados()
         Try
-            dtEmpleados = radTecnico.RetrieveDT(, "Nombre", "RadTecnicoID, Codigo + ' - ' + Nombre as Nombre")
-            dtEmpleados.PrimaryKey = New DataColumn() {Me.dtEmpleados.Columns("RadTecnicoID")}
-            dtEmpleados.DefaultView.Sort = "RadTecnicoID"
+            dtEmpleados = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto ,objPersonaID", "vwSrhEmpleado", "Activo =1"))
+
+            dtEmpleados = SrhEmpleado.RetrieveDT(, "Nombre", "SrhEmpleadoID,  NombreCompleto as Nombre")
+            dtEmpleados.PrimaryKey = New DataColumn() {Me.dtEmpleados.Columns("SrhEmpleadoID")}
+            dtEmpleados.DefaultView.Sort = "SrhEmpleadoID"
             Me.cboEmpleado.DataSource = dtEmpleados
             Me.cboEmpleado.DisplayMember = "Nombre"
-            Me.cboEmpleado.ValueMember = "RadTecnicoID"
+            Me.cboEmpleado.ValueMember = "SrhEmpleadoID"
             Me.dtEmpleados.DefaultView.Sort = "Nombre"
 
             '--- Formatear combo
             '-----------------
-            Me.cboEmpleado.Splits(0).DisplayColumns("RadTecnicoID").Visible = False
+            Me.cboEmpleado.Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
             'Me.cboEmpleado.Splits(0).DisplayColumns("Activo").Visible = False
             'Me.cboEmpleado.Splits(0).DisplayColumns("FechaIngreso").Visible = False
             'Me.cboEmpleado.Splits(0).DisplayColumns("FechaEgreso").Visible = False

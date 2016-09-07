@@ -10,11 +10,11 @@ Partial Public Class SccDescuentoPlazo
 	Protected m_PlazoPago As Nullable(Of Integer) 
 	Protected m_DescuentoMaximo As Nullable(Of Decimal) 
 	Protected m_DescuentoMinimo As Nullable(Of Decimal) 
-	Protected m_Activo As Nullable(Of Boolean) 
 	Protected m_FechaCreacion As Nullable(Of Date) 
 	Protected m_UsuarioCreacion As String = Nothing 
 	Protected m_FechaModificacion As Nullable(Of Date) 
 	Protected m_UsuarioModificacion As String = Nothing 
+	Protected m_Activo As Nullable(Of Boolean) 
 #End Region
 
 #Region " Propiedades "
@@ -51,15 +51,6 @@ Partial Public Class SccDescuentoPlazo
         End Get
 		Set(ByVal Value As Nullable(Of Decimal))					
 			m_DescuentoMinimo = Value
-		End Set
-    End Property
-	
-	Public Property Activo() As Nullable(Of Boolean)
-        Get
-            Return (m_Activo)
-        End Get
-		Set(ByVal Value As Nullable(Of Boolean))					
-			m_Activo = Value
 		End Set
     End Property
 	
@@ -106,6 +97,15 @@ Partial Public Class SccDescuentoPlazo
 				End If
 			End If
 			m_UsuarioModificacion = Value
+		End Set
+    End Property
+	
+	Public Property Activo() As Nullable(Of Boolean)
+        Get
+            Return (m_Activo)
+        End Get
+		Set(ByVal Value As Nullable(Of Boolean))					
+			m_Activo = Value
 		End Set
     End Property
 	
@@ -161,24 +161,24 @@ Partial Public Class SccDescuentoPlazo
 			cmdInsert.Parameters.Add("@PlazoPago", SqlDbType.Int, 4, "PlazoPago")
 			cmdInsert.Parameters.Add("@DescuentoMaximo", SqlDbType.Decimal, 9, "DescuentoMaximo")
 			cmdInsert.Parameters.Add("@DescuentoMinimo", SqlDbType.Decimal, 9, "DescuentoMinimo")
-			cmdInsert.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 30, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
-			cmdInsert.CommandText = "INSERT INTO SccDescuentoPlazo ( PlazoPago, DescuentoMaximo, DescuentoMinimo, Activo, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion) VALUES ( @PlazoPago, @DescuentoMaximo, @DescuentoMinimo, @Activo, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion)"
+			cmdInsert.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
+			cmdInsert.CommandText = "INSERT INTO SccDescuentoPlazo ( PlazoPago, DescuentoMaximo, DescuentoMinimo, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, Activo) VALUES ( @PlazoPago, @DescuentoMaximo, @DescuentoMinimo, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @Activo)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@PlazoPago", SqlDbType.Int, 4, "PlazoPago")
 			cmdUpdate.Parameters.Add("@DescuentoMaximo", SqlDbType.Decimal, 9, "DescuentoMaximo")
 			cmdUpdate.Parameters.Add("@DescuentoMinimo", SqlDbType.Decimal, 9, "DescuentoMinimo")
-			cmdUpdate.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdUpdate.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 30, "UsuarioCreacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
+			cmdUpdate.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
 			cmdUpdate.Parameters.Add("@wSccDescuentoID", SqlDbType.Int, 4, "SccDescuentoID")
-			cmdUpdate.CommandText = "UPDATE SccDescuentoPlazo SET PlazoPago=@PlazoPago, DescuentoMaximo=@DescuentoMaximo, DescuentoMinimo=@DescuentoMinimo, Activo=@Activo, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion WHERE SccDescuentoID= @wSccDescuentoID"
+			cmdUpdate.CommandText = "UPDATE SccDescuentoPlazo SET PlazoPago=@PlazoPago, DescuentoMaximo=@DescuentoMaximo, DescuentoMinimo=@DescuentoMinimo, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, Activo=@Activo WHERE SccDescuentoID= @wSccDescuentoID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -228,11 +228,11 @@ Partial Public Class SccDescuentoPlazo
 				m_PlazoPago = IIf(IsDBNull(dr("PlazoPago")), Nothing, dr("PlazoPago"))					
 				m_DescuentoMaximo = IIf(IsDBNull(dr("DescuentoMaximo")), Nothing, dr("DescuentoMaximo"))					
 				m_DescuentoMinimo = IIf(IsDBNull(dr("DescuentoMinimo")), Nothing, dr("DescuentoMinimo"))					
-				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
+				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
 				Return True
 			Else
 				Return False
@@ -270,11 +270,11 @@ Partial Public Class SccDescuentoPlazo
 				m_PlazoPago = IIf(IsDBNull(dr("PlazoPago")), Nothing, dr("PlazoPago"))					
 				m_DescuentoMaximo = IIf(IsDBNull(dr("DescuentoMaximo")), Nothing, dr("DescuentoMaximo"))					
 				m_DescuentoMinimo = IIf(IsDBNull(dr("DescuentoMinimo")), Nothing, dr("DescuentoMinimo"))					
-				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
+				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
 				Return True
 			Else
 				Return False
@@ -403,19 +403,19 @@ Partial Public Class SccDescuentoPlazo
 		sCommand &= "PlazoPago,"
 		sCommand &= "DescuentoMaximo,"
 		sCommand &= "DescuentoMinimo,"
-		sCommand &= "Activo,"
 		sCommand &= "FechaCreacion,"
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaModificacion,"
-		sCommand &= "UsuarioModificacion) values ("		
+		sCommand &= "UsuarioModificacion,"
+		sCommand &= "Activo) values ("		
 		sCommand &= "@PlazoPago,"
 		sCommand &= "@DescuentoMaximo,"
 		sCommand &= "@DescuentoMinimo,"
-		sCommand &= "@Activo,"
 		sCommand &= "@FechaCreacion,"
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaModificacion,"
-		sCommand &= "@UsuarioModificacion)"		
+		sCommand &= "@UsuarioModificacion,"
+		sCommand &= "@Activo)"		
 	
 		sCommand &= " select "
 		sCommand &= "@SccDescuentoID = SccDescuentoID from SccDescuentoPlazo where "		
@@ -443,35 +443,35 @@ Partial Public Class SccDescuentoPlazo
         Else
             arParams(3).Value = m_DescuentoMinimo
         End If
-		arParams(4) = New SqlParameter("@Activo", SqlDbType.Bit)		
-		If IsDBNull(m_Activo) Then
+		arParams(4) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_Activo
+            arParams(4).Value = m_FechaCreacion
         End If
-		arParams(5) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(5) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_FechaCreacion
+            arParams(5).Value = m_UsuarioCreacion
         End If
-		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(6) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioCreacion
+            arParams(6).Value = m_FechaModificacion
         End If
-		arParams(7) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(7) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_FechaModificacion
+            arParams(7).Value = m_UsuarioModificacion
         End If
-		arParams(8) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(8) = New SqlParameter("@Activo", SqlDbType.Bit)		
+		If IsDBNull(m_Activo) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_UsuarioModificacion
+            arParams(8).Value = m_Activo
         End If
 	
 		Try
@@ -500,11 +500,11 @@ Partial Public Class SccDescuentoPlazo
 		sCommand &= "PlazoPago = @PlazoPago,"
 		sCommand &= "DescuentoMaximo = @DescuentoMaximo,"
 		sCommand &= "DescuentoMinimo = @DescuentoMinimo,"
-		sCommand &= "Activo = @Activo,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
 		sCommand &= "FechaModificacion = @FechaModificacion,"
-		sCommand &= "UsuarioModificacion = @UsuarioModificacion"		
+		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
+		sCommand &= "Activo = @Activo"		
 		sCommand &= " where "	
 		sCommand &= "SccDescuentoID = @SccDescuentoID"					
 		
@@ -533,35 +533,35 @@ Partial Public Class SccDescuentoPlazo
         Else
             arParams(3).Value = m_DescuentoMinimo
         End If
-		arParams(4) = New SqlParameter("@Activo", SqlDbType.Bit)		
-		If IsDBNull(m_Activo) Then
+		arParams(4) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_Activo
+            arParams(4).Value = m_FechaCreacion
         End If
-		arParams(5) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(5) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_FechaCreacion
+            arParams(5).Value = m_UsuarioCreacion
         End If
-		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(6) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioCreacion
+            arParams(6).Value = m_FechaModificacion
         End If
-		arParams(7) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(7) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_FechaModificacion
+            arParams(7).Value = m_UsuarioModificacion
         End If
-		arParams(8) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(8) = New SqlParameter("@Activo", SqlDbType.Bit)		
+		If IsDBNull(m_Activo) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_UsuarioModificacion
+            arParams(8).Value = m_Activo
         End If
 	
 		Try

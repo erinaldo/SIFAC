@@ -85,6 +85,8 @@
     <Compile Include="SccReciboDetNC_CF.vb" />
     <Compile Include="SccReciboDetND_CF.vb" />
     <Compile Include="SccTramiteLegal_CF.vb" />
+    <Compile Include="ScpOrdenCompra.vb" />
+    <Compile Include="ScpOrdenCompraDetalle.vb" />
     <Compile Include="SfaCotizacionDetalle_CF.vb" />
     <Compile Include="SfaCotizacion_CF.vb" />
     <Compile Include="SfaFacturas.vb" />
@@ -95,6 +97,8 @@
     <Compile Include="SivBodegaProductos.vb" />
     <Compile Include="SivBodegaRepuestos_CF.vb" />
     <Compile Include="SivCategorias.vb" />
+    <Compile Include="SivEncargos.vb" />
+    <Compile Include="SivEncargosDetalle.vb" />
     <Compile Include="SivEntradaBodega.vb" />
     <Compile Include="SivEntradaBodegaDetalle.vb" />
     <Compile Include="SivEntradaBodegaPREIMP_CF.vb" />

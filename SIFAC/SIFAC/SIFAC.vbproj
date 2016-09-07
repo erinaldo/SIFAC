@@ -393,6 +393,30 @@
     <Compile Include="Formularios\Devoluciones\frmSccDevoluciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Encargos\frmSivEncargos.Designer.vb">
+      <DependentUpon>frmSivEncargos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmSivEncargos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmSivEncargosEdit.Designer.vb">
+      <DependentUpon>frmSivEncargosEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmSivEncargosEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\OrdenCompra\frmSivOrdenCompra.Designer.vb">
+      <DependentUpon>frmSivOrdenCompra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\OrdenCompra\frmSivOrdenCompra.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\OrdenCompra\frmSivOrdenCompraEdit.Designer.vb">
+      <DependentUpon>frmSivOrdenCompraEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\OrdenCompra\frmSivOrdenCompraEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\PIM\frmPersonaSelector.Designer.vb">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
     </Compile>
@@ -1088,6 +1112,12 @@
     <EmbeddedResource Include="Formularios\Devoluciones\frmSccDevoluciones.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Encargos\frmSivEncargos.resx">
+      <DependentUpon>frmSivEncargos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Encargos\frmSivEncargosEdit.resx">
+      <DependentUpon>frmSivEncargosEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PIM\frmPersonaSelector.resx">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>

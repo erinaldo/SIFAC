@@ -22,7 +22,7 @@ Public Class frmSccDescuento
             DtDescuento.PrimaryKey = New DataColumn() {Me.DtDescuento.Columns("SccDescuentoID")}
             DtDescuento.DefaultView.Sort = "SccDescuentoID"
             Me.grdDescuento.DataSource = DtDescuento
-            Me.grdDescuento.Text = "Rutas (" & Me.DtDescuento.Rows.Count & ")"
+            Me.grdDescuento.Text = "Configuracion de Descuento (" & Me.DtDescuento.Rows.Count & ")"
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally

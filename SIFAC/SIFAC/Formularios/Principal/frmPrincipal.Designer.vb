@@ -107,6 +107,7 @@ Partial Class frmPrincipal
         Me.cmdCategorias = New C1.Win.C1Command.C1Command()
         Me.cmdDescuento = New C1.Win.C1Command.C1Command()
         Me.cmdRutas = New C1.Win.C1Command.C1Command()
+        Me.cmdEncargos = New C1.Win.C1Command.C1Command()
         Me.C1CommandLink7 = New C1.Win.C1Command.C1CommandLink()
         Me.linkParametros = New C1.Win.C1Command.C1CommandLink()
         Me.linkCategorias = New C1.Win.C1Command.C1CommandLink()
@@ -124,7 +125,6 @@ Partial Class frmPrincipal
         Me.C1CommandLink2 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink3 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink6 = New C1.Win.C1Command.C1CommandLink()
-        Me.C1CommandLink23 = New C1.Win.C1Command.C1CommandLink()
         Me.outReportes = New C1.Win.C1Command.C1OutPage()
         Me.ToolBReportes = New C1.Win.C1Command.C1ToolBar()
         Me.C1CommandLink8 = New C1.Win.C1Command.C1CommandLink()
@@ -149,6 +149,7 @@ Partial Class frmPrincipal
         Me.C1CommandLink26 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink27 = New C1.Win.C1Command.C1CommandLink()
         Me.C1CommandLink28 = New C1.Win.C1Command.C1CommandLink()
+        Me.C1CommandLink50 = New C1.Win.C1Command.C1CommandLink()
         Me.brInventarioReportes = New C1.Win.C1Command.C1OutPage()
         Me.ToolBarInventarioReportes = New C1.Win.C1Command.C1ToolBar()
         Me.C1CommandLink36 = New C1.Win.C1Command.C1CommandLink()
@@ -190,6 +191,8 @@ Partial Class frmPrincipal
         Me.RibbonSeparator4 = New C1.Win.C1Ribbon.RibbonSeparator()
         Me.lblFecha = New C1.Win.C1Ribbon.RibbonLabel()
         Me.lblHora = New C1.Win.C1Ribbon.RibbonLabel()
+        Me.C1CommandLink51 = New C1.Win.C1Command.C1CommandLink()
+        Me.cmdOrdenesCompra = New C1.Win.C1Command.C1Command()
         Me.MenuPrincipal.SuspendLayout()
         CType(Me.OutBarPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.OutBarPrincipal.SuspendLayout()
@@ -325,6 +328,7 @@ Partial Class frmPrincipal
         Me.OutBarPrincipal.Location = New System.Drawing.Point(0, 24)
         Me.OutBarPrincipal.Name = "OutBarPrincipal"
         Me.OutBarPrincipal.PageLayout = C1.Win.C1Command.ButtonLayoutEnum.TextOnLeft
+        Me.OutBarPrincipal.SelectedIndex = 3
         Me.OutBarPrincipal.Size = New System.Drawing.Size(188, 583)
         Me.OutBarPrincipal.VisualStyleBase = C1.Win.C1Command.VisualStyle.OfficeXP
         '
@@ -421,6 +425,8 @@ Partial Class frmPrincipal
         Me.C1CommandHolder1.Commands.Add(Me.cmdCategorias)
         Me.C1CommandHolder1.Commands.Add(Me.cmdDescuento)
         Me.C1CommandHolder1.Commands.Add(Me.cmdRutas)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdEncargos)
+        Me.C1CommandHolder1.Commands.Add(Me.cmdOrdenesCompra)
         Me.C1CommandHolder1.Owner = Me
         '
         'cmdCatalogoValor
@@ -655,7 +661,7 @@ Partial Class frmPrincipal
         '
         'cmdEntradaBodega
         '
-        Me.cmdEntradaBodega.Image = CType(resources.GetObject("cmdEntradaBodega.Image"), System.Drawing.Image)
+        Me.cmdEntradaBodega.Icon = CType(resources.GetObject("cmdEntradaBodega.Icon"), System.Drawing.Icon)
         Me.cmdEntradaBodega.Name = "cmdEntradaBodega"
         Me.cmdEntradaBodega.Text = "Entrada Bodega"
         '
@@ -822,6 +828,11 @@ Partial Class frmPrincipal
         Me.cmdRutas.Name = "cmdRutas"
         Me.cmdRutas.Text = "Rutas"
         '
+        'cmdEncargos
+        '
+        Me.cmdEncargos.Name = "cmdEncargos"
+        Me.cmdEncargos.Text = "Encargos"
+        '
         'C1CommandLink7
         '
         Me.C1CommandLink7.Command = Me.cmdCatalogoValor
@@ -896,7 +907,7 @@ Partial Class frmPrincipal
         Me.ToolBarCartera.Border.Style = C1.Win.C1Command.BorderStyleEnum.Ridge
         Me.ToolBarCartera.ButtonLookVert = CType((C1.Win.C1Command.ButtonLookFlags.Text Or C1.Win.C1Command.ButtonLookFlags.Image), C1.Win.C1Command.ButtonLookFlags)
         Me.ToolBarCartera.CommandHolder = Me.C1CommandHolder1
-        Me.ToolBarCartera.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink6, Me.C1CommandLink23})
+        Me.ToolBarCartera.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink1, Me.C1CommandLink2, Me.C1CommandLink3, Me.C1CommandLink6})
         Me.ToolBarCartera.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolBarCartera.Horizontal = False
         Me.ToolBarCartera.Location = New System.Drawing.Point(0, 0)
@@ -925,11 +936,6 @@ Partial Class frmPrincipal
         '
         Me.C1CommandLink6.Command = Me.cmdDevoluciones
         Me.C1CommandLink6.SortOrder = 3
-        '
-        'C1CommandLink23
-        '
-        Me.C1CommandLink23.Command = Me.cmdTramiteLegal
-        Me.C1CommandLink23.SortOrder = 4
         '
         'outReportes
         '
@@ -1058,7 +1064,7 @@ Partial Class frmPrincipal
         Me.toolBarInventario.AutoSize = False
         Me.toolBarInventario.ButtonLookVert = CType((C1.Win.C1Command.ButtonLookFlags.Text Or C1.Win.C1Command.ButtonLookFlags.Image), C1.Win.C1Command.ButtonLookFlags)
         Me.toolBarInventario.CommandHolder = Me.C1CommandHolder1
-        Me.toolBarInventario.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink33, Me.C1CommandLink32, Me.C1CommandLink26, Me.C1CommandLink27, Me.C1CommandLink28})
+        Me.toolBarInventario.CommandLinks.AddRange(New C1.Win.C1Command.C1CommandLink() {Me.C1CommandLink33, Me.C1CommandLink32, Me.C1CommandLink26, Me.C1CommandLink27, Me.C1CommandLink28, Me.C1CommandLink50, Me.C1CommandLink51})
         Me.toolBarInventario.Dock = System.Windows.Forms.DockStyle.Fill
         Me.toolBarInventario.Horizontal = False
         Me.toolBarInventario.Location = New System.Drawing.Point(0, 0)
@@ -1096,6 +1102,11 @@ Partial Class frmPrincipal
         Me.C1CommandLink28.Command = Me.cmdRecepcionarTransferencia
         Me.C1CommandLink28.SortOrder = 4
         Me.C1CommandLink28.Text = "Recepción"
+        '
+        'C1CommandLink50
+        '
+        Me.C1CommandLink50.Command = Me.cmdEncargos
+        Me.C1CommandLink50.SortOrder = 5
         '
         'brInventarioReportes
         '
@@ -1366,6 +1377,16 @@ Partial Class frmPrincipal
         Me.lblHora.SmallImage = CType(resources.GetObject("lblHora.SmallImage"), System.Drawing.Image)
         Me.lblHora.Text = "Hora :"
         '
+        'C1CommandLink51
+        '
+        Me.C1CommandLink51.Command = Me.cmdOrdenesCompra
+        Me.C1CommandLink51.SortOrder = 6
+        '
+        'cmdOrdenesCompra
+        '
+        Me.cmdOrdenesCompra.Name = "cmdOrdenesCompra"
+        Me.cmdOrdenesCompra.Text = "Ordenes de Compra"
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1456,7 +1477,6 @@ Partial Class frmPrincipal
     Friend WithEvents cmdRptRecuperacionComparativo As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink22 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdTramiteLegal As C1.Win.C1Command.C1Command
-    Friend WithEvents C1CommandLink23 As C1.Win.C1Command.C1CommandLink
     Friend WithEvents cmdProveedores As C1.Win.C1Command.C1Command
     Friend WithEvents brInventario As C1.Win.C1Command.C1OutPage
     Friend WithEvents toolBarInventario As C1.Win.C1Command.C1ToolBar
@@ -1569,4 +1589,8 @@ Partial Class frmPrincipal
     Friend WithEvents cmdDescuento As C1.Win.C1Command.C1Command
     Friend WithEvents cmdRutas As C1.Win.C1Command.C1Command
     Friend WithEvents C1CommandLink34 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdEncargos As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink50 As C1.Win.C1Command.C1CommandLink
+    Friend WithEvents cmdOrdenesCompra As C1.Win.C1Command.C1Command
+    Friend WithEvents C1CommandLink51 As C1.Win.C1Command.C1CommandLink
 End Class

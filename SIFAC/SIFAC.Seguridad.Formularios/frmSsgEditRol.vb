@@ -96,7 +96,7 @@ Public Class frmSsgEditRol
 #End Region
 
 #Region "Eventos de los Botones Acepar-Cancelar"
-    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
+    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Try
             If blnModifico Then
                 Select Case MsgBox("¿Desea guardar los cambios ?", MsgBoxStyle.Question + MsgBoxStyle.YesNoCancel)
@@ -114,7 +114,7 @@ Public Class frmSsgEditRol
         End Try
     End Sub
 
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Try
             SalvarRol()
         Catch ex As Exception

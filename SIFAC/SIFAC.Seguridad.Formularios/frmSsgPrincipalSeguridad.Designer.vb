@@ -19,37 +19,37 @@ Partial Class frmSsgPrincipalSeguridad
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSsgPrincipalSeguridad))
         Me.tmrPrincipal = New System.Windows.Forms.Timer(Me.components)
         Me.ImageListSeguridad = New System.Windows.Forms.ImageList(Me.components)
-        Me.stbSeguridad = New C1.Win.C1Ribbon.C1StatusBar
-        Me.lblServidor = New C1.Win.C1Ribbon.RibbonLabel
-        Me.RibbonSeparator1 = New C1.Win.C1Ribbon.RibbonSeparator
-        Me.lblBaseDatos = New C1.Win.C1Ribbon.RibbonLabel
-        Me.RibbonSeparator2 = New C1.Win.C1Ribbon.RibbonSeparator
-        Me.lblUser = New C1.Win.C1Ribbon.RibbonLabel
-        Me.lblFecha = New C1.Win.C1Ribbon.RibbonLabel
-        Me.lblHora = New C1.Win.C1Ribbon.RibbonLabel
-        Me.C1Sizer1 = New C1.Win.C1Sizer.C1Sizer
-        Me.grdSeguridad = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.treeSeguridad = New System.Windows.Forms.TreeView
-        Me.C1Ribbon1 = New C1.Win.C1Ribbon.C1Ribbon
-        Me.RibbonApplicationMenu1 = New C1.Win.C1Ribbon.RibbonApplicationMenu
-        Me.RibbonConfigToolBar1 = New C1.Win.C1Ribbon.RibbonConfigToolBar
-        Me.cmdAyuda = New C1.Win.C1Ribbon.RibbonButton
-        Me.cmdSalir = New C1.Win.C1Ribbon.RibbonButton
-        Me.RibbonQat1 = New C1.Win.C1Ribbon.RibbonQat
-        Me.tlsEditarSeguridad = New System.Windows.Forms.ToolStrip
-        Me.tsbNuevo = New System.Windows.Forms.ToolStripButton
-        Me.tsbEditar = New System.Windows.Forms.ToolStripButton
-        Me.tsbEliminar = New System.Windows.Forms.ToolStripButton
+        Me.stbSeguridad = New C1.Win.C1Ribbon.C1StatusBar()
+        Me.lblServidor = New C1.Win.C1Ribbon.RibbonLabel()
+        Me.RibbonSeparator1 = New C1.Win.C1Ribbon.RibbonSeparator()
+        Me.lblBaseDatos = New C1.Win.C1Ribbon.RibbonLabel()
+        Me.RibbonSeparator2 = New C1.Win.C1Ribbon.RibbonSeparator()
+        Me.lblUser = New C1.Win.C1Ribbon.RibbonLabel()
+        Me.lblFecha = New C1.Win.C1Ribbon.RibbonLabel()
+        Me.lblHora = New C1.Win.C1Ribbon.RibbonLabel()
+        Me.C1Ribbon1 = New C1.Win.C1Ribbon.C1Ribbon()
+        Me.RibbonApplicationMenu1 = New C1.Win.C1Ribbon.RibbonApplicationMenu()
+        Me.RibbonConfigToolBar1 = New C1.Win.C1Ribbon.RibbonConfigToolBar()
+        Me.cmdAyuda = New C1.Win.C1Ribbon.RibbonButton()
+        Me.cmdSalir = New C1.Win.C1Ribbon.RibbonButton()
+        Me.RibbonQat1 = New C1.Win.C1Ribbon.RibbonQat()
+        Me.tlsEditarSeguridad = New System.Windows.Forms.ToolStrip()
+        Me.tsbNuevo = New System.Windows.Forms.ToolStripButton()
+        Me.tsbEditar = New System.Windows.Forms.ToolStripButton()
+        Me.tsbEliminar = New System.Windows.Forms.ToolStripButton()
+        Me.C1Sizer1 = New C1.Win.C1Sizer.C1Sizer()
+        Me.grdSeguridad = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.treeSeguridad = New System.Windows.Forms.TreeView()
         CType(Me.stbSeguridad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1Ribbon1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tlsEditarSeguridad.SuspendLayout()
         CType(Me.C1Sizer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.C1Sizer1.SuspendLayout()
         CType(Me.grdSeguridad, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1Ribbon1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tlsEditarSeguridad.SuspendLayout()
         Me.SuspendLayout()
         '
         'tmrPrincipal
@@ -128,52 +128,6 @@ Partial Class frmSsgPrincipalSeguridad
         Me.lblHora.SmallImage = CType(resources.GetObject("lblHora.SmallImage"), System.Drawing.Image)
         Me.lblHora.Text = "Hora : "
         '
-        'C1Sizer1
-        '
-        Me.C1Sizer1.Controls.Add(Me.grdSeguridad)
-        Me.C1Sizer1.Controls.Add(Me.treeSeguridad)
-        Me.C1Sizer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.C1Sizer1.GridDefinition = "97.8723404255319:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "30.9090909090909:True:False;66.6666666666667:False:" & _
-            "False;"
-        Me.C1Sizer1.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.C1Sizer1.Location = New System.Drawing.Point(0, 0)
-        Me.C1Sizer1.Name = "C1Sizer1"
-        Me.C1Sizer1.Size = New System.Drawing.Size(495, 376)
-        Me.C1Sizer1.TabIndex = 19
-        Me.C1Sizer1.TabStop = False
-        '
-        'grdSeguridad
-        '
-        Me.grdSeguridad.DataView = C1.Win.C1TrueDBGrid.DataViewEnum.GroupBy
-        Me.grdSeguridad.EmptyRows = True
-        Me.grdSeguridad.ExtendRightColumn = True
-        Me.grdSeguridad.FilterBar = True
-        Me.grdSeguridad.GroupByCaption = ""
-        Me.grdSeguridad.Images.Add(CType(resources.GetObject("grdSeguridad.Images"), System.Drawing.Image))
-        Me.grdSeguridad.Location = New System.Drawing.Point(161, 4)
-        Me.grdSeguridad.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.FloatingEditor
-        Me.grdSeguridad.Name = "grdSeguridad"
-        Me.grdSeguridad.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdSeguridad.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdSeguridad.PreviewInfo.ZoomFactor = 75
-        Me.grdSeguridad.PrintInfo.PageSettings = CType(resources.GetObject("grdSeguridad.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdSeguridad.Size = New System.Drawing.Size(330, 368)
-        Me.grdSeguridad.TabIndex = 3
-        Me.grdSeguridad.Text = "C1TrueDBGrid1"
-        Me.grdSeguridad.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
-        Me.grdSeguridad.PropBag = resources.GetString("grdSeguridad.PropBag")
-        '
-        'treeSeguridad
-        '
-        Me.treeSeguridad.FullRowSelect = True
-        Me.treeSeguridad.ImageIndex = 0
-        Me.treeSeguridad.ImageList = Me.ImageListSeguridad
-        Me.treeSeguridad.Location = New System.Drawing.Point(4, 4)
-        Me.treeSeguridad.Name = "treeSeguridad"
-        Me.treeSeguridad.SelectedImageIndex = 0
-        Me.treeSeguridad.Size = New System.Drawing.Size(153, 368)
-        Me.treeSeguridad.TabIndex = 2
-        '
         'C1Ribbon1
         '
         Me.C1Ribbon1.ApplicationMenuHolder = Me.RibbonApplicationMenu1
@@ -182,7 +136,7 @@ Partial Class frmSsgPrincipalSeguridad
         Me.C1Ribbon1.Name = "C1Ribbon1"
         Me.C1Ribbon1.QatHolder = Me.RibbonQat1
         Me.C1Ribbon1.Size = New System.Drawing.Size(495, 51)
-        Me.C1Ribbon1.TabIndex = 20
+        Me.C1Ribbon1.TabIndex = 17
         Me.C1Ribbon1.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Black
         '
         'RibbonApplicationMenu1
@@ -215,11 +169,12 @@ Partial Class frmSsgPrincipalSeguridad
         '
         'tlsEditarSeguridad
         '
+        Me.tlsEditarSeguridad.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.tlsEditarSeguridad.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbNuevo, Me.tsbEditar, Me.tsbEliminar})
         Me.tlsEditarSeguridad.Location = New System.Drawing.Point(0, 51)
         Me.tlsEditarSeguridad.Name = "tlsEditarSeguridad"
-        Me.tlsEditarSeguridad.Size = New System.Drawing.Size(495, 25)
-        Me.tlsEditarSeguridad.TabIndex = 21
+        Me.tlsEditarSeguridad.Size = New System.Drawing.Size(495, 39)
+        Me.tlsEditarSeguridad.TabIndex = 18
         Me.tlsEditarSeguridad.Text = "ToolStrip1"
         '
         'tsbNuevo
@@ -228,7 +183,7 @@ Partial Class frmSsgPrincipalSeguridad
         Me.tsbNuevo.Image = CType(resources.GetObject("tsbNuevo.Image"), System.Drawing.Image)
         Me.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbNuevo.Name = "tsbNuevo"
-        Me.tsbNuevo.Size = New System.Drawing.Size(23, 22)
+        Me.tsbNuevo.Size = New System.Drawing.Size(36, 36)
         Me.tsbNuevo.Text = "ToolStripButton1"
         Me.tsbNuevo.ToolTipText = "Nuevo"
         '
@@ -238,7 +193,7 @@ Partial Class frmSsgPrincipalSeguridad
         Me.tsbEditar.Image = CType(resources.GetObject("tsbEditar.Image"), System.Drawing.Image)
         Me.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbEditar.Name = "tsbEditar"
-        Me.tsbEditar.Size = New System.Drawing.Size(23, 22)
+        Me.tsbEditar.Size = New System.Drawing.Size(36, 36)
         Me.tsbEditar.Text = "ToolStripButton2"
         Me.tsbEditar.ToolTipText = "Editar"
         '
@@ -248,30 +203,76 @@ Partial Class frmSsgPrincipalSeguridad
         Me.tsbEliminar.Image = CType(resources.GetObject("tsbEliminar.Image"), System.Drawing.Image)
         Me.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbEliminar.Name = "tsbEliminar"
-        Me.tsbEliminar.Size = New System.Drawing.Size(23, 22)
+        Me.tsbEliminar.Size = New System.Drawing.Size(36, 36)
         Me.tsbEliminar.Text = "ToolStripButton3"
         Me.tsbEliminar.ToolTipText = "Eliminar"
+        '
+        'C1Sizer1
+        '
+        Me.C1Sizer1.Controls.Add(Me.grdSeguridad)
+        Me.C1Sizer1.Controls.Add(Me.treeSeguridad)
+        Me.C1Sizer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.C1Sizer1.GridDefinition = "97.2027972027972:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "30.9090909090909:True:False;66.6666666666667:False:" & _
+    "False;"
+        Me.C1Sizer1.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.C1Sizer1.Location = New System.Drawing.Point(0, 90)
+        Me.C1Sizer1.Name = "C1Sizer1"
+        Me.C1Sizer1.Size = New System.Drawing.Size(495, 286)
+        Me.C1Sizer1.TabIndex = 19
+        Me.C1Sizer1.TabStop = False
+        '
+        'grdSeguridad
+        '
+        Me.grdSeguridad.DataView = C1.Win.C1TrueDBGrid.DataViewEnum.GroupBy
+        Me.grdSeguridad.EmptyRows = True
+        Me.grdSeguridad.ExtendRightColumn = True
+        Me.grdSeguridad.FilterBar = True
+        Me.grdSeguridad.GroupByCaption = ""
+        Me.grdSeguridad.Images.Add(CType(resources.GetObject("grdSeguridad.Images"), System.Drawing.Image))
+        Me.grdSeguridad.Location = New System.Drawing.Point(161, 4)
+        Me.grdSeguridad.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.FloatingEditor
+        Me.grdSeguridad.Name = "grdSeguridad"
+        Me.grdSeguridad.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdSeguridad.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdSeguridad.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdSeguridad.PrintInfo.PageSettings = CType(resources.GetObject("grdSeguridad.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdSeguridad.Size = New System.Drawing.Size(330, 278)
+        Me.grdSeguridad.TabIndex = 3
+        Me.grdSeguridad.Text = "C1TrueDBGrid1"
+        Me.grdSeguridad.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Blue
+        Me.grdSeguridad.PropBag = resources.GetString("grdSeguridad.PropBag")
+        '
+        'treeSeguridad
+        '
+        Me.treeSeguridad.FullRowSelect = True
+        Me.treeSeguridad.ImageIndex = 0
+        Me.treeSeguridad.ImageList = Me.ImageListSeguridad
+        Me.treeSeguridad.Location = New System.Drawing.Point(4, 4)
+        Me.treeSeguridad.Name = "treeSeguridad"
+        Me.treeSeguridad.SelectedImageIndex = 0
+        Me.treeSeguridad.Size = New System.Drawing.Size(153, 278)
+        Me.treeSeguridad.TabIndex = 2
         '
         'frmSsgPrincipalSeguridad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(495, 398)
+        Me.Controls.Add(Me.C1Sizer1)
         Me.Controls.Add(Me.tlsEditarSeguridad)
         Me.Controls.Add(Me.C1Ribbon1)
-        Me.Controls.Add(Me.C1Sizer1)
         Me.Controls.Add(Me.stbSeguridad)
         Me.Name = "frmSsgPrincipalSeguridad"
         Me.ShowIcon = False
-        Me.Text = "SubSistema de Seguridad"
+        Me.Text = "SIFAC - SubSistema de Seguridad"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.stbSeguridad, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1Sizer1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.C1Sizer1.ResumeLayout(False)
-        CType(Me.grdSeguridad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1Ribbon1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tlsEditarSeguridad.ResumeLayout(False)
         Me.tlsEditarSeguridad.PerformLayout()
+        CType(Me.C1Sizer1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.C1Sizer1.ResumeLayout(False)
+        CType(Me.grdSeguridad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -286,18 +287,18 @@ Partial Class frmSsgPrincipalSeguridad
     Friend WithEvents lblUser As C1.Win.C1Ribbon.RibbonLabel
     Friend WithEvents lblFecha As C1.Win.C1Ribbon.RibbonLabel
     Friend WithEvents lblHora As C1.Win.C1Ribbon.RibbonLabel
-    Friend WithEvents C1Sizer1 As C1.Win.C1Sizer.C1Sizer
-    Friend WithEvents treeSeguridad As System.Windows.Forms.TreeView
-    Friend WithEvents grdSeguridad As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents C1Ribbon1 As C1.Win.C1Ribbon.C1Ribbon
     Friend WithEvents RibbonApplicationMenu1 As C1.Win.C1Ribbon.RibbonApplicationMenu
     Friend WithEvents RibbonConfigToolBar1 As C1.Win.C1Ribbon.RibbonConfigToolBar
-    Friend WithEvents cmdAyuda As C1.Win.C1Ribbon.RibbonButton
-    Friend WithEvents cmdSalir As C1.Win.C1Ribbon.RibbonButton
     Friend WithEvents RibbonQat1 As C1.Win.C1Ribbon.RibbonQat
     Friend WithEvents tlsEditarSeguridad As System.Windows.Forms.ToolStrip
     Friend WithEvents tsbNuevo As System.Windows.Forms.ToolStripButton
     Friend WithEvents tsbEditar As System.Windows.Forms.ToolStripButton
     Friend WithEvents tsbEliminar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents cmdAyuda As C1.Win.C1Ribbon.RibbonButton
+    Friend WithEvents cmdSalir As C1.Win.C1Ribbon.RibbonButton
+    Friend WithEvents C1Sizer1 As C1.Win.C1Sizer.C1Sizer
+    Friend WithEvents treeSeguridad As System.Windows.Forms.TreeView
+    Friend WithEvents grdSeguridad As C1.Win.C1TrueDBGrid.C1TrueDBGrid
 
 End Class

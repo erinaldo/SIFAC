@@ -20,22 +20,25 @@ Partial Class frmStbImpresion
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbImpresion))
-        Me.grpEstados = New System.Windows.Forms.GroupBox
-        Me.rbtAmbos = New System.Windows.Forms.RadioButton
-        Me.rbtInactivo = New System.Windows.Forms.RadioButton
-        Me.rbtActivo = New System.Windows.Forms.RadioButton
-        Me.lblCatalogos = New System.Windows.Forms.Label
-        Me.chkMostrar = New System.Windows.Forms.CheckBox
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.cmbCatalogos = New C1.Win.C1List.C1Combo
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.rbimpresora = New System.Windows.Forms.RadioButton
-        Me.rbArchivo = New System.Windows.Forms.RadioButton
-        Me.rbPantalla = New System.Windows.Forms.RadioButton
+        Me.grpEstados = New System.Windows.Forms.GroupBox()
+        Me.rbtAmbos = New System.Windows.Forms.RadioButton()
+        Me.rbtInactivo = New System.Windows.Forms.RadioButton()
+        Me.rbtActivo = New System.Windows.Forms.RadioButton()
+        Me.lblCatalogos = New System.Windows.Forms.Label()
+        Me.chkMostrar = New System.Windows.Forms.CheckBox()
+        Me.cmbCatalogos = New C1.Win.C1List.C1Combo()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.rbimpresora = New System.Windows.Forms.RadioButton()
+        Me.rbArchivo = New System.Windows.Forms.RadioButton()
+        Me.rbPantalla = New System.Windows.Forms.RadioButton()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.grpEstados.SuspendLayout()
         CType(Me.cmbCatalogos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpEstados
@@ -43,9 +46,10 @@ Partial Class frmStbImpresion
         Me.grpEstados.Controls.Add(Me.rbtAmbos)
         Me.grpEstados.Controls.Add(Me.rbtInactivo)
         Me.grpEstados.Controls.Add(Me.rbtActivo)
-        Me.grpEstados.Location = New System.Drawing.Point(12, 12)
+        Me.grpEstados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpEstados.Location = New System.Drawing.Point(14, 12)
         Me.grpEstados.Name = "grpEstados"
-        Me.grpEstados.Size = New System.Drawing.Size(304, 62)
+        Me.grpEstados.Size = New System.Drawing.Size(304, 53)
         Me.grpEstados.TabIndex = 0
         Me.grpEstados.TabStop = False
         Me.grpEstados.Text = "Estados "
@@ -53,9 +57,10 @@ Partial Class frmStbImpresion
         'rbtAmbos
         '
         Me.rbtAmbos.AutoSize = True
-        Me.rbtAmbos.Location = New System.Drawing.Point(230, 26)
+        Me.rbtAmbos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtAmbos.Location = New System.Drawing.Point(230, 22)
         Me.rbtAmbos.Name = "rbtAmbos"
-        Me.rbtAmbos.Size = New System.Drawing.Size(57, 17)
+        Me.rbtAmbos.Size = New System.Drawing.Size(62, 17)
         Me.rbtAmbos.TabIndex = 2
         Me.rbtAmbos.TabStop = True
         Me.rbtAmbos.Text = "Ambos"
@@ -64,9 +69,10 @@ Partial Class frmStbImpresion
         'rbtInactivo
         '
         Me.rbtInactivo.AutoSize = True
-        Me.rbtInactivo.Location = New System.Drawing.Point(116, 26)
+        Me.rbtInactivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtInactivo.Location = New System.Drawing.Point(116, 22)
         Me.rbtInactivo.Name = "rbtInactivo"
-        Me.rbtInactivo.Size = New System.Drawing.Size(63, 17)
+        Me.rbtInactivo.Size = New System.Drawing.Size(71, 17)
         Me.rbtInactivo.TabIndex = 1
         Me.rbtInactivo.TabStop = True
         Me.rbtInactivo.Text = "Inactivo"
@@ -75,9 +81,10 @@ Partial Class frmStbImpresion
         'rbtActivo
         '
         Me.rbtActivo.AutoSize = True
-        Me.rbtActivo.Location = New System.Drawing.Point(17, 26)
+        Me.rbtActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtActivo.Location = New System.Drawing.Point(17, 22)
         Me.rbtActivo.Name = "rbtActivo"
-        Me.rbtActivo.Size = New System.Drawing.Size(55, 17)
+        Me.rbtActivo.Size = New System.Drawing.Size(61, 17)
         Me.rbtActivo.TabIndex = 0
         Me.rbtActivo.TabStop = True
         Me.rbtActivo.Text = "Activo"
@@ -86,41 +93,23 @@ Partial Class frmStbImpresion
         'lblCatalogos
         '
         Me.lblCatalogos.AutoSize = True
-        Me.lblCatalogos.Location = New System.Drawing.Point(26, 88)
+        Me.lblCatalogos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCatalogos.Location = New System.Drawing.Point(28, 77)
         Me.lblCatalogos.Name = "lblCatalogos"
-        Me.lblCatalogos.Size = New System.Drawing.Size(54, 13)
+        Me.lblCatalogos.Size = New System.Drawing.Size(63, 13)
         Me.lblCatalogos.TabIndex = 2
         Me.lblCatalogos.Text = "Catálogos"
         '
         'chkMostrar
         '
         Me.chkMostrar.AutoSize = True
-        Me.chkMostrar.Location = New System.Drawing.Point(29, 115)
+        Me.chkMostrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkMostrar.Location = New System.Drawing.Point(21, 107)
         Me.chkMostrar.Name = "chkMostrar"
-        Me.chkMostrar.Size = New System.Drawing.Size(151, 17)
+        Me.chkMostrar.Size = New System.Drawing.Size(176, 17)
         Me.chkMostrar.TabIndex = 3
         Me.chkMostrar.Text = "Mostrar Valores Asociados"
         Me.chkMostrar.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Location = New System.Drawing.Point(161, 199)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(75, 31)
-        Me.cmdAceptar.TabIndex = 4
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Location = New System.Drawing.Point(242, 199)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 31)
-        Me.cmdCancelar.TabIndex = 5
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
         '
         'cmbCatalogos
         '
@@ -138,7 +127,7 @@ Partial Class frmStbImpresion
         Me.cmbCatalogos.EditorHeight = 15
         Me.cmbCatalogos.Images.Add(CType(resources.GetObject("cmbCatalogos.Images"), System.Drawing.Image))
         Me.cmbCatalogos.ItemHeight = 15
-        Me.cmbCatalogos.Location = New System.Drawing.Point(91, 88)
+        Me.cmbCatalogos.Location = New System.Drawing.Point(91, 73)
         Me.cmbCatalogos.MatchEntryTimeout = CType(2000, Long)
         Me.cmbCatalogos.MaxDropDownItems = CType(5, Short)
         Me.cmbCatalogos.MaxLength = 32767
@@ -157,9 +146,10 @@ Partial Class frmStbImpresion
         Me.GroupBox1.Controls.Add(Me.rbimpresora)
         Me.GroupBox1.Controls.Add(Me.rbArchivo)
         Me.GroupBox1.Controls.Add(Me.rbPantalla)
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 139)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(15, 141)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(303, 54)
+        Me.GroupBox1.Size = New System.Drawing.Size(303, 52)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Destino de Impresión"
@@ -169,7 +159,7 @@ Partial Class frmStbImpresion
         Me.rbimpresora.AutoSize = True
         Me.rbimpresora.Location = New System.Drawing.Point(115, 19)
         Me.rbimpresora.Name = "rbimpresora"
-        Me.rbimpresora.Size = New System.Drawing.Size(71, 17)
+        Me.rbimpresora.Size = New System.Drawing.Size(80, 17)
         Me.rbimpresora.TabIndex = 3
         Me.rbimpresora.TabStop = True
         Me.rbimpresora.Text = "Impresora"
@@ -180,7 +170,7 @@ Partial Class frmStbImpresion
         Me.rbArchivo.AutoSize = True
         Me.rbArchivo.Location = New System.Drawing.Point(229, 19)
         Me.rbArchivo.Name = "rbArchivo"
-        Me.rbArchivo.Size = New System.Drawing.Size(61, 17)
+        Me.rbArchivo.Size = New System.Drawing.Size(68, 17)
         Me.rbArchivo.TabIndex = 2
         Me.rbArchivo.TabStop = True
         Me.rbArchivo.Text = "Archivo"
@@ -191,25 +181,66 @@ Partial Class frmStbImpresion
         Me.rbPantalla.AutoSize = True
         Me.rbPantalla.Location = New System.Drawing.Point(8, 19)
         Me.rbPantalla.Name = "rbPantalla"
-        Me.rbPantalla.Size = New System.Drawing.Size(63, 17)
+        Me.rbPantalla.Size = New System.Drawing.Size(71, 17)
         Me.rbPantalla.TabIndex = 1
         Me.rbPantalla.TabStop = True
         Me.rbPantalla.Text = "Pantalla"
         Me.rbPantalla.UseVisualStyleBackColor = True
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(238, 199)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 21
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(152, 199)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 20
+        Me.cmdAceptar.Tag = "ACEPTAR"
+        Me.cmdAceptar.Text = "&Aceptar"
+        '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.grpEstados)
+        Me.PanelControl1.Controls.Add(Me.chkMostrar)
+        Me.PanelControl1.Controls.Add(Me.GroupBox1)
+        Me.PanelControl1.Controls.Add(Me.lblCatalogos)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(330, 235)
+        Me.PanelControl1.TabIndex = 22
         '
         'frmStbImpresion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(330, 235)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.cmbCatalogos)
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmdAceptar)
-        Me.Controls.Add(Me.chkMostrar)
-        Me.Controls.Add(Me.lblCatalogos)
-        Me.Controls.Add(Me.grpEstados)
+        Me.Controls.Add(Me.cmbCatalogos)
+        Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmStbImpresion"
@@ -221,6 +252,9 @@ Partial Class frmStbImpresion
         CType(Me.cmbCatalogos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -231,11 +265,12 @@ Partial Class frmStbImpresion
     Friend WithEvents rbtActivo As System.Windows.Forms.RadioButton
     Friend WithEvents lblCatalogos As System.Windows.Forms.Label
     Friend WithEvents chkMostrar As System.Windows.Forms.CheckBox
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents cmbCatalogos As C1.Win.C1List.C1Combo
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents rbimpresora As System.Windows.Forms.RadioButton
     Friend WithEvents rbArchivo As System.Windows.Forms.RadioButton
     Friend WithEvents rbPantalla As System.Windows.Forms.RadioButton
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
 End Class

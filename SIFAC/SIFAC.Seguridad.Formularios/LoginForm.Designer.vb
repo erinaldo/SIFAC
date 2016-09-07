@@ -32,20 +32,23 @@ Partial Class LoginForm
         Me.UsernameTextBox = New System.Windows.Forms.TextBox()
         Me.PasswordTextBox = New System.Windows.Forms.TextBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmdOK = New C1.Win.C1Input.C1Button()
-        Me.cmdCancel = New C1.Win.C1Input.C1Button()
         Me.PasswordLabel = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.mnuAppConfig = New System.Windows.Forms.ToolStripMenuItem()
+        Me.cmdCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdOK = New DevExpress.XtraEditors.SimpleButton()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'LogoPictureBox
         '
         Me.LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), System.Drawing.Image)
-        Me.LogoPictureBox.Location = New System.Drawing.Point(12, 27)
+        Me.LogoPictureBox.Location = New System.Drawing.Point(12, 21)
         Me.LogoPictureBox.Name = "LogoPictureBox"
         Me.LogoPictureBox.Size = New System.Drawing.Size(145, 133)
         Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -56,7 +59,7 @@ Partial Class LoginForm
         '
         Me.UsernameLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.UsernameLabel.ForeColor = System.Drawing.Color.Black
-        Me.UsernameLabel.Location = New System.Drawing.Point(182, 25)
+        Me.UsernameLabel.Location = New System.Drawing.Point(182, 21)
         Me.UsernameLabel.Name = "UsernameLabel"
         Me.UsernameLabel.Size = New System.Drawing.Size(160, 23)
         Me.UsernameLabel.TabIndex = 0
@@ -65,14 +68,14 @@ Partial Class LoginForm
         '
         'UsernameTextBox
         '
-        Me.UsernameTextBox.Location = New System.Drawing.Point(185, 49)
+        Me.UsernameTextBox.Location = New System.Drawing.Point(185, 45)
         Me.UsernameTextBox.Name = "UsernameTextBox"
         Me.UsernameTextBox.Size = New System.Drawing.Size(192, 20)
         Me.UsernameTextBox.TabIndex = 1
         '
         'PasswordTextBox
         '
-        Me.PasswordTextBox.Location = New System.Drawing.Point(185, 97)
+        Me.PasswordTextBox.Location = New System.Drawing.Point(185, 93)
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(192, 20)
@@ -82,40 +85,11 @@ Partial Class LoginForm
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'cmdOK
-        '
-        Me.cmdOK.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"), System.Drawing.Image)
-        Me.cmdOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdOK.Location = New System.Drawing.Point(199, 145)
-        Me.cmdOK.Name = "cmdOK"
-        Me.cmdOK.Size = New System.Drawing.Size(74, 32)
-        Me.cmdOK.TabIndex = 6
-        Me.cmdOK.Text = "&Aceptar"
-        Me.cmdOK.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdOK.UseVisualStyleBackColor = True
-        Me.cmdOK.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Black
-        '
-        'cmdCancel
-        '
-        Me.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"), System.Drawing.Image)
-        Me.cmdCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancel.Location = New System.Drawing.Point(293, 145)
-        Me.cmdCancel.Name = "cmdCancel"
-        Me.cmdCancel.Size = New System.Drawing.Size(81, 32)
-        Me.cmdCancel.TabIndex = 7
-        Me.cmdCancel.Text = "Cancelar"
-        Me.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdCancel.UseVisualStyleBackColor = True
-        Me.cmdCancel.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Black
-        '
         'PasswordLabel
         '
         Me.PasswordLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PasswordLabel.ForeColor = System.Drawing.Color.Black
-        Me.PasswordLabel.Location = New System.Drawing.Point(182, 74)
+        Me.PasswordLabel.Location = New System.Drawing.Point(182, 69)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(160, 23)
         Me.PasswordLabel.TabIndex = 8
@@ -142,21 +116,59 @@ Partial Class LoginForm
         Me.mnuAppConfig.Text = "AppConfig"
         Me.mnuAppConfig.Visible = False
         '
+        'cmdCancel
+        '
+        Me.cmdCancel.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancel.Appearance.Options.UseFont = True
+        Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"), System.Drawing.Image)
+        Me.cmdCancel.Location = New System.Drawing.Point(302, 132)
+        Me.cmdCancel.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancel.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancel.Name = "cmdCancel"
+        Me.cmdCancel.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancel.TabIndex = 21
+        Me.cmdCancel.Tag = "CANCELAR"
+        Me.cmdCancel.Text = "&Cancelar"
+        '
+        'cmdOK
+        '
+        Me.cmdOK.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdOK.Appearance.Options.UseFont = True
+        Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"), System.Drawing.Image)
+        Me.cmdOK.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdOK.Location = New System.Drawing.Point(214, 132)
+        Me.cmdOK.LookAndFeel.SkinName = "Caramel"
+        Me.cmdOK.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdOK.Name = "cmdOK"
+        Me.cmdOK.Size = New System.Drawing.Size(80, 28)
+        Me.cmdOK.TabIndex = 20
+        Me.cmdOK.Tag = "ACEPTAR"
+        Me.cmdOK.Text = "&Aceptar"
+        '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.UsernameLabel)
+        Me.PanelControl1.Controls.Add(Me.PasswordLabel)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(405, 173)
+        Me.PanelControl1.TabIndex = 22
+        '
         'LoginForm
         '
-        Me.AcceptButton = Me.cmdOK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.CancelButton = Me.cmdCancel
-        Me.ClientSize = New System.Drawing.Size(405, 203)
-        Me.Controls.Add(Me.PasswordLabel)
+        Me.ClientSize = New System.Drawing.Size(405, 173)
         Me.Controls.Add(Me.cmdCancel)
         Me.Controls.Add(Me.cmdOK)
         Me.Controls.Add(Me.LogoPictureBox)
-        Me.Controls.Add(Me.UsernameLabel)
         Me.Controls.Add(Me.PasswordTextBox)
         Me.Controls.Add(Me.UsernameTextBox)
+        Me.Controls.Add(Me.PanelControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -172,15 +184,18 @@ Partial Class LoginForm
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
-    Friend WithEvents cmdOK As C1.Win.C1Input.C1Button
-    Friend WithEvents cmdCancel As C1.Win.C1Input.C1Button
     Friend WithEvents PasswordLabel As System.Windows.Forms.Label
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents mnuAppConfig As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents cmdCancel As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdOK As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
 
 End Class

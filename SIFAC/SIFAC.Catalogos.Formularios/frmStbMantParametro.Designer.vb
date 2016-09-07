@@ -20,24 +20,25 @@ Partial Class frmStbMantParametro
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbMantParametro))
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.tsbAgregarParametro = New System.Windows.Forms.ToolStripButton
-        Me.tsbModificarParametro = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.tsbSalir = New System.Windows.Forms.ToolStripButton
-        Me.tdgParametro = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.tsbAgregarParametro = New System.Windows.Forms.ToolStripButton()
+        Me.tsbModificarParametro = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
+        Me.tdgParametro = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.tdgParametro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
         '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbAgregarParametro, Me.tsbModificarParametro, Me.ToolStripSeparator1, Me.tsbRefrescar, Me.ToolStripSeparator2, Me.tsbSalir})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(563, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(563, 39)
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -48,7 +49,7 @@ Partial Class frmStbMantParametro
         Me.tsbAgregarParametro.Image = CType(resources.GetObject("tsbAgregarParametro.Image"), System.Drawing.Image)
         Me.tsbAgregarParametro.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbAgregarParametro.Name = "tsbAgregarParametro"
-        Me.tsbAgregarParametro.Size = New System.Drawing.Size(23, 22)
+        Me.tsbAgregarParametro.Size = New System.Drawing.Size(36, 36)
         Me.tsbAgregarParametro.Text = "Agregar Parámetro"
         '
         'tsbModificarParametro
@@ -58,13 +59,13 @@ Partial Class frmStbMantParametro
         Me.tsbModificarParametro.Image = CType(resources.GetObject("tsbModificarParametro.Image"), System.Drawing.Image)
         Me.tsbModificarParametro.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbModificarParametro.Name = "tsbModificarParametro"
-        Me.tsbModificarParametro.Size = New System.Drawing.Size(23, 22)
+        Me.tsbModificarParametro.Size = New System.Drawing.Size(36, 36)
         Me.tsbModificarParametro.Text = "Modificar Parámetro"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
         '
         'tsbRefrescar
         '
@@ -72,13 +73,13 @@ Partial Class frmStbMantParametro
         Me.tsbRefrescar.Image = CType(resources.GetObject("tsbRefrescar.Image"), System.Drawing.Image)
         Me.tsbRefrescar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbRefrescar.Name = "tsbRefrescar"
-        Me.tsbRefrescar.Size = New System.Drawing.Size(23, 22)
+        Me.tsbRefrescar.Size = New System.Drawing.Size(36, 36)
         Me.tsbRefrescar.Text = "Refrescar"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
         '
         'tsbSalir
         '
@@ -86,7 +87,7 @@ Partial Class frmStbMantParametro
         Me.tsbSalir.Image = CType(resources.GetObject("tsbSalir.Image"), System.Drawing.Image)
         Me.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbSalir.Name = "tsbSalir"
-        Me.tsbSalir.Size = New System.Drawing.Size(23, 22)
+        Me.tsbSalir.Size = New System.Drawing.Size(36, 36)
         Me.tsbSalir.Text = "Salir"
         '
         'tdgParametro
@@ -98,14 +99,14 @@ Partial Class frmStbMantParametro
         Me.tdgParametro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tdgParametro.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.tdgParametro.Images.Add(CType(resources.GetObject("tdgParametro.Images"), System.Drawing.Image))
-        Me.tdgParametro.Location = New System.Drawing.Point(0, 25)
+        Me.tdgParametro.Location = New System.Drawing.Point(0, 39)
         Me.tdgParametro.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
         Me.tdgParametro.Name = "tdgParametro"
         Me.tdgParametro.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.tdgParametro.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.tdgParametro.PreviewInfo.ZoomFactor = 75
+        Me.tdgParametro.PreviewInfo.ZoomFactor = 75.0R
         Me.tdgParametro.PrintInfo.PageSettings = CType(resources.GetObject("tdgParametro.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.tdgParametro.Size = New System.Drawing.Size(563, 444)
+        Me.tdgParametro.Size = New System.Drawing.Size(563, 430)
         Me.tdgParametro.TabIndex = 2
         Me.tdgParametro.Tag = ""
         Me.tdgParametro.Text = "Parámetro"
@@ -118,6 +119,7 @@ Partial Class frmStbMantParametro
         Me.ClientSize = New System.Drawing.Size(563, 469)
         Me.Controls.Add(Me.tdgParametro)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmStbMantParametro"
         Me.Tag = "CATALOGOS"
         Me.Text = "Parámetro"

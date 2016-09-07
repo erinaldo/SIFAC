@@ -381,6 +381,7 @@ Public Class frmPrincipal
             Me.cmdRecepcionarTransferencia.Enabled = objSeg.TienePermiso("OpcionRecibirTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
             Me.cmdSalidaBodega.Enabled = objSeg.TienePermiso("OpcionSalidaBodega") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
             Me.cmdEntradaBodega.Enabled = objSeg.TienePermiso("OpcionEntradaBodega") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            Me.cmdEncargos.Enabled = objSeg.TienePermiso("OpcionEncargos")
 
             'Inventario reportes
             Me.cmdRptEntrada.Enabled = objSeg.TienePermiso("OpcionRptEntradas") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
@@ -690,6 +691,12 @@ Public Class frmPrincipal
 #Region "Recepción de transferencia"
     Private Sub cmdRecepcionarTransferencia_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdRecepcionarTransferencia.Click
         Me.CargarRecepcionTransferencia()
+    End Sub
+#End Region
+
+#Region "Encargos"
+    Private Sub cmdEncargos_Click(sender As Object, e As C1.Win.C1Command.ClickEventArgs) Handles cmdEncargos.Click
+        CargarEncargos()
     End Sub
 #End Region
 
@@ -1335,6 +1342,27 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
+#Region "Cargar Encargos"
+    Private Sub CargarEncargos()
+        Dim objForm As New frmSivEncargos
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario(frmSivEncargos.Name, Me) Then
+                    objForm.Width = Me.Width - Me.OutBarPrincipal.Width
+                    objForm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objForm.MdiParent = Me
+                    objForm.Show()
+                End If
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+#End Region
+
 #Region "Cargar Cotizaciones"
     'Private Sub CargarCotizaciones()
     '    Dim objForm As New frmSfaCotizacion
@@ -1880,4 +1908,5 @@ Public Class frmPrincipal
    
  
  
+  
 End Class

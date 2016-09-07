@@ -114,10 +114,9 @@ Public Class frmSsgPrincipalSeguridad
     ''' <remarks></remarks>
     Private Sub CagarInformacionConeccion()
         Try
-            Me.Text = clsProyecto.SiglasSistema & " - SubSistema de Seguridad"
             Me.lblBaseDatos.Text = " Base de Datos : " & clsProyecto.Conexion.BaseDeDatos
-            Me.lblServidor.Text = " Servidor : " + clsProyecto.Conexion.Servidor
-            Me.lblUser.Text = " Usuario : " + clsProyecto.Conexion.Usuario
+            Me.lblServidor.Text = " Servidor : " & clsProyecto.Conexion.Servidor
+            Me.lblUser.Text = " Usuario : " & clsProyecto.Conexion.Usuario
             Me.lblFecha.Text = " Fecha : " + Date.Now.ToShortDateString()
             Me.lblHora.Text = " Hora : " + DateTime.Now.ToShortTimeString
             Me.tmrPrincipal.Start()
@@ -134,7 +133,7 @@ Public Class frmSsgPrincipalSeguridad
     ''' <remarks></remarks>
     Private Sub tmrPrincipal_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrPrincipal.Tick
         Try
-            Me.lblHora.Text = Now.ToShortTimeString()
+            Me.lblHora.Text = clsProyecto.Conexion.FechaServidor.ToShortTimeString
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -540,8 +539,6 @@ Public Class frmSsgPrincipalSeguridad
             Me.grdSeguridad.Splits(0).DisplayColumns("UsuarioModificacion").Locked = True
             Me.grdSeguridad.Splits(0).DisplayColumns("FechaModificacion").Locked = True
 
-            Me.grdSeguridad.Splits(0).DisplayColumns("UsuarioModificacion").Width = 150
-
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -619,7 +616,6 @@ Public Class frmSsgPrincipalSeguridad
 
             '-- Caption
             Me.grdSeguridad.Columns("CodInterno").Caption = "Código"
-            Me.grdSeguridad.Splits(0).DisplayColumns("Código").Width = 250
 
             '--- No permitir la edición sobre cada columna
             Me.grdSeguridad.Splits(0).DisplayColumns("CodInterno").Locked = True
@@ -646,7 +642,6 @@ Public Class frmSsgPrincipalSeguridad
             '--- Formatear Grid ---
             Me.grdSeguridad.Splits(0).DisplayColumns("SsgAccionID").Visible = False
             Me.grdSeguridad.Splits(0).DisplayColumns("Nombre").Width = 200
-            Me.grdSeguridad.Splits(0).DisplayColumns("CodInterno").Width = 200
 
             '-- Caption
             Me.grdSeguridad.Columns("CodInterno").Caption = "Código"
@@ -773,7 +768,7 @@ Public Class frmSsgPrincipalSeguridad
 
 #Region "Eventos de los botones del toolbar"
 
-    Private Sub tsbNuevo_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub tsbNuevo_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbNuevo.Click
         '--- Declaración ---
         Dim NodeSeleccionado As TreeNode
         Try
@@ -841,7 +836,7 @@ Public Class frmSsgPrincipalSeguridad
             Me.Cursor = Cursors.Default
         End Try
     End Sub
-    Private Sub tsbEliminar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub tsbEliminar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbEliminar.Click
         '--- Declaración ---
         Dim NodeSeleccionado As TreeNode
         Try
@@ -942,7 +937,7 @@ Public Class frmSsgPrincipalSeguridad
         End Try
     End Sub
 
-    Private Sub tsbEditar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub tsbEditar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbEditar.Click
         '--- Declaración ---
         Dim NodeSeleccionado As TreeNode
         Try
@@ -1303,7 +1298,6 @@ Public Class frmSsgPrincipalSeguridad
             objfrm = New frmSsgEditAccion
             objfrm.AccionID = AccionID
             objfrm.ServUsuarioID = ServicioID
-
 
             If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 ActualizarNodeAcc(objfrm.AccionID)

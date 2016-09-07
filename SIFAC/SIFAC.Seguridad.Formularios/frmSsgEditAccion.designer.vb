@@ -19,26 +19,29 @@ Partial Class frmSsgEditAccion
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSsgEditAccion))
-        Me.grpDatosAplicacion = New System.Windows.Forms.GroupBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.txtNombreS = New System.Windows.Forms.TextBox
-        Me.txtCodInternoS = New System.Windows.Forms.TextBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.lblDescripcion = New System.Windows.Forms.Label
-        Me.lblNombre = New System.Windows.Forms.Label
-        Me.lblCodInterno = New System.Windows.Forms.Label
-        Me.txtDescripcion = New System.Windows.Forms.TextBox
-        Me.txtNombre = New System.Windows.Forms.TextBox
-        Me.txtCodInterno = New System.Windows.Forms.TextBox
-        Me.cmdAceptar = New System.Windows.Forms.Button
+        Me.grpDatosAplicacion = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtNombreS = New System.Windows.Forms.TextBox()
+        Me.txtCodInternoS = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblDescripcion = New System.Windows.Forms.Label()
+        Me.lblNombre = New System.Windows.Forms.Label()
+        Me.lblCodInterno = New System.Windows.Forms.Label()
+        Me.txtDescripcion = New System.Windows.Forms.TextBox()
+        Me.txtNombre = New System.Windows.Forms.TextBox()
+        Me.txtCodInterno = New System.Windows.Forms.TextBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmdCancelar = New System.Windows.Forms.Button
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.grpDatosAplicacion.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpDatosAplicacion
@@ -48,7 +51,7 @@ Partial Class frmSsgEditAccion
         Me.grpDatosAplicacion.Controls.Add(Me.txtNombreS)
         Me.grpDatosAplicacion.Controls.Add(Me.txtCodInternoS)
         Me.grpDatosAplicacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpDatosAplicacion.ForeColor = System.Drawing.SystemColors.ActiveCaption
+        Me.grpDatosAplicacion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.grpDatosAplicacion.Location = New System.Drawing.Point(12, 12)
         Me.grpDatosAplicacion.Name = "grpDatosAplicacion"
         Me.grpDatosAplicacion.Size = New System.Drawing.Size(423, 78)
@@ -59,11 +62,11 @@ Partial Class frmSsgEditAccion
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Label2.Location = New System.Drawing.Point(6, 48)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(47, 13)
+        Me.Label2.Size = New System.Drawing.Size(54, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Tag = "OBLIGATORIO"
         Me.Label2.Text = "Nombre:"
@@ -71,11 +74,11 @@ Partial Class frmSsgEditAccion
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Label3.Location = New System.Drawing.Point(6, 25)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(43, 13)
+        Me.Label3.Size = New System.Drawing.Size(50, 13)
         Me.Label3.TabIndex = 0
         Me.Label3.Tag = "OBLIGATORIO"
         Me.Label3.Text = "Código:"
@@ -109,8 +112,8 @@ Partial Class frmSsgEditAccion
         Me.GroupBox1.Controls.Add(Me.txtNombre)
         Me.GroupBox1.Controls.Add(Me.txtCodInterno)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 96)
+        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 95)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(423, 171)
         Me.GroupBox1.TabIndex = 0
@@ -120,11 +123,11 @@ Partial Class frmSsgEditAccion
         'lblDescripcion
         '
         Me.lblDescripcion.AutoSize = True
-        Me.lblDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDescripcion.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lblDescripcion.Location = New System.Drawing.Point(6, 74)
         Me.lblDescripcion.Name = "lblDescripcion"
-        Me.lblDescripcion.Size = New System.Drawing.Size(66, 13)
+        Me.lblDescripcion.Size = New System.Drawing.Size(78, 13)
         Me.lblDescripcion.TabIndex = 4
         Me.lblDescripcion.Text = "Descripción:"
         Me.lblDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -132,11 +135,11 @@ Partial Class frmSsgEditAccion
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lblNombre.Location = New System.Drawing.Point(6, 48)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(47, 13)
+        Me.lblNombre.Size = New System.Drawing.Size(54, 13)
         Me.lblNombre.TabIndex = 2
         Me.lblNombre.Tag = "OBLIGATORIO"
         Me.lblNombre.Text = "Nombre:"
@@ -144,11 +147,11 @@ Partial Class frmSsgEditAccion
         'lblCodInterno
         '
         Me.lblCodInterno.AutoSize = True
-        Me.lblCodInterno.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCodInterno.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCodInterno.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lblCodInterno.Location = New System.Drawing.Point(6, 25)
         Me.lblCodInterno.Name = "lblCodInterno"
-        Me.lblCodInterno.Size = New System.Drawing.Size(43, 13)
+        Me.lblCodInterno.Size = New System.Drawing.Size(50, 13)
         Me.lblCodInterno.TabIndex = 0
         Me.lblCodInterno.Tag = "OBLIGATORIO"
         Me.lblCodInterno.Text = "Código:"
@@ -176,44 +179,59 @@ Partial Class frmSsgEditAccion
         Me.txtCodInterno.Size = New System.Drawing.Size(304, 20)
         Me.txtCodInterno.TabIndex = 0
         '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(258, 272)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(82, 28)
-        Me.cmdAceptar.TabIndex = 1
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
-        '
         'ErrorProvider1
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdAceptar)
+        Me.PanelControl1.Controls.Add(Me.grpDatosAplicacion)
+        Me.PanelControl1.Controls.Add(Me.GroupBox1)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(444, 307)
+        Me.PanelControl1.TabIndex = 4
+        '
         'cmdCancelar
         '
-        Me.cmdCancelar.CausesValidation = False
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Location = New System.Drawing.Point(349, 273)
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(357, 271)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(86, 28)
-        Me.cmdCancelar.TabIndex = 2
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 19
         Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(271, 271)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 18
+        Me.cmdAceptar.Tag = "GUARDAR"
+        Me.cmdAceptar.Text = "&Guardar"
         '
         'frmSsgEditAccion
         '
-        Me.AcceptButton = Me.cmdAceptar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.cmdCancelar
         Me.ClientSize = New System.Drawing.Size(444, 307)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdAceptar)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.grpDatosAplicacion)
+        Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -226,6 +244,8 @@ Partial Class frmSsgEditAccion
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -241,7 +261,8 @@ Partial Class frmSsgEditAccion
     Friend WithEvents txtDescripcion As System.Windows.Forms.TextBox
     Friend WithEvents txtNombre As System.Windows.Forms.TextBox
     Friend WithEvents txtCodInterno As System.Windows.Forms.TextBox
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
 End Class

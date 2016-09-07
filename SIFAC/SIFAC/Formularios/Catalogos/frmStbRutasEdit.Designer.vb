@@ -25,6 +25,8 @@ Partial Class frmStbRutasEdit
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbRutasEdit))
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.txtDescripcion = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtCodigo = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ckdCargaDiferenciada = New System.Windows.Forms.CheckBox()
@@ -43,8 +45,6 @@ Partial Class frmStbRutasEdit
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtDescripcion = New System.Windows.Forms.TextBox()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,6 +81,27 @@ Partial Class frmStbRutasEdit
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(735, 250)
         Me.PanelControl1.TabIndex = 25
+        '
+        'txtDescripcion
+        '
+        Me.txtDescripcion.Enabled = False
+        Me.txtDescripcion.Location = New System.Drawing.Point(107, 88)
+        Me.txtDescripcion.Multiline = True
+        Me.txtDescripcion.Name = "txtDescripcion"
+        Me.txtDescripcion.Size = New System.Drawing.Size(279, 48)
+        Me.txtDescripcion.TabIndex = 31
+        Me.txtDescripcion.Tag = "OBLIGATORIO"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(16, 92)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(78, 13)
+        Me.Label5.TabIndex = 30
+        Me.Label5.Tag = ""
+        Me.Label5.Text = "Descripcion:"
         '
         'txtCodigo
         '
@@ -353,27 +374,6 @@ Partial Class frmStbRutasEdit
         'ErrorProv
         '
         Me.ErrorProv.ContainerControl = Me
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(16, 92)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(78, 13)
-        Me.Label5.TabIndex = 30
-        Me.Label5.Tag = ""
-        Me.Label5.Text = "Descripcion:"
-        '
-        'txtDescripcion
-        '
-        Me.txtDescripcion.Enabled = False
-        Me.txtDescripcion.Location = New System.Drawing.Point(107, 88)
-        Me.txtDescripcion.Multiline = True
-        Me.txtDescripcion.Name = "txtDescripcion"
-        Me.txtDescripcion.Size = New System.Drawing.Size(279, 48)
-        Me.txtDescripcion.TabIndex = 31
-        Me.txtDescripcion.Tag = "OBLIGATORIO"
         '
         'frmStbRutasEdit
         '

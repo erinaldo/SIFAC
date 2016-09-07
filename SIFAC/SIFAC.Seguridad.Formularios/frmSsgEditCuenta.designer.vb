@@ -19,41 +19,42 @@ Partial Class frmSsgEditCuenta
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSsgEditCuenta))
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.TabControl = New System.Windows.Forms.TabControl
-        Me.TabCuenta = New System.Windows.Forms.TabPage
-        Me.grpDatosCuenta = New System.Windows.Forms.GroupBox
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.txtConfirmacion = New System.Windows.Forms.TextBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.chkActivo = New System.Windows.Forms.CheckBox
-        Me.cdeFechaExpiracion = New C1.Win.C1Input.C1DateEdit
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.lblFechaInicia = New System.Windows.Forms.Label
-        Me.cdeFechaCreacion = New C1.Win.C1Input.C1DateEdit
-        Me.txtPassword = New System.Windows.Forms.TextBox
-        Me.LblClave = New System.Windows.Forms.Label
-        Me.lblNombre = New System.Windows.Forms.Label
-        Me.txtLogin = New System.Windows.Forms.TextBox
-        Me.grpDatosEmpleado = New System.Windows.Forms.GroupBox
-        Me.lblFechaFinEmp = New System.Windows.Forms.Label
-        Me.lblFechaInicioEmp = New System.Windows.Forms.Label
-        Me.lblCedula = New System.Windows.Forms.Label
-        Me.lblNombreEmp = New System.Windows.Forms.Label
-        Me.chkActivoEmpleado = New System.Windows.Forms.CheckBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.cboEmpleado = New C1.Win.C1List.C1Combo
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.TabRoles = New System.Windows.Forms.TabPage
-        Me.grdRoles = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.cmdCancelar = New System.Windows.Forms.Button
+        Me.TabControl = New System.Windows.Forms.TabControl()
+        Me.TabCuenta = New System.Windows.Forms.TabPage()
+        Me.grpDatosCuenta = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtConfirmacion = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.chkActivo = New System.Windows.Forms.CheckBox()
+        Me.cdeFechaExpiracion = New C1.Win.C1Input.C1DateEdit()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblFechaInicia = New System.Windows.Forms.Label()
+        Me.cdeFechaCreacion = New C1.Win.C1Input.C1DateEdit()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.LblClave = New System.Windows.Forms.Label()
+        Me.lblNombre = New System.Windows.Forms.Label()
+        Me.txtLogin = New System.Windows.Forms.TextBox()
+        Me.grpDatosEmpleado = New System.Windows.Forms.GroupBox()
+        Me.lblFechaFinEmp = New System.Windows.Forms.Label()
+        Me.lblFechaInicioEmp = New System.Windows.Forms.Label()
+        Me.lblCedula = New System.Windows.Forms.Label()
+        Me.lblNombreEmp = New System.Windows.Forms.Label()
+        Me.chkActivoEmpleado = New System.Windows.Forms.CheckBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cboEmpleado = New C1.Win.C1List.C1Combo()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TabRoles = New System.Windows.Forms.TabPage()
+        Me.grdRoles = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl.SuspendLayout()
         Me.TabCuenta.SuspendLayout()
@@ -64,22 +65,12 @@ Partial Class frmSsgEditCuenta
         CType(Me.cboEmpleado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabRoles.SuspendLayout()
         CType(Me.grdRoles, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ErrorProvider1
         '
         Me.ErrorProvider1.ContainerControl = Me
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(328, 359)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(77, 28)
-        Me.cmdAceptar.TabIndex = 9
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
         '
         'TabControl
         '
@@ -177,11 +168,21 @@ Partial Class frmSsgEditCuenta
         '
         'cdeFechaExpiracion
         '
+        '
+        '
+        '
+        Me.cdeFechaExpiracion.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.cdeFechaExpiracion.Calendar.BoldedDates = New Date(-1) {}
+        Me.cdeFechaExpiracion.Calendar.ClearText = "&Clear"
+        Me.cdeFechaExpiracion.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.cdeFechaExpiracion.Calendar.SelectedDate = New Date(2016, 9, 6, 0, 0, 0, 0)
+        Me.cdeFechaExpiracion.Calendar.TodayText = "&Today"
+        Me.cdeFechaExpiracion.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.cdeFechaExpiracion.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.cdeFechaExpiracion.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.cdeFechaExpiracion.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.cdeFechaExpiracion.Location = New System.Drawing.Point(317, 45)
         Me.cdeFechaExpiracion.Name = "cdeFechaExpiracion"
@@ -219,11 +220,21 @@ Partial Class frmSsgEditCuenta
         '
         'cdeFechaCreacion
         '
+        '
+        '
+        '
+        Me.cdeFechaCreacion.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.cdeFechaCreacion.Calendar.BoldedDates = New Date(-1) {}
+        Me.cdeFechaCreacion.Calendar.ClearText = "&Clear"
+        Me.cdeFechaCreacion.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.cdeFechaCreacion.Calendar.SelectedDate = New Date(2016, 9, 6, 0, 0, 0, 0)
+        Me.cdeFechaCreacion.Calendar.TodayText = "&Today"
+        Me.cdeFechaCreacion.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.cdeFechaCreacion.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.cdeFechaCreacion.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.cdeFechaCreacion.Enabled = False
         Me.cdeFechaCreacion.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.cdeFechaCreacion.Location = New System.Drawing.Point(317, 17)
@@ -471,7 +482,7 @@ Partial Class frmSsgEditCuenta
         Me.grdRoles.Name = "grdRoles"
         Me.grdRoles.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdRoles.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdRoles.PreviewInfo.ZoomFactor = 75
+        Me.grdRoles.PreviewInfo.ZoomFactor = 75.0R
         Me.grdRoles.PrintInfo.PageSettings = CType(resources.GetObject("grdRoles.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdRoles.Size = New System.Drawing.Size(469, 309)
         Me.grdRoles.TabIndex = 0
@@ -479,26 +490,52 @@ Partial Class frmSsgEditCuenta
         '
         'cmdCancelar
         '
-        Me.cmdCancelar.CausesValidation = False
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Location = New System.Drawing.Point(420, 359)
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(416, 359)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 14
+        Me.cmdCancelar.TabIndex = 21
         Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(330, 359)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 20
+        Me.cmdAceptar.Tag = "GUARDAR"
+        Me.cmdAceptar.Text = "&Guardar"
+        '
+        'PanelControl1
+        '
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(514, 395)
+        Me.PanelControl1.TabIndex = 22
         '
         'frmSsgEditCuenta
         '
-        Me.AcceptButton = Me.cmdAceptar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.cmdCancelar
         Me.ClientSize = New System.Drawing.Size(514, 395)
         Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.TabControl)
         Me.Controls.Add(Me.cmdAceptar)
+        Me.Controls.Add(Me.TabControl)
+        Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -518,10 +555,10 @@ Partial Class frmSsgEditCuenta
         CType(Me.cboEmpleado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabRoles.ResumeLayout(False)
         CType(Me.grdRoles, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
     Friend WithEvents TabControl As System.Windows.Forms.TabControl
     Friend WithEvents TabCuenta As System.Windows.Forms.TabPage
@@ -549,9 +586,11 @@ Partial Class frmSsgEditCuenta
     Friend WithEvents lblNombre As System.Windows.Forms.Label
     Friend WithEvents txtLogin As System.Windows.Forms.TextBox
     Friend WithEvents grdRoles As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents lblNombreEmp As System.Windows.Forms.Label
     Friend WithEvents lblCedula As System.Windows.Forms.Label
     Friend WithEvents lblFechaInicioEmp As System.Windows.Forms.Label
     Friend WithEvents lblFechaFinEmp As System.Windows.Forms.Label
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
 End Class

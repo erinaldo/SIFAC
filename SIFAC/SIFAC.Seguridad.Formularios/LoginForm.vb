@@ -156,4 +156,5 @@ Public Class LoginForm
             System.Windows.Forms.Application.Restart()
         End If
     End Sub
+
 End Class
