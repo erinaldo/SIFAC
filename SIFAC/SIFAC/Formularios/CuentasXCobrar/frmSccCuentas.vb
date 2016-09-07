@@ -20,8 +20,8 @@ Public Class frmSccCuentas
 
     Public Sub CargarCuentas(Optional ByVal Filtro As String = "ESTADO <> 'CANCELADO'")
          Try
-            dtCuentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SccCuentaID + Cast(objTiendaID as Varchar(5)) as Llave,SccCuentaID,objTiendaID,Tienda,objClienteID,Cliente,LimiteCredito,Saldo,Cedula,FechaCredito,objEstadoID,Estado", "vwSccCuenta", Filtro))
-            dtDetalleCuenta = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSccCuentaID+Cast(objTiendaID as Varchar(5)) as Llave,Numero,SfaFacturaID,Saldo, Cargos, objEstadoID,EstadoFact,CodigoEstado,CuotasTranscurridas,Fecha,objTiendaID,CuotasPagadas,CuotasPendientes,CuotasVencidas,MontoAbonado,SaldoVencido,SaldoCorriente,MontoTotal,Plazo,Calificacion,MontoCuota,Concepto,Estado,objSccCuentaID,objSccCuentaID as SccCuentaID", "vwSccCuentaDetalle", "CodigoEstado<> '00' AND " & Filtro))
+            dtCuentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SccCuentaID,SccCuentaID AS Llave,objClienteID,Cliente,Saldo,Cedula,FechaCredito,objEstadoID,Estado", "vwSccCuenta", Filtro))
+            dtDetalleCuenta = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSccCuentaID AS Llave,Numero,SfaFacturaID,Saldo, objEstadoID,EstadoFact,CodigoEstado,Fecha,MontoAbonado,MontoTotal,Plazo,MontoCuota,Estado,objSccCuentaID,objSccCuentaID as SccCuentaID", "vwSccCuentaDetalle", "CodigoEstado<> '00' AND " & Filtro))
             dsCuentas = New DataSet
             dsCuentas.Merge(dtCuentas)
             dsCuentas.Tables(0).TableName = "SccCuenta"
@@ -46,7 +46,6 @@ Public Class frmSccCuentas
         Try
             clsProyecto.CargarTemaDefinido(Me)
             Call CargarCuentas()
-            Me.grdCuentas.Splits(0).DisplayColumns("objTiendaID").Visible = False
             Me.grdCuentas.Splits(0).DisplayColumns("objEstadoID").Visible = False
 
             Me.AplicarSeguridad()
@@ -64,7 +63,7 @@ Public Class frmSccCuentas
             objfrmCuentaEdit.TypeGUI = 0
             If objfrmCuentaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarCuentas()
-                Me.grdCuentas.Row = Me.dsCuentas.Tables("SccCuenta").DefaultView.Find(objfrmCuentaEdit.CuentaID.ToString + objfrmCuentaEdit.TiendaID.ToString)
+                Me.grdCuentas.Row = Me.dsCuentas.Tables("SccCuenta").DefaultView.Find(objfrmCuentaEdit.CuentaID.ToString)
             End If
 
         Catch ex As Exception
@@ -81,7 +80,6 @@ Public Class frmSccCuentas
         Try
             objfrmCuentaEdit = New frmSccCuentasEditar
             objfrmCuentaEdit.CuentaID = Me.grdCuentas.Columns("SccCuentaID").Value
-            objfrmCuentaEdit.TiendaID = Me.grdCuentas.Columns("objTiendaID").Value
             objfrmCuentaEdit.TypeGUI = 2
             objfrmCuentaEdit.ShowDialog(Me)
         Catch ex As Exception
@@ -102,11 +100,10 @@ Public Class frmSccCuentas
             End If
             objfrmCuentaEdit = New frmSccCuentasEditar
             objfrmCuentaEdit.CuentaID = Me.grdCuentas.Columns("SccCuentaID").Value
-            objfrmCuentaEdit.TiendaID = Me.grdCuentas.Columns("objTiendaID").Value
             objfrmCuentaEdit.TypeGUI = 1
             If objfrmCuentaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.CargarCuentas()
-                Me.grdCuentas.Row = Me.dsCuentas.Tables("SccCuenta").DefaultView.Find(objfrmCuentaEdit.CuentaID.ToString + objfrmCuentaEdit.TiendaID.ToString)
+                Me.grdCuentas.Row = Me.dsCuentas.Tables("SccCuenta").DefaultView.Find(objfrmCuentaEdit.CuentaID.ToString)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)

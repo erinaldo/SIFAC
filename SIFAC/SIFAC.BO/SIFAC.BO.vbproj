@@ -72,8 +72,8 @@
     <Compile Include="radTecnico_CF.vb" />
     <Compile Include="SccClientes.vb" />
     <Compile Include="SccCuentaFiador_CF.vb" />
-    <Compile Include="SccCuentaPorCobrarDetalle_CF.vb" />
-    <Compile Include="SccCuentaPorCobrar_CF.vb" />
+    <Compile Include="SccCuentaPorCobrar.vb" />
+    <Compile Include="SccCuentaPorCobrarDetalle.vb" />
     <Compile Include="SccDescuentoPlazo.vb" />
     <Compile Include="SccDetalleMovimientos_CF.vb" />
     <Compile Include="SccDevolucion_CF.vb" />

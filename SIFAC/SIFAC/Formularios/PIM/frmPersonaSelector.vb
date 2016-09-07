@@ -50,9 +50,9 @@ Public Class frmPersonaSelector
         Dim strSQL As String
 
         If String.IsNullOrEmpty(Me.Filtro) Then
-            strSQL = ObtenerConsultaGeneral("DISTINCT Cast(0 AS BIT) AS Seleccionar,StbPersonaID,NombreCompleto", "vwPersonaClasificacion")
+            strSQL = ObtenerConsultaGeneral("Cast(0 AS BIT) AS Seleccionar,StbPersonaID,NombreCompleto, ClienteID", "vwPersonaClasificacion")
         Else
-            strSQL = ObtenerConsultaGeneral("DISTINCT Cast(0 AS BIT) AS Seleccionar,StbPersonaID,NombreCompleto", "vwPersonaClasificacion", Filtro)
+            strSQL = ObtenerConsultaGeneral("Cast(0 AS BIT) AS Seleccionar,StbPersonaID,NombreCompleto, ClienteID", "vwPersonaClasificacion", Filtro)
         End If
 
         DtPersonas = DAL.SqlHelper.ExecuteQueryDT(strSQL)
@@ -81,16 +81,16 @@ Public Class frmPersonaSelector
     End Sub
 
     Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
-        Dim objPersonaID As New Object
+        Dim objClienteID As New Object
         Dim Cantidad As New Object
 
         Cantidad = Me.DtPersonas.Compute("Count(Seleccionar)", "Seleccionar=1")
         If Cantidad = 0 Then
             Exit Sub
         End If
-        objPersonaID = Me.DtPersonas.Select("Seleccionar = 1")(0)("StbPersonaID")
-        If Not IsDBNull(objPersonaID) Then
-            Seleccion = objPersonaID
+        objClienteID = Me.DtPersonas.Select("Seleccionar = 1")(0)("ClienteID")
+        If Not IsDBNull(objClienteID) Then
+            Seleccion = objClienteID
             Me.DialogResult = Windows.Forms.DialogResult.OK
         Else
             Me.DialogResult = Windows.Forms.DialogResult.None

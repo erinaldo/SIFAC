@@ -380,7 +380,7 @@ Public Class frmSccEditDevolucion
                 DtDatosNC.TableName = "SccNotaCredito"
                 SccNotaCredito.BatchUpdate(DtDatosNC.DataSet, T)
 
-                objSccCuentaCobrar.Retrieve(objDevolucion.objSccCuentaID, objDevolucion.ObjSucursalID, T)
+                objSccCuentaCobrar.Retrieve(objDevolucion.objSccCuentaID, T)
                 objSccCuentaCobrar.UsuarioModificacion = clsProyecto.Conexion.Usuario
                 objSccCuentaCobrar.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objSccCuentaCobrar.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "DEVOLUCION")
@@ -507,7 +507,6 @@ Public Class frmSccEditDevolucion
         Dim objfrmCuentaEdit As frmSccCuentasEditar
         objfrmCuentaEdit = New frmSccCuentasEditar
         objfrmCuentaEdit.CuentaID = Me.IDCuenta
-        objfrmCuentaEdit.TiendaID = Me.IDTienda
         objfrmCuentaEdit.TypeGUI = 2
         objfrmCuentaEdit.ShowDialog(Me)
     End Sub
