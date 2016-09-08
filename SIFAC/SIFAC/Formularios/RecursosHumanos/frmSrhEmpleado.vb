@@ -34,11 +34,11 @@ Public Class frmSrhEmpleado
     Private Sub AplicarSeguridad()
         Try
             objSeg = New SsgSeguridad
-            objSeg.ServicioUsuario = "FRMSRHEMPLEADO"
+            objSeg.ServicioUsuario = "frmSrhEmpleado"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
-            boolAgregar = objSeg.TienePermiso("AGREGAREMPLEADO")
-            boolEditar = objSeg.TienePermiso("EDITAREMPLEADO")
-            boolConsultar = objSeg.TienePermiso("CONSULTAREMPLEADO")
+            boolAgregar = objSeg.TienePermiso("AgregarEmpleado")
+            boolEditar = objSeg.TienePermiso("ModificarEmpleado")
+            boolConsultar = objSeg.TienePermiso("ConsultarEmpleado")
             cmdAgregar.Enabled = boolAgregar
             cmdEditar.Enabled = boolEditar And DtEmpleados.Rows.Count > 0
             cmdConsultar.Enabled = boolConsultar And DtEmpleados.Rows.Count > 0

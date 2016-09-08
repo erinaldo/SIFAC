@@ -184,31 +184,31 @@ Public Class frmSccCuentas
     End Sub
 
    
-    Private Sub cmdModificarLimite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdModificarLimite.Click
+    'Private Sub cmdModificarLimite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdModificarLimite.Click
 
-        If Me.grdCuentas.RowCount = 0 Then
-            Exit Sub
-        End If
+    '    If Me.grdCuentas.RowCount = 0 Then
+    '        Exit Sub
+    '    End If
 
-        Dim objfrmCuentaEdit As frmSccModificarLimite
-        Dim intEstadoVIG As Integer
-        Try
-            intEstadoVIG = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE")
-            If Me.grdCuentas.Columns("objEstadoID").Value <> intEstadoVIG Then
-                MsgBox("Esta opción es funcional para expedientes en estado VIGENTE")
-                Exit Sub
-            End If
-            objfrmCuentaEdit = New frmSccModificarLimite
-            objfrmCuentaEdit.IDCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
-            objfrmCuentaEdit.IDTienda = Me.grdCuentas.Columns("objTiendaID").Value
-            If objfrmCuentaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Me.CargarCuentas()
-                Me.grdCuentas.Row = Me.dsCuentas.Tables("SccCuenta").DefaultView.Find(objfrmCuentaEdit.IDCuenta + objfrmCuentaEdit.IDTienda.ToString)
-            End If
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-    End Sub
+    '    Dim objfrmCuentaEdit As frmSccModificarLimite
+    '    Dim intEstadoVIG As Integer
+    '    Try
+    '        intEstadoVIG = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE")
+    '        If Me.grdCuentas.Columns("objEstadoID").Value <> intEstadoVIG Then
+    '            MsgBox("Esta opción es funcional para expedientes en estado VIGENTE")
+    '            Exit Sub
+    '        End If
+    '        objfrmCuentaEdit = New frmSccModificarLimite
+    '        objfrmCuentaEdit.IDCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
+    '        objfrmCuentaEdit.IDTienda = Me.grdCuentas.Columns("objTiendaID").Value
+    '        If objfrmCuentaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+    '            Me.CargarCuentas()
+    '            Me.grdCuentas.Row = Me.dsCuentas.Tables("SccCuenta").DefaultView.Find(objfrmCuentaEdit.IDCuenta + objfrmCuentaEdit.IDTienda.ToString)
+    '        End If
+    '    Catch ex As Exception
+    '        clsError.CaptarError(ex)
+    '    End Try
+    'End Sub
 
 #Region "REESTRUCTURAR CUENTA CLIENTE"
 
@@ -219,16 +219,16 @@ Public Class frmSccCuentas
         'Dim sSQL, sFiltro As String
         Dim iContador As Integer = 0
         Try
-            'Verificar Tasa de cambio
-            Select Case HayTasaCambio(iTasaCambioConfirmadaID)
-                Case "NoExiste"
-                    MsgBox("No ha definido Tasa de Cambio para el Mes y Año Actual, Click OK para Definirla.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
-                    If Not CargarTasaCambio(iTasaCambioConfirmadaID) Then
-                        iErrores += 1
-                    End If
-                Case "NoConfirmado"
-                    iErrores += 1
-            End Select
+            ''Verificar Tasa de cambio
+            'Select Case HayTasaCambio(iTasaCambioConfirmadaID)
+            '    Case "NoExiste"
+            '        MsgBox("No ha definido Tasa de Cambio para el Mes y Año Actual, Click OK para Definirla.", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+            '        If Not CargarTasaCambio(iTasaCambioConfirmadaID) Then
+            '            iErrores += 1
+            '        End If
+            '    Case "NoConfirmado"
+            '        iErrores += 1
+            'End Select
 
             ''Verificar si existen notas de Crédito Autorizadas sin Aplicar
             'Dim NC As New SccNotaCredito
@@ -263,17 +263,17 @@ Public Class frmSccCuentas
     End Function
 
     Private Function LimiteCredito_Step3() As Boolean
-        Dim objfrmCuentaEdit As frmSccModificarLimite
-        Try
-            objfrmCuentaEdit = New frmSccModificarLimite
-            objfrmCuentaEdit.IDCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
-            objfrmCuentaEdit.IDTienda = Me.grdCuentas.Columns("objTiendaID").Value
-            objfrmCuentaEdit.blnReestructuracionCuenta = True
-            Return objfrmCuentaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK            
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-            Return False
-        End Try
+        'Dim objfrmCuentaEdit As frmSccModificarLimite
+        'Try
+        '    objfrmCuentaEdit = New frmSccModificarLimite
+        '    objfrmCuentaEdit.IDCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
+        '    objfrmCuentaEdit.IDTienda = Me.grdCuentas.Columns("objTiendaID").Value
+        '    objfrmCuentaEdit.blnReestructuracionCuenta = True
+        '    Return objfrmCuentaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK            
+        'Catch ex As Exception
+        '    clsError.CaptarError(ex)
+        '    Return False
+        'End Try
     End Function
 
     ''' <summary>
@@ -326,38 +326,7 @@ Public Class frmSccCuentas
         Return sCaso
     End Function
 
-    Private Function CargarTasaCambio(ByVal idConfirmada As Integer) As Boolean
-        Dim objfrm As frmStbEditTasaCambioOficial
-        Dim objTasaCambio As New StbTasaCambioOficial
-
-        Try
-            Me.Cursor = Cursors.WaitCursor
-            objfrm = New frmStbEditTasaCambioOficial
-            objfrm.TipoEstadoRegistarda = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOTASACAMBIO", "REGISTRADO")
-            objfrm.TipoEstadoConfirmada = idConfirmada
-            If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                'Verificar si el usuario CONFIRMÓ la tasa de cambio.               
-                objTasaCambio.Retrieve(objfrm.TasaCambioOficialID)
-                If objTasaCambio.objEstadoID <> idConfirmada Then
-                    If MsgBox("Para que el proceso de REESTRUCTURACION DE CUENTA pueda continuar debe CONFIRMAR la tasa de cambio ingresada, ¿Desea Confirmarla Ahora?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
-                        objTasaCambio.objEstadoID = idConfirmada
-                        objTasaCambio.Update()
-                        Return True
-                    Else
-                        Return False
-                    End If
-                Else
-                    Return True
-                End If
-            End If
-
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        Finally
-            objfrm = Nothing
-            Me.Cursor = Cursors.Default
-        End Try
-    End Function
+   
 #End Region
 
 End Class

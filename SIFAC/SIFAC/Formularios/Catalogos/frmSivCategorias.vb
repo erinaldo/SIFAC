@@ -32,7 +32,7 @@ Public Class frmSivCategorias
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
         Try
-            objseg.ServicioUsuario = "FRMSIVCATEGORIAS"
+            objseg.ServicioUsuario = "frmSivCategorias"
             objseg.Usuario = clsProyecto.Conexion.Usuario
             boolAgregar = objseg.TienePermiso("AgregarCategoria")
             boolConsultar = objseg.TienePermiso("ConsultarCategoria")

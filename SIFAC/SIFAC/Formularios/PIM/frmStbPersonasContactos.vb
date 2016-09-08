@@ -176,11 +176,11 @@ Public Class frmStbPersonasContactos
                 End If
             Next
             'Introducir datos al datatable respectivo
-            Dim intSecuencialContacto As Integer = 1
-            For Each dr As DataRow In frmStbEditTiendas.DtContactos.Rows
-                intSecuencialContacto = dr("SecuencialContacto") + 1
-            Next
-            frmStbEditTiendas.DtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
+            'Dim intSecuencialContacto As Integer = 1
+            'For Each dr As DataRow In frmStbEditTiendas.DtContactos.Rows
+            '    intSecuencialContacto = dr("SecuencialContacto") + 1
+            'Next
+            'frmStbEditTiendas.DtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
 
 
             If MsgBox("¿Desea agregar más contactos?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
@@ -214,7 +214,7 @@ Public Class frmStbPersonasContactos
                 End If
             Next
             'Introducir datos al datatable respectivo
-            frmStbEditTiendas.DtContactos.Select("StbTiendaID = " + StbTienda + " AND SecuencialContacto = " + SecuencialContacto)(0)("Valor") = txtValor.Text
+            'frmStbEditTiendas.DtContactos.Select("StbTiendaID = " + StbTienda + " AND SecuencialContacto = " + SecuencialContacto)(0)("Valor") = txtValor.Text
             Me.DialogResult = Windows.Forms.DialogResult.OK
             'Hasta aca
         Else
@@ -236,7 +236,7 @@ Public Class frmStbPersonasContactos
                 Data = dtTiposPersonas.Select("StbTiposEntradaID=" + objTipoEntrada)
                 Me.cmbTipoPersona.SelectedValue = Data(0)("StbTiposEntradaID")
                 Me.cmbTipoPersona.Enabled = False
-                txtValor.Text = frmStbEditTiendas.DtContactos.Select("StbTiendaID = " + StbTienda + " AND SecuencialContacto = " + SecuencialContacto)(0)("Valor")
+                'txtValor.Text = frmStbEditTiendas.DtContactos.Select("StbTiendaID = " + StbTienda + " AND SecuencialContacto = " + SecuencialContacto)(0)("Valor")
         End Select
     End Sub
 #End Region

@@ -48,35 +48,35 @@ Public Class frmSccClientes
 
             objSeg = New SsgSeguridad
 
-            objSeg.ServicioUsuario = "FRMSTBPERSONA"
+            objSeg.ServicioUsuario = "frmStbClientes"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
 
-            If Not objSeg.TienePermiso("AGREGARPERSONA") Then
+            If Not objSeg.TienePermiso("AgregarCliente") Then
                 Me.cmdAgregar.Enabled = False
             End If
 
-            If Not objSeg.TienePermiso("EDITARPERSONA") Then
+            If Not objSeg.TienePermiso("ModificarCliente") Then
                 Me.cmdEditar.Enabled = False
                 bolEditar = False
             Else
                 bolEditar = True
             End If
 
-            If Not objSeg.TienePermiso("CONSULTARPERSONA") Then
+            If Not objSeg.TienePermiso("ConsultarCliente") Then
                 Me.cmdConsultar.Enabled = False
                 bolConsultar = False
             Else
                 bolConsultar = True
             End If
 
-            If Not objSeg.TienePermiso("ELIMINARPERSONA") Then
+            If Not objSeg.TienePermiso("DesactivarCliente") Then
                 Me.cmdInactivar.Enabled = False
                 bolEliminar = False
             Else
                 bolEliminar = True
             End If
 
-            If Not objSeg.TienePermiso("IMPPERSONA") Then
+            If Not objSeg.TienePermiso("ImprimirCliente") Then
                 Me.cmdImprimir.Enabled = False
                 bolImprimir = False
             Else

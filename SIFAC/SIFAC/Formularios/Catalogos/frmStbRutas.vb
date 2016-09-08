@@ -33,7 +33,7 @@ Public Class frmStbRutas
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
         Try
-            objSeg.ServicioUsuario = "FRMSTBRUTAS"
+            objSeg.ServicioUsuario = "frmStbRutas"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
             boolAgregar = objSeg.TienePermiso("AgregarRuta")
             boolEditar = objSeg.TienePermiso("EditarRuta")

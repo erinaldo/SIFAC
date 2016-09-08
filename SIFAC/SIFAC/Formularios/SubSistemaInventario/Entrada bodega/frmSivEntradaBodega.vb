@@ -28,14 +28,14 @@ Public Class frmSivEntradaBodega
     Private Sub AplicarSeguridad()
         Dim objSeg As New SsgSeguridad
         Try
-            objSeg.ServicioUsuario = "FRMSIVENTRADABODEGA"
+            objSeg.ServicioUsuario = "frmSivEntradaBodega"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
 
             'Obtener permisos en variables de control
-            Me.blnAgregar = objSeg.TienePermiso("AGREGARENTRADABODEGA")
-            Me.blnAnular = objSeg.TienePermiso("ANULARENTRADABODEGA")
-            Me.blnConsultar = objSeg.TienePermiso("CONSULTARENTRADABODEGA")
-            Me.blnImprimir = objSeg.TienePermiso("IMPRIMIRENTRADABODEGA")
+            Me.blnAgregar = objSeg.TienePermiso("AgregarEntradaBodega")
+            Me.blnAnular = objSeg.TienePermiso("AnularEntradaBodega")
+            Me.blnConsultar = objSeg.TienePermiso("ConsultarEntradaBodega")
+            Me.blnImprimir = objSeg.TienePermiso("ImprimirEntradaBodega")
 
             'Aplicar permisos a los comandos
             Me.cmdAgregar.Enabled = Me.blnAgregar

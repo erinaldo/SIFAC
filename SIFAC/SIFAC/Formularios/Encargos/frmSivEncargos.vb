@@ -52,7 +52,7 @@ Public Class frmSivEncargos
     Public Sub AplicarSeguridad()
         objseg = New SsgSeguridad
         Try
-            objseg.ServicioUsuario = "FRMSIVENCARGOS"
+            objseg.ServicioUsuario = "frmSivEncargos"
             objseg.Usuario = clsProyecto.Conexion.Usuario
             boolAgregar = objseg.TienePermiso("AgregarEncargo")
             boolConsultar = objseg.TienePermiso("ConsultarEncargo")

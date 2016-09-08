@@ -33,7 +33,7 @@ Public Class frmStbBodegas
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
         Try
-            objseg.ServicioUsuario = "FRMSTBBODEGAS"
+            objseg.ServicioUsuario = "frmStbBodegas"
             objseg.Usuario = clsProyecto.Conexion.Usuario
             boolAgregar = objseg.TienePermiso("AgregarBodega")
             boolConsultar = objseg.TienePermiso("ConsultarBodega")

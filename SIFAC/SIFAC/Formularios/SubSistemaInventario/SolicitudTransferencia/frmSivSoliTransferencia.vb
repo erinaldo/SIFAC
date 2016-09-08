@@ -161,15 +161,15 @@ Public Class frmSivSoliTransferencia
     Private Sub AplicarSeguridad()
         Dim objSeg As New SsgSeguridad
         Try
-            objSeg.ServicioUsuario = "FRMSIVSOLTRANSFERENCIA"
+            objSeg.ServicioUsuario = "FrmSivSolTransferencia"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
 
             'Obtener permisos en variables de control
-            Me.blnAgregar = objSeg.TienePermiso("AGREGARSOLTRANSF")
-            Me.blnAnular = objSeg.TienePermiso("ANULARSOLTRANSF")
+            Me.blnAgregar = objSeg.TienePermiso("AgregarSolTransf")
+            Me.blnAnular = objSeg.TienePermiso("AnularSolTransf")
             Me.blnEditar = objSeg.TienePermiso("EDITARSOLTRANSF")
-            Me.blnImprimir = objSeg.TienePermiso("IMPRIMIRSOLTRANSF")
-            Me.blnConsultar = objSeg.TienePermiso("CONSULTARSOLTRANSF")
+            Me.blnImprimir = objSeg.TienePermiso("ImprimirSolTransf")
+            Me.blnConsultar = objSeg.TienePermiso("ConsultarSolTransf")
 
             'Aplicar permisos a los comandos
             Me.cmdAgregarSolicitud.Enabled = Me.blnAgregar

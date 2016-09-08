@@ -160,13 +160,13 @@ Public Class frmSivRecepTransferencia
     Private Sub AplicarSeguridad()
         Dim objSeg As New SsgSeguridad
         Try
-            objSeg.ServicioUsuario = "FRMSIVRECEPTRANSFERENCIA"
+            objSeg.ServicioUsuario = "FrmSivRecepTransferencia"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
 
             'Obtener permisos en variables de control
-            Me.blnAprobar = objSeg.TienePermiso("APROBARRECEPTRANSF")
-            Me.blnImprimir = objSeg.TienePermiso("IMPRIMIRRECEPTRANSF")
-            Me.blnConsultar = objSeg.TienePermiso("CONSULTARRECEPTRANSF")
+            Me.blnAprobar = objSeg.TienePermiso("AprobarRecepTransf")
+            Me.blnImprimir = objSeg.TienePermiso("ImprimirRecepTransf")
+            Me.blnConsultar = objSeg.TienePermiso("ConsultarRecepTransf")
 
             'Aplicar permisos a los comandos
             Me.cmdAprobar.Enabled = Me.blnAprobar

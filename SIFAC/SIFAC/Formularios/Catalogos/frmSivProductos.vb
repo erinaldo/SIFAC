@@ -34,13 +34,13 @@ Public Class frmSivProductos
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
         Try
-            objSeg.ServicioUsuario = "FRMSTBPRODUCTO"
+            objSeg.ServicioUsuario = "frmStbProductos"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
-            boolAgregar = objSeg.TienePermiso("AGREGARPRODUCTO")
-            boolEditar = objSeg.TienePermiso("EDITARPRODUCTO")
-            boolConsultar = objSeg.TienePermiso("CONSULTARPRODUCTO")
-            boolDesactivar = objSeg.TienePermiso("INACTIVARPRODUCTO")
-            boolImprimir = objSeg.TienePermiso("IMPRIMIRPRODUCTO")
+            boolAgregar = objSeg.TienePermiso("AgregarProducto")
+            boolEditar = objSeg.TienePermiso("ModificarProducto")
+            boolConsultar = objSeg.TienePermiso("ConsultarProducto")
+            boolDesactivar = objSeg.TienePermiso("InactivarProducto")
+            boolImprimir = objSeg.TienePermiso("ImprimirProducto")
 
             cmdAgregar.Enabled = boolAgregar
             cmdEditar.Enabled = boolEditar And DtProductos.Rows.Count > 0

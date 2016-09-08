@@ -96,14 +96,14 @@ Public Class frmSivSalidaBodega
         Try
             objSeg = New SsgSeguridad
 
-            objSeg.ServicioUsuario = "FRMSIVSALIDABODEGA"
+            objSeg.ServicioUsuario = "FrmSivSalidaBodega"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
-            boolAgregar = objSeg.TienePermiso("AGREGARSALIDA")
-            boolBuscar = objSeg.TienePermiso("BUSCARSALIDA")
-            boolConsultar = objSeg.TienePermiso("CONSULTARSALIDA")
-            boolAnular = objSeg.TienePermiso("ANULARSALIDA")
-            boolAutorizar = objSeg.TienePermiso("AUTORIZARSALIDA")
-            boolImprimir = objSeg.TienePermiso("IMPRIMIRSALIDA")
+            boolAgregar = objSeg.TienePermiso("AgregarSalida")
+            boolBuscar = objSeg.TienePermiso("BuscarSalida")
+            boolConsultar = objSeg.TienePermiso("ConsultarSalida")
+            boolAnular = objSeg.TienePermiso("AnularSalida")
+            boolAutorizar = objSeg.TienePermiso("AutorizarSalida")
+            boolImprimir = objSeg.TienePermiso("ImprimirSalida")
 
             Me.cmdAgregar.Enabled = boolAgregar
             Me.cmdAutorizar.Enabled = boolAutorizar

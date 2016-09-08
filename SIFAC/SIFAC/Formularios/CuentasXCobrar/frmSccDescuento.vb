@@ -35,7 +35,7 @@ Public Class frmSccDescuento
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
         Try
-            objSeg.ServicioUsuario = "FRMSCCDESCUENTOS"
+            objSeg.ServicioUsuario = "frmSccDescuentos"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
             boolAgregar = objSeg.TienePermiso("AgregarDescuento")
             boolEditar = objSeg.TienePermiso("EditarDescuento")

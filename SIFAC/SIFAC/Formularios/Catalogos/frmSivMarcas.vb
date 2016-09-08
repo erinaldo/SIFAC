@@ -32,7 +32,7 @@ Public Class frmSivMarcas
       Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad
         Try
-            objseg.ServicioUsuario = "FRMSTBMARCA"
+            objseg.ServicioUsuario = "frmStbMarcas"
             objseg.Usuario = clsProyecto.Conexion.Usuario
             boolAgregar = objseg.TienePermiso("AgregarMarca")
             boolEditar = objseg.TienePermiso("EditarMarca")

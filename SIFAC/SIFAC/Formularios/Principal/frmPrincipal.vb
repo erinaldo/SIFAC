@@ -633,12 +633,6 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
-#Region "Tasa Camio"
-    Private Sub cmdTasaCambio_Click(ByVal sender As Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdTasaCambio.Click
-        Call Me.CargarTasaCambio()
-    End Sub
-#End Region
-
 #Region "Empleados"
     Private Sub cmdEmpleados_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdEmpleados.Click
         CargarEmpleados()
@@ -667,13 +661,6 @@ Public Class frmPrincipal
     Private Sub cmdProveedores_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdProveedores.Click
         Me.CargarProveedores()
     End Sub
-#End Region
-
-#Region "Repuestos"
-    Private Sub cmdRepuestos_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdRepuestos.Click
-        Me.CargarRepuestos()
-    End Sub
-
 #End Region
 
 #Region "Solicitud de transferencia"
@@ -1000,61 +987,9 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
-#Region "Cargar Catálogo de Repuestos"
-    '----------------------------------------------------------------------------------
-    '-- Nombre del Autor        :   Gelmin Martínez
-    '-- Fecha de Elaboración    :   24 de Junio de 2010, 12:13 PM.
-    '-- Descripcion             :   Cargar la pantalla principal de catálogo de Repuestos
-    '----------------------------------------------------------------------------------
-    Private Sub CargarRepuestos()
-        Dim objForm As frmSivRepuestos
-        Try
-            Me.Cursor = Cursors.WaitCursor
-            If Not clsProyecto.MostrarFormulario(frmSivRepuestos.Name, Me) Then
-                objForm = New frmSivRepuestos
-                With objForm
-                    .Width = Me.Width - Me.OutBarPrincipal.Width
-                    .Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    .MdiParent = Me
-                    .Show()
-                End With
-            End If
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
-#End Region
 
-#Region "Cargar de Tasas de Cambio"
-    '---------------------------------------------------------------------------------------------
-    '-- Nombre del Autor        :   Pedro Pablo Tinoco Salgado
-    '-- Fecha de Elaboración    :   13 de Marzo de 2009.
-    '-- Descripcion             :   Cargar la pantalla principal de catálogo de Tasas de Cambio.
-    '---------------------------------------------------------------------------------------------
-    Private Sub CargarTasaCambio()
-        Dim objTasaCambio As frmStbMantTasaCambioOficial
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario("frmStbMantTasaCambioOficial", Me) Then
-                    objTasaCambio = New frmStbMantTasaCambioOficial
-                    objTasaCambio.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objTasaCambio.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objTasaCambio.MdiParent = Me
-                    objTasaCambio.Show()
-                End If
 
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
 
-#End Region
 
 #Region "Cargar de empleados"
     '---------------------------------------------------------------------------------------------
@@ -1185,34 +1120,6 @@ Public Class frmPrincipal
     Private Sub cmdReciboCaja_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdReciboCaja.Click
         Call Me.CargarRecibosCaja()
     End Sub
-#End Region
-
-#Region "Cargar Tramite Legal"
-    Private Sub CargarTramiteLegal()
-        Dim objTramite As frmSccTramiteLegal
-        Try
-            Try
-                Me.Cursor = Cursors.WaitCursor
-                If Not clsProyecto.MostrarFormulario("frmSccTramiteLegal", Me) Then
-                    objTramite = New frmSccTramiteLegal
-                    objTramite.Width = Me.Width - Me.OutBarPrincipal.Width
-                    objTramite.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
-                    objTramite.MdiParent = Me
-                    objTramite.Show()
-                End If
-
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
-
-    Private Sub cmdTramiteLegal_Click(ByVal sender As System.Object, ByVal e As C1.Win.C1Command.ClickEventArgs) Handles cmdTramiteLegal.Click
-        Call CargarTramiteLegal()
-    End Sub
-
 #End Region
 
 #Region "Cargar Solicitud de transferencia"

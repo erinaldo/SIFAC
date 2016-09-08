@@ -65,15 +65,15 @@ Public Class frmSivProveedor
     Private Sub AplicarSeguridad()
         Dim objSeg As New SsgSeguridad
         Try
-            objSeg.ServicioUsuario = "FRMSIVPROVEEDOR"
+            objSeg.ServicioUsuario = "frmSivProveedor"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
 
             'Obtener permisos en variables de control
-            Me.blnAgregar = objSeg.TienePermiso("AGREGARSIVPROVEEDOR")
-            Me.blnAnular = objSeg.TienePermiso("ANULARSIVPROVEEDOR")
-            Me.blnEditar = objSeg.TienePermiso("EDITARSIVPROVEEDOR")
-            Me.blnImprimir = objSeg.TienePermiso("IMPRIMIRSIVPROVEEDOR")
-            Me.blnConsultar = objSeg.TienePermiso("CONSULTARSIVPROVEEDOR")
+            Me.blnAgregar = objSeg.TienePermiso("AgregarProveedor")
+            Me.blnAnular = objSeg.TienePermiso("AnularProveedor")
+            Me.blnEditar = objSeg.TienePermiso("ModificarProveedor")
+            Me.blnImprimir = objSeg.TienePermiso("ImprimirProveedor")
+            Me.blnConsultar = objSeg.TienePermiso("ConsultarProveedor")
 
             'Aplicar permisos a los comandos
             Me.cmdAgregarProveedor.Enabled = Me.blnAgregar

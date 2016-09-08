@@ -381,12 +381,6 @@
     <Compile Include="Formularios\CuentasXCobrar\frmSccDescuentoEdit.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\CuentasXCobrar\frmSccModificarLimite.Designer.vb">
-      <DependentUpon>frmSccModificarLimite.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\CuentasXCobrar\frmSccModificarLimite.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Devoluciones\frmSccDevoluciones.Designer.vb">
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
     </Compile>
@@ -523,30 +517,6 @@
       <DependentUpon>frmSrhEmpleadoEditar.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\RecursosHumanos\frmSrhEmpleadoEditar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmEtiquetarCB.Designer.vb">
-      <DependentUpon>frmEtiquetarCB.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmEtiquetarCB.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivEditRepuestos.Designer.vb">
-      <DependentUpon>frmSivEditRepuestos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivEditRepuestos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivRepuestos.Designer.vb">
-      <DependentUpon>frmSivRepuestos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivRepuestos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivRptRepuesto.Designer.vb">
-      <DependentUpon>frmSivRptRepuesto.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivRptRepuesto.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\SubSistemaFacturacion\frmAlertaSolicitudDescuento.Designer.vb">
@@ -813,16 +783,10 @@
     <Compile Include="Formularios\SubSistemaTaller\frmStaServicioTallerEditar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\TasaCambio\frmStbEditTasaCambioOficial.Designer.vb">
-      <DependentUpon>frmStbEditTasaCambioOficial.vb</DependentUpon>
+    <Compile Include="Formularios\Devoluciones\frmSccEditDevolucion.designer.vb">
+      <DependentUpon>frmSccEditDevolucion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\TasaCambio\frmStbEditTasaCambioOficial.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\TasaCambio\frmStbMantTasaCambioOficial.Designer.vb">
-      <DependentUpon>frmStbMantTasaCambioOficial.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\TasaCambio\frmStbMantTasaCambioOficial.vb">
+    <Compile Include="Formularios\Devoluciones\frmSccEditDevolucion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Tiendas\frmOpcionesImpresion.Designer.vb">
@@ -847,24 +811,6 @@
       <DependentUpon>frmStbTiendas.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Tiendas\frmStbTiendas.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Devoluciones\frmSccEditDevolucion.designer.vb">
-      <DependentUpon>frmSccEditDevolucion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Devoluciones\frmSccEditDevolucion.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\TramiteLegal\frmSccEditTramite.designer.vb">
-      <DependentUpon>frmSccEditTramite.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\TramiteLegal\frmSccEditTramite.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\TramiteLegal\frmSccTramiteLegal.Designer.vb">
-      <DependentUpon>frmSccTramiteLegal.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\TramiteLegal\frmSccTramiteLegal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\frmVisorRS.designer.vb">
@@ -1105,10 +1051,6 @@
     <EmbeddedResource Include="Formularios\CuentasXCobrar\frmSccDescuentoEdit.resx">
       <DependentUpon>frmSccDescuentoEdit.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\CuentasXCobrar\frmSccModificarLimite.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmSccModificarLimite.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Devoluciones\frmSccDevoluciones.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
@@ -1185,22 +1127,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\RecursosHumanos\frmSrhEmpleadoEditar.resx">
       <DependentUpon>frmSrhEmpleadoEditar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Repuestos\frmEtiquetarCB.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmEtiquetarCB.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Repuestos\frmSivEditRepuestos.resx">
-      <DependentUpon>frmSivEditRepuestos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Repuestos\frmSivRepuestos.resx">
-      <DependentUpon>frmSivRepuestos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Repuestos\frmSivRptRepuesto.resx">
-      <DependentUpon>frmSivRptRepuesto.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubSistemaFacturacion\frmAlertaSolicitudDescuento.resx">
@@ -1379,41 +1305,21 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmStaServicioTallerEditar.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TasaCambio\frmStbEditTasaCambioOficial.resx">
-      <DependentUpon>frmStbEditTasaCambioOficial.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TasaCambio\frmStbMantTasaCambioOficial.resx">
-      <DependentUpon>frmStbMantTasaCambioOficial.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tiendas\frmOpcionesImpresion.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmOpcionesImpresion.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tiendas\frmStbEditTiendas.resx">
-      <DependentUpon>frmStbEditTiendas.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendaContactos.resx">
-      <DependentUpon>frmStbTiendaContactos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendas.resx">
-      <DependentUpon>frmStbTiendas.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Devoluciones\frmSccEditDevolucion.resx">
       <DependentUpon>frmSccEditDevolucion.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TramiteLegal\frmSccEditTramite.resx">
-      <DependentUpon>frmSccEditTramite.vb</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Formularios\Tiendas\frmOpcionesImpresion.resx">
+      <DependentUpon>frmOpcionesImpresion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TramiteLegal\frmSccTramiteLegal.resx">
-      <DependentUpon>frmSccTramiteLegal.vb</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Formularios\Tiendas\frmStbEditTiendas.resx">
+      <DependentUpon>frmStbEditTiendas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendaContactos.resx">
+      <DependentUpon>frmStbTiendaContactos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendas.resx">
+      <DependentUpon>frmStbTiendas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\frmVisorRS.resx">
       <DependentUpon>frmVisorRS.vb</DependentUpon>
