@@ -236,6 +236,7 @@ Public Class frmPrincipal
             'Cartera y Cobro
             Me.navBarFacturacion.Enabled = objSeg.TienePermiso("OpcionFacturaExpediente")
             Me.NavBarDescuentos.Enabled = objSeg.TienePermiso("OpcionDescuentos")
+            Me.NavBarCuentas.Enabled = objSeg.TienePermiso("OpcionCuentaXCobrar")
 
             'Inventario
             Me.NavBarSolicitud.Enabled = objSeg.TienePermiso("OpcionSolicitudTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
@@ -246,8 +247,7 @@ Public Class frmPrincipal
             Me.NavBarOrdenCompra.Enabled = objSeg.TienePermiso("OpcionEncargos")
 
             'Facturación
-            Me.navBarFacturacion.Enabled = objSeg.TienePermiso("OpcionFacturaRepuesto") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
-           
+            Me.navBarFacturacion.Enabled = objSeg.TienePermiso("OpcionFacturas")
            
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -284,8 +284,9 @@ Public Class frmPrincipal
             Me.navBarFacturacion.Enabled = False
             Me.NavBarDescuentos.Enabled = False
 
-            
-            '
+            'Cuentas  por cobrar
+            Me.NavBarCuentas.Enabled = False
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -348,7 +349,9 @@ Public Class frmPrincipal
         CargarFacturasRepuestos()
     End Sub
 
-   
+    Private Sub NavBarCuentas_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarCuentas.LinkClicked
+        CargarCuentas()
+    End Sub
 #End Region
 
 #Region "Inventario"
@@ -939,5 +942,6 @@ Public Class frmPrincipal
         End Try
     End Sub
 #End Region
+
 
 End Class
