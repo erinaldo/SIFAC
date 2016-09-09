@@ -175,14 +175,14 @@ Public Class frmSfaFacturaRepuestos
         Try
             objseg = New SsgSeguridad
 
-            objseg.ServicioUsuario = "FRMSFAFACTURAREPUESTO"
+            objseg.ServicioUsuario = "frmSfaFacturas"
             objseg.Usuario = clsProyecto.Conexion.Usuario
-            boolAgregar = objseg.TienePermiso("AGREGARFACTURAREPUESTO")
-            boolBuscar = objseg.TienePermiso("BUSCARFACTURAREPUESTO")
-            boolConsultar = objseg.TienePermiso("CONSULTARFACTURAREPUESTO")
-            boolAnular = objseg.TienePermiso("ANULARFACTURAREPUESTO")
-            boolProcesar = objseg.TienePermiso("PROCESARFATURAREPUESTO")
-            boolImprimir = objseg.TienePermiso("IMPRIMIRFACTURAREPUESTO")
+            boolAgregar = objseg.TienePermiso("AgregarFactura")
+            boolBuscar = objseg.TienePermiso("BuscarFactura")
+            boolConsultar = objseg.TienePermiso("ConsultarFactura")
+            boolAnular = objseg.TienePermiso("AnularFactura")
+            boolProcesar = objseg.TienePermiso("ProcesarFactura")
+            boolImprimir = objseg.TienePermiso("ImprimirFactura")
 
             Me.cmdAgregar.Enabled = boolAgregar
             Me.cmdProcesar.Enabled = boolProcesar
