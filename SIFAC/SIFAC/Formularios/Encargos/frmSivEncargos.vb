@@ -23,7 +23,7 @@ Public Class frmSivEncargos
         Try
 
             dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoID, Numero, TotalCosto, Fecha, Vendedor, Cliente, Activo, objSccClienteID", "vwSivEncargosMaster", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
-            dtDetalleEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoDetalleID, objSivEncargoID, objCategoriaID, Categoria, Numero, NombreProducto, Cantidad, CostoPromedio, TotalCosto", "vwSivaEncargosDetalle", strFiltro), Me.SqlParametros)
+            dtDetalleEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoDetalleID, objSivEncargoID, objCategoriaID, Categoria, Numero, NombreProducto, Cantidad, CostoPromedio, TotalCosto", "vwSivEncargosDetalle", strFiltro), Me.SqlParametros)
 
             dsEncargos = New DataSet
 
@@ -36,7 +36,7 @@ Public Class frmSivEncargos
             dsEncargos.Relations.Add("SivEncargos_SivEncargosDetalle", dsEncargos.Tables(0).Columns("SivEncargoID"), dsEncargos.Tables(1).Columns("objSivEncargoID"), False)
 
             Me.grdEncargosMaster.DataSource = dsEncargos
-            Me.grdEncargosMaster.DataMember = "SfaFactura"
+            Me.grdEncargosMaster.DataMember = "SivEncargos"
 
             Me.grdEncargosDetalle.DataSource = dsEncargos
             Me.grdEncargosDetalle.DataMember = "SivEncargos.SivEncargos_SivEncargosDetalle"

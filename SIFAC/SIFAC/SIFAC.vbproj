@@ -87,14 +87,17 @@
     <Reference Include="DevExpress.CodeRush.Controls, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.DXCore.Controls.Data.v6.3, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
     <Reference Include="DevExpress.DXCore.Controls.Utils.v6.3, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
+    <Reference Include="DevExpress.DXCore.Controls.XtraBars.v6.3, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.DXCore.Controls.XtraEditors.v6.3, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v11.1.Design, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v11.1.Design, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="GUI, Version=1.0.6031.28568, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLS\GUI.dll</HintPath>
@@ -385,6 +388,12 @@
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Devoluciones\frmSccDevoluciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmBuscarProductovb.Designer.vb">
+      <DependentUpon>frmBuscarProductovb.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmBuscarProductovb.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Encargos\frmSivEncargos.Designer.vb">
@@ -1054,6 +1063,9 @@
     <EmbeddedResource Include="Formularios\Devoluciones\frmSccDevoluciones.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Encargos\frmBuscarProductovb.resx">
+      <DependentUpon>frmBuscarProductovb.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Encargos\frmSivEncargos.resx">
       <DependentUpon>frmSivEncargos.vb</DependentUpon>
@@ -1984,9 +1996,7 @@
       <Name>Seguridad.Formularios</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

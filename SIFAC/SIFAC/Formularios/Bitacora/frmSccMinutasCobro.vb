@@ -133,7 +133,7 @@ Public Class frmSccMinutasCobro
                 Me.DialogResult = Windows.Forms.DialogResult.OK
                 Me.Cursor = Cursors.WaitCursor
                 objReportes.IDReporte = "MinutaPago"
-                objReportes.Width = frmPrincipal.Width - frmPrincipal.OutBarPrincipal.Width
+                objReportes.Width = frmPrincipal.Width - frmPrincipal.NavBarPrincipal.Width
                 'objReportes.Height = frmPrincipal.Height - frmPrincipal.MenuPrincipal.Height - frmPrincipal.stbPrincipal.Height
                 objReportes.MdiParent = frmPrincipal
                 objReportes.strFiltro = Me.ObtenerFiltro
@@ -154,7 +154,7 @@ Public Class frmSccMinutasCobro
                 Me.DialogResult = Windows.Forms.DialogResult.OK
                 Me.Cursor = Cursors.WaitCursor
                 objReportes.IDReporte = "MinutaCliente"
-                objReportes.Width = frmPrincipal.Width - frmPrincipal.OutBarPrincipal.Width
+                objReportes.Width = frmPrincipal.Width - frmPrincipal.NavBarPrincipal.Width
                 'objReportes.Height = frmPrincipal.Height - frmPrincipal.MenuPrincipal.Height - frmPrincipal.stbPrincipal.Height
                 objReportes.MdiParent = frmPrincipal
                 objReportes.strFiltro = Me.ObtenerFiltro
