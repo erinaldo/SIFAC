@@ -51,20 +51,22 @@ Partial Class frmSsgEditRol
         '
         Me.TabAcciones.Controls.Add(Me.TabRol)
         Me.TabAcciones.Controls.Add(Me.TabPage2)
-        Me.TabAcciones.Location = New System.Drawing.Point(12, 12)
+        Me.TabAcciones.Location = New System.Drawing.Point(16, 15)
+        Me.TabAcciones.Margin = New System.Windows.Forms.Padding(4)
         Me.TabAcciones.Name = "TabAcciones"
         Me.TabAcciones.SelectedIndex = 0
-        Me.TabAcciones.Size = New System.Drawing.Size(678, 326)
+        Me.TabAcciones.Size = New System.Drawing.Size(904, 401)
         Me.TabAcciones.TabIndex = 0
         '
         'TabRol
         '
         Me.TabRol.Controls.Add(Me.grpDatosRol)
         Me.TabRol.Controls.Add(Me.grpDatosAplicacion)
-        Me.TabRol.Location = New System.Drawing.Point(4, 22)
+        Me.TabRol.Location = New System.Drawing.Point(4, 25)
+        Me.TabRol.Margin = New System.Windows.Forms.Padding(4)
         Me.TabRol.Name = "TabRol"
-        Me.TabRol.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabRol.Size = New System.Drawing.Size(670, 300)
+        Me.TabRol.Padding = New System.Windows.Forms.Padding(4)
+        Me.TabRol.Size = New System.Drawing.Size(896, 372)
         Me.TabRol.TabIndex = 0
         Me.TabRol.Text = "Rol"
         Me.TabRol.UseVisualStyleBackColor = True
@@ -78,9 +80,11 @@ Partial Class frmSsgEditRol
         Me.grpDatosRol.Controls.Add(Me.txtNombre)
         Me.grpDatosRol.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpDatosRol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.grpDatosRol.Location = New System.Drawing.Point(13, 133)
+        Me.grpDatosRol.Location = New System.Drawing.Point(17, 164)
+        Me.grpDatosRol.Margin = New System.Windows.Forms.Padding(4)
         Me.grpDatosRol.Name = "grpDatosRol"
-        Me.grpDatosRol.Size = New System.Drawing.Size(423, 142)
+        Me.grpDatosRol.Padding = New System.Windows.Forms.Padding(4)
+        Me.grpDatosRol.Size = New System.Drawing.Size(564, 175)
         Me.grpDatosRol.TabIndex = 0
         Me.grpDatosRol.TabStop = False
         Me.grpDatosRol.Text = "Datos del Rol"
@@ -90,9 +94,10 @@ Partial Class frmSsgEditRol
         Me.lblDescripcion.AutoSize = True
         Me.lblDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDescripcion.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblDescripcion.Location = New System.Drawing.Point(6, 45)
+        Me.lblDescripcion.Location = New System.Drawing.Point(8, 55)
+        Me.lblDescripcion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDescripcion.Name = "lblDescripcion"
-        Me.lblDescripcion.Size = New System.Drawing.Size(78, 13)
+        Me.lblDescripcion.Size = New System.Drawing.Size(98, 17)
         Me.lblDescripcion.TabIndex = 5
         Me.lblDescripcion.Tag = "OBLIGATORIO"
         Me.lblDescripcion.Text = "Descripción:"
@@ -103,28 +108,31 @@ Partial Class frmSsgEditRol
         Me.lblNombre.AutoSize = True
         Me.lblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblNombre.Location = New System.Drawing.Point(6, 22)
+        Me.lblNombre.Location = New System.Drawing.Point(8, 27)
+        Me.lblNombre.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(54, 13)
+        Me.lblNombre.Size = New System.Drawing.Size(69, 17)
         Me.lblNombre.TabIndex = 4
         Me.lblNombre.Tag = "OBLIGATORIO"
         Me.lblNombre.Text = "Nombre:"
         '
         'txtDescripcion
         '
-        Me.txtDescripcion.Location = New System.Drawing.Point(106, 45)
+        Me.txtDescripcion.Location = New System.Drawing.Point(141, 55)
+        Me.txtDescripcion.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDescripcion.MaxLength = 255
         Me.txtDescripcion.Multiline = True
         Me.txtDescripcion.Name = "txtDescripcion"
-        Me.txtDescripcion.Size = New System.Drawing.Size(304, 87)
+        Me.txtDescripcion.Size = New System.Drawing.Size(404, 106)
         Me.txtDescripcion.TabIndex = 2
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(106, 19)
+        Me.txtNombre.Location = New System.Drawing.Point(141, 23)
+        Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombre.MaxLength = 50
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(304, 20)
+        Me.txtNombre.Size = New System.Drawing.Size(404, 23)
         Me.txtNombre.TabIndex = 0
         '
         'grpDatosAplicacion
@@ -136,9 +144,11 @@ Partial Class frmSsgEditRol
         Me.grpDatosAplicacion.Controls.Add(Me.txtNombreA)
         Me.grpDatosAplicacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpDatosAplicacion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.grpDatosAplicacion.Location = New System.Drawing.Point(13, 28)
+        Me.grpDatosAplicacion.Location = New System.Drawing.Point(17, 34)
+        Me.grpDatosAplicacion.Margin = New System.Windows.Forms.Padding(4)
         Me.grpDatosAplicacion.Name = "grpDatosAplicacion"
-        Me.grpDatosAplicacion.Size = New System.Drawing.Size(423, 78)
+        Me.grpDatosAplicacion.Padding = New System.Windows.Forms.Padding(4)
+        Me.grpDatosAplicacion.Size = New System.Drawing.Size(564, 96)
         Me.grpDatosAplicacion.TabIndex = 9
         Me.grpDatosAplicacion.TabStop = False
         Me.grpDatosAplicacion.Text = "Datos de la Aplicación"
@@ -147,10 +157,11 @@ Partial Class frmSsgEditRol
         '
         Me.txtCodInternoA.BackColor = System.Drawing.SystemColors.HighlightText
         Me.txtCodInternoA.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCodInternoA.Location = New System.Drawing.Point(106, 22)
+        Me.txtCodInternoA.Location = New System.Drawing.Point(141, 27)
+        Me.txtCodInternoA.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodInternoA.MaxLength = 10
         Me.txtCodInternoA.Name = "txtCodInternoA"
-        Me.txtCodInternoA.Size = New System.Drawing.Size(303, 20)
+        Me.txtCodInternoA.Size = New System.Drawing.Size(403, 23)
         Me.txtCodInternoA.TabIndex = 20
         Me.txtCodInternoA.Tag = "BLOQUEADO"
         '
@@ -159,9 +170,10 @@ Partial Class frmSsgEditRol
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(6, 48)
+        Me.Label2.Location = New System.Drawing.Point(8, 59)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(54, 13)
+        Me.Label2.Size = New System.Drawing.Size(69, 17)
         Me.Label2.TabIndex = 4
         Me.Label2.Tag = "OBLIGATORIO"
         Me.Label2.Text = "Nombre:"
@@ -171,9 +183,10 @@ Partial Class frmSsgEditRol
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(6, 25)
+        Me.Label3.Location = New System.Drawing.Point(8, 31)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 13)
+        Me.Label3.Size = New System.Drawing.Size(63, 17)
         Me.Label3.TabIndex = 3
         Me.Label3.Tag = "OBLIGATORIO"
         Me.Label3.Text = "Código:"
@@ -182,20 +195,22 @@ Partial Class frmSsgEditRol
         '
         Me.txtNombreA.BackColor = System.Drawing.SystemColors.HighlightText
         Me.txtNombreA.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombreA.Location = New System.Drawing.Point(106, 48)
+        Me.txtNombreA.Location = New System.Drawing.Point(141, 59)
+        Me.txtNombreA.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombreA.MaxLength = 100
         Me.txtNombreA.Name = "txtNombreA"
-        Me.txtNombreA.Size = New System.Drawing.Size(304, 20)
+        Me.txtNombreA.Size = New System.Drawing.Size(404, 23)
         Me.txtNombreA.TabIndex = 1
         Me.txtNombreA.Tag = "BLOQUEADO"
         '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.grdAcciones)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage2.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(670, 300)
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(4)
+        Me.TabPage2.Size = New System.Drawing.Size(896, 372)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Acciones"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -208,14 +223,15 @@ Partial Class frmSsgEditRol
         Me.grdAcciones.ExtendRightColumn = True
         Me.grdAcciones.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.grdAcciones.Images.Add(CType(resources.GetObject("grdAcciones.Images"), System.Drawing.Image))
-        Me.grdAcciones.Location = New System.Drawing.Point(3, 3)
+        Me.grdAcciones.Location = New System.Drawing.Point(4, 4)
+        Me.grdAcciones.Margin = New System.Windows.Forms.Padding(4)
         Me.grdAcciones.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.FloatingEditor
         Me.grdAcciones.Name = "grdAcciones"
         Me.grdAcciones.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdAcciones.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdAcciones.PreviewInfo.ZoomFactor = 75.0R
         Me.grdAcciones.PrintInfo.PageSettings = CType(resources.GetObject("grdAcciones.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdAcciones.Size = New System.Drawing.Size(664, 294)
+        Me.grdAcciones.Size = New System.Drawing.Size(888, 364)
         Me.grdAcciones.TabIndex = 1
         Me.grdAcciones.Tag = "AGRUPAR"
         Me.grdAcciones.Text = "C1TrueDBGrid1"
@@ -230,11 +246,12 @@ Partial Class frmSsgEditRol
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(608, 351)
+        Me.cmdCancelar.Location = New System.Drawing.Point(811, 432)
         Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.Size = New System.Drawing.Size(100, 34)
         Me.cmdCancelar.TabIndex = 25
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
@@ -245,25 +262,27 @@ Partial Class frmSsgEditRol
         Me.cmdAceptar.Appearance.Options.UseFont = True
         Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
         Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(522, 351)
+        Me.cmdAceptar.Location = New System.Drawing.Point(696, 432)
         Me.cmdAceptar.LookAndFeel.SkinName = "Caramel"
         Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.Size = New System.Drawing.Size(107, 34)
         Me.cmdAceptar.TabIndex = 24
         Me.cmdAceptar.Tag = "GUARDAR"
         Me.cmdAceptar.Text = "&Guardar"
         '
         'frmSsgEditRol
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(703, 391)
+        Me.ClientSize = New System.Drawing.Size(937, 481)
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.TabAcciones)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSsgEditRol"
