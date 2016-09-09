@@ -136,17 +136,15 @@ Public Class frmSccCuentas
         Dim objSeg As New SsgSeguridad
         Try
             objSeg.Usuario = clsProyecto.Conexion.Usuario
-            objSeg.ServicioUsuario = "FRMSCCEXPEDIENTE"
-            If objSeg.TienePermiso("AgregarExp") Then
+            objSeg.ServicioUsuario = "frmSccCuentas"
+            If objSeg.TienePermiso("AgregarCuentaXCobrar") Then
                 Me.cmdAgregar.Enabled = True
             Else
                 Me.cmdAgregar.Enabled = False
             End If
-            Me.cmdEditar.Enabled = objSeg.TienePermiso("EditarExp")
-            Me.cmdConsultar.Enabled = objSeg.TienePermiso("ConsultarExp")
-            Me.cmdBuscarExpedientes.Enabled = objSeg.TienePermiso("BuscarExp")
-            Me.cmdModificarLimite.Enabled = objSeg.TienePermiso("ModificarLimiteCredito")
-            Me.cmdReestructurarCuenta.Enabled = objSeg.TienePermiso("REESTRUCTCUENTA")
+            Me.cmdEditar.Enabled = objSeg.TienePermiso("EditarCuentaXCobrar")
+            Me.cmdConsultar.Enabled = objSeg.TienePermiso("ConsultarCuentaXCobrar")
+            Me.cmdBuscarExpedientes.Enabled = objSeg.TienePermiso("BuscarCuentaXCobrar")
 
         Catch ex As Exception
             clsError.CaptarError(ex)
