@@ -395,11 +395,11 @@ Public Class frmPrincipal
             Me.cmdRptPromociones.Enabled = objSeg.TienePermiso("OpcionRptPromociones") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
 
             'Facturación
-            Me.cmdCotizaciones.Enabled = objSeg.TienePermiso("OpcionCotizaciones") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
-            Me.cmdFacturasRepuestos.Enabled = objSeg.TienePermiso("OpcionFacturaRepuesto") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
-            Me.cmdPromociones.Enabled = objSeg.TienePermiso("OpcionPromociones") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            'Me.cmdCotizaciones.Enabled = objSeg.TienePermiso("OpcionCotizaciones") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            Me.cmdFacturasRepuestos.Enabled = objSeg.TienePermiso("OpcionFacturas") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            'Me.cmdPromociones.Enabled = objSeg.TienePermiso("OpcionPromociones") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
             Me.cmdOrdenCompra.Enabled = objSeg.TienePermiso("OpcionOrdenCompra") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
-            Me.cmdSolicitudesDescuento.Enabled = objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            'Me.cmdSolicitudesDescuento.Enabled = objSeg.TienePermiso("AUTORIZACIONGERENTE")
 
             'Facturación reportes
             Me.cmdRptListadoPrecios.Enabled = objSeg.TienePermiso("OpcionReporteListadoPrecio") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
