@@ -41,6 +41,7 @@ Partial Class frmSivEncargosEdit
         Me.colObservaciones = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemMemoEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cmbCategoria1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cmbNombreProducto = New DevExpress.XtraEditors.LookUpEdit()
         Me.cmbMarca = New DevExpress.XtraEditors.LookUpEdit()
         Me.cmbCategoria = New DevExpress.XtraEditors.LookUpEdit()
@@ -84,7 +85,6 @@ Partial Class frmSivEncargosEdit
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.cmbCategoria1 = New DevExpress.XtraEditors.ComboBoxEdit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,6 +97,7 @@ Partial Class frmSivEncargosEdit
         CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.cmbCategoria1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -113,7 +114,6 @@ Partial Class frmSivEncargosEdit
         Me.GroupBox1.SuspendLayout()
         CType(Me.grdvwExpediente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbCategoria1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -313,6 +313,14 @@ Partial Class frmSivEncargosEdit
         Me.GroupBox2.TabIndex = 118
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Buscar Producto"
+        '
+        'cmbCategoria1
+        '
+        Me.cmbCategoria1.Location = New System.Drawing.Point(313, 107)
+        Me.cmbCategoria1.Name = "cmbCategoria1"
+        Me.cmbCategoria1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cmbCategoria1.Size = New System.Drawing.Size(111, 20)
+        Me.cmbCategoria1.TabIndex = 126
         '
         'cmbNombreProducto
         '
@@ -857,14 +865,6 @@ Partial Class frmSivEncargosEdit
         Me.Panel1.Size = New System.Drawing.Size(859, 22)
         Me.Panel1.TabIndex = 7
         '
-        'cmbCategoria1
-        '
-        Me.cmbCategoria1.Location = New System.Drawing.Point(313, 107)
-        Me.cmbCategoria1.Name = "cmbCategoria1"
-        Me.cmbCategoria1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbCategoria1.Size = New System.Drawing.Size(111, 20)
-        Me.cmbCategoria1.TabIndex = 126
-        '
         'frmSivEncargosEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -889,6 +889,7 @@ Partial Class frmSivEncargosEdit
         CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.cmbCategoria1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -907,7 +908,6 @@ Partial Class frmSivEncargosEdit
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.grdvwExpediente, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbCategoria1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

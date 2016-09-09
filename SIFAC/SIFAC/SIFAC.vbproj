@@ -276,12 +276,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dtDatosServicioTallerBitacoraMoto.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Bitacora\frmSccMinutasCobro.Designer.vb">
       <DependentUpon>frmSccMinutasCobro.vb</DependentUpon>
     </Compile>
@@ -388,12 +382,6 @@
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Devoluciones\frmSccDevoluciones.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Encargos\frmBuscarProductovb.Designer.vb">
-      <DependentUpon>frmBuscarProductovb.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Encargos\frmBuscarProductovb.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Encargos\frmSivEncargos.Designer.vb">
@@ -998,9 +986,6 @@
     <Compile Include="Settings.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Bitacora\frmSccMinutasCobro.resx">
       <DependentUpon>frmSccMinutasCobro.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1063,9 +1048,6 @@
     <EmbeddedResource Include="Formularios\Devoluciones\frmSccDevoluciones.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Encargos\frmBuscarProductovb.resx">
-      <DependentUpon>frmBuscarProductovb.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Encargos\frmSivEncargos.resx">
       <DependentUpon>frmSivEncargos.vb</DependentUpon>
