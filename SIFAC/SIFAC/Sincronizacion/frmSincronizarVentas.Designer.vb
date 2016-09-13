@@ -36,7 +36,6 @@ Partial Class frmSincronizarVentas
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
-        Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
         Me.grdEncargosDetalle = New DevExpress.XtraGrid.GridControl()
         Me.grdEncargosDetalleTable = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -46,14 +45,19 @@ Partial Class frmSincronizarVentas
         Me.colCantidad = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCostoPromedio = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTotalEncargoDetalle = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmbMarca = New DevExpress.XtraEditors.LookUpEdit()
+        Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.tbProductos.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
-        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl3.SuspendLayout()
         CType(Me.grdEncargosDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdEncargosDetalleTable, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl2.SuspendLayout()
+        CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbProductos
@@ -165,14 +169,6 @@ Partial Class frmSincronizarVentas
         Me.PanelControl1.Size = New System.Drawing.Size(837, 439)
         Me.PanelControl1.TabIndex = 11
         '
-        'PanelControl2
-        '
-        Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelControl2.Location = New System.Drawing.Point(2, 2)
-        Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(833, 116)
-        Me.PanelControl2.TabIndex = 0
-        '
         'PanelControl3
         '
         Me.PanelControl3.Controls.Add(Me.grdEncargosDetalle)
@@ -253,6 +249,36 @@ Partial Class frmSincronizarVentas
         Me.colTotalEncargoDetalle.Visible = True
         Me.colTotalEncargoDetalle.VisibleIndex = 5
         '
+        'PanelControl2
+        '
+        Me.PanelControl2.Controls.Add(Me.cmbMarca)
+        Me.PanelControl2.Controls.Add(Me.lblModeloCompatible)
+        Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelControl2.Location = New System.Drawing.Point(2, 2)
+        Me.PanelControl2.Name = "PanelControl2"
+        Me.PanelControl2.Size = New System.Drawing.Size(833, 116)
+        Me.PanelControl2.TabIndex = 0
+        '
+        'cmbMarca
+        '
+        Me.cmbMarca.Location = New System.Drawing.Point(133, 57)
+        Me.cmbMarca.Name = "cmbMarca"
+        Me.cmbMarca.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cmbMarca.Properties.NullText = ""
+        Me.cmbMarca.Size = New System.Drawing.Size(166, 20)
+        Me.cmbMarca.TabIndex = 126
+        '
+        'lblModeloCompatible
+        '
+        Me.lblModeloCompatible.BackColor = System.Drawing.Color.Transparent
+        Me.lblModeloCompatible.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblModeloCompatible.Location = New System.Drawing.Point(12, 58)
+        Me.lblModeloCompatible.Name = "lblModeloCompatible"
+        Me.lblModeloCompatible.Size = New System.Drawing.Size(103, 18)
+        Me.lblModeloCompatible.TabIndex = 125
+        Me.lblModeloCompatible.Tag = ""
+        Me.lblModeloCompatible.Text = "Marca:"
+        '
         'frmSincronizarVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -267,11 +293,13 @@ Partial Class frmSincronizarVentas
         Me.tbProductos.PerformLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
-        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl3.ResumeLayout(False)
         CType(Me.grdEncargosDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdEncargosDetalleTable, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl2.ResumeLayout(False)
+        CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -299,4 +327,6 @@ Partial Class frmSincronizarVentas
     Friend WithEvents colCantidad As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCostoPromedio As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTotalEncargoDetalle As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmbMarca As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents lblModeloCompatible As System.Windows.Forms.Label
 End Class

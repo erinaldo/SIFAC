@@ -45,9 +45,9 @@ Public Class frmSfaBusquedaCliente
         Dim strSQL As String
 
         If String.IsNullOrEmpty(Me.Filtro) Then
-            strSQL = ObtenerConsultaGeneral("Distinct Cast(0 as bit) as Seleccion, Cedula,Exonerado, StbPersonaID, NombreCompleto", "vwSfaClienteFactura")
+            strSQL = ObtenerConsultaGeneral("Distinct Cast(0 as bit) as Seleccion, ClienteID, Cedula, StbPersonaID, NombreCompleto", "vwSfaClienteFactura")
         Else
-            strSQL = ObtenerConsultaGeneral("Distinct Cast(0 as bit) as Seleccion, StbPersonaID,Cedula,Exonerado, NombreCompleto", "vwSfaClienteFactura", Filtro)
+            strSQL = ObtenerConsultaGeneral("Distinct Cast(0 as bit) as Seleccion, ClienteID, StbPersonaID,Cedula, NombreCompleto", "vwSfaClienteFactura", Filtro)
         End If
         DtPersonas = DAL.SqlHelper.ExecuteQueryDT(strSQL)
         DtPersonas.DefaultView.Sort = "NombreCompleto"
@@ -108,7 +108,7 @@ Public Class frmSfaBusquedaCliente
         If Cantidad = 0 Then
             Exit Sub
         End If
-        objPersonaID = Me.DtPersonas.Select("Seleccion = 1")(0)("StbPersonaID")
+        objPersonaID = Me.DtPersonas.Select("Seleccion = 1")(0)("ClienteID")
         If Not IsDBNull(objPersonaID) Then
             Seleccion = objPersonaID
             Me.DialogResult = Windows.Forms.DialogResult.OK

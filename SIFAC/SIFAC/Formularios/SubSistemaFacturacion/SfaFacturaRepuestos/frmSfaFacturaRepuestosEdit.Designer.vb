@@ -21,11 +21,11 @@ Partial Class frmSfaFacturaRepuestosEditar
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaFacturaRepuestosEditar))
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.tabFacturas = New System.Windows.Forms.TabControl()
         Me.TabPageGenerales = New System.Windows.Forms.TabPage()
         Me.txtCodigoCliente = New System.Windows.Forms.TextBox()
@@ -56,7 +56,6 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.grpDetalle = New System.Windows.Forms.GroupBox()
         Me.grdDetalleFactura = New DevExpress.XtraGrid.GridControl()
@@ -110,6 +109,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numTotalD = New C1.Win.C1Input.C1NumericEdit()
         Me.ErrorFactura = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.lblCantidadMaxItems = New System.Windows.Forms.Label()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.tabFacturas.SuspendLayout()
         Me.TabPageGenerales.SuspendLayout()
         CType(Me.cmbMotivoAnular, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,13 +146,15 @@ Partial Class frmSfaFacturaRepuestosEditar
         CType(Me.numTotalC, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numTotalD, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorFactura, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'tabFacturas
         '
         Me.tabFacturas.Controls.Add(Me.TabPageGenerales)
         Me.tabFacturas.Controls.Add(Me.TabPageCliente)
-        Me.tabFacturas.Location = New System.Drawing.Point(4, 38)
+        Me.tabFacturas.Location = New System.Drawing.Point(8, 23)
         Me.tabFacturas.Name = "tabFacturas"
         Me.tabFacturas.SelectedIndex = 0
         Me.tabFacturas.Size = New System.Drawing.Size(817, 161)
@@ -592,17 +594,6 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Label8.TabIndex = 0
         Me.Label8.Text = "Teléfonos:"
         '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(831, 32)
-        Me.Panel2.TabIndex = 5
-        Me.Panel2.Tag = "LAYOUT"
-        '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
@@ -615,7 +606,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'grpDetalle
         '
         Me.grpDetalle.Controls.Add(Me.grdDetalleFactura)
-        Me.grpDetalle.Location = New System.Drawing.Point(8, 241)
+        Me.grpDetalle.Location = New System.Drawing.Point(18, 228)
         Me.grpDetalle.Name = "grpDetalle"
         Me.grpDetalle.Size = New System.Drawing.Size(813, 237)
         Me.grpDetalle.TabIndex = 7
@@ -727,7 +718,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'grdSpnPrecioUnitario
         '
         Me.grdSpnPrecioUnitario.AutoHeight = False
-        Me.grdSpnPrecioUnitario.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, False)})
+        Me.grdSpnPrecioUnitario.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject6, "", Nothing, Nothing, False)})
         Me.grdSpnPrecioUnitario.Increment = New Decimal(New Integer() {0, 0, 0, 0})
         Me.grdSpnPrecioUnitario.Name = "grdSpnPrecioUnitario"
         '
@@ -751,7 +742,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'grdspnSubTotal
         '
         Me.grdspnSubTotal.AutoHeight = False
-        Me.grdspnSubTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, False)})
+        Me.grdspnSubTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject7, "", Nothing, Nothing, False)})
         Me.grdspnSubTotal.DisplayFormat.FormatString = "#0.#0"
         Me.grdspnSubTotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.grdspnSubTotal.EditFormat.FormatString = "#0.#0"
@@ -778,7 +769,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'grdSpnDescuento
         '
         Me.grdSpnDescuento.AutoHeight = False
-        Me.grdSpnDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, False)})
+        Me.grdSpnDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject8, "", Nothing, Nothing, False)})
         Me.grdSpnDescuento.DisplayFormat.FormatString = "#0.#0"
         Me.grdSpnDescuento.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.grdSpnDescuento.EditFormat.FormatString = "#0.#0"
@@ -805,7 +796,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'grdspnTotal
         '
         Me.grdspnTotal.AutoHeight = False
-        Me.grdspnTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, False)})
+        Me.grdspnTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, "", Nothing, Nothing, False)})
         Me.grdspnTotal.DisplayFormat.FormatString = "#0.#0"
         Me.grdspnTotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.grdspnTotal.EditFormat.FormatString = "#0.#0"
@@ -837,7 +828,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'grdspnPorcentajeDescuento
         '
         Me.grdspnPorcentajeDescuento.AutoHeight = False
-        Me.grdspnPorcentajeDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinRight, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, False), New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.grdspnPorcentajeDescuento.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinRight, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject10, "", Nothing, Nothing, False), New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.grdspnPorcentajeDescuento.DisplayFormat.FormatString = "#0.#0"
         Me.grdspnPorcentajeDescuento.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.grdspnPorcentajeDescuento.EditFormat.FormatString = "#0.#0"
@@ -847,7 +838,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(249, 220)
+        Me.Label11.Location = New System.Drawing.Point(237, 204)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(36, 13)
         Me.Label11.TabIndex = 9
@@ -856,7 +847,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(422, 220)
+        Me.Label12.Location = New System.Drawing.Point(410, 204)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(37, 13)
         Me.Label12.TabIndex = 10
@@ -864,8 +855,8 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         'cmdBuscar
         '
-        Me.cmdBuscar.Image = Global.SIFAC.My.Resources.Resources.Buscar
-        Me.cmdBuscar.Location = New System.Drawing.Point(778, 220)
+        Me.cmdBuscar.Image = CType(resources.GetObject("cmdBuscar.Image"), System.Drawing.Image)
+        Me.cmdBuscar.Location = New System.Drawing.Point(778, 199)
         Me.cmdBuscar.Name = "cmdBuscar"
         Me.cmdBuscar.Size = New System.Drawing.Size(40, 23)
         Me.cmdBuscar.TabIndex = 11
@@ -885,7 +876,7 @@ Partial Class frmSfaFacturaRepuestosEditar
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numSaldo.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numSaldo.Location = New System.Drawing.Point(465, 215)
+        Me.numSaldo.Location = New System.Drawing.Point(453, 199)
         Me.numSaldo.Name = "numSaldo"
         Me.numSaldo.Size = New System.Drawing.Size(108, 20)
         Me.numSaldo.TabIndex = 12
@@ -906,7 +897,7 @@ Partial Class frmSfaFacturaRepuestosEditar
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numPrima.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numPrima.Location = New System.Drawing.Point(292, 215)
+        Me.numPrima.Location = New System.Drawing.Point(280, 199)
         Me.numPrima.Name = "numPrima"
         Me.numPrima.Size = New System.Drawing.Size(104, 20)
         Me.numPrima.TabIndex = 13
@@ -917,7 +908,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(19, 488)
+        Me.Label13.Location = New System.Drawing.Point(19, 485)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(58, 13)
         Me.Label13.TabIndex = 14
@@ -926,7 +917,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(199, 488)
+        Me.Label14.Location = New System.Drawing.Point(195, 488)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(29, 13)
         Me.Label14.TabIndex = 15
@@ -935,7 +926,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(22, 524)
+        Me.Label15.Location = New System.Drawing.Point(23, 524)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(188, 13)
         Me.Label15.TabIndex = 16
@@ -944,7 +935,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'chkSolicitudDescuento
         '
         Me.chkSolicitudDescuento.AutoSize = True
-        Me.chkSolicitudDescuento.Location = New System.Drawing.Point(415, 484)
+        Me.chkSolicitudDescuento.Location = New System.Drawing.Point(400, 481)
         Me.chkSolicitudDescuento.Name = "chkSolicitudDescuento"
         Me.chkSolicitudDescuento.Size = New System.Drawing.Size(152, 17)
         Me.chkSolicitudDescuento.TabIndex = 17
@@ -1061,7 +1052,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(663, 488)
+        Me.Label16.Location = New System.Drawing.Point(655, 488)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(56, 13)
         Me.Label16.TabIndex = 23
@@ -1070,7 +1061,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(663, 514)
+        Me.Label17.Location = New System.Drawing.Point(655, 514)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(62, 13)
         Me.Label17.TabIndex = 24
@@ -1079,7 +1070,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(663, 540)
+        Me.Label18.Location = New System.Drawing.Point(655, 540)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(27, 13)
         Me.Label18.TabIndex = 25
@@ -1088,7 +1079,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(663, 564)
+        Me.Label19.Location = New System.Drawing.Point(655, 564)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(50, 13)
         Me.Label19.TabIndex = 26
@@ -1097,7 +1088,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(661, 589)
+        Me.Label20.Location = New System.Drawing.Point(653, 589)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(58, 13)
         Me.Label20.TabIndex = 27
@@ -1239,19 +1230,45 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.lblCantidadMaxItems.AutoSize = True
         Me.lblCantidadMaxItems.BackColor = System.Drawing.SystemColors.Control
         Me.lblCantidadMaxItems.ForeColor = System.Drawing.Color.Gray
-        Me.lblCantidadMaxItems.Location = New System.Drawing.Point(8, 638)
+        Me.lblCantidadMaxItems.Location = New System.Drawing.Point(12, 634)
         Me.lblCantidadMaxItems.Name = "lblCantidadMaxItems"
         Me.lblCantidadMaxItems.Size = New System.Drawing.Size(204, 13)
         Me.lblCantidadMaxItems.TabIndex = 121
         Me.lblCantidadMaxItems.Tag = ""
         Me.lblCantidadMaxItems.Text = "Cantidad Máxima de repuestos en detalle:"
         '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.lblCantidadMaxItems)
+        Me.PanelControl1.Controls.Add(Me.tabFacturas)
+        Me.PanelControl1.Controls.Add(Me.cmdBuscar)
+        Me.PanelControl1.Controls.Add(Me.grpDetalle)
+        Me.PanelControl1.Controls.Add(Me.Label13)
+        Me.PanelControl1.Controls.Add(Me.Label14)
+        Me.PanelControl1.Controls.Add(Me.chkSolicitudDescuento)
+        Me.PanelControl1.Controls.Add(Me.Label16)
+        Me.PanelControl1.Controls.Add(Me.Label17)
+        Me.PanelControl1.Controls.Add(Me.Label18)
+        Me.PanelControl1.Controls.Add(Me.Label20)
+        Me.PanelControl1.Controls.Add(Me.Label19)
+        Me.PanelControl1.Controls.Add(Me.Label15)
+        Me.PanelControl1.Controls.Add(Me.numPrima)
+        Me.PanelControl1.Controls.Add(Me.numSaldo)
+        Me.PanelControl1.Controls.Add(Me.Label11)
+        Me.PanelControl1.Controls.Add(Me.Label12)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(831, 683)
+        Me.PanelControl1.TabIndex = 122
+        '
         'frmSfaFacturaRepuestosEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(831, 683)
-        Me.Controls.Add(Me.lblCantidadMaxItems)
         Me.Controls.Add(Me.numTotalD)
         Me.Controls.Add(Me.numTotalC)
         Me.Controls.Add(Me.numIVA)
@@ -1260,29 +1277,13 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmdProcesar)
         Me.Controls.Add(Me.cmdAceptar)
-        Me.Controls.Add(Me.Label20)
-        Me.Controls.Add(Me.Label19)
-        Me.Controls.Add(Me.Label18)
-        Me.Controls.Add(Me.Label17)
-        Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.TabDescuento)
         Me.Controls.Add(Me.txtSolicitudDescuento)
         Me.Controls.Add(Me.txtObervaciones)
         Me.Controls.Add(Me.numTasa)
         Me.Controls.Add(Me.numExistencia)
-        Me.Controls.Add(Me.chkSolicitudDescuento)
-        Me.Controls.Add(Me.Label15)
-        Me.Controls.Add(Me.Label14)
-        Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.numPrima)
-        Me.Controls.Add(Me.numSaldo)
-        Me.Controls.Add(Me.cmdBuscar)
-        Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.grpDetalle)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.tabFacturas)
-        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -1328,6 +1329,9 @@ Partial Class frmSfaFacturaRepuestosEditar
         CType(Me.numTotalC, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numTotalD, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorFactura, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1335,7 +1339,6 @@ Partial Class frmSfaFacturaRepuestosEditar
     Friend WithEvents tabFacturas As System.Windows.Forms.TabControl
     Friend WithEvents TabPageGenerales As System.Windows.Forms.TabPage
     Friend WithEvents TabPageCliente As System.Windows.Forms.TabPage
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents cmbTPago As C1.Win.C1List.C1Combo
     Friend WithEvents cmbBodega As C1.Win.C1List.C1Combo
@@ -1416,4 +1419,5 @@ Partial Class frmSfaFacturaRepuestosEditar
     Friend WithEvents txtCodigoCliente As System.Windows.Forms.TextBox
     Friend WithEvents NumDescuento As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents grdspnCodigoRepuesto As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
 End Class

@@ -128,15 +128,19 @@ Public Class frmSfaFacturaRepuestosEditar
 
 #Region "Cargar Clientes"
     Private Sub CargarClientes()
-        dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ClienteID,NombreCompleto", "vwSfaClienteFactura", "Descripcion = 'Cliente'"))
-        dtCliente.DefaultView.Sort = "NombreCompleto"
-        With Me.cmbCliente
-            .DataSource = dtCliente
-            .ValueMember = "ClienteID"
-            .DisplayMember = "NombreCompleto"
-            .Splits(0).DisplayColumns("ClienteID").Visible = False
-            .ExtendRightColumn = True
-        End With
+        Try
+            dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ClienteID,NombreCompleto", "vwSfaClienteFactura", "Descripcion = 'Cliente'"))
+            dtCliente.DefaultView.Sort = "NombreCompleto"
+            With Me.cmbCliente
+                .DataSource = dtCliente
+                .ValueMember = "ClienteID"
+                .DisplayMember = "NombreCompleto"
+                .Splits(0).DisplayColumns("ClienteID").Visible = False
+                .ExtendRightColumn = True
+            End With
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 #End Region
 

@@ -20,18 +20,16 @@ Partial Class frmSfaBusquedaCliente
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaBusquedaCliente))
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.grdCliente = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Panel3 = New System.Windows.Forms.Panel
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.cmdNuevaPersona = New System.Windows.Forms.Button
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.grdCliente = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
+        Me.cmdAceptar = New System.Windows.Forms.Button()
+        Me.cmdNuevaPersona = New System.Windows.Forms.Button()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.Panel1.SuspendLayout()
         CType(Me.grdCliente, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -52,33 +50,11 @@ Partial Class frmSfaBusquedaCliente
         Me.grdCliente.Name = "grdCliente"
         Me.grdCliente.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdCliente.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdCliente.PreviewInfo.ZoomFactor = 75
+        Me.grdCliente.PreviewInfo.ZoomFactor = 75.0R
         Me.grdCliente.PrintInfo.PageSettings = CType(resources.GetObject("grdCliente.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdCliente.Size = New System.Drawing.Size(551, 245)
         Me.grdCliente.TabIndex = 1
         Me.grdCliente.PropBag = resources.GetString("grdCliente.PropBag")
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.PictureBox1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(575, 32)
-        Me.Panel2.TabIndex = 6
-        Me.Panel2.Tag = "LAYOUT"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(504, -1)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(70, 31)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
         '
         'Panel3
         '
@@ -118,6 +94,16 @@ Partial Class frmSfaBusquedaCliente
         Me.cmdNuevaPersona.TabIndex = 33
         Me.cmdNuevaPersona.UseVisualStyleBackColor = True
         '
+        'PanelControl1
+        '
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(575, 356)
+        Me.PanelControl1.TabIndex = 34
+        '
         'frmSfaBusquedaCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -127,8 +113,9 @@ Partial Class frmSfaBusquedaCliente
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.PanelControl1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSfaBusquedaCliente"
@@ -136,17 +123,15 @@ Partial Class frmSfaBusquedaCliente
         Me.Text = "Busqueda Cliente"
         Me.Panel1.ResumeLayout(False)
         CType(Me.grdCliente, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents grdCliente As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents cmdNuevaPersona As System.Windows.Forms.Button
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
 End Class

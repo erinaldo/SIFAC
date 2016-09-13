@@ -39,7 +39,7 @@ Public Class frmSccBuscarCuentas
         Me.CargarEstados()
     End Sub
 
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
         Dim strFiltro As String = ""
         Try
             If Trim(Me.txtNumExp.Text) <> "" Then

@@ -1159,7 +1159,7 @@ Public Class frmSfaFacturaRepuestos
 #End Region
 
 #Region "Botones"
-    Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
+    Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Agregar()
     End Sub
 
@@ -1197,11 +1197,14 @@ Public Class frmSfaFacturaRepuestos
     Private Sub cmdImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImprimir.Click
         Me.Imprimir()
     End Sub
-    Private Sub AgregaDesdeCotizaciónToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AgregaDesdeCotizaciónToolStripMenuItem.Click
+    Private Sub AgregaDesdeCotizaciónToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         'AgregarCotizacion()
     End Sub
 #End Region
 
 #End Region
     
+    Private Sub cmdAgregar_Click(sender As Object, e As EventArgs) Handles cmdAgregar.Click
+        Agregar()
+    End Sub
 End Class

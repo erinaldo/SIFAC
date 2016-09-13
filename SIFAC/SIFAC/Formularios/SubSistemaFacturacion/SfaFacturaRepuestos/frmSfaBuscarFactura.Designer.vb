@@ -55,11 +55,9 @@ Partial Class frmSfaBuscarFactura
         Me.grpDatos.Controls.Add(Me.Label3)
         Me.grpDatos.Controls.Add(Me.Label2)
         Me.grpDatos.Controls.Add(Me.Label1)
-        Me.grpDatos.Location = New System.Drawing.Point(16, 47)
-        Me.grpDatos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpDatos.Location = New System.Drawing.Point(12, 38)
         Me.grpDatos.Name = "grpDatos"
-        Me.grpDatos.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grpDatos.Size = New System.Drawing.Size(484, 138)
+        Me.grpDatos.Size = New System.Drawing.Size(363, 112)
         Me.grpDatos.TabIndex = 0
         Me.grpDatos.TabStop = False
         Me.grpDatos.Text = "Datos Generales"
@@ -74,16 +72,15 @@ Partial Class frmSfaBuscarFactura
         Me.cmbCliente.ColumnFooterHeight = 17
         Me.cmbCliente.ColumnHeaders = False
         Me.cmbCliente.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbCliente.ContentHeight = 18
+        Me.cmbCliente.ContentHeight = 15
         Me.cmbCliente.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbCliente.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbCliente.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCliente.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCliente.EditorHeight = 18
+        Me.cmbCliente.EditorHeight = 15
         Me.cmbCliente.Images.Add(CType(resources.GetObject("cmbCliente.Images"), System.Drawing.Image))
         Me.cmbCliente.ItemHeight = 15
-        Me.cmbCliente.Location = New System.Drawing.Point(143, 95)
-        Me.cmbCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbCliente.Location = New System.Drawing.Point(107, 77)
         Me.cmbCliente.MatchEntryTimeout = CType(2000, Long)
         Me.cmbCliente.MaxDropDownItems = CType(5, Short)
         Me.cmbCliente.MaxLength = 32767
@@ -92,7 +89,7 @@ Partial Class frmSfaBuscarFactura
         Me.cmbCliente.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbCliente.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCliente.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCliente.Size = New System.Drawing.Size(305, 24)
+        Me.cmbCliente.Size = New System.Drawing.Size(229, 21)
         Me.cmbCliente.TabIndex = 5
         Me.cmbCliente.PropBag = resources.GetString("cmbCliente.PropBag")
         '
@@ -106,17 +103,16 @@ Partial Class frmSfaBuscarFactura
         Me.cmbSucursal.ColumnFooterHeight = 17
         Me.cmbSucursal.ColumnHeaders = False
         Me.cmbSucursal.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbSucursal.ContentHeight = 18
+        Me.cmbSucursal.ContentHeight = 15
         Me.cmbSucursal.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbSucursal.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbSucursal.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSucursal.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbSucursal.EditorHeight = 18
+        Me.cmbSucursal.EditorHeight = 15
         Me.cmbSucursal.Enabled = False
         Me.cmbSucursal.Images.Add(CType(resources.GetObject("cmbSucursal.Images"), System.Drawing.Image))
         Me.cmbSucursal.ItemHeight = 15
-        Me.cmbSucursal.Location = New System.Drawing.Point(143, 62)
-        Me.cmbSucursal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbSucursal.Location = New System.Drawing.Point(107, 50)
         Me.cmbSucursal.MatchEntryTimeout = CType(2000, Long)
         Me.cmbSucursal.MaxDropDownItems = CType(5, Short)
         Me.cmbSucursal.MaxLength = 32767
@@ -125,55 +121,50 @@ Partial Class frmSfaBuscarFactura
         Me.cmbSucursal.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbSucursal.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbSucursal.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbSucursal.Size = New System.Drawing.Size(305, 24)
+        Me.cmbSucursal.Size = New System.Drawing.Size(229, 21)
         Me.cmbSucursal.TabIndex = 4
         Me.cmbSucursal.PropBag = resources.GetString("cmbSucursal.PropBag")
         '
         'txtNumeroFactura
         '
-        Me.txtNumeroFactura.Location = New System.Drawing.Point(143, 27)
-        Me.txtNumeroFactura.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNumeroFactura.Location = New System.Drawing.Point(107, 22)
         Me.txtNumeroFactura.Name = "txtNumeroFactura"
-        Me.txtNumeroFactura.Size = New System.Drawing.Size(132, 22)
+        Me.txtNumeroFactura.Size = New System.Drawing.Size(100, 20)
         Me.txtNumeroFactura.TabIndex = 3
         Me.txtNumeroFactura.Text = "TODAS"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(8, 105)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(6, 85)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(55, 17)
+        Me.Label3.Size = New System.Drawing.Size(42, 13)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Cliente:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 71)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(6, 58)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(67, 17)
+        Me.Label2.Size = New System.Drawing.Size(51, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Sucursal:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(8, 36)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(6, 29)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(114, 17)
+        Me.Label1.Size = New System.Drawing.Size(86, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Número Factura:"
         '
         'cmdCancelar
         '
-        Me.cmdCancelar.Location = New System.Drawing.Point(791, 193)
-        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdCancelar.Location = New System.Drawing.Point(593, 157)
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(99, 37)
+        Me.cmdCancelar.Size = New System.Drawing.Size(74, 30)
         Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
@@ -181,10 +172,9 @@ Partial Class frmSfaBuscarFactura
         '
         'cmdAceptar
         '
-        Me.cmdAceptar.Location = New System.Drawing.Point(683, 193)
-        Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdAceptar.Location = New System.Drawing.Point(512, 157)
         Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(99, 37)
+        Me.cmdAceptar.Size = New System.Drawing.Size(74, 30)
         Me.cmdAceptar.TabIndex = 2
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
@@ -196,11 +186,9 @@ Partial Class frmSfaBuscarFactura
         Me.grpPeriodo.Controls.Add(Me.dtpDesde)
         Me.grpPeriodo.Controls.Add(Me.Label5)
         Me.grpPeriodo.Controls.Add(Me.Label4)
-        Me.grpPeriodo.Location = New System.Drawing.Point(517, 47)
-        Me.grpPeriodo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpPeriodo.Location = New System.Drawing.Point(388, 38)
         Me.grpPeriodo.Name = "grpPeriodo"
-        Me.grpPeriodo.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grpPeriodo.Size = New System.Drawing.Size(373, 137)
+        Me.grpPeriodo.Size = New System.Drawing.Size(280, 111)
         Me.grpPeriodo.TabIndex = 3
         Me.grpPeriodo.TabStop = False
         Me.grpPeriodo.Text = "Período Factura"
@@ -228,10 +216,9 @@ Partial Class frmSfaBuscarFactura
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpHasta.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpHasta.Location = New System.Drawing.Point(128, 73)
-        Me.dtpHasta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpHasta.Location = New System.Drawing.Point(96, 59)
         Me.dtpHasta.Name = "dtpHasta"
-        Me.dtpHasta.Size = New System.Drawing.Size(212, 22)
+        Me.dtpHasta.Size = New System.Drawing.Size(159, 20)
         Me.dtpHasta.TabIndex = 4
         Me.dtpHasta.Tag = Nothing
         Me.dtpHasta.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
@@ -259,10 +246,9 @@ Partial Class frmSfaBuscarFactura
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpDesde.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpDesde.Location = New System.Drawing.Point(128, 41)
-        Me.dtpDesde.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpDesde.Location = New System.Drawing.Point(96, 33)
         Me.dtpDesde.Name = "dtpDesde"
-        Me.dtpDesde.Size = New System.Drawing.Size(212, 22)
+        Me.dtpDesde.Size = New System.Drawing.Size(159, 20)
         Me.dtpDesde.TabIndex = 3
         Me.dtpDesde.Tag = Nothing
         Me.dtpDesde.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
@@ -270,20 +256,18 @@ Partial Class frmSfaBuscarFactura
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(8, 80)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(6, 65)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(92, 17)
+        Me.Label5.Size = New System.Drawing.Size(71, 13)
         Me.Label5.TabIndex = 2
         Me.Label5.Text = "Fecha Hasta:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(8, 44)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(6, 36)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(96, 17)
+        Me.Label4.Size = New System.Drawing.Size(74, 13)
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Fecha Desde:"
         '
@@ -293,9 +277,8 @@ Partial Class frmSfaBuscarFactura
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(905, 39)
+        Me.Panel2.Size = New System.Drawing.Size(679, 32)
         Me.Panel2.TabIndex = 30
         Me.Panel2.Tag = "LAYOUT"
         '
@@ -303,10 +286,9 @@ Partial Class frmSfaBuscarFactura
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 239)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Location = New System.Drawing.Point(0, 194)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(905, 26)
+        Me.Panel1.Size = New System.Drawing.Size(679, 21)
         Me.Panel1.TabIndex = 49
         '
         'ErrorBusquedaFactura
@@ -315,9 +297,9 @@ Partial Class frmSfaBuscarFactura
         '
         'frmSfaBuscarFactura
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(905, 265)
+        Me.ClientSize = New System.Drawing.Size(679, 215)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.grpPeriodo)
@@ -325,7 +307,6 @@ Partial Class frmSfaBuscarFactura
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.grpDatos)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSfaBuscarFactura"

@@ -96,7 +96,7 @@ Public Class frmSccCuentasEditar
 
                 Me.dtpFechaCredito.Enabled = False
                 Me.cmdBuscarCliente.Enabled = False
-                Me.cmdAceptar.Enabled = False
+                Me.cmdGuardar.Enabled = False
         End Select
 
     End Sub
@@ -216,7 +216,7 @@ Public Class frmSccCuentasEditar
         Me.txtUsuario.Text = clsProyecto.Conexion.Usuario
         CargarCliente()
         ConfigurarGUI()
-        Me.Panel2.BackColor = Color.White
+
         Me.grdFacturas.Splits(0).FilterBar = False
     End Sub
 
@@ -237,7 +237,7 @@ Public Class frmSccCuentasEditar
             If objBuscarPersona.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 ClienteID = objBuscarPersona.Seleccion
                 Me.ErrorProv.Clear()
-                foundRows = Me.dtCliente.Select("ClienteID = '" & ClienteID & "'")
+                foundRows = Me.dtCliente.Select("StbPersonaID = '" & ClienteID & "'")
 
                 'If foundRows = 0 Then
                 '    Me.CargarCliente()
@@ -250,7 +250,7 @@ Public Class frmSccCuentasEditar
         End Try
     End Sub
 
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
 
         Select Case Me.TypeGUI
             Case 0

@@ -21,9 +21,6 @@ Partial Class frmSfaFacturaRepuestos
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaFacturaRepuestos))
         Me.barFacturaRepuesto = New System.Windows.Forms.ToolStrip()
-        Me.cmdAgregar = New System.Windows.Forms.ToolStripSplitButton()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AgregaDesdeCotizaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmdProcesar = New System.Windows.Forms.ToolStripButton()
         Me.cmdAnular = New System.Windows.Forms.ToolStripButton()
         Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
@@ -51,6 +48,7 @@ Partial Class frmSfaFacturaRepuestos
         Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colAnulada = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
         Me.barFacturaRepuesto.SuspendLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contenedor.SuspendLayout()
@@ -69,28 +67,6 @@ Partial Class frmSfaFacturaRepuestos
         Me.barFacturaRepuesto.Size = New System.Drawing.Size(981, 39)
         Me.barFacturaRepuesto.TabIndex = 0
         Me.barFacturaRepuesto.Text = "ToolStrip1"
-        '
-        'cmdAgregar
-        '
-        Me.cmdAgregar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdAgregar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.AgregaDesdeCotizaciónToolStripMenuItem})
-        Me.cmdAgregar.Image = CType(resources.GetObject("cmdAgregar.Image"), System.Drawing.Image)
-        Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdAgregar.Name = "cmdAgregar"
-        Me.cmdAgregar.Size = New System.Drawing.Size(48, 36)
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(209, 22)
-        Me.ToolStripMenuItem1.Text = "Agregar"
-        '
-        'AgregaDesdeCotizaciónToolStripMenuItem
-        '
-        Me.AgregaDesdeCotizaciónToolStripMenuItem.Name = "AgregaDesdeCotizaciónToolStripMenuItem"
-        Me.AgregaDesdeCotizaciónToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
-        Me.AgregaDesdeCotizaciónToolStripMenuItem.Text = "Agregar desde Cotización"
-        Me.AgregaDesdeCotizaciónToolStripMenuItem.Visible = False
         '
         'cmdProcesar
         '
@@ -355,6 +331,14 @@ Partial Class frmSfaFacturaRepuestos
         Me.colAnulada.VisibleIndex = 6
         Me.colAnulada.Width = 86
         '
+        'cmdAgregar
+        '
+        Me.cmdAgregar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdAgregar.Image = CType(resources.GetObject("cmdAgregar.Image"), System.Drawing.Image)
+        Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdAgregar.Name = "cmdAgregar"
+        Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
+        '
         'frmSfaFacturaRepuestos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -362,6 +346,7 @@ Partial Class frmSfaFacturaRepuestos
         Me.ClientSize = New System.Drawing.Size(981, 472)
         Me.Controls.Add(Me.Contenedor)
         Me.Controls.Add(Me.barFacturaRepuesto)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSfaFacturaRepuestos"
         Me.Text = "Consulta de Facturas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -378,7 +363,6 @@ Partial Class frmSfaFacturaRepuestos
 
     End Sub
     Friend WithEvents barFacturaRepuesto As System.Windows.Forms.ToolStrip
-    Friend WithEvents cmdAgregar As System.Windows.Forms.ToolStripSplitButton
     Friend WithEvents cmdProcesar As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdAnular As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdConsultar As System.Windows.Forms.ToolStripButton
@@ -387,8 +371,6 @@ Partial Class frmSfaFacturaRepuestos
     Friend WithEvents cmdActualizar As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdSalir As System.Windows.Forms.ToolStripButton
     Friend WithEvents Contenedor As C1.Win.C1Sizer.C1Sizer
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AgregaDesdeCotizaciónToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents grdFacturaDetalle As DevExpress.XtraGrid.GridControl
     Friend WithEvents grdFacturaDetalleTable As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents grdFacturaMaster As DevExpress.XtraGrid.GridControl
@@ -408,4 +390,5 @@ Partial Class frmSfaFacturaRepuestos
     Friend WithEvents colTotal As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colAnulada As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmdAgregar As System.Windows.Forms.ToolStripButton
 End Class
