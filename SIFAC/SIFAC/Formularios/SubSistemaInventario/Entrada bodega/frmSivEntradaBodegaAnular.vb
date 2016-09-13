@@ -51,8 +51,6 @@ Public Class frmSivEntradaBodegaAnular
 
 #Region "Inicializar GUI"
 
-    Private Property cmbProveedor As Object
-
     Private Sub InicializarGui()
         Dim objSivEntradaBodega As SivEntradaBodega
 
@@ -98,7 +96,8 @@ Public Class frmSivEntradaBodegaAnular
         LongitudesMaximas()
         CargarBodegas()
         CargarTipoEntrada()
-      
+        CargarProveedor()
+
         Me.lblUsuario.Text = clsProyecto.Conexion.Usuario
 
         Select Case Me.TypeGui
@@ -110,6 +109,9 @@ Public Class frmSivEntradaBodegaAnular
                     Me.txtNumeroEntrada.Text = objSivEntradaBodega.SivEntradaBodegaID
                     Me.cmbBodega.SelectedValue = objSivEntradaBodega.objStbBodegaID
                     Me.cmbTipoEntrada.SelectedValue = objSivEntradaBodega.objTipoEntradaID
+                    If Not IsNothing(objSivEntradaBodega.objProvededorID) Then
+                        Me.cmbProveedor.SelectedValue = objSivEntradaBodega.objProvededorID
+                    End If
                     Me.dtpFechaEntrada.Value = objSivEntradaBodega.FechaEntrada
                     Me.NumCostoTotal.Value = objSivEntradaBodega.CostoTotal
                     If Not IsDBNull(objSivEntradaBodega.NumeroFactura) Then
@@ -125,6 +127,7 @@ Public Class frmSivEntradaBodegaAnular
                     If Not IsDBNull(objSivEntradaBodega.ComentarioAnular) Then
                         txtComentariosAnular.Text = objSivEntradaBodega.ComentarioAnular
                     End If
+
                 Catch ex As Exception
                     clsError.CaptarError(ex)
                 End Try
@@ -190,8 +193,28 @@ Public Class frmSivEntradaBodegaAnular
     End Sub
 #End Region
 
+#Region "Proveedor"
+    Private Sub CargarProveedor()
+        Dim dtDatos As New DataTable
+        Try
+            dtDatos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID,RazonSocial", "vwTipoProveedor", "1=1 ORDER BY RazonSocial"))
+            With Me.cmbProveedor
+                .DataSource = dtDatos
+                .DisplayMember = "RazonSocial"
+                .ValueMember = "SivProveedorID"
+                .Splits(0).DisplayColumns("SivProveedorID").Visible = False
+                .ExtendRightColumn = True
+                .ColumnHeaders = False
+            End With
 
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            dtDatos = Nothing
+        End Try
+    End Sub
 
+#End Region
 
 #End Region
 

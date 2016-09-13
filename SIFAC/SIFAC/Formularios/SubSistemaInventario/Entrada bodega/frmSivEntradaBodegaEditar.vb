@@ -71,6 +71,7 @@ Public Class frmSivEntradaBodegaEditar
         LongitudesMaximas()
         CargarBodegas()
         CargarTipoEntrada()
+        CargarProveedor()
         CargarDescripcionDE("1=1")
         Me.lblUsuario.Text = clsProyecto.Conexion.Usuario
 
@@ -148,6 +149,29 @@ Public Class frmSivEntradaBodegaEditar
             dtDatos = Nothing
         End Try
     End Sub
+#End Region
+
+#Region "Proveedor"
+    Private Sub CargarProveedor()
+        Dim dtDatos As New DataTable
+        Try
+            dtDatos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID,RazonSocial", "vwTipoProveedor", "1=1 ORDER BY RazonSocial"))
+            With Me.cmbProveedor
+                .DataSource = dtDatos
+                .DisplayMember = "RazonSocial"
+                .ValueMember = "SivProveedorID"
+                .Splits(0).DisplayColumns("SivProveedorID").Visible = False
+                .ExtendRightColumn = True
+                .ColumnHeaders = False
+            End With
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            dtDatos = Nothing
+        End Try
+    End Sub
+
 #End Region
 
 #Region "Cargar Descripción grid DE"
@@ -437,7 +461,9 @@ Public Class frmSivEntradaBodegaEditar
             objSivEntradaBodega.Comentarios = txtComentarios.Text.Trim
             objSivEntradaBodega.Anulada = 0
             objSivEntradaBodega.ComentarioAnular = "---"
-
+            If Me.cmbProveedor.Text.Trim <> "" Then
+                objSivEntradaBodega.objProvededorID = Me.cmbProveedor.SelectedValue
+            End If
 
             objSivEntradaBodega.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objSivEntradaBodega.UsuarioCreacion = clsProyecto.Conexion.Usuario
