@@ -29,6 +29,7 @@ Public Class frmStbRutas
 
     End Sub
 
+
     ''Descripción:      Metodo encargado de aplicar la seguridad al formulario
     Public Sub AplicarSeguridad()
         objSeg = New SsgSeguridad

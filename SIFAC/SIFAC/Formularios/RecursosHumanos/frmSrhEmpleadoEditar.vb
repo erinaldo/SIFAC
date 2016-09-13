@@ -399,11 +399,16 @@ Public Class frmSrhEmpleadoEditar
         End Try
     End Sub
 
+    
+
+#End Region
+
+#Region "Modificar Detalle de Personas"
     Private Sub ModificarDetalle()
 
         Try
-            StbPersonaClasificacion.DeleteByFilter("objTipoPersonaID = (SELECT StbTipoPersonaID FROM StbTipoPersona WHERE Descripcion='Empleado') AND objPersonaID=" + Me.PersonaID)
-            StbContactos.DeleteByFilter("objPersonaID=" + Me.PersonaID)
+            StbPersonaClasificacion.DeleteByFilter("objTipoPersonaID = (SELECT StbTipoPersonaID FROM StbTipoPersona WHERE Descripcion='Cliente') AND objPersonaID=" + Me.PersonaID)
+            StbContactos.DeleteByFilter("objPersonaID='" + Me.PersonaID + "'")
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -411,7 +416,114 @@ Public Class frmSrhEmpleadoEditar
             Me.Cursor = [Default]
         End Try
     End Sub
+#End Region
 
+#Region "Insertar Detalle de Personas"
+
+    Private Sub InsertarDetalle(ByVal IDGenerado As String)
+
+        Dim objContactos As StbContactos
+        Dim objClasifica As StbPersonaClasificacion
+
+        Try
+            objContactos = New StbContactos
+            objClasifica = New StbPersonaClasificacion
+
+            'Guardar Contactos
+            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+                objContactos.objPersonaID = IDGenerado
+                objContactos.SecuencialContacto = CInt(dr("SecuencialContacto").ToString)
+                objContactos.objTipoEntradaID = CInt(dr("objTipoEntradaID").ToString)
+                objContactos.Valor = dr("Valor").ToString
+                objContactos.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objContactos.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objContactos.Insert()
+            Next
+
+            objClasifica.objPersonaID = IDGenerado
+            objClasifica.objTipoPersonaID = StbTipoPersona.RetrieveDT("Descripcion='Cliente'").DefaultView.Item(0)("StbTipoPersonaID")
+            objClasifica.UsuarioCreacion = clsProyecto.Conexion.Usuario
+            objClasifica.FechaCreacion = clsProyecto.Conexion.FechaServidor
+            objClasifica.Insert()
+
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objContactos = Nothing
+            objClasifica = Nothing
+        End Try
+
+    End Sub
+
+#End Region
+
+#Region "Cargar Grid Contactos"
+    Private Sub CargarGridContactos()
+        Try
+
+            Dim strFiltro As String = "1=1"
+            Select Case Me.TypeGUI
+                Case 1
+                    strFiltro = "1=0"
+                Case 2, 3
+                    strFiltro = "objPersonaID=" & Me.PersonaID
+            End Select
+
+            frmClientesEdit.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", strFiltro))
+            Me.tdbContactos.SetDataBinding(frmClientesEdit.dtContactos, "", True)
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+
+            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+                Me.cmdEliminarContacto.Enabled = False
+            Else
+                Me.cmdEliminarContacto.Enabled = True
+            End If
+
+            Me.tdbContactos.Refresh()
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
+
+    End Sub
+#End Region
+
+#Region "Eliminar Contactos"
+    Private Sub EliminarContactos()
+        Try
+            If MsgBox(My.Resources.MsgConfirmarEliminar, MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
+                frmClientesEdit.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
+            Else
+                Exit Sub
+            End If
+            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+                Me.cmdEliminarContacto.Enabled = False
+            End If
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
+
+#Region "Guardar Contactos Temporalmente"
+    Private Sub GuardarContactosTemp()
+        Try
+            Dim objContactos As frmStbPersonasContactos
+            objContactos = New frmStbPersonasContactos
+            objContactos.frmLLamado = 0
+            objContactos.ShowDialog()
+            If frmClientesEdit.dtContactos.Rows.Count > 0 Then
+                Me.cmdEliminarContacto.Enabled = True
+            End If
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 #End Region
 
 #Region "Cargar Longitudes Máximas"
@@ -491,6 +603,21 @@ Public Class frmSrhEmpleadoEditar
 
 #Region "Eventos del formualario"
 
+    Private Sub cmdAgregarContacto_Click(sender As Object, e As EventArgs) Handles cmdAgregarContacto.Click
+        Try
+            Me.GuardarContactosTemp()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub cmdEliminarContacto_Click(sender As Object, e As EventArgs) Handles cmdEliminarContacto.Click
+        Try
+            Me.EliminarContactos()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 
     Private Sub frmSrhEmpleadoEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
@@ -593,4 +720,5 @@ Public Class frmSrhEmpleadoEditar
 #End Region
 
 
+    
 End Class

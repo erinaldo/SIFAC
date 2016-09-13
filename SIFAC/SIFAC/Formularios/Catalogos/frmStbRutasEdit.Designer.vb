@@ -37,7 +37,7 @@ Partial Class frmStbRutasEdit
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cbxCiudad = New C1.Win.C1List.C1Combo()
+        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
         Me.cbxCobrador = New C1.Win.C1List.C1Combo()
         Me.lblCilindraje = New System.Windows.Forms.Label()
         Me.lblMarca = New System.Windows.Forms.Label()
@@ -49,7 +49,7 @@ Partial Class frmStbRutasEdit
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbSupervisor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbxCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -68,7 +68,7 @@ Partial Class frmStbRutasEdit
         Me.PanelControl1.Controls.Add(Me.Label2)
         Me.PanelControl1.Controls.Add(Me.txtNombre)
         Me.PanelControl1.Controls.Add(Me.Label1)
-        Me.PanelControl1.Controls.Add(Me.cbxCiudad)
+        Me.PanelControl1.Controls.Add(Me.cmbCiudad)
         Me.PanelControl1.Controls.Add(Me.cbxCobrador)
         Me.PanelControl1.Controls.Add(Me.lblCilindraje)
         Me.PanelControl1.Controls.Add(Me.lblMarca)
@@ -249,36 +249,36 @@ Partial Class frmStbRutasEdit
         Me.Label1.Tag = "OBLIGATORIO"
         Me.Label1.Text = "Nombre:"
         '
-        'cbxCiudad
+        'cmbCiudad
         '
-        Me.cbxCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cbxCiudad.Caption = ""
-        Me.cbxCiudad.CaptionHeight = 17
-        Me.cbxCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cbxCiudad.ColumnCaptionHeight = 17
-        Me.cbxCiudad.ColumnFooterHeight = 17
-        Me.cbxCiudad.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cbxCiudad.ContentHeight = 15
-        Me.cbxCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cbxCiudad.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cbxCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbxCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cbxCiudad.EditorHeight = 15
-        Me.cbxCiudad.Images.Add(CType(resources.GetObject("cbxCiudad.Images"), System.Drawing.Image))
-        Me.cbxCiudad.ItemHeight = 15
-        Me.cbxCiudad.Location = New System.Drawing.Point(518, 28)
-        Me.cbxCiudad.MatchEntryTimeout = CType(2000, Long)
-        Me.cbxCiudad.MaxDropDownItems = CType(5, Short)
-        Me.cbxCiudad.MaxLength = 32767
-        Me.cbxCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cbxCiudad.Name = "cbxCiudad"
-        Me.cbxCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cbxCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cbxCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cbxCiudad.Size = New System.Drawing.Size(172, 21)
-        Me.cbxCiudad.TabIndex = 18
-        Me.cbxCiudad.Tag = "OBLIGATORIO"
-        Me.cbxCiudad.PropBag = resources.GetString("cbxCiudad.PropBag")
+        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCiudad.Caption = ""
+        Me.cmbCiudad.CaptionHeight = 17
+        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCiudad.ColumnCaptionHeight = 17
+        Me.cmbCiudad.ColumnFooterHeight = 17
+        Me.cmbCiudad.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cmbCiudad.ContentHeight = 15
+        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCiudad.EditorHeight = 15
+        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
+        Me.cmbCiudad.ItemHeight = 15
+        Me.cmbCiudad.Location = New System.Drawing.Point(518, 28)
+        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
+        Me.cmbCiudad.MaxLength = 32767
+        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCiudad.Name = "cmbCiudad"
+        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCiudad.Size = New System.Drawing.Size(172, 21)
+        Me.cmbCiudad.TabIndex = 18
+        Me.cmbCiudad.Tag = "OBLIGATORIO"
+        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
         '
         'cbxCobrador
         '
@@ -391,7 +391,7 @@ Partial Class frmStbRutasEdit
         Me.PanelControl1.PerformLayout()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbSupervisor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbxCiudad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -405,7 +405,7 @@ Partial Class frmStbRutasEdit
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtNombre As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents cbxCiudad As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbCiudad As C1.Win.C1List.C1Combo
     Friend WithEvents cbxCobrador As C1.Win.C1List.C1Combo
     Friend WithEvents lblCilindraje As System.Windows.Forms.Label
     Friend WithEvents lblMarca As System.Windows.Forms.Label

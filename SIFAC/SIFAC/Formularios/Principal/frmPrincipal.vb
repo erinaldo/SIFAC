@@ -248,7 +248,9 @@ Public Class frmPrincipal
 
             'Facturación
             Me.navBarFacturacion.Enabled = objSeg.TienePermiso("OpcionFacturas")
-           
+
+            ''Sincronizar
+            Me.NavBarSincroVentas.Enabled = objSeg.TienePermiso("OpcionSincVentas")
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -286,6 +288,9 @@ Public Class frmPrincipal
 
             'Cuentas  por cobrar
             Me.NavBarCuentas.Enabled = False
+
+            ''Sincronizar
+            Me.NavBarSincroVentas.Enabled = False
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -873,6 +878,27 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
+#Region "Cargar Sincronizar Ventas"
+    Private Sub CargarSincronizarVentas()
+        Dim objForm As New frmSincronizarVentas
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario(frmSincronizarVentas.Name, Me) Then
+                    objForm.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objForm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objForm.MdiParent = Me
+                    objForm.Show()
+                End If
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+#End Region
+
 #Region "Cargar Facturas Repuestos"
     Private Sub CargarFacturasRepuestos()
         Dim objForm As New frmSfaFacturaRepuestos
@@ -946,5 +972,9 @@ Public Class frmPrincipal
 
     Private Sub NavBarEncargos_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarEncargos.LinkClicked
         CargarEncargos()
+    End Sub
+
+    Private Sub NavBarSincroVentas_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarSincroVentas.LinkClicked
+        CargarSincronizarVentas()
     End Sub
 End Class
