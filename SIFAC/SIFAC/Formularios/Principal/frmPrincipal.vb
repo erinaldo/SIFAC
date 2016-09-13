@@ -304,7 +304,7 @@ Public Class frmPrincipal
 
 
     Private Sub NavBarParametros_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarParametros.LinkClicked
-        CargarCatalogoValor()
+        CargarParametros()
     End Sub
 
     Private Sub NavBarCategorias_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarCategorias.LinkClicked
@@ -944,4 +944,7 @@ Public Class frmPrincipal
 #End Region
 
 
+    Private Sub NavBarEncargos_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarEncargos.LinkClicked
+        CargarEncargos()
+    End Sub
 End Class

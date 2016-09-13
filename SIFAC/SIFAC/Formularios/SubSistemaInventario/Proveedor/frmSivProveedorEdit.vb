@@ -109,9 +109,39 @@ Public Class frmSivProveedorEdit
 
 #Region "Procedimientos"
 
+#Region "Cargar combos"
+    Private Sub CargarCiudad()
+        Dim objparametro As StbParametro
+        Dim objPais As StbPais
+        Try
+            objparametro = New StbParametro
+            objPais = New StbPais
+
+            'Ciudad
+            objparametro.RetrieveByFilter("Nombre='Pais'")
+            objPais.RetrieveByFilter("Nombre='" & objparametro.Valor & "'")
+
+            frmClientesEdit.dtCiudad = StbCiudad.RetrieveDT("objPaisID=" & objPais.StbPaisID, "", "StbCiudadID,Nombre")
+            Me.cmbCiudad.DataSource = frmClientesEdit.dtCiudad
+            Me.cmbCiudad.DisplayMember = "Nombre"
+            Me.cmbCiudad.ValueMember = "StbCiudadID"
+            Me.cmbCiudad.Splits(0).DisplayColumns("StbCiudadID").Visible = False
+            Me.cmbCiudad.ExtendRightColumn = True
+            Me.cmbCiudad.SelectedValue = -1
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objPais = Nothing
+            objparametro = Nothing
+            Me.Cursor = [Default]
+        End Try
+    End Sub
+#End Region
+
 #Region "Cargar datos proveedor"
     Private Sub CargaDatosProveedor()
         Dim sSQL, sCampos, sFiltro As String
+        Dim objPersonas As StbPersona
         Try
             sCampos = "SivProveedorID, objPersonaID, objContactoID, FechaIngreso,  Activo"
             sFiltro = "SivProveedorID=" + Me.IDProveedor.ToString
@@ -135,6 +165,15 @@ Public Class frmSivProveedorEdit
                 Me.CargarDatosContactoPrincipal(Me.objContactoId)
             End If
 
+            objPersonas = New StbPersona
+            
+            objPersonas.RetrieveByFilter("StbPersonaID=" + Me.objPersonaId)
+            Me.txtNombreCompleto.Text = objPersonas.RazonSocial
+            Me.txtCedulaRUC.Text = objPersonas.RUC
+            
+            Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
+            Me.txtDireccion.Text = objPersonas.Direccion
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -145,42 +184,55 @@ Public Class frmSivProveedorEdit
 
 #Region "Guardar proveedor"
     Private Function GuardarProveedor() As Boolean
+        Dim objPersonas, objPCompara As StbPersona
         Dim T As New TransactionManager
         Dim objProveedor As New SivProveedor
-        Dim dtDetalleProvision As New DataTable
-        Dim fila As DataRow
         Try
             Try
                 T.BeginTran()
-                dtDetalleProvision = SivProveedorDetProvision.RetrieveDT("1=0")
-                With objProveedor
-                    .objPersonaID = Me.objPersonaId
-                    If Not String.IsNullOrEmpty(Me.objContactoId) Then
-                        .objContactoID = Me.objContactoId
-                    End If
-                    .FechaIngreso = Me.dtpFechaIngreso.Value
-                    .Activo = Me.chkActivo.Checked
-                    .UsuarioCreacion = clsProyecto.Conexion.Usuario
-                    .FechaCreacion = clsProyecto.Conexion.FechaServidor
-                    .Insert(T)
-                End With
-                Me.IDProveedor = objProveedor.SivProveedorID
+                objPersonas = New StbPersona
+                objPCompara = New StbPersona
 
-                'Isertar detalle de provisión                 
-                Me.dtProveedorDetalleProvision.AcceptChanges()
-                For Each row As DataRow In Me.dtProveedorDetalleProvision.Rows
-                    fila = dtDetalleProvision.NewRow
-                    If Not IsDBNull(row("objTipoProvisionID")) AndAlso row("objTipoProvisionID").ToString.Length <> 0 Then
-                        fila("objTipoProvisionID") = row("objTipoProvisionID")
-                        fila("objSivProveedorID") = Me.IDProveedor
-                        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                        dtDetalleProvision.Rows.Add(fila)
-                    End If
-                Next
+                If Me.txtCedulaRUC.Text.Trim = "      -" Then
+                    Me.ErrorProvider.SetError(Me.txtCedulaRUC, "Campo Obligatorio")
+                    Exit Function
+                End If
 
-                dtDetalleProvision.TableName = "SivProveedorDetProvision"
-                SivProveedorDetProvision.BatchUpdate(dtDetalleProvision.DataSet, T)
+                '1.1 Validar que no exista una empresa con el mismo RUC
+                objPCompara.RetrieveByFilter("RUC='" + Me.txtCedulaRUC.Text + "'")
+                If objPCompara.RUC <> Nothing Then
+                    Me.ErrorProvider.SetError(Me.txtCedulaRUC, "Ya existe una empresa con el mismo número RUC.")
+                    Me.txtCedulaRUC.Focus()
+                    Exit Function
+                End If
+                objPersonas.Nombre1 = ""
+                objPersonas.Apellido1 = ""
+                objPersonas.PersonaJuridica = 1
+                objPersonas.RazonSocial = Me.txtNombreCompleto.Text.Trim
+                objPersonas.SiglasEmpresa = ""
+
+                If Me.txtCedulaRUC.Text.Trim = "-" Then
+                    objPersonas.RUC = ""
+                Else
+                    objPersonas.RUC = Me.txtCedulaRUC.Text.Trim
+                End If
+
+                objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                objPersonas.objCiudadID = cmbCiudad.SelectedValue
+                objPersonas.Direccion = txtDireccion.Text
+                objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objPersonas.Insert(T)
+                Me.objPersonaId = objPersonas.StbPersonaID
+
+                objProveedor.objPersonaID = Me.objPersonaId
+                objProveedor.Activo = 1
+                objProveedor.FechaIngreso = dtpFechaIngreso.Value
+                objProveedor.objContactoID = objContactoId
+                objProveedor.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objProveedor.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objProveedor.Insert(T)
+                Me.InsertarDetalle(Me.objPersonaId)
 
                 T.CommitTran()
                 MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
@@ -192,22 +244,47 @@ Public Class frmSivProveedorEdit
             End Try
         Finally
             objProveedor = Nothing
-            dtDetalleProvision = Nothing
+
             T = Nothing
         End Try
     End Function
+#End Region
+
+#Region "Modificar Detalle de Personas"
+    Private Sub ModificarDetalle()
+
+        Try
+            StbPersonaClasificacion.DeleteByFilter("objTipoPersonaID = (SELECT StbTipoPersonaID FROM StbTipoPersona WHERE Descripcion='Cliente') AND objPersonaID=" + Me.objPersonaId)
+            StbContactos.DeleteByFilter("objPersonaID='" + Me.objPersonaId + "'")
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
+    End Sub
 #End Region
 
 #Region "Actualizar Proveedor"
     Private Function ActualizarProveedor() As Boolean
         Dim T As New TransactionManager
         Dim objProveedor As New SivProveedor
-        Dim dtDetalleProvision As New DataTable
-        Dim fila As DataRow
+        Dim objPersonas As StbPersona
         Try
             Try
+                objPersonas = New StbPersona
+
                 If Me.ModificoProveedor Then 'verificar si hubo cambio en datos del proveedor
                     T.BeginTran()
+                    With objPersonas
+                        .Retrieve(Me.objPersonaId)
+                        .RazonSocial = Me.txtNombreCompleto.Text.Trim
+                        .objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                        .objCiudadID = cmbCiudad.SelectedValue
+                        .Direccion = txtDireccion.Text
+                        .Update(T)
+                    End With
+
                     With objProveedor
 
                         .Retrieve(Me.IDProveedor)
@@ -216,29 +293,14 @@ Public Class frmSivProveedorEdit
                                 .objContactoID = Me.objContactoId
                             End If
                         End If
+                        .Activo = 1
                         .UsuarioModificacion = clsProyecto.Conexion.Usuario
                         .FechaModificacion = clsProyecto.Conexion.FechaServidor
                         .Update(T)
                     End With
 
-                    'Actualizar detalle de provisión   
-                    dtDetalleProvision = SivProveedorDetProvision.RetrieveDT("1=0")
-                    If Me.ModificoDetProvision Then
-                        SivProveedorDetProvision.DeleteByFilter("objSivProveedorID=" + Me.IDProveedor.ToString, T)
-
-                        Me.dtProveedorDetalleProvision.AcceptChanges()
-                        For Each row As DataRow In Me.dtProveedorDetalleProvision.Rows
-                            fila = dtDetalleProvision.NewRow
-                            fila("objTipoProvisionID") = row("objTipoProvisionID")
-                            fila("objSivProveedorID") = Me.IDProveedor
-                            fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-                            fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-                            dtDetalleProvision.Rows.Add(fila)
-                        Next
-
-                        dtDetalleProvision.TableName = "SivProveedorDetProvision"
-                        SivProveedorDetProvision.BatchUpdate(dtDetalleProvision.DataSet, T)
-                    End If
+                    Me.ModificarDetalle()
+                    Me.InsertarDetalle(Me.objPersonaId)
 
                     T.CommitTran()
                     MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
@@ -251,7 +313,6 @@ Public Class frmSivProveedorEdit
             End Try
         Finally
             objProveedor = Nothing
-            dtDetalleProvision = Nothing
             T = Nothing
         End Try
     End Function
@@ -372,11 +433,11 @@ Public Class frmSivProveedorEdit
 #Region "Validaciones de datos"
     Private Function Validaciones() As Boolean
         Try
-            If String.IsNullOrEmpty(Me.objPersonaId) Then
-                MsgBox("Debe cargar los datos personales del Proveedor", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                Return False
-                Exit Function
-            End If
+            'If String.IsNullOrEmpty(Me.objPersonaId) Then
+            '    MsgBox("Debe cargar los datos personales del Proveedor", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+            '    Return False
+            '    Exit Function
+            'End If
 
             Return True
         Catch ex As Exception
@@ -403,12 +464,15 @@ Public Class frmSivProveedorEdit
             Select Case Me.TypeGui
                 Case 0
                     objPers.TyGui = 1
+                    objPers.Text = "Nuevo Proveedor"
                 Case 1
                     objPers.TyGui = 2
                     objPers.idpersona = Me.objPersonaId
+                    objPers.Text = "Proveedor"
                 Case 2
                     objPers.TyGui = 3
                     objPers.idpersona = Me.objPersonaId
+                    objPers.Text = "Proveedor"
             End Select
             If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.objPersonaId = objPers.idpersona
@@ -527,7 +591,7 @@ Public Class frmSivProveedorEdit
             IdTipoPersonaProveedor = SqlHelper.ExecuteQueryDT("SELECT dbo.FnGetIdTipoPersona('Proveedor') as ID").DefaultView.Item(0)("ID")
 
             clsProyecto.CargarTemaDefinido(Me)
-
+            CargarCiudad()
             Select Case Me.TypeGui
                 Case 0
                     Me.Text = "Nuevo Proveedor"
@@ -569,6 +633,82 @@ Public Class frmSivProveedorEdit
     End Sub
 #End Region
 
+#Region "Eliminar Contactos"
+    Private Sub EliminarContactos()
+        Try
+            If MsgBox(My.Resources.MsgConfirmarEliminar, MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
+                frmClientesEdit.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
+            Else
+                Exit Sub
+            End If
+            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+                Me.cmdEliminarContacto.Enabled = False
+            End If
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
+
+#Region "Guardar Contactos Temporalmente"
+    Private Sub GuardarContactosTemp()
+        Try
+            Dim objContactos As frmStbPersonasContactos
+            objContactos = New frmStbPersonasContactos
+            objContactos.frmLLamado = 0
+            objContactos.ShowDialog()
+            If frmClientesEdit.dtContactos.Rows.Count > 0 Then
+                Me.cmdEliminarContacto.Enabled = True
+            End If
+            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
+
+#Region "Insertar Detalle de Personas"
+
+    Private Sub InsertarDetalle(ByVal IDGenerado As String)
+
+        Dim objContactos As StbContactos
+        Dim objClasifica As StbPersonaClasificacion
+
+        Try
+            objContactos = New StbContactos
+            objClasifica = New StbPersonaClasificacion
+
+            'Guardar Contactos
+            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+                objContactos.objPersonaID = IDGenerado
+                objContactos.SecuencialContacto = CInt(dr("SecuencialContacto").ToString)
+                objContactos.objTipoEntradaID = CInt(dr("objTipoEntradaID").ToString)
+                objContactos.Valor = dr("Valor").ToString
+                objContactos.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objContactos.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objContactos.Insert()
+            Next
+
+            objClasifica.objPersonaID = IDGenerado
+            objClasifica.objTipoPersonaID = StbTipoPersona.RetrieveDT("Descripcion='Cliente'").DefaultView.Item(0)("StbTipoPersonaID")
+            objClasifica.UsuarioCreacion = clsProyecto.Conexion.Usuario
+            objClasifica.FechaCreacion = clsProyecto.Conexion.FechaServidor
+            objClasifica.Insert()
+
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objContactos = Nothing
+            objClasifica = Nothing
+        End Try
+
+    End Sub
+
+#End Region
+
+
     Private Sub TabProveedor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabProveedor.SelectedIndexChanged
         Me.cmdBuscarContacto.Visible = TabProveedor.SelectedIndex = 0
         Me.cmdEditarContactoPrincipal.Visible = TabProveedor.SelectedIndex = 0
@@ -602,5 +742,20 @@ Public Class frmSivProveedorEdit
         Me.ModificoDetProvision = False 'variable para verificar si se hacen cambios al grid de Provisión
     End Sub
 
- 
+
+    Private Sub cmdAgregarContacto_Click(sender As Object, e As EventArgs) Handles cmdAgregarContacto.Click
+        Try
+            Me.GuardarContactosTemp()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub cmdEliminarContacto_Click(sender As Object, e As EventArgs) Handles cmdEliminarContacto.Click
+        Try
+            Me.EliminarContactos()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 End Class

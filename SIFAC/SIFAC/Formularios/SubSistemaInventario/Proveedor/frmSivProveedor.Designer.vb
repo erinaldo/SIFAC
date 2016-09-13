@@ -34,14 +34,13 @@ Partial Class frmSivProveedor
         Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
         Me.grdvwProveedores = New DevExpress.XtraGrid.GridControl()
         Me.grdvwProveedoresTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colNombre1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colNombre2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colApellido1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colApellido2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRUC = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCiudad = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTelefonos = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colActivo = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colSivProveedorID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.colSivProveedorID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.toolTramitesLegales.SuspendLayout()
         CType(Me.grdvwProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdvwProveedoresTabla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -140,42 +139,34 @@ Partial Class frmSivProveedor
         '
         'grdvwProveedoresTabla
         '
-        Me.grdvwProveedoresTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNombre1, Me.colNombre2, Me.colApellido1, Me.colApellido2, Me.colTelefonos, Me.colActivo, Me.colSivProveedorID})
+        Me.grdvwProveedoresTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNombre, Me.colRUC, Me.colCiudad, Me.colTelefonos, Me.colActivo, Me.colSivProveedorID})
         Me.grdvwProveedoresTabla.GridControl = Me.grdvwProveedores
         Me.grdvwProveedoresTabla.Name = "grdvwProveedoresTabla"
         Me.grdvwProveedoresTabla.OptionsBehavior.Editable = False
         '
-        'colNombre1
+        'colNombre
         '
-        Me.colNombre1.Caption = "Primer Nombre / Razón Social"
-        Me.colNombre1.FieldName = "Nombre1"
-        Me.colNombre1.Name = "colNombre1"
-        Me.colNombre1.Visible = True
-        Me.colNombre1.VisibleIndex = 0
+        Me.colNombre.Caption = "Razón Social"
+        Me.colNombre.FieldName = "RazonSocial"
+        Me.colNombre.Name = "colNombre"
+        Me.colNombre.Visible = True
+        Me.colNombre.VisibleIndex = 0
         '
-        'colNombre2
+        'colRUC
         '
-        Me.colNombre2.Caption = "Segundo Nombre"
-        Me.colNombre2.FieldName = "Nombre2"
-        Me.colNombre2.Name = "colNombre2"
-        Me.colNombre2.Visible = True
-        Me.colNombre2.VisibleIndex = 1
+        Me.colRUC.Caption = "RUC"
+        Me.colRUC.FieldName = "RUC"
+        Me.colRUC.Name = "colRUC"
+        Me.colRUC.Visible = True
+        Me.colRUC.VisibleIndex = 1
         '
-        'colApellido1
+        'colCiudad
         '
-        Me.colApellido1.Caption = "Primer Apellidos / Siglas"
-        Me.colApellido1.FieldName = "Apellido1"
-        Me.colApellido1.Name = "colApellido1"
-        Me.colApellido1.Visible = True
-        Me.colApellido1.VisibleIndex = 2
-        '
-        'colApellido2
-        '
-        Me.colApellido2.Caption = "Segundo Apellido"
-        Me.colApellido2.FieldName = "Apellido2"
-        Me.colApellido2.Name = "colApellido2"
-        Me.colApellido2.Visible = True
-        Me.colApellido2.VisibleIndex = 3
+        Me.colCiudad.Caption = "Ciudad"
+        Me.colCiudad.FieldName = "Ciudad"
+        Me.colCiudad.Name = "colCiudad"
+        Me.colCiudad.Visible = True
+        Me.colCiudad.VisibleIndex = 2
         '
         'colTelefonos
         '
@@ -183,7 +174,7 @@ Partial Class frmSivProveedor
         Me.colTelefonos.FieldName = "Telefonos"
         Me.colTelefonos.Name = "colTelefonos"
         Me.colTelefonos.Visible = True
-        Me.colTelefonos.VisibleIndex = 4
+        Me.colTelefonos.VisibleIndex = 3
         '
         'colActivo
         '
@@ -192,19 +183,19 @@ Partial Class frmSivProveedor
         Me.colActivo.FieldName = "Activo"
         Me.colActivo.Name = "colActivo"
         Me.colActivo.Visible = True
-        Me.colActivo.VisibleIndex = 5
+        Me.colActivo.VisibleIndex = 4
         Me.colActivo.Width = 86
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'colSivProveedorID
         '
         Me.colSivProveedorID.Caption = "SivProveedorID"
         Me.colSivProveedorID.FieldName = "SivProveedorID"
         Me.colSivProveedorID.Name = "colSivProveedorID"
-        '
-        'RepositoryItemCheckEdit1
-        '
-        Me.RepositoryItemCheckEdit1.AutoHeight = False
-        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSivProveedor
         '
@@ -238,10 +229,9 @@ Partial Class frmSivProveedor
     Friend WithEvents cmdEditarProveedor As System.Windows.Forms.ToolStripButton
     Friend WithEvents grdvwProveedores As DevExpress.XtraGrid.GridControl
     Friend WithEvents grdvwProveedoresTabla As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents colNombre1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNombre2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colApellido1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colApellido2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRUC As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCiudad As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTelefonos As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colActivo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colSivProveedorID As DevExpress.XtraGrid.Columns.GridColumn

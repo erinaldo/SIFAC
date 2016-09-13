@@ -34,26 +34,37 @@ Partial Class frmSivEncargos
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
         Me.tbProductos = New System.Windows.Forms.ToolStrip()
+        Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.Contenedor = New C1.Win.C1Sizer.C1Sizer()
         Me.grdEncargosDetalle = New DevExpress.XtraGrid.GridControl()
         Me.grdEncargosDetalleTable = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ColCategoria = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCantidad = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCostoPromedio = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTotalEncargoDetalle = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdEncargosMaster = New DevExpress.XtraGrid.GridControl()
         Me.grdEncargosMasterTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRuta = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colVendedor = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRuta = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colActivo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
-        Me.colCostoPromedio = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTotalCosto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ColCategoria = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.grdEncargosExcel = New DevExpress.XtraGrid.GridControl()
+        Me.grdvwEncargosExcel = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.Ruta = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Empleado = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Categoria = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Producto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Cantidad = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.CostoPromedio = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.TotalCosto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
         Me.tbProductos.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
@@ -64,6 +75,8 @@ Partial Class frmSivEncargos
         CType(Me.grdEncargosMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdEncargosMasterTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdEncargosExcel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdvwEncargosExcel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdAgregar
@@ -147,11 +160,21 @@ Partial Class frmSivEncargos
         'tbProductos
         '
         Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdImprimir, Me.ToolStripSeparator3, Me.cmdCerrar})
+        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdImprimir, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
         Me.tbProductos.Size = New System.Drawing.Size(958, 39)
         Me.tbProductos.TabIndex = 9
+        '
+        'cmbExportar
+        '
+        Me.cmbExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmbExportar.Image = CType(resources.GetObject("cmbExportar.Image"), System.Drawing.Image)
+        Me.cmbExportar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmbExportar.Name = "cmbExportar"
+        Me.cmbExportar.Size = New System.Drawing.Size(36, 36)
+        Me.cmbExportar.Text = "ToolStripButton1"
+        Me.cmbExportar.ToolTipText = "Exportar a excel"
         '
         'PanelControl1
         '
@@ -166,6 +189,7 @@ Partial Class frmSivEncargos
         '
         Me.Contenedor.Controls.Add(Me.grdEncargosDetalle)
         Me.Contenedor.Controls.Add(Me.grdEncargosMaster)
+        Me.Contenedor.Controls.Add(Me.grdEncargosExcel)
         Me.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Contenedor.GridDefinition = "49.1103202846975:False:False;48.7544483985765:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.1614255765199:False" & _
     ":False;"
@@ -201,6 +225,14 @@ Partial Class frmSivEncargos
         Me.colCodigo.Visible = True
         Me.colCodigo.VisibleIndex = 0
         '
+        'ColCategoria
+        '
+        Me.ColCategoria.Caption = "Categoria"
+        Me.ColCategoria.FieldName = "Categoria"
+        Me.ColCategoria.Name = "ColCategoria"
+        Me.ColCategoria.Visible = True
+        Me.ColCategoria.VisibleIndex = 1
+        '
         'colDescripcion
         '
         Me.colDescripcion.Caption = "Producto"
@@ -220,6 +252,14 @@ Partial Class frmSivEncargos
         Me.colCantidad.OptionsColumn.ReadOnly = True
         Me.colCantidad.Visible = True
         Me.colCantidad.VisibleIndex = 3
+        '
+        'colCostoPromedio
+        '
+        Me.colCostoPromedio.Caption = "Costo Promedio"
+        Me.colCostoPromedio.FieldName = "CostoPromedio"
+        Me.colCostoPromedio.Name = "colCostoPromedio"
+        Me.colCostoPromedio.Visible = True
+        Me.colCostoPromedio.VisibleIndex = 4
         '
         'colTotalEncargoDetalle
         '
@@ -275,6 +315,17 @@ Partial Class frmSivEncargos
         Me.colFecha.VisibleIndex = 1
         Me.colFecha.Width = 78
         '
+        'colRuta
+        '
+        Me.colRuta.Caption = "Ruta"
+        Me.colRuta.FieldName = "Ruta"
+        Me.colRuta.Name = "colRuta"
+        Me.colRuta.OptionsColumn.AllowFocus = False
+        Me.colRuta.OptionsColumn.ReadOnly = True
+        Me.colRuta.Visible = True
+        Me.colRuta.VisibleIndex = 4
+        Me.colRuta.Width = 86
+        '
         'colCliente
         '
         Me.colCliente.Caption = "Cliente"
@@ -297,17 +348,6 @@ Partial Class frmSivEncargos
         Me.colVendedor.VisibleIndex = 3
         Me.colVendedor.Width = 109
         '
-        'colRuta
-        '
-        Me.colRuta.Caption = "Ruta"
-        Me.colRuta.FieldName = "Ruta"
-        Me.colRuta.Name = "colRuta"
-        Me.colRuta.OptionsColumn.AllowFocus = False
-        Me.colRuta.OptionsColumn.ReadOnly = True
-        Me.colRuta.Visible = True
-        Me.colRuta.VisibleIndex = 4
-        Me.colRuta.Width = 86
-        '
         'colActivo
         '
         Me.colActivo.Caption = "Activo"
@@ -325,14 +365,6 @@ Partial Class frmSivEncargos
         Me.RepositoryItemCheckEdit1.AutoHeight = False
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
-        'colCostoPromedio
-        '
-        Me.colCostoPromedio.Caption = "Costo Promedio"
-        Me.colCostoPromedio.FieldName = "CostoPromedio"
-        Me.colCostoPromedio.Name = "colCostoPromedio"
-        Me.colCostoPromedio.Visible = True
-        Me.colCostoPromedio.VisibleIndex = 4
-        '
         'colTotalCosto
         '
         Me.colTotalCosto.Caption = "Total Costo"
@@ -341,13 +373,89 @@ Partial Class frmSivEncargos
         Me.colTotalCosto.Visible = True
         Me.colTotalCosto.VisibleIndex = 6
         '
-        'ColCategoria
+        'grdEncargosExcel
         '
-        Me.ColCategoria.Caption = "Categoria"
-        Me.ColCategoria.FieldName = "Categoria"
-        Me.ColCategoria.Name = "ColCategoria"
-        Me.ColCategoria.Visible = True
-        Me.ColCategoria.VisibleIndex = 1
+        Me.grdEncargosExcel.Location = New System.Drawing.Point(4, 284)
+        Me.grdEncargosExcel.MainView = Me.grdvwEncargosExcel
+        Me.grdEncargosExcel.Name = "grdEncargosExcel"
+        Me.grdEncargosExcel.Size = New System.Drawing.Size(946, 274)
+        Me.grdEncargosExcel.TabIndex = 4
+        Me.grdEncargosExcel.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdvwEncargosExcel})
+        Me.grdEncargosExcel.Visible = False
+        '
+        'grdvwEncargosExcel
+        '
+        Me.grdvwEncargosExcel.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.Ruta, Me.Empleado, Me.Categoria, Me.Producto, Me.Cantidad, Me.CostoPromedio, Me.TotalCosto})
+        Me.grdvwEncargosExcel.GridControl = Me.grdEncargosExcel
+        Me.grdvwEncargosExcel.Name = "grdvwEncargosExcel"
+        '
+        'Ruta
+        '
+        Me.Ruta.Caption = "Ruta"
+        Me.Ruta.FieldName = "Ruta"
+        Me.Ruta.Name = "Ruta"
+        Me.Ruta.OptionsColumn.AllowFocus = False
+        Me.Ruta.OptionsColumn.ReadOnly = True
+        Me.Ruta.Visible = True
+        Me.Ruta.VisibleIndex = 0
+        '
+        'Empleado
+        '
+        Me.Empleado.Caption = "Empleado"
+        Me.Empleado.FieldName = "Empleado"
+        Me.Empleado.Name = "Empleado"
+        Me.Empleado.Visible = True
+        Me.Empleado.VisibleIndex = 1
+        '
+        'Categoria
+        '
+        Me.Categoria.Caption = "Categoria"
+        Me.Categoria.FieldName = "Categoria"
+        Me.Categoria.Name = "Categoria"
+        Me.Categoria.OptionsColumn.AllowFocus = False
+        Me.Categoria.OptionsColumn.ReadOnly = True
+        Me.Categoria.Visible = True
+        Me.Categoria.VisibleIndex = 2
+        '
+        'Producto
+        '
+        Me.Producto.Caption = "Producto"
+        Me.Producto.FieldName = "Producto"
+        Me.Producto.Name = "Producto"
+        Me.Producto.OptionsColumn.AllowFocus = False
+        Me.Producto.OptionsColumn.ReadOnly = True
+        Me.Producto.Visible = True
+        Me.Producto.VisibleIndex = 3
+        '
+        'Cantidad
+        '
+        Me.Cantidad.Caption = "Cantidad"
+        Me.Cantidad.FieldName = "Cantidad"
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.Visible = True
+        Me.Cantidad.VisibleIndex = 4
+        '
+        'CostoPromedio
+        '
+        Me.CostoPromedio.Caption = "Costo Promedio"
+        Me.CostoPromedio.FieldName = "CostoPromedio"
+        Me.CostoPromedio.Name = "CostoPromedio"
+        Me.CostoPromedio.OptionsColumn.AllowFocus = False
+        Me.CostoPromedio.OptionsColumn.ReadOnly = True
+        Me.CostoPromedio.Visible = True
+        Me.CostoPromedio.VisibleIndex = 5
+        '
+        'TotalCosto
+        '
+        Me.TotalCosto.Caption = "Total Costo"
+        Me.TotalCosto.FieldName = "TotalCosto"
+        Me.TotalCosto.Name = "TotalCosto"
+        Me.TotalCosto.Visible = True
+        Me.TotalCosto.VisibleIndex = 6
+        '
+        'sfdRuta
+        '
+        Me.sfdRuta.Filter = "Archivos Excel | *.xls"
         '
         'frmSivEncargos
         '
@@ -371,6 +479,8 @@ Partial Class frmSivEncargos
         CType(Me.grdEncargosMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdEncargosMasterTabla, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdEncargosExcel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdvwEncargosExcel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -406,4 +516,15 @@ Partial Class frmSivEncargos
     Friend WithEvents colCostoPromedio As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTotalCosto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ColCategoria As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmbExportar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents grdEncargosExcel As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdvwEncargosExcel As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents Ruta As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Empleado As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Categoria As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Producto As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Cantidad As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents CostoPromedio As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents TotalCosto As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents sfdRuta As System.Windows.Forms.SaveFileDialog
 End Class

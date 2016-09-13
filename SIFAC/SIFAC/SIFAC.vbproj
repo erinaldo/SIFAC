@@ -984,6 +984,24 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.vb" />
+    <Compile Include="Sincronizacion\frmSincronizarAbonos.Designer.vb">
+      <DependentUpon>frmSincronizarAbonos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarAbonos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarDevoluciones.Designer.vb">
+      <DependentUpon>frmSincronizarDevoluciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarDevoluciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarVentas.Designer.vb">
+      <DependentUpon>frmSincronizarVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Formularios\Bitacora\frmSccMinutasCobro.resx">
@@ -1460,6 +1478,9 @@
     <EmbeddedResource Include="Reportes\rptTransferenciaSolicitudes.resx">
       <DependentUpon>rptTransferenciaSolicitudes.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sincronizacion\frmSincronizarVentas.resx">
+      <DependentUpon>frmSincronizarVentas.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

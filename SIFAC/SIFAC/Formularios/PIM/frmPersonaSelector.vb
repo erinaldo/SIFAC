@@ -50,9 +50,9 @@ Public Class frmPersonaSelector
         Dim strSQL As String
 
         If String.IsNullOrEmpty(Me.Filtro) Then
-            strSQL = ObtenerConsultaGeneral("Cast(0 AS BIT) AS Seleccionar,StbPersonaID,NombreCompleto, ClienteID", "vwPersonaClasificacion")
+            strSQL = ObtenerConsultaGeneral("Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion")
         Else
-            strSQL = ObtenerConsultaGeneral("Cast(0 AS BIT) AS Seleccionar,StbPersonaID,NombreCompleto, ClienteID", "vwPersonaClasificacion", Filtro)
+            strSQL = ObtenerConsultaGeneral("Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion", Filtro)
         End If
 
         DtPersonas = DAL.SqlHelper.ExecuteQueryDT(strSQL)
@@ -88,7 +88,7 @@ Public Class frmPersonaSelector
         If Cantidad = 0 Then
             Exit Sub
         End If
-        objClienteID = Me.DtPersonas.Select("Seleccionar = 1")(0)("ClienteID")
+        objClienteID = Me.DtPersonas.Select("Seleccionar = 1")(0)("StbPersonaID")
         If Not IsDBNull(objClienteID) Then
             Seleccion = objClienteID
             Me.DialogResult = Windows.Forms.DialogResult.OK

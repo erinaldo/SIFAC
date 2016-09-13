@@ -22,9 +22,10 @@ Partial Class frmSivEncargosEdit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivEncargosEdit))
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdPedido = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.grdDetalleEncargos = New DevExpress.XtraGrid.GridControl()
@@ -41,7 +42,6 @@ Partial Class frmSivEncargosEdit
         Me.colObservaciones = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemMemoEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.cmbCategoria1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cmbNombreProducto = New DevExpress.XtraEditors.LookUpEdit()
         Me.cmbMarca = New DevExpress.XtraEditors.LookUpEdit()
         Me.cmbCategoria = New DevExpress.XtraEditors.LookUpEdit()
@@ -60,6 +60,8 @@ Partial Class frmSivEncargosEdit
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.tabFacturas = New System.Windows.Forms.TabControl()
         Me.TabPageGenerales = New System.Windows.Forms.TabPage()
+        Me.cmbEstado = New DevExpress.XtraEditors.LookUpEdit()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.cmdCliente = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdAgregarCliente = New DevExpress.XtraEditors.SimpleButton()
         Me.C1Combo1 = New C1.Win.C1List.C1Combo()
@@ -97,7 +99,6 @@ Partial Class frmSivEncargosEdit
         CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.cmbCategoria1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,6 +107,7 @@ Partial Class frmSivEncargosEdit
         CType(Me.spnCantidad.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabFacturas.SuspendLayout()
         Me.TabPageGenerales.SuspendLayout()
+        CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1Combo1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbVendedor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -118,6 +120,7 @@ Partial Class frmSivEncargosEdit
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdPedido)
         Me.PanelControl1.Controls.Add(Me.GroupControl1)
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
@@ -129,6 +132,21 @@ Partial Class frmSivEncargosEdit
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(859, 631)
         Me.PanelControl1.TabIndex = 0
+        '
+        'cmdPedido
+        '
+        Me.cmdPedido.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdPedido.Appearance.Options.UseFont = True
+        Me.cmdPedido.Image = CType(resources.GetObject("cmdPedido.Image"), System.Drawing.Image)
+        Me.cmdPedido.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdPedido.Location = New System.Drawing.Point(29, 575)
+        Me.cmdPedido.LookAndFeel.SkinName = "Caramel"
+        Me.cmdPedido.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdPedido.Name = "cmdPedido"
+        Me.cmdPedido.Size = New System.Drawing.Size(121, 28)
+        Me.cmdPedido.TabIndex = 117
+        Me.cmdPedido.Tag = "PEDIDO"
+        Me.cmdPedido.Text = "&Generar Pedido"
         '
         'GroupControl1
         '
@@ -293,7 +311,6 @@ Partial Class frmSivEncargosEdit
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.cmbCategoria1)
         Me.GroupBox2.Controls.Add(Me.cmbNombreProducto)
         Me.GroupBox2.Controls.Add(Me.cmbMarca)
         Me.GroupBox2.Controls.Add(Me.cmbCategoria)
@@ -313,14 +330,6 @@ Partial Class frmSivEncargosEdit
         Me.GroupBox2.TabIndex = 118
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Buscar Producto"
-        '
-        'cmbCategoria1
-        '
-        Me.cmbCategoria1.Location = New System.Drawing.Point(313, 107)
-        Me.cmbCategoria1.Name = "cmbCategoria1"
-        Me.cmbCategoria1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbCategoria1.Size = New System.Drawing.Size(111, 20)
-        Me.cmbCategoria1.TabIndex = 126
         '
         'cmbNombreProducto
         '
@@ -507,6 +516,8 @@ Partial Class frmSivEncargosEdit
         '
         'TabPageGenerales
         '
+        Me.TabPageGenerales.Controls.Add(Me.cmbEstado)
+        Me.TabPageGenerales.Controls.Add(Me.Label9)
         Me.TabPageGenerales.Controls.Add(Me.cmdCliente)
         Me.TabPageGenerales.Controls.Add(Me.cmdAgregarCliente)
         Me.TabPageGenerales.Controls.Add(Me.C1Combo1)
@@ -527,6 +538,26 @@ Partial Class frmSivEncargosEdit
         Me.TabPageGenerales.TabIndex = 0
         Me.TabPageGenerales.Text = "Datos Generales"
         Me.TabPageGenerales.UseVisualStyleBackColor = True
+        '
+        'cmbEstado
+        '
+        Me.cmbEstado.Location = New System.Drawing.Point(77, 72)
+        Me.cmbEstado.Name = "cmbEstado"
+        Me.cmbEstado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cmbEstado.Properties.NullText = ""
+        Me.cmbEstado.Size = New System.Drawing.Size(300, 20)
+        Me.cmbEstado.TabIndex = 124
+        '
+        'Label9
+        '
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(9, 74)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(82, 18)
+        Me.Label9.TabIndex = 118
+        Me.Label9.Tag = ""
+        Me.Label9.Text = "Estado:"
         '
         'cmdCliente
         '
@@ -889,7 +920,6 @@ Partial Class frmSivEncargosEdit
         CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.cmbCategoria1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -899,6 +929,7 @@ Partial Class frmSivEncargosEdit
         Me.tabFacturas.ResumeLayout(False)
         Me.TabPageGenerales.ResumeLayout(False)
         Me.TabPageGenerales.PerformLayout()
+        CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1Combo1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbVendedor, System.ComponentModel.ISupportInitialize).EndInit()
@@ -971,5 +1002,7 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents cmbNombreProducto As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents cmbMarca As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents cmbCategoria As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents cmbCategoria1 As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents cmdPedido As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmbEstado As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents Label9 As System.Windows.Forms.Label
 End Class

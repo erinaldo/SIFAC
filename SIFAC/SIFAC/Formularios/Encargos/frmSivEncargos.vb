@@ -7,7 +7,7 @@ Imports SIFAC.BO
 Public Class frmSivEncargos
 
 #Region "Variables del formulario"
-    Dim dtEncargos, dtDetalleEncargos As DataTable
+    Dim dtEncargos, dtEncargosExcel, dtDetalleEncargos As DataTable
     Dim dsEncargos As DataSet
     Dim objseg As SsgSeguridad
     Dim boolAgregar, boolEditar, boolConsultar, boolImprimir, boolBuscar, boolDesactivar As Boolean
@@ -22,7 +22,7 @@ Public Class frmSivEncargos
     Private Sub CargarEncargos(ByVal strFiltro As String)
         Try
 
-            dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoID, Numero, TotalCosto, Fecha, Vendedor, Cliente, Activo, objSccClienteID", "vwSivEncargosMaster", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
+            dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoID, Numero,Ruta, TotalCosto, Fecha, Vendedor, Cliente, Activo, objSccClienteID", "vwSivEncargosMaster", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
             dtDetalleEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoDetalleID, objSivEncargoID, objCategoriaID, Categoria, Numero, NombreProducto, Cantidad, CostoPromedio, TotalCosto", "vwSivEncargosDetalle", strFiltro), Me.SqlParametros)
 
             dsEncargos = New DataSet
@@ -42,6 +42,9 @@ Public Class frmSivEncargos
             Me.grdEncargosDetalle.DataMember = "SivEncargos.SivEncargos_SivEncargosDetalle"
 
             Me.grdEncargosMaster.Text = "Encargos (" & Me.grdEncargosMasterTabla.RowCount & ")"
+
+            dtEncargosExcel = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Ruta, Empleado, Categoria, Producto, Cantidad, CostoPromedio, TotalCosto, Observaciones", "vwEncargosExcel", strFiltro & " ORDER BY Empleado DESC"), Me.SqlParametros)
+            Me.grdEncargosExcel.DataSource = dtEncargosExcel
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -73,6 +76,16 @@ Public Class frmSivEncargos
         End Try
     End Sub
 
+    Private Sub ExportarExcel()
+        Try
+            If sfdRuta.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Me.grdEncargosExcel.ExportToXls(sfdRuta.FileName)
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 #End Region
 
 #Region "Procedimientos"
@@ -116,7 +129,7 @@ Public Class frmSivEncargos
 #Region "Eventos del formulario"
 
     Private Sub frmSivEncargos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-       Try
+        Try
             clsProyecto.CargarTemaDefinido(Me)
             CargarEncargos("1=1")
             Me.AplicarSeguridad()
@@ -184,7 +197,7 @@ Public Class frmSivEncargos
         Dim FilaActual As Integer
         Try
             FilaActual = Me.grdEncargosMasterTabla.FocusedRowHandle
-            Select Case MsgBox("¿Está seguro de In  activar el encargo?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
+            Select Case MsgBox("¿Está seguro de Inactivar el encargo?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
                 Case MsgBoxResult.Yes
                     IDEncargo = Me.dtEncargos.DefaultView.Item(FilaActual)("SivEncargoID")
                     Encargos.Retrieve(IDEncargo)
@@ -217,6 +230,10 @@ Public Class frmSivEncargos
         Close()
     End Sub
 
+    Private Sub cmbExportar_Click(sender As Object, e As EventArgs) Handles cmbExportar.Click
+
+        ExportarExcel()
+    End Sub
 #End Region
 
 End Class
