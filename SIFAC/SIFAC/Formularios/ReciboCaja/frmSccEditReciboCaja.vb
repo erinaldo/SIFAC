@@ -275,10 +275,8 @@ Public Class frmSccEditReciboCaja
             Me.chkPrima.Enabled = True
             Dim objCuentasSeleccion As New frmSccSeleccionCuentas
             If objCuentasSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Me.txtCodTienda.Text = objCuentasSeleccion.CodigoTienda
                 Me.txtNumCuenta.Text = objCuentasSeleccion.SccCuentaID
                 Me.IDCuenta = objCuentasSeleccion.SccCuentaID
-                Me.IDTienda = objCuentasSeleccion.IDTienda
                 Me.cmbSucursal.SelectedValue = Me.IDTienda
                 Me.txtCliente.Text = objCuentasSeleccion.Cliente
                 Me.CargarInfoCuenta(Me.IDCuenta)

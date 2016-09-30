@@ -18,7 +18,7 @@ Public Class frmSfaFactura
         Dim FacturasRecientes As Integer
         Try
             FacturasRecientes = StbParametro.RetrieveDT("Nombre = 'DiasFacturasRecientes'", , "Valor").DefaultView.Item(0)("Valor")
-            strConsulta = clsConsultas.ObtenerConsultaGeneral("*,MontoTotal - ISNULL(MontoPrima,0) as Financiamiento", "vwFacturas", " Fecha BETWEEN GETDATE()-" & FacturasRecientes + 1 & " AND GETDATE()")
+            strConsulta = clsConsultas.ObtenerConsultaGeneral("*,ISNULL(MontoCredito,0) - ISNULL(MontoPrima,0) as Financiamiento", "vwFacturas", " Fecha BETWEEN GETDATE()-" & FacturasRecientes + 1 & " AND GETDATE()")
             dtDatosFact = SqlHelper.ExecuteQueryDT(strConsulta)
             Me.dtDatosFact.PrimaryKey = New DataColumn() {Me.dtDatosFact.Columns("SfaFacturaID")}
             Me.dtDatosFact.DefaultView.Sort = "SfaFacturaID"
@@ -81,7 +81,6 @@ Public Class frmSfaFactura
 
                     objFacturaEdit.IDFactura = Me.grdFacturas.Columns("SfaFacturaID").Value
                     objFacturaEdit.TypGui = IntOpcion
-                    objFacturaEdit.BoolModificarChasis = True
                 End If
                 If objFacturaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Me.CargarDatos()
@@ -150,7 +149,6 @@ Public Class frmSfaFactura
         Dim Credito As Decimal
         Dim IDEstadoReg As Integer      
         Dim IDCuenta As String
-        Dim IDTienda As Integer
         Dim T As New TransactionManager
         Dim EstadoActual As Integer
         Dim IDFactura As Integer
@@ -165,80 +163,57 @@ Public Class frmSfaFactura
                 T.BeginTran()
                 IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "00")
                 objDetalleFact.Retrieve(IDDetalleFact, T)
-                IDTienda = objDetalleFact.objTiendaID
                 IDCuenta = objDetalleFact.objSccCuentaID
                 EstadoActual = objDetalleFact.objEstadoID
-                IDFactura = objDetalleFact.objFacturaID
                 If IDEstadoReg <> EstadoActual Then
                     MsgBox("Solamente Expedientes de Facturas en Estado Registrada puede ser Procesadas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                     T.RollbackTran()
                     Exit Sub
                 End If
 
-                If objDetalleFact.MontoPrima.HasValue Then
-                    Credito = objDetalleFact.MontoTotal - objDetalleFact.MontoPrima
-                Else
-                    Credito = objDetalleFact.MontoTotal
+                'If objDetalleFact.MontoPrima.HasValue Then
+                '    Credito = objDetalleFact.MontoTotal - objDetalleFact.MontoPrima
+                'Else
+                '    Credito = objDetalleFact.MontoTotal
+                'End If
+
+                objSccCuentaCobrar.Retrieve(IDCuenta, T)
+
+
+                'MontoPrima = SccCuentaPorCobrarDetalle.RetrieveDT("SccCuentaPorCobrarDetalleID = '" & IDDetalleFact & "' AND objEstadoID <>" & IDEstadoReg.ToString, , "isnull(SUM(ISNULL(MontoPrima,0.0)),0.0) AS Monto", T).DefaultView.Item(0)("Monto")
+                'MontoTotal = SccCuentaPorCobrarDetalle.RetrieveDT("SccCuentaPorCobrarDetalleID = '" & IDDetalleFact & "' AND objEstadoID <>" & IDEstadoReg.ToString, , "isnull(SUM(isnull(MontoTotal,0.0)),0.0) as Monto", T).DefaultView.Item(0)("Monto")
+
+                'MontoTotal = MontoTotal - MontoPrima
+
+                'If Credito > MontoTotal Then
+                '    T.RollbackTran()
+                '    MsgBox("La adición de este Monto al expediente excede el Limite de Crédito", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+
+                '    Exit Sub
+                'Else
+                objDetalleFact.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                objDetalleFact.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                objDetalleFact.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "01")
+                objDetalleFact.Update(T)
+
+                IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO")
+
+                If objSccCuentaCobrar.objEstadoID.Value = IDEstadoReg Then
+                    objSccCuentaCobrar.Saldo = objSccCuentaCobrar.Saldo + objDetalleFact.MontoTotal
+                    objSccCuentaCobrar.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE")
+                    objSccCuentaCobrar.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    objSccCuentaCobrar.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    objSccCuentaCobrar.Update(T)
                 End If
 
-                objSccCuentaCobrar.Retrieve(IDCuenta, IDTienda, T)
-
-                If Credito > objSccCuentaCobrar.LimiteCredito Then
-                    T.RollbackTran()
-                    MsgBox("El Monto de financiamiento del  Expediente-Factura Excede el Límite de Crédito del Expediente de Cuenta.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                    Exit Sub
-                End If
-
-                MontoPrima = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID = '" & IDCuenta & "' and objTiendaID=" & IDTienda & " AND objEstadoID <>" & IDEstadoReg.ToString, , "isnull(SUM(ISNULL(MontoPrima,0.0)),0.0) AS Monto", T).DefaultView.Item(0)("Monto")
-                MontoTotal = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID = '" & IDCuenta & "' and objTiendaID=" & IDTienda & " AND objEstadoID <>" & IDEstadoReg.ToString, , "isnull(SUM(isnull(MontoTotal,0.0)),0.0) as Monto", T).DefaultView.Item(0)("Monto")
-
-                MontoTotal = MontoTotal - MontoPrima
-                MontoTotal = objSccCuentaCobrar.LimiteCredito - MontoTotal
-
-                If Credito > MontoTotal Then
-                    T.RollbackTran()
-                    MsgBox("La adición de este Monto al expediente excede el Limite de Crédito", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-
-                    Exit Sub
-                Else
-                    objDetalleFact.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                    objDetalleFact.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                    objDetalleFact.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "01")
-                    objDetalleFact.Update(T)
-
-                    IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO")
-
-                    If objSccCuentaCobrar.objEstadoID.Value = IDEstadoReg Then
-                        objSccCuentaCobrar.Saldo = objSccCuentaCobrar.Saldo + objDetalleFact.MontoTotal
-                        objSccCuentaCobrar.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE")
-                        objSccCuentaCobrar.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                        objSccCuentaCobrar.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                        objSccCuentaCobrar.Update(T)
-                    End If
 
 
-
-                    If objDetalleFact.EsDebitoAutomatico Then
-                        objNotaCredito.Fecha = clsProyecto.Conexion.FechaServidor
-                        objNotaCredito.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                        objNotaCredito.Descripcion = "Nota de Crédito generada por descuento aplicado a Expedientes-Facturas con débito automático."
-                        objNotaCredito.objConceptoID = ClsCatalogos.ObtenerIDSTbCatalogo("CONCEPTONC", "05")
-                        objNotaCredito.Numero = SccNotaCredito.RetrieveDT(, , "ISNULL(MAX(Numero),0) + 1 as Maximo", T).DefaultView.Item(0)("Maximo")
-                        objNotaCredito.objTiendaID = IDTienda
-                        objNotaCredito.objSccCuentaID = IDCuenta
-                        objNotaCredito.Monto = objDetalleFact.MontoTotal * (objDetalleFact.Descuento.Value / 100)
-                        objNotaCredito.UsuarioCreacion = clsProyecto.Conexion.Usuario
-                        objNotaCredito.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADONC", "AUTORIZADA")
-                        objNotaCredito.Insert(T)
-                        BoolNC = True
-                    End If
-
-                End If
+                'End If   
                 T.CommitTran()
                 MsgBox("Factura procesada Exitosamente", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-                If BoolNC Then
-                    MsgBox("Se ha generado una Nota de Crédito por Débito Automático.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-                End If
+                'If BoolNC Then
+                '    MsgBox("Se ha generado una Nota de Crédito por Débito Automático.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                'End If
                 Me.CargarDatos()
                 Me.grdFacturas.Row = Me.dtDatosFact.DefaultView.Find(IDFactura)
             Catch ex As Exception
@@ -273,7 +248,7 @@ Public Class frmSfaFactura
                 T.BeginTran()
                 IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "00")
                 objDetalleCuentas.Retrieve(IDDetalleCuentas)
-                IDFactura = objDetalleCuentas.objFacturaID
+                IDFactura = objDetalleCuentas.objSfaFacturaID
                 EstadoActual = objDetalleCuentas.objEstadoID
 
                 If EstadoActual <> IDEstadoReg Then
@@ -282,7 +257,8 @@ Public Class frmSfaFactura
                     Exit Sub
                 End If
                 SccCuentaPorCobrarDetalle.Delete(IDDetalleCuentas)
-                SfaFactura.Delete(IDFactura)
+                SfaFacturasDetalle.DeleteByFilter(String.Format("objSfaFacturaID={0}", IDFactura))
+                SfaFacturas.Delete(IDFactura)
                 T.CommitTran()
                 MsgBox("Anulación de Expediente Exitosa", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
                 Me.CargarDatos()
@@ -313,7 +289,7 @@ Public Class frmSfaFactura
     Private Sub Seguridad()
         Dim objSeg As New SsgSeguridad
         Try
-            objSeg.ServicioUsuario = "FRMSFAFACTURA"
+            objSeg.ServicioUsuario = "frmSfaFacturasXCuenta"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
             Me.cmdAgregar.Enabled = objSeg.TienePermiso("AgregarFact")
             Me.cmdEditarFactura.Enabled = objSeg.TienePermiso("EditarFact")
@@ -333,7 +309,7 @@ Public Class frmSfaFactura
         Try
             If objBusquedaFact.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 dtDatosFact.Reset()
-                strconsulta = clsConsultas.ObtenerConsultaGeneral("*,MontoTotal - ISNULL(MontoPrima,0) as Financiamiento", "vwFacturas", objBusquedaFact.strFiltro)
+                strconsulta = clsConsultas.ObtenerConsultaGeneral("*,MontoCredito - ISNULL(MontoPrima,0) as Financiamiento", "vwFacturas", objBusquedaFact.strFiltro)
                 dtDatosFact = SqlHelper.ExecuteQueryDT(strconsulta, objBusquedaFact.Parametros)
                 'Me.dtDatosFact.PrimaryKey = New DataColumn() {Me.dtDatosFact.Columns("SfaFacturaID")}
                 'Me.dtDatosFact.DefaultView.Sort = "SfaFacturaID"

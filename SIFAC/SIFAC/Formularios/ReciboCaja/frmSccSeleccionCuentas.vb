@@ -22,15 +22,6 @@ Public Class frmSccSeleccionCuentas
     
 #Region "Propiedades"
 
-    Property LimiteCredito() As Decimal
-        Get
-            LimiteCredito = Me.m_LimiteCredito
-        End Get
-        Set(ByVal value As Decimal)
-            Me.m_LimiteCredito = value
-        End Set
-    End Property
-
     Property SccCuentaID() As String
         Get
             SccCuentaID = m_SccCuentaID
@@ -46,24 +37,6 @@ Public Class frmSccSeleccionCuentas
         End Get
         Set(ByVal value As String)
             m_Cliente = value
-        End Set
-    End Property
-
-    Property CodigoTienda() As String
-        Get
-            CodigoTienda = m_CodigoTienda
-        End Get
-        Set(ByVal value As String)
-            m_CodigoTienda = value
-        End Set
-    End Property
-
-    Property IDTienda() As Integer
-        Get
-            IDTienda = m_IDTienda
-        End Get
-        Set(ByVal value As Integer)
-            m_IDTienda = value
         End Set
     End Property
 
@@ -95,12 +68,12 @@ Public Class frmSccSeleccionCuentas
     Private Sub CargarDatos()
         Dim strConsulta As String = ""
         Try
-            strConsulta = clsConsultas.ObtenerConsultaGeneral("Cast(0 as Bit) as Seleccion,StbTiendaID,SccCuentaID,Tienda,Cliente,CodigoTienda,StbPersonaID,LimiteCredito", "vwSccCuentasSeleccion", "Codigo<> 'CANCELADO' AND Codigo <> 'DEVOLUCION'")
+            strConsulta = clsConsultas.ObtenerConsultaGeneral("Cast(0 as Bit) as Seleccion,SccCuentaID,Cliente,StbPersonaID", "vwSccCuentasSeleccion", "Codigo<> 'CANCELADO' AND Codigo <> 'DEVOLUCION'")
             Me.DtDatosCuentas = SqlHelper.ExecuteQueryDT(strConsulta)
             Me.grdSeleccion.SetDataBinding(Me.DtDatosCuentas, "", True)
-            Me.grdSeleccion.Splits(0).DisplayColumns("CodigoTienda").Visible = False
-            Me.grdSeleccion.Splits(0).DisplayColumns("StbTiendaID").Visible = False
-            Me.grdSeleccion.Splits(0).DisplayColumns("LimiteCredito").Visible = False
+            'Me.grdSeleccion.Splits(0).DisplayColumns("CodigoTienda").Visible = False
+            'Me.grdSeleccion.Splits(0).DisplayColumns("StbTiendaID").Visible = False
+            'Me.grdSeleccion.Splits(0).DisplayColumns("LimiteCredito").Visible = False
             Me.grdSeleccion.ExtendRightColumn = True
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -126,10 +99,7 @@ Public Class frmSccSeleccionCuentas
                 DtDatos = Me.DtDatosCuentas.Select("Seleccion=1")
                 ''  Me.DtDatosCuentas.DefaultView.RowFilter = "Seleccion = 1"
                 Me.SccCuentaID = DtDatos(0)("SccCuentaID")
-                Me.CodigoTienda = DtDatos(0)("CodigoTienda")
                 Me.Cliente = DtDatos(0)("Cliente")
-                Me.IDTienda = DtDatos(0)("StbTiendaID")
-                Me.LimiteCredito = DtDatos(0)("LimiteCredito")
                 Me.DialogResult = Windows.Forms.DialogResult.OK
             End If
 

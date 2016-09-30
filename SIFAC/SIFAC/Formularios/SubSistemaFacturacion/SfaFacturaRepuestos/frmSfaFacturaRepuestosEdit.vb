@@ -632,11 +632,16 @@ Public Class frmSfaFacturaRepuestosEditar
                 End If
             End If
 
-            Me.numSubTotal.Value = DecSubTotal * numTasa.Value
-            Me.numTotalDescuento.Value = DecDescuento * numTasa.Value
-            Me.numIVA.Value = DecIVA * numTasa.Value
-            Me.numTotalC.Value = DecTotalCord * numTasa.Value
-            Me.numTotalD.Value = DecTotalCord
+            Me.numSubTotal.Value = DecSubTotal 'DecSubTotal * numTasa.Value
+            Me.numTotalDescuento.Value = DecDescuento 'DecDescuento * numTasa.Value
+            Me.numIVA.Value = DecIVA 'DecIVA * numTasa.Value
+            Me.numTotalC.Value = DecTotalCord 'DecTotalCord * numTasa.Value
+            If numTasa.Value = 0 Then
+                Me.numTotalD.Value = 0
+
+            Else
+                Me.numTotalD.Value = DecTotalCord / numTasa.Value
+            End If
 
             'If Me.Autorizacion Then
             '    Me.numDescuento.Value = Me.numTotalDescuento.Value / Me.numTasa.Value
@@ -1099,11 +1104,15 @@ Public Class frmSfaFacturaRepuestosEditar
             'Me.numTotalD.Value = DecTotalCord
 
             'Se realizarán los cálculos usando un redondeo de dos decimales
-            Me.numSubTotal.Value = Decimal.Round(DecSubTotal, 2) * Decimal.Round(numTasa.Value, 2)
-            Me.numTotalDescuento.Value = Decimal.Round(DecDescuento, 2) * Decimal.Round(numTasa.Value, 2)
-            Me.numIVA.Value = Decimal.Round(DecIVA, 2) * Decimal.Round(numTasa.Value, 2)
-            Me.numTotalC.Value = Decimal.Round(DecTotalCord, 2) * Decimal.Round(numTasa.Value, 2)
-            Me.numTotalD.Value = Decimal.Round(DecTotalCord, 2)
+            Me.numSubTotal.Value = Decimal.Round(DecSubTotal, 2) '* Decimal.Round(numTasa.Value, 2)
+            Me.numTotalDescuento.Value = Decimal.Round(DecDescuento, 2) '* Decimal.Round(numTasa.Value, 2)
+            Me.numIVA.Value = Decimal.Round(DecIVA, 2) '* Decimal.Round(numTasa.Value, 2)
+            Me.numTotalC.Value = Decimal.Round(DecTotalCord, 2) '* Decimal.Round(numTasa.Value, 2)
+            If numTasa.Value = 0 Then
+                Me.numTotalD.Value = 0
+            Else
+                Me.numTotalD.Value = Decimal.Round(DecTotalCord, 2) / Decimal.Round(numTasa.Value, 2)
+            End If
 
             'If Me.Autorizacion Then
             '    Me.numDescuento.Value = Me.numTotalDescuento.Value / Me.numTasa.Value

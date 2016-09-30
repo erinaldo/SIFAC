@@ -68,10 +68,8 @@ Public Class frmStbBitacoraClienteEdit
         Try
             Dim objCuentasSeleccion As New frmSccSeleccionCuentas
             If objCuentasSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Me.txtCodTienda.Text = objCuentasSeleccion.CodigoTienda
                 Me.txtNumCuenta.Text = objCuentasSeleccion.SccCuentaID
                 Me.IdCuenta = objCuentasSeleccion.SccCuentaID
-                Me.IDTienda = objCuentasSeleccion.IDTienda
                 Me.txtCliente.Text = objCuentasSeleccion.Cliente
                 Me.ErrorProv.Clear()
             End If

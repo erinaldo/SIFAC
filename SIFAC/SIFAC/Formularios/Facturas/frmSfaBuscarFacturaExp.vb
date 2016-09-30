@@ -9,7 +9,6 @@ Public Class frmSfaBuscarFacturaExp
 
     Private Sub frmSfaBuscarFacturaExp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         clsProyecto.CargarTemaDefinido(Me)
-        Me.CargarConcepto()
         Me.CargarEstados()
     End Sub
 
@@ -32,28 +31,6 @@ Public Class frmSfaBuscarFacturaExp
             clsError.CaptarError(ex)
         End Try
     End Sub
-
-
-    Private Sub CargarConcepto()
-        Dim dtDatos As New DataTable
-        Try
-            dtDatos = ClsCatalogos.ObtenerValCat("CONCEPTOFACTURA")
-            With Me.cmbConcepto
-                .DataSource = dtDatos
-                .DisplayMember = "Descripcion"
-                .ValueMember = "StbValorCatalogoID"
-                .Splits(0).DisplayColumns("Codigo").Visible = False
-                .Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
-                .Splits(0).DisplayColumns("Activo").Visible = False
-                .ExtendRightColumn = True
-                .ColumnHeaders = False
-            End With
-
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-    End Sub
-
 
     Private Sub AplicarFiltro()
         Try
@@ -94,15 +71,6 @@ Public Class frmSfaBuscarFacturaExp
                     strFiltro = " objEstadoID = @IdEstado "
                 Else
                     strFiltro = strFiltro + " AND objEstadoID = @IdEstado"
-                End If
-            End If
-
-            If Me.cmbConcepto.Text <> "" Then
-                Parametros(3).Value = Me.cmbConcepto.SelectedValue
-                If strFiltro = "" Then
-                    strFiltro = " ObjConceptoFactura = @IdConcepto"
-                Else
-                    strFiltro = strFiltro + " and ObjConceptoFactura =@IdConcepto"
                 End If
             End If
 
