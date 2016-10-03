@@ -236,7 +236,6 @@ Partial Class frmPrincipal
         'grpSincronizacion
         '
         Me.grpSincronizacion.Caption = "Sincronizacion"
-        Me.grpSincronizacion.Expanded = True
         Me.grpSincronizacion.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSincroAbonos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSincroVentas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSincroDevoluciones)})
         Me.grpSincronizacion.Name = "grpSincronizacion"
         '

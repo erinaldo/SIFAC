@@ -7,8 +7,8 @@ Imports Proyecto.Catalogos.Datos
 Public Class frmStbRutasEdit
 
 #Region "Declaracion de Variables"
-    Public DtMarca, DtCilindraje, DtSegmento As DataTable
-    Public DtCobrador, DtSupervisor As DataTable
+    Public DtMarca, DtCiudad, DtSegmento As DataTable
+    Public DtCobrador, DtSupervisor, DtDias As DataTable
     Public intTypeGui As Integer
     Public intRutaID As Integer
     Public boolEditado As Boolean
@@ -38,9 +38,71 @@ Public Class frmStbRutasEdit
 #Region "Procedimientos del formulario"
 
     '' Descripción:        Procedimiento encargado de cargar el combo de Cobrador
+    Public Sub CargarDias()
+        Try
+            DtDias = New DataTable("Dias")
+            Dim FNameColumn As New DataColumn("NombreDia")
+            FNameColumn.DataType = GetType(String)
+            DtDias.Columns.Add(FNameColumn)
+
+            Dim newDiasRow As DataRow
+
+            newDiasRow = DtDias.NewRow()
+            newDiasRow("NombreDia") = "Ninguno"
+            DtDias.Rows.Add(newDiasRow)
+
+            newDiasRow = DtDias.NewRow()
+            newDiasRow("NombreDia") = "Lunes"
+            DtDias.Rows.Add(newDiasRow)
+
+            newDiasRow = DtDias.NewRow()
+            newDiasRow("NombreDia") = "Martes"
+            DtDias.Rows.Add(newDiasRow)
+
+            newDiasRow = DtDias.NewRow()
+            newDiasRow("NombreDia") = "Miercoles"
+            DtDias.Rows.Add(newDiasRow)
+
+            newDiasRow = DtDias.NewRow()
+            newDiasRow("NombreDia") = "Jueves"
+            DtDias.Rows.Add(newDiasRow)
+
+            newDiasRow = DtDias.NewRow()
+            newDiasRow("NombreDia") = "Viernes"
+            DtDias.Rows.Add(newDiasRow)
+
+            newDiasRow = DtDias.NewRow()
+            newDiasRow("NombreDia") = "Sabado"
+            DtDias.Rows.Add(newDiasRow)
+
+            newDiasRow = DtDias.NewRow()
+            newDiasRow("NombreDia") = "Domingo"
+            DtDias.Rows.Add(newDiasRow)
+
+            With cmbDiaCrobro
+                .DataSource = DtDias
+                .DisplayMember = "NombreDia"
+                .ValueMember = "NombreDia"
+                .ColumnHeaders = False
+                .ExtendRightColumn = True
+                .SelectedValue = -1
+            End With
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    '' Descripción:        Procedimiento encargado de cargar el combo de Cobrador
     Public Sub CargarCobrador()
         Try
             DtCobrador = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
+
+            Dim newCobradorsRow As DataRow
+            newCobradorsRow = DtCobrador.NewRow()
+            newCobradorsRow("SrhEmpleadoID") = "0"
+            newCobradorsRow("NombreCompleto") = "Ninguno"
+            DtCobrador.Rows.Add(newCobradorsRow)
+
             With cbxCobrador
                 .DataSource = DtCobrador
                 .DisplayMember = "NombreCompleto"
@@ -59,6 +121,13 @@ Public Class frmStbRutasEdit
     Public Sub CargarSupervisor()
         Try
             DtSupervisor = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
+
+            Dim newSupervisorsRow As DataRow
+            newSupervisorsRow = DtSupervisor.NewRow()
+            newSupervisorsRow("SrhEmpleadoID") = "0"
+            newSupervisorsRow("NombreCompleto") = "Ninguno"
+            DtSupervisor.Rows.Add(newSupervisorsRow)
+
             With cmbSupervisor
                 .DataSource = DtSupervisor
                 .DisplayMember = "NombreCompleto"
@@ -81,6 +150,7 @@ Public Class frmStbRutasEdit
             CargarSupervisor()
             CargarCobrador()
             CargarCiudad()
+            CargarDias()
             Select Case TypeGui
                 Case 0
                     Me.Text = "Agregar Ruta"
@@ -116,8 +186,14 @@ Public Class frmStbRutasEdit
             objRutas.Retrieve(RutaID)
             txtCodigo.Text = objRutas.Codigo
             txtNombre.Text = objRutas.Nombre
-            cbxCobrador.SelectedValue = objRutas.objCobradorID
-            cmbSupervisor.SelectedValue = objRutas.objSupervisor
+            cbxCobrador.SelectedValue = objRutas.ojbCobradorID
+
+            If IsDBNull(objRutas.objSupervisor) Then
+                cmbSupervisor.SelectedValue = "0"
+            Else
+                cmbSupervisor.SelectedValue = IsDBNull(objRutas.objSupervisor)
+            End If
+
             cmbDiaCrobro.Text = objRutas.DiaCobro
             cmbCiudad.SelectedValue = objRutas.objCiudadID
             chkActivo.Checked = objRutas.Activa
@@ -140,7 +216,7 @@ Public Class frmStbRutasEdit
             objRutas.Nombre = txtNombre.Text.Trim
             objRutas.Descripcion = txtDescripcion.Text.Trim
             objRutas.Activa = chkActivo.Checked
-            objRutas.objCobradorID = cbxCobrador.SelectedValue
+            objRutas.ojbCobradorID = cbxCobrador.SelectedValue
             objRutas.objSupervisor = cmbSupervisor.SelectedValue
             objRutas.objCiudadID = cmbCiudad.SelectedValue
             objRutas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
@@ -148,10 +224,9 @@ Public Class frmStbRutasEdit
             objRutas.CargarDiferenciada = ckdCargaDiferenciada.Checked
             objRutas.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objRutas.FechaCreacion = clsProyecto.Conexion.FechaServidor
-            objRutas.Insert()
-            T.CommitTran()
-
             objRutas.Codigo = "RUT" + cmbCiudad.Text.Substring(0, 3) + objRutas.StbRutaID
+            objRutas.Insert(T)
+            T.CommitTran()
             txtCodigo.Text = objRutas.Codigo
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.boolEditado = False
@@ -176,7 +251,7 @@ Public Class frmStbRutasEdit
             objRutas.Descripcion = txtDescripcion.Text.Trim
             objRutas.Activa = chkActivo.Checked
             objRutas.Codigo = txtCodigo.Text
-            objRutas.objCobradorID = cbxCobrador.SelectedValue
+            objRutas.ojbCobradorID = cbxCobrador.SelectedValue
             objRutas.objSupervisor = cmbSupervisor.SelectedValue
             objRutas.objCiudadID = cmbCiudad.SelectedValue
             objRutas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
@@ -184,7 +259,7 @@ Public Class frmStbRutasEdit
             objRutas.CargarDiferenciada = ckdCargaDiferenciada.Checked
             objRutas.UsuarioModificacion = clsProyecto.Conexion.Servidor
             objRutas.FechaModificacion = clsProyecto.Conexion.FechaServidor
-            objRutas.Update()
+            objRutas.Update(T)
             T.CommitTran()
             MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.boolEditado = False
@@ -208,13 +283,20 @@ Public Class frmStbRutasEdit
             objparametro.RetrieveByFilter("Nombre='Pais'")
             objPais.RetrieveByFilter("Nombre='" & objparametro.Valor & "'")
 
-            frmClientesEdit.dtCiudad = StbCiudad.RetrieveDT("objPaisID=" & objPais.StbPaisID, "", "StbCiudadID,Nombre")
-            Me.cmbCiudad.DataSource = frmClientesEdit.dtCiudad
+            DtCiudad = StbCiudad.RetrieveDT("objPaisID=" & objPais.StbPaisID, "", "StbCiudadID,Nombre")
+
+            Dim newCiudadRow As DataRow
+            newCiudadRow = DtCiudad.NewRow()
+            newCiudadRow("StbCiudadID") = "0"
+            newCiudadRow("Nombre") = "Ninguna"
+            DtCiudad.Rows.Add(newCiudadRow)
+
+            Me.cmbCiudad.DataSource = DtCiudad
             Me.cmbCiudad.DisplayMember = "Nombre"
             Me.cmbCiudad.ValueMember = "StbCiudadID"
             Me.cmbCiudad.Splits(0).DisplayColumns("StbCiudadID").Visible = False
             Me.cmbCiudad.ExtendRightColumn = True
-            Me.cmbCiudad.SelectedValue = -1
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -238,24 +320,23 @@ Public Class frmStbRutasEdit
                 Exit Function
             End If
 
-            If cmbDiaCrobro.Text.Trim.Length = 0 Then
+            If cmbDiaCrobro.Text.Trim.Length = 0 Or cmbDiaCrobro.Text = "Ninguno" Then
                 ErrorProv.SetError(cmbDiaCrobro, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
             End If
 
-            If cmbCiudad.Text.Trim.Length = 0 Then
+            If cmbCiudad.Text.Trim.Length = 0 Or cmbCiudad.Text = "Ninguna" Then
                 ErrorProv.SetError(cmbCiudad, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
             End If
 
-            If cbxCobrador.Text.Trim.Length = 0 Then
-                ErrorProv.SetError(txtNombre, My.Resources.MsgObligatorio)
+            If cbxCobrador.Text.Trim.Length = 0 Or cbxCobrador.Text = "Ninguno" Then
+                ErrorProv.SetError(cbxCobrador, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
             End If
-
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -305,6 +386,90 @@ Public Class frmStbRutasEdit
             Else
                 Me.DialogResult = Windows.Forms.DialogResult.None
             End If
+        End If
+    End Sub
+
+    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
+        ErrorProv.SetError(txtNombre, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub txtDescripcion_TextChanged(sender As Object, e As EventArgs) Handles txtDescripcion.TextChanged
+        ErrorProv.SetError(txtDescripcion, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub cbxCobrador_TextChanged(sender As Object, e As EventArgs) Handles cbxCobrador.TextChanged
+        ErrorProv.SetError(cbxCobrador, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub cmbSupervisor_TextChanged(sender As Object, e As EventArgs) Handles cmbSupervisor.TextChanged
+        ErrorProv.SetError(cmbSupervisor, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub cmbCiudad_TextChanged(sender As Object, e As EventArgs) Handles cmbCiudad.TextChanged
+        ErrorProv.SetError(cmbCiudad, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub cmbDiaCrobro_TextChanged(sender As Object, e As EventArgs) Handles cmbDiaCrobro.TextChanged
+        ErrorProv.SetError(cmbDiaCrobro, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub txtCodigo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodigo.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtNombre.Focus()
+        End If
+    End Sub
+  
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            Me.txtDescripcion.Focus()
+        End If
+    End Sub
+
+    Private Sub txtDescripcion_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDescripcion.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            Me.cbxCobrador.Focus()
+        End If
+    End Sub
+
+    Private Sub cbxCobrador_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbxCobrador.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            Me.cmbSupervisor.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbSupervisor_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbSupervisor.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            Me.cmbCiudad.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbCiudad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbCiudad.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            Me.cmbDiaCrobro.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbDiaCrobro_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbDiaCrobro.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            Me.chkActivo.Focus()
+        End If
+    End Sub
+
+    Private Sub chkActivo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles chkActivo.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            Me.ckdCargaDiferenciada.Focus()
+        End If
+    End Sub
+
+    Private Sub ckdCargaDiferenciada_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ckdCargaDiferenciada.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            Me.cmdGuardar.Focus()
         End If
     End Sub
 #End Region

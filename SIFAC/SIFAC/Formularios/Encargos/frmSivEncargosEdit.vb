@@ -37,6 +37,11 @@ Public Class frmSivEncargosEdit
     Public Sub CargarMarca()
         Try
             DtMarca = SivMarcas.RetrieveDT("Activa=1")
+            Dim newMarcaRow As DataRow = DtMarca.NewRow()
+            newMarcaRow("MarcaID") = "0"
+            newMarcaRow("Nombre") = "Ninguna"
+
+            DtMarca.Rows.Add(newMarcaRow)
             With cmbMarca
                 .Properties.DataSource = DtMarca
                 .Properties.DisplayMember = "Nombre"
@@ -51,6 +56,7 @@ Public Class frmSivEncargosEdit
                 .Properties.Columns("UsuarioModificacion").Visible = False
                 .Properties.AutoHeight = True
                 .Properties.ShowHeader = False
+                .EditValue = 0
               
             End With
         Catch ex As Exception
@@ -64,6 +70,9 @@ Public Class frmSivEncargosEdit
     Public Sub CargarCategorias()
         Try
             DtCategoria = SivCategorias.RetrieveDT("Activa=1", " Nombre", "CategoriaID, Nombre")
+            Dim newCategoriaRow As DataRow = DtMarca.NewRow()
+            newCategoriaRow("CategoriaID") = "0"
+            newCategoriaRow("Nombre") = "Ninguna"
             With cmbCategoria
                 .Properties.DataSource = DtCategoria
                 .Properties.DisplayMember = "Nombre"
@@ -72,6 +81,7 @@ Public Class frmSivEncargosEdit
                 .Properties.Columns("CategoriaID").Visible = False
                 .Properties.AutoHeight = True
                 .Properties.ShowHeader = False
+                .EditValue = 0
             End With
 
         Catch ex As Exception
@@ -82,6 +92,10 @@ Public Class frmSivEncargosEdit
     Public Sub CargarProductos(CategoriaID As Integer, MarcaID As Integer)
         Try
             DtNombreProducto = SivProductos.RetrieveDT("Activo=1 AND objCategoriaID='" + CategoriaID.ToString() + "' AND objMarcaID='" + MarcaID.ToString() + "'", " Nombre", " (Codigo  + '-' +  Nombre) AS Nombre")
+            Dim newProductosRow As DataRow = DtMarca.NewRow()
+            newProductosRow("SivProductoID") = "0"
+            newProductosRow("Nombre") = "Ninguna"
+
             With cmbNombreProducto
                 .Properties.DataSource = DtNombreProducto
                 .Properties.DisplayMember = "Nombre"
@@ -90,7 +104,7 @@ Public Class frmSivEncargosEdit
                 .Properties.Columns("SivProductoID").Visible = False
                 .Properties.AutoHeight = True
                 .Properties.ShowHeader = False
-
+                .EditValue = 0
             End With
         Catch ex As Exception
             clsError.CaptarError(ex)
