@@ -237,6 +237,9 @@ Public Class frmPrincipal
             Me.navBarFacturacion.Enabled = objSeg.TienePermiso("OpcionFacturaExpediente")
             Me.NavBarDescuentos.Enabled = objSeg.TienePermiso("OpcionDescuentos")
             Me.NavBarCuentas.Enabled = objSeg.TienePermiso("OpcionCuentaXCobrar")
+            Me.NavBarFacturasXCuenta.Enabled = objSeg.TienePermiso("OpcionFacturasXCuentas")
+            Me.NavBarReciboCaja.Enabled = objSeg.TienePermiso("OpcionReciboCaja")
+
 
             'Inventario
             Me.NavBarSolicitud.Enabled = objSeg.TienePermiso("OpcionSolicitudTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
@@ -288,6 +291,9 @@ Public Class frmPrincipal
 
             'Cuentas  por cobrar
             Me.NavBarCuentas.Enabled = False
+            Me.NavBarFacturasXCuenta.Enabled = False
+            Me.NavBarReciboCaja.Enabled = False
+
 
             ''Sincronizar
             Me.NavBarSincroVentas.Enabled = False
@@ -701,9 +707,33 @@ Public Class frmPrincipal
             Me.Cursor = Cursors.Default
         End Try
     End Sub
-
-   
 #End Region
+
+#Region "Cargar Facturas"
+    Private Sub CargarFacturas()
+        Dim objFactura As frmSfaFactura
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario("frmSfaFactura", Me) Then
+                    objFactura = New frmSfaFactura
+                    objFactura.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objFactura.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objFactura.MdiParent = Me
+                    objFactura.Show()
+                End If
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+
+    End Sub
+
+#End Region
+
+
 
 #Region "Cargar Configuracion de Descuentos"
 
@@ -748,7 +778,6 @@ Public Class frmPrincipal
         End Try
     End Sub
 
- 
 #End Region
 
 #Region "Cargar Solicitud de transferencia"
@@ -976,5 +1005,13 @@ Public Class frmPrincipal
 
     Private Sub NavBarSincroVentas_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarSincroVentas.LinkClicked
         CargarSincronizarVentas()
+    End Sub
+
+    Private Sub NavBarFacturasXCuenta_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarFacturasXCuenta.LinkClicked
+        CargarFacturas()
+    End Sub
+
+    Private Sub NavBarReciboCaja_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarReciboCaja.LinkClicked
+        CargarRecibosCaja()
     End Sub
 End Class

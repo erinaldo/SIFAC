@@ -37,6 +37,7 @@ Partial Class frmPrincipal
         Me.grpCatalogos = New DevExpress.XtraNavBar.NavBarGroup()
         Me.grpCartera = New DevExpress.XtraNavBar.NavBarGroup()
         Me.NavBarCuentas = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarFacturasXCuenta = New DevExpress.XtraNavBar.NavBarItem()
         Me.grpInventario = New DevExpress.XtraNavBar.NavBarGroup()
         Me.NavBarOrdenCompra = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarEncargos = New DevExpress.XtraNavBar.NavBarItem()
@@ -80,6 +81,7 @@ Partial Class frmPrincipal
         Me.RibbonSeparator1 = New C1.Win.C1Ribbon.RibbonSeparator()
         Me.lblServidor = New C1.Win.C1Ribbon.RibbonLabel()
         Me.stbPrincipal = New C1.Win.C1Ribbon.C1StatusBar()
+        Me.NavBarReciboCaja = New DevExpress.XtraNavBar.NavBarItem()
         CType(Me.NavBarPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
         CType(Me.stbPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,7 +172,8 @@ Partial Class frmPrincipal
         'grpCartera
         '
         Me.grpCartera.Caption = "Cartera y Cobro"
-        Me.grpCartera.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarClientes), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCuentas)})
+        Me.grpCartera.Expanded = True
+        Me.grpCartera.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarClientes), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCuentas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarFacturasXCuenta), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReciboCaja)})
         Me.grpCartera.Name = "grpCartera"
         '
         'NavBarCuentas
@@ -178,6 +181,11 @@ Partial Class frmPrincipal
         Me.NavBarCuentas.Caption = "Cuentas"
         Me.NavBarCuentas.Name = "NavBarCuentas"
         Me.NavBarCuentas.SmallImage = CType(resources.GetObject("NavBarCuentas.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarFacturasXCuenta
+        '
+        Me.NavBarFacturasXCuenta.Caption = "Facturas X Cuentas"
+        Me.NavBarFacturasXCuenta.Name = "NavBarFacturasXCuenta"
         '
         'grpInventario
         '
@@ -262,13 +270,14 @@ Partial Class frmPrincipal
         Me.NavBarPrincipal.ActiveGroup = Me.grpCatalogos
         Me.NavBarPrincipal.Dock = System.Windows.Forms.DockStyle.Left
         Me.NavBarPrincipal.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpCatalogos, Me.grpCartera, Me.grpInventario, Me.grpFacturacion, Me.grpSincronizacion})
-        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones})
-        Me.NavBarPrincipal.Location = New System.Drawing.Point(0, 24)
+        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarFacturasXCuenta, Me.NavBarReciboCaja})
+        Me.NavBarPrincipal.Location = New System.Drawing.Point(0, 28)
         Me.NavBarPrincipal.LookAndFeel.SkinName = "iMaginary"
         Me.NavBarPrincipal.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.NavBarPrincipal.Margin = New System.Windows.Forms.Padding(4)
         Me.NavBarPrincipal.Name = "NavBarPrincipal"
         Me.NavBarPrincipal.OptionsNavPane.ExpandedWidth = 175
-        Me.NavBarPrincipal.Size = New System.Drawing.Size(175, 561)
+        Me.NavBarPrincipal.Size = New System.Drawing.Size(233, 697)
         Me.NavBarPrincipal.TabIndex = 17
         '
         'WindowsMenu
@@ -276,68 +285,68 @@ Partial Class frmPrincipal
         Me.WindowsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CascadeToolStripMenuItem, Me.TileVerticalToolStripMenuItem, Me.TileHorizontalToolStripMenuItem, Me.CloseAllToolStripMenuItem, Me.tsmEstiloVisual})
         Me.WindowsMenu.ForeColor = System.Drawing.Color.Black
         Me.WindowsMenu.Name = "WindowsMenu"
-        Me.WindowsMenu.Size = New System.Drawing.Size(67, 20)
+        Me.WindowsMenu.Size = New System.Drawing.Size(81, 24)
         Me.WindowsMenu.Text = "&Ventanas"
         '
         'CascadeToolStripMenuItem
         '
         Me.CascadeToolStripMenuItem.Name = "CascadeToolStripMenuItem"
-        Me.CascadeToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.CascadeToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
         Me.CascadeToolStripMenuItem.Text = "&Cascada"
         '
         'TileVerticalToolStripMenuItem
         '
         Me.TileVerticalToolStripMenuItem.Name = "TileVerticalToolStripMenuItem"
-        Me.TileVerticalToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.TileVerticalToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
         Me.TileVerticalToolStripMenuItem.Text = "Titulo &Vertical"
         '
         'TileHorizontalToolStripMenuItem
         '
         Me.TileHorizontalToolStripMenuItem.Name = "TileHorizontalToolStripMenuItem"
-        Me.TileHorizontalToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.TileHorizontalToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
         Me.TileHorizontalToolStripMenuItem.Text = "Titulo &Horizontal"
         '
         'CloseAllToolStripMenuItem
         '
         Me.CloseAllToolStripMenuItem.Name = "CloseAllToolStripMenuItem"
-        Me.CloseAllToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.CloseAllToolStripMenuItem.Size = New System.Drawing.Size(196, 26)
         Me.CloseAllToolStripMenuItem.Text = "C&errar todas"
         '
         'tsmEstiloVisual
         '
         Me.tsmEstiloVisual.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmOfficexp, Me.tsmOffice2003Olive, Me.tsmOffice2007Blue, Me.tsmOffice2007Silver, Me.tsmOffice2007Black})
         Me.tsmEstiloVisual.Name = "tsmEstiloVisual"
-        Me.tsmEstiloVisual.Size = New System.Drawing.Size(163, 22)
+        Me.tsmEstiloVisual.Size = New System.Drawing.Size(196, 26)
         Me.tsmEstiloVisual.Text = "Estilo Visual"
         '
         'tsmOfficexp
         '
         Me.tsmOfficexp.Name = "tsmOfficexp"
-        Me.tsmOfficexp.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOfficexp.Size = New System.Drawing.Size(192, 26)
         Me.tsmOfficexp.Text = "Officexp"
         '
         'tsmOffice2003Olive
         '
         Me.tsmOffice2003Olive.Name = "tsmOffice2003Olive"
-        Me.tsmOffice2003Olive.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOffice2003Olive.Size = New System.Drawing.Size(192, 26)
         Me.tsmOffice2003Olive.Text = "Office2003Olive"
         '
         'tsmOffice2007Blue
         '
         Me.tsmOffice2007Blue.Name = "tsmOffice2007Blue"
-        Me.tsmOffice2007Blue.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOffice2007Blue.Size = New System.Drawing.Size(192, 26)
         Me.tsmOffice2007Blue.Text = "Office2007Blue"
         '
         'tsmOffice2007Silver
         '
         Me.tsmOffice2007Silver.Name = "tsmOffice2007Silver"
-        Me.tsmOffice2007Silver.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOffice2007Silver.Size = New System.Drawing.Size(192, 26)
         Me.tsmOffice2007Silver.Text = "Office2007Silver"
         '
         'tsmOffice2007Black
         '
         Me.tsmOffice2007Black.Name = "tsmOffice2007Black"
-        Me.tsmOffice2007Black.Size = New System.Drawing.Size(158, 22)
+        Me.tsmOffice2007Black.Size = New System.Drawing.Size(192, 26)
         Me.tsmOffice2007Black.Text = "Office2007Black"
         '
         'HelpMenu
@@ -345,21 +354,21 @@ Partial Class frmPrincipal
         Me.HelpMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAyuda})
         Me.HelpMenu.ForeColor = System.Drawing.Color.Black
         Me.HelpMenu.Name = "HelpMenu"
-        Me.HelpMenu.Size = New System.Drawing.Size(53, 20)
+        Me.HelpMenu.Size = New System.Drawing.Size(63, 24)
         Me.HelpMenu.Text = "&Ayuda"
         '
         'tsmAyuda
         '
         Me.tsmAyuda.Name = "tsmAyuda"
         Me.tsmAyuda.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F1), System.Windows.Forms.Keys)
-        Me.tsmAyuda.Size = New System.Drawing.Size(176, 22)
+        Me.tsmAyuda.Size = New System.Drawing.Size(210, 26)
         Me.tsmAyuda.Text = "&Contenido"
         '
         'tsmSalir
         '
         Me.tsmSalir.ForeColor = System.Drawing.Color.Black
         Me.tsmSalir.Name = "tsmSalir"
-        Me.tsmSalir.Size = New System.Drawing.Size(41, 20)
+        Me.tsmSalir.Size = New System.Drawing.Size(50, 24)
         Me.tsmSalir.Text = "&Salir"
         '
         'MenuPrincipal
@@ -370,7 +379,8 @@ Partial Class frmPrincipal
         Me.MenuPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.MenuPrincipal.MdiWindowListItem = Me.WindowsMenu
         Me.MenuPrincipal.Name = "MenuPrincipal"
-        Me.MenuPrincipal.Size = New System.Drawing.Size(795, 24)
+        Me.MenuPrincipal.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
+        Me.MenuPrincipal.Size = New System.Drawing.Size(1060, 28)
         Me.MenuPrincipal.TabIndex = 6
         Me.MenuPrincipal.Text = "MenuStrip"
         '
@@ -456,28 +466,35 @@ Partial Class frmPrincipal
         Me.stbPrincipal.LeftPaneItems.Add(Me.RibbonSeparator3)
         Me.stbPrincipal.LeftPaneItems.Add(Me.RibbonMenu1)
         Me.stbPrincipal.LeftPaneItems.Add(Me.RibbonSeparator4)
-        Me.stbPrincipal.Location = New System.Drawing.Point(0, 585)
+        Me.stbPrincipal.Location = New System.Drawing.Point(0, 725)
+        Me.stbPrincipal.Margin = New System.Windows.Forms.Padding(4)
         Me.stbPrincipal.Name = "stbPrincipal"
         Me.stbPrincipal.RightPaneItems.Add(Me.lblFecha)
         Me.stbPrincipal.RightPaneItems.Add(Me.lblHora)
         Me.stbPrincipal.RightPaneWidth = 240
-        Me.stbPrincipal.Size = New System.Drawing.Size(795, 22)
+        Me.stbPrincipal.Size = New System.Drawing.Size(1060, 22)
         Me.stbPrincipal.TabIndex = 14
         Me.stbPrincipal.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Silver
         '
+        'NavBarReciboCaja
+        '
+        Me.NavBarReciboCaja.Caption = "Recibo de Caja"
+        Me.NavBarReciboCaja.Name = "NavBarReciboCaja"
+        '
         'frmPrincipal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.SIFAC.My.Resources.Resources.Fondo
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(795, 607)
+        Me.ClientSize = New System.Drawing.Size(1060, 747)
         Me.Controls.Add(Me.NavBarPrincipal)
         Me.Controls.Add(Me.stbPrincipal)
         Me.Controls.Add(Me.MenuPrincipal)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuPrincipal
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmPrincipal"
         Me.Text = "Sistema SIFAC"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -549,4 +566,6 @@ Partial Class frmPrincipal
     Friend WithEvents NavBarSincroAbonos As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarSincroVentas As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarSincroDevoluciones As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents NavBarFacturasXCuenta As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents NavBarReciboCaja As DevExpress.XtraNavBar.NavBarItem
 End Class

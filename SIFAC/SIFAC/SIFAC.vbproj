@@ -396,6 +396,30 @@
     <Compile Include="Formularios\Encargos\frmSivEncargosEdit.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Facturas\frmSfaBuscarFacturaExp.Designer.vb">
+      <DependentUpon>frmSfaBuscarFacturaExp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturas\frmSfaBuscarFacturaExp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturas\frmSfaCambiosPagos.Designer.vb">
+      <DependentUpon>frmSfaCambiosPagos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturas\frmSfaCambiosPagos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturas\frmSfaFactura.Designer.vb">
+      <DependentUpon>frmSfaFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturas\frmSfaFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturas\frmSfaFaturaEditar.Designer.vb">
+      <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturas\frmSfaFaturaEditar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\OrdenCompra\frmSivOrdenCompra.Designer.vb">
       <DependentUpon>frmSivOrdenCompra.vb</DependentUpon>
     </Compile>
@@ -1072,6 +1096,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Encargos\frmSivEncargosEdit.resx">
       <DependentUpon>frmSivEncargosEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturas\frmSfaBuscarFacturaExp.resx">
+      <DependentUpon>frmSfaBuscarFacturaExp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturas\frmSfaCambiosPagos.resx">
+      <DependentUpon>frmSfaCambiosPagos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturas\frmSfaFactura.resx">
+      <DependentUpon>frmSfaFactura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturas\frmSfaFaturaEditar.resx">
+      <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PIM\frmPersonaSelector.resx">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
