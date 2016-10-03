@@ -123,7 +123,6 @@ Public Class frmSccEditReciboCaja
     Private Sub frmSccEditReciboCaja_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             Me.Cursor = Cursors.WaitCursor
-            Me.CargarSucursales()
             clsProyecto.CargarTemaDefinido(Me)
             Call Me.CargarMonedaPago()
             Me.txtNumRecibo.MaxLength = SccReciboCaja.GetMaxLength("Numero")
@@ -146,7 +145,6 @@ Public Class frmSccEditReciboCaja
                     Me.cmdProcesar.Enabled = False
                     Me.txtNumRecibo.Enabled = False
                     clsProyecto.CargarTemaDefinido(Me)
-                    Me.cmbSucursal.Enabled = False
             End Select
             Me.Panel2.BackColor = Color.White
             Me.grdFacturas.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.FloatingEditor
@@ -206,7 +204,6 @@ Public Class frmSccEditReciboCaja
                 Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
                 Me.dtpFecha.Enabled = False
                 Me.chkPrima.Enabled = False
-                Me.cmbSucursal.SelectedValue = SqlHelper.ExecuteScalar(CommandType.Text, "SELECT StbTiendaID FROM dbo.StbTienda WHERE RTRIM(LTRIM(Codigo)) = 'C'").ToString
                 'Me.cmbSucursal.Enabled = False
                 Me.NumMontoDolares.Value = Me.DtDatosNotasCredito.DefaultView.Item(0)("Monto")
 
@@ -277,7 +274,6 @@ Public Class frmSccEditReciboCaja
             If objCuentasSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.txtNumCuenta.Text = objCuentasSeleccion.SccCuentaID
                 Me.IDCuenta = objCuentasSeleccion.SccCuentaID
-                Me.cmbSucursal.SelectedValue = Me.IDTienda
                 Me.txtCliente.Text = objCuentasSeleccion.Cliente
                 Me.CargarInfoCuenta(Me.IDCuenta)
                 Me.CargarFacturas()
@@ -908,11 +904,6 @@ Public Class frmSccEditReciboCaja
                 Exit Function
             End If            
 
-            If Me.cmbSucursal.Text.Trim = "" Then
-                Me.ErrorProv.SetError(Me.lblError, "Debe seleccionar Sucursal")
-                Exit Function
-            End If
-
             T.BeginTran()
             Me.objReciboCaja = New SccReciboCaja
             If objReciboCaja.RetrieveByFilter("Numero='" & Trim(Me.txtNumRecibo.Text) & "'") Then
@@ -939,7 +930,6 @@ Public Class frmSccEditReciboCaja
             Me.objReciboCaja.objTiendaID = Me.IDTienda
             Me.objReciboCaja.EsPagoPrima = Me.chkPrima.Checked
             Me.objReciboCaja.objMonedaID = Me.cmbMoneda.SelectedValue
-            Me.objReciboCaja.SucursalPagoID = Me.cmbSucursal.SelectedValue
             '-------------------------------------------------------------------- ---------------------------
             Me.objReciboCaja.Insert(T)
             Me.ReciboCajaID = Me.objReciboCaja.SccReciboCajaID
@@ -1027,11 +1017,6 @@ Public Class frmSccEditReciboCaja
                 Boolrst = False
                 CalcularTotales()
 
-                If Me.cmbSucursal.Text.Trim = "" Then
-                    Me.ErrorProv.SetError(Me.lblError, "Debe seleccionar Sucursal")
-                    Exit Function
-                End If
-
                 T.BeginTran()
 
                 'Eliminar datos que se encuentren en las tablas para los datos temporales
@@ -1058,7 +1043,6 @@ Public Class frmSccEditReciboCaja
                     .objTiendaID = Me.IDTienda
                     .EsPagoPrima = False 'Me.chkPrima.Checked
                     .objMonedaID = Me.cmbMoneda.SelectedValue
-                    .SucursalPagoID = Me.cmbSucursal.SelectedValue
                     '-------------------------------------------------------------------- ---------------------------
                     .Insert(T)
                 End With
@@ -1454,10 +1438,6 @@ Public Class frmSccEditReciboCaja
                     Me.MontoPrima = objSccRecibo.TotalRecibo
                 End If
 
-                If objSccRecibo.SucursalPagoID.HasValue Then
-                    Me.cmbSucursal.SelectedValue = objSccRecibo.SucursalPagoID
-                End If
-
                 Me.DecTotalFact = objSccRecibo.TotalFacturas
                 Me.DecTotalRecibo = objSccRecibo.TotalRecibo
                 dtDatos = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("CodigoTienda,SccCuentaID,Cliente", "vwSccCuentasSeleccion", "SccCuentaID='" & Me.IDCuenta.ToString & "' AND StbTiendaID =" & Me.IDTienda))
@@ -1571,11 +1551,6 @@ Public Class frmSccEditReciboCaja
                 Exit Function
             End If
 
-            If Me.cmbSucursal.Text.Trim = "" Then
-                Me.ErrorProv.SetError(Me.lblError, "Datos Imcompletos")
-                Exit Function
-            End If
-
             If (Decimal.Round(Me.DecTotalAbonado, 2) <> Decimal.Round(Me.DecTotalRecibo, 2)) Or (Me.txtTotalPagar.Value = 0) Then
                 Me.ErrorProv.SetError(Me.lblError, "Montos no coinciden")
                 Exit Function
@@ -1594,7 +1569,6 @@ Public Class frmSccEditReciboCaja
             Me.objReciboCaja.FechaModificacion = clsProyecto.Conexion.FechaServidor
             Me.objReciboCaja.EsPagoPrima = Me.chkPrima.Checked
             Me.objReciboCaja.objMonedaID = Me.cmbMoneda.SelectedValue
-            Me.objReciboCaja.SucursalPagoID = Me.cmbSucursal.SelectedValue
             Me.objReciboCaja.Update(T)
 
             '----------------------------Actualizamos las detalles de facturas-----------------------------------
@@ -1730,31 +1704,7 @@ Public Class frmSccEditReciboCaja
 #End Region
 
 
-    ''' <summary>
-    ''' Procedimiento encargado de cargar las sucursales y mostrarlas en el listado de sucursales.
-    ''' Autor : Pedro Pablo Tinoco Salgado.
-    ''' Fecha : 6 de Abril de 2009.
-    ''' </summary>
-    ''' <remarks></remarks>
-    Private Sub CargarSucursales()
-        Dim dtSucursal As New DataTable
-        Try
-            DtSucursal = New DataTable
-            dtSucursal = StbTienda.RetrieveDT("Activo= 1", "Nombre", "StbTiendaID,Codigo,Nombre")
-            With Me.cmbSucursal
-                .DataSource = dtSucursal
-                .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .ExtendRightColumn = True
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
-                .ColumnHeaders = False
-            End With
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-    End Sub
-
-    Private Sub cmbSucursal_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbSucursal.SelectedValueChanged
+    Private Sub cmbSucursal_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs)
         Me.ErrorProv.Clear()
     End Sub
 
