@@ -238,6 +238,8 @@ Public Class frmPrincipal
             Me.NavBarDescuentos.Enabled = objSeg.TienePermiso("OpcionDescuentos")
             Me.NavBarCuentas.Enabled = objSeg.TienePermiso("OpcionCuentaXCobrar")
             Me.NavBarFacturasXCuenta.Enabled = objSeg.TienePermiso("OpcionFacturasXCuentas")
+            Me.NavBarReciboCaja.Enabled = objSeg.TienePermiso("OpcionReciboCaja")
+
 
             'Inventario
             Me.NavBarSolicitud.Enabled = objSeg.TienePermiso("OpcionSolicitudTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
@@ -290,6 +292,8 @@ Public Class frmPrincipal
             'Cuentas  por cobrar
             Me.NavBarCuentas.Enabled = False
             Me.NavBarFacturasXCuenta.Enabled = False
+            Me.NavBarReciboCaja.Enabled = False
+
 
             ''Sincronizar
             Me.NavBarSincroVentas.Enabled = False
@@ -730,6 +734,7 @@ Public Class frmPrincipal
 #End Region
 
 
+
 #Region "Cargar Configuracion de Descuentos"
 
     Private Sub CargarDescuentos()
@@ -773,7 +778,6 @@ Public Class frmPrincipal
         End Try
     End Sub
 
- 
 #End Region
 
 #Region "Cargar Solicitud de transferencia"
@@ -1005,5 +1009,9 @@ Public Class frmPrincipal
 
     Private Sub NavBarFacturasXCuenta_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarFacturasXCuenta.LinkClicked
         CargarFacturas()
+    End Sub
+
+    Private Sub NavBarReciboCaja_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarReciboCaja.LinkClicked
+        CargarRecibosCaja()
     End Sub
 End Class

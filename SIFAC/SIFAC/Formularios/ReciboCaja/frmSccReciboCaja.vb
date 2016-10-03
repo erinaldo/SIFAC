@@ -56,7 +56,7 @@ Public Class frmSccReciboCaja
         Try
             DiasRecibosRecientes = StbParametro.RetrieveDT("Nombre = 'CantidadRecibosRecientes'", , "Valor").DefaultView.Item(0)("Valor")
             'strConsulta = clsConsultas.ObtenerConsultaGeneral("*", "vwSccRecibodetFactura,vwSccReciboCaja", "vwSccReciboDetFactura.objSccCuentaID = vwSccReciboCaja.SccCuentaID AND vwSccReciboCaja.Fecha BETWEEN GETDATE()-" & DiasRecibosRecientes + 1 & " AND GETDATE()")
-            Me.DtRecibosCajas = SqlHelper.ExecuteQueryDT("SELECT Fecha, Numero, SccReciboCajaID, TotalNC, TotalFacturas, TotalND, TotalRecibo,objEstadoId, esPagoPrima, SccCuentaID,objTiendaId,objClienteId, Cliente, Estado, NumeroRecibo,TotalEfectivo, Tienda, StbPersonaID FROM vwSccReciboCaja WHERE Fecha BETWEEN GETDATE()-366 AND GETDATE()")
+            Me.DtRecibosCajas = SqlHelper.ExecuteQueryDT("SELECT Fecha, Numero, SccReciboCajaID, TotalRecibo,objEstadoId, EsPagoPrima, SccCuentaID,objClienteId, Cliente, Estado, NumeroRecibo, StbPersonaID FROM vwSccReciboCaja WHERE Fecha BETWEEN GETDATE()-366 AND GETDATE()")
             'Me.DtRecibosCajas = SqlHelper.ExecuteQueryDT(strConsulta)
             'Me.DtRecibosCajas.PrimaryKey = New DataColumn() {DtRecibosCajas.Columns("SccReciboCajaID")}
             Me.DtRecibosCajas.DefaultView.Sort = "SccReciboCajaID"
@@ -129,13 +129,13 @@ Public Class frmSccReciboCaja
         Dim objSeg As New SsgSeguridad
         Try
             objSeg.Usuario = clsProyecto.Conexion.Usuario
-            objSeg.ServicioUsuario = "SCCRECIBOCAJA"
-            Me.cmdAgregar.Enabled = objSeg.TienePermiso("AGREGARROC")
-            Me.cmdEditar.Enabled = objSeg.TienePermiso("EDITARROC")
-            Me.cmdConsultar.Enabled = objSeg.TienePermiso("CONSULTARROC")
-            Me.blnAprobar = objSeg.TienePermiso("PROCESARROC")
+            objSeg.ServicioUsuario = "frmSccReciboCaja"
+            Me.cmdAgregar.Enabled = objSeg.TienePermiso("AgregarRoc")
+            Me.cmdEditar.Enabled = objSeg.TienePermiso("EditarRoc")
+            Me.cmdConsultar.Enabled = objSeg.TienePermiso("ConsultarRoc")
+            Me.blnAprobar = objSeg.TienePermiso("ProcesarRoc")
             Me.cmdAprobar.Enabled = Me.blnAprobar
-            Me.CMDBuscarReciboCaja.Enabled = objSeg.TienePermiso("BUSCARROC")
+            Me.CMDBuscarReciboCaja.Enabled = objSeg.TienePermiso("BuscarRoc")
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
