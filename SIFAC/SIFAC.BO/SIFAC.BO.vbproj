@@ -80,8 +80,8 @@
     <Compile Include="SccNotaCredito_CF.vb" />
     <Compile Include="SccNotaDebito_CF.vb" />
     <Compile Include="SccPersonasCuentas_CF.vb" />
-    <Compile Include="SccReciboCaja_CF.vb" />
-    <Compile Include="SccReciboDetFactura_CF.vb" />
+    <Compile Include="SccReciboCaja.vb" />
+    <Compile Include="SccReciboDetFactura.vb" />
     <Compile Include="SccReciboDetNC_CF.vb" />
     <Compile Include="SccReciboDetND_CF.vb" />
     <Compile Include="SccTramiteLegal_CF.vb" />
