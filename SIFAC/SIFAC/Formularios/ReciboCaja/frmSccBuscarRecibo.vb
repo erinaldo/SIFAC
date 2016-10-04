@@ -53,36 +53,10 @@ Public Class frmSccBuscarRecibo
         End Try
     End Sub
 
-    ''' <summary>
-    ''' Autor : Pedro Pablo Tinoco
-    ''' Fecha : 24 de Abril de 2009.
-    ''' Decripcion : Procedimiento encargado de cargar las sucursales.
-    ''' </summary>
-    ''' <remarks></remarks>
-    Private Sub CargarSucursales()
-        Dim dtDatos As New DataTable
-        Try
-            dtDatos = StbTienda.RetrieveDT(, , "Nombre,StbTiendaID")
-            With Me.cmbSucursal
-                .DataSource = dtDatos
-                .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .ColumnHeaders = False
-                .ExtendRightColumn = True
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
-            End With
-
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-    End Sub
-
-
     Private Sub frmSccBuscarRecibo_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             clsProyecto.CargarTemaDefinido(Me)
             Me.CargarEstadoRecibo()
-            Me.CargarSucursales()
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -148,7 +122,6 @@ Public Class frmSccBuscarRecibo
                 Parametros(6).SqlDbType = SqlDbType.DateTime
                 Parametros(6).Size = 15
 
-
                 If Me.txtNumeroRecibo.Text.Trim.Length > 0 Then
                     StrFiltro = "vwSccReciboCaja.Numero = @Numero"
                     Parametros(0).Value = Me.txtNumeroRecibo.Text.Trim
@@ -180,15 +153,6 @@ Public Class frmSccBuscarRecibo
                         StrFiltro = "vwSccReciboCaja.StbPersonaID = @ClienteID"
                     Else
                         StrFiltro = StrFiltro + " AND vwSccReciboCaja.StbPersonaID = @ClienteID"
-                    End If
-                End If
-
-                If Me.cmbSucursal.Text.Trim <> "" Then
-                    Parametros(4).Value = Trim(Me.cmbSucursal.SelectedValue)
-                    If StrFiltro = "" Then
-                        StrFiltro = "vwSccReciboCaja.SucursalPagoID = @SucursalID"
-                    Else
-                        StrFiltro = StrFiltro + " AND vwSccReciboCaja.SucursalPagoID = @ClienteID"
                     End If
                 End If
 

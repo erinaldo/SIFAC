@@ -245,10 +245,8 @@ Public Class frmSccCuentas
                 objRecibo = New frmSccEditReciboCaja
                 objRecibo.TypGui = 0
 
-                objRecibo.blnReestructurarCuenta = True
                 objRecibo.Cliente = Me.grdCuentas.Columns("Cliente").Value
                 objRecibo.IDCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
-                objRecibo.IDTienda = Me.grdCuentas.Columns("objTiendaID").Value
 
                 Return objRecibo.ShowDialog(Me) = Windows.Forms.DialogResult.OK
             Else

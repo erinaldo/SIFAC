@@ -83,38 +83,15 @@ Public Class frmSccReciboCaja
 
 
     Private Sub cmdAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAgregar.Click
-        If BoolConTasaCambio() Then
-
         Dim objRecibo As frmSccEditReciboCaja
-            objRecibo = New frmSccEditReciboCaja
-            objRecibo.TypGui = 0
-            If objRecibo.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Me.CargarDatos()
-                Me.grdRecibosCaja.Row = Me.DtRecibosCajas.DefaultView.Find(objRecibo.ReciboCajaID)
-            End If
-        Else
-            MsgBox("No hay definido Tasa de Cambio para el Mes y Año Actual", MsgBoxStyle.Exclamation, clsProyecto.SiglasSistema)
+        objRecibo = New frmSccEditReciboCaja
+        objRecibo.TypGui = 0
+        If objRecibo.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+            Me.CargarDatos()
+            Me.grdRecibosCaja.Row = Me.DtRecibosCajas.DefaultView.Find(objRecibo.ReciboCajaID)
         End If
-
     End Sub
 #End Region
-
-
-#Region "Validar Datos"
-    Private Function BoolConTasaCambio() As Boolean
-        Dim objTasaCambio As New StbTasaCambioOficial
-        Try
-            Try
-                Return objTasaCambio.RetrieveByFilter("Anio=" & clsProyecto.Conexion.FechaServidor.Year.ToString & " and Mes =" & clsProyecto.Conexion.FechaServidor.Month.ToString)
-            Catch ex As Exception
-                clsError.CaptarError(ex)
-            End Try
-        Finally
-            objTasaCambio = Nothing
-        End Try
-    End Function
-#End Region
-
 
 
 #Region "Metodos"
@@ -225,7 +202,6 @@ Public Class frmSccReciboCaja
         Dim objNotCredito As SccNotaCredito
         Dim objReciboCaja As New SccReciboCaja
         Dim EsPrima As Boolean
-        Dim dtNotCredDet As New DataTable
         Dim IDReciboCaja As Integer
 
         Try
@@ -254,19 +230,6 @@ Public Class frmSccReciboCaja
                 parametro(1).Value = 0
             End If
             SqlHelper.ExecuteNonQuery(T.Transaction, CommandType.StoredProcedure, "Sp_SfaDimininuirCuentaPorCobrar", parametro)
-
-
-            dtNotCredDet = SccReciboDetNC.RetrieveDT("objReciboCajaID= " & IDReciboCaja, , "objNotaCreditoID")
-
-            If dtNotCredDet.DefaultView.Count > 0 Then
-                For Each drwNotCred As DataRow In dtNotCredDet.Rows
-                    objNotCredito.Retrieve(drwNotCred("objNotaCreditoID"), T)
-                    objNotCredito.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                    objNotCredito.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                    objNotCredito.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("EstadoNC", "PAGADA")
-                    objNotCredito.Update(T)
-                Next
-            End If
 
             T.CommitTran()
             MsgBox("El Recibo ha sido Procesado Exitosamente.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
@@ -326,7 +289,7 @@ Public Class frmSccReciboCaja
         Dim Filtro2 As String
         Try
             Filtro2 = "vwSccReciboDetFactura.objSccCuentaID = vwSccReciboCaja.SccCuentaID AND " & Filtro
-            strConsulta = clsConsultas.ObtenerConsultaGeneral("distinct vwSccReciboCaja.Fecha, vwSccReciboCaja.Numero, vwSccReciboCaja.SccReciboCajaID, vwSccReciboCaja.TotalNC, vwSccReciboCaja.TotalFacturas, vwSccReciboCaja.TotalND, vwSccReciboCaja.TotalRecibo,vwSccReciboCaja.objEstadoId, vwSccReciboCaja.esPagoPrima, vwSccReciboCaja.SccCuentaID, vwSccReciboCaja.objTiendaId,vwSccReciboCaja.objClienteId, vwSccReciboCaja.Cliente, vwSccReciboCaja.Estado, vwSccReciboCaja.NumeroRecibo,vwSccReciboCaja.TotalEfectivo, vwSccReciboCaja.Tienda, vwSccReciboCaja.StbPersonaID, dbo.fnConcatenarRecibos(vwSccReciboCaja.SccReciboCajaID)as concepto ", "vwSccRecibodetFactura, vwSccReciboCaja", Filtro2)
+            strConsulta = clsConsultas.ObtenerConsultaGeneral("distinct vwSccReciboCaja.Fecha, vwSccReciboCaja.Numero, vwSccReciboCaja.SccReciboCajaID, vwSccReciboCaja.TotalRecibo,vwSccReciboCaja.objEstadoId, vwSccReciboCaja.esPagoPrima, vwSccReciboCaja.SccCuentaID, vwSccReciboCaja.objClienteId, vwSccReciboCaja.Cliente, vwSccReciboCaja.Estado, vwSccReciboCaja.NumeroRecibo, vwSccReciboCaja.StbPersonaID", "vwSccRecibodetFactura, vwSccReciboCaja", Filtro2)
             Me.DtRecibosCajas = SqlHelper.ExecuteQueryDT(strConsulta, Me.SqlParametros)
             Me.DtRecibosCajas.DefaultView.Sort = "SccReciboCajaID"
             Me.grdRecibosCaja.SetDataBinding(Me.DtRecibosCajas, "", True)
@@ -368,12 +331,8 @@ Public Class frmSccReciboCaja
             hojaExcel(0, 4).Style = estilo
             hojaExcel(0, 5).Value = "Cliente"
             hojaExcel(0, 5).Style = estilo
-            hojaExcel(0, 6).Value = "Sucursal Pago"
+            hojaExcel(0, 6).Value = "Estado"
             hojaExcel(0, 6).Style = estilo
-            hojaExcel(0, 7).Value = "Estado"
-            hojaExcel(0, 7).Style = estilo
-            hojaExcel(0, 8).Value = "Concepto"
-            hojaExcel(0, 8).Style = estilo
 
             For Each dr As DataRow In DtRecibosCajas.Rows
                 i = i + 1
@@ -383,9 +342,7 @@ Public Class frmSccReciboCaja
                 hojaExcel(i, 3).Value = dr("TotalRecibo")
                 hojaExcel(i, 4).Value = Convert.ToString(dr("Fecha"))
                 hojaExcel(i, 5).Value = dr("Cliente")
-                hojaExcel(i, 6).Value = dr("Tienda")
-                hojaExcel(i, 7).Value = dr("Estado")
-                hojaExcel(i, 8).Value = dr("Concepto")
+                hojaExcel(i, 6).Value = dr("Estado")
             Next
 
             If objUbicacion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
@@ -394,16 +351,6 @@ Public Class frmSccReciboCaja
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
-
-
-
-
-
-
-
-
-
-
 
     End Sub
 #End Region

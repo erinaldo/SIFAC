@@ -23,33 +23,23 @@ Partial Class frmSccEditReciboCaja
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSccEditReciboCaja))
         Me.tbControl = New System.Windows.Forms.TabControl()
         Me.tbpDetFact = New System.Windows.Forms.TabPage()
-        Me.grdNotaDebito = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.grdFacturas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.tbpFormasPago = New System.Windows.Forms.TabPage()
         Me.grpFormaPago = New System.Windows.Forms.GroupBox()
-        Me.grpPago = New System.Windows.Forms.GroupBox()
         Me.NumMontoDolares = New C1.Win.C1Input.C1NumericEdit()
-        Me.numMontoCordobas = New C1.Win.C1Input.C1NumericEdit()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.grpCambios = New System.Windows.Forms.GroupBox()
-        Me.numTasaCambio = New C1.Win.C1Input.C1NumericEdit()
-        Me.lblTasaCambio = New System.Windows.Forms.Label()
-        Me.cmbMoneda = New C1.Win.C1List.C1Combo()
-        Me.lblMoneda = New System.Windows.Forms.Label()
         Me.cmdEliminar = New System.Windows.Forms.Button()
         Me.ListaImagenes = New System.Windows.Forms.ImageList(Me.components)
-        Me.grdNotasCredito = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.cmbMoneda = New C1.Win.C1List.C1Combo()
+        Me.lblMoneda = New System.Windows.Forms.Label()
         Me.cmdAceptar = New System.Windows.Forms.Button()
         Me.cmdProcesar = New System.Windows.Forms.Button()
         Me.cmdCancelar = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.lblTotalFact = New System.Windows.Forms.Label()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.lblError = New System.Windows.Forms.Label()
         Me.txtTotalFact = New C1.Win.C1Input.C1NumericEdit()
-        Me.txtTotalDB = New C1.Win.C1Input.C1NumericEdit()
         Me.txtTotalPagar = New C1.Win.C1Input.C1NumericEdit()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.grpDatosRecibos = New System.Windows.Forms.GroupBox()
@@ -65,7 +55,6 @@ Partial Class frmSccEditReciboCaja
         Me.txtCliente = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtNumCuenta = New System.Windows.Forms.TextBox()
-        Me.txtCodTienda = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -75,30 +64,20 @@ Partial Class frmSccEditReciboCaja
         Me.lblMontoRestante = New System.Windows.Forms.Label()
         Me.lblMontoAbonado = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.numTotalPagarCor = New C1.Win.C1Input.C1NumericEdit()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.tbControl.SuspendLayout()
         Me.tbpDetFact.SuspendLayout()
-        CType(Me.grdNotaDebito, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbpFormasPago.SuspendLayout()
         Me.grpFormaPago.SuspendLayout()
-        Me.grpPago.SuspendLayout()
         CType(Me.NumMontoDolares, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.numMontoCordobas, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpCambios.SuspendLayout()
-        CType(Me.numTasaCambio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbMoneda, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdNotasCredito, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTotalFact, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTotalDB, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTotalPagar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpDatosRecibos.SuspendLayout()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GrpExpediente.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.numTotalPagarCor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbControl
@@ -109,40 +88,20 @@ Partial Class frmSccEditReciboCaja
         Me.tbControl.Margin = New System.Windows.Forms.Padding(4)
         Me.tbControl.Name = "tbControl"
         Me.tbControl.SelectedIndex = 0
-        Me.tbControl.Size = New System.Drawing.Size(856, 305)
+        Me.tbControl.Size = New System.Drawing.Size(856, 254)
         Me.tbControl.TabIndex = 2
         '
         'tbpDetFact
         '
-        Me.tbpDetFact.Controls.Add(Me.grdNotaDebito)
         Me.tbpDetFact.Controls.Add(Me.grdFacturas)
         Me.tbpDetFact.Location = New System.Drawing.Point(4, 25)
         Me.tbpDetFact.Margin = New System.Windows.Forms.Padding(4)
         Me.tbpDetFact.Name = "tbpDetFact"
         Me.tbpDetFact.Padding = New System.Windows.Forms.Padding(4)
-        Me.tbpDetFact.Size = New System.Drawing.Size(848, 276)
+        Me.tbpDetFact.Size = New System.Drawing.Size(848, 225)
         Me.tbpDetFact.TabIndex = 0
         Me.tbpDetFact.Text = "Detalle de Facturas"
         Me.tbpDetFact.UseVisualStyleBackColor = True
-        '
-        'grdNotaDebito
-        '
-        Me.grdNotaDebito.AllowColMove = False
-        Me.grdNotaDebito.Caption = "Notas de Débito"
-        Me.grdNotaDebito.Dock = System.Windows.Forms.DockStyle.Top
-        Me.grdNotaDebito.ExtendRightColumn = True
-        Me.grdNotaDebito.GroupByCaption = "Drag a column header here to group by that column"
-        Me.grdNotaDebito.Images.Add(CType(resources.GetObject("grdNotaDebito.Images"), System.Drawing.Image))
-        Me.grdNotaDebito.Location = New System.Drawing.Point(4, 148)
-        Me.grdNotaDebito.Margin = New System.Windows.Forms.Padding(4)
-        Me.grdNotaDebito.Name = "grdNotaDebito"
-        Me.grdNotaDebito.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdNotaDebito.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdNotaDebito.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdNotaDebito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotaDebito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdNotaDebito.Size = New System.Drawing.Size(840, 124)
-        Me.grdNotaDebito.TabIndex = 9
-        Me.grdNotaDebito.PropBag = resources.GetString("grdNotaDebito.PropBag")
         '
         'grdFacturas
         '
@@ -163,7 +122,7 @@ Partial Class frmSccEditReciboCaja
         Me.grdFacturas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdFacturas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdFacturas.PrintInfo.PageSettings = CType(resources.GetObject("grdFacturas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdFacturas.Size = New System.Drawing.Size(840, 144)
+        Me.grdFacturas.Size = New System.Drawing.Size(840, 208)
         Me.grdFacturas.TabIndex = 7
         Me.grdFacturas.PropBag = resources.GetString("grdFacturas.PropBag")
         '
@@ -171,48 +130,33 @@ Partial Class frmSccEditReciboCaja
         '
         Me.tbpFormasPago.Controls.Add(Me.grpFormaPago)
         Me.tbpFormasPago.Controls.Add(Me.cmdEliminar)
-        Me.tbpFormasPago.Controls.Add(Me.grdNotasCredito)
         Me.tbpFormasPago.Location = New System.Drawing.Point(4, 25)
         Me.tbpFormasPago.Margin = New System.Windows.Forms.Padding(4)
         Me.tbpFormasPago.Name = "tbpFormasPago"
         Me.tbpFormasPago.Padding = New System.Windows.Forms.Padding(4)
-        Me.tbpFormasPago.Size = New System.Drawing.Size(848, 276)
+        Me.tbpFormasPago.Size = New System.Drawing.Size(848, 225)
         Me.tbpFormasPago.TabIndex = 1
         Me.tbpFormasPago.Text = "Formas de Pago"
         Me.tbpFormasPago.UseVisualStyleBackColor = True
         '
         'grpFormaPago
         '
-        Me.grpFormaPago.Controls.Add(Me.grpPago)
-        Me.grpFormaPago.Controls.Add(Me.grpCambios)
-        Me.grpFormaPago.Location = New System.Drawing.Point(11, 160)
+        Me.grpFormaPago.Controls.Add(Me.NumMontoDolares)
+        Me.grpFormaPago.Controls.Add(Me.Label7)
+        Me.grpFormaPago.Location = New System.Drawing.Point(8, 17)
         Me.grpFormaPago.Margin = New System.Windows.Forms.Padding(4)
         Me.grpFormaPago.Name = "grpFormaPago"
         Me.grpFormaPago.Padding = New System.Windows.Forms.Padding(4)
         Me.grpFormaPago.Size = New System.Drawing.Size(827, 106)
         Me.grpFormaPago.TabIndex = 14
         Me.grpFormaPago.TabStop = False
-        Me.grpFormaPago.Text = "Pago en efectivo o Débito Automático"
-        '
-        'grpPago
-        '
-        Me.grpPago.Controls.Add(Me.NumMontoDolares)
-        Me.grpPago.Controls.Add(Me.numMontoCordobas)
-        Me.grpPago.Controls.Add(Me.Label7)
-        Me.grpPago.Controls.Add(Me.Label6)
-        Me.grpPago.Location = New System.Drawing.Point(420, 16)
-        Me.grpPago.Margin = New System.Windows.Forms.Padding(4)
-        Me.grpPago.Name = "grpPago"
-        Me.grpPago.Padding = New System.Windows.Forms.Padding(4)
-        Me.grpPago.Size = New System.Drawing.Size(399, 81)
-        Me.grpPago.TabIndex = 10
-        Me.grpPago.TabStop = False
+        Me.grpFormaPago.Text = "Pago en Efectivo"
         '
         'NumMontoDolares
         '
         Me.NumMontoDolares.BackColor = System.Drawing.SystemColors.Desktop
         Me.NumMontoDolares.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.NumMontoDolares.Location = New System.Drawing.Point(184, 48)
+        Me.NumMontoDolares.Location = New System.Drawing.Point(74, 35)
         Me.NumMontoDolares.Margin = New System.Windows.Forms.Padding(4)
         Me.NumMontoDolares.Name = "NumMontoDolares"
         Me.NumMontoDolares.Size = New System.Drawing.Size(196, 22)
@@ -222,77 +166,35 @@ Partial Class frmSccEditReciboCaja
         Me.NumMontoDolares.Value = New Decimal(New Integer() {0, 0, 0, 65536})
         Me.NumMontoDolares.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
         '
-        'numMontoCordobas
-        '
-        Me.numMontoCordobas.BackColor = System.Drawing.SystemColors.Desktop
-        Me.numMontoCordobas.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numMontoCordobas.Location = New System.Drawing.Point(184, 16)
-        Me.numMontoCordobas.Margin = New System.Windows.Forms.Padding(4)
-        Me.numMontoCordobas.Name = "numMontoCordobas"
-        Me.numMontoCordobas.Size = New System.Drawing.Size(196, 22)
-        Me.numMontoCordobas.TabIndex = 16
-        Me.numMontoCordobas.Tag = Nothing
-        Me.numMontoCordobas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.numMontoCordobas.Value = New Decimal(New Integer() {0, 0, 0, 65536})
-        Me.numMontoCordobas.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(25, 49)
+        Me.Label7.Location = New System.Drawing.Point(15, 38)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(104, 17)
+        Me.Label7.Size = New System.Drawing.Size(51, 17)
         Me.Label7.TabIndex = 11
-        Me.Label7.Text = "Monto Dolares:"
+        Me.Label7.Text = "Monto:"
         '
-        'Label6
+        'cmdEliminar
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(25, 20)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(116, 17)
-        Me.Label6.TabIndex = 10
-        Me.Label6.Text = "Monto Córdobas:"
+        Me.cmdEliminar.ImageIndex = 0
+        Me.cmdEliminar.ImageList = Me.ListaImagenes
+        Me.cmdEliminar.Location = New System.Drawing.Point(8, 374)
+        Me.cmdEliminar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdEliminar.Name = "cmdEliminar"
+        Me.cmdEliminar.Size = New System.Drawing.Size(41, 32)
+        Me.cmdEliminar.TabIndex = 13
+        Me.cmdEliminar.Tag = ""
+        Me.cmdEliminar.Text = "&D"
+        Me.ToolTip1.SetToolTip(Me.cmdEliminar, "Eliminar formas de pago")
+        Me.cmdEliminar.UseVisualStyleBackColor = True
         '
-        'grpCambios
+        'ListaImagenes
         '
-        Me.grpCambios.Controls.Add(Me.numTasaCambio)
-        Me.grpCambios.Controls.Add(Me.lblTasaCambio)
-        Me.grpCambios.Controls.Add(Me.cmbMoneda)
-        Me.grpCambios.Controls.Add(Me.lblMoneda)
-        Me.grpCambios.Location = New System.Drawing.Point(16, 16)
-        Me.grpCambios.Margin = New System.Windows.Forms.Padding(4)
-        Me.grpCambios.Name = "grpCambios"
-        Me.grpCambios.Padding = New System.Windows.Forms.Padding(4)
-        Me.grpCambios.Size = New System.Drawing.Size(396, 82)
-        Me.grpCambios.TabIndex = 9
-        Me.grpCambios.TabStop = False
-        '
-        'numTasaCambio
-        '
-        Me.numTasaCambio.BackColor = System.Drawing.SystemColors.Info
-        Me.numTasaCambio.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numTasaCambio.Location = New System.Drawing.Point(160, 48)
-        Me.numTasaCambio.Margin = New System.Windows.Forms.Padding(4)
-        Me.numTasaCambio.Name = "numTasaCambio"
-        Me.numTasaCambio.Size = New System.Drawing.Size(204, 22)
-        Me.numTasaCambio.TabIndex = 18
-        Me.numTasaCambio.Tag = "BLOQUEADO"
-        Me.numTasaCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.numTasaCambio.Value = New Decimal(New Integer() {0, 0, 0, 65536})
-        Me.numTasaCambio.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
-        '
-        'lblTasaCambio
-        '
-        Me.lblTasaCambio.AutoSize = True
-        Me.lblTasaCambio.Location = New System.Drawing.Point(29, 53)
-        Me.lblTasaCambio.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblTasaCambio.Name = "lblTasaCambio"
-        Me.lblTasaCambio.Size = New System.Drawing.Size(115, 17)
-        Me.lblTasaCambio.TabIndex = 11
-        Me.lblTasaCambio.Text = "Tasa de Cambio:"
+        Me.ListaImagenes.ImageStream = CType(resources.GetObject("ListaImagenes.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ListaImagenes.TransparentColor = System.Drawing.Color.Transparent
+        Me.ListaImagenes.Images.SetKeyName(0, "Eliminar.ico")
         '
         'cmbMoneda
         '
@@ -334,50 +236,10 @@ Partial Class frmSccEditReciboCaja
         Me.lblMoneda.Name = "lblMoneda"
         Me.lblMoneda.Size = New System.Drawing.Size(120, 17)
         Me.lblMoneda.TabIndex = 9
-        Me.lblMoneda.Text = "Moneda de Pago:"
-        '
-        'cmdEliminar
-        '
-        Me.cmdEliminar.ImageIndex = 0
-        Me.cmdEliminar.ImageList = Me.ListaImagenes
-        Me.cmdEliminar.Location = New System.Drawing.Point(8, 374)
-        Me.cmdEliminar.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmdEliminar.Name = "cmdEliminar"
-        Me.cmdEliminar.Size = New System.Drawing.Size(41, 32)
-        Me.cmdEliminar.TabIndex = 13
-        Me.cmdEliminar.Tag = ""
-        Me.cmdEliminar.Text = "&D"
-        Me.ToolTip1.SetToolTip(Me.cmdEliminar, "Eliminar formas de pago")
-        Me.cmdEliminar.UseVisualStyleBackColor = True
-        '
-        'ListaImagenes
-        '
-        Me.ListaImagenes.ImageStream = CType(resources.GetObject("ListaImagenes.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ListaImagenes.TransparentColor = System.Drawing.Color.Transparent
-        Me.ListaImagenes.Images.SetKeyName(0, "Eliminar.ico")
-        '
-        'grdNotasCredito
-        '
-        Me.grdNotasCredito.AllowColMove = False
-        Me.grdNotasCredito.Caption = "Notas de Crédito"
-        Me.grdNotasCredito.Dock = System.Windows.Forms.DockStyle.Top
-        Me.grdNotasCredito.ExtendRightColumn = True
-        Me.grdNotasCredito.GroupByCaption = "Drag a column header here to group by that column"
-        Me.grdNotasCredito.Images.Add(CType(resources.GetObject("grdNotasCredito.Images"), System.Drawing.Image))
-        Me.grdNotasCredito.Location = New System.Drawing.Point(4, 4)
-        Me.grdNotasCredito.Margin = New System.Windows.Forms.Padding(4)
-        Me.grdNotasCredito.Name = "grdNotasCredito"
-        Me.grdNotasCredito.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdNotasCredito.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdNotasCredito.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdNotasCredito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotasCredito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdNotasCredito.Size = New System.Drawing.Size(840, 146)
-        Me.grdNotasCredito.TabIndex = 0
-        Me.grdNotasCredito.PropBag = resources.GetString("grdNotasCredito.PropBag")
         '
         'cmdAceptar
         '
-        Me.cmdAceptar.Location = New System.Drawing.Point(521, 617)
+        Me.cmdAceptar.Location = New System.Drawing.Point(521, 541)
         Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(101, 38)
@@ -391,7 +253,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmdProcesar.Enabled = False
         Me.cmdProcesar.Image = CType(resources.GetObject("cmdProcesar.Image"), System.Drawing.Image)
         Me.cmdProcesar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdProcesar.Location = New System.Drawing.Point(629, 617)
+        Me.cmdProcesar.Location = New System.Drawing.Point(629, 541)
         Me.cmdProcesar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdProcesar.Name = "cmdProcesar"
         Me.cmdProcesar.Size = New System.Drawing.Size(101, 38)
@@ -403,7 +265,7 @@ Partial Class frmSccEditReciboCaja
         'cmdCancelar
         '
         Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Location = New System.Drawing.Point(736, 617)
+        Me.cmdCancelar.Location = New System.Drawing.Point(736, 541)
         Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(101, 38)
@@ -416,27 +278,17 @@ Partial Class frmSccEditReciboCaja
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(536, 558)
+        Me.Label3.Location = New System.Drawing.Point(536, 482)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(112, 17)
+        Me.Label3.Size = New System.Drawing.Size(98, 17)
         Me.Label3.TabIndex = 9
-        Me.Label3.Text = "Total Pagar $:"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(536, 527)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(68, 17)
-        Me.Label2.TabIndex = 8
-        Me.Label2.Text = "Total ND:"
+        Me.Label3.Text = "Total Pagar:"
         '
         'lblTotalFact
         '
         Me.lblTotalFact.AutoSize = True
-        Me.lblTotalFact.Location = New System.Drawing.Point(536, 497)
+        Me.lblTotalFact.Location = New System.Drawing.Point(536, 451)
         Me.lblTotalFact.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalFact.Name = "lblTotalFact"
         Me.lblTotalFact.Size = New System.Drawing.Size(75, 17)
@@ -450,7 +302,7 @@ Partial Class frmSccEditReciboCaja
         'lblError
         '
         Me.lblError.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.lblError.Location = New System.Drawing.Point(16, 598)
+        Me.lblError.Location = New System.Drawing.Point(16, 552)
         Me.lblError.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblError.Name = "lblError"
         Me.lblError.Size = New System.Drawing.Size(24, 22)
@@ -466,7 +318,7 @@ Partial Class frmSccEditReciboCaja
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.txtTotalFact.Enabled = False
         Me.txtTotalFact.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.txtTotalFact.Location = New System.Drawing.Point(652, 494)
+        Me.txtTotalFact.Location = New System.Drawing.Point(652, 448)
         Me.txtTotalFact.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotalFact.Name = "txtTotalFact"
         Me.txtTotalFact.Size = New System.Drawing.Size(164, 22)
@@ -475,26 +327,6 @@ Partial Class frmSccEditReciboCaja
         Me.txtTotalFact.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtTotalFact.Value = New Decimal(New Integer() {0, 0, 0, 65536})
         Me.txtTotalFact.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
-        '
-        'txtTotalDB
-        '
-        Me.txtTotalDB.BackColor = System.Drawing.SystemColors.Info
-        Me.txtTotalDB.DisplayFormat.CustomFormat = "$ #,##0.00"
-        Me.txtTotalDB.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.FormatType Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.txtTotalDB.Enabled = False
-        Me.txtTotalDB.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.txtTotalDB.Location = New System.Drawing.Point(652, 523)
-        Me.txtTotalDB.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtTotalDB.Name = "txtTotalDB"
-        Me.txtTotalDB.Size = New System.Drawing.Size(164, 22)
-        Me.txtTotalDB.TabIndex = 16
-        Me.txtTotalDB.Tag = "BLOQUEADO"
-        Me.txtTotalDB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtTotalDB.Value = New Decimal(New Integer() {0, 0, 0, 65536})
-        Me.txtTotalDB.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
         '
         'txtTotalPagar
         '
@@ -509,7 +341,7 @@ Partial Class frmSccEditReciboCaja
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.txtTotalPagar.Enabled = False
         Me.txtTotalPagar.FormatType = C1.Win.C1Input.FormatTypeEnum.Percent
-        Me.txtTotalPagar.Location = New System.Drawing.Point(652, 554)
+        Me.txtTotalPagar.Location = New System.Drawing.Point(652, 478)
         Me.txtTotalPagar.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotalPagar.Name = "txtTotalPagar"
         Me.txtTotalPagar.Size = New System.Drawing.Size(164, 22)
@@ -625,7 +457,6 @@ Partial Class frmSccEditReciboCaja
         Me.GrpExpediente.Controls.Add(Me.txtCliente)
         Me.GrpExpediente.Controls.Add(Me.Label4)
         Me.GrpExpediente.Controls.Add(Me.txtNumCuenta)
-        Me.GrpExpediente.Controls.Add(Me.txtCodTienda)
         Me.GrpExpediente.Controls.Add(Me.Label5)
         Me.GrpExpediente.Location = New System.Drawing.Point(351, 54)
         Me.GrpExpediente.Margin = New System.Windows.Forms.Padding(4)
@@ -686,15 +517,6 @@ Partial Class frmSccEditReciboCaja
         Me.txtNumCuenta.TabIndex = 3
         Me.txtNumCuenta.Tag = "BLOQUEADO"
         '
-        'txtCodTienda
-        '
-        Me.txtCodTienda.Location = New System.Drawing.Point(115, 21)
-        Me.txtCodTienda.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtCodTienda.Name = "txtCodTienda"
-        Me.txtCodTienda.Size = New System.Drawing.Size(83, 22)
-        Me.txtCodTienda.TabIndex = 2
-        Me.txtCodTienda.Tag = "BLOQUEADO"
-        '
         'Label5
         '
         Me.Label5.AutoSize = True
@@ -725,7 +547,7 @@ Partial Class frmSccEditReciboCaja
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.lblMontoRestante)
         Me.GroupBox1.Controls.Add(Me.lblMontoAbonado)
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 490)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 444)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
@@ -788,64 +610,27 @@ Partial Class frmSccEditReciboCaja
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 660)
+        Me.Panel1.Location = New System.Drawing.Point(0, 620)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(864, 22)
         Me.Panel1.TabIndex = 22
-        '
-        'numTotalPagarCor
-        '
-        Me.numTotalPagarCor.BackColor = System.Drawing.SystemColors.Info
-        Me.numTotalPagarCor.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numTotalPagarCor.DisplayFormat.Inherit = CType((((C1.Win.C1Input.FormatInfoInheritFlags.NullText Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.numTotalPagarCor.EditFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.FormatType Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.numTotalPagarCor.Enabled = False
-        Me.numTotalPagarCor.FormatType = C1.Win.C1Input.FormatTypeEnum.Percent
-        Me.numTotalPagarCor.Location = New System.Drawing.Point(652, 585)
-        Me.numTotalPagarCor.Margin = New System.Windows.Forms.Padding(4)
-        Me.numTotalPagarCor.Name = "numTotalPagarCor"
-        Me.numTotalPagarCor.Size = New System.Drawing.Size(164, 22)
-        Me.numTotalPagarCor.TabIndex = 74
-        Me.numTotalPagarCor.Tag = "BLOQUEADO"
-        Me.numTotalPagarCor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.numTotalPagarCor.Value = New Decimal(New Integer() {0, 0, 0, 65536})
-        Me.numTotalPagarCor.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(536, 590)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(107, 17)
-        Me.Label10.TabIndex = 73
-        Me.Label10.Text = "Total Pagar C$:"
         '
         'frmSccEditReciboCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdCancelar
-        Me.ClientSize = New System.Drawing.Size(864, 682)
-        Me.Controls.Add(Me.numTotalPagarCor)
-        Me.Controls.Add(Me.Label10)
+        Me.ClientSize = New System.Drawing.Size(864, 642)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.grpDatosRecibos)
         Me.Controls.Add(Me.GrpExpediente)
         Me.Controls.Add(Me.txtTotalPagar)
-        Me.Controls.Add(Me.txtTotalDB)
         Me.Controls.Add(Me.txtTotalFact)
         Me.Controls.Add(Me.lblError)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lblTotalFact)
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmdProcesar)
@@ -861,22 +646,14 @@ Partial Class frmSccEditReciboCaja
         Me.Text = "Modificar Recibo Caja"
         Me.tbControl.ResumeLayout(False)
         Me.tbpDetFact.ResumeLayout(False)
-        CType(Me.grdNotaDebito, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdFacturas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbpFormasPago.ResumeLayout(False)
         Me.grpFormaPago.ResumeLayout(False)
-        Me.grpPago.ResumeLayout(False)
-        Me.grpPago.PerformLayout()
+        Me.grpFormaPago.PerformLayout()
         CType(Me.NumMontoDolares, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.numMontoCordobas, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.grpCambios.ResumeLayout(False)
-        Me.grpCambios.PerformLayout()
-        CType(Me.numTasaCambio, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbMoneda, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdNotasCredito, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTotalFact, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTotalDB, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTotalPagar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpDatosRecibos.ResumeLayout(False)
         Me.grpDatosRecibos.PerformLayout()
@@ -885,7 +662,6 @@ Partial Class frmSccEditReciboCaja
         Me.GrpExpediente.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.numTotalPagarCor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -897,9 +673,7 @@ Partial Class frmSccEditReciboCaja
     Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents cmdProcesar As System.Windows.Forms.Button
     Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents grdNotasCredito As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents lblTotalFact As System.Windows.Forms.Label
     Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
     Friend WithEvents cmdEliminar As System.Windows.Forms.Button
@@ -907,7 +681,6 @@ Partial Class frmSccEditReciboCaja
     Friend WithEvents lblError As System.Windows.Forms.Label
     Friend WithEvents txtTotalFact As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents txtTotalPagar As C1.Win.C1Input.C1NumericEdit
-    Friend WithEvents txtTotalDB As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents grpDatosRecibos As System.Windows.Forms.GroupBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
@@ -921,20 +694,13 @@ Partial Class frmSccEditReciboCaja
     Friend WithEvents txtCliente As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtNumCuenta As System.Windows.Forms.TextBox
-    Friend WithEvents txtCodTienda As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents grpFormaPago As System.Windows.Forms.GroupBox
-    Friend WithEvents grpCambios As System.Windows.Forms.GroupBox
-    Friend WithEvents lblTasaCambio As System.Windows.Forms.Label
     Friend WithEvents cmbMoneda As C1.Win.C1List.C1Combo
     Friend WithEvents lblMoneda As System.Windows.Forms.Label
-    Friend WithEvents grpPago As System.Windows.Forms.GroupBox
     Friend WithEvents NumMontoDolares As C1.Win.C1Input.C1NumericEdit
-    Friend WithEvents numMontoCordobas As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents numTasaCambio As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents chkPrima As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
@@ -943,7 +709,4 @@ Partial Class frmSccEditReciboCaja
     Friend WithEvents lblMontRest As System.Windows.Forms.Label
     Friend WithEvents lblMontAbon As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents grdNotaDebito As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents numTotalPagarCor As C1.Win.C1Input.C1NumericEdit
-    Friend WithEvents Label10 As System.Windows.Forms.Label
 End Class
