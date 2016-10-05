@@ -239,6 +239,8 @@ Public Class frmPrincipal
             Me.NavBarCuentas.Enabled = objSeg.TienePermiso("OpcionCuentaXCobrar")
             Me.NavBarFacturasXCuenta.Enabled = objSeg.TienePermiso("OpcionFacturasXCuentas")
             Me.NavBarReciboCaja.Enabled = objSeg.TienePermiso("OpcionReciboCaja")
+            Me.NavBarDevoluciones.Enabled = objSeg.TienePermiso("OpcionDevoluciones")
+
 
 
             'Inventario
@@ -293,6 +295,7 @@ Public Class frmPrincipal
             Me.NavBarCuentas.Enabled = False
             Me.NavBarFacturasXCuenta.Enabled = False
             Me.NavBarReciboCaja.Enabled = False
+            Me.NavBarDevoluciones.Enabled = False
 
 
             ''Sincronizar
@@ -780,6 +783,29 @@ Public Class frmPrincipal
 
 #End Region
 
+#Region "Carga Devoluciones"
+    Private Sub CargarDevoluciones()
+        Dim objDevolucion As New frmSccDevoluciones
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario("frmSccDevoluciones", Me) Then
+                    objDevolucion = New frmSccDevoluciones
+                    objDevolucion.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objDevolucion.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objDevolucion.MdiParent = Me
+                    objDevolucion.Show()
+                End If
+
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+#End Region
+
 #Region "Cargar Solicitud de transferencia"
     Private Sub CargarSolicitudTransferencia()
         Dim objTrans As frmSivSoliTransferencia
@@ -1013,5 +1039,9 @@ Public Class frmPrincipal
 
     Private Sub NavBarReciboCaja_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarReciboCaja.LinkClicked
         CargarRecibosCaja()
+    End Sub
+
+    Private Sub NavBarDevoluciones_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarDevoluciones.LinkClicked
+        CargarDevoluciones()
     End Sub
 End Class

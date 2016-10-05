@@ -23,18 +23,18 @@ Partial Class frmSccDevoluciones
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSccDevoluciones))
-        Me.tstNotaCredito = New System.Windows.Forms.ToolStrip
-        Me.cmdAgregarDev = New System.Windows.Forms.ToolStripButton
-        Me.cmdEditarDev = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdAutorizarDev = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.cmdConsultarDev = New System.Windows.Forms.ToolStripButton
-        Me.cmdBuscarDevolucion = New System.Windows.Forms.ToolStripButton
-        Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator
-        Me.tsbSalir = New System.Windows.Forms.ToolStripButton
-        Me.grdDevolucion = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
+        Me.tstNotaCredito = New System.Windows.Forms.ToolStrip()
+        Me.cmdAgregarDev = New System.Windows.Forms.ToolStripButton()
+        Me.cmdEditarDev = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdAutorizarDev = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdConsultarDev = New System.Windows.Forms.ToolStripButton()
+        Me.cmdBuscarDevolucion = New System.Windows.Forms.ToolStripButton()
+        Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
+        Me.grdDevolucion = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.tstNotaCredito.SuspendLayout()
         CType(Me.grdDevolucion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -45,7 +45,7 @@ Partial Class frmSccDevoluciones
         Me.tstNotaCredito.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregarDev, Me.cmdEditarDev, Me.ToolStripSeparator3, Me.cmdAutorizarDev, Me.ToolStripSeparator1, Me.cmdConsultarDev, Me.cmdBuscarDevolucion, Me.tsbRefrescar, Me.ToolStripSeparator4, Me.tsbSalir})
         Me.tstNotaCredito.Location = New System.Drawing.Point(0, 0)
         Me.tstNotaCredito.Name = "tstNotaCredito"
-        Me.tstNotaCredito.Size = New System.Drawing.Size(731, 39)
+        Me.tstNotaCredito.Size = New System.Drawing.Size(975, 39)
         Me.tstNotaCredito.TabIndex = 2
         Me.tstNotaCredito.Text = "ToolStrip1"
         '
@@ -137,13 +137,14 @@ Partial Class frmSccDevoluciones
         Me.grdDevolucion.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.grdDevolucion.Images.Add(CType(resources.GetObject("grdDevolucion.Images"), System.Drawing.Image))
         Me.grdDevolucion.Location = New System.Drawing.Point(0, 39)
+        Me.grdDevolucion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdDevolucion.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
         Me.grdDevolucion.Name = "grdDevolucion"
         Me.grdDevolucion.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDevolucion.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdDevolucion.PreviewInfo.ZoomFactor = 75
+        Me.grdDevolucion.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDevolucion.PrintInfo.PageSettings = CType(resources.GetObject("grdDevolucion.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdDevolucion.Size = New System.Drawing.Size(731, 513)
+        Me.grdDevolucion.Size = New System.Drawing.Size(975, 640)
         Me.grdDevolucion.TabIndex = 3
         Me.grdDevolucion.Tag = "AGRUPAR"
         Me.grdDevolucion.Text = "Devoluciones"
@@ -152,11 +153,12 @@ Partial Class frmSccDevoluciones
         '
         'frmSccDevoluciones
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(731, 552)
+        Me.ClientSize = New System.Drawing.Size(975, 679)
         Me.Controls.Add(Me.grdDevolucion)
         Me.Controls.Add(Me.tstNotaCredito)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmSccDevoluciones"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Devoluciones"

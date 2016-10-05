@@ -82,6 +82,7 @@ Partial Class frmPrincipal
         Me.RibbonSeparator1 = New C1.Win.C1Ribbon.RibbonSeparator()
         Me.lblServidor = New C1.Win.C1Ribbon.RibbonLabel()
         Me.stbPrincipal = New C1.Win.C1Ribbon.C1StatusBar()
+        Me.NavBarDevoluciones = New DevExpress.XtraNavBar.NavBarItem()
         CType(Me.NavBarPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
         CType(Me.stbPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -173,7 +174,7 @@ Partial Class frmPrincipal
         '
         Me.grpCartera.Caption = "Cartera y Cobro"
         Me.grpCartera.Expanded = True
-        Me.grpCartera.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarClientes), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCuentas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarFacturasXCuenta), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReciboCaja)})
+        Me.grpCartera.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarClientes), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCuentas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarFacturasXCuenta), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReciboCaja), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarDevoluciones)})
         Me.grpCartera.Name = "grpCartera"
         '
         'NavBarCuentas
@@ -278,7 +279,7 @@ Partial Class frmPrincipal
         Me.NavBarPrincipal.ActiveGroup = Me.grpCatalogos
         Me.NavBarPrincipal.Dock = System.Windows.Forms.DockStyle.Left
         Me.NavBarPrincipal.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpCatalogos, Me.grpCartera, Me.grpInventario, Me.grpFacturacion, Me.grpSincronizacion})
-        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarFacturasXCuenta, Me.NavBarReciboCaja})
+        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarFacturasXCuenta, Me.NavBarReciboCaja, Me.NavBarDevoluciones})
         Me.NavBarPrincipal.Location = New System.Drawing.Point(0, 28)
         Me.NavBarPrincipal.LookAndFeel.SkinName = "iMaginary"
         Me.NavBarPrincipal.LookAndFeel.UseDefaultLookAndFeel = False
@@ -484,6 +485,12 @@ Partial Class frmPrincipal
         Me.stbPrincipal.TabIndex = 14
         Me.stbPrincipal.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Silver
         '
+        'NavBarDevoluciones
+        '
+        Me.NavBarDevoluciones.Caption = "Devoluciones"
+        Me.NavBarDevoluciones.Name = "NavBarDevoluciones"
+        Me.NavBarDevoluciones.SmallImage = CType(resources.GetObject("NavBarDevoluciones.SmallImage"), System.Drawing.Image)
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -571,4 +578,5 @@ Partial Class frmPrincipal
     Friend WithEvents NavBarSincroDevoluciones As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarFacturasXCuenta As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarReciboCaja As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents NavBarDevoluciones As DevExpress.XtraNavBar.NavBarItem
 End Class

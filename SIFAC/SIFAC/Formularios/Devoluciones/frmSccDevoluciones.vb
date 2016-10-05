@@ -306,13 +306,13 @@ Public Class frmSccDevoluciones
     Private Sub AplicarSeguridad()
         Dim objSeg As New SsgSeguridad
         Try
-            objSeg.ServicioUsuario = "FRMSCCDEVOLUCION"
+            objSeg.ServicioUsuario = "FrmSccDevolucion"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
-            Me.cmdAgregarDev.Enabled = objSeg.TienePermiso("AGREGARDEV")
-            Me.cmdEditarDev.Enabled = objSeg.TienePermiso("EDITARDEV")
-            Me.cmdAutorizarDev.Enabled = objSeg.TienePermiso("AUTORIZARDEV")
+            Me.cmdAgregarDev.Enabled = objSeg.TienePermiso("AgregarDev")
+            Me.cmdEditarDev.Enabled = objSeg.TienePermiso("EditarDev")
+            Me.cmdAutorizarDev.Enabled = objSeg.TienePermiso("AutorizarDev")
             Me.cmdBuscarDevolucion.Enabled = objSeg.TienePermiso("BuscarDev")
-            Me.cmdConsultarDev.Enabled = objSeg.TienePermiso("CONSULTARDEV")
+            Me.cmdConsultarDev.Enabled = objSeg.TienePermiso("ConsultarDev")
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
