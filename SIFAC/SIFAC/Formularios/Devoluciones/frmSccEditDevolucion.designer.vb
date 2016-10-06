@@ -26,12 +26,10 @@ Partial Class frmSccEditDevolucion
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GrpExpediente = New System.Windows.Forms.GroupBox()
         Me.cmdConsultar = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.cmdExpediente = New System.Windows.Forms.Button()
         Me.txtCliente = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtNumCuenta = New System.Windows.Forms.TextBox()
-        Me.txtCodTienda = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.dtpFecha = New C1.Win.C1Input.C1DateEdit()
         Me.lblFechaPedido = New System.Windows.Forms.Label()
@@ -49,8 +47,6 @@ Partial Class frmSccEditDevolucion
         Me.tbFacturas = New System.Windows.Forms.TabControl()
         Me.PGFacturas = New System.Windows.Forms.TabPage()
         Me.grdFacturas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.cmbSucursal = New C1.Win.C1List.C1Combo()
-        Me.lblEstado = New System.Windows.Forms.Label()
         Me.lblInfo = New System.Windows.Forms.Label()
         Me.cmdAutorizar = New System.Windows.Forms.Button()
         Me.ToolTip = New C1.Win.C1SuperTooltip.C1SuperTooltip(Me.components)
@@ -63,7 +59,6 @@ Partial Class frmSccEditDevolucion
         Me.tbFacturas.SuspendLayout()
         Me.PGFacturas.SuspendLayout()
         CType(Me.grdFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -76,9 +71,9 @@ Partial Class frmSccEditDevolucion
         Me.GroupBox1.Controls.Add(Me.txtNumero)
         Me.GroupBox1.Controls.Add(Me.lblNumeroPedido)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 47)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(887, 118)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
@@ -87,7 +82,7 @@ Partial Class frmSccEditDevolucion
         'txtEstado
         '
         Me.txtEstado.Location = New System.Drawing.Point(83, 53)
-        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.Size = New System.Drawing.Size(265, 22)
         Me.txtEstado.TabIndex = 44
@@ -107,17 +102,15 @@ Partial Class frmSccEditDevolucion
         'GrpExpediente
         '
         Me.GrpExpediente.Controls.Add(Me.cmdConsultar)
-        Me.GrpExpediente.Controls.Add(Me.Label10)
         Me.GrpExpediente.Controls.Add(Me.cmdExpediente)
         Me.GrpExpediente.Controls.Add(Me.txtCliente)
         Me.GrpExpediente.Controls.Add(Me.Label11)
         Me.GrpExpediente.Controls.Add(Me.txtNumCuenta)
-        Me.GrpExpediente.Controls.Add(Me.txtCodTienda)
         Me.GrpExpediente.Controls.Add(Me.Label12)
         Me.GrpExpediente.Location = New System.Drawing.Point(383, 15)
-        Me.GrpExpediente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GrpExpediente.Margin = New System.Windows.Forms.Padding(4)
         Me.GrpExpediente.Name = "GrpExpediente"
-        Me.GrpExpediente.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GrpExpediente.Padding = New System.Windows.Forms.Padding(4)
         Me.GrpExpediente.Size = New System.Drawing.Size(496, 91)
         Me.GrpExpediente.TabIndex = 43
         Me.GrpExpediente.TabStop = False
@@ -127,28 +120,17 @@ Partial Class frmSccEditDevolucion
         '
         Me.cmdConsultar.Image = Global.SIFAC.My.Resources.Resources.Buscar
         Me.cmdConsultar.Location = New System.Drawing.Point(456, 17)
-        Me.cmdConsultar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdConsultar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(32, 28)
         Me.cmdConsultar.TabIndex = 18
         Me.cmdConsultar.Text = "..."
         Me.cmdConsultar.UseVisualStyleBackColor = True
         '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Location = New System.Drawing.Point(204, 25)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(18, 17)
-        Me.Label10.TabIndex = 17
-        Me.Label10.Text = "--"
-        '
         'cmdExpediente
         '
         Me.cmdExpediente.Location = New System.Drawing.Point(421, 17)
-        Me.cmdExpediente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdExpediente.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdExpediente.Name = "cmdExpediente"
         Me.cmdExpediente.Size = New System.Drawing.Size(32, 28)
         Me.cmdExpediente.TabIndex = 0
@@ -158,7 +140,7 @@ Partial Class frmSccEditDevolucion
         'txtCliente
         '
         Me.txtCliente.Location = New System.Drawing.Point(115, 54)
-        Me.txtCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCliente.Name = "txtCliente"
         Me.txtCliente.Size = New System.Drawing.Size(337, 22)
         Me.txtCliente.TabIndex = 5
@@ -178,20 +160,11 @@ Partial Class frmSccEditDevolucion
         'txtNumCuenta
         '
         Me.txtNumCuenta.Location = New System.Drawing.Point(224, 21)
-        Me.txtNumCuenta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNumCuenta.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNumCuenta.Name = "txtNumCuenta"
         Me.txtNumCuenta.Size = New System.Drawing.Size(188, 22)
         Me.txtNumCuenta.TabIndex = 3
         Me.txtNumCuenta.Tag = "BLOQUEADO"
-        '
-        'txtCodTienda
-        '
-        Me.txtCodTienda.Location = New System.Drawing.Point(115, 21)
-        Me.txtCodTienda.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.txtCodTienda.Name = "txtCodTienda"
-        Me.txtCodTienda.Size = New System.Drawing.Size(83, 22)
-        Me.txtCodTienda.TabIndex = 2
-        Me.txtCodTienda.Tag = "BLOQUEADO"
         '
         'Label12
         '
@@ -218,7 +191,7 @@ Partial Class frmSccEditDevolucion
         Me.dtpFecha.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFecha.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFecha.Location = New System.Drawing.Point(83, 84)
-        Me.dtpFecha.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpFecha.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(267, 22)
         Me.dtpFecha.TabIndex = 1
@@ -240,7 +213,7 @@ Partial Class frmSccEditDevolucion
         '
         Me.txtNumero.Enabled = False
         Me.txtNumero.Location = New System.Drawing.Point(83, 23)
-        Me.txtNumero.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNumero.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNumero.Name = "txtNumero"
         Me.txtNumero.Size = New System.Drawing.Size(265, 22)
         Me.txtNumero.TabIndex = 0
@@ -262,9 +235,9 @@ Partial Class frmSccEditDevolucion
         Me.GroupBox2.Controls.Add(Me.numTotal)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Location = New System.Drawing.Point(595, 356)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Size = New System.Drawing.Size(305, 62)
         Me.GroupBox2.TabIndex = 7
         Me.GroupBox2.TabStop = False
@@ -280,7 +253,7 @@ Partial Class frmSccEditDevolucion
         Me.numTotal.ErrorInfo.ShowErrorMessage = False
         Me.numTotal.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numTotal.Location = New System.Drawing.Point(87, 23)
-        Me.numTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numTotal.Margin = New System.Windows.Forms.Padding(4)
         Me.numTotal.Name = "numTotal"
         Me.numTotal.Size = New System.Drawing.Size(196, 22)
         Me.numTotal.TabIndex = 2
@@ -310,7 +283,7 @@ Partial Class frmSccEditDevolucion
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(917, 39)
         Me.Panel2.TabIndex = 8
@@ -320,7 +293,7 @@ Partial Class frmSccEditDevolucion
         '
         Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdCancelar.Location = New System.Drawing.Point(780, 430)
-        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(99, 37)
         Me.cmdCancelar.TabIndex = 10
@@ -331,7 +304,7 @@ Partial Class frmSccEditDevolucion
         'cmdGuardar
         '
         Me.cmdGuardar.Location = New System.Drawing.Point(567, 430)
-        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(99, 37)
         Me.cmdGuardar.TabIndex = 9
@@ -344,7 +317,7 @@ Partial Class frmSccEditDevolucion
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 474)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(917, 27)
         Me.Panel1.TabIndex = 11
@@ -353,7 +326,7 @@ Partial Class frmSccEditDevolucion
         '
         Me.tbFacturas.Controls.Add(Me.PGFacturas)
         Me.tbFacturas.Location = New System.Drawing.Point(13, 172)
-        Me.tbFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbFacturas.Margin = New System.Windows.Forms.Padding(4)
         Me.tbFacturas.Name = "tbFacturas"
         Me.tbFacturas.SelectedIndex = 0
         Me.tbFacturas.Size = New System.Drawing.Size(887, 181)
@@ -363,9 +336,9 @@ Partial Class frmSccEditDevolucion
         '
         Me.PGFacturas.Controls.Add(Me.grdFacturas)
         Me.PGFacturas.Location = New System.Drawing.Point(4, 25)
-        Me.PGFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PGFacturas.Margin = New System.Windows.Forms.Padding(4)
         Me.PGFacturas.Name = "PGFacturas"
-        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(4)
         Me.PGFacturas.Size = New System.Drawing.Size(879, 152)
         Me.PGFacturas.TabIndex = 0
         Me.PGFacturas.Text = "Facturas Asociadas"
@@ -378,7 +351,7 @@ Partial Class frmSccEditDevolucion
         Me.grdFacturas.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdFacturas.Images.Add(CType(resources.GetObject("grdFacturas.Images"), System.Drawing.Image))
         Me.grdFacturas.Location = New System.Drawing.Point(4, 4)
-        Me.grdFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdFacturas.Margin = New System.Windows.Forms.Padding(4)
         Me.grdFacturas.Name = "grdFacturas"
         Me.grdFacturas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdFacturas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
@@ -387,51 +360,6 @@ Partial Class frmSccEditDevolucion
         Me.grdFacturas.Size = New System.Drawing.Size(871, 144)
         Me.grdFacturas.TabIndex = 0
         Me.grdFacturas.PropBag = resources.GetString("grdFacturas.PropBag")
-        '
-        'cmbSucursal
-        '
-        Me.cmbSucursal.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbSucursal.Caption = ""
-        Me.cmbSucursal.CaptionHeight = 17
-        Me.cmbSucursal.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbSucursal.ColumnCaptionHeight = 17
-        Me.cmbSucursal.ColumnFooterHeight = 17
-        Me.cmbSucursal.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbSucursal.ContentHeight = 18
-        Me.cmbSucursal.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbSucursal.DropDownWidth = 250
-        Me.cmbSucursal.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbSucursal.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbSucursal.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbSucursal.EditorHeight = 18
-        Me.cmbSucursal.Images.Add(CType(resources.GetObject("cmbSucursal.Images"), System.Drawing.Image))
-        Me.cmbSucursal.ItemHeight = 15
-        Me.cmbSucursal.LimitToList = True
-        Me.cmbSucursal.Location = New System.Drawing.Point(171, 375)
-        Me.cmbSucursal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.cmbSucursal.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbSucursal.MaxDropDownItems = CType(5, Short)
-        Me.cmbSucursal.MaxLength = 32767
-        Me.cmbSucursal.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbSucursal.Name = "cmbSucursal"
-        Me.cmbSucursal.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbSucursal.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbSucursal.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbSucursal.Size = New System.Drawing.Size(267, 24)
-        Me.cmbSucursal.TabIndex = 69
-        Me.cmbSucursal.Tag = ""
-        Me.cmbSucursal.PropBag = resources.GetString("cmbSucursal.PropBag")
-        '
-        'lblEstado
-        '
-        Me.lblEstado.AutoSize = True
-        Me.lblEstado.Location = New System.Drawing.Point(19, 379)
-        Me.lblEstado.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblEstado.Name = "lblEstado"
-        Me.lblEstado.Size = New System.Drawing.Size(141, 17)
-        Me.lblEstado.TabIndex = 70
-        Me.lblEstado.Tag = ""
-        Me.lblEstado.Text = "Sucursal Devolución:"
         '
         'lblInfo
         '
@@ -447,7 +375,7 @@ Partial Class frmSccEditDevolucion
         Me.cmdAutorizar.Enabled = False
         Me.cmdAutorizar.Image = CType(resources.GetObject("cmdAutorizar.Image"), System.Drawing.Image)
         Me.cmdAutorizar.Location = New System.Drawing.Point(673, 430)
-        Me.cmdAutorizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdAutorizar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdAutorizar.Name = "cmdAutorizar"
         Me.cmdAutorizar.Size = New System.Drawing.Size(99, 37)
         Me.cmdAutorizar.TabIndex = 72
@@ -469,8 +397,6 @@ Partial Class frmSccEditDevolucion
         Me.ClientSize = New System.Drawing.Size(917, 501)
         Me.Controls.Add(Me.cmdAutorizar)
         Me.Controls.Add(Me.lblInfo)
-        Me.Controls.Add(Me.cmbSucursal)
-        Me.Controls.Add(Me.lblEstado)
         Me.Controls.Add(Me.tbFacturas)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.cmdCancelar)
@@ -478,7 +404,7 @@ Partial Class frmSccEditDevolucion
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSccEditDevolucion"
@@ -497,9 +423,7 @@ Partial Class frmSccEditDevolucion
         Me.tbFacturas.ResumeLayout(False)
         Me.PGFacturas.ResumeLayout(False)
         CType(Me.grdFacturas, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbSucursal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -514,12 +438,10 @@ Partial Class frmSccEditDevolucion
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents GrpExpediente As System.Windows.Forms.GroupBox
     Friend WithEvents cmdConsultar As System.Windows.Forms.Button
-    Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents cmdExpediente As System.Windows.Forms.Button
     Friend WithEvents txtCliente As System.Windows.Forms.TextBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents txtNumCuenta As System.Windows.Forms.TextBox
-    Friend WithEvents txtCodTienda As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents cmdGuardar As System.Windows.Forms.Button
@@ -530,8 +452,6 @@ Partial Class frmSccEditDevolucion
     Friend WithEvents grdFacturas As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents txtEstado As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents cmbSucursal As C1.Win.C1List.C1Combo
-    Friend WithEvents lblEstado As System.Windows.Forms.Label
     Friend WithEvents lblInfo As System.Windows.Forms.Label
     Friend WithEvents cmdAutorizar As System.Windows.Forms.Button
     Friend WithEvents ToolTip As C1.Win.C1SuperTooltip.C1SuperTooltip

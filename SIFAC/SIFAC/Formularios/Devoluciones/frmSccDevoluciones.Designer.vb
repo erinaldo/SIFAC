@@ -137,7 +137,7 @@ Partial Class frmSccDevoluciones
         Me.grdDevolucion.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.grdDevolucion.Images.Add(CType(resources.GetObject("grdDevolucion.Images"), System.Drawing.Image))
         Me.grdDevolucion.Location = New System.Drawing.Point(0, 39)
-        Me.grdDevolucion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdDevolucion.Margin = New System.Windows.Forms.Padding(4)
         Me.grdDevolucion.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
         Me.grdDevolucion.Name = "grdDevolucion"
         Me.grdDevolucion.PreviewInfo.Location = New System.Drawing.Point(0, 0)
@@ -158,7 +158,7 @@ Partial Class frmSccDevoluciones
         Me.ClientSize = New System.Drawing.Size(975, 679)
         Me.Controls.Add(Me.grdDevolucion)
         Me.Controls.Add(Me.tstNotaCredito)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmSccDevoluciones"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Devoluciones"
