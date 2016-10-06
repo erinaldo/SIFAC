@@ -7,9 +7,8 @@ Partial Public Class StbRutas
 
 #Region " Variables Miembro " 
 	Protected m_StbRutaID As Integer 
-	Protected m_Codigo As String = Nothing 
 	Protected m_Nombre As String = Nothing 
-	Protected m_objCobradorID As Nullable(Of Integer) 
+	Protected m_ojbCobradorID As Nullable(Of Integer) 
 	Protected m_objSupervisor As Nullable(Of Integer) 
 	Protected m_DiaCobro As String = Nothing 
 	Protected m_objPaisID As Nullable(Of Integer) 
@@ -21,6 +20,7 @@ Partial Public Class StbRutas
 	Protected m_FechaModificacion As Nullable(Of Date) 
 	Protected m_UsuarioModificacion As String = Nothing 
 	Protected m_Descripcion As String = Nothing 
+	Protected m_Codigo As String = Nothing 
 #End Region
 
 #Region " Propiedades "
@@ -30,20 +30,6 @@ Partial Public Class StbRutas
         End Get
 		Set(ByVal Value As Integer)					
 			m_StbRutaID = Value
-		End Set
-    End Property
-	
-	Public Property Codigo() As String
-        Get
-            Return (m_Codigo)
-        End Get
-		Set(ByVal Value As String)		
-			If Not Value Is Nothing Then
-				If Value.Length > 50 Then
-					Throw New ArgumentOutOfRangeException("Codigo", Value.ToString(), "Valor inv?lido para StbRutas.Codigo. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
-				End If
-			End If
-			m_Codigo = Value
 		End Set
     End Property
 	
@@ -61,12 +47,12 @@ Partial Public Class StbRutas
 		End Set
     End Property
 	
-	Public Property objCobradorID() As Nullable(Of Integer)
+	Public Property ojbCobradorID() As Nullable(Of Integer)
         Get
-            Return (m_objCobradorID)
+            Return (m_ojbCobradorID)
         End Get
 		Set(ByVal Value As Nullable(Of Integer))					
-			m_objCobradorID = Value
+			m_ojbCobradorID = Value
 		End Set
     End Property
 	
@@ -189,11 +175,23 @@ Partial Public Class StbRutas
 		End Set
     End Property
 	
+	Public Property Codigo() As String
+        Get
+            Return (m_Codigo)
+        End Get
+		Set(ByVal Value As String)		
+			If Not Value Is Nothing Then
+				If Value.Length > 50 Then
+					Throw New ArgumentOutOfRangeException("Codigo", Value.ToString(), "Valor inv?lido para StbRutas.Codigo. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
+				End If
+			End If
+			m_Codigo = Value
+		End Set
+    End Property
+	
 
 	Public Shared Function GetMaxLength(ProperyName as String) as Integer
 		Select Case ProperyName
-			Case "Codigo"
-				Return	50
 			Case "Nombre"
 				Return	50
 			Case "DiaCobro"
@@ -204,6 +202,8 @@ Partial Public Class StbRutas
 				Return	30
 			Case "Descripcion"
 				Return	100
+			Case "Codigo"
+				Return	50
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
 		End Select
@@ -238,9 +238,8 @@ Partial Public Class StbRutas
 			cmdDelete.CommandText = "DELETE FROM  StbRutas WHERE StbRutaID= @StbRutaID" 	
 
 			'CREACION DEL COMANDO INSERT
-			cmdInsert.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
 			cmdInsert.Parameters.Add("@Nombre", SqlDbType.VarChar, 50, "Nombre")
-			cmdInsert.Parameters.Add("@objCobradorID", SqlDbType.Int, 4, "objCobradorID")
+			cmdInsert.Parameters.Add("@ojbCobradorID", SqlDbType.Int, 4, "ojbCobradorID")
 			cmdInsert.Parameters.Add("@objSupervisor", SqlDbType.Int, 4, "objSupervisor")
 			cmdInsert.Parameters.Add("@DiaCobro", SqlDbType.VarChar, 20, "DiaCobro")
 			cmdInsert.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
@@ -252,12 +251,12 @@ Partial Public Class StbRutas
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdInsert.Parameters.Add("@Descripcion", SqlDbType.VarChar, 100, "Descripcion")
-			cmdInsert.CommandText = "INSERT INTO StbRutas ( Codigo, Nombre, objCobradorID, objSupervisor, DiaCobro, objPaisID, objCiudadID, CargarDiferenciada, Activa, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, Descripcion) VALUES ( @Codigo, @Nombre, @objCobradorID, @objSupervisor, @DiaCobro, @objPaisID, @objCiudadID, @CargarDiferenciada, @Activa, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @Descripcion)"
+			cmdInsert.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
+			cmdInsert.CommandText = "INSERT INTO StbRutas ( Nombre, ojbCobradorID, objSupervisor, DiaCobro, objPaisID, objCiudadID, CargarDiferenciada, Activa, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, Descripcion, Codigo) VALUES ( @Nombre, @ojbCobradorID, @objSupervisor, @DiaCobro, @objPaisID, @objCiudadID, @CargarDiferenciada, @Activa, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @Descripcion, @Codigo)"
 
 			'CREACION DEL COMANDO UPDATE
-			cmdUpdate.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
 			cmdUpdate.Parameters.Add("@Nombre", SqlDbType.VarChar, 50, "Nombre")
-			cmdUpdate.Parameters.Add("@objCobradorID", SqlDbType.Int, 4, "objCobradorID")
+			cmdUpdate.Parameters.Add("@ojbCobradorID", SqlDbType.Int, 4, "ojbCobradorID")
 			cmdUpdate.Parameters.Add("@objSupervisor", SqlDbType.Int, 4, "objSupervisor")
 			cmdUpdate.Parameters.Add("@DiaCobro", SqlDbType.VarChar, 20, "DiaCobro")
 			cmdUpdate.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
@@ -269,8 +268,9 @@ Partial Public Class StbRutas
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@Descripcion", SqlDbType.VarChar, 100, "Descripcion")
+			cmdUpdate.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
 			cmdUpdate.Parameters.Add("@wStbRutaID", SqlDbType.Int, 4, "StbRutaID")
-			cmdUpdate.CommandText = "UPDATE StbRutas SET Codigo=@Codigo, Nombre=@Nombre, objCobradorID=@objCobradorID, objSupervisor=@objSupervisor, DiaCobro=@DiaCobro, objPaisID=@objPaisID, objCiudadID=@objCiudadID, CargarDiferenciada=@CargarDiferenciada, Activa=@Activa, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, Descripcion=@Descripcion WHERE StbRutaID= @wStbRutaID"
+			cmdUpdate.CommandText = "UPDATE StbRutas SET Nombre=@Nombre, ojbCobradorID=@ojbCobradorID, objSupervisor=@objSupervisor, DiaCobro=@DiaCobro, objPaisID=@objPaisID, objCiudadID=@objCiudadID, CargarDiferenciada=@CargarDiferenciada, Activa=@Activa, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, Descripcion=@Descripcion, Codigo=@Codigo WHERE StbRutaID= @wStbRutaID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -317,9 +317,8 @@ Partial Public Class StbRutas
 			
 			If dr.Read() Then		
 				m_StbRutaID = dr("StbRutaID")
-				m_Codigo = IIf(IsDBNull(dr("Codigo")), Nothing, dr("Codigo"))					
 				m_Nombre = IIf(IsDBNull(dr("Nombre")), Nothing, dr("Nombre"))					
-				m_objCobradorID = IIf(IsDBNull(dr("objCobradorID")), Nothing, dr("objCobradorID"))					
+				m_ojbCobradorID = IIf(IsDBNull(dr("ojbCobradorID")), Nothing, dr("ojbCobradorID"))					
 				m_objSupervisor = IIf(IsDBNull(dr("objSupervisor")), Nothing, dr("objSupervisor"))					
 				m_DiaCobro = IIf(IsDBNull(dr("DiaCobro")), Nothing, dr("DiaCobro"))					
 				m_objPaisID = IIf(IsDBNull(dr("objPaisID")), Nothing, dr("objPaisID"))					
@@ -331,6 +330,7 @@ Partial Public Class StbRutas
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_Descripcion = IIf(IsDBNull(dr("Descripcion")), Nothing, dr("Descripcion"))					
+				m_Codigo = IIf(IsDBNull(dr("Codigo")), Nothing, dr("Codigo"))					
 				Return True
 			Else
 				Return False
@@ -365,9 +365,8 @@ Partial Public Class StbRutas
 				
 			If dr.Read() Then
 				m_StbRutaID = dr("StbRutaID")
-				m_Codigo = IIf(IsDBNull(dr("Codigo")), Nothing, dr("Codigo"))					
 				m_Nombre = IIf(IsDBNull(dr("Nombre")), Nothing, dr("Nombre"))					
-				m_objCobradorID = IIf(IsDBNull(dr("objCobradorID")), Nothing, dr("objCobradorID"))					
+				m_ojbCobradorID = IIf(IsDBNull(dr("ojbCobradorID")), Nothing, dr("ojbCobradorID"))					
 				m_objSupervisor = IIf(IsDBNull(dr("objSupervisor")), Nothing, dr("objSupervisor"))					
 				m_DiaCobro = IIf(IsDBNull(dr("DiaCobro")), Nothing, dr("DiaCobro"))					
 				m_objPaisID = IIf(IsDBNull(dr("objPaisID")), Nothing, dr("objPaisID"))					
@@ -379,6 +378,7 @@ Partial Public Class StbRutas
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_Descripcion = IIf(IsDBNull(dr("Descripcion")), Nothing, dr("Descripcion"))					
+				m_Codigo = IIf(IsDBNull(dr("Codigo")), Nothing, dr("Codigo"))					
 				Return True
 			Else
 				Return False
@@ -504,9 +504,8 @@ Partial Public Class StbRutas
     ''' <remarks></remarks>
 	Public Sub Insert(Optional ByRef pTransac As TransactionManager = Nothing)
 		Dim sCommand As String = "insert into StbRutas("
-		sCommand &= "Codigo,"
 		sCommand &= "Nombre,"
-		sCommand &= "objCobradorID,"
+		sCommand &= "ojbCobradorID,"
 		sCommand &= "objSupervisor,"
 		sCommand &= "DiaCobro,"
 		sCommand &= "objPaisID,"
@@ -517,10 +516,10 @@ Partial Public Class StbRutas
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaModificacion,"
 		sCommand &= "UsuarioModificacion,"
-		sCommand &= "Descripcion) values ("		
-		sCommand &= "@Codigo,"
+		sCommand &= "Descripcion,"
+		sCommand &= "Codigo) values ("		
 		sCommand &= "@Nombre,"
-		sCommand &= "@objCobradorID,"
+		sCommand &= "@ojbCobradorID,"
 		sCommand &= "@objSupervisor,"
 		sCommand &= "@DiaCobro,"
 		sCommand &= "@objPaisID,"
@@ -531,7 +530,8 @@ Partial Public Class StbRutas
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaModificacion,"
 		sCommand &= "@UsuarioModificacion,"
-		sCommand &= "@Descripcion)"		
+		sCommand &= "@Descripcion,"
+		sCommand &= "@Codigo)"		
 	
 		sCommand &= " select "
 		sCommand &= "@StbRutaID = StbRutaID from StbRutas where "		
@@ -541,89 +541,89 @@ Partial Public Class StbRutas
 		Dim arParams(14) As SqlParameter
 		arParams(0) = New SqlParameter("@StbRutaID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
-		arParams(1) = New SqlParameter("@Codigo", SqlDbType.VarChar)		
-		If IsDBNull(m_Codigo) Then
+		arParams(1) = New SqlParameter("@Nombre", SqlDbType.VarChar)		
+		If IsDBNull(m_Nombre) Then
             arParams(1).Value = DBNull.Value
         Else
-            arParams(1).Value = m_Codigo
+            arParams(1).Value = m_Nombre
         End If
-		arParams(2) = New SqlParameter("@Nombre", SqlDbType.VarChar)		
-		If IsDBNull(m_Nombre) Then
+		arParams(2) = New SqlParameter("@ojbCobradorID", SqlDbType.Int)		
+		If IsDBNull(m_ojbCobradorID) Then
             arParams(2).Value = DBNull.Value
         Else
-            arParams(2).Value = m_Nombre
+            arParams(2).Value = m_ojbCobradorID
         End If
-		arParams(3) = New SqlParameter("@objCobradorID", SqlDbType.Int)		
-		If IsDBNull(m_objCobradorID) Then
+		arParams(3) = New SqlParameter("@objSupervisor", SqlDbType.Int)		
+		If IsDBNull(m_objSupervisor) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_objCobradorID
+            arParams(3).Value = m_objSupervisor
         End If
-		arParams(4) = New SqlParameter("@objSupervisor", SqlDbType.Int)		
-		If IsDBNull(m_objSupervisor) Then
+		arParams(4) = New SqlParameter("@DiaCobro", SqlDbType.VarChar)		
+		If IsDBNull(m_DiaCobro) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_objSupervisor
+            arParams(4).Value = m_DiaCobro
         End If
-		arParams(5) = New SqlParameter("@DiaCobro", SqlDbType.VarChar)		
-		If IsDBNull(m_DiaCobro) Then
+		arParams(5) = New SqlParameter("@objPaisID", SqlDbType.Int)		
+		If IsDBNull(m_objPaisID) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_DiaCobro
+            arParams(5).Value = m_objPaisID
         End If
-		arParams(6) = New SqlParameter("@objPaisID", SqlDbType.Int)		
-		If IsDBNull(m_objPaisID) Then
+		arParams(6) = New SqlParameter("@objCiudadID", SqlDbType.Int)		
+		If IsDBNull(m_objCiudadID) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_objPaisID
+            arParams(6).Value = m_objCiudadID
         End If
-		arParams(7) = New SqlParameter("@objCiudadID", SqlDbType.Int)		
-		If IsDBNull(m_objCiudadID) Then
+		arParams(7) = New SqlParameter("@CargarDiferenciada", SqlDbType.Bit)		
+		If IsDBNull(m_CargarDiferenciada) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_objCiudadID
+            arParams(7).Value = m_CargarDiferenciada
         End If
-		arParams(8) = New SqlParameter("@CargarDiferenciada", SqlDbType.Bit)		
-		If IsDBNull(m_CargarDiferenciada) Then
+		arParams(8) = New SqlParameter("@Activa", SqlDbType.Bit)		
+		If IsDBNull(m_Activa) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_CargarDiferenciada
+            arParams(8).Value = m_Activa
         End If
-		arParams(9) = New SqlParameter("@Activa", SqlDbType.Bit)		
-		If IsDBNull(m_Activa) Then
+		arParams(9) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_Activa
+            arParams(9).Value = m_FechaCreacion
         End If
-		arParams(10) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(10) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_FechaCreacion
+            arParams(10).Value = m_UsuarioCreacion
         End If
-		arParams(11) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(11) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_UsuarioCreacion
+            arParams(11).Value = m_FechaModificacion
         End If
-		arParams(12) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(12) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_FechaModificacion
+            arParams(12).Value = m_UsuarioModificacion
         End If
-		arParams(13) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(13) = New SqlParameter("@Descripcion", SqlDbType.VarChar)		
+		If IsDBNull(m_Descripcion) Then
             arParams(13).Value = DBNull.Value
         Else
-            arParams(13).Value = m_UsuarioModificacion
+            arParams(13).Value = m_Descripcion
         End If
-		arParams(14) = New SqlParameter("@Descripcion", SqlDbType.VarChar)		
-		If IsDBNull(m_Descripcion) Then
+		arParams(14) = New SqlParameter("@Codigo", SqlDbType.VarChar)		
+		If IsDBNull(m_Codigo) Then
             arParams(14).Value = DBNull.Value
         Else
-            arParams(14).Value = m_Descripcion
+            arParams(14).Value = m_Codigo
         End If
 	
 		Try
@@ -649,9 +649,8 @@ Partial Public Class StbRutas
     ''' <remarks></remarks>
 	Public Sub Update(Optional ByRef pTransac As TransactionManager = Nothing)        		
 		Dim sCommand As String = "update StbRutas set "		
-		sCommand &= "Codigo = @Codigo,"
 		sCommand &= "Nombre = @Nombre,"
-		sCommand &= "objCobradorID = @objCobradorID,"
+		sCommand &= "ojbCobradorID = @ojbCobradorID,"
 		sCommand &= "objSupervisor = @objSupervisor,"
 		sCommand &= "DiaCobro = @DiaCobro,"
 		sCommand &= "objPaisID = @objPaisID,"
@@ -662,7 +661,8 @@ Partial Public Class StbRutas
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
 		sCommand &= "FechaModificacion = @FechaModificacion,"
 		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
-		sCommand &= "Descripcion = @Descripcion"		
+		sCommand &= "Descripcion = @Descripcion,"
+		sCommand &= "Codigo = @Codigo"		
 		sCommand &= " where "	
 		sCommand &= "StbRutaID = @StbRutaID"					
 		
@@ -673,89 +673,89 @@ Partial Public Class StbRutas
         Else
             arParams(0).Value = m_StbRutaID
         End If
-		arParams(1) = New SqlParameter("@Codigo", SqlDbType.VarChar)		
-		If IsDBNull(m_Codigo) Then
+		arParams(1) = New SqlParameter("@Nombre", SqlDbType.VarChar)		
+		If IsDBNull(m_Nombre) Then
             arParams(1).Value = DBNull.Value
         Else
-            arParams(1).Value = m_Codigo
+            arParams(1).Value = m_Nombre
         End If
-		arParams(2) = New SqlParameter("@Nombre", SqlDbType.VarChar)		
-		If IsDBNull(m_Nombre) Then
+		arParams(2) = New SqlParameter("@ojbCobradorID", SqlDbType.Int)		
+		If IsDBNull(m_ojbCobradorID) Then
             arParams(2).Value = DBNull.Value
         Else
-            arParams(2).Value = m_Nombre
+            arParams(2).Value = m_ojbCobradorID
         End If
-		arParams(3) = New SqlParameter("@objCobradorID", SqlDbType.Int)		
-		If IsDBNull(m_objCobradorID) Then
+		arParams(3) = New SqlParameter("@objSupervisor", SqlDbType.Int)		
+		If IsDBNull(m_objSupervisor) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_objCobradorID
+            arParams(3).Value = m_objSupervisor
         End If
-		arParams(4) = New SqlParameter("@objSupervisor", SqlDbType.Int)		
-		If IsDBNull(m_objSupervisor) Then
+		arParams(4) = New SqlParameter("@DiaCobro", SqlDbType.VarChar)		
+		If IsDBNull(m_DiaCobro) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_objSupervisor
+            arParams(4).Value = m_DiaCobro
         End If
-		arParams(5) = New SqlParameter("@DiaCobro", SqlDbType.VarChar)		
-		If IsDBNull(m_DiaCobro) Then
+		arParams(5) = New SqlParameter("@objPaisID", SqlDbType.Int)		
+		If IsDBNull(m_objPaisID) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_DiaCobro
+            arParams(5).Value = m_objPaisID
         End If
-		arParams(6) = New SqlParameter("@objPaisID", SqlDbType.Int)		
-		If IsDBNull(m_objPaisID) Then
+		arParams(6) = New SqlParameter("@objCiudadID", SqlDbType.Int)		
+		If IsDBNull(m_objCiudadID) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_objPaisID
+            arParams(6).Value = m_objCiudadID
         End If
-		arParams(7) = New SqlParameter("@objCiudadID", SqlDbType.Int)		
-		If IsDBNull(m_objCiudadID) Then
+		arParams(7) = New SqlParameter("@CargarDiferenciada", SqlDbType.Bit)		
+		If IsDBNull(m_CargarDiferenciada) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_objCiudadID
+            arParams(7).Value = m_CargarDiferenciada
         End If
-		arParams(8) = New SqlParameter("@CargarDiferenciada", SqlDbType.Bit)		
-		If IsDBNull(m_CargarDiferenciada) Then
+		arParams(8) = New SqlParameter("@Activa", SqlDbType.Bit)		
+		If IsDBNull(m_Activa) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_CargarDiferenciada
+            arParams(8).Value = m_Activa
         End If
-		arParams(9) = New SqlParameter("@Activa", SqlDbType.Bit)		
-		If IsDBNull(m_Activa) Then
+		arParams(9) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_Activa
+            arParams(9).Value = m_FechaCreacion
         End If
-		arParams(10) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(10) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_FechaCreacion
+            arParams(10).Value = m_UsuarioCreacion
         End If
-		arParams(11) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(11) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_UsuarioCreacion
+            arParams(11).Value = m_FechaModificacion
         End If
-		arParams(12) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(12) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_FechaModificacion
+            arParams(12).Value = m_UsuarioModificacion
         End If
-		arParams(13) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(13) = New SqlParameter("@Descripcion", SqlDbType.VarChar)		
+		If IsDBNull(m_Descripcion) Then
             arParams(13).Value = DBNull.Value
         Else
-            arParams(13).Value = m_UsuarioModificacion
+            arParams(13).Value = m_Descripcion
         End If
-		arParams(14) = New SqlParameter("@Descripcion", SqlDbType.VarChar)		
-		If IsDBNull(m_Descripcion) Then
+		arParams(14) = New SqlParameter("@Codigo", SqlDbType.VarChar)		
+		If IsDBNull(m_Codigo) Then
             arParams(14).Value = DBNull.Value
         Else
-            arParams(14).Value = m_Descripcion
+            arParams(14).Value = m_Codigo
         End If
 	
 		Try

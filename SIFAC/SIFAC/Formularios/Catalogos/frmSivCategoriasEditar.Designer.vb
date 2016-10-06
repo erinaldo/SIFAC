@@ -64,7 +64,7 @@ Partial Class frmSivCategoriasEditar
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 3
+        Me.cmdCancelar.TabIndex = 4
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -79,7 +79,7 @@ Partial Class frmSivCategoriasEditar
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 2
+        Me.cmdGuardar.TabIndex = 3
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
@@ -90,9 +90,9 @@ Partial Class frmSivCategoriasEditar
         Me.gbxDatosGenerales.Controls.Add(Me.txtNombre)
         Me.gbxDatosGenerales.Controls.Add(Me.lblDescripcion)
         Me.gbxDatosGenerales.Controls.Add(Me.lblSfaPromocionID)
-        Me.gbxDatosGenerales.Location = New System.Drawing.Point(23, 12)
+        Me.gbxDatosGenerales.Location = New System.Drawing.Point(5, 12)
         Me.gbxDatosGenerales.Name = "gbxDatosGenerales"
-        Me.gbxDatosGenerales.Size = New System.Drawing.Size(475, 128)
+        Me.gbxDatosGenerales.Size = New System.Drawing.Size(493, 128)
         Me.gbxDatosGenerales.TabIndex = 1
         Me.gbxDatosGenerales.TabStop = False
         '
@@ -105,34 +105,34 @@ Partial Class frmSivCategoriasEditar
         Me.chkActivo.Location = New System.Drawing.Point(400, 24)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
-        Me.chkActivo.TabIndex = 2
+        Me.chkActivo.TabIndex = 1
         Me.chkActivo.Text = "Activa"
         Me.chkActivo.UseVisualStyleBackColor = True
         '
         'txtDescripcion
         '
-        Me.txtDescripcion.Location = New System.Drawing.Point(82, 50)
+        Me.txtDescripcion.Location = New System.Drawing.Point(97, 50)
         Me.txtDescripcion.Multiline = True
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtDescripcion.Size = New System.Drawing.Size(375, 65)
-        Me.txtDescripcion.TabIndex = 1
+        Me.txtDescripcion.Size = New System.Drawing.Size(360, 65)
+        Me.txtDescripcion.TabIndex = 2
         Me.txtDescripcion.Tag = ""
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(82, 24)
+        Me.txtNombre.Location = New System.Drawing.Point(97, 24)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(259, 20)
+        Me.txtNombre.Size = New System.Drawing.Size(244, 20)
         Me.txtNombre.TabIndex = 0
         Me.txtNombre.TabStop = False
-        Me.txtNombre.Tag = "BLOQUEADO"
+        Me.txtNombre.Tag = ""
         '
         'lblDescripcion
         '
         Me.lblDescripcion.AutoSize = True
         Me.lblDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescripcion.Location = New System.Drawing.Point(-2, 53)
+        Me.lblDescripcion.Location = New System.Drawing.Point(8, 53)
         Me.lblDescripcion.Name = "lblDescripcion"
         Me.lblDescripcion.Size = New System.Drawing.Size(78, 13)
         Me.lblDescripcion.TabIndex = 0
@@ -143,7 +143,7 @@ Partial Class frmSivCategoriasEditar
         '
         Me.lblSfaPromocionID.AutoSize = True
         Me.lblSfaPromocionID.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSfaPromocionID.Location = New System.Drawing.Point(-2, 28)
+        Me.lblSfaPromocionID.Location = New System.Drawing.Point(8, 28)
         Me.lblSfaPromocionID.Name = "lblSfaPromocionID"
         Me.lblSfaPromocionID.Size = New System.Drawing.Size(54, 13)
         Me.lblSfaPromocionID.TabIndex = 0

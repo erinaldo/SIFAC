@@ -44,10 +44,12 @@ Public Class frmMarcasEdit
                     Me.Text = "Agregar Marca"
                     chkActivo.Checked = True
                     chkActivo.Enabled = False
+                    txtNombreMarca.Focus()
                 Case 1
                     Me.Text = "Editar Marca"
                     CargarDatosMarca()
                     chkActivo.Enabled = True
+                    txtNombreMarca.Focus()
                 Case 2
                     Me.Text = "Consultar Marca"
                     CargarDatosMarca()
@@ -55,6 +57,7 @@ Public Class frmMarcasEdit
                     txtDescripcion.Enabled = False
                     chkActivo.Enabled = False
                     cmdGuardar.Enabled = False
+                    txtNombreMarca.Focus()
             End Select
         Catch ex As Exception
             clsError.CaptarError(ex)

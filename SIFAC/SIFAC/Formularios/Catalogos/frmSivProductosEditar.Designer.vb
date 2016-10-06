@@ -109,7 +109,7 @@ Partial Class frmSivProductosEditar
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 8
+        Me.cmdCancelar.TabIndex = 12
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -124,7 +124,7 @@ Partial Class frmSivProductosEditar
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 7
+        Me.cmdGuardar.TabIndex = 11
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
@@ -143,7 +143,7 @@ Partial Class frmSivProductosEditar
         Me.GroupControl2.Controls.Add(Me.Label3)
         Me.GroupControl2.Controls.Add(Me.Label2)
         Me.GroupControl2.Location = New System.Drawing.Point(443, 14)
-        Me.GroupControl2.LookAndFeel.SkinName = "iMaginary"
+        Me.GroupControl2.LookAndFeel.SkinName = "Caramel"
         Me.GroupControl2.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.Size = New System.Drawing.Size(310, 201)
@@ -156,7 +156,7 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioContado.Name = "spnPrecioContado"
         Me.spnPrecioContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
         Me.spnPrecioContado.Size = New System.Drawing.Size(91, 20)
-        Me.spnPrecioContado.TabIndex = 20
+        Me.spnPrecioContado.TabIndex = 7
         '
         'spnMargenCredito
         '
@@ -165,7 +165,7 @@ Partial Class frmSivProductosEditar
         Me.spnMargenCredito.Name = "spnMargenCredito"
         Me.spnMargenCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
         Me.spnMargenCredito.Size = New System.Drawing.Size(91, 20)
-        Me.spnMargenCredito.TabIndex = 20
+        Me.spnMargenCredito.TabIndex = 8
         '
         'spnPrecioCredito
         '
@@ -174,7 +174,7 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioCredito.Name = "spnPrecioCredito"
         Me.spnPrecioCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
         Me.spnPrecioCredito.Size = New System.Drawing.Size(91, 20)
-        Me.spnPrecioCredito.TabIndex = 19
+        Me.spnPrecioCredito.TabIndex = 6
         '
         'spnMargenContado
         '
@@ -183,7 +183,7 @@ Partial Class frmSivProductosEditar
         Me.spnMargenContado.Name = "spnMargenContado"
         Me.spnMargenContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, True)})
         Me.spnMargenContado.Size = New System.Drawing.Size(91, 20)
-        Me.spnMargenContado.TabIndex = 21
+        Me.spnMargenContado.TabIndex = 0
         '
         'spnCostoPromedio
         '
@@ -192,7 +192,7 @@ Partial Class frmSivProductosEditar
         Me.spnCostoPromedio.Name = "spnCostoPromedio"
         Me.spnCostoPromedio.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, True)})
         Me.spnCostoPromedio.Size = New System.Drawing.Size(91, 20)
-        Me.spnCostoPromedio.TabIndex = 9
+        Me.spnCostoPromedio.TabIndex = 5
         '
         'spnCantidadMinima
         '
@@ -201,7 +201,7 @@ Partial Class frmSivProductosEditar
         Me.spnCantidadMinima.Name = "spnCantidadMinima"
         Me.spnCantidadMinima.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject6, "", Nothing, Nothing, True)})
         Me.spnCantidadMinima.Size = New System.Drawing.Size(91, 20)
-        Me.spnCantidadMinima.TabIndex = 22
+        Me.spnCantidadMinima.TabIndex = 10
         '
         'Label7
         '
@@ -281,7 +281,7 @@ Partial Class frmSivProductosEditar
         Me.GroupControl1.Controls.Add(Me.lblMarca)
         Me.GroupControl1.Controls.Add(Me.lblModelo)
         Me.GroupControl1.Location = New System.Drawing.Point(12, 14)
-        Me.GroupControl1.LookAndFeel.SkinName = "iMaginary"
+        Me.GroupControl1.LookAndFeel.SkinName = "Caramel"
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(416, 201)
@@ -293,7 +293,7 @@ Partial Class frmSivProductosEditar
         Me.txtNombre.Location = New System.Drawing.Point(92, 81)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(279, 20)
-        Me.txtNombre.TabIndex = 15
+        Me.txtNombre.TabIndex = 1
         Me.txtNombre.Tag = "OBLIGATORIO"
         '
         'Label1
@@ -334,7 +334,7 @@ Partial Class frmSivProductosEditar
         Me.cbxCategoria.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cbxCategoria.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cbxCategoria.Size = New System.Drawing.Size(279, 21)
-        Me.cbxCategoria.TabIndex = 9
+        Me.cbxCategoria.TabIndex = 2
         Me.cbxCategoria.Tag = "OBLIGATORIO"
         Me.cbxCategoria.PropBag = resources.GetString("cbxCategoria.PropBag")
         '
@@ -365,7 +365,7 @@ Partial Class frmSivProductosEditar
         Me.cbxMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cbxMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cbxMarca.Size = New System.Drawing.Size(279, 21)
-        Me.cbxMarca.TabIndex = 7
+        Me.cbxMarca.TabIndex = 3
         Me.cbxMarca.Tag = "OBLIGATORIO"
         Me.cbxMarca.PropBag = resources.GetString("cbxMarca.PropBag")
         '
@@ -374,7 +374,7 @@ Partial Class frmSivProductosEditar
         Me.txtProducto.Location = New System.Drawing.Point(92, 55)
         Me.txtProducto.Name = "txtProducto"
         Me.txtProducto.Size = New System.Drawing.Size(279, 20)
-        Me.txtProducto.TabIndex = 5
+        Me.txtProducto.TabIndex = 0
         Me.txtProducto.Tag = "OBLIGATORIO"
         '
         'chkActivo
@@ -384,7 +384,7 @@ Partial Class frmSivProductosEditar
         Me.chkActivo.Location = New System.Drawing.Point(311, 171)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
-        Me.chkActivo.TabIndex = 13
+        Me.chkActivo.TabIndex = 4
         Me.chkActivo.Text = "Activo"
         Me.chkActivo.UseVisualStyleBackColor = True
         '

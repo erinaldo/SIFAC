@@ -43,6 +43,13 @@ Public Class frmBodegasEditar
     Public Sub CargarCiudad()
         Try
             DtCiudad = StbCiudad.RetrieveDT("", "", "StbCiudadID,Nombre")
+
+            Dim newCiudadsRow As DataRow
+            newCiudadsRow = DtCiudad.NewRow()
+            newCiudadsRow("StbCiudadID") = "0"
+            newCiudadsRow("Nombre") = "Ninguna"
+            DtCiudad.Rows.Add(newCiudadsRow)
+
             With cmbCiudad
                 .DataSource = DtCiudad
                 .DisplayMember = "Nombre"
@@ -60,6 +67,13 @@ Public Class frmBodegasEditar
     Public Sub CargarJefe()
         Try
             DtJefe = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
+
+            Dim newJefeRow As DataRow
+            newJefeRow = DtJefe.NewRow()
+            newJefeRow("SrhEmpleadoID") = "0"
+            newJefeRow("NombreCompleto") = "Ninguna"
+            DtJefe.Rows.Add(newJefeRow)
+
             With cmbJefe
                 .DataSource = DtJefe
                 .DisplayMember = "NombreCompleto"
@@ -310,6 +324,7 @@ Public Class frmBodegasEditar
         CargarJefe()
         EstablecerPropiedades()
         ConfigurarGUI()
+        txtNombre.Focus()
         boolEditado = False
     End Sub
 

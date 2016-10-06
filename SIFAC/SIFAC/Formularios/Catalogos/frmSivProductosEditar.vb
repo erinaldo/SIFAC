@@ -108,6 +108,7 @@ Public Class frmSivProductosEditar
                     chkActivo.Enabled = False
                     cmdGuardar.Enabled = False
             End Select
+            txtProducto.Focus()
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -258,6 +259,7 @@ Public Class frmSivProductosEditar
         CargarMarca()
         CargarCategorias()
         ConfigurarGUI()
+
         Me.boolEditado = False
     End Sub
 

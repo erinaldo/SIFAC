@@ -22,8 +22,9 @@ Partial Class frmSivEncargosEdit
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivEncargosEdit))
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmdPedido = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
@@ -55,16 +56,15 @@ Partial Class frmSivEncargosEdit
         Me.lblMarca = New System.Windows.Forms.Label()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.cmdAgregar = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdEiminar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.tabFacturas = New System.Windows.Forms.TabControl()
         Me.TabPageGenerales = New System.Windows.Forms.TabPage()
+        Me.txtRuta = New System.Windows.Forms.TextBox()
         Me.cmbEstado = New DevExpress.XtraEditors.LookUpEdit()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cmdCliente = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdAgregarCliente = New DevExpress.XtraEditors.SimpleButton()
-        Me.C1Combo1 = New C1.Win.C1List.C1Combo()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtCodigoCliente = New System.Windows.Forms.TextBox()
         Me.dtpFecha = New C1.Win.C1Input.C1DateEdit()
@@ -87,6 +87,7 @@ Partial Class frmSivEncargosEdit
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ErrorFactura = New System.Windows.Forms.ErrorProvider(Me.components)
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,7 +109,6 @@ Partial Class frmSivEncargosEdit
         Me.tabFacturas.SuspendLayout()
         Me.TabPageGenerales.SuspendLayout()
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1Combo1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbVendedor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCliente, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,6 +116,7 @@ Partial Class frmSivEncargosEdit
         Me.GroupBox1.SuspendLayout()
         CType(Me.grdvwExpediente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -155,7 +156,6 @@ Partial Class frmSivEncargosEdit
         Me.GroupControl1.Controls.Add(Me.GroupBox3)
         Me.GroupControl1.Controls.Add(Me.GroupBox2)
         Me.GroupControl1.Controls.Add(Me.cmdAgregar)
-        Me.GroupControl1.Controls.Add(Me.cmdEiminar)
         Me.GroupControl1.Location = New System.Drawing.Point(25, 174)
         Me.GroupControl1.LookAndFeel.SkinName = "Caramel"
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
@@ -195,7 +195,7 @@ Partial Class frmSivEncargosEdit
         'colProductoID
         '
         Me.colProductoID.Caption = "ProductoID"
-        Me.colProductoID.FieldName = "objProductoID"
+        Me.colProductoID.FieldName = "SivProductoID"
         Me.colProductoID.Name = "colProductoID"
         Me.colProductoID.Width = 76
         '
@@ -206,6 +206,7 @@ Partial Class frmSivEncargosEdit
         Me.colCodigo.AppearanceHeader.Options.UseTextOptions = True
         Me.colCodigo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colCodigo.Caption = "Codigo"
+        Me.colCodigo.FieldName = "Codigo"
         Me.colCodigo.Name = "colCodigo"
         Me.colCodigo.Visible = True
         Me.colCodigo.VisibleIndex = 0
@@ -233,7 +234,7 @@ Partial Class frmSivEncargosEdit
         Me.colNombre.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colNombre.Caption = "Nombre"
         Me.colNombre.ColumnEdit = Me.grdcmbDescripcion
-        Me.colNombre.FieldName = "Codigo"
+        Me.colNombre.FieldName = "Producto"
         Me.colNombre.Name = "colNombre"
         Me.colNombre.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
         Me.colNombre.OptionsFilter.AllowAutoFilter = False
@@ -286,6 +287,7 @@ Partial Class frmSivEncargosEdit
         Me.colCostoPromedio.AppearanceHeader.Options.UseTextOptions = True
         Me.colCostoPromedio.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colCostoPromedio.Caption = "Costo Promedio"
+        Me.colCostoPromedio.FieldName = "CostoPromedio"
         Me.colCostoPromedio.Name = "colCostoPromedio"
         Me.colCostoPromedio.Visible = True
         Me.colCostoPromedio.VisibleIndex = 4
@@ -399,7 +401,7 @@ Partial Class frmSivEncargosEdit
         Me.spnCantidad.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnCantidad.Location = New System.Drawing.Point(457, 51)
         Me.spnCantidad.Name = "spnCantidad"
-        Me.spnCantidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
+        Me.spnCantidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
         Me.spnCantidad.Size = New System.Drawing.Size(62, 20)
         Me.spnCantidad.TabIndex = 117
         '
@@ -453,27 +455,13 @@ Partial Class frmSivEncargosEdit
         Me.cmdAgregar.Appearance.Options.UseFont = True
         Me.cmdAgregar.Image = CType(resources.GetObject("cmdAgregar.Image"), System.Drawing.Image)
         Me.cmdAgregar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdAgregar.Location = New System.Drawing.Point(716, 183)
+        Me.cmdAgregar.Location = New System.Drawing.Point(753, 184)
         Me.cmdAgregar.LookAndFeel.SkinName = "Caramel"
         Me.cmdAgregar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(32, 28)
         Me.cmdAgregar.TabIndex = 115
         Me.cmdAgregar.Tag = "AGREGAR"
-        '
-        'cmdEiminar
-        '
-        Me.cmdEiminar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdEiminar.Appearance.Options.UseFont = True
-        Me.cmdEiminar.Image = CType(resources.GetObject("cmdEiminar.Image"), System.Drawing.Image)
-        Me.cmdEiminar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdEiminar.Location = New System.Drawing.Point(754, 183)
-        Me.cmdEiminar.LookAndFeel.SkinName = "Caramel"
-        Me.cmdEiminar.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdEiminar.Name = "cmdEiminar"
-        Me.cmdEiminar.Size = New System.Drawing.Size(31, 28)
-        Me.cmdEiminar.TabIndex = 12
-        Me.cmdEiminar.Tag = "Eliminar"
         '
         'cmdCancelar
         '
@@ -516,11 +504,11 @@ Partial Class frmSivEncargosEdit
         '
         'TabPageGenerales
         '
+        Me.TabPageGenerales.Controls.Add(Me.txtRuta)
         Me.TabPageGenerales.Controls.Add(Me.cmbEstado)
         Me.TabPageGenerales.Controls.Add(Me.Label9)
         Me.TabPageGenerales.Controls.Add(Me.cmdCliente)
         Me.TabPageGenerales.Controls.Add(Me.cmdAgregarCliente)
-        Me.TabPageGenerales.Controls.Add(Me.C1Combo1)
         Me.TabPageGenerales.Controls.Add(Me.Label3)
         Me.TabPageGenerales.Controls.Add(Me.txtCodigoCliente)
         Me.TabPageGenerales.Controls.Add(Me.dtpFecha)
@@ -539,20 +527,28 @@ Partial Class frmSivEncargosEdit
         Me.TabPageGenerales.Text = "Datos Generales"
         Me.TabPageGenerales.UseVisualStyleBackColor = True
         '
+        'txtRuta
+        '
+        Me.txtRuta.Enabled = False
+        Me.txtRuta.Location = New System.Drawing.Point(77, 72)
+        Me.txtRuta.Name = "txtRuta"
+        Me.txtRuta.Size = New System.Drawing.Size(300, 20)
+        Me.txtRuta.TabIndex = 125
+        '
         'cmbEstado
         '
-        Me.cmbEstado.Location = New System.Drawing.Point(77, 72)
+        Me.cmbEstado.Location = New System.Drawing.Point(559, 74)
         Me.cmbEstado.Name = "cmbEstado"
         Me.cmbEstado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbEstado.Properties.NullText = ""
-        Me.cmbEstado.Size = New System.Drawing.Size(300, 20)
+        Me.cmbEstado.Size = New System.Drawing.Size(172, 20)
         Me.cmbEstado.TabIndex = 124
         '
         'Label9
         '
         Me.Label9.BackColor = System.Drawing.Color.Transparent
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(9, 74)
+        Me.Label9.Location = New System.Drawing.Point(475, 72)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(82, 18)
         Me.Label9.TabIndex = 118
@@ -587,43 +583,11 @@ Partial Class frmSivEncargosEdit
         Me.cmdAgregarCliente.TabIndex = 116
         Me.cmdAgregarCliente.Tag = "AGREGAR"
         '
-        'C1Combo1
-        '
-        Me.C1Combo1.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.C1Combo1.Caption = ""
-        Me.C1Combo1.CaptionHeight = 17
-        Me.C1Combo1.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.C1Combo1.ColumnCaptionHeight = 17
-        Me.C1Combo1.ColumnFooterHeight = 17
-        Me.C1Combo1.ColumnHeaders = False
-        Me.C1Combo1.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.C1Combo1.ContentHeight = 15
-        Me.C1Combo1.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.C1Combo1.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.C1Combo1.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C1Combo1.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.C1Combo1.EditorHeight = 15
-        Me.C1Combo1.Enabled = False
-        Me.C1Combo1.Images.Add(CType(resources.GetObject("C1Combo1.Images"), System.Drawing.Image))
-        Me.C1Combo1.ItemHeight = 15
-        Me.C1Combo1.Location = New System.Drawing.Point(559, 67)
-        Me.C1Combo1.MatchEntryTimeout = CType(2000, Long)
-        Me.C1Combo1.MaxDropDownItems = CType(5, Short)
-        Me.C1Combo1.MaxLength = 32767
-        Me.C1Combo1.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.C1Combo1.Name = "C1Combo1"
-        Me.C1Combo1.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.C1Combo1.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.C1Combo1.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.C1Combo1.Size = New System.Drawing.Size(172, 21)
-        Me.C1Combo1.TabIndex = 22
-        Me.C1Combo1.PropBag = resources.GetString("C1Combo1.PropBag")
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(479, 74)
+        Me.Label3.Location = New System.Drawing.Point(9, 77)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(38, 13)
         Me.Label3.TabIndex = 21
@@ -896,6 +860,10 @@ Partial Class frmSivEncargosEdit
         Me.Panel1.Size = New System.Drawing.Size(859, 22)
         Me.Panel1.TabIndex = 7
         '
+        'ErrorFactura
+        '
+        Me.ErrorFactura.ContainerControl = Me
+        '
         'frmSivEncargosEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -930,7 +898,6 @@ Partial Class frmSivEncargosEdit
         Me.TabPageGenerales.ResumeLayout(False)
         Me.TabPageGenerales.PerformLayout()
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1Combo1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbVendedor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCliente, System.ComponentModel.ISupportInitialize).EndInit()
@@ -939,6 +906,7 @@ Partial Class frmSivEncargosEdit
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.grdvwExpediente, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorFactura, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -961,7 +929,6 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents C1Combo1 As C1.Win.C1List.C1Combo
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
@@ -982,7 +949,6 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents chkNoExistente As System.Windows.Forms.CheckBox
     Friend WithEvents lblMarca As System.Windows.Forms.Label
     Friend WithEvents cmdAgregar As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents cmdEiminar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lblModeloCompatible As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents spnCantidad As DevExpress.XtraEditors.SpinEdit
@@ -1005,4 +971,6 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents cmdPedido As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmbEstado As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents txtRuta As System.Windows.Forms.TextBox
+    Friend WithEvents ErrorFactura As System.Windows.Forms.ErrorProvider
 End Class

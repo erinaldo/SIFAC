@@ -1109,6 +1109,9 @@
     <EmbeddedResource Include="Formularios\Facturas\frmSfaFaturaEditar.resx">
       <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\OrdenCompra\frmSivOrdenCompraEdit.resx">
+      <DependentUpon>frmSivOrdenCompraEdit.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PIM\frmPersonaSelector.resx">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
       <SubType>Designer</SubType>

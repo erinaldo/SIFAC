@@ -44,10 +44,12 @@ Public Class frmSivCategoriasEditar
                     Me.Text = "Agregar Categoria"
                     chkActivo.Checked = True
                     chkActivo.Enabled = False
+
                 Case 1
                     Me.Text = "Editar Categoria"
                     CargarDatosCategoria()
                     chkActivo.Enabled = True
+
                 Case 2
                     Me.Text = "Consultar Categoria"
                     CargarDatosCategoria()
@@ -55,6 +57,7 @@ Public Class frmSivCategoriasEditar
                     txtDescripcion.Enabled = False
                     chkActivo.Enabled = False
                     cmdGuardar.Enabled = False
+
             End Select
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -157,6 +160,7 @@ Public Class frmSivCategoriasEditar
         clsProyecto.CargarTemaDefinido(Me)
         ConfigurarGUI()
         Me.boolEditado = False
+        txtNombre.Focus()
     End Sub
 
     Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
