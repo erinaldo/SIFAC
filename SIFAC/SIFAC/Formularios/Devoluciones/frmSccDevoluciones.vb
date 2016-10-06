@@ -91,10 +91,7 @@ Public Class frmSccDevoluciones
         Dim objSccCuentaDetalle As New SccCuentaPorCobrarDetalle
 
         Dim DtDatosFactura As New DataTable
-        Dim DtDatosND As New DataTable
-        Dim DtDatosNC As New DataTable
         Dim IDEstadoN As Integer
-        Dim IdClasificacion As Integer
         Dim T As New TransactionManager
 
         Try
@@ -106,42 +103,15 @@ Public Class frmSccDevoluciones
                 objDevolucion.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objDevolucion.Update(T)
 
-                DtDatosFactura = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID='" & objDevolucion.objSccCuentaID & "' AND objTiendaID=" & objDevolucion.ObjSucursalID & " AND objFacturaID IS NOT NULL", , , T)
+                DtDatosFactura = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID='" & objDevolucion.objSccCuentaID & "' AND objSfaFacturaID IS NOT NULL", , , T)
                 IDEstadoN = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "03")
-                IdClasificacion = ClsCatalogos.ObtenerIDSTbCatalogo("CLASIFICACIONCUENTA", "C")
                 For Each drw As DataRow In DtDatosFactura.Rows
                     drw("UsuarioModificacion") = clsProyecto.Conexion.Usuario
                     drw("FechaModificacion") = clsProyecto.Conexion.FechaServidor
                     drw("objEstadoID") = IDEstadoN
-                    drw("objCalificacionID") = IdClasificacion
                 Next
                 DtDatosFactura.TableName = "SccCuentaPorCobrarDetalle"
                 SccCuentaPorCobrarDetalle.BatchUpdate(DtDatosFactura.DataSet, T)
-
-                IDEstadoN = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOND", "PAGADA")
-                DtDatosND = SccNotaDebito.RetrieveDT("objSccCuentaID='" & objDevolucion.objSccCuentaID & "' AND objTiendaID=" & objDevolucion.ObjSucursalID & " AND objEstadoID <> " & IDEstadoN.ToString, , "*", T)
-                IDEstadoN = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOND", "ANULADA")
-
-                For Each drw As DataRow In DtDatosND.Rows
-                    drw("UsuarioModificacion") = clsProyecto.Conexion.Usuario
-                    drw("FechaModificacion") = clsProyecto.Conexion.FechaServidor
-                    drw("objEstadoID") = IDEstadoN
-
-                Next
-                DtDatosND.TableName = "SccNotaDebito"
-                SccNotaDebito.BatchUpdate(DtDatosND.DataSet, T)
-
-                IDEstadoN = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADONC", "PAGADA")
-                DtDatosNC = SccNotaCredito.RetrieveDT("objSccCuentaID='" & objDevolucion.objSccCuentaID & "' AND objTiendaID=" & objDevolucion.ObjSucursalID & " AND objEstadoID <> " & IDEstadoN.ToString, , "*", T)
-                IDEstadoN = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADONC", "ANULADA")
-
-                For Each drw As DataRow In DtDatosNC.Rows
-                    drw("UsuarioModificacion") = clsProyecto.Conexion.Usuario
-                    drw("FechaModificacion") = clsProyecto.Conexion.FechaServidor
-                    drw("objEstadoID") = IDEstadoN
-                Next
-                DtDatosNC.TableName = "SccNotaCredito"
-                SccNotaCredito.BatchUpdate(DtDatosNC.DataSet, T)
 
                 objSccCuentaCobrar.Retrieve(objDevolucion.objSccCuentaID, T)
                 objSccCuentaCobrar.UsuarioModificacion = clsProyecto.Conexion.Usuario

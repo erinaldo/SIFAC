@@ -76,7 +76,7 @@
     <Compile Include="SccCuentaPorCobrarDetalle.vb" />
     <Compile Include="SccDescuentoPlazo.vb" />
     <Compile Include="SccDetalleMovimientos_CF.vb" />
-    <Compile Include="SccDevolucion_CF.vb" />
+    <Compile Include="SccDevolucion.vb" />
     <Compile Include="SccNotaCredito_CF.vb" />
     <Compile Include="SccNotaDebito_CF.vb" />
     <Compile Include="SccPersonasCuentas_CF.vb" />
