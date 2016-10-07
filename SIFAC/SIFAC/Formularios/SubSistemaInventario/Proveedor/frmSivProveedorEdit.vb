@@ -30,6 +30,7 @@ Public Class frmSivProveedorEdit
     Private dtProveedorDetalleProvision As DataTable
     Private dtTerminoPago As DataTable
     Private intTerminoPagoCREDITO As Integer
+    Public Shared dtContactos As DataTable
 #End Region
 
 #Region "Propiedades"
@@ -637,14 +638,14 @@ Public Class frmSivProveedorEdit
     Private Sub EliminarContactos()
         Try
             If MsgBox(My.Resources.MsgConfirmarEliminar, MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
-                frmClientesEdit.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
+                frmSivProveedorEdit.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
             Else
                 Exit Sub
             End If
-            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+            If frmSivProveedorEdit.dtContactos.Rows.Count = 0 Then
                 Me.cmdEliminarContacto.Enabled = False
             End If
-            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+            Me.tdbContactos.Caption = "Contactos (" & frmSivProveedorEdit.dtContactos.Rows.Count & ")"
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -656,12 +657,12 @@ Public Class frmSivProveedorEdit
         Try
             Dim objContactos As frmStbPersonasContactos
             objContactos = New frmStbPersonasContactos
-            objContactos.frmLLamado = 0
+            objContactos.frmLLamado = 2
             objContactos.ShowDialog()
-            If frmClientesEdit.dtContactos.Rows.Count > 0 Then
+            If frmSivProveedorEdit.dtContactos.Rows.Count > 0 Then
                 Me.cmdEliminarContacto.Enabled = True
             End If
-            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+            Me.tdbContactos.Caption = "Contactos (" & frmSivProveedorEdit.dtContactos.Rows.Count & ")"
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -680,7 +681,7 @@ Public Class frmSivProveedorEdit
             objClasifica = New StbPersonaClasificacion
 
             'Guardar Contactos
-            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+            For Each dr As DataRow In frmSivProveedorEdit.dtContactos.Rows
                 objContactos.objPersonaID = IDGenerado
                 objContactos.SecuencialContacto = CInt(dr("SecuencialContacto").ToString)
                 objContactos.objTipoEntradaID = CInt(dr("objTipoEntradaID").ToString)
