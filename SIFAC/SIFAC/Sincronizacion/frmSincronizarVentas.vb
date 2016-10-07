@@ -82,16 +82,16 @@ Public Class frmSincronizarVentas
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("fecha, objEstadoID,SfaFacturaProformaID, ObjRutaID,Ruta, Cliente, SrhEmpleadoID, Empleado, Subtotal, Descuento, Total, Prima, Saldo, observaciones", "vwAplicacionVentas", "ObjRutaID =" + intRutaID + " AND SrhEmpleadoID=" + intEmpleadoID + " AND objEstadoID=" + intEstadoID))
+                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("fecha, objEstadoID,SfaFacturaProformaID, ObjRutaID,Ruta, Cliente, SrhEmpleadoID, Empleado, Subtotal, Descuento, Total, Prima, Saldo, observaciones", "vwAplicacionVentas", "ObjRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And Not (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("fecha,objEstadoID, SfaFacturaProformaID, ObjRutaID,Ruta, Cliente, SrhEmpleadoID, Empleado, Subtotal, Descuento, Total, Prima, Saldo, observaciones", "vwAplicacionVentas", " SrhEmpleadoID=" + intEmpleadoID + " AND objEstadoID=" + intEstadoID))
+                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("fecha,objEstadoID, SfaFacturaProformaID, ObjRutaID,Ruta, Cliente, SrhEmpleadoID, Empleado, Subtotal, Descuento, Total, Prima, Saldo, observaciones", "vwAplicacionVentas", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
             End If
 
 
             If Not blnTodos And Not (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("fecha, objEstadoID,SfaFacturaProformaID, ObjRutaID,Ruta, Cliente, SrhEmpleadoID, Empleado, Subtotal, Descuento, Total, Prima, Saldo, observaciones", "vwAplicacionVentas", "ObjRutaID =" + intRutaID + "  AND objEstadoID=" + intEstadoID))
+                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("fecha, objEstadoID,SfaFacturaProformaID, ObjRutaID,Ruta, Cliente, SrhEmpleadoID, Empleado, Subtotal, Descuento, Total, Prima, Saldo, observaciones", "vwAplicacionVentas", "ObjRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
             End If
 
             DtVentas.PrimaryKey = New DataColumn() {Me.DtVentas.Columns("SfaFacturaProformaID")}
@@ -145,5 +145,9 @@ Public Class frmSincronizarVentas
 
     Private Sub cmdActualizar_Click(sender As Object, e As EventArgs) Handles cmdActualizar.Click
         CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
+    End Sub
+
+    Private Sub cmdAprobar_Click(sender As Object, e As EventArgs) Handles cmdAprobar.Click
+
     End Sub
 End Class
