@@ -157,4 +157,20 @@ Public Class LoginForm
         End If
     End Sub
 
+
+    Private Sub UsernameTextBox_KeyPress(sender As Object, e As Windows.Forms.KeyPressEventArgs) Handles UsernameTextBox.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.UsernameTextBox.Text.Trim.Length <> 0 Then
+                Me.PasswordTextBox.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub PasswordTextBox_KeyPress(sender As Object, e As Windows.Forms.KeyPressEventArgs) Handles PasswordTextBox.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            If Me.PasswordTextBox.Text.Trim.Length <> 0 Then
+                Me.cmdOK.Focus()
+            End If
+        End If
+    End Sub
 End Class

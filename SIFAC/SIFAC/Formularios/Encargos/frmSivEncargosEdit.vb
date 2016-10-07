@@ -203,7 +203,7 @@ Public Class frmSivEncargosEdit
 
     Public Sub CargarProductos(CategoriaID As Integer, MarcaID As Integer)
         Try
-            DtNombreProducto = SivProductos.RetrieveDT("Activo=1 AND objCategoriaID='" + CategoriaID.ToString() + "' AND objMarcaID='" + MarcaID.ToString() + "'", " Nombre", " (Codigo  + '-' +  Nombre) AS Nombre")
+            DtNombreProducto = SivProductos.RetrieveDT("Activo=1 AND objCategoriaID=" & CategoriaID.ToString() & " AND objMarcaID=" & MarcaID.ToString(), " Nombre", " SivProductoID, (Codigo  + '-' +  Nombre) AS Nombre")
             Dim newProductosRow As DataRow
             newProductosRow = DtNombreProducto.NewRow()
             newProductosRow("SivProductoID") = "0"
@@ -382,7 +382,7 @@ Public Class frmSivEncargosEdit
                     Me.cmbVendedor.SelectedValue = SsgCuenta.RetrieveDT("Login = '" & clsProyecto.Conexion.Usuario & "'", "", "objEmpleadoID").DefaultView.Item(0)("objEmpleadoID")
                     Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
                     Me.CargarDetalleEncargos("1=0")
-                    Me.txtObservaciones.Properties.MaxLength = SivEncargosDetalle.GetMaxLength("observaciones")
+                    Me.txtObservaciones.Properties.MaxLength = SivEncargosDetalle.GetMaxLength("Observaciones")
 
                     '    chkActivo.Checked = True
                     '    chkActivo.Enabled = False
@@ -426,11 +426,15 @@ Public Class frmSivEncargosEdit
     Private Sub AgregarProductos()
         Dim filas As DataRow
         Dim ProductoID As Integer
+        Dim objSivProducto As SivProductos
         Try
             filas = dtDetalleEncargo.NewRow
             ProductoID = cmbNombreProducto.EditValue
+            objSivProducto = New SivProductos
 
-            filas("Codigo") = SivProductos.RetrieveDT("SivProductoID=" + ProductoID).Rows(0)("CostoPromedio")
+            objSivProducto.Retrieve(ProductoID)
+
+            filas("Codigo") = objSivProducto.Codigo
 
             If chkNoExistente.Checked Then
                 filas("Producto") = txtNombreProducto.Text
@@ -442,7 +446,7 @@ Public Class frmSivEncargosEdit
 
             filas("Cantidad") = spnCantidad.Value
             filas("Observaciones") = txtObservaciones.Text
-            filas("CostoPromedio") = SivProductos.RetrieveDT("SivProductoID=" + ProductoID).Rows(0)("Codigo")
+            filas("CostoPromedio") = objSivProducto.CostoPromedio
 
             dtDetalleEncargo.Rows.Add(filas)
         Catch ex As Exception
@@ -558,6 +562,30 @@ Public Class frmSivEncargosEdit
         End If
     End Sub
 
+    Private Sub cmbCategoria_TextChanged(sender As Object, e As EventArgs) Handles cmbCategoria.TextChanged
+        ErrorFactura.SetError(cmbCategoria, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub cmbMarca_TextChanged(sender As Object, e As EventArgs) Handles cmbMarca.TextChanged
+        ErrorFactura.SetError(cmbMarca, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub cmbNombreProducto_TextChanged(sender As Object, e As EventArgs) Handles cmbNombreProducto.TextChanged
+        ErrorFactura.SetError(cmbNombreProducto, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub spnCantidad_TextChanged(sender As Object, e As EventArgs) Handles spnCantidad.TextChanged
+        ErrorFactura.SetError(spnCantidad, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub txtNombreProducto_TextChanged(sender As Object, e As EventArgs) Handles txtNombreProducto.TextChanged
+        ErrorFactura.SetError(txtNombreProducto, "")
+        boolEditado = True
+    End Sub
 #End Region
 
 
@@ -566,4 +594,5 @@ Public Class frmSivEncargosEdit
 
 
   
+   
 End Class

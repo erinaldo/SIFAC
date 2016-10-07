@@ -14,6 +14,7 @@ Public Class frmSrhEmpleadoEditar
     Public boolEditado As Boolean
     Public intEmpleadoID, intTypeGUI As Integer
     Public strPersonaID As String
+    Public Shared dtContactos As DataTable
 #End Region
 
 #Region "Propiedades"
@@ -48,16 +49,18 @@ Public Class frmSrhEmpleadoEditar
 
 #Region "Procedimientos"
     '' Descripción:        Procedimiento encargado de cargar la informacion de personas con clasificacion empleado que aun no han sido ingresadas en empleado
-    Public Sub CargarPersona()
+    Public Sub CargarPersona(intTipo As Integer)
         Try
             Dim strFiltro As String = ""
-            Select Case TypeGUI
-                Case 0
-                    strFiltro = "Descripcion = 'Empleado' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SrhEmpleado)"
-                Case 1, 2
-                    strFiltro = "StbPersonaID = '" & PersonaID & "'"
-            End Select
-            DtPersona = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero", "vwPersonaClasificacion", strFiltro))
+            strFiltro = "StbPersonaID = '" & PersonaID & "'"
+
+            'Select Case intTipo
+            '    Case 0
+            '        strFiltro = "Descripcion = 'Empleado' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SrhEmpleado)"
+            '    Case 1
+            '        strFiltro = "StbPersonaID = '" & PersonaID & "'"
+            'End Select
+            DtPersona = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero, Direccion,objGeneroID,objCiudadID,FechaNacimiento", "vwPersonaClasificacionEmpleado", strFiltro))
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -139,35 +142,65 @@ Public Class frmSrhEmpleadoEditar
             Me.cmbCiudad.DataBindings.Clear()
             Me.txtDireccion.DataBindings.Clear()
 
-            Me.PersonaID = DtPersona.Rows(0)("StbPersonaID")
-            Me.txtPersonaID.DataBindings.Add("text", DtPersona, "NombreCompleto", False, DataSourceUpdateMode.OnPropertyChanged)
-            Me.txtNombre1.DataBindings.Add("text", DtPersona, "Nombre1", False, DataSourceUpdateMode.OnPropertyChanged)
-            Me.txtNombre2.DataBindings.Add("text", DtPersona, "Nombre2", False, DataSourceUpdateMode.OnPropertyChanged)
-            Me.txtCedula.DataBindings.Add("text", DtPersona, "Cedula", False, DataSourceUpdateMode.OnPropertyChanged)
-            Me.txtApellido1.DataBindings.Add("text", DtPersona, "Apellido1", False, DataSourceUpdateMode.OnPropertyChanged)
-            Me.txtApellido2.DataBindings.Add("text", DtPersona, "Apellido2", False, DataSourceUpdateMode.OnPropertyChanged)
-            Me.txtDireccion.DataBindings.Add("text", DtPersona, "Direccion", False, DataSourceUpdateMode.OnPropertyChanged)
-            Me.cmbGenero.SelectedValue = DtPersona.Rows(0)("objGeneroID")
-            Me.cmbCiudad.SelectedValue = DtPersona.Rows(0)("objCiudadID")
-            Me.dtpFechaNacimiento.Value = DtPersona.Rows(0)("FechaNacimiento")
+            If DtPersona.Rows.Count > 0 Then
 
+                Me.PersonaID = DtPersona.Rows(0)("StbPersonaID")
+                txtDireccion.Text = DtPersona.Rows(0)("Direccion")
 
-            'Cargar Contactos
-            frmClientesEdit.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", "objPersonaID=" & Me.PersonaID))
-            Me.tdbContactos.SetDataBinding(frmClientesEdit.dtContactos, "", True)
-            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+                Me.txtPersonaID.DataBindings.Add("text", DtPersona, "NombreCompleto", False, DataSourceUpdateMode.OnPropertyChanged)
+                Me.txtNombre1.DataBindings.Add("text", DtPersona, "Nombre1", False, DataSourceUpdateMode.OnPropertyChanged)
+                Me.txtNombre2.DataBindings.Add("text", DtPersona, "Nombre2", False, DataSourceUpdateMode.OnPropertyChanged)
+                Me.txtCedula.DataBindings.Add("text", DtPersona, "Cedula", False, DataSourceUpdateMode.OnPropertyChanged)
+                Me.txtApellido1.DataBindings.Add("text", DtPersona, "Apellido1", False, DataSourceUpdateMode.OnPropertyChanged)
+                Me.txtApellido2.DataBindings.Add("text", DtPersona, "Apellido2", False, DataSourceUpdateMode.OnPropertyChanged)
+                Me.cmbGenero.SelectedValue = DtPersona.Rows(0)("objGeneroID")
+                Me.cmbCiudad.SelectedValue = DtPersona.Rows(0)("objCiudadID")
 
-            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
-                Me.cmdEliminarContacto.Enabled = False
-            Else
-                Me.cmdEliminarContacto.Enabled = True
+                If Not IsDBNull(DtPersona.Rows(0)("FechaNacimiento")) Then
+                    Me.dtpFechaNacimiento.DateTime = DtPersona.Rows(0)("FechaNacimiento")
+                Else
+                    Me.dtpFechaNacimiento.Text = String.Empty
+                End If
+
+                'Cargar Contactos
+                frmSrhEmpleadoEditar.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", "objPersonaID=" & Me.PersonaID))
+                Me.tdbContactos.SetDataBinding(frmSrhEmpleadoEditar.dtContactos, "", True)
+                Me.tdbContactos.Caption = "Contactos (" & frmSrhEmpleadoEditar.dtContactos.Rows.Count & ")"
+
+                If frmSrhEmpleadoEditar.dtContactos.Rows.Count = 0 Then
+                    Me.cmdEliminarContacto.Enabled = False
+                Else
+                    Me.cmdEliminarContacto.Enabled = True
+                End If
+
             End If
-
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
 
+    Private Sub DeshabilitarControles()
+        Me.chkActivo.Enabled = False
+        Me.cmdBuscar.Enabled = False
+        Me.cmbCargo.Enabled = False
+        Me.dtpFechaIngreso.Enabled = False
+        Me.dtpFechaEgresoE.Enabled = False
+        Me.cmdGuardar.Enabled = False
+        Me.txtNombre1.Enabled = False
+        Me.txtNombre2.Enabled = False
+        Me.txtApellido1.Enabled = False
+        Me.txtApellido2.Enabled = False
+        Me.txtPersonaID.Enabled = False
+        Me.cmbCargo.Enabled = False
+        Me.cmbCiudad.Enabled = False
+        Me.cmbGenero.Enabled = False
+        Me.txtDireccion.Enabled = False
+        Me.txtCodigoIME.Enabled = False
+        Me.txtCedula.Enabled = False
+        Me.dtpFechaNacimiento.Enabled = False
+        Me.cmdAgregarContacto.Enabled = False
+        Me.cmdEliminarContacto.Enabled = False
+    End Sub
     '' Descripción:        Procedimiento encargado de configurar los controles segun el modo del formulario
     Public Sub ConfigurarGUI()
         Try
@@ -175,20 +208,15 @@ Public Class frmSrhEmpleadoEditar
                 Case 0
                     Me.chkActivo.Checked = True
                     Me.chkActivo.Enabled = False
-                    Me.dtpFechaEgreso.Enabled = False
+                    Me.dtpFechaEgresoE.Enabled = False
                     Me.DtPersona.DefaultView.RowFilter = "1=0"
                 Case 1
                     Me.chkActivo.Enabled = True
-                    Me.dtpFechaEgreso.Enabled = True
                     Me.cmdBuscar.Enabled = False
+                    Me.dtpFechaEgresoE.Enabled = True
                     CargarDatosEdicion()
                 Case 2
-                    Me.chkActivo.Enabled = False
-                    Me.cmdBuscar.Enabled = False
-                    Me.cmbCargo.Enabled = False
-                    Me.dtpFechaIngreso.Enabled = False
-                    Me.dtpFechaEgreso.Enabled = False
-                    Me.cmdGuardar.Enabled = False
+                    DeshabilitarControles()
                     CargarDatosEdicion()
             End Select
         Catch ex As Exception
@@ -239,20 +267,21 @@ Public Class frmSrhEmpleadoEditar
                 objPersonas.Direccion = txtDireccion.Text
                 objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                objPersonas.Insert()
+                objPersonas.Direccion = txtDireccion.Text.Trim
+                objPersonas.Insert(T)
                 Me.PersonaID = objPersonas.StbPersonaID
 
                 objEmpleado.objPersonaID = PersonaID
                 objEmpleado.objCargoID = cmbCargo.SelectedValue
-                objEmpleado.FechaIngreso = dtpFechaIngreso.Value
+                objEmpleado.FechaIngreso = dtpFechaIngreso.DateTime
                 objEmpleado.Activo = chkActivo.Checked
                 objEmpleado.Imei = txtCodigoIME.Text
 
                 objEmpleado.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objEmpleado.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                objEmpleado.Insert()
+                objEmpleado.Insert(T)
                 EmpleadoID = objEmpleado.SrhEmpleadoID
-                Me.InsertarDetalleEmpleado(Me.PersonaID)
+                Me.InsertarDetalleEmpleado(Me.PersonaID, T)
                 T.CommitTran()
 
                 MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
@@ -266,7 +295,7 @@ Public Class frmSrhEmpleadoEditar
         End Try
     End Sub
 
-    Private Sub InsertarDetalleEmpleado(ByVal IDGenerado As String)
+    Private Sub InsertarDetalleEmpleado(ByVal IDGenerado As String, T As DAL.TransactionManager)
 
         Dim objContactos As StbContactos
         Dim objClasifica As StbPersonaClasificacion
@@ -276,21 +305,21 @@ Public Class frmSrhEmpleadoEditar
             objClasifica = New StbPersonaClasificacion
 
             'Guardar Contactos
-            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+            For Each dr As DataRow In frmSrhEmpleadoEditar.dtContactos.Rows
                 objContactos.objPersonaID = IDGenerado
                 objContactos.SecuencialContacto = CInt(dr("SecuencialContacto").ToString)
                 objContactos.objTipoEntradaID = CInt(dr("objTipoEntradaID").ToString)
                 objContactos.Valor = dr("Valor").ToString
                 objContactos.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objContactos.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                objContactos.Insert()
+                objContactos.Insert(T)
             Next
 
             objClasifica.objPersonaID = IDGenerado
             objClasifica.objTipoPersonaID = StbTipoPersona.RetrieveDT("Descripcion='Empleado'").DefaultView.Item(0)("StbTipoPersonaID")
             objClasifica.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objClasifica.FechaCreacion = clsProyecto.Conexion.FechaServidor
-            objClasifica.Insert()
+            objClasifica.Insert(T)
 
 
         Catch ex As Exception
@@ -337,9 +366,9 @@ Public Class frmSrhEmpleadoEditar
                 objPersonas.objCiudadID = cmbCiudad.SelectedValue
                 objPersonas.Direccion = txtDireccion.Text
 
-                objPersonas.Update()
-                Me.ModificarDetalle()
-                Me.InsertarDetalleEmpleado(Me.PersonaID)
+                objPersonas.Update(T)
+                Me.ModificarDetalle(T)
+                Me.InsertarDetalleEmpleado(Me.PersonaID, T)
 
                 objEmpleado.SrhEmpleadoID = EmpleadoID
                 objEmpleado.objPersonaID = PersonaID
@@ -347,27 +376,27 @@ Public Class frmSrhEmpleadoEditar
                 objEmpleado.Imei = txtCodigoIME.Text
 
                 If chkActivo.Checked = False Then
-                    objEmpleado.FechaEgreso = dtpFechaEgreso.Value
+                    objEmpleado.FechaEgreso = dtpFechaEgresoE.DateTime
                     If objCuenta.RetrieveByFilter("objEmpleadoID = " & EmpleadoID) Then
                         objCuenta.Activo = False
-                        objCuenta.Update()
+                        objCuenta.Update(T)
                     End If
                 Else
                     chkActivo.Checked = True
                     objEmpleado.FechaEgreso = Nothing
                     If objCuenta.RetrieveByFilter("objEmpleadoID = " & EmpleadoID) Then
                         objCuenta.Activo = True
-                        objCuenta.Update()
+                        objCuenta.Update(T)
                     End If
                 End If
-                objEmpleado.FechaIngreso = dtpFechaIngreso.Value
+                objEmpleado.FechaIngreso = dtpFechaIngreso.DateTime
                 objEmpleado.Activo = chkActivo.Checked
 
                 objEmpleado.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objEmpleado.FechaCreacion = clsProyecto.Conexion.FechaServidor
                 objEmpleado.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                objEmpleado.Update()
-
+                objEmpleado.Update(T)
+                T.CommitTran()
                 MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
 
                 Me.boolEditado = False
@@ -389,26 +418,30 @@ Public Class frmSrhEmpleadoEditar
             objEmpleado.Retrieve(EmpleadoID)
             Me.cmbCargo.SelectedValue = objEmpleado.objCargoID
             Me.chkActivo.Checked = objEmpleado.Activo
-            Me.dtpFechaIngreso.Value = objEmpleado.FechaIngreso
-
+            Me.dtpFechaIngreso.DateTime = objEmpleado.FechaIngreso
+            Me.txtCodigoIME.Text = objEmpleado.Imei
             If objEmpleado.FechaEgreso.HasValue Then
-                Me.dtpFechaEgreso.Value = objEmpleado.FechaEgreso
+
+                If Not IsDBNull(objEmpleado.FechaEgreso) Then
+                    Me.dtpFechaEgresoE.DateTime = objEmpleado.FechaEgreso
+                End If
+
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
 
-    
+
 
 #End Region
 
 #Region "Modificar Detalle de Personas"
-    Private Sub ModificarDetalle()
+    Private Sub ModificarDetalle(T As DAL.TransactionManager)
 
         Try
-            StbPersonaClasificacion.DeleteByFilter("objTipoPersonaID = (SELECT StbTipoPersonaID FROM StbTipoPersona WHERE Descripcion='Cliente') AND objPersonaID=" + Me.PersonaID)
-            StbContactos.DeleteByFilter("objPersonaID='" + Me.PersonaID + "'")
+            StbPersonaClasificacion.DeleteByFilter("objTipoPersonaID = (SELECT StbTipoPersonaID FROM StbTipoPersona WHERE Descripcion='Empleado') AND objPersonaID=" + Me.PersonaID)
+            StbContactos.DeleteByFilter("objPersonaID='" + Me.PersonaID + "'", T)
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -430,7 +463,7 @@ Public Class frmSrhEmpleadoEditar
             objClasifica = New StbPersonaClasificacion
 
             'Guardar Contactos
-            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+            For Each dr As DataRow In frmSrhEmpleadoEditar.dtContactos.Rows
                 objContactos.objPersonaID = IDGenerado
                 objContactos.SecuencialContacto = CInt(dr("SecuencialContacto").ToString)
                 objContactos.objTipoEntradaID = CInt(dr("objTipoEntradaID").ToString)
@@ -464,17 +497,17 @@ Public Class frmSrhEmpleadoEditar
 
             Dim strFiltro As String = "1=1"
             Select Case Me.TypeGUI
-                Case 1
+                Case 0
                     strFiltro = "1=0"
-                Case 2, 3
+                Case 1, 2
                     strFiltro = "objPersonaID=" & Me.PersonaID
             End Select
 
-            frmClientesEdit.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", strFiltro))
-            Me.tdbContactos.SetDataBinding(frmClientesEdit.dtContactos, "", True)
-            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+            frmSrhEmpleadoEditar.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", strFiltro))
+            Me.tdbContactos.SetDataBinding(frmSrhEmpleadoEditar.dtContactos, "", True)
+            Me.tdbContactos.Caption = "Contactos (" & frmSrhEmpleadoEditar.dtContactos.Rows.Count & ")"
 
-            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+            If frmSrhEmpleadoEditar.dtContactos.Rows.Count = 0 Then
                 Me.cmdEliminarContacto.Enabled = False
             Else
                 Me.cmdEliminarContacto.Enabled = True
@@ -495,14 +528,14 @@ Public Class frmSrhEmpleadoEditar
     Private Sub EliminarContactos()
         Try
             If MsgBox(My.Resources.MsgConfirmarEliminar, MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
-                frmClientesEdit.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
+                frmSrhEmpleadoEditar.dtContactos.Rows.RemoveAt(Me.tdbContactos.Row)
             Else
                 Exit Sub
             End If
-            If frmClientesEdit.dtContactos.Rows.Count = 0 Then
+            If frmSrhEmpleadoEditar.dtContactos.Rows.Count = 0 Then
                 Me.cmdEliminarContacto.Enabled = False
             End If
-            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
+            Me.tdbContactos.Caption = "Contactos (" & frmSrhEmpleadoEditar.dtContactos.Rows.Count & ")"
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -514,12 +547,13 @@ Public Class frmSrhEmpleadoEditar
         Try
             Dim objContactos As frmStbPersonasContactos
             objContactos = New frmStbPersonasContactos
-            objContactos.frmLLamado = 0
-            objContactos.ShowDialog()
-            If frmClientesEdit.dtContactos.Rows.Count > 0 Then
-                Me.cmdEliminarContacto.Enabled = True
+            objContactos.frmLLamado = 1
+            If objContactos.ShowDialog() = DialogResult.OK Then
+                If frmSrhEmpleadoEditar.dtContactos.Rows.Count > 0 Then
+                    Me.cmdEliminarContacto.Enabled = True
+                End If
+                Me.tdbContactos.Caption = "Contactos (" & frmSrhEmpleadoEditar.dtContactos.Rows.Count & ")"
             End If
-            Me.tdbContactos.Caption = "Contactos (" & frmClientesEdit.dtContactos.Rows.Count & ")"
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -550,8 +584,24 @@ Public Class frmSrhEmpleadoEditar
         Try
             Select Case TypeGUI
                 Case 0
-                    If txtPersonaID.Text.Trim.Length = 0 Then
-                        ErrorProv.SetError(cmdBuscar, My.Resources.MsgObligatorio)
+                    If txtNombre1.Text.Trim.Length = 0 Then
+                        ErrorProv.SetError(txtNombre1, My.Resources.MsgObligatorio)
+                        Return False
+                        Exit Function
+                    End If
+                    If txtApellido1.Text.Trim.Length = 0 Then
+                        ErrorProv.SetError(txtApellido1, My.Resources.MsgObligatorio)
+                        Return False
+                        Exit Function
+                    End If
+                    If txtCedula.Text = "   -      -" Then
+                        ErrorProv.SetError(txtCedula, My.Resources.MsgObligatorio)
+                        Return False
+                        Exit Function
+                    End If
+
+                    If txtCedula.Text.Trim.Length = 0 Then
+                        ErrorProv.SetError(txtCedula, My.Resources.MsgObligatorio)
                         Return False
                         Exit Function
                     End If
@@ -565,7 +615,7 @@ Public Class frmSrhEmpleadoEditar
                         Return False
                         Exit Function
                     End If
-                    If dtpFechaIngreso.Value > clsProyecto.Conexion.FechaServidor Then
+                    If dtpFechaIngreso.DateTime > clsProyecto.Conexion.FechaServidor Then
                         ErrorProv.SetError(dtpFechaIngreso, "La fecha de ingreso no puede ser mayor que la fecha actual")
                         Return False
                         Exit Function
@@ -578,17 +628,17 @@ Public Class frmSrhEmpleadoEditar
                         Exit Function
                     End If
 
-                    If dtpFechaEgreso.Text.Trim.Length = 0 Then
+                    If dtpFechaEgresoE.Text.Trim.Length = 0 Then
                         Return True
                         Exit Function
                     End If
-                    If dtpFechaEgreso.Value > clsProyecto.Conexion.FechaServidor Then
-                        ErrorProv.SetError(dtpFechaEgreso, "La fecha de egreso no puede ser mayor que la fecha actual")
+                    If dtpFechaEgresoE.DateTime > clsProyecto.Conexion.FechaServidor And Me.dtpFechaEgresoE.Text <> "01/01/0001" Then
+                        ErrorProv.SetError(dtpFechaEgresoE, "La fecha de egreso no puede ser mayor que la fecha actual")
                         Return False
                         Exit Function
                     End If
-                    If dtpFechaEgreso.Value < dtpFechaIngreso.Value Then
-                        ErrorProv.SetError(dtpFechaEgreso, "La fecha de egreso debe ser mayor a la fecha de ingreso")
+                    If dtpFechaEgresoE.DateTime < dtpFechaIngreso.DateTime And Me.dtpFechaEgresoE.Text <> "01/01/0001" Then
+                        ErrorProv.SetError(dtpFechaEgresoE, "La fecha de egreso debe ser mayor a la fecha de ingreso")
                         Return False
                         Exit Function
                     End If
@@ -625,9 +675,10 @@ Public Class frmSrhEmpleadoEditar
             Me.CargarLongitudesMaximas()
             CargarGenero()
             CargarCiudad()
-            CargarPersona()
-            VincularControles()
             CargarCargo()
+            CargarPersona(1)
+            CargarGridContactos()
+            VincularControles()
             ConfigurarGUI()
             boolEditado = False
         Catch ex As Exception
@@ -643,11 +694,11 @@ Public Class frmSrhEmpleadoEditar
         Try
             Dim objSeleccion As frmPersonaSelector
             objSeleccion = New frmPersonaSelector
-            objSeleccion.Filtro = " Descripcion = 'Empleado' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SrhEmpleado)"
+            objSeleccion.Filtro = "  StbPersonaID NOT IN (SELECT objPersonaID FROM SrhEmpleado)"
             objSeleccion.Opcion = 3
             If objSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.PersonaID = objSeleccion.Seleccion
-                CargarPersona()
+                CargarPersona(1)
                 VincularControles()
                 Me.DtPersona.DefaultView.RowFilter = "StbPersonaID = '" & PersonaID & "'"
                 ErrorProv.SetError(cmdBuscar, "")
@@ -679,14 +730,18 @@ Public Class frmSrhEmpleadoEditar
         End Try
     End Sub
 
-    Private Sub dtpFechaIngreso_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dtpFechaIngreso.TextChanged
+    Private Sub dtpFechaIngreso_EditValueChanged(sender As Object, e As EventArgs) Handles dtpFechaIngreso.EditValueChanged
+        Me.boolEditado = True
+        Me.ErrorProv.SetError(dtpFechaIngreso, "")
+    End Sub
+    Private Sub dtpFechaIngreso_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.boolEditado = True
         Me.ErrorProv.SetError(dtpFechaIngreso, "")
     End Sub
 
-    Private Sub dtpFechaEgreso_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dtpFechaEgreso.TextChanged
+    Private Sub dtpFechaEgreso_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.boolEditado = True
-        Me.ErrorProv.SetError(dtpFechaEgreso, "")
+        Me.ErrorProv.SetError(dtpFechaEgresoE, "")
     End Sub
 
     Private Sub frmSrhEmpleadoEditar_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
@@ -704,21 +759,35 @@ Public Class frmSrhEmpleadoEditar
             Select Case Me.chkActivo.Checked
                 Case False
                     If Me.TypeGUI = 1 Then
-                        Me.dtpFechaEgreso.Value = Nothing
-                        Me.dtpFechaEgreso.Enabled = True
+                        Me.dtpFechaEgresoE.DateTime = Nothing
+                        Me.dtpFechaEgresoE.Enabled = True
                     End If
                 Case True
                     If Me.TypeGUI = 1 Then
-                        Me.dtpFechaEgreso.Value = Nothing
-                        Me.dtpFechaEgreso.Enabled = False
+                        Me.dtpFechaEgresoE.DateTime = Nothing
+                        Me.dtpFechaEgresoE.Enabled = False
                     End If
             End Select
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
+
+    Private Sub txtNombre1_TextChanged(sender As Object, e As EventArgs) Handles txtNombre1.TextChanged
+        Me.boolEditado = True
+        Me.ErrorProv.SetError(txtNombre1, "")
+    End Sub
+
+    Private Sub txtApellido1_TextChanged(sender As Object, e As EventArgs) Handles txtApellido1.TextChanged
+        Me.boolEditado = True
+        Me.ErrorProv.SetError(txtApellido1, "")
+    End Sub
+
+    Private Sub txtCedula_TextChanged(sender As Object, e As EventArgs) Handles txtCedula.TextChanged
+        Me.boolEditado = True
+        Me.ErrorProv.SetError(txtCedula, "")
+    End Sub
 #End Region
-
-
-    
+   
+   
 End Class

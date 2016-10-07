@@ -25,13 +25,12 @@ Partial Class LoginForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LoginForm))
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
         Me.UsernameLabel = New System.Windows.Forms.Label()
         Me.UsernameTextBox = New System.Windows.Forms.TextBox()
         Me.PasswordTextBox = New System.Windows.Forms.TextBox()
-        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider()
         Me.PasswordLabel = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.mnuAppConfig = New System.Windows.Forms.ToolStripMenuItem()
@@ -79,7 +78,7 @@ Partial Class LoginForm
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(192, 20)
-        Me.PasswordTextBox.TabIndex = 3
+        Me.PasswordTextBox.TabIndex = 2
         '
         'ErrorProvider1
         '
@@ -126,7 +125,7 @@ Partial Class LoginForm
         Me.cmdCancel.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancel.TabIndex = 21
+        Me.cmdCancel.TabIndex = 4
         Me.cmdCancel.Tag = "CANCELAR"
         Me.cmdCancel.Text = "&Cancelar"
         '
@@ -141,7 +140,7 @@ Partial Class LoginForm
         Me.cmdOK.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdOK.Name = "cmdOK"
         Me.cmdOK.Size = New System.Drawing.Size(80, 28)
-        Me.cmdOK.TabIndex = 20
+        Me.cmdOK.TabIndex = 3
         Me.cmdOK.Tag = "ACEPTAR"
         Me.cmdOK.Text = "&Aceptar"
         '

@@ -12,7 +12,8 @@ Imports Proyecto.Catalogos.Datos
 Public Class frmClientesEdit
 
 #Region "Declaración de Variables propias del formulario"
-    Public Shared dtContactos, dtGenero, dtCiudad, dtRutas As DataTable
+    Public dtGenero, dtCiudad, dtRutas As DataTable
+    Public Shared dtContactos As DataTable
     Public dtOcupacion As DataTable
     Public DtPersona As DataTable
     Dim intTelefonoCliente, intResultado As Integer
@@ -83,8 +84,8 @@ Public Class frmClientesEdit
     Private Sub CargarGenero()
         Try
             'Género
-            frmClientesEdit.dtGenero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "StbValorCatalogo", "objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='GENERO')"))
-            Me.cmbGenero.DataSource = frmClientesEdit.dtGenero
+            dtGenero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbValorCatalogoID,Descripcion", "StbValorCatalogo", "objCatalogoID=(SELECT StbCatalogoID FROM StbCatalogo WHERE Nombre='GENERO')"))
+            Me.cmbGenero.DataSource = dtGenero
             Me.cmbGenero.DisplayMember = "Descripcion"
             Me.cmbGenero.ValueMember = "StbValorCatalogoID"
             Me.cmbGenero.Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
@@ -108,8 +109,8 @@ Public Class frmClientesEdit
             objparametro.RetrieveByFilter("Nombre='Pais'")
             objPais.RetrieveByFilter("Nombre='" & objparametro.Valor & "'")
 
-            frmClientesEdit.dtCiudad = StbCiudad.RetrieveDT("objPaisID=" & objPais.StbPaisID, "", "StbCiudadID,Nombre")
-            Me.cmbCiudad.DataSource = frmClientesEdit.dtCiudad
+            dtCiudad = StbCiudad.RetrieveDT("objPaisID=" & objPais.StbPaisID, "", "StbCiudadID,Nombre")
+            Me.cmbCiudad.DataSource = dtCiudad
             Me.cmbCiudad.DisplayMember = "Nombre"
             Me.cmbCiudad.ValueMember = "StbCiudadID"
             Me.cmbCiudad.Splits(0).DisplayColumns("StbCiudadID").Visible = False
@@ -129,8 +130,8 @@ Public Class frmClientesEdit
         Try
             objRuta = New StbRutas
             'Rutas
-            frmClientesEdit.dtRutas = StbRutas.RetrieveDT("1=1", "", "StbRutaID,Nombre")
-            Me.cmbRuta.DataSource = frmClientesEdit.dtRutas
+            dtRutas = StbRutas.RetrieveDT("1=1", "", "StbRutaID,Nombre")
+            Me.cmbRuta.DataSource = dtRutas
             Me.cmbRuta.DisplayMember = "Nombre"
             Me.cmbRuta.ValueMember = "StbRutaID"
             Me.cmbRuta.Splits(0).DisplayColumns("StbRutaID").Visible = False

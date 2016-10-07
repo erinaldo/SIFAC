@@ -22,11 +22,11 @@ Partial Class frmSrhEmpleadoEditar
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSrhEmpleadoEditar))
         Me.grbDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.dtpFechaNacimiento = New DevExpress.XtraEditors.DateEdit()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cmbCiudad = New C1.Win.C1List.C1Combo()
-        Me.dtpFechaNacimiento = New C1.Win.C1Input.C1DateEdit()
         Me.cmbGenero = New C1.Win.C1List.C1Combo()
         Me.txtCedula = New System.Windows.Forms.MaskedTextBox()
         Me.lblFechaNacimiento = New System.Windows.Forms.Label()
@@ -44,10 +44,10 @@ Partial Class frmSrhEmpleadoEditar
         Me.lblNombre1 = New System.Windows.Forms.Label()
         Me.lblPersonaID = New System.Windows.Forms.Label()
         Me.grbRH = New System.Windows.Forms.GroupBox()
+        Me.dtpFechaIngreso = New DevExpress.XtraEditors.DateEdit()
+        Me.dtpFechaEgresoE = New DevExpress.XtraEditors.DateEdit()
         Me.txtCodigoIME = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.dtpFechaEgreso = New C1.Win.C1Input.C1DateEdit()
-        Me.dtpFechaIngreso = New C1.Win.C1Input.C1DateEdit()
         Me.cmbCargo = New C1.Win.C1List.C1Combo()
         Me.lblFechaEgreso = New System.Windows.Forms.Label()
         Me.lblFechaIngreso = New System.Windows.Forms.Label()
@@ -67,12 +67,15 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmdEliminarContacto = New System.Windows.Forms.ToolStripButton()
         Me.ErrPrv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grbDatosGenerales.SuspendLayout()
+        CType(Me.dtpFechaNacimiento.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtpFechaNacimiento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grbRH.SuspendLayout()
-        CType(Me.dtpFechaEgreso, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtpFechaIngreso, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaIngreso.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaIngreso.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaEgresoE.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaEgresoE.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,11 +90,11 @@ Partial Class frmSrhEmpleadoEditar
         '
         'grbDatosGenerales
         '
+        Me.grbDatosGenerales.Controls.Add(Me.dtpFechaNacimiento)
         Me.grbDatosGenerales.Controls.Add(Me.txtDireccion)
         Me.grbDatosGenerales.Controls.Add(Me.Label4)
         Me.grbDatosGenerales.Controls.Add(Me.Label5)
         Me.grbDatosGenerales.Controls.Add(Me.cmbCiudad)
-        Me.grbDatosGenerales.Controls.Add(Me.dtpFechaNacimiento)
         Me.grbDatosGenerales.Controls.Add(Me.cmbGenero)
         Me.grbDatosGenerales.Controls.Add(Me.txtCedula)
         Me.grbDatosGenerales.Controls.Add(Me.lblFechaNacimiento)
@@ -115,6 +118,16 @@ Partial Class frmSrhEmpleadoEditar
         Me.grbDatosGenerales.TabIndex = 0
         Me.grbDatosGenerales.TabStop = False
         Me.grbDatosGenerales.Text = "Datos Generales"
+        '
+        'dtpFechaNacimiento
+        '
+        Me.dtpFechaNacimiento.EditValue = Nothing
+        Me.dtpFechaNacimiento.Location = New System.Drawing.Point(148, 129)
+        Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
+        Me.dtpFechaNacimiento.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtpFechaNacimiento.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.dtpFechaNacimiento.Size = New System.Drawing.Size(161, 20)
+        Me.dtpFechaNacimiento.TabIndex = 31
         '
         'txtDireccion
         '
@@ -179,41 +192,6 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmbCiudad.TabIndex = 28
         Me.cmbCiudad.Tag = "OBLIGATORIO"
         Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
-        '
-        'dtpFechaNacimiento
-        '
-        Me.dtpFechaNacimiento.AcceptsTab = True
-        Me.dtpFechaNacimiento.AllowDrop = True
-        Me.dtpFechaNacimiento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        '
-        '
-        '
-        Me.dtpFechaNacimiento.Calendar.AnnuallyBoldedDates = New Date(-1) {}
-        Me.dtpFechaNacimiento.Calendar.BoldedDates = New Date(-1) {}
-        Me.dtpFechaNacimiento.Calendar.ClearText = "&Clear"
-        Me.dtpFechaNacimiento.Calendar.MonthlyBoldedDates = New Date(-1) {}
-        Me.dtpFechaNacimiento.Calendar.SelectedDate = New Date(2016, 8, 17, 0, 0, 0, 0)
-        Me.dtpFechaNacimiento.Calendar.ShowTodayCircle = False
-        Me.dtpFechaNacimiento.Calendar.TodayText = "&Today"
-        Me.dtpFechaNacimiento.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
-        Me.dtpFechaNacimiento.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaNacimiento.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.dtpFechaNacimiento.DropDownFormAlign = C1.Win.C1Input.DropDownFormAlignmentEnum.Right
-        Me.dtpFechaNacimiento.EmptyAsNull = True
-        Me.dtpFechaNacimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpFechaNacimiento.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaNacimiento.Location = New System.Drawing.Point(148, 128)
-        Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
-        Me.dtpFechaNacimiento.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.dtpFechaNacimiento.Size = New System.Drawing.Size(170, 20)
-        Me.dtpFechaNacimiento.TabIndex = 26
-        Me.dtpFechaNacimiento.Tag = Nothing
-        Me.dtpFechaNacimiento.TrimStart = True
-        Me.dtpFechaNacimiento.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
-        Me.dtpFechaNacimiento.VisualStyle = C1.Win.C1Input.VisualStyle.System
         '
         'cmbGenero
         '
@@ -392,10 +370,10 @@ Partial Class frmSrhEmpleadoEditar
         '
         'grbRH
         '
+        Me.grbRH.Controls.Add(Me.dtpFechaIngreso)
+        Me.grbRH.Controls.Add(Me.dtpFechaEgresoE)
         Me.grbRH.Controls.Add(Me.txtCodigoIME)
         Me.grbRH.Controls.Add(Me.Label1)
-        Me.grbRH.Controls.Add(Me.dtpFechaEgreso)
-        Me.grbRH.Controls.Add(Me.dtpFechaIngreso)
         Me.grbRH.Controls.Add(Me.cmbCargo)
         Me.grbRH.Controls.Add(Me.lblFechaEgreso)
         Me.grbRH.Controls.Add(Me.lblFechaIngreso)
@@ -407,6 +385,26 @@ Partial Class frmSrhEmpleadoEditar
         Me.grbRH.TabIndex = 1
         Me.grbRH.TabStop = False
         Me.grbRH.Text = "Recursos Humanos"
+        '
+        'dtpFechaIngreso
+        '
+        Me.dtpFechaIngreso.EditValue = Nothing
+        Me.dtpFechaIngreso.Location = New System.Drawing.Point(458, 21)
+        Me.dtpFechaIngreso.Name = "dtpFechaIngreso"
+        Me.dtpFechaIngreso.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtpFechaIngreso.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.dtpFechaIngreso.Size = New System.Drawing.Size(161, 20)
+        Me.dtpFechaIngreso.TabIndex = 33
+        '
+        'dtpFechaEgresoE
+        '
+        Me.dtpFechaEgresoE.EditValue = Nothing
+        Me.dtpFechaEgresoE.Location = New System.Drawing.Point(458, 46)
+        Me.dtpFechaEgresoE.Name = "dtpFechaEgresoE"
+        Me.dtpFechaEgresoE.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtpFechaEgresoE.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.dtpFechaEgresoE.Size = New System.Drawing.Size(161, 20)
+        Me.dtpFechaEgresoE.TabIndex = 32
         '
         'txtCodigoIME
         '
@@ -425,64 +423,6 @@ Partial Class frmSrhEmpleadoEditar
         Me.Label1.Size = New System.Drawing.Size(76, 13)
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "Código IME:"
-        '
-        'dtpFechaEgreso
-        '
-        '
-        '
-        '
-        Me.dtpFechaEgreso.Calendar.AnnuallyBoldedDates = New Date(-1) {}
-        Me.dtpFechaEgreso.Calendar.BoldedDates = New Date(-1) {}
-        Me.dtpFechaEgreso.Calendar.ClearText = "&Clear"
-        Me.dtpFechaEgreso.Calendar.MonthlyBoldedDates = New Date(-1) {}
-        Me.dtpFechaEgreso.Calendar.SelectedDate = New Date(2016, 8, 5, 0, 0, 0, 0)
-        Me.dtpFechaEgreso.Calendar.TodayText = "&Today"
-        Me.dtpFechaEgreso.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
-        Me.dtpFechaEgreso.DisplayFormat.EmptyAsNull = False
-        Me.dtpFechaEgreso.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaEgreso.DisplayFormat.Inherit = CType((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.dtpFechaEgreso.EditFormat.EmptyAsNull = False
-        Me.dtpFechaEgreso.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaEgreso.EditFormat.Inherit = CType((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.dtpFechaEgreso.EmptyAsNull = True
-        Me.dtpFechaEgreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpFechaEgreso.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaEgreso.Location = New System.Drawing.Point(458, 48)
-        Me.dtpFechaEgreso.Name = "dtpFechaEgreso"
-        Me.dtpFechaEgreso.Size = New System.Drawing.Size(161, 20)
-        Me.dtpFechaEgreso.TabIndex = 8
-        Me.dtpFechaEgreso.Tag = Nothing
-        Me.dtpFechaEgreso.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
-        '
-        'dtpFechaIngreso
-        '
-        '
-        '
-        '
-        Me.dtpFechaIngreso.Calendar.AnnuallyBoldedDates = New Date(-1) {}
-        Me.dtpFechaIngreso.Calendar.BoldedDates = New Date(-1) {}
-        Me.dtpFechaIngreso.Calendar.ClearText = "&Clear"
-        Me.dtpFechaIngreso.Calendar.MonthlyBoldedDates = New Date(-1) {}
-        Me.dtpFechaIngreso.Calendar.SelectedDate = New Date(2016, 8, 5, 0, 0, 0, 0)
-        Me.dtpFechaIngreso.Calendar.TodayText = "&Today"
-        Me.dtpFechaIngreso.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
-        Me.dtpFechaIngreso.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaIngreso.EditFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.dtpFechaIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpFechaIngreso.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaIngreso.Location = New System.Drawing.Point(458, 24)
-        Me.dtpFechaIngreso.Name = "dtpFechaIngreso"
-        Me.dtpFechaIngreso.Size = New System.Drawing.Size(161, 20)
-        Me.dtpFechaIngreso.TabIndex = 7
-        Me.dtpFechaIngreso.Tag = Nothing
-        Me.dtpFechaIngreso.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
         'cmbCargo
         '
@@ -717,13 +657,16 @@ Partial Class frmSrhEmpleadoEditar
         Me.Text = "Nuevo Empleado"
         Me.grbDatosGenerales.ResumeLayout(False)
         Me.grbDatosGenerales.PerformLayout()
+        CType(Me.dtpFechaNacimiento.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtpFechaNacimiento, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grbRH.ResumeLayout(False)
         Me.grbRH.PerformLayout()
-        CType(Me.dtpFechaEgreso, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtpFechaIngreso, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaIngreso.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaIngreso.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaEgresoE.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaEgresoE.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -761,8 +704,6 @@ Partial Class frmSrhEmpleadoEditar
     Friend WithEvents lblCargo As System.Windows.Forms.Label
     Friend WithEvents cmbCargo As C1.Win.C1List.C1Combo
     Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
-    Friend WithEvents dtpFechaEgreso As C1.Win.C1Input.C1DateEdit
-    Friend WithEvents dtpFechaIngreso As C1.Win.C1Input.C1DateEdit
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
@@ -779,10 +720,12 @@ Partial Class frmSrhEmpleadoEditar
     Friend WithEvents lblFechaNacimiento As System.Windows.Forms.Label
     Friend WithEvents txtCedula As System.Windows.Forms.MaskedTextBox
     Friend WithEvents cmbGenero As C1.Win.C1List.C1Combo
-    Public WithEvents dtpFechaNacimiento As C1.Win.C1Input.C1DateEdit
     Friend WithEvents txtDireccion As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents cmbCiudad As C1.Win.C1List.C1Combo
     Friend WithEvents ErrPrv As System.Windows.Forms.ErrorProvider
+    Friend WithEvents dtpFechaNacimiento As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents dtpFechaIngreso As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents dtpFechaEgresoE As DevExpress.XtraEditors.DateEdit
 End Class

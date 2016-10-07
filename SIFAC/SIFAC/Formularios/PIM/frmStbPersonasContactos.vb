@@ -10,7 +10,7 @@ Public Class frmStbPersonasContactos
 
 #Region "Declaración de variables propias del formulario"
     Dim dtTiposPersonas, dtTiposEntradas As DataTable
-#End Region
+    #End Region
 
 #Region "propiedades"
     Dim intFrmLlamado As Integer
@@ -141,11 +141,26 @@ Public Class frmStbPersonasContactos
             Next
             'Introducir datos al datatable respectivo
             Dim intSecuencialContacto As Integer = 1
-            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
-                intSecuencialContacto = dr("SecuencialContacto") + 1
-            Next
-            frmClientesEdit.dtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
+            Select Case frmLLamado
+                Case 0
+                    For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+                        intSecuencialContacto = dr("SecuencialContacto") + 1
+                    Next
+                    frmClientesEdit.dtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
 
+                Case 1
+                    For Each dr As DataRow In frmSrhEmpleadoEditar.dtContactos.Rows
+                        intSecuencialContacto = dr("SecuencialContacto") + 1
+                    Next
+                    frmSrhEmpleadoEditar.dtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
+
+                Case 2
+                    For Each dr As DataRow In frmSivProveedorEdit.dtContactos.Rows
+                        intSecuencialContacto = dr("SecuencialContacto") + 1
+                    Next
+                    frmSivProveedorEdit.dtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
+            End Select
+           
             If MsgBox("¿Desea agregar más contactos?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
                 Me.txtValor.Text = ""
                 Me.cmbTipoPersona.Focus()
@@ -256,16 +271,18 @@ Public Class frmStbPersonasContactos
 
 #Region "Eventos de los Botones"
     Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
-        Select Case frmLLamado
-            Case 0
-                Me.GuardarDatos()
-            Case 1
-                If TypeGui = 0 Then
-                    Me.GuardarTiendaContactos()
-                Else
-                    Me.EditarTiendaContactos()
-                End If
-        End Select
+        Me.GuardarDatos()
+
+        'Select Case frmLLamado
+        '    Case 0
+        '        Me.GuardarDatos()
+        '    Case 1
+        '        If TypeGui = 0 Then
+        '            Me.GuardarTiendaContactos()
+        '        Else
+        '            Me.EditarTiendaContactos()
+        '        End If
+        'End Select
 
     End Sub
 

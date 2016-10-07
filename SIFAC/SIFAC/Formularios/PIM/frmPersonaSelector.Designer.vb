@@ -79,6 +79,7 @@ Partial Class frmPersonaSelector
         Me.cmdNuevaPersona.Size = New System.Drawing.Size(40, 35)
         Me.cmdNuevaPersona.TabIndex = 0
         Me.cmdNuevaPersona.UseVisualStyleBackColor = True
+        Me.cmdNuevaPersona.Visible = False
         '
         'grdPersonas
         '
