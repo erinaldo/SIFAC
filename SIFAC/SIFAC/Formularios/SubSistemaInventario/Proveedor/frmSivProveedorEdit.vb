@@ -169,9 +169,9 @@ Public Class frmSivProveedorEdit
             objPersonas = New StbPersona
             
             objPersonas.RetrieveByFilter("StbPersonaID=" + Me.objPersonaId)
-            Me.txtNombreCompleto.Text = objPersonas.RazonSocial
+            Me.txtRazonSocial.Text = objPersonas.RazonSocial
             Me.txtCedulaRUC.Text = objPersonas.RUC
-            
+
             Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
             Me.txtDireccion.Text = objPersonas.Direccion
 
@@ -199,31 +199,72 @@ Public Class frmSivProveedorEdit
                     Exit Function
                 End If
 
-                '1.1 Validar que no exista una empresa con el mismo RUC
-                objPCompara.RetrieveByFilter("RUC='" + Me.txtCedulaRUC.Text + "'")
-                If objPCompara.RUC <> Nothing Then
-                    Me.ErrorProvider.SetError(Me.txtCedulaRUC, "Ya existe una empresa con el mismo número RUC.")
-                    Me.txtCedulaRUC.Focus()
-                    Exit Function
-                End If
-                objPersonas.Nombre1 = ""
-                objPersonas.Apellido1 = ""
-                objPersonas.PersonaJuridica = 1
-                objPersonas.RazonSocial = Me.txtNombreCompleto.Text.Trim
-                objPersonas.SiglasEmpresa = ""
+                If chkJuridico.Checked Then
 
-                If Me.txtCedulaRUC.Text.Trim = "-" Then
-                    objPersonas.RUC = ""
+                    '1.1 Validar que no exista una empresa con el mismo RUC
+                    objPCompara.RetrieveByFilter("RUC='" + Me.txtCedulaRUC.Text + "'")
+                    If objPCompara.RUC <> Nothing Then
+                        Me.ErrorProvider.SetError(Me.txtCedulaRUC, "Ya existe una empresa con el mismo número RUC.")
+                        Me.txtCedulaRUC.Focus()
+                        Exit Function
+                    End If
+                    objPersonas.Nombre1 = ""
+                    objPersonas.Apellido1 = ""
+                    objPersonas.PersonaJuridica = 1
+                    objPersonas.RazonSocial = Me.txtRazonSocial.Text.Trim
+                    objPersonas.SiglasEmpresa = ""
+
+                    If Me.txtCedulaRUC.Text.Trim = "-" Then
+                        objPersonas.RUC = ""
+                    Else
+                        objPersonas.RUC = Me.txtCedulaRUC.Text.Trim
+                    End If
+
+                    objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                    objPersonas.objCiudadID = cmbCiudad.SelectedValue
+                    objPersonas.Direccion = txtDireccion.Text
+                    objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                    objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    objPersonas.Insert(T)
                 Else
-                    objPersonas.RUC = Me.txtCedulaRUC.Text.Trim
+                    '1.2 Validar que no exista  una persona con la misma cédula
+                    objPCompara.RetrieveByFilter("Cedula='" + Me.txtCedula.Text + "'")
+                    If objPCompara.Cedula <> Nothing Then
+                        Me.ErrorProvider.SetError(Me.txtCedula, "Ya existe una persona con la misma cédula.")
+                        Me.txtCedula.Focus()
+                        Exit Function
+                    End If
+
+                    'PROCEDER A INGRESAR
+                    objPersonas.Nombre1 = txtNombre1.Text
+                    objPersonas.Nombre2 = txtNombre2.Text
+                    objPersonas.Apellido1 = txtApellido1.Text
+                    objPersonas.Apellido2 = txtApellido2.Text
+                    objPersonas.objGeneroID = cmbGenero.SelectedValue
+
+                    If Me.txtCedula.Text.Trim <> "-      -" Then
+                        objPersonas.Cedula = Me.txtCedula.Text
+                    Else
+                        objPersonas.Cedula = Nothing
+                    End If
+                    If Me.dtpFechaNacimiento.Text.Trim.Length <> 0 Then
+                        objPersonas.FechaNacimiento = Me.dtpFechaNacimiento.Text
+                    Else
+                        objPersonas.FechaNacimiento = Nothing
+                    End If
+
+                    objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                    objPersonas.objCiudadID = cmbCiudadNatural.SelectedValue
+                    objPersonas.Direccion = txtDireccion.Text
+                    objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                    objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    objPersonas.Direccion = txtdireccionNatural.Text.Trim
+
+                    objPersonas.Insert(T)
+
                 End If
 
-                objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
-                objPersonas.objCiudadID = cmbCiudad.SelectedValue
-                objPersonas.Direccion = txtDireccion.Text
-                objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
-                objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                objPersonas.Insert(T)
+
                 Me.objPersonaId = objPersonas.StbPersonaID
 
                 objProveedor.objPersonaID = Me.objPersonaId
@@ -274,17 +315,43 @@ Public Class frmSivProveedorEdit
         Try
             Try
                 objPersonas = New StbPersona
+                objPersonas.Retrieve(Me.objPersonaId)
 
-                If Me.ModificoProveedor Then 'verificar si hubo cambio en datos del proveedor
-                    T.BeginTran()
-                    With objPersonas
-                        .Retrieve(Me.objPersonaId)
-                        .RazonSocial = Me.txtNombreCompleto.Text.Trim
-                        .objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
-                        .objCiudadID = cmbCiudad.SelectedValue
-                        .Direccion = txtDireccion.Text
-                        .Update(T)
-                    End With
+                If chkJuridico.Checked Then
+                    If Me.ModificoProveedor Then 'verificar si hubo cambio en datos del proveedor
+                        T.BeginTran()
+                        With objPersonas
+                            .RazonSocial = Me.txtRazonSocial.Text.Trim
+                            .objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                            .objCiudadID = cmbCiudad.SelectedValue
+                            .Direccion = txtDireccion.Text
+                            .Update(T)
+                        End With
+                    Else
+                        objPersonas.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                        objPersonas.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                        objPersonas.Nombre1 = Me.txtNombre1.Text.Trim
+                        objPersonas.Nombre2 = Me.txtNombre2.Text.Trim
+                        objPersonas.Apellido1 = Me.txtApellido1.Text.Trim
+                        objPersonas.Apellido2 = Me.txtApellido2.Text.Trim
+                        objPersonas.objGeneroID = Me.cmbGenero.SelectedValue
+
+                        If Me.txtCedula.Text.Trim <> "-      -" Then
+                            objPersonas.Cedula = Me.txtCedula.Text
+                        Else
+                            objPersonas.Cedula = Nothing
+                        End If
+                        If Me.dtpFechaNacimiento.Text.Trim.Length <> 0 Then
+                            objPersonas.FechaNacimiento = Me.dtpFechaNacimiento.Text
+                        Else
+                            objPersonas.FechaNacimiento = Nothing
+                        End If
+                        objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                        objPersonas.objCiudadID = cmbCiudadNatural.SelectedValue
+                        objPersonas.Direccion = txtdireccionNatural.Text
+
+                        objPersonas.Update(T)
+                    End If
 
                     With objProveedor
 
@@ -352,7 +419,7 @@ Public Class frmSivProveedorEdit
 
             dtPersona = SqlHelper.ExecuteQueryDT(strSQL)
 
-            Me.txtNombreCompleto.Text = dtPersona.DefaultView.Item(0)("NombreCompleto")
+            Me.txtRazonSocial.Text = dtPersona.DefaultView.Item(0)("NombreCompleto")
             Me.txtDireccion.Text = dtPersona.DefaultView.Item(0)("Direccion")
             Me.txtCedulaRUC.Text = dtPersona.DefaultView.Item(0)("StbPersonaID")
             Me.txtTelefono.Text = dtPersona.DefaultView.Item(0)("TelefonoParticular")
@@ -758,5 +825,43 @@ Public Class frmSivProveedorEdit
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
+    End Sub
+
+    Private Sub LimpiarControlesNaturalJuridico(boolNatural As Boolean)
+        Try
+            Select Case boolNatural
+                Case True
+                    txtNombre1.Text = String.Empty
+                    txtNombre2.Text = String.Empty
+                    txtApellido1.Text = String.Empty
+                    txtApellido2.Text = String.Empty
+                    txtCedula.Text = String.Empty
+                    cmbGenero.Text = String.Empty
+                    cmbCiudadNatural.Text = String.Empty
+                    dtpFechaNacimiento.Text = String.Empty
+                    txtdireccionNatural.Text = String.Empty
+                    gbxDatosJuridico.Visible = True
+                    grbDatosNatural.Visible = False
+                Case False
+                    txtRazonSocial.Text = String.Empty
+                    dtpFechaIngreso.Text = String.Empty
+                    txtDireccion.Text = String.Empty
+                    cmbCiudad.Text = String.Empty
+                    gbxDatosJuridico.Visible = False
+                    grbDatosNatural.Visible = True
+            End Select
+
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub chkJuridico_CheckedChanged(sender As Object, e As EventArgs) Handles chkJuridico.CheckedChanged
+        If chkJuridico.Checked Then
+            LimpiarControlesNaturalJuridico(True)
+        Else
+            LimpiarControlesNaturalJuridico(False)
+        End If
     End Sub
 End Class

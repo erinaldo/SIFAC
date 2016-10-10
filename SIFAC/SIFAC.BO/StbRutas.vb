@@ -10,7 +10,7 @@ Partial Public Class StbRutas
 	Protected m_Nombre As String = Nothing 
 	Protected m_ojbCobradorID As Nullable(Of Integer) 
 	Protected m_objSupervisor As Nullable(Of Integer) 
-	Protected m_DiaCobro As String = Nothing 
+	Protected m_DiaCobro As Nullable(Of Integer) 
 	Protected m_objPaisID As Nullable(Of Integer) 
 	Protected m_objCiudadID As Nullable(Of Integer) 
 	Protected m_CargarDiferenciada As Nullable(Of Boolean) 
@@ -65,16 +65,11 @@ Partial Public Class StbRutas
 		End Set
     End Property
 	
-	Public Property DiaCobro() As String
+	Public Property DiaCobro() As Nullable(Of Integer)
         Get
             Return (m_DiaCobro)
         End Get
-		Set(ByVal Value As String)		
-			If Not Value Is Nothing Then
-				If Value.Length > 20 Then
-					Throw New ArgumentOutOfRangeException("DiaCobro", Value.ToString(), "Valor inv?lido para StbRutas.DiaCobro. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (20).")
-				End If
-			End If
+		Set(ByVal Value As Nullable(Of Integer))					
 			m_DiaCobro = Value
 		End Set
     End Property
@@ -181,8 +176,8 @@ Partial Public Class StbRutas
         End Get
 		Set(ByVal Value As String)		
 			If Not Value Is Nothing Then
-				If Value.Length > 50 Then
-					Throw New ArgumentOutOfRangeException("Codigo", Value.ToString(), "Valor inv?lido para StbRutas.Codigo. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
+				If Value.Length > 100 Then
+					Throw New ArgumentOutOfRangeException("Codigo", Value.ToString(), "Valor inv?lido para StbRutas.Codigo. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (100).")
 				End If
 			End If
 			m_Codigo = Value
@@ -194,8 +189,6 @@ Partial Public Class StbRutas
 		Select Case ProperyName
 			Case "Nombre"
 				Return	50
-			Case "DiaCobro"
-				Return	20
 			Case "UsuarioCreacion"
 				Return	30
 			Case "UsuarioModificacion"
@@ -203,7 +196,7 @@ Partial Public Class StbRutas
 			Case "Descripcion"
 				Return	100
 			Case "Codigo"
-				Return	50
+				Return	100
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
 		End Select
@@ -241,7 +234,7 @@ Partial Public Class StbRutas
 			cmdInsert.Parameters.Add("@Nombre", SqlDbType.VarChar, 50, "Nombre")
 			cmdInsert.Parameters.Add("@ojbCobradorID", SqlDbType.Int, 4, "ojbCobradorID")
 			cmdInsert.Parameters.Add("@objSupervisor", SqlDbType.Int, 4, "objSupervisor")
-			cmdInsert.Parameters.Add("@DiaCobro", SqlDbType.VarChar, 20, "DiaCobro")
+			cmdInsert.Parameters.Add("@DiaCobro", SqlDbType.Int, 4, "DiaCobro")
 			cmdInsert.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
 			cmdInsert.Parameters.Add("@objCiudadID", SqlDbType.Int, 4, "objCiudadID")
 			cmdInsert.Parameters.Add("@CargarDiferenciada", SqlDbType.Bit, 1, "CargarDiferenciada")
@@ -251,14 +244,14 @@ Partial Public Class StbRutas
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdInsert.Parameters.Add("@Descripcion", SqlDbType.VarChar, 100, "Descripcion")
-			cmdInsert.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
+			cmdInsert.Parameters.Add("@Codigo", SqlDbType.VarChar, 100, "Codigo")
 			cmdInsert.CommandText = "INSERT INTO StbRutas ( Nombre, ojbCobradorID, objSupervisor, DiaCobro, objPaisID, objCiudadID, CargarDiferenciada, Activa, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, Descripcion, Codigo) VALUES ( @Nombre, @ojbCobradorID, @objSupervisor, @DiaCobro, @objPaisID, @objCiudadID, @CargarDiferenciada, @Activa, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @Descripcion, @Codigo)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@Nombre", SqlDbType.VarChar, 50, "Nombre")
 			cmdUpdate.Parameters.Add("@ojbCobradorID", SqlDbType.Int, 4, "ojbCobradorID")
 			cmdUpdate.Parameters.Add("@objSupervisor", SqlDbType.Int, 4, "objSupervisor")
-			cmdUpdate.Parameters.Add("@DiaCobro", SqlDbType.VarChar, 20, "DiaCobro")
+			cmdUpdate.Parameters.Add("@DiaCobro", SqlDbType.Int, 4, "DiaCobro")
 			cmdUpdate.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
 			cmdUpdate.Parameters.Add("@objCiudadID", SqlDbType.Int, 4, "objCiudadID")
 			cmdUpdate.Parameters.Add("@CargarDiferenciada", SqlDbType.Bit, 1, "CargarDiferenciada")
@@ -268,7 +261,7 @@ Partial Public Class StbRutas
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@Descripcion", SqlDbType.VarChar, 100, "Descripcion")
-			cmdUpdate.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
+			cmdUpdate.Parameters.Add("@Codigo", SqlDbType.VarChar, 100, "Codigo")
 			cmdUpdate.Parameters.Add("@wStbRutaID", SqlDbType.Int, 4, "StbRutaID")
 			cmdUpdate.CommandText = "UPDATE StbRutas SET Nombre=@Nombre, ojbCobradorID=@ojbCobradorID, objSupervisor=@objSupervisor, DiaCobro=@DiaCobro, objPaisID=@objPaisID, objCiudadID=@objCiudadID, CargarDiferenciada=@CargarDiferenciada, Activa=@Activa, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, Descripcion=@Descripcion, Codigo=@Codigo WHERE StbRutaID= @wStbRutaID"
 			If Not pTransac Is Nothing Then
@@ -559,7 +552,7 @@ Partial Public Class StbRutas
         Else
             arParams(3).Value = m_objSupervisor
         End If
-		arParams(4) = New SqlParameter("@DiaCobro", SqlDbType.VarChar)		
+		arParams(4) = New SqlParameter("@DiaCobro", SqlDbType.Int)		
 		If IsDBNull(m_DiaCobro) Then
             arParams(4).Value = DBNull.Value
         Else
@@ -691,7 +684,7 @@ Partial Public Class StbRutas
         Else
             arParams(3).Value = m_objSupervisor
         End If
-		arParams(4) = New SqlParameter("@DiaCobro", SqlDbType.VarChar)		
+		arParams(4) = New SqlParameter("@DiaCobro", SqlDbType.Int)		
 		If IsDBNull(m_DiaCobro) Then
             arParams(4).Value = DBNull.Value
         Else

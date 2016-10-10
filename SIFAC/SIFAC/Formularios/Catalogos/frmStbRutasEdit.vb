@@ -42,47 +42,61 @@ Public Class frmStbRutasEdit
         Try
             DtDias = New DataTable("Dias")
             Dim FNameColumn As New DataColumn("NombreDia")
+            Dim FNumeroColumn As New DataColumn("IDDia")
+
             FNameColumn.DataType = GetType(String)
+            FNumeroColumn.DataType = GetType(Integer)
+
             DtDias.Columns.Add(FNameColumn)
+            DtDias.Columns.Add(FNumeroColumn)
 
             Dim newDiasRow As DataRow
 
             newDiasRow = DtDias.NewRow()
+            newDiasRow("IDDia") = "0"
             newDiasRow("NombreDia") = "Ninguno"
             DtDias.Rows.Add(newDiasRow)
 
             newDiasRow = DtDias.NewRow()
+            newDiasRow("IDDia") = "1"
+            newDiasRow("NombreDia") = "Domingo"
+            DtDias.Rows.Add(newDiasRow)
+
+            newDiasRow = DtDias.NewRow()
+            newDiasRow("IDDia") = "2"
             newDiasRow("NombreDia") = "Lunes"
             DtDias.Rows.Add(newDiasRow)
 
             newDiasRow = DtDias.NewRow()
+            newDiasRow("IDDia") = "3"
             newDiasRow("NombreDia") = "Martes"
             DtDias.Rows.Add(newDiasRow)
 
             newDiasRow = DtDias.NewRow()
+            newDiasRow("IDDia") = "4"
             newDiasRow("NombreDia") = "Miercoles"
             DtDias.Rows.Add(newDiasRow)
 
             newDiasRow = DtDias.NewRow()
+            newDiasRow("IDDia") = "5"
             newDiasRow("NombreDia") = "Jueves"
             DtDias.Rows.Add(newDiasRow)
 
             newDiasRow = DtDias.NewRow()
+            newDiasRow("IDDia") = "6"
             newDiasRow("NombreDia") = "Viernes"
             DtDias.Rows.Add(newDiasRow)
 
             newDiasRow = DtDias.NewRow()
+            newDiasRow("IDDia") = "7"
             newDiasRow("NombreDia") = "Sabado"
-            DtDias.Rows.Add(newDiasRow)
-
-            newDiasRow = DtDias.NewRow()
-            newDiasRow("NombreDia") = "Domingo"
             DtDias.Rows.Add(newDiasRow)
 
             With cmbDiaCrobro
                 .DataSource = DtDias
                 .DisplayMember = "NombreDia"
-                .ValueMember = "NombreDia"
+                .ValueMember = "IDDia"
+                .Splits(0).DisplayColumns("IDDia").Visible = False
                 .ColumnHeaders = False
                 .ExtendRightColumn = True
                 .SelectedValue = -1
@@ -194,7 +208,7 @@ Public Class frmStbRutasEdit
                 cmbSupervisor.SelectedValue = IsDBNull(objRutas.objSupervisor)
             End If
 
-            cmbDiaCrobro.Text = objRutas.DiaCobro
+            cmbDiaCrobro.SelectedValue = objRutas.DiaCobro
             cmbCiudad.SelectedValue = objRutas.objCiudadID
             chkActivo.Checked = objRutas.Activa
             ckdCargaDiferenciada.Checked = objRutas.CargarDiferenciada
@@ -217,15 +231,21 @@ Public Class frmStbRutasEdit
             objRutas.Descripcion = txtDescripcion.Text.Trim
             objRutas.Activa = chkActivo.Checked
             objRutas.ojbCobradorID = cbxCobrador.SelectedValue
-            objRutas.objSupervisor = cmbSupervisor.SelectedValue
+
+            If Not cmbSupervisor.Text = "Ninguno" Then
+                objRutas.objSupervisor = cmbSupervisor.SelectedValue
+            End If
+
             objRutas.objCiudadID = cmbCiudad.SelectedValue
             objRutas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
-            objRutas.DiaCobro = cmbDiaCrobro.Text
+            objRutas.DiaCobro = cmbDiaCrobro.SelectedValue
             objRutas.CargarDiferenciada = ckdCargaDiferenciada.Checked
             objRutas.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objRutas.FechaCreacion = clsProyecto.Conexion.FechaServidor
-            objRutas.Codigo = "RUT" + cmbCiudad.Text.Substring(0, 3) + objRutas.StbRutaID
+
             objRutas.Insert(T)
+            objRutas.Codigo = "RUT" + cmbCiudad.Text.Substring(0, 3) + objRutas.StbRutaID
+            objRutas.Update(T)
             T.CommitTran()
             txtCodigo.Text = objRutas.Codigo
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
@@ -252,10 +272,14 @@ Public Class frmStbRutasEdit
             objRutas.Activa = chkActivo.Checked
             objRutas.Codigo = txtCodigo.Text
             objRutas.ojbCobradorID = cbxCobrador.SelectedValue
-            objRutas.objSupervisor = cmbSupervisor.SelectedValue
+
+            If Not cmbSupervisor.Text = "Ninguno" Then
+                objRutas.objSupervisor = cmbSupervisor.SelectedValue
+            End If
+
             objRutas.objCiudadID = cmbCiudad.SelectedValue
             objRutas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
-            objRutas.DiaCobro = cmbDiaCrobro.Text
+            objRutas.DiaCobro = cmbDiaCrobro.SelectedValue
             objRutas.CargarDiferenciada = ckdCargaDiferenciada.Checked
             objRutas.UsuarioModificacion = clsProyecto.Conexion.Servidor
             objRutas.FechaModificacion = clsProyecto.Conexion.FechaServidor
@@ -313,7 +337,10 @@ Public Class frmStbRutasEdit
 
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntrada() As Boolean
+        Dim objStbRuta, objPCompara As StbRutas
+        Dim dtCompara As DataTable
         Try
+
             If txtNombre.Text.Trim.Length = 0 Then
                 ErrorProv.SetError(txtNombre, My.Resources.MsgObligatorio)
                 Return False
@@ -337,6 +364,27 @@ Public Class frmStbRutasEdit
                 Return False
                 Exit Function
             End If
+
+            ''Validar que no existe otra ruta, mismo vendedor, en el mismo dia y ciudad
+            objStbRuta = New StbRutas
+            
+            dtCompara = StbRutas.RetrieveDT("ojbCobradorID=" & Me.cbxCobrador.SelectedValue & "  AND DiaCobro=" & cmbDiaCrobro.SelectedValue & " AND objCiudadID=" & cmbCiudad.SelectedValue & " AND Activa=1")
+
+            Select Case TypeGui
+                Case 0
+                    If dtCompara.Rows.Count > 0 Then
+                        Me.ErrorProv.SetError(Me.cbxCobrador, "Ya existe una ruta con estas caracteristicas.")
+                        Me.cbxCobrador.Focus()
+                        Exit Function
+                    End If
+                Case 1
+                    If dtCompara.Rows.Count > 1 Then
+                        Me.ErrorProv.SetError(Me.cbxCobrador, "Ya existe una ruta con estas caracteristicas.")
+                        Me.cbxCobrador.Focus()
+                        Exit Function
+                    End If
+            End Select
+            
 
         Catch ex As Exception
             clsError.CaptarError(ex)

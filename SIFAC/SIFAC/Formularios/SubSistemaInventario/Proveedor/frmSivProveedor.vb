@@ -38,8 +38,8 @@ Public Class frmSivProveedor
     Private Sub CargaDatos()
         Dim sSQL, sCampos, sFiltro As String
 
-        sCampos = "SivProveedorID, StbPersonaID, RazonSocial, Nombre2, Apellido1, Apellido2, Telefonos, Activo, Ciudad, RUC"
-        sFiltro = "1=1 ORDER BY RazonSocial"
+        sCampos = "SivProveedorID, StbPersonaID, NombreProveedor, Telefonos, Activo, Ciudad, Identificacion"
+        sFiltro = "1=1 ORDER BY NombreProveedor"
 
         Try
             Me.DtProveedores = New DataTable

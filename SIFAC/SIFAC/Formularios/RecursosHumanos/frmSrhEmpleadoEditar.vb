@@ -15,6 +15,7 @@ Public Class frmSrhEmpleadoEditar
     Public intEmpleadoID, intTypeGUI As Integer
     Public strPersonaID As String
     Public Shared dtContactos As DataTable
+    Public boolPersonaExistente As Boolean
 #End Region
 
 #Region "Propiedades"
@@ -53,13 +54,6 @@ Public Class frmSrhEmpleadoEditar
         Try
             Dim strFiltro As String = ""
             strFiltro = "StbPersonaID = '" & PersonaID & "'"
-
-            'Select Case intTipo
-            '    Case 0
-            '        strFiltro = "Descripcion = 'Empleado' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SrhEmpleado)"
-            '    Case 1
-            '        strFiltro = "StbPersonaID = '" & PersonaID & "'"
-            'End Select
             DtPersona = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero, Direccion,objGeneroID,objCiudadID,FechaNacimiento", "vwPersonaClasificacionEmpleado", strFiltro))
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -143,7 +137,7 @@ Public Class frmSrhEmpleadoEditar
             Me.txtDireccion.DataBindings.Clear()
 
             If DtPersona.Rows.Count > 0 Then
-
+                boolPersonaExistente = True
                 Me.PersonaID = DtPersona.Rows(0)("StbPersonaID")
                 txtDireccion.Text = DtPersona.Rows(0)("Direccion")
 
@@ -172,7 +166,8 @@ Public Class frmSrhEmpleadoEditar
                 Else
                     Me.cmdEliminarContacto.Enabled = True
                 End If
-
+            Else
+                boolPersonaExistente = False
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -268,6 +263,7 @@ Public Class frmSrhEmpleadoEditar
                 objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
                 objPersonas.Direccion = txtDireccion.Text.Trim
+
                 objPersonas.Insert(T)
                 Me.PersonaID = objPersonas.StbPersonaID
 
@@ -292,6 +288,72 @@ Public Class frmSrhEmpleadoEditar
             End Try
         Finally
             objEmpleado = Nothing
+        End Try
+    End Sub
+
+    Public Sub AsociarPersonaEmpleado()
+        Dim objPersonas As StbPersona
+        Dim T As New DAL.TransactionManager
+        Dim objEmpleado As SrhEmpleado
+        Dim objCuenta As New SsgCuenta
+        objEmpleado = New SrhEmpleado
+        Try
+            Try
+                T.BeginTran()
+                objPersonas = New StbPersona
+                objPersonas.Retrieve(Me.PersonaID)
+
+                objPersonas.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                objPersonas.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                objPersonas.Nombre1 = Me.txtNombre1.Text.Trim
+                objPersonas.Nombre2 = Me.txtNombre2.Text.Trim
+                objPersonas.Apellido1 = Me.txtApellido1.Text.Trim
+                objPersonas.Apellido2 = Me.txtApellido2.Text.Trim
+                objPersonas.objGeneroID = Me.cmbGenero.SelectedValue
+
+                If Me.txtCedula.Text.Trim <> "-      -" Then
+                    objPersonas.Cedula = Me.txtCedula.Text
+                Else
+                    objPersonas.Cedula = Nothing
+                End If
+                If Me.dtpFechaNacimiento.Text.Trim.Length <> 0 Then
+                    objPersonas.FechaNacimiento = Me.dtpFechaNacimiento.Text
+                Else
+                    objPersonas.FechaNacimiento = Nothing
+                End If
+                objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                objPersonas.objCiudadID = cmbCiudad.SelectedValue
+                objPersonas.Direccion = txtDireccion.Text
+
+                objPersonas.Update(T)
+                Me.ModificarDetalle(T)
+
+
+                Me.PersonaID = objPersonas.StbPersonaID
+
+                objEmpleado.objPersonaID = PersonaID
+                objEmpleado.objCargoID = cmbCargo.SelectedValue
+                objEmpleado.FechaIngreso = dtpFechaIngreso.DateTime
+                objEmpleado.Activo = chkActivo.Checked
+                objEmpleado.Imei = txtCodigoIME.Text
+
+                objEmpleado.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objEmpleado.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objEmpleado.Insert(T)
+                EmpleadoID = objEmpleado.SrhEmpleadoID
+                Me.InsertarDetalleEmpleado(Me.PersonaID, T)
+
+                T.CommitTran()
+                MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+
+                Me.boolEditado = False
+                Me.DialogResult = Windows.Forms.DialogResult.OK
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            objEmpleado = Nothing
+            objCuenta = Nothing
         End Try
     End Sub
 
@@ -672,6 +734,7 @@ Public Class frmSrhEmpleadoEditar
     Private Sub frmSrhEmpleadoEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             clsProyecto.CargarTemaDefinido(Me)
+            boolPersonaExistente = False
             Me.CargarLongitudesMaximas()
             CargarGenero()
             CargarCiudad()
@@ -720,7 +783,12 @@ Public Class frmSrhEmpleadoEditar
             If ValidarEntrada() Then
                 Select Case TypeGUI
                     Case 0
-                        AgregarEmpleado()
+                        If Not boolPersonaExistente Then
+                            AgregarEmpleado()
+                        Else
+                            AsociarPersonaEmpleado()
+                        End If
+
                     Case 1
                         EditarEmpleado()
                 End Select

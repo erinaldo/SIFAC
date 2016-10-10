@@ -64,7 +64,7 @@ Partial Class frmStbRutas
         Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdAgregar.ToolTipText = "Nuevo Producto"
+        Me.cmdAgregar.ToolTipText = "Nueva Ruta"
         '
         'cmdEditar
         '
@@ -73,7 +73,7 @@ Partial Class frmStbRutas
         Me.cmdEditar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdEditar.ToolTipText = "Editar Producto"
+        Me.cmdEditar.ToolTipText = "Editar Ruta"
         '
         'cmdConsultar
         '
@@ -82,7 +82,7 @@ Partial Class frmStbRutas
         Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdConsultar.ToolTipText = "Consultar Producto"
+        Me.cmdConsultar.ToolTipText = "Consultar Ruta"
         '
         'ToolStripSeparator1
         '
@@ -96,7 +96,7 @@ Partial Class frmStbRutas
         Me.cmdDesactivar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdDesactivar.Name = "cmdDesactivar"
         Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdDesactivar.ToolTipText = "Inactivar Producto"
+        Me.cmdDesactivar.ToolTipText = "Inactivar Ruta"
         '
         'ToolStripSeparator2
         '
@@ -119,7 +119,7 @@ Partial Class frmStbRutas
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
-        Me.cmdImprimir.ToolTipText = "Imprimir Datos de Productos"
+        Me.cmdImprimir.ToolTipText = "Imprimir Datos de las rutas"
         '
         'ToolStripSeparator3
         '
@@ -133,7 +133,7 @@ Partial Class frmStbRutas
         Me.cmdCerrar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdCerrar.Name = "cmdCerrar"
         Me.cmdCerrar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdCerrar.ToolTipText = "Salir de Catálogo de Productos"
+        Me.cmdCerrar.ToolTipText = "Salir de Catálogo de Rutas"
         '
         'grdRutas
         '

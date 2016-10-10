@@ -146,16 +146,16 @@ Partial Class frmSivProveedor
         '
         'colNombre
         '
-        Me.colNombre.Caption = "Razón Social"
-        Me.colNombre.FieldName = "RazonSocial"
+        Me.colNombre.Caption = "Razón Social/Nombre"
+        Me.colNombre.FieldName = "NombreProveedor"
         Me.colNombre.Name = "colNombre"
         Me.colNombre.Visible = True
         Me.colNombre.VisibleIndex = 0
         '
         'colRUC
         '
-        Me.colRUC.Caption = "RUC"
-        Me.colRUC.FieldName = "RUC"
+        Me.colRUC.Caption = "RUC/Cedula"
+        Me.colRUC.FieldName = "Identificacion"
         Me.colRUC.Name = "colRUC"
         Me.colRUC.Visible = True
         Me.colRUC.VisibleIndex = 1
