@@ -35,7 +35,6 @@ Partial Class frmSivProveedorEdit
         Me.txtCedulaRUC = New System.Windows.Forms.TextBox()
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.cmdBuscarProv = New System.Windows.Forms.Button()
-        Me.cmdNuevoProv = New System.Windows.Forms.Button()
         Me.imgIconos = New System.Windows.Forms.ImageList(Me.components)
         Me.chkActivo = New System.Windows.Forms.CheckBox()
         Me.txtIdProveedor = New System.Windows.Forms.TextBox()
@@ -81,28 +80,28 @@ Partial Class frmSivProveedorEdit
         Me.lblCedula = New System.Windows.Forms.Label()
         Me.lblNombre2 = New System.Windows.Forms.Label()
         Me.lblNombre1 = New System.Windows.Forms.Label()
-        Me.gbxDatosJuridico.SuspendLayout
-        CType(Me.cmbCiudad,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtpFechaIngreso,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.imgProveedor,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ErrorProvider,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.TabProveedor.SuspendLayout
-        Me.tbpContacto.SuspendLayout
-        CType(Me.grdContactoPrincipal,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.mnuProvision.SuspendLayout
-        CType(Me.PanelControl1,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.PanelControl1.SuspendLayout
-        Me.GroupBox1.SuspendLayout
-        Me.tabAdicionales.SuspendLayout
-        Me.tabContactos.SuspendLayout
-        CType(Me.tdbContactos,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.barContactos.SuspendLayout
-        Me.grbDatosNatural.SuspendLayout
-        CType(Me.dtpFechaNacimiento.Properties.VistaTimeProperties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtpFechaNacimiento.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.cmbCiudadNatural,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.cmbGenero,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.gbxDatosJuridico.SuspendLayout()
+        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaIngreso, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabProveedor.SuspendLayout()
+        Me.tbpContacto.SuspendLayout()
+        CType(Me.grdContactoPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.mnuProvision.SuspendLayout()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        Me.tabAdicionales.SuspendLayout()
+        Me.tabContactos.SuspendLayout()
+        CType(Me.tdbContactos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.barContactos.SuspendLayout()
+        Me.grbDatosNatural.SuspendLayout()
+        CType(Me.dtpFechaNacimiento.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbCiudadNatural, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'gbxDatosJuridico
         '
@@ -118,18 +117,18 @@ Partial Class frmSivProveedorEdit
         Me.gbxDatosJuridico.Controls.Add(Me.txtTelefono)
         Me.gbxDatosJuridico.Controls.Add(Me.txtCedulaRUC)
         Me.gbxDatosJuridico.Controls.Add(Me.txtRazonSocial)
-        Me.gbxDatosJuridico.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.gbxDatosJuridico.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbxDatosJuridico.Location = New System.Drawing.Point(11, 65)
         Me.gbxDatosJuridico.Name = "gbxDatosJuridico"
         Me.gbxDatosJuridico.Size = New System.Drawing.Size(575, 174)
         Me.gbxDatosJuridico.TabIndex = 1
-        Me.gbxDatosJuridico.TabStop = false
+        Me.gbxDatosJuridico.TabStop = False
         Me.gbxDatosJuridico.Text = "Datos personales"
         '
         'Label1
         '
-        Me.Label1.AutoSize = true
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(15, 94)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(50, 13)
@@ -139,27 +138,27 @@ Partial Class frmSivProveedorEdit
         'cmbCiudad
         '
         Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCiudad.AllowColMove = false
-        Me.cmbCiudad.AllowSort = false
+        Me.cmbCiudad.AllowColMove = False
+        Me.cmbCiudad.AllowSort = False
         Me.cmbCiudad.Caption = ""
         Me.cmbCiudad.CaptionHeight = 17
         Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbCiudad.ColumnCaptionHeight = 17
         Me.cmbCiudad.ColumnFooterHeight = 17
-        Me.cmbCiudad.ColumnHeaders = false
+        Me.cmbCiudad.ColumnHeaders = False
         Me.cmbCiudad.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbCiudad.ContentHeight = 15
         Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbCiudad.EditorHeight = 15
-        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"),System.Drawing.Image))
+        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
         Me.cmbCiudad.ItemHeight = 15
         Me.cmbCiudad.Location = New System.Drawing.Point(140, 87)
-        Me.cmbCiudad.MatchEntryTimeout = CType(2000,Long)
-        Me.cmbCiudad.MaxDropDownItems = CType(5,Short)
+        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
         Me.cmbCiudad.MaxLength = 32767
         Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
         Me.cmbCiudad.Name = "cmbCiudad"
@@ -173,20 +172,20 @@ Partial Class frmSivProveedorEdit
         '
         'txtDireccion
         '
-        Me.txtDireccion.AcceptsTab = true
-        Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtDireccion.AcceptsTab = True
+        Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccion.Location = New System.Drawing.Point(140, 117)
-        Me.txtDireccion.Multiline = true
+        Me.txtDireccion.Multiline = True
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtDireccion.Size = New System.Drawing.Size(411, 55)
         Me.txtDireccion.TabIndex = 93
-        Me.txtDireccion.TabStop = false
+        Me.txtDireccion.TabStop = False
         Me.txtDireccion.Tag = "BLOQUEADO"
         '
         'lblTelefono
         '
-        Me.lblTelefono.AutoSize = true
+        Me.lblTelefono.AutoSize = True
         Me.lblTelefono.BackColor = System.Drawing.Color.Transparent
         Me.lblTelefono.Location = New System.Drawing.Point(320, 212)
         Me.lblTelefono.Name = "lblTelefono"
@@ -197,7 +196,7 @@ Partial Class frmSivProveedorEdit
         '
         'lblCedulaRUC
         '
-        Me.lblCedulaRUC.AutoSize = true
+        Me.lblCedulaRUC.AutoSize = True
         Me.lblCedulaRUC.BackColor = System.Drawing.Color.Transparent
         Me.lblCedulaRUC.Location = New System.Drawing.Point(14, 212)
         Me.lblCedulaRUC.Name = "lblCedulaRUC"
@@ -208,7 +207,7 @@ Partial Class frmSivProveedorEdit
         '
         'lblDireccion
         '
-        Me.lblDireccion.AutoSize = true
+        Me.lblDireccion.AutoSize = True
         Me.lblDireccion.BackColor = System.Drawing.Color.Transparent
         Me.lblDireccion.Location = New System.Drawing.Point(17, 117)
         Me.lblDireccion.Name = "lblDireccion"
@@ -219,7 +218,7 @@ Partial Class frmSivProveedorEdit
         '
         'lblFechaIngreso
         '
-        Me.lblFechaIngreso.AutoSize = true
+        Me.lblFechaIngreso.AutoSize = True
         Me.lblFechaIngreso.BackColor = System.Drawing.Color.Transparent
         Me.lblFechaIngreso.Location = New System.Drawing.Point(15, 29)
         Me.lblFechaIngreso.Name = "lblFechaIngreso"
@@ -253,7 +252,7 @@ Partial Class frmSivProveedorEdit
         Me.dtpFechaIngreso.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaIngreso.CustomFormat = "dd/mm/yyyy"
         Me.dtpFechaIngreso.EditMask = "##/##/####"
-        Me.dtpFechaIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.dtpFechaIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaIngreso.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaIngreso.Location = New System.Drawing.Point(140, 29)
         Me.dtpFechaIngreso.Name = "dtpFechaIngreso"
@@ -264,95 +263,84 @@ Partial Class frmSivProveedorEdit
         '
         'txtTelefono
         '
-        Me.txtTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtTelefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTelefono.Location = New System.Drawing.Point(394, 208)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(157, 20)
         Me.txtTelefono.TabIndex = 0
-        Me.txtTelefono.TabStop = false
+        Me.txtTelefono.TabStop = False
         Me.txtTelefono.Tag = "BLOQUEADO"
         '
         'txtCedulaRUC
         '
-        Me.txtCedulaRUC.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtCedulaRUC.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCedulaRUC.Location = New System.Drawing.Point(138, 208)
         Me.txtCedulaRUC.Name = "txtCedulaRUC"
         Me.txtCedulaRUC.Size = New System.Drawing.Size(157, 20)
         Me.txtCedulaRUC.TabIndex = 0
-        Me.txtCedulaRUC.TabStop = false
+        Me.txtCedulaRUC.TabStop = False
         Me.txtCedulaRUC.Tag = "BLOQUEADO"
         '
         'txtRazonSocial
         '
-        Me.txtRazonSocial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtRazonSocial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRazonSocial.Location = New System.Drawing.Point(140, 58)
         Me.txtRazonSocial.Name = "txtRazonSocial"
         Me.txtRazonSocial.Size = New System.Drawing.Size(411, 20)
         Me.txtRazonSocial.TabIndex = 0
-        Me.txtRazonSocial.TabStop = false
+        Me.txtRazonSocial.TabStop = False
         Me.txtRazonSocial.Tag = "BLOQUEADO"
         '
         'cmdBuscarProv
         '
         Me.cmdBuscarProv.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdBuscarProv.Image = CType(resources.GetObject("cmdBuscarProv.Image"),System.Drawing.Image)
+        Me.cmdBuscarProv.Image = CType(resources.GetObject("cmdBuscarProv.Image"), System.Drawing.Image)
         Me.cmdBuscarProv.Location = New System.Drawing.Point(285, 21)
         Me.cmdBuscarProv.Name = "cmdBuscarProv"
-        Me.cmdBuscarProv.Size = New System.Drawing.Size(29, 25)
+        Me.cmdBuscarProv.Size = New System.Drawing.Size(21, 21)
         Me.cmdBuscarProv.TabIndex = 3
-        Me.cmdBuscarProv.UseVisualStyleBackColor = true
-        '
-        'cmdNuevoProv
-        '
-        Me.cmdNuevoProv.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdNuevoProv.ImageIndex = 0
-        Me.cmdNuevoProv.ImageList = Me.imgIconos
-        Me.cmdNuevoProv.Location = New System.Drawing.Point(320, 19)
-        Me.cmdNuevoProv.Name = "cmdNuevoProv"
-        Me.cmdNuevoProv.Size = New System.Drawing.Size(30, 25)
-        Me.cmdNuevoProv.TabIndex = 2
-        Me.cmdNuevoProv.UseVisualStyleBackColor = true
-        Me.cmdNuevoProv.Visible = false
+        Me.cmdBuscarProv.UseVisualStyleBackColor = True
         '
         'imgIconos
         '
-        Me.imgIconos.ImageStream = CType(resources.GetObject("imgIconos.ImageStream"),System.Windows.Forms.ImageListStreamer)
+        Me.imgIconos.ImageStream = CType(resources.GetObject("imgIconos.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.imgIconos.TransparentColor = System.Drawing.Color.Transparent
         Me.imgIconos.Images.SetKeyName(0, "Usuario.gif")
         Me.imgIconos.Images.SetKeyName(1, "Buscar.png")
         '
         'chkActivo
         '
-        Me.chkActivo.AutoSize = true
+        Me.chkActivo.AutoSize = True
         Me.chkActivo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.chkActivo.Checked = true
+        Me.chkActivo.Checked = True
         Me.chkActivo.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkActivo.Enabled = false
-        Me.chkActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.chkActivo.Enabled = False
+        Me.chkActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkActivo.Location = New System.Drawing.Point(530, 26)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
         Me.chkActivo.TabIndex = 96
         Me.chkActivo.Tag = "BLOQUEADO"
         Me.chkActivo.Text = "Activo"
-        Me.chkActivo.UseVisualStyleBackColor = true
+        Me.chkActivo.UseVisualStyleBackColor = True
         '
         'txtIdProveedor
         '
-        Me.txtIdProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtIdProveedor.Enabled = False
+        Me.txtIdProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtIdProveedor.Location = New System.Drawing.Point(153, 22)
         Me.txtIdProveedor.Name = "txtIdProveedor"
         Me.txtIdProveedor.Size = New System.Drawing.Size(126, 20)
         Me.txtIdProveedor.TabIndex = 0
-        Me.txtIdProveedor.TabStop = false
+        Me.txtIdProveedor.TabStop = False
         Me.txtIdProveedor.Tag = "BLOQUEADO"
         Me.txtIdProveedor.Text = "(Automático)"
         '
         'lblIdProveedor
         '
-        Me.lblIdProveedor.AutoSize = true
+        Me.lblIdProveedor.AutoSize = True
         Me.lblIdProveedor.BackColor = System.Drawing.Color.Transparent
-        Me.lblIdProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblIdProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIdProveedor.Location = New System.Drawing.Point(28, 27)
         Me.lblIdProveedor.Name = "lblIdProveedor"
         Me.lblIdProveedor.Size = New System.Drawing.Size(84, 13)
@@ -368,7 +356,7 @@ Partial Class frmSivProveedorEdit
         Me.imgProveedor.Name = "imgProveedor"
         Me.imgProveedor.Size = New System.Drawing.Size(133, 154)
         Me.imgProveedor.TabIndex = 98
-        Me.imgProveedor.TabStop = false
+        Me.imgProveedor.TabStop = False
         '
         'ErrorProvider
         '
@@ -401,25 +389,25 @@ Partial Class frmSivProveedorEdit
         Me.tbpContacto.Size = New System.Drawing.Size(522, 137)
         Me.tbpContacto.TabIndex = 0
         Me.tbpContacto.Text = "Contacto Principal"
-        Me.tbpContacto.UseVisualStyleBackColor = true
+        Me.tbpContacto.UseVisualStyleBackColor = True
         '
         'grdContactoPrincipal
         '
-        Me.grdContactoPrincipal.AllowColMove = false
-        Me.grdContactoPrincipal.AllowColSelect = false
-        Me.grdContactoPrincipal.AllowRowSelect = false
+        Me.grdContactoPrincipal.AllowColMove = False
+        Me.grdContactoPrincipal.AllowColSelect = False
+        Me.grdContactoPrincipal.AllowRowSelect = False
         Me.grdContactoPrincipal.AllowRowSizing = C1.Win.C1TrueDBGrid.RowSizingEnum.None
-        Me.grdContactoPrincipal.AllowUpdate = false
+        Me.grdContactoPrincipal.AllowUpdate = False
         Me.grdContactoPrincipal.FlatStyle = C1.Win.C1TrueDBGrid.FlatModeEnum.Flat
         Me.grdContactoPrincipal.GroupByCaption = "Drag a column header here to group by that column"
-        Me.grdContactoPrincipal.Images.Add(CType(resources.GetObject("grdContactoPrincipal.Images"),System.Drawing.Image))
+        Me.grdContactoPrincipal.Images.Add(CType(resources.GetObject("grdContactoPrincipal.Images"), System.Drawing.Image))
         Me.grdContactoPrincipal.Location = New System.Drawing.Point(2, 7)
         Me.grdContactoPrincipal.Name = "grdContactoPrincipal"
         Me.grdContactoPrincipal.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdContactoPrincipal.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdContactoPrincipal.PreviewInfo.ZoomFactor = 75R
-        Me.grdContactoPrincipal.PrintInfo.PageSettings = CType(resources.GetObject("grdContactoPrincipal.PrintInfo.PageSettings"),System.Drawing.Printing.PageSettings)
-        Me.grdContactoPrincipal.RecordSelectors = false
+        Me.grdContactoPrincipal.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdContactoPrincipal.PrintInfo.PageSettings = CType(resources.GetObject("grdContactoPrincipal.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdContactoPrincipal.RecordSelectors = False
         Me.grdContactoPrincipal.Size = New System.Drawing.Size(510, 113)
         Me.grdContactoPrincipal.TabIndex = 0
         Me.grdContactoPrincipal.Text = "C1TrueDBGrid1"
@@ -443,30 +431,29 @@ Partial Class frmSivProveedorEdit
         'cmdBuscarContacto
         '
         Me.cmdBuscarContacto.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdBuscarContacto.Image = CType(resources.GetObject("cmdBuscarContacto.Image"),System.Drawing.Image)
+        Me.cmdBuscarContacto.Image = CType(resources.GetObject("cmdBuscarContacto.Image"), System.Drawing.Image)
         Me.cmdBuscarContacto.Location = New System.Drawing.Point(508, 265)
         Me.cmdBuscarContacto.Name = "cmdBuscarContacto"
-        Me.cmdBuscarContacto.Size = New System.Drawing.Size(29, 25)
+        Me.cmdBuscarContacto.Size = New System.Drawing.Size(21, 21)
         Me.cmdBuscarContacto.TabIndex = 4
-        Me.cmdBuscarContacto.UseVisualStyleBackColor = true
+        Me.cmdBuscarContacto.UseVisualStyleBackColor = True
         '
         'cmdEditarContactoPrincipal
         '
         Me.cmdEditarContactoPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cmdEditarContactoPrincipal.ImageIndex = 0
-        Me.cmdEditarContactoPrincipal.ImageList = Me.imgIconos
-        Me.cmdEditarContactoPrincipal.Location = New System.Drawing.Point(472, 264)
+        Me.cmdEditarContactoPrincipal.Image = CType(resources.GetObject("cmdEditarContactoPrincipal.Image"), System.Drawing.Image)
+        Me.cmdEditarContactoPrincipal.Location = New System.Drawing.Point(482, 264)
         Me.cmdEditarContactoPrincipal.Name = "cmdEditarContactoPrincipal"
-        Me.cmdEditarContactoPrincipal.Size = New System.Drawing.Size(30, 25)
-        Me.cmdEditarContactoPrincipal.TabIndex = 73
-        Me.cmdEditarContactoPrincipal.UseVisualStyleBackColor = true
+        Me.cmdEditarContactoPrincipal.Size = New System.Drawing.Size(21, 21)
+        Me.cmdEditarContactoPrincipal.TabIndex = 21
+        Me.cmdEditarContactoPrincipal.UseVisualStyleBackColor = True
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.grbDatosNatural)
         Me.PanelControl1.Controls.Add(Me.chkJuridico)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Controls.Add(Me.chkActivo)
-        Me.PanelControl1.Controls.Add(Me.cmdNuevoProv)
         Me.PanelControl1.Controls.Add(Me.cmdBuscarProv)
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
@@ -475,7 +462,6 @@ Partial Class frmSivProveedorEdit
         Me.PanelControl1.Controls.Add(Me.TabProveedor)
         Me.PanelControl1.Controls.Add(Me.txtIdProveedor)
         Me.PanelControl1.Controls.Add(Me.lblIdProveedor)
-        Me.PanelControl1.Controls.Add(Me.grbDatosNatural)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
@@ -922,7 +908,6 @@ End Sub
     Friend WithEvents txtRazonSocial As System.Windows.Forms.TextBox
     Friend WithEvents lblCedulaRUC As System.Windows.Forms.Label
     Friend WithEvents txtCedulaRUC As System.Windows.Forms.TextBox
-    Friend WithEvents cmdNuevoProv As System.Windows.Forms.Button
     Friend WithEvents lblTelefono As System.Windows.Forms.Label
     Friend WithEvents txtTelefono As System.Windows.Forms.TextBox
     Friend WithEvents TabProveedor As System.Windows.Forms.TabControl

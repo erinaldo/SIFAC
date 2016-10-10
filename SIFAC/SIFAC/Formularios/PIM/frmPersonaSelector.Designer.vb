@@ -20,17 +20,32 @@ Partial Class frmPersonaSelector
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPersonaSelector))
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.pnlBotones = New System.Windows.Forms.Panel()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdNuevaPersona = New System.Windows.Forms.Button()
-        Me.grdPersonas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.grdPersonas = New DevExpress.XtraGrid.GridControl()
+        Me.grdvwPersonas = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.ColSeleccionar = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.chkSeleccionado = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.colCedula = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNombreCompleto = New DevExpress.XtraGrid.Columns.GridColumn()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlBotones.SuspendLayout()
-        CType(Me.grdPersonas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
+        CType(Me.grdPersonas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdvwPersonas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkSeleccionado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'pnlBotones
         '
@@ -81,22 +96,6 @@ Partial Class frmPersonaSelector
         Me.cmdNuevaPersona.UseVisualStyleBackColor = True
         Me.cmdNuevaPersona.Visible = False
         '
-        'grdPersonas
-        '
-        Me.grdPersonas.ExtendRightColumn = True
-        Me.grdPersonas.GroupByCaption = "Drag a column header here to group by that column"
-        Me.grdPersonas.Images.Add(CType(resources.GetObject("grdPersonas.Images"), System.Drawing.Image))
-        Me.grdPersonas.Location = New System.Drawing.Point(0, 12)
-        Me.grdPersonas.Name = "grdPersonas"
-        Me.grdPersonas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdPersonas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdPersonas.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdPersonas.PrintInfo.PageSettings = CType(resources.GetObject("grdPersonas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdPersonas.Size = New System.Drawing.Size(498, 274)
-        Me.grdPersonas.TabIndex = 1
-        Me.grdPersonas.Text = "grdSeleccionPersona"
-        Me.grdPersonas.PropBag = resources.GetString("grdPersonas.PropBag")
-        '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
@@ -108,6 +107,7 @@ Partial Class frmPersonaSelector
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.grdPersonas)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
@@ -116,13 +116,86 @@ Partial Class frmPersonaSelector
         Me.PanelControl1.Size = New System.Drawing.Size(502, 363)
         Me.PanelControl1.TabIndex = 8
         '
+        'grdPersonas
+        '
+        Me.grdPersonas.Location = New System.Drawing.Point(0, 0)
+        Me.grdPersonas.MainView = Me.grdvwPersonas
+        Me.grdPersonas.Name = "grdPersonas"
+        Me.grdPersonas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.chkSeleccionado})
+        Me.grdPersonas.Size = New System.Drawing.Size(502, 292)
+        Me.grdPersonas.TabIndex = 0
+        Me.grdPersonas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdvwPersonas})
+        '
+        'grdvwPersonas
+        '
+        Me.grdvwPersonas.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColSeleccionar, Me.colCedula, Me.colNombreCompleto})
+        Me.grdvwPersonas.GridControl = Me.grdPersonas
+        Me.grdvwPersonas.Name = "grdvwPersonas"
+        Me.grdvwPersonas.OptionsView.ColumnAutoWidth = False
+        Me.grdvwPersonas.OptionsView.ShowDetailButtons = False
+        Me.grdvwPersonas.OptionsView.ShowGroupPanel = False
+        '
+        'ColSeleccionar
+        '
+        Me.ColSeleccionar.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.ColSeleccionar.AppearanceHeader.Options.UseFont = True
+        Me.ColSeleccionar.AppearanceHeader.Options.UseTextOptions = True
+        Me.ColSeleccionar.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.ColSeleccionar.Caption = "Seleccionar"
+        Me.ColSeleccionar.ColumnEdit = Me.chkSeleccionado
+        Me.ColSeleccionar.FieldName = "Seleccionar"
+        Me.ColSeleccionar.Name = "ColSeleccionar"
+        Me.ColSeleccionar.OptionsColumn.AllowMove = False
+        Me.ColSeleccionar.OptionsFilter.AllowAutoFilter = False
+        Me.ColSeleccionar.OptionsFilter.AllowFilter = False
+        Me.ColSeleccionar.Visible = True
+        Me.ColSeleccionar.VisibleIndex = 0
+        '
+        'chkSeleccionado
+        '
+        Me.chkSeleccionado.AutoHeight = False
+        Me.chkSeleccionado.Name = "chkSeleccionado"
+        '
+        'colCedula
+        '
+        Me.colCedula.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.colCedula.AppearanceHeader.Options.UseFont = True
+        Me.colCedula.AppearanceHeader.Options.UseTextOptions = True
+        Me.colCedula.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colCedula.Caption = "Cédula"
+        Me.colCedula.FieldName = "Cedula"
+        Me.colCedula.Name = "colCedula"
+        Me.colCedula.OptionsColumn.AllowEdit = False
+        Me.colCedula.OptionsColumn.AllowMove = False
+        Me.colCedula.OptionsFilter.AllowAutoFilter = False
+        Me.colCedula.OptionsFilter.AllowFilter = False
+        Me.colCedula.Visible = True
+        Me.colCedula.VisibleIndex = 1
+        Me.colCedula.Width = 108
+        '
+        'colNombreCompleto
+        '
+        Me.colNombreCompleto.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.colNombreCompleto.AppearanceHeader.Options.UseFont = True
+        Me.colNombreCompleto.AppearanceHeader.Options.UseTextOptions = True
+        Me.colNombreCompleto.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colNombreCompleto.Caption = "Nombre Completo"
+        Me.colNombreCompleto.FieldName = "NombreCompleto"
+        Me.colNombreCompleto.Name = "colNombreCompleto"
+        Me.colNombreCompleto.OptionsColumn.AllowEdit = False
+        Me.colNombreCompleto.OptionsColumn.AllowMove = False
+        Me.colNombreCompleto.OptionsFilter.AllowAutoFilter = False
+        Me.colNombreCompleto.OptionsFilter.AllowFilter = False
+        Me.colNombreCompleto.Visible = True
+        Me.colNombreCompleto.VisibleIndex = 2
+        Me.colNombreCompleto.Width = 300
+        '
         'frmPersonaSelector
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(502, 363)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.grdPersonas)
         Me.Controls.Add(Me.pnlBotones)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -132,17 +205,27 @@ Partial Class frmPersonaSelector
         Me.Name = "frmPersonaSelector"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Selección de Personas"
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlBotones.ResumeLayout(False)
-        CType(Me.grdPersonas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
+        CType(Me.grdPersonas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdvwPersonas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkSeleccionado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents pnlBotones As System.Windows.Forms.Panel
-    Friend WithEvents grdPersonas As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents cmdNuevaPersona As System.Windows.Forms.Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents grdPersonas As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdvwPersonas As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents ColSeleccionar As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCedula As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNombreCompleto As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents chkSeleccionado As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

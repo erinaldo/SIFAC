@@ -1,6 +1,4 @@
 '-------------------------------------------------------------------------------------------------
-''-- Nombre del Autor        : Gelmin Martínez.
-''-- Fecha de Elaboración    : 12 Mayo 2010. 04:45 AM.
 ''-- Formulario de Edición y Modificación de Proveedor.
 ''------------------------------------------------------------------------------------------------
 Imports DAL
@@ -109,6 +107,37 @@ Public Class frmSivProveedorEdit
 #End Region
 
 #Region "Procedimientos"
+#Region "Cargar Grid Contactos"
+    Private Sub CargarGridContactos()
+        Try
+            Dim strFiltro As String = "1=1"
+            Select Case Me.TypeGui
+                Case 0
+                    strFiltro = "1=0"
+                Case 1, 2
+                    strFiltro = "objPersonaID=" & Me.objPersonaId
+            End Select
+
+            frmSivProveedorEdit.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", strFiltro))
+            Me.tdbContactos.SetDataBinding(frmSivProveedorEdit.dtContactos, "", True)
+            Me.tdbContactos.Caption = "Contactos (" & frmSivProveedorEdit.dtContactos.Rows.Count & ")"
+
+            If frmSivProveedorEdit.dtContactos.Rows.Count = 0 Then
+                Me.cmdEliminarContacto.Enabled = False
+            Else
+                Me.cmdEliminarContacto.Enabled = True
+            End If
+
+            Me.tdbContactos.Refresh()
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
+
+    End Sub
+#End Region
 
 #Region "Cargar combos"
     Private Sub CargarCiudad()
@@ -172,8 +201,13 @@ Public Class frmSivProveedorEdit
             Me.txtRazonSocial.Text = objPersonas.RazonSocial
             Me.txtCedulaRUC.Text = objPersonas.RUC
 
-            Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
-            Me.txtDireccion.Text = objPersonas.Direccion
+            If objPersonas.objCiudadID IsNot Nothing Then
+                Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
+            End If
+
+            If objPersonas.Direccion IsNot Nothing Then
+                Me.txtDireccion.Text = objPersonas.Direccion
+            End If
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -413,18 +447,38 @@ Public Class frmSivProveedorEdit
 
         Try
 
-            strCampos = "NombreCompleto, Direccion, StbPersonaID, TelefonoParticular,objCiudadID"
+            strCampos = "StbPersonaID, NombreCompleto, Nombre1, Nombre2, Apellido1, Apellido2, FechaNacimiento,  objGeneroID, Genero, Cedula, Direccion, SivProveedorID, objCiudadID, PersonaJuridica"
             strFiltro = "StbPersonaID='" + sIdPersona + "'"
-            strSQL = clsConsultas.ObtenerConsultaGeneral(strCampos, "dbo.vwPersonaClasificacion", strFiltro)
+            strSQL = clsConsultas.ObtenerConsultaGeneral(strCampos, "dbo.vwPersonaClasificacionProveedor", strFiltro)
 
             dtPersona = SqlHelper.ExecuteQueryDT(strSQL)
 
-            Me.txtRazonSocial.Text = dtPersona.DefaultView.Item(0)("NombreCompleto")
-            Me.txtDireccion.Text = dtPersona.DefaultView.Item(0)("Direccion")
-            Me.txtCedulaRUC.Text = dtPersona.DefaultView.Item(0)("StbPersonaID")
-            Me.txtTelefono.Text = dtPersona.DefaultView.Item(0)("TelefonoParticular")
-            Me.txtDireccion.Text = dtPersona.DefaultView.Item(0)("Direccion")
-            Me.cmbCiudad.SelectedValue = dtPersona.DefaultView.Item(0)("objCiudadID")
+            Me.chkJuridico.Checked = dtPersona.DefaultView.Item(0)("PersonaJuridica")
+
+            Select Case Me.chkJuridico.Checked
+                Case True
+                    Me.grbDatosNatural.Visible = False
+                    Me.gbxDatosJuridico.Visible = True
+                    Me.txtRazonSocial.Text = dtPersona.DefaultView.Item(0)("NombreCompleto")
+                    Me.txtDireccion.Text = dtPersona.DefaultView.Item(0)("Direccion")
+                    Me.txtCedulaRUC.Text = dtPersona.DefaultView.Item(0)("StbPersonaID")
+                    Me.txtTelefono.Text = dtPersona.DefaultView.Item(0)("TelefonoParticular")
+                    Me.txtDireccion.Text = dtPersona.DefaultView.Item(0)("Direccion")
+                    Me.cmbCiudad.SelectedValue = dtPersona.DefaultView.Item(0)("objCiudadID")
+                Case False
+                    Me.grbDatosNatural.Visible = True
+                    Me.gbxDatosJuridico.Visible = False
+                    txtNombre1.Text = dtPersona.DefaultView.Item(0)("Nombre1")
+                    txtNombre2.Text = dtPersona.DefaultView.Item(0)("Nombre2")
+                    txtApellido1.Text = dtPersona.DefaultView.Item(0)("Apellido1")
+                    txtApellido2.Text = dtPersona.DefaultView.Item(0)("Apellido2")
+                    txtCedula.Text = dtPersona.DefaultView.Item(0)("Cedula")
+                    dtpFechaNacimiento.Text = dtPersona.DefaultView.Item(0)("FechaNacimiento")
+                    cmbGenero.SelectedValue = dtPersona.DefaultView.Item(0)("objGeneroID")
+                    cmbCiudad.SelectedValue = dtPersona.DefaultView.Item(0)("objCiudadID")
+                    txtdireccionNatural.Text = dtPersona.DefaultView.Item(0)("Direccion")
+            End Select
+           
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -488,7 +542,6 @@ Public Class frmSivProveedorEdit
         Me.cmdBuscarContacto.Enabled = Not bValor
         Me.cmdGuardar.Enabled = Not bValor
         Me.cmdBuscarProv.Enabled = Not bValor
-        Me.cmdNuevoProv.Enabled = Not bValor
         Me.cmbCiudad.Enabled = Not bValor
         Me.txtDireccion.Enabled = Not bValor
        
@@ -525,7 +578,7 @@ Public Class frmSivProveedorEdit
         End If
     End Sub
 
-    Private Sub cmdNuevoProv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNuevoProv.Click
+    Private Sub cmdNuevoProv_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim objPers As frmClientesEdit
         objPers = New frmClientesEdit
         Try
@@ -562,6 +615,7 @@ Public Class frmSivProveedorEdit
                 objPers = New frmClientesEdit
                 objPers.TyGui = 3
                 objPers.idpersona = Me.objPersonaId
+                objPers.Text = "Consultando contacto"
                 If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Me.objPersonaId = objPers.idpersona
                     If objPers.idpersona.Length <> 0 Then
@@ -571,7 +625,7 @@ Public Class frmSivProveedorEdit
                 End If
             Else 'si no mostrar el selector de personas
                 Dim frmSeleccionarPersona As New frmPersonaSelector
-                frmSeleccionarPersona.strFiltro = "ObjTipoPersonaID=" + Me.IdTipoPersonaProveedor.ToString
+                frmSeleccionarPersona.Filtro = "  StbPersonaID NOT IN (SELECT objPersonaID FROM SivProveedor)"
                 frmSeleccionarPersona.Opcion = 6 'Proveedores
                 If frmSeleccionarPersona.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Me.objPersonaId = frmSeleccionarPersona.strSeleccion
@@ -660,25 +714,21 @@ Public Class frmSivProveedorEdit
 
             clsProyecto.CargarTemaDefinido(Me)
             CargarCiudad()
+            CargarGridContactos()
             Select Case Me.TypeGui
                 Case 0
                     Me.Text = "Nuevo Proveedor"
                     Me.dtpFechaIngreso.Value = clsProyecto.Conexion.FechaServidor
                     Me.cmdEditarContactoPrincipal.Enabled = False
 
-                    Me.ttBotones.SetToolTip(Me.cmdNuevoProv, "Nuevo Proveedor")
                     Me.ttBotones.SetToolTip(Me.cmdBuscarProv, "Seleccionar Proveedor")
                     Me.ttBotones.SetToolTip(Me.cmdBuscarContacto, "Seleccionar Contacto principal")
                 Case 1
                     Me.Text = "Editar Proveedor"
                     Me.CargaDatosProveedor()
-                    Me.cmdNuevoProv.Enabled = True
                     Me.cmdBuscarProv.Enabled = True
                     Me.dtpFechaIngreso.Enabled = False
                     Me.cmdEditarContactoPrincipal.Enabled = True
-
-
-                    Me.ttBotones.SetToolTip(Me.cmdNuevoProv, "Editar Proveedor")
                     Me.ttBotones.SetToolTip(Me.cmdBuscarProv, "Seleccionar Proveedor")
                     Me.ttBotones.SetToolTip(Me.cmdEditarContactoPrincipal, "Editar Contacto principal")
                     Me.ttBotones.SetToolTip(Me.cmdBuscarContacto, "Seleccionar Contacto")
@@ -783,8 +833,8 @@ Public Class frmSivProveedorEdit
     End Sub
 
     Private Sub cmdEditarContactoPrincipal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEditarContactoPrincipal.Click
-        Dim objPers As frmClientesEdit
-        objPers = New frmClientesEdit
+        Dim objPers As frmStbPersonasEditar
+        objPers = New frmStbPersonasEditar
         Try
             Select Case Me.TypeGui
                 Case 0, 1
@@ -793,6 +843,7 @@ Public Class frmSivProveedorEdit
                     objPers.TyGui = 3
             End Select
             objPers.idpersona = Me.objContactoId
+            objPers.Text = "Agregar nuevo contacto"
             If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.objContactoId = objPers.idpersona
                 If objPers.idpersona.Length <> 0 Then

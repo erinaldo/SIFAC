@@ -50,13 +50,13 @@ Public Class frmPersonaSelector
         Dim strSQL As String
 
         If String.IsNullOrEmpty(Me.Filtro) Then
-            strSQL = ObtenerConsultaGeneral("Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion")
+            strSQL = ObtenerConsultaGeneral(" DISTINCT Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion")
         Else
-            strSQL = ObtenerConsultaGeneral("Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion", Filtro)
+            strSQL = ObtenerConsultaGeneral(" DISTINCT Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion", Filtro)
         End If
 
         DtPersonas = DAL.SqlHelper.ExecuteQueryDT(strSQL)
-        Me.grdPersonas.SetDataBinding(DtPersonas, "", True)
+        Me.grdPersonas.DataSource = DtPersonas
         Me.grdPersonas.Text = "Personas (" & DtPersonas.Rows.Count & ")"
         Me.grdPersonas.Refresh()
 
@@ -108,20 +108,27 @@ Public Class frmPersonaSelector
         End Try
     End Sub
 
-    Private Sub grdPersonas_AfterColUpdate(ByVal sender As Object, ByVal e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles grdPersonas.AfterColUpdate
-        Try
-            If e.Column.Name = "Seleccionar" Then
-                If DtPersonas.Compute("COUNT(Seleccionar)", "Seleccionar=1") > 0 Then
-                    Me.DtPersonas.Rows(Me.grdPersonas.RowBookmark(Me.grdPersonas.Row))("Seleccionar") = False
-                End If
-            End If
-        Finally
-        End Try
-    End Sub
-
     Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SimpleButton1.Click
         Close()
     End Sub
 #End Region
 
+    Private Sub chkSeleccionado_CheckedChanged(sender As Object, e As EventArgs) Handles chkSeleccionado.CheckedChanged
+        Try
+            Dim blnSeleccionar As Boolean
+            Dim Filas() As DataRow = Nothing
+
+            blnSeleccionar = CType(sender, DevExpress.XtraEditors.CheckEdit).Checked
+            If blnSeleccionar Then
+                Filas = DtPersonas.Select("Seleccionar=1")
+                For index As Integer = 0 To Filas.Length - 1
+                    Filas(index)("Seleccionar") = 0
+                    DtPersonas.AcceptChanges()
+                Next
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+       
+    End Sub
 End Class

@@ -130,4 +130,27 @@ Public Class clsConsultas
     End Function
 #End Region
 
+    ''' <summary>
+    ''' Método que actualiza una columna del dt
+    ''' </summary>
+    ''' <param name="objDataTable">origen de dato con la estructura previamiente definidos</param>
+    ''' <param name="strnNombrellave">Nombre del campo de llave</param>
+    ''' <param name="intIdLlave">Id del campo llave</param>
+    ''' <param name="strNombreCampo">nombre del campo al cual se cambiará el valor</param>
+    ''' <param name="strNuevoValor">nuevo valor del campo</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function actualizarColumnaDT(ByVal objDataTable As DataTable, ByVal strnNombrellave As String, ByVal intIdLlave As Integer, ByVal strNombreCampo As String, ByVal strNuevoValor As Object)
+
+        Dim dtNuevaprjSeguridad As DataTable = objDataTable.Clone
+        dtNuevaprjSeguridad = objDataTable
+        Dim Filas() As DataRow = Nothing
+
+        Filas = dtNuevaprjSeguridad.Select(String.Format("{0}={1}", strnNombrellave, intIdLlave))
+        Filas(0)(strNombreCampo) = strNuevoValor
+        dtNuevaprjSeguridad.AcceptChanges()
+        Return dtNuevaprjSeguridad
+
+    End Function
+
 End Class
