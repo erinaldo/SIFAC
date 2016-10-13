@@ -36,7 +36,7 @@ Partial Class frmSincronizarVentas
         Me.grdVentas = New DevExpress.XtraGrid.GridControl()
         Me.grdVentasTable = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colSeleccionar = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.colfecha = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.colRuta = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -44,8 +44,8 @@ Partial Class frmSincronizarVentas
         Me.colEmpleado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colobservaciones = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colSincronizado = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.ColEstado = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
         Me.cmbEstado = New DevExpress.XtraEditors.LookUpEdit()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -56,15 +56,16 @@ Partial Class frmSincronizarVentas
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmbEmpleado = New DevExpress.XtraEditors.LookUpEdit()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
+        Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
         Me.tbProductos.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,6 +99,7 @@ Partial Class frmSincronizarVentas
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
         Me.cmdConsultar.ToolTipText = "Consultar Producto"
+        Me.cmdConsultar.Visible = False
         '
         'ToolStripSeparator1
         '
@@ -111,7 +113,7 @@ Partial Class frmSincronizarVentas
         Me.cmdDesactivar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdDesactivar.Name = "cmdDesactivar"
         Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdDesactivar.ToolTipText = "Inactivar Producto"
+        Me.cmdDesactivar.ToolTipText = "Anular Venta"
         '
         'ToolStripSeparator2
         '
@@ -150,7 +152,7 @@ Partial Class frmSincronizarVentas
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.PanelControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(1116, 540)
         Me.PanelControl1.TabIndex = 11
@@ -158,10 +160,10 @@ Partial Class frmSincronizarVentas
         'grdVentas
         '
         Me.grdVentas.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdVentas.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdVentas.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4)
         Me.grdVentas.Location = New System.Drawing.Point(2, 177)
         Me.grdVentas.MainView = Me.grdVentasTable
-        Me.grdVentas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdVentas.Margin = New System.Windows.Forms.Padding(4)
         Me.grdVentas.Name = "grdVentas"
         Me.grdVentas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2, Me.RepositoryItemDateEdit1})
         Me.grdVentas.Size = New System.Drawing.Size(1112, 361)
@@ -170,28 +172,29 @@ Partial Class frmSincronizarVentas
         '
         'grdVentasTable
         '
-        Me.grdVentasTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colSeleccionar, Me.colfecha, Me.colRuta, Me.ColCliente, Me.colEmpleado, Me.colTotal, Me.colobservaciones, Me.colSincronizado})
+        Me.grdVentasTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colSeleccionar, Me.colfecha, Me.colRuta, Me.ColCliente, Me.colEmpleado, Me.colTotal, Me.colobservaciones, Me.ColEstado})
         Me.grdVentasTable.GridControl = Me.grdVentas
         Me.grdVentasTable.Name = "grdVentasTable"
         '
         'colSeleccionar
         '
         Me.colSeleccionar.Caption = "Seleccionar"
-        Me.colSeleccionar.ColumnEdit = Me.RepositoryItemCheckEdit2
+        Me.colSeleccionar.ColumnEdit = Me.RepositoryItemCheckEdit1
+        Me.colSeleccionar.FieldName = "Seleccionar"
         Me.colSeleccionar.Name = "colSeleccionar"
         Me.colSeleccionar.Visible = True
         Me.colSeleccionar.VisibleIndex = 0
         '
-        'RepositoryItemCheckEdit2
+        'RepositoryItemCheckEdit1
         '
-        Me.RepositoryItemCheckEdit2.AutoHeight = False
-        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'colfecha
         '
         Me.colfecha.Caption = "Fecha"
         Me.colfecha.ColumnEdit = Me.RepositoryItemDateEdit1
-        Me.colfecha.FieldName = "fecha"
+        Me.colfecha.FieldName = "Fecha"
         Me.colfecha.Name = "colfecha"
         Me.colfecha.OptionsColumn.AllowFocus = False
         Me.colfecha.OptionsColumn.ReadOnly = True
@@ -251,19 +254,20 @@ Partial Class frmSincronizarVentas
         Me.colobservaciones.Visible = True
         Me.colobservaciones.VisibleIndex = 6
         '
-        'colSincronizado
+        'ColEstado
         '
-        Me.colSincronizado.Caption = "Sincronizado"
-        Me.colSincronizado.ColumnEdit = Me.RepositoryItemCheckEdit1
-        Me.colSincronizado.FieldName = "Sincronizado"
-        Me.colSincronizado.Name = "colSincronizado"
-        Me.colSincronizado.Visible = True
-        Me.colSincronizado.VisibleIndex = 7
+        Me.ColEstado.Caption = "Estado"
+        Me.ColEstado.FieldName = "Estado"
+        Me.ColEstado.Name = "ColEstado"
+        Me.ColEstado.OptionsColumn.AllowFocus = False
+        Me.ColEstado.OptionsColumn.ReadOnly = True
+        Me.ColEstado.Visible = True
+        Me.ColEstado.VisibleIndex = 7
         '
-        'RepositoryItemCheckEdit1
+        'RepositoryItemCheckEdit2
         '
-        Me.RepositoryItemCheckEdit1.AutoHeight = False
-        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
+        Me.RepositoryItemCheckEdit2.AutoHeight = False
+        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
         '
         'PanelControl2
         '
@@ -278,7 +282,7 @@ Partial Class frmSincronizarVentas
         Me.PanelControl2.Controls.Add(Me.lblModeloCompatible)
         Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelControl2.Location = New System.Drawing.Point(2, 2)
-        Me.PanelControl2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelControl2.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelControl2.Name = "PanelControl2"
         Me.PanelControl2.Size = New System.Drawing.Size(1112, 175)
         Me.PanelControl2.TabIndex = 0
@@ -286,7 +290,7 @@ Partial Class frmSincronizarVentas
         'cmbEstado
         '
         Me.cmbEstado.Location = New System.Drawing.Point(169, 134)
-        Me.cmbEstado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbEstado.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbEstado.Name = "cmbEstado"
         Me.cmbEstado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbEstado.Properties.NullText = ""
@@ -323,7 +327,7 @@ Partial Class frmSincronizarVentas
         Me.chkTodos.AutoSize = True
         Me.chkTodos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkTodos.Location = New System.Drawing.Point(428, 137)
-        Me.chkTodos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.chkTodos.Margin = New System.Windows.Forms.Padding(4)
         Me.chkTodos.Name = "chkTodos"
         Me.chkTodos.Size = New System.Drawing.Size(105, 21)
         Me.chkTodos.TabIndex = 131
@@ -335,7 +339,7 @@ Partial Class frmSincronizarVentas
         Me.cmdActualizar.Image = CType(resources.GetObject("cmdActualizar.Image"), System.Drawing.Image)
         Me.cmdActualizar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
         Me.cmdActualizar.Location = New System.Drawing.Point(428, 87)
-        Me.cmdActualizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdActualizar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdActualizar.Name = "cmdActualizar"
         Me.cmdActualizar.Size = New System.Drawing.Size(43, 28)
         Me.cmdActualizar.TabIndex = 130
@@ -343,7 +347,7 @@ Partial Class frmSincronizarVentas
         'cmbRuta
         '
         Me.cmbRuta.Location = New System.Drawing.Point(169, 66)
-        Me.cmbRuta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbRuta.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbRuta.Name = "cmbRuta"
         Me.cmbRuta.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbRuta.Properties.NullText = ""
@@ -365,7 +369,7 @@ Partial Class frmSincronizarVentas
         'cmbEmpleado
         '
         Me.cmbEmpleado.Location = New System.Drawing.Point(169, 102)
-        Me.cmbEmpleado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbEmpleado.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbEmpleado.Name = "cmbEmpleado"
         Me.cmbEmpleado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbEmpleado.Properties.NullText = ""
@@ -384,6 +388,10 @@ Partial Class frmSincronizarVentas
         Me.lblModeloCompatible.Tag = ""
         Me.lblModeloCompatible.Text = "Empleado:"
         '
+        'sfdRuta
+        '
+        Me.sfdRuta.Filter = "Archivos Excel | *.xls"
+        '
         'frmSincronizarVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -392,7 +400,7 @@ Partial Class frmSincronizarVentas
         Me.Controls.Add(Me.tbProductos)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmSincronizarVentas"
         Me.Text = "Sincronizar Ventas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -402,10 +410,10 @@ Partial Class frmSincronizarVentas
         Me.PanelControl1.ResumeLayout(False)
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         Me.PanelControl2.PerformLayout()
@@ -447,6 +455,7 @@ Partial Class frmSincronizarVentas
     Friend WithEvents colEmpleado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTotal As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colobservaciones As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colSincronizado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents ColEstado As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents sfdRuta As System.Windows.Forms.SaveFileDialog
 End Class
