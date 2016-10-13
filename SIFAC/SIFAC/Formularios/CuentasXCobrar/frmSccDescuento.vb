@@ -166,15 +166,15 @@ Public Class frmSccDescuento
 #End Region
 
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
-        Dim objReporte As frmRptVisor
-        Try
-            objReporte = New frmRptVisor
-            objReporte.IDReporte = "ListaDescuentos"
-            objReporte.Show()
+        'Dim objReporte As frmRptVisor
+        'Try
+        '    objReporte = New frmRptVisor
+        '    objReporte.IDReporte = "ListaDescuentos"
+        '    objReporte.Show()
 
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-        
+        'Catch ex As Exception
+        '    clsError.CaptarError(ex)
+        'End Try
+
     End Sub
 End Class
