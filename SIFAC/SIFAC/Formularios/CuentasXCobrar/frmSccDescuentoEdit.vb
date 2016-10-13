@@ -94,7 +94,7 @@ Public Class frmSccDescuentoEdit
             objDescuento.Activo = chkActivo.Checked
             objDescuento.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objDescuento.FechaCreacion = clsProyecto.Conexion.FechaServidor
-            objDescuento.Insert()
+            objDescuento.Insert(T)
             T.CommitTran()
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.boolEditado = False
@@ -124,7 +124,7 @@ Public Class frmSccDescuentoEdit
             objDescuento.UsuarioModificacion = clsProyecto.Conexion.Servidor
             objDescuento.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objDescuento.FechaModificacion = clsProyecto.Conexion.FechaServidor
-            objDescuento.Update()
+            objDescuento.Update(T)
             T.CommitTran()
             MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.boolEditado = False

@@ -160,6 +160,8 @@ Public Class frmSivProveedor
         Try
             Try
                 Me.Cursor = Cursors.WaitCursor
+                objReporte = New frmSivReporteProveedor
+               
                 If Not clsProyecto.MostrarFormulario("frmSivReporteProveedor", Me) Then
                     objReporte = New frmSivReporteProveedor
                     objReporte.StartPosition = FormStartPosition.CenterScreen

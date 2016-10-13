@@ -465,22 +465,41 @@ Public Class frmSivProveedorEdit
     Private Function AsociarPersonaroveedor() As Boolean
         Dim T As New TransactionManager
         Dim objProveedor As New SivProveedor
-        Dim objPersonas As StbPersona
+        Dim objPersonas, objPCompara As StbPersona
         Try
             Try
                 objPersonas = New StbPersona
+                objPCompara = New StbPersona
                 objPersonas.Retrieve(Me.objPersonaId)
 
                 T.BeginTran()
                 If chkJuridico.Checked Then
+
+                    '1.1 Validar que no exista una empresa con el mismo RUC
+                    objPCompara.RetrieveByFilter("RUC='" + Me.txtCedulaRUC.Text + "' AND StbPersonaID<>" & objPersonaId)
+                    If objPCompara.RUC <> Nothing Then
+                        Me.ErrorProvider.SetError(Me.txtCedulaRUC, "Ya existe una empresa con el mismo número RUC.")
+                        Me.txtCedulaRUC.Focus()
+                        Exit Function
+                    End If
+
                     With objPersonas
                         .RazonSocial = Me.txtRazonSocial.Text.Trim
                         .objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
                         .objCiudadID = cmbCiudad.SelectedValue
                         .Direccion = txtDireccion.Text
+                        .RUC = txtCedulaRUC.Text
                         .Update(T)
                     End With
                 Else
+                    '1.2 Validar que no exista  una persona con la misma cédula
+                    objPCompara.RetrieveByFilter("Cedula='" + Me.txtCedula.Text + "' AND StbPersonaID<>" & objPersonaId)
+                    If objPCompara.Cedula <> Nothing Then
+                        Me.ErrorProvider.SetError(Me.txtCedula, "Ya existe una persona con la misma cédula.")
+                        Me.txtCedula.Focus()
+                        Exit Function
+                    End If
+
                     objPersonas.UsuarioModificacion = clsProyecto.Conexion.Usuario
                     objPersonas.FechaModificacion = clsProyecto.Conexion.FechaServidor
                     objPersonas.Nombre1 = Me.txtNombre1.Text.Trim
@@ -488,12 +507,9 @@ Public Class frmSivProveedorEdit
                     objPersonas.Apellido1 = Me.txtApellido1.Text.Trim
                     objPersonas.Apellido2 = Me.txtApellido2.Text.Trim
                     objPersonas.objGeneroID = Me.cmbGenero.SelectedValue
+                    objPersonas.Cedula = Me.txtCedula.Text
 
-                    If Me.txtCedula.Text.Trim <> "-      -" Then
-                        objPersonas.Cedula = Me.txtCedula.Text
-                    Else
-                        objPersonas.Cedula = Nothing
-                    End If
+
                     If Me.dtpFechaNacimiento.Text.Trim.Length <> 0 Then
                         objPersonas.FechaNacimiento = Me.dtpFechaNacimiento.Text
                     Else
@@ -599,7 +615,7 @@ Public Class frmSivProveedorEdit
                         End If
 
                         cmbGenero.SelectedValue = dtPersona.DefaultView.Item(0)("objGeneroID")
-                        cmbCiudad.SelectedValue = dtPersona.DefaultView.Item(0)("objCiudadID")
+                        cmbCiudadNatural.SelectedValue = dtPersona.DefaultView.Item(0)("objCiudadID")
                         txtdireccionNatural.Text = dtPersona.DefaultView.Item(0)("Direccion")
                 End Select
 
@@ -672,6 +688,22 @@ Public Class frmSivProveedorEdit
         Me.cmdBuscarProv.Enabled = Not bValor
         Me.cmbCiudad.Enabled = Not bValor
         Me.txtDireccion.Enabled = Not bValor
+
+        Me.txtRazonSocial.Enabled = Not bValor
+        Me.txtCedulaRUC.Enabled = Not bValor
+        Me.txtCedula.Enabled = Not bValor
+        Me.txtdireccionNatural.Enabled = Not bValor
+        Me.txtNombre2.Enabled = Not bValor
+        Me.txtNombre1.Enabled = Not bValor
+        Me.txtApellido1.Enabled = Not bValor
+        Me.txtApellido2.Enabled = Not bValor
+        Me.dtpFechaNacimiento.Enabled = Not bValor
+        Me.cmbCiudadNatural.Enabled = Not bValor
+        Me.cmbGenero.Enabled = Not bValor
+        Me.chkJuridico.Enabled = Not bValor
+        Me.cmdEditarContactoPrincipal.Enabled = Not bValor
+        Me.cmdEliminarContacto.Enabled = Not bValor
+        Me.cmdAgregarContacto.Enabled = Not bValor
 
     End Sub
 #End Region
@@ -1030,13 +1062,17 @@ Public Class frmSivProveedorEdit
         objPers = New frmStbPersonasEditar
         Try
             Select Case Me.TypeGui
-                Case 0, 1
+                Case 0
+                    objPers.TyGui = 1
+                Case 1
                     objPers.TyGui = 2
+                    objPers.idpersona = Me.objContactoId
                 Case 2
                     objPers.TyGui = 3
+                    objPers.idpersona = Me.objContactoId
             End Select
-            objPers.idpersona = Me.objContactoId
-            objPers.Text = "Agregar nuevo contacto"
+            objPers.frmLlamado = 7
+
             If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.objContactoId = objPers.idpersona
                 If objPers.idpersona.Length <> 0 Then
@@ -1107,5 +1143,33 @@ Public Class frmSivProveedorEdit
         Else
             LimpiarControlesNaturalJuridico(False)
         End If
+    End Sub
+
+    Private Sub txtRazonSocial_TextChanged(sender As Object, e As EventArgs) Handles txtRazonSocial.TextChanged
+        Me.ErrorProvider.SetError(txtRazonSocial, "")
+    End Sub
+
+    Private Sub txtDireccion_TextChanged(sender As Object, e As EventArgs) Handles txtDireccion.TextChanged
+        Me.ErrorProvider.SetError(txtDireccion, "")
+    End Sub
+   
+    Private Sub txtCedulaRUC_TextChanged(sender As Object, e As EventArgs) Handles txtCedulaRUC.TextChanged
+        Me.ErrorProvider.SetError(txtCedulaRUC, "")
+    End Sub
+
+    Private Sub txtNombre1_TextChanged(sender As Object, e As EventArgs) Handles txtNombre1.TextChanged
+        Me.ErrorProvider.SetError(txtNombre1, "")
+    End Sub
+
+    Private Sub txtApellido1_TextChanged(sender As Object, e As EventArgs) Handles txtApellido1.TextChanged
+        Me.ErrorProvider.SetError(txtApellido1, "")
+    End Sub
+
+    Private Sub txtCedula_TextChanged(sender As Object, e As EventArgs) Handles txtCedula.TextChanged
+        Me.ErrorProvider.SetError(txtCedula, "")
+    End Sub
+
+    Private Sub txtdireccionNatural_TextChanged(sender As Object, e As EventArgs) Handles txtdireccionNatural.TextChanged
+        Me.ErrorProvider.SetError(txtdireccionNatural, "")
     End Sub
 End Class

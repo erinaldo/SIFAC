@@ -159,6 +159,12 @@ Public Class frmStbPersonasContactos
                         intSecuencialContacto = dr("SecuencialContacto") + 1
                     Next
                     frmSivProveedorEdit.dtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
+                Case 3
+                    For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
+                        intSecuencialContacto = dr("SecuencialContacto") + 1
+                    Next
+                    frmStbPersonasEditar.dtContactos.Rows.Add(1, intSecuencialContacto, Me.cmbTipoPersona.SelectedValue, Me.cmbTipoPersona.SelectedText, Me.txtValor.Text)
+
             End Select
            
             If MsgBox("¿Desea agregar más contactos?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then

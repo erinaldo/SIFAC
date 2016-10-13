@@ -38,13 +38,15 @@ Partial Class frmSccDescuento
         Me.grdDescuentoTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colCobrador = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDescuentoMaximo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDescuentoMinimo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ColActivo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.tbProductos.SuspendLayout()
         CType(Me.grdDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDescuentoTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -143,14 +145,14 @@ Partial Class frmSccDescuento
         Me.grdDescuento.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdDescuento.MainView = Me.grdDescuentoTabla
         Me.grdDescuento.Name = "grdDescuento"
-        Me.grdDescuento.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
+        Me.grdDescuento.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2})
         Me.grdDescuento.Size = New System.Drawing.Size(623, 270)
         Me.grdDescuento.TabIndex = 9
         Me.grdDescuento.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDescuentoTabla})
         '
         'grdDescuentoTabla
         '
-        Me.grdDescuentoTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colCobrador, Me.colActiva})
+        Me.grdDescuentoTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescuentoMaximo, Me.colDescuentoMinimo, Me.ColActivo})
         Me.grdDescuentoTabla.GridControl = Me.grdDescuento
         Me.grdDescuentoTabla.Name = "grdDescuentoTabla"
         Me.grdDescuentoTabla.OptionsDetail.AllowZoomDetail = False
@@ -163,7 +165,7 @@ Partial Class frmSccDescuento
         'colNumero
         '
         Me.colNumero.Caption = "Número"
-        Me.colNumero.FieldName = "StbRutaID"
+        Me.colNumero.FieldName = "SccDescuentoID"
         Me.colNumero.Name = "colNumero"
         Me.colNumero.OptionsColumn.AllowFocus = False
         Me.colNumero.OptionsColumn.ReadOnly = True
@@ -171,46 +173,50 @@ Partial Class frmSccDescuento
         '
         'colNombre
         '
-        Me.colNombre.Caption = "Nombre"
-        Me.colNombre.FieldName = "Nombre"
+        Me.colNombre.Caption = "Plazo de pago"
+        Me.colNombre.FieldName = "PlazoPago"
         Me.colNombre.Name = "colNombre"
+        Me.colNombre.OptionsColumn.AllowEdit = False
         Me.colNombre.OptionsColumn.AllowFocus = False
         Me.colNombre.OptionsColumn.ReadOnly = True
         Me.colNombre.Visible = True
         Me.colNombre.VisibleIndex = 0
         Me.colNombre.Width = 148
         '
-        'colDescripcion
+        'colDescuentoMaximo
         '
-        Me.colDescripcion.Caption = "Descripcion"
-        Me.colDescripcion.FieldName = "Descripcion"
-        Me.colDescripcion.Name = "colDescripcion"
-        Me.colDescripcion.OptionsColumn.AllowFocus = False
-        Me.colDescripcion.OptionsColumn.ReadOnly = True
-        Me.colDescripcion.Visible = True
-        Me.colDescripcion.VisibleIndex = 1
-        Me.colDescripcion.Width = 219
+        Me.colDescuentoMaximo.Caption = "Descuento Maximo"
+        Me.colDescuentoMaximo.FieldName = "DescuentoMaximo"
+        Me.colDescuentoMaximo.Name = "colDescuentoMaximo"
+        Me.colDescuentoMaximo.OptionsColumn.AllowEdit = False
+        Me.colDescuentoMaximo.Visible = True
+        Me.colDescuentoMaximo.VisibleIndex = 1
+        Me.colDescuentoMaximo.Width = 150
         '
-        'colCobrador
+        'colDescuentoMinimo
         '
-        Me.colCobrador.Caption = "Cobrador"
-        Me.colCobrador.FieldName = "Cobrador"
-        Me.colCobrador.Name = "colCobrador"
-        Me.colCobrador.Visible = True
-        Me.colCobrador.VisibleIndex = 2
-        Me.colCobrador.Width = 150
+        Me.colDescuentoMinimo.Caption = "Descuento Minimo"
+        Me.colDescuentoMinimo.FieldName = "DescuentoMinimo"
+        Me.colDescuentoMinimo.Name = "colDescuentoMinimo"
+        Me.colDescuentoMinimo.OptionsColumn.AllowEdit = False
+        Me.colDescuentoMinimo.Visible = True
+        Me.colDescuentoMinimo.VisibleIndex = 2
         '
-        'colActiva
+        'ColActivo
         '
-        Me.colActiva.Caption = "Activa"
-        Me.colActiva.ColumnEdit = Me.RepositoryItemCheckEdit1
-        Me.colActiva.FieldName = "Activo"
-        Me.colActiva.Name = "colActiva"
-        Me.colActiva.OptionsColumn.AllowFocus = False
-        Me.colActiva.OptionsColumn.ReadOnly = True
-        Me.colActiva.Visible = True
-        Me.colActiva.VisibleIndex = 3
-        Me.colActiva.Width = 95
+        Me.ColActivo.Caption = "Activo"
+        Me.ColActivo.ColumnEdit = Me.RepositoryItemCheckEdit2
+        Me.ColActivo.FieldName = "Activo"
+        Me.ColActivo.Name = "ColActivo"
+        Me.ColActivo.OptionsColumn.AllowEdit = False
+        Me.ColActivo.Visible = True
+        Me.ColActivo.VisibleIndex = 3
+        Me.ColActivo.Width = 123
+        '
+        'RepositoryItemCheckEdit2
+        '
+        Me.RepositoryItemCheckEdit2.AutoHeight = False
+        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
         '
         'RepositoryItemCheckEdit1
         '
@@ -232,6 +238,7 @@ Partial Class frmSccDescuento
         Me.tbProductos.PerformLayout()
         CType(Me.grdDescuento, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDescuentoTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -252,8 +259,9 @@ Partial Class frmSccDescuento
     Friend WithEvents grdDescuentoTabla As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colCobrador As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colActiva As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colDescuentoMaximo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents colDescuentoMinimo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ColActivo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

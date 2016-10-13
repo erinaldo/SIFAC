@@ -47,7 +47,6 @@ Partial Class frmStbPersonasEditar
         Me.lblNumeroRUC = New System.Windows.Forms.Label()
         Me.lblSiglasEmpresa = New System.Windows.Forms.Label()
         Me.grpPersonaNatural = New System.Windows.Forms.GroupBox()
-        Me.chkCedulaNacionalidad = New System.Windows.Forms.CheckBox()
         Me.dtpFechaNacimiento = New C1.Win.C1Input.C1DateEdit()
         Me.cmbGenero = New C1.Win.C1List.C1Combo()
         Me.txtCedula = New System.Windows.Forms.MaskedTextBox()
@@ -68,6 +67,7 @@ Partial Class frmStbPersonasEditar
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
+        Me.lblCedula = New System.Windows.Forms.Label()
         Me.grpDatos.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -404,7 +404,7 @@ Partial Class frmStbPersonasEditar
         '
         'grpPersonaNatural
         '
-        Me.grpPersonaNatural.Controls.Add(Me.chkCedulaNacionalidad)
+        Me.grpPersonaNatural.Controls.Add(Me.lblCedula)
         Me.grpPersonaNatural.Controls.Add(Me.dtpFechaNacimiento)
         Me.grpPersonaNatural.Controls.Add(Me.cmbGenero)
         Me.grpPersonaNatural.Controls.Add(Me.txtCedula)
@@ -424,18 +424,6 @@ Partial Class frmStbPersonasEditar
         Me.grpPersonaNatural.TabIndex = 2
         Me.grpPersonaNatural.TabStop = False
         Me.grpPersonaNatural.Text = "Persona"
-        '
-        'chkCedulaNacionalidad
-        '
-        Me.chkCedulaNacionalidad.AutoSize = True
-        Me.chkCedulaNacionalidad.Checked = True
-        Me.chkCedulaNacionalidad.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCedulaNacionalidad.Location = New System.Drawing.Point(15, 183)
-        Me.chkCedulaNacionalidad.Name = "chkCedulaNacionalidad"
-        Me.chkCedulaNacionalidad.Size = New System.Drawing.Size(123, 17)
-        Me.chkCedulaNacionalidad.TabIndex = 16
-        Me.chkCedulaNacionalidad.Text = "Cédula Nacional:"
-        Me.chkCedulaNacionalidad.UseVisualStyleBackColor = True
         '
         'dtpFechaNacimiento
         '
@@ -681,6 +669,16 @@ Partial Class frmStbPersonasEditar
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
+        'lblCedula
+        '
+        Me.lblCedula.AutoSize = True
+        Me.lblCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCedula.Location = New System.Drawing.Point(12, 182)
+        Me.lblCedula.Name = "lblCedula"
+        Me.lblCedula.Size = New System.Drawing.Size(50, 13)
+        Me.lblCedula.TabIndex = 15
+        Me.lblCedula.Text = "Cédula:"
+        '
         'frmStbPersonasEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -761,7 +759,6 @@ Partial Class frmStbPersonasEditar
     Friend WithEvents ArchivoDialogo As System.Windows.Forms.OpenFileDialog
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Public WithEvents dtpFechaNacimiento As C1.Win.C1Input.C1DateEdit
-    Friend WithEvents chkCedulaNacionalidad As System.Windows.Forms.CheckBox
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents txtDireccion As System.Windows.Forms.TextBox
@@ -770,4 +767,5 @@ Partial Class frmStbPersonasEditar
     Friend WithEvents cmbCiudad As C1.Win.C1List.C1Combo
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents lblCedula As System.Windows.Forms.Label
 End Class

@@ -90,7 +90,6 @@ Public Class frmStbPersonasEditar
                 Me.grpPersonaJuridica.Enabled = True
                 Me.grpPersonaNatural.Enabled = False
                 Me.txtSiglasEmpresa.Focus()
-                Me.chkCedulaNacionalidad.Enabled = False
                 Me.txtDireccion.Text = ""
             Case False
                 Me.ErrPrv.SetError(Me.txtSiglasEmpresa, "")
@@ -105,7 +104,6 @@ Public Class frmStbPersonasEditar
                 Me.grpPersonaJuridica.Enabled = False
                 Me.grpPersonaNatural.Enabled = True
                 Me.txtSiglasEmpresa.Focus()
-                Me.chkCedulaNacionalidad.Enabled = True
         End Select
     End Sub
 #End Region
@@ -136,75 +134,15 @@ Public Class frmStbPersonasEditar
 #End Region
 
 #Region "Validar Ingresos"
-    Public Function ValidarIngresos()
-        Me.intResultado = 6
-        Me.intTelefonoCliente = 0
-
-        'Validar que se haya ingresado al menos la dirección de la persona
-        For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
-            If dr("TipoEntrada") = "Dirección" Then
-                Me.intResultado = 0
-                Exit For
-            End If
-        Next
+    Public Function ValidarIngresos() As Boolean
 
         If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
-            Return 1
+            MsgBox("No se puede ingresar el registro del proveedor." + vbCrLf + "Debe definir al menos un tipo de Contacto.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+            Return False
             Exit Function
         End If
 
-        If Me.intResultado = 6 Then
-            Return 1
-            Exit Function
-        End If
-
-        frmStbPersonasEditar.dtPIM.DefaultView.RowFilter = "TipoPersona = 'Nacional' OR TipoPersona = 'Extranjero'"
-        If frmStbPersonasEditar.dtPIM.DefaultView.Count = 0 Then
-            frmStbPersonasEditar.dtPIM.DefaultView.RowFilter = "1 = 1"
-            Return 3
-            Exit Function
-        End If
-        'Validar que se haya ingresado al menos un teléfono de la persona natural
-        'con clasificación PIM Cliente
-
-        '1. Se valida que la persona sea Natural
-        If Me.chkPersonaJuridica.Checked = False Then Me.intTelefonoCliente = 1
-        '2. Se valida que haya un PIM Cliente
-        If Me.intTelefonoCliente = 1 Then
-            For Each dr As DataRow In frmStbPersonasEditar.dtPIM.Rows
-                If dr("TipoPersona") = "Cliente" Then
-                    Me.intTelefonoCliente = 2
-                End If
-            Next
-        End If
-
-
-        '3. Se valida que haya al menos un teléfono si es cliente
-        If Me.intTelefonoCliente = 2 Then
-            If frmStbPersonasEditar.dtContactos.Rows.Count = 0 Then
-                Me.intResultado = 2
-            End If
-
-            For Each dr As DataRow In frmStbPersonasEditar.dtContactos.Rows
-                If dr("TipoEntrada").ToString.Trim.Length >= 8 Then
-                    If dr("TipoEntrada").ToString.Substring(0, 8) = "Teléfono" Then
-                        Return 0
-                        Exit Function
-                    Else
-                        Me.intResultado = 2
-                    End If
-                Else
-                    Me.intResultado = 2
-                End If
-            Next
-        End If
-        '4. Mandar Return = 2 y salir si hay PIM=Cliente y no se ha ingresado el Teléfono
-        If Me.intResultado = 2 Then
-            Return Me.intResultado
-            Exit Function
-        End If
-
-        Return intResultado
+        Return True
     End Function
 #End Region
 
@@ -316,19 +254,10 @@ Public Class frmStbPersonasEditar
 
         Select Case Me.ValidarDatos
             Case True
-                Select Case Me.ValidarIngresos
-                    Case 0
-                        Me.InsertarPersonas()
-                    Case 1
-                        MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos una dirección en Contacto.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                        Me.GuardarContactosTemp()
-                    Case 2
-                        MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos un teléfono como Contacto del Cliente", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                        Me.GuardarContactosTemp()
-                    Case 3
-                        MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir la clasificación de persona nacional o extranjero", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                        GuardarPIMTemp()
-                End Select
+                If ValidarIngresos() Then
+                    Me.InsertarPersonas()
+                End If
+                
             Case False
                 Exit Sub
         End Select
@@ -416,11 +345,11 @@ Public Class frmStbPersonasEditar
                     objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
                     objPersonas.Insert()
                     Me.idpersona = objPersonas.StbPersonaID
-                    Me.InsertarDetalle(Me.idpersona)
+                    'Me.InsertarDetalle(Me.idpersona, T)
 
             End Select
             ValidarLlamados()
-            Me.InsertarDetalle(Me.idpersona)
+            Me.InsertarDetalle(Me.idpersona, T)
             T.CommitTran()
 
             'If Me.frmLlamado = 5 Then
@@ -442,7 +371,7 @@ Public Class frmStbPersonasEditar
 
 #Region "Insertar Detalle de Personas"
 
-    Private Sub InsertarDetalle(ByVal IDGenerado As String)
+    Private Sub InsertarDetalle(ByVal IDGenerado As String, T As TransactionManager)
 
         Dim objContactos As StbContactos
         Dim objClasifica As StbPersonaClasificacion
@@ -460,7 +389,7 @@ Public Class frmStbPersonasEditar
                 objContactos.Valor = dr("Valor").ToString
                 objContactos.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objContactos.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                objContactos.Insert()
+                objContactos.Insert(T)
             Next
             'Guardar PIM
             For Each dr As DataRow In frmStbPersonasEditar.dtPIM.Rows
@@ -468,7 +397,7 @@ Public Class frmStbPersonasEditar
                 objClasifica.objTipoPersonaID = CInt(dr("objTipoPersonaID").ToString)
                 objClasifica.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objClasifica.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                objClasifica.Insert()
+                objClasifica.Insert(T)
             Next
 
         Catch ex As Exception
@@ -508,17 +437,20 @@ Public Class frmStbPersonasEditar
                     Me.txtSegundoNombre.Text = objPersonas.Nombre2
                     Me.txtPrimerApellido.Text = objPersonas.Apellido1
                     Me.txtSegundoApellido.Text = objPersonas.Apellido2
-                    Me.cmbGenero.SelectedValue = objPersonas.objGeneroID
-                    Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
-                    Me.txtDireccion.Text = objPersonas.Direccion
 
-                    If objPersonas.Cedula.Trim.Length = 16 Then
-                        Me.chkCedulaNacionalidad.Checked = True
-                    Else
-                        Me.chkCedulaNacionalidad.Checked = False
+                    If objPersonas.objGeneroID IsNot Nothing Then
+                        Me.cmbGenero.SelectedValue = objPersonas.objGeneroID
+                    End If
+                    If objPersonas.objCiudadID IsNot Nothing Then
+                        Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
+                    End If
+                    If objPersonas.Direccion IsNot Nothing Then
+                        Me.txtDireccion.Text = objPersonas.Direccion
                     End If
 
-                    Me.txtCedula.Text = objPersonas.Cedula
+                    If objPersonas.Cedula IsNot Nothing Then
+                        Me.txtCedula.Text = objPersonas.Cedula
+                    End If
 
                     If objPersonas.FechaNacimiento.ToString.Length <> 0 Then
                         Me.dtpFechaNacimiento.Value = objPersonas.FechaNacimiento
@@ -541,25 +473,13 @@ Public Class frmStbPersonasEditar
 
         Select Case Me.ValidarDatos
             Case True
+                If ValidarIngresos() Then
+                    Me.ModificarPersonas()
+                End If
 
-                Select Case Me.ValidarIngresos
-                    Case 0
-                        Me.ModificarPersonas()
-                    Case 1
-                        MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos una dirección en Contacto.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                        Me.GuardarContactosTemp()
-                    Case 2
-                        MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos un teléfono como Contacto del Cliente", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                        Me.GuardarContactosTemp()
-                    Case 3
-                        MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir Nacionalidad", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                End Select
             Case False
                 Exit Sub
         End Select
-
-
-
     End Sub
 
 #End Region
@@ -608,9 +528,9 @@ Public Class frmStbPersonasEditar
 
             End Select
 
-            objPersonas.Update()
-            Me.ModificarDetalle()
-            Me.InsertarDetalle(Me.idpersona)
+            objPersonas.Update(T)
+            Me.ModificarDetalle(T)
+            Me.InsertarDetalle(Me.idpersona, T)
             MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.DialogResult = Windows.Forms.DialogResult.OK
 
@@ -627,12 +547,11 @@ Public Class frmStbPersonasEditar
 #End Region
 
 #Region "Modificar Detalle de Personas"
-    Private Sub ModificarDetalle()
-
+    Private Sub ModificarDetalle(T As TransactionManager)
         Try
 
-            StbPersonaClasificacion.DeleteByFilter("objPersonaID='" + Me.idpersona + "'")
-            StbContactos.DeleteByFilter("objPersonaID='" + Me.idpersona + "'")
+            StbPersonaClasificacion.DeleteByFilter("objPersonaID='" + Me.idpersona + "'", T)
+            StbContactos.DeleteByFilter("objPersonaID='" + Me.idpersona + "'", T)
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -833,8 +752,7 @@ Public Class frmStbPersonasEditar
         End If
 
         'Validar la cédula
-        Select Case Me.chkCedulaNacionalidad.Checked
-            Case True
+       
                 If Me.ValidarCedula = False Then
                     Me.txtCedula.Focus()
                     Return False
@@ -849,17 +767,6 @@ Public Class frmStbPersonasEditar
                         Exit Function
                     End If
                 End If
-
-            Case False 'NO OBLIGAR EL CAMPO CEDULA QUE LO GENERE EL SISTEMA.
-                'If Me.txtCedula.Text.Trim.Length = 0 Then
-                '    Me.ErrPrv.SetError(Me.txtCedula, "Campo Obligatorio")
-                '    Me.txtCedula.Focus()
-                '    Return False
-                '    Exit Function
-                'End If
-
-        End Select
-
 
         Return True
     End Function
@@ -950,7 +857,7 @@ Public Class frmStbPersonasEditar
     Private Sub GuardarContactosTemp()
         Dim objContactos As frmStbPersonasContactos
         objContactos = New frmStbPersonasContactos
-        objContactos.frmLLamado = 0
+        objContactos.frmLLamado = 3
         objContactos.ShowDialog()
         If frmStbPersonasEditar.dtContactos.Rows.Count > 0 Then
             Me.cmdEliminarContacto.Enabled = True
@@ -1386,7 +1293,9 @@ Public Class frmStbPersonasEditar
                         Case 7
                             Me.Text = "Consultando datos de Contacto de Proveedor"
                     End Select
+
                     Me.CargarDatosEditar()
+
                     Me.tdbPIM.Enabled = False
                     Me.barContactos.Enabled = False
                     Me.barPIM.Enabled = False
@@ -1399,7 +1308,6 @@ Public Class frmStbPersonasEditar
                     Me.txtDireccion.Enabled = False
                     Me.txtSiglasEmpresa.Enabled = False
                     Me.txtRazonSocial.Enabled = False
-                    Me.chkCedulaNacionalidad.Enabled = False
 
                     Me.txtPrimerNombre.Enabled = False
                     Me.txtSegundoNombre.Enabled = False
@@ -1436,14 +1344,13 @@ Public Class frmStbPersonasEditar
         objVisor.ShowDialog(Me)
     End Sub
 
-    Private Sub chkCedulaNacionalidad_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCedulaNacionalidad.CheckedChanged
-        Select Case Me.chkCedulaNacionalidad.Checked
-            Case True
-                Me.txtCedula.Clear()
-                Me.txtCedula.Mask = "000-000000-0000L"
-            Case False
-                Me.txtCedula.Clear()
-                Me.txtCedula.Mask = ""
-        End Select
-    End Sub
+    'Private Sub chkCedulaNacionalidad_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    '            Me.txtCedula.Clear()
+    '            Me.txtCedula.Mask = "000-000000-0000L"
+    '        Case False
+    '            Me.txtCedula.Clear()
+    '            Me.txtCedula.Mask = ""
+    '    End Select
+    'End Sub
 End Class

@@ -270,7 +270,7 @@ Partial Class frmSivProveedorEdit
         '
         Me.cmdBuscarProv.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmdBuscarProv.Image = CType(resources.GetObject("cmdBuscarProv.Image"), System.Drawing.Image)
-        Me.cmdBuscarProv.Location = New System.Drawing.Point(285, 21)
+        Me.cmdBuscarProv.Location = New System.Drawing.Point(271, 21)
         Me.cmdBuscarProv.Name = "cmdBuscarProv"
         Me.cmdBuscarProv.Size = New System.Drawing.Size(21, 21)
         Me.cmdBuscarProv.TabIndex = 3
@@ -303,7 +303,7 @@ Partial Class frmSivProveedorEdit
         '
         Me.txtIdProveedor.Enabled = False
         Me.txtIdProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIdProveedor.Location = New System.Drawing.Point(153, 22)
+        Me.txtIdProveedor.Location = New System.Drawing.Point(139, 22)
         Me.txtIdProveedor.Name = "txtIdProveedor"
         Me.txtIdProveedor.Size = New System.Drawing.Size(126, 20)
         Me.txtIdProveedor.TabIndex = 0
@@ -316,7 +316,7 @@ Partial Class frmSivProveedorEdit
         Me.lblIdProveedor.AutoSize = True
         Me.lblIdProveedor.BackColor = System.Drawing.Color.Transparent
         Me.lblIdProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblIdProveedor.Location = New System.Drawing.Point(28, 27)
+        Me.lblIdProveedor.Location = New System.Drawing.Point(14, 27)
         Me.lblIdProveedor.Name = "lblIdProveedor"
         Me.lblIdProveedor.Size = New System.Drawing.Size(84, 13)
         Me.lblIdProveedor.TabIndex = 19
@@ -435,8 +435,8 @@ Partial Class frmSivProveedorEdit
         Me.PanelControl1.Controls.Add(Me.TabProveedor)
         Me.PanelControl1.Controls.Add(Me.txtIdProveedor)
         Me.PanelControl1.Controls.Add(Me.lblIdProveedor)
-        Me.PanelControl1.Controls.Add(Me.gbxDatosJuridico)
         Me.PanelControl1.Controls.Add(Me.grbDatosNatural)
+        Me.PanelControl1.Controls.Add(Me.gbxDatosJuridico)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
@@ -451,13 +451,12 @@ Partial Class frmSivProveedorEdit
         Me.chkJuridico.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.chkJuridico.Checked = True
         Me.chkJuridico.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkJuridico.Enabled = False
         Me.chkJuridico.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkJuridico.Location = New System.Drawing.Point(440, 26)
         Me.chkJuridico.Name = "chkJuridico"
         Me.chkJuridico.Size = New System.Drawing.Size(72, 17)
         Me.chkJuridico.TabIndex = 101
-        Me.chkJuridico.Tag = "BLOQUEADO"
+        Me.chkJuridico.Tag = ""
         Me.chkJuridico.Text = "Jurídico"
         Me.chkJuridico.UseVisualStyleBackColor = True
         '

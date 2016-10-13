@@ -18,7 +18,7 @@ Public Class frmSccDescuento
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
         Try
-            DtDescuento = SccDescuentoPlazo.RetrieveDT("Activo=1", "SccDescuentoID, PlazoPago, DescuentoMaximo, DescuentoMinimo")
+            DtDescuento = SccDescuentoPlazo.RetrieveDT("1=1", "SccDescuentoID", "SccDescuentoID, CAST(PlazoPago AS VARCHAR)  + ' Meses' AS PlazoPago, DescuentoMaximo, DescuentoMinimo")
             DtDescuento.PrimaryKey = New DataColumn() {Me.DtDescuento.Columns("SccDescuentoID")}
             DtDescuento.DefaultView.Sort = "SccDescuentoID"
             Me.grdDescuento.DataSource = DtDescuento
@@ -165,4 +165,16 @@ Public Class frmSccDescuento
     End Sub
 #End Region
 
+    Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
+        Dim objReporte As frmRptVisor
+        Try
+            objReporte = New frmRptVisor
+            objReporte.IDReporte = "ListaDescuentos"
+            objReporte.Show()
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+        
+    End Sub
 End Class

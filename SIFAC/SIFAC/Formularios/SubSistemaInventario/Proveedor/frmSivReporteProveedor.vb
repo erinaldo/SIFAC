@@ -20,10 +20,10 @@ Public Class frmSivReporteProveedor
     Private Sub Seguridad()
         Try
             objSeg = New SsgSeguridad
-            objSeg.ServicioUsuario = "FRMSIVREPORTEPROVEEDOR"
+            objSeg.ServicioUsuario = "frmSivReporteProveedor"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
 
-            If Not objSeg.TienePermiso("VERREPORTE") Then
+            If Not objSeg.TienePermiso("VerReporte") Then
                 Me.Close()
             End If
         Catch ex As Exception
@@ -59,33 +59,37 @@ Public Class frmSivReporteProveedor
 
     Private Sub Imprimir()
         Dim objRptProveedores As rptProveedores
-        Dim objImpresion As frmOpcionesImpresion
-        objImpresion = New frmOpcionesImpresion
-        If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            objRptProveedores = New rptProveedores
-            If Me.rbProveedor.Checked Then
-                dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "SivProveedorID=" & Me.cmbProveedor.SelectedValue))
-            End If
-            If Me.rbTodos.Checked Then
-                dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "1=1"))
-            End If
-            If Me.rbActivos.Checked Then
-                dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "Activo=1"))
-            End If
-            If Me.rbInactivos.Checked Then
-                dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "Activo=0"))
-            End If
+        'Dim objImpresion As frmOpcionesImpresion
+        'objImpresion = New frmOpcionesImpresion
 
-            objRptProveedores.DataSource = Me.dtRptProveedor
-            Select Case objImpresion.Seleccion
-                Case 1
-                    clsProyecto.ImprimirEnPantalla(objRptProveedores)
-                Case 2
-                    clsProyecto.ImprimirEnImpresora(objRptProveedores, True)
-                Case 3
-                    clsProyecto.ImprimirEnArchivo(objRptProveedores, Me)
-            End Select
+        objRptProveedores = New rptProveedores
+        If Me.rbProveedor.Checked Then
+            dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "SivProveedorID=" & Me.cmbProveedor.SelectedValue))
         End If
+        If Me.rbTodos.Checked Then
+            dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "1=1"))
+        End If
+        If Me.rbActivos.Checked Then
+            dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "Activo=1"))
+        End If
+        If Me.rbInactivos.Checked Then
+            dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "Activo=0"))
+        End If
+
+        objRptProveedores.DataSource = Me.dtRptProveedor
+        clsProyecto.ImprimirEnPantalla(objRptProveedores)
+
+        'If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
+
+        '    Select Case objImpresion.Seleccion
+        '        Case 1
+        '            clsProyecto.ImprimirEnPantalla(objRptProveedores)
+        '        Case 2
+        '            clsProyecto.ImprimirEnImpresora(objRptProveedores, True)
+        '        Case 3
+        '            clsProyecto.ImprimirEnArchivo(objRptProveedores, Me)
+        '    End Select
+        'End If
     End Sub
 
 #End Region
@@ -99,12 +103,16 @@ Public Class frmSivReporteProveedor
     End Sub
 
     Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
-        If Me.rbProveedor.Checked And Me.cmbProveedor.Text = "" Then
-            MsgBox("Seleccione un proveedor", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-            Me.cmbProveedor.Focus()
-            Exit Sub
-        End If
-        Imprimir()
+        Try
+            If Me.rbProveedor.Checked And Me.cmbProveedor.Text = "" Then
+                MsgBox("Seleccione un proveedor", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+                Me.cmbProveedor.Focus()
+                Exit Sub
+            End If
+            Imprimir()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
