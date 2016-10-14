@@ -14,4 +14,11 @@ C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Release\SIFAC.B
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Release\SIFAC.BO.Resources.resources
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Release\SIFAC.BO.dll
 C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Release\SIFAC.BO.pdb
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Release\SIFAC.BO.vbprojResolveAssemblyReference.cache
+C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.BO\bin\Release\SIFAC.BO.dll
+C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.BO\bin\Release\SIFAC.BO.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.BO\bin\Release\Proyecto.BO.xml
+C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.BO\obj\Release\SIFAC.BO.Resources.resources
+C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.BO\obj\Release\SIFAC.BO.vbproj.GenerateResource.Cache
+C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.BO\obj\Release\SIFAC.BO.dll
+C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.BO\obj\Release\Proyecto.BO.xml
+C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.BO\obj\Release\SIFAC.BO.pdb

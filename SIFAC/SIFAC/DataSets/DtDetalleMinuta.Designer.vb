@@ -281,8 +281,7 @@ Partial Public Class DtDetalleMinuta
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class vwRptMinutaDetalleDataTable
-        Inherits Global.System.Data.DataTable
-        Implements Global.System.Collections.IEnumerable
+        Inherits Global.System.Data.TypedTableBase(Of vwRptMinutaDetalleRow)
         
         Private columnSccCuentaID As Global.System.Data.DataColumn
         
@@ -753,12 +752,6 @@ Partial Public Class DtDetalleMinuta
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function FindBySccCuentaIDStbTiendaID(ByVal SccCuentaID As String, ByVal StbTiendaID As Integer) As vwRptMinutaDetalleRow
             Return CType(Me.Rows.Find(New Object() {SccCuentaID, StbTiendaID}),vwRptMinutaDetalleRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
-            Return Me.Rows.GetEnumerator
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2022,7 +2015,7 @@ Namespace DtDetalleMinutaTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.SIFAC.My.MySettings.Default.SIFACConnectionString
+            'Me._connection.ConnectionString = Global.SIFAC.MySettings.Default.SCCUM2ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

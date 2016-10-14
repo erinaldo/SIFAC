@@ -5,19 +5,20 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F66F20CE-A3E7-4722-AE3D-68DF5A9F8719}</ProjectGuid>
+    <ProjectGuid>{141E0D71-F77A-4743-AE26-1C234515C900}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>SCCUM.My.MyApplication</StartupObject>
-    <RootNamespace>SCCUM</RootNamespace>
-    <AssemblyName>SCCUM</AssemblyName>
+    <StartupObject>SIFAC.My.MyApplication</StartupObject>
+    <RootNamespace>SIFAC</RootNamespace>
+    <AssemblyName>SIFAC</AssemblyName>
     <MyType>WindowsForms</MyType>
-    <ApplicationIcon>VentanaConfiguracion.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <ApplicationIcon>sifac-desk-icon.ico</ApplicationIcon>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -30,9 +31,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,7 +41,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SCCUM.xml</DocumentationFile>
+    <DocumentationFile>SIFAC.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -49,8 +50,11 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SCCUM.xml</DocumentationFile>
+    <DocumentationFile>SIFAC.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActiveReports.Chart">
@@ -68,27 +72,34 @@
     <Reference Include="ActiveReports3, Version=5.2.0.397, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
       <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\ActiveReports3.dll</HintPath>
     </Reference>
-    <Reference Include="C1.C1Excel.2, Version=2.1.20072.71, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.C1Pdf.2, Version=2.1.20072.61, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Command.2, Version=2.0.20072.19209, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20072.339, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Input.2, Version=2.0.20072.33009, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1List.2, Version=2.1.20072.123, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Ribbon.2, Version=2.0.20072.46, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Schedule.2, Version=2.0.20072.45, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20072.18, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1SuperTooltip.2, Version=2.0.20072.38, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20072.61122, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
-    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data3, Version=3.2.3.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils3, Version=3.2.3.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars3.Design, Version=3.7.3.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors3, Version=3.2.3.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid3, Version=3.2.3.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid3.Design, Version=3.2.3.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4, processorArchitecture=MSIL" />
-    <Reference Include="GUI, Version=1.0.2866.30389, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="C1.C1Excel.2, Version=2.1.20073.74, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Command.2, Version=2.0.20073.19306, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.2, Version=2.6.20073.357, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Input.2, Version=2.0.20073.33104, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1List.2, Version=2.1.20073.132, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Ribbon.2, Version=2.0.20073.72, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Sizer.2, Version=2.1.20073.20, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1SuperTooltip.2, Version=2.0.20073.44, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1TrueDBGrid.2, Version=2.0.20073.61130, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Copy of PSMTSHARED\3-Fuente\prjPriceSmart\bin\Debug\GUI.dll</HintPath>
+      <HintPath>..\DLLS\DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v13.1.Design, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v13.1.Design, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="GUI, Version=1.0.6031.28568, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS\GUI.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -104,17 +115,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\Microsoft.VisualStudio.HostingProcess.Utilities.Sync.dll</HintPath>
     </Reference>
-    <Reference Include="Seguridad.Datos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Proyecto.Configuracion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLS\Seguridad.Datos.dll</HintPath>
-    </Reference>
-    <Reference Include="Seguridad.Formularios, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLS\Seguridad.Formularios.dll</HintPath>
+      <HintPath>..\DLLS\Proyecto.Configuracion.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
@@ -192,11 +200,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dtMinutaCliente.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSets\DtMorosidadS.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DtMorosidadS.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\dtRecuperacionComparativo.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -297,6 +300,60 @@
     <Compile Include="Formularios\Bitacora\frmStbBuscarBitacora.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Catalogos\frmBodegasEditar.Designer.vb">
+      <DependentUpon>frmBodegasEditar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmBodegasEditar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivCategorias.Designer.vb">
+      <DependentUpon>frmSivCategorias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivCategorias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivCategoriasEditar.Designer.vb">
+      <DependentUpon>frmSivCategoriasEditar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivCategoriasEditar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivMarcas.Designer.vb">
+      <DependentUpon>frmSivMarcas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivMarcas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmStbBodegas.Designer.vb">
+      <DependentUpon>frmStbBodegas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmStbBodegas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmStbRutas.Designer.vb">
+      <DependentUpon>frmStbRutas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmStbRutas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmStbRutasEdit.Designer.vb">
+      <DependentUpon>frmStbRutasEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmStbRutasEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\frmSccClientes.Designer.vb">
+      <DependentUpon>frmSccClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Clientes\frmSccClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\frmClientesEdit.Designer.vb">
+      <DependentUpon>frmClientesEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Clientes\frmClientesEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\CuentasXCobrar\frmSccBuscarCuentas.Designer.vb">
       <DependentUpon>frmSccBuscarCuentas.vb</DependentUpon>
     </Compile>
@@ -315,16 +372,34 @@
     <Compile Include="Formularios\CuentasXCobrar\frmSccCuentasEditar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\CuentasXCobrar\frmSccModificarLimite.Designer.vb">
-      <DependentUpon>frmSccModificarLimite.vb</DependentUpon>
+    <Compile Include="Formularios\CuentasXCobrar\frmSccDescuento.Designer.vb">
+      <DependentUpon>frmSccDescuento.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\CuentasXCobrar\frmSccModificarLimite.vb">
+    <Compile Include="Formularios\CuentasXCobrar\frmSccDescuento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\CuentasXCobrar\frmSccDescuentoEdit.Designer.vb">
+      <DependentUpon>frmSccDescuentoEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\CuentasXCobrar\frmSccDescuentoEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Devoluciones\frmSccDevoluciones.Designer.vb">
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Devoluciones\frmSccDevoluciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmSivEncargos.Designer.vb">
+      <DependentUpon>frmSivEncargos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmSivEncargos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmSivEncargosEdit.Designer.vb">
+      <DependentUpon>frmSivEncargosEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmSivEncargosEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Facturas\frmSfaBuscarFacturaExp.Designer.vb">
@@ -349,42 +424,6 @@
       <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Facturas\frmSfaFaturaEditar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccEditNotaCredito.Designer.vb">
-      <DependentUpon>frmSccEditNotaCredito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccEditNotaCredito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccMantNotaCredito.Designer.vb">
-      <DependentUpon>frmSccMantNotaCredito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccMantNotaCredito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccParamBuscarNotaCredito.designer.vb">
-      <DependentUpon>frmSccParamBuscarNotaCredito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaCredito\frmSccParamBuscarNotaCredito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccEditNotaDebito.designer.vb">
-      <DependentUpon>frmSccEditNotaDebito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccEditNotaDebito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccMantNotaDebito.Designer.vb">
-      <DependentUpon>frmSccMantNotaDebito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccMantNotaDebito.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccParamBuscarNotaDebito.Designer.vb">
-      <DependentUpon>frmSccParamBuscarNotaDebito.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\NotaDebito\frmSccParamBuscarNotaDebito.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\PIM\frmPersonaSelector.Designer.vb">
@@ -435,16 +474,22 @@
     <Compile Include="Formularios\Principal\frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivProductosEditar.Designer.vb">
-      <DependentUpon>frmSivProductosEditar.vb</DependentUpon>
+    <Compile Include="Formularios\Catalogos\frmMarcasEdit.Designer.vb">
+      <DependentUpon>frmMarcasEdit.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivProductosEditar.vb">
+    <Compile Include="Formularios\Catalogos\frmMarcasEdit.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivProductos.Designer.vb">
+    <Compile Include="Formularios\Catalogos\frmSivProductos.Designer.vb">
       <DependentUpon>frmSivProductos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Productos\frmSivProductos.vb">
+    <Compile Include="Formularios\Catalogos\frmSivProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivProductosEditar.Designer.vb">
+      <DependentUpon>frmSivProductosEditar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivProductosEditar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\ReciboCaja\frmSccBuscarRecibo.Designer.vb">
@@ -483,30 +528,6 @@
     <Compile Include="Formularios\RecursosHumanos\frmSrhEmpleadoEditar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Repuestos\frmEtiquetarCB.Designer.vb">
-      <DependentUpon>frmEtiquetarCB.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmEtiquetarCB.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivEditRepuestos.Designer.vb">
-      <DependentUpon>frmSivEditRepuestos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivEditRepuestos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivRepuestos.Designer.vb">
-      <DependentUpon>frmSivRepuestos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivRepuestos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivRptRepuesto.Designer.vb">
-      <DependentUpon>frmSivRptRepuesto.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Repuestos\frmSivRptRepuesto.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\SubSistemaFacturacion\frmAlertaSolicitudDescuento.Designer.vb">
       <DependentUpon>frmAlertaSolicitudDescuento.vb</DependentUpon>
     </Compile>
@@ -541,36 +562,6 @@
       <DependentUpon>frmCriteriosReporteUtilidades.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\SubSistemaFacturacion\frmCriteriosReporteUtilidades.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacion.Designer.vb">
-      <DependentUpon>frmSfaCotizacion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacion.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionAnular.designer.vb">
-      <DependentUpon>frmSfaCotizacionAnular.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionAnular.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionBodegaRepuestoConsultar.designer.vb">
-      <DependentUpon>frmSfaCotizacionBodegaRepuestoConsultar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionBodegaRepuestoConsultar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionDescuentoConsultar.designer.vb">
-      <DependentUpon>frmSfaCotizacionDescuentoConsultar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionDescuentoConsultar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionEditar.designer.vb">
-      <DependentUpon>frmSfaCotizacionEditar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionEditar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\SubSistemaFacturacion\SfaFacturaRepuestos\frmSfaAgregarDescripcion.Designer.vb">
@@ -631,48 +622,6 @@
       <DependentUpon>frmSfaRptFacturaRepuestos.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\SubSistemaFacturacion\SfaFacturaRepuestos\frmSfaRptFacturaRepuestos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmBuscarOrdenCompra.Designer.vb">
-      <DependentUpon>frmBuscarOrdenCompra.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmBuscarOrdenCompra.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\FrmSfaOrdenCompraEdit.Designer.vb">
-      <DependentUpon>FrmSfaOrdenCompraEdit.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\FrmSfaOrdenCompraEdit.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmSfaOrdenesCompra.Designer.vb">
-      <DependentUpon>frmSfaOrdenesCompra.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmSfaOrdenesCompra.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmConsultaDescuentoPromociones.Designer.vb">
-      <DependentUpon>frmConsultaDescuentoPromociones.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmConsultaDescuentoPromociones.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmReportesPromociones.Designer.vb">
-      <DependentUpon>frmReportesPromociones.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmReportesPromociones.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromociones.Designer.vb">
-      <DependentUpon>frmSfaPromociones.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromociones.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromocionesEdit.Designer.vb">
-      <DependentUpon>frmSfaPromocionesEdit.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromocionesEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\SubSistemaInventario\DespacharTransferencia\frmSivDespTransferencia.Designer.vb">
@@ -843,16 +792,10 @@
     <Compile Include="Formularios\SubSistemaTaller\frmStaServicioTallerEditar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\TasaCambio\frmStbEditTasaCambioOficial.Designer.vb">
-      <DependentUpon>frmStbEditTasaCambioOficial.vb</DependentUpon>
+    <Compile Include="Formularios\Devoluciones\frmSccEditDevolucion.designer.vb">
+      <DependentUpon>frmSccEditDevolucion.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\TasaCambio\frmStbEditTasaCambioOficial.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\TasaCambio\frmStbMantTasaCambioOficial.Designer.vb">
-      <DependentUpon>frmStbMantTasaCambioOficial.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\TasaCambio\frmStbMantTasaCambioOficial.vb">
+    <Compile Include="Formularios\Devoluciones\frmSccEditDevolucion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Tiendas\frmOpcionesImpresion.Designer.vb">
@@ -879,88 +822,70 @@
     <Compile Include="Formularios\Tiendas\frmStbTiendas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Devoluciones\frmSccEditDevolucion.designer.vb">
-      <DependentUpon>frmSccEditDevolucion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Devoluciones\frmSccEditDevolucion.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\TramiteLegal\frmSccEditTramite.designer.vb">
-      <DependentUpon>frmSccEditTramite.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\TramiteLegal\frmSccEditTramite.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\TramiteLegal\frmSccTramiteLegal.Designer.vb">
-      <DependentUpon>frmSccTramiteLegal.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\TramiteLegal\frmSccTramiteLegal.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes SIFUM\frmVisorRS.designer.vb">
+    <Compile Include="Reportes SIFAC\frmVisorRS.designer.vb">
       <DependentUpon>frmVisorRS.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\frmVisorRS.vb">
+    <Compile Include="Reportes SIFAC\frmVisorRS.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptEtiquetaBarCode.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptEtiquetaBarCode.Designer.vb">
       <DependentUpon>rptEtiquetaBarCode.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptEtiquetaBarCode.vb">
+    <Compile Include="Reportes SIFAC\rptEtiquetaBarCode.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptFacturacionListadoPrecios.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptFacturacionListadoPrecios.Designer.vb">
       <DependentUpon>rptFacturacionListadoPrecios.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptFacturacionListadoPrecios.vb">
+    <Compile Include="Reportes SIFAC\rptFacturacionListadoPrecios.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporte.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporte.Designer.vb">
       <DependentUpon>rptInventarioReporte.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporte.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporte.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteBodegas.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteBodegas.Designer.vb">
       <DependentUpon>rptInventarioReporteBodegas.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteBodegas.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteBodegas.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteFormato.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteFormato.Designer.vb">
       <DependentUpon>rptInventarioReporteFormato.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteFormato.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteFormato.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteRepuesto.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteRepuesto.Designer.vb">
       <DependentUpon>rptInventarioReporteRepuesto.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptInventarioReporteRepuesto.vb">
+    <Compile Include="Reportes SIFAC\rptInventarioReporteRepuesto.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptOrdenCompraActive.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptOrdenCompraActive.Designer.vb">
       <DependentUpon>rptOrdenCompraActive.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptOrdenCompraActive.vb">
+    <Compile Include="Reportes SIFAC\rptOrdenCompraActive.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSalidaBodega.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptSalidaBodega.Designer.vb">
       <DependentUpon>rptSalidaBodega.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSalidaBodega.vb">
+    <Compile Include="Reportes SIFAC\rptSalidaBodega.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSivRepuestos.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptSivRepuestos.Designer.vb">
       <DependentUpon>rptSivRepuestos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSivRepuestos.vb">
+    <Compile Include="Reportes SIFAC\rptSivRepuestos.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSivSalidaFiltrado.Designer.vb">
+    <Compile Include="Reportes SIFAC\rptSivSalidaFiltrado.Designer.vb">
       <DependentUpon>rptSivSalidaFiltrado.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reportes SIFUM\rptSivSalidaFiltrado.vb">
+    <Compile Include="Reportes SIFAC\rptSivSalidaFiltrado.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\clsReportes.vb" />
@@ -1071,6 +996,24 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.vb" />
+    <Compile Include="Sincronizacion\frmSincronizarAbonos.Designer.vb">
+      <DependentUpon>frmSincronizarAbonos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarAbonos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarDevoluciones.Designer.vb">
+      <DependentUpon>frmSincronizarDevoluciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarDevoluciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarVentas.Designer.vb">
+      <DependentUpon>frmSincronizarVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Formularios\Bitacora\frmSccMinutasCobro.resx">
@@ -1089,6 +1032,34 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmStbBuscarBitacora.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmBodegasEditar.resx">
+      <DependentUpon>frmBodegasEditar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivCategorias.resx">
+      <DependentUpon>frmSivCategorias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivCategoriasEditar.resx">
+      <DependentUpon>frmSivCategoriasEditar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivMarcas.resx">
+      <DependentUpon>frmSivMarcas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmStbBodegas.resx">
+      <DependentUpon>frmStbBodegas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmStbRutas.resx">
+      <DependentUpon>frmStbRutas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmStbRutasEdit.resx">
+      <DependentUpon>frmStbRutasEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\frmSccClientes.resx">
+      <DependentUpon>frmSccClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\frmClientesEdit.resx">
+      <DependentUpon>frmClientesEdit.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\CuentasXCobrar\frmSccBuscarCuentas.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSccBuscarCuentas.vb</DependentUpon>
@@ -1101,53 +1072,33 @@
       <DependentUpon>frmSccCuentasEditar.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\CuentasXCobrar\frmSccModificarLimite.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmSccModificarLimite.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\CuentasXCobrar\frmSccDescuento.resx">
+      <DependentUpon>frmSccDescuento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\CuentasXCobrar\frmSccDescuentoEdit.resx">
+      <DependentUpon>frmSccDescuentoEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Devoluciones\frmSccDevoluciones.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Encargos\frmSivEncargos.resx">
+      <DependentUpon>frmSivEncargos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Encargos\frmSivEncargosEdit.resx">
+      <DependentUpon>frmSivEncargosEdit.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Facturas\frmSfaBuscarFacturaExp.resx">
-      <SubType>Designer</SubType>
       <DependentUpon>frmSfaBuscarFacturaExp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Facturas\frmSfaCambiosPagos.resx">
-      <SubType>Designer</SubType>
       <DependentUpon>frmSfaCambiosPagos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Facturas\frmSfaFactura.resx">
       <DependentUpon>frmSfaFactura.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Facturas\frmSfaFaturaEditar.resx">
       <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaCredito\frmSccEditNotaCredito.resx">
-      <DependentUpon>frmSccEditNotaCredito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaCredito\frmSccMantNotaCredito.resx">
-      <DependentUpon>frmSccMantNotaCredito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaCredito\frmSccParamBuscarNotaCredito.resx">
-      <DependentUpon>frmSccParamBuscarNotaCredito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaDebito\frmSccEditNotaDebito.resx">
-      <DependentUpon>frmSccEditNotaDebito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaDebito\frmSccMantNotaDebito.resx">
-      <DependentUpon>frmSccMantNotaDebito.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\NotaDebito\frmSccParamBuscarNotaDebito.resx">
-      <DependentUpon>frmSccParamBuscarNotaDebito.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PIM\frmPersonaSelector.resx">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
@@ -1181,13 +1132,14 @@
       <DependentUpon>frmPrincipal.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Productos\frmSivProductosEditar.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmSivProductosEditar.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\Catalogos\frmMarcasEdit.resx">
+      <DependentUpon>frmMarcasEdit.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Productos\frmSivProductos.resx">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivProductos.resx">
       <DependentUpon>frmSivProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivProductosEditar.resx">
+      <DependentUpon>frmSivProductosEditar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ReciboCaja\frmSccBuscarRecibo.resx">
       <SubType>Designer</SubType>
@@ -1213,22 +1165,6 @@
       <DependentUpon>frmSrhEmpleadoEditar.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Repuestos\frmEtiquetarCB.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmEtiquetarCB.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Repuestos\frmSivEditRepuestos.resx">
-      <DependentUpon>frmSivEditRepuestos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Repuestos\frmSivRepuestos.resx">
-      <DependentUpon>frmSivRepuestos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Repuestos\frmSivRptRepuesto.resx">
-      <DependentUpon>frmSivRptRepuesto.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubSistemaFacturacion\frmAlertaSolicitudDescuento.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmAlertaSolicitudDescuento.vb</DependentUpon>
@@ -1252,26 +1188,6 @@
     <EmbeddedResource Include="Formularios\SubSistemaFacturacion\frmCriteriosReporteUtilidades.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmCriteriosReporteUtilidades.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacion.resx">
-      <DependentUpon>frmSfaCotizacion.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionAnular.resx">
-      <DependentUpon>frmSfaCotizacionAnular.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionBodegaRepuestoConsultar.resx">
-      <DependentUpon>frmSfaCotizacionBodegaRepuestoConsultar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionDescuentoConsultar.resx">
-      <DependentUpon>frmSfaCotizacionDescuentoConsultar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaCotizacion\frmSfaCotizacionEditar.resx">
-      <DependentUpon>frmSfaCotizacionEditar.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaFacturaRepuestos\frmSfaAgregarDescripcion.resx">
       <DependentUpon>frmSfaAgregarDescripcion.vb</DependentUpon>
@@ -1311,34 +1227,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaFacturaRepuestos\frmSfaRptFacturaRepuestos.resx">
       <DependentUpon>frmSfaRptFacturaRepuestos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmBuscarOrdenCompra.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmBuscarOrdenCompra.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\FrmSfaOrdenCompraEdit.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>FrmSfaOrdenCompraEdit.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaOrdenCompra\frmSfaOrdenesCompra.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmSfaOrdenesCompra.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmConsultaDescuentoPromociones.resx">
-      <DependentUpon>frmConsultaDescuentoPromociones.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmReportesPromociones.resx">
-      <DependentUpon>frmReportesPromociones.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromociones.resx">
-      <DependentUpon>frmSfaPromociones.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\SubSistemaFacturacion\SfaPromociones\frmSfaPromocionesEdit.resx">
-      <DependentUpon>frmSfaPromocionesEdit.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubSistemaInventario\DespacharTransferencia\frmSivDespTransferencia.resx">
@@ -1453,106 +1341,86 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmStaServicioTallerEditar.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TasaCambio\frmStbEditTasaCambioOficial.resx">
-      <DependentUpon>frmStbEditTasaCambioOficial.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TasaCambio\frmStbMantTasaCambioOficial.resx">
-      <DependentUpon>frmStbMantTasaCambioOficial.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tiendas\frmOpcionesImpresion.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmOpcionesImpresion.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tiendas\frmStbEditTiendas.resx">
-      <DependentUpon>frmStbEditTiendas.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendaContactos.resx">
-      <DependentUpon>frmStbTiendaContactos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendas.resx">
-      <DependentUpon>frmStbTiendas.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Devoluciones\frmSccEditDevolucion.resx">
       <DependentUpon>frmSccEditDevolucion.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TramiteLegal\frmSccEditTramite.resx">
-      <DependentUpon>frmSccEditTramite.vb</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Formularios\Tiendas\frmOpcionesImpresion.resx">
+      <DependentUpon>frmOpcionesImpresion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TramiteLegal\frmSccTramiteLegal.resx">
-      <DependentUpon>frmSccTramiteLegal.vb</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Formularios\Tiendas\frmStbEditTiendas.resx">
+      <DependentUpon>frmStbEditTiendas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\frmVisorRS.resx">
+    <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendaContactos.resx">
+      <DependentUpon>frmStbTiendaContactos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendas.resx">
+      <DependentUpon>frmStbTiendas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\frmVisorRS.resx">
       <DependentUpon>frmVisorRS.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptComisiones.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptCotizacion.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptCotizaciones.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptEntradas.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptEstadisticoServicioTallerSUCURSAL.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptEstadisticoServicioTallerSucursales.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptEtiquetaBarCode.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptComisiones.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptCotizacion.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptCotizaciones.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptEntradas.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptEstadisticoServicioTallerSUCURSAL.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptEstadisticoServicioTallerSucursales.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptEtiquetaBarCode.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptEtiquetaBarCode.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptFacturacionListadoPrecios.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptFacturacionListadoPrecios.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptFacturacionListadoPrecios.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptHojaEntrada.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptInventarioReporte.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptHojaEntrada.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporte.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporte.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptInventarioReporteBodegas.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporteBodegas.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporteBodegas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptInventarioReporteFormato.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporteFormato.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporteFormato.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptInventarioReporteRepuesto.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporteRepuesto.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporteRepuesto.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptKardex.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptOrdenCompra.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptOrdenCompraActive.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptKardex.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptOrdenCompra.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptOrdenCompraActive.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptOrdenCompraActive.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptPromocion.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptPromociones.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSalidaBodega.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptPromocion.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptPromociones.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSalidaBodega.resx">
       <DependentUpon>rptSalidaBodega.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptServicioTallerBitacoraMoto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSfaFacturaMoto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSfaFacturaRepuesto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSfaReporteFacturas.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSfaRepuestosFacturados.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptSivRepuestos.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptServicioTallerBitacoraMoto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSfaFacturaMoto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSfaFacturaRepuesto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSfaReporteFacturas.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSfaRepuestosFacturados.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSivRepuestos.resx">
       <DependentUpon>rptSivRepuestos.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptSivSalidaFiltrado.resx">
+    <EmbeddedResource Include="Reportes SIFAC\rptSivSalidaFiltrado.resx">
       <DependentUpon>rptSivSalidaFiltrado.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes SIFUM\rptTallerHojaEntregaMoto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptTallerHojaRecepcionMoto.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptUtilidades.rdlc" />
-    <EmbeddedResource Include="Reportes SIFUM\rptVentasRepuestos.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptTallerHojaEntregaMoto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptTallerHojaRecepcionMoto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptUtilidades.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptVentasRepuestos.rdlc" />
     <EmbeddedResource Include="Reportes\frmStbVisor.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmStbVisor.vb</DependentUpon>
@@ -1635,9 +1503,15 @@
       <DependentUpon>rptTransferenciaSolicitudes.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sincronizacion\frmSincronizarVentas.resx">
+      <DependentUpon>frmSincronizarVentas.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -1647,24 +1521,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SCCUM.BO\SCCUM.BO.vbproj">
-      <Project>{C9CC746B-0B3A-4F47-8638-772BC3AA75BD}</Project>
-      <Name>SCCUM.BO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SCCUM.Catalogos.Datos\SCCUM.Catalogos.Datos.vbproj">
-      <Project>{33DA4E3E-A1D1-4D09-857A-4884251CBB4B}</Project>
-      <Name>SCCUM.Catalogos.Datos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SCCUM.Catalogos.Formularios\SCCUM.Catalogos.Formularios.vbproj">
-      <Project>{CAC48429-C201-4E7B-9864-D76B30ED6382}</Project>
-      <Name>SCCUM.Catalogos.Formularios</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SCCUM.Configuracion\SCCUM.Configuracion.vbproj">
-      <Project>{56A5F0B6-2FAB-419E-AAF1-C98724860924}</Project>
-      <Name>SCCUM.Configuracion</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Anular.png" />
@@ -1943,7 +1799,6 @@
     <None Include="DataSets\DtMorosidadS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DtMorosidadS.Designer.vb</LastGenOutput>
     </None>
     <None Include="DataSets\DtMorosidadS.xss">
       <DependentUpon>DtMorosidadS.xsd</DependentUpon>
@@ -2118,7 +1973,10 @@
     <None Include="Resources\balanza.bmp" />
     <Content Include="Resources\Banner.jpg" />
     <Content Include="Resources\Bitacora.png" />
+    <None Include="Resources\Cancel16.png" />
     <Content Include="Resources\Fact.png" />
+    <None Include="Resources\Guardar32.png" />
+    <None Include="Resources\Guardar16.png" />
     <Content Include="Resources\Home.ico" />
     <Content Include="Resources\Logo.jpg" />
     <Content Include="Resources\MdiChild.png" />
@@ -2129,6 +1987,8 @@
     <Content Include="Resources\Proveedor.ico" />
     <None Include="Resources\Sello.png" />
     <None Include="Resources\ProveedorEstilo1.jpg" />
+    <None Include="Resources\save.png" />
+    <Content Include="sifac-desk-icon.ico" />
     <Content Include="VentanaConfiguracion.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -2142,6 +2002,31 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIFAC.BO\SIFAC.BO.vbproj">
+      <Project>{c9cc746b-0b3a-4f47-8638-772bc3aa75bd}</Project>
+      <Name>SIFAC.BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SIFAC.Catalogos.Datos\Catalogos.Datos.vbproj">
+      <Project>{33da4e3e-a1d1-4d09-857a-4884251cbb4b}</Project>
+      <Name>Catalogos.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SIFAC.Catalogos.Formularios\Catalogos.Formularios.vbproj">
+      <Project>{cac48429-c201-4e7b-9864-d76b30ed6382}</Project>
+      <Name>Catalogos.Formularios</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SIFAC.Seguridad.Datos\Seguridad.Datos.vbproj">
+      <Project>{1d3e4a0c-f671-4890-9a17-f6b64951cca2}</Project>
+      <Name>Seguridad.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SIFAC.Seguridad.Formularios\Seguridad.Formularios.vbproj">
+      <Project>{7a293fdd-5637-4bdf-9a92-a6b37db742ee}</Project>
+      <Name>Seguridad.Formularios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Formularios\OrdenCompra\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

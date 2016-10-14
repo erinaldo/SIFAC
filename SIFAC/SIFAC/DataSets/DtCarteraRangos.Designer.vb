@@ -281,8 +281,7 @@ Partial Public Class DtCarteraRangos
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class vwRptCarteraRangosDataTable
-        Inherits Global.System.Data.DataTable
-        Implements Global.System.Collections.IEnumerable
+        Inherits Global.System.Data.TypedTableBase(Of vwRptCarteraRangosRow)
         
         Private columnobjTiendaID As Global.System.Data.DataColumn
         
@@ -512,12 +511,6 @@ Partial Public Class DtCarteraRangos
             rowvwRptCarteraRangosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvwRptCarteraRangosRow)
             Return rowvwRptCarteraRangosRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
-            Return Me.Rows.GetEnumerator
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1224,7 +1217,7 @@ Namespace DtCarteraRangosTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.SIFAC.My.MySettings.Default.SIFACConnectionString
+            'Me._connection.ConnectionString = Global.SIFAC.MySettings.Default.SCCUM3ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

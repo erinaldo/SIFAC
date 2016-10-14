@@ -281,8 +281,7 @@ Partial Public Class DtDatosHistorialClientes
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class vwRptHistorialClientesDataTable
-        Inherits Global.System.Data.DataTable
-        Implements Global.System.Collections.IEnumerable
+        Inherits Global.System.Data.TypedTableBase(Of vwRptHistorialClientesRow)
         
         Private columnExpediente As Global.System.Data.DataColumn
         
@@ -929,12 +928,6 @@ Partial Public Class DtDatosHistorialClientes
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function FindByExpedienteobjTiendaID(ByVal Expediente As String, ByVal objTiendaID As Integer) As vwRptHistorialClientesRow
             Return CType(Me.Rows.Find(New Object() {Expediente, objTiendaID}),vwRptHistorialClientesRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
-            Return Me.Rows.GetEnumerator
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

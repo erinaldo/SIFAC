@@ -281,8 +281,7 @@ Partial Public Class dtDatosServicioTallerBitacoraMoto
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class vwStaServicioTallerBitacoraMotoDataTable
-        Inherits Global.System.Data.DataTable
-        Implements Global.System.Collections.IEnumerable
+        Inherits Global.System.Data.TypedTableBase(Of vwStaServicioTallerBitacoraMotoRow)
         
         Private columnStaServicioTallerID As Global.System.Data.DataColumn
         
@@ -610,12 +609,6 @@ Partial Public Class dtDatosServicioTallerBitacoraMoto
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function FindByStaServicioTallerID(ByVal StaServicioTallerID As Integer) As vwStaServicioTallerBitacoraMotoRow
             Return CType(Me.Rows.Find(New Object() {StaServicioTallerID}),vwStaServicioTallerBitacoraMotoRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
-            Return Me.Rows.GetEnumerator
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

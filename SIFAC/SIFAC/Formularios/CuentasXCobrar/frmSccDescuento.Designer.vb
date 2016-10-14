@@ -36,18 +36,13 @@ Partial Class frmSccDescuento
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
         Me.grdDescuento = New DevExpress.XtraGrid.GridControl()
         Me.grdDescuentoTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSccDescuentoID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colPlazoPago = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescuentoMaximo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescuentoMinimo = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ColActivo = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
-        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.tbProductos.SuspendLayout()
         CType(Me.grdDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDescuentoTabla, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbProductos
@@ -141,47 +136,34 @@ Partial Class frmSccDescuento
         '
         Me.grdDescuento.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdDescuento.Location = New System.Drawing.Point(0, 39)
-        Me.grdDescuento.LookAndFeel.SkinName = "Caramel"
+        Me.grdDescuento.LookAndFeel.SkinName = "Visual Studio 2013 Blue"
         Me.grdDescuento.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdDescuento.MainView = Me.grdDescuentoTabla
         Me.grdDescuento.Name = "grdDescuento"
-        Me.grdDescuento.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2})
         Me.grdDescuento.Size = New System.Drawing.Size(623, 270)
-        Me.grdDescuento.TabIndex = 9
+        Me.grdDescuento.TabIndex = 3
         Me.grdDescuento.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDescuentoTabla})
         '
         'grdDescuentoTabla
         '
-        Me.grdDescuentoTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescuentoMaximo, Me.colDescuentoMinimo, Me.ColActivo})
+        Me.grdDescuentoTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colPlazoPago, Me.colSccDescuentoID, Me.colDescuentoMaximo, Me.colDescuentoMinimo})
         Me.grdDescuentoTabla.GridControl = Me.grdDescuento
         Me.grdDescuentoTabla.Name = "grdDescuentoTabla"
-        Me.grdDescuentoTabla.OptionsDetail.AllowZoomDetail = False
-        Me.grdDescuentoTabla.OptionsDetail.EnableMasterViewMode = False
-        Me.grdDescuentoTabla.OptionsDetail.ShowDetailTabs = False
-        Me.grdDescuentoTabla.OptionsDetail.SmartDetailExpand = False
-        Me.grdDescuentoTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
-        Me.grdDescuentoTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '
-        'colNumero
+        'colSccDescuentoID
         '
-        Me.colNumero.Caption = "Número"
-        Me.colNumero.FieldName = "SccDescuentoID"
-        Me.colNumero.Name = "colNumero"
-        Me.colNumero.OptionsColumn.AllowFocus = False
-        Me.colNumero.OptionsColumn.ReadOnly = True
-        Me.colNumero.Width = 76
+        Me.colSccDescuentoID.Caption = "SccDescuentoID"
+        Me.colSccDescuentoID.FieldName = "SccDescuentoID"
+        Me.colSccDescuentoID.Name = "colSccDescuentoID"
         '
-        'colNombre
+        'colPlazoPago
         '
-        Me.colNombre.Caption = "Plazo de pago"
-        Me.colNombre.FieldName = "PlazoPago"
-        Me.colNombre.Name = "colNombre"
-        Me.colNombre.OptionsColumn.AllowEdit = False
-        Me.colNombre.OptionsColumn.AllowFocus = False
-        Me.colNombre.OptionsColumn.ReadOnly = True
-        Me.colNombre.Visible = True
-        Me.colNombre.VisibleIndex = 0
-        Me.colNombre.Width = 148
+        Me.colPlazoPago.Caption = "Plazo de Pago"
+        Me.colPlazoPago.FieldName = "PlazoPago"
+        Me.colPlazoPago.Name = "colPlazoPago"
+        Me.colPlazoPago.OptionsColumn.AllowEdit = False
+        Me.colPlazoPago.Visible = True
+        Me.colPlazoPago.VisibleIndex = 0
         '
         'colDescuentoMaximo
         '
@@ -191,7 +173,6 @@ Partial Class frmSccDescuento
         Me.colDescuentoMaximo.OptionsColumn.AllowEdit = False
         Me.colDescuentoMaximo.Visible = True
         Me.colDescuentoMaximo.VisibleIndex = 1
-        Me.colDescuentoMaximo.Width = 150
         '
         'colDescuentoMinimo
         '
@@ -201,27 +182,6 @@ Partial Class frmSccDescuento
         Me.colDescuentoMinimo.OptionsColumn.AllowEdit = False
         Me.colDescuentoMinimo.Visible = True
         Me.colDescuentoMinimo.VisibleIndex = 2
-        '
-        'ColActivo
-        '
-        Me.ColActivo.Caption = "Activo"
-        Me.ColActivo.ColumnEdit = Me.RepositoryItemCheckEdit2
-        Me.ColActivo.FieldName = "Activo"
-        Me.ColActivo.Name = "ColActivo"
-        Me.ColActivo.OptionsColumn.AllowEdit = False
-        Me.ColActivo.Visible = True
-        Me.ColActivo.VisibleIndex = 3
-        Me.ColActivo.Width = 123
-        '
-        'RepositoryItemCheckEdit2
-        '
-        Me.RepositoryItemCheckEdit2.AutoHeight = False
-        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
-        '
-        'RepositoryItemCheckEdit1
-        '
-        Me.RepositoryItemCheckEdit1.AutoHeight = False
-        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSccDescuento
         '
@@ -238,8 +198,6 @@ Partial Class frmSccDescuento
         Me.tbProductos.PerformLayout()
         CType(Me.grdDescuento, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDescuentoTabla, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -257,11 +215,8 @@ Partial Class frmSccDescuento
     Friend WithEvents cmdCerrar As System.Windows.Forms.ToolStripButton
     Friend WithEvents grdDescuento As DevExpress.XtraGrid.GridControl
     Friend WithEvents grdDescuentoTabla As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colPlazoPago As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSccDescuentoID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colDescuentoMaximo As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents colDescuentoMinimo As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents ColActivo As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents RepositoryItemCheckEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

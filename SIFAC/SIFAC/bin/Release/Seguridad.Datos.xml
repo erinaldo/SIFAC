@@ -6,103 +6,222 @@ Seguridad.Datos
 </name>
 </assembly>
 <members>
-<member name="P:Seguridad.Datos.SsgRolAccion.SsgRolAccionID">
+<member name="P:Seguridad.Datos.SsgAccion.SsgAccionID">
 	<summary>
- Llave Principal de la Tabla SsgRolAccion
+ Llave Principal de la Tabla SsgAccion
  </summary>
-</member><member name="P:Seguridad.Datos.SsgRolAccion.UsuarioCreacion">
+</member><member name="P:Seguridad.Datos.SsgAccion.CodInterno">
+	<summary>
+ C?digo interno para identificar la acci?n. Varchar (50). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAccion.Nombre">
+	<summary>
+ Nombre de la acci?n. Varchar (100). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAccion.Descripcion">
+	<summary>
+ Descripci?n general de la acci?n. Varchar (255). Permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAccion.UsuarioCreacion">
 	<summary>
  Login del Usuario que cre? el registro. Varchar (30). No permite Null.
  </summary>
-</member><member name="P:Seguridad.Datos.SsgRolAccion.FechaCreacion">
+</member><member name="P:Seguridad.Datos.SsgAccion.FechaCreacion">
 	<summary>
  Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
  </summary>
-</member><member name="P:Seguridad.Datos.SsgRolAccion.UsuarioModificacion">
+</member><member name="P:Seguridad.Datos.SsgAccion.UsuarioModificacion">
 	<summary>
  Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
  </summary>
-</member><member name="P:Seguridad.Datos.SsgRolAccion.FechaModificacion">
+</member><member name="P:Seguridad.Datos.SsgAccion.FechaModificacion">
 	<summary>
  ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
  </summary>
-</member><member name="P:Seguridad.Datos.SsgRolAccion.objAccionID">
+</member><member name="P:Seguridad.Datos.SsgAccion.objServicioUsuarioID">
 	<summary>
- ID de la acci?n permitida en el Rol.
+ ID del Servicio de Usuario (formulario) al que pertenece la acci?n.
  </summary>
-</member><member name="P:Seguridad.Datos.SsgRolAccion.objRolID">
+</member><member name="M:Seguridad.Datos.SsgAccion.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
 	<summary>
- ID del Rol al que se le asocian las acciones.
+ Salva un DataSet del tipo de la tabla SsgAccion en la base de datos.
  </summary>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
-	<summary>
- Salva un DataSet del tipo de la tabla SsgRolAccion en la base de datos.
- </summary>
-	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgRolAccion </param>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgAccion </param>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
 	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.Retrieve(System.Int32,DAL.TransactionManager)">
+</member><member name="M:Seguridad.Datos.SsgAccion.Retrieve(System.Int32,DAL.TransactionManager)">
 	<summary>
- Devuelve de la base de datos un objeto SsgRolAccion
+ Devuelve de la base de datos un objeto SsgAccion
  </summary>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.RetrieveByFilter(System.String,DAL.TransactionManager)">
+</member><member name="M:Seguridad.Datos.SsgAccion.RetrieveByFilter(System.String,DAL.TransactionManager)">
 	<summary>
- Devuelve de la base de datos un objeto SsgRolAccion usando un filter.
+ Devuelve de la base de datos un objeto SsgAccion usando un filter.
  </summary>
 	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+</member><member name="M:Seguridad.Datos.SsgAccion.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
 	<summary>
- Trae de la base de datos un conjunto de objetos SsgRolAccion en un objeto DataTable
+ Trae de la base de datos un conjunto de objetos SsgAccion en un objeto DataTable
  </summary>
 	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
 	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
 	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+</member><member name="M:Seguridad.Datos.SsgAccion.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
 	<summary>
- Trae de la base de datos un conjunto de objetos SsgRolAccion en un objeto DataSet
+ Trae de la base de datos un conjunto de objetos SsgAccion en un objeto DataSet
  </summary>
 	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
 	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
 	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+</member><member name="M:Seguridad.Datos.SsgAccion.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
 	<summary>
- Trae de la base de datos un conjunto de objetos SsgRolAccion en un objeto DataReader
+ Trae de la base de datos un conjunto de objetos SsgAccion en un objeto DataReader
  </summary>
 	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
 	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
 	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.Insert(DAL.TransactionManager@)">
+</member><member name="M:Seguridad.Datos.SsgAccion.Insert(DAL.TransactionManager@)">
 	<summary>
- 	Inserta en la base de datos una nueva instancia de la clase SsgRolAccion.
+ 	Inserta en la base de datos una nueva instancia de la clase SsgAccion.
  </summary>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
 	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.Update(DAL.TransactionManager@)">
+</member><member name="M:Seguridad.Datos.SsgAccion.Update(DAL.TransactionManager@)">
 	<summary>
- 	Actualiza el objeto SsgRolAccion en la base de datos.
+ 	Actualiza el objeto SsgAccion en la base de datos.
  </summary>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
 	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.Delete(DAL.TransactionManager)">
+</member><member name="M:Seguridad.Datos.SsgAccion.Delete(DAL.TransactionManager)">
 	<summary>
- Borra un objeto SsgRolAccion de la base de datos.
+ Borra un objeto SsgAccion de la base de datos.
  <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
 	</summary>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.Delete(System.Int32,DAL.TransactionManager)">
+</member><member name="M:Seguridad.Datos.SsgAccion.Delete(System.Int32,DAL.TransactionManager)">
 	<summary>
- Borra un objeto SsgRolAccion de la base de datos
+ Borra un objeto SsgAccion de la base de datos
  </summary>
-</member><member name="M:Seguridad.Datos.SsgRolAccion.DeleteByFilter(System.String,DAL.TransactionManager)">
+</member><member name="M:Seguridad.Datos.SsgAccion.DeleteByFilter(System.String,DAL.TransactionManager)">
 	<summary>
- Borra objetos SsgRolAccion de la base de datos en base al par?metro WHERE
+ Borra objetos SsgAccion de la base de datos en base al par?metro WHERE
  </summary>
 	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-</member><member name="T:Seguridad.Datos.SsgRolAccion">
+</member><member name="T:Seguridad.Datos.SsgAccion">
 	<summary>
- Acciones que se pueden realizar dentro de un Rol espec?fico.
+ Acciones disponibles dentro de un servicio espec?fico. Por ejemplo: Agregar, Editar, Eliminar, Consultar, Imprimir.
+ </summary>
+</member><member name="P:Seguridad.Datos.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Seguridad.Datos.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:Seguridad.Datos.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:Seguridad.Datos.SsgCuentaRol.SsgCuentaRolID">
+	<summary>
+ Llave Principal de la Tabla SsgCuentaRol
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgCuentaRol.UsuarioCreacion">
+	<summary>
+ Login del Usuario que cre? el registro. Varchar (30). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgCuentaRol.FechaCreacion">
+	<summary>
+ Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgCuentaRol.UsuarioModificacion">
+	<summary>
+ Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgCuentaRol.FechaModificacion">
+	<summary>
+ ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgCuentaRol.objCuentaID">
+	<summary>
+ ID de la cuenta de usuario a la que se le asocia el Rol.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgCuentaRol.objRolID">
+	<summary>
+ ID del Rol asociado a la cuenta de usuario.
+ </summary>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla SsgCuentaRol en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgCuentaRol </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SsgCuentaRol
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SsgCuentaRol usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgCuentaRol en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgCuentaRol en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgCuentaRol en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase SsgCuentaRol.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto SsgCuentaRol en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SsgCuentaRol de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SsgCuentaRol de la base de datos
+ </summary>
+</member><member name="M:Seguridad.Datos.SsgCuentaRol.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos SsgCuentaRol de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="T:Seguridad.Datos.SsgCuentaRol">
+	<summary>
+ Roles que puede tener asignado una misma cuenta de usuario.
  </summary>
 </member><member name="M:Seguridad.Datos.SsgSeguridad.Autenticar(System.String,System.String)">
 	<summary>
@@ -130,112 +249,6 @@ Seguridad.Datos
  Esta clase contiene  todos  los métodos utilizados para la autenticación de usuario
  </summary>
 	<remarks></remarks>
-</member><member name="P:Seguridad.Datos.SsgServicioUsuario.SsgServicioUsuarioID">
-	<summary>
- Llave Principal de la Tabla SsgServicioUsuario
- </summary>
-</member><member name="P:Seguridad.Datos.SsgServicioUsuario.CodInterno">
-	<summary>
- C?digo interno para identificar el servicio. Varchar (50). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgServicioUsuario.Nombre">
-	<summary>
- Nombre del Servicio. Varchar (100). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgServicioUsuario.Descripcion">
-	<summary>
- Descripci?n del Servicio. Varchar (255). Permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgServicioUsuario.UsuarioCreacion">
-	<summary>
- Login del Usuario que cre? el registro. Varchar (30). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgServicioUsuario.FechaCreacion">
-	<summary>
- Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgServicioUsuario.UsuarioModificacion">
-	<summary>
- Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgServicioUsuario.FechaModificacion">
-	<summary>
- ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgServicioUsuario.objModuloID">
-	<summary>
- ID del m?dulo al que pertenece el Servicio de Usuario.
- </summary>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
-	<summary>
- Salva un DataSet del tipo de la tabla SsgServicioUsuario en la base de datos.
- </summary>
-	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgServicioUsuario </param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
-	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Retrieve(System.Int32,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SsgServicioUsuario
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.RetrieveByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SsgServicioUsuario usando un filter.
- </summary>
-	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgServicioUsuario en un objeto DataTable
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgServicioUsuario en un objeto DataSet
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgServicioUsuario en un objeto DataReader
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Insert(DAL.TransactionManager@)">
-	<summary>
- 	Inserta en la base de datos una nueva instancia de la clase SsgServicioUsuario.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Update(DAL.TransactionManager@)">
-	<summary>
- 	Actualiza el objeto SsgServicioUsuario en la base de datos.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Delete(DAL.TransactionManager)">
-	<summary>
- Borra un objeto SsgServicioUsuario de la base de datos.
- <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	</summary>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Delete(System.Int32,DAL.TransactionManager)">
-	<summary>
- Borra un objeto SsgServicioUsuario de la base de datos
- </summary>
-</member><member name="M:Seguridad.Datos.SsgServicioUsuario.DeleteByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Borra objetos SsgServicioUsuario de la base de datos en base al par?metro WHERE
- </summary>
-	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-</member><member name="T:Seguridad.Datos.SsgServicioUsuario">
-	<summary>
- Servicios que cada m?dulo provee al usuario. Suele ser cada formulario del m?dulo que contenga una o m?s acciones espec?ficas a ser realizadas.
- </summary>
 </member><member name="P:Seguridad.Datos.SsgCuenta.SsgCuentaID">
 	<summary>
  Llave Principal de la Tabla SsgCuenta
@@ -346,19 +359,206 @@ Seguridad.Datos
 	<summary>
  Cuentas de Usuario.
  </summary>
-</member><member name="P:Seguridad.Datos.My.Resources.Resources.ResourceManager">
+</member><member name="P:Seguridad.Datos.SsgRolAccion.SsgRolAccionID">
 	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:Seguridad.Datos.My.Resources.Resources.Culture">
+ Llave Principal de la Tabla SsgRolAccion
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgRolAccion.UsuarioCreacion">
 	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:Seguridad.Datos.My.Resources.Resources">
+ Login del Usuario que cre? el registro. Varchar (30). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgRolAccion.FechaCreacion">
 	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
+ Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgRolAccion.UsuarioModificacion">
+	<summary>
+ Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgRolAccion.FechaModificacion">
+	<summary>
+ ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgRolAccion.objAccionID">
+	<summary>
+ ID de la acci?n permitida en el Rol.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgRolAccion.objRolID">
+	<summary>
+ ID del Rol al que se le asocian las acciones.
+ </summary>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla SsgRolAccion en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgRolAccion </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SsgRolAccion
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SsgRolAccion usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgRolAccion en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgRolAccion en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgRolAccion en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase SsgRolAccion.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto SsgRolAccion en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SsgRolAccion de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SsgRolAccion de la base de datos
+ </summary>
+</member><member name="M:Seguridad.Datos.SsgRolAccion.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos SsgRolAccion de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="T:Seguridad.Datos.SsgRolAccion">
+	<summary>
+ Acciones que se pueden realizar dentro de un Rol espec?fico.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAplicacion.SsgAplicacionID">
+	<summary>
+ Llave Principal de la Tabla SsgAplicacion
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAplicacion.CodInterno">
+	<summary>
+ C?digo interno para identificar la aplicaci?n. Varchar (10). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAplicacion.Nombre">
+	<summary>
+ Nombre de la aplicaci?n. Varchar (100). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAplicacion.Descripcion">
+	<summary>
+ Descripci?n general de la aplicaci?n. Varchar (255). Permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAplicacion.UsuarioCreacion">
+	<summary>
+ Login del Usuario que cre? el registro. Varchar (30). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAplicacion.FechaCreacion">
+	<summary>
+ Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAplicacion.UsuarioModificacion">
+	<summary>
+ Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgAplicacion.FechaModificacion">
+	<summary>
+ ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
+ </summary>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla SsgAplicacion en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgAplicacion </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SsgAplicacion
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SsgAplicacion usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgAplicacion en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgAplicacion en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgAplicacion en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase SsgAplicacion.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto SsgAplicacion en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SsgAplicacion de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SsgAplicacion de la base de datos
+ </summary>
+</member><member name="M:Seguridad.Datos.SsgAplicacion.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos SsgAplicacion de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="T:Seguridad.Datos.SsgAplicacion">
+	<summary>
+ Aplicaciones del Sistema. Se puede considerar como una aplicaci?n la Seguridad como tal.
+ </summary>
 </member><member name="P:Seguridad.Datos.SsgModulo.SsgModuloID">
 	<summary>
  Llave Principal de la Tabla SsgModulo
@@ -465,312 +665,6 @@ Seguridad.Datos
 	<summary>
  M?dulos de la aplicaci?n. En caso de que la aplicaci?n no conste de m?dulos espec?ficos se puede considerar la misma aplicaci?n como un m?dulo.
  </summary>
-</member><member name="P:Seguridad.Datos.SsgAplicacion.SsgAplicacionID">
-	<summary>
- Llave Principal de la Tabla SsgAplicacion
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAplicacion.CodInterno">
-	<summary>
- C?digo interno para identificar la aplicaci?n. Varchar (10). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAplicacion.Nombre">
-	<summary>
- Nombre de la aplicaci?n. Varchar (100). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAplicacion.Descripcion">
-	<summary>
- Descripci?n general de la aplicaci?n. Varchar (255). Permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAplicacion.UsuarioCreacion">
-	<summary>
- Login del Usuario que cre? el registro. Varchar (30). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAplicacion.FechaCreacion">
-	<summary>
- Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAplicacion.UsuarioModificacion">
-	<summary>
- Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAplicacion.FechaModificacion">
-	<summary>
- ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
- </summary>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
-	<summary>
- Salva un DataSet del tipo de la tabla SsgAplicacion en la base de datos.
- </summary>
-	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgAplicacion </param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
-	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.Retrieve(System.Int32,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SsgAplicacion
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.RetrieveByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SsgAplicacion usando un filter.
- </summary>
-	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgAplicacion en un objeto DataTable
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgAplicacion en un objeto DataSet
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgAplicacion en un objeto DataReader
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.Insert(DAL.TransactionManager@)">
-	<summary>
- 	Inserta en la base de datos una nueva instancia de la clase SsgAplicacion.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.Update(DAL.TransactionManager@)">
-	<summary>
- 	Actualiza el objeto SsgAplicacion en la base de datos.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.Delete(DAL.TransactionManager)">
-	<summary>
- Borra un objeto SsgAplicacion de la base de datos.
- <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	</summary>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.Delete(System.Int32,DAL.TransactionManager)">
-	<summary>
- Borra un objeto SsgAplicacion de la base de datos
- </summary>
-</member><member name="M:Seguridad.Datos.SsgAplicacion.DeleteByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Borra objetos SsgAplicacion de la base de datos en base al par?metro WHERE
- </summary>
-	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-</member><member name="T:Seguridad.Datos.SsgAplicacion">
-	<summary>
- Aplicaciones del Sistema. Se puede considerar como una aplicaci?n la Seguridad como tal.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAccion.SsgAccionID">
-	<summary>
- Llave Principal de la Tabla SsgAccion
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAccion.CodInterno">
-	<summary>
- C?digo interno para identificar la acci?n. Varchar (50). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAccion.Nombre">
-	<summary>
- Nombre de la acci?n. Varchar (100). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAccion.Descripcion">
-	<summary>
- Descripci?n general de la acci?n. Varchar (255). Permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAccion.UsuarioCreacion">
-	<summary>
- Login del Usuario que cre? el registro. Varchar (30). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAccion.FechaCreacion">
-	<summary>
- Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAccion.UsuarioModificacion">
-	<summary>
- Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAccion.FechaModificacion">
-	<summary>
- ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgAccion.objServicioUsuarioID">
-	<summary>
- ID del Servicio de Usuario (formulario) al que pertenece la acci?n.
- </summary>
-</member><member name="M:Seguridad.Datos.SsgAccion.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
-	<summary>
- Salva un DataSet del tipo de la tabla SsgAccion en la base de datos.
- </summary>
-	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgAccion </param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
-	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
-</member><member name="M:Seguridad.Datos.SsgAccion.Retrieve(System.Int32,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SsgAccion
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgAccion.RetrieveByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SsgAccion usando un filter.
- </summary>
-	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgAccion.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgAccion en un objeto DataTable
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgAccion.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgAccion en un objeto DataSet
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgAccion.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgAccion en un objeto DataReader
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgAccion.Insert(DAL.TransactionManager@)">
-	<summary>
- 	Inserta en la base de datos una nueva instancia de la clase SsgAccion.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgAccion.Update(DAL.TransactionManager@)">
-	<summary>
- 	Actualiza el objeto SsgAccion en la base de datos.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgAccion.Delete(DAL.TransactionManager)">
-	<summary>
- Borra un objeto SsgAccion de la base de datos.
- <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	</summary>
-</member><member name="M:Seguridad.Datos.SsgAccion.Delete(System.Int32,DAL.TransactionManager)">
-	<summary>
- Borra un objeto SsgAccion de la base de datos
- </summary>
-</member><member name="M:Seguridad.Datos.SsgAccion.DeleteByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Borra objetos SsgAccion de la base de datos en base al par?metro WHERE
- </summary>
-	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-</member><member name="T:Seguridad.Datos.SsgAccion">
-	<summary>
- Acciones disponibles dentro de un servicio espec?fico. Por ejemplo: Agregar, Editar, Eliminar, Consultar, Imprimir.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgCuentaRol.SsgCuentaRolID">
-	<summary>
- Llave Principal de la Tabla SsgCuentaRol
- </summary>
-</member><member name="P:Seguridad.Datos.SsgCuentaRol.UsuarioCreacion">
-	<summary>
- Login del Usuario que cre? el registro. Varchar (30). No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgCuentaRol.FechaCreacion">
-	<summary>
- Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgCuentaRol.UsuarioModificacion">
-	<summary>
- Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgCuentaRol.FechaModificacion">
-	<summary>
- ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgCuentaRol.objCuentaID">
-	<summary>
- ID de la cuenta de usuario a la que se le asocia el Rol.
- </summary>
-</member><member name="P:Seguridad.Datos.SsgCuentaRol.objRolID">
-	<summary>
- ID del Rol asociado a la cuenta de usuario.
- </summary>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
-	<summary>
- Salva un DataSet del tipo de la tabla SsgCuentaRol en la base de datos.
- </summary>
-	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgCuentaRol </param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
-	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.Retrieve(System.Int32,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SsgCuentaRol
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.RetrieveByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SsgCuentaRol usando un filter.
- </summary>
-	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgCuentaRol en un objeto DataTable
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgCuentaRol en un objeto DataSet
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SsgCuentaRol en un objeto DataReader
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.Insert(DAL.TransactionManager@)">
-	<summary>
- 	Inserta en la base de datos una nueva instancia de la clase SsgCuentaRol.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.Update(DAL.TransactionManager@)">
-	<summary>
- 	Actualiza el objeto SsgCuentaRol en la base de datos.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.Delete(DAL.TransactionManager)">
-	<summary>
- Borra un objeto SsgCuentaRol de la base de datos.
- <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	</summary>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.Delete(System.Int32,DAL.TransactionManager)">
-	<summary>
- Borra un objeto SsgCuentaRol de la base de datos
- </summary>
-</member><member name="M:Seguridad.Datos.SsgCuentaRol.DeleteByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Borra objetos SsgCuentaRol de la base de datos en base al par?metro WHERE
- </summary>
-	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-</member><member name="T:Seguridad.Datos.SsgCuentaRol">
-	<summary>
- Roles que puede tener asignado una misma cuenta de usuario.
- </summary>
 </member><member name="P:Seguridad.Datos.SsgRol.SsgRolID">
 	<summary>
  Llave Principal de la Tabla SsgRol
@@ -872,6 +766,112 @@ Seguridad.Datos
 </member><member name="T:Seguridad.Datos.SsgRol">
 	<summary>
  Roles posibles de ejecutar en una aplicaci?n. Por ejemplo: Administrador, Operador, etc.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgServicioUsuario.SsgServicioUsuarioID">
+	<summary>
+ Llave Principal de la Tabla SsgServicioUsuario
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgServicioUsuario.CodInterno">
+	<summary>
+ C?digo interno para identificar el servicio. Varchar (50). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgServicioUsuario.Nombre">
+	<summary>
+ Nombre del Servicio. Varchar (100). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgServicioUsuario.Descripcion">
+	<summary>
+ Descripci?n del Servicio. Varchar (255). Permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgServicioUsuario.UsuarioCreacion">
+	<summary>
+ Login del Usuario que cre? el registro. Varchar (30). No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgServicioUsuario.FechaCreacion">
+	<summary>
+ Fecha en que se cre? el registro. Corresponde a la fecha del servidor de base de datos. No permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgServicioUsuario.UsuarioModificacion">
+	<summary>
+ Login del ?ltimo usuario que modific? el registro. Varchar (30). Permite Null.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgServicioUsuario.FechaModificacion">
+	<summary>
+ ?ltima fecha en que se modific? el registro. Corresponde a la fecha del servidor de base de datos. Permite Null, sin embargo al llenarse el dato UsuarioModificacion debe llenarse ?ste tambi?n.
+ </summary>
+</member><member name="P:Seguridad.Datos.SsgServicioUsuario.objModuloID">
+	<summary>
+ ID del m?dulo al que pertenece el Servicio de Usuario.
+ </summary>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla SsgServicioUsuario en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SsgServicioUsuario </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SsgServicioUsuario
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SsgServicioUsuario usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgServicioUsuario en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgServicioUsuario en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SsgServicioUsuario en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase SsgServicioUsuario.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto SsgServicioUsuario en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SsgServicioUsuario de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SsgServicioUsuario de la base de datos
+ </summary>
+</member><member name="M:Seguridad.Datos.SsgServicioUsuario.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos SsgServicioUsuario de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="T:Seguridad.Datos.SsgServicioUsuario">
+	<summary>
+ Servicios que cada m?dulo provee al usuario. Suele ser cada formulario del m?dulo que contenga una o m?s acciones espec?ficas a ser realizadas.
  </summary>
 </member>
 </members>

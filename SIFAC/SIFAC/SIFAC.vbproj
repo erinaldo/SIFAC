@@ -12,7 +12,7 @@
     <AssemblyName>SIFAC</AssemblyName>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>sifac-desk-icon.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -33,6 +33,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,20 +85,30 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLS\DAL.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.CodeRush.Controls, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DXCore.Controls.Data.v6.3, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
-    <Reference Include="DevExpress.DXCore.Controls.Utils.v6.3, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d" />
-    <Reference Include="DevExpress.DXCore.Controls.XtraBars.v6.3, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DXCore.Controls.XtraEditors.v6.3, Version=11.1.4.0, Culture=neutral, PublicKeyToken=35c9f04b7764aa3d, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v11.1.Core, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v11.1.Design, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v11.1.Design, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraNavBar.v11.1, Version=11.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v14.1.Core, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v14.1.Core, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v14.1.Core, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v14.1.Core, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v14.1.Core, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v14.1.UI, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v14.1.Design, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v14.1.Core, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.1.Design, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v14.1.Extensions, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="GUI, Version=1.0.6031.28568, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLLS\GUI.dll</HintPath>
@@ -123,6 +134,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
@@ -318,6 +330,12 @@
     <Compile Include="Formularios\Catalogos\frmSivCategoriasEditar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivMarcas.Designer.vb">
+      <DependentUpon>frmSivMarcas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmSivMarcas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Catalogos\frmStbBodegas.Designer.vb">
       <DependentUpon>frmStbBodegas.vb</DependentUpon>
     </Compile>
@@ -420,18 +438,6 @@
     <Compile Include="Formularios\Facturas\frmSfaFaturaEditar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\OrdenCompra\frmSivOrdenCompra.Designer.vb">
-      <DependentUpon>frmSivOrdenCompra.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\OrdenCompra\frmSivOrdenCompra.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\OrdenCompra\frmSivOrdenCompraEdit.Designer.vb">
-      <DependentUpon>frmSivOrdenCompraEdit.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\OrdenCompra\frmSivOrdenCompraEdit.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\PIM\frmPersonaSelector.Designer.vb">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
     </Compile>
@@ -484,12 +490,6 @@
       <DependentUpon>frmMarcasEdit.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Catalogos\frmMarcasEdit.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Catalogos\frmSivMarcas.Designer.vb">
-      <DependentUpon>frmSivMarcas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Catalogos\frmSivMarcas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Catalogos\frmSivProductos.Designer.vb">
@@ -834,11 +834,23 @@
     <Compile Include="Formularios\Tiendas\frmStbTiendas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\frmRptVisor.Designer.vb">
+      <DependentUpon>frmRptVisor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\frmRptVisor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\frmVisorRS.designer.vb">
       <DependentUpon>frmVisorRS.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes SIFAC\frmVisorRS.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptDescuentos.Designer.vb">
+      <DependentUpon>rptDescuentos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptDescuentos.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptEtiquetaBarCode.Designer.vb">
       <DependentUpon>rptEtiquetaBarCode.vb</DependentUpon>
@@ -1053,6 +1065,9 @@
     <EmbeddedResource Include="Formularios\Catalogos\frmSivCategoriasEditar.resx">
       <DependentUpon>frmSivCategoriasEditar.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmSivMarcas.resx">
+      <DependentUpon>frmSivMarcas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmStbBodegas.resx">
       <DependentUpon>frmStbBodegas.vb</DependentUpon>
     </EmbeddedResource>
@@ -1109,9 +1124,6 @@
     <EmbeddedResource Include="Formularios\Facturas\frmSfaFaturaEditar.resx">
       <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\OrdenCompra\frmSivOrdenCompraEdit.resx">
-      <DependentUpon>frmSivOrdenCompraEdit.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PIM\frmPersonaSelector.resx">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1146,9 +1158,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmMarcasEdit.resx">
       <DependentUpon>frmMarcasEdit.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Catalogos\frmSivMarcas.resx">
-      <DependentUpon>frmSivMarcas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmSivProductos.resx">
       <DependentUpon>frmSivProductos.vb</DependentUpon>
@@ -1372,6 +1381,9 @@
     <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendas.resx">
       <DependentUpon>frmStbTiendas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\frmRptVisor.resx">
+      <DependentUpon>frmRptVisor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\frmVisorRS.resx">
       <DependentUpon>frmVisorRS.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1379,6 +1391,9 @@
     <EmbeddedResource Include="Reportes SIFAC\rptComisiones.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptCotizacion.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptCotizaciones.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptDescuentos.resx">
+      <DependentUpon>rptDescuentos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptEntradas.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptEstadisticoServicioTallerSUCURSAL.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptEstadisticoServicioTallerSucursales.rdlc" />
@@ -2040,7 +2055,9 @@
       <Name>Seguridad.Formularios</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Formularios\OrdenCompra\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

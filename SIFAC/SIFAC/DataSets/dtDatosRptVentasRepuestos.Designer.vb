@@ -281,8 +281,7 @@ Partial Public Class dtDatosRptVentasRepuestos
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class vwRptVentasRepuestosDataTable
-        Inherits Global.System.Data.DataTable
-        Implements Global.System.Collections.IEnumerable
+        Inherits Global.System.Data.TypedTableBase(Of vwRptVentasRepuestosRow)
         
         Private columnobjClienteID As Global.System.Data.DataColumn
         
@@ -593,12 +592,6 @@ Partial Public Class dtDatosRptVentasRepuestos
             rowvwRptVentasRepuestosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvwRptVentasRepuestosRow)
             Return rowvwRptVentasRepuestosRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
-            Return Me.Rows.GetEnumerator
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

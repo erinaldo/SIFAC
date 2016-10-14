@@ -281,8 +281,7 @@ Partial Public Class DtDatosDevolucion
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class DatosDevolucionesDataTable
-        Inherits Global.System.Data.DataTable
-        Implements Global.System.Collections.IEnumerable
+        Inherits Global.System.Data.TypedTableBase(Of DatosDevolucionesRow)
         
         Private columnNumeroDev As Global.System.Data.DataColumn
         
@@ -544,12 +543,6 @@ Partial Public Class DtDatosDevolucion
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function FindBySccDevolucionIDExpediente(ByVal SccDevolucionID As Integer, ByVal Expediente As String) As DatosDevolucionesRow
             Return CType(Me.Rows.Find(New Object() {SccDevolucionID, Expediente}),DatosDevolucionesRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
-            Return Me.Rows.GetEnumerator
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

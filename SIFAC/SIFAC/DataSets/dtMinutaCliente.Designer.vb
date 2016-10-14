@@ -281,8 +281,7 @@ Partial Public Class dtMinutaCliente
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class vwSccMinutaCobroDataTable
-        Inherits Global.System.Data.DataTable
-        Implements Global.System.Collections.IEnumerable
+        Inherits Global.System.Data.TypedTableBase(Of vwSccMinutaCobroRow)
         
         Private columnSccCuentaID As Global.System.Data.DataColumn
         
@@ -555,12 +554,6 @@ Partial Public Class dtMinutaCliente
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function FindBySccCuentaIDStbTiendaIDStbPersonaIDStbValorCatalogoID(ByVal SccCuentaID As String, ByVal StbTiendaID As Integer, ByVal StbPersonaID As String, ByVal StbValorCatalogoID As Integer) As vwSccMinutaCobroRow
             Return CType(Me.Rows.Find(New Object() {SccCuentaID, StbTiendaID, StbPersonaID, StbValorCatalogoID}),vwSccMinutaCobroRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function GetEnumerator() As Global.System.Collections.IEnumerator Implements Global.System.Collections.IEnumerable.GetEnumerator
-            Return Me.Rows.GetEnumerator
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

@@ -54,13 +54,6 @@ Represents the connection and commands used to retrieve and save data.
  Descripcion : Procedimiento encargado de cargar los estados posibles de un recibo de caja.
  </summary>
 	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccBuscarRecibo.CargarSucursales">
-	<summary>
- Autor : Pedro Pablo Tinoco
- Fecha : 24 de Abril de 2009.
- Decripcion : Procedimiento encargado de cargar las sucursales.
- </summary>
-	<remarks></remarks>
 </member><member name="M:SIFAC.frmSccBuscarRecibo.BuscarSeguimientos">
 	<summary>
  Procedimiento Encargado de Realizar la Busqueda de los Seguimientos Realizados
@@ -82,46 +75,11 @@ Represents the connection and commands used to retrieve and save data.
  Fecha : 24 de Marzo de 2009.
  </summary>
 	<remarks></remarks>
-</member><member name="M:SIFAC.frmSivProveedor.CargaDatos">
-	<summary>
- Procedimiento encargado de cargar los datos correspondientes a los proveedores.
- Autor : Gelmin Martínez.
- Fecha : 12 de Mayo de 2010
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSivProveedor.AplicarSeguridad">
-	<summary>
- Autor : Gelmin Martínez.
- Fecha : 12 de Mayo de 2010.
- Procedimiento Encargado de Aplicar Seguridad.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSivProveedor.Nuevo_Proveedor">
-	<summary>
- Procedimiento encargado de crear un nuevo Proveedor
- Autor : Gelmin Martinez.
- Fecha : 12 de Mayo de 2010.
- </summary>
-	<remarks></remarks>
-</member><member name="T:SIFAC.frmSivProveedor">
-	<summary>
- Formulario Principal de Mantenimiento de Proveedores
- Autor : Gelmin Martínez
- Fecha : 12 de Mayo de 2010.
- </summary>
-	<remarks></remarks>
 </member><member name="M:SIFAC.frmStbBuscarBitacora.BuscarSeguimientos">
 	<summary>
  Procedimiento Encargado de Realizar la Busqueda de los Seguimientos Realizados
  Autor : Pedro Pablo Tinoco Salgado.
  Fecha : 15 de Abril de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaCotizacion.AplicarSeguridad">
-	<summary>
- Autor : Enrique Escobar Maradiaga.
- Fecha : 02 de Junio de 2010.
- Procedimiento Encargado de Aplicar Seguridad.
  </summary>
 	<remarks></remarks>
 </member><member name="M:SIFAC.frmCriterioReporteEstadisticoServicios.CargarComboSucursales">
@@ -221,11 +179,6 @@ Represents the connection and commands used to retrieve and save data.
  Procedimiento encargado de aplicar la seguridad en la pantalla
  Autor : Pedro Pablo Tinoco
  Fecha : 11 de Abril de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccCuentas.CrearFactura_Step4">
-	<summary>
- Crea la factura nueva para concluir el proceso de reestructuración 
  </summary>
 	<remarks></remarks>
 </member><member name="M:SIFAC.frmSivEntradaBodega.AplicarSeguridad">
@@ -632,20 +585,6 @@ Represents a strongly typed in-memory cache of data.
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
-</member><member name="T:SIFAC.frmSivEditRepuestos">
-	<summary>
- Pantalla de Edicion de Catalogo de Repuestos.
- Autor : Milagros Ruiz Oporta.
- Fecha : 17 de Mayo de 2010.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaCotizacionEditar.CargarComboSitioDestino">
-	<summary>
- Procedimiento encargado de Cargar desplegable de sitio Destino
- Autor : Gelmin Martinez
- Fecha 20 de Mayo de 2010, 11:20 am.
- </summary>
-	<remarks></remarks>
 </member><member name="M:SIFAC.frmSivDespTransferenciaEdit.CargarComboSitioOrigen">
 	<summary>
  Procedimiento encargado de Cargar desplegable de sitio Origen
@@ -658,34 +597,6 @@ Represents the connection and commands used to retrieve and save data.
  Procedimiento encargado de Cargar desplegable de sitio Destino
  Autor : Gelmin Martinez
  Fecha 20 de Mayo de 2010, 11:20 am.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccTramiteLegal.CargaDatos">
-	<summary>
- Procedimiento encargado de cargar los datos correspondientes de los trámites legales.
- Autor : Gelmin Martínez.
- Fecha : 24 de Marzo de 2010
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccTramiteLegal.Nuevo_tramite">
-	<summary>
- Procedimiento encargado de crear un nuevo trámite
- Autor : Gelmin Martinez.
- Fecha : 24 de Marzo de 2010.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccTramiteLegal.AplicarSeguridad">
-	<summary>
- Autor : Gelmin Martínez.
- Fecha : 24 de Marzo de 2010.
- Procedimiento Encargado de Aplicar Seguridad.
- </summary>
-	<remarks></remarks>
-</member><member name="T:SIFAC.frmSccTramiteLegal">
-	<summary>
- Formulario Principal de Mantenimiento de Trámites legales.
- Autor : Gelmin Martínez
- Fecha : 25 de Marzo de 2010.
  </summary>
 	<remarks></remarks>
 </member><member name="T:SIFAC.DtEstadoCuentas.DatosReporteDataTable">
@@ -801,20 +712,6 @@ Represents the connection and commands used to retrieve and save data.
  </summary>
 	<param name="IDCuenta"></param>
 	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccEditReciboCaja.CargarNotasDebito">
-	<summary>
- Procedimiento Encargado de Cargar las notas de debito relacionadas a la cuenta.
- Autor : Pedro Tinoco.
- Fecha : 25 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccEditReciboCaja.CargarNotasCredito">
-	<summary>
- Procedimiento Encargado de Cargar las notas de credito relacionadas a la cuenta.
- Autor : Pedro Tinoco.
- Fecha : 25 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
 </member><member name="M:SIFAC.frmSccEditReciboCaja.CargarFacturas">
 	<summary>
  Procedimiento encargado de cargar las facturas correspondientes.
@@ -823,25 +720,11 @@ Represents the connection and commands used to retrieve and save data.
  Fecha : 3 de Abril de 2009.
  </summary>
 	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccEditReciboCaja.CargarMonedaPago">
-	<summary>
- Procedimiento Encargado de Cargar Monedas de Pago
- Autor : Pedro Pablo Tinoco.
- Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
 </member><member name="M:SIFAC.frmSccEditReciboCaja.CalcularTotales">
 	<summary>
  Procedimiento Encargado de Llevar a Cabo el Calculo de Total a Pagar del Recibo.
  Autor : Pedro Tinoco Salgado.
  Fecha : 26 de Marzo de 2009.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccEditReciboCaja.CargarSucursales">
-	<summary>
- Procedimiento encargado de cargar las sucursales y mostrarlas en el listado de sucursales.
- Autor : Pedro Pablo Tinoco Salgado.
- Fecha : 6 de Abril de 2009.
  </summary>
 	<remarks></remarks>
 </member><member name="T:SIFAC.frmSccEditReciboCaja">
@@ -1048,50 +931,12 @@ Represents a strongly typed in-memory cache of data.
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
-</member><member name="P:SIFAC.frmSfaFaturaEditar.BoolModificarChasis">
-	<summary>
- Propiedades del Formulario:
- IDFactura.
- Tipo de Gui : Nuevo, Edicion, Consulta.
- </summary>
-	<value></value>
-	<returns></returns>
-	<remarks></remarks>
 </member><member name="M:SIFAC.frmSfaFaturaEditar.CargarDatos">
 	<summary>
  Evento de Llamado de Metodos para Cargar Datos.
  Autor : Pedro Pablo Tinoco.
  </summary>
 	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaFaturaEditar.CargarModelos">
-	<summary>
- Carga de Modelos de Motos Existentes.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaFaturaEditar.CargarConceptoFactura">
-	<summary>
- Carga de Conceptos de Facturas.
- Autor: Pedro Pablo Tinoco Salgado.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaFaturaEditar.CargarEmpleados">
-	<summary>
- Carga de Empleados.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaFaturaEditar.MapearProp">
-	<summary>
- Procedimiento Encargado de Mapear el Largo de las Propiedades
- Autor : Pedro Pablo Tinoco Salgado.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaFaturaEditar.Validacion(DAL.TransactionManager)">
-	<summary>
- Funcion encargada de realizar la validacion de existencias de numeros de facturas y cuentas.
- </summary>
-	<param name="T"></param>
-	<returns></returns>s 
- <remarks></remarks>
 </member><member name="M:SIFAC.frmSfaFaturaEditar.GuardarFactura">
 	<summary>
  Procedimiento encargado de realizar el guardado de las facturas de credito.
@@ -1099,14 +944,6 @@ Represents the connection and commands used to retrieve and save data.
  Fecha : 23 de Marzo de 2009.
  </summary>
 	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaFaturaEditar.GuardarFactura_temp">
-	<summary>
- Procedimiento encargado de realizar el guardado de las facturas de crédito, 
- Temporalmente mientras se completa el proceso de REESTRUCTURACION DE CUENTA
- Autor : Gelmin Martínez
- Fecha : 09 de Abril de 2010, 01:54 pm
- </summary>
 	<remarks></remarks>
 </member><member name="M:SIFAC.frmSfaFaturaEditar.NumMonto_Validating(System.Object,System.ComponentModel.CancelEventArgs)">
 	<summary>
@@ -1137,15 +974,10 @@ Represents the connection and commands used to retrieve and save data.
  </summary>
 	<param name="IDDetalleFact"></param>
 	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaFaturaEditar.ProcesarFactura_ReestructurarCuenta">
-	<summary>
- Procedimiento Encargado de procesar la nueva factura, y completar el proceso de REESTRUCTURACION DE CUENTA.
- </summary>
-	<remarks></remarks>
 </member><member name="T:SIFAC.frmSfaFaturaEditar">
 	<summary>
  Formulario Principal de Carga y Guardado de Facturas.
- Autor : Pedro Pablo Tinoco
+ Autor : Enrique José Escobar Maradiaga
  Fecha : 21 de Marzo de 2009.
  </summary>
 	<remarks></remarks>
@@ -1190,13 +1022,6 @@ Represents the connection and commands used to retrieve and save data.
  Fecha Creacion : 24 de Marzo de 2009
  </summary>
 	<param name="IdEstado"></param>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccEditDevolucion.CargarSucursales">
-	<summary>
- Procedimiento encargado de cargar las sucursales y mostrarlas en el listado de sucursales.
- Autor : Pedro Pablo Tinoco Salgado.
- Fecha : 6 de Abril de 2009.
- </summary>
 	<remarks></remarks>
 </member><member name="M:SIFAC.frmSccEditDevolucion.ActualizarDevolucion">
 	<summary>
@@ -1325,18 +1150,6 @@ Represents a strongly typed in-memory cache of data.
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
-</member><member name="T:SIFAC.frmEtiquetarCB">
-	<summary>
- Formulario de etiquetado de códigos de barras a repuesto
- Autor : Gelmin Martínez
- Fecha :26 de Julio de 2010, 08:59 am.
- </summary>
-</member><member name="T:SIFAC.frmSfaOrdenesCompra">
-	<summary>
- Formulario Principal de Mantenimiento de Ordenes de compra
- Autor : Gelmín Martínez
- Fecha :09 de Julio de 2010, 10:24 am.
- </summary>
 </member><member name="M:SIFAC.frmCriteriosInventarioReporte.CargarComboBodegas">
 	<summary>
  Procedimiento encargado de Cargar desplegable de Bodegas
@@ -1376,27 +1189,6 @@ Represents the connection and commands used to retrieve and save data.
  Procedimiento encargado de Cargar desplegable de Sucursales
  Autor : Gelmin Martinez
  Fecha 05 de Agosto de 2010, 09:35 am.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccEditTramiteLegal.CargarClientes">
-	<summary>
- Procedimiento encargado de Cargar los Clientes
- Autor : Gelmin Martínez 
- Fecha : 26 de Marzo de 2010.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccEditTramiteLegal.CargarExpedientes">
-	<summary>
- Procedimiento encargado de Cargar los Expedientes
- Autor : Gelmin Martinez
- Fecha 24 de Marzo de 2010.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSccEditTramiteLegal.CargarEmpleadosAbogados">
-	<summary>
- Procedimiento encargado de Cargar Empleados con cargo Abogado
- Autor : Gelmin Martinez
- Fecha 24 de Marzo de 2010.
  </summary>
 	<remarks></remarks>
 </member><member name="T:SIFAC.DtCarteraRangos.vwRptCarteraRangosDataTable">
@@ -1795,74 +1587,6 @@ Represents the connection and commands used to retrieve and save data.
 	<summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
-</member><member name="M:SIFAC.frmReportesPromociones.CargarComboSucursales">
-	<summary>
- Procedimiento encargado de Cargar desplegable de Sucursales
- Autor : Gelmin Martinez
- Fecha 05 de Julio de 2010, 04:08 pm.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaPromociones.AplicarSeguridad">
-	<summary>
- Autor : Gelmin Martínez.
- Fecha : 17 de Junio de 2010. 02:31 pm.
- Procedimiento Encargado de Aplicar Seguridad.
- </summary>
-	<remarks></remarks>
-</member><member name="M:SIFAC.frmSfaPromociones.AgregarPromocion">
-	<summary>
- Procedimiento encargado de agregar una promoción
- Autor : Gelmin Martínez.
- Fecha : 18 de Junio de 2010, 04:35 pm.
- </summary>
-</member><member name="M:SIFAC.frmSfaPromociones.EditarPromocion">
-	<summary>
- Procedimiento encargado de editar una promoción
- Autor : Gelmin Martínez.
- Fecha : 23 de Junio de 2010, 11:51 pm.
- </summary>
-</member><member name="M:SIFAC.frmSfaPromociones.InactivarPromocion">
-	<summary>
- Procedimiento encargado de inactivar una promoción
- Autor : Gelmin Martínez.
- Fecha : 23 de Junio de 2010, 06:08 pm.
- </summary>
-</member><member name="M:SIFAC.frmSfaPromociones.ConsultarPromocion">
-	<summary>
- Procedimiento encargado de Consultar una promoción
- Autor : Gelmin Martínez.
- Fecha : 23 de Junio de 2010, 05:56 pm.
- </summary>
-</member><member name="M:SIFAC.frmSfaPromociones.ImprimirPromocionSeleccionada(System.Int32)">
-	<summary>
- Procedimiento encargado de Imprimir la promoción que esté seleccionada
- Autor : Gelmin Martínez.
- Fecha : 17 de Junio de 2010, 02:41 pm.
- </summary>
-</member><member name="M:SIFAC.frmSfaPromociones.ImprimirPromocionByFiltro">
-	<summary>
- Procedimiento encargado de Imprimir un reporte de promociones por filtro
- Autor : Gelmin Martínez.
- Fecha : 17 de Junio de 2010, 02:41 pm.
- </summary>
-</member><member name="T:SIFAC.frmSfaPromociones">
-	<summary>
- Formulario Principal de Mantenimiento de promociones
- Autor : Gelmín Martínez
- Fecha :17 de Junio de 2010, 01:47 pm.
- </summary>
-</member><member name="M:SIFAC.frmSfaPromocionesEdit.CargarComboDescripcionRepuestos">
-	<summary>
- Procedimiento encargado de Cargar desplegable de descripción de repuesto
- Autor : Gelmin Martínez
- Fecha 17 de Junio de 2010, 04:21 pm.
- </summary>
-</member><member name="M:SIFAC.frmSfaPromocionesEdit.CargarComboTipoRepuesto">
-	<summary>
- Procedimiento encargado de Cargar desplegable de Tipos repuestos
- Autor : Gelmin Martínez
- Fecha 17 de Junio de 2010, 04:28 pm.
- </summary>
 </member><member name="M:SIFAC.frmCriteriosReporteKardex.CargarComboSucursales">
 	<summary>
  Procedimiento encargado de Cargar desplegable de Sucursales
