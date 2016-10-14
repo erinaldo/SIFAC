@@ -39,6 +39,7 @@ Partial Class frmPrincipal
         Me.NavBarCuentas = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarFacturasXCuenta = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarReciboCaja = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarDevoluciones = New DevExpress.XtraNavBar.NavBarItem()
         Me.grpInventario = New DevExpress.XtraNavBar.NavBarGroup()
         Me.NavBarOrdenCompra = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarEncargos = New DevExpress.XtraNavBar.NavBarItem()
@@ -82,7 +83,6 @@ Partial Class frmPrincipal
         Me.RibbonSeparator1 = New C1.Win.C1Ribbon.RibbonSeparator()
         Me.lblServidor = New C1.Win.C1Ribbon.RibbonLabel()
         Me.stbPrincipal = New C1.Win.C1Ribbon.C1StatusBar()
-        Me.NavBarDevoluciones = New DevExpress.XtraNavBar.NavBarItem()
         CType(Me.NavBarPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
         CType(Me.stbPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -194,6 +194,12 @@ Partial Class frmPrincipal
         Me.NavBarReciboCaja.Caption = "Recibo de Caja"
         Me.NavBarReciboCaja.Name = "NavBarReciboCaja"
         Me.NavBarReciboCaja.SmallImage = CType(resources.GetObject("NavBarReciboCaja.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarDevoluciones
+        '
+        Me.NavBarDevoluciones.Caption = "Devoluciones"
+        Me.NavBarDevoluciones.Name = "NavBarDevoluciones"
+        Me.NavBarDevoluciones.SmallImage = CType(resources.GetObject("NavBarDevoluciones.SmallImage"), System.Drawing.Image)
         '
         'grpInventario
         '
@@ -484,12 +490,6 @@ Partial Class frmPrincipal
         Me.stbPrincipal.Size = New System.Drawing.Size(1060, 22)
         Me.stbPrincipal.TabIndex = 14
         Me.stbPrincipal.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Silver
-        '
-        'NavBarDevoluciones
-        '
-        Me.NavBarDevoluciones.Caption = "Devoluciones"
-        Me.NavBarDevoluciones.Name = "NavBarDevoluciones"
-        Me.NavBarDevoluciones.SmallImage = CType(resources.GetObject("NavBarDevoluciones.SmallImage"), System.Drawing.Image)
         '
         'frmPrincipal
         '

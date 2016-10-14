@@ -169,15 +169,25 @@ Public Class frmSincronizarVentas
     End Sub
 
     Private Sub RepositoryItemCheckEdit1_CheckedChanged(sender As Object, e As EventArgs) Handles RepositoryItemCheckEdit1.CheckedChanged
-        Dim FilaActual As Integer
+        Dim FilaActual, intEstadoFila As Integer
         FilaActual = Me.grdVentasTable.FocusedRowHandle
 
         Dim objConsultas As clsConsultas
         objConsultas = New clsConsultas
 
         Dim blnSeleccionar As Boolean
-        blnSeleccionar = CType(sender, DevExpress.XtraEditors.CheckEdit).Checked
-        DtVentas = objConsultas.actualizarColumnaDT(DtVentas, "SfaFacturaProformaID", CInt(DtVentas.Rows(FilaActual)("SfaFacturaProformaID")), "Seleccionar", blnSeleccionar)
+        Dim chkSeleccionado As DevExpress.XtraEditors.CheckEdit
+
+        intEstadoFila = CInt(DtVentas.Rows(FilaActual)("objEstadoID"))
+
+        If intEstadoFila = intEstadoFactProfRegistrado Then
+            blnSeleccionar = CType(sender, DevExpress.XtraEditors.CheckEdit).Checked
+            DtVentas = objConsultas.actualizarColumnaDT(DtVentas, "SfaFacturaProformaID", CInt(DtVentas.Rows(FilaActual)("SfaFacturaProformaID")), "Seleccionar", blnSeleccionar)
+        Else
+            chkSeleccionado = CType(sender, DevExpress.XtraEditors.CheckEdit)
+            chkSeleccionado.Checked = False
+        End If
+
     End Sub
 
     Private Sub SincronizarVentas()
