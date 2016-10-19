@@ -120,7 +120,6 @@ Public Class frmSccEditReciboCaja
                     Me.txtNumRecibo.Enabled = False
                     clsProyecto.CargarTemaDefinido(Me)
             End Select
-            Me.Panel2.BackColor = Color.White
             Me.grdFacturas.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.FloatingEditor
 
             Me.Cursor = Cursors.Default
