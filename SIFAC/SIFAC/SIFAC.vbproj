@@ -1542,6 +1542,9 @@
       <DependentUpon>rptTransferenciaSolicitudes.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sincronizacion\frmSincronizarAbonos.resx">
+      <DependentUpon>frmSincronizarAbonos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sincronizacion\frmSincronizarVentas.resx">
       <DependentUpon>frmSincronizarVentas.vb</DependentUpon>
     </EmbeddedResource>
