@@ -177,7 +177,7 @@ Public Class frmSivRptEntradas
 
 #Region "Eventos del Formulario"
     Private Sub frmSivRptEntradas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarBodega()
         Me.CargarTipoEntrada()
     End Sub

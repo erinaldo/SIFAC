@@ -26,7 +26,7 @@ Public Class frmStbMantParametro
             'Me.Icon = My.Resources.MdiChild
             CargarGrid()
             Seguridad()
-            clsProyecto.CargarTemaDefinido(Me)
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally

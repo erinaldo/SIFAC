@@ -179,7 +179,7 @@ Public Class frmSccEditDevolucion
                 Me.cmdAutorizar.Enabled = False
                 Me.cmdGuardar.Enabled = False
         End Select
-        clsProyecto.CargarTemaDefinido(Me)
+
 
     End Sub
 

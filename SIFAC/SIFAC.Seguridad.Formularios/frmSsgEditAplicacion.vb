@@ -36,7 +36,7 @@ Public Class frmSsgEditAplicacion
     Private Sub frmSsgEditAplicacion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             EstablecerPropiedades()
-            clsProyecto.CargarTemaDefinido(Me)
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

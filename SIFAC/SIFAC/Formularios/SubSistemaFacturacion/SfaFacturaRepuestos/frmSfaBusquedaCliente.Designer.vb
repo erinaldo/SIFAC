@@ -27,9 +27,16 @@ Partial Class frmSfaBusquedaCliente
         Me.cmdAceptar = New System.Windows.Forms.Button()
         Me.cmdNuevaPersona = New System.Windows.Forms.Button()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdPedido = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel1.SuspendLayout()
         CType(Me.grdCliente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
+        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -96,6 +103,7 @@ Partial Class frmSfaBusquedaCliente
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.PanelControl2)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
@@ -103,6 +111,63 @@ Partial Class frmSfaBusquedaCliente
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(575, 356)
         Me.PanelControl1.TabIndex = 34
+        '
+        'PanelControl2
+        '
+        Me.PanelControl2.Controls.Add(Me.cmdPedido)
+        Me.PanelControl2.Controls.Add(Me.SimpleButton1)
+        Me.PanelControl2.Controls.Add(Me.cmdGuardar)
+        Me.PanelControl2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl2.Location = New System.Drawing.Point(2, 2)
+        Me.PanelControl2.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.PanelControl2.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl2.Name = "PanelControl2"
+        Me.PanelControl2.Size = New System.Drawing.Size(571, 352)
+        Me.PanelControl2.TabIndex = 29
+        '
+        'cmdPedido
+        '
+        Me.cmdPedido.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdPedido.Appearance.Options.UseFont = True
+        Me.cmdPedido.Image = CType(resources.GetObject("cmdPedido.Image"), System.Drawing.Image)
+        Me.cmdPedido.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdPedido.Location = New System.Drawing.Point(29, 575)
+        Me.cmdPedido.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdPedido.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdPedido.Name = "cmdPedido"
+        Me.cmdPedido.Size = New System.Drawing.Size(121, 28)
+        Me.cmdPedido.TabIndex = 117
+        Me.cmdPedido.Tag = "PEDIDO"
+        Me.cmdPedido.Text = "&Generar Pedido"
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SimpleButton1.Appearance.Options.UseFont = True
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(759, 572)
+        Me.SimpleButton1.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
+        Me.SimpleButton1.TabIndex = 10
+        Me.SimpleButton1.Tag = "CANCELAR"
+        Me.SimpleButton1.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(673, 572)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 9
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Guardar"
         '
         'frmSfaBusquedaCliente
         '
@@ -124,6 +189,9 @@ Partial Class frmSfaBusquedaCliente
         Me.Panel1.ResumeLayout(False)
         CType(Me.grdCliente, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
+        CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -134,4 +202,8 @@ Partial Class frmSfaBusquedaCliente
     Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents cmdNuevaPersona As System.Windows.Forms.Button
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdPedido As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

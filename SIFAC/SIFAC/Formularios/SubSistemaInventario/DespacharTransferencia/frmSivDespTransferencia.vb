@@ -114,8 +114,6 @@ Public Class frmSivDespTransferencia
 
         Me.AplicarSeguridad()
         Me.CargaDatos()
-
-        clsProyecto.CargarTemaDefinido(Me)
     End Sub
 #End Region
 

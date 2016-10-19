@@ -73,7 +73,7 @@ Public Class frmSccReciboCaja
 #Region "Eventos"
     Private Sub frmSccReciboCaja_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Me.CargarDatos()
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.AplicarSeguridad()
     End Sub
 

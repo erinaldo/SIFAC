@@ -97,7 +97,7 @@ Public Class frmSivReporteProveedor
 #Region "Eventos del Formulario"
 
     Private Sub frmSivReporteProveedor_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Seguridad()
         CargarProveedor()
     End Sub

@@ -835,7 +835,7 @@ Public Class frmSivDespTransferenciaDesp
 
 #Region "Cargar formulario"
     Private Sub frmSivDespTransferenciaEdit_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.txtObservaciones.MaxLength = SivTransferencia.GetMaxLength("Observaciones")
         Me.IdSucursalCentral = ClsCatalogos.GetStbTiendaID("C") '-- C=Central
         Me.IdSucursalSession = ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)

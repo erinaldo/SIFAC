@@ -68,7 +68,7 @@ Public Class FrmConfig
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.ofdExaminador.Filter = "Archivos de Configuración (*.config)|*.config"
         Me.ofdExaminador.Title = "Seleccione archivo de configuración."
     End Sub

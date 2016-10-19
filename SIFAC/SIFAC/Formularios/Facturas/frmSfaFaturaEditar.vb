@@ -153,8 +153,6 @@ Public Class frmSfaFaturaEditar
                 Case 3
                     Me.Text = "Desplazamiento de Fechas de pago de Expediente-Factura"
             End Select
-            clsProyecto.CargarTemaDefinido(Me)
-            Me.Panel2.BackColor = Color.White
 
             Me.Cursor = Cursors.Default
         Catch ex As Exception

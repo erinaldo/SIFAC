@@ -47,6 +47,7 @@ Partial Class frmStbPersonasEditar
         Me.lblNumeroRUC = New System.Windows.Forms.Label()
         Me.lblSiglasEmpresa = New System.Windows.Forms.Label()
         Me.grpPersonaNatural = New System.Windows.Forms.GroupBox()
+        Me.lblCedula = New System.Windows.Forms.Label()
         Me.dtpFechaNacimiento = New C1.Win.C1Input.C1DateEdit()
         Me.cmbGenero = New C1.Win.C1List.C1Combo()
         Me.txtCedula = New System.Windows.Forms.MaskedTextBox()
@@ -67,7 +68,6 @@ Partial Class frmStbPersonasEditar
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
-        Me.lblCedula = New System.Windows.Forms.Label()
         Me.grpDatos.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -425,6 +425,16 @@ Partial Class frmStbPersonasEditar
         Me.grpPersonaNatural.TabStop = False
         Me.grpPersonaNatural.Text = "Persona"
         '
+        'lblCedula
+        '
+        Me.lblCedula.AutoSize = True
+        Me.lblCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCedula.Location = New System.Drawing.Point(12, 182)
+        Me.lblCedula.Name = "lblCedula"
+        Me.lblCedula.Size = New System.Drawing.Size(50, 13)
+        Me.lblCedula.TabIndex = 15
+        Me.lblCedula.Text = "Cédula:"
+        '
         'dtpFechaNacimiento
         '
         Me.dtpFechaNacimiento.AcceptsTab = True
@@ -634,7 +644,7 @@ Partial Class frmStbPersonasEditar
         Me.PanelControl1.Controls.Add(Me.grpDatos)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(787, 464)
@@ -646,7 +656,7 @@ Partial Class frmStbPersonasEditar
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(688, 411)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -661,23 +671,13 @@ Partial Class frmStbPersonasEditar
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(602, 411)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 31
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
-        '
-        'lblCedula
-        '
-        Me.lblCedula.AutoSize = True
-        Me.lblCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCedula.Location = New System.Drawing.Point(12, 182)
-        Me.lblCedula.Name = "lblCedula"
-        Me.lblCedula.Size = New System.Drawing.Size(50, 13)
-        Me.lblCedula.TabIndex = 15
-        Me.lblCedula.Text = "Cédula:"
         '
         'frmStbPersonasEditar
         '

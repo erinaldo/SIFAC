@@ -181,7 +181,6 @@ Public Class frmSccDescuentoEdit
     End Sub
 
     Private Sub frmSccDescuentoEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
         ConfigurarGUI()
 
         Me.boolEditado = False

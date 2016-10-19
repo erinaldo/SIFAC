@@ -163,7 +163,7 @@ Partial Class frmSccClientes
         '
         Me.grdClientes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdClientes.Location = New System.Drawing.Point(0, 39)
-        Me.grdClientes.LookAndFeel.SkinName = "Caramel"
+        Me.grdClientes.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.grdClientes.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdClientes.MainView = Me.grdClientesTabla
         Me.grdClientes.Name = "grdClientes"
@@ -257,11 +257,13 @@ Partial Class frmSccClientes
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'RepositoryItemCheckEdit2
         '
         Me.RepositoryItemCheckEdit2.AutoHeight = False
+        Me.RepositoryItemCheckEdit2.Caption = "Check"
         Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
         '
         'objUbicacion

@@ -187,7 +187,7 @@ Partial Class frmSsgEditServUsuarios
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(340, 276)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -202,7 +202,7 @@ Partial Class frmSsgEditServUsuarios
         Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
         Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdAceptar.Location = New System.Drawing.Point(254, 276)
-        Me.cmdAceptar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
@@ -214,7 +214,7 @@ Partial Class frmSsgEditServUsuarios
         '
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(445, 310)

@@ -44,7 +44,7 @@ Public Class frmSccCuentas
 
     Private Sub frmSccCuentas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             Call CargarCuentas()
             Me.grdCuentas.Splits(0).DisplayColumns("objEstadoID").Visible = False
 

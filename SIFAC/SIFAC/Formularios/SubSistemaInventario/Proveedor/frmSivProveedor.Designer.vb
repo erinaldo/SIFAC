@@ -130,6 +130,8 @@ Partial Class frmSivProveedor
         '
         Me.grdvwProveedores.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdvwProveedores.Location = New System.Drawing.Point(0, 39)
+        Me.grdvwProveedores.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdvwProveedores.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdvwProveedores.MainView = Me.grdvwProveedoresTabla
         Me.grdvwProveedores.Name = "grdvwProveedores"
         Me.grdvwProveedores.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
@@ -189,6 +191,7 @@ Partial Class frmSivProveedor
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'colSivProveedorID

@@ -44,7 +44,7 @@ Public Class frmStbEditParametro
                 Me.txtDescripParam.Text = objParam.Descripcion
             End If
             PropiedadesFormulario()
-            clsProyecto.CargarTemaDefinido(Me)
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally

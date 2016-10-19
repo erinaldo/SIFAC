@@ -246,7 +246,7 @@ Public Class frmSivSalidaBodega
 
     Private Sub frmSivSalidaBodega_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             Me.ConfigurarSucursalSession()
             Me.CargarIdentificadoreEstados()
             Me.AplicarSeguridad()

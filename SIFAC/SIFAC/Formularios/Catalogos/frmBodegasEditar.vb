@@ -319,7 +319,6 @@ Public Class frmBodegasEditar
 #Region "Eventos del formulario"
 
     Private Sub frmBodegasEditar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
         CargarCiudad()
         CargarJefe()
         EstablecerPropiedades()

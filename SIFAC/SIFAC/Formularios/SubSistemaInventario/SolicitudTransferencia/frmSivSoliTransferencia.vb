@@ -336,7 +336,7 @@ Public Class frmSivSoliTransferencia
 
 #Region "Eventos de controles"
     Private Sub frmSivSoliTransferencia_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         'SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("StbTiendaID", "dbo.StbTienda", "Codigo='C'")).DefaultView.Item(0)("StbTiendaID")
         Me.IdSucursalCentral = ClsCatalogos.GetStbTiendaID("C") '-- C=Central
         Me.IdSucursalSession = ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)

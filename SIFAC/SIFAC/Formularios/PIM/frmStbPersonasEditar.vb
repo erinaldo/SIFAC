@@ -1241,7 +1241,7 @@ Public Class frmStbPersonasEditar
 
     Private Sub frmStbPersonasEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             Me.CargarLongitudesMaximas()
             Me.CargarCombos()
             CargarCiudad()

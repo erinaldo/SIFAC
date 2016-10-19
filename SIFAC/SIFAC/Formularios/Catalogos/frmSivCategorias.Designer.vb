@@ -117,7 +117,7 @@ Partial Class frmSivCategorias
         '
         Me.grdCategorias.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdCategorias.Location = New System.Drawing.Point(0, 39)
-        Me.grdCategorias.LookAndFeel.SkinName = "Caramel"
+        Me.grdCategorias.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.grdCategorias.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdCategorias.MainView = Me.grdCategoriasTabla
         Me.grdCategorias.Name = "grdCategorias"
@@ -186,6 +186,7 @@ Partial Class frmSivCategorias
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSivCategorias

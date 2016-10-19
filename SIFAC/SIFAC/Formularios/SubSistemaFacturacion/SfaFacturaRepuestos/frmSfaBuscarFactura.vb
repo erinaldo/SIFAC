@@ -173,7 +173,7 @@ Public Class frmSfaBuscarFactura
 #Region "Eventos"
 
     Private Sub frmSfaBuscarFactura_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarClientes()
         Me.CargarTienda()
     End Sub

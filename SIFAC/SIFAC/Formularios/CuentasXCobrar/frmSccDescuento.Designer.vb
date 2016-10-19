@@ -36,8 +36,8 @@ Partial Class frmSccDescuento
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
         Me.grdDescuento = New DevExpress.XtraGrid.GridControl()
         Me.grdDescuentoTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colSccDescuentoID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPlazoPago = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSccDescuentoID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescuentoMaximo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescuentoMinimo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tbProductos.SuspendLayout()
@@ -136,7 +136,7 @@ Partial Class frmSccDescuento
         '
         Me.grdDescuento.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdDescuento.Location = New System.Drawing.Point(0, 39)
-        Me.grdDescuento.LookAndFeel.SkinName = "Visual Studio 2013 Blue"
+        Me.grdDescuento.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.grdDescuento.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdDescuento.MainView = Me.grdDescuentoTabla
         Me.grdDescuento.Name = "grdDescuento"
@@ -150,12 +150,6 @@ Partial Class frmSccDescuento
         Me.grdDescuentoTabla.GridControl = Me.grdDescuento
         Me.grdDescuentoTabla.Name = "grdDescuentoTabla"
         '
-        'colSccDescuentoID
-        '
-        Me.colSccDescuentoID.Caption = "SccDescuentoID"
-        Me.colSccDescuentoID.FieldName = "SccDescuentoID"
-        Me.colSccDescuentoID.Name = "colSccDescuentoID"
-        '
         'colPlazoPago
         '
         Me.colPlazoPago.Caption = "Plazo de Pago"
@@ -164,6 +158,12 @@ Partial Class frmSccDescuento
         Me.colPlazoPago.OptionsColumn.AllowEdit = False
         Me.colPlazoPago.Visible = True
         Me.colPlazoPago.VisibleIndex = 0
+        '
+        'colSccDescuentoID
+        '
+        Me.colSccDescuentoID.Caption = "SccDescuentoID"
+        Me.colSccDescuentoID.FieldName = "SccDescuentoID"
+        Me.colSccDescuentoID.Name = "colSccDescuentoID"
         '
         'colDescuentoMaximo
         '

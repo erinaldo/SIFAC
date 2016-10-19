@@ -447,7 +447,7 @@ Public Class frmSivEntradaBodegaAnular
 #Region "Pantalla"
 
     Private Sub frmSivEntradaBodegaEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.InicializarGui()
         CargarDetalleEntradaBodega()
 

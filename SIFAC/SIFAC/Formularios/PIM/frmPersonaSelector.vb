@@ -99,7 +99,7 @@ Public Class frmPersonaSelector
 
     Private Sub frmPersonaSelector_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             CargarDatos()
         Catch ex As Exception
             clsError.CaptarError(ex)

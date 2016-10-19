@@ -130,7 +130,6 @@ Public Class frmSivEncargos
 
     Private Sub frmSivEncargos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
             CargarEncargos("1=1")
             Me.AplicarSeguridad()
         Catch ex As Exception

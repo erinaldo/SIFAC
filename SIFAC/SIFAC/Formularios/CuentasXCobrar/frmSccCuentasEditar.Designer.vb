@@ -296,7 +296,7 @@ Partial Class frmSccCuentasEditar
         Me.pgClientes.Controls.Add(Me.GroupBox6)
         Me.pgClientes.Location = New System.Drawing.Point(4, 22)
         Me.pgClientes.Name = "pgClientes"
-        Me.pgClientes.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.pgClientes.Padding = New System.Windows.Forms.Padding(3)
         Me.pgClientes.Size = New System.Drawing.Size(596, 149)
         Me.pgClientes.TabIndex = 0
         Me.pgClientes.Text = "Cliente"
@@ -531,7 +531,7 @@ Partial Class frmSccCuentasEditar
         Me.PGFacturas.Controls.Add(Me.grdFacturas)
         Me.PGFacturas.Location = New System.Drawing.Point(4, 22)
         Me.PGFacturas.Name = "PGFacturas"
-        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(3)
         Me.PGFacturas.Size = New System.Drawing.Size(596, 139)
         Me.PGFacturas.TabIndex = 0
         Me.PGFacturas.Text = "Facturas"
@@ -586,7 +586,7 @@ Partial Class frmSccCuentasEditar
         Me.PanelControl1.Controls.Add(Me.tbFacturas)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(622, 559)
@@ -598,7 +598,7 @@ Partial Class frmSccCuentasEditar
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(531, 504)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -613,7 +613,7 @@ Partial Class frmSccCuentasEditar
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(444, 504)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)

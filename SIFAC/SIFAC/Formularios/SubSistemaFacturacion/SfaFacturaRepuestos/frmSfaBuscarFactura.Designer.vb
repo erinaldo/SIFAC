@@ -35,9 +35,12 @@ Partial Class frmSfaBuscarFactura
         Me.dtpDesde = New C1.Win.C1Input.C1DateEdit()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorBusquedaFactura = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdPedido = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.grpDatos.SuspendLayout()
         CType(Me.cmbCliente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -45,6 +48,8 @@ Partial Class frmSfaBuscarFactura
         CType(Me.dtpHasta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpDesde, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorBusquedaFactura, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpDatos
@@ -55,7 +60,7 @@ Partial Class frmSfaBuscarFactura
         Me.grpDatos.Controls.Add(Me.Label3)
         Me.grpDatos.Controls.Add(Me.Label2)
         Me.grpDatos.Controls.Add(Me.Label1)
-        Me.grpDatos.Location = New System.Drawing.Point(12, 38)
+        Me.grpDatos.Location = New System.Drawing.Point(11, 22)
         Me.grpDatos.Name = "grpDatos"
         Me.grpDatos.Size = New System.Drawing.Size(363, 112)
         Me.grpDatos.TabIndex = 0
@@ -162,7 +167,7 @@ Partial Class frmSfaBuscarFactura
         '
         'cmdCancelar
         '
-        Me.cmdCancelar.Location = New System.Drawing.Point(593, 157)
+        Me.cmdCancelar.Location = New System.Drawing.Point(593, 144)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(74, 30)
         Me.cmdCancelar.TabIndex = 1
@@ -172,7 +177,7 @@ Partial Class frmSfaBuscarFactura
         '
         'cmdAceptar
         '
-        Me.cmdAceptar.Location = New System.Drawing.Point(512, 157)
+        Me.cmdAceptar.Location = New System.Drawing.Point(512, 144)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(74, 30)
         Me.cmdAceptar.TabIndex = 2
@@ -186,7 +191,7 @@ Partial Class frmSfaBuscarFactura
         Me.grpPeriodo.Controls.Add(Me.dtpDesde)
         Me.grpPeriodo.Controls.Add(Me.Label5)
         Me.grpPeriodo.Controls.Add(Me.Label4)
-        Me.grpPeriodo.Location = New System.Drawing.Point(388, 38)
+        Me.grpPeriodo.Location = New System.Drawing.Point(387, 22)
         Me.grpPeriodo.Name = "grpPeriodo"
         Me.grpPeriodo.Size = New System.Drawing.Size(280, 111)
         Me.grpPeriodo.TabIndex = 3
@@ -271,22 +276,11 @@ Partial Class frmSfaBuscarFactura
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Fecha Desde:"
         '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(679, 32)
-        Me.Panel2.TabIndex = 30
-        Me.Panel2.Tag = "LAYOUT"
-        '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 194)
+        Me.Panel1.Location = New System.Drawing.Point(0, 183)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(679, 21)
         Me.Panel1.TabIndex = 49
@@ -295,17 +289,74 @@ Partial Class frmSfaBuscarFactura
         '
         Me.ErrorBusquedaFactura.ContainerControl = Me
         '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.cmdPedido)
+        Me.PanelControl1.Controls.Add(Me.grpPeriodo)
+        Me.PanelControl1.Controls.Add(Me.SimpleButton1)
+        Me.PanelControl1.Controls.Add(Me.cmdGuardar)
+        Me.PanelControl1.Controls.Add(Me.grpDatos)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(679, 204)
+        Me.PanelControl1.TabIndex = 50
+        '
+        'cmdPedido
+        '
+        Me.cmdPedido.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdPedido.Appearance.Options.UseFont = True
+        Me.cmdPedido.Image = CType(resources.GetObject("cmdPedido.Image"), System.Drawing.Image)
+        Me.cmdPedido.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdPedido.Location = New System.Drawing.Point(29, 575)
+        Me.cmdPedido.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdPedido.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdPedido.Name = "cmdPedido"
+        Me.cmdPedido.Size = New System.Drawing.Size(121, 28)
+        Me.cmdPedido.TabIndex = 117
+        Me.cmdPedido.Tag = "PEDIDO"
+        Me.cmdPedido.Text = "&Generar Pedido"
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SimpleButton1.Appearance.Options.UseFont = True
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(759, 572)
+        Me.SimpleButton1.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
+        Me.SimpleButton1.TabIndex = 10
+        Me.SimpleButton1.Tag = "CANCELAR"
+        Me.SimpleButton1.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(673, 572)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 9
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Guardar"
+        '
         'frmSfaBuscarFactura
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(679, 215)
+        Me.ClientSize = New System.Drawing.Size(679, 204)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.grpPeriodo)
         Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.grpDatos)
+        Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -321,6 +372,8 @@ Partial Class frmSfaBuscarFactura
         CType(Me.dtpHasta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpDesde, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorBusquedaFactura, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -338,7 +391,10 @@ Partial Class frmSfaBuscarFactura
     Friend WithEvents dtpDesde As C1.Win.C1Input.C1DateEdit
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents ErrorBusquedaFactura As System.Windows.Forms.ErrorProvider
+    Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdPedido As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

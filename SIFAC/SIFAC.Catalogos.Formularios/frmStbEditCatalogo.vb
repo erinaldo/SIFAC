@@ -62,7 +62,7 @@ Public Class frmCatalogoAdd
         Me.chkActivo.Checked = False
         Me.cmdValor.Enabled = False
         PropiedadesFormulario()
-        clsProyecto.CargarTemaDefinido(Me)
+
         '----------------------------------------------------------------
 
         '--------------------En Caso de que entremos en Modo de Edicion---------------------

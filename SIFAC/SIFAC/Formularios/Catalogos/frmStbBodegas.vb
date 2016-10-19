@@ -94,7 +94,6 @@ Public Class frmStbBodegas
 #Region "Eventos del Formulario"
 
     Private Sub frmStbBodegas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
         CargarGrid()
         Me.AplicarSeguridad()
     End Sub

@@ -1125,7 +1125,7 @@ Public Class frmSfaFacturaRepuestos
 #Region "Formulario"
     Private Sub frmSfaFacturaRepuestos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
             Me.AplicarSeguridad()
         Catch ex As Exception

@@ -115,6 +115,8 @@ Partial Class frmSrhEmpleado
         '
         Me.grdvwEmpleados.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdvwEmpleados.Location = New System.Drawing.Point(0, 39)
+        Me.grdvwEmpleados.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdvwEmpleados.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdvwEmpleados.MainView = Me.grdvwEmpleadosTabla
         Me.grdvwEmpleados.Name = "grdvwEmpleados"
         Me.grdvwEmpleados.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
@@ -202,6 +204,7 @@ Partial Class frmSrhEmpleado
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSrhEmpleado

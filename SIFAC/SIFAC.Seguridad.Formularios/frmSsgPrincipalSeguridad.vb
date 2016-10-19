@@ -53,7 +53,7 @@ Public Class frmSsgPrincipalSeguridad
 #Region "Eventos del Formulario"
     Private Sub frmSsgPrincipalSeguridad_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             LlenaArbolSeguridad(Nothing)
             '-- Instanciar el objeto seguridad 
             objSeg = New SsgSeguridad

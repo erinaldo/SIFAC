@@ -289,7 +289,6 @@ Public Class frmSccClientes
     Private Sub frmSccClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Me.Cursor = WaitCursor
-            clsProyecto.CargarTemaDefinido(Me)
             Me.Seguridad()
             Me.CargarGridClientes()
           

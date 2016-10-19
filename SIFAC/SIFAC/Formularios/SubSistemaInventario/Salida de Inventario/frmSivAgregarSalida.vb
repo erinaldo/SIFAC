@@ -838,7 +838,7 @@ Public Class frmSivAgregarSalida
         EstadoSalidaRegistradaID = ClsCatalogos.GetValorCatalogoID("ESTADOSALIDA", "01")
         EstadoSalidaAutorizadaID = ClsCatalogos.GetValorCatalogoID("ESTADOSALIDA", "02")
         EstadoSalidaAnuladaID = ClsCatalogos.GetValorCatalogoID("ESTADOSALIDA", "03")
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.ConfigurarGUI()
         boolModificado = False
 

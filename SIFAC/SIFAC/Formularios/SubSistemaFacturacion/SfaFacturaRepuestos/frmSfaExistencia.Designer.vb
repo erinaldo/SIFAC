@@ -20,12 +20,12 @@ Partial Class frmSfaExistencia
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaExistencia))
-        Me.PanelExistencia = New System.Windows.Forms.Panel
-        Me.grdExistencia = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.PanelExistencia = New System.Windows.Forms.Panel()
+        Me.grdExistencia = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.PanelExistencia.SuspendLayout()
         CType(Me.grdExistencia, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,7 +49,7 @@ Partial Class frmSfaExistencia
         Me.grdExistencia.Name = "grdExistencia"
         Me.grdExistencia.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdExistencia.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdExistencia.PreviewInfo.ZoomFactor = 75
+        Me.grdExistencia.PreviewInfo.ZoomFactor = 75.0R
         Me.grdExistencia.PrintInfo.PageSettings = CType(resources.GetObject("grdExistencia.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdExistencia.Size = New System.Drawing.Size(332, 161)
         Me.grdExistencia.TabIndex = 0

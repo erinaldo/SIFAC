@@ -20,14 +20,14 @@ Partial Class frmSfaBusquedaCotizacion
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaBusquedaCotizacion))
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.Panel3 = New System.Windows.Forms.Panel
-        Me.grdCotizaciones = New C1.Win.C1TrueDBGrid.C1TrueDBGrid
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.cmdCancelar = New System.Windows.Forms.Button
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.grdCotizaciones = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cmdAceptar = New System.Windows.Forms.Button()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.grdCotizaciones, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,7 +73,7 @@ Partial Class frmSfaBusquedaCotizacion
         Me.grdCotizaciones.Name = "grdCotizaciones"
         Me.grdCotizaciones.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdCotizaciones.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdCotizaciones.PreviewInfo.ZoomFactor = 75
+        Me.grdCotizaciones.PreviewInfo.ZoomFactor = 75.0R
         Me.grdCotizaciones.PrintInfo.PageSettings = CType(resources.GetObject("grdCotizaciones.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdCotizaciones.Size = New System.Drawing.Size(753, 165)
         Me.grdCotizaciones.TabIndex = 9

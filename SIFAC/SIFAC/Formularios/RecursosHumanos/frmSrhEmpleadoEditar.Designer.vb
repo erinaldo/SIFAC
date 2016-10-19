@@ -67,14 +67,14 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmdEliminarContacto = New System.Windows.Forms.ToolStripButton()
         Me.ErrPrv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grbDatosGenerales.SuspendLayout()
-        CType(Me.dtpFechaNacimiento.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grbRH.SuspendLayout()
-        CType(Me.dtpFechaIngreso.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaIngreso.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaIngreso.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtpFechaEgresoE.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaEgresoE.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaEgresoE.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -125,7 +125,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.dtpFechaNacimiento.Location = New System.Drawing.Point(148, 129)
         Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
         Me.dtpFechaNacimiento.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtpFechaNacimiento.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.dtpFechaNacimiento.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.dtpFechaNacimiento.Size = New System.Drawing.Size(161, 20)
         Me.dtpFechaNacimiento.TabIndex = 31
         '
@@ -392,7 +392,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.dtpFechaIngreso.Location = New System.Drawing.Point(458, 21)
         Me.dtpFechaIngreso.Name = "dtpFechaIngreso"
         Me.dtpFechaIngreso.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtpFechaIngreso.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.dtpFechaIngreso.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.dtpFechaIngreso.Size = New System.Drawing.Size(161, 20)
         Me.dtpFechaIngreso.TabIndex = 33
         '
@@ -402,7 +402,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.dtpFechaEgresoE.Location = New System.Drawing.Point(458, 46)
         Me.dtpFechaEgresoE.Name = "dtpFechaEgresoE"
         Me.dtpFechaEgresoE.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtpFechaEgresoE.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.dtpFechaEgresoE.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.dtpFechaEgresoE.Size = New System.Drawing.Size(161, 20)
         Me.dtpFechaEgresoE.TabIndex = 32
         '
@@ -513,7 +513,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(991, 294)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -528,7 +528,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(905, 294)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
@@ -546,7 +546,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.PanelControl1.Controls.Add(Me.chkActivo)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(1088, 361)
@@ -657,15 +657,15 @@ Partial Class frmSrhEmpleadoEditar
         Me.Text = "Nuevo Empleado"
         Me.grbDatosGenerales.ResumeLayout(False)
         Me.grbDatosGenerales.PerformLayout()
-        CType(Me.dtpFechaNacimiento.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grbRH.ResumeLayout(False)
         Me.grbRH.PerformLayout()
-        CType(Me.dtpFechaIngreso.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaIngreso.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaIngreso.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtpFechaEgresoE.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaEgresoE.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaEgresoE.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()

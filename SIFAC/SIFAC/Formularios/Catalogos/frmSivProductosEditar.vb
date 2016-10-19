@@ -255,7 +255,6 @@ Public Class frmSivProductosEditar
 #Region "Eventos del formulario"
 
     Private Sub frmSivProductosEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
         CargarMarca()
         CargarCategorias()
         ConfigurarGUI()

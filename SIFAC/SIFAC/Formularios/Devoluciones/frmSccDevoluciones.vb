@@ -191,10 +191,10 @@ Public Class frmSccDevoluciones
         Me.CargaDatos()
         Me.AplicarSeguridad()
         Me.IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADODEVOLUCION", "REGISTRADA")
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.grdDevolucion.Splits(0).DisplayColumns("SccDevolucionID").Visible = False
         Me.grdDevolucion.Splits(0).DisplayColumns("objEstadoID").Visible = False
-        clsProyecto.CargarTemaDefinido(Me)
+
     End Sub
 
     Private Sub tsbSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbSalir.Click

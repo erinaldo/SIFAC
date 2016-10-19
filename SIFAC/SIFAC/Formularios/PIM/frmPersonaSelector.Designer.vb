@@ -45,6 +45,7 @@ Partial Class frmPersonaSelector
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'pnlBotones
@@ -63,7 +64,7 @@ Partial Class frmPersonaSelector
         Me.SimpleButton1.Appearance.Options.UseFont = True
         Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
         Me.SimpleButton1.Location = New System.Drawing.Point(418, 13)
-        Me.SimpleButton1.LookAndFeel.SkinName = "Caramel"
+        Me.SimpleButton1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
@@ -78,7 +79,7 @@ Partial Class frmPersonaSelector
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(332, 13)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
@@ -110,7 +111,7 @@ Partial Class frmPersonaSelector
         Me.PanelControl1.Controls.Add(Me.grdPersonas)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(502, 363)
@@ -119,6 +120,8 @@ Partial Class frmPersonaSelector
         'grdPersonas
         '
         Me.grdPersonas.Location = New System.Drawing.Point(0, 0)
+        Me.grdPersonas.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdPersonas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdPersonas.MainView = Me.grdvwPersonas
         Me.grdPersonas.Name = "grdPersonas"
         Me.grdPersonas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.chkSeleccionado})
@@ -154,6 +157,7 @@ Partial Class frmPersonaSelector
         'chkSeleccionado
         '
         Me.chkSeleccionado.AutoHeight = False
+        Me.chkSeleccionado.Caption = "Check"
         Me.chkSeleccionado.Name = "chkSeleccionado"
         '
         'colCedula

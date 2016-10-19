@@ -147,7 +147,7 @@ Public Class frmBusquedaRepuestos
     End Sub
 
     Private Sub frmBusquedaRepuestos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarComboProveedores()
         Me.CargarComboMarcas()
         Me.CargarComboModelosCompatibles()

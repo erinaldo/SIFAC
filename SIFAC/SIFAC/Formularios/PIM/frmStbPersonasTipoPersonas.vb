@@ -68,7 +68,7 @@ Public Class frmStbPersonasTipoPersonas
 
 #Region "Eventos del Formulario"
     Private Sub frmStbPersonasTipoPersonas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarComboTipoPersona()
         Me.cmbTipoPersona.Focus()
     End Sub

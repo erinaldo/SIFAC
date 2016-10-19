@@ -22,6 +22,7 @@ Partial Class frmSivMarcas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivMarcas))
         Me.toolTramitesLegales = New System.Windows.Forms.ToolStrip()
         Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
@@ -31,11 +32,19 @@ Partial Class frmSivMarcas
         Me.ToolSeparador1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
-        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.grdMarcas = New DevExpress.XtraGrid.GridControl()
+        Me.grdMarcasTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.SnapDockManager1 = New DevExpress.Snap.Extensions.SnapDockManager(Me.components)
         Me.toolTramitesLegales.SuspendLayout()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdMarcas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdMarcasTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SnapDockManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'toolTramitesLegales
@@ -107,34 +116,91 @@ Partial Class frmSivMarcas
         Me.tsbSalir.Size = New System.Drawing.Size(36, 36)
         Me.tsbSalir.Text = "Salir"
         '
-        'GridControl1
+        'grdMarcas
         '
-        Me.GridControl1.Location = New System.Drawing.Point(31, 87)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(400, 200)
-        Me.GridControl1.TabIndex = 7
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        Me.grdMarcas.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdMarcas.Location = New System.Drawing.Point(0, 39)
+        Me.grdMarcas.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdMarcas.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdMarcas.MainView = Me.grdMarcasTabla
+        Me.grdMarcas.Name = "grdMarcas"
+        Me.grdMarcas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
+        Me.grdMarcas.Size = New System.Drawing.Size(639, 346)
+        Me.grdMarcas.TabIndex = 7
+        Me.grdMarcas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdMarcasTabla})
         '
-        'GridView1
+        'grdMarcasTabla
         '
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
+        Me.grdMarcasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colActiva})
+        Me.grdMarcasTabla.GridControl = Me.grdMarcas
+        Me.grdMarcasTabla.Name = "grdMarcasTabla"
         '
-        'frmSivMarca
+        'colNumero
+        '
+        Me.colNumero.Caption = "Numero"
+        Me.colNumero.FieldName = "MarcaID"
+        Me.colNumero.Name = "colNumero"
+        Me.colNumero.OptionsColumn.AllowEdit = False
+        Me.colNumero.OptionsColumn.ReadOnly = True
+        '
+        'colNombre
+        '
+        Me.colNombre.Caption = "Nombre"
+        Me.colNombre.FieldName = "Nombre"
+        Me.colNombre.Name = "colNombre"
+        Me.colNombre.Visible = True
+        Me.colNombre.VisibleIndex = 0
+        '
+        'colDescripcion
+        '
+        Me.colDescripcion.Caption = "Descripciom"
+        Me.colDescripcion.Name = "colDescripcion"
+        Me.colDescripcion.OptionsColumn.AllowEdit = False
+        Me.colDescripcion.OptionsColumn.ReadOnly = True
+        Me.colDescripcion.Visible = True
+        Me.colDescripcion.VisibleIndex = 1
+        Me.colDescripcion.Width = 293
+        '
+        'colActiva
+        '
+        Me.colActiva.Caption = "Activa"
+        Me.colActiva.ColumnEdit = Me.RepositoryItemCheckEdit1
+        Me.colActiva.FieldName = "Activa"
+        Me.colActiva.Name = "colActiva"
+        Me.colActiva.OptionsColumn.AllowEdit = False
+        Me.colActiva.OptionsColumn.ReadOnly = True
+        Me.colActiva.Visible = True
+        Me.colActiva.VisibleIndex = 2
+        Me.colActiva.Width = 124
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
+        '
+        'SnapDockManager1
+        '
+        Me.SnapDockManager1.Form = Me
+        Me.SnapDockManager1.SnapControl = Nothing
+        Me.SnapDockManager1.TopZIndexControls.AddRange(New String() {"DevExpress.XtraBars.BarDockControl", "DevExpress.XtraBars.StandaloneBarDockControl", "System.Windows.Forms.StatusBar", "System.Windows.Forms.MenuStrip", "System.Windows.Forms.StatusStrip", "DevExpress.XtraBars.Ribbon.RibbonStatusBar", "DevExpress.XtraBars.Ribbon.RibbonControl"})
+        '
+        'frmSivMarcas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(639, 385)
-        Me.Controls.Add(Me.GridControl1)
+        Me.Controls.Add(Me.grdMarcas)
         Me.Controls.Add(Me.toolTramitesLegales)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "frmSivMarca"
+        Me.Name = "frmSivMarcas"
         Me.Text = "Consulta Marcas"
         Me.toolTramitesLegales.ResumeLayout(False)
         Me.toolTramitesLegales.PerformLayout()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdMarcas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdMarcasTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SnapDockManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -147,6 +213,12 @@ Partial Class frmSivMarcas
     Friend WithEvents ToolSeparador1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tsbRefrescar As System.Windows.Forms.ToolStripButton
     Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
-    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents grdMarcas As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdMarcasTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents SnapDockManager1 As DevExpress.Snap.Extensions.SnapDockManager
+    Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colActiva As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

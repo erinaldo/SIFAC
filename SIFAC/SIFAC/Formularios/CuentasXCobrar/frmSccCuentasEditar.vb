@@ -212,7 +212,7 @@ Public Class frmSccCuentasEditar
         Me.ToolTip.Hide(Me.lblinfo)
     End Sub
     Private Sub frmSccCuentasEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.txtUsuario.Text = clsProyecto.Conexion.Usuario
         CargarCliente()
         ConfigurarGUI()

@@ -52,7 +52,6 @@ Public Class frmSrhEmpleado
     Private Sub frmSrhEmpleado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             Me.Cursor = WaitCursor
-            clsProyecto.CargarTemaDefinido(Me)
             Me.CargarGrid()
 
         Catch ex As Exception

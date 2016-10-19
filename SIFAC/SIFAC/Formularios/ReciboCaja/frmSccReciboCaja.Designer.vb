@@ -45,7 +45,7 @@ Partial Class frmSccReciboCaja
         Me.tbRecibosCajas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.ToolStripSeparator1, Me.cmdAprobar, Me.ToolStripSeparator2, Me.CMDBuscarReciboCaja, Me.cmdConsultar, Me.cmdRefrescar, Me.cmdSalir})
         Me.tbRecibosCajas.Location = New System.Drawing.Point(0, 0)
         Me.tbRecibosCajas.Name = "tbRecibosCajas"
-        Me.tbRecibosCajas.Size = New System.Drawing.Size(961, 39)
+        Me.tbRecibosCajas.Size = New System.Drawing.Size(721, 39)
         Me.tbRecibosCajas.TabIndex = 1
         Me.tbRecibosCajas.Text = "ToolStrip1"
         '
@@ -131,14 +131,13 @@ Partial Class frmSccReciboCaja
         Me.grdRecibosCaja.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.grdRecibosCaja.Images.Add(CType(resources.GetObject("grdRecibosCaja.Images"), System.Drawing.Image))
         Me.grdRecibosCaja.Location = New System.Drawing.Point(0, 39)
-        Me.grdRecibosCaja.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdRecibosCaja.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
         Me.grdRecibosCaja.Name = "grdRecibosCaja"
         Me.grdRecibosCaja.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdRecibosCaja.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdRecibosCaja.PreviewInfo.ZoomFactor = 75.0R
         Me.grdRecibosCaja.PrintInfo.PageSettings = CType(resources.GetObject("grdRecibosCaja.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdRecibosCaja.Size = New System.Drawing.Size(961, 549)
+        Me.grdRecibosCaja.Size = New System.Drawing.Size(721, 439)
         Me.grdRecibosCaja.TabIndex = 3
         Me.grdRecibosCaja.Tag = "AGRUPAR"
         Me.grdRecibosCaja.Text = "Recibos de Caja"
@@ -147,12 +146,12 @@ Partial Class frmSccReciboCaja
         '
         'frmSccReciboCaja
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(961, 588)
+        Me.ClientSize = New System.Drawing.Size(721, 478)
         Me.Controls.Add(Me.grdRecibosCaja)
         Me.Controls.Add(Me.tbRecibosCajas)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSccReciboCaja"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Tag = "AGRUPAR"

@@ -69,19 +69,19 @@ Partial Class frmMarcasEdit
         '
         'txtDescripcion
         '
-        Me.txtDescripcion.Location = New System.Drawing.Point(82, 50)
+        Me.txtDescripcion.Location = New System.Drawing.Point(95, 50)
         Me.txtDescripcion.Multiline = True
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtDescripcion.Size = New System.Drawing.Size(375, 65)
+        Me.txtDescripcion.Size = New System.Drawing.Size(362, 65)
         Me.txtDescripcion.TabIndex = 2
         Me.txtDescripcion.Tag = ""
         '
         'txtNombreMarca
         '
-        Me.txtNombreMarca.Location = New System.Drawing.Point(82, 24)
+        Me.txtNombreMarca.Location = New System.Drawing.Point(95, 24)
         Me.txtNombreMarca.Name = "txtNombreMarca"
-        Me.txtNombreMarca.Size = New System.Drawing.Size(131, 20)
+        Me.txtNombreMarca.Size = New System.Drawing.Size(177, 20)
         Me.txtNombreMarca.TabIndex = 0
         Me.txtNombreMarca.TabStop = False
         Me.txtNombreMarca.Tag = "BLOQUEADO"
@@ -90,7 +90,7 @@ Partial Class frmMarcasEdit
         '
         Me.lblDescripcion.AutoSize = True
         Me.lblDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescripcion.Location = New System.Drawing.Point(-2, 53)
+        Me.lblDescripcion.Location = New System.Drawing.Point(11, 53)
         Me.lblDescripcion.Name = "lblDescripcion"
         Me.lblDescripcion.Size = New System.Drawing.Size(78, 13)
         Me.lblDescripcion.TabIndex = 0
@@ -101,7 +101,7 @@ Partial Class frmMarcasEdit
         '
         Me.lblSfaPromocionID.AutoSize = True
         Me.lblSfaPromocionID.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSfaPromocionID.Location = New System.Drawing.Point(-2, 28)
+        Me.lblSfaPromocionID.Location = New System.Drawing.Point(8, 28)
         Me.lblSfaPromocionID.Name = "lblSfaPromocionID"
         Me.lblSfaPromocionID.Size = New System.Drawing.Size(54, 13)
         Me.lblSfaPromocionID.TabIndex = 0
@@ -123,7 +123,7 @@ Partial Class frmMarcasEdit
         Me.PanelControl1.Controls.Add(Me.gbxDatosGenerales)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(526, 219)
@@ -135,7 +135,7 @@ Partial Class frmMarcasEdit
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(425, 155)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -150,7 +150,7 @@ Partial Class frmMarcasEdit
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(339, 155)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)

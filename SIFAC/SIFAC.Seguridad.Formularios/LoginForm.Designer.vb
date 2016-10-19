@@ -121,7 +121,7 @@ Partial Class LoginForm
         Me.cmdCancel.Appearance.Options.UseFont = True
         Me.cmdCancel.Image = CType(resources.GetObject("cmdCancel.Image"), System.Drawing.Image)
         Me.cmdCancel.Location = New System.Drawing.Point(302, 132)
-        Me.cmdCancel.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancel.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancel.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancel.Name = "cmdCancel"
         Me.cmdCancel.Size = New System.Drawing.Size(75, 28)
@@ -136,7 +136,7 @@ Partial Class LoginForm
         Me.cmdOK.Image = CType(resources.GetObject("cmdOK.Image"), System.Drawing.Image)
         Me.cmdOK.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdOK.Location = New System.Drawing.Point(214, 132)
-        Me.cmdOK.LookAndFeel.SkinName = "Caramel"
+        Me.cmdOK.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdOK.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdOK.Name = "cmdOK"
         Me.cmdOK.Size = New System.Drawing.Size(80, 28)
@@ -150,7 +150,7 @@ Partial Class LoginForm
         Me.PanelControl1.Controls.Add(Me.PasswordLabel)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(405, 173)

@@ -31,7 +31,7 @@ Public Class frmSfaFactura
     End Sub
 
     Private Sub frmSfaFactura_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarDatos()
         Me.Seguridad()
         Me.grdFacturas.Splits(0).DisplayColumns("SccCuentaPorCobrarDetalleID").Visible = False

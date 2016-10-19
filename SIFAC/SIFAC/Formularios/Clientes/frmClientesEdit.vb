@@ -933,7 +933,6 @@ Public Class frmClientesEdit
 
     Private Sub frmStbPersonasEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
             Me.CargarLongitudesMaximas()
             CargarGenero()
             CargarCiudad()

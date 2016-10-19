@@ -62,8 +62,7 @@ Public Class frmSccDescuento
 
     Private Sub frmSccDescuento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
-            CargarGrid()
+             CargarGrid()
             Me.AplicarSeguridad()
         Catch ex As Exception
             clsError.CaptarError(ex)

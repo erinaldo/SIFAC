@@ -23,20 +23,16 @@ Partial Class frmSfaCambiosPagos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaCambiosPagos))
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.txtusuario = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.dtpNuevoPago = New C1.Win.C1Input.C1DateEdit
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.dtpFechaProximoPago = New C1.Win.C1Input.C1DateEdit
-        Me.lblFechaPago = New System.Windows.Forms.Label
-        Me.cmdCancelar = New System.Windows.Forms.Button
-        Me.cmdAceptar = New System.Windows.Forms.Button
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtusuario = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.dtpNuevoPago = New C1.Win.C1Input.C1DateEdit()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.dtpFechaProximoPago = New C1.Win.C1Input.C1DateEdit()
+        Me.lblFechaPago = New System.Windows.Forms.Label()
+        Me.cmdCancelar = New System.Windows.Forms.Button()
+        Me.cmdAceptar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dtpNuevoPago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaProximoPago, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,28 +46,6 @@ Partial Class frmSfaCambiosPagos
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(314, 22)
         Me.Panel1.TabIndex = 4
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.PictureBox1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(314, 32)
-        Me.Panel2.TabIndex = 5
-        Me.Panel2.Tag = "LAYOUT"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(246, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(70, 31)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
         '
         'GroupBox1
         '
@@ -107,16 +81,26 @@ Partial Class frmSfaCambiosPagos
         '
         'dtpNuevoPago
         '
+        '
+        '
+        '
+        Me.dtpNuevoPago.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpNuevoPago.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpNuevoPago.Calendar.ClearText = "&Clear"
+        Me.dtpNuevoPago.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpNuevoPago.Calendar.SelectedDate = New Date(2016, 10, 19, 0, 0, 0, 0)
+        Me.dtpNuevoPago.Calendar.TodayText = "&Today"
+        Me.dtpNuevoPago.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpNuevoPago.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpNuevoPago.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpNuevoPago.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpNuevoPago.EditFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpNuevoPago.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpNuevoPago.Location = New System.Drawing.Point(112, 50)
         Me.dtpNuevoPago.Name = "dtpNuevoPago"
@@ -136,16 +120,26 @@ Partial Class frmSfaCambiosPagos
         '
         'dtpFechaProximoPago
         '
+        '
+        '
+        '
+        Me.dtpFechaProximoPago.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.dtpFechaProximoPago.Calendar.BoldedDates = New Date(-1) {}
+        Me.dtpFechaProximoPago.Calendar.ClearText = "&Clear"
+        Me.dtpFechaProximoPago.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.dtpFechaProximoPago.Calendar.SelectedDate = New Date(2016, 10, 19, 0, 0, 0, 0)
+        Me.dtpFechaProximoPago.Calendar.TodayText = "&Today"
+        Me.dtpFechaProximoPago.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFechaProximoPago.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaProximoPago.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFechaProximoPago.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaProximoPago.EditFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-                    Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFechaProximoPago.Enabled = False
         Me.dtpFechaProximoPago.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaProximoPago.Location = New System.Drawing.Point(112, 24)
@@ -192,15 +186,13 @@ Partial Class frmSfaCambiosPagos
         Me.Controls.Add(Me.cmdCancelar)
         Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSfaCambiosPagos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cambio de Fecha de Pago próxima."
-        Me.Panel2.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.dtpNuevoPago, System.ComponentModel.ISupportInitialize).EndInit()

@@ -205,7 +205,7 @@ Partial Class frmSivProductos
         '
         Me.grdProductos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdProductos.Location = New System.Drawing.Point(0, 39)
-        Me.grdProductos.LookAndFeel.SkinName = "Caramel"
+        Me.grdProductos.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.grdProductos.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdProductos.MainView = Me.grdProductosTabla
         Me.grdProductos.Name = "grdProductos"
@@ -290,6 +290,7 @@ Partial Class frmSivProductos
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSivProductos

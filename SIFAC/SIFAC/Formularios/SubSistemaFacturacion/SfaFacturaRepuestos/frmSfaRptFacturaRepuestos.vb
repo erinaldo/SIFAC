@@ -294,7 +294,7 @@ Public Class frmSfaRptFacturaRepuestos
 #Region "Eventos"
 
     Private Sub frmSfaRptFacturaRepuestos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarTienda()
         Me.CargarRepuestos()
         Me.CargarTipoRepuesto()

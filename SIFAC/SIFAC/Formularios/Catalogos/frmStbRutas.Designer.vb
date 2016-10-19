@@ -139,7 +139,7 @@ Partial Class frmStbRutas
         '
         Me.grdRutas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdRutas.Location = New System.Drawing.Point(0, 39)
-        Me.grdRutas.LookAndFeel.SkinName = "Caramel"
+        Me.grdRutas.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.grdRutas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdRutas.MainView = Me.grdRutasTabla
         Me.grdRutas.Name = "grdRutas"
@@ -215,6 +215,7 @@ Partial Class frmStbRutas
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmStbRutas

@@ -21,7 +21,7 @@ Public Class frmStbValAsociados
 #End Region
 
     Private Sub frmValAsociados_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         CargarDatos()
 
     End Sub

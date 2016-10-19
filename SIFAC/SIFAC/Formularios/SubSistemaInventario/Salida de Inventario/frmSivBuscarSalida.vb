@@ -115,7 +115,7 @@ Public Class frmSivBuscarSalida
     End Sub
 
     Private Sub frmSivBuscarSalida_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarBodega()
         Me.CargarTipoSalida()
         Me.cmbTipoSalida.Text = "NO APLICA"

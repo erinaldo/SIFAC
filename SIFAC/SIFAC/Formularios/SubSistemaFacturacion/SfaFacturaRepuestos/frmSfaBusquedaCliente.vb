@@ -57,7 +57,7 @@ Public Class frmSfaBusquedaCliente
         Me.grdCliente.Refresh()
     End Sub
     Private Sub frmSfaBusquedaCliente_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         CargarDatos()
     End Sub
     Private Function CantidadCheck() As Integer

@@ -238,7 +238,7 @@ Public Class frmSivEntradaBodega
 
     Private Sub frmSccCuentas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             Me.AplicarSeguridad()
             Call CargarEntradas("1=1")
         Catch ex As Exception

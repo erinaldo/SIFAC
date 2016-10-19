@@ -156,7 +156,6 @@ Public Class frmStbEditValorCatalogo
         Me.chkActivo.Checked = True
         Me.chkActivo.Enabled = False
         PropiedadesFormulario()
-        clsProyecto.CargarTemaDefinido(Me)
 
         'En caso de que sea editar un Valor de Catalogo especifico   
         If Me.IdValCat > 0 Then

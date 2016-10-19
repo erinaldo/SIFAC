@@ -170,7 +170,7 @@ Public Class frmReportesTransferencias
 
 #Region "Cargar Formulario"
     Private Sub frmReporteSolicitudesTransf_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.IdSucursalCentral = ClsCatalogos.GetStbTiendaID("C") '-- C=Central
         Me.IdSucursalSession = ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
         Me.IdEstadoSolicitada = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "01") '01=Solicitada

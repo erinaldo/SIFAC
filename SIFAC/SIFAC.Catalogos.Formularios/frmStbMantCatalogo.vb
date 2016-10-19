@@ -105,7 +105,7 @@ Public Class frmStbMantCatalogo
     '--------------------------------------------------------------------------------------------------
     Private Sub frmMantCatalogos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             'Me.Icon = My.Resources.MdiChild
             stbCatalogos = New StbCatalogo
             stbValores = New StbValorCatalogo

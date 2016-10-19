@@ -94,7 +94,6 @@ Public Class frmSivCategorias
 #Region "Eventos del Formulario"
 
     Private Sub frmSivCategorias_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
         CargarGrid()
         Me.AplicarSeguridad()
     End Sub

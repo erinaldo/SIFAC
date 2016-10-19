@@ -60,7 +60,6 @@ Public Class frmSivProductos
 #Region "Eventos del formulario"
 
     Private Sub frmStbProductos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
         CargarGrid()
         Me.AplicarSeguridad()
     End Sub

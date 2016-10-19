@@ -83,7 +83,7 @@ Public Class frmSccSeleccionCuentas
 
 #Region "Eventos"
     Private Sub frmSccSeleccionCuentas_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarDatos()
     End Sub
 

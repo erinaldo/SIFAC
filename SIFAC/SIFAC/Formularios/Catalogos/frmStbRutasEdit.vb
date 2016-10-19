@@ -418,7 +418,6 @@ Public Class frmStbRutasEdit
 
     Private Sub frmStbRutasEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
             ConfigurarGUI()
             Me.boolEditado = False
 

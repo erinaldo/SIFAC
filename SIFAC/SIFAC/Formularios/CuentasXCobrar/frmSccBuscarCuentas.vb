@@ -35,7 +35,7 @@ Public Class frmSccBuscarCuentas
     End Sub
 
     Private Sub frmSccBuscarCuentas_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarEstados()
     End Sub
 

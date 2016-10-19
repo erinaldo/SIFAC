@@ -356,7 +356,7 @@ Public Class frmSfaReporteFacturas
 #Region "Eventos"
 
     Private Sub frmSfaReporteFacturas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.ConfigurarSucursalesID()
         Me.CargarTienda()
         Me.CargarClientes()

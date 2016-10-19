@@ -192,7 +192,7 @@ Public Class frmSivProveedor
 #Region "Eventos"
 
     Private Sub frmSivProveedor_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.AplicarSeguridad()
         Me.CargaDatos()
     End Sub

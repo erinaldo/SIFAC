@@ -174,7 +174,6 @@ Public Class frmMarcasEdit
     End Sub
 
     Private Sub frmMarcasEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
         ConfigurarGUI()
         Me.boolEditado = False
     End Sub

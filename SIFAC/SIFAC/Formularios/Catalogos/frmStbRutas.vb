@@ -61,7 +61,6 @@ Public Class frmStbRutas
 
     Private Sub frmStbRutas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
             CargarGrid()
             Me.AplicarSeguridad()
         Catch ex As Exception

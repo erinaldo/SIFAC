@@ -48,7 +48,7 @@ Partial Class frmSfaFactura
         Me.tbCuentas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditarFactura, Me.ToolStripSeparator3, Me.cmdNuevaFecha, Me.cmdProcesarExpedienteFact, Me.cmdAnularFactura, Me.ToolStripSeparator4, Me.cmdBuscar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdRefrescar, Me.ToolStripSeparator2, Me.cmdSalir})
         Me.tbCuentas.Location = New System.Drawing.Point(0, 0)
         Me.tbCuentas.Name = "tbCuentas"
-        Me.tbCuentas.Size = New System.Drawing.Size(1045, 39)
+        Me.tbCuentas.Size = New System.Drawing.Size(784, 39)
         Me.tbCuentas.TabIndex = 1
         Me.tbCuentas.Text = "ToolStrip1"
         '
@@ -164,13 +164,12 @@ Partial Class frmSfaFactura
         Me.grdFacturas.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.grdFacturas.Images.Add(CType(resources.GetObject("grdFacturas.Images"), System.Drawing.Image))
         Me.grdFacturas.Location = New System.Drawing.Point(0, 39)
-        Me.grdFacturas.Margin = New System.Windows.Forms.Padding(4)
         Me.grdFacturas.Name = "grdFacturas"
         Me.grdFacturas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdFacturas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdFacturas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdFacturas.PrintInfo.PageSettings = CType(resources.GetObject("grdFacturas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdFacturas.Size = New System.Drawing.Size(1045, 649)
+        Me.grdFacturas.Size = New System.Drawing.Size(784, 520)
         Me.grdFacturas.TabIndex = 4
         Me.grdFacturas.Tag = "AGRUPAR"
         Me.grdFacturas.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
@@ -178,12 +177,12 @@ Partial Class frmSfaFactura
         '
         'frmSfaFactura
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1045, 688)
+        Me.ClientSize = New System.Drawing.Size(784, 559)
         Me.Controls.Add(Me.grdFacturas)
         Me.Controls.Add(Me.tbCuentas)
-        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSfaFactura"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Expediente-Facturas"

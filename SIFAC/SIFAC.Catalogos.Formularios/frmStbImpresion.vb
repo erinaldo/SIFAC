@@ -59,7 +59,7 @@ Public Class frmStbImpresion
         Me.chkMostrar.Checked = True
         Me.Icon = My.Resources.Imprimir
         CargarDatos(3)
-        clsProyecto.CargarTemaDefinido(Me)
+
     End Sub
 
 #End Region

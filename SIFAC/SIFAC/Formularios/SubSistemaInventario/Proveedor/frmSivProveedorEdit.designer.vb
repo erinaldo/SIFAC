@@ -95,7 +95,7 @@ Partial Class frmSivProveedorEdit
         CType(Me.tdbContactos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.barContactos.SuspendLayout()
         Me.grbDatosNatural.SuspendLayout()
-        CType(Me.dtpFechaNacimiento.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCiudadNatural, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -439,7 +439,7 @@ Partial Class frmSivProveedorEdit
         Me.PanelControl1.Controls.Add(Me.gbxDatosJuridico)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(1086, 470)
@@ -550,7 +550,7 @@ Partial Class frmSivProveedorEdit
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(629, 353)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
@@ -565,7 +565,7 @@ Partial Class frmSivProveedorEdit
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(629, 316)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
@@ -608,7 +608,7 @@ Partial Class frmSivProveedorEdit
         Me.dtpFechaNacimiento.Location = New System.Drawing.Point(148, 107)
         Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
         Me.dtpFechaNacimiento.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtpFechaNacimiento.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.dtpFechaNacimiento.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.dtpFechaNacimiento.Size = New System.Drawing.Size(161, 20)
         Me.dtpFechaNacimiento.TabIndex = 31
         '
@@ -861,7 +861,7 @@ Partial Class frmSivProveedorEdit
         Me.barContactos.PerformLayout()
         Me.grbDatosNatural.ResumeLayout(False)
         Me.grbDatosNatural.PerformLayout()
-        CType(Me.dtpFechaNacimiento.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCiudadNatural, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()

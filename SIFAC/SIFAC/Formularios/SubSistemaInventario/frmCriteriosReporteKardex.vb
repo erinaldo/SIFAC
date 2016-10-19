@@ -110,7 +110,7 @@ Public Class frmCriteriosReporteKardex
 
 #Region "Cargar Formulario"
     Private Sub frmCriteriosReporteUtilidades_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.FechaKardex = ClsCatalogos.GetValorParametro("FechaKardex")
         Me.CargarComboSucursales()
 

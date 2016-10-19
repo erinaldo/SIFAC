@@ -134,7 +134,7 @@ Public Class frmSivRecepTransferencia
 
 #Region "Cargar Formulario"
     Private Sub frmSivDespTransferencia_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.AplicarSeguridad()
 
         gblEstadoRecibidaID = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "03") '-- 03=RECIBIDA

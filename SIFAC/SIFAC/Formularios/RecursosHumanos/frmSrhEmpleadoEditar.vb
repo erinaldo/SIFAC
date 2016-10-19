@@ -733,7 +733,6 @@ Public Class frmSrhEmpleadoEditar
 
     Private Sub frmSrhEmpleadoEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
             boolPersonaExistente = False
             Me.CargarLongitudesMaximas()
             CargarGenero()

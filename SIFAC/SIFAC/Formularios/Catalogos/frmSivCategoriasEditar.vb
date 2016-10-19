@@ -157,7 +157,6 @@ Public Class frmSivCategoriasEditar
 #Region "Eventos del formulario"
 
     Private Sub frmSivCategoriasEditar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
         ConfigurarGUI()
         Me.boolEditado = False
         txtNombre.Focus()

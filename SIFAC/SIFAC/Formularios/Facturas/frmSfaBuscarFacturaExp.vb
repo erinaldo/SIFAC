@@ -8,7 +8,7 @@ Public Class frmSfaBuscarFacturaExp
     Public Parametros(4) As SqlClient.SqlParameter
 
     Private Sub frmSfaBuscarFacturaExp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarEstados()
     End Sub
 

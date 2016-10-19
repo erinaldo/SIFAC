@@ -93,7 +93,7 @@ Partial Class frmSivProductosEditar
         Me.PanelControl1.Controls.Add(Me.GroupControl1)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(777, 290)
@@ -105,7 +105,7 @@ Partial Class frmSivProductosEditar
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(674, 228)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -120,7 +120,7 @@ Partial Class frmSivProductosEditar
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(588, 228)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
@@ -143,7 +143,7 @@ Partial Class frmSivProductosEditar
         Me.GroupControl2.Controls.Add(Me.Label3)
         Me.GroupControl2.Controls.Add(Me.Label2)
         Me.GroupControl2.Location = New System.Drawing.Point(443, 14)
-        Me.GroupControl2.LookAndFeel.SkinName = "Caramel"
+        Me.GroupControl2.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.GroupControl2.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.Size = New System.Drawing.Size(310, 201)
@@ -281,7 +281,7 @@ Partial Class frmSivProductosEditar
         Me.GroupControl1.Controls.Add(Me.lblMarca)
         Me.GroupControl1.Controls.Add(Me.lblModelo)
         Me.GroupControl1.Location = New System.Drawing.Point(12, 14)
-        Me.GroupControl1.LookAndFeel.SkinName = "Caramel"
+        Me.GroupControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(416, 201)

@@ -113,7 +113,7 @@ Partial Class FrmConfig
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(519, 348)
@@ -140,7 +140,7 @@ Partial Class FrmConfig
         Me.btnEliminar.Image = CType(resources.GetObject("btnEliminar.Image"), System.Drawing.Image)
         Me.btnEliminar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.btnEliminar.Location = New System.Drawing.Point(18, 312)
-        Me.btnEliminar.LookAndFeel.SkinName = "Caramel"
+        Me.btnEliminar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.btnEliminar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(80, 28)
@@ -154,7 +154,7 @@ Partial Class FrmConfig
         Me.btnCancelar.Appearance.Options.UseFont = True
         Me.btnCancelar.Image = CType(resources.GetObject("btnCancelar.Image"), System.Drawing.Image)
         Me.btnCancelar.Location = New System.Drawing.Point(432, 312)
-        Me.btnCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.btnCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.btnCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 28)
@@ -169,7 +169,7 @@ Partial Class FrmConfig
         Me.btnGuardar.Image = CType(resources.GetObject("btnGuardar.Image"), System.Drawing.Image)
         Me.btnGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.btnGuardar.Location = New System.Drawing.Point(346, 312)
-        Me.btnGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.btnGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.btnGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(80, 28)

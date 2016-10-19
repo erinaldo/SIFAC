@@ -21,6 +21,7 @@ Partial Class frmSfaFacturaRepuestos
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaFacturaRepuestos))
         Me.barFacturaRepuesto = New System.Windows.Forms.ToolStrip()
+        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
         Me.cmdProcesar = New System.Windows.Forms.ToolStripButton()
         Me.cmdAnular = New System.Windows.Forms.ToolStripButton()
         Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
@@ -48,7 +49,6 @@ Partial Class frmSfaFacturaRepuestos
         Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colAnulada = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
         Me.barFacturaRepuesto.SuspendLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contenedor.SuspendLayout()
@@ -67,6 +67,14 @@ Partial Class frmSfaFacturaRepuestos
         Me.barFacturaRepuesto.Size = New System.Drawing.Size(981, 39)
         Me.barFacturaRepuesto.TabIndex = 0
         Me.barFacturaRepuesto.Text = "ToolStrip1"
+        '
+        'cmdAgregar
+        '
+        Me.cmdAgregar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdAgregar.Image = CType(resources.GetObject("cmdAgregar.Image"), System.Drawing.Image)
+        Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdAgregar.Name = "cmdAgregar"
+        Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
         '
         'cmdProcesar
         '
@@ -236,6 +244,8 @@ Partial Class frmSfaFacturaRepuestos
         'grdFacturaMaster
         '
         Me.grdFacturaMaster.Location = New System.Drawing.Point(4, 4)
+        Me.grdFacturaMaster.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdFacturaMaster.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdFacturaMaster.MainView = Me.grdFacturaMasterTabla
         Me.grdFacturaMaster.Name = "grdFacturaMaster"
         Me.grdFacturaMaster.Size = New System.Drawing.Size(973, 211)
@@ -330,14 +340,6 @@ Partial Class frmSfaFacturaRepuestos
         Me.colAnulada.Visible = True
         Me.colAnulada.VisibleIndex = 6
         Me.colAnulada.Width = 86
-        '
-        'cmdAgregar
-        '
-        Me.cmdAgregar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdAgregar.Image = CType(resources.GetObject("cmdAgregar.Image"), System.Drawing.Image)
-        Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdAgregar.Name = "cmdAgregar"
-        Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
         '
         'frmSfaFacturaRepuestos
         '

@@ -18,7 +18,7 @@ Public Class frmSfaCambiosPagos
     End Property
     Private Sub frmSfaCambiosPagos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             objDetalleFact.Retrieve(Me.IdDetalleFact)
             Me.dtpNuevoPago.Value = objDetalleFact.FechaProximoPago.Value.AddDays(1)
             Me.dtpFechaProximoPago.Value = objDetalleFact.FechaProximoPago

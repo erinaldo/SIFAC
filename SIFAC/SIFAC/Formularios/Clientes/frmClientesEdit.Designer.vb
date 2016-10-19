@@ -563,7 +563,7 @@ Partial Class frmClientesEdit
         Me.panelcliente.Controls.Add(Me.cmdGuardar)
         Me.panelcliente.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelcliente.Location = New System.Drawing.Point(0, 0)
-        Me.panelcliente.LookAndFeel.SkinName = "Caramel"
+        Me.panelcliente.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.panelcliente.LookAndFeel.UseDefaultLookAndFeel = False
         Me.panelcliente.Name = "panelcliente"
         Me.panelcliente.Size = New System.Drawing.Size(922, 444)
@@ -575,7 +575,7 @@ Partial Class frmClientesEdit
         Me.SimpleButton1.Appearance.Options.UseFont = True
         Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
         Me.SimpleButton1.Location = New System.Drawing.Point(831, 390)
-        Me.SimpleButton1.LookAndFeel.SkinName = "Caramel"
+        Me.SimpleButton1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
@@ -590,7 +590,7 @@ Partial Class frmClientesEdit
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(745, 390)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)

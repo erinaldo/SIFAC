@@ -55,7 +55,7 @@ Public Class frmSccBuscarRecibo
 
     Private Sub frmSccBuscarRecibo_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
-            clsProyecto.CargarTemaDefinido(Me)
+
             Me.CargarEstadoRecibo()
         Catch ex As Exception
             clsError.CaptarError(ex)

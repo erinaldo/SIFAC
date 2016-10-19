@@ -45,9 +45,8 @@ Partial Class frmSfaBuscarFacturaExp
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(440, 39)
+        Me.Panel2.Size = New System.Drawing.Size(330, 32)
         Me.Panel2.TabIndex = 24
         Me.Panel2.Tag = "LAYOUT"
         '
@@ -55,10 +54,9 @@ Partial Class frmSfaBuscarFacturaExp
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(884, 7)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(663, 6)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 31)
+        Me.Label1.Size = New System.Drawing.Size(44, 24)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "UM"
         '
@@ -66,19 +64,17 @@ Partial Class frmSfaBuscarFacturaExp
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 248)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Location = New System.Drawing.Point(0, 202)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(440, 26)
+        Me.Panel1.Size = New System.Drawing.Size(330, 21)
         Me.Panel1.TabIndex = 23
         '
         'cmdCancelar
         '
         Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Location = New System.Drawing.Point(308, 207)
-        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdCancelar.Location = New System.Drawing.Point(231, 168)
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(99, 36)
+        Me.cmdCancelar.Size = New System.Drawing.Size(74, 29)
         Me.cmdCancelar.TabIndex = 29
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
@@ -86,10 +82,9 @@ Partial Class frmSfaBuscarFacturaExp
         '
         'cmdGuardar
         '
-        Me.cmdGuardar.Location = New System.Drawing.Point(201, 207)
-        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdGuardar.Location = New System.Drawing.Point(151, 168)
         Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(99, 36)
+        Me.cmdGuardar.Size = New System.Drawing.Size(74, 29)
         Me.cmdGuardar.TabIndex = 28
         Me.cmdGuardar.Tag = "ACEPTAR"
         Me.cmdGuardar.Text = "&Aceptar"
@@ -104,16 +99,15 @@ Partial Class frmSfaBuscarFacturaExp
         Me.cmbEstado.ColumnCaptionHeight = 17
         Me.cmbEstado.ColumnFooterHeight = 17
         Me.cmbEstado.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbEstado.ContentHeight = 18
+        Me.cmbEstado.ContentHeight = 15
         Me.cmbEstado.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbEstado.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbEstado.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbEstado.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbEstado.EditorHeight = 18
+        Me.cmbEstado.EditorHeight = 15
         Me.cmbEstado.Images.Add(CType(resources.GetObject("cmbEstado.Images"), System.Drawing.Image))
         Me.cmbEstado.ItemHeight = 15
-        Me.cmbEstado.Location = New System.Drawing.Point(132, 127)
-        Me.cmbEstado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbEstado.Location = New System.Drawing.Point(99, 103)
         Me.cmbEstado.MatchEntryTimeout = CType(2000, Long)
         Me.cmbEstado.MaxDropDownItems = CType(5, Short)
         Me.cmbEstado.MaxLength = 32767
@@ -122,61 +116,56 @@ Partial Class frmSfaBuscarFacturaExp
         Me.cmbEstado.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbEstado.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbEstado.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbEstado.Size = New System.Drawing.Size(280, 24)
+        Me.cmbEstado.Size = New System.Drawing.Size(210, 21)
         Me.cmbEstado.TabIndex = 33
         Me.cmbEstado.PropBag = resources.GetString("cmbEstado.PropBag")
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 136)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(11, 110)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(56, 17)
+        Me.Label4.Size = New System.Drawing.Size(43, 13)
         Me.Label4.TabIndex = 32
         Me.Label4.Text = "Estado:"
         '
         'txtNumExp
         '
-        Me.txtNumExp.Location = New System.Drawing.Point(131, 54)
-        Me.txtNumExp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNumExp.Location = New System.Drawing.Point(98, 44)
         Me.txtNumExp.Name = "txtNumExp"
-        Me.txtNumExp.Size = New System.Drawing.Size(279, 22)
+        Me.txtNumExp.Size = New System.Drawing.Size(210, 20)
         Me.txtNumExp.TabIndex = 31
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(15, 58)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(11, 47)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(104, 17)
+        Me.Label2.Size = New System.Drawing.Size(80, 13)
         Me.Label2.TabIndex = 30
         Me.Label2.Text = "No Expediente:"
         '
         'txtNumfact
         '
-        Me.txtNumfact.Location = New System.Drawing.Point(131, 90)
-        Me.txtNumfact.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNumfact.Location = New System.Drawing.Point(98, 73)
         Me.txtNumfact.Name = "txtNumfact"
-        Me.txtNumfact.Size = New System.Drawing.Size(279, 22)
+        Me.txtNumfact.Size = New System.Drawing.Size(210, 20)
         Me.txtNumfact.TabIndex = 35
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(15, 94)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(11, 76)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(86, 17)
+        Me.Label3.Size = New System.Drawing.Size(66, 13)
         Me.Label3.TabIndex = 34
         Me.Label3.Text = "No. Factura:"
         '
         'frmSfaBuscarFacturaExp
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(440, 274)
+        Me.ClientSize = New System.Drawing.Size(330, 223)
         Me.Controls.Add(Me.txtNumfact)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cmbEstado)
@@ -187,7 +176,6 @@ Partial Class frmSfaBuscarFacturaExp
         Me.Controls.Add(Me.cmdGuardar)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSfaBuscarFacturaExp"

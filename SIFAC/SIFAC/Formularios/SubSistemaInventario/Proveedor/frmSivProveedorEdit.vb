@@ -934,7 +934,7 @@ Public Class frmSivProveedorEdit
         Try
             IdTipoPersonaProveedor = SqlHelper.ExecuteQueryDT("SELECT dbo.FnGetIdTipoPersona('Proveedor') as ID").DefaultView.Item(0)("ID")
 
-            clsProyecto.CargarTemaDefinido(Me)
+
             boolPersonaExistente = False
             CargarGenero()
             CargarCiudadJurudico()

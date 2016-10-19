@@ -203,6 +203,8 @@ Partial Class frmSivEncargos
         'grdEncargosDetalle
         '
         Me.grdEncargosDetalle.Location = New System.Drawing.Point(4, 284)
+        Me.grdEncargosDetalle.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdEncargosDetalle.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdEncargosDetalle.MainView = Me.grdEncargosDetalleTable
         Me.grdEncargosDetalle.Name = "grdEncargosDetalle"
         Me.grdEncargosDetalle.Size = New System.Drawing.Size(946, 274)
@@ -274,6 +276,8 @@ Partial Class frmSivEncargos
         'grdEncargosMaster
         '
         Me.grdEncargosMaster.Location = New System.Drawing.Point(4, 4)
+        Me.grdEncargosMaster.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdEncargosMaster.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdEncargosMaster.MainView = Me.grdEncargosMasterTabla
         Me.grdEncargosMaster.Name = "grdEncargosMaster"
         Me.grdEncargosMaster.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
@@ -363,6 +367,7 @@ Partial Class frmSivEncargos
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'colTotalCosto

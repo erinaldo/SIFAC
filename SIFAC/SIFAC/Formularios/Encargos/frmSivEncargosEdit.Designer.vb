@@ -128,7 +128,7 @@ Partial Class frmSivEncargosEdit
         Me.PanelControl1.Controls.Add(Me.tabFacturas)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(859, 631)
@@ -141,7 +141,7 @@ Partial Class frmSivEncargosEdit
         Me.cmdPedido.Image = CType(resources.GetObject("cmdPedido.Image"), System.Drawing.Image)
         Me.cmdPedido.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdPedido.Location = New System.Drawing.Point(29, 575)
-        Me.cmdPedido.LookAndFeel.SkinName = "Caramel"
+        Me.cmdPedido.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdPedido.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdPedido.Name = "cmdPedido"
         Me.cmdPedido.Size = New System.Drawing.Size(121, 28)
@@ -157,7 +157,7 @@ Partial Class frmSivEncargosEdit
         Me.GroupControl1.Controls.Add(Me.GroupBox2)
         Me.GroupControl1.Controls.Add(Me.cmdAgregar)
         Me.GroupControl1.Location = New System.Drawing.Point(25, 174)
-        Me.GroupControl1.LookAndFeel.SkinName = "Caramel"
+        Me.GroupControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(809, 389)
@@ -384,6 +384,7 @@ Partial Class frmSivEncargosEdit
         Me.txtObservaciones.Name = "txtObservaciones"
         Me.txtObservaciones.Size = New System.Drawing.Size(292, 61)
         Me.txtObservaciones.TabIndex = 119
+        Me.txtObservaciones.UseOptimizedRendering = True
         '
         'Label7
         '
@@ -469,7 +470,7 @@ Partial Class frmSivEncargosEdit
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(759, 572)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -484,7 +485,7 @@ Partial Class frmSivEncargosEdit
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdGuardar.Location = New System.Drawing.Point(673, 572)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)

@@ -59,7 +59,7 @@ Public Class frmStbPersonaBuscar
 
 #Region "Eventos del formulario"
     Private Sub frmStbPersonaBuscar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         CargarTipoPersona()
         CargarGenero()
     End Sub

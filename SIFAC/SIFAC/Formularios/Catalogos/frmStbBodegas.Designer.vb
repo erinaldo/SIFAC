@@ -119,7 +119,7 @@ Partial Class frmStbBodegas
         '
         Me.grdBodegas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdBodegas.Location = New System.Drawing.Point(0, 39)
-        Me.grdBodegas.LookAndFeel.SkinName = "Caramel"
+        Me.grdBodegas.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.grdBodegas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdBodegas.MainView = Me.grdBodegasTabla
         Me.grdBodegas.Name = "grdBodegas"
@@ -208,6 +208,7 @@ Partial Class frmStbBodegas
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmStbBodegas

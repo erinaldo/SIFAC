@@ -22,6 +22,7 @@ Partial Class frmCatalogoAdd
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCatalogoAdd))
         Me.grpDatosCatalogo = New System.Windows.Forms.GroupBox()
+        Me.cmdValor = New DevExpress.XtraEditors.SimpleButton()
         Me.chkActivo = New System.Windows.Forms.CheckBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
@@ -33,7 +34,6 @@ Partial Class frmCatalogoAdd
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdValor = New DevExpress.XtraEditors.SimpleButton()
         Me.grpDatosCatalogo.SuspendLayout()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDatosvalores, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,6 +57,21 @@ Partial Class frmCatalogoAdd
         Me.grpDatosCatalogo.TabIndex = 0
         Me.grpDatosCatalogo.TabStop = False
         Me.grpDatosCatalogo.Text = "Datos Catálogo :"
+        '
+        'cmdValor
+        '
+        Me.cmdValor.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdValor.Appearance.Options.UseFont = True
+        Me.cmdValor.Image = CType(resources.GetObject("cmdValor.Image"), System.Drawing.Image)
+        Me.cmdValor.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdValor.Location = New System.Drawing.Point(255, 141)
+        Me.cmdValor.LookAndFeel.SkinName = "Caramel"
+        Me.cmdValor.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdValor.Name = "cmdValor"
+        Me.cmdValor.Size = New System.Drawing.Size(107, 28)
+        Me.cmdValor.TabIndex = 17
+        Me.cmdValor.Tag = "ACEPTAR"
+        Me.cmdValor.Text = "&AgregarValor"
         '
         'chkActivo
         '
@@ -144,7 +159,7 @@ Partial Class frmCatalogoAdd
         Me.PanelControl1.Controls.Add(Me.grdDatosvalores)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(401, 365)
@@ -156,7 +171,7 @@ Partial Class frmCatalogoAdd
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
         Me.cmdCancelar.Location = New System.Drawing.Point(314, 325)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
@@ -171,28 +186,13 @@ Partial Class frmCatalogoAdd
         Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
         Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         Me.cmdAceptar.Location = New System.Drawing.Point(228, 325)
-        Me.cmdAceptar.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
         Me.cmdAceptar.TabIndex = 16
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
-        '
-        'cmdValor
-        '
-        Me.cmdValor.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdValor.Appearance.Options.UseFont = True
-        Me.cmdValor.Image = CType(resources.GetObject("cmdValor.Image"), System.Drawing.Image)
-        Me.cmdValor.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdValor.Location = New System.Drawing.Point(255, 141)
-        Me.cmdValor.LookAndFeel.SkinName = "Caramel"
-        Me.cmdValor.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdValor.Name = "cmdValor"
-        Me.cmdValor.Size = New System.Drawing.Size(107, 28)
-        Me.cmdValor.TabIndex = 17
-        Me.cmdValor.Tag = "ACEPTAR"
-        Me.cmdValor.Text = "&AgregarValor"
         '
         'frmCatalogoAdd
         '

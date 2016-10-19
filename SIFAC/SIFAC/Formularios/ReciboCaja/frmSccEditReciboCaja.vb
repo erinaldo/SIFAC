@@ -99,7 +99,7 @@ Public Class frmSccEditReciboCaja
     Private Sub frmSccEditReciboCaja_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             Me.Cursor = Cursors.WaitCursor
-            clsProyecto.CargarTemaDefinido(Me)
+
             Me.txtNumRecibo.MaxLength = SccReciboCaja.GetMaxLength("Numero")
             Select Case Me.TypGui
                 Case 0

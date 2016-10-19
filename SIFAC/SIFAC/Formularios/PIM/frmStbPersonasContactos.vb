@@ -264,7 +264,7 @@ Public Class frmStbPersonasContactos
 
 #Region "Eventos del Formulario"
     Private Sub frmStbPersonasContactos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargarMascaras()
         Me.CargarComboTipoPersona()
         If frmLLamado() = 1 Then
