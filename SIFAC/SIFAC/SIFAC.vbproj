@@ -19,6 +19,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -33,7 +34,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1544,6 +1544,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sincronizacion\frmSincronizarAbonos.resx">
       <DependentUpon>frmSincronizarAbonos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sincronizacion\frmSincronizarDevoluciones.resx">
+      <DependentUpon>frmSincronizarDevoluciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sincronizacion\frmSincronizarVentas.resx">
       <DependentUpon>frmSincronizarVentas.vb</DependentUpon>
