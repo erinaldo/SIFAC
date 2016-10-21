@@ -108,6 +108,8 @@
     <Compile Include="SivEntradaBodegaPREIMP_CF.vb" />
     <Compile Include="SivEntradaPreliquidacion_CF.vb" />
     <Compile Include="SivMarcas.vb" />
+    <Compile Include="SivPedidos.vb" />
+    <Compile Include="SivPedidosDetalle.vb" />
     <Compile Include="SivProductos.vb" />
     <Compile Include="SivProveedor.vb" />
     <Compile Include="SivProveedorDetProvision_CF.vb" />

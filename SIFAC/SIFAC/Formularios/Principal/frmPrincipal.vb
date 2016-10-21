@@ -374,7 +374,7 @@ Public Class frmPrincipal
 #Region "Inventario"
 
     Private Sub NavBarOrdenCompra_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarOrdenCompra.LinkClicked
-
+        CargarPedidos()
     End Sub
 
     Private Sub NavBarEntrada_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarEntrada.LinkClicked
@@ -922,6 +922,27 @@ Public Class frmPrincipal
             Try
                 Me.Cursor = Cursors.WaitCursor
                 If Not clsProyecto.MostrarFormulario(frmSivEncargos.Name, Me) Then
+                    objForm.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objForm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objForm.MdiParent = Me
+                    objForm.Show()
+                End If
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+#End Region
+
+#Region "Cargar Pedidos"
+    Private Sub CargarPedidos()
+        Dim objForm As New frmPedidos
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario(frmPedidos.Name, Me) Then
                     objForm.Width = Me.Width - Me.NavBarPrincipal.Width
                     objForm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
                     objForm.MdiParent = Me

@@ -61,7 +61,7 @@ Public Class frmSivEncargos
             boolConsultar = objseg.TienePermiso("ConsultarEncargo")
             boolEditar = objseg.TienePermiso("EditarEncargo")
             boolImprimir = objseg.TienePermiso("ImprimirEncargo")
-            boolDesactivar = objseg.TienePermiso("InactivasEncargo")
+            boolDesactivar = objseg.TienePermiso("InactivarEncargo")
 
             cmdAgregar.Enabled = boolAgregar
             cmdEditar.Enabled = boolEditar And dtEncargos.Rows.Count > 0

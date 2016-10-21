@@ -4,6 +4,7 @@ Imports SIFAC.BO.clsConsultas
 Imports Seguridad.Datos
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Base
+Imports Proyecto.Catalogos.Datos.ClsCatalogos
 
 Public Class frmSivEncargosEdit
 
@@ -11,7 +12,7 @@ Public Class frmSivEncargosEdit
     Public intTypeGui As Integer
     Public intEncargoID As Integer
     Public boolEditado, boolRegistrada, boolExisteErroresGrid As Boolean
-    Public DtMarca, DtCategoria, DtNombreProducto, dtCliente, dtVendedor, dtExpediente, dtDetalleEncargo As DataTable
+    Public DtMarca, DtCategoria, DtNombreProducto, dtCliente, dtVendedor, dtExpediente, dtDetalleEncargo, dtRutas, dtEstados As DataTable
 #End Region
 
 #Region "Propiedades"
@@ -73,6 +74,22 @@ Public Class frmSivEncargosEdit
 
         Return True
     End Function
+
+    Public Function ValidarEntrada() As Boolean
+        If cmbCliente.Text.Trim.Length = 0 Or cmbCliente.SelectedValue = "0" Then
+            ErrorFactura.SetError(cmbCategoria, My.Resources.MsgObligatorio)
+            Return False
+            Exit Function
+        End If
+
+        If dtDetalleEncargo.Rows.Count = 0 Then
+            MsgBox("Debe indicar al menos un producto en el encargo", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+            Return False
+            Exit Function
+        End If
+
+        Return True
+    End Function
 #End Region
 
 #Region "Procedimientos"
@@ -126,6 +143,127 @@ Public Class frmSivEncargosEdit
     End Function
 #End Region
 
+#Region "Guardar Encargo"
+    Private Sub Guardar()
+        Dim objEncargoMaster As SivEncargos
+        Dim objEncargoDetalle As SivEncargosDetalle
+        Dim T As New DAL.TransactionManager
+        Try
+            T.BeginTran()
+            objEncargoMaster = New SivEncargos
+            objEncargoDetalle = New SivEncargosDetalle
+
+            objEncargoMaster.objRutaID = cmbRuta.SelectedValue
+            objEncargoMaster.objSccClienteID = cmbCliente.SelectedValue
+            objEncargoMaster.objSrhEmpleadoID = cmbVendedor.SelectedValue
+            objEncargoMaster.ObjEstadoID = cmbEstado.EditValue
+            objEncargoMaster.Activo = True
+
+            objEncargoMaster.UsuarioCreacion = clsProyecto.Conexion.Usuario
+            objEncargoMaster.FechaCreacion = clsProyecto.Conexion.FechaServidor
+            objEncargoMaster.Insert(T)
+
+            ''Guadar Detalle de Encargos
+            For Each row As DataRow In dtDetalleEncargo.Rows
+                objEncargoDetalle.objSivEncargoID = objEncargoMaster.SivEncargoID
+                objEncargoDetalle.objCategoriaID = row("objCategoriaID")
+                objEncargoDetalle.objProductoID = row("SivProductoID")
+                objEncargoDetalle.Nombre_Producto = row("Producto")
+                objEncargoDetalle.Cantidad = row("Cantidad")
+                objEncargoDetalle.Observaciones = row("Observaciones")
+                objEncargoDetalle.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objEncargoDetalle.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objEncargoDetalle.Insert(T)
+            Next
+            T.CommitTran()
+
+            MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+            Me.DialogResult = Windows.Forms.DialogResult.OK
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+            T.RollbackTran()
+        Finally
+            objEncargoMaster = Nothing
+            objEncargoDetalle = Nothing
+        End Try
+
+    End Sub
+
+    Private Sub Actualizar()
+        Dim objEncargoMaster As SivEncargos
+        Dim objEncargoDetalle As SivEncargosDetalle
+        Dim T As New DAL.TransactionManager
+        Try
+            T.BeginTran()
+            objEncargoMaster = New SivEncargos
+            objEncargoDetalle = New SivEncargosDetalle
+
+            objEncargoMaster.Retrieve(EncargoID)
+
+            objEncargoMaster.objRutaID = cmbRuta.SelectedValue
+            objEncargoMaster.objSccClienteID = cmbCliente.SelectedValue
+            objEncargoMaster.objSrhEmpleadoID = cmbVendedor.SelectedValue
+            objEncargoMaster.ObjEstadoID = cmbEstado.EditValue
+            objEncargoMaster.Activo = True
+
+            objEncargoMaster.UsuarioModificacion = clsProyecto.Conexion.Usuario
+            objEncargoMaster.FechaModificacion = clsProyecto.Conexion.FechaServidor
+            objEncargoMaster.Update(T)
+
+            'Eliminar Detalle'
+            SivEncargosDetalle.DeleteByFilter("objSivEncargoID=" & EncargoID, T)
+
+            ''Guadar Detalle de Encargos
+            For Each row As DataRow In dtDetalleEncargo.Rows
+                objEncargoDetalle.objSivEncargoID = objEncargoMaster.SivEncargoID
+                objEncargoDetalle.objCategoriaID = row("objCategoriaID")
+                objEncargoDetalle.objProductoID = row("SivProductoID")
+                objEncargoDetalle.Nombre_Producto = row("Producto")
+                objEncargoDetalle.Cantidad = row("Cantidad")
+                objEncargoDetalle.Observaciones = row("Observaciones")
+                objEncargoDetalle.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objEncargoDetalle.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objEncargoDetalle.Insert(T)
+            Next
+
+            T.CommitTran()
+
+            MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+            Me.DialogResult = Windows.Forms.DialogResult.OK
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+            T.RollbackTran()
+        Finally
+            objEncargoMaster = Nothing
+            objEncargoDetalle = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Controles"
+    Private Sub DeshabilitarControles()
+        Try
+            cmbCliente.Enabled = False
+            cmdCliente.Enabled = False
+            cmdAgregarCliente.Enabled = False
+            cmbVendedor.Enabled = False
+            cmbEstado.Enabled = False
+            cmdAgregar.Enabled = False
+            dtpFecha.Enabled = False
+            chkNoExistente.Enabled = False
+            cmbCategoria.Enabled = False
+            cmbMarca.Enabled = False
+            cmbNombreProducto.Enabled = False
+            txtNombreProducto.Enabled = False
+            spnCantidad.Enabled = False
+            txtObservaciones.Enabled = False
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
 #End Region
 
 #Region "Cargar Combos"
@@ -260,6 +398,50 @@ Public Class frmSivEncargosEdit
     End Sub
 #End Region
 
+#Region "Cargar Estados"
+    Public Sub CargarEstados()
+        Try
+            dtEstados = ObtenerValCat("ESTADOENCARGO")
+            With cmbEstado
+                .Properties.DataSource = dtEstados
+                .Properties.DisplayMember = "Descripcion"
+                .Properties.ValueMember = "StbValorCatalogoID"
+                .Properties.PopulateColumns()
+                .Properties.Columns("StbValorCatalogoID").Visible = False
+                .Properties.Columns("Codigo").Visible = False
+                .Properties.Columns("Activo").Visible = False
+                .Properties.AutoHeight = True
+                .Properties.ShowHeader = False
+            End With
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
+
+#Region "Cargar rutas"
+    Private Sub CargarRuta()
+        Dim objRuta As StbRutas
+        Try
+            objRuta = New StbRutas
+            'Rutas
+            dtRutas = StbRutas.RetrieveDT("1=1", "", "StbRutaID,Nombre")
+            Me.cmbRuta.DataSource = dtRutas
+            Me.cmbRuta.DisplayMember = "Nombre"
+            Me.cmbRuta.ValueMember = "StbRutaID"
+            Me.cmbRuta.Splits(0).DisplayColumns("StbRutaID").Visible = False
+            Me.cmbRuta.ExtendRightColumn = True
+            Me.cmbRuta.SelectedValue = -1
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objRuta = Nothing
+
+        End Try
+    End Sub
+
+#End Region
+
 #End Region
 
 #Region "Cargar Datos"
@@ -271,7 +453,7 @@ Public Class frmSivEncargosEdit
         Try
             Try
                 If Not String.IsNullOrEmpty(Me.cmbCliente.Text) Then
-                    dtDatosCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID, NombreCompleto, Direccion, Email, TelefonoParticular,TelefonoTrabajo, Celular,Ruta", "vwSivClienteEncargos", "ClienteID = '" & Me.cmbCliente.SelectedValue & "'"))
+                    dtDatosCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,Cedula, NombreCompleto, Direccion, Email, TelefonoParticular,TelefonoTrabajo, Celular,StbRutaID", "vwSivClienteEncargos", "ClienteID = '" & Me.cmbCliente.SelectedValue & "'"))
 
                     If IsDBNull(dtDatosCliente.DefaultView.Item(0)("TelefonoParticular")) Then
                         If Not IsDBNull(dtDatosCliente.DefaultView.Item(0)("TelefonoTrabajo")) Then
@@ -291,14 +473,14 @@ Public Class frmSivEncargosEdit
                         Me.txtDireccion.Text = dtDatosCliente.DefaultView.Item(0)("Direccion")
                     End If
 
-                    If IsDBNull(dtDatosCliente.DefaultView.Item(0)("Ruta")) Then
-                        Me.txtRuta.Text = ""
+                    If IsDBNull(dtDatosCliente.DefaultView.Item(0)("StbRutaID")) Then
+                        Me.cmbRuta.Text = ""
                     Else
-                        Me.txtRuta.Text = dtDatosCliente.DefaultView.Item(0)("Ruta")
+                        Me.cmbRuta.SelectedValue = dtDatosCliente.DefaultView.Item(0)("StbRutaID")
                     End If
 
                     If Me.cmbCliente.Text.Trim.Length <> 0 Then
-                        Me.txtCodigoCliente.Text = Me.cmbCliente.SelectedValue
+                        Me.txtCodigoCliente.Text = dtDatosCliente.DefaultView.Item(0)("Cedula")
                     End If
                 Else
                     Me.txtDireccion.Text = ""
@@ -339,6 +521,30 @@ Public Class frmSivEncargosEdit
 
 #End Region
 
+#Region "Cargar Datos Encargo"
+
+    Private Sub CargarDatosEncargo()
+        Dim objEncargoMaster As SivEncargos
+        Dim objEncargoDetalle As SivEncargosDetalle
+        Try
+            objEncargoMaster = New SivEncargos
+            objEncargoDetalle = New SivEncargosDetalle
+
+            objEncargoMaster.Retrieve(EncargoID)
+            cmbCliente.SelectedValue = objEncargoMaster.objSccClienteID
+            cmbEstado.EditValue = objEncargoMaster.ObjEstadoID
+            cmbVendedor.SelectedValue = objEncargoMaster.objSrhEmpleadoID
+
+            ''Cargar Detalle del encargo
+            CargarDetalleEncargos("objSivEncargoID=" & EncargoID)
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+#End Region
+
 #Region "Consultar Clientes"
 
     Private Sub CargarConsultaCliente()
@@ -373,36 +579,29 @@ Public Class frmSivEncargosEdit
         Try
             CargarCategorias()
             CargarMarca()
+            CargarEstados()
             Me.CargarClientes()
             Me.CargarVendedor()
-
+            CargarRuta()
             Select Case TypeGui
                 Case 0
-                    Me.Text = "Agregar Entrada"
+                    Me.Text = "Agregar Encargo"
                     Me.cmbVendedor.SelectedValue = SsgCuenta.RetrieveDT("Login = '" & clsProyecto.Conexion.Usuario & "'", "", "objEmpleadoID").DefaultView.Item(0)("objEmpleadoID")
                     Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
                     Me.CargarDetalleEncargos("1=0")
                     Me.txtObservaciones.Properties.MaxLength = SivEncargosDetalle.GetMaxLength("Observaciones")
+                    Me.cmbEstado.Text = "REGISTRADO"
+                    Me.cmbEstado.Enabled = False
 
-                    '    chkActivo.Checked = True
-                    '    chkActivo.Enabled = False
-                    'Case 1
-                    '    CargarDatosProducto()
-                    '    chkActivo.Enabled = True
-                    'Case 2
-                    '    CargarDatosProducto()
-                    '    spnCantidadMinima.Enabled = False
-                    '    spnCostoPromedio.Enabled = False
-                    '    spnMargenContado.Enabled = False
-                    '    spnMargenCredito.Enabled = False
-                    '    spnPrecioContado.Enabled = False
-                    '    spnPrecioCredito.Enabled = False
-                    '    txtNombre.Enabled = False
-                    '    txtProducto.Enabled = False
-                    '    cbxMarca.Enabled = False
-                    '    cbxCategoria.Enabled = False
-                    '    chkActivo.Enabled = False
-                    '    cmdGuardar.Enabled = False
+                Case 1
+                    Me.Text = "Editar Encargo"
+                    CargarDatosEncargo()
+                    Me.cmbEstado.Enabled = True
+                Case 2
+                    Me.Text = "Consultar Encargo"
+                    CargarDatosEncargo()
+                    DeshabilitarControles()
+                    cmdGuardar.Enabled = False
             End Select
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -415,13 +614,12 @@ Public Class frmSivEncargosEdit
     Private Sub CargarDetalleEncargos(ByVal strFiltro As String)
         dtDetalleEncargo = New DataTable
         Try
-            dtDetalleEncargo = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, Cantidad, Observaciones, CostoPromedio, objSivEncargoID,SivProductoID", "vwSivDetalleProductosEncargos", strFiltro))
-            Me.grdDetalleEncargos.DataSource = dtDetalleEncargo
+            dtDetalleEncargo = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, Cantidad, Observaciones, CostoPromedio, objSivEncargoID,SivProductoID,objCategoriaID", "vwSivDetalleProductosEncargos", strFiltro))
+            Me.grdDetallePedidos.DataSource = dtDetalleEncargo
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
-
 
     Private Sub AgregarProductos()
         Dim filas As DataRow
@@ -447,6 +645,7 @@ Public Class frmSivEncargosEdit
             filas("Cantidad") = spnCantidad.Value
             filas("Observaciones") = txtObservaciones.Text
             filas("CostoPromedio") = objSivProducto.CostoPromedio
+            filas("objCategoriaID") = cmbCategoria.EditValue
 
             dtDetalleEncargo.Rows.Add(filas)
         Catch ex As Exception
@@ -464,7 +663,7 @@ Public Class frmSivEncargosEdit
         ConfigurarGUI()
     End Sub
 
-    Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs) Handles cmbCategoria.EditValueChanged
+    Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs)
         Try
             If cmbCategoria.Text <> "" And cmbMarca.Text <> "" Then
                 CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
@@ -475,7 +674,7 @@ Public Class frmSivEncargosEdit
         End Try
     End Sub
 
-    Private Sub cmbMarca_EditValueChanged(sender As Object, e As EventArgs) Handles cmbMarca.EditValueChanged
+    Private Sub cmbMarca_EditValueChanged(sender As Object, e As EventArgs)
         Try
             If cmbCategoria.Text <> "" And cmbMarca.Text <> "" Then
                 CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
@@ -524,7 +723,7 @@ Public Class frmSivEncargosEdit
         Me.CargarConsultaCliente()
     End Sub
 
-    Private Sub chkNoExistente_CheckedChanged(sender As Object, e As EventArgs) Handles chkNoExistente.CheckedChanged
+    Private Sub chkNoExistente_CheckedChanged(sender As Object, e As EventArgs)
         Try
             If chkNoExistente.Checked Then
                 txtNombreProducto.Text = String.Empty
@@ -562,30 +761,47 @@ Public Class frmSivEncargosEdit
         End If
     End Sub
 
-    Private Sub cmbCategoria_TextChanged(sender As Object, e As EventArgs) Handles cmbCategoria.TextChanged
+    Private Sub cmbCategoria_TextChanged(sender As Object, e As EventArgs)
         ErrorFactura.SetError(cmbCategoria, "")
         boolEditado = True
     End Sub
 
-    Private Sub cmbMarca_TextChanged(sender As Object, e As EventArgs) Handles cmbMarca.TextChanged
+    Private Sub cmbMarca_TextChanged(sender As Object, e As EventArgs)
         ErrorFactura.SetError(cmbMarca, "")
         boolEditado = True
     End Sub
 
-    Private Sub cmbNombreProducto_TextChanged(sender As Object, e As EventArgs) Handles cmbNombreProducto.TextChanged
+    Private Sub cmbNombreProducto_TextChanged(sender As Object, e As EventArgs)
         ErrorFactura.SetError(cmbNombreProducto, "")
         boolEditado = True
     End Sub
 
-    Private Sub spnCantidad_TextChanged(sender As Object, e As EventArgs) Handles spnCantidad.TextChanged
+    Private Sub spnCantidad_TextChanged(sender As Object, e As EventArgs)
         ErrorFactura.SetError(spnCantidad, "")
         boolEditado = True
     End Sub
 
-    Private Sub txtNombreProducto_TextChanged(sender As Object, e As EventArgs) Handles txtNombreProducto.TextChanged
+    Private Sub txtNombreProducto_TextChanged(sender As Object, e As EventArgs)
         ErrorFactura.SetError(txtNombreProducto, "")
         boolEditado = True
     End Sub
+
+    Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
+        Try
+            If ValidarEntrada() Then
+                Select Case Me.TypeGui
+                    Case 0
+                        Me.Guardar()
+                    Case 1
+                        Me.Actualizar()
+                End Select
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+
 #End Region
 
 
@@ -595,4 +811,5 @@ Public Class frmSivEncargosEdit
 
   
    
+    
 End Class

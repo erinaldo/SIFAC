@@ -23,44 +23,44 @@ Partial Class frmSivEncargosEdit
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivEncargosEdit))
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivEncargosEdit))
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
-        Me.cmdPedido = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cmbNombreProducto = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cmbMarca = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cmbCategoria = New DevExpress.XtraEditors.LookUpEdit()
+        Me.C1DateEdit1 = New C1.Win.C1Input.C1DateEdit()
+        Me.txtNombreProducto = New DevExpress.XtraEditors.TextEdit()
+        Me.lblNombreProducto = New System.Windows.Forms.Label()
+        Me.txtObservaciones = New DevExpress.XtraEditors.MemoEdit()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.spnCantidad = New DevExpress.XtraEditors.SpinEdit()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.chkNoExistente = New System.Windows.Forms.CheckBox()
+        Me.lblMarca = New System.Windows.Forms.Label()
+        Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.grdDetalleEncargos = New DevExpress.XtraGrid.GridControl()
+        Me.grdDetallePedidos = New DevExpress.XtraGrid.GridControl()
         Me.grdDetalleEncargosTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colProductoID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCategoria = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdcmbDescripcion = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.colCantidad = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdspnCantidad = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.colCostoPromedio = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colObservaciones = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemMemoEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.cmbNombreProducto = New DevExpress.XtraEditors.LookUpEdit()
-        Me.cmbMarca = New DevExpress.XtraEditors.LookUpEdit()
-        Me.cmbCategoria = New DevExpress.XtraEditors.LookUpEdit()
-        Me.txtNombreProducto = New DevExpress.XtraEditors.TextEdit()
-        Me.lblNombreProducto = New System.Windows.Forms.Label()
-        Me.txtObservaciones = New DevExpress.XtraEditors.MemoEdit()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.spnCantidad = New DevExpress.XtraEditors.SpinEdit()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.chkNoExistente = New System.Windows.Forms.CheckBox()
-        Me.lblMarca = New System.Windows.Forms.Label()
-        Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.cmdAgregar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.tabFacturas = New System.Windows.Forms.TabControl()
         Me.TabPageGenerales = New System.Windows.Forms.TabPage()
-        Me.txtRuta = New System.Windows.Forms.TextBox()
+        Me.cmbRuta = New C1.Win.C1List.C1Combo()
         Me.cmbEstado = New DevExpress.XtraEditors.LookUpEdit()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cmdCliente = New DevExpress.XtraEditors.SimpleButton()
@@ -86,28 +86,30 @@ Partial Class frmSivEncargosEdit
         Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.grdcmbDescripcion = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorFactura = New System.Windows.Forms.ErrorProvider(Me.components)
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        CType(Me.grdDetalleEncargos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdDetalleEncargosTabla, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdcmbDescripcion, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNombreProducto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spnCantidad.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.grdDetallePedidos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdDetalleEncargosTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabFacturas.SuspendLayout()
         Me.TabPageGenerales.SuspendLayout()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbVendedor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,12 +118,12 @@ Partial Class frmSivEncargosEdit
         Me.GroupBox1.SuspendLayout()
         CType(Me.grdvwExpediente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdcmbDescripcion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
         '
-        Me.PanelControl1.Controls.Add(Me.cmdPedido)
         Me.PanelControl1.Controls.Add(Me.GroupControl1)
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
@@ -131,205 +133,45 @@ Partial Class frmSivEncargosEdit
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(859, 631)
+        Me.PanelControl1.Size = New System.Drawing.Size(859, 649)
         Me.PanelControl1.TabIndex = 0
-        '
-        'cmdPedido
-        '
-        Me.cmdPedido.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdPedido.Appearance.Options.UseFont = True
-        Me.cmdPedido.Image = CType(resources.GetObject("cmdPedido.Image"), System.Drawing.Image)
-        Me.cmdPedido.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdPedido.Location = New System.Drawing.Point(29, 575)
-        Me.cmdPedido.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.cmdPedido.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdPedido.Name = "cmdPedido"
-        Me.cmdPedido.Size = New System.Drawing.Size(121, 28)
-        Me.cmdPedido.TabIndex = 117
-        Me.cmdPedido.Tag = "PEDIDO"
-        Me.cmdPedido.Text = "&Generar Pedido"
         '
         'GroupControl1
         '
         Me.GroupControl1.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupControl1.AppearanceCaption.Options.UseFont = True
-        Me.GroupControl1.Controls.Add(Me.GroupBox3)
         Me.GroupControl1.Controls.Add(Me.GroupBox2)
+        Me.GroupControl1.Controls.Add(Me.GroupBox3)
         Me.GroupControl1.Controls.Add(Me.cmdAgregar)
-        Me.GroupControl1.Location = New System.Drawing.Point(25, 174)
+        Me.GroupControl1.Location = New System.Drawing.Point(25, 173)
         Me.GroupControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.GroupControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(809, 389)
+        Me.GroupControl1.Size = New System.Drawing.Size(809, 403)
         Me.GroupControl1.TabIndex = 116
         Me.GroupControl1.Text = "Detalle"
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.grdDetalleEncargos)
-        Me.GroupBox3.Location = New System.Drawing.Point(16, 214)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(774, 159)
-        Me.GroupBox3.TabIndex = 119
-        Me.GroupBox3.TabStop = False
-        '
-        'grdDetalleEncargos
-        '
-        Me.grdDetalleEncargos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdDetalleEncargos.Location = New System.Drawing.Point(3, 16)
-        Me.grdDetalleEncargos.LookAndFeel.SkinName = "Glass Oceans"
-        Me.grdDetalleEncargos.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
-        Me.grdDetalleEncargos.MainView = Me.grdDetalleEncargosTabla
-        Me.grdDetalleEncargos.Name = "grdDetalleEncargos"
-        Me.grdDetalleEncargos.Size = New System.Drawing.Size(768, 140)
-        Me.grdDetalleEncargos.TabIndex = 2
-        Me.grdDetalleEncargos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDetalleEncargosTabla})
-        '
-        'grdDetalleEncargosTabla
-        '
-        Me.grdDetalleEncargosTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colProductoID, Me.colCodigo, Me.colCategoria, Me.colNombre, Me.colCantidad, Me.colCostoPromedio, Me.colObservaciones})
-        Me.grdDetalleEncargosTabla.GridControl = Me.grdDetalleEncargos
-        Me.grdDetalleEncargosTabla.Name = "grdDetalleEncargosTabla"
-        Me.grdDetalleEncargosTabla.OptionsView.ShowGroupPanel = False
-        '
-        'colProductoID
-        '
-        Me.colProductoID.Caption = "ProductoID"
-        Me.colProductoID.FieldName = "SivProductoID"
-        Me.colProductoID.Name = "colProductoID"
-        Me.colProductoID.Width = 76
-        '
-        'colCodigo
-        '
-        Me.colCodigo.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.colCodigo.AppearanceHeader.Options.UseFont = True
-        Me.colCodigo.AppearanceHeader.Options.UseTextOptions = True
-        Me.colCodigo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colCodigo.Caption = "Codigo"
-        Me.colCodigo.FieldName = "Codigo"
-        Me.colCodigo.Name = "colCodigo"
-        Me.colCodigo.Visible = True
-        Me.colCodigo.VisibleIndex = 0
-        Me.colCodigo.Width = 81
-        '
-        'colCategoria
-        '
-        Me.colCategoria.Caption = "Categoria"
-        Me.colCategoria.ColumnEdit = Me.RepositoryItemComboBox1
-        Me.colCategoria.FieldName = "Categoria"
-        Me.colCategoria.Name = "colCategoria"
-        Me.colCategoria.Width = 132
-        '
-        'RepositoryItemComboBox1
-        '
-        Me.RepositoryItemComboBox1.AutoHeight = False
-        Me.RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemComboBox1.Name = "RepositoryItemComboBox1"
-        '
-        'colNombre
-        '
-        Me.colNombre.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.colNombre.AppearanceHeader.Options.UseFont = True
-        Me.colNombre.AppearanceHeader.Options.UseTextOptions = True
-        Me.colNombre.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colNombre.Caption = "Nombre"
-        Me.colNombre.ColumnEdit = Me.grdcmbDescripcion
-        Me.colNombre.FieldName = "Producto"
-        Me.colNombre.Name = "colNombre"
-        Me.colNombre.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colNombre.OptionsFilter.AllowAutoFilter = False
-        Me.colNombre.OptionsFilter.AllowFilter = False
-        Me.colNombre.Visible = True
-        Me.colNombre.VisibleIndex = 1
-        Me.colNombre.Width = 183
-        '
-        'grdcmbDescripcion
-        '
-        Me.grdcmbDescripcion.AutoHeight = False
-        Me.grdcmbDescripcion.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.grdcmbDescripcion.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("SivProductoID", "Código"), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Descripción")})
-        Me.grdcmbDescripcion.DisplayMember = "Nombre"
-        Me.grdcmbDescripcion.Name = "grdcmbDescripcion"
-        Me.grdcmbDescripcion.NullText = ""
-        Me.grdcmbDescripcion.ValueMember = "SivProductoID"
-        '
-        'colCantidad
-        '
-        Me.colCantidad.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.colCantidad.AppearanceHeader.Options.UseFont = True
-        Me.colCantidad.AppearanceHeader.Options.UseTextOptions = True
-        Me.colCantidad.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colCantidad.Caption = "Cantidad"
-        Me.colCantidad.ColumnEdit = Me.grdspnCantidad
-        Me.colCantidad.FieldName = "Cantidad"
-        Me.colCantidad.Name = "colCantidad"
-        Me.colCantidad.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
-        Me.colCantidad.OptionsFilter.AllowAutoFilter = False
-        Me.colCantidad.OptionsFilter.AllowFilter = False
-        Me.colCantidad.Visible = True
-        Me.colCantidad.VisibleIndex = 2
-        Me.colCantidad.Width = 71
-        '
-        'grdspnCantidad
-        '
-        Me.grdspnCantidad.AutoHeight = False
-        Me.grdspnCantidad.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.grdspnCantidad.EditFormat.FormatString = "#"
-        Me.grdspnCantidad.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.grdspnCantidad.Increment = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.grdspnCantidad.IsFloatValue = False
-        Me.grdspnCantidad.Name = "grdspnCantidad"
-        '
-        'colCostoPromedio
-        '
-        Me.colCostoPromedio.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.colCostoPromedio.AppearanceHeader.Options.UseFont = True
-        Me.colCostoPromedio.AppearanceHeader.Options.UseTextOptions = True
-        Me.colCostoPromedio.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colCostoPromedio.Caption = "Costo Promedio"
-        Me.colCostoPromedio.FieldName = "CostoPromedio"
-        Me.colCostoPromedio.Name = "colCostoPromedio"
-        Me.colCostoPromedio.Visible = True
-        Me.colCostoPromedio.VisibleIndex = 4
-        Me.colCostoPromedio.Width = 116
-        '
-        'colObservaciones
-        '
-        Me.colObservaciones.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.colObservaciones.AppearanceHeader.Options.UseFont = True
-        Me.colObservaciones.AppearanceHeader.Options.UseTextOptions = True
-        Me.colObservaciones.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colObservaciones.Caption = "Observaciones"
-        Me.colObservaciones.ColumnEdit = Me.RepositoryItemMemoEdit1
-        Me.colObservaciones.FieldName = "Observaciones"
-        Me.colObservaciones.Name = "colObservaciones"
-        Me.colObservaciones.Visible = True
-        Me.colObservaciones.VisibleIndex = 3
-        Me.colObservaciones.Width = 299
-        '
-        'RepositoryItemMemoEdit1
-        '
-        Me.RepositoryItemMemoEdit1.Name = "RepositoryItemMemoEdit1"
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.cmbNombreProducto)
         Me.GroupBox2.Controls.Add(Me.cmbMarca)
         Me.GroupBox2.Controls.Add(Me.cmbCategoria)
+        Me.GroupBox2.Controls.Add(Me.C1DateEdit1)
         Me.GroupBox2.Controls.Add(Me.txtNombreProducto)
         Me.GroupBox2.Controls.Add(Me.lblNombreProducto)
         Me.GroupBox2.Controls.Add(Me.txtObservaciones)
         Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.spnCantidad)
         Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.spnCantidad)
+        Me.GroupBox2.Controls.Add(Me.Label11)
         Me.GroupBox2.Controls.Add(Me.chkNoExistente)
         Me.GroupBox2.Controls.Add(Me.lblMarca)
         Me.GroupBox2.Controls.Add(Me.lblModeloCompatible)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(16, 26)
+        Me.GroupBox2.Location = New System.Drawing.Point(19, 29)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(771, 152)
-        Me.GroupBox2.TabIndex = 118
+        Me.GroupBox2.Size = New System.Drawing.Size(771, 149)
+        Me.GroupBox2.TabIndex = 119
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Buscar Producto"
         '
@@ -359,6 +201,34 @@ Partial Class frmSivEncargosEdit
         Me.cmbCategoria.Properties.NullText = ""
         Me.cmbCategoria.Size = New System.Drawing.Size(166, 20)
         Me.cmbCategoria.TabIndex = 123
+        '
+        'C1DateEdit1
+        '
+        '
+        '
+        '
+        Me.C1DateEdit1.Calendar.AnnuallyBoldedDates = New Date(-1) {}
+        Me.C1DateEdit1.Calendar.BoldedDates = New Date(-1) {}
+        Me.C1DateEdit1.Calendar.ClearText = "&Clear"
+        Me.C1DateEdit1.Calendar.MonthlyBoldedDates = New Date(-1) {}
+        Me.C1DateEdit1.Calendar.SelectedDate = New Date(2016, 8, 18, 0, 0, 0, 0)
+        Me.C1DateEdit1.Calendar.TodayText = "&Today"
+        Me.C1DateEdit1.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
+        Me.C1DateEdit1.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
+        Me.C1DateEdit1.DisplayFormat.Inherit = CType(((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart), C1.Win.C1Input.FormatInfoInheritFlags)
+        Me.C1DateEdit1.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
+        Me.C1DateEdit1.EditFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+        Me.C1DateEdit1.Enabled = False
+        Me.C1DateEdit1.Location = New System.Drawing.Point(559, -29)
+        Me.C1DateEdit1.Name = "C1DateEdit1"
+        Me.C1DateEdit1.Size = New System.Drawing.Size(121, 20)
+        Me.C1DateEdit1.TabIndex = 14
+        Me.C1DateEdit1.Tag = Nothing
+        Me.C1DateEdit1.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
         'txtNombreProducto
         '
@@ -397,6 +267,16 @@ Partial Class frmSivEncargosEdit
         Me.Label7.Tag = ""
         Me.Label7.Text = "Observaciones:"
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(475, -26)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(46, 13)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "Fecha:"
+        '
         'spnCantidad
         '
         Me.spnCantidad.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
@@ -406,16 +286,16 @@ Partial Class frmSivEncargosEdit
         Me.spnCantidad.Size = New System.Drawing.Size(62, 20)
         Me.spnCantidad.TabIndex = 117
         '
-        'Label4
+        'Label11
         '
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(346, 53)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(72, 18)
-        Me.Label4.TabIndex = 116
-        Me.Label4.Tag = ""
-        Me.Label4.Text = "Cantidad:"
+        Me.Label11.BackColor = System.Drawing.Color.Transparent
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(346, 53)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(72, 18)
+        Me.Label11.TabIndex = 116
+        Me.Label11.Tag = ""
+        Me.Label11.Text = "Cantidad:"
         '
         'chkNoExistente
         '
@@ -450,6 +330,147 @@ Partial Class frmSivEncargosEdit
         Me.lblModeloCompatible.Tag = ""
         Me.lblModeloCompatible.Text = "Marca:"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.grdDetallePedidos)
+        Me.GroupBox3.Location = New System.Drawing.Point(19, 216)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(774, 179)
+        Me.GroupBox3.TabIndex = 119
+        Me.GroupBox3.TabStop = False
+        '
+        'grdDetallePedidos
+        '
+        Me.grdDetallePedidos.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdDetallePedidos.Location = New System.Drawing.Point(3, 16)
+        Me.grdDetallePedidos.LookAndFeel.SkinName = "Glass Oceans"
+        Me.grdDetallePedidos.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
+        Me.grdDetallePedidos.MainView = Me.grdDetalleEncargosTabla
+        Me.grdDetallePedidos.Name = "grdDetallePedidos"
+        Me.grdDetallePedidos.Size = New System.Drawing.Size(768, 160)
+        Me.grdDetallePedidos.TabIndex = 2
+        Me.grdDetallePedidos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDetalleEncargosTabla})
+        '
+        'grdDetalleEncargosTabla
+        '
+        Me.grdDetalleEncargosTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colProductoID, Me.colCodigo, Me.colCategoria, Me.colNombre, Me.colCantidad, Me.colCostoPromedio, Me.colObservaciones})
+        Me.grdDetalleEncargosTabla.GridControl = Me.grdDetallePedidos
+        Me.grdDetalleEncargosTabla.Name = "grdDetalleEncargosTabla"
+        Me.grdDetalleEncargosTabla.OptionsView.ShowGroupPanel = False
+        '
+        'colProductoID
+        '
+        Me.colProductoID.Caption = "ProductoID"
+        Me.colProductoID.FieldName = "SivProductoID"
+        Me.colProductoID.Name = "colProductoID"
+        Me.colProductoID.Width = 76
+        '
+        'colCodigo
+        '
+        Me.colCodigo.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colCodigo.AppearanceHeader.Options.UseFont = True
+        Me.colCodigo.AppearanceHeader.Options.UseTextOptions = True
+        Me.colCodigo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colCodigo.Caption = "Codigo"
+        Me.colCodigo.FieldName = "Codigo"
+        Me.colCodigo.Name = "colCodigo"
+        Me.colCodigo.OptionsColumn.AllowEdit = False
+        Me.colCodigo.Visible = True
+        Me.colCodigo.VisibleIndex = 0
+        Me.colCodigo.Width = 81
+        '
+        'colCategoria
+        '
+        Me.colCategoria.Caption = "Categoria"
+        Me.colCategoria.ColumnEdit = Me.RepositoryItemComboBox1
+        Me.colCategoria.FieldName = "Categoria"
+        Me.colCategoria.Name = "colCategoria"
+        Me.colCategoria.Width = 132
+        '
+        'RepositoryItemComboBox1
+        '
+        Me.RepositoryItemComboBox1.AutoHeight = False
+        Me.RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemComboBox1.Name = "RepositoryItemComboBox1"
+        '
+        'colNombre
+        '
+        Me.colNombre.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colNombre.AppearanceHeader.Options.UseFont = True
+        Me.colNombre.AppearanceHeader.Options.UseTextOptions = True
+        Me.colNombre.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colNombre.Caption = "Nombre"
+        Me.colNombre.FieldName = "Producto"
+        Me.colNombre.Name = "colNombre"
+        Me.colNombre.OptionsColumn.AllowEdit = False
+        Me.colNombre.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
+        Me.colNombre.OptionsFilter.AllowAutoFilter = False
+        Me.colNombre.OptionsFilter.AllowFilter = False
+        Me.colNombre.Visible = True
+        Me.colNombre.VisibleIndex = 1
+        Me.colNombre.Width = 183
+        '
+        'colCantidad
+        '
+        Me.colCantidad.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colCantidad.AppearanceHeader.Options.UseFont = True
+        Me.colCantidad.AppearanceHeader.Options.UseTextOptions = True
+        Me.colCantidad.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colCantidad.Caption = "Cantidad"
+        Me.colCantidad.ColumnEdit = Me.grdspnCantidad
+        Me.colCantidad.FieldName = "Cantidad"
+        Me.colCantidad.Name = "colCantidad"
+        Me.colCantidad.OptionsColumn.AllowEdit = False
+        Me.colCantidad.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
+        Me.colCantidad.OptionsFilter.AllowAutoFilter = False
+        Me.colCantidad.OptionsFilter.AllowFilter = False
+        Me.colCantidad.Visible = True
+        Me.colCantidad.VisibleIndex = 2
+        Me.colCantidad.Width = 71
+        '
+        'grdspnCantidad
+        '
+        Me.grdspnCantidad.AutoHeight = False
+        Me.grdspnCantidad.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.grdspnCantidad.EditFormat.FormatString = "#"
+        Me.grdspnCantidad.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.grdspnCantidad.Increment = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.grdspnCantidad.IsFloatValue = False
+        Me.grdspnCantidad.Name = "grdspnCantidad"
+        '
+        'colCostoPromedio
+        '
+        Me.colCostoPromedio.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colCostoPromedio.AppearanceHeader.Options.UseFont = True
+        Me.colCostoPromedio.AppearanceHeader.Options.UseTextOptions = True
+        Me.colCostoPromedio.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colCostoPromedio.Caption = "Costo Promedio"
+        Me.colCostoPromedio.FieldName = "CostoPromedio"
+        Me.colCostoPromedio.Name = "colCostoPromedio"
+        Me.colCostoPromedio.OptionsColumn.AllowEdit = False
+        Me.colCostoPromedio.Visible = True
+        Me.colCostoPromedio.VisibleIndex = 4
+        Me.colCostoPromedio.Width = 116
+        '
+        'colObservaciones
+        '
+        Me.colObservaciones.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colObservaciones.AppearanceHeader.Options.UseFont = True
+        Me.colObservaciones.AppearanceHeader.Options.UseTextOptions = True
+        Me.colObservaciones.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colObservaciones.Caption = "Observaciones"
+        Me.colObservaciones.ColumnEdit = Me.RepositoryItemMemoEdit1
+        Me.colObservaciones.FieldName = "Observaciones"
+        Me.colObservaciones.Name = "colObservaciones"
+        Me.colObservaciones.OptionsColumn.AllowEdit = False
+        Me.colObservaciones.Visible = True
+        Me.colObservaciones.VisibleIndex = 3
+        Me.colObservaciones.Width = 299
+        '
+        'RepositoryItemMemoEdit1
+        '
+        Me.RepositoryItemMemoEdit1.Name = "RepositoryItemMemoEdit1"
+        '
         'cmdAgregar
         '
         Me.cmdAgregar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -469,7 +490,7 @@ Partial Class frmSivEncargosEdit
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(759, 572)
+        Me.cmdCancelar.Location = New System.Drawing.Point(766, 582)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -484,7 +505,7 @@ Partial Class frmSivEncargosEdit
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(673, 572)
+        Me.cmdGuardar.Location = New System.Drawing.Point(680, 582)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -505,7 +526,7 @@ Partial Class frmSivEncargosEdit
         '
         'TabPageGenerales
         '
-        Me.TabPageGenerales.Controls.Add(Me.txtRuta)
+        Me.TabPageGenerales.Controls.Add(Me.cmbRuta)
         Me.TabPageGenerales.Controls.Add(Me.cmbEstado)
         Me.TabPageGenerales.Controls.Add(Me.Label9)
         Me.TabPageGenerales.Controls.Add(Me.cmdCliente)
@@ -528,13 +549,41 @@ Partial Class frmSivEncargosEdit
         Me.TabPageGenerales.Text = "Datos Generales"
         Me.TabPageGenerales.UseVisualStyleBackColor = True
         '
-        'txtRuta
+        'cmbRuta
         '
-        Me.txtRuta.Enabled = False
-        Me.txtRuta.Location = New System.Drawing.Point(77, 72)
-        Me.txtRuta.Name = "txtRuta"
-        Me.txtRuta.Size = New System.Drawing.Size(300, 20)
-        Me.txtRuta.TabIndex = 125
+        Me.cmbRuta.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbRuta.AllowColMove = False
+        Me.cmbRuta.AllowSort = False
+        Me.cmbRuta.Caption = ""
+        Me.cmbRuta.CaptionHeight = 17
+        Me.cmbRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbRuta.ColumnCaptionHeight = 17
+        Me.cmbRuta.ColumnFooterHeight = 17
+        Me.cmbRuta.ColumnHeaders = False
+        Me.cmbRuta.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cmbRuta.ContentHeight = 15
+        Me.cmbRuta.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbRuta.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbRuta.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbRuta.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbRuta.EditorHeight = 15
+        Me.cmbRuta.Enabled = False
+        Me.cmbRuta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbRuta.Images.Add(CType(resources.GetObject("cmbRuta.Images"), System.Drawing.Image))
+        Me.cmbRuta.ItemHeight = 15
+        Me.cmbRuta.Location = New System.Drawing.Point(77, 73)
+        Me.cmbRuta.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbRuta.MaxDropDownItems = CType(5, Short)
+        Me.cmbRuta.MaxLength = 32767
+        Me.cmbRuta.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbRuta.Name = "cmbRuta"
+        Me.cmbRuta.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbRuta.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbRuta.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbRuta.Size = New System.Drawing.Size(300, 21)
+        Me.cmbRuta.TabIndex = 125
+        Me.cmbRuta.Tag = "OBLIGATORIO"
+        Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")
         '
         'cmbEstado
         '
@@ -549,7 +598,7 @@ Partial Class frmSivEncargosEdit
         '
         Me.Label9.BackColor = System.Drawing.Color.Transparent
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(475, 72)
+        Me.Label9.Location = New System.Drawing.Point(476, 74)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(82, 18)
         Me.Label9.TabIndex = 118
@@ -809,6 +858,7 @@ Partial Class frmSivEncargosEdit
         Me.colNumero.Caption = "Numero"
         Me.colNumero.FieldName = "SccCuentaID"
         Me.colNumero.Name = "colNumero"
+        Me.colNumero.OptionsColumn.AllowEdit = False
         Me.colNumero.Visible = True
         Me.colNumero.VisibleIndex = 0
         Me.colNumero.Width = 81
@@ -816,8 +866,9 @@ Partial Class frmSivEncargosEdit
         'colProducto
         '
         Me.colProducto.Caption = "Producto"
-        Me.colProducto.FieldName = "Producto"
+        Me.colProducto.FieldName = "ModeloMarca"
         Me.colProducto.Name = "colProducto"
+        Me.colProducto.OptionsColumn.AllowEdit = False
         Me.colProducto.Visible = True
         Me.colProducto.VisibleIndex = 1
         Me.colProducto.Width = 162
@@ -851,11 +902,21 @@ Partial Class frmSivEncargosEdit
         Me.Label8.TabIndex = 0
         Me.Label8.Text = "Teléfonos:"
         '
+        'grdcmbDescripcion
+        '
+        Me.grdcmbDescripcion.AutoHeight = False
+        Me.grdcmbDescripcion.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.grdcmbDescripcion.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("SivProductoID", "Código"), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Nombre", "Descripción")})
+        Me.grdcmbDescripcion.DisplayMember = "Nombre"
+        Me.grdcmbDescripcion.Name = "grdcmbDescripcion"
+        Me.grdcmbDescripcion.NullText = ""
+        Me.grdcmbDescripcion.ValueMember = "SivProductoID"
+        '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 609)
+        Me.Panel1.Location = New System.Drawing.Point(0, 627)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(859, 22)
         Me.Panel1.TabIndex = 7
@@ -868,10 +929,12 @@ Partial Class frmSivEncargosEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(859, 631)
+        Me.ClientSize = New System.Drawing.Size(859, 649)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmSivEncargosEdit"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registrar Encargos"
@@ -879,24 +942,25 @@ Partial Class frmSivEncargosEdit
         Me.PanelControl1.ResumeLayout(False)
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
-        Me.GroupBox3.ResumeLayout(False)
-        CType(Me.grdDetalleEncargos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdDetalleEncargosTabla, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdcmbDescripcion, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNombreProducto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spnCantidad.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        CType(Me.grdDetallePedidos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdDetalleEncargosTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabFacturas.ResumeLayout(False)
         Me.TabPageGenerales.ResumeLayout(False)
         Me.TabPageGenerales.PerformLayout()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbVendedor, System.ComponentModel.ISupportInitialize).EndInit()
@@ -906,6 +970,7 @@ Partial Class frmSivEncargosEdit
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.grdvwExpediente, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdcmbDescripcion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorFactura, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -934,7 +999,7 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents grdDetalleEncargos As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdDetallePedidos As DevExpress.XtraGrid.GridControl
     Friend WithEvents grdDetalleEncargosTabla As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colProductoID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCategoria As DevExpress.XtraGrid.Columns.GridColumn
@@ -945,17 +1010,7 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents grdspnCantidad As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
     Friend WithEvents colObservaciones As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemMemoEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents chkNoExistente As System.Windows.Forms.CheckBox
-    Friend WithEvents lblMarca As System.Windows.Forms.Label
     Friend WithEvents cmdAgregar As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents lblModeloCompatible As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents spnCantidad As DevExpress.XtraEditors.SpinEdit
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents txtNombreProducto As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents lblNombreProducto As System.Windows.Forms.Label
-    Friend WithEvents txtObservaciones As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents colCostoPromedio As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCodigo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents grdvwExpediente As DevExpress.XtraGrid.GridControl
@@ -965,12 +1020,23 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents colSaldo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents cmdAgregarCliente As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdCliente As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmbEstado As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents ErrorFactura As System.Windows.Forms.ErrorProvider
+    Friend WithEvents cmbRuta As C1.Win.C1List.C1Combo
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents cmbNombreProducto As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents cmbMarca As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents cmbCategoria As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents cmdPedido As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents cmbEstado As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents txtRuta As System.Windows.Forms.TextBox
-    Friend WithEvents ErrorFactura As System.Windows.Forms.ErrorProvider
+    Friend WithEvents C1DateEdit1 As C1.Win.C1Input.C1DateEdit
+    Friend WithEvents txtNombreProducto As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents lblNombreProducto As System.Windows.Forms.Label
+    Friend WithEvents txtObservaciones As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents spnCantidad As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents chkNoExistente As System.Windows.Forms.CheckBox
+    Friend WithEvents lblMarca As System.Windows.Forms.Label
+    Friend WithEvents lblModeloCompatible As System.Windows.Forms.Label
 End Class

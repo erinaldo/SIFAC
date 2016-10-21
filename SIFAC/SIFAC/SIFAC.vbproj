@@ -447,6 +447,18 @@
     <Compile Include="Formularios\Facturas\frmSfaFaturaEditar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Pedidos\frmPedidos.Designer.vb">
+      <DependentUpon>frmPedidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Pedidos\frmPedidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Pedidos\frmPedidosEdit.Designer.vb">
+      <DependentUpon>frmPedidosEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Pedidos\frmPedidosEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\PIM\frmPersonaSelector.Designer.vb">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
     </Compile>
@@ -1132,6 +1144,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Facturas\frmSfaFaturaEditar.resx">
       <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Pedidos\frmPedidos.resx">
+      <DependentUpon>frmPedidos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Pedidos\frmPedidosEdit.resx">
+      <DependentUpon>frmPedidosEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\PIM\frmPersonaSelector.resx">
       <DependentUpon>frmPersonaSelector.vb</DependentUpon>
@@ -2029,6 +2047,7 @@
     <Content Include="Resources\Office2007Blue.jpg" />
     <Content Include="Resources\Office2007Silver.jpg" />
     <Content Include="Resources\Officexp.jpg" />
+    <Content Include="Resources\pedidos.jpg" />
     <Content Include="Resources\Proveedor.ico" />
     <None Include="Resources\Sello.png" />
     <None Include="Resources\ProveedorEstilo1.jpg" />
@@ -2070,9 +2089,7 @@
       <Name>Seguridad.Formularios</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Formularios\OrdenCompra\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
