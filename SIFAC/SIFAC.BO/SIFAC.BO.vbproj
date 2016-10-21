@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AplCobros.vb" />
+    <Compile Include="AplDevoluciones.vb" />
     <Compile Include="AplFacturasProforma.vb" />
     <Compile Include="AplFacturasProformaDetalle.vb" />
     <Compile Include="clsConsultas.vb" />
