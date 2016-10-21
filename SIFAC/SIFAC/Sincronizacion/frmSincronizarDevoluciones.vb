@@ -8,10 +8,10 @@ Imports Proyecto.Catalogos.Datos
 Public Class frmSincronizarDevoluciones
 
 #Region "Declaracion de Variables"
-    Public DtEmpleados, DtRuta, DtAbonos, DtEstados, dtAplCobros As DataTable
+    Public DtEmpleados, DtRuta, DtDevoluciones, DtEstados As DataTable
     Dim objseg As SsgSeguridad
     Dim boolAprobar, boolConsultar, boolExportar, boolDesactivar As Boolean
-    Dim intEstadoAbonoRegistrado As Integer
+    Dim intEstadoDevolucionRegistrado As Integer
     Dim objReciboCaja As SccReciboCaja
     Dim objReciboDetFactura As SccReciboDetFactura
 
@@ -21,7 +21,7 @@ Public Class frmSincronizarDevoluciones
 
     Private Sub InicializarVariables()
         Try
-            intEstadoAbonoRegistrado = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOAPLICACION", "01"))
+            intEstadoDevolucionRegistrado = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOAPLICACION", "01"))
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -91,26 +91,26 @@ Public Class frmSincronizarDevoluciones
         Try
 
             If blnTodos Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "1=1"))
+                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "1=1"))
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "ObjRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
+                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "ObjRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And Not (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
+                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
             End If
 
             If Not blnTodos And Not (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "ObjRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
+                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "ObjRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
             End If
 
-            If Not DtAbonos Is Nothing Then
-                DtAbonos.PrimaryKey = New DataColumn() {Me.DtAbonos.Columns("AplDevolucionID")}
-                DtAbonos.DefaultView.Sort = "Fecha"
-                Me.grdVentas.DataSource = DtAbonos
-                Me.grdVentas.Text = "Devoluciones (" & Me.DtAbonos.Rows.Count & ")"
+            If Not DtDevoluciones Is Nothing Then
+                DtDevoluciones.PrimaryKey = New DataColumn() {Me.DtDevoluciones.Columns("AplDevolucionID")}
+                DtDevoluciones.DefaultView.Sort = "Fecha"
+                Me.grdVentas.DataSource = DtDevoluciones
+                Me.grdVentas.Text = "Devoluciones (" & Me.DtDevoluciones.Rows.Count & ")"
             End If
 
         Catch ex As Exception
@@ -133,12 +133,12 @@ Public Class frmSincronizarDevoluciones
     Public Sub AplicarSeguridad()
         objseg = New SsgSeguridad
         Try
-            objseg.ServicioUsuario = "frmSincronizarVentas"
+            objseg.ServicioUsuario = "frmSincronizarDevoluciones"
             objseg.Usuario = clsProyecto.Conexion.Usuario
-            boolAprobar = objseg.TienePermiso("AprobarVentas")
-            boolConsultar = objseg.TienePermiso("ConsultarVentas")
-            boolExportar = objseg.TienePermiso("ExportarVentas")
-            boolDesactivar = objseg.TienePermiso("InactivarVenta")
+            boolAprobar = objseg.TienePermiso("AprobarDevoluciones")
+            boolConsultar = objseg.TienePermiso("ConsultarDevoluciones")
+            boolExportar = objseg.TienePermiso("ExportarDevoluciones")
+            boolDesactivar = objseg.TienePermiso("InactivarDevoluciones")
 
             cmdAprobar.Enabled = boolAprobar
             cmdConsultar.Enabled = boolConsultar
@@ -180,11 +180,11 @@ Public Class frmSincronizarDevoluciones
         Dim blnSeleccionar As Boolean
         Dim chkSeleccionado As DevExpress.XtraEditors.CheckEdit
 
-        intEstadoFila = CInt(DtAbonos.Rows(FilaActual)("objEstadoID"))
+        intEstadoFila = CInt(DtDevoluciones.Rows(FilaActual)("objEstadoID"))
 
-        If intEstadoFila = intEstadoAbonoRegistrado Then
+        If intEstadoFila = intEstadoDevolucionRegistrado Then
             blnSeleccionar = CType(sender, DevExpress.XtraEditors.CheckEdit).Checked
-            DtAbonos = objConsultas.actualizarColumnaDT(DtAbonos, "AplCobroID", CInt(DtAbonos.Rows(FilaActual)("AplCobroID")), "Seleccionar", blnSeleccionar)
+            DtDevoluciones = objConsultas.actualizarColumnaDT(DtDevoluciones, "AplDevolucionID", CInt(DtDevoluciones.Rows(FilaActual)("AplDevolucionID")), "Seleccionar", blnSeleccionar)
         Else
             chkSeleccionado = CType(sender, DevExpress.XtraEditors.CheckEdit)
             chkSeleccionado.Checked = False
@@ -192,87 +192,72 @@ Public Class frmSincronizarDevoluciones
 
     End Sub
 
-    Private Sub SincronizarAbonos()
-        Dim DtDatosFactRecibo As DataTable
-        DtDatosFactRecibo = New DataTable
-        Dim sConsulta As String
+    Private Sub SincronizarDevoluciones()
         Dim intEstadoRegistrado As Integer
         Dim blnSeleccionado As Boolean
-        Dim intAplCobroID, intobjSccCuentaID, intReciboCajaID As Integer
-        Dim dtFechaAbono As Date
-        Dim decTotalRecibo As Decimal
-        Dim objAplCobros As New AplCobros
+        Dim intAplDevolucionID, intobjSccCuentaID, intobjSfaFacturaID As Integer
+        Dim dtFecha As Date
+        Dim decTotalDevolucion As Decimal
+        Dim objAplDevoluciones As New AplDevoluciones
+        Dim SccDev As New SccDevolucion
 
         Dim t As New TransactionManager
+        Dim DtDatosFactura As New DataTable
+        Dim objSccCuentaCobrar As New SccCuentaPorCobrar
 
         Try
             t.BeginTran()
 
-            For Each drFilaAbonos As DataRow In DtAbonos.Rows
-                blnSeleccionado = CBool(drFilaAbonos("Seleccionar"))
-                intEstadoRegistrado = CInt(drFilaAbonos("objEstadoID"))
+            For Each drFilaDevoluciones As DataRow In DtDevoluciones.Rows
+                blnSeleccionado = CBool(drFilaDevoluciones("Seleccionar"))
+                intEstadoRegistrado = CInt(drFilaDevoluciones("objEstadoID"))
 
-                If blnSeleccionado And intEstadoRegistrado = intEstadoAbonoRegistrado Then
+                If blnSeleccionado And intEstadoRegistrado = intEstadoDevolucionRegistrado Then
                     'Asignacion de valores a Variables
-                    intAplCobroID = CInt(drFilaAbonos("AplCobroID"))
-                    intobjSccCuentaID = CInt(drFilaAbonos("objSccCuentaID"))
-                    dtFechaAbono = CDate(drFilaAbonos("FechaAbono"))
-                    decTotalRecibo = CDec(drFilaAbonos("MontoAbonado"))
+                    intAplDevolucionID = CInt(drFilaDevoluciones("AplDevolucionID"))
+                    intobjSccCuentaID = CInt(drFilaDevoluciones("objSccCuentaID"))
+                    dtFecha = CDate(drFilaDevoluciones("Fecha"))
+                    decTotalDevolucion = CDec(drFilaDevoluciones("TotalDevolucion"))
+                    intobjSfaFacturaID = CDec(drFilaDevoluciones("objSfaFacturaID"))
 
                     '0 Actualizar estado factura proforma
-                    With objAplCobros
-                        .Retrieve(intAplCobroID, t)
+                    With objAplDevoluciones
+                        .Retrieve(intAplDevolucionID, t)
                         .objEstadoID = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOAPLICACION", "02"))
                         .Update(t)
                     End With
 
-                    '--------------------------- Creamos el encabezado del recibo colector--------------------------
-                    Me.objReciboCaja = New SccReciboCaja
-                    Me.objReciboCaja.Numero = 0
-                    Me.objReciboCaja.Fecha = dtFechaAbono
-                    Me.objReciboCaja.TotalRecibo = decTotalRecibo
-                    Me.objReciboCaja.UsuarioCreacion = clsProyecto.Conexion.Usuario
-                    Me.objReciboCaja.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                    Me.objReciboCaja.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("EstadoROC", "PAGADO")
-                    Me.objReciboCaja.objSccCuentaID = intobjSccCuentaID
-                    Me.objReciboCaja.EsPagoPrima = False
-                    '-------------------------------------------------------------------- ---------------------------
-                    Me.objReciboCaja.Insert(t)
-                    intReciboCajaID = Me.objReciboCaja.SccReciboCajaID
+                    '1 Crear Registro Devoluciones
+                    SccDev.Numero = SccDevolucion.RetrieveDT(, , "ISNULL(MAX(Numero),0) + 1 as Maximo", t).DefaultView.Item(0)("Maximo")
 
-                    'Cargar Facturas por cuentas
-                    sConsulta = clsConsultas.ObtenerConsultaGeneral("*,Saldo as SaldoFactura,CAST(0 AS BIT) AS Seleccion,CAST(0 AS BIT) AS Abonar,CAST(0 AS BIT) AS Cancelar,CAST(0 AS DECIMAL) as CantAbonar", "vwSccReciboDetFactura", "objSccCuentaID='" & intobjSccCuentaID & "'")
-                    DtDatosFactRecibo = SqlHelper.ExecuteQueryDT(sConsulta)
+                    SccDev.objSccCuentaID = intobjSccCuentaID
+                    SccDev.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADODEVOLUCION", "AUTORIZADA")
+                    SccDev.TotalDevolucion = decTotalDevolucion
+                    SccDev.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                    SccDev.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    SccDev.Fecha = dtFecha
+                    SccDev.objSfaFacturasID = intobjSfaFacturaID
+                    SccDev.Insert(t)
 
-                    '---------------------------------------------------------------------------------------------
-                    '-----------------Creamos los detalles por cada factura procesada-----------------------------
-                    objReciboDetFactura = New SccReciboDetFactura
-                    For Each drwFactINC As DataRow In DtDatosFactRecibo.Rows
-                        objReciboDetFactura.Monto = (Me.objReciboCaja.TotalRecibo / DtDatosFactRecibo.Rows.Count)
-                        objReciboDetFactura.objSfaFacturaID = drwFactINC("SfaFacturaID")
-                        objReciboDetFactura.UsuarioCreacion = clsProyecto.Conexion.Usuario
-                        objReciboDetFactura.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                        objReciboDetFactura.objReciboCajaID = Me.objReciboCaja.SccReciboCajaID
-                        objReciboDetFactura.EsAbono = True
-                        objReciboDetFactura.Insert(t)
+                    '2. actualizar el detalle de las cuentas por cobrar al estado devolucion
+                    DtDatosFactura = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID='" & intobjSccCuentaID & "' AND objSfaFacturaID IS NOT NULL", , , t)
+                    For Each drw As DataRow In DtDatosFactura.Rows
+                        drw("UsuarioModificacion") = clsProyecto.Conexion.Usuario
+                        drw("FechaModificacion") = clsProyecto.Conexion.FechaServidor
+                        drw("objEstadoID") = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "03")
                     Next
+                    DtDatosFactura.TableName = "SccCuentaPorCobrarDetalle"
+                    SccCuentaPorCobrarDetalle.BatchUpdate(DtDatosFactura.DataSet, t)
 
-                    'Procesamos el Abono
-                    Dim parametro(3) As SqlClient.SqlParameter
-                    parametro(0) = New SqlClient.SqlParameter("@IntReciboCajaID", SqlDbType.Int, 4)
-                    parametro(0).Value = Me.objReciboCaja.SccReciboCajaID
-
-                    parametro(1) = New SqlClient.SqlParameter("@EsPrima", SqlDbType.Int, 4)
-                    parametro(2) = New SqlClient.SqlParameter("@MontoPrima", SqlDbType.Decimal)
-                    parametro(1).Value = 0
-                    parametro(2).Value = 0
-
-                    SqlHelper.ExecuteNonQuery(t.Transaction, CommandType.StoredProcedure, "Sp_SfaDimininuirCuentaPorCobrar", parametro)
+                    '3.Actualizar el estado de las cuentas por cobrar a Devolución
+                    objSccCuentaCobrar.Retrieve(intobjSccCuentaID, t)
+                    objSccCuentaCobrar.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    objSccCuentaCobrar.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    objSccCuentaCobrar.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "DEVOLUCION")
+                    objSccCuentaCobrar.Update(t)
 
                 End If
-
             Next
-
 
             t.CommitTran()
         Catch ex As Exception
@@ -281,9 +266,9 @@ Public Class frmSincronizarDevoluciones
         End Try
     End Sub
 
-    Private Sub AnularAbonos()
-        Dim SfaFacturaProformaID, intEstadoRegistrado As Integer
-        Dim objAplFacturasProforma As New AplFacturasProforma
+    Private Sub AnularDevoluciones()
+        Dim intAplDevolucionID, intEstadoRegistrado As Integer
+        Dim objAplDevoluciones As New AplDevoluciones
         Dim blnSeleccionado As Boolean = False
 
         Dim t As New TransactionManager
@@ -291,16 +276,16 @@ Public Class frmSincronizarDevoluciones
         Try
             t.BeginTran()
 
-            objAplFacturasProforma = New AplFacturasProforma
+            objAplDevoluciones = New AplDevoluciones
 
-            For Each drFilaVenta As DataRow In DtAbonos.Rows
+            For Each drFilaDevoluciones As DataRow In DtDevoluciones.Rows
+                intAplDevolucionID = CInt(drFilaDevoluciones("AplDevolucionID"))
+                blnSeleccionado = CBool(drFilaDevoluciones("Seleccionar"))
+                intEstadoRegistrado = CInt(drFilaDevoluciones("objEstadoID"))
 
-                blnSeleccionado = CBool(drFilaVenta("Seleccionar"))
-                intEstadoRegistrado = CInt(drFilaVenta("objEstadoID"))
-
-                If blnSeleccionado And intEstadoRegistrado = intEstadoAbonoRegistrado Then
-                    With objAplFacturasProforma
-                        .Retrieve(SfaFacturaProformaID, t)
+                If blnSeleccionado And intEstadoRegistrado = intEstadoDevolucionRegistrado Then
+                    With objAplDevoluciones
+                        .Retrieve(intAplDevolucionID, t)
                         .objEstadoID = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOAPLICACION", "03"))
                         .Update(t)
                     End With
@@ -316,7 +301,7 @@ Public Class frmSincronizarDevoluciones
     End Sub
 
     Private Sub cmdAprobar_Click(sender As Object, e As EventArgs) Handles cmdAprobar.Click
-        'SincronizarAbonos()
+        SincronizarDevoluciones()
         CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
     End Sub
 
@@ -329,6 +314,7 @@ Public Class frmSincronizarDevoluciones
     End Sub
 
     Private Sub cmdDesactivar_Click(sender As Object, e As EventArgs) Handles cmdDesactivar.Click
-        AnularAbonos()
+        AnularDevoluciones()
+        CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
     End Sub
 End Class

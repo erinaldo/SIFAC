@@ -367,7 +367,7 @@ lblGuardarDetalleCuenta:
     End Sub
 
     Private Sub AnularVentas()
-        Dim SfaFacturaProformaID, intEstadoRegistrado As Integer
+        Dim intSfaFacturaProformaID, intEstadoRegistrado As Integer
         Dim objAplFacturasProforma As New AplFacturasProforma
         Dim blnSeleccionado As Boolean = False
 
@@ -379,13 +379,13 @@ lblGuardarDetalleCuenta:
             objAplFacturasProforma = New AplFacturasProforma
 
             For Each drFilaVenta As DataRow In DtVentas.Rows
-
+                intSfaFacturaProformaID = CInt(drFilaVenta("SfaFacturaProformaID"))
                 blnSeleccionado = CBool(drFilaVenta("Seleccionar"))
                 intEstadoRegistrado = CInt(drFilaVenta("objEstadoID"))
 
                 If blnSeleccionado And intEstadoRegistrado = intEstadoFactProfRegistrado Then
                     With objAplFacturasProforma
-                        .Retrieve(SfaFacturaProformaID, t)
+                        .Retrieve(intSfaFacturaProformaID, t)
                         .objEstadoID = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOAPLICACION", "03"))
                         .Update(t)
                     End With
@@ -415,5 +415,6 @@ lblGuardarDetalleCuenta:
 
     Private Sub cmdDesactivar_Click(sender As Object, e As EventArgs) Handles cmdDesactivar.Click
         AnularVentas()
+        CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
     End Sub
 End Class

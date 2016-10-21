@@ -14,7 +14,6 @@ Public Class frmSincronizarAbonos
     Dim intEstadoAbonoRegistrado As Integer
     Dim objReciboCaja As SccReciboCaja
     Dim objReciboDetFactura As SccReciboDetFactura
-
 #End Region
 
 #Region "Procedimientos"
@@ -86,10 +85,8 @@ Public Class frmSincronizarAbonos
 #End Region
 
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
-
     Public Sub CargarGrid(blnTodos As Boolean, intEstadoID As Integer, intEmpleadoID As Integer, intRutaID As Integer)
         Try
-
             If blnTodos Then
                 DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "1=1"))
             End If
@@ -133,12 +130,12 @@ Public Class frmSincronizarAbonos
     Public Sub AplicarSeguridad()
         objseg = New SsgSeguridad
         Try
-            objseg.ServicioUsuario = "frmSincronizarVentas"
+            objseg.ServicioUsuario = "frmSincronizarAbonos"
             objseg.Usuario = clsProyecto.Conexion.Usuario
-            boolAprobar = objseg.TienePermiso("AprobarVentas")
-            boolConsultar = objseg.TienePermiso("ConsultarVentas")
-            boolExportar = objseg.TienePermiso("ExportarVentas")
-            boolDesactivar = objseg.TienePermiso("InactivarVenta")
+            boolAprobar = objseg.TienePermiso("AprobarAbonos")
+            boolConsultar = objseg.TienePermiso("ConsultarAbonos")
+            boolExportar = objseg.TienePermiso("ExportarAbonos")
+            boolDesactivar = objseg.TienePermiso("InactivarAbonos")
 
             cmdAprobar.Enabled = boolAprobar
             cmdConsultar.Enabled = boolConsultar
@@ -282,8 +279,8 @@ Public Class frmSincronizarAbonos
     End Sub
 
     Private Sub AnularAbonos()
-        Dim SfaFacturaProformaID, intEstadoRegistrado As Integer
-        Dim objAplFacturasProforma As New AplFacturasProforma
+        Dim intAplCobroID, intEstadoRegistrado As Integer
+        Dim objAplCobros As New AplCobros
         Dim blnSeleccionado As Boolean = False
 
         Dim t As New TransactionManager
@@ -291,16 +288,16 @@ Public Class frmSincronizarAbonos
         Try
             t.BeginTran()
 
-            objAplFacturasProforma = New AplFacturasProforma
+            objAplCobros = New AplCobros
 
             For Each drFilaVenta As DataRow In DtAbonos.Rows
-
+                intAplCobroID = CBool(drFilaVenta("AplCobroID"))
                 blnSeleccionado = CBool(drFilaVenta("Seleccionar"))
                 intEstadoRegistrado = CInt(drFilaVenta("objEstadoID"))
 
                 If blnSeleccionado And intEstadoRegistrado = intEstadoAbonoRegistrado Then
-                    With objAplFacturasProforma
-                        .Retrieve(SfaFacturaProformaID, t)
+                    With objAplCobros
+                        .Retrieve(intAplCobroID, t)
                         .objEstadoID = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOAPLICACION", "03"))
                         .Update(t)
                     End With
@@ -330,5 +327,6 @@ Public Class frmSincronizarAbonos
 
     Private Sub cmdDesactivar_Click(sender As Object, e As EventArgs) Handles cmdDesactivar.Click
         AnularAbonos()
+        CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
     End Sub
 End Class
