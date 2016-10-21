@@ -166,7 +166,7 @@ Partial Class frmPersonaSelector
         Me.colCedula.AppearanceHeader.Options.UseFont = True
         Me.colCedula.AppearanceHeader.Options.UseTextOptions = True
         Me.colCedula.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colCedula.Caption = "Cédula"
+        Me.colCedula.Caption = "Identificacion"
         Me.colCedula.FieldName = "Cedula"
         Me.colCedula.Name = "colCedula"
         Me.colCedula.OptionsColumn.AllowEdit = False

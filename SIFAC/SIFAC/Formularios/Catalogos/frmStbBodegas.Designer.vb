@@ -141,6 +141,7 @@ Partial Class frmStbBodegas
         Me.grdBodegasTabla.OptionsDetail.ShowDetailTabs = False
         Me.grdBodegasTabla.OptionsDetail.SmartDetailExpand = False
         Me.grdBodegasTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdBodegasTabla.OptionsView.ShowAutoFilterRow = True
         Me.grdBodegasTabla.OptionsView.ShowFooter = True
         Me.grdBodegasTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '

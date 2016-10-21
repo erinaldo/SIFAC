@@ -22,7 +22,7 @@ Public Class frmSivEncargos
     Private Sub CargarEncargos(ByVal strFiltro As String)
         Try
 
-            dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoID, Numero,Ruta, TotalCosto, Fecha, Vendedor, Cliente, Activo, objSccClienteID", "vwSivEncargosMaster", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
+            dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoID, Numero,Ruta, TotalCosto, Fecha, Vendedor, Cliente, Estado, objSccClienteID", "vwSivEncargosMaster", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
             dtDetalleEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoDetalleID, objSivEncargoID, objCategoriaID, Categoria, Numero, NombreProducto, Cantidad, CostoPromedio, TotalCosto", "vwSivEncargosDetalle", strFiltro), Me.SqlParametros)
 
             dsEncargos = New DataSet
@@ -68,7 +68,7 @@ Public Class frmSivEncargos
             cmdConsultar.Enabled = boolConsultar And dtEncargos.Rows.Count > 0
             cmdImprimir.Enabled = boolImprimir And dtEncargos.Rows.Count > 0
             cmdDesactivar.Enabled = boolDesactivar And dtEncargos.Rows.Count > 0
-
+            cmbExportar.Enabled = boolImprimir And dtEncargos.Rows.Count > 0
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally

@@ -156,9 +156,8 @@ Public Class frmSivEncargosEdit
             objEncargoMaster.objRutaID = cmbRuta.SelectedValue
             objEncargoMaster.objSccClienteID = cmbCliente.SelectedValue
             objEncargoMaster.objSrhEmpleadoID = cmbVendedor.SelectedValue
-            objEncargoMaster.ObjEstadoID = cmbEstado.EditValue
+            objEncargoMaster.ObjEstadoID = cboEstado.SelectedValue
             objEncargoMaster.Activo = True
-
             objEncargoMaster.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objEncargoMaster.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objEncargoMaster.Insert(T)
@@ -167,7 +166,11 @@ Public Class frmSivEncargosEdit
             For Each row As DataRow In dtDetalleEncargo.Rows
                 objEncargoDetalle.objSivEncargoID = objEncargoMaster.SivEncargoID
                 objEncargoDetalle.objCategoriaID = row("objCategoriaID")
-                objEncargoDetalle.objProductoID = row("SivProductoID")
+
+                If Not IsDBNull(row("SivProductoID")) Then
+                    objEncargoDetalle.objProductoID = row("SivProductoID")
+                End If
+
                 objEncargoDetalle.Nombre_Producto = row("Producto")
                 objEncargoDetalle.Cantidad = row("Cantidad")
                 objEncargoDetalle.Observaciones = row("Observaciones")
@@ -204,7 +207,7 @@ Public Class frmSivEncargosEdit
             objEncargoMaster.objRutaID = cmbRuta.SelectedValue
             objEncargoMaster.objSccClienteID = cmbCliente.SelectedValue
             objEncargoMaster.objSrhEmpleadoID = cmbVendedor.SelectedValue
-            objEncargoMaster.ObjEstadoID = cmbEstado.EditValue
+            objEncargoMaster.ObjEstadoID = cboEstado.SelectedValue
             objEncargoMaster.Activo = True
 
             objEncargoMaster.UsuarioModificacion = clsProyecto.Conexion.Usuario
@@ -218,7 +221,11 @@ Public Class frmSivEncargosEdit
             For Each row As DataRow In dtDetalleEncargo.Rows
                 objEncargoDetalle.objSivEncargoID = objEncargoMaster.SivEncargoID
                 objEncargoDetalle.objCategoriaID = row("objCategoriaID")
-                objEncargoDetalle.objProductoID = row("SivProductoID")
+
+                If Not IsDBNull(row("SivProductoID")) Then
+                    objEncargoDetalle.objProductoID = row("SivProductoID")
+                End If
+
                 objEncargoDetalle.Nombre_Producto = row("Producto")
                 objEncargoDetalle.Cantidad = row("Cantidad")
                 objEncargoDetalle.Observaciones = row("Observaciones")
@@ -249,9 +256,8 @@ Public Class frmSivEncargosEdit
             cmdCliente.Enabled = False
             cmdAgregarCliente.Enabled = False
             cmbVendedor.Enabled = False
-            cmbEstado.Enabled = False
+            cboEstado.Enabled = False
             cmdAgregar.Enabled = False
-            dtpFecha.Enabled = False
             chkNoExistente.Enabled = False
             cmbCategoria.Enabled = False
             cmbMarca.Enabled = False
@@ -259,6 +265,7 @@ Public Class frmSivEncargosEdit
             txtNombreProducto.Enabled = False
             spnCantidad.Enabled = False
             txtObservaciones.Enabled = False
+            txtCodigoCliente.Enabled = False
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -402,16 +409,14 @@ Public Class frmSivEncargosEdit
     Public Sub CargarEstados()
         Try
             dtEstados = ObtenerValCat("ESTADOENCARGO")
-            With cmbEstado
-                .Properties.DataSource = dtEstados
-                .Properties.DisplayMember = "Descripcion"
-                .Properties.ValueMember = "StbValorCatalogoID"
-                .Properties.PopulateColumns()
-                .Properties.Columns("StbValorCatalogoID").Visible = False
-                .Properties.Columns("Codigo").Visible = False
-                .Properties.Columns("Activo").Visible = False
-                .Properties.AutoHeight = True
-                .Properties.ShowHeader = False
+            With cboEstado
+                .DataSource = dtEstados
+                .DisplayMember = "Descripcion"
+                .ValueMember = "StbValorCatalogoID"
+                .Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
+                .Splits(0).DisplayColumns("Codigo").Visible = False
+                .Splits(0).DisplayColumns("Activo").Visible = False
+                 .ExtendRightColumn = True
             End With
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -532,9 +537,10 @@ Public Class frmSivEncargosEdit
 
             objEncargoMaster.Retrieve(EncargoID)
             cmbCliente.SelectedValue = objEncargoMaster.objSccClienteID
-            cmbEstado.EditValue = objEncargoMaster.ObjEstadoID
+            cboEstado.SelectedValue = objEncargoMaster.ObjEstadoID
             cmbVendedor.SelectedValue = objEncargoMaster.objSrhEmpleadoID
-
+            cmbRuta.SelectedValue = objEncargoMaster.objRutaID
+            dtpFecha.Value = objEncargoMaster.FechaCreacion
             ''Cargar Detalle del encargo
             CargarDetalleEncargos("objSivEncargoID=" & EncargoID)
 
@@ -590,13 +596,14 @@ Public Class frmSivEncargosEdit
                     Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
                     Me.CargarDetalleEncargos("1=0")
                     Me.txtObservaciones.Properties.MaxLength = SivEncargosDetalle.GetMaxLength("Observaciones")
-                    Me.cmbEstado.Text = "REGISTRADO"
-                    Me.cmbEstado.Enabled = False
+                    Me.cboEstado.Text = "REGISTRADO"
+                    Me.cboEstado.Enabled = False
 
                 Case 1
                     Me.Text = "Editar Encargo"
+                    Me.cboEstado.Enabled = True
                     CargarDatosEncargo()
-                    Me.cmbEstado.Enabled = True
+
                 Case 2
                     Me.Text = "Consultar Encargo"
                     CargarDatosEncargo()

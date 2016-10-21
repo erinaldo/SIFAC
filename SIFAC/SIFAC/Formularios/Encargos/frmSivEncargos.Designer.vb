@@ -44,7 +44,7 @@ Partial Class frmSivEncargos
         Me.colRuta = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colVendedor = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colActivo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.colTotalCosto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdEncargosDetalle = New DevExpress.XtraGrid.GridControl()
@@ -86,7 +86,7 @@ Partial Class frmSivEncargos
         Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdAgregar.ToolTipText = "Nuevo Producto"
+        Me.cmdAgregar.ToolTipText = "Nuevo Encargo"
         '
         'cmdEditar
         '
@@ -95,7 +95,7 @@ Partial Class frmSivEncargos
         Me.cmdEditar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdEditar.ToolTipText = "Editar Producto"
+        Me.cmdEditar.ToolTipText = "Editar Encargo"
         '
         'cmdConsultar
         '
@@ -104,7 +104,7 @@ Partial Class frmSivEncargos
         Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdConsultar.ToolTipText = "Consultar Producto"
+        Me.cmdConsultar.ToolTipText = "Consultar Encargo"
         '
         'ToolStripSeparator1
         '
@@ -118,7 +118,7 @@ Partial Class frmSivEncargos
         Me.cmdDesactivar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdDesactivar.Name = "cmdDesactivar"
         Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdDesactivar.ToolTipText = "Inactivar Producto"
+        Me.cmdDesactivar.ToolTipText = "Inactivar Encargo"
         '
         'ToolStripSeparator2
         '
@@ -141,7 +141,7 @@ Partial Class frmSivEncargos
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
-        Me.cmdImprimir.ToolTipText = "Imprimir Datos de Productos"
+        Me.cmdImprimir.ToolTipText = "Imprimir Datos de Encargos"
         '
         'ToolStripSeparator3
         '
@@ -214,7 +214,7 @@ Partial Class frmSivEncargos
         '
         'grdEncargosMasterTabla
         '
-        Me.grdEncargosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colRuta, Me.colCliente, Me.colVendedor, Me.colActivo, Me.colTotalCosto})
+        Me.grdEncargosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colRuta, Me.colCliente, Me.colVendedor, Me.colEstado, Me.colTotalCosto})
         Me.grdEncargosMasterTabla.GridControl = Me.grdEncargosMaster
         Me.grdEncargosMasterTabla.Name = "grdEncargosMasterTabla"
         Me.grdEncargosMasterTabla.OptionsDetail.AllowZoomDetail = False
@@ -222,6 +222,8 @@ Partial Class frmSivEncargos
         Me.grdEncargosMasterTabla.OptionsDetail.ShowDetailTabs = False
         Me.grdEncargosMasterTabla.OptionsDetail.SmartDetailExpand = False
         Me.grdEncargosMasterTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdEncargosMasterTabla.OptionsView.ShowAutoFilterRow = True
+        Me.grdEncargosMasterTabla.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways
         Me.grdEncargosMasterTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '
         'colNumero
@@ -279,17 +281,16 @@ Partial Class frmSivEncargos
         Me.colVendedor.VisibleIndex = 3
         Me.colVendedor.Width = 109
         '
-        'colActivo
+        'colEstado
         '
-        Me.colActivo.Caption = "Activo"
-        Me.colActivo.ColumnEdit = Me.RepositoryItemCheckEdit1
-        Me.colActivo.FieldName = "Activo"
-        Me.colActivo.Name = "colActivo"
-        Me.colActivo.OptionsColumn.AllowFocus = False
-        Me.colActivo.OptionsColumn.ReadOnly = True
-        Me.colActivo.Visible = True
-        Me.colActivo.VisibleIndex = 5
-        Me.colActivo.Width = 86
+        Me.colEstado.Caption = "Estado"
+        Me.colEstado.FieldName = "Estado"
+        Me.colEstado.Name = "colEstado"
+        Me.colEstado.OptionsColumn.AllowFocus = False
+        Me.colEstado.OptionsColumn.ReadOnly = True
+        Me.colEstado.Visible = True
+        Me.colEstado.VisibleIndex = 5
+        Me.colEstado.Width = 86
         '
         'RepositoryItemCheckEdit1
         '
@@ -516,7 +517,7 @@ Partial Class frmSivEncargos
     Friend WithEvents colCliente As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colVendedor As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colRuta As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colActivo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents colCostoPromedio As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTotalCosto As DevExpress.XtraGrid.Columns.GridColumn

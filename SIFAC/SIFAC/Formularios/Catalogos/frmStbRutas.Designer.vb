@@ -158,6 +158,7 @@ Partial Class frmStbRutas
         Me.grdRutasTabla.OptionsDetail.ShowDetailTabs = False
         Me.grdRutasTabla.OptionsDetail.SmartDetailExpand = False
         Me.grdRutasTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdRutasTabla.OptionsView.ShowAutoFilterRow = True
         Me.grdRutasTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '
         'colNumero

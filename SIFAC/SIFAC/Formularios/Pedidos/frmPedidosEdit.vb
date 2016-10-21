@@ -10,7 +10,7 @@ Public Class frmPedidosEdit
 
 #Region "Declaracion de Variables"
     Public intTypeGui As Integer
-    Public intPedidoID, intProveedorID As Integer
+    Public intPedidoID, intProveedorID, intPersonaID As Integer
     Public boolEditado, boolRegistrad, boolExisteErroresGrid As Boolean
     Public DtMarca, DtCategoria, DtNombreProducto, dtProveedor, dtDetallePedido, dtEstados As DataTable
 #End Region
@@ -40,18 +40,7 @@ Public Class frmPedidosEdit
 
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntradaDetalle() As Boolean
-        If cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.EditValue = "0" Then
-            ErrorFactura.SetError(cmbCategoria, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
-
-        If cmbMarca.Text.Trim.Length = 0 Or cmbMarca.EditValue = "0" Then
-            ErrorFactura.SetError(cmbMarca, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
-
+       
         If cmbNombreProducto.Text.Trim.Length = 0 Or cmbNombreProducto.EditValue = "0" Then
             ErrorFactura.SetError(cmbNombreProducto, My.Resources.MsgObligatorio)
             Return False
@@ -160,13 +149,14 @@ Public Class frmPedidosEdit
             objPedidoMaster.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objPedidoMaster.Insert(T)
 
+           
             ''Guadar Detalle de Pedidos
             For Each row As DataRow In dtDetallePedido.Rows
                 objPedidoDetalle.objPedidoID = objPedidoMaster.SivPedidoID
                 objPedidoDetalle.objProductoID = row("SivProductoID")
-                objPedidoDetalle.CantidadOrdenada = row("CantidadOrdenada")
+                objPedidoDetalle.CantidadOrdenada = row("Cantidad")
                 objPedidoDetalle.CostoUnitario = row("CostoUnitario")
-                objPedidoDetalle.CostoSubtotal = row("CostoSubtotal")
+                objPedidoDetalle.CostoSubtotal = row("Cantidad") * row("CostoUnitario")
                 objPedidoDetalle.CostoImpuesto = row("CostoImpuesto")
                 objPedidoDetalle.CostoTotal = row("CostoTotal")
                 objPedidoDetalle.UsuarioCreacion = clsProyecto.Conexion.Usuario
@@ -215,7 +205,7 @@ Public Class frmPedidosEdit
             For Each row As DataRow In dtDetallePedido.Rows
                 objPedidoDetalle.objPedidoID = objPedidoMaster.SivPedidoID
                 objPedidoDetalle.objProductoID = row("SivProductoID")
-                objPedidoDetalle.CantidadOrdenada = row("CantidadOrdenada")
+                objPedidoDetalle.CantidadOrdenada = row("Cantidad")
                 objPedidoDetalle.CostoUnitario = row("CostoUnitario")
                 objPedidoDetalle.CostoSubtotal = row("CostoSubtotal")
                 objPedidoDetalle.CostoImpuesto = row("CostoImpuesto")
@@ -243,7 +233,6 @@ Public Class frmPedidosEdit
 #Region "Controles"
     Private Sub DeshabilitarControles()
         Try
-
             cmdProveedor.Enabled = False
             cmdAgregarProveedor.Enabled = False
             cmbEstado.Enabled = False
@@ -398,19 +387,25 @@ Public Class frmPedidosEdit
         Try
             Try
                 If Not String.IsNullOrEmpty(Me.intProveedorID) Then
-                    dtDatosProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,Identificacion, NombreProveedor", "vwSivProveedores", "SivProveedorID = " & Me.intProveedorID))
+                    dtDatosProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,SivProveedorID,Identificacion, NombreProveedor", "vwSivProveedores", "StbPersonaID = " & Me.intPersonaID))
 
-                    If IsDBNull(dtDatosProveedor.DefaultView.Item(0)("Identificacion")) Then
+                    If dtDatosProveedor.Rows.Count > 0 Then
+
+                        Me.intProveedorID = dtDatosProveedor.DefaultView.Item(0)("SivProveedorID")
+
                         If Not IsDBNull(dtDatosProveedor.DefaultView.Item(0)("Identificacion")) Then
                             Me.txtCodigoProveedor.Text = dtDatosProveedor.DefaultView.Item(0)("Identificacion")
                         Else
                             Me.txtCodigoProveedor.Text = ""
                         End If
-                    ElseIf Not IsDBNull(dtDatosProveedor.DefaultView.Item(0)("NombreProveedor")) Then
-                        Me.txtNombreProveedor.Text = dtDatosProveedor.DefaultView.Item(0)("NombreProveedor")
-                    Else
-                        Me.txtNombreProveedor.Text = ""
+
+                        If Not IsDBNull(dtDatosProveedor.DefaultView.Item(0)("NombreProveedor")) Then
+                            Me.txtNombreProveedor.Text = dtDatosProveedor.DefaultView.Item(0)("NombreProveedor")
+                        Else
+                            Me.txtNombreProveedor.Text = ""
+                        End If
                     End If
+                  
                 End If
 
             Catch ex As Exception
@@ -492,7 +487,7 @@ Public Class frmPedidosEdit
                     Me.txtObservaciones.Properties.MaxLength = SivEncargosDetalle.GetMaxLength("Observaciones")
                     Me.cmbEstado.Text = "REGISTRADO"
                     Me.cmbEstado.Enabled = False
-
+                    Me.dtaFechaaPedir.Value = clsProyecto.Conexion.FechaServidor
                 Case 1
                     Me.Text = "Editar Pedido"
                     CargarDatosEncargo()
@@ -514,7 +509,7 @@ Public Class frmPedidosEdit
     Private Sub CargarDetallePedidos(ByVal strFiltro As String)
         dtDetallePedido = New DataTable
         Try
-            dtDetallePedido = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, Cantidad, Observaciones, CostoPromedio, objSivEncargoID,SivProductoID,objCategoriaID", "vwSivDetalleProductosEncargos", strFiltro))
+            dtDetallePedido = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID, Codigo, objCategoriaID, Categoria, Producto, Cantidad,CostoImpuesto, CostoUnitario, CostoTotal, objPedidoID", "vwSivDetalleProductosPedidos", strFiltro))
             Me.grdDetallePedidos.DataSource = dtDetallePedido
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -536,11 +531,14 @@ Public Class frmPedidosEdit
             filas("Producto") = cmbNombreProducto.Text
             filas("SivProductoID") = ProductoID
             filas("Cantidad") = spnCantidad.Value
-            filas("Observaciones") = txtObservaciones.Text
-            filas("CostoPromedio") = objSivProducto.CostoPromedio
+            filas("CostoUnitario") = spnCostoUnitario.Value
+            filas("CostoImpuesto") = spnImpuestoUnitario.Value
             filas("objCategoriaID") = cmbCategoria.EditValue
+            filas("CostoTotal") = spnCantidad.Value * (spnCostoUnitario.Value - spnImpuestoUnitario.Value)
 
             dtDetallePedido.Rows.Add(filas)
+            spnTotalCosto.Value = spnTotalCosto.Value + filas("CostoTotal")
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -621,5 +619,44 @@ Public Class frmPedidosEdit
         End Try
     End Sub
 
+    Private Sub cmdProveedor_Click(sender As Object, e As EventArgs) Handles cmdProveedor.Click
+        Try
+            Dim objSeleccion As frmPersonaSelector
+            objSeleccion = New frmPersonaSelector
+            objSeleccion.Filtro = " Descripcion = 'Proveedor' "
+            objSeleccion.Opcion = 1
+            If objSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Me.intPersonaID = objSeleccion.Seleccion
+                CargarDatosProveedor()
+                ErrorFactura.SetError(txtNombreProveedor, "")
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub txtCodigoProveedor_TextChanged(sender As Object, e As EventArgs) Handles txtCodigoProveedor.TextChanged
+        ErrorFactura.SetError(txtCodigoProveedor, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub cmbNombreProducto_TextChanged(sender As Object, e As EventArgs) Handles cmbNombreProducto.TextChanged
+        ErrorFactura.SetError(cmbCategoria, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub spnCantidad_TextChanged(sender As Object, e As EventArgs) Handles spnCantidad.TextChanged
+        ErrorFactura.SetError(spnCantidad, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub spnCostoUnitario_TextChanged(sender As Object, e As EventArgs) Handles spnCostoUnitario.TextChanged
+        ErrorFactura.SetError(spnCostoUnitario, "")
+        boolEditado = True
+    End Sub
+
 #End Region
+
+   
+    
 End Class

@@ -134,6 +134,7 @@ Partial Class frmSivMarcas
         Me.grdMarcasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colActiva})
         Me.grdMarcasTabla.GridControl = Me.grdMarcas
         Me.grdMarcasTabla.Name = "grdMarcasTabla"
+        Me.grdMarcasTabla.OptionsView.ShowAutoFilterRow = True
         '
         'colNumero
         '

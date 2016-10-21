@@ -145,6 +145,7 @@ Partial Class frmSivProveedor
         Me.grdvwProveedoresTabla.GridControl = Me.grdvwProveedores
         Me.grdvwProveedoresTabla.Name = "grdvwProveedoresTabla"
         Me.grdvwProveedoresTabla.OptionsBehavior.Editable = False
+        Me.grdvwProveedoresTabla.OptionsView.ShowAutoFilterRow = True
         '
         'colNombre
         '

@@ -49,10 +49,15 @@ Public Class frmPersonaSelector
     Public Sub CargarDatos()
         Dim strSQL As String
 
-        If String.IsNullOrEmpty(Me.Filtro) Then
-            strSQL = ObtenerConsultaGeneral(" DISTINCT Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion")
+        If Opcion = 1 Then
+            strSQL = ObtenerConsultaGeneral(" DISTINCT Cast(0 AS BIT) AS Seleccionar,ISNULL(Cedula,RUC) AS Cedula,NombreCompleto, StbPersonaID ", "vwPersonaClasificacionProveedor", Filtro)
         Else
-            strSQL = ObtenerConsultaGeneral(" DISTINCT Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion", Filtro)
+
+            If String.IsNullOrEmpty(Me.Filtro) Then
+                strSQL = ObtenerConsultaGeneral(" DISTINCT Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion")
+            Else
+                strSQL = ObtenerConsultaGeneral(" DISTINCT Cast(0 AS BIT) AS Seleccionar,Cedula,NombreCompleto, StbPersonaID", "vwPersonaClasificacion", Filtro)
+            End If
         End If
 
         DtPersonas = DAL.SqlHelper.ExecuteQueryDT(strSQL)
@@ -60,9 +65,9 @@ Public Class frmPersonaSelector
         Me.grdPersonas.Text = "Personas (" & DtPersonas.Rows.Count & ")"
         Me.grdPersonas.Refresh()
 
-        If Opcion = 1 Then
-            cmdNuevaPersona.Visible = False
-        End If
+        'If Opcion = 1 Then
+        '    cmdNuevaPersona.Visible = False
+        'End If
     End Sub
 
 #End Region

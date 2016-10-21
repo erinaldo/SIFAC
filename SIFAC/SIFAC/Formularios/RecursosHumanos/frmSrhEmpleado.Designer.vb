@@ -130,6 +130,7 @@ Partial Class frmSrhEmpleado
         Me.grdvwEmpleadosTabla.GridControl = Me.grdvwEmpleados
         Me.grdvwEmpleadosTabla.Name = "grdvwEmpleadosTabla"
         Me.grdvwEmpleadosTabla.OptionsBehavior.Editable = False
+        Me.grdvwEmpleadosTabla.OptionsView.ShowAutoFilterRow = True
         Me.grdvwEmpleadosTabla.OptionsView.ShowFooter = True
         '
         'colSrhEmpleadoID

@@ -197,7 +197,6 @@ Partial Class frmPedidosEdit
             Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.dtaFechaaPedir.Enabled = False
         Me.dtaFechaaPedir.Location = New System.Drawing.Point(143, 75)
         Me.dtaFechaaPedir.Name = "dtaFechaaPedir"
         Me.dtaFechaaPedir.Size = New System.Drawing.Size(171, 20)
@@ -477,6 +476,7 @@ Partial Class frmPedidosEdit
         Me.cmbNombreProducto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbNombreProducto.Properties.NullText = ""
         Me.cmbNombreProducto.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
+        Me.cmbNombreProducto.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.cmbNombreProducto.Size = New System.Drawing.Size(166, 20)
         Me.cmbNombreProducto.TabIndex = 125
         '
@@ -487,6 +487,7 @@ Partial Class frmPedidosEdit
         Me.cmbMarca.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbMarca.Properties.NullText = ""
         Me.cmbMarca.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
+        Me.cmbMarca.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.cmbMarca.Size = New System.Drawing.Size(166, 20)
         Me.cmbMarca.TabIndex = 124
         '
@@ -511,6 +512,7 @@ Partial Class frmPedidosEdit
         Me.cmbCategoria.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbCategoria.Properties.NullText = ""
         Me.cmbCategoria.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
+        Me.cmbCategoria.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.cmbCategoria.Size = New System.Drawing.Size(166, 20)
         Me.cmbCategoria.TabIndex = 123
         '

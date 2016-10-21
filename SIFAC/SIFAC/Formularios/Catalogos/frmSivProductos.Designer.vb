@@ -224,6 +224,7 @@ Partial Class frmSivProductos
         Me.grdProductosTabla.OptionsDetail.ShowDetailTabs = False
         Me.grdProductosTabla.OptionsDetail.SmartDetailExpand = False
         Me.grdProductosTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdProductosTabla.OptionsView.ShowAutoFilterRow = True
         Me.grdProductosTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '
         'colNumero

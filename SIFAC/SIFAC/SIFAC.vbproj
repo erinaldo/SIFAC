@@ -411,6 +411,12 @@
     <Compile Include="Formularios\Devoluciones\frmSccDevoluciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Encargos\frmReporteEncargos.Designer.vb">
+      <DependentUpon>frmReporteEncargos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Encargos\frmReporteEncargos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Encargos\frmSivEncargos.Designer.vb">
       <DependentUpon>frmSivEncargos.vb</DependentUpon>
     </Compile>
@@ -1126,6 +1132,9 @@
     <EmbeddedResource Include="Formularios\Devoluciones\frmSccDevoluciones.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Encargos\frmReporteEncargos.resx">
+      <DependentUpon>frmReporteEncargos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Encargos\frmSivEncargos.resx">
       <DependentUpon>frmSivEncargos.vb</DependentUpon>

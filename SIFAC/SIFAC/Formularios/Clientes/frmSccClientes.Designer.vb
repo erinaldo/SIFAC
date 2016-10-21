@@ -182,6 +182,7 @@ Partial Class frmSccClientes
         Me.grdClientesTabla.OptionsDetail.ShowDetailTabs = False
         Me.grdClientesTabla.OptionsDetail.SmartDetailExpand = False
         Me.grdClientesTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdClientesTabla.OptionsView.ShowAutoFilterRow = True
         Me.grdClientesTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '
         'colNumero

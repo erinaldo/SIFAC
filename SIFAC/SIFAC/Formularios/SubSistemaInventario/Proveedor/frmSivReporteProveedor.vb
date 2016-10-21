@@ -58,38 +58,29 @@ Public Class frmSivReporteProveedor
 #Region "Operaciones"
 
     Private Sub Imprimir()
-        Dim objRptProveedores As rptProveedores
-        'Dim objImpresion As frmOpcionesImpresion
-        'objImpresion = New frmOpcionesImpresion
+        Dim objReporte As frmRptVisor
+        Try
+            objReporte = New frmRptVisor
+            objReporte.IDReporte = "Proveedores"
 
-        objRptProveedores = New rptProveedores
-        If Me.rbProveedor.Checked Then
-            dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "SivProveedorID=" & Me.cmbProveedor.SelectedValue))
-        End If
-        If Me.rbTodos.Checked Then
-            dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "1=1"))
-        End If
-        If Me.rbActivos.Checked Then
-            dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "Activo=1"))
-        End If
-        If Me.rbInactivos.Checked Then
-            dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "Activo=0"))
-        End If
+            If Me.rbProveedor.Checked Then
+                objReporte.strFiltro = "SivProveedorID=" & Me.cmbProveedor.SelectedValue
+            End If
+            If Me.rbTodos.Checked Then
+                objReporte.strFiltro = "1=1"
+            End If
+            If Me.rbActivos.Checked Then
+                objReporte.strFiltro = "Activo=1"
+            End If
+            If Me.rbInactivos.Checked Then
+                objReporte.strFiltro = "Activo=0"
+            End If
 
-        objRptProveedores.DataSource = Me.dtRptProveedor
-        clsProyecto.ImprimirEnPantalla(objRptProveedores)
+            objReporte.Show()
 
-        'If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
-
-        '    Select Case objImpresion.Seleccion
-        '        Case 1
-        '            clsProyecto.ImprimirEnPantalla(objRptProveedores)
-        '        Case 2
-        '            clsProyecto.ImprimirEnImpresora(objRptProveedores, True)
-        '        Case 3
-        '            clsProyecto.ImprimirEnArchivo(objRptProveedores, Me)
-        '    End Select
-        'End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 #End Region

@@ -60,8 +60,8 @@ Partial Class frmSivEncargosEdit
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.tabFacturas = New System.Windows.Forms.TabControl()
         Me.TabPageGenerales = New System.Windows.Forms.TabPage()
+        Me.cboEstado = New C1.Win.C1List.C1Combo()
         Me.cmbRuta = New C1.Win.C1List.C1Combo()
-        Me.cmbEstado = New DevExpress.XtraEditors.LookUpEdit()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cmdCliente = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdAgregarCliente = New DevExpress.XtraEditors.SimpleButton()
@@ -109,8 +109,8 @@ Partial Class frmSivEncargosEdit
         CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabFacturas.SuspendLayout()
         Me.TabPageGenerales.SuspendLayout()
+        CType(Me.cboEstado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbVendedor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCliente, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -181,6 +181,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbNombreProducto.Name = "cmbNombreProducto"
         Me.cmbNombreProducto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbNombreProducto.Properties.NullText = ""
+        Me.cmbNombreProducto.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
         Me.cmbNombreProducto.Size = New System.Drawing.Size(166, 20)
         Me.cmbNombreProducto.TabIndex = 125
         '
@@ -190,6 +191,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbMarca.Name = "cmbMarca"
         Me.cmbMarca.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbMarca.Properties.NullText = ""
+        Me.cmbMarca.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
         Me.cmbMarca.Size = New System.Drawing.Size(166, 20)
         Me.cmbMarca.TabIndex = 124
         '
@@ -199,6 +201,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbCategoria.Name = "cmbCategoria"
         Me.cmbCategoria.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbCategoria.Properties.NullText = ""
+        Me.cmbCategoria.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
         Me.cmbCategoria.Size = New System.Drawing.Size(166, 20)
         Me.cmbCategoria.TabIndex = 123
         '
@@ -526,8 +529,8 @@ Partial Class frmSivEncargosEdit
         '
         'TabPageGenerales
         '
+        Me.TabPageGenerales.Controls.Add(Me.cboEstado)
         Me.TabPageGenerales.Controls.Add(Me.cmbRuta)
-        Me.TabPageGenerales.Controls.Add(Me.cmbEstado)
         Me.TabPageGenerales.Controls.Add(Me.Label9)
         Me.TabPageGenerales.Controls.Add(Me.cmdCliente)
         Me.TabPageGenerales.Controls.Add(Me.cmdAgregarCliente)
@@ -548,6 +551,37 @@ Partial Class frmSivEncargosEdit
         Me.TabPageGenerales.TabIndex = 0
         Me.TabPageGenerales.Text = "Datos Generales"
         Me.TabPageGenerales.UseVisualStyleBackColor = True
+        '
+        'cboEstado
+        '
+        Me.cboEstado.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cboEstado.Caption = ""
+        Me.cboEstado.CaptionHeight = 17
+        Me.cboEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cboEstado.ColumnCaptionHeight = 17
+        Me.cboEstado.ColumnFooterHeight = 17
+        Me.cboEstado.ColumnHeaders = False
+        Me.cboEstado.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cboEstado.ContentHeight = 15
+        Me.cboEstado.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cboEstado.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cboEstado.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboEstado.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cboEstado.EditorHeight = 15
+        Me.cboEstado.Images.Add(CType(resources.GetObject("cboEstado.Images"), System.Drawing.Image))
+        Me.cboEstado.ItemHeight = 15
+        Me.cboEstado.Location = New System.Drawing.Point(592, 71)
+        Me.cboEstado.MatchEntryTimeout = CType(2000, Long)
+        Me.cboEstado.MaxDropDownItems = CType(5, Short)
+        Me.cboEstado.MaxLength = 32767
+        Me.cboEstado.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cboEstado.Name = "cboEstado"
+        Me.cboEstado.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cboEstado.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cboEstado.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cboEstado.Size = New System.Drawing.Size(172, 21)
+        Me.cboEstado.TabIndex = 126
+        Me.cboEstado.PropBag = resources.GetString("cboEstado.PropBag")
         '
         'cmbRuta
         '
@@ -584,15 +618,6 @@ Partial Class frmSivEncargosEdit
         Me.cmbRuta.TabIndex = 125
         Me.cmbRuta.Tag = "OBLIGATORIO"
         Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")
-        '
-        'cmbEstado
-        '
-        Me.cmbEstado.Location = New System.Drawing.Point(559, 74)
-        Me.cmbEstado.Name = "cmbEstado"
-        Me.cmbEstado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbEstado.Properties.NullText = ""
-        Me.cmbEstado.Size = New System.Drawing.Size(172, 20)
-        Me.cmbEstado.TabIndex = 124
         '
         'Label9
         '
@@ -671,7 +696,7 @@ Partial Class frmSivEncargosEdit
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFecha.Enabled = False
-        Me.dtpFecha.Location = New System.Drawing.Point(559, 13)
+        Me.dtpFecha.Location = New System.Drawing.Point(592, 13)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(121, 20)
         Me.dtpFecha.TabIndex = 14
@@ -696,7 +721,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbVendedor.EditorHeight = 15
         Me.cmbVendedor.Images.Add(CType(resources.GetObject("cmbVendedor.Images"), System.Drawing.Image))
         Me.cmbVendedor.ItemHeight = 15
-        Me.cmbVendedor.Location = New System.Drawing.Point(559, 40)
+        Me.cmbVendedor.Location = New System.Drawing.Point(592, 40)
         Me.cmbVendedor.MatchEntryTimeout = CType(2000, Long)
         Me.cmbVendedor.MaxDropDownItems = CType(5, Short)
         Me.cmbVendedor.MaxLength = 32767
@@ -765,9 +790,9 @@ Partial Class frmSivEncargosEdit
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(475, 16)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(46, 13)
+        Me.Label5.Size = New System.Drawing.Size(110, 13)
         Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Fecha:"
+        Me.Label5.Text = "Fecha de registro:"
         '
         'Label2
         '
@@ -878,6 +903,7 @@ Partial Class frmSivEncargosEdit
         Me.colSaldo.Caption = "Saldo"
         Me.colSaldo.FieldName = "Saldo"
         Me.colSaldo.Name = "colSaldo"
+        Me.colSaldo.OptionsColumn.AllowEdit = False
         Me.colSaldo.Visible = True
         Me.colSaldo.VisibleIndex = 2
         Me.colSaldo.Width = 102
@@ -960,8 +986,8 @@ Partial Class frmSivEncargosEdit
         Me.tabFacturas.ResumeLayout(False)
         Me.TabPageGenerales.ResumeLayout(False)
         Me.TabPageGenerales.PerformLayout()
+        CType(Me.cboEstado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbVendedor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCliente, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1020,7 +1046,6 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents colSaldo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents cmdAgregarCliente As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdCliente As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents cmbEstado As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents ErrorFactura As System.Windows.Forms.ErrorProvider
     Friend WithEvents cmbRuta As C1.Win.C1List.C1Combo
@@ -1039,4 +1064,5 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents chkNoExistente As System.Windows.Forms.CheckBox
     Friend WithEvents lblMarca As System.Windows.Forms.Label
     Friend WithEvents lblModeloCompatible As System.Windows.Forms.Label
+    Friend WithEvents cboEstado As C1.Win.C1List.C1Combo
 End Class

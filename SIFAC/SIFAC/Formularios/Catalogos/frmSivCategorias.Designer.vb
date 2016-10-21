@@ -139,6 +139,7 @@ Partial Class frmSivCategorias
         Me.grdCategoriasTabla.OptionsDetail.ShowDetailTabs = False
         Me.grdCategoriasTabla.OptionsDetail.SmartDetailExpand = False
         Me.grdCategoriasTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdCategoriasTabla.OptionsView.ShowAutoFilterRow = True
         Me.grdCategoriasTabla.OptionsView.ShowFooter = True
         Me.grdCategoriasTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '

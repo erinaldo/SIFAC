@@ -36,16 +36,16 @@ Partial Class frmPedidos
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
         Me.Contenedor = New C1.Win.C1Sizer.C1Sizer()
-        Me.grdEncargosDetalle = New DevExpress.XtraGrid.GridControl()
-        Me.grdEncargosDetalleTable = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.grdPedidosDetalle = New DevExpress.XtraGrid.GridControl()
+        Me.grdPedidosDetalleTable = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ColCategoria = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCantidad = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCostoPromedio = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTotalEncargoDetalle = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdEncargosMaster = New DevExpress.XtraGrid.GridControl()
-        Me.grdEncargosMasterTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.grdPedidosMaster = New DevExpress.XtraGrid.GridControl()
+        Me.grdPedidosMasterTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colRuta = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -57,10 +57,10 @@ Partial Class frmPedidos
         Me.tbProductos.SuspendLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contenedor.SuspendLayout()
-        CType(Me.grdEncargosDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdEncargosDetalleTable, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdEncargosMaster, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdEncargosMasterTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdPedidosDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdPedidosDetalleTable, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdPedidosMaster, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdPedidosMasterTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -80,7 +80,7 @@ Partial Class frmPedidos
         Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdAgregar.ToolTipText = "Nuevo Producto"
+        Me.cmdAgregar.ToolTipText = "Nuevo Pedido"
         '
         'cmdEditar
         '
@@ -89,7 +89,7 @@ Partial Class frmPedidos
         Me.cmdEditar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdEditar.ToolTipText = "Editar Producto"
+        Me.cmdEditar.ToolTipText = "Editar Pedido"
         '
         'cmdConsultar
         '
@@ -98,7 +98,7 @@ Partial Class frmPedidos
         Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdConsultar.ToolTipText = "Consultar Producto"
+        Me.cmdConsultar.ToolTipText = "Consultar Pedido"
         '
         'ToolStripSeparator1
         '
@@ -112,7 +112,7 @@ Partial Class frmPedidos
         Me.cmdDesactivar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdDesactivar.Name = "cmdDesactivar"
         Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdDesactivar.ToolTipText = "Inactivar Producto"
+        Me.cmdDesactivar.ToolTipText = "Inactivar Pedido"
         '
         'ToolStripSeparator2
         '
@@ -135,7 +135,7 @@ Partial Class frmPedidos
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
-        Me.cmdImprimir.ToolTipText = "Imprimir Datos de Productos"
+        Me.cmdImprimir.ToolTipText = "Imprimir Datos de Pedidos"
         '
         'cmbExportar
         '
@@ -163,8 +163,8 @@ Partial Class frmPedidos
         '
         'Contenedor
         '
-        Me.Contenedor.Controls.Add(Me.grdEncargosDetalle)
-        Me.Contenedor.Controls.Add(Me.grdEncargosMaster)
+        Me.Contenedor.Controls.Add(Me.grdPedidosDetalle)
+        Me.Contenedor.Controls.Add(Me.grdPedidosMaster)
         Me.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Contenedor.GridDefinition = "49.2831541218638:False:False;48.5663082437276:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.0751445086705:False" & _
     ":False;"
@@ -175,22 +175,22 @@ Partial Class frmPedidos
         Me.Contenedor.TabIndex = 11
         Me.Contenedor.TabStop = False
         '
-        'grdEncargosDetalle
+        'grdPedidosDetalle
         '
-        Me.grdEncargosDetalle.Location = New System.Drawing.Point(4, 283)
-        Me.grdEncargosDetalle.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.grdEncargosDetalle.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.grdEncargosDetalle.MainView = Me.grdEncargosDetalleTable
-        Me.grdEncargosDetalle.Name = "grdEncargosDetalle"
-        Me.grdEncargosDetalle.Size = New System.Drawing.Size(857, 271)
-        Me.grdEncargosDetalle.TabIndex = 3
-        Me.grdEncargosDetalle.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdEncargosDetalleTable})
+        Me.grdPedidosDetalle.Location = New System.Drawing.Point(4, 283)
+        Me.grdPedidosDetalle.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdPedidosDetalle.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdPedidosDetalle.MainView = Me.grdPedidosDetalleTable
+        Me.grdPedidosDetalle.Name = "grdPedidosDetalle"
+        Me.grdPedidosDetalle.Size = New System.Drawing.Size(857, 271)
+        Me.grdPedidosDetalle.TabIndex = 3
+        Me.grdPedidosDetalle.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdPedidosDetalleTable})
         '
-        'grdEncargosDetalleTable
+        'grdPedidosDetalleTable
         '
-        Me.grdEncargosDetalleTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCodigo, Me.ColCategoria, Me.colDescripcion, Me.colCantidad, Me.colCostoPromedio, Me.colTotalEncargoDetalle})
-        Me.grdEncargosDetalleTable.GridControl = Me.grdEncargosDetalle
-        Me.grdEncargosDetalleTable.Name = "grdEncargosDetalleTable"
+        Me.grdPedidosDetalleTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCodigo, Me.ColCategoria, Me.colDescripcion, Me.colCantidad, Me.colCostoPromedio, Me.colTotalEncargoDetalle})
+        Me.grdPedidosDetalleTable.GridControl = Me.grdPedidosDetalle
+        Me.grdPedidosDetalleTable.Name = "grdPedidosDetalleTable"
         '
         'colCodigo
         '
@@ -248,29 +248,30 @@ Partial Class frmPedidos
         Me.colTotalEncargoDetalle.Visible = True
         Me.colTotalEncargoDetalle.VisibleIndex = 5
         '
-        'grdEncargosMaster
+        'grdPedidosMaster
         '
-        Me.grdEncargosMaster.Location = New System.Drawing.Point(4, 4)
-        Me.grdEncargosMaster.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.grdEncargosMaster.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.grdEncargosMaster.MainView = Me.grdEncargosMasterTabla
-        Me.grdEncargosMaster.Name = "grdEncargosMaster"
-        Me.grdEncargosMaster.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
-        Me.grdEncargosMaster.Size = New System.Drawing.Size(857, 275)
-        Me.grdEncargosMaster.TabIndex = 2
-        Me.grdEncargosMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdEncargosMasterTabla})
+        Me.grdPedidosMaster.Location = New System.Drawing.Point(4, 4)
+        Me.grdPedidosMaster.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdPedidosMaster.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdPedidosMaster.MainView = Me.grdPedidosMasterTabla
+        Me.grdPedidosMaster.Name = "grdPedidosMaster"
+        Me.grdPedidosMaster.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
+        Me.grdPedidosMaster.Size = New System.Drawing.Size(857, 275)
+        Me.grdPedidosMaster.TabIndex = 2
+        Me.grdPedidosMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdPedidosMasterTabla})
         '
-        'grdEncargosMasterTabla
+        'grdPedidosMasterTabla
         '
-        Me.grdEncargosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colRuta, Me.colCliente, Me.colVendedor, Me.colActivo, Me.colTotalCosto})
-        Me.grdEncargosMasterTabla.GridControl = Me.grdEncargosMaster
-        Me.grdEncargosMasterTabla.Name = "grdEncargosMasterTabla"
-        Me.grdEncargosMasterTabla.OptionsDetail.AllowZoomDetail = False
-        Me.grdEncargosMasterTabla.OptionsDetail.EnableMasterViewMode = False
-        Me.grdEncargosMasterTabla.OptionsDetail.ShowDetailTabs = False
-        Me.grdEncargosMasterTabla.OptionsDetail.SmartDetailExpand = False
-        Me.grdEncargosMasterTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
-        Me.grdEncargosMasterTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
+        Me.grdPedidosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colRuta, Me.colCliente, Me.colVendedor, Me.colActivo, Me.colTotalCosto})
+        Me.grdPedidosMasterTabla.GridControl = Me.grdPedidosMaster
+        Me.grdPedidosMasterTabla.Name = "grdPedidosMasterTabla"
+        Me.grdPedidosMasterTabla.OptionsDetail.AllowZoomDetail = False
+        Me.grdPedidosMasterTabla.OptionsDetail.EnableMasterViewMode = False
+        Me.grdPedidosMasterTabla.OptionsDetail.ShowDetailTabs = False
+        Me.grdPedidosMasterTabla.OptionsDetail.SmartDetailExpand = False
+        Me.grdPedidosMasterTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdPedidosMasterTabla.OptionsView.ShowAutoFilterRow = True
+        Me.grdPedidosMasterTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         '
         'colNumero
         '
@@ -353,7 +354,7 @@ Partial Class frmPedidos
         Me.colTotalCosto.Visible = True
         Me.colTotalCosto.VisibleIndex = 6
         '
-        'frmSivOrdenCompra
+        'frmPedidos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -361,17 +362,17 @@ Partial Class frmPedidos
         Me.Controls.Add(Me.Contenedor)
         Me.Controls.Add(Me.tbProductos)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "frmSivOrdenCompra"
+        Me.Name = "frmPedidos"
         Me.Text = "Pedidos"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.tbProductos.ResumeLayout(False)
         Me.tbProductos.PerformLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Contenedor.ResumeLayout(False)
-        CType(Me.grdEncargosDetalle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdEncargosDetalleTable, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdEncargosMaster, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdEncargosMasterTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdPedidosDetalle, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdPedidosDetalleTable, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdPedidosMaster, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdPedidosMasterTabla, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -390,8 +391,8 @@ Partial Class frmPedidos
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdCerrar As System.Windows.Forms.ToolStripButton
     Friend WithEvents Contenedor As C1.Win.C1Sizer.C1Sizer
-    Friend WithEvents grdEncargosMaster As DevExpress.XtraGrid.GridControl
-    Friend WithEvents grdEncargosMasterTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents grdPedidosMaster As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdPedidosMasterTabla As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colFecha As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colRuta As DevExpress.XtraGrid.Columns.GridColumn
@@ -400,8 +401,8 @@ Partial Class frmPedidos
     Friend WithEvents colActivo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents colTotalCosto As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents grdEncargosDetalle As DevExpress.XtraGrid.GridControl
-    Friend WithEvents grdEncargosDetalleTable As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents grdPedidosDetalle As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdPedidosDetalleTable As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colCodigo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ColCategoria As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
