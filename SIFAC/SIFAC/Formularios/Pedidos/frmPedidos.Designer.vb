@@ -42,18 +42,15 @@ Partial Class frmPedidos
         Me.ColCategoria = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCantidad = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colCostoPromedio = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colTotalEncargoDetalle = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdPedidosMaster = New DevExpress.XtraGrid.GridControl()
         Me.grdPedidosMasterTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRuta = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colVendedor = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colActivo = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.colProveedor = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTotalCosto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.tbProductos.SuspendLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contenedor.SuspendLayout()
@@ -188,7 +185,7 @@ Partial Class frmPedidos
         '
         'grdPedidosDetalleTable
         '
-        Me.grdPedidosDetalleTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCodigo, Me.ColCategoria, Me.colDescripcion, Me.colCantidad, Me.colCostoPromedio, Me.colTotalEncargoDetalle})
+        Me.grdPedidosDetalleTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCodigo, Me.ColCategoria, Me.colDescripcion, Me.colCantidad, Me.colTotal})
         Me.grdPedidosDetalleTable.GridControl = Me.grdPedidosDetalle
         Me.grdPedidosDetalleTable.Name = "grdPedidosDetalleTable"
         '
@@ -222,31 +219,23 @@ Partial Class frmPedidos
         '
         'colCantidad
         '
-        Me.colCantidad.Caption = "Cantidad"
-        Me.colCantidad.FieldName = "Cantidad"
+        Me.colCantidad.Caption = "Cantidad Pedida"
+        Me.colCantidad.FieldName = "CantidadOrdenada"
         Me.colCantidad.Name = "colCantidad"
         Me.colCantidad.OptionsColumn.AllowFocus = False
         Me.colCantidad.OptionsColumn.ReadOnly = True
         Me.colCantidad.Visible = True
         Me.colCantidad.VisibleIndex = 3
         '
-        'colCostoPromedio
+        'colTotal
         '
-        Me.colCostoPromedio.Caption = "Costo Promedio"
-        Me.colCostoPromedio.FieldName = "CostoPromedio"
-        Me.colCostoPromedio.Name = "colCostoPromedio"
-        Me.colCostoPromedio.Visible = True
-        Me.colCostoPromedio.VisibleIndex = 4
-        '
-        'colTotalEncargoDetalle
-        '
-        Me.colTotalEncargoDetalle.Caption = "Total Costo"
-        Me.colTotalEncargoDetalle.FieldName = "Total"
-        Me.colTotalEncargoDetalle.Name = "colTotalEncargoDetalle"
-        Me.colTotalEncargoDetalle.OptionsColumn.AllowFocus = False
-        Me.colTotalEncargoDetalle.OptionsColumn.ReadOnly = True
-        Me.colTotalEncargoDetalle.Visible = True
-        Me.colTotalEncargoDetalle.VisibleIndex = 5
+        Me.colTotal.Caption = "Total Costo"
+        Me.colTotal.FieldName = "TotalCosto"
+        Me.colTotal.Name = "colTotal"
+        Me.colTotal.OptionsColumn.AllowFocus = False
+        Me.colTotal.OptionsColumn.ReadOnly = True
+        Me.colTotal.Visible = True
+        Me.colTotal.VisibleIndex = 4
         '
         'grdPedidosMaster
         '
@@ -262,7 +251,7 @@ Partial Class frmPedidos
         '
         'grdPedidosMasterTabla
         '
-        Me.grdPedidosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colRuta, Me.colCliente, Me.colVendedor, Me.colActivo, Me.colTotalCosto})
+        Me.grdPedidosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colProveedor, Me.colEstado, Me.colTotalCosto})
         Me.grdPedidosMasterTabla.GridControl = Me.grdPedidosMaster
         Me.grdPedidosMasterTabla.Name = "grdPedidosMasterTabla"
         Me.grdPedidosMasterTabla.OptionsDetail.AllowZoomDetail = False
@@ -295,56 +284,27 @@ Partial Class frmPedidos
         Me.colFecha.VisibleIndex = 1
         Me.colFecha.Width = 78
         '
-        'colRuta
+        'colProveedor
         '
-        Me.colRuta.Caption = "Ruta"
-        Me.colRuta.FieldName = "Ruta"
-        Me.colRuta.Name = "colRuta"
-        Me.colRuta.OptionsColumn.AllowFocus = False
-        Me.colRuta.OptionsColumn.ReadOnly = True
-        Me.colRuta.Visible = True
-        Me.colRuta.VisibleIndex = 4
-        Me.colRuta.Width = 86
+        Me.colProveedor.Caption = "Proveedor"
+        Me.colProveedor.FieldName = "Proveedor"
+        Me.colProveedor.Name = "colProveedor"
+        Me.colProveedor.OptionsColumn.AllowFocus = False
+        Me.colProveedor.OptionsColumn.ReadOnly = True
+        Me.colProveedor.Visible = True
+        Me.colProveedor.VisibleIndex = 2
+        Me.colProveedor.Width = 109
         '
-        'colCliente
+        'colEstado
         '
-        Me.colCliente.Caption = "Cliente"
-        Me.colCliente.FieldName = "Cliente"
-        Me.colCliente.Name = "colCliente"
-        Me.colCliente.OptionsColumn.AllowFocus = False
-        Me.colCliente.OptionsColumn.ReadOnly = True
-        Me.colCliente.Visible = True
-        Me.colCliente.VisibleIndex = 2
-        Me.colCliente.Width = 218
-        '
-        'colVendedor
-        '
-        Me.colVendedor.Caption = "Vendedor"
-        Me.colVendedor.FieldName = "Vendedor"
-        Me.colVendedor.Name = "colVendedor"
-        Me.colVendedor.OptionsColumn.AllowFocus = False
-        Me.colVendedor.OptionsColumn.ReadOnly = True
-        Me.colVendedor.Visible = True
-        Me.colVendedor.VisibleIndex = 3
-        Me.colVendedor.Width = 109
-        '
-        'colActivo
-        '
-        Me.colActivo.Caption = "Activo"
-        Me.colActivo.ColumnEdit = Me.RepositoryItemCheckEdit1
-        Me.colActivo.FieldName = "Activo"
-        Me.colActivo.Name = "colActivo"
-        Me.colActivo.OptionsColumn.AllowFocus = False
-        Me.colActivo.OptionsColumn.ReadOnly = True
-        Me.colActivo.Visible = True
-        Me.colActivo.VisibleIndex = 5
-        Me.colActivo.Width = 86
-        '
-        'RepositoryItemCheckEdit1
-        '
-        Me.RepositoryItemCheckEdit1.AutoHeight = False
-        Me.RepositoryItemCheckEdit1.Caption = "Check"
-        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
+        Me.colEstado.Caption = "Estado"
+        Me.colEstado.FieldName = "Estado"
+        Me.colEstado.Name = "colEstado"
+        Me.colEstado.OptionsColumn.AllowFocus = False
+        Me.colEstado.OptionsColumn.ReadOnly = True
+        Me.colEstado.Visible = True
+        Me.colEstado.VisibleIndex = 3
+        Me.colEstado.Width = 86
         '
         'colTotalCosto
         '
@@ -352,7 +312,13 @@ Partial Class frmPedidos
         Me.colTotalCosto.FieldName = "TotalCosto"
         Me.colTotalCosto.Name = "colTotalCosto"
         Me.colTotalCosto.Visible = True
-        Me.colTotalCosto.VisibleIndex = 6
+        Me.colTotalCosto.VisibleIndex = 4
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmPedidos
         '
@@ -395,10 +361,8 @@ Partial Class frmPedidos
     Friend WithEvents grdPedidosMasterTabla As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colFecha As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colRuta As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colCliente As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colVendedor As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colActivo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colProveedor As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents colTotalCosto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents grdPedidosDetalle As DevExpress.XtraGrid.GridControl
@@ -407,6 +371,5 @@ Partial Class frmPedidos
     Friend WithEvents ColCategoria As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCantidad As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colCostoPromedio As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colTotalEncargoDetalle As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colTotal As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -19,11 +19,10 @@ Partial Class FrmConfig
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmConfig))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.grdClaves = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.ilstImagenes = New System.Windows.Forms.ImageList(Me.components)
+        Me.ilstImagenes = New System.Windows.Forms.ImageList()
         Me.lblDireccion = New System.Windows.Forms.Label()
         Me.txtRuta = New System.Windows.Forms.TextBox()
         Me.ofdExaminador = New System.Windows.Forms.OpenFileDialog()
@@ -54,6 +53,7 @@ Partial Class FrmConfig
         Me.grdClaves.AllowAddNew = True
         Me.grdClaves.AllowDelete = True
         Me.grdClaves.AlternatingRows = True
+        Me.grdClaves.CollapseColor = System.Drawing.Color.Transparent
         Me.grdClaves.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdClaves.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdClaves.Images.Add(CType(resources.GetObject("grdClaves.Images"), System.Drawing.Image))
@@ -68,6 +68,7 @@ Partial Class FrmConfig
         Me.grdClaves.TabAction = C1.Win.C1TrueDBGrid.TabActionEnum.ColumnNavigation
         Me.grdClaves.TabIndex = 2
         Me.grdClaves.Text = "C1TrueDBGrid1"
+        Me.grdClaves.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
         Me.grdClaves.PropBag = resources.GetString("grdClaves.PropBag")
         '
         'ilstImagenes

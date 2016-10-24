@@ -207,7 +207,7 @@ Public Class frmPedidosEdit
                 objPedidoDetalle.objProductoID = row("SivProductoID")
                 objPedidoDetalle.CantidadOrdenada = row("Cantidad")
                 objPedidoDetalle.CostoUnitario = row("CostoUnitario")
-                objPedidoDetalle.CostoSubtotal = row("CostoSubtotal")
+                objPedidoDetalle.CostoSubtotal = row("Cantidad") * row("CostoUnitario")
                 objPedidoDetalle.CostoImpuesto = row("CostoImpuesto")
                 objPedidoDetalle.CostoTotal = row("CostoTotal")
                 objPedidoDetalle.UsuarioCreacion = clsProyecto.Conexion.Usuario
@@ -422,16 +422,23 @@ Public Class frmPedidosEdit
     Private Sub CargarDatosEncargo()
         Dim objPedidoMaster As SivPedidos
         Dim objPedidoDetalle As SivPedidosDetalle
+        Dim objProveedor As SivProveedor
         Try
             objPedidoMaster = New SivPedidos
             objPedidoDetalle = New SivPedidosDetalle
+            objProveedor = New SivProveedor
+
 
             objPedidoMaster.Retrieve(PedidoID)
             intProveedorID = objPedidoMaster.objProveedorID
+            objProveedor.Retrieve(intProveedorID)
+            intPersonaID = objProveedor.objPersonaID
             dtaFechaaPedir.Value = objPedidoMaster.FechaPedido
             dtaFechaAutorizado.Value = objPedidoMaster.FechaAutorizacion
             cmbEstado.EditValue = objPedidoMaster.objEstadoID
             txtObservaciones.Text = objPedidoMaster.Observaciones
+
+            CargarDatosProveedor()
 
             ''Cargar Detalle del pedido
             CargarDetallePedidos("objPedidoID=" & PedidoID)

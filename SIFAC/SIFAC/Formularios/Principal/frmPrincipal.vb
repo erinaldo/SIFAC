@@ -52,16 +52,9 @@ Public Class frmPrincipal
             Dim info As ConnectionInfo = SqlHelper.GetConnectionInfo()
             Me.clsAppConfig = New clsAppconfiguration
             Me.BkColor = New System.Drawing.Color
-
-            clsProyecto.TemaDefinido = Me.clsAppConfig.Getkey("TemaDefinido")
-            If clsProyecto.TemaDefinido.Trim.Length = 0 Then
-                clsProyecto.TemaDefinido = "Office2007Silver"
-            End If
+            
             clsProyecto.SiglasSistema = Me.clsAppConfig.Getkey("NombreSistema")
-            clsProyecto.Sucursal = Me.clsAppConfig.Getkey("Sucursal")
-            clsProyecto.ImpresoraBarCode = Me.clsAppConfig.Getkey("ImpresoraBarcode")
-            clsProyecto.ImpresoraFacturas = Me.clsAppConfig.Getkey("ImpresoraFacturas")
-
+           
             clsProyecto.RESOURCE_PATH = Application.StartupPath
             clsProyecto.Conexion.BaseDeDatos = info.DatabaseName
             clsProyecto.Conexion.Servidor = info.ServerName
