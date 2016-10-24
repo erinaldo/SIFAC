@@ -66,7 +66,7 @@ Public Class frmPedidos
             cmdConsultar.Enabled = boolConsultar And dtPedidos.Rows.Count > 0
             cmdImprimir.Enabled = boolImprimir And dtPedidos.Rows.Count > 0
             cmdDesactivar.Enabled = boolDesactivar And dtPedidos.Rows.Count > 0
-            cmbExportar.Enabled = boolImprimir And dtPedidos.Rows.Count > 0
+
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -97,6 +97,7 @@ Public Class frmPedidos
             editPedidos.TypeGui = 0
             If editPedidos.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarPedidos("1=1")
+                Me.AplicarSeguridad()
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -157,6 +158,7 @@ Public Class frmPedidos
                     Pedidos.Activo = False
                     Pedidos.Update()
                     CargarPedidos("1=1")
+                    Me.AplicarSeguridad()
                 Case MsgBoxResult.No
                     Exit Sub
             End Select

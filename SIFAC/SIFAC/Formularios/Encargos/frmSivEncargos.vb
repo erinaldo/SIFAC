@@ -3,6 +3,7 @@ Imports SIFAC.BO.clsConsultas
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
 Imports SIFAC.BO
+Imports Proyecto.Catalogos.Datos
 
 Public Class frmSivEncargos
 
@@ -66,7 +67,6 @@ Public Class frmSivEncargos
             cmdAgregar.Enabled = boolAgregar
             cmdEditar.Enabled = boolEditar And dtEncargos.Rows.Count > 0
             cmdConsultar.Enabled = boolConsultar And dtEncargos.Rows.Count > 0
-            cmdImprimir.Enabled = boolImprimir And dtEncargos.Rows.Count > 0
             cmdDesactivar.Enabled = boolDesactivar And dtEncargos.Rows.Count > 0
             cmbExportar.Enabled = boolImprimir And dtEncargos.Rows.Count > 0
         Catch ex As Exception
@@ -230,9 +230,72 @@ Public Class frmSivEncargos
     End Sub
 
     Private Sub cmbExportar_Click(sender As Object, e As EventArgs) Handles cmbExportar.Click
-
         ExportarExcel()
     End Sub
+
+    Private Sub btnAutorizar_Click(sender As Object, e As EventArgs) Handles btnAutorizar.Click
+        Dim IDEncargo As Integer
+        Dim Encargos As New SivEncargos
+        Dim Catalogos As New StbCatalogo
+        Dim ValorCatalogo As New StbValorCatalogo
+        Dim FilaActual As Integer
+        Try
+            FilaActual = Me.grdEncargosMasterTabla.FocusedRowHandle
+            Select Case MsgBox("¿Está seguro de aprobar el encargo?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
+                Case MsgBoxResult.Yes
+                    IDEncargo = Me.dtEncargos.DefaultView.Item(FilaActual)("SivEncargoID")
+                    Encargos.Retrieve(IDEncargo)
+                    Catalogos.RetrieveByFilter("Nombre='ESTADOENCARGO'")
+                    ValorCatalogo.RetrieveByFilter("objCatalogoID=" & Catalogos.StbCatalogoID & " AND Codigo='03'")
+                    Encargos.ObjEstadoID = ValorCatalogo.StbValorCatalogoID
+                    Encargos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    Encargos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    Encargos.Update()
+                    CargarEncargos("1=1")
+                    MsgBox("Encargo aprobado correctamente.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+                Case MsgBoxResult.No
+                    Exit Sub
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Encargos = Nothing
+            Catalogos = Nothing
+            ValorCatalogo = Nothing
+            Me.Cursor = [Default]
+        End Try
+    End Sub
+
+    Private Sub btnPedido_Click(sender As Object, e As EventArgs) Handles btnPedido.Click
+        Dim strEstado As String
+        Dim Encargos As New SivEncargos
+        Dim FilaActual As Integer
+        Dim editPedidos As frmPedidosEdit
+        Try
+            FilaActual = Me.grdEncargosMasterTabla.FocusedRowHandle
+            strEstado = Me.dtEncargos.DefaultView.Item(FilaActual)("Estado").ToString
+
+            If strEstado = "APROBADO" Then
+                editPedidos = New frmPedidosEdit
+                editPedidos.TypeGui = 3
+                editPedidos.EncargoID = Me.dtEncargos.DefaultView.Item(FilaActual)("SivEncargoID")
+                If editPedidos.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    CargarEncargos("1=1")
+                End If
+            Else
+                MsgBox("El encargo debe estar aprobado para generar pedido?", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
+    End Sub
+
+
 #End Region
+
+
 
 End Class

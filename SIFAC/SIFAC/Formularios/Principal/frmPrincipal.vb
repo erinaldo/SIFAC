@@ -280,7 +280,7 @@ Public Class frmPrincipal
             Me.NavBarRecepcion.Enabled = False
             Me.NavBarSalidas.Enabled = False
             Me.NavBarEntrada.Enabled = False
-
+            Me.NavBarProveedor.Enabled = False
 
             'Facturación
             Me.navBarFacturacion.Enabled = False
@@ -291,7 +291,9 @@ Public Class frmPrincipal
             Me.NavBarFacturasXCuenta.Enabled = False
             Me.NavBarReciboCaja.Enabled = False
             Me.NavBarDevoluciones.Enabled = False
-
+            Me.NavBarEncargos.Enabled = False
+            Me.NavBarRutas.Enabled = False
+            Me.NavBarOrdenCompra.Enabled = False
 
             ''Sincronizar
             Me.NavBarSincroVentas.Enabled = False
@@ -1067,24 +1069,6 @@ Public Class frmPrincipal
 
 #Region "Eventos"
 
-
-#End Region
-
-#Region "Liberar Memoria"
-    Private Declare Auto Function SetProcessWorkingSetSize Lib "kernel32.dll" (ByVal procHandle As IntPtr, ByVal min As Int32, ByVal max As Int32) As Boolean
-
-    Public Sub ClearMemory()
-        Try
-            Dim Mem As Process
-            Mem = Process.GetCurrentProcess()
-            SetProcessWorkingSetSize(Mem.Handle, -1, -1)
-        Catch ex As Exception
-            'Control de errores
-        End Try
-    End Sub
-#End Region
-
-
     Private Sub NavBarEncargos_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarEncargos.LinkClicked
         CargarEncargos()
     End Sub
@@ -1112,4 +1096,22 @@ Public Class frmPrincipal
     Private Sub NavBarSincroDevoluciones_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarSincroDevoluciones.LinkClicked
         CargarSincronizarDevoluciones()
     End Sub
+
+#End Region
+
+#Region "Liberar Memoria"
+    Private Declare Auto Function SetProcessWorkingSetSize Lib "kernel32.dll" (ByVal procHandle As IntPtr, ByVal min As Int32, ByVal max As Int32) As Boolean
+
+    Public Sub ClearMemory()
+        Try
+            Dim Mem As Process
+            Mem = Process.GetCurrentProcess()
+            SetProcessWorkingSetSize(Mem.Handle, -1, -1)
+        Catch ex As Exception
+            'Control de errores
+        End Try
+    End Sub
+#End Region
+
+
 End Class

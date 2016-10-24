@@ -30,7 +30,6 @@ Partial Class frmSivEncargos
         Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
-        Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
         Me.tbProductos = New System.Windows.Forms.ToolStrip()
@@ -45,8 +44,8 @@ Partial Class frmSivEncargos
         Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colVendedor = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.colTotalCosto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.grdEncargosDetalle = New DevExpress.XtraGrid.GridControl()
         Me.grdEncargosDetalleTable = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -65,6 +64,8 @@ Partial Class frmSivEncargos
         Me.CostoPromedio = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.TotalCosto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
+        Me.btnPedido = New System.Windows.Forms.ToolStripButton()
+        Me.btnAutorizar = New System.Windows.Forms.ToolStripButton()
         Me.tbProductos.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
@@ -134,15 +135,6 @@ Partial Class frmSivEncargos
         Me.cmdRefrescar.Size = New System.Drawing.Size(36, 36)
         Me.cmdRefrescar.ToolTipText = "Refrescar Datos"
         '
-        'cmdImprimir
-        '
-        Me.cmdImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdImprimir.Image = CType(resources.GetObject("cmdImprimir.Image"), System.Drawing.Image)
-        Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdImprimir.Name = "cmdImprimir"
-        Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
-        Me.cmdImprimir.ToolTipText = "Imprimir Datos de Encargos"
-        '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
@@ -160,7 +152,7 @@ Partial Class frmSivEncargos
         'tbProductos
         '
         Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdImprimir, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
+        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.btnAutorizar, Me.btnPedido, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
         Me.tbProductos.Size = New System.Drawing.Size(958, 39)
@@ -292,12 +284,6 @@ Partial Class frmSivEncargos
         Me.colEstado.VisibleIndex = 5
         Me.colEstado.Width = 86
         '
-        'RepositoryItemCheckEdit1
-        '
-        Me.RepositoryItemCheckEdit1.AutoHeight = False
-        Me.RepositoryItemCheckEdit1.Caption = "Check"
-        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
-        '
         'colTotalCosto
         '
         Me.colTotalCosto.Caption = "Total Costo"
@@ -305,6 +291,12 @@ Partial Class frmSivEncargos
         Me.colTotalCosto.Name = "colTotalCosto"
         Me.colTotalCosto.Visible = True
         Me.colTotalCosto.VisibleIndex = 6
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'grdEncargosDetalle
         '
@@ -463,6 +455,24 @@ Partial Class frmSivEncargos
         '
         Me.sfdRuta.Filter = "Archivos Excel | *.xls"
         '
+        'btnPedido
+        '
+        Me.btnPedido.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnPedido.Image = CType(resources.GetObject("btnPedido.Image"), System.Drawing.Image)
+        Me.btnPedido.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnPedido.Name = "btnPedido"
+        Me.btnPedido.Size = New System.Drawing.Size(36, 36)
+        Me.btnPedido.Text = "Generar Pedido"
+        '
+        'btnAutorizar
+        '
+        Me.btnAutorizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnAutorizar.Image = CType(resources.GetObject("btnAutorizar.Image"), System.Drawing.Image)
+        Me.btnAutorizar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnAutorizar.Name = "btnAutorizar"
+        Me.btnAutorizar.Size = New System.Drawing.Size(36, 36)
+        Me.btnAutorizar.Text = "Autorizar"
+        '
         'frmSivEncargos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -498,7 +508,6 @@ Partial Class frmSivEncargos
     Friend WithEvents cmdDesactivar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdRefrescar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdCerrar As System.Windows.Forms.ToolStripButton
     Friend WithEvents tbProductos As System.Windows.Forms.ToolStrip
@@ -533,4 +542,6 @@ Partial Class frmSivEncargos
     Friend WithEvents CostoPromedio As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents TotalCosto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents sfdRuta As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents btnPedido As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnAutorizar As System.Windows.Forms.ToolStripButton
 End Class

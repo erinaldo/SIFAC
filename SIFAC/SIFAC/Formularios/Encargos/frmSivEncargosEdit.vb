@@ -40,19 +40,20 @@ Public Class frmSivEncargosEdit
 
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntradaDetalle() As Boolean
-        If cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.EditValue = "0" Then
-            ErrorFactura.SetError(cmbCategoria, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
 
-        If cmbMarca.Text.Trim.Length = 0 Or cmbMarca.EditValue = "0" Then
-            ErrorFactura.SetError(cmbMarca, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
+        'If cmbMarca.Text.Trim.Length = 0 Or cmbMarca.EditValue = "0" Then
+        '    ErrorFactura.SetError(cmbMarca, My.Resources.MsgObligatorio)
+        '    Return False
+        '    Exit Function
+        'End If
 
         If (chkNoExistente.Checked) Then
+            If cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.EditValue = "0" Then
+                ErrorFactura.SetError(cmbCategoria, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
+
             If txtNombreProducto.Text.Trim.Length = 0 Then
                 ErrorFactura.SetError(txtNombreProducto, My.Resources.MsgObligatorio)
                 Return False
@@ -347,8 +348,24 @@ Public Class frmSivEncargosEdit
 #Region "Cargar Productos"
 
     Public Sub CargarProductos(CategoriaID As Integer, MarcaID As Integer)
+        Dim strfiltro As String
         Try
-            DtNombreProducto = SivProductos.RetrieveDT("Activo=1 AND objCategoriaID=" & CategoriaID.ToString() & " AND objMarcaID=" & MarcaID.ToString(), " Nombre", " SivProductoID, (Codigo  + '-' +  Nombre) AS Nombre")
+            If (cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.EditValue = "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.EditValue <> "0") Then
+                strfiltro = "Activo=1  AND objMarcaID=" & MarcaID.ToString()
+            Else
+                If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.EditValue <> "0") And (cmbMarca.Text.Trim.Length = 0 Or cmbMarca.EditValue = "0") Then
+                    strfiltro = "Activo=1  AND objCategoriaID=" & CategoriaID.ToString()
+                Else
+                    If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.EditValue <> "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.EditValue <> "0") Then
+                        strfiltro = "Activo=1 AND objCategoriaID=" & CategoriaID.ToString() & " AND objMarcaID=" & MarcaID.ToString()
+                    Else
+                        strfiltro = "1=1"
+                    End If
+                End If
+            End If
+
+            DtNombreProducto = SivProductos.RetrieveDT(strfiltro, " Nombre", " SivProductoID, (Codigo  + '-' +  Nombre) AS Nombre")
+
             Dim newProductosRow As DataRow
             newProductosRow = DtNombreProducto.NewRow()
             newProductosRow("SivProductoID") = "0"
@@ -622,7 +639,7 @@ Public Class frmSivEncargosEdit
         dtDetalleEncargo = New DataTable
         Try
             dtDetalleEncargo = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, Cantidad, Observaciones, CostoPromedio, objSivEncargoID,SivProductoID,objCategoriaID", "vwSivDetalleProductosEncargos", strFiltro))
-            Me.grdDetallePedidos.DataSource = dtDetalleEncargo
+            Me.grdDetalleEncargos.DataSource = dtDetalleEncargo
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -670,22 +687,17 @@ Public Class frmSivEncargosEdit
         ConfigurarGUI()
     End Sub
 
-    Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs)
+    Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs) Handles cmbCategoria.EditValueChanged
         Try
-            If cmbCategoria.Text <> "" And cmbMarca.Text <> "" Then
-                CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
-            End If
-
+            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
 
-    Private Sub cmbMarca_EditValueChanged(sender As Object, e As EventArgs)
+    Private Sub cmbMarca_EditValueChanged(sender As Object, e As EventArgs) Handles cmbMarca.EditValueChanged
         Try
-            If cmbCategoria.Text <> "" And cmbMarca.Text <> "" Then
-                CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
-            End If
+            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -808,6 +820,9 @@ Public Class frmSivEncargosEdit
         End Try
     End Sub
 
+    Private Sub cmbNombreProducto_Enter(sender As Object, e As EventArgs) Handles cmbNombreProducto.Enter
+        CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
+    End Sub
 
 #End Region
 
@@ -819,4 +834,5 @@ Public Class frmSivEncargosEdit
   
    
     
+   
 End Class

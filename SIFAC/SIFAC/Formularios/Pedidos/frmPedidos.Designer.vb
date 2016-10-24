@@ -32,7 +32,6 @@ Partial Class frmPedidos
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
-        Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
         Me.Contenedor = New C1.Win.C1Sizer.C1Sizer()
@@ -64,7 +63,7 @@ Partial Class frmPedidos
         'tbProductos
         '
         Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdImprimir, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
+        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdImprimir, Me.ToolStripSeparator3, Me.cmdCerrar})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
         Me.tbProductos.Size = New System.Drawing.Size(865, 39)
@@ -134,16 +133,6 @@ Partial Class frmPedidos
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
         Me.cmdImprimir.ToolTipText = "Imprimir Datos de Pedidos"
         '
-        'cmbExportar
-        '
-        Me.cmbExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmbExportar.Image = CType(resources.GetObject("cmbExportar.Image"), System.Drawing.Image)
-        Me.cmbExportar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmbExportar.Name = "cmbExportar"
-        Me.cmbExportar.Size = New System.Drawing.Size(36, 36)
-        Me.cmbExportar.Text = "ToolStripButton1"
-        Me.cmbExportar.ToolTipText = "Exportar a excel"
-        '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
@@ -194,6 +183,7 @@ Partial Class frmPedidos
         Me.colCodigo.Caption = "Código"
         Me.colCodigo.FieldName = "Numero"
         Me.colCodigo.Name = "colCodigo"
+        Me.colCodigo.OptionsColumn.AllowEdit = False
         Me.colCodigo.OptionsColumn.AllowFocus = False
         Me.colCodigo.OptionsColumn.ReadOnly = True
         Me.colCodigo.Visible = True
@@ -204,6 +194,7 @@ Partial Class frmPedidos
         Me.ColCategoria.Caption = "Categoria"
         Me.ColCategoria.FieldName = "Categoria"
         Me.ColCategoria.Name = "ColCategoria"
+        Me.ColCategoria.OptionsColumn.AllowFocus = False
         Me.ColCategoria.Visible = True
         Me.ColCategoria.VisibleIndex = 1
         '
@@ -212,6 +203,7 @@ Partial Class frmPedidos
         Me.colDescripcion.Caption = "Producto"
         Me.colDescripcion.FieldName = "NombreProducto"
         Me.colDescripcion.Name = "colDescripcion"
+        Me.colDescripcion.OptionsColumn.AllowEdit = False
         Me.colDescripcion.OptionsColumn.AllowFocus = False
         Me.colDescripcion.OptionsColumn.ReadOnly = True
         Me.colDescripcion.Visible = True
@@ -222,6 +214,7 @@ Partial Class frmPedidos
         Me.colCantidad.Caption = "Cantidad Pedida"
         Me.colCantidad.FieldName = "CantidadOrdenada"
         Me.colCantidad.Name = "colCantidad"
+        Me.colCantidad.OptionsColumn.AllowEdit = False
         Me.colCantidad.OptionsColumn.AllowFocus = False
         Me.colCantidad.OptionsColumn.ReadOnly = True
         Me.colCantidad.Visible = True
@@ -232,6 +225,7 @@ Partial Class frmPedidos
         Me.colTotal.Caption = "Total Costo"
         Me.colTotal.FieldName = "TotalCosto"
         Me.colTotal.Name = "colTotal"
+        Me.colTotal.OptionsColumn.AllowEdit = False
         Me.colTotal.OptionsColumn.AllowFocus = False
         Me.colTotal.OptionsColumn.ReadOnly = True
         Me.colTotal.Visible = True
@@ -353,7 +347,6 @@ Partial Class frmPedidos
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdRefrescar As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cmbExportar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdCerrar As System.Windows.Forms.ToolStripButton
     Friend WithEvents Contenedor As C1.Win.C1Sizer.C1Sizer

@@ -310,6 +310,7 @@ Partial Class frmPedidosEdit
         Me.colProductoID.Caption = "ProductoID"
         Me.colProductoID.FieldName = "SivProductoID"
         Me.colProductoID.Name = "colProductoID"
+        Me.colProductoID.OptionsColumn.AllowEdit = False
         Me.colProductoID.Width = 76
         '
         'colCodigo
@@ -375,6 +376,7 @@ Partial Class frmPedidosEdit
         Me.colImpuesto.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colImpuesto.Caption = "Impuesto"
         Me.colImpuesto.Name = "colImpuesto"
+        Me.colImpuesto.OptionsColumn.AllowEdit = False
         Me.colImpuesto.Visible = True
         Me.colImpuesto.VisibleIndex = 4
         '
@@ -401,6 +403,7 @@ Partial Class frmPedidosEdit
         Me.colCostoUnitario.Caption = "Costo Unitario"
         Me.colCostoUnitario.FieldName = "CostoUnitario"
         Me.colCostoUnitario.Name = "colCostoUnitario"
+        Me.colCostoUnitario.OptionsColumn.AllowEdit = False
         Me.colCostoUnitario.Visible = True
         Me.colCostoUnitario.VisibleIndex = 3
         '

@@ -10,7 +10,7 @@ Public Class frmPedidosEdit
 
 #Region "Declaracion de Variables"
     Public intTypeGui As Integer
-    Public intPedidoID, intProveedorID, intPersonaID As Integer
+    Public intPedidoID, intProveedorID, intPersonaID, intEncargoID As Integer
     Public boolEditado, boolRegistrad, boolExisteErroresGrid As Boolean
     Public DtMarca, DtCategoria, DtNombreProducto, dtProveedor, dtDetallePedido, dtEstados As DataTable
 #End Region
@@ -31,6 +31,15 @@ Public Class frmPedidosEdit
         End Get
         Set(ByVal value As Integer)
             intPedidoID = value
+        End Set
+    End Property
+
+    Property EncargoID() As Integer
+        Get
+            Return intEncargoID
+        End Get
+        Set(ByVal value As Integer)
+            intEncargoID = value
         End Set
     End Property
 
@@ -147,8 +156,12 @@ Public Class frmPedidosEdit
             objPedidoMaster.Activo = True
             objPedidoMaster.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objPedidoMaster.FechaCreacion = clsProyecto.Conexion.FechaServidor
-            objPedidoMaster.Insert(T)
 
+            If TypeGui = 3 Then
+                objPedidoMaster.objEncargoID = EncargoID
+            End If
+          
+            objPedidoMaster.Insert(T)
            
             ''Guadar Detalle de Pedidos
             For Each row As DataRow In dtDetallePedido.Rows
@@ -329,8 +342,24 @@ Public Class frmPedidosEdit
 #Region "Cargar Productos"
 
     Public Sub CargarProductos(CategoriaID As Integer, MarcaID As Integer)
+        Dim strfiltro As String
         Try
-            DtNombreProducto = SivProductos.RetrieveDT("Activo=1 AND objCategoriaID=" & CategoriaID.ToString() & " AND objMarcaID=" & MarcaID.ToString(), " Nombre", " SivProductoID, (Codigo  + '-' +  Nombre) AS Nombre")
+            If (cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.EditValue = "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.EditValue <> "0") Then
+                strfiltro = "Activo=1  AND objMarcaID=" & MarcaID.ToString()
+            Else
+                If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.EditValue <> "0") And (cmbMarca.Text.Trim.Length = 0 Or cmbMarca.EditValue = "0") Then
+                    strfiltro = "Activo=1  AND objCategoriaID=" & CategoriaID.ToString()
+                Else
+                    If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.EditValue <> "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.EditValue <> "0") Then
+                        strfiltro = "Activo=1 AND objCategoriaID=" & CategoriaID.ToString() & " AND objMarcaID=" & MarcaID.ToString()
+                    Else
+                        strfiltro = "1=1"
+                    End If
+                End If
+            End If
+
+            DtNombreProducto = SivProductos.RetrieveDT(strfiltro, " Nombre", " SivProductoID, (Codigo  + '-' +  Nombre) AS Nombre")
+
             Dim newProductosRow As DataRow
             newProductosRow = DtNombreProducto.NewRow()
             newProductosRow("SivProductoID") = "0"
@@ -419,7 +448,7 @@ Public Class frmPedidosEdit
 
 #Region "Cargar Datos Pedido"
 
-    Private Sub CargarDatosEncargo()
+    Private Sub CargarDatosPedido()
         Dim objPedidoMaster As SivPedidos
         Dim objPedidoDetalle As SivPedidosDetalle
         Dim objProveedor As SivProveedor
@@ -427,7 +456,6 @@ Public Class frmPedidosEdit
             objPedidoMaster = New SivPedidos
             objPedidoDetalle = New SivPedidosDetalle
             objProveedor = New SivProveedor
-
 
             objPedidoMaster.Retrieve(PedidoID)
             intProveedorID = objPedidoMaster.objProveedorID
@@ -447,6 +475,18 @@ Public Class frmPedidosEdit
             clsError.CaptarError(ex)
         End Try
     End Sub
+
+    Private Sub CargarDatosEncargo()
+        Try
+            dtDetallePedido = New DataTable
+            dtDetallePedido = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID, Codigo, objCategoriaID, Producto, Cantidad, 0 AS CostoImpuesto, CostoPromedio AS CostoUnitario,Cantidad* CostoPromedio CostoTotal ", "vwSivDetalleProductosEncargos", "SivProductoID IS NOT NULL AND SivProductoID<>0 AND objSivEncargoID=" & EncargoID))
+            Me.grdDetallePedidos.DataSource = dtDetallePedido
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+   
 
 #End Region
 
@@ -497,13 +537,22 @@ Public Class frmPedidosEdit
                     Me.dtaFechaaPedir.Value = clsProyecto.Conexion.FechaServidor
                 Case 1
                     Me.Text = "Editar Pedido"
-                    CargarDatosEncargo()
+                    CargarDatosPedido()
                     Me.cmbEstado.Enabled = True
                 Case 2
                     Me.Text = "Consultar Encargo"
-                    CargarDatosEncargo()
+                    CargarDatosPedido()
                     DeshabilitarControles()
                     cmdGuardar.Enabled = False
+                Case 3
+                    Me.Text = "Agregar Pedido"
+                    Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
+                    Me.CargarDetallePedidos("1=0")
+                    Me.txtObservaciones.Properties.MaxLength = SivEncargosDetalle.GetMaxLength("Observaciones")
+                    Me.cmbEstado.Text = "REGISTRADO"
+                    Me.cmbEstado.Enabled = False
+                    Me.dtaFechaaPedir.Value = clsProyecto.Conexion.FechaServidor
+                    CargarDatosEncargo()
             End Select
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -540,7 +589,7 @@ Public Class frmPedidosEdit
             filas("Cantidad") = spnCantidad.Value
             filas("CostoUnitario") = spnCostoUnitario.Value
             filas("CostoImpuesto") = spnImpuestoUnitario.Value
-            filas("objCategoriaID") = cmbCategoria.EditValue
+            filas("objCategoriaID") = objSivProducto.objCategoriaID
             filas("CostoTotal") = spnCantidad.Value * (spnCostoUnitario.Value - spnImpuestoUnitario.Value)
 
             dtDetallePedido.Rows.Add(filas)
@@ -562,10 +611,8 @@ Public Class frmPedidosEdit
 
     Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs) Handles cmbCategoria.EditValueChanged
         Try
-            If cmbCategoria.Text <> "" And cmbMarca.Text <> "" Then
-                CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
-            End If
-
+            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
+            
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -573,10 +620,7 @@ Public Class frmPedidosEdit
 
     Private Sub cmbMarca_EditValueChanged(sender As Object, e As EventArgs) Handles cmbMarca.EditValueChanged
         Try
-            If cmbCategoria.Text <> "" And cmbMarca.Text <> "" Then
-                CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
-            End If
-
+            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -597,7 +641,7 @@ Public Class frmPedidosEdit
         End If
     End Sub
 
-    Private Sub grdDetallePedidos_KeyDown(sender As Object, e As KeyEventArgs) Handles grdDetallePedidos.KeyDown
+    Private Sub grdDetallePedidos_KeyDown(sender As Object, e As KeyEventArgs) Handles grdDetallePedidos.KeyDown, grdDetallePedidosTabla.KeyDown
         '---- Delete
         If e.KeyCode = Keys.Delete Then
             Dim view As GridView = CType(sender, GridView)
@@ -619,6 +663,8 @@ Public Class frmPedidosEdit
                         Me.Guardar()
                     Case 1
                         Me.Actualizar()
+                    Case 3
+                        Guardar()
                 End Select
             End If
         Catch ex As Exception
@@ -642,13 +688,21 @@ Public Class frmPedidosEdit
         End Try
     End Sub
 
+    Private Sub cmbNombreProducto_Enter(sender As Object, e As EventArgs) Handles cmbNombreProducto.Enter
+        Try
+            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
     Private Sub txtCodigoProveedor_TextChanged(sender As Object, e As EventArgs) Handles txtCodigoProveedor.TextChanged
         ErrorFactura.SetError(txtCodigoProveedor, "")
         boolEditado = True
     End Sub
 
     Private Sub cmbNombreProducto_TextChanged(sender As Object, e As EventArgs) Handles cmbNombreProducto.TextChanged
-        ErrorFactura.SetError(cmbCategoria, "")
+        ErrorFactura.SetError(cmbNombreProducto, "")
         boolEditado = True
     End Sub
 
@@ -663,7 +717,6 @@ Public Class frmPedidosEdit
     End Sub
 
 #End Region
-
-   
     
+   
 End Class

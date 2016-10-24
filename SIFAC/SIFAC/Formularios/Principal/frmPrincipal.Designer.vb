@@ -166,6 +166,7 @@ Partial Class frmPrincipal
         'grpCatalogos
         '
         Me.grpCatalogos.Caption = "Catalogos"
+        Me.grpCatalogos.Expanded = True
         Me.grpCatalogos.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.navBarCatalogos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarParametros), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCategorias), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarMarcas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarBodegas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavProductos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarRutas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEmpleados)})
         Me.grpCatalogos.Name = "grpCatalogos"
         '
@@ -202,7 +203,6 @@ Partial Class frmPrincipal
         'grpInventario
         '
         Me.grpInventario.Caption = "Inventario"
-        Me.grpInventario.Expanded = True
         Me.grpInventario.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarOrdenCompra), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEncargos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarProveedor), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEntrada), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSalidas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSolicitud), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarDespacho), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarRecepcion)})
         Me.grpInventario.Name = "grpInventario"
         '

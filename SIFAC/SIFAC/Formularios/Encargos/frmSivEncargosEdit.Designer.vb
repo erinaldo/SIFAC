@@ -43,7 +43,7 @@ Partial Class frmSivEncargosEdit
         Me.lblMarca = New System.Windows.Forms.Label()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.grdDetallePedidos = New DevExpress.XtraGrid.GridControl()
+        Me.grdDetalleEncargos = New DevExpress.XtraGrid.GridControl()
         Me.grdDetalleEncargosTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colProductoID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -102,7 +102,7 @@ Partial Class frmSivEncargosEdit
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spnCantidad.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.grdDetallePedidos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdDetalleEncargos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDetalleEncargosTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -335,29 +335,29 @@ Partial Class frmSivEncargosEdit
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.grdDetallePedidos)
+        Me.GroupBox3.Controls.Add(Me.grdDetalleEncargos)
         Me.GroupBox3.Location = New System.Drawing.Point(19, 216)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(774, 179)
         Me.GroupBox3.TabIndex = 119
         Me.GroupBox3.TabStop = False
         '
-        'grdDetallePedidos
+        'grdDetalleEncargos
         '
-        Me.grdDetallePedidos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdDetallePedidos.Location = New System.Drawing.Point(3, 16)
-        Me.grdDetallePedidos.LookAndFeel.SkinName = "Glass Oceans"
-        Me.grdDetallePedidos.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
-        Me.grdDetallePedidos.MainView = Me.grdDetalleEncargosTabla
-        Me.grdDetallePedidos.Name = "grdDetallePedidos"
-        Me.grdDetallePedidos.Size = New System.Drawing.Size(768, 160)
-        Me.grdDetallePedidos.TabIndex = 2
-        Me.grdDetallePedidos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDetalleEncargosTabla})
+        Me.grdDetalleEncargos.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdDetalleEncargos.Location = New System.Drawing.Point(3, 16)
+        Me.grdDetalleEncargos.LookAndFeel.SkinName = "Glass Oceans"
+        Me.grdDetalleEncargos.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
+        Me.grdDetalleEncargos.MainView = Me.grdDetalleEncargosTabla
+        Me.grdDetalleEncargos.Name = "grdDetalleEncargos"
+        Me.grdDetalleEncargos.Size = New System.Drawing.Size(768, 160)
+        Me.grdDetalleEncargos.TabIndex = 2
+        Me.grdDetalleEncargos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDetalleEncargosTabla})
         '
         'grdDetalleEncargosTabla
         '
         Me.grdDetalleEncargosTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colProductoID, Me.colCodigo, Me.colCategoria, Me.colNombre, Me.colCantidad, Me.colCostoPromedio, Me.colObservaciones})
-        Me.grdDetalleEncargosTabla.GridControl = Me.grdDetallePedidos
+        Me.grdDetalleEncargosTabla.GridControl = Me.grdDetalleEncargos
         Me.grdDetalleEncargosTabla.Name = "grdDetalleEncargosTabla"
         Me.grdDetalleEncargosTabla.OptionsView.ShowGroupPanel = False
         '
@@ -978,7 +978,7 @@ Partial Class frmSivEncargosEdit
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spnCantidad.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
-        CType(Me.grdDetallePedidos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdDetalleEncargos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDetalleEncargosTabla, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdspnCantidad, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1025,7 +1025,7 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents grdDetallePedidos As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdDetalleEncargos As DevExpress.XtraGrid.GridControl
     Friend WithEvents grdDetalleEncargosTabla As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colProductoID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCategoria As DevExpress.XtraGrid.Columns.GridColumn

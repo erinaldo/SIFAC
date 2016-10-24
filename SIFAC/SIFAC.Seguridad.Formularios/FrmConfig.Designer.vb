@@ -54,11 +54,12 @@ Partial Class FrmConfig
         Me.grdClaves.AllowDelete = True
         Me.grdClaves.AlternatingRows = True
         Me.grdClaves.CollapseColor = System.Drawing.Color.Transparent
+        Me.grdClaves.ExpandColor = System.Drawing.Color.Transparent
         Me.grdClaves.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdClaves.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdClaves.Images.Add(CType(resources.GetObject("grdClaves.Images"), System.Drawing.Image))
         Me.grdClaves.Location = New System.Drawing.Point(6, 19)
-        Me.grdClaves.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightCell
+        Me.grdClaves.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.NoMarquee
         Me.grdClaves.Name = "grdClaves"
         Me.grdClaves.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdClaves.PreviewInfo.Size = New System.Drawing.Size(0, 0)
