@@ -163,7 +163,7 @@ Partial Class frmSccClientes
         '
         Me.grdClientes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdClientes.Location = New System.Drawing.Point(0, 39)
-        Me.grdClientes.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdClientes.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdClientes.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdClientes.MainView = Me.grdClientesTabla
         Me.grdClientes.Name = "grdClientes"
@@ -176,6 +176,7 @@ Partial Class frmSccClientes
         '
         Me.grdClientesTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre1, Me.colNombre2, Me.colApellido1, Me.colApellido2, Me.colCedula, Me.colGenero})
         Me.grdClientesTabla.GridControl = Me.grdClientes
+        Me.grdClientesTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdClientesTabla.Name = "grdClientesTabla"
         Me.grdClientesTabla.OptionsDetail.AllowZoomDetail = False
         Me.grdClientesTabla.OptionsDetail.EnableMasterViewMode = False

@@ -9,6 +9,7 @@ Partial Public Class SivEntradaBodegaDetalle
 	Protected m_SivEntradaBodegaDetID As Integer 
 	Protected m_objEntradaBodegaID As Integer 
 	Protected m_objProductoID As Integer 
+	Protected m_ExistenciaAnterior As Nullable(Of Integer) 
 	Protected m_Cantidad As Integer 
 	Protected m_Costo As Decimal 
 	Protected m_FechaCreacion As Date 
@@ -42,6 +43,15 @@ Partial Public Class SivEntradaBodegaDetalle
         End Get
 		Set(ByVal Value As Integer)					
 			m_objProductoID = Value
+		End Set
+    End Property
+	
+	Public Property ExistenciaAnterior() As Nullable(Of Integer)
+        Get
+            Return (m_ExistenciaAnterior)
+        End Get
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_ExistenciaAnterior = Value
 		End Set
     End Property
 	
@@ -156,17 +166,19 @@ Partial Public Class SivEntradaBodegaDetalle
 			'CREACION DEL COMANDO INSERT
 			cmdInsert.Parameters.Add("@objEntradaBodegaID", SqlDbType.Int, 4, "objEntradaBodegaID")
 			cmdInsert.Parameters.Add("@objProductoID", SqlDbType.Int, 4, "objProductoID")
+			cmdInsert.Parameters.Add("@ExistenciaAnterior", SqlDbType.Int, 4, "ExistenciaAnterior")
 			cmdInsert.Parameters.Add("@Cantidad", SqlDbType.Int, 4, "Cantidad")
 			cmdInsert.Parameters.Add("@Costo", SqlDbType.Decimal, 9, "Costo")
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 30, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
-			cmdInsert.CommandText = "INSERT INTO SivEntradaBodegaDetalle ( objEntradaBodegaID, objProductoID, Cantidad, Costo, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion) VALUES ( @objEntradaBodegaID, @objProductoID, @Cantidad, @Costo, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion)"
+			cmdInsert.CommandText = "INSERT INTO SivEntradaBodegaDetalle ( objEntradaBodegaID, objProductoID, ExistenciaAnterior, Cantidad, Costo, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion) VALUES ( @objEntradaBodegaID, @objProductoID, @ExistenciaAnterior, @Cantidad, @Costo, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@objEntradaBodegaID", SqlDbType.Int, 4, "objEntradaBodegaID")
 			cmdUpdate.Parameters.Add("@objProductoID", SqlDbType.Int, 4, "objProductoID")
+			cmdUpdate.Parameters.Add("@ExistenciaAnterior", SqlDbType.Int, 4, "ExistenciaAnterior")
 			cmdUpdate.Parameters.Add("@Cantidad", SqlDbType.Int, 4, "Cantidad")
 			cmdUpdate.Parameters.Add("@Costo", SqlDbType.Decimal, 9, "Costo")
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
@@ -174,7 +186,7 @@ Partial Public Class SivEntradaBodegaDetalle
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@wSivEntradaBodegaDetID", SqlDbType.Int, 4, "SivEntradaBodegaDetID")
-			cmdUpdate.CommandText = "UPDATE SivEntradaBodegaDetalle SET objEntradaBodegaID=@objEntradaBodegaID, objProductoID=@objProductoID, Cantidad=@Cantidad, Costo=@Costo, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion WHERE SivEntradaBodegaDetID= @wSivEntradaBodegaDetID"
+			cmdUpdate.CommandText = "UPDATE SivEntradaBodegaDetalle SET objEntradaBodegaID=@objEntradaBodegaID, objProductoID=@objProductoID, ExistenciaAnterior=@ExistenciaAnterior, Cantidad=@Cantidad, Costo=@Costo, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion WHERE SivEntradaBodegaDetID= @wSivEntradaBodegaDetID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -223,6 +235,7 @@ Partial Public Class SivEntradaBodegaDetalle
 				m_SivEntradaBodegaDetID = dr("SivEntradaBodegaDetID")
 				m_objEntradaBodegaID = IIf(IsDBNull(dr("objEntradaBodegaID")), Nothing, dr("objEntradaBodegaID"))					
 				m_objProductoID = IIf(IsDBNull(dr("objProductoID")), Nothing, dr("objProductoID"))					
+				m_ExistenciaAnterior = IIf(IsDBNull(dr("ExistenciaAnterior")), Nothing, dr("ExistenciaAnterior"))					
 				m_Cantidad = IIf(IsDBNull(dr("Cantidad")), Nothing, dr("Cantidad"))					
 				m_Costo = IIf(IsDBNull(dr("Costo")), Nothing, dr("Costo"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -265,6 +278,7 @@ Partial Public Class SivEntradaBodegaDetalle
 				m_SivEntradaBodegaDetID = dr("SivEntradaBodegaDetID")
 				m_objEntradaBodegaID = IIf(IsDBNull(dr("objEntradaBodegaID")), Nothing, dr("objEntradaBodegaID"))					
 				m_objProductoID = IIf(IsDBNull(dr("objProductoID")), Nothing, dr("objProductoID"))					
+				m_ExistenciaAnterior = IIf(IsDBNull(dr("ExistenciaAnterior")), Nothing, dr("ExistenciaAnterior"))					
 				m_Cantidad = IIf(IsDBNull(dr("Cantidad")), Nothing, dr("Cantidad"))					
 				m_Costo = IIf(IsDBNull(dr("Costo")), Nothing, dr("Costo"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -398,6 +412,7 @@ Partial Public Class SivEntradaBodegaDetalle
 		Dim sCommand As String = "insert into SivEntradaBodegaDetalle("
 		sCommand &= "objEntradaBodegaID,"
 		sCommand &= "objProductoID,"
+		sCommand &= "ExistenciaAnterior,"
 		sCommand &= "Cantidad,"
 		sCommand &= "Costo,"
 		sCommand &= "FechaCreacion,"
@@ -406,6 +421,7 @@ Partial Public Class SivEntradaBodegaDetalle
 		sCommand &= "UsuarioModificacion) values ("		
 		sCommand &= "@objEntradaBodegaID,"
 		sCommand &= "@objProductoID,"
+		sCommand &= "@ExistenciaAnterior,"
 		sCommand &= "@Cantidad,"
 		sCommand &= "@Costo,"
 		sCommand &= "@FechaCreacion,"
@@ -418,7 +434,7 @@ Partial Public Class SivEntradaBodegaDetalle
 		sCommand &= "SivEntradaBodegaDetID = SCOPE_IDENTITY()"
 		
 		
-		Dim arParams(8) As SqlParameter
+		Dim arParams(9) As SqlParameter
 		arParams(0) = New SqlParameter("@SivEntradaBodegaDetID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@objEntradaBodegaID", SqlDbType.Int)		
@@ -433,41 +449,47 @@ Partial Public Class SivEntradaBodegaDetalle
         Else
             arParams(2).Value = m_objProductoID
         End If
-		arParams(3) = New SqlParameter("@Cantidad", SqlDbType.Int)		
-		If IsDBNull(m_Cantidad) Then
+		arParams(3) = New SqlParameter("@ExistenciaAnterior", SqlDbType.Int)		
+		If IsDBNull(m_ExistenciaAnterior) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_Cantidad
+            arParams(3).Value = m_ExistenciaAnterior
         End If
-		arParams(4) = New SqlParameter("@Costo", SqlDbType.Decimal)		
-		If IsDBNull(m_Costo) Then
+		arParams(4) = New SqlParameter("@Cantidad", SqlDbType.Int)		
+		If IsDBNull(m_Cantidad) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_Costo
+            arParams(4).Value = m_Cantidad
         End If
-		arParams(5) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(5) = New SqlParameter("@Costo", SqlDbType.Decimal)		
+		If IsDBNull(m_Costo) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_FechaCreacion
+            arParams(5).Value = m_Costo
         End If
-		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(6) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioCreacion
+            arParams(6).Value = m_FechaCreacion
         End If
-		arParams(7) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(7) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_FechaModificacion
+            arParams(7).Value = m_UsuarioCreacion
         End If
-		arParams(8) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(8) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_UsuarioModificacion
+            arParams(8).Value = m_FechaModificacion
+        End If
+		arParams(9) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
+            arParams(9).Value = DBNull.Value
+        Else
+            arParams(9).Value = m_UsuarioModificacion
         End If
 	
 		Try
@@ -495,6 +517,7 @@ Partial Public Class SivEntradaBodegaDetalle
 		Dim sCommand As String = "update SivEntradaBodegaDetalle set "		
 		sCommand &= "objEntradaBodegaID = @objEntradaBodegaID,"
 		sCommand &= "objProductoID = @objProductoID,"
+		sCommand &= "ExistenciaAnterior = @ExistenciaAnterior,"
 		sCommand &= "Cantidad = @Cantidad,"
 		sCommand &= "Costo = @Costo,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
@@ -504,7 +527,7 @@ Partial Public Class SivEntradaBodegaDetalle
 		sCommand &= " where "	
 		sCommand &= "SivEntradaBodegaDetID = @SivEntradaBodegaDetID"					
 		
-		Dim arParams(8) As SqlParameter
+		Dim arParams(9) As SqlParameter
 		arParams(0) = New SqlParameter("@SivEntradaBodegaDetID", SqlDbType.Int)		
 		If IsDBNull(m_SivEntradaBodegaDetID) Then
             arParams(0).Value = DBNull.Value
@@ -523,41 +546,47 @@ Partial Public Class SivEntradaBodegaDetalle
         Else
             arParams(2).Value = m_objProductoID
         End If
-		arParams(3) = New SqlParameter("@Cantidad", SqlDbType.Int)		
-		If IsDBNull(m_Cantidad) Then
+		arParams(3) = New SqlParameter("@ExistenciaAnterior", SqlDbType.Int)		
+		If IsDBNull(m_ExistenciaAnterior) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_Cantidad
+            arParams(3).Value = m_ExistenciaAnterior
         End If
-		arParams(4) = New SqlParameter("@Costo", SqlDbType.Decimal)		
-		If IsDBNull(m_Costo) Then
+		arParams(4) = New SqlParameter("@Cantidad", SqlDbType.Int)		
+		If IsDBNull(m_Cantidad) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_Costo
+            arParams(4).Value = m_Cantidad
         End If
-		arParams(5) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(5) = New SqlParameter("@Costo", SqlDbType.Decimal)		
+		If IsDBNull(m_Costo) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_FechaCreacion
+            arParams(5).Value = m_Costo
         End If
-		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(6) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioCreacion
+            arParams(6).Value = m_FechaCreacion
         End If
-		arParams(7) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(7) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_FechaModificacion
+            arParams(7).Value = m_UsuarioCreacion
         End If
-		arParams(8) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(8) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_UsuarioModificacion
+            arParams(8).Value = m_FechaModificacion
+        End If
+		arParams(9) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
+            arParams(9).Value = DBNull.Value
+        Else
+            arParams(9).Value = m_UsuarioModificacion
         End If
 	
 		Try

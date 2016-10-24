@@ -31,7 +31,7 @@ Partial Class frmCriteriosReporteKardex
         Me.ErrErrores = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cmbSucursales = New C1.Win.C1List.C1Combo()
+        Me.cmbBodegas = New C1.Win.C1List.C1Combo()
         Me.lblBodega = New System.Windows.Forms.Label()
         Me.gbxCriterios = New System.Windows.Forms.GroupBox()
         Me.grbVer = New System.Windows.Forms.GroupBox()
@@ -45,7 +45,7 @@ Partial Class frmCriteriosReporteKardex
         CType(Me.dtpFechaDesde, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrErrores, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbSucursales, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbBodegas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxCriterios.SuspendLayout()
         Me.grbVer.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -191,56 +191,56 @@ Partial Class frmCriteriosReporteKardex
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(13, 67)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(65, 13)
+        Me.Label1.Size = New System.Drawing.Size(62, 13)
         Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Repuesto:"
+        Me.Label1.Text = "Producto:"
         '
-        'cmbSucursales
+        'cmbBodegas
         '
-        Me.cmbSucursales.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbSucursales.Caption = ""
-        Me.cmbSucursales.CaptionHeight = 17
-        Me.cmbSucursales.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbSucursales.ColumnCaptionHeight = 17
-        Me.cmbSucursales.ColumnFooterHeight = 17
-        Me.cmbSucursales.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbSucursales.ContentHeight = 15
-        Me.cmbSucursales.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbSucursales.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbSucursales.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbSucursales.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbSucursales.EditorHeight = 15
-        Me.cmbSucursales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbSucursales.Images.Add(CType(resources.GetObject("cmbSucursales.Images"), System.Drawing.Image))
-        Me.cmbSucursales.ItemHeight = 15
-        Me.cmbSucursales.Location = New System.Drawing.Point(81, 27)
-        Me.cmbSucursales.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbSucursales.MaxDropDownItems = CType(5, Short)
-        Me.cmbSucursales.MaxLength = 32767
-        Me.cmbSucursales.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbSucursales.Name = "cmbSucursales"
-        Me.cmbSucursales.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbSucursales.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbSucursales.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbSucursales.Size = New System.Drawing.Size(217, 21)
-        Me.cmbSucursales.TabIndex = 3
-        Me.cmbSucursales.PropBag = resources.GetString("cmbSucursales.PropBag")
+        Me.cmbBodegas.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbBodegas.Caption = ""
+        Me.cmbBodegas.CaptionHeight = 17
+        Me.cmbBodegas.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbBodegas.ColumnCaptionHeight = 17
+        Me.cmbBodegas.ColumnFooterHeight = 17
+        Me.cmbBodegas.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cmbBodegas.ContentHeight = 15
+        Me.cmbBodegas.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbBodegas.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbBodegas.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbBodegas.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbBodegas.EditorHeight = 15
+        Me.cmbBodegas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbBodegas.Images.Add(CType(resources.GetObject("cmbBodegas.Images"), System.Drawing.Image))
+        Me.cmbBodegas.ItemHeight = 15
+        Me.cmbBodegas.Location = New System.Drawing.Point(81, 27)
+        Me.cmbBodegas.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbBodegas.MaxDropDownItems = CType(5, Short)
+        Me.cmbBodegas.MaxLength = 32767
+        Me.cmbBodegas.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbBodegas.Name = "cmbBodegas"
+        Me.cmbBodegas.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbBodegas.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbBodegas.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbBodegas.Size = New System.Drawing.Size(217, 21)
+        Me.cmbBodegas.TabIndex = 3
+        Me.cmbBodegas.PropBag = resources.GetString("cmbBodegas.PropBag")
         '
         'lblBodega
         '
         Me.lblBodega.AutoSize = True
         Me.lblBodega.Location = New System.Drawing.Point(13, 31)
         Me.lblBodega.Name = "lblBodega"
-        Me.lblBodega.Size = New System.Drawing.Size(60, 13)
+        Me.lblBodega.Size = New System.Drawing.Size(54, 13)
         Me.lblBodega.TabIndex = 4
-        Me.lblBodega.Text = "Sucursal:"
+        Me.lblBodega.Text = "Bodega:"
         '
         'gbxCriterios
         '
         Me.gbxCriterios.Controls.Add(Me.Label1)
         Me.gbxCriterios.Controls.Add(Me.lblBodega)
         Me.gbxCriterios.Controls.Add(Me.cmbRepuestos)
-        Me.gbxCriterios.Controls.Add(Me.cmbSucursales)
+        Me.gbxCriterios.Controls.Add(Me.cmbBodegas)
         Me.gbxCriterios.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbxCriterios.Location = New System.Drawing.Point(5, 34)
         Me.gbxCriterios.Name = "gbxCriterios"
@@ -346,7 +346,7 @@ Partial Class frmCriteriosReporteKardex
         CType(Me.dtpFechaDesde, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrErrores, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbSucursales, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbBodegas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbxCriterios.ResumeLayout(False)
         Me.gbxCriterios.PerformLayout()
         Me.grbVer.ResumeLayout(False)
@@ -369,7 +369,7 @@ Partial Class frmCriteriosReporteKardex
     Friend WithEvents gbxCriterios As System.Windows.Forms.GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblBodega As System.Windows.Forms.Label
-    Friend WithEvents cmbSucursales As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbBodegas As C1.Win.C1List.C1Combo
     Friend WithEvents grbVer As System.Windows.Forms.GroupBox
     Friend WithEvents rbtCantidadCosto As System.Windows.Forms.RadioButton
     Friend WithEvents rbtSoloCantidades As System.Windows.Forms.RadioButton

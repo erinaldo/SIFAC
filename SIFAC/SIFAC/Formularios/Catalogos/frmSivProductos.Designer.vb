@@ -205,7 +205,7 @@ Partial Class frmSivProductos
         '
         Me.grdProductos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdProductos.Location = New System.Drawing.Point(0, 39)
-        Me.grdProductos.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdProductos.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdProductos.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdProductos.MainView = Me.grdProductosTabla
         Me.grdProductos.Name = "grdProductos"
@@ -218,6 +218,7 @@ Partial Class frmSivProductos
         '
         Me.grdProductosTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colCodigo, Me.colNombre, Me.colCategoria, Me.colMarca, Me.colActiva})
         Me.grdProductosTabla.GridControl = Me.grdProductos
+        Me.grdProductosTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdProductosTabla.Name = "grdProductosTabla"
         Me.grdProductosTabla.OptionsDetail.AllowZoomDetail = False
         Me.grdProductosTabla.OptionsDetail.EnableMasterViewMode = False

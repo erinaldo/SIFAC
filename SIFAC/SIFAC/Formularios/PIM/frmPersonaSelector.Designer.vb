@@ -120,7 +120,7 @@ Partial Class frmPersonaSelector
         'grdPersonas
         '
         Me.grdPersonas.Location = New System.Drawing.Point(0, 0)
-        Me.grdPersonas.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdPersonas.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdPersonas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdPersonas.MainView = Me.grdvwPersonas
         Me.grdPersonas.Name = "grdPersonas"
@@ -135,6 +135,7 @@ Partial Class frmPersonaSelector
         Me.grdvwPersonas.GridControl = Me.grdPersonas
         Me.grdvwPersonas.Name = "grdvwPersonas"
         Me.grdvwPersonas.OptionsView.ColumnAutoWidth = False
+        Me.grdvwPersonas.OptionsView.ShowAutoFilterRow = True
         Me.grdvwPersonas.OptionsView.ShowDetailButtons = False
         Me.grdvwPersonas.OptionsView.ShowGroupPanel = False
         '

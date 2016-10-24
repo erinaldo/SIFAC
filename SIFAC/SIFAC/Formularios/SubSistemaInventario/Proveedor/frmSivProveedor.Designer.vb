@@ -130,7 +130,7 @@ Partial Class frmSivProveedor
         '
         Me.grdvwProveedores.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdvwProveedores.Location = New System.Drawing.Point(0, 39)
-        Me.grdvwProveedores.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdvwProveedores.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdvwProveedores.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdvwProveedores.MainView = Me.grdvwProveedoresTabla
         Me.grdvwProveedores.Name = "grdvwProveedores"
@@ -143,6 +143,7 @@ Partial Class frmSivProveedor
         '
         Me.grdvwProveedoresTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNombre, Me.colRUC, Me.colCiudad, Me.colTelefonos, Me.colActivo, Me.colSivProveedorID})
         Me.grdvwProveedoresTabla.GridControl = Me.grdvwProveedores
+        Me.grdvwProveedoresTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdvwProveedoresTabla.Name = "grdvwProveedoresTabla"
         Me.grdvwProveedoresTabla.OptionsBehavior.Editable = False
         Me.grdvwProveedoresTabla.OptionsView.ShowAutoFilterRow = True

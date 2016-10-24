@@ -62,6 +62,7 @@ Partial Class frmSivCategorias
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
         Me.cmdAgregar.Text = "Agregar Bodega"
+        Me.cmdAgregar.ToolTipText = "Agregar Categoria"
         '
         'cmdEditar
         '
@@ -71,6 +72,7 @@ Partial Class frmSivCategorias
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
         Me.cmdEditar.Text = "Editar Bodega"
+        Me.cmdEditar.ToolTipText = "Editar Categoria"
         '
         'cmdConsultar
         '
@@ -80,6 +82,7 @@ Partial Class frmSivCategorias
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
         Me.cmdConsultar.Text = "Consultar Bodega"
+        Me.cmdConsultar.ToolTipText = "Consultar Categoria"
         '
         'cmdImprimir
         '
@@ -89,6 +92,7 @@ Partial Class frmSivCategorias
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
         Me.cmdImprimir.Text = "Imprimir Bodegas"
+        Me.cmdImprimir.ToolTipText = "Imprimir Categorias"
         '
         'ToolSeparador1
         '
@@ -117,7 +121,7 @@ Partial Class frmSivCategorias
         '
         Me.grdCategorias.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdCategorias.Location = New System.Drawing.Point(0, 39)
-        Me.grdCategorias.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdCategorias.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdCategorias.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdCategorias.MainView = Me.grdCategoriasTabla
         Me.grdCategorias.Name = "grdCategorias"
@@ -130,6 +134,7 @@ Partial Class frmSivCategorias
         '
         Me.grdCategoriasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colActiva})
         Me.grdCategoriasTabla.GridControl = Me.grdCategorias
+        Me.grdCategoriasTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdCategoriasTabla.Name = "grdCategoriasTabla"
         Me.grdCategoriasTabla.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
         Me.grdCategoriasTabla.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]

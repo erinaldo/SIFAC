@@ -33,6 +33,8 @@ Partial Class frmSivEncargos
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
         Me.tbProductos = New System.Windows.Forms.ToolStrip()
+        Me.btnAutorizar = New System.Windows.Forms.ToolStripButton()
+        Me.btnPedido = New System.Windows.Forms.ToolStripButton()
         Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.Contenedor = New C1.Win.C1Sizer.C1Sizer()
@@ -64,8 +66,6 @@ Partial Class frmSivEncargos
         Me.CostoPromedio = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.TotalCosto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        Me.btnPedido = New System.Windows.Forms.ToolStripButton()
-        Me.btnAutorizar = New System.Windows.Forms.ToolStripButton()
         Me.tbProductos.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
@@ -158,6 +158,24 @@ Partial Class frmSivEncargos
         Me.tbProductos.Size = New System.Drawing.Size(958, 39)
         Me.tbProductos.TabIndex = 9
         '
+        'btnAutorizar
+        '
+        Me.btnAutorizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnAutorizar.Image = CType(resources.GetObject("btnAutorizar.Image"), System.Drawing.Image)
+        Me.btnAutorizar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnAutorizar.Name = "btnAutorizar"
+        Me.btnAutorizar.Size = New System.Drawing.Size(36, 36)
+        Me.btnAutorizar.Text = "Autorizar"
+        '
+        'btnPedido
+        '
+        Me.btnPedido.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnPedido.Image = CType(resources.GetObject("btnPedido.Image"), System.Drawing.Image)
+        Me.btnPedido.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnPedido.Name = "btnPedido"
+        Me.btnPedido.Size = New System.Drawing.Size(36, 36)
+        Me.btnPedido.Text = "Generar Pedido"
+        '
         'cmbExportar
         '
         Me.cmbExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -195,7 +213,7 @@ Partial Class frmSivEncargos
         'grdEncargosMaster
         '
         Me.grdEncargosMaster.Location = New System.Drawing.Point(4, 4)
-        Me.grdEncargosMaster.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdEncargosMaster.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdEncargosMaster.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdEncargosMaster.MainView = Me.grdEncargosMasterTabla
         Me.grdEncargosMaster.Name = "grdEncargosMaster"
@@ -208,6 +226,7 @@ Partial Class frmSivEncargos
         '
         Me.grdEncargosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colRuta, Me.colCliente, Me.colVendedor, Me.colEstado, Me.colTotalCosto})
         Me.grdEncargosMasterTabla.GridControl = Me.grdEncargosMaster
+        Me.grdEncargosMasterTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdEncargosMasterTabla.Name = "grdEncargosMasterTabla"
         Me.grdEncargosMasterTabla.OptionsDetail.AllowZoomDetail = False
         Me.grdEncargosMasterTabla.OptionsDetail.EnableMasterViewMode = False
@@ -301,7 +320,7 @@ Partial Class frmSivEncargos
         'grdEncargosDetalle
         '
         Me.grdEncargosDetalle.Location = New System.Drawing.Point(4, 265)
-        Me.grdEncargosDetalle.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdEncargosDetalle.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdEncargosDetalle.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdEncargosDetalle.MainView = Me.grdEncargosDetalleTable
         Me.grdEncargosDetalle.Name = "grdEncargosDetalle"
@@ -313,6 +332,7 @@ Partial Class frmSivEncargos
         '
         Me.grdEncargosDetalleTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCodigo, Me.ColCategoria, Me.colDescripcion, Me.colCantidad, Me.colCostoPromedio, Me.colTotalEncargoDetalle})
         Me.grdEncargosDetalleTable.GridControl = Me.grdEncargosDetalle
+        Me.grdEncargosDetalleTable.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdEncargosDetalleTable.Name = "grdEncargosDetalleTable"
         '
         'colCodigo
@@ -454,24 +474,6 @@ Partial Class frmSivEncargos
         'sfdRuta
         '
         Me.sfdRuta.Filter = "Archivos Excel | *.xls"
-        '
-        'btnPedido
-        '
-        Me.btnPedido.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnPedido.Image = CType(resources.GetObject("btnPedido.Image"), System.Drawing.Image)
-        Me.btnPedido.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnPedido.Name = "btnPedido"
-        Me.btnPedido.Size = New System.Drawing.Size(36, 36)
-        Me.btnPedido.Text = "Generar Pedido"
-        '
-        'btnAutorizar
-        '
-        Me.btnAutorizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnAutorizar.Image = CType(resources.GetObject("btnAutorizar.Image"), System.Drawing.Image)
-        Me.btnAutorizar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnAutorizar.Name = "btnAutorizar"
-        Me.btnAutorizar.Size = New System.Drawing.Size(36, 36)
-        Me.btnAutorizar.Text = "Autorizar"
         '
         'frmSivEncargos
         '

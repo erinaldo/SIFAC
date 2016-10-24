@@ -119,7 +119,7 @@ Partial Class frmStbBodegas
         '
         Me.grdBodegas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdBodegas.Location = New System.Drawing.Point(0, 39)
-        Me.grdBodegas.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdBodegas.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdBodegas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdBodegas.MainView = Me.grdBodegasTabla
         Me.grdBodegas.Name = "grdBodegas"
@@ -132,6 +132,7 @@ Partial Class frmStbBodegas
         '
         Me.grdBodegasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colCodigo, Me.colNombre, Me.ColJefe, Me.colCiudad, Me.colActiva})
         Me.grdBodegasTabla.GridControl = Me.grdBodegas
+        Me.grdBodegasTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdBodegasTabla.Name = "grdBodegasTabla"
         Me.grdBodegasTabla.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
         Me.grdBodegasTabla.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]

@@ -339,7 +339,7 @@ Partial Class frmSivAgregarSalida
         '
         Me.grdSalidaDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdSalidaDetalle.Location = New System.Drawing.Point(13, 19)
-        Me.grdSalidaDetalle.LookAndFeel.SkinName = "Caramel"
+        Me.grdSalidaDetalle.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdSalidaDetalle.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdSalidaDetalle.MainView = Me.grdSalidaDetalleTable
         Me.grdSalidaDetalle.Name = "grdSalidaDetalle"

@@ -346,8 +346,8 @@ Partial Class frmSivEncargosEdit
         '
         Me.grdDetalleEncargos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdDetalleEncargos.Location = New System.Drawing.Point(3, 16)
-        Me.grdDetalleEncargos.LookAndFeel.SkinName = "Glass Oceans"
-        Me.grdDetalleEncargos.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
+        Me.grdDetalleEncargos.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdDetalleEncargos.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdDetalleEncargos.MainView = Me.grdDetalleEncargosTabla
         Me.grdDetalleEncargos.Name = "grdDetalleEncargos"
         Me.grdDetalleEncargos.Size = New System.Drawing.Size(768, 160)

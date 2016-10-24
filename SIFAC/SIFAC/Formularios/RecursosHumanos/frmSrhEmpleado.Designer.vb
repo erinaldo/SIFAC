@@ -115,7 +115,7 @@ Partial Class frmSrhEmpleado
         '
         Me.grdvwEmpleados.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdvwEmpleados.Location = New System.Drawing.Point(0, 39)
-        Me.grdvwEmpleados.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdvwEmpleados.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdvwEmpleados.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdvwEmpleados.MainView = Me.grdvwEmpleadosTabla
         Me.grdvwEmpleados.Name = "grdvwEmpleados"
@@ -128,6 +128,7 @@ Partial Class frmSrhEmpleado
         '
         Me.grdvwEmpleadosTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colSrhEmpleadoID, Me.colobjPersonaID, Me.colNombre1, Me.colNombre2, Me.colApellido1, Me.colApellido2, Me.colGenero, Me.colCargo, Me.colActivo})
         Me.grdvwEmpleadosTabla.GridControl = Me.grdvwEmpleados
+        Me.grdvwEmpleadosTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdvwEmpleadosTabla.Name = "grdvwEmpleadosTabla"
         Me.grdvwEmpleadosTabla.OptionsBehavior.Editable = False
         Me.grdvwEmpleadosTabla.OptionsView.ShowAutoFilterRow = True

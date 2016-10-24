@@ -1,5 +1,4 @@
-'-- Autor: Gelmin Martínez
-'-- Fecha: 29 Julio 2010, 09:37 am.
+
 '-- Formulario para seleccionar parámetros de filtrado del reporte 
 '-- de Kardex
 
@@ -55,7 +54,7 @@ Public Class frmCriteriosReporteKardex
         Dim dtDatos As New DataTable
         Try
             dtDatos = StbTienda.RetrieveDT("Activo=1 AND ActivoRepuesto=1", "Nombre", "StbTiendaID, Codigo, Nombre")
-            With Me.cmbSucursales
+            With Me.cmbBodegas
                 .DataSource = dtDatos
                 .DisplayMember = "Nombre"
                 .ValueMember = "StbTiendaID"
@@ -66,7 +65,7 @@ Public Class frmCriteriosReporteKardex
             End With
 
             dtDatos.Rows.Add("0", "-", "TODAS")
-            Me.cmbSucursales.SelectedValue = 0
+            Me.cmbBodegas.SelectedValue = 0
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -118,7 +117,7 @@ Public Class frmCriteriosReporteKardex
         Me.IdSucursalSession = ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
         Me.VerificarSucursalRepuesto()
 
-        Me.cmbSucursales.Enabled = Me.IdSucursalSession = Me.IdSucursalCentral
+        Me.cmbBodegas.Enabled = Me.IdSucursalSession = Me.IdSucursalCentral
         Me.CargarComboRepuestos()
 
         Me.dtpFechaDesde.Value = Me.FechaKardex
@@ -133,11 +132,11 @@ Public Class frmCriteriosReporteKardex
             MsgBox("No ha configurado la sucursal en el utilitario de configuración del sistema.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
             Me.DialogResult = Windows.Forms.DialogResult.Cancel
         Else
-            If Me.cmbSucursales.FindStringExact(Me.IdSucursalSession.ToString, 0, 0) = -1 Then
+            If Me.cmbBodegas.FindStringExact(Me.IdSucursalSession.ToString, 0, 0) = -1 Then
                 MsgBox("La sucursal configurada en la sesión del sistema, no es una sucursal de Repuestos", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                 Me.DialogResult = Windows.Forms.DialogResult.Cancel
             Else
-                Me.cmbSucursales.SelectedValue = Me.IdSucursalSession
+                Me.cmbBodegas.SelectedValue = Me.IdSucursalSession
             End If
         End If
     End Sub
@@ -203,8 +202,8 @@ Public Class frmCriteriosReporteKardex
         Dim strFiltro As String = String.Empty
 
         'Verificar si seleccionó sucursal
-        If Me.cmbSucursales.SelectedValue <> 0 Then
-            strFiltro = " objTiendaID = " + Me.cmbSucursales.SelectedValue.ToString
+        If Me.cmbBodegas.SelectedValue <> 0 Then
+            strFiltro = " objTiendaID = " + Me.cmbBodegas.SelectedValue.ToString
         End If
 
         If Me.cmbRepuestos.Text.Trim.Length <> 0 Then

@@ -466,6 +466,7 @@ Public Class frmSivAgregarSalida
     Private Sub Autorizar()
         Dim objsalida As New SivSalidaBodega
         Dim objSivBodegaProductos As New SivBodegaProductos
+        Dim objSivSalidaDetalle As New SivSalidaBodegaDetalle
         Dim T As New DAL.TransactionManager
         Dim dtDetalleSalida As New DataTable
         Dim fila As DataRow
@@ -493,6 +494,11 @@ Public Class frmSivAgregarSalida
                 fila = dtDetalleSalida.NewRow
                 fila("objSalidaBodegaID") = Me.SalidaID
                 fila("objSivProductoID") = row("Codigo")
+
+                If objSivBodegaProductos.RetrieveByFilter("objProductoID = '" & row("Codigo") & "' AND objBodegaID=" & Me.cmbBodega.SelectedValue) Then
+                    fila("ExistenciaAnterior") = objSivBodegaProductos.Cantidad
+                End If
+
                 fila("Cantidad") = row("Cantidad")
                 fila("costo") = row("CostoProm")
                 fila("Subtotal") = row("Subtotal")
@@ -505,11 +511,11 @@ Public Class frmSivAgregarSalida
 
             '---- Actualizar el campo cantidad de la tabla SivBodegaRepuestos
             For Each row As DataRow In Me.dtDetalle.Rows
-                objSivBodegaProductos.RetrieveByFilter("objProductoID = '" & row("Codigo") & "' AND objBodegaID = " & Me.cmbBodega.SelectedValue)
+
                 objSivBodegaProductos.Cantidad = objSivBodegaProductos.Cantidad - row("Cantidad")
                 objSivBodegaProductos.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                objSivBodegaProductos.Update()
+                objSivBodegaProductos.Update(T)
             Next
             T.CommitTran()
             Me.boolModificado = False

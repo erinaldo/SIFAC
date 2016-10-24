@@ -139,7 +139,7 @@ Partial Class frmStbRutas
         '
         Me.grdRutas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdRutas.Location = New System.Drawing.Point(0, 39)
-        Me.grdRutas.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdRutas.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdRutas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdRutas.MainView = Me.grdRutasTabla
         Me.grdRutas.Name = "grdRutas"
@@ -152,6 +152,7 @@ Partial Class frmStbRutas
         '
         Me.grdRutasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colCobrador, Me.colActiva})
         Me.grdRutasTabla.GridControl = Me.grdRutas
+        Me.grdRutasTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdRutasTabla.Name = "grdRutasTabla"
         Me.grdRutasTabla.OptionsDetail.AllowZoomDetail = False
         Me.grdRutasTabla.OptionsDetail.EnableMasterViewMode = False

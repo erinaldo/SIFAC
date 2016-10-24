@@ -136,7 +136,7 @@ Partial Class frmSccDescuento
         '
         Me.grdDescuento.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdDescuento.Location = New System.Drawing.Point(0, 39)
-        Me.grdDescuento.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdDescuento.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdDescuento.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdDescuento.MainView = Me.grdDescuentoTabla
         Me.grdDescuento.Name = "grdDescuento"
@@ -148,6 +148,7 @@ Partial Class frmSccDescuento
         '
         Me.grdDescuentoTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colPlazoPago, Me.colSccDescuentoID, Me.colDescuentoMaximo, Me.colDescuentoMinimo})
         Me.grdDescuentoTabla.GridControl = Me.grdDescuento
+        Me.grdDescuentoTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdDescuentoTabla.Name = "grdDescuentoTabla"
         '
         'colPlazoPago

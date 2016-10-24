@@ -54,7 +54,8 @@ Public Class frmPrincipal
             Me.BkColor = New System.Drawing.Color
             
             clsProyecto.SiglasSistema = Me.clsAppConfig.Getkey("NombreSistema")
-           
+            clsProyecto.Sucursal = Me.clsAppConfig.Getkey("Bodega")
+
             clsProyecto.RESOURCE_PATH = Application.StartupPath
             clsProyecto.Conexion.BaseDeDatos = info.DatabaseName
             clsProyecto.Conexion.Servidor = info.ServerName

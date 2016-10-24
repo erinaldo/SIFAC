@@ -290,8 +290,8 @@ Partial Class frmPedidosEdit
         '
         Me.grdDetallePedidos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdDetallePedidos.Location = New System.Drawing.Point(3, 16)
-        Me.grdDetallePedidos.LookAndFeel.SkinName = "Glass Oceans"
-        Me.grdDetallePedidos.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D
+        Me.grdDetallePedidos.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdDetallePedidos.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdDetallePedidos.MainView = Me.grdDetallePedidosTabla
         Me.grdDetallePedidos.Name = "grdDetallePedidos"
         Me.grdDetallePedidos.Size = New System.Drawing.Size(768, 126)

@@ -65,6 +65,7 @@ Partial Class frmSivMarcas
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
         Me.cmdAgregar.Text = "Agregar Proveedor"
+        Me.cmdAgregar.ToolTipText = "Agregar Marcas"
         '
         'cmdEditar
         '
@@ -74,6 +75,7 @@ Partial Class frmSivMarcas
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
         Me.cmdEditar.Text = "Editar Proveedor"
+        Me.cmdEditar.ToolTipText = "Editar Marcas"
         '
         'cmdConsultar
         '
@@ -83,6 +85,7 @@ Partial Class frmSivMarcas
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
         Me.cmdConsultar.Text = "ToolStripButton1"
+        Me.cmdConsultar.ToolTipText = "Consultar Marca"
         '
         'cmdImprimir
         '
@@ -92,6 +95,7 @@ Partial Class frmSivMarcas
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
         Me.cmdImprimir.Text = "Imprimir Proveedor"
+        Me.cmdImprimir.ToolTipText = "Imprimir Marcas"
         '
         'ToolSeparador1
         '
@@ -120,7 +124,7 @@ Partial Class frmSivMarcas
         '
         Me.grdMarcas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdMarcas.Location = New System.Drawing.Point(0, 39)
-        Me.grdMarcas.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdMarcas.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdMarcas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdMarcas.MainView = Me.grdMarcasTabla
         Me.grdMarcas.Name = "grdMarcas"
@@ -133,8 +137,10 @@ Partial Class frmSivMarcas
         '
         Me.grdMarcasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colActiva})
         Me.grdMarcasTabla.GridControl = Me.grdMarcas
+        Me.grdMarcasTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdMarcasTabla.Name = "grdMarcasTabla"
         Me.grdMarcasTabla.OptionsView.ShowAutoFilterRow = True
+        Me.grdMarcasTabla.Tag = ""
         '
         'colNumero
         '
@@ -149,6 +155,7 @@ Partial Class frmSivMarcas
         Me.colNombre.Caption = "Nombre"
         Me.colNombre.FieldName = "Nombre"
         Me.colNombre.Name = "colNombre"
+        Me.colNombre.OptionsColumn.AllowEdit = False
         Me.colNombre.Visible = True
         Me.colNombre.VisibleIndex = 0
         '
@@ -196,6 +203,7 @@ Partial Class frmSivMarcas
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSivMarcas"
         Me.Text = "Consulta Marcas"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.toolTramitesLegales.ResumeLayout(False)
         Me.toolTramitesLegales.PerformLayout()
         CType(Me.grdMarcas, System.ComponentModel.ISupportInitialize).EndInit()

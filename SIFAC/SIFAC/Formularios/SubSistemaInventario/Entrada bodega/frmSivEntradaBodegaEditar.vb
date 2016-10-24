@@ -476,6 +476,7 @@ Public Class frmSivEntradaBodegaEditar
 
     Private Sub GuardarEntradaDetalle(ByVal T As DAL.TransactionManager)
         Dim objSivEntradaBodegaDetalle As SivEntradaBodegaDetalle
+        Dim objSivBodegaProductos As New SivBodegaProductos
         Dim dtDetalleEntrada As New DataTable
         Dim fila As DataRow
 
@@ -486,9 +487,15 @@ Public Class frmSivEntradaBodegaEditar
             'Isertar detalle de Entradas  
             Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").AcceptChanges()
             For Each row As DataRow In Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").Rows
+
+                'Antes de filtrar actualizar la existencia anterior en el registro de entrada        
                 fila = dtDetalleEntrada.NewRow
                 fila("objEntradaBodegaID") = Me.SivEntradaBodegaID
                 fila("objProductoID") = row("SivProductoID")
+
+                If objSivBodegaProductos.RetrieveByFilter("objProductoID='" & row("SivProductoID") & "' AND objBodegaID=" & Me.cmbBodega.SelectedValue) Then
+                    fila("ExistenciaAnterior") = objSivBodegaProductos.Cantidad
+                End If
                 fila("Cantidad") = row("Cantidad")
                 fila("Costo") = row("Costo")
                 fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
@@ -507,10 +514,11 @@ Public Class frmSivEntradaBodegaEditar
     Private Sub ActualizarSivBodegaRepuesto(ByVal T As DAL.TransactionManager)
         Dim objSivBodegaProductos As SivBodegaProductos
         Dim objSivProductos As SivProductos
-
+        Dim objSivEntradaDetalle As SivEntradaBodegaDetalle
         Try
             objSivBodegaProductos = New SivBodegaProductos
             objSivProductos = New SivProductos
+            objSivEntradaDetalle = New SivEntradaBodegaDetalle
 
             For Each row As DataRow In Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").Rows
 
@@ -520,7 +528,7 @@ Public Class frmSivEntradaBodegaEditar
                     objSivBodegaProductos.Cantidad = objSivBodegaProductos.Cantidad + row("Cantidad")
                     objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
                     objSivBodegaProductos.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                    objSivBodegaProductos.Update()
+                    objSivBodegaProductos.Update(T)
 
                     'Filtrar el repuesto para modificar su costoPromedio
                     objSivProductos.RetrieveByFilter("SivProductoID='" & row("SivProductoID") & "'")
@@ -531,7 +539,7 @@ Public Class frmSivEntradaBodegaEditar
                     Else
                         objSivProductos.CostoPromedio = ((objSivProductos.CostoPromedio + row("Costo")) / 2)
                     End If
-                    objSivProductos.Update()
+                    objSivProductos.Update(T)
 
                 Else
 
@@ -545,7 +553,7 @@ Public Class frmSivEntradaBodegaEditar
 
                     If objSivProductos.RetrieveByFilter("SivProductoID='" & row("SivProductoID") & "'") Then
                         objSivProductos.CostoPromedio = ((objSivProductos.CostoPromedio + row("Costo")) / 2)
-                        objSivProductos.Update()
+                        objSivProductos.Update(T)
                     End If
 
                 End If

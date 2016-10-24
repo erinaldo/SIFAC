@@ -93,7 +93,7 @@ Partial Class frmSivEntradaBodegaEditar
         Me.grdDetalleEntradasBodegasDE.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdDetalleEntradasBodegasDE.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdDetalleEntradasBodegasDE.Location = New System.Drawing.Point(3, 16)
-        Me.grdDetalleEntradasBodegasDE.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdDetalleEntradasBodegasDE.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdDetalleEntradasBodegasDE.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdDetalleEntradasBodegasDE.MainView = Me.grdDetalleEntradasBodegasDETabla
         Me.grdDetalleEntradasBodegasDE.Name = "grdDetalleEntradasBodegasDE"

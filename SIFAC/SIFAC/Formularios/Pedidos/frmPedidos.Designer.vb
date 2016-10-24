@@ -164,7 +164,7 @@ Partial Class frmPedidos
         'grdPedidosDetalle
         '
         Me.grdPedidosDetalle.Location = New System.Drawing.Point(4, 283)
-        Me.grdPedidosDetalle.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdPedidosDetalle.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdPedidosDetalle.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdPedidosDetalle.MainView = Me.grdPedidosDetalleTable
         Me.grdPedidosDetalle.Name = "grdPedidosDetalle"
@@ -176,6 +176,7 @@ Partial Class frmPedidos
         '
         Me.grdPedidosDetalleTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCodigo, Me.ColCategoria, Me.colDescripcion, Me.colCantidad, Me.colTotal})
         Me.grdPedidosDetalleTable.GridControl = Me.grdPedidosDetalle
+        Me.grdPedidosDetalleTable.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdPedidosDetalleTable.Name = "grdPedidosDetalleTable"
         '
         'colCodigo
@@ -234,7 +235,7 @@ Partial Class frmPedidos
         'grdPedidosMaster
         '
         Me.grdPedidosMaster.Location = New System.Drawing.Point(4, 4)
-        Me.grdPedidosMaster.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.grdPedidosMaster.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdPedidosMaster.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdPedidosMaster.MainView = Me.grdPedidosMasterTabla
         Me.grdPedidosMaster.Name = "grdPedidosMaster"
@@ -247,6 +248,7 @@ Partial Class frmPedidos
         '
         Me.grdPedidosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colProveedor, Me.colEstado, Me.colTotalCosto})
         Me.grdPedidosMasterTabla.GridControl = Me.grdPedidosMaster
+        Me.grdPedidosMasterTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdPedidosMasterTabla.Name = "grdPedidosMasterTabla"
         Me.grdPedidosMasterTabla.OptionsDetail.AllowZoomDetail = False
         Me.grdPedidosMasterTabla.OptionsDetail.EnableMasterViewMode = False
