@@ -305,9 +305,7 @@ Public Class frmSincronizarDevoluciones
         CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
     End Sub
 
-    Private Sub cmbExportar_Click(sender As Object, e As EventArgs) Handles cmbExportar.Click
-        ExportarExcel()
-    End Sub
+   
 
     Private Sub cmdCerrar_Click(sender As Object, e As EventArgs) Handles cmdCerrar.Click
         Me.Close()
@@ -316,5 +314,9 @@ Public Class frmSincronizarDevoluciones
     Private Sub cmdDesactivar_Click(sender As Object, e As EventArgs) Handles cmdDesactivar.Click
         AnularDevoluciones()
         CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
+    End Sub
+
+    Private Sub cmbExportar_Click_1(sender As Object, e As EventArgs) Handles cmbExportar.Click
+        ExportarExcel()
     End Sub
 End Class

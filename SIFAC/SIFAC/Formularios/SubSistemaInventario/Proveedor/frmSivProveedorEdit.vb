@@ -597,10 +597,15 @@ Public Class frmSivProveedorEdit
                         Me.grbDatosNatural.Visible = False
                         Me.gbxDatosJuridico.Visible = True
                         Me.txtRazonSocial.Text = dtPersona.DefaultView.Item(0)("NombreCompleto")
-                        Me.txtDireccion.Text = dtPersona.DefaultView.Item(0)("Direccion")
                         Me.txtCedulaRUC.Text = dtPersona.DefaultView.Item(0)("RUC")
-                        Me.txtDireccion.Text = dtPersona.DefaultView.Item(0)("Direccion")
-                        Me.cmbCiudad.SelectedValue = dtPersona.DefaultView.Item(0)("objCiudadID")
+
+                        If Not IsDBNull(dtPersona.DefaultView.Item(0)("Direccion")) Then
+                            Me.txtDireccion.Text = dtPersona.DefaultView.Item(0)("Direccion")
+                        End If
+                        If Not IsDBNull(dtPersona.DefaultView.Item(0)("objCiudadID")) Then
+                            Me.cmbCiudad.SelectedValue = dtPersona.DefaultView.Item(0)("objCiudadID")
+                        End If
+
                     Case False
                         Me.grbDatosNatural.Visible = True
                         Me.gbxDatosJuridico.Visible = False
@@ -933,8 +938,6 @@ Public Class frmSivProveedorEdit
     Private Sub frmSivProveedorEdit_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             IdTipoPersonaProveedor = SqlHelper.ExecuteQueryDT("SELECT dbo.FnGetIdTipoPersona('Proveedor') as ID").DefaultView.Item(0)("ID")
-
-
             boolPersonaExistente = False
             CargarGenero()
             CargarCiudadJurudico()
