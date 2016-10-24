@@ -242,6 +242,7 @@ Public Class frmSincronizarVentas
 
                     '1. GUARDAR CABECERA DE FACTURA
                     With objSfaFactura
+                        .Numero = GenerarCodigo()
                         .Fecha = CDate(drFilaVenta("Fecha"))
                         .objSccClienteID = CInt(drFilaVenta("objSccClienteID"))
                         .objVendedorID = CInt(drFilaVenta("objVendedorID"))
@@ -399,6 +400,24 @@ lblGuardarDetalleCuenta:
             clsError.CaptarError(ex)
         End Try
     End Sub
+
+    Private Function GenerarCodigo() As Integer
+        Dim strNumero As String = ""
+        Dim dtMaximoNumero As New DataTable
+        Try
+            Try
+                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero)+ 1 as NumeroMaximo", "SfaFacturas"))
+                strNumero = dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo")
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            dtMaximoNumero = Nothing
+        End Try
+
+        Return strNumero.Trim
+
+    End Function
 
     Private Sub cmdAprobar_Click(sender As Object, e As EventArgs) Handles cmdAprobar.Click
         SincronizarVentas()

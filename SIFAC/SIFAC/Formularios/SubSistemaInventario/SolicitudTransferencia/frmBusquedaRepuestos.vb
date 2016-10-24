@@ -199,8 +199,8 @@ Public Class frmBusquedaRepuestos
         Dim dtDatos As New DataTable
         Dim sCampos, sFiltro, sSQL As String
 
-        sFiltro = "Activo = 1 ORDER BY Nombre1 "
-        sCampos = "SivProveedorID, (ISNULL(Nombre1,'')) + ' ' + (ISNULL(Nombre2,''))+' '+ (ISNULL(Apellido1,''))+' '+(ISNULL(Apellido2,'')) AS NombreProveedor"
+        sFiltro = "Activo = 1 ORDER BY NombreProveedor "
+        sCampos = "SivProveedorID,NombreProveedor"
         sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwSivProveedores", sFiltro)
         Try
             dtDatos = SqlHelper.ExecuteQueryDT(sSQL)

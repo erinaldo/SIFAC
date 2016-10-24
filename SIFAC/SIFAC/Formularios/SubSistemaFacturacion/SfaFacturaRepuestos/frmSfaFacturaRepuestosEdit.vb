@@ -206,131 +206,13 @@ Public Class frmSfaFacturaRepuestosEditar
 
 #End Region
 
-#Region "Autorizacion Gerencia"
-    Private Sub AutorizacionGenerencia()
-        Dim objseg As New SsgSeguridad
-
-        objseg.Usuario = clsProyecto.Conexion.Usuario
-        objseg.ServicioUsuario = "frmPrincipal"
-        If objseg.TienePermiso("AUTORIZACIONGERENTE") Then
-            Me.chkAutorizar.Enabled = True
-            Me.numDescuento.Enabled = True
-        End If
-
-    End Sub
-
-    Private Function Autorizacion() As Boolean
-        Dim objseg As New SsgSeguridad
-
-        objseg.Usuario = clsProyecto.Conexion.Usuario
-        objseg.ServicioUsuario = "frmPrincipal"
-
-        If objseg.TienePermiso("AUTORIZACIONGERENTE") Then
-            Me.chkAutorizar.Enabled = True
-            Me.numDescuento.Enabled = True
-            Return True
-            Exit Function
-        End If
-
-        Return False
-    End Function
-
-    'Private Sub AutorizarDescuento()
-    '    Dim objSfaFactura As New SfaFacturas
-    '    Dim objSfaFacturaDetalle As New SfaFacturasDetalle
-    '    Dim objseg As New SsgSeguridad
-    '    Dim dtDetalleFact As New DataTable
-    '    Dim t As New TransactionManager
-    '    Dim fila As DataRow
-    '    Try
-    '        Try
-    '            t.BeginTran()
-    '            objseg.Usuario = clsProyecto.Conexion.Usuario
-    '            objseg.ServicioUsuario = "frmPrincipal"
-    '            If objseg.TienePermiso("AUTORIZACIONGERENTE") Then
-    '                objSfaFactura.Retrieve(Me.SfaFacturaID)
-    '                objSfaFactura.Descuento = Me.numTotalDescuento.Value
-    '                objSfaFactura.TotalCordobas = Me.numTotalC.Value
-    '                objSfaFactura.TotalDolares = Me.numTotalD.Value
-    '                objSfaFactura.Impuesto = Me.numIVA.Value
-    '                objSfaFactura.Subtotal = Me.numSubTotal.Value
-    '                objSfaFactura.UsuarioModificacion = clsProyecto.Conexion.Usuario
-    '                objSfaFactura.FechaModificacion = clsProyecto.Conexion.FechaServidor
-    '                objSfaFactura.Update()
-
-    '                '--Actualizar el detalle de la factura
-    '                SfaFacturasDetalle.DeleteByFilter("objSfaFacturaID = " & Me.SfaFacturaID)
-
-    '                If Me.chkAgregarMoto.Checked Then
-    '                    dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
-
-    '                    'Isertar detalle de Factura              
-
-    '                    For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
-    '                        fila = dtDetalleFact.NewRow
-    '                        fila("objFacturaRepuestoID") = Me.SfaFacturaID
-    '                        fila("objRepuestoID") = row("Codigo")
-    '                        fila("Cantidad") = row("Cantidad")
-    '                        fila("Precio") = row("Precio")
-    '                        fila("Subtotal") = row("Subtotal")
-    '                        fila("Descuento") = row("Descuento")
-    '                        fila("Impuesto") = row("Impuesto")
-    '                        fila("Total") = row("Total")
-    '                        fila("CostoDolares") = row("CostoProm")
-    '                        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-    '                        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-    '                        dtDetalleFact.Rows.Add(fila)
-    '                    Next
-    '                    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-    '                    SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
-
-    '                Else
-    '                    dtDetalleFact = SfaFacturasDetalle.RetrieveDT("1=0")
-
-    '                    'Isertar detalle de Factura              
-
-    '                    For Each row As DataRow In Me.dtDetalleFactura.Rows
-    '                        fila = dtDetalleFact.NewRow
-    '                        fila("objFacturaRepuestoID") = Me.SfaFacturaID
-    '                        fila("objRepuestoID") = row("Codigo")
-    '                        fila("Cantidad") = row("Cantidad")
-    '                        fila("Precio") = row("Precio")
-    '                        fila("Subtotal") = row("Subtotal")
-    '                        fila("Descuento") = row("Descuento")
-    '                        fila("Impuesto") = row("Impuesto")
-    '                        fila("Total") = row("Total")
-    '                        fila("CostoDolares") = row("CostoProm")
-    '                        fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
-    '                        fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
-    '                        dtDetalleFact.Rows.Add(fila)
-    '                    Next
-    '                    dtDetalleFact.TableName = "SfaFacturaRepuestoDetalle"
-    '                    SfaFacturasDetalle.BatchUpdate(dtDetalleFact.DataSet, t)
-    '                End If
-
-    '                t.CommitTran()
-    '                MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-    '                Me.DialogResult = Windows.Forms.DialogResult.OK
-    '            End If
-    '        Catch ex As Exception
-    '            t.RollbackTran()
-    '            clsError.CaptarError(ex)
-    '        End Try
-    '    Finally
-    '        objSfaFactura = Nothing
-    '        objseg = Nothing
-    '    End Try
-    'End Sub
-#End Region
 
 #Region "Configurar GUI"
 
     Private Sub FormatearGrids()
-
-        Me.numPrima.Enabled = False
+        'Me.numPrima.Enabled = False
         Me.numSaldo.Enabled = False
-        Me.numDescuento.Enabled = False
-        Me.chkAutorizar.Enabled = False
+        'Me.NumDescuento.Enabled = False
     End Sub
 
     Private Sub ConfigurarGUI()
@@ -345,7 +227,6 @@ Public Class frmSfaFacturaRepuestosEditar
         Me.CargarVendedor()
         Me.CargarTipoPago()
         Me.FormatearGrids()
-        AutorizacionGenerencia()
 
         Select Case Me.TypeGUI
             Case 1
@@ -377,12 +258,10 @@ Public Class frmSfaFacturaRepuestosEditar
                 'End If
                 Me.BloquearControles()
 
-                If (Me.chkSolicitudDescuento.Checked) And (Me.chkAutorizar.Checked) Then
-                    Me.cmdProcesar.Enabled = True
-                    Me.cmdAceptar.Enabled = False
-                End If
                 Me.grdDetalleFactura.Enabled = False
                 'Me.grdDetalleMoto.Enabled = False
+
+                cmdProcesar.Enabled = True
 
                 Me.MaxItemDetalle = ClsCatalogos.GetValorParametro("MaxItemsDetalleFactura")
                 Me.lblCantidadMaxItems.Text = Me.lblCantidadMaxItems.Text + " " + Me.MaxItemDetalle.ToString
@@ -401,23 +280,22 @@ Public Class frmSfaFacturaRepuestosEditar
                 'End If
                 Me.BloquearControles()
 
-                If (Me.chkSolicitudDescuento.Checked) And (Me.chkAutorizar.Checked) Then
-                    Me.cmdProcesar.Enabled = True
-                    Me.cmdAceptar.Enabled = False
+                'If (Me.chkSolicitudDescuento.Checked) And (Me.chkAutorizar.Checked) Then
+                '    Me.cmdProcesar.Enabled = True
+                '    Me.cmdAceptar.Enabled = False
 
-                ElseIf Not Me.chkSolicitudDescuento.Checked Then
-                    Me.cmdProcesar.Enabled = True
-                    Me.cmdAceptar.Enabled = False
-                Else
-                    Me.cmdProcesar.Enabled = False
-                    Me.cmdAceptar.Enabled = True
-                End If
+                'ElseIf Not Me.chkSolicitudDescuento.Checked Then
+                '    Me.cmdProcesar.Enabled = True
+                '    Me.cmdAceptar.Enabled = False
+                'Else
+                '    Me.cmdProcesar.Enabled = False
+                '    Me.cmdAceptar.Enabled = True
+                'End If
 
                 Me.grdDetalleFactura.Enabled = False
                 'Me.grdDetalleMoto.Enabled = False
 
                 Me.NumDescuento.Enabled = True
-                Me.chkAutorizar.Enabled = True
                 Me.grdDetalleFactura.Enabled = False
                 'Me.grdDetalleMoto.Enabled = False
                 Me.numPrima.Enabled = True
@@ -550,8 +428,9 @@ Public Class frmSfaFacturaRepuestosEditar
 
                 'Me.chkAgregarMoto.Checked = objSfaFactura.FacturaMoto
                 'If objSfaFactura.FacturaMoto Then
-                '    Me.numPrima.Value = objSfaFactura.Prima
-                '    Me.numSaldo.Value = objSfaFactura.Saldo
+                Me.numPrima.Value = objSfaFactura.Prima
+                Me.numSaldo.Value = objSfaFactura.Saldo
+                NumDescuento.Value = objSfaFactura.Descuento
                 'End If
 
                 'If (objSfaFactura.SolicAutorDescuento) And (objSfaFactura.AutorizaDescuento) Then
@@ -579,13 +458,10 @@ Public Class frmSfaFacturaRepuestosEditar
         Me.cmbTPago.Enabled = False
         'Me.chkAgregarMoto.Enabled = False
         Me.cmdBuscar.Enabled = False
-        Me.chkSolicitudDescuento.Enabled = False
         Me.txtObervaciones.Enabled = False
         Me.cmdAceptar.Enabled = False
         Me.cmdProcesar.Enabled = False
-        Me.txtSolicitudDescuento.Enabled = False
-        Me.numDescuento.Enabled = False
-        Me.chkAutorizar.Enabled = False
+        Me.NumDescuento.Enabled = False
         Me.cmdCliente.Enabled = False
         Me.cmdAgregarCliente.Enabled = False
     End Sub
@@ -615,37 +491,34 @@ Public Class frmSfaFacturaRepuestosEditar
 
 #Region "Calculos"
     Private Sub CalcularTotalesMoto()
-        Dim DecSubTotal, DecDescuento, DecIVA, DecTotalCord As Double
+        'Dim DecSubTotal, DecDescuento, DecIVA, DecTotalCord As Double
+        Dim DecSubTotal, DecIVA, DecTotalCord As Double
 
         Try
             DecSubTotal = 0.0
-            DecDescuento = 0.0
+            'DecDescuento = 0.0
             DecIVA = 0.0
             DecTotalCord = 0.0
 
             If Not Me.dtDetalleFacturaMoto Is Nothing Then
                 If Me.dtDetalleFacturaMoto.DefaultView.Count > 0 Then
                     DecSubTotal = Me.dtDetalleFacturaMoto.Compute("SUM(Subtotal)", "1=1")
-                    DecDescuento = Me.dtDetalleFacturaMoto.Compute("SUM(Descuento)", "1=1")
+                    'DecDescuento = Me.dtDetalleFacturaMoto.Compute("SUM(Descuento)", "1=1")
                     DecIVA = Me.dtDetalleFacturaMoto.Compute("SUM(Impuesto)", "1=1")
                     DecTotalCord = Me.dtDetalleFacturaMoto.Compute("SUM(Total)", "1=1")
                 End If
             End If
 
             Me.numSubTotal.Value = DecSubTotal 'DecSubTotal * numTasa.Value
-            Me.numTotalDescuento.Value = DecDescuento 'DecDescuento * numTasa.Value
+            Me.numTotalDescuento.Value = NumDescuento.Value 'DecDescuento 'DecDescuento * numTasa.Value
             Me.numIVA.Value = DecIVA 'DecIVA * numTasa.Value
-            Me.numTotalC.Value = DecTotalCord 'DecTotalCord * numTasa.Value
+            Me.numTotalC.Value = DecTotalCord - Me.numTotalDescuento.Value 'DecTotalCord * numTasa.Value
             If numTasa.Value = 0 Then
                 Me.numTotalD.Value = 0
 
             Else
                 Me.numTotalD.Value = DecTotalCord / numTasa.Value
             End If
-
-            'If Me.Autorizacion Then
-            '    Me.numDescuento.Value = Me.numTotalDescuento.Value / Me.numTasa.Value
-            'End If
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -1080,18 +953,19 @@ Public Class frmSfaFacturaRepuestosEditar
 
 #Region "Calculos"
     Private Sub CalcularTotales()
-        Dim DecSubTotal, DecDescuento, DecIVA, DecTotalCord As Decimal
+        'Dim DecSubTotal, DecDescuento, DecIVA, DecTotalCord As Decimal
+        Dim DecSubTotal, DecIVA, DecTotalCord As Decimal
 
         Try
             DecSubTotal = 0.0
-            DecDescuento = 0.0
+            'DecDescuento = 0.0
             DecIVA = 0.0
             DecTotalCord = 0.0
 
             If Not Me.dtDetalleFactura Is Nothing Then
                 If Me.dtDetalleFactura.DefaultView.Count > 0 Then
                     DecSubTotal = Me.dtDetalleFactura.Compute("SUM(Subtotal)", "1=1")
-                    DecDescuento = Me.dtDetalleFactura.Compute("SUM(Descuento)", "1=1")
+                    'DecDescuento = Me.dtDetalleFactura.Compute("SUM(Descuento)", "1=1")
                     DecIVA = Me.dtDetalleFactura.Compute("SUM(Impuesto)", "1=1")
                     DecTotalCord = Me.dtDetalleFactura.Compute("SUM(Total)", "1=1")
                 End If
@@ -1105,9 +979,9 @@ Public Class frmSfaFacturaRepuestosEditar
 
             'Se realizarán los cálculos usando un redondeo de dos decimales
             Me.numSubTotal.Value = Decimal.Round(DecSubTotal, 2) '* Decimal.Round(numTasa.Value, 2)
-            Me.numTotalDescuento.Value = Decimal.Round(DecDescuento, 2) '* Decimal.Round(numTasa.Value, 2)
+            Me.numTotalDescuento.Value = NumDescuento.Value 'Decimal.Round(DecDescuento, 2) '* Decimal.Round(numTasa.Value, 2)
             Me.numIVA.Value = Decimal.Round(DecIVA, 2) '* Decimal.Round(numTasa.Value, 2)
-            Me.numTotalC.Value = Decimal.Round(DecTotalCord, 2) '* Decimal.Round(numTasa.Value, 2)
+            Me.numTotalC.Value = Decimal.Round(DecTotalCord - Me.numTotalDescuento.Value, 2) '* Decimal.Round(numTasa.Value, 2)
             If numTasa.Value = 0 Then
                 Me.numTotalD.Value = 0
             Else
@@ -1700,7 +1574,9 @@ Public Class frmSfaFacturaRepuestosEditar
                 '    strNumero = RellenarConCeros(dtTiendaMaximo.DefaultView.Item(0)("ProximaFactura"), 4)
                 'Else
                 'strSerie = StbTienda.RetrieveDT("StbTiendaID = " & Me.cmbBodega.SelectedValue, "", "Seriefactura").DefaultView.Item(0)("Seriefactura")
-                strNumero = RellenarConCeros(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"), 4)
+                'strNumero = RellenarConCeros(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"), 6)
+                strNumero = dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo")
+
                 'End If
 
             Catch ex As Exception
@@ -1874,14 +1750,6 @@ Public Class frmSfaFacturaRepuestosEditar
     '    End If
     'End Sub
 
-    Private Sub chkSolicitudDescuento_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkSolicitudDescuento.CheckedChanged
-        If Me.chkSolicitudDescuento.Checked Then
-            Me.txtSolicitudDescuento.Enabled = True
-        Else
-            Me.txtSolicitudDescuento.Enabled = False
-        End If
-    End Sub
-
     Private Sub cmbCliente_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cmbCliente.KeyPress
         If Asc(e.KeyChar) = 13 Then
             If Me.cmbCliente.Text.Trim.Length <> 0 Then
@@ -1898,17 +1766,6 @@ Public Class frmSfaFacturaRepuestosEditar
 
     Private Sub txtObervaciones_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtObervaciones.KeyPress
         If Asc(e.KeyChar) = 13 Then
-            Me.chkSolicitudDescuento.Focus()
-        End If
-    End Sub
-
-    Private Sub chkSolicitudDescuento_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles chkSolicitudDescuento.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            If Me.chkSolicitudDescuento.Checked Then
-                Me.txtSolicitudDescuento.Focus()
-            Else
-                Me.cmdAceptar.Focus()
-            End If
         End If
     End Sub
 
@@ -1972,7 +1829,6 @@ Public Class frmSfaFacturaRepuestosEditar
     Private Sub cmdProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdProcesar.Click
         Dim t As New TransactionManager
         Me.Procesar(t)
-
     End Sub
 
     Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
@@ -2011,12 +1867,12 @@ Public Class frmSfaFacturaRepuestosEditar
             Me.boolModificado = False
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
 
-            If Not Me.chkSolicitudDescuento.Checked Then
-                Me.cmdProcesar.Enabled = True
-                Me.cmdAceptar.Enabled = False
-            Else
-                Me.DialogResult = Windows.Forms.DialogResult.OK
-            End If
+            'If Not Me.chkSolicitudDescuento.Checked Then
+            Me.cmdProcesar.Enabled = True
+            Me.cmdAceptar.Enabled = False
+            'Else
+            '    Me.DialogResult = Windows.Forms.DialogResult.OK
+            'End If
 
         Catch ex As Exception
             t.RollbackTran()
@@ -2060,7 +1916,7 @@ Public Class frmSfaFacturaRepuestosEditar
             'objSfaFactura.FacturaMoto = Me.chkAgregarMoto.Checked
 
             'If Me.chkAgregarMoto.Checked Then
-            '    objSfaFactura.Prima = Me.numPrima.Value
+            objSfaFactura.Prima = Me.numPrima.Value
             '    objSfaFactura.Saldo = Me.numSaldo.Value
             'End If
 
@@ -2205,7 +2061,7 @@ Public Class frmSfaFacturaRepuestosEditar
                 T.BeginTran()
                 '---Actualizar el maestro de la factura
                 objSfaFactura.Retrieve(Me.SfaFacturaID)
-                objSfaFactura.Numero = Me.SfaFacturaID 'Me.GenerarNumero
+                objSfaFactura.Numero = Me.GenerarCodigo() 'Me.SfaFacturaID 
                 objSfaFactura.objEstadoID = ClsCatalogos.GetValorCatalogoID("ESTADOFACT", "PROCESADA")
                 objSfaFactura.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objSfaFactura.UsuarioModificacion = clsProyecto.Conexion.Usuario
@@ -3636,16 +3492,12 @@ Public Class frmSfaFacturaRepuestosEditar
 #Region "Eventos del Descuento Autorizado"
     Private Sub numDescuento_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
-            If Me.chkAutorizar.Checked Then
-                Me.CargarDescuentoAutorizadoEnGrid()
-            End If
+            Me.CargarDescuentoAutorizadoEnGrid()
         End If
     End Sub
 
     Private Sub numDescuento_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Me.chkAutorizar.Checked Then
-            Me.CargarDescuentoAutorizadoEnGrid()
-        End If
+        Me.CargarDescuentoAutorizadoEnGrid()
     End Sub
 
     Private Sub CargarDescuentoAutorizadoEnGrid()
@@ -3670,16 +3522,6 @@ Public Class frmSfaFacturaRepuestosEditar
         End If
     End Sub
 
-    Private Sub chkAutorizar_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkAutorizar.CheckedChanged
-        If Not Me.chkAutorizar.Checked Then
-            Me.NumDescuento.Value = 0
-            Me.CargarDescuentoAutorizadoEnGrid()
-        Else
-            If Me.NumDescuento.EditValue > 0 Then
-                Me.CargarDescuentoAutorizadoEnGrid()
-            End If
-        End If
-    End Sub
 #End Region
 
     Private Sub grdspnCodigoRepuesto_ButtonClick_1(ByVal sender As System.Object, ByVal e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles grdspnCodigoRepuesto.ButtonClick
@@ -3687,4 +3529,7 @@ Public Class frmSfaFacturaRepuestosEditar
     End Sub
 
     
+    Private Sub NumDescuento_EditValueChanged(sender As Object, e As EventArgs) Handles NumDescuento.EditValueChanged
+        numTotalDescuento.Value = NumDescuento.Value
+    End Sub
 End Class
