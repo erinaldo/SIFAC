@@ -12,7 +12,7 @@ Public Class frmSccCuentasEditar
 #Region "Variables del formulario"
     Public dtCliente, dtFacturas As DataTable
     Public intTypeGUI As Integer
-    Public strCuentaID, FiltroCliente, strClienteID As String
+    Public strCuentaID, FiltroCliente, strClienteID, strPersonaID As String
     Dim foundRows() As DataRow
 #End Region
 
@@ -36,12 +36,12 @@ Public Class frmSccCuentasEditar
         End Set
     End Property
 
-    Public Property ClienteID() As String
+    Public Property PersonaID() As String
         Get
-            Return strClienteID
+            Return strPersonaID
         End Get
         Set(ByVal value As String)
-            strClienteID = value
+            strPersonaID = value
         End Set
     End Property
 
@@ -50,46 +50,56 @@ Public Class frmSccCuentasEditar
 #Region "Procedimientos del formulario"
 
     Public Sub CargarCliente()
-        Select Case TypeGUI
-            Case 0
-                FiltroCliente = "Descripcion = 'Cliente' "
-            Case 1
-                FiltroCliente = "Descripcion = 'Cliente' "
-            Case 2
-                FiltroCliente = "Descripcion = 'Cliente' "
-        End Select
-        dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Direccion,Cedula,Genero,Descripcion,TipoPersona,Nacionalidad,ClienteID", "vwPersonaClasificacion", FiltroCliente))
-        dtCliente.DefaultView.RowFilter = "1=0"
+        Try
+            Select Case TypeGUI
+                Case 0
+                    FiltroCliente = "Descripcion = 'Cliente' "
+                Case 1
+                    FiltroCliente = "Descripcion = 'Cliente' "
+                Case 2
+                    FiltroCliente = "Descripcion = 'Cliente' "
+            End Select
+            dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Direccion,Cedula,Genero,Descripcion,TipoPersona,Nacionalidad,ClienteID", "vwPersonaClasificacion", FiltroCliente))
+            dtCliente.DefaultView.RowFilter = "1=0"
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Public Sub VincularControles()
-        Me.txtNombre.Text = String.Empty
-        Me.txtDireccion.Text = String.Empty
-        Me.txtCedula.Text = String.Empty
-        Me.txtGenero.Text = String.Empty
-        Me.txtNacionalidad.Text = String.Empty
-        Me.txtTipoPersona.Text = String.Empty
-        Me.txtNombre.Text = IIf(IsDBNull(foundRows(0)("NombreCompleto")), String.Empty, foundRows(0)("NombreCompleto"))
-        Me.txtDireccion.Text = IIf(IsDBNull(foundRows(0)("Direccion")), String.Empty, foundRows(0)("Direccion"))
-        Me.txtCedula.Text = IIf(IsDBNull(foundRows(0)("Cedula")), String.Empty, foundRows(0)("Cedula"))
-        Me.txtGenero.Text = IIf(IsDBNull(foundRows(0)("Genero")), String.Empty, foundRows(0)("Genero"))
-        Me.txtNacionalidad.Text = IIf(IsDBNull(foundRows(0)("Nacionalidad")), String.Empty, foundRows(0)("Nacionalidad"))
-        Me.txtTipoPersona.Text = IIf(IsDBNull(foundRows(0)("TipoPersona")), String.Empty, foundRows(0)("TipoPersona"))
+        Try
+            Me.txtNombre.Text = String.Empty
+            Me.txtDireccion.Text = String.Empty
+            Me.txtCedula.Text = String.Empty
+            Me.txtGenero.Text = String.Empty
+            Me.txtNacionalidad.Text = String.Empty
+            Me.txtTipoPersona.Text = String.Empty
+            Me.txtNombre.Text = IIf(IsDBNull(foundRows(0)("NombreCompleto")), String.Empty, foundRows(0)("NombreCompleto"))
+            Me.txtDireccion.Text = IIf(IsDBNull(foundRows(0)("Direccion")), String.Empty, foundRows(0)("Direccion"))
+            Me.txtCedula.Text = IIf(IsDBNull(foundRows(0)("Cedula")), String.Empty, foundRows(0)("Cedula"))
+            Me.txtGenero.Text = IIf(IsDBNull(foundRows(0)("Genero")), String.Empty, foundRows(0)("Genero"))
+            Me.txtNacionalidad.Text = IIf(IsDBNull(foundRows(0)("Nacionalidad")), String.Empty, foundRows(0)("Nacionalidad"))
+            Me.txtTipoPersona.Text = IIf(IsDBNull(foundRows(0)("TipoPersona")), String.Empty, foundRows(0)("TipoPersona"))
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+      
     End Sub
 
     Public Sub ConfigurarGUI()
         Select Case TypeGUI
             Case 0
                 Me.Text = "Nuevo Expediente."
-                ClienteID = Nothing
+                PersonaID = Nothing
                 Me.txtEstado.Text = Me.CargarEstados(ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO"))
             Case 1
-                Me.Text = "Edición de Expediente."
+                Me.Text = "Edición de Expediente"
                 CargarDatosEdicion()
                 Call Me.CargarFacturas()
                 Me.txtCuenta.Enabled = False
             Case 2
-                Me.Text = "Consulta de Expediente."
+                Me.Text = "Consulta de Expediente"
                 CargarDatosEdicion()
                 Call Me.CargarFacturas()
                 Me.txtCuenta.Enabled = False
@@ -113,7 +123,7 @@ Public Class frmSccCuentasEditar
                 objSccCuenta.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objSccCuenta.SaldoInicial = 0.0
                 objSccCuenta.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                objSccCuenta.objClienteID = ClienteID
+                objSccCuenta.objClienteID = strClienteID
                 objSccCuenta.FechaCredito = Me.dtpFechaCredito.Value
                 objSccCuenta.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO")
                 objSccCuenta.Insert(tx)
@@ -147,7 +157,7 @@ Public Class frmSccCuentasEditar
                 objSccCuenta.Saldo = Me.numSaldo.Value
                 objSccCuenta.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objSccCuenta.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                objSccCuenta.objClienteID = ClienteID
+                objSccCuenta.objClienteID = strClienteID
                 objSccCuenta.FechaCredito = Me.dtpFechaCredito.Value
                 objSccCuenta.Update(tx)
                 tx.CommitTran()
@@ -167,20 +177,24 @@ Public Class frmSccCuentasEditar
 
     Public Sub CargarDatosEdicion()
         Dim objSccCuenta As SccCuentaPorCobrar
-        objSccCuenta = New SccCuentaPorCobrar
+        Try
 
+            objSccCuenta = New SccCuentaPorCobrar
 
-        objSccCuenta.Retrieve(CuentaID, )
-        Me.txtCuenta.Text = objSccCuenta.SccCuentaID
-        Me.ClienteID = objSccCuenta.objClienteID
-        Me.numSaldo.Value = objSccCuenta.Saldo
-        Me.dtpFechaCredito.Value = objSccCuenta.FechaCredito
-        Me.txtEstado.Text = Me.CargarEstados(objSccCuenta.objEstadoID)
-        Me.txtUsuario.Text = objSccCuenta.UsuarioCreacion
+            objSccCuenta.Retrieve(CuentaID, )
+            Me.txtCuenta.Text = objSccCuenta.SccCuentaID
+            strClienteID = objSccCuenta.objClienteID
+            Me.numSaldo.Value = objSccCuenta.Saldo
+            Me.dtpFechaCredito.Value = objSccCuenta.FechaCredito
+            Me.txtEstado.Text = Me.CargarEstados(objSccCuenta.objEstadoID)
+            Me.txtUsuario.Text = objSccCuenta.UsuarioCreacion
 
-        foundRows = Me.dtCliente.Select("ClienteID = '" & ClienteID & "'")
-        Call VincularControles()
-        
+            foundRows = Me.dtCliente.Select("ClienteID = '" & strClienteID & "'")
+            PersonaID = IIf(IsDBNull(foundRows(0)("StbPersonaID")), String.Empty, foundRows(0)("StbPersonaID"))
+            Call VincularControles()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 #End Region
@@ -188,20 +202,23 @@ Public Class frmSccCuentasEditar
 #Region "Funciones"
     Public Function ValidarEntrada() As Boolean
         Dim objTemp As New SccCuentaPorCobrar
-
+        Try
         If dtpFechaCredito.Text.Length = 0 Then
             Me.ErrorProv.SetError(dtpFechaCredito, My.Resources.MsgObligatorio)
             Return False
             Exit Function
         End If
 
-        If ClienteID Is Nothing Then
-            Me.tbcCuentas.SelectedIndex = 0
-            Me.ErrorProv.SetError(cmdBuscarCliente, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
+            If PersonaID Is Nothing Then
+                Me.tbcCuentas.SelectedIndex = 0
+                Me.ErrorProv.SetError(cmdBuscarCliente, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
 
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
         Return True
     End Function
 #End Region
@@ -235,9 +252,9 @@ Public Class frmSccCuentasEditar
             objBuscarPersona.Opcion = 4
             objBuscarPersona.Filtro = FiltroCliente
             If objBuscarPersona.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                ClienteID = objBuscarPersona.Seleccion
+                PersonaID = objBuscarPersona.Seleccion
                 Me.ErrorProv.Clear()
-                foundRows = Me.dtCliente.Select("StbPersonaID = '" & ClienteID & "'")
+                foundRows = Me.dtCliente.Select("StbPersonaID = '" & PersonaID & "'")
 
                 'If foundRows = 0 Then
                 '    Me.CargarCliente()
