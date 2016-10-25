@@ -40,16 +40,16 @@ Partial Class frmSccEditDevolucion
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdGuardar = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.tbFacturas = New System.Windows.Forms.TabControl()
         Me.PGFacturas = New System.Windows.Forms.TabPage()
         Me.grdFacturas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.lblInfo = New System.Windows.Forms.Label()
-        Me.cmdAutorizar = New System.Windows.Forms.Button()
         Me.ToolTip = New C1.Win.C1SuperTooltip.C1SuperTooltip(Me.components)
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdAutorizar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBox1.SuspendLayout()
         Me.GrpExpediente.SuspendLayout()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,6 +72,7 @@ Partial Class frmSccEditDevolucion
         Me.GroupBox1.Controls.Add(Me.lblFechaPedido)
         Me.GroupBox1.Controls.Add(Me.txtNumero)
         Me.GroupBox1.Controls.Add(Me.lblNumeroPedido)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(10, 22)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(665, 96)
@@ -81,6 +82,7 @@ Partial Class frmSccEditDevolucion
         '
         'txtEstado
         '
+        Me.txtEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEstado.Location = New System.Drawing.Point(62, 43)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.Size = New System.Drawing.Size(200, 20)
@@ -90,9 +92,10 @@ Partial Class frmSccEditDevolucion
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(11, 47)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 13)
+        Me.Label1.Size = New System.Drawing.Size(50, 13)
         Me.Label1.TabIndex = 45
         Me.Label1.Tag = ""
         Me.Label1.Text = "Estado:"
@@ -114,7 +117,7 @@ Partial Class frmSccEditDevolucion
         '
         'cmdConsultar
         '
-        Me.cmdConsultar.Image = Global.SIFAC.My.Resources.Resources.Buscar
+        Me.cmdConsultar.Image = CType(resources.GetObject("cmdConsultar.Image"), System.Drawing.Image)
         Me.cmdConsultar.Location = New System.Drawing.Point(342, 14)
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(24, 23)
@@ -133,6 +136,7 @@ Partial Class frmSccEditDevolucion
         '
         'txtCliente
         '
+        Me.txtCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCliente.Location = New System.Drawing.Point(86, 44)
         Me.txtCliente.Name = "txtCliente"
         Me.txtCliente.Size = New System.Drawing.Size(254, 20)
@@ -142,15 +146,17 @@ Partial Class frmSccEditDevolucion
         'Label11
         '
         Me.Label11.AutoSize = True
+        Me.Label11.ForeColor = System.Drawing.Color.Black
         Me.Label11.Location = New System.Drawing.Point(16, 47)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(42, 13)
+        Me.Label11.Size = New System.Drawing.Size(50, 13)
         Me.Label11.TabIndex = 4
         Me.Label11.Tag = "OBLIGATORIO"
         Me.Label11.Text = "Cliente:"
         '
         'txtNumCuenta
         '
+        Me.txtNumCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumCuenta.Location = New System.Drawing.Point(168, 17)
         Me.txtNumCuenta.Name = "txtNumCuenta"
         Me.txtNumCuenta.Size = New System.Drawing.Size(142, 20)
@@ -160,9 +166,10 @@ Partial Class frmSccEditDevolucion
         'Label12
         '
         Me.Label12.AutoSize = True
+        Me.Label12.ForeColor = System.Drawing.Color.Black
         Me.Label12.Location = New System.Drawing.Point(16, 20)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(48, 13)
+        Me.Label12.Size = New System.Drawing.Size(56, 13)
         Me.Label12.TabIndex = 1
         Me.Label12.Tag = "OBLIGATORIO"
         Me.Label12.Text = "No. Exp:"
@@ -179,6 +186,7 @@ Partial Class frmSccEditDevolucion
         Me.dtpFecha.Calendar.SelectedDate = New Date(2016, 7, 12, 0, 0, 0, 0)
         Me.dtpFecha.Calendar.TodayText = "&Today"
         Me.dtpFecha.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
+        Me.dtpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFecha.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFecha.Location = New System.Drawing.Point(62, 68)
         Me.dtpFecha.Name = "dtpFecha"
@@ -190,9 +198,10 @@ Partial Class frmSccEditDevolucion
         'lblFechaPedido
         '
         Me.lblFechaPedido.AutoSize = True
+        Me.lblFechaPedido.ForeColor = System.Drawing.Color.Black
         Me.lblFechaPedido.Location = New System.Drawing.Point(12, 71)
         Me.lblFechaPedido.Name = "lblFechaPedido"
-        Me.lblFechaPedido.Size = New System.Drawing.Size(40, 13)
+        Me.lblFechaPedido.Size = New System.Drawing.Size(46, 13)
         Me.lblFechaPedido.TabIndex = 42
         Me.lblFechaPedido.Tag = "OBLIGATORIO"
         Me.lblFechaPedido.Text = "Fecha:"
@@ -200,6 +209,7 @@ Partial Class frmSccEditDevolucion
         'txtNumero
         '
         Me.txtNumero.Enabled = False
+        Me.txtNumero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumero.Location = New System.Drawing.Point(62, 19)
         Me.txtNumero.Name = "txtNumero"
         Me.txtNumero.Size = New System.Drawing.Size(200, 20)
@@ -209,9 +219,10 @@ Partial Class frmSccEditDevolucion
         'lblNumeroPedido
         '
         Me.lblNumeroPedido.AutoSize = True
+        Me.lblNumeroPedido.ForeColor = System.Drawing.Color.Black
         Me.lblNumeroPedido.Location = New System.Drawing.Point(12, 23)
         Me.lblNumeroPedido.Name = "lblNumeroPedido"
-        Me.lblNumeroPedido.Size = New System.Drawing.Size(47, 13)
+        Me.lblNumeroPedido.Size = New System.Drawing.Size(54, 13)
         Me.lblNumeroPedido.TabIndex = 19
         Me.lblNumeroPedido.Tag = ""
         Me.lblNumeroPedido.Text = "Número:"
@@ -248,9 +259,10 @@ Partial Class frmSccEditDevolucion
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(10, 22)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(34, 13)
+        Me.Label2.Size = New System.Drawing.Size(40, 13)
         Me.Label2.TabIndex = 12
         Me.Label2.Tag = ""
         Me.Label2.Text = "Total:"
@@ -258,27 +270,6 @@ Partial Class frmSccEditDevolucion
         'ErrorProvider
         '
         Me.ErrorProvider.ContainerControl = Me
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Location = New System.Drawing.Point(585, 349)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdCancelar.TabIndex = 10
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdGuardar
-        '
-        Me.cmdGuardar.Location = New System.Drawing.Point(425, 349)
-        Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdGuardar.TabIndex = 9
-        Me.cmdGuardar.Tag = "ACEPTAR"
-        Me.cmdGuardar.Text = "&Aceptar"
-        Me.cmdGuardar.UseVisualStyleBackColor = True
         '
         'Panel1
         '
@@ -333,18 +324,6 @@ Partial Class frmSccEditDevolucion
         Me.lblInfo.TabIndex = 71
         Me.lblInfo.Tag = ""
         '
-        'cmdAutorizar
-        '
-        Me.cmdAutorizar.Enabled = False
-        Me.cmdAutorizar.Image = CType(resources.GetObject("cmdAutorizar.Image"), System.Drawing.Image)
-        Me.cmdAutorizar.Location = New System.Drawing.Point(505, 349)
-        Me.cmdAutorizar.Name = "cmdAutorizar"
-        Me.cmdAutorizar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdAutorizar.TabIndex = 72
-        Me.cmdAutorizar.Tag = ""
-        Me.cmdAutorizar.Text = "A&utorizar"
-        Me.cmdAutorizar.UseVisualStyleBackColor = True
-        '
         'ToolTip
         '
         Me.ToolTip.Font = New System.Drawing.Font("Tahoma", 8.0!)
@@ -354,6 +333,9 @@ Partial Class frmSccEditDevolucion
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdAutorizar)
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Controls.Add(Me.tbFacturas)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -364,16 +346,57 @@ Partial Class frmSccEditDevolucion
         Me.PanelControl1.Size = New System.Drawing.Size(688, 407)
         Me.PanelControl1.TabIndex = 98
         '
+        'cmdAutorizar
+        '
+        Me.cmdAutorizar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAutorizar.Appearance.Options.UseFont = True
+        Me.cmdAutorizar.Image = CType(resources.GetObject("cmdAutorizar.Image"), System.Drawing.Image)
+        Me.cmdAutorizar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAutorizar.Location = New System.Drawing.Point(511, 346)
+        Me.cmdAutorizar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdAutorizar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAutorizar.Name = "cmdAutorizar"
+        Me.cmdAutorizar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAutorizar.TabIndex = 15
+        Me.cmdAutorizar.Tag = "AUTORIZAR"
+        Me.cmdAutorizar.Text = "A&utorizar"
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(597, 346)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 14
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(425, 346)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 13
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Guardar"
+        '
         'frmSccEditDevolucion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(688, 407)
-        Me.Controls.Add(Me.cmdAutorizar)
         Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdGuardar)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -417,8 +440,6 @@ Partial Class frmSccEditDevolucion
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents txtNumCuenta As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdGuardar As System.Windows.Forms.Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents tbFacturas As System.Windows.Forms.TabControl
     Friend WithEvents PGFacturas As System.Windows.Forms.TabPage
@@ -426,7 +447,9 @@ Partial Class frmSccEditDevolucion
     Friend WithEvents txtEstado As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblInfo As System.Windows.Forms.Label
-    Friend WithEvents cmdAutorizar As System.Windows.Forms.Button
     Friend WithEvents ToolTip As C1.Win.C1SuperTooltip.C1SuperTooltip
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdAutorizar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

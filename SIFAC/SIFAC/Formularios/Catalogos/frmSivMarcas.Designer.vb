@@ -161,7 +161,8 @@ Partial Class frmSivMarcas
         '
         'colDescripcion
         '
-        Me.colDescripcion.Caption = "Descripciom"
+        Me.colDescripcion.Caption = "Descripcion"
+        Me.colDescripcion.FieldName = "Descripcion"
         Me.colDescripcion.Name = "colDescripcion"
         Me.colDescripcion.OptionsColumn.AllowEdit = False
         Me.colDescripcion.OptionsColumn.ReadOnly = True

@@ -59,8 +59,6 @@ Public Class frmSccDevoluciones
 
     ''' <summary>
     ''' Procedimiento encargado de cargar los datos correspondientes de las devoluciones.
-    ''' Autor : Pedro Pablo Tinoco Salgado.
-    ''' Fecha : 6 de Abril de 2009.
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub CargaDatos()
@@ -69,7 +67,7 @@ Public Class frmSccDevoluciones
             Me.DtDatosDevolucion = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccDevolucion"))
             Me.DtDatosDevolucion.PrimaryKey = New DataColumn() {Me.DtDatosDevolucion.Columns("SccDevolucionID")}
             Me.DtDatosDevolucion.DefaultView.Sort = "SccDevolucionID"
-            Me.grdDevolucion.SetDataBinding(Me.DtDatosDevolucion, "", True)
+            Me.grdDevolucion.DataSource = DtDatosDevolucion
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -123,7 +121,7 @@ Public Class frmSccDevoluciones
                 MsgBox("Autorización de Devolución Exitosa", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
                 Me.DialogResult = Windows.Forms.DialogResult.OK
                 Me.CargaDatos()
-                Me.grdDevolucion.Row = Me.DtDatosDevolucion.DefaultView.Find(Me.IDDevolucion)
+
 
             Catch ex As Exception
                 T.RollbackTran()
@@ -137,21 +135,27 @@ Public Class frmSccDevoluciones
     End Function
 
     Private Sub cmdAutorizarDev_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAutorizarDev.Click
-        If Me.grdDevolucion.RowCount > 0 Then
-            Me.IDDevolucion = Me.grdDevolucion.Columns("SccDevolucionID").Value
-            If Me.grdDevolucion.Columns("objEstadoID").Value <> Me.IDEstadoReg Then
-                MsgBox("Solamente Devoluciones en Estado Registrada pueden ser Autorizadas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                Exit Sub
-            End If
-            Select Case MsgBox("Esta seguro de utorizar Devolución", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
-                Case MsgBoxResult.Yes
-                    Me.AutorizarDevolucion()
-
-                Case MsgBoxResult.No
+        Dim FilaActual As Integer
+        Try
+            FilaActual = Me.grdDevolucionTabla.FocusedRowHandle
+            If Me.DtDatosDevolucion.Rows.Count > 0 Then
+                Me.IDDevolucion = Me.DtDatosDevolucion.DefaultView.Item(FilaActual)("SccDevolucionID")
+                If Me.DtDatosDevolucion.DefaultView.Item(FilaActual)("objEstadoID") <> Me.IDEstadoReg Then
+                    MsgBox("Solamente Devoluciones en Estado Registrada pueden ser Autorizadas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                     Exit Sub
-            End Select
+                End If
+                Select Case MsgBox("Esta seguro de utorizar Devolución", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
+                    Case MsgBoxResult.Yes
+                        Me.AutorizarDevolucion()
 
-        End If
+                    Case MsgBoxResult.No
+                        Exit Sub
+                End Select
+
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 #End Region
 
@@ -159,8 +163,6 @@ Public Class frmSccDevoluciones
 
     ''' <summary>
     ''' Procedimiento encargado de crear una nueva devolucion
-    ''' Autor : Pedro Pablo Tinoco Salgado.
-    ''' Fecha : 6 de Abril de 2009.
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub New_Devolucion()
@@ -170,7 +172,7 @@ Public Class frmSccDevoluciones
             objFormDev.TypeGui = 0
             If objFormDev.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.CargaDatos()
-                Me.grdDevolucion.Row = Me.DtDatosDevolucion.DefaultView.Find(objFormDev.IDDevolucion)
+                'Me.grdDevolucion.Row = Me.DtDatosDevolucion.DefaultView.Find(objFormDev.IDDevolucion)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -192,8 +194,8 @@ Public Class frmSccDevoluciones
         Me.AplicarSeguridad()
         Me.IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADODEVOLUCION", "REGISTRADA")
 
-        Me.grdDevolucion.Splits(0).DisplayColumns("SccDevolucionID").Visible = False
-        Me.grdDevolucion.Splits(0).DisplayColumns("objEstadoID").Visible = False
+        'Me.grdDevolucion.Splits(0).DisplayColumns("SccDevolucionID").Visible = False
+        'Me.grdDevolucion.Splits(0).DisplayColumns("objEstadoID").Visible = False
 
     End Sub
 
@@ -210,14 +212,21 @@ Public Class frmSccDevoluciones
 
 #Region "Editar Devolucion"
     Private Sub cmdEditarDev_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEditarDev.Click
-        If Me.grdDevolucion.RowCount > 0 Then
-            Me.IDDevolucion = Me.grdDevolucion.Columns("SccDevolucionID").Value
-            If Me.grdDevolucion.Columns("objEstadoID").Value <> Me.IDEstadoReg Then
-                MsgBox("Solamente Devoluciones en Estado Registrada pueden ser Editadas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                Exit Sub
+        Dim FilaActual As Integer
+        Try
+            If Me.DtDatosDevolucion.Rows.Count > 0 Then
+                FilaActual = Me.grdDevolucionTabla.FocusedRowHandle
+                Me.IDDevolucion = Me.DtDatosDevolucion.DefaultView.Item(FilaActual)("SccDevolucionID")
+                If Me.DtDatosDevolucion.DefaultView.Item(FilaActual)("objEstadoID") <> Me.IDEstadoReg Then
+                    MsgBox("Solamente Devoluciones en Estado Registrada pueden ser Editadas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                    Exit Sub
+                End If
+                Me.Edit_Devolucion()
             End If
-            Me.Edit_Devolucion()
-        End If
+        Catch ex As Exception
+
+        End Try
+      
     End Sub
 
     ''' <summary>
@@ -227,14 +236,17 @@ Public Class frmSccDevoluciones
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub Edit_Devolucion()
+        Dim FilaActual As Integer
         Dim objFormDev As frmSccEditDevolucion
         Try
+            FilaActual = Me.grdDevolucionTabla.FocusedRowHandle
             objFormDev = New frmSccEditDevolucion
             objFormDev.TypeGui = 1
+            IDDevolucion = Me.DtDatosDevolucion.DefaultView.Item(FilaActual)("SccDevolucionID")
             objFormDev.IDDevolucion = Me.IDDevolucion
             If objFormDev.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.CargaDatos()
-                Me.grdDevolucion.Row = Me.DtDatosDevolucion.DefaultView.Find(objFormDev.IDDevolucion)
+                'Me.grdDevolucion.Row = Me.DtDatosDevolucion.DefaultView.Find(objFormDev.IDDevolucion)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -258,10 +270,18 @@ Public Class frmSccDevoluciones
     End Sub
 
     Private Sub cmdConsultarDev_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultarDev.Click
-        If Me.grdDevolucion.RowCount > 0 Then
-            Me.IDDevolucion = Me.grdDevolucion.Columns("SccDevolucionID").Value
-            Me.Quote_Devolucion()
-        End If
+        Dim FilaActual As Integer
+        Try
+            FilaActual = Me.grdDevolucionTabla.FocusedRowHandle
+            If Me.DtDatosDevolucion.Rows.Count > 0 Then
+                Me.IDDevolucion = Me.DtDatosDevolucion.DefaultView.Item(FilaActual)("SccDevolucionID")
+                Me.Quote_Devolucion()
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+       
     End Sub
 #End Region
 

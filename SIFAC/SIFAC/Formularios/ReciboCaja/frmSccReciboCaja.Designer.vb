@@ -33,10 +33,22 @@ Partial Class frmSccReciboCaja
         Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
         Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
-        Me.grdRecibosCaja = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.objUbicacion = New System.Windows.Forms.SaveFileDialog()
+        Me.grdRecibosCaja = New DevExpress.XtraGrid.GridControl()
+        Me.grdRecibosCajaTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colSccReciboCajaID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNumeroRecibo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSccCuentaID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMonto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colobjEstadoID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.tbRecibosCajas.SuspendLayout()
         CType(Me.grdRecibosCaja, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdRecibosCajaTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbRecibosCajas
@@ -124,25 +136,110 @@ Partial Class frmSccReciboCaja
         '
         'grdRecibosCaja
         '
-        Me.grdRecibosCaja.Caption = "Recibos de Caja"
         Me.grdRecibosCaja.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdRecibosCaja.EmptyRows = True
-        Me.grdRecibosCaja.ExtendRightColumn = True
-        Me.grdRecibosCaja.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
-        Me.grdRecibosCaja.Images.Add(CType(resources.GetObject("grdRecibosCaja.Images"), System.Drawing.Image))
         Me.grdRecibosCaja.Location = New System.Drawing.Point(0, 39)
-        Me.grdRecibosCaja.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
+        Me.grdRecibosCaja.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdRecibosCaja.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdRecibosCaja.MainView = Me.grdRecibosCajaTabla
         Me.grdRecibosCaja.Name = "grdRecibosCaja"
-        Me.grdRecibosCaja.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdRecibosCaja.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdRecibosCaja.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdRecibosCaja.PrintInfo.PageSettings = CType(resources.GetObject("grdRecibosCaja.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdRecibosCaja.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
         Me.grdRecibosCaja.Size = New System.Drawing.Size(721, 439)
-        Me.grdRecibosCaja.TabIndex = 3
-        Me.grdRecibosCaja.Tag = "AGRUPAR"
-        Me.grdRecibosCaja.Text = "Recibos de Caja"
-        Me.grdRecibosCaja.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
-        Me.grdRecibosCaja.PropBag = resources.GetString("grdRecibosCaja.PropBag")
+        Me.grdRecibosCaja.TabIndex = 10
+        Me.grdRecibosCaja.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdRecibosCajaTabla})
+        '
+        'grdRecibosCajaTabla
+        '
+        Me.grdRecibosCajaTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colSccReciboCajaID, Me.colNumeroRecibo, Me.colSccCuentaID, Me.colMonto, Me.colFecha, Me.colCliente, Me.colEstado, Me.colobjEstadoID})
+        Me.grdRecibosCajaTabla.GridControl = Me.grdRecibosCaja
+        Me.grdRecibosCajaTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
+        Me.grdRecibosCajaTabla.Name = "grdRecibosCajaTabla"
+        Me.grdRecibosCajaTabla.OptionsView.ShowAutoFilterRow = True
+        Me.grdRecibosCajaTabla.Tag = ""
+        '
+        'colSccReciboCajaID
+        '
+        Me.colSccReciboCajaID.Caption = "SccReciboCajaID"
+        Me.colSccReciboCajaID.FieldName = "SccReciboCajaID"
+        Me.colSccReciboCajaID.Name = "colSccReciboCajaID"
+        Me.colSccReciboCajaID.OptionsColumn.AllowEdit = False
+        Me.colSccReciboCajaID.OptionsColumn.ReadOnly = True
+        Me.colSccReciboCajaID.Width = 108
+        '
+        'colNumeroRecibo
+        '
+        Me.colNumeroRecibo.Caption = "Número"
+        Me.colNumeroRecibo.FieldName = "NumeroRecibo"
+        Me.colNumeroRecibo.Name = "colNumeroRecibo"
+        Me.colNumeroRecibo.OptionsColumn.AllowEdit = False
+        Me.colNumeroRecibo.Visible = True
+        Me.colNumeroRecibo.VisibleIndex = 0
+        Me.colNumeroRecibo.Width = 133
+        '
+        'colSccCuentaID
+        '
+        Me.colSccCuentaID.Caption = "No. Expediente"
+        Me.colSccCuentaID.FieldName = "SccCuentaID"
+        Me.colSccCuentaID.Name = "colSccCuentaID"
+        Me.colSccCuentaID.OptionsColumn.AllowEdit = False
+        Me.colSccCuentaID.OptionsColumn.ReadOnly = True
+        Me.colSccCuentaID.Visible = True
+        Me.colSccCuentaID.VisibleIndex = 1
+        Me.colSccCuentaID.Width = 150
+        '
+        'colMonto
+        '
+        Me.colMonto.Caption = "Monto"
+        Me.colMonto.FieldName = "TotalRecibo"
+        Me.colMonto.Name = "colMonto"
+        Me.colMonto.OptionsColumn.AllowEdit = False
+        Me.colMonto.OptionsColumn.ReadOnly = True
+        Me.colMonto.Visible = True
+        Me.colMonto.VisibleIndex = 2
+        Me.colMonto.Width = 76
+        '
+        'colFecha
+        '
+        Me.colFecha.Caption = "Fecha"
+        Me.colFecha.FieldName = "Fecha"
+        Me.colFecha.Name = "colFecha"
+        Me.colFecha.OptionsColumn.AllowEdit = False
+        Me.colFecha.Visible = True
+        Me.colFecha.VisibleIndex = 3
+        Me.colFecha.Width = 128
+        '
+        'colCliente
+        '
+        Me.colCliente.Caption = "Cliente"
+        Me.colCliente.FieldName = "Cliente"
+        Me.colCliente.Name = "colCliente"
+        Me.colCliente.OptionsColumn.AllowEdit = False
+        Me.colCliente.Visible = True
+        Me.colCliente.VisibleIndex = 4
+        Me.colCliente.Width = 80
+        '
+        'colEstado
+        '
+        Me.colEstado.Caption = "Estado"
+        Me.colEstado.FieldName = "Estado"
+        Me.colEstado.Name = "colEstado"
+        Me.colEstado.OptionsColumn.AllowEdit = False
+        Me.colEstado.Visible = True
+        Me.colEstado.VisibleIndex = 5
+        Me.colEstado.Width = 54
+        '
+        'colobjEstadoID
+        '
+        Me.colobjEstadoID.Caption = "objEstadoID"
+        Me.colobjEstadoID.FieldName = "objEstadoId"
+        Me.colobjEstadoID.Name = "colobjEstadoID"
+        Me.colobjEstadoID.OptionsColumn.AllowEdit = False
+        Me.colobjEstadoID.Width = 83
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSccReciboCaja
         '
@@ -160,6 +257,8 @@ Partial Class frmSccReciboCaja
         Me.tbRecibosCajas.ResumeLayout(False)
         Me.tbRecibosCajas.PerformLayout()
         CType(Me.grdRecibosCaja, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdRecibosCajaTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -170,10 +269,20 @@ Partial Class frmSccReciboCaja
     Friend WithEvents cmdEditar As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdRefrescar As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdSalir As System.Windows.Forms.ToolStripButton
-    Friend WithEvents grdRecibosCaja As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdAprobar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents CMDBuscarReciboCaja As System.Windows.Forms.ToolStripButton
     Friend WithEvents objUbicacion As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents grdRecibosCaja As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdRecibosCajaTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colSccReciboCajaID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNumeroRecibo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSccCuentaID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colMonto As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colFecha As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCliente As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colobjEstadoID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

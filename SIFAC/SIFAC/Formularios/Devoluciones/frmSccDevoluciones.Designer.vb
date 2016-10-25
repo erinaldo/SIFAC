@@ -34,9 +34,19 @@ Partial Class frmSccDevoluciones
         Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
-        Me.grdDevolucion = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdDevolucion = New DevExpress.XtraGrid.GridControl()
+        Me.grdDevolucionTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colExpediente = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.colobjEstadoID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSccDevolucionID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tstNotaCredito.SuspendLayout()
         CType(Me.grdDevolucion, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdDevolucionTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tstNotaCredito
@@ -130,25 +140,86 @@ Partial Class frmSccDevoluciones
         '
         'grdDevolucion
         '
-        Me.grdDevolucion.Caption = "Devoluciones"
         Me.grdDevolucion.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdDevolucion.EmptyRows = True
-        Me.grdDevolucion.ExtendRightColumn = True
-        Me.grdDevolucion.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
-        Me.grdDevolucion.Images.Add(CType(resources.GetObject("grdDevolucion.Images"), System.Drawing.Image))
         Me.grdDevolucion.Location = New System.Drawing.Point(0, 39)
-        Me.grdDevolucion.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
+        Me.grdDevolucion.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdDevolucion.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdDevolucion.MainView = Me.grdDevolucionTabla
         Me.grdDevolucion.Name = "grdDevolucion"
-        Me.grdDevolucion.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdDevolucion.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdDevolucion.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdDevolucion.PrintInfo.PageSettings = CType(resources.GetObject("grdDevolucion.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdDevolucion.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
         Me.grdDevolucion.Size = New System.Drawing.Size(731, 513)
-        Me.grdDevolucion.TabIndex = 3
-        Me.grdDevolucion.Tag = "AGRUPAR"
-        Me.grdDevolucion.Text = "Devoluciones"
-        Me.grdDevolucion.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
-        Me.grdDevolucion.PropBag = resources.GetString("grdDevolucion.PropBag")
+        Me.grdDevolucion.TabIndex = 8
+        Me.grdDevolucion.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDevolucionTabla})
+        '
+        'grdDevolucionTabla
+        '
+        Me.grdDevolucionTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colExpediente, Me.colFecha, Me.colCliente, Me.colobjEstadoID, Me.colSccDevolucionID})
+        Me.grdDevolucionTabla.GridControl = Me.grdDevolucion
+        Me.grdDevolucionTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
+        Me.grdDevolucionTabla.Name = "grdDevolucionTabla"
+        Me.grdDevolucionTabla.OptionsView.ShowAutoFilterRow = True
+        Me.grdDevolucionTabla.Tag = ""
+        '
+        'colNumero
+        '
+        Me.colNumero.Caption = "Número"
+        Me.colNumero.FieldName = "NumeroDevolucion"
+        Me.colNumero.Name = "colNumero"
+        Me.colNumero.OptionsColumn.AllowEdit = False
+        Me.colNumero.OptionsColumn.ReadOnly = True
+        Me.colNumero.Visible = True
+        Me.colNumero.VisibleIndex = 0
+        Me.colNumero.Width = 140
+        '
+        'colExpediente
+        '
+        Me.colExpediente.Caption = "Expediente"
+        Me.colExpediente.FieldName = "SccCuentaID"
+        Me.colExpediente.Name = "colExpediente"
+        Me.colExpediente.OptionsColumn.AllowEdit = False
+        Me.colExpediente.Visible = True
+        Me.colExpediente.VisibleIndex = 1
+        Me.colExpediente.Width = 112
+        '
+        'colFecha
+        '
+        Me.colFecha.Caption = "Fecha"
+        Me.colFecha.FieldName = "Fecha"
+        Me.colFecha.Name = "colFecha"
+        Me.colFecha.OptionsColumn.AllowEdit = False
+        Me.colFecha.OptionsColumn.ReadOnly = True
+        Me.colFecha.Visible = True
+        Me.colFecha.VisibleIndex = 2
+        Me.colFecha.Width = 139
+        '
+        'colCliente
+        '
+        Me.colCliente.Caption = "Cliente"
+        Me.colCliente.FieldName = "Cliente"
+        Me.colCliente.Name = "colCliente"
+        Me.colCliente.OptionsColumn.AllowEdit = False
+        Me.colCliente.OptionsColumn.ReadOnly = True
+        Me.colCliente.Visible = True
+        Me.colCliente.VisibleIndex = 3
+        Me.colCliente.Width = 322
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
+        '
+        'colobjEstadoID
+        '
+        Me.colobjEstadoID.Caption = "objEstadoID"
+        Me.colobjEstadoID.FieldName = "objEstadoID"
+        Me.colobjEstadoID.Name = "colobjEstadoID"
+        '
+        'colSccDevolucionID
+        '
+        Me.colSccDevolucionID.Caption = "SccDevolucionID"
+        Me.colSccDevolucionID.FieldName = "SccDevolucionID"
+        Me.colSccDevolucionID.Name = "colSccDevolucionID"
         '
         'frmSccDevoluciones
         '
@@ -165,6 +236,8 @@ Partial Class frmSccDevoluciones
         Me.tstNotaCredito.ResumeLayout(False)
         Me.tstNotaCredito.PerformLayout()
         CType(Me.grdDevolucion, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdDevolucionTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -176,9 +249,17 @@ Partial Class frmSccDevoluciones
     Friend WithEvents tsbRefrescar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
-    Friend WithEvents grdDevolucion As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents cmdEditarDev As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdAutorizarDev As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdBuscarDevolucion As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents grdDevolucion As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdDevolucionTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colExpediente As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colFecha As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCliente As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents colobjEstadoID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSccDevolucionID As DevExpress.XtraGrid.Columns.GridColumn
 End Class

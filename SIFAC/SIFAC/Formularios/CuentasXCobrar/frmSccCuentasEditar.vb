@@ -52,11 +52,11 @@ Public Class frmSccCuentasEditar
     Public Sub CargarCliente()
         Select Case TypeGUI
             Case 0
-                FiltroCliente = "Descripcion = 'Cliente' ORDER BY Descripcion DESC"
+                FiltroCliente = "Descripcion = 'Cliente' "
             Case 1
-                FiltroCliente = "Descripcion = 'Cliente' ORDER BY Descripcion DESC"
+                FiltroCliente = "Descripcion = 'Cliente' "
             Case 2
-                FiltroCliente = "Descripcion = 'Cliente' ORDER BY Descripcion DESC"
+                FiltroCliente = "Descripcion = 'Cliente' "
         End Select
         dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Direccion,Cedula,Genero,Descripcion,TipoPersona,Nacionalidad,ClienteID", "vwPersonaClasificacion", FiltroCliente))
         dtCliente.DefaultView.RowFilter = "1=0"

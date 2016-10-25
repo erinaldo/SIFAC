@@ -365,7 +365,7 @@ Public Class frmSccEditDevolucion
         Select Case Me.TypeGui
             Case 0
                 If Me.Validaciones Then
-                    Me.BoolGuardado = Me.GuardarDevolucion                    
+                    Me.BoolGuardado = Me.GuardarDevolucion
                 End If
             Case 1
                 If Me.Validaciones Then

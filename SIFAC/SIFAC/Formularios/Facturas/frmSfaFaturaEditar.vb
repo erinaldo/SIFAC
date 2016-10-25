@@ -160,7 +160,7 @@ Public Class frmSfaFaturaEditar
         End Try
     End Sub
 
-    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
         Me.Close()
     End Sub
 
@@ -297,12 +297,12 @@ Public Class frmSfaFaturaEditar
         End Try
     End Function
 
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
         If Me.ValidacionEntradas Then
             If Me.GuardarFactura Then
                 Me.DialogResult = Windows.Forms.DialogResult.OK
             End If
-            
+
         End If
     End Sub
 #End Region
@@ -685,7 +685,7 @@ Public Class frmSfaFaturaEditar
         End Try
     End Sub
 
-    Private Sub cmdAceptar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         If Me.ValidacionEntradas Then
 
@@ -695,7 +695,7 @@ Public Class frmSfaFaturaEditar
                 Me.Inhabilitar()
                 Me.cmdProcesar.Enabled = True
                 Me.ToolTip.Show("Cancelar para Salir, ó puede Procesar la Factura desde esta pantalla.", Me.lblInfo, 15000)
-        End If
+            End If
         End If
     End Sub
 
@@ -713,7 +713,7 @@ Public Class frmSfaFaturaEditar
         End Try
     End Sub
 
-    Private Sub cmdCancelar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
+    Private Sub cmdCancelar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Me.BoolOK Then
             Select Case MsgBox("¿Desea crear otro Expediente-Factura para el mismo Expediente de Cuenta?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
                 Case MsgBoxResult.Yes
@@ -818,7 +818,7 @@ Public Class frmSfaFaturaEditar
         Me.cmbPlazo.Enabled = False
     End Sub
 
-    Private Sub cmdProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdProcesar.Click
+    Private Sub cmdProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.ProcesarExpedienteFact(Me.IDDetalleFact)
     End Sub
 

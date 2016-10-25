@@ -38,8 +38,6 @@ Partial Class frmSivDespTransferenciaEdit
         Dim Style15 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Dim Style16 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Me.grdDetalleTransferencia = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdGuardar = New System.Windows.Forms.Button()
         Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
         Me.cmbSitioDestino = New C1.Win.C1List.C1Combo()
         Me.cmbSitioOrigen = New C1.Win.C1List.C1Combo()
@@ -60,6 +58,8 @@ Partial Class frmSivDespTransferenciaEdit
         Me.cmbDescripcionRepuesto = New C1.Win.C1TrueDBGrid.C1TrueDBDropdown()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.grdDetalleTransferencia, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxDatosGenerales.SuspendLayout()
         CType(Me.cmbSitioDestino, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -89,35 +89,6 @@ Partial Class frmSivDespTransferenciaEdit
         Me.grdDetalleTransferencia.Size = New System.Drawing.Size(801, 197)
         Me.grdDetalleTransferencia.TabIndex = 76
         Me.grdDetalleTransferencia.PropBag = resources.GetString("grdDetalleTransferencia.PropBag")
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancelar.Location = New System.Drawing.Point(732, 454)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(79, 30)
-        Me.cmdCancelar.TabIndex = 78
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdGuardar
-        '
-        Me.cmdGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
-        Me.cmdGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(652, 454)
-        Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdGuardar.TabIndex = 77
-        Me.cmdGuardar.Tag = "ACEPTAR"
-        Me.cmdGuardar.Text = "&Aceptar"
-        Me.cmdGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdGuardar.UseVisualStyleBackColor = True
         '
         'gbxDatosGenerales
         '
@@ -426,6 +397,8 @@ Partial Class frmSivDespTransferenciaEdit
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.gbxDatosGenerales)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
@@ -434,6 +407,35 @@ Partial Class frmSivDespTransferenciaEdit
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(833, 513)
         Me.PanelControl1.TabIndex = 96
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(725, 455)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdCancelar.TabIndex = 87
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(634, 455)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 86
+        Me.cmdGuardar.Tag = "ACEPTAR"
+        Me.cmdGuardar.Text = "&Aceptar"
         '
         'frmSivDespTransferenciaEdit
         '
@@ -445,8 +447,6 @@ Partial Class frmSivDespTransferenciaEdit
         Me.Controls.Add(Me.cmbDescripcionRepuesto)
         Me.Controls.Add(Me.cmdBuscarRepuesto)
         Me.Controls.Add(Me.grdDetalleTransferencia)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdGuardar)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -470,8 +470,6 @@ Partial Class frmSivDespTransferenciaEdit
 
     End Sub
     Friend WithEvents grdDetalleTransferencia As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdGuardar As System.Windows.Forms.Button
     Friend WithEvents gbxDatosGenerales As System.Windows.Forms.GroupBox
     Friend WithEvents cmbSitioDestino As C1.Win.C1List.C1Combo
     Friend WithEvents cmbSitioOrigen As C1.Win.C1List.C1Combo
@@ -492,4 +490,6 @@ Partial Class frmSivDespTransferenciaEdit
     Friend WithEvents cmbDescripcionRepuesto As C1.Win.C1TrueDBGrid.C1TrueDBDropdown
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

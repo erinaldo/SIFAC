@@ -22,9 +22,8 @@ Public Class frmSfaFactura
             dtDatosFact = SqlHelper.ExecuteQueryDT(strConsulta)
             Me.dtDatosFact.PrimaryKey = New DataColumn() {Me.dtDatosFact.Columns("SfaFacturaID")}
             Me.dtDatosFact.DefaultView.Sort = "SfaFacturaID"
-            Me.grdFacturas.SetDataBinding(Me.dtDatosFact, "", True)
-            Me.grdFacturas.Splits(0).DisplayColumns("SfaFacturaID").Visible = False
-            Me.grdFacturas.Caption = "Facturas(" & Me.grdFacturas.RowCount.ToString & ")"
+            Me.grdFacturas.DataSource = dtDatosFact
+          
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -34,7 +33,7 @@ Public Class frmSfaFactura
 
         Me.CargarDatos()
         Me.Seguridad()
-        Me.grdFacturas.Splits(0).DisplayColumns("SccCuentaPorCobrarDetalleID").Visible = False
+
     End Sub
 
 
@@ -61,15 +60,16 @@ Public Class frmSfaFactura
         Dim objDetalleCuentas As New SccCuentaPorCobrarDetalle
         Dim IDEstadoReg As Integer
         Dim EstadoActual As Integer
+        Dim FilaActual As Integer
         Try
             Try
                 Me.Cursor = Cursors.WaitCursor
-
+                FilaActual = Me.grdFacturasTabla.FocusedRowHandle
                 objFacturaEdit.TypGui = 0
                 If IntOpcion > 0 Then
                     If IntOpcion = 1 Then
                         IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "00")
-                        objDetalleCuentas.Retrieve(Me.grdFacturas.Columns("SccCuentaPorCobrarDetalleID").Value)
+                        objDetalleCuentas.Retrieve(Me.dtDatosFact.DefaultView.Item(FilaActual)("SccCuentaPorCobrarDetalleID"))
                         EstadoActual = objDetalleCuentas.objEstadoID
 
                         If EstadoActual <> IDEstadoReg Then
@@ -79,12 +79,12 @@ Public Class frmSfaFactura
                         End If
                     End If
 
-                    objFacturaEdit.IDFactura = Me.grdFacturas.Columns("SfaFacturaID").Value
+                    objFacturaEdit.IDFactura = Me.dtDatosFact.DefaultView.Item(FilaActual)("SfaFacturaID")
                     objFacturaEdit.TypGui = IntOpcion
                 End If
                 If objFacturaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Me.CargarDatos()
-                    Me.grdFacturas.Row = Me.dtDatosFact.DefaultView.Find(objFacturaEdit.IDFactura)
+                    'Me.grdFacturas.Row = Me.dtDatosFact.DefaultView.Find(objFacturaEdit.IDFactura)
                 End If
 
             Catch ex As Exception
@@ -98,19 +98,15 @@ Public Class frmSfaFactura
     End Sub
 
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEditarFactura.Click
-        If Me.grdFacturas.RowCount > 0 Then
+        If Me.dtDatosFact.Rows.Count > 0 Then
             Me.CargarFacturas(1)
         End If
     End Sub
 
     Private Sub cmdConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultar.Click
-        If Me.grdFacturas.RowCount > 0 Then
+        If Me.dtDatosFact.Rows.Count > 0 Then
             Me.CargarFacturas(2)
         End If
-    End Sub
-
-    Private Sub cmdProcesarFactura_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
     End Sub
 
 #Region "Procesar Factura"
@@ -133,9 +129,16 @@ Public Class frmSfaFactura
 #End Region
 
     Private Sub cmdProcesarExpedienteFact_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdProcesarExpedienteFact.Click
-        If Me.grdFacturas.RowCount > 0 Then
-            Me.ProcesarExpedienteFact(Me.grdFacturas.Columns("SccCuentaPorCobrarDetalleID").Value)
-        End If
+        Dim FilaActual As Integer
+        Try
+            FilaActual = Me.grdFacturasTabla.FocusedRowHandle
+            If Me.dtDatosFact.Rows.Count > 0 Then
+                Me.ProcesarExpedienteFact(Me.dtDatosFact.DefaultView.Item(FilaActual)("SccCuentaPorCobrarDetalleID"))
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+        
     End Sub
 
 #Region "Procesar Factura"
@@ -206,8 +209,6 @@ Public Class frmSfaFactura
                     objSccCuentaCobrar.Update(T)
                 End If
 
-
-
                 'End If   
                 T.CommitTran()
                 MsgBox("Factura procesada Exitosamente", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
@@ -215,7 +216,7 @@ Public Class frmSfaFactura
                 '    MsgBox("Se ha generado una Nota de Crédito por Débito Automático.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
                 'End If
                 Me.CargarDatos()
-                Me.grdFacturas.Row = Me.dtDatosFact.DefaultView.Find(IDFactura)
+                'Me.grdFacturas.Row = Me.dtDatosFact.DefaultView.Find(IDFactura)
             Catch ex As Exception
                 T.RollbackTran()
                 clsError.CaptarError(ex)
@@ -274,15 +275,27 @@ Public Class frmSfaFactura
 #End Region
 
     Private Sub cmdAnularFactura_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAnularFactura.Click
-        If Me.grdFacturas.RowCount > 0 Then
-            Me.AnularExpediente(Me.grdFacturas.Columns("SccCuentaPorCobrarDetalleID").Value)
-        End If
+        Dim FilaActual As Integer
+        Try
+            If Me.dtDatosFact.Rows.Count > 0 Then
+                FilaActual = Me.grdFacturasTabla.FocusedRowHandle
+                Me.AnularExpediente((Me.dtDatosFact.DefaultView.Item(FilaActual)("SccCuentaPorCobrarDetalleID")))
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
     End Sub
 
     Private Sub cmdNuevaFecha_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNuevaFecha.Click
-        If Me.grdFacturas.RowCount > 0 Then
-            Me.CargarFacturas(3)
-        End If
+        Try
+            If Me.dtDatosFact.Rows.Count > 0 Then
+                Me.CargarFacturas(3)
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+        
     End Sub
 
 
@@ -313,24 +326,18 @@ Public Class frmSfaFactura
                 dtDatosFact = SqlHelper.ExecuteQueryDT(strconsulta, objBusquedaFact.Parametros)
                 'Me.dtDatosFact.PrimaryKey = New DataColumn() {Me.dtDatosFact.Columns("SfaFacturaID")}
                 'Me.dtDatosFact.DefaultView.Sort = "SfaFacturaID"
-                Me.grdFacturas.SetDataBinding(Me.dtDatosFact, "", True)
-                Me.grdFacturas.Splits(0).DisplayColumns("SfaFacturaID").Visible = False
+                Me.grdFacturas.DataSource = dtDatosFact
+                'Me.grdFacturas.Splits(0).DisplayColumns("SfaFacturaID").Visible = False
                 If dtDatosFact.DefaultView.Count = 0 Then
                     MsgBox("Su Búsqueda no tiene resultados a mostrar", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
                     Exit Sub
                 End If
-                Me.grdFacturas.Caption = "Facturas(" & Me.grdFacturas.RowCount.ToString & ")"
+                'Me.grdFacturas.Caption = "Facturas(" & Me.grdFacturas.RowCount.ToString & ")"
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
 
-    Private Sub grdFacturas_AfterFilter(ByVal sender As Object, ByVal e As C1.Win.C1TrueDBGrid.FilterEventArgs) Handles grdFacturas.AfterFilter
-        Me.grdFacturas.Caption = "Facturas(" & Me.grdFacturas.RowCount.ToString & ")"
-    End Sub
-
-    Private Sub grdFacturas_FilterChange(ByVal sender As Object, ByVal e As System.EventArgs) Handles grdFacturas.FilterChange
-        Me.grdFacturas.Caption = "Facturas(" & Me.grdFacturas.RowCount.ToString & ")"
-    End Sub
+   
 End Class
