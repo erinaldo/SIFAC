@@ -11,7 +11,7 @@ Public Class frmSccCuentasEditar
 
 #Region "Variables del formulario"
     Public dtCliente, dtFacturas As DataTable
-    Public intTypeGUI As Integer
+    Public intTypeGUI, intobjRutaID As Integer
     Public strCuentaID, FiltroCliente, strClienteID, strPersonaID As String
     Dim foundRows() As DataRow
 #End Region
@@ -59,7 +59,7 @@ Public Class frmSccCuentasEditar
                 Case 2
                     FiltroCliente = "Descripcion = 'Cliente' "
             End Select
-            dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Direccion,Cedula,Genero,Descripcion,TipoPersona,Nacionalidad,ClienteID", "vwPersonaClasificacion", FiltroCliente))
+            dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Direccion,Cedula,Genero,Descripcion,TipoPersona,Nacionalidad,ClienteID,objRutaID", "vwPersonaClasificacion", FiltroCliente))
             dtCliente.DefaultView.RowFilter = "1=0"
 
         Catch ex As Exception
@@ -69,6 +69,8 @@ Public Class frmSccCuentasEditar
 
     Public Sub VincularControles()
         Try
+            intobjRutaID = IIf(IsDBNull(foundRows(0)("objRutaID")), 0, foundRows(0)("objRutaID"))
+            strClienteID = IIf(IsDBNull(foundRows(0)("ClienteID")), 0, foundRows(0)("ClienteID"))
             Me.txtNombre.Text = String.Empty
             Me.txtDireccion.Text = String.Empty
             Me.txtCedula.Text = String.Empty
@@ -97,12 +99,12 @@ Public Class frmSccCuentasEditar
                 Me.Text = "Edición de Expediente"
                 CargarDatosEdicion()
                 Call Me.CargarFacturas()
-                Me.txtCuenta.Enabled = False
+                'Me.txtCuenta.Enabled = False
             Case 2
                 Me.Text = "Consulta de Expediente"
                 CargarDatosEdicion()
                 Call Me.CargarFacturas()
-                Me.txtCuenta.Enabled = False
+                'Me.txtCuenta.Enabled = False
 
                 Me.dtpFechaCredito.Enabled = False
                 Me.cmdBuscarCliente.Enabled = False
@@ -119,6 +121,7 @@ Public Class frmSccCuentasEditar
         Try
             Try
                 tx.BeginTran()
+                objSccCuenta.Numero = GenerarCodigo()
                 objSccCuenta.Saldo = Me.numSaldo.Value
                 objSccCuenta.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objSccCuenta.SaldoInicial = 0.0
@@ -182,7 +185,7 @@ Public Class frmSccCuentasEditar
             objSccCuenta = New SccCuentaPorCobrar
 
             objSccCuenta.Retrieve(CuentaID, )
-            Me.txtCuenta.Text = objSccCuenta.SccCuentaID
+            Me.txtCuenta.Text = objSccCuenta.Numero
             strClienteID = objSccCuenta.objClienteID
             Me.numSaldo.Value = objSccCuenta.Saldo
             Me.dtpFechaCredito.Value = objSccCuenta.FechaCredito
@@ -335,6 +338,22 @@ Public Class frmSccCuentasEditar
     End Sub
 #End Region
 
+
+    Private Function GenerarCodigo() As String
+        Dim strNumero As String = ""
+        Dim dtMaximoNumero As New DataTable
+        Try
+            Try
+                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("COUNT(*)+ 1 as NumeroMaximo", "SccCuentaPorCobrar"))
+                strNumero = String.Format("C{0}-{1}", intobjRutaID, dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"))
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            dtMaximoNumero = Nothing
+        End Try
+        Return strNumero.Trim
+    End Function
 
     Private Sub cmdConsultarCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultarCliente.Click
         If Trim(Me.txtNombre.Text) <> "" Then

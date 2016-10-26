@@ -97,9 +97,11 @@ Partial Class frmSccCuentasEditar
         Me.GroupBox1.Controls.Add(Me.txtCuenta)
         Me.GroupBox1.Controls.Add(Me.lblCuenta)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(7, 21)
+        Me.GroupBox1.Location = New System.Drawing.Point(9, 26)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(320, 115)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(427, 142)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Información del Expediente"
@@ -107,18 +109,21 @@ Partial Class frmSccCuentasEditar
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(18, 47)
+        Me.Label3.Location = New System.Drawing.Point(24, 58)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 13)
+        Me.Label3.Size = New System.Drawing.Size(63, 17)
         Me.Label3.TabIndex = 16
         Me.Label3.Text = "Estado:"
         '
         'txtEstado
         '
         Me.txtEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEstado.Location = New System.Drawing.Point(109, 44)
+        Me.txtEstado.Location = New System.Drawing.Point(145, 54)
+        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtEstado.Name = "txtEstado"
-        Me.txtEstado.Size = New System.Drawing.Size(185, 20)
+        Me.txtEstado.ReadOnly = True
+        Me.txtEstado.Size = New System.Drawing.Size(245, 23)
         Me.txtEstado.TabIndex = 15
         Me.txtEstado.Tag = "BLOQUEADO"
         '
@@ -126,9 +131,11 @@ Partial Class frmSccCuentasEditar
         '
         Me.GroupBox2.Controls.Add(Me.dtpFechaCredito)
         Me.GroupBox2.Controls.Add(Me.lblFechaCredito)
-        Me.GroupBox2.Location = New System.Drawing.Point(10, 70)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 86)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(304, 34)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(405, 42)
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Periodo"
@@ -157,9 +164,10 @@ Partial Class frmSccCuentasEditar
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFechaCredito.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaCredito.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaCredito.Location = New System.Drawing.Point(102, 11)
+        Me.dtpFechaCredito.Location = New System.Drawing.Point(136, 14)
+        Me.dtpFechaCredito.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtpFechaCredito.Name = "dtpFechaCredito"
-        Me.dtpFechaCredito.Size = New System.Drawing.Size(184, 20)
+        Me.dtpFechaCredito.Size = New System.Drawing.Size(245, 23)
         Me.dtpFechaCredito.TabIndex = 2
         Me.dtpFechaCredito.Tag = Nothing
         Me.dtpFechaCredito.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
@@ -167,27 +175,31 @@ Partial Class frmSccCuentasEditar
         'lblFechaCredito
         '
         Me.lblFechaCredito.AutoSize = True
-        Me.lblFechaCredito.Location = New System.Drawing.Point(6, 16)
+        Me.lblFechaCredito.Location = New System.Drawing.Point(8, 20)
+        Me.lblFechaCredito.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFechaCredito.Name = "lblFechaCredito"
-        Me.lblFechaCredito.Size = New System.Drawing.Size(90, 13)
+        Me.lblFechaCredito.Size = New System.Drawing.Size(114, 17)
         Me.lblFechaCredito.TabIndex = 1
         Me.lblFechaCredito.Text = "Fecha Credito:"
         '
         'txtCuenta
         '
         Me.txtCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCuenta.Location = New System.Drawing.Point(109, 19)
+        Me.txtCuenta.Location = New System.Drawing.Point(145, 23)
+        Me.txtCuenta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtCuenta.Name = "txtCuenta"
-        Me.txtCuenta.Size = New System.Drawing.Size(122, 20)
+        Me.txtCuenta.ReadOnly = True
+        Me.txtCuenta.Size = New System.Drawing.Size(161, 23)
         Me.txtCuenta.TabIndex = 1
         Me.txtCuenta.Tag = "BLOQUEADO"
         '
         'lblCuenta
         '
         Me.lblCuenta.AutoSize = True
-        Me.lblCuenta.Location = New System.Drawing.Point(18, 21)
+        Me.lblCuenta.Location = New System.Drawing.Point(24, 26)
+        Me.lblCuenta.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCuenta.Name = "lblCuenta"
-        Me.lblCuenta.Size = New System.Drawing.Size(98, 13)
+        Me.lblCuenta.Size = New System.Drawing.Size(123, 17)
         Me.lblCuenta.TabIndex = 0
         Me.lblCuenta.Text = "No. Expediente:"
         '
@@ -200,9 +212,11 @@ Partial Class frmSccCuentasEditar
         Me.GroupBox4.Controls.Add(Me.numSaldo)
         Me.GroupBox4.Controls.Add(Me.lblSaldo)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(333, 21)
+        Me.GroupBox4.Location = New System.Drawing.Point(444, 26)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(279, 115)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Size = New System.Drawing.Size(372, 142)
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Información Financiera del Expediente"
@@ -210,18 +224,21 @@ Partial Class frmSccCuentasEditar
         'txtUsuario
         '
         Me.txtUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsuario.Location = New System.Drawing.Point(108, 80)
+        Me.txtUsuario.Location = New System.Drawing.Point(144, 98)
+        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtUsuario.Name = "txtUsuario"
-        Me.txtUsuario.Size = New System.Drawing.Size(147, 20)
+        Me.txtUsuario.ReadOnly = True
+        Me.txtUsuario.Size = New System.Drawing.Size(195, 23)
         Me.txtUsuario.TabIndex = 19
         Me.txtUsuario.Tag = "BLOQUEADO"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(10, 84)
+        Me.Label4.Location = New System.Drawing.Point(13, 103)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(54, 13)
+        Me.Label4.Size = New System.Drawing.Size(69, 17)
         Me.Label4.TabIndex = 18
         Me.Label4.Text = "Usuario:"
         '
@@ -232,9 +249,11 @@ Partial Class frmSccCuentasEditar
         Me.numSaldoInicial.EmptyAsNull = True
         Me.numSaldoInicial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numSaldoInicial.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numSaldoInicial.Location = New System.Drawing.Point(109, 19)
+        Me.numSaldoInicial.Location = New System.Drawing.Point(145, 23)
+        Me.numSaldoInicial.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.numSaldoInicial.Name = "numSaldoInicial"
-        Me.numSaldoInicial.Size = New System.Drawing.Size(147, 18)
+        Me.numSaldoInicial.ReadOnly = True
+        Me.numSaldoInicial.Size = New System.Drawing.Size(196, 21)
         Me.numSaldoInicial.TabIndex = 17
         Me.numSaldoInicial.Tag = "BLOQUEADO"
         Me.numSaldoInicial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -245,9 +264,10 @@ Partial Class frmSccCuentasEditar
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(10, 21)
+        Me.Label2.Location = New System.Drawing.Point(13, 26)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(81, 13)
+        Me.Label2.Size = New System.Drawing.Size(101, 17)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Saldo Inicial:"
         '
@@ -258,9 +278,11 @@ Partial Class frmSccCuentasEditar
         Me.numSaldo.EmptyAsNull = True
         Me.numSaldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numSaldo.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numSaldo.Location = New System.Drawing.Point(108, 46)
+        Me.numSaldo.Location = New System.Drawing.Point(144, 57)
+        Me.numSaldo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.numSaldo.Name = "numSaldo"
-        Me.numSaldo.Size = New System.Drawing.Size(147, 18)
+        Me.numSaldo.ReadOnly = True
+        Me.numSaldo.Size = New System.Drawing.Size(196, 21)
         Me.numSaldo.TabIndex = 15
         Me.numSaldo.Tag = "BLOQUEADO"
         Me.numSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -271,9 +293,10 @@ Partial Class frmSccCuentasEditar
         'lblSaldo
         '
         Me.lblSaldo.AutoSize = True
-        Me.lblSaldo.Location = New System.Drawing.Point(10, 46)
+        Me.lblSaldo.Location = New System.Drawing.Point(13, 57)
+        Me.lblSaldo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSaldo.Name = "lblSaldo"
-        Me.lblSaldo.Size = New System.Drawing.Size(43, 13)
+        Me.lblSaldo.Size = New System.Drawing.Size(54, 17)
         Me.lblSaldo.TabIndex = 2
         Me.lblSaldo.Text = "Saldo:"
         '
@@ -285,19 +308,21 @@ Partial Class frmSccCuentasEditar
         'tbcCuentas
         '
         Me.tbcCuentas.Controls.Add(Me.pgClientes)
-        Me.tbcCuentas.Location = New System.Drawing.Point(8, 323)
+        Me.tbcCuentas.Location = New System.Drawing.Point(11, 398)
+        Me.tbcCuentas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.tbcCuentas.Name = "tbcCuentas"
         Me.tbcCuentas.SelectedIndex = 0
-        Me.tbcCuentas.Size = New System.Drawing.Size(604, 175)
+        Me.tbcCuentas.Size = New System.Drawing.Size(805, 215)
         Me.tbcCuentas.TabIndex = 8
         '
         'pgClientes
         '
         Me.pgClientes.Controls.Add(Me.GroupBox6)
-        Me.pgClientes.Location = New System.Drawing.Point(4, 22)
+        Me.pgClientes.Location = New System.Drawing.Point(4, 25)
+        Me.pgClientes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pgClientes.Name = "pgClientes"
-        Me.pgClientes.Padding = New System.Windows.Forms.Padding(3)
-        Me.pgClientes.Size = New System.Drawing.Size(596, 149)
+        Me.pgClientes.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pgClientes.Size = New System.Drawing.Size(797, 186)
         Me.pgClientes.TabIndex = 0
         Me.pgClientes.Text = "Cliente"
         Me.pgClientes.UseVisualStyleBackColor = True
@@ -320,9 +345,11 @@ Partial Class frmSccCuentasEditar
         Me.GroupBox6.Controls.Add(Me.lblNombre)
         Me.GroupBox6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox6.Location = New System.Drawing.Point(3, 3)
+        Me.GroupBox6.Location = New System.Drawing.Point(4, 4)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(590, 143)
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox6.Size = New System.Drawing.Size(789, 178)
         Me.GroupBox6.TabIndex = 9
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Tag = "BLOQUEADO"
@@ -331,9 +358,10 @@ Partial Class frmSccCuentasEditar
         'cmdConsultarCliente
         '
         Me.cmdConsultarCliente.Image = CType(resources.GetObject("cmdConsultarCliente.Image"), System.Drawing.Image)
-        Me.cmdConsultarCliente.Location = New System.Drawing.Point(562, 22)
+        Me.cmdConsultarCliente.Location = New System.Drawing.Point(749, 27)
+        Me.cmdConsultarCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdConsultarCliente.Name = "cmdConsultarCliente"
-        Me.cmdConsultarCliente.Size = New System.Drawing.Size(23, 23)
+        Me.cmdConsultarCliente.Size = New System.Drawing.Size(31, 28)
         Me.cmdConsultarCliente.TabIndex = 15
         Me.cmdConsultarCliente.Text = "..."
         Me.cmdConsultarCliente.UseVisualStyleBackColor = True
@@ -341,62 +369,69 @@ Partial Class frmSccCuentasEditar
         'txtTipoPersona
         '
         Me.txtTipoPersona.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTipoPersona.Location = New System.Drawing.Point(440, 106)
+        Me.txtTipoPersona.Location = New System.Drawing.Point(587, 130)
+        Me.txtTipoPersona.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTipoPersona.Name = "txtTipoPersona"
-        Me.txtTipoPersona.Size = New System.Drawing.Size(135, 20)
+        Me.txtTipoPersona.Size = New System.Drawing.Size(179, 23)
         Me.txtTipoPersona.TabIndex = 14
         Me.txtTipoPersona.Tag = "BLOQUEADO"
         '
         'txtNacionalidad
         '
         Me.txtNacionalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNacionalidad.Location = New System.Drawing.Point(192, 103)
+        Me.txtNacionalidad.Location = New System.Drawing.Point(256, 127)
+        Me.txtNacionalidad.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtNacionalidad.Name = "txtNacionalidad"
-        Me.txtNacionalidad.Size = New System.Drawing.Size(149, 20)
+        Me.txtNacionalidad.Size = New System.Drawing.Size(197, 23)
         Me.txtNacionalidad.TabIndex = 13
         Me.txtNacionalidad.Tag = "BLOQUEADO"
         '
         'lblTipoPersona
         '
         Me.lblTipoPersona.AutoSize = True
-        Me.lblTipoPersona.Location = New System.Drawing.Point(348, 109)
+        Me.lblTipoPersona.Location = New System.Drawing.Point(464, 134)
+        Me.lblTipoPersona.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTipoPersona.Name = "lblTipoPersona"
-        Me.lblTipoPersona.Size = New System.Drawing.Size(86, 13)
+        Me.lblTipoPersona.Size = New System.Drawing.Size(110, 17)
         Me.lblTipoPersona.TabIndex = 12
         Me.lblTipoPersona.Text = "Tipo Persona:"
         '
         'lblNacionalidad
         '
         Me.lblNacionalidad.AutoSize = True
-        Me.lblNacionalidad.Location = New System.Drawing.Point(2, 106)
+        Me.lblNacionalidad.Location = New System.Drawing.Point(3, 130)
+        Me.lblNacionalidad.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNacionalidad.Name = "lblNacionalidad"
-        Me.lblNacionalidad.Size = New System.Drawing.Size(85, 13)
+        Me.lblNacionalidad.Size = New System.Drawing.Size(107, 17)
         Me.lblNacionalidad.TabIndex = 11
         Me.lblNacionalidad.Text = "Nacionalidad:"
         '
         'txtGenero
         '
         Me.txtGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtGenero.Location = New System.Drawing.Point(440, 78)
+        Me.txtGenero.Location = New System.Drawing.Point(587, 96)
+        Me.txtGenero.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtGenero.Name = "txtGenero"
-        Me.txtGenero.Size = New System.Drawing.Size(135, 20)
+        Me.txtGenero.Size = New System.Drawing.Size(179, 23)
         Me.txtGenero.TabIndex = 10
         Me.txtGenero.Tag = "BLOQUEADO"
         '
         'lblGenero
         '
         Me.lblGenero.AutoSize = True
-        Me.lblGenero.Location = New System.Drawing.Point(381, 81)
+        Me.lblGenero.Location = New System.Drawing.Point(508, 100)
+        Me.lblGenero.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblGenero.Name = "lblGenero"
-        Me.lblGenero.Size = New System.Drawing.Size(52, 13)
+        Me.lblGenero.Size = New System.Drawing.Size(67, 17)
         Me.lblGenero.TabIndex = 9
         Me.lblGenero.Text = "Genero:"
         '
         'cmdBuscarCliente
         '
-        Me.cmdBuscarCliente.Location = New System.Drawing.Point(531, 22)
+        Me.cmdBuscarCliente.Location = New System.Drawing.Point(708, 27)
+        Me.cmdBuscarCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdBuscarCliente.Name = "cmdBuscarCliente"
-        Me.cmdBuscarCliente.Size = New System.Drawing.Size(28, 23)
+        Me.cmdBuscarCliente.Size = New System.Drawing.Size(37, 28)
         Me.cmdBuscarCliente.TabIndex = 7
         Me.cmdBuscarCliente.Text = "..."
         Me.cmdBuscarCliente.UseVisualStyleBackColor = True
@@ -404,54 +439,60 @@ Partial Class frmSccCuentasEditar
         'txtCedula
         '
         Me.txtCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCedula.Location = New System.Drawing.Point(192, 78)
+        Me.txtCedula.Location = New System.Drawing.Point(256, 96)
+        Me.txtCedula.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtCedula.Name = "txtCedula"
-        Me.txtCedula.Size = New System.Drawing.Size(149, 20)
+        Me.txtCedula.Size = New System.Drawing.Size(197, 23)
         Me.txtCedula.TabIndex = 5
         Me.txtCedula.Tag = "BLOQUEADO"
         '
         'txtDireccion
         '
         Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDireccion.Location = New System.Drawing.Point(192, 52)
+        Me.txtDireccion.Location = New System.Drawing.Point(256, 64)
+        Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtDireccion.Name = "txtDireccion"
-        Me.txtDireccion.Size = New System.Drawing.Size(383, 20)
+        Me.txtDireccion.Size = New System.Drawing.Size(509, 23)
         Me.txtDireccion.TabIndex = 4
         Me.txtDireccion.Tag = "BLOQUEADO"
         '
         'lblCedula
         '
         Me.lblCedula.AutoSize = True
-        Me.lblCedula.Location = New System.Drawing.Point(3, 81)
+        Me.lblCedula.Location = New System.Drawing.Point(4, 100)
+        Me.lblCedula.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCedula.Name = "lblCedula"
-        Me.lblCedula.Size = New System.Drawing.Size(50, 13)
+        Me.lblCedula.Size = New System.Drawing.Size(63, 17)
         Me.lblCedula.TabIndex = 3
         Me.lblCedula.Text = "Cedula:"
         '
         'lblDireccion
         '
         Me.lblDireccion.AutoSize = True
-        Me.lblDireccion.Location = New System.Drawing.Point(3, 56)
+        Me.lblDireccion.Location = New System.Drawing.Point(4, 69)
+        Me.lblDireccion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDireccion.Name = "lblDireccion"
-        Me.lblDireccion.Size = New System.Drawing.Size(65, 13)
+        Me.lblDireccion.Size = New System.Drawing.Size(81, 17)
         Me.lblDireccion.TabIndex = 2
         Me.lblDireccion.Text = "Dirección:"
         '
         'txtNombre
         '
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombre.Location = New System.Drawing.Point(192, 24)
+        Me.txtNombre.Location = New System.Drawing.Point(256, 30)
+        Me.txtNombre.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(335, 20)
+        Me.txtNombre.Size = New System.Drawing.Size(445, 23)
         Me.txtNombre.TabIndex = 1
         Me.txtNombre.Tag = "BLOQUEADO"
         '
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(0, 27)
+        Me.lblNombre.Location = New System.Drawing.Point(0, 33)
+        Me.lblNombre.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(195, 13)
+        Me.lblNombre.Size = New System.Drawing.Size(246, 17)
         Me.lblNombre.TabIndex = 0
         Me.lblNombre.Text = "Nombre Completo/Razon Social: "
         '
@@ -520,19 +561,21 @@ Partial Class frmSccCuentasEditar
         'tbFacturas
         '
         Me.tbFacturas.Controls.Add(Me.PGFacturas)
-        Me.tbFacturas.Location = New System.Drawing.Point(8, 142)
+        Me.tbFacturas.Location = New System.Drawing.Point(11, 175)
+        Me.tbFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.tbFacturas.Name = "tbFacturas"
         Me.tbFacturas.SelectedIndex = 0
-        Me.tbFacturas.Size = New System.Drawing.Size(604, 165)
+        Me.tbFacturas.Size = New System.Drawing.Size(805, 203)
         Me.tbFacturas.TabIndex = 10
         '
         'PGFacturas
         '
         Me.PGFacturas.Controls.Add(Me.grdFacturas)
-        Me.PGFacturas.Location = New System.Drawing.Point(4, 22)
+        Me.PGFacturas.Location = New System.Drawing.Point(4, 25)
+        Me.PGFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PGFacturas.Name = "PGFacturas"
-        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(3)
-        Me.PGFacturas.Size = New System.Drawing.Size(596, 139)
+        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PGFacturas.Size = New System.Drawing.Size(797, 174)
         Me.PGFacturas.TabIndex = 0
         Me.PGFacturas.Text = "Facturas"
         Me.PGFacturas.UseVisualStyleBackColor = True
@@ -543,13 +586,14 @@ Partial Class frmSccCuentasEditar
         Me.grdFacturas.ExtendRightColumn = True
         Me.grdFacturas.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdFacturas.Images.Add(CType(resources.GetObject("grdFacturas.Images"), System.Drawing.Image))
-        Me.grdFacturas.Location = New System.Drawing.Point(3, 3)
+        Me.grdFacturas.Location = New System.Drawing.Point(4, 4)
+        Me.grdFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdFacturas.Name = "grdFacturas"
         Me.grdFacturas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdFacturas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdFacturas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdFacturas.PrintInfo.PageSettings = CType(resources.GetObject("grdFacturas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdFacturas.Size = New System.Drawing.Size(590, 133)
+        Me.grdFacturas.Size = New System.Drawing.Size(789, 166)
         Me.grdFacturas.TabIndex = 0
         Me.grdFacturas.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
         Me.grdFacturas.PropBag = resources.GetString("grdFacturas.PropBag")
@@ -558,9 +602,10 @@ Partial Class frmSccCuentasEditar
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 539)
+        Me.Panel1.Location = New System.Drawing.Point(0, 663)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(622, 20)
+        Me.Panel1.Size = New System.Drawing.Size(829, 25)
         Me.Panel1.TabIndex = 12
         '
         'ToolTip
@@ -571,9 +616,10 @@ Partial Class frmSccCuentasEditar
         'lblinfo
         '
         Me.lblinfo.AutoSize = True
-        Me.lblinfo.Location = New System.Drawing.Point(8, 520)
+        Me.lblinfo.Location = New System.Drawing.Point(11, 640)
+        Me.lblinfo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblinfo.Name = "lblinfo"
-        Me.lblinfo.Size = New System.Drawing.Size(0, 13)
+        Me.lblinfo.Size = New System.Drawing.Size(0, 17)
         Me.lblinfo.TabIndex = 16
         '
         'PanelControl1
@@ -588,8 +634,9 @@ Partial Class frmSccCuentasEditar
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(622, 559)
+        Me.PanelControl1.Size = New System.Drawing.Size(829, 688)
         Me.PanelControl1.TabIndex = 17
         '
         'cmdCancelar
@@ -597,11 +644,12 @@ Partial Class frmSccCuentasEditar
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(531, 504)
+        Me.cmdCancelar.Location = New System.Drawing.Point(708, 620)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.Size = New System.Drawing.Size(100, 34)
         Me.cmdCancelar.TabIndex = 12
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
@@ -612,25 +660,27 @@ Partial Class frmSccCuentasEditar
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(444, 504)
+        Me.cmdGuardar.Location = New System.Drawing.Point(592, 620)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.Size = New System.Drawing.Size(107, 34)
         Me.cmdGuardar.TabIndex = 11
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
         'frmSccCuentasEditar
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(622, 559)
+        Me.ClientSize = New System.Drawing.Size(829, 688)
         Me.Controls.Add(Me.lblinfo)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSccCuentasEditar"
