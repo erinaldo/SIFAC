@@ -21,12 +21,12 @@ Partial Class frmSivProductosEditar
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivProductosEditar))
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
@@ -154,7 +154,7 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioContado.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnPrecioContado.Location = New System.Drawing.Point(174, 83)
         Me.spnPrecioContado.Name = "spnPrecioContado"
-        Me.spnPrecioContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
+        Me.spnPrecioContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject7, "", Nothing, Nothing, True)})
         Me.spnPrecioContado.Size = New System.Drawing.Size(91, 20)
         Me.spnPrecioContado.TabIndex = 7
         '
@@ -163,7 +163,7 @@ Partial Class frmSivProductosEditar
         Me.spnMargenCredito.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnMargenCredito.Location = New System.Drawing.Point(174, 110)
         Me.spnMargenCredito.Name = "spnMargenCredito"
-        Me.spnMargenCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
+        Me.spnMargenCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
         Me.spnMargenCredito.Size = New System.Drawing.Size(91, 20)
         Me.spnMargenCredito.TabIndex = 8
         '
@@ -172,7 +172,7 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioCredito.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnPrecioCredito.Location = New System.Drawing.Point(174, 57)
         Me.spnPrecioCredito.Name = "spnPrecioCredito"
-        Me.spnPrecioCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
+        Me.spnPrecioCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
         Me.spnPrecioCredito.Size = New System.Drawing.Size(91, 20)
         Me.spnPrecioCredito.TabIndex = 6
         '
@@ -181,7 +181,7 @@ Partial Class frmSivProductosEditar
         Me.spnMargenContado.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnMargenContado.Location = New System.Drawing.Point(174, 136)
         Me.spnMargenContado.Name = "spnMargenContado"
-        Me.spnMargenContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, True)})
+        Me.spnMargenContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
         Me.spnMargenContado.Size = New System.Drawing.Size(91, 20)
         Me.spnMargenContado.TabIndex = 0
         '
@@ -190,7 +190,7 @@ Partial Class frmSivProductosEditar
         Me.spnCostoPromedio.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnCostoPromedio.Location = New System.Drawing.Point(174, 27)
         Me.spnCostoPromedio.Name = "spnCostoPromedio"
-        Me.spnCostoPromedio.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, True)})
+        Me.spnCostoPromedio.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, True)})
         Me.spnCostoPromedio.Size = New System.Drawing.Size(91, 20)
         Me.spnCostoPromedio.TabIndex = 5
         '
@@ -199,7 +199,7 @@ Partial Class frmSivProductosEditar
         Me.spnCantidadMinima.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnCantidadMinima.Location = New System.Drawing.Point(174, 163)
         Me.spnCantidadMinima.Name = "spnCantidadMinima"
-        Me.spnCantidadMinima.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject6, "", Nothing, Nothing, True)})
+        Me.spnCantidadMinima.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, True)})
         Me.spnCantidadMinima.Size = New System.Drawing.Size(91, 20)
         Me.spnCantidadMinima.TabIndex = 10
         '
@@ -380,6 +380,8 @@ Partial Class frmSivProductosEditar
         'chkActivo
         '
         Me.chkActivo.AutoSize = True
+        Me.chkActivo.Checked = True
+        Me.chkActivo.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkActivo.Location = New System.Drawing.Point(311, 171)
         Me.chkActivo.Name = "chkActivo"

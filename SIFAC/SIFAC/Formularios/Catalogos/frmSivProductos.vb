@@ -149,28 +149,14 @@ Public Class frmSivProductos
     End Sub
 
     Private Sub cmdImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImprimir.Click
-        Dim objRptProducto As rptProducto
-        Dim objImpresion As frmOpcionesImpresion
-        objImpresion = New frmOpcionesImpresion
+        Dim objFormReporte As frmReporteProductos
         Try
-            If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
-                objRptProducto = New rptProducto
-                objRptProducto.DataSource = Me.DtProductos
-                Select Case objImpresion.Seleccion
-                    Case 1
-                        clsProyecto.ImprimirEnPantalla(objRptProducto)
-                    Case 2
-                        clsProyecto.ImprimirEnImpresora(objRptProducto, True)
-                    Case 3
-                        clsProyecto.ImprimirEnArchivo(objRptProducto, Me)
-                End Select
-            End If
+            objFormReporte = New frmReporteProductos
+            objFormReporte.ShowDialog()
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
-            objRptProducto = Nothing
-            objImpresion = Nothing
-            Me.Cursor = [Default]
+            objFormReporte = Nothing
         End Try
     End Sub
 

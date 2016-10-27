@@ -327,6 +327,12 @@
     <Compile Include="Formularios\Catalogos\frmBodegasEditar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Catalogos\frmReporteProductos.Designer.vb">
+      <DependentUpon>frmReporteProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmReporteProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Catalogos\frmSivCategorias.Designer.vb">
       <DependentUpon>frmSivCategorias.vb</DependentUpon>
     </Compile>
@@ -409,12 +415,6 @@
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Devoluciones\frmSccDevoluciones.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Encargos\frmReporteEncargos.Designer.vb">
-      <DependentUpon>frmReporteEncargos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Encargos\frmReporteEncargos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Encargos\frmSivEncargos.Designer.vb">
@@ -873,6 +873,12 @@
     <Compile Include="Reportes SIFAC\frmVisorRS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\rptCategorias.Designer.vb">
+      <DependentUpon>rptCategorias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptCategorias.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\rptDescuentos.Designer.vb">
       <DependentUpon>rptDescuentos.vb</DependentUpon>
     </Compile>
@@ -915,10 +921,22 @@
     <Compile Include="Reportes SIFAC\rptInventarioReporteRepuesto.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\rptMarcas.Designer.vb">
+      <DependentUpon>rptMarcas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptMarcas.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\rptOrdenCompraActive.Designer.vb">
       <DependentUpon>rptOrdenCompraActive.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes SIFAC\rptOrdenCompraActive.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptProductos.Designer.vb">
+      <DependentUpon>rptProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptProductos.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptSalidaBodega.Designer.vb">
@@ -1086,6 +1104,9 @@
     <EmbeddedResource Include="Formularios\Catalogos\frmBodegasEditar.resx">
       <DependentUpon>frmBodegasEditar.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmReporteProductos.resx">
+      <DependentUpon>frmReporteProductos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmSivCategorias.resx">
       <DependentUpon>frmSivCategorias.vb</DependentUpon>
     </EmbeddedResource>
@@ -1132,9 +1153,6 @@
     <EmbeddedResource Include="Formularios\Devoluciones\frmSccDevoluciones.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmSccDevoluciones.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Encargos\frmReporteEncargos.resx">
-      <DependentUpon>frmReporteEncargos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Encargos\frmSivEncargos.resx">
       <DependentUpon>frmSivEncargos.vb</DependentUpon>
@@ -1424,6 +1442,9 @@
       <DependentUpon>frmVisorRS.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptCategorias.resx">
+      <DependentUpon>rptCategorias.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptComisiones.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptCotizacion.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptCotizaciones.rdlc" />
@@ -1459,10 +1480,16 @@
       <DependentUpon>rptInventarioReporteRepuesto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptKardex.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptMarcas.resx">
+      <DependentUpon>rptMarcas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptOrdenCompra.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptOrdenCompraActive.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptOrdenCompraActive.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptProductos.resx">
+      <DependentUpon>rptProductos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptPromocion.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptPromociones.rdlc" />

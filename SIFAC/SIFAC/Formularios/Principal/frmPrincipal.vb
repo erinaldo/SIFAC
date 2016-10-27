@@ -231,7 +231,6 @@ Public Class frmPrincipal
             Me.navBarFacturacion.Enabled = objSeg.TienePermiso("OpcionFacturaExpediente")
             Me.NavBarDescuentos.Enabled = objSeg.TienePermiso("OpcionDescuentos")
             Me.NavBarCuentas.Enabled = objSeg.TienePermiso("OpcionCuentaXCobrar")
-            Me.NavBarFacturasXCuenta.Enabled = objSeg.TienePermiso("OpcionFacturasXCuentas")
             Me.NavBarReciboCaja.Enabled = objSeg.TienePermiso("OpcionReciboCaja")
             Me.NavBarDevoluciones.Enabled = objSeg.TienePermiso("OpcionDevoluciones")
 
@@ -289,7 +288,6 @@ Public Class frmPrincipal
 
             'Cuentas  por cobrar
             Me.NavBarCuentas.Enabled = False
-            Me.NavBarFacturasXCuenta.Enabled = False
             Me.NavBarReciboCaja.Enabled = False
             Me.NavBarDevoluciones.Enabled = False
             Me.NavBarEncargos.Enabled = False
@@ -1078,7 +1076,7 @@ Public Class frmPrincipal
         CargarSincronizarVentas()
     End Sub
 
-    Private Sub NavBarFacturasXCuenta_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarFacturasXCuenta.LinkClicked
+    Private Sub NavBarFacturasXCuenta_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs)
         CargarFacturas()
     End Sub
 

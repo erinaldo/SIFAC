@@ -143,6 +143,19 @@ Public Class frmSivMarcas
     Private Sub tsbSalir_Click(sender As Object, e As EventArgs) Handles tsbSalir.Click
         Close()
     End Sub
+
+    Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
+        Dim objReporte As frmRptVisor
+        Try
+            objReporte = New frmRptVisor
+            objReporte.IDReporte = "Marcas"
+            objReporte.Show()
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 #End Region
 
+    
 End Class

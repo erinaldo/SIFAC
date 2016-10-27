@@ -140,6 +140,8 @@ Public Class frmSivProductosEditar
     '' Descripción:        Procedimiento encargado de crear un nuevo registro de producto
     Public Sub GuardarProducto()
         Dim objProducto As SivProductos
+        Dim objBodega As StbBodegas
+        Dim objBodegaProductos As SivBodegaProductos
         Dim T As New DAL.TransactionManager
         Try
             T.BeginTran()
@@ -159,8 +161,22 @@ Public Class frmSivProductosEditar
             objProducto.Margen_Utilidad_Contado = spnMargenContado.Value
             objProducto.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objProducto.FechaCreacion = clsProyecto.Conexion.FechaServidor
-            objProducto.Insert()
+            objProducto.Insert(T)
+
+            ''Insertar en Bodega Productos con cantidad 0
+            objBodegaProductos = New SivBodegaProductos
+            objBodega = New StbBodegas
+            objBodega.RetrieveByFilter("Codigo='" & clsProyecto.Sucursal & "'")
+
+            objBodegaProductos.objProductoID = ProductoID
+            objBodegaProductos.objBodegaID = objBodega.StbBodegaID
+            objBodegaProductos.Cantidad = 0
+            objBodegaProductos.CantidadTransito = 0
+            objBodegaProductos.UsuarioCreacion = clsProyecto.Conexion.Servidor
+            objBodegaProductos.FechaCreacion = clsProyecto.Conexion.FechaServidor
+            objBodegaProductos.Insert(T)
             T.CommitTran()
+
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.boolEditado = False
             Me.DialogResult = Windows.Forms.DialogResult.OK

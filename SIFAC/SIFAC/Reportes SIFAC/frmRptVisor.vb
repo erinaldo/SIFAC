@@ -41,6 +41,24 @@ Public Class frmRptVisor
                     objjReporte.DataSource = dtReporte
                     visor.DocumentSource = objjReporte
 
+                Case "Marcas"
+                    Dim objjReporte As rptMarcas = New rptMarcas
+                    dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MarcaID, Nombre, Descripcion, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptMarcas", ))
+                    objjReporte.DataSource = dtReporte
+                    visor.DocumentSource = objjReporte
+
+                Case "Categorias"
+                    Dim objjReporte As rptCategorias = New rptCategorias
+                    dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CategoriaID, Nombre, Descripcion, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptCategorias", ))
+                    objjReporte.DataSource = dtReporte
+                    visor.DocumentSource = objjReporte
+
+                Case "Productos"
+                    Dim objjReporte As rptProductos = New rptProductos
+                    dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, objMarcaID, objCategoriaID, Marca, Categoria, CostoPromedio, Precio_Credito, Precio_Contado, Margen_Utilidad_Contado, Margen_Utilidad_Credito, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProductos", strFiltro))
+                    objjReporte.DataSource = dtReporte
+                    visor.DocumentSource = objjReporte
+
             End Select
         Catch ex As Exception
             clsError.CaptarError(ex)
