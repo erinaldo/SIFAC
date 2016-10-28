@@ -67,8 +67,11 @@ Partial Class frmSccCuentasEditar
         Me.ToolTip = New C1.Win.C1SuperTooltip.C1SuperTooltip(Me.components)
         Me.lblinfo = New System.Windows.Forms.Label()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdBuscarFacturas = New System.Windows.Forms.Button()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdConsultarFacturas = New System.Windows.Forms.Button()
+        Me.cmdProcesarFacturas = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dtpFechaCredito, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,9 +101,9 @@ Partial Class frmSccCuentasEditar
         Me.GroupBox1.Controls.Add(Me.lblCuenta)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(9, 26)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(427, 142)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
@@ -120,7 +123,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.txtEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEstado.Location = New System.Drawing.Point(145, 54)
-        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.ReadOnly = True
         Me.txtEstado.Size = New System.Drawing.Size(245, 23)
@@ -132,9 +135,9 @@ Partial Class frmSccCuentasEditar
         Me.GroupBox2.Controls.Add(Me.dtpFechaCredito)
         Me.GroupBox2.Controls.Add(Me.lblFechaCredito)
         Me.GroupBox2.Location = New System.Drawing.Point(13, 86)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Size = New System.Drawing.Size(405, 42)
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
@@ -165,7 +168,7 @@ Partial Class frmSccCuentasEditar
         Me.dtpFechaCredito.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaCredito.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFechaCredito.Location = New System.Drawing.Point(136, 14)
-        Me.dtpFechaCredito.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpFechaCredito.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaCredito.Name = "dtpFechaCredito"
         Me.dtpFechaCredito.Size = New System.Drawing.Size(245, 23)
         Me.dtpFechaCredito.TabIndex = 2
@@ -186,7 +189,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.txtCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCuenta.Location = New System.Drawing.Point(145, 23)
-        Me.txtCuenta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCuenta.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCuenta.Name = "txtCuenta"
         Me.txtCuenta.ReadOnly = True
         Me.txtCuenta.Size = New System.Drawing.Size(161, 23)
@@ -213,9 +216,9 @@ Partial Class frmSccCuentasEditar
         Me.GroupBox4.Controls.Add(Me.lblSaldo)
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.Location = New System.Drawing.Point(444, 26)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Size = New System.Drawing.Size(372, 142)
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
@@ -225,7 +228,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.txtUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsuario.Location = New System.Drawing.Point(144, 98)
-        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(4)
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.ReadOnly = True
         Me.txtUsuario.Size = New System.Drawing.Size(195, 23)
@@ -250,7 +253,7 @@ Partial Class frmSccCuentasEditar
         Me.numSaldoInicial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numSaldoInicial.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numSaldoInicial.Location = New System.Drawing.Point(145, 23)
-        Me.numSaldoInicial.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numSaldoInicial.Margin = New System.Windows.Forms.Padding(4)
         Me.numSaldoInicial.Name = "numSaldoInicial"
         Me.numSaldoInicial.ReadOnly = True
         Me.numSaldoInicial.Size = New System.Drawing.Size(196, 21)
@@ -279,7 +282,7 @@ Partial Class frmSccCuentasEditar
         Me.numSaldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numSaldo.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.numSaldo.Location = New System.Drawing.Point(144, 57)
-        Me.numSaldo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.numSaldo.Margin = New System.Windows.Forms.Padding(4)
         Me.numSaldo.Name = "numSaldo"
         Me.numSaldo.ReadOnly = True
         Me.numSaldo.Size = New System.Drawing.Size(196, 21)
@@ -308,8 +311,8 @@ Partial Class frmSccCuentasEditar
         'tbcCuentas
         '
         Me.tbcCuentas.Controls.Add(Me.pgClientes)
-        Me.tbcCuentas.Location = New System.Drawing.Point(11, 398)
-        Me.tbcCuentas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbcCuentas.Location = New System.Drawing.Point(9, 176)
+        Me.tbcCuentas.Margin = New System.Windows.Forms.Padding(4)
         Me.tbcCuentas.Name = "tbcCuentas"
         Me.tbcCuentas.SelectedIndex = 0
         Me.tbcCuentas.Size = New System.Drawing.Size(805, 215)
@@ -319,9 +322,9 @@ Partial Class frmSccCuentasEditar
         '
         Me.pgClientes.Controls.Add(Me.GroupBox6)
         Me.pgClientes.Location = New System.Drawing.Point(4, 25)
-        Me.pgClientes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pgClientes.Margin = New System.Windows.Forms.Padding(4)
         Me.pgClientes.Name = "pgClientes"
-        Me.pgClientes.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pgClientes.Padding = New System.Windows.Forms.Padding(4)
         Me.pgClientes.Size = New System.Drawing.Size(797, 186)
         Me.pgClientes.TabIndex = 0
         Me.pgClientes.Text = "Cliente"
@@ -346,9 +349,9 @@ Partial Class frmSccCuentasEditar
         Me.GroupBox6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox6.Location = New System.Drawing.Point(4, 4)
-        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox6.Size = New System.Drawing.Size(789, 178)
         Me.GroupBox6.TabIndex = 9
         Me.GroupBox6.TabStop = False
@@ -359,7 +362,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.cmdConsultarCliente.Image = CType(resources.GetObject("cmdConsultarCliente.Image"), System.Drawing.Image)
         Me.cmdConsultarCliente.Location = New System.Drawing.Point(749, 27)
-        Me.cmdConsultarCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdConsultarCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdConsultarCliente.Name = "cmdConsultarCliente"
         Me.cmdConsultarCliente.Size = New System.Drawing.Size(31, 28)
         Me.cmdConsultarCliente.TabIndex = 15
@@ -370,7 +373,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.txtTipoPersona.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTipoPersona.Location = New System.Drawing.Point(587, 130)
-        Me.txtTipoPersona.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtTipoPersona.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTipoPersona.Name = "txtTipoPersona"
         Me.txtTipoPersona.Size = New System.Drawing.Size(179, 23)
         Me.txtTipoPersona.TabIndex = 14
@@ -380,7 +383,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.txtNacionalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNacionalidad.Location = New System.Drawing.Point(256, 127)
-        Me.txtNacionalidad.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNacionalidad.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNacionalidad.Name = "txtNacionalidad"
         Me.txtNacionalidad.Size = New System.Drawing.Size(197, 23)
         Me.txtNacionalidad.TabIndex = 13
@@ -410,7 +413,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.txtGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtGenero.Location = New System.Drawing.Point(587, 96)
-        Me.txtGenero.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtGenero.Margin = New System.Windows.Forms.Padding(4)
         Me.txtGenero.Name = "txtGenero"
         Me.txtGenero.Size = New System.Drawing.Size(179, 23)
         Me.txtGenero.TabIndex = 10
@@ -429,7 +432,7 @@ Partial Class frmSccCuentasEditar
         'cmdBuscarCliente
         '
         Me.cmdBuscarCliente.Location = New System.Drawing.Point(708, 27)
-        Me.cmdBuscarCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdBuscarCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdBuscarCliente.Name = "cmdBuscarCliente"
         Me.cmdBuscarCliente.Size = New System.Drawing.Size(37, 28)
         Me.cmdBuscarCliente.TabIndex = 7
@@ -440,7 +443,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.txtCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCedula.Location = New System.Drawing.Point(256, 96)
-        Me.txtCedula.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCedula.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(197, 23)
         Me.txtCedula.TabIndex = 5
@@ -450,7 +453,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccion.Location = New System.Drawing.Point(256, 64)
-        Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtDireccion.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(509, 23)
         Me.txtDireccion.TabIndex = 4
@@ -480,7 +483,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(256, 30)
-        Me.txtNombre.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(445, 23)
         Me.txtNombre.TabIndex = 1
@@ -561,8 +564,8 @@ Partial Class frmSccCuentasEditar
         'tbFacturas
         '
         Me.tbFacturas.Controls.Add(Me.PGFacturas)
-        Me.tbFacturas.Location = New System.Drawing.Point(11, 175)
-        Me.tbFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbFacturas.Location = New System.Drawing.Point(9, 420)
+        Me.tbFacturas.Margin = New System.Windows.Forms.Padding(4)
         Me.tbFacturas.Name = "tbFacturas"
         Me.tbFacturas.SelectedIndex = 0
         Me.tbFacturas.Size = New System.Drawing.Size(805, 203)
@@ -572,9 +575,9 @@ Partial Class frmSccCuentasEditar
         '
         Me.PGFacturas.Controls.Add(Me.grdFacturas)
         Me.PGFacturas.Location = New System.Drawing.Point(4, 25)
-        Me.PGFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PGFacturas.Margin = New System.Windows.Forms.Padding(4)
         Me.PGFacturas.Name = "PGFacturas"
-        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(4)
         Me.PGFacturas.Size = New System.Drawing.Size(797, 174)
         Me.PGFacturas.TabIndex = 0
         Me.PGFacturas.Text = "Facturas"
@@ -587,7 +590,7 @@ Partial Class frmSccCuentasEditar
         Me.grdFacturas.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdFacturas.Images.Add(CType(resources.GetObject("grdFacturas.Images"), System.Drawing.Image))
         Me.grdFacturas.Location = New System.Drawing.Point(4, 4)
-        Me.grdFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdFacturas.Margin = New System.Windows.Forms.Padding(4)
         Me.grdFacturas.Name = "grdFacturas"
         Me.grdFacturas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdFacturas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
@@ -602,8 +605,8 @@ Partial Class frmSccCuentasEditar
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 663)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Location = New System.Drawing.Point(0, 683)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(829, 25)
         Me.Panel1.TabIndex = 12
@@ -624,6 +627,9 @@ Partial Class frmSccCuentasEditar
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdProcesarFacturas)
+        Me.PanelControl1.Controls.Add(Me.cmdConsultarFacturas)
+        Me.PanelControl1.Controls.Add(Me.cmdBuscarFacturas)
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
@@ -634,20 +640,31 @@ Partial Class frmSccCuentasEditar
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.PanelControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(829, 688)
+        Me.PanelControl1.Size = New System.Drawing.Size(829, 708)
         Me.PanelControl1.TabIndex = 17
+        '
+        'cmdBuscarFacturas
+        '
+        Me.cmdBuscarFacturas.Image = CType(resources.GetObject("cmdBuscarFacturas.Image"), System.Drawing.Image)
+        Me.cmdBuscarFacturas.Location = New System.Drawing.Point(705, 412)
+        Me.cmdBuscarFacturas.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdBuscarFacturas.Name = "cmdBuscarFacturas"
+        Me.cmdBuscarFacturas.Size = New System.Drawing.Size(31, 28)
+        Me.cmdBuscarFacturas.TabIndex = 16
+        Me.cmdBuscarFacturas.Text = "..."
+        Me.cmdBuscarFacturas.UseVisualStyleBackColor = True
         '
         'cmdCancelar
         '
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(708, 620)
+        Me.cmdCancelar.Location = New System.Drawing.Point(703, 640)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(100, 34)
         Me.cmdCancelar.TabIndex = 12
@@ -660,27 +677,49 @@ Partial Class frmSccCuentasEditar
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(592, 620)
+        Me.cmdGuardar.Location = New System.Drawing.Point(587, 640)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(107, 34)
         Me.cmdGuardar.TabIndex = 11
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
+        'cmdConsultarFacturas
+        '
+        Me.cmdConsultarFacturas.Image = CType(resources.GetObject("cmdConsultarFacturas.Image"), System.Drawing.Image)
+        Me.cmdConsultarFacturas.Location = New System.Drawing.Point(783, 412)
+        Me.cmdConsultarFacturas.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdConsultarFacturas.Name = "cmdConsultarFacturas"
+        Me.cmdConsultarFacturas.Size = New System.Drawing.Size(31, 28)
+        Me.cmdConsultarFacturas.TabIndex = 17
+        Me.cmdConsultarFacturas.Text = "..."
+        Me.cmdConsultarFacturas.UseVisualStyleBackColor = True
+        '
+        'cmdProcesarFacturas
+        '
+        Me.cmdProcesarFacturas.Image = CType(resources.GetObject("cmdProcesarFacturas.Image"), System.Drawing.Image)
+        Me.cmdProcesarFacturas.Location = New System.Drawing.Point(744, 412)
+        Me.cmdProcesarFacturas.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdProcesarFacturas.Name = "cmdProcesarFacturas"
+        Me.cmdProcesarFacturas.Size = New System.Drawing.Size(31, 28)
+        Me.cmdProcesarFacturas.TabIndex = 18
+        Me.cmdProcesarFacturas.Text = "..."
+        Me.cmdProcesarFacturas.UseVisualStyleBackColor = True
+        '
         'frmSccCuentasEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(829, 688)
+        Me.ClientSize = New System.Drawing.Size(829, 708)
         Me.Controls.Add(Me.lblinfo)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSccCuentasEditar"
@@ -762,4 +801,7 @@ Partial Class frmSccCuentasEditar
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdBuscarFacturas As System.Windows.Forms.Button
+    Friend WithEvents cmdConsultarFacturas As System.Windows.Forms.Button
+    Friend WithEvents cmdProcesarFacturas As System.Windows.Forms.Button
 End Class

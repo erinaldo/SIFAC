@@ -25,6 +25,8 @@ Partial Class frmSfaFaturaEditar
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSfaFaturaEditar))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.numDescuentoPorc = New C1.Win.C1Input.C1NumericEdit()
+        Me.lblDescuento = New System.Windows.Forms.Label()
         Me.cmbFactura = New C1.Win.C1List.C1Combo()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.numFinancimiento = New C1.Win.C1Input.C1NumericEdit()
@@ -41,20 +43,11 @@ Partial Class frmSfaFaturaEditar
         Me.lblfact = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.GrpExpediente = New System.Windows.Forms.GroupBox()
-        Me.cmdConsultar = New System.Windows.Forms.Button()
-        Me.cmdExpediente = New System.Windows.Forms.Button()
-        Me.txtCliente = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.txtNumCuenta = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cmbModalidadPago = New C1.Win.C1List.C1Combo()
+        Me.lblModalidadPago = New System.Windows.Forms.Label()
         Me.txtEstado = New System.Windows.Forms.TextBox()
         Me.lblEstado = New System.Windows.Forms.Label()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.numDescuentoPorc = New C1.Win.C1Input.C1NumericEdit()
-        Me.lblDescuento = New System.Windows.Forms.Label()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.dtpUltimoPago = New C1.Win.C1Input.C1DateEdit()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -95,6 +88,7 @@ Partial Class frmSfaFaturaEditar
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.numDescuentoPorc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numFinancimiento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numPrima, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,11 +97,8 @@ Partial Class frmSfaFaturaEditar
         CType(Me.NumMonto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numMontoCuotas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GrpExpediente.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        CType(Me.numDescuentoPorc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.cmbModalidadPago, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         CType(Me.dtpUltimoPago, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaProximoPago, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -127,6 +118,8 @@ Partial Class frmSfaFaturaEditar
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.numDescuentoPorc)
+        Me.GroupBox1.Controls.Add(Me.lblDescuento)
         Me.GroupBox1.Controls.Add(Me.cmbFactura)
         Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.numFinancimiento)
@@ -142,14 +135,47 @@ Partial Class frmSfaFaturaEditar
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.lblfact)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(16, 156)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 38)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(488, 262)
+        Me.GroupBox1.Size = New System.Drawing.Size(488, 280)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Principales"
+        '
+        'numDescuentoPorc
+        '
+        Me.numDescuentoPorc.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.numDescuentoPorc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.numDescuentoPorc.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.FormatType Or C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
+            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+        Me.numDescuentoPorc.Enabled = False
+        Me.numDescuentoPorc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.numDescuentoPorc.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
+        Me.numDescuentoPorc.Location = New System.Drawing.Point(140, 122)
+        Me.numDescuentoPorc.Margin = New System.Windows.Forms.Padding(4)
+        Me.numDescuentoPorc.Name = "numDescuentoPorc"
+        Me.numDescuentoPorc.Size = New System.Drawing.Size(332, 21)
+        Me.numDescuentoPorc.TabIndex = 30
+        Me.numDescuentoPorc.Tag = "-"
+        Me.numDescuentoPorc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.numDescuentoPorc.Value = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.numDescuentoPorc.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.UpDown
+        Me.numDescuentoPorc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Silver
+        '
+        'lblDescuento
+        '
+        Me.lblDescuento.AutoSize = True
+        Me.lblDescuento.ForeColor = System.Drawing.Color.Black
+        Me.lblDescuento.Location = New System.Drawing.Point(11, 124)
+        Me.lblDescuento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblDescuento.Name = "lblDescuento"
+        Me.lblDescuento.Size = New System.Drawing.Size(90, 17)
+        Me.lblDescuento.TabIndex = 29
+        Me.lblDescuento.Text = "Descuento:"
         '
         'cmbFactura
         '
@@ -169,7 +195,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmbFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbFactura.Images.Add(CType(resources.GetObject("cmbFactura.Images"), System.Drawing.Image))
         Me.cmbFactura.ItemHeight = 15
-        Me.cmbFactura.Location = New System.Drawing.Point(140, 53)
+        Me.cmbFactura.Location = New System.Drawing.Point(140, 29)
         Me.cmbFactura.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbFactura.MatchEntryTimeout = CType(2000, Long)
         Me.cmbFactura.MaxDropDownItems = CType(5, Short)
@@ -187,7 +213,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.Label14.AutoSize = True
         Me.Label14.ForeColor = System.Drawing.Color.Black
-        Me.Label14.Location = New System.Drawing.Point(11, 149)
+        Me.Label14.Location = New System.Drawing.Point(11, 159)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(122, 17)
@@ -201,7 +227,7 @@ Partial Class frmSfaFaturaEditar
         Me.numFinancimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.numFinancimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numFinancimiento.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numFinancimiento.Location = New System.Drawing.Point(140, 146)
+        Me.numFinancimiento.Location = New System.Drawing.Point(140, 156)
         Me.numFinancimiento.Margin = New System.Windows.Forms.Padding(4)
         Me.numFinancimiento.Name = "numFinancimiento"
         Me.numFinancimiento.ReadOnly = True
@@ -217,7 +243,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(11, 119)
+        Me.Label5.Location = New System.Drawing.Point(11, 92)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(54, 17)
@@ -231,7 +257,7 @@ Partial Class frmSfaFaturaEditar
         Me.numPrima.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.numPrima.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numPrima.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numPrima.Location = New System.Drawing.Point(140, 117)
+        Me.numPrima.Location = New System.Drawing.Point(140, 90)
         Me.numPrima.Margin = New System.Windows.Forms.Padding(4)
         Me.numPrima.Name = "numPrima"
         Me.numPrima.ReadOnly = True
@@ -249,7 +275,7 @@ Partial Class frmSfaFaturaEditar
         Me.numCuotas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.numCuotas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numCuotas.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numCuotas.Location = New System.Drawing.Point(140, 174)
+        Me.numCuotas.Location = New System.Drawing.Point(140, 184)
         Me.numCuotas.Margin = New System.Windows.Forms.Padding(4)
         Me.numCuotas.Name = "numCuotas"
         Me.numCuotas.ReadOnly = True
@@ -265,7 +291,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.Label1.AutoSize = True
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(11, 176)
+        Me.Label1.Location = New System.Drawing.Point(11, 186)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(88, 17)
@@ -277,7 +303,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.lblSaldo.AutoSize = True
         Me.lblSaldo.ForeColor = System.Drawing.Color.Black
-        Me.lblSaldo.Location = New System.Drawing.Point(11, 234)
+        Me.lblSaldo.Location = New System.Drawing.Point(11, 244)
         Me.lblSaldo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSaldo.Name = "lblSaldo"
         Me.lblSaldo.Size = New System.Drawing.Size(54, 17)
@@ -291,7 +317,7 @@ Partial Class frmSfaFaturaEditar
         Me.numSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.numSaldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numSaldo.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numSaldo.Location = New System.Drawing.Point(140, 231)
+        Me.numSaldo.Location = New System.Drawing.Point(140, 241)
         Me.numSaldo.Margin = New System.Windows.Forms.Padding(4)
         Me.numSaldo.Name = "numSaldo"
         Me.numSaldo.ReadOnly = True
@@ -307,7 +333,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.lblMonto.AutoSize = True
         Me.lblMonto.ForeColor = System.Drawing.Color.Black
-        Me.lblMonto.Location = New System.Drawing.Point(11, 92)
+        Me.lblMonto.Location = New System.Drawing.Point(11, 65)
         Me.lblMonto.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMonto.Name = "lblMonto"
         Me.lblMonto.Size = New System.Drawing.Size(99, 17)
@@ -321,7 +347,7 @@ Partial Class frmSfaFaturaEditar
         Me.NumMonto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.NumMonto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumMonto.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.NumMonto.Location = New System.Drawing.Point(140, 90)
+        Me.NumMonto.Location = New System.Drawing.Point(140, 63)
         Me.NumMonto.Margin = New System.Windows.Forms.Padding(4)
         Me.NumMonto.Name = "NumMonto"
         Me.NumMonto.ReadOnly = True
@@ -339,7 +365,7 @@ Partial Class frmSfaFaturaEditar
         Me.numMontoCuotas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.numMontoCuotas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.numMontoCuotas.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numMontoCuotas.Location = New System.Drawing.Point(140, 202)
+        Me.numMontoCuotas.Location = New System.Drawing.Point(140, 212)
         Me.numMontoCuotas.Margin = New System.Windows.Forms.Padding(4)
         Me.numMontoCuotas.Name = "numMontoCuotas"
         Me.numMontoCuotas.ReadOnly = True
@@ -355,7 +381,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(11, 204)
+        Me.Label2.Location = New System.Drawing.Point(11, 214)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(112, 17)
@@ -367,7 +393,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.lblfact.AutoSize = True
         Me.lblfact.ForeColor = System.Drawing.Color.Black
-        Me.lblfact.Location = New System.Drawing.Point(11, 60)
+        Me.lblfact.Location = New System.Drawing.Point(11, 32)
         Me.lblfact.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblfact.Name = "lblfact"
         Me.lblfact.Size = New System.Drawing.Size(98, 17)
@@ -379,7 +405,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 500)
+        Me.Panel1.Location = New System.Drawing.Point(0, 395)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(915, 27)
@@ -389,172 +415,12 @@ Partial Class frmSfaFaturaEditar
         '
         Me.ErrorProvider.ContainerControl = Me
         '
-        'GrpExpediente
-        '
-        Me.GrpExpediente.Controls.Add(Me.cmdConsultar)
-        Me.GrpExpediente.Controls.Add(Me.cmdExpediente)
-        Me.GrpExpediente.Controls.Add(Me.txtCliente)
-        Me.GrpExpediente.Controls.Add(Me.Label11)
-        Me.GrpExpediente.Controls.Add(Me.txtNumCuenta)
-        Me.GrpExpediente.Controls.Add(Me.Label12)
-        Me.GrpExpediente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GrpExpediente.Location = New System.Drawing.Point(19, 33)
-        Me.GrpExpediente.Margin = New System.Windows.Forms.Padding(4)
-        Me.GrpExpediente.Name = "GrpExpediente"
-        Me.GrpExpediente.Padding = New System.Windows.Forms.Padding(4)
-        Me.GrpExpediente.Size = New System.Drawing.Size(496, 112)
-        Me.GrpExpediente.TabIndex = 19
-        Me.GrpExpediente.TabStop = False
-        Me.GrpExpediente.Text = "Datos Expediente"
-        '
-        'cmdConsultar
-        '
-        Me.cmdConsultar.Image = CType(resources.GetObject("cmdConsultar.Image"), System.Drawing.Image)
-        Me.cmdConsultar.Location = New System.Drawing.Point(425, 18)
-        Me.cmdConsultar.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmdConsultar.Name = "cmdConsultar"
-        Me.cmdConsultar.Size = New System.Drawing.Size(32, 28)
-        Me.cmdConsultar.TabIndex = 18
-        Me.cmdConsultar.Text = "..."
-        Me.cmdConsultar.UseVisualStyleBackColor = True
-        '
-        'cmdExpediente
-        '
-        Me.cmdExpediente.Location = New System.Drawing.Point(389, 18)
-        Me.cmdExpediente.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmdExpediente.Name = "cmdExpediente"
-        Me.cmdExpediente.Size = New System.Drawing.Size(32, 28)
-        Me.cmdExpediente.TabIndex = 0
-        Me.cmdExpediente.Text = "..."
-        Me.cmdExpediente.UseVisualStyleBackColor = True
-        '
-        'txtCliente
-        '
-        Me.txtCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCliente.Location = New System.Drawing.Point(121, 50)
-        Me.txtCliente.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtCliente.Name = "txtCliente"
-        Me.txtCliente.Size = New System.Drawing.Size(336, 23)
-        Me.txtCliente.TabIndex = 5
-        Me.txtCliente.Tag = "BLOQUEADO"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(11, 54)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(63, 17)
-        Me.Label11.TabIndex = 4
-        Me.Label11.Tag = "OBLIGATORIO"
-        Me.Label11.Text = "Cliente:"
-        '
-        'txtNumCuenta
-        '
-        Me.txtNumCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNumCuenta.Location = New System.Drawing.Point(121, 21)
-        Me.txtNumCuenta.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtNumCuenta.Name = "txtNumCuenta"
-        Me.txtNumCuenta.Size = New System.Drawing.Size(188, 23)
-        Me.txtNumCuenta.TabIndex = 3
-        Me.txtNumCuenta.Tag = "BLOQUEADO"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(11, 25)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(69, 17)
-        Me.Label12.TabIndex = 1
-        Me.Label12.Tag = "OBLIGATORIO"
-        Me.Label12.Text = "No. Exp:"
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.txtEstado)
-        Me.GroupBox5.Controls.Add(Me.lblEstado)
-        Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox5.Location = New System.Drawing.Point(524, 255)
-        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox5.Size = New System.Drawing.Size(380, 80)
-        Me.GroupBox5.TabIndex = 22
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Estado y Calificación"
-        '
-        'txtEstado
-        '
-        Me.txtEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEstado.Location = New System.Drawing.Point(115, 47)
-        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtEstado.Name = "txtEstado"
-        Me.txtEstado.Size = New System.Drawing.Size(240, 23)
-        Me.txtEstado.TabIndex = 4
-        Me.txtEstado.Tag = "BLOQUEADO"
-        '
-        'lblEstado
-        '
-        Me.lblEstado.AutoSize = True
-        Me.lblEstado.ForeColor = System.Drawing.Color.Black
-        Me.lblEstado.Location = New System.Drawing.Point(13, 50)
-        Me.lblEstado.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblEstado.Name = "lblEstado"
-        Me.lblEstado.Size = New System.Drawing.Size(63, 17)
-        Me.lblEstado.TabIndex = 1
-        Me.lblEstado.Text = "Estado:"
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.numDescuentoPorc)
-        Me.GroupBox3.Controls.Add(Me.lblDescuento)
-        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(524, 341)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(376, 80)
-        Me.GroupBox3.TabIndex = 21
-        Me.GroupBox3.TabStop = False
-        '
-        'numDescuentoPorc
-        '
-        Me.numDescuentoPorc.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.numDescuentoPorc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.numDescuentoPorc.DisplayFormat.Inherit = CType(((((C1.Win.C1Input.FormatInfoInheritFlags.FormatType Or C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.NullText) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
-            Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
-        Me.numDescuentoPorc.Enabled = False
-        Me.numDescuentoPorc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.numDescuentoPorc.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numDescuentoPorc.Location = New System.Drawing.Point(149, 26)
-        Me.numDescuentoPorc.Margin = New System.Windows.Forms.Padding(4)
-        Me.numDescuentoPorc.Name = "numDescuentoPorc"
-        Me.numDescuentoPorc.Size = New System.Drawing.Size(196, 21)
-        Me.numDescuentoPorc.TabIndex = 12
-        Me.numDescuentoPorc.Tag = "-"
-        Me.numDescuentoPorc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.numDescuentoPorc.Value = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.numDescuentoPorc.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.UpDown
-        Me.numDescuentoPorc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Silver
-        '
-        'lblDescuento
-        '
-        Me.lblDescuento.AutoSize = True
-        Me.lblDescuento.ForeColor = System.Drawing.Color.Black
-        Me.lblDescuento.Location = New System.Drawing.Point(11, 28)
-        Me.lblDescuento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblDescuento.Name = "lblDescuento"
-        Me.lblDescuento.Size = New System.Drawing.Size(90, 17)
-        Me.lblDescuento.TabIndex = 3
-        Me.lblDescuento.Text = "Descuento:"
-        '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.cmbModalidadPago)
+        Me.GroupBox2.Controls.Add(Me.lblModalidadPago)
+        Me.GroupBox2.Controls.Add(Me.txtEstado)
+        Me.GroupBox2.Controls.Add(Me.lblEstado)
         Me.GroupBox2.Controls.Add(Me.GroupBox4)
         Me.GroupBox2.Controls.Add(Me.dtpFechaVencimiento)
         Me.GroupBox2.Controls.Add(Me.dtpFechaCredito)
@@ -567,10 +433,74 @@ Partial Class frmSfaFaturaEditar
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(383, 212)
+        Me.GroupBox2.Size = New System.Drawing.Size(383, 280)
         Me.GroupBox2.TabIndex = 20
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Período"
+        '
+        'cmbModalidadPago
+        '
+        Me.cmbModalidadPago.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbModalidadPago.Caption = ""
+        Me.cmbModalidadPago.CaptionHeight = 17
+        Me.cmbModalidadPago.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbModalidadPago.ColumnCaptionHeight = 17
+        Me.cmbModalidadPago.ColumnFooterHeight = 17
+        Me.cmbModalidadPago.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cmbModalidadPago.ContentHeight = 18
+        Me.cmbModalidadPago.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbModalidadPago.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbModalidadPago.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbModalidadPago.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbModalidadPago.EditorHeight = 18
+        Me.cmbModalidadPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbModalidadPago.Images.Add(CType(resources.GetObject("cmbModalidadPago.Images"), System.Drawing.Image))
+        Me.cmbModalidadPago.ItemHeight = 15
+        Me.cmbModalidadPago.Location = New System.Drawing.Point(171, 88)
+        Me.cmbModalidadPago.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbModalidadPago.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbModalidadPago.MaxDropDownItems = CType(5, Short)
+        Me.cmbModalidadPago.MaxLength = 32767
+        Me.cmbModalidadPago.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbModalidadPago.Name = "cmbModalidadPago"
+        Me.cmbModalidadPago.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbModalidadPago.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbModalidadPago.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbModalidadPago.Size = New System.Drawing.Size(196, 24)
+        Me.cmbModalidadPago.TabIndex = 16
+        Me.cmbModalidadPago.PropBag = resources.GetString("cmbModalidadPago.PropBag")
+        '
+        'lblModalidadPago
+        '
+        Me.lblModalidadPago.AutoSize = True
+        Me.lblModalidadPago.ForeColor = System.Drawing.Color.Black
+        Me.lblModalidadPago.Location = New System.Drawing.Point(13, 92)
+        Me.lblModalidadPago.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblModalidadPago.Name = "lblModalidadPago"
+        Me.lblModalidadPago.Size = New System.Drawing.Size(124, 17)
+        Me.lblModalidadPago.TabIndex = 15
+        Me.lblModalidadPago.Text = "Modalidad Pago"
+        '
+        'txtEstado
+        '
+        Me.txtEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEstado.Location = New System.Drawing.Point(171, 26)
+        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtEstado.Name = "txtEstado"
+        Me.txtEstado.Size = New System.Drawing.Size(193, 23)
+        Me.txtEstado.TabIndex = 14
+        Me.txtEstado.Tag = "BLOQUEADO"
+        '
+        'lblEstado
+        '
+        Me.lblEstado.AutoSize = True
+        Me.lblEstado.ForeColor = System.Drawing.Color.Black
+        Me.lblEstado.Location = New System.Drawing.Point(13, 29)
+        Me.lblEstado.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblEstado.Name = "lblEstado"
+        Me.lblEstado.Size = New System.Drawing.Size(63, 17)
+        Me.lblEstado.TabIndex = 13
+        Me.lblEstado.Text = "Estado:"
         '
         'GroupBox4
         '
@@ -578,7 +508,7 @@ Partial Class frmSfaFaturaEditar
         Me.GroupBox4.Controls.Add(Me.Label9)
         Me.GroupBox4.Controls.Add(Me.dtpFechaProximoPago)
         Me.GroupBox4.Controls.Add(Me.lblFechaPago)
-        Me.GroupBox4.Location = New System.Drawing.Point(7, 111)
+        Me.GroupBox4.Location = New System.Drawing.Point(7, 182)
         Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
@@ -700,7 +630,7 @@ Partial Class frmSfaFaturaEditar
         Me.dtpFechaVencimiento.Enabled = False
         Me.dtpFechaVencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaVencimiento.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaVencimiento.Location = New System.Drawing.Point(171, 82)
+        Me.dtpFechaVencimiento.Location = New System.Drawing.Point(171, 152)
         Me.dtpFechaVencimiento.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaVencimiento.Name = "dtpFechaVencimiento"
         Me.dtpFechaVencimiento.Size = New System.Drawing.Size(196, 23)
@@ -732,7 +662,7 @@ Partial Class frmSfaFaturaEditar
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.dtpFechaCredito.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaCredito.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFechaCredito.Location = New System.Drawing.Point(171, 50)
+        Me.dtpFechaCredito.Location = New System.Drawing.Point(171, 120)
         Me.dtpFechaCredito.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFechaCredito.Name = "dtpFechaCredito"
         Me.dtpFechaCredito.Size = New System.Drawing.Size(196, 23)
@@ -758,7 +688,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmbPlazo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbPlazo.Images.Add(CType(resources.GetObject("cmbPlazo.Images"), System.Drawing.Image))
         Me.cmbPlazo.ItemHeight = 15
-        Me.cmbPlazo.Location = New System.Drawing.Point(171, 17)
+        Me.cmbPlazo.Location = New System.Drawing.Point(171, 57)
         Me.cmbPlazo.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbPlazo.MatchEntryTimeout = CType(2000, Long)
         Me.cmbPlazo.MaxDropDownItems = CType(5, Short)
@@ -776,7 +706,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.lblFechaVencimiento.AutoSize = True
         Me.lblFechaVencimiento.ForeColor = System.Drawing.Color.Black
-        Me.lblFechaVencimiento.Location = New System.Drawing.Point(13, 85)
+        Me.lblFechaVencimiento.Location = New System.Drawing.Point(13, 155)
         Me.lblFechaVencimiento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFechaVencimiento.Name = "lblFechaVencimiento"
         Me.lblFechaVencimiento.Size = New System.Drawing.Size(150, 17)
@@ -787,7 +717,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.lblFechaCredito.AutoSize = True
         Me.lblFechaCredito.ForeColor = System.Drawing.Color.Black
-        Me.lblFechaCredito.Location = New System.Drawing.Point(13, 54)
+        Me.lblFechaCredito.Location = New System.Drawing.Point(13, 124)
         Me.lblFechaCredito.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFechaCredito.Name = "lblFechaCredito"
         Me.lblFechaCredito.Size = New System.Drawing.Size(114, 17)
@@ -798,7 +728,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.lblTerminoPlazo.AutoSize = True
         Me.lblTerminoPlazo.ForeColor = System.Drawing.Color.Black
-        Me.lblTerminoPlazo.Location = New System.Drawing.Point(13, 22)
+        Me.lblTerminoPlazo.Location = New System.Drawing.Point(13, 62)
         Me.lblTerminoPlazo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTerminoPlazo.Name = "lblTerminoPlazo"
         Me.lblTerminoPlazo.Size = New System.Drawing.Size(117, 17)
@@ -827,9 +757,6 @@ Partial Class frmSfaFaturaEditar
         Me.PanelControl1.Controls.Add(Me.cmdPedido)
         Me.PanelControl1.Controls.Add(Me.SimpleButton1)
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
-        Me.PanelControl1.Controls.Add(Me.GrpExpediente)
-        Me.PanelControl1.Controls.Add(Me.GroupBox3)
-        Me.PanelControl1.Controls.Add(Me.GroupBox5)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Controls.Add(Me.GroupBox2)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -838,7 +765,7 @@ Partial Class frmSfaFaturaEditar
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(915, 527)
+        Me.PanelControl1.Size = New System.Drawing.Size(915, 422)
         Me.PanelControl1.TabIndex = 28
         '
         'cmdProcesar
@@ -847,7 +774,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmdProcesar.Appearance.Options.UseFont = True
         Me.cmdProcesar.Image = CType(resources.GetObject("cmdProcesar.Image"), System.Drawing.Image)
         Me.cmdProcesar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdProcesar.Location = New System.Drawing.Point(673, 452)
+        Me.cmdProcesar.Location = New System.Drawing.Point(692, 337)
         Me.cmdProcesar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdProcesar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdProcesar.Margin = New System.Windows.Forms.Padding(4)
@@ -862,7 +789,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(788, 452)
+        Me.cmdCancelar.Location = New System.Drawing.Point(807, 337)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
@@ -878,7 +805,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmdAceptar.Appearance.Options.UseFont = True
         Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
         Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(559, 452)
+        Me.cmdAceptar.Location = New System.Drawing.Point(578, 337)
         Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4)
@@ -1171,7 +1098,7 @@ Partial Class frmSfaFaturaEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(915, 527)
+        Me.ClientSize = New System.Drawing.Size(915, 422)
         Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
@@ -1185,6 +1112,7 @@ Partial Class frmSfaFaturaEditar
         Me.Text = "Factura-Expediente"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.numDescuentoPorc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbFactura, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numFinancimiento, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numPrima, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1193,15 +1121,9 @@ Partial Class frmSfaFaturaEditar
         CType(Me.NumMonto, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numMontoCuotas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GrpExpediente.ResumeLayout(False)
-        Me.GrpExpediente.PerformLayout()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        CType(Me.numDescuentoPorc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.cmbModalidadPago, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.dtpUltimoPago, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1228,20 +1150,8 @@ Partial Class frmSfaFaturaEditar
     Friend WithEvents lblfact As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents ErrorProvider As System.Windows.Forms.ErrorProvider
-    Friend WithEvents GrpExpediente As System.Windows.Forms.GroupBox
-    Friend WithEvents cmdExpediente As System.Windows.Forms.Button
-    Friend WithEvents txtCliente As System.Windows.Forms.TextBox
-    Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents txtNumCuenta As System.Windows.Forms.TextBox
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents cmdConsultar As System.Windows.Forms.Button
     Friend WithEvents numMontoCuotas As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents numDescuentoPorc As C1.Win.C1Input.C1NumericEdit
-    Friend WithEvents lblDescuento As System.Windows.Forms.Label
-    Friend WithEvents lblEstado As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents dtpFechaVencimiento As C1.Win.C1Input.C1DateEdit
     Friend WithEvents dtpFechaCredito As C1.Win.C1Input.C1DateEdit
@@ -1255,7 +1165,6 @@ Partial Class frmSfaFaturaEditar
     Friend WithEvents NumMonto As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents numCuotas As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents txtEstado As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents dtpUltimoPago As C1.Win.C1Input.C1DateEdit
     Friend WithEvents Label9 As System.Windows.Forms.Label
@@ -1294,4 +1203,10 @@ Partial Class frmSfaFaturaEditar
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmbFactura As C1.Win.C1List.C1Combo
+    Friend WithEvents numDescuentoPorc As C1.Win.C1Input.C1NumericEdit
+    Friend WithEvents lblDescuento As System.Windows.Forms.Label
+    Friend WithEvents txtEstado As System.Windows.Forms.TextBox
+    Friend WithEvents lblEstado As System.Windows.Forms.Label
+    Friend WithEvents cmbModalidadPago As C1.Win.C1List.C1Combo
+    Friend WithEvents lblModalidadPago As System.Windows.Forms.Label
 End Class

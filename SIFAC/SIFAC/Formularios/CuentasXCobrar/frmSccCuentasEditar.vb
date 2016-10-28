@@ -95,6 +95,12 @@ Public Class frmSccCuentasEditar
                 Me.Text = "Nuevo Expediente."
                 PersonaID = Nothing
                 Me.txtEstado.Text = Me.CargarEstados(ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO"))
+
+                'poner invisible los controles de agregar
+                cmdBuscarFacturas.Visible = False
+                cmdProcesarFacturas.Visible = False
+                cmdConsultarFacturas.Visible = False
+
             Case 1
                 Me.Text = "Edición de Expediente"
                 CargarDatosEdicion()
@@ -293,7 +299,8 @@ Public Class frmSccCuentasEditar
         Try
             IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "00")
             dtFacturas = New DataTable
-            dtFacturas = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("Numero,Fecha,FechaVencimiento,NoCuotas,Saldo,MontoAbonado,MontoCuota,Termino,MontoCredito", "vwFacturas", "objEstadoID<>" & IDEstadoReg.ToString & " AND objSccCuentaID='" & Me.CuentaID & "'"))
+            'dtFacturas = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("Numero,Fecha,FechaVencimiento,NoCuotas,Saldo,MontoAbonado,MontoCuota,Termino,MontoCredito", "vwFacturas", "objEstadoID<>" & IDEstadoReg.ToString & " AND objSccCuentaID='" & Me.CuentaID & "'"))
+            dtFacturas = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SccCuentaPorCobrarDetalleID,SfaFacturaID,Numero,Fecha,FechaVencimiento,NoCuotas,Saldo,MontoAbonado,MontoCuota,Termino,MontoCredito", "vwFacturas", " objSccCuentaID='" & Me.CuentaID & "'"))
             Me.grdFacturas.SetDataBinding(dtFacturas, "", True)
 
         Catch ex As Exception
@@ -370,4 +377,101 @@ Public Class frmSccCuentasEditar
         End If
     End Sub
 
+
+    Private Sub cmdBuscarFacturas_Click(sender As Object, e As EventArgs) Handles cmdBuscarFacturas.Click
+        Dim objfrm As frmSfaFaturaEditar
+        objfrm = New frmSfaFaturaEditar
+        'objfrm.Show()
+        objfrm.TypGui = 0
+        objfrm.IDCuenta = Me.CuentaID
+        If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+            CargarFacturas()
+        End If
+
+    End Sub
+
+    Private Sub cmdConsultarFacturas_Click(sender As Object, e As EventArgs) Handles cmdConsultarFacturas.Click
+        If Me.dtFacturas.Rows.Count > 0 Then
+            Dim objfrm As frmSfaFaturaEditar
+            objfrm = New frmSfaFaturaEditar
+            'objfrm.Show()
+            objfrm.TypGui = 2
+            objfrm.IDFactura = Me.grdFacturas.Columns("SfaFacturaID").Value
+            If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                CargarFacturas()
+                'Me.grdFacturas.Row = Me.dtDatosFact.DefaultView.Find(objFacturaEdit.IDFactura)
+            End If
+        End If
+    End Sub
+
+
+#Region "Procesar Factura"
+    ''' <summary>
+    ''' Procedimiento Encargado de Establecer el Detalle de Factura como Procesado.
+    ''' </summary>
+    ''' <param name="IDDetalleFact"></param>
+    ''' <remarks></remarks>
+    Private Sub ProcesarExpedienteFact(ByVal IDDetalleFact As Integer)
+        Dim objDetalleFact As New SccCuentaPorCobrarDetalle
+        Dim IDEstadoReg As Integer
+        Dim IDCuenta As String
+        Dim T As New TransactionManager
+        Dim EstadoActual As Integer
+        Dim objNotaCredito As New SccNotaCredito
+        Dim BoolNC As Boolean = False
+        Dim objSccCuentaCobrar As New SccCuentaPorCobrar
+
+        Try
+            Try
+                T.BeginTran()
+                IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "00")
+                objDetalleFact.Retrieve(IDDetalleFact, T)
+                IDCuenta = objDetalleFact.objSccCuentaID
+                EstadoActual = objDetalleFact.objEstadoID
+                If IDEstadoReg <> EstadoActual Then
+                    MsgBox("Solamente Expedientes de Facturas en Estado Registrada puede ser Procesadas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                    T.RollbackTran()
+                    Exit Sub
+                End If
+
+                objSccCuentaCobrar.Retrieve(IDCuenta, T)
+                objDetalleFact.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                objDetalleFact.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                objDetalleFact.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "01")
+                objDetalleFact.Update(T)
+
+                IDEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO")
+
+                If objSccCuentaCobrar.objEstadoID.Value = IDEstadoReg Then
+                    objSccCuentaCobrar.Saldo = objSccCuentaCobrar.Saldo + objDetalleFact.MontoTotal
+                    objSccCuentaCobrar.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE")
+                    objSccCuentaCobrar.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    objSccCuentaCobrar.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    objSccCuentaCobrar.Update(T)
+                End If
+                T.CommitTran()
+                MsgBox("Factura procesada Exitosamente", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Me.CargarFacturas()
+            Catch ex As Exception
+                T.RollbackTran()
+                clsError.CaptarError(ex)
+            End Try
+        Catch ex As Exception
+            T = Nothing
+            objDetalleFact = Nothing
+            objNotaCredito = Nothing
+            objSccCuentaCobrar = Nothing
+        End Try
+    End Sub
+#End Region
+
+    Private Sub cmdProcesarFacturas_Click(sender As Object, e As EventArgs) Handles cmdProcesarFacturas.Click
+        Try
+            If Me.dtFacturas.Rows.Count > 0 Then
+                Me.ProcesarExpedienteFact(Me.grdFacturas.Columns("SccCuentaPorCobrarDetalleID").Value)
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 End Class

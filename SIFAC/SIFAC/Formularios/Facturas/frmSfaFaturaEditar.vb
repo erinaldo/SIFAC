@@ -21,7 +21,7 @@ Public Class frmSfaFaturaEditar
     Dim DtEmpleados As DataTable
     Dim objFact As SfaFacturas
     Dim m_IDCuenta As String
-    Dim DtDatosPlazos, DtDatosFacturas, DtDatosFacturasFiltradas As DataTable
+    Dim DtDatosPlazos, DtDatosFacturas, DtDatosFacturasFiltradas, DtModalidadesPago As DataTable
     Dim m_IdPlazo As Integer
     Dim m_IDCliente As Integer
 
@@ -123,21 +123,23 @@ Public Class frmSfaFaturaEditar
         Try
             Call Me.SetearValoresInicio()
             Call Me.CargarPlazos()
+            CargarModalidadesPago()
             'CargarFacturas()
-            Me.cmdExpediente.Focus()
+            'Me.cmdExpediente.Focus()
 
             If Me.TypGui > 0 Then
                 Call Me.CargarDatosEdicionConsulta()
             End If
             If Me.TypGui = 2 Or TypGui = 3 Then
                 Me.cmbFactura.Enabled = False
-                Me.txtNumCuenta.Enabled = False
+                'Me.txtNumCuenta.Enabled = False
                 Me.cmdAceptar.Enabled = False
                 Me.NumMonto.Enabled = False
-                Me.cmdExpediente.Enabled = False
+                'Me.cmdExpediente.Enabled = False
                 Me.numDescuentoPorc.Enabled = False
                 Me.dtpFechaCredito.Enabled = False
                 Me.cmbPlazo.Enabled = False
+                Me.cmbModalidadPago.Enabled = False
                 Me.numPrima.Enabled = False
 
             End If
@@ -158,6 +160,18 @@ Public Class frmSfaFaturaEditar
                 Case 0
                     Me.InhabilitarDatos(0, False)
                     Me.Text = "Registro Expediente-Factura"
+
+                    'Cargar datos cuando viene desde la cuenta
+                    Dim objCuenta As SccCuentaPorCobrar
+                    Me.InhabilitarDatos(0, True)
+                    objCuenta = New SccCuentaPorCobrar
+                    objCuenta.Retrieve(Me.IDCuenta)
+                    Me.dtpFechaCredito.Value = objCuenta.FechaCredito
+                    IDCliente = objCuenta.objClienteID
+                    CargarFacturas()
+                    Me.CalculoDiferenciaCredito()
+
+
                 Case 1
                     Me.Text = "Edición de Expediente-Factura"
                 Case 2
@@ -280,6 +294,7 @@ Public Class frmSfaFaturaEditar
                 objCuentaCobrarDetalle.Saldo = numSaldo.Value 'objFactura.TotalCordobas
                 objCuentaCobrarDetalle.MontoCuota = Me.numMontoCuotas.Value
                 objCuentaCobrarDetalle.objTeminoPlazoID = Me.cmbPlazo.SelectedValue
+                objCuentaCobrarDetalle.objModalidadPago = Me.cmbModalidadPago.SelectedValue
 
                 objCuentaCobrarDetalle.Descuento = Me.numDescuentoPorc.Value
                 objCuentaCobrarDetalle.objEstadoID = Me.IDEstado
@@ -356,11 +371,11 @@ Public Class frmSfaFaturaEditar
     ''' <remarks></remarks>
     Private Function ValidacionEntradas() As Boolean
 
-        If Trim(Me.txtNumCuenta.Text) = "" Then
-            Me.ErrorProvider.SetError(Me.cmdExpediente, "Campo Obligatorio")
-            Return False
-            Exit Function
-        End If
+        'If Trim(Me.txtNumCuenta.Text) = "" Then
+        '    Me.ErrorProvider.SetError(Me.cmdExpediente, "Campo Obligatorio")
+        '    Return False
+        '    Exit Function
+        'End If
 
         If Me.NumMonto.Value <= 0 Then
             Me.ErrorProvider.SetError(Me.NumMonto, "Valor debe ser mayor que cero.")
@@ -376,6 +391,12 @@ Public Class frmSfaFaturaEditar
 
         If Trim(Me.cmbPlazo.Text) = "" Then
             Me.ErrorProvider.SetError(Me.cmbPlazo, "Campo Obligatorio")
+            Return False
+            Exit Function
+        End If
+
+        If Trim(Me.cmbModalidadPago.Text) = "" Then
+            Me.ErrorProvider.SetError(Me.cmbModalidadPago, "Campo Obligatorio")
             Return False
             Exit Function
         End If
@@ -412,6 +433,10 @@ Public Class frmSfaFaturaEditar
                     Me.cmbPlazo.SelectedValue = objCuentaDetalle.objTeminoPlazoID
                 End If
 
+                If objCuentaDetalle.objModalidadPago.HasValue Then
+                    Me.cmbModalidadPago.SelectedValue = objCuentaDetalle.objModalidadPago
+                End If
+
                 Me.numDescuentoPorc.Value = objCuentaDetalle.Descuento
                 Me.numCuotas.Value = Me.cmbPlazo.Columns("Codigo").Value
                 Me.numSaldo.Value = objCuentaDetalle.Saldo
@@ -434,8 +459,8 @@ Public Class frmSfaFaturaEditar
                 Me.SetearValoresInicio()
 
                 dtDatos = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SccCuentaID,Cliente", "vwSccCuentasSeleccion", "SccCuentaID='" & Me.IDCuenta.ToString & "'"))
-                Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("SccCuentaID")
-                Me.txtCliente.Text = dtDatos.DefaultView.Item(0)("Cliente")
+                'Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("SccCuentaID")
+                'Me.txtCliente.Text = dtDatos.DefaultView.Item(0)("Cliente")
 
                 Me.numPrima.Value = objCuentaDetalle.MontoPrima
                 Me.CalculoDiferenciaCredito()
@@ -451,7 +476,7 @@ Public Class frmSfaFaturaEditar
     End Sub
 #End Region
 
-    Private Sub cmdExpediente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdExpediente.Click
+    Private Sub cmdExpediente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.ErrorProvider.Clear()
         Call Me.SeleccionarCuenta()
     End Sub
@@ -463,9 +488,9 @@ Public Class frmSfaFaturaEditar
                 Dim objCuentasSeleccion As New frmSccSeleccionCuentas
                 If objCuentasSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     Me.LimpiarDatos()
-                    Me.txtNumCuenta.Text = objCuentasSeleccion.SccCuentaID
+                    'Me.txtNumCuenta.Text = objCuentasSeleccion.SccCuentaID
                     Me.IDCuenta = objCuentasSeleccion.SccCuentaID
-                    Me.txtCliente.Text = objCuentasSeleccion.Cliente
+                    'Me.txtCliente.Text = objCuentasSeleccion.Cliente
                     Me.InhabilitarDatos(0, True)
                     objCuenta = New SccCuentaPorCobrar
                     objCuenta.Retrieve(Me.IDCuenta)
@@ -489,6 +514,27 @@ Public Class frmSfaFaturaEditar
             Me.DtDatosPlazos = ClsCatalogos.ObtenerValCat("PLAZOS")
             With Me.cmbPlazo
                 .DataSource = Me.DtDatosPlazos
+                .ValueMember = "StbValorCatalogoID"
+                .DisplayMember = "Descripcion"
+                .Splits(0).DisplayColumns("Codigo").Visible = False
+                .Splits(0).DisplayColumns("Activo").Visible = False
+                .Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
+                .ExtendRightColumn = True
+                .ColumnHeaders = False
+            End With
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
+
+#Region "Carga de modalidades de Pago"
+    Private Sub CargarModalidadesPago()
+        Try
+            Me.DtModalidadesPago = New DataTable
+            Me.DtModalidadesPago = ClsCatalogos.ObtenerValCat("MODALIDADPAGO")
+            With Me.cmbModalidadPago
+                .DataSource = Me.DtModalidadesPago
                 .ValueMember = "StbValorCatalogoID"
                 .DisplayMember = "Descripcion"
                 .Splits(0).DisplayColumns("Codigo").Visible = False
@@ -537,7 +583,8 @@ Public Class frmSfaFaturaEditar
                 '' Inhabilitar Todos
                 Case 0
                     Me.cmbPlazo.Enabled = Opcion
-                    Me.cmdConsultar.Enabled = Opcion
+                    Me.cmbModalidadPago.Enabled = Opcion
+                    'Me.cmdConsultar.Enabled = Opcion
                     Me.cmbFactura.Enabled = Opcion
                     Me.dtpFechaCredito.Enabled = False
                     ''      Me.dtpFecha.Enabled = Opcion
@@ -556,9 +603,10 @@ Public Class frmSfaFaturaEditar
     Private Sub LimpiarDatos()
         Try
             Me.cmbFactura.SelectedIndex = -1
-            Me.txtCliente.Clear()
-            Me.txtNumCuenta.Clear()
+            'Me.txtCliente.Clear()
+            'Me.txtNumCuenta.Clear()
             Me.cmbPlazo.SelectedValue = 0
+            Me.cmbModalidadPago.SelectedValue = 0
             Me.NumMonto.Value = 0.0
             Me.numMontoCuotas.Value = 0.0
         Catch ex As Exception
@@ -581,11 +629,11 @@ Public Class frmSfaFaturaEditar
         Me.ErrorProvider.Clear()
     End Sub
 
-    Private Sub cmdConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultar.Click
-        If Me.txtNumCuenta.Text <> "" Then
-            CargarConsultaCuenta()
-        End If
-    End Sub
+    'Private Sub cmdConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    If Me.txtNumCuenta.Text <> "" Then
+    '        CargarConsultaCuenta()
+    '    End If
+    'End Sub
 
     Private Sub CargarConsultaCuenta()
         Dim objfrmCuentaEdit As frmSccCuentasEditar
@@ -595,7 +643,7 @@ Public Class frmSfaFaturaEditar
         objfrmCuentaEdit.ShowDialog(Me)
     End Sub
 
-    Private Sub numDescuentoPorc_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles numDescuentoPorc.KeyPress
+    Private Sub numDescuentoPorc_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If Me.numDescuentoPorc.Text.Trim.Length > 0 Then
             If Asc(e.KeyChar) = 13 Then
                 numDescuentoPorc.UpdateValueWithCurrentText()
@@ -606,7 +654,7 @@ Public Class frmSfaFaturaEditar
         End If
     End Sub
 
-    Private Sub numDescuentoPorc_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numDescuentoPorc.ValueChanged
+    Private Sub numDescuentoPorc_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Not IsDBNull(numDescuentoPorc.Value) Then
             If Me.numDescuentoPorc.Value >= 0 Then
                 If Me.numDescuentoPorc.Value > 100 Then
@@ -822,7 +870,7 @@ Public Class frmSfaFaturaEditar
         Me.ErrorProvider.Clear()
     End Sub
 
-    Private Sub numDescuentoPorc_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numDescuentoPorc.TextChanged
+    Private Sub numDescuentoPorc_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.ErrorProvider.Clear()
     End Sub
 
@@ -841,13 +889,14 @@ Public Class frmSfaFaturaEditar
 
     Private Sub Inhabilitar()
         Me.cmbFactura.Enabled = False
-        Me.txtNumCuenta.Enabled = False
+        'Me.txtNumCuenta.Enabled = False
         Me.cmdAceptar.Enabled = False
         Me.NumMonto.Enabled = False
-        Me.cmdExpediente.Enabled = False
+        'Me.cmdExpediente.Enabled = False
         Me.numDescuentoPorc.Enabled = False
         Me.dtpFechaCredito.Enabled = False
         Me.cmbPlazo.Enabled = False
+        Me.cmbModalidadPago.Enabled = False
     End Sub
 
     Private Sub cmdProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -930,6 +979,7 @@ Public Class frmSfaFaturaEditar
             Me.NumMonto.Enabled = True
             Me.numDescuentoPorc.Enabled = True
             Me.cmbPlazo.Enabled = True
+            Me.cmbModalidadPago.Enabled = True
             Me.cmbFactura.SelectedIndex = -1
             Me.numCuotas.Value = 0.0
             Me.NumMonto.Value = 0.0
@@ -938,6 +988,7 @@ Public Class frmSfaFaturaEditar
             Me.numSaldo.Value = 0.0
             Me.numMontoCuotas.Value = 0.0
             Me.cmbPlazo.SelectedValue = -1
+            Me.cmbModalidadPago.SelectedValue = -1
             Me.numDescuentoPorc.Value = 0.0
             Me.cmdProcesar.Enabled = False
             Me.cmdAceptar.Enabled = True
@@ -977,4 +1028,7 @@ Public Class frmSfaFaturaEditar
     End Sub
 
 
+    Private Sub cmbModalidadPago_TextChanged(sender As Object, e As EventArgs) Handles cmbModalidadPago.TextChanged
+        Me.ErrorProvider.Clear()
+    End Sub
 End Class
