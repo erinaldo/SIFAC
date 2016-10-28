@@ -27,11 +27,11 @@ Partial Class frmReporteProductos
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.rbTodos = New System.Windows.Forms.CheckBox()
         Me.cboMarca = New C1.Win.C1List.C1Combo()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cboCategoria = New C1.Win.C1List.C1Combo()
-        Me.rbTodos = New System.Windows.Forms.RadioButton()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -81,11 +81,11 @@ Partial Class frmReporteProductos
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.rbTodos)
         Me.GroupBox1.Controls.Add(Me.cboMarca)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.cboCategoria)
-        Me.GroupBox1.Controls.Add(Me.rbTodos)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
@@ -93,6 +93,16 @@ Partial Class frmReporteProductos
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Criterios"
+        '
+        'rbTodos
+        '
+        Me.rbTodos.AutoSize = True
+        Me.rbTodos.Location = New System.Drawing.Point(106, 89)
+        Me.rbTodos.Name = "rbTodos"
+        Me.rbTodos.Size = New System.Drawing.Size(61, 17)
+        Me.rbTodos.TabIndex = 11
+        Me.rbTodos.Text = "Todos"
+        Me.rbTodos.UseVisualStyleBackColor = True
         '
         'cboMarca
         '
@@ -182,16 +192,6 @@ Partial Class frmReporteProductos
         Me.cboCategoria.TabIndex = 4
         Me.cboCategoria.PropBag = resources.GetString("cboCategoria.PropBag")
         '
-        'rbTodos
-        '
-        Me.rbTodos.AutoSize = True
-        Me.rbTodos.Location = New System.Drawing.Point(106, 83)
-        Me.rbTodos.Name = "rbTodos"
-        Me.rbTodos.Size = New System.Drawing.Size(60, 17)
-        Me.rbTodos.TabIndex = 1
-        Me.rbTodos.Text = "Todos"
-        Me.rbTodos.UseVisualStyleBackColor = True
-        '
         'frmReporteProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -220,8 +220,8 @@ Partial Class frmReporteProductos
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents cboCategoria As C1.Win.C1List.C1Combo
-    Friend WithEvents rbTodos As System.Windows.Forms.RadioButton
     Friend WithEvents cboMarca As C1.Win.C1List.C1Combo
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents rbTodos As System.Windows.Forms.CheckBox
 End Class

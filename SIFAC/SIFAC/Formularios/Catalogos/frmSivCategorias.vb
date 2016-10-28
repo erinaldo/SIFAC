@@ -2,6 +2,7 @@
 Imports SIFAC.BO.clsConsultas
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
+Imports DevExpress.XtraReports.UI
 
 Public Class frmSivCategorias
 
@@ -30,7 +31,7 @@ Public Class frmSivCategorias
 
 
     Public Sub AplicarSeguridad()
-        objSeg = New SsgSeguridad
+        objseg = New SsgSeguridad
         Try
             objseg.ServicioUsuario = "frmSivCategorias"
             objseg.Usuario = clsProyecto.Conexion.Usuario
@@ -149,18 +150,21 @@ Public Class frmSivCategorias
     End Sub
 
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
-        Dim objReporte As frmRptVisor
+        Dim dtReporte As DataTable
         Try
-            objReporte = New frmRptVisor
-            objReporte.IDReporte = "Categorias"
-            objReporte.Show()
+            Dim objjReporte As New rptCategorias()
+            dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CategoriaID, Nombre, Descripcion, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptCategorias", ))
+            objjReporte.DataSource = dtReporte
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
 
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
+
     End Sub
 
 #End Region
 
-    
+
 End Class

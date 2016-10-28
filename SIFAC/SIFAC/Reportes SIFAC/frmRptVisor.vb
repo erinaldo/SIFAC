@@ -1,5 +1,7 @@
 ﻿Imports Proyecto.Configuracion
 Imports SIFAC.BO.clsConsultas
+Imports DevExpress.XtraReports.UI
+Imports DevExpress.XtraPrinting
 
 Public Class frmRptVisor
 
@@ -27,13 +29,38 @@ Public Class frmRptVisor
 
     Private Sub frmRptVisor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            dtReporte = New DataTable()
+
+            
+            'visor.DocumentSource = objjReportes
+
+            'visor.Refresh()
+
+            '' Create a report instance, assigned to a Print Tool.
+            'Dim pt As New ReportPrintTool(New rptDescuentos())
+
+            '' Get the Print Tool's printing system.
+            'Dim ps As PrintingSystemBase = pt.PrintingSystem
+
+            '' Show the report's Print Preview.
+            'pt.ShowPreview()
+
+            '' Zoom the print preview, so that it fits the entire page.
+            'ps.ExecCommand(PrintingSystemCommand.ViewWholePage)
+
+            '' Invoke the Hand tool.
+            'ps.ExecCommand(PrintingSystemCommand.HandTool, New Object() {True})
+
+            '' Hide the Hand tool.
+            'ps.ExecCommand(PrintingSystemCommand.HandTool, New Object() {False})
+
+            'dtReporte = New DataTable()
             Select Case Me.IDReporte
                 Case "Descuentos"
                     Dim objjReporte As rptDescuentos = New rptDescuentos
                     dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwRptDescuentosPlazos", ))
                     objjReporte.DataSource = dtReporte
                     visor.DocumentSource = objjReporte
+                    visor.Refresh()
 
                 Case "Proveedores"
                     Dim objjReporte As rptDescuentos = New rptDescuentos

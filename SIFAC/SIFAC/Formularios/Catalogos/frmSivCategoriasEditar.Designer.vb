@@ -100,6 +100,8 @@ Partial Class frmSivCategoriasEditar
         '
         Me.chkActivo.AutoSize = True
         Me.chkActivo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chkActivo.Checked = True
+        Me.chkActivo.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkActivo.Enabled = False
         Me.chkActivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkActivo.Location = New System.Drawing.Point(400, 24)

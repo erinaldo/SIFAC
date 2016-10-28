@@ -4,6 +4,7 @@ Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
 Imports SIFAC.BO.clsConsultas
 Imports SIFAC.BO
+Imports DevExpress.XtraReports.UI
 
 Public Class frmSccDescuento
 
@@ -62,7 +63,7 @@ Public Class frmSccDescuento
 
     Private Sub frmSccDescuento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-             CargarGrid()
+            CargarGrid()
             Me.AplicarSeguridad()
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -165,11 +166,13 @@ Public Class frmSccDescuento
 #End Region
 
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
-        Dim objReporte As frmRptVisor
+        Dim dtReporte As DataTable
         Try
-            objReporte = New frmRptVisor
-            objReporte.IDReporte = "Descuentos"
-            objReporte.Show()
+            Dim objjReporte As New rptDescuentos()
+            dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwRptDescuentosPlazos", ))
+            objjReporte.DataSource = dtReporte
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
 
         Catch ex As Exception
             clsError.CaptarError(ex)

@@ -6,6 +6,7 @@ Imports SIFAC.BO.clsConsultas
 Imports SIFAC.BO
 Imports System.Data.SqlClient
 Imports System.IO
+Imports DevExpress.XtraReports.UI
 
 Public Class frmReporteProductos
 
@@ -63,33 +64,49 @@ Public Class frmReporteProductos
     End Sub
 
     Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
-        Dim objReporte As frmRptVisor
+        Dim dtReporte As DataTable
+        Dim strFiltro As String
         Try
-            objReporte = New frmRptVisor
-            objReporte.IDReporte = "Productos"
+            Dim objjReporte As New rptProductos()
 
-            If rbTodos.Checked Then
-                objReporte.strFiltro = "1=1"
+            If ((Not rbTodos.Checked) And (cboCategoria.SelectedValue = 0 Or cboCategoria.Text = "") And (cboMarca.SelectedValue = 0 Or cboMarca.Text = "")) Then
+                MsgBox("Debe seleccionar un criterio.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Else
-                If (cboCategoria.SelectedValue = 0 Or cboCategoria.Text = "") And (cboMarca.SelectedValue <> 0 And cboMarca.Text <> "") Then
-                    objReporte.strFiltro = "objMarcaID=" & cboMarca.SelectedValue
+                If rbTodos.Checked Then
+                    strFiltro = "1=1"
                 Else
-                    If (cboCategoria.SelectedValue <> 0 And cboCategoria.Text <> "") And (cboMarca.SelectedValue = 0 Or cboMarca.Text = "") Then
-                        objReporte.strFiltro = "objCategoriaID=" & cboCategoria.SelectedValue
+                    If (cboCategoria.SelectedValue = 0 Or cboCategoria.Text = "") And (cboMarca.SelectedValue <> 0 And cboMarca.Text <> "") Then
+                        strFiltro = "objMarcaID=" & cboMarca.SelectedValue
                     Else
-                        If (cboCategoria.SelectedValue <> 0 And cboCategoria.Text <> "") And (cboMarca.SelectedValue <> 0 And cboMarca.Text <> "") Then
-                            objReporte.strFiltro = "objCategoriaID=" & cboCategoria.SelectedValue & " AND objMarcaID=" & cboMarca.SelectedValue
+                        If (cboCategoria.SelectedValue <> 0 And cboCategoria.Text <> "") And (cboMarca.SelectedValue = 0 Or cboMarca.Text = "") Then
+                            strFiltro = "objCategoriaID=" & cboCategoria.SelectedValue
+                        Else
+                            If (cboCategoria.SelectedValue <> 0 And cboCategoria.Text <> "") And (cboMarca.SelectedValue <> 0 And cboMarca.Text <> "") Then
+                                strFiltro = "objCategoriaID=" & cboCategoria.SelectedValue & " AND objMarcaID=" & cboMarca.SelectedValue
+                            End If
                         End If
                     End If
                 End If
+
+                dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, objMarcaID, objCategoriaID, Marca, Categoria, CostoPromedio, Precio_Credito, Precio_Contado, Margen_Utilidad_Contado, Margen_Utilidad_Credito, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProductos", strFiltro))
+                objjReporte.DataSource = dtReporte
+                Dim pt As New ReportPrintTool(objjReporte)
+                pt.ShowPreview()
+
+
             End If
-            objReporte.Show()
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
 
+    Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
+        Close()
+    End Sub
+
 #End Region
 
-    
+
+   
 End Class
