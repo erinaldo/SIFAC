@@ -360,7 +360,6 @@ Partial Class frmPedidosEdit
         Me.colCantidad.Caption = "Cantidad"
         Me.colCantidad.FieldName = "Cantidad"
         Me.colCantidad.Name = "colCantidad"
-        Me.colCantidad.OptionsColumn.AllowEdit = False
         Me.colCantidad.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.[False]
         Me.colCantidad.OptionsFilter.AllowAutoFilter = False
         Me.colCantidad.OptionsFilter.AllowFilter = False
@@ -376,7 +375,6 @@ Partial Class frmPedidosEdit
         Me.colImpuesto.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colImpuesto.Caption = "Impuesto"
         Me.colImpuesto.Name = "colImpuesto"
-        Me.colImpuesto.OptionsColumn.AllowEdit = False
         Me.colImpuesto.Visible = True
         Me.colImpuesto.VisibleIndex = 4
         '
@@ -403,7 +401,6 @@ Partial Class frmPedidosEdit
         Me.colCostoUnitario.Caption = "Costo Unitario"
         Me.colCostoUnitario.FieldName = "CostoUnitario"
         Me.colCostoUnitario.Name = "colCostoUnitario"
-        Me.colCostoUnitario.OptionsColumn.AllowEdit = False
         Me.colCostoUnitario.Visible = True
         Me.colCostoUnitario.VisibleIndex = 3
         '

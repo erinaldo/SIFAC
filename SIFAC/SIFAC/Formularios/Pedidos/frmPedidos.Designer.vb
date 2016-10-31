@@ -50,6 +50,16 @@ Partial Class frmPedidos
         Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTotalCosto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.CardView1 = New DevExpress.XtraGrid.Views.Card.CardView()
+        Me.grdDetallesPedidos = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colCodigoD = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCategoriaD = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colProducto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCantidadD = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colTotalCostoD = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.OfficeNavigationBar1 = New DevExpress.XtraBars.Navigation.OfficeNavigationBar()
+        Me.NavigationBarItem1 = New DevExpress.XtraBars.Navigation.NavigationBarItem()
+        Me.NavigationBarItem2 = New DevExpress.XtraBars.Navigation.NavigationBarItem()
         Me.tbProductos.SuspendLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contenedor.SuspendLayout()
@@ -58,6 +68,9 @@ Partial Class frmPedidos
         CType(Me.grdPedidosMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdPedidosMasterTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdDetallesPedidos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OfficeNavigationBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbProductos
@@ -149,6 +162,7 @@ Partial Class frmPedidos
         '
         'Contenedor
         '
+        Me.Contenedor.Controls.Add(Me.OfficeNavigationBar1)
         Me.Contenedor.Controls.Add(Me.grdPedidosDetalle)
         Me.Contenedor.Controls.Add(Me.grdPedidosMaster)
         Me.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill
@@ -242,7 +256,7 @@ Partial Class frmPedidos
         Me.grdPedidosMaster.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
         Me.grdPedidosMaster.Size = New System.Drawing.Size(857, 275)
         Me.grdPedidosMaster.TabIndex = 2
-        Me.grdPedidosMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdPedidosMasterTabla})
+        Me.grdPedidosMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdPedidosMasterTabla, Me.CardView1, Me.grdDetallesPedidos})
         '
         'grdPedidosMasterTabla
         '
@@ -316,6 +330,77 @@ Partial Class frmPedidos
         Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
+        'CardView1
+        '
+        Me.CardView1.FocusedCardTopFieldIndex = 0
+        Me.CardView1.GridControl = Me.grdPedidosMaster
+        Me.CardView1.Name = "CardView1"
+        '
+        'grdDetallesPedidos
+        '
+        Me.grdDetallesPedidos.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCodigoD, Me.colCategoriaD, Me.colProducto, Me.colCantidadD, Me.colTotalCostoD})
+        Me.grdDetallesPedidos.GridControl = Me.grdPedidosMaster
+        Me.grdDetallesPedidos.Name = "grdDetallesPedidos"
+        '
+        'colCodigoD
+        '
+        Me.colCodigoD.Caption = "Código"
+        Me.colCodigoD.FieldName = "Numero"
+        Me.colCodigoD.Name = "colCodigoD"
+        Me.colCodigoD.Visible = True
+        Me.colCodigoD.VisibleIndex = 0
+        '
+        'colCategoriaD
+        '
+        Me.colCategoriaD.Caption = "Categoria"
+        Me.colCategoriaD.Name = "colCategoriaD"
+        Me.colCategoriaD.Visible = True
+        Me.colCategoriaD.VisibleIndex = 1
+        '
+        'colProducto
+        '
+        Me.colProducto.Caption = "Producto"
+        Me.colProducto.FieldName = "NombreProducto"
+        Me.colProducto.Name = "colProducto"
+        Me.colProducto.Visible = True
+        Me.colProducto.VisibleIndex = 2
+        '
+        'colCantidadD
+        '
+        Me.colCantidadD.Caption = "Cantidad pedida"
+        Me.colCantidadD.FieldName = "CantidadOrdenada"
+        Me.colCantidadD.Name = "colCantidadD"
+        Me.colCantidadD.Visible = True
+        Me.colCantidadD.VisibleIndex = 3
+        '
+        'colTotalCostoD
+        '
+        Me.colTotalCostoD.Caption = "Total Costo"
+        Me.colTotalCostoD.FieldName = "TotalCosto"
+        Me.colTotalCostoD.Name = "colTotalCostoD"
+        Me.colTotalCostoD.Visible = True
+        Me.colTotalCostoD.VisibleIndex = 4
+        '
+        'OfficeNavigationBar1
+        '
+        Me.OfficeNavigationBar1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.OfficeNavigationBar1.Items.AddRange(New DevExpress.XtraBars.Navigation.NavigationBarItem() {Me.NavigationBarItem1, Me.NavigationBarItem2})
+        Me.OfficeNavigationBar1.Location = New System.Drawing.Point(4, 283)
+        Me.OfficeNavigationBar1.Name = "OfficeNavigationBar1"
+        Me.OfficeNavigationBar1.Size = New System.Drawing.Size(857, 45)
+        Me.OfficeNavigationBar1.TabIndex = 4
+        Me.OfficeNavigationBar1.Text = "OfficeNavigationBar1"
+        '
+        'NavigationBarItem1
+        '
+        Me.NavigationBarItem1.Name = "NavigationBarItem1"
+        Me.NavigationBarItem1.Text = "Item1"
+        '
+        'NavigationBarItem2
+        '
+        Me.NavigationBarItem2.Name = "NavigationBarItem2"
+        Me.NavigationBarItem2.Text = "Item2"
+        '
         'frmPedidos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -331,11 +416,15 @@ Partial Class frmPedidos
         Me.tbProductos.PerformLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Contenedor.ResumeLayout(False)
+        Me.Contenedor.PerformLayout()
         CType(Me.grdPedidosDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdPedidosDetalleTable, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdPedidosMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdPedidosMasterTabla, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdDetallesPedidos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OfficeNavigationBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -367,4 +456,14 @@ Partial Class frmPedidos
     Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCantidad As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTotal As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents grdDetallesPedidos As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colCodigoD As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCategoriaD As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colProducto As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCantidadD As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colTotalCostoD As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents CardView1 As DevExpress.XtraGrid.Views.Card.CardView
+    Friend WithEvents OfficeNavigationBar1 As DevExpress.XtraBars.Navigation.OfficeNavigationBar
+    Friend WithEvents NavigationBarItem1 As DevExpress.XtraBars.Navigation.NavigationBarItem
+    Friend WithEvents NavigationBarItem2 As DevExpress.XtraBars.Navigation.NavigationBarItem
 End Class

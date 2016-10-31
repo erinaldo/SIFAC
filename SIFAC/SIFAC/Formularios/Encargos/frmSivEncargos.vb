@@ -21,27 +21,11 @@ Public Class frmSivEncargos
 
 
     Private Sub CargarEncargos(ByVal strFiltro As String)
+
         Try
+            dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CAST(0 AS BIT) AS Seleccionar,  Numero, Ruta, Fecha, Vendedor, Cliente, Estado, Categoria, CodigoProducto, NombreProducto, Cantidad, CostoPromedio, TotalCosto", "VWEncargosConsolidado", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
 
-            dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoID, Numero,Ruta, TotalCosto, Fecha, Vendedor, Cliente, Estado, objSccClienteID", "vwSivEncargosMaster", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
-            dtDetalleEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivEncargoDetalleID, objSivEncargoID, objCategoriaID, Categoria, Numero, NombreProducto, Cantidad, CostoPromedio, TotalCosto", "vwSivEncargosDetalle", strFiltro), Me.SqlParametros)
-
-            dsEncargos = New DataSet
-
-            dsEncargos.Merge(dtEncargos)
-            dsEncargos.Tables(0).TableName = "SivEncargos"
-
-            dsEncargos.Merge(dtDetalleEncargos)
-            dsEncargos.Tables(1).TableName = "SivEncargosDetalle"
-
-            dsEncargos.Relations.Add("SivEncargos_SivEncargosDetalle", dsEncargos.Tables(0).Columns("SivEncargoID"), dsEncargos.Tables(1).Columns("objSivEncargoID"), False)
-
-            Me.grdEncargosMaster.DataSource = dsEncargos
-            Me.grdEncargosMaster.DataMember = "SivEncargos"
-
-            Me.grdEncargosDetalle.DataSource = dsEncargos
-            Me.grdEncargosDetalle.DataMember = "SivEncargos.SivEncargos_SivEncargosDetalle"
-
+            Me.grdEncargosMaster.DataSource = dtEncargos
             Me.grdEncargosMaster.Text = "Encargos (" & Me.grdEncargosMasterTabla.RowCount & ")"
 
             dtEncargosExcel = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Ruta, Empleado, Categoria, Producto, Cantidad, CostoPromedio, TotalCosto, Observaciones", "vwEncargosExcel", strFiltro & " ORDER BY Empleado DESC"), Me.SqlParametros)

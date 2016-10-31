@@ -48,7 +48,7 @@ Public Class frmSivEncargosEdit
         'End If
 
         If (chkNoExistente.Checked) Then
-            If cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.EditValue = "0" Then
+            If cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.SelectedValue = "0" Then
                 ErrorFactura.SetError(cmbCategoria, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
@@ -60,7 +60,7 @@ Public Class frmSivEncargosEdit
                 Exit Function
             End If
         Else
-            If cmbNombreProducto.Text.Trim.Length = 0 Or cmbNombreProducto.EditValue = "0" Then
+            If cmbNombreProducto.Text.Trim.Length = 0 Or cmbNombreProducto.SelectedValue = "0" Then
                 ErrorFactura.SetError(cmbNombreProducto, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
@@ -71,6 +71,18 @@ Public Class frmSivEncargosEdit
             ErrorFactura.SetError(spnCantidad, My.Resources.MsgObligatorio)
             Return False
             Exit Function
+        End If
+
+        'Buscar el pdoducto en la lista'
+        If dtDetalleEncargo.Rows.Count > 0 Then
+            Dim foundRows() As Data.DataRow
+            foundRows = dtDetalleEncargo.Select("SivProductoID = " & cmbNombreProducto.SelectedValue)
+
+            If foundRows.Length > 0 Then
+                MsgBox("El producto seleccionado ya existe en la lista del pedido.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+                Return False
+                Exit Function
+            End If
         End If
 
         Return True
@@ -166,7 +178,10 @@ Public Class frmSivEncargosEdit
             ''Guadar Detalle de Encargos
             For Each row As DataRow In dtDetalleEncargo.Rows
                 objEncargoDetalle.objSivEncargoID = objEncargoMaster.SivEncargoID
-                objEncargoDetalle.objCategoriaID = row("objCategoriaID")
+
+                If row("objCategoriaID") <> 0 Then
+                    objEncargoDetalle.objCategoriaID = row("objCategoriaID")
+                End If
 
                 If Not IsDBNull(row("SivProductoID")) Then
                     objEncargoDetalle.objProductoID = row("SivProductoID")
@@ -221,7 +236,10 @@ Public Class frmSivEncargosEdit
             ''Guadar Detalle de Encargos
             For Each row As DataRow In dtDetalleEncargo.Rows
                 objEncargoDetalle.objSivEncargoID = objEncargoMaster.SivEncargoID
-                objEncargoDetalle.objCategoriaID = row("objCategoriaID")
+
+                If row("objCategoriaID") <> 0 Then
+                    objEncargoDetalle.objCategoriaID = row("objCategoriaID")
+                End If
 
                 If Not IsDBNull(row("SivProductoID")) Then
                     objEncargoDetalle.objProductoID = row("SivProductoID")
@@ -281,30 +299,12 @@ Public Class frmSivEncargosEdit
     '' Descripción:        Procedimiento encargado de cargar los valores de Marca
     Public Sub CargarMarca()
         Try
+
+            cmbMarca.ValueMember = "MarcaID"
+            cmbMarca.DisplayMember = "Nombre"
             DtMarca = SivMarcas.RetrieveDT("Activa=1")
-
-            Dim newMarcasRow As DataRow
-            newMarcasRow = DtMarca.NewRow()
-            newMarcasRow("MarcaID") = "0"
-            newMarcasRow("Nombre") = "Ninguna"
-            DtMarca.Rows.Add(newMarcasRow)
-
-            With cmbMarca
-                .Properties.DataSource = DtMarca
-                .Properties.DisplayMember = "Nombre"
-                .Properties.ValueMember = "MarcaID"
-                .Properties.PopulateColumns()
-                .Properties.Columns("MarcaID").Visible = False
-                .Properties.Columns("Descripcion").Visible = False
-                .Properties.Columns("Activa").Visible = False
-                .Properties.Columns("FechaCreacion").Visible = False
-                .Properties.Columns("UsuarioCreacion").Visible = False
-                .Properties.Columns("FechaModificacion").Visible = False
-                .Properties.Columns("UsuarioModificacion").Visible = False
-                .Properties.AutoHeight = True
-                .Properties.ShowHeader = False
-
-            End With
+            cmbMarca.DataSource = DtMarca
+            cmbMarca.Text = ""
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -318,25 +318,13 @@ Public Class frmSivEncargosEdit
 
     '' Descripción:        Procedimiento encargado de cargar los valores de Categorias
     Public Sub CargarCategorias()
+
         Try
+            cmbCategoria.ValueMember = "CategoriaID"
+            cmbCategoria.DisplayMember = "Nombre"
             DtCategoria = SivCategorias.RetrieveDT("Activa=1", " Nombre", "CategoriaID, Nombre")
-
-            Dim newCategoriaRow As DataRow
-            newCategoriaRow = DtCategoria.NewRow()
-            newCategoriaRow("CategoriaID") = "0"
-            newCategoriaRow("Nombre") = "Ninguna"
-            DtCategoria.Rows.Add(newCategoriaRow)
-
-            With cmbCategoria
-                .Properties.DataSource = DtCategoria
-                .Properties.DisplayMember = "Nombre"
-                .Properties.ValueMember = "CategoriaID"
-                .Properties.PopulateColumns()
-                .Properties.Columns("CategoriaID").Visible = False
-                .Properties.AutoHeight = True
-                .Properties.ShowHeader = False
-            End With
-
+            cmbCategoria.DataSource = DtCategoria
+            cmbCategoria.Text = ""
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -350,39 +338,26 @@ Public Class frmSivEncargosEdit
     Public Sub CargarProductos(CategoriaID As Integer, MarcaID As Integer)
         Dim strfiltro As String
         Try
-            If (cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.EditValue = "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.EditValue <> "0") Then
+            If (cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.SelectedValue = "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.SelectedValue <> "0") Then
                 strfiltro = "Activo=1  AND objMarcaID=" & MarcaID.ToString()
             Else
-                If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.EditValue <> "0") And (cmbMarca.Text.Trim.Length = 0 Or cmbMarca.EditValue = "0") Then
+                If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.SelectedValue <> "0") And (cmbMarca.Text.Trim.Length = 0 Or cmbMarca.SelectedValue = "0") Then
                     strfiltro = "Activo=1  AND objCategoriaID=" & CategoriaID.ToString()
                 Else
-                    If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.EditValue <> "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.EditValue <> "0") Then
+                    If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.SelectedValue <> "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.SelectedValue <> "0") Then
                         strfiltro = "Activo=1 AND objCategoriaID=" & CategoriaID.ToString() & " AND objMarcaID=" & MarcaID.ToString()
                     Else
                         strfiltro = "1=1"
                     End If
                 End If
             End If
-
+           
+            cmbNombreProducto.ValueMember = "SivProductoID"
+            cmbNombreProducto.DisplayMember = "Nombre"
             DtNombreProducto = SivProductos.RetrieveDT(strfiltro, " Nombre", " SivProductoID, (Codigo  + '-' +  Nombre) AS Nombre")
 
-            Dim newProductosRow As DataRow
-            newProductosRow = DtNombreProducto.NewRow()
-            newProductosRow("SivProductoID") = "0"
-            newProductosRow("Nombre") = "Ninguno"
-            DtNombreProducto.Rows.Add(newProductosRow)
-
-
-            With cmbNombreProducto
-                .Properties.DataSource = DtNombreProducto
-                .Properties.DisplayMember = "Nombre"
-                .Properties.ValueMember = "SivProductoID"
-                .Properties.PopulateColumns()
-                .Properties.Columns("SivProductoID").Visible = False
-                .Properties.AutoHeight = True
-                .Properties.ShowHeader = False
-
-            End With
+            cmbNombreProducto.DataSource = DtNombreProducto
+            cmbNombreProducto.Text = ""
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -651,7 +626,7 @@ Public Class frmSivEncargosEdit
         Dim objSivProducto As SivProductos
         Try
             filas = dtDetalleEncargo.NewRow
-            ProductoID = cmbNombreProducto.EditValue
+            ProductoID = cmbNombreProducto.SelectedValue
             objSivProducto = New SivProductos
 
             objSivProducto.Retrieve(ProductoID)
@@ -669,7 +644,12 @@ Public Class frmSivEncargosEdit
             filas("Cantidad") = spnCantidad.Value
             filas("Observaciones") = txtObservaciones.Text
             filas("CostoPromedio") = objSivProducto.CostoPromedio
-            filas("objCategoriaID") = cmbCategoria.EditValue
+
+            If cmbCategoria.SelectedValue = "" Or cmbCategoria.Text = "" Then
+                filas("objCategoriaID") = 0
+            Else
+                filas("objCategoriaID") = cmbCategoria.SelectedValue
+            End If
 
             dtDetalleEncargo.Rows.Add(filas)
         Catch ex As Exception
@@ -687,22 +667,23 @@ Public Class frmSivEncargosEdit
         ConfigurarGUI()
     End Sub
 
-    Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs) Handles cmbCategoria.EditValueChanged
+    Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs)
         Try
-            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
+            CargarProductos(Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbMarca.SelectedValue))
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
 
-    Private Sub cmbMarca_EditValueChanged(sender As Object, e As EventArgs) Handles cmbMarca.EditValueChanged
+    Private Sub cmbCategoria_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbCategoria.SelectedValueChanged
         Try
-            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
+            CargarProductos(Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbMarca.SelectedValue))
 
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
+
 
     Private Sub cmdCliente_Click(sender As Object, e As EventArgs) Handles cmdCliente.Click
         Dim objBusquedaCliente As New frmSfaBusquedaCliente
@@ -748,12 +729,12 @@ Public Class frmSivEncargosEdit
                 txtNombreProducto.Text = String.Empty
                 txtNombreProducto.Visible = True
                 cmbNombreProducto.Visible = False
-                cmbNombreProducto.EditValue = "0"
+                cmbNombreProducto.SelectedValue = "0"
             Else
                 txtNombreProducto.Text = String.Empty
                 txtNombreProducto.Visible = False
                 cmbNombreProducto.Visible = True
-                cmbNombreProducto.EditValue = "0"
+                cmbNombreProducto.SelectedValue = "0"
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -821,18 +802,18 @@ Public Class frmSivEncargosEdit
     End Sub
 
     Private Sub cmbNombreProducto_Enter(sender As Object, e As EventArgs) Handles cmbNombreProducto.Enter
-        CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
+        CargarProductos(Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbMarca.SelectedValue))
     End Sub
 
+    Private Sub cmbNombreProducto_TextChanged_2(sender As Object, e As EventArgs) Handles cmbNombreProducto.TextChanged
+        ErrorFactura.SetError(cmbNombreProducto, "")
+        boolEditado = True
+    End Sub
 #End Region
 
 
 
 
-
-
-  
    
-    
    
 End Class

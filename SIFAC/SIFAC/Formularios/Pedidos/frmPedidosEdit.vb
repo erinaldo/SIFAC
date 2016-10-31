@@ -68,6 +68,19 @@ Public Class frmPedidosEdit
             Exit Function
         End If
 
+        'Buscar el pdoducto en la lista'
+        If dtDetallePedido.Rows.Count > 0 Then
+            Dim foundRows() As Data.DataRow
+            foundRows = dtDetallePedido.Select("SivProductoID = " & cmbNombreProducto.EditValue)
+
+            If foundRows.Length > 0 Then
+                MsgBox("El producto seleccionado ya existe en la lista del pedido.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+                Return False
+                Exit Function
+            End If
+        End If
+       
+
         Return True
     End Function
 

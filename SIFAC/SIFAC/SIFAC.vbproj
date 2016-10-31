@@ -861,6 +861,12 @@
     <Compile Include="Formularios\Tiendas\frmStbTiendas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="prueba.Designer.vb">
+      <DependentUpon>prueba.vb</DependentUpon>
+    </Compile>
+    <Compile Include="prueba.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\frmRptVisor.Designer.vb">
       <DependentUpon>frmRptVisor.vb</DependentUpon>
     </Compile>
@@ -872,6 +878,12 @@
     </Compile>
     <Compile Include="Reportes SIFAC\frmVisorRS.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptBodegas.Designer.vb">
+      <DependentUpon>rptBodegas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptBodegas.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptCategorias.Designer.vb">
       <DependentUpon>rptCategorias.vb</DependentUpon>
@@ -1065,6 +1077,16 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.vb" />
+    <Compile Include="SIFACDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIFACDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SIFACPedidosMaster.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIFACPedidosMaster.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Sincronizacion\frmSincronizarAbonos.Designer.vb">
       <DependentUpon>frmSincronizarAbonos.vb</DependentUpon>
     </Compile>
@@ -1435,12 +1457,18 @@
     <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendas.resx">
       <DependentUpon>frmStbTiendas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="prueba.resx">
+      <DependentUpon>prueba.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\frmRptVisor.resx">
       <DependentUpon>frmRptVisor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\frmVisorRS.resx">
       <DependentUpon>frmVisorRS.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptBodegas.resx">
+      <DependentUpon>rptBodegas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptCategorias.resx">
       <DependentUpon>rptCategorias.vb</DependentUpon>
@@ -1619,6 +1647,28 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="SIFACDataSet.xsc">
+      <DependentUpon>SIFACDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SIFACDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SIFACDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SIFACDataSet.xss">
+      <DependentUpon>SIFACDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SIFACPedidosMaster.xsc">
+      <DependentUpon>SIFACPedidosMaster.xsd</DependentUpon>
+    </None>
+    <None Include="SIFACPedidosMaster.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SIFACPedidosMaster.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SIFACPedidosMaster.xss">
+      <DependentUpon>SIFACPedidosMaster.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

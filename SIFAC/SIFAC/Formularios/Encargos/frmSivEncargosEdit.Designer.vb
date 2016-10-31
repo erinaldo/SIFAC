@@ -28,9 +28,9 @@ Partial Class frmSivEncargosEdit
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.cmbNombreProducto = New DevExpress.XtraEditors.LookUpEdit()
-        Me.cmbMarca = New DevExpress.XtraEditors.LookUpEdit()
-        Me.cmbCategoria = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cmbNombreProducto = New System.Windows.Forms.ComboBox()
+        Me.cmbMarca = New System.Windows.Forms.ComboBox()
+        Me.cmbCategoria = New System.Windows.Forms.ComboBox()
         Me.C1DateEdit1 = New C1.Win.C1Input.C1DateEdit()
         Me.txtNombreProducto = New DevExpress.XtraEditors.TextEdit()
         Me.lblNombreProducto = New System.Windows.Forms.Label()
@@ -94,9 +94,6 @@ Partial Class frmSivEncargosEdit
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNombreProducto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -177,33 +174,30 @@ Partial Class frmSivEncargosEdit
         '
         'cmbNombreProducto
         '
+        Me.cmbNombreProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbNombreProducto.FormattingEnabled = True
         Me.cmbNombreProducto.Location = New System.Drawing.Point(127, 104)
         Me.cmbNombreProducto.Name = "cmbNombreProducto"
-        Me.cmbNombreProducto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbNombreProducto.Properties.NullText = ""
-        Me.cmbNombreProducto.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
-        Me.cmbNombreProducto.Size = New System.Drawing.Size(166, 20)
-        Me.cmbNombreProducto.TabIndex = 125
+        Me.cmbNombreProducto.Size = New System.Drawing.Size(166, 21)
+        Me.cmbNombreProducto.TabIndex = 128
         '
         'cmbMarca
         '
-        Me.cmbMarca.Location = New System.Drawing.Point(127, 78)
+        Me.cmbMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMarca.FormattingEnabled = True
+        Me.cmbMarca.Location = New System.Drawing.Point(127, 77)
         Me.cmbMarca.Name = "cmbMarca"
-        Me.cmbMarca.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbMarca.Properties.NullText = ""
-        Me.cmbMarca.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
-        Me.cmbMarca.Size = New System.Drawing.Size(166, 20)
-        Me.cmbMarca.TabIndex = 124
+        Me.cmbMarca.Size = New System.Drawing.Size(166, 21)
+        Me.cmbMarca.TabIndex = 127
         '
         'cmbCategoria
         '
-        Me.cmbCategoria.Location = New System.Drawing.Point(127, 52)
+        Me.cmbCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCategoria.FormattingEnabled = True
+        Me.cmbCategoria.Location = New System.Drawing.Point(127, 51)
         Me.cmbCategoria.Name = "cmbCategoria"
-        Me.cmbCategoria.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbCategoria.Properties.NullText = ""
-        Me.cmbCategoria.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
-        Me.cmbCategoria.Size = New System.Drawing.Size(166, 20)
-        Me.cmbCategoria.TabIndex = 123
+        Me.cmbCategoria.Size = New System.Drawing.Size(166, 21)
+        Me.cmbCategoria.TabIndex = 126
         '
         'C1DateEdit1
         '
@@ -970,9 +964,6 @@ Partial Class frmSivEncargosEdit
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNombreProducto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1050,9 +1041,6 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents ErrorFactura As System.Windows.Forms.ErrorProvider
     Friend WithEvents cmbRuta As C1.Win.C1List.C1Combo
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents cmbNombreProducto As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents cmbMarca As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents cmbCategoria As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents C1DateEdit1 As C1.Win.C1Input.C1DateEdit
     Friend WithEvents txtNombreProducto As DevExpress.XtraEditors.TextEdit
     Friend WithEvents lblNombreProducto As System.Windows.Forms.Label
@@ -1065,4 +1053,7 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents lblMarca As System.Windows.Forms.Label
     Friend WithEvents lblModeloCompatible As System.Windows.Forms.Label
     Friend WithEvents cboEstado As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbCategoria As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbNombreProducto As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbMarca As System.Windows.Forms.ComboBox
 End Class

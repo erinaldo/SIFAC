@@ -534,11 +534,12 @@ Public Class frmSivEntradaBodegaEditar
                     objSivProductos.RetrieveByFilter("SivProductoID='" & row("SivProductoID") & "'")
 
                     'Si costo promedio del repuesto es CERO entonces es la primera entrada por lo tanto queda el costo de esa entrada
-                    If objSivProductos.CostoPromedio = 0 Then
-                        objSivProductos.CostoPromedio = row("Costo")
-                    Else
-                        objSivProductos.CostoPromedio = ((objSivProductos.CostoPromedio + row("Costo")) / 2)
-                    End If
+                    objSivProductos.CostoPromedio = row("Costo")
+                    'If objSivProductos.CostoPromedio = 0 Then
+                    '    objSivProductos.CostoPromedio = row("Costo")
+                    'Else
+                    '    objSivProductos.CostoPromedio = ((objSivProductos.CostoPromedio + row("Costo")) / 2)
+                    'End If
                     objSivProductos.Update(T)
 
                 Else
