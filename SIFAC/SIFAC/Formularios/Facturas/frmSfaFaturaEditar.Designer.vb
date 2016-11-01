@@ -487,6 +487,7 @@ Partial Class frmSfaFaturaEditar
         Me.txtEstado.Location = New System.Drawing.Point(171, 26)
         Me.txtEstado.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEstado.Name = "txtEstado"
+        Me.txtEstado.ReadOnly = True
         Me.txtEstado.Size = New System.Drawing.Size(193, 23)
         Me.txtEstado.TabIndex = 14
         Me.txtEstado.Tag = "BLOQUEADO"

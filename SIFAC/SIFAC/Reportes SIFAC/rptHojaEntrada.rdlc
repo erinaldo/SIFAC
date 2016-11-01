@@ -51,6 +51,18 @@
   <Body>
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
+      <Image Name="image1">
+        <Sizing>Fit</Sizing>
+        <Left>9.5cm</Left>
+        <MIMEType>image/png</MIMEType>
+        <Top>0.5cm</Top>
+        <ZIndex>22</ZIndex>
+        <Width>5.25cm</Width>
+        <Source>Embedded</Source>
+        <Style />
+        <Height>3.25cm</Height>
+        <Value>logo_dis_meza</Value>
+      </Image>
       <Textbox Name="Anulada">
         <Left>3cm</Left>
         <Top>7.36772cm</Top>
@@ -917,7 +929,8 @@
                         <PaddingBottom>2pt</PaddingBottom>
                         <FontFamily>Arial Narrow</FontFamily>
                         <FontWeight>700</FontWeight>
-                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <Color>DarkBlue</Color>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                       </Style>
@@ -940,7 +953,8 @@
                         <PaddingBottom>2pt</PaddingBottom>
                         <FontFamily>Arial Narrow</FontFamily>
                         <FontWeight>700</FontWeight>
-                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <Color>DarkBlue</Color>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                       </Style>
@@ -963,7 +977,8 @@
                         <PaddingBottom>2pt</PaddingBottom>
                         <FontFamily>Arial Narrow</FontFamily>
                         <FontWeight>700</FontWeight>
-                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <Color>DarkBlue</Color>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                       </Style>
@@ -986,7 +1001,8 @@
                         <PaddingBottom>2pt</PaddingBottom>
                         <FontFamily>Arial Narrow</FontFamily>
                         <FontWeight>700</FontWeight>
-                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <Color>DarkBlue</Color>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                       </Style>
@@ -1009,7 +1025,8 @@
                         <PaddingBottom>2pt</PaddingBottom>
                         <FontFamily>Arial Narrow</FontFamily>
                         <FontWeight>700</FontWeight>
-                        <BackgroundColor>LightSteelBlue</BackgroundColor>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
+                        <Color>DarkBlue</Color>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                       </Style>
@@ -1042,15 +1059,14 @@
         </TableColumns>
       </Table>
       <Textbox Name="txtUsuarioFecha">
-        <Left>9.5cm</Left>
-        <Top>0.25cm</Top>
+        <Left>0.75cm</Left>
+        <Top>3.30291cm</Top>
         <ZIndex>6</ZIndex>
-        <Width>5.5cm</Width>
+        <Width>8.5cm</Width>
         <Style>
-          <TextAlign>Right</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
-          <Color>Gray</Color>
+          <Color>DarkBlue</Color>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
         </Style>
@@ -1062,10 +1078,12 @@
         <Left>0.75265cm</Left>
         <Top>1.78836cm</Top>
         <ZIndex>5</ZIndex>
-        <Width>14.24735cm</Width>
+        <Width>8.49735cm</Width>
         <Style>
+          <TextAlign>Left</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
+          <Color>DarkBlue</Color>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
         </Style>
@@ -1077,10 +1095,12 @@
         <Left>0.75265cm</Left>
         <Top>1.03836cm</Top>
         <ZIndex>4</ZIndex>
-        <Width>14.24735cm</Width>
+        <Width>8.49735cm</Width>
         <Style>
+          <TextAlign>Left</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
+          <Color>DarkBlue</Color>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
         </Style>
@@ -1092,10 +1112,12 @@
         <Left>0.75265cm</Left>
         <Top>2.53836cm</Top>
         <ZIndex>3</ZIndex>
-        <Width>14.24735cm</Width>
+        <Width>8.49735cm</Width>
         <Style>
+          <TextAlign>Left</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
+          <Color>DarkBlue</Color>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
         </Style>
@@ -1109,10 +1131,12 @@
         <ZIndex>2</ZIndex>
         <Width>8.49735cm</Width>
         <Style>
+          <TextAlign>Left</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingBottom>2pt</PaddingBottom>
           <FontWeight>700</FontWeight>
           <FontSize>12pt</FontSize>
+          <Color>DarkBlue</Color>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
         </Style>
@@ -1133,7 +1157,7 @@
             <Default>1.5pt</Default>
           </BorderWidth>
           <BorderColor>
-            <Default>SteelBlue</Default>
+            <Default>Navy</Default>
           </BorderColor>
         </Style>
         <Height>0cm</Height>
@@ -1149,7 +1173,7 @@
           <PaddingBottom>2pt</PaddingBottom>
           <FontWeight>700</FontWeight>
           <FontSize>15pt</FontSize>
-          <Color>SteelBlue</Color>
+          <Color>DarkBlue</Color>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
         </Style>
@@ -1523,6 +1547,16 @@ AFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUU
 RRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB//2Q==</ImageData>
       <MIMEType>image/jpeg</MIMEType>
     </EmbeddedImage>
+    <EmbeddedImage Name="logo_dis_meza">
+      <ImageData>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</ImageData>
+      <MIMEType>image/png</MIMEType>
+    </EmbeddedImage>
   </EmbeddedImages>
   <DataSets>
     <DataSet Name="DtRptEntrada_vwrptSfaEntradaBodega">
@@ -1644,8 +1678,8 @@ RRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAB
           </BorderWidth>
           <PaddingBottom>2pt</PaddingBottom>
           <BorderColor>
-            <Top>SteelBlue</Top>
-            <Default>SteelBlue</Default>
+            <Top>Navy</Top>
+            <Default>Navy</Default>
           </BorderColor>
           <Color>Silver</Color>
           <PaddingRight>2pt</PaddingRight>
