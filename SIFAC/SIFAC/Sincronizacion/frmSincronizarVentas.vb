@@ -390,11 +390,12 @@ lblGuardarDetalleCuenta:
                         .objEstadoID = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOAPLICACION", "03"))
                         .Update(t)
                     End With
-                    MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+
                 End If
             Next
 
             t.CommitTran()
+            MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
         Catch ex As Exception
             t.RollbackTran()
             clsError.CaptarError(ex)

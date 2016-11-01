@@ -53,6 +53,7 @@ Partial Class frmSivEncargos
         Me.colCategoriaProducto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ColSeleccionar = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.colNumeroDetalle = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdEncargosExcel = New DevExpress.XtraGrid.GridControl()
         Me.grdvwEncargosExcel = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.Ruta = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -219,7 +220,7 @@ Partial Class frmSivEncargos
         '
         'grdEncargosMasterTabla
         '
-        Me.grdEncargosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colRuta, Me.colVendedor, Me.colEstado, Me.colCodigoProducto, Me.ColProducto, Me.ColCantidadProducto, Me.colCostoProducto, Me.ColTotalCostoProducto, Me.colCategoriaProducto, Me.ColSeleccionar})
+        Me.grdEncargosMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colRuta, Me.colVendedor, Me.colEstado, Me.colCodigoProducto, Me.ColProducto, Me.ColCantidadProducto, Me.colCostoProducto, Me.ColTotalCostoProducto, Me.colCategoriaProducto, Me.ColSeleccionar, Me.colNumeroDetalle})
         Me.grdEncargosMasterTabla.GridControl = Me.grdEncargosMaster
         Me.grdEncargosMasterTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdEncargosMasterTabla.Name = "grdEncargosMasterTabla"
@@ -251,7 +252,7 @@ Partial Class frmSivEncargos
         Me.colFecha.OptionsColumn.AllowFocus = False
         Me.colFecha.OptionsColumn.ReadOnly = True
         Me.colFecha.Visible = True
-        Me.colFecha.VisibleIndex = 2
+        Me.colFecha.VisibleIndex = 3
         Me.colFecha.Width = 89
         '
         'colRuta
@@ -262,7 +263,7 @@ Partial Class frmSivEncargos
         Me.colRuta.OptionsColumn.AllowFocus = False
         Me.colRuta.OptionsColumn.ReadOnly = True
         Me.colRuta.Visible = True
-        Me.colRuta.VisibleIndex = 4
+        Me.colRuta.VisibleIndex = 5
         Me.colRuta.Width = 93
         '
         'colVendedor
@@ -273,7 +274,7 @@ Partial Class frmSivEncargos
         Me.colVendedor.OptionsColumn.AllowFocus = False
         Me.colVendedor.OptionsColumn.ReadOnly = True
         Me.colVendedor.Visible = True
-        Me.colVendedor.VisibleIndex = 3
+        Me.colVendedor.VisibleIndex = 4
         Me.colVendedor.Width = 158
         '
         'colEstado
@@ -284,7 +285,7 @@ Partial Class frmSivEncargos
         Me.colEstado.OptionsColumn.AllowFocus = False
         Me.colEstado.OptionsColumn.ReadOnly = True
         Me.colEstado.Visible = True
-        Me.colEstado.VisibleIndex = 10
+        Me.colEstado.VisibleIndex = 11
         Me.colEstado.Width = 99
         '
         'colCodigoProducto
@@ -299,7 +300,7 @@ Partial Class frmSivEncargos
         Me.ColProducto.FieldName = "NombreProducto"
         Me.ColProducto.Name = "ColProducto"
         Me.ColProducto.Visible = True
-        Me.ColProducto.VisibleIndex = 6
+        Me.ColProducto.VisibleIndex = 7
         Me.ColProducto.Width = 132
         '
         'ColCantidadProducto
@@ -308,7 +309,7 @@ Partial Class frmSivEncargos
         Me.ColCantidadProducto.FieldName = "Cantidad"
         Me.ColCantidadProducto.Name = "ColCantidadProducto"
         Me.ColCantidadProducto.Visible = True
-        Me.ColCantidadProducto.VisibleIndex = 7
+        Me.ColCantidadProducto.VisibleIndex = 8
         Me.ColCantidadProducto.Width = 62
         '
         'colCostoProducto
@@ -317,7 +318,7 @@ Partial Class frmSivEncargos
         Me.colCostoProducto.FieldName = "CostoPromedio"
         Me.colCostoProducto.Name = "colCostoProducto"
         Me.colCostoProducto.Visible = True
-        Me.colCostoProducto.VisibleIndex = 8
+        Me.colCostoProducto.VisibleIndex = 9
         Me.colCostoProducto.Width = 66
         '
         'ColTotalCostoProducto
@@ -326,7 +327,7 @@ Partial Class frmSivEncargos
         Me.ColTotalCostoProducto.FieldName = "TotalCosto"
         Me.ColTotalCostoProducto.Name = "ColTotalCostoProducto"
         Me.ColTotalCostoProducto.Visible = True
-        Me.ColTotalCostoProducto.VisibleIndex = 9
+        Me.ColTotalCostoProducto.VisibleIndex = 10
         Me.ColTotalCostoProducto.Width = 71
         '
         'colCategoriaProducto
@@ -335,7 +336,7 @@ Partial Class frmSivEncargos
         Me.colCategoriaProducto.FieldName = "Categoria"
         Me.colCategoriaProducto.Name = "colCategoriaProducto"
         Me.colCategoriaProducto.Visible = True
-        Me.colCategoriaProducto.VisibleIndex = 5
+        Me.colCategoriaProducto.VisibleIndex = 6
         Me.colCategoriaProducto.Width = 94
         '
         'ColSeleccionar
@@ -353,6 +354,14 @@ Partial Class frmSivEncargos
         Me.RepositoryItemCheckEdit1.AutoHeight = False
         Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
+        '
+        'colNumeroDetalle
+        '
+        Me.colNumeroDetalle.Caption = "NumeroDetalle"
+        Me.colNumeroDetalle.FieldName = "NumeroDetalle"
+        Me.colNumeroDetalle.Name = "colNumeroDetalle"
+        Me.colNumeroDetalle.Visible = True
+        Me.colNumeroDetalle.VisibleIndex = 2
         '
         'grdEncargosExcel
         '
@@ -504,4 +513,5 @@ Partial Class frmSivEncargos
     Friend WithEvents ColTotalCostoProducto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCategoriaProducto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ColSeleccionar As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNumeroDetalle As DevExpress.XtraGrid.Columns.GridColumn
 End Class
