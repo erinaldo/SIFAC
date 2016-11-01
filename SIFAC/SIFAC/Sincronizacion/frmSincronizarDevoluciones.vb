@@ -260,6 +260,7 @@ Public Class frmSincronizarDevoluciones
             Next
 
             t.CommitTran()
+            MsgBox("Devoluciones aplicadas correctamente", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
         Catch ex As Exception
             t.RollbackTran()
             clsError.CaptarError(ex)

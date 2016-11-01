@@ -107,6 +107,7 @@
     <Reference Include="DevExpress.XtraCharts.v14.1.Wizard, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGauges.v14.1.Core, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -867,6 +868,12 @@
     <Compile Include="prueba.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\frmReportePivot.Designer.vb">
+      <DependentUpon>frmReportePivot.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\frmReportePivot.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\frmRptVisor.Designer.vb">
       <DependentUpon>frmRptVisor.vb</DependentUpon>
     </Compile>
@@ -1459,6 +1466,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="prueba.resx">
       <DependentUpon>prueba.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\frmReportePivot.resx">
+      <DependentUpon>frmReportePivot.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\frmRptVisor.resx">
       <DependentUpon>frmRptVisor.vb</DependentUpon>

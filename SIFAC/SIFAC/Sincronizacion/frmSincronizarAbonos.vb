@@ -8,12 +8,13 @@ Imports Proyecto.Catalogos.Datos
 Public Class frmSincronizarAbonos
 
 #Region "Declaracion de Variables"
-    Public DtEmpleados, DtRuta, DtAbonos, DtEstados, dtAplCobros As DataTable
+    Public DtEmpleados, DtRuta, DtAbonos, DtEstados, dtAplCobros, DtAbonosDetalle As DataTable
     Dim objseg As SsgSeguridad
     Dim boolAprobar, boolConsultar, boolExportar, boolDesactivar As Boolean
     Dim intEstadoAbonoRegistrado As Integer
     Dim objReciboCaja As SccReciboCaja
     Dim objReciboDetFactura As SccReciboDetFactura
+    Public ds As DataSet
 #End Region
 
 #Region "Procedimientos"
@@ -104,10 +105,20 @@ Public Class frmSincronizarAbonos
             End If
 
             If Not DtAbonos Is Nothing Then
+
+                DtAbonosDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SccCuentaID as Numero,  Producto, ModeloMarca, Saldo", "vwSfaExpedienteCliente", "1=1"))
+                ds = New DataSet
+                ds.Merge(DtAbonos)
+                ds.Tables(0).TableName = "Abonos"
+                ds.Merge(DtAbonosDetalle)
+                ds.Tables(1).TableName = "DetalleAbono"
+
+                ds.Relations.Add("Detalle", ds.Tables(0).Columns("objSccCuentaID"), ds.Tables(1).Columns("Numero"), False)
                 DtAbonos.PrimaryKey = New DataColumn() {Me.DtAbonos.Columns("AplCobroID")}
                 DtAbonos.DefaultView.Sort = "FechaAbono"
-                Me.grdVentas.DataSource = DtAbonos
+                Me.grdVentas.DataSource = ds.Tables(0)
                 Me.grdVentas.Text = "Abonos (" & Me.DtAbonos.Rows.Count & ")"
+
             End If
 
         Catch ex As Exception
@@ -157,7 +168,7 @@ Public Class frmSincronizarAbonos
             CargarEmpleados()
             CargarEstados()
             Me.AplicarSeguridad()
-            'CargarGrid(False, False, 0, 0)
+            ''CargarGrid(False, False, 0, 0)
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -272,6 +283,7 @@ Public Class frmSincronizarAbonos
 
 
             t.CommitTran()
+            MsgBox("Abonos aplicados correctamente", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
         Catch ex As Exception
             t.RollbackTran()
             clsError.CaptarError(ex)

@@ -29,6 +29,7 @@ Partial Class frmSincronizarDevoluciones
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
@@ -55,7 +56,6 @@ Partial Class frmSincronizarDevoluciones
         Me.cmbEmpleado = New DevExpress.XtraEditors.LookUpEdit()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
         Me.tbProductos.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
@@ -119,6 +119,16 @@ Partial Class frmSincronizarDevoluciones
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
         '
+        'cmbExportar
+        '
+        Me.cmbExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmbExportar.Image = CType(resources.GetObject("cmbExportar.Image"), System.Drawing.Image)
+        Me.cmbExportar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmbExportar.Name = "cmbExportar"
+        Me.cmbExportar.Size = New System.Drawing.Size(36, 36)
+        Me.cmbExportar.Text = "Exportar"
+        Me.cmbExportar.ToolTipText = "Exportar a excel"
+        '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
@@ -164,6 +174,7 @@ Partial Class frmSincronizarDevoluciones
         Me.grdVentasTable.GridControl = Me.grdVentas
         Me.grdVentasTable.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdVentasTable.Name = "grdVentasTable"
+        Me.grdVentasTable.OptionsView.ShowAutoFilterRow = True
         '
         'colSeleccionar
         '
@@ -364,16 +375,6 @@ Partial Class frmSincronizarDevoluciones
         'sfdRuta
         '
         Me.sfdRuta.Filter = "Archivos Excel | *.xls"
-        '
-        'cmbExportar
-        '
-        Me.cmbExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmbExportar.Image = CType(resources.GetObject("cmbExportar.Image"), System.Drawing.Image)
-        Me.cmbExportar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmbExportar.Name = "cmbExportar"
-        Me.cmbExportar.Size = New System.Drawing.Size(36, 36)
-        Me.cmbExportar.Text = "Exportar"
-        Me.cmbExportar.ToolTipText = "Exportar a excel"
         '
         'frmSincronizarDevoluciones
         '

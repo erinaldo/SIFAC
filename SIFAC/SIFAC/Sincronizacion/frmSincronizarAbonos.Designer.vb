@@ -22,17 +22,13 @@ Partial Class frmSincronizarAbonos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSincronizarAbonos))
-        Me.tbProductos = New System.Windows.Forms.ToolStrip()
-        Me.cmdAprobar = New System.Windows.Forms.ToolStripButton()
-        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
-        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.grdExpediente = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.ColSccCuentaID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colProducto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colModeloMarca = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdVentas = New DevExpress.XtraGrid.GridControl()
         Me.grdVentasTable = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colSeleccionar = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -45,6 +41,16 @@ Partial Class frmSincronizarAbonos
         Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ColEstado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.tbProductos = New System.Windows.Forms.ToolStrip()
+        Me.cmdAprobar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
+        Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
         Me.cmbEstado = New DevExpress.XtraEditors.LookUpEdit()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -56,15 +62,16 @@ Partial Class frmSincronizarAbonos
         Me.cmbEmpleado = New DevExpress.XtraEditors.LookUpEdit()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        Me.tbProductos.SuspendLayout()
-        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl1.SuspendLayout()
+        CType(Me.grdExpediente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tbProductos.SuspendLayout()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelControl1.SuspendLayout()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,92 +79,59 @@ Partial Class frmSincronizarAbonos
         CType(Me.cmbEmpleado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'tbProductos
+        'grdExpediente
         '
-        Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAprobar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
-        Me.tbProductos.Location = New System.Drawing.Point(0, 0)
-        Me.tbProductos.Name = "tbProductos"
-        Me.tbProductos.Size = New System.Drawing.Size(837, 39)
-        Me.tbProductos.TabIndex = 10
+        Me.grdExpediente.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColSccCuentaID, Me.colProducto, Me.colModeloMarca, Me.colSaldo})
+        Me.grdExpediente.GridControl = Me.grdVentas
+        Me.grdExpediente.Name = "grdExpediente"
+        Me.grdExpediente.OptionsBehavior.AutoPopulateColumns = False
+        Me.grdExpediente.OptionsBehavior.Editable = False
+        Me.grdExpediente.OptionsBehavior.ReadOnly = True
+        Me.grdExpediente.OptionsView.ShowGroupPanel = False
+        Me.grdExpediente.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never
         '
-        'cmdAprobar
+        'ColSccCuentaID
         '
-        Me.cmdAprobar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdAprobar.Image = CType(resources.GetObject("cmdAprobar.Image"), System.Drawing.Image)
-        Me.cmdAprobar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdAprobar.Name = "cmdAprobar"
-        Me.cmdAprobar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdAprobar.Text = "Aprobar"
+        Me.ColSccCuentaID.Caption = "SccCuentaID"
+        Me.ColSccCuentaID.FieldName = "SccCuentaID"
+        Me.ColSccCuentaID.Name = "ColSccCuentaID"
         '
-        'cmdConsultar
+        'colProducto
         '
-        Me.cmdConsultar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdConsultar.Image = CType(resources.GetObject("cmdConsultar.Image"), System.Drawing.Image)
-        Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdConsultar.Name = "cmdConsultar"
-        Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdConsultar.ToolTipText = "Consultar Producto"
-        Me.cmdConsultar.Visible = False
+        Me.colProducto.Caption = "Producto"
+        Me.colProducto.FieldName = "Producto"
+        Me.colProducto.Name = "colProducto"
+        Me.colProducto.OptionsColumn.AllowEdit = False
+        Me.colProducto.OptionsFilter.AllowAutoFilter = False
+        Me.colProducto.Visible = True
+        Me.colProducto.VisibleIndex = 0
         '
-        'ToolStripSeparator1
+        'colModeloMarca
         '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
+        Me.colModeloMarca.Caption = "Modelo/Marca"
+        Me.colModeloMarca.FieldName = "ModeloMarca"
+        Me.colModeloMarca.Name = "colModeloMarca"
+        Me.colModeloMarca.OptionsColumn.AllowEdit = False
+        Me.colModeloMarca.OptionsFilter.AllowAutoFilter = False
+        Me.colModeloMarca.Visible = True
+        Me.colModeloMarca.VisibleIndex = 1
         '
-        'cmdDesactivar
+        'colSaldo
         '
-        Me.cmdDesactivar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdDesactivar.Image = CType(resources.GetObject("cmdDesactivar.Image"), System.Drawing.Image)
-        Me.cmdDesactivar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdDesactivar.Name = "cmdDesactivar"
-        Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdDesactivar.ToolTipText = "Anular Venta"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
-        '
-        'cmbExportar
-        '
-        Me.cmbExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmbExportar.Image = CType(resources.GetObject("cmbExportar.Image"), System.Drawing.Image)
-        Me.cmbExportar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmbExportar.Name = "cmbExportar"
-        Me.cmbExportar.Size = New System.Drawing.Size(36, 36)
-        Me.cmbExportar.Text = "Exportar"
-        Me.cmbExportar.ToolTipText = "Exportar a excel"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 39)
-        '
-        'cmdCerrar
-        '
-        Me.cmdCerrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdCerrar.Image = CType(resources.GetObject("cmdCerrar.Image"), System.Drawing.Image)
-        Me.cmdCerrar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdCerrar.Name = "cmdCerrar"
-        Me.cmdCerrar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdCerrar.ToolTipText = "Salir de Catálogo de Productos"
-        '
-        'PanelControl1
-        '
-        Me.PanelControl1.Controls.Add(Me.grdVentas)
-        Me.PanelControl1.Controls.Add(Me.PanelControl2)
-        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
-        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(837, 439)
-        Me.PanelControl1.TabIndex = 11
+        Me.colSaldo.Caption = "Saldo"
+        Me.colSaldo.FieldName = "Saldo"
+        Me.colSaldo.Name = "colSaldo"
+        Me.colSaldo.OptionsColumn.AllowEdit = False
+        Me.colSaldo.OptionsFilter.AllowAutoFilter = False
+        Me.colSaldo.Visible = True
+        Me.colSaldo.VisibleIndex = 2
         '
         'grdVentas
         '
         Me.grdVentas.Dock = System.Windows.Forms.DockStyle.Fill
+        GridLevelNode1.LevelTemplate = Me.grdExpediente
+        GridLevelNode1.RelationName = "LevelExpediente"
+        Me.grdVentas.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.grdVentas.Location = New System.Drawing.Point(2, 144)
         Me.grdVentas.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdVentas.LookAndFeel.UseDefaultLookAndFeel = False
@@ -166,7 +140,7 @@ Partial Class frmSincronizarAbonos
         Me.grdVentas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2, Me.RepositoryItemDateEdit1})
         Me.grdVentas.Size = New System.Drawing.Size(833, 293)
         Me.grdVentas.TabIndex = 6
-        Me.grdVentas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdVentasTable})
+        Me.grdVentas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdVentasTable, Me.grdExpediente})
         '
         'grdVentasTable
         '
@@ -174,6 +148,7 @@ Partial Class frmSincronizarAbonos
         Me.grdVentasTable.GridControl = Me.grdVentas
         Me.grdVentasTable.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdVentasTable.Name = "grdVentasTable"
+        Me.grdVentasTable.OptionsView.ShowAutoFilterRow = True
         '
         'colSeleccionar
         '
@@ -259,6 +234,89 @@ Partial Class frmSincronizarAbonos
         Me.RepositoryItemCheckEdit2.AutoHeight = False
         Me.RepositoryItemCheckEdit2.Caption = "Check"
         Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
+        '
+        'tbProductos
+        '
+        Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAprobar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
+        Me.tbProductos.Location = New System.Drawing.Point(0, 0)
+        Me.tbProductos.Name = "tbProductos"
+        Me.tbProductos.Size = New System.Drawing.Size(837, 39)
+        Me.tbProductos.TabIndex = 10
+        '
+        'cmdAprobar
+        '
+        Me.cmdAprobar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdAprobar.Image = CType(resources.GetObject("cmdAprobar.Image"), System.Drawing.Image)
+        Me.cmdAprobar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdAprobar.Name = "cmdAprobar"
+        Me.cmdAprobar.Size = New System.Drawing.Size(36, 36)
+        Me.cmdAprobar.Text = "Aprobar"
+        '
+        'cmdConsultar
+        '
+        Me.cmdConsultar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdConsultar.Image = CType(resources.GetObject("cmdConsultar.Image"), System.Drawing.Image)
+        Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdConsultar.Name = "cmdConsultar"
+        Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
+        Me.cmdConsultar.ToolTipText = "Consultar Producto"
+        Me.cmdConsultar.Visible = False
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
+        '
+        'cmdDesactivar
+        '
+        Me.cmdDesactivar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdDesactivar.Image = CType(resources.GetObject("cmdDesactivar.Image"), System.Drawing.Image)
+        Me.cmdDesactivar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdDesactivar.Name = "cmdDesactivar"
+        Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
+        Me.cmdDesactivar.ToolTipText = "Anular Venta"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
+        '
+        'cmbExportar
+        '
+        Me.cmbExportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmbExportar.Image = CType(resources.GetObject("cmbExportar.Image"), System.Drawing.Image)
+        Me.cmbExportar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmbExportar.Name = "cmbExportar"
+        Me.cmbExportar.Size = New System.Drawing.Size(36, 36)
+        Me.cmbExportar.Text = "Exportar"
+        Me.cmbExportar.ToolTipText = "Exportar a excel"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 39)
+        '
+        'cmdCerrar
+        '
+        Me.cmdCerrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdCerrar.Image = CType(resources.GetObject("cmdCerrar.Image"), System.Drawing.Image)
+        Me.cmdCerrar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdCerrar.Name = "cmdCerrar"
+        Me.cmdCerrar.Size = New System.Drawing.Size(36, 36)
+        Me.cmdCerrar.ToolTipText = "Salir de Catálogo de Productos"
+        '
+        'PanelControl1
+        '
+        Me.PanelControl1.Controls.Add(Me.grdVentas)
+        Me.PanelControl1.Controls.Add(Me.PanelControl2)
+        Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
+        Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Name = "PanelControl1"
+        Me.PanelControl1.Size = New System.Drawing.Size(837, 439)
+        Me.PanelControl1.TabIndex = 11
         '
         'PanelControl2
         '
@@ -386,16 +444,17 @@ Partial Class frmSincronizarAbonos
         Me.Name = "frmSincronizarAbonos"
         Me.Text = "Sincronizar Abonos"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.tbProductos.ResumeLayout(False)
-        Me.tbProductos.PerformLayout()
-        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelControl1.ResumeLayout(False)
+        CType(Me.grdExpediente, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tbProductos.ResumeLayout(False)
+        Me.tbProductos.PerformLayout()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.ResumeLayout(False)
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl2.ResumeLayout(False)
         Me.PanelControl2.PerformLayout()
@@ -439,4 +498,9 @@ Partial Class frmSincronizarAbonos
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents ColEstado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents sfdRuta As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents grdExpediente As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents ColSccCuentaID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colProducto As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colModeloMarca As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSaldo As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -8,10 +8,11 @@ Imports Proyecto.Catalogos.Datos
 Public Class frmSincronizarVentas
 
 #Region "Declaracion de Variables"
-    Public DtEmpleados, DtRuta, DtVentas, DtEstados, dtAplFacturasProformaDetalle As DataTable
+    Public DtEmpleados, DtRuta, DtVentas, DtEstados, dtAplFacturasProformaDetalle, DTVentasDetalle As DataTable
     Dim objseg As SsgSeguridad
     Dim boolAprobar, boolConsultar, boolExportar, boolDesactivar As Boolean
     Dim intEstadoFactProfRegistrado As Integer
+    Public ds As DataSet
 #End Region
 
 #Region "Procedimientos"
@@ -105,10 +106,23 @@ Public Class frmSincronizarVentas
             End If
 
             If Not DtVentas Is Nothing Then
+                DTVentasDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSfaFacturaProformaID as Numero,Categoria, Marca, Codigo, Producto, Cantidad, Precio, Subtotal, Descuento, Total", "vwAplicacionVentasDetalle", "1=1"))
+                ds = New DataSet
+
+                ds.Merge(DtVentas)
+                ds.Tables(0).TableName = "Ventas"
+
+                ds.Merge(DTVentasDetalle)
+                ds.Tables(1).TableName = "VentasDetalle"
+
+                ds.Relations.Add("Detalle", ds.Tables(0).Columns("SfaFacturaProformaID"), ds.Tables(1).Columns("Numero"), False)
+
                 DtVentas.PrimaryKey = New DataColumn() {Me.DtVentas.Columns("SfaFacturaProformaID")}
                 DtVentas.DefaultView.Sort = "fecha"
-                Me.grdVentas.DataSource = DtVentas
+                Me.grdVentas.DataSource = ds.Tables(0)
                 Me.grdVentas.Text = "Ventas (" & Me.DtVentas.Rows.Count & ")"
+
+                FormatearGridDetalle()
             End If
 
         Catch ex As Exception
@@ -147,6 +161,23 @@ Public Class frmSincronizarVentas
             clsError.CaptarError(ex)
         Finally
             objseg = Nothing
+        End Try
+    End Sub
+
+    Private Sub FormatearGridDetalle()
+        Try
+
+            colCantidad.OptionsColumn.AllowEdit = False
+            colCategoria.OptionsColumn.AllowEdit = False
+            colMarca.OptionsColumn.AllowEdit = False
+            colCodigo.OptionsColumn.AllowEdit = False
+            colProducto.OptionsColumn.AllowEdit = False
+            colPrecio.OptionsColumn.AllowEdit = False
+            colSubtotal.OptionsColumn.AllowEdit = False
+            colDescuento.OptionsColumn.AllowEdit = False
+            colTotalDetalle.OptionsColumn.AllowEdit = False
+        Catch ex As Exception
+            clsError.CaptarError(ex)
         End Try
     End Sub
 
@@ -361,6 +392,7 @@ lblGuardarDetalleCuenta:
             Next
 
             t.CommitTran()
+            MsgBox("Ventas aplicadas correctamente", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
         Catch ex As Exception
             t.RollbackTran()
             clsError.CaptarError(ex)

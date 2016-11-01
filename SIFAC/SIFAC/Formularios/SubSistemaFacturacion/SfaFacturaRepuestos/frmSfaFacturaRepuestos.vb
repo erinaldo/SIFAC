@@ -1135,26 +1135,31 @@ Public Class frmSfaFacturaRepuestos
 
     Private Sub grdFacturaMasterTabla_FocusedRowChanged(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles grdFacturaMasterTabla.FocusedRowChanged
         Dim FilaActual As Integer
-        FilaActual = Me.grdFacturaMasterTabla.FocusedRowHandle
+        Try
 
-        If Me.dtFactura.Rows.Count <> 0 Then
+            FilaActual = Me.grdFacturaMasterTabla.FocusedRowHandle
 
-            If Not String.IsNullOrEmpty(Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("objEstadoID").ToString) Then
-                If (Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("objEstadoID") = ClsCatalogos.GetValorCatalogoID("ESTADOFACT", "PROCESADA")) Then
-                    Me.cmdProcesar.Enabled = False
-                    Me.cmdAnular.Enabled = True
-                    Me.cmdImprimir.Enabled = True
-                ElseIf Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("objEstadoID") = ClsCatalogos.GetValorCatalogoID("ESTADOFACT", "ANULADA") Then
-                    Me.cmdProcesar.Enabled = False
-                    Me.cmdAnular.Enabled = False
-                    Me.cmdImprimir.Enabled = False
-                Else
-                    Me.cmdProcesar.Enabled = True
-                    Me.cmdAnular.Enabled = False
-                    Me.cmdImprimir.Enabled = False
+            If Me.dtFactura.Rows.Count <> 0 Then
+
+                If Not String.IsNullOrEmpty(Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("objEstadoID").ToString) Then
+                    If (Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("objEstadoID") = ClsCatalogos.GetValorCatalogoID("ESTADOFACT", "PROCESADA")) Then
+                        Me.cmdProcesar.Enabled = False
+                        Me.cmdAnular.Enabled = True
+                        Me.cmdImprimir.Enabled = True
+                    ElseIf Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("objEstadoID") = ClsCatalogos.GetValorCatalogoID("ESTADOFACT", "ANULADA") Then
+                        Me.cmdProcesar.Enabled = False
+                        Me.cmdAnular.Enabled = False
+                        Me.cmdImprimir.Enabled = False
+                    Else
+                        Me.cmdProcesar.Enabled = True
+                        Me.cmdAnular.Enabled = False
+                        Me.cmdImprimir.Enabled = False
+                    End If
                 End If
             End If
-        End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 #End Region
 
