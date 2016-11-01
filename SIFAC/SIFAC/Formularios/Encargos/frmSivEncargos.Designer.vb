@@ -360,8 +360,6 @@ Partial Class frmSivEncargos
         Me.colNumeroDetalle.Caption = "NumeroDetalle"
         Me.colNumeroDetalle.FieldName = "NumeroDetalle"
         Me.colNumeroDetalle.Name = "colNumeroDetalle"
-        Me.colNumeroDetalle.Visible = True
-        Me.colNumeroDetalle.VisibleIndex = 2
         '
         'grdEncargosExcel
         '

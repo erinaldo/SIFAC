@@ -645,13 +645,20 @@ Public Class frmSivEncargosEdit
             filas("Observaciones") = txtObservaciones.Text
             filas("CostoPromedio") = objSivProducto.CostoPromedio
 
-            If cmbCategoria.SelectedValue = "" Or cmbCategoria.Text = "" Then
+            If cmbCategoria.Text = "" Then
                 filas("objCategoriaID") = 0
             Else
                 filas("objCategoriaID") = cmbCategoria.SelectedValue
             End If
 
             dtDetalleEncargo.Rows.Add(filas)
+
+            ''Limpiar Controles
+            cmbCategoria.Text = String.Empty
+            cmbNombreProducto.Text = String.Empty
+            txtNombreProducto.Text = String.Empty
+            txtObservaciones.Text = String.Empty
+            spnCantidad.Value = 0.0
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -686,15 +693,19 @@ Public Class frmSivEncargosEdit
 
 
     Private Sub cmdCliente_Click(sender As Object, e As EventArgs) Handles cmdCliente.Click
-        Dim objBusquedaCliente As New frmSfaBusquedaCliente
-        Dim objPersonaID As String
+        Dim objBusquedaCliente As New frmPersonaSelector
+        Dim objClienteID As Integer
+        Dim objPersonaID As Integer
+        Dim objCliente As New SccClientes
         Try
             Try
                 objBusquedaCliente.Filtro = "Descripcion = 'Cliente'" 'AND StbPersonaID NOT IN (SELECT objFiadorID FROM vwSccCuentaFiador WHERE Estado = 'VIGENTE') "
                 If objBusquedaCliente.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     objPersonaID = objBusquedaCliente.Seleccion
+                    objCliente.RetrieveByFilter("objPersonaID=" & objPersonaID)
+                    objClienteID = objCliente.ClienteID
                     Me.CargarClientes()
-                    Me.cmbCliente.SelectedValue = objPersonaID
+                    Me.cmbCliente.SelectedValue = objClienteID
                 End If
 
             Catch ex As Exception
@@ -702,6 +713,7 @@ Public Class frmSivEncargosEdit
             End Try
         Finally
             objBusquedaCliente = Nothing
+            objCliente = Nothing
         End Try
     End Sub
 

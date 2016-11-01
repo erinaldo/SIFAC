@@ -24,7 +24,7 @@ Public Class frmSivEncargos
     Private Sub CargarEncargos(ByVal strFiltro As String)
 
         Try
-            dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CAST(0 AS BIT) AS Seleccionar, NumeroDetalle, Ruta, Fecha, Vendedor, Cliente, Estado, Categoria, CodigoProducto, NombreProducto, Cantidad, CostoPromedio, TotalCosto", "VWEncargosConsolidado", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
+            dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CAST(0 AS BIT) AS Seleccionar,Numero, NumeroDetalle, Ruta, Fecha, Vendedor, Cliente, Estado, Categoria, CodigoProducto, NombreProducto, Cantidad, CostoPromedio, TotalCosto", "VWEncargosConsolidado", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
 
             If Not dtEncargos Is Nothing Then
                 'dtEncargos.PrimaryKey = New DataColumn() {Me.dtEncargos.Columns("NumeroDetalle")}
@@ -160,7 +160,7 @@ Public Class frmSivEncargos
                 Me.Cursor = WaitCursor
                 editEncargos = New frmSivEncargosEdit
                 editEncargos.TypeGui = 1
-                editEncargos.EncargoID = Me.dtEncargos.DefaultView.Item(FilaActual)("SivEncargoID")
+                editEncargos.EncargoID = Me.dtEncargos.DefaultView.Item(FilaActual)("Numero")
                 If editEncargos.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     CargarEncargos("1=1")
                 End If
@@ -186,7 +186,7 @@ Public Class frmSivEncargos
                 Me.Cursor = WaitCursor
                 editEncargos = New frmSivEncargosEdit
                 editEncargos.TypeGui = 2
-                editEncargos.EncargoID = Me.dtEncargos.DefaultView.Item(FilaActual)("SivEncargoID")
+                editEncargos.EncargoID = Me.dtEncargos.DefaultView.Item(FilaActual)("Numero")
                 editEncargos.ShowDialog(Me)
             End If
 
@@ -261,7 +261,7 @@ Public Class frmSivEncargos
                     t.BeginTran()
                     foundRowsSeleccionadas = dtEncargos.Select("Seleccionar = 1")
                     For Each row As DataRow In foundRowsSeleccionadas
-                        IDEncargo = row("SivEncargoID")
+                        IDEncargo = row("Numero")
                         Encargos.Retrieve(IDEncargo)
                         Catalogos.RetrieveByFilter("Nombre='ESTADOENCARGO'")
                         ValorCatalogo.RetrieveByFilter("objCatalogoID=" & Catalogos.StbCatalogoID & " AND Codigo='03'")
@@ -288,22 +288,34 @@ Public Class frmSivEncargos
 
     Private Sub btnPedido_Click(sender As Object, e As EventArgs) Handles btnPedido.Click
         Dim strEstado As String
+        Dim strFiltro As String
         Dim Encargos As New SivEncargos
-        Dim FilaActual As Integer
         Dim editPedidos As frmPedidosEdit
+        Dim foundRowsSeleccionadas() As Data.DataRow
         Try
-            FilaActual = Me.grdEncargosMasterTabla.FocusedRowHandle
-            strEstado = Me.dtEncargos.DefaultView.Item(FilaActual)("Estado").ToString
+            strFiltro = String.Empty
+            foundRowsSeleccionadas = dtEncargos.Select("Seleccionar = 1")
+            For Each row As DataRow In foundRowsSeleccionadas
+                strEstado = row("Estado").ToString
 
-            If strEstado = "APROBADO" Then
-                editPedidos = New frmPedidosEdit
-                editPedidos.TypeGui = 3
-                editPedidos.EncargoID = Me.dtEncargos.DefaultView.Item(FilaActual)("SivEncargoID")
-                If editPedidos.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    CargarEncargos("1=1")
+                If strEstado <> "APROBADO" Then
+                    MsgBox("Los encargos seleccionados deben estar aprobados para generar pedido", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                    Exit Sub
+                Else
+                    If strFiltro.Length = 0 Then
+                        strFiltro = row("NumeroDetalle").ToString
+                    Else
+                        strFiltro = strFiltro & "," & row("NumeroDetalle").ToString
+                    End If
                 End If
-            Else
-                MsgBox("El encargo debe estar aprobado para generar pedido?", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+
+            Next
+
+            editPedidos = New frmPedidosEdit
+            editPedidos.TypeGui = 3
+            editPedidos.strFiltroEncargos = strFiltro
+            If editPedidos.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                CargarEncargos("1=1")
             End If
 
         Catch ex As Exception

@@ -5,6 +5,7 @@ Imports Seguridad.Datos
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Base
 Imports Proyecto.Catalogos.Datos.ClsCatalogos
+Imports DevExpress.XtraGrid.Columns
 
 Public Class frmPedidosEdit
 
@@ -13,9 +14,20 @@ Public Class frmPedidosEdit
     Public intPedidoID, intProveedorID, intPersonaID, intEncargoID As Integer
     Public boolEditado, boolRegistrad, boolExisteErroresGrid As Boolean
     Public DtMarca, DtCategoria, DtNombreProducto, dtProveedor, dtDetallePedido, dtEstados As DataTable
+    Public dtEncargosAprobados As DataTable
+    Public FiltroEncargos As String
 #End Region
 
 #Region "Propiedades"
+    Property strFiltroEncargos() As String
+        Get
+            Return FiltroEncargos
+        End Get
+        Set(ByVal value As String)
+            FiltroEncargos = value
+        End Set
+    End Property
+
     Property TypeGui() As Integer
         Get
             Return intTypeGui
@@ -49,7 +61,7 @@ Public Class frmPedidosEdit
 
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntradaDetalle() As Boolean
-       
+
         If cmbNombreProducto.Text.Trim.Length = 0 Or cmbNombreProducto.EditValue = "0" Then
             ErrorFactura.SetError(cmbNombreProducto, My.Resources.MsgObligatorio)
             Return False
@@ -79,7 +91,7 @@ Public Class frmPedidosEdit
                 Exit Function
             End If
         End If
-       
+
 
         Return True
     End Function
@@ -169,13 +181,8 @@ Public Class frmPedidosEdit
             objPedidoMaster.Activo = True
             objPedidoMaster.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objPedidoMaster.FechaCreacion = clsProyecto.Conexion.FechaServidor
-
-            If TypeGui = 3 Then
-                objPedidoMaster.objEncargoID = EncargoID
-            End If
-          
             objPedidoMaster.Insert(T)
-           
+
             ''Guadar Detalle de Pedidos
             For Each row As DataRow In dtDetallePedido.Rows
                 objPedidoDetalle.objPedidoID = objPedidoMaster.SivPedidoID
@@ -447,7 +454,7 @@ Public Class frmPedidosEdit
                             Me.txtNombreProveedor.Text = ""
                         End If
                     End If
-                  
+
                 End If
 
             Catch ex As Exception
@@ -492,14 +499,14 @@ Public Class frmPedidosEdit
     Private Sub CargarDatosEncargo()
         Try
             dtDetallePedido = New DataTable
-            dtDetallePedido = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID, Codigo, objCategoriaID, Producto, Cantidad, 0 AS CostoImpuesto, CostoPromedio AS CostoUnitario,Cantidad* CostoPromedio CostoTotal ", "vwSivDetalleProductosEncargos", "SivProductoID IS NOT NULL AND SivProductoID<>0 AND objSivEncargoID=" & EncargoID))
+            dtDetallePedido = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID, Codigo, objCategoriaID, Producto, Cantidad, 0 AS CostoImpuesto, CostoPromedio AS CostoUnitario,Cantidad* CostoPromedio CostoTotal ", "vwSivEncargosPedidosDetalle", " SivEncargoDetalleID IN(" & strFiltroEncargos & ")"))
             Me.grdDetallePedidos.DataSource = dtDetallePedido
-
+            CalcularTotal()
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
-   
+
 
 #End Region
 
@@ -538,7 +545,7 @@ Public Class frmPedidosEdit
             CargarCategorias()
             CargarMarca()
             CargarEstados()
-            
+
             Select Case TypeGui
                 Case 0
                     Me.Text = "Agregar Pedido"
@@ -585,6 +592,16 @@ Public Class frmPedidosEdit
         End Try
     End Sub
 
+    Private Sub CalcularTotal()
+        Try
+            For Each row As DataRow In dtDetallePedido.Rows
+                spnTotalCosto.Value = spnTotalCosto.Value + row("CostoTotal")
+            Next
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
     Private Sub AgregarProductos()
         Dim filas As DataRow
         Dim ProductoID As Integer
@@ -625,7 +642,7 @@ Public Class frmPedidosEdit
     Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs) Handles cmbCategoria.EditValueChanged
         Try
             CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
-            
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -655,6 +672,7 @@ Public Class frmPedidosEdit
     End Sub
 
     Private Sub grdDetallePedidos_KeyDown(sender As Object, e As KeyEventArgs) Handles grdDetallePedidos.KeyDown, grdDetallePedidosTabla.KeyDown
+        
         '---- Delete
         If e.KeyCode = Keys.Delete Then
             Dim view As GridView = CType(sender, GridView)
@@ -663,11 +681,28 @@ Public Class frmPedidosEdit
                     Me.ElminarFilaSinPreguntar()
                 Else
                     Me.EliminarFila()
+                    Me.CalcularTotal()
                 End If
             End If
         End If
+        If e.KeyCode = Keys.Enter Then
+            'Costo Dólares
+            If Me.grdDetallePedidosTabla.FocusedColumn.Equals(Me.colCostoUnitario) Then
+                Me.grdDetallePedidosTabla.FocusedColumn = Me.colCostoUnitario
+
+                SendKeys.Send("{down}")
+                Exit Sub
+            End If
+
+        End If
+        
+        'Si se preciona TAB estando en la última Celda editable
+        If e.KeyCode = Keys.Tab AndAlso Me.grdDetallePedidosTabla.FocusedColumn.Equals(Me.colCostoUnitario) Then
+            Me.cmdGuardar.Focus()
+        End If
+
     End Sub
-   
+
     Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
         Try
             If ValidarEntrada() Then
@@ -730,6 +765,53 @@ Public Class frmPedidosEdit
     End Sub
 
 #End Region
-    
-   
+
+
+    Private Sub grdDetallePedidosTabla_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles grdDetallePedidosTabla.ValidateRow
+        Dim viewCosto As ColumnView = CType(sender, ColumnView)
+        Dim columnCostoDolares As GridColumn = viewCosto.Columns("CostoUnitario")
+        Try
+        If IsDBNull(viewCosto.GetRowCellValue(e.RowHandle, columnCostoDolares)) Then
+            e.Valid = False
+            viewCosto.SetColumnError(columnCostoDolares, "El Costo no puede ser nulo.")
+            boolExisteErroresGrid = True
+        Else
+            If viewCosto.GetRowCellValue(e.RowHandle, columnCostoDolares) >= Double.MaxValue Then
+                e.Valid = False
+                viewCosto.SetColumnError(columnCostoDolares, "El Costo ingresado no es soportado.")
+                boolExisteErroresGrid = True
+            Else
+                boolExisteErroresGrid = False
+            End If
+        End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+    Private Sub grdDetallePedidosTabla_CellValueChanged(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles grdDetallePedidosTabla.CellValueChanged
+        Dim objSivProductos As SivProductos
+        Dim objRepuestosDetProv As SivRepuestosDetProv
+        Dim FilaActual As Integer
+        Try
+
+        objSivProductos = New SivProductos
+        objRepuestosDetProv = New SivRepuestosDetProv
+
+        FilaActual = Me.grdDetallePedidosTabla.FocusedRowHandle
+
+        'Cantidad
+        If e.Column.Equals(Me.colCostoUnitario) Or e.Column.Equals(Me.colCantidad) Then
+
+            'Realizar cálculos en grid
+            If Me.dtDetallePedido.Rows.Count <> 0 Then
+                    Me.dtDetallePedido.DefaultView.Item(FilaActual)("CostoTotal") = (Me.dtDetallePedido.DefaultView.Item(FilaActual)("Cantidad")) * (Me.dtDetallePedido.DefaultView.Item(FilaActual)("CostoUnitario"))
+            End If
+
+            'Calcular los totales
+            CalcularTotal()
+        End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 End Class

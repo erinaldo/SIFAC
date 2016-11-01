@@ -23,11 +23,11 @@ Partial Class frmPedidosEdit
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPedidosEdit))
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.dtaFechaAutorizado = New C1.Win.C1Input.C1DateEdit()
@@ -252,7 +252,7 @@ Partial Class frmPedidosEdit
         Me.spnTotalCosto.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnTotalCosto.Location = New System.Drawing.Point(662, 309)
         Me.spnTotalCosto.Name = "spnTotalCosto"
-        Me.spnTotalCosto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
+        Me.spnTotalCosto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, True)})
         Me.spnTotalCosto.Size = New System.Drawing.Size(128, 20)
         Me.spnTotalCosto.TabIndex = 129
         '
@@ -434,7 +434,7 @@ Partial Class frmPedidosEdit
         Me.spnImpuestoUnitario.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnImpuestoUnitario.Location = New System.Drawing.Point(457, 85)
         Me.spnImpuestoUnitario.Name = "spnImpuestoUnitario"
-        Me.spnImpuestoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
+        Me.spnImpuestoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
         Me.spnImpuestoUnitario.Size = New System.Drawing.Size(80, 20)
         Me.spnImpuestoUnitario.TabIndex = 129
         '
@@ -454,7 +454,7 @@ Partial Class frmPedidosEdit
         Me.spnCostoUnitario.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnCostoUnitario.Location = New System.Drawing.Point(457, 59)
         Me.spnCostoUnitario.Name = "spnCostoUnitario"
-        Me.spnCostoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
+        Me.spnCostoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
         Me.spnCostoUnitario.Size = New System.Drawing.Size(80, 20)
         Me.spnCostoUnitario.TabIndex = 127
         '
@@ -570,7 +570,7 @@ Partial Class frmPedidosEdit
         Me.spnCantidad.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnCantidad.Location = New System.Drawing.Point(457, 31)
         Me.spnCantidad.Name = "spnCantidad"
-        Me.spnCantidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, True)})
+        Me.spnCantidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
         Me.spnCantidad.Size = New System.Drawing.Size(80, 20)
         Me.spnCantidad.TabIndex = 117
         '
