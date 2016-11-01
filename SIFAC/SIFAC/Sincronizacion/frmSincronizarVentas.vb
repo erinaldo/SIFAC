@@ -88,6 +88,7 @@ Public Class frmSincronizarVentas
 
     Public Sub CargarGrid(blnTodos As Boolean, intEstadoID As Integer, intEmpleadoID As Integer, intRutaID As Integer)
         Try
+           
 
             If blnTodos Then
                 DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionVentas", "1=1"))

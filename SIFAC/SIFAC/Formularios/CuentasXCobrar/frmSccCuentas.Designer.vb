@@ -33,13 +33,30 @@ Partial Class frmSccCuentas
         Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
         Me.C1Sizer1 = New C1.Win.C1Sizer.C1Sizer()
-        Me.grdDetalleExpedientes = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.grdCuentas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdExpedienteDetalle = New DevExpress.XtraGrid.GridControl()
+        Me.grdExpedienteDetalleTable = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colNumeroFact = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMontoTotal = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.SaldoD = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colPlazo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMontoCuota = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMontoAbonado = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstadoF = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.grdExpedienteMaster = New DevExpress.XtraGrid.GridControl()
+        Me.grdExpedienteMasterTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCedula = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tbCuentas.SuspendLayout()
         CType(Me.C1Sizer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.C1Sizer1.SuspendLayout()
-        CType(Me.grdDetalleExpedientes, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdCuentas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdExpedienteDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdExpedienteDetalleTable, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdExpedienteMaster, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdExpedienteMasterTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbCuentas
@@ -48,7 +65,7 @@ Partial Class frmSccCuentas
         Me.tbCuentas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.ToolStripSeparator1, Me.cmdModificarLimite, Me.cmdConsultar, Me.cmdBuscarExpedientes, Me.ToolStripSeparator2, Me.cmdReestructurarCuenta, Me.ToolStripSeparator3, Me.cmdRefrescar, Me.cmdSalir})
         Me.tbCuentas.Location = New System.Drawing.Point(0, 0)
         Me.tbCuentas.Name = "tbCuentas"
-        Me.tbCuentas.Size = New System.Drawing.Size(1151, 39)
+        Me.tbCuentas.Size = New System.Drawing.Size(863, 39)
         Me.tbCuentas.TabIndex = 0
         Me.tbCuentas.Text = "ToolStrip1"
         '
@@ -144,66 +161,198 @@ Partial Class frmSccCuentas
         '
         'C1Sizer1
         '
-        Me.C1Sizer1.Controls.Add(Me.grdDetalleExpedientes)
-        Me.C1Sizer1.Controls.Add(Me.grdCuentas)
+        Me.C1Sizer1.Controls.Add(Me.grdExpedienteMaster)
+        Me.C1Sizer1.Controls.Add(Me.grdExpedienteDetalle)
         Me.C1Sizer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.C1Sizer1.GridDefinition = "73.2558139534884:False:False;24.4186046511628:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.3049522154648:False" & _
+        Me.C1Sizer1.GridDefinition = "60.7287449392713:False:False;36.8421052631579:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.0730011587486:False" & _
     ":False;"
         Me.C1Sizer1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.C1Sizer1.Location = New System.Drawing.Point(0, 39)
-        Me.C1Sizer1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.C1Sizer1.Name = "C1Sizer1"
-        Me.C1Sizer1.Size = New System.Drawing.Size(1151, 516)
+        Me.C1Sizer1.Size = New System.Drawing.Size(863, 494)
         Me.C1Sizer1.TabIndex = 1
         Me.C1Sizer1.TabStop = False
         '
-        'grdDetalleExpedientes
+        'grdExpedienteDetalle
         '
-        Me.grdDetalleExpedientes.Caption = "Expedientes-Facturas"
-        Me.grdDetalleExpedientes.GroupByCaption = "Drag a column header here to group by that column"
-        Me.grdDetalleExpedientes.Images.Add(CType(resources.GetObject("grdDetalleExpedientes.Images"), System.Drawing.Image))
-        Me.grdDetalleExpedientes.Location = New System.Drawing.Point(4, 386)
-        Me.grdDetalleExpedientes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grdDetalleExpedientes.Name = "grdDetalleExpedientes"
-        Me.grdDetalleExpedientes.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdDetalleExpedientes.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdDetalleExpedientes.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdDetalleExpedientes.PrintInfo.PageSettings = CType(resources.GetObject("grdDetalleExpedientes.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdDetalleExpedientes.Size = New System.Drawing.Size(1143, 126)
-        Me.grdDetalleExpedientes.TabIndex = 10
-        Me.grdDetalleExpedientes.Text = "Expedientes-Facturas"
-        Me.grdDetalleExpedientes.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
-        Me.grdDetalleExpedientes.PropBag = resources.GetString("grdDetalleExpedientes.PropBag")
+        Me.grdExpedienteDetalle.Location = New System.Drawing.Point(4, 308)
+        Me.grdExpedienteDetalle.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdExpedienteDetalle.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdExpedienteDetalle.MainView = Me.grdExpedienteDetalleTable
+        Me.grdExpedienteDetalle.Name = "grdExpedienteDetalle"
+        Me.grdExpedienteDetalle.Size = New System.Drawing.Size(855, 182)
+        Me.grdExpedienteDetalle.TabIndex = 12
+        Me.grdExpedienteDetalle.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdExpedienteDetalleTable})
         '
-        'grdCuentas
+        'grdExpedienteDetalleTable
         '
-        Me.grdCuentas.AllowUpdate = False
-        Me.grdCuentas.Caption = "Expedientes"
-        Me.grdCuentas.ExtendRightColumn = True
-        Me.grdCuentas.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
-        Me.grdCuentas.Images.Add(CType(resources.GetObject("grdCuentas.Images"), System.Drawing.Image))
-        Me.grdCuentas.Location = New System.Drawing.Point(4, 4)
-        Me.grdCuentas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grdCuentas.Name = "grdCuentas"
-        Me.grdCuentas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdCuentas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdCuentas.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdCuentas.PrintInfo.PageSettings = CType(resources.GetObject("grdCuentas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdCuentas.Size = New System.Drawing.Size(1143, 508)
-        Me.grdCuentas.TabIndex = 9
-        Me.grdCuentas.Tag = "AGRUPAR"
-        Me.grdCuentas.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
-        Me.grdCuentas.PropBag = resources.GetString("grdCuentas.PropBag")
+        Me.grdExpedienteDetalleTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumeroFact, Me.colMontoTotal, Me.SaldoD, Me.colPlazo, Me.colMontoCuota, Me.colMontoAbonado, Me.colEstadoF})
+        Me.grdExpedienteDetalleTable.GridControl = Me.grdExpedienteDetalle
+        Me.grdExpedienteDetalleTable.Name = "grdExpedienteDetalleTable"
+        Me.grdExpedienteDetalleTable.OptionsView.ShowAutoFilterRow = True
+        Me.grdExpedienteDetalleTable.OptionsView.ShowGroupPanel = False
+        '
+        'colNumeroFact
+        '
+        Me.colNumeroFact.Caption = "No Factura"
+        Me.colNumeroFact.FieldName = "Numero"
+        Me.colNumeroFact.Name = "colNumeroFact"
+        Me.colNumeroFact.OptionsColumn.AllowEdit = False
+        Me.colNumeroFact.Visible = True
+        Me.colNumeroFact.VisibleIndex = 0
+        '
+        'colMontoTotal
+        '
+        Me.colMontoTotal.Caption = "Monto Total"
+        Me.colMontoTotal.FieldName = "MontoTotal"
+        Me.colMontoTotal.Name = "colMontoTotal"
+        Me.colMontoTotal.OptionsColumn.AllowEdit = False
+        Me.colMontoTotal.Visible = True
+        Me.colMontoTotal.VisibleIndex = 1
+        '
+        'SaldoD
+        '
+        Me.SaldoD.Caption = "Saldo"
+        Me.SaldoD.FieldName = "Saldo"
+        Me.SaldoD.Name = "SaldoD"
+        Me.SaldoD.OptionsColumn.AllowEdit = False
+        Me.SaldoD.Visible = True
+        Me.SaldoD.VisibleIndex = 2
+        '
+        'colPlazo
+        '
+        Me.colPlazo.Caption = "Plazo"
+        Me.colPlazo.FieldName = "Plazo"
+        Me.colPlazo.Name = "colPlazo"
+        Me.colPlazo.OptionsColumn.AllowEdit = False
+        Me.colPlazo.Visible = True
+        Me.colPlazo.VisibleIndex = 4
+        '
+        'colMontoCuota
+        '
+        Me.colMontoCuota.Caption = "Monto Cuota"
+        Me.colMontoCuota.FieldName = "MontoCuota"
+        Me.colMontoCuota.Name = "colMontoCuota"
+        Me.colMontoCuota.OptionsColumn.AllowEdit = False
+        Me.colMontoCuota.Visible = True
+        Me.colMontoCuota.VisibleIndex = 3
+        '
+        'colMontoAbonado
+        '
+        Me.colMontoAbonado.Caption = "Monto Abonado"
+        Me.colMontoAbonado.FieldName = "MontoAbonado"
+        Me.colMontoAbonado.Name = "colMontoAbonado"
+        Me.colMontoAbonado.OptionsColumn.AllowEdit = False
+        Me.colMontoAbonado.Visible = True
+        Me.colMontoAbonado.VisibleIndex = 5
+        '
+        'colEstadoF
+        '
+        Me.colEstadoF.Caption = "Estado"
+        Me.colEstadoF.FieldName = "EstadoFact"
+        Me.colEstadoF.Name = "colEstadoF"
+        Me.colEstadoF.OptionsColumn.AllowEdit = False
+        Me.colEstadoF.Visible = True
+        Me.colEstadoF.VisibleIndex = 6
+        '
+        'grdExpedienteMaster
+        '
+        Me.grdExpedienteMaster.Location = New System.Drawing.Point(4, 4)
+        Me.grdExpedienteMaster.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdExpedienteMaster.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdExpedienteMaster.MainView = Me.grdExpedienteMasterTabla
+        Me.grdExpedienteMaster.Name = "grdExpedienteMaster"
+        Me.grdExpedienteMaster.Size = New System.Drawing.Size(855, 300)
+        Me.grdExpedienteMaster.TabIndex = 13
+        Me.grdExpedienteMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdExpedienteMasterTabla})
+        '
+        'grdExpedienteMasterTabla
+        '
+        Me.grdExpedienteMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colCliente, Me.colSaldo, Me.colEstado, Me.colCedula})
+        Me.grdExpedienteMasterTabla.GridControl = Me.grdExpedienteMaster
+        Me.grdExpedienteMasterTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
+        Me.grdExpedienteMasterTabla.Name = "grdExpedienteMasterTabla"
+        Me.grdExpedienteMasterTabla.OptionsDetail.AllowZoomDetail = False
+        Me.grdExpedienteMasterTabla.OptionsDetail.EnableMasterViewMode = False
+        Me.grdExpedienteMasterTabla.OptionsDetail.ShowDetailTabs = False
+        Me.grdExpedienteMasterTabla.OptionsDetail.SmartDetailExpand = False
+        Me.grdExpedienteMasterTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdExpedienteMasterTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
+        '
+        'colNumero
+        '
+        Me.colNumero.Caption = "No Expediente" & Global.Microsoft.VisualBasic.ChrW(9)
+        Me.colNumero.FieldName = "Numero"
+        Me.colNumero.Name = "colNumero"
+        Me.colNumero.OptionsColumn.AllowFocus = False
+        Me.colNumero.OptionsColumn.ReadOnly = True
+        Me.colNumero.Visible = True
+        Me.colNumero.VisibleIndex = 0
+        Me.colNumero.Width = 76
+        '
+        'colFecha
+        '
+        Me.colFecha.Caption = "Fecha Credito"
+        Me.colFecha.FieldName = "FechaCredito"
+        Me.colFecha.Name = "colFecha"
+        Me.colFecha.OptionsColumn.AllowFocus = False
+        Me.colFecha.OptionsColumn.ReadOnly = True
+        Me.colFecha.Visible = True
+        Me.colFecha.VisibleIndex = 3
+        Me.colFecha.Width = 78
+        '
+        'colCliente
+        '
+        Me.colCliente.Caption = "Cliente"
+        Me.colCliente.FieldName = "Cliente"
+        Me.colCliente.Name = "colCliente"
+        Me.colCliente.OptionsColumn.AllowFocus = False
+        Me.colCliente.OptionsColumn.ReadOnly = True
+        Me.colCliente.Visible = True
+        Me.colCliente.VisibleIndex = 1
+        Me.colCliente.Width = 218
+        '
+        'colSaldo
+        '
+        Me.colSaldo.Caption = "Saldo"
+        Me.colSaldo.FieldName = "Saldo"
+        Me.colSaldo.Name = "colSaldo"
+        Me.colSaldo.OptionsColumn.AllowFocus = False
+        Me.colSaldo.OptionsColumn.ReadOnly = True
+        Me.colSaldo.Visible = True
+        Me.colSaldo.VisibleIndex = 4
+        Me.colSaldo.Width = 109
+        '
+        'colEstado
+        '
+        Me.colEstado.Caption = "Estado"
+        Me.colEstado.FieldName = "Estado"
+        Me.colEstado.Name = "colEstado"
+        Me.colEstado.OptionsColumn.AllowFocus = False
+        Me.colEstado.OptionsColumn.ReadOnly = True
+        Me.colEstado.Visible = True
+        Me.colEstado.VisibleIndex = 5
+        Me.colEstado.Width = 86
+        '
+        'colCedula
+        '
+        Me.colCedula.Caption = "Cédula"
+        Me.colCedula.FieldName = "Cedula"
+        Me.colCedula.Name = "colCedula"
+        Me.colCedula.OptionsColumn.AllowFocus = False
+        Me.colCedula.OptionsColumn.ReadOnly = True
+        Me.colCedula.Visible = True
+        Me.colCedula.VisibleIndex = 2
+        Me.colCedula.Width = 86
         '
         'frmSccCuentas
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1151, 555)
+        Me.ClientSize = New System.Drawing.Size(863, 533)
         Me.Controls.Add(Me.C1Sizer1)
         Me.Controls.Add(Me.tbCuentas)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmSccCuentas"
         Me.Text = "Expedientes"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -211,8 +360,10 @@ Partial Class frmSccCuentas
         Me.tbCuentas.PerformLayout()
         CType(Me.C1Sizer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.C1Sizer1.ResumeLayout(False)
-        CType(Me.grdDetalleExpedientes, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdCuentas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdExpedienteDetalle, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdExpedienteDetalleTable, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdExpedienteMaster, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdExpedienteMasterTabla, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -225,11 +376,26 @@ Partial Class frmSccCuentas
     Friend WithEvents cmdSalir As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdBuscarExpedientes As System.Windows.Forms.ToolStripButton
     Friend WithEvents C1Sizer1 As C1.Win.C1Sizer.C1Sizer
-    Friend WithEvents grdCuentas As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents grdDetalleExpedientes As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdModificarLimite As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdReestructurarCuenta As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents grdExpedienteDetalle As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdExpedienteDetalleTable As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colNumeroFact As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colMontoTotal As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents SaldoD As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colPlazo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colMontoCuota As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colMontoAbonado As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEstadoF As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents grdExpedienteMaster As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdExpedienteMasterTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colFecha As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCliente As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSaldo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCedula As DevExpress.XtraGrid.Columns.GridColumn
 End Class

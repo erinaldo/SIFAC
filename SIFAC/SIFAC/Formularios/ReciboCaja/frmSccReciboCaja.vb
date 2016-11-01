@@ -173,7 +173,7 @@ Public Class frmSccReciboCaja
         Dim DiasRecibosRecientes As Integer
         Try
             DiasRecibosRecientes = StbParametro.RetrieveDT("Nombre = 'CantidadRecibosRecientes'", , "Valor").DefaultView.Item(0)("Valor")
-            Me.DtRecibosCajas = SqlHelper.ExecuteQueryDT("SELECT Fecha, Numero, SccReciboCajaID, TotalRecibo,objEstadoId, EsPagoPrima, SccCuentaID,objClienteId, Cliente, Estado, NumeroRecibo, StbPersonaID FROM vwSccReciboCaja WHERE Fecha BETWEEN GETDATE()-366 AND GETDATE()")
+            Me.DtRecibosCajas = SqlHelper.ExecuteQueryDT("SELECT Expediente, Fecha, Numero, SccReciboCajaID, TotalRecibo,objEstadoId, EsPagoPrima,objClienteId, Cliente, Estado, NumeroRecibo, StbPersonaID FROM vwSccReciboCaja WHERE Fecha BETWEEN GETDATE()-366 AND GETDATE()")
             Me.DtRecibosCajas.DefaultView.Sort = "SccReciboCajaID"
             Me.grdRecibosCaja.DataSource = Me.DtRecibosCajas
         Catch ex As Exception

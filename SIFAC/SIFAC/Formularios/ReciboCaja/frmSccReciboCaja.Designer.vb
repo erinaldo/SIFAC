@@ -38,7 +38,7 @@ Partial Class frmSccReciboCaja
         Me.grdRecibosCajaTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colSccReciboCajaID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNumeroRecibo = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colSccCuentaID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Expediente = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colMonto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -149,7 +149,7 @@ Partial Class frmSccReciboCaja
         '
         'grdRecibosCajaTabla
         '
-        Me.grdRecibosCajaTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colSccReciboCajaID, Me.colNumeroRecibo, Me.colSccCuentaID, Me.colMonto, Me.colFecha, Me.colCliente, Me.colEstado, Me.colobjEstadoID})
+        Me.grdRecibosCajaTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colSccReciboCajaID, Me.colNumeroRecibo, Me.Expediente, Me.colMonto, Me.colFecha, Me.colCliente, Me.colEstado, Me.colobjEstadoID})
         Me.grdRecibosCajaTabla.GridControl = Me.grdRecibosCaja
         Me.grdRecibosCajaTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdRecibosCajaTabla.Name = "grdRecibosCajaTabla"
@@ -173,18 +173,18 @@ Partial Class frmSccReciboCaja
         Me.colNumeroRecibo.OptionsColumn.AllowEdit = False
         Me.colNumeroRecibo.Visible = True
         Me.colNumeroRecibo.VisibleIndex = 0
-        Me.colNumeroRecibo.Width = 133
+        Me.colNumeroRecibo.Width = 96
         '
-        'colSccCuentaID
+        'Expediente
         '
-        Me.colSccCuentaID.Caption = "No. Expediente"
-        Me.colSccCuentaID.FieldName = "SccCuentaID"
-        Me.colSccCuentaID.Name = "colSccCuentaID"
-        Me.colSccCuentaID.OptionsColumn.AllowEdit = False
-        Me.colSccCuentaID.OptionsColumn.ReadOnly = True
-        Me.colSccCuentaID.Visible = True
-        Me.colSccCuentaID.VisibleIndex = 1
-        Me.colSccCuentaID.Width = 150
+        Me.Expediente.Caption = "No. Expediente"
+        Me.Expediente.FieldName = "Expediente"
+        Me.Expediente.Name = "Expediente"
+        Me.Expediente.OptionsColumn.AllowEdit = False
+        Me.Expediente.OptionsColumn.ReadOnly = True
+        Me.Expediente.Visible = True
+        Me.Expediente.VisibleIndex = 1
+        Me.Expediente.Width = 119
         '
         'colMonto
         '
@@ -195,7 +195,7 @@ Partial Class frmSccReciboCaja
         Me.colMonto.OptionsColumn.ReadOnly = True
         Me.colMonto.Visible = True
         Me.colMonto.VisibleIndex = 2
-        Me.colMonto.Width = 76
+        Me.colMonto.Width = 108
         '
         'colFecha
         '
@@ -205,7 +205,7 @@ Partial Class frmSccReciboCaja
         Me.colFecha.OptionsColumn.AllowEdit = False
         Me.colFecha.Visible = True
         Me.colFecha.VisibleIndex = 3
-        Me.colFecha.Width = 128
+        Me.colFecha.Width = 101
         '
         'colCliente
         '
@@ -215,7 +215,7 @@ Partial Class frmSccReciboCaja
         Me.colCliente.OptionsColumn.AllowEdit = False
         Me.colCliente.Visible = True
         Me.colCliente.VisibleIndex = 4
-        Me.colCliente.Width = 80
+        Me.colCliente.Width = 159
         '
         'colEstado
         '
@@ -225,7 +225,7 @@ Partial Class frmSccReciboCaja
         Me.colEstado.OptionsColumn.AllowEdit = False
         Me.colEstado.Visible = True
         Me.colEstado.VisibleIndex = 5
-        Me.colEstado.Width = 54
+        Me.colEstado.Width = 120
         '
         'colobjEstadoID
         '
@@ -278,7 +278,7 @@ Partial Class frmSccReciboCaja
     Friend WithEvents grdRecibosCajaTabla As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colSccReciboCajaID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colNumeroRecibo As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colSccCuentaID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Expediente As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colMonto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colFecha As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCliente As DevExpress.XtraGrid.Columns.GridColumn

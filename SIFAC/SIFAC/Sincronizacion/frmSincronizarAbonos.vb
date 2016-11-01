@@ -22,6 +22,7 @@ Public Class frmSincronizarAbonos
     Private Sub InicializarVariables()
         Try
             intEstadoAbonoRegistrado = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOAPLICACION", "01"))
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -88,6 +89,7 @@ Public Class frmSincronizarAbonos
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid(blnTodos As Boolean, intEstadoID As Integer, intEmpleadoID As Integer, intRutaID As Integer)
         Try
+
             If blnTodos Then
                 DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "1=1"))
             End If
@@ -200,11 +202,53 @@ Public Class frmSincronizarAbonos
 
     End Sub
 
+    '--------------------------------------------------------------------------------------------------------------
+    ' Descripcion     : Esta funcion se encarga de ir a generar el numero del recibo creado.
+    '--------------------------------------------------------------------------------------------------------------
+    Private Function GeneraraNumero(t As TransactionManager) As String
+        Dim strNum As String
+        Dim dtNum As New DataTable
+        Dim dtValParam As New DataTable
+        Dim intNCeros As Integer
+        Dim intNumero As Integer
+        strNum = ""
+        Try
+            dtValParam = StbParametro.RetrieveDT("Nombre = 'CerosRellenoReciboCaja'", , "Valor", t)
+            If dtValParam.DefaultView.Count > 0 Then
+                intNCeros = dtValParam.DefaultView.Item(0)("Valor")
+            End If
+            dtNum = SccReciboCaja.RetrieveDT(, , "COUNT(*) AS Cantidad,MAX(Numero) as NumeroMax", t)
+            If dtNum.DefaultView.Item(0)("Cantidad") = 0 Then
+                For Cant As Integer = 1 To intNCeros - 1
+                    strNum = strNum + "0"
+                Next
+                strNum = strNum + "1"
+            Else
+                intNumero = dtNum.DefaultView.Item(0)("NumeroMax") + 1
+                intNCeros = intNCeros - intNumero.ToString.Length
+                For Cant As Integer = 1 To intNCeros
+                    strNum = strNum + "0"
+                Next
+                strNum = strNum + intNumero.ToString
+            End If
+            Return strNum
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            dtNum = Nothing
+            dtValParam = Nothing
+        End Try
+        Return strNum
+    End Function
+
+
     Private Sub SincronizarAbonos()
         Dim DtDatosFactRecibo As DataTable
         DtDatosFactRecibo = New DataTable
         Dim sConsulta As String
         Dim intEstadoRegistrado As Integer
+        Dim intRuta As Integer
+        Dim intCobrador As Integer
         Dim blnSeleccionado As Boolean
         Dim intAplCobroID, intobjSccCuentaID, intReciboCajaID As Integer
         Dim dtFechaAbono As Date
@@ -226,6 +270,8 @@ Public Class frmSincronizarAbonos
                     intobjSccCuentaID = CInt(drFilaAbonos("objSccCuentaID"))
                     dtFechaAbono = CDate(drFilaAbonos("FechaAbono"))
                     decTotalRecibo = CDec(drFilaAbonos("MontoAbonado"))
+                    intRuta = CInt(drFilaAbonos("objStbRutaID"))
+                    intCobrador = CInt(drFilaAbonos("objCobradorID"))
 
                     '0 Actualizar estado factura proforma
                     With objAplCobros
@@ -236,8 +282,10 @@ Public Class frmSincronizarAbonos
 
                     '--------------------------- Creamos el encabezado del recibo colector--------------------------
                     Me.objReciboCaja = New SccReciboCaja
-                    Me.objReciboCaja.Numero = 0
+                    Me.objReciboCaja.Numero = GeneraraNumero(t)
                     Me.objReciboCaja.Fecha = dtFechaAbono
+                    Me.objReciboCaja.objRutaID = intRuta
+                    Me.objReciboCaja.objSrhEmpleado = intCobrador
                     Me.objReciboCaja.TotalRecibo = decTotalRecibo
                     Me.objReciboCaja.UsuarioCreacion = clsProyecto.Conexion.Usuario
                     Me.objReciboCaja.FechaCreacion = clsProyecto.Conexion.FechaServidor
@@ -326,8 +374,13 @@ Public Class frmSincronizarAbonos
     End Sub
 
     Private Sub cmdAprobar_Click(sender As Object, e As EventArgs) Handles cmdAprobar.Click
-        SincronizarAbonos()
-        CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
+        Try
+            SincronizarAbonos()
+            CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+       
     End Sub
 
     Private Sub cmbExportar_Click(sender As Object, e As EventArgs) Handles cmbExportar.Click

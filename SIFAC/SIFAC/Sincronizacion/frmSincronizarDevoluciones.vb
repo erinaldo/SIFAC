@@ -89,7 +89,7 @@ Public Class frmSincronizarDevoluciones
 
     Public Sub CargarGrid(blnTodos As Boolean, intEstadoID As Integer, intEmpleadoID As Integer, intRutaID As Integer)
         Try
-
+          
             If blnTodos Then
                 DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "1=1"))
             End If
@@ -302,10 +302,14 @@ Public Class frmSincronizarDevoluciones
     End Sub
 
     Private Sub cmdAprobar_Click(sender As Object, e As EventArgs) Handles cmdAprobar.Click
-        SincronizarDevoluciones()
-        CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
-    End Sub
+        Try
+            SincronizarDevoluciones()
+            CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
 
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
    
 
     Private Sub cmdCerrar_Click(sender As Object, e As EventArgs) Handles cmdCerrar.Click

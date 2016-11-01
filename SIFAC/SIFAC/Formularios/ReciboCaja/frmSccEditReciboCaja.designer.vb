@@ -32,9 +32,6 @@ Partial Class frmSccEditReciboCaja
         Me.ListaImagenes = New System.Windows.Forms.ImageList(Me.components)
         Me.cmbMoneda = New C1.Win.C1List.C1Combo()
         Me.lblMoneda = New System.Windows.Forms.Label()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
-        Me.cmdProcesar = New System.Windows.Forms.Button()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblTotalFact = New System.Windows.Forms.Label()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
@@ -64,6 +61,13 @@ Partial Class frmSccEditReciboCaja
         Me.lblMontoAbonado = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmbRuta = New C1.Win.C1List.C1Combo()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cbxCobrador = New C1.Win.C1List.C1Combo()
+        Me.lblMarca = New System.Windows.Forms.Label()
+        Me.cmProcesar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.tbControl.SuspendLayout()
         Me.tbpDetFact.SuspendLayout()
         CType(Me.grdFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,13 +84,15 @@ Partial Class frmSccEditReciboCaja
         Me.GroupBox1.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbControl
         '
         Me.tbControl.Controls.Add(Me.tbpDetFact)
         Me.tbControl.Controls.Add(Me.tbpFormasPago)
-        Me.tbControl.Location = New System.Drawing.Point(0, 148)
+        Me.tbControl.Location = New System.Drawing.Point(0, 168)
         Me.tbControl.Name = "tbControl"
         Me.tbControl.SelectedIndex = 0
         Me.tbControl.Size = New System.Drawing.Size(642, 206)
@@ -133,8 +139,8 @@ Partial Class frmSccEditReciboCaja
         Me.tbpFormasPago.Name = "tbpFormasPago"
         Me.tbpFormasPago.Padding = New System.Windows.Forms.Padding(3)
         Me.tbpFormasPago.Size = New System.Drawing.Size(634, 180)
-        Me.tbpFormasPago.TabIndex = 1
-        Me.tbpFormasPago.Text = "Formas de Pago"
+        Me.tbpFormasPago.TabIndex = 2
+        Me.tbpFormasPago.Text = "Pago"
         Me.tbpFormasPago.UseVisualStyleBackColor = True
         '
         'grpFormaPago
@@ -143,14 +149,14 @@ Partial Class frmSccEditReciboCaja
         Me.grpFormaPago.Controls.Add(Me.Label7)
         Me.grpFormaPago.Location = New System.Drawing.Point(6, 14)
         Me.grpFormaPago.Name = "grpFormaPago"
-        Me.grpFormaPago.Size = New System.Drawing.Size(620, 86)
+        Me.grpFormaPago.Size = New System.Drawing.Size(620, 61)
         Me.grpFormaPago.TabIndex = 14
         Me.grpFormaPago.TabStop = False
         Me.grpFormaPago.Text = "Pago en Efectivo"
         '
         'NumMontoDolares
         '
-        Me.NumMontoDolares.BackColor = System.Drawing.SystemColors.Desktop
+        Me.NumMontoDolares.BackColor = System.Drawing.Color.Transparent
         Me.NumMontoDolares.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
         Me.NumMontoDolares.Location = New System.Drawing.Point(56, 28)
         Me.NumMontoDolares.Name = "NumMontoDolares"
@@ -164,9 +170,10 @@ Partial Class frmSccEditReciboCaja
         'Label7
         '
         Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(11, 31)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(40, 13)
+        Me.Label7.Size = New System.Drawing.Size(46, 13)
         Me.Label7.TabIndex = 11
         Me.Label7.Text = "Monto:"
         '
@@ -230,45 +237,11 @@ Partial Class frmSccEditReciboCaja
         Me.lblMoneda.Size = New System.Drawing.Size(120, 17)
         Me.lblMoneda.TabIndex = 9
         '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Location = New System.Drawing.Point(391, 440)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(76, 31)
-        Me.cmdAceptar.TabIndex = 3
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
-        '
-        'cmdProcesar
-        '
-        Me.cmdProcesar.Enabled = False
-        Me.cmdProcesar.Image = CType(resources.GetObject("cmdProcesar.Image"), System.Drawing.Image)
-        Me.cmdProcesar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdProcesar.Location = New System.Drawing.Point(472, 440)
-        Me.cmdProcesar.Name = "cmdProcesar"
-        Me.cmdProcesar.Size = New System.Drawing.Size(76, 31)
-        Me.cmdProcesar.TabIndex = 4
-        Me.cmdProcesar.Text = "&Procesar"
-        Me.cmdProcesar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdProcesar.UseVisualStyleBackColor = True
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Location = New System.Drawing.Point(552, 440)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(76, 31)
-        Me.cmdCancelar.TabIndex = 5
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(402, 392)
+        Me.Label3.Location = New System.Drawing.Point(402, 412)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(77, 13)
         Me.Label3.TabIndex = 9
@@ -277,9 +250,10 @@ Partial Class frmSccEditReciboCaja
         'lblTotalFact
         '
         Me.lblTotalFact.AutoSize = True
-        Me.lblTotalFact.Location = New System.Drawing.Point(402, 366)
+        Me.lblTotalFact.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalFact.Location = New System.Drawing.Point(402, 386)
         Me.lblTotalFact.Name = "lblTotalFact"
-        Me.lblTotalFact.Size = New System.Drawing.Size(58, 13)
+        Me.lblTotalFact.Size = New System.Drawing.Size(69, 13)
         Me.lblTotalFact.TabIndex = 7
         Me.lblTotalFact.Text = "Total Fact:"
         '
@@ -305,7 +279,7 @@ Partial Class frmSccEditReciboCaja
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.txtTotalFact.Enabled = False
         Me.txtTotalFact.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.txtTotalFact.Location = New System.Drawing.Point(489, 364)
+        Me.txtTotalFact.Location = New System.Drawing.Point(489, 384)
         Me.txtTotalFact.Name = "txtTotalFact"
         Me.txtTotalFact.Size = New System.Drawing.Size(123, 20)
         Me.txtTotalFact.TabIndex = 15
@@ -327,7 +301,7 @@ Partial Class frmSccEditReciboCaja
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.txtTotalPagar.Enabled = False
         Me.txtTotalPagar.FormatType = C1.Win.C1Input.FormatTypeEnum.Percent
-        Me.txtTotalPagar.Location = New System.Drawing.Point(489, 388)
+        Me.txtTotalPagar.Location = New System.Drawing.Point(489, 408)
         Me.txtTotalPagar.Name = "txtTotalPagar"
         Me.txtTotalPagar.Size = New System.Drawing.Size(123, 20)
         Me.txtTotalPagar.TabIndex = 17
@@ -344,7 +318,8 @@ Partial Class frmSccEditReciboCaja
         Me.grpDatosRecibos.Controls.Add(Me.Label1)
         Me.grpDatosRecibos.Controls.Add(Me.txtNumRecibo)
         Me.grpDatosRecibos.Controls.Add(Me.lblRecibo)
-        Me.grpDatosRecibos.Location = New System.Drawing.Point(15, 25)
+        Me.grpDatosRecibos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpDatosRecibos.Location = New System.Drawing.Point(7, 12)
         Me.grpDatosRecibos.Name = "grpDatosRecibos"
         Me.grpDatosRecibos.Size = New System.Drawing.Size(241, 98)
         Me.grpDatosRecibos.TabIndex = 19
@@ -354,15 +329,18 @@ Partial Class frmSccEditReciboCaja
         'Label8
         '
         Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.Black
         Me.Label8.Location = New System.Drawing.Point(6, 44)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(43, 13)
+        Me.Label8.Size = New System.Drawing.Size(50, 13)
         Me.Label8.TabIndex = 6
         Me.Label8.Tag = "OBLIGATORIO"
         Me.Label8.Text = "Estado:"
         '
         'txtEstado
         '
+        Me.txtEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEstado.Location = New System.Drawing.Point(73, 43)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.Size = New System.Drawing.Size(159, 20)
@@ -391,6 +369,7 @@ Partial Class frmSccEditReciboCaja
             Or C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
+        Me.dtpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFecha.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
         Me.dtpFecha.Location = New System.Drawing.Point(73, 69)
         Me.dtpFecha.Name = "dtpFecha"
@@ -402,15 +381,18 @@ Partial Class frmSccEditReciboCaja
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Black
         Me.Label1.Location = New System.Drawing.Point(6, 72)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(40, 13)
+        Me.Label1.Size = New System.Drawing.Size(46, 13)
         Me.Label1.TabIndex = 2
         Me.Label1.Tag = "OBLIGATORIO"
         Me.Label1.Text = "Fecha:"
         '
         'txtNumRecibo
         '
+        Me.txtNumRecibo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumRecibo.Location = New System.Drawing.Point(73, 17)
         Me.txtNumRecibo.Name = "txtNumRecibo"
         Me.txtNumRecibo.Size = New System.Drawing.Size(159, 20)
@@ -420,9 +402,11 @@ Partial Class frmSccEditReciboCaja
         'lblRecibo
         '
         Me.lblRecibo.AutoSize = True
+        Me.lblRecibo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRecibo.ForeColor = System.Drawing.Color.Black
         Me.lblRecibo.Location = New System.Drawing.Point(6, 20)
         Me.lblRecibo.Name = "lblRecibo"
-        Me.lblRecibo.Size = New System.Drawing.Size(61, 13)
+        Me.lblRecibo.Size = New System.Drawing.Size(71, 13)
         Me.lblRecibo.TabIndex = 0
         Me.lblRecibo.Tag = "OBLIGATORIO"
         Me.lblRecibo.Text = "No.Recibo:"
@@ -435,9 +419,10 @@ Partial Class frmSccEditReciboCaja
         Me.GrpExpediente.Controls.Add(Me.Label4)
         Me.GrpExpediente.Controls.Add(Me.txtNumCuenta)
         Me.GrpExpediente.Controls.Add(Me.Label5)
-        Me.GrpExpediente.Location = New System.Drawing.Point(263, 26)
+        Me.GrpExpediente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GrpExpediente.Location = New System.Drawing.Point(273, 12)
         Me.GrpExpediente.Name = "GrpExpediente"
-        Me.GrpExpediente.Size = New System.Drawing.Size(379, 98)
+        Me.GrpExpediente.Size = New System.Drawing.Size(367, 98)
         Me.GrpExpediente.TabIndex = 18
         Me.GrpExpediente.TabStop = False
         Me.GrpExpediente.Text = "Datos Expediente"
@@ -445,9 +430,11 @@ Partial Class frmSccEditReciboCaja
         'chkPrima
         '
         Me.chkPrima.AutoSize = True
+        Me.chkPrima.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkPrima.ForeColor = System.Drawing.Color.Black
         Me.chkPrima.Location = New System.Drawing.Point(19, 75)
         Me.chkPrima.Name = "chkPrima"
-        Me.chkPrima.Size = New System.Drawing.Size(104, 17)
+        Me.chkPrima.Size = New System.Drawing.Size(119, 17)
         Me.chkPrima.TabIndex = 22
         Me.chkPrima.Text = "Recibo de Prima"
         Me.chkPrima.UseVisualStyleBackColor = True
@@ -463,6 +450,7 @@ Partial Class frmSccEditReciboCaja
         '
         'txtCliente
         '
+        Me.txtCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCliente.Location = New System.Drawing.Point(86, 44)
         Me.txtCliente.Name = "txtCliente"
         Me.txtCliente.Size = New System.Drawing.Size(263, 20)
@@ -472,15 +460,18 @@ Partial Class frmSccEditReciboCaja
         'Label4
         '
         Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Black
         Me.Label4.Location = New System.Drawing.Point(16, 47)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(42, 13)
+        Me.Label4.Size = New System.Drawing.Size(50, 13)
         Me.Label4.TabIndex = 4
         Me.Label4.Tag = "OBLIGATORIO"
         Me.Label4.Text = "Cliente:"
         '
         'txtNumCuenta
         '
+        Me.txtNumCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNumCuenta.Location = New System.Drawing.Point(155, 17)
         Me.txtNumCuenta.Name = "txtNumCuenta"
         Me.txtNumCuenta.Size = New System.Drawing.Size(163, 20)
@@ -490,9 +481,11 @@ Partial Class frmSccEditReciboCaja
         'Label5
         '
         Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Black
         Me.Label5.Location = New System.Drawing.Point(16, 20)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(48, 13)
+        Me.Label5.Size = New System.Drawing.Size(56, 13)
         Me.Label5.TabIndex = 1
         Me.Label5.Tag = "OBLIGATORIO"
         Me.Label5.Text = "No. Exp:"
@@ -504,7 +497,7 @@ Partial Class frmSccEditReciboCaja
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.lblMontoRestante)
         Me.GroupBox1.Controls.Add(Me.lblMontoAbonado)
-        Me.GroupBox1.Location = New System.Drawing.Point(10, 361)
+        Me.GroupBox1.Location = New System.Drawing.Point(7, 386)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(229, 59)
         Me.GroupBox1.TabIndex = 21
@@ -532,18 +525,22 @@ Partial Class frmSccEditReciboCaja
         'Label9
         '
         Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.Black
         Me.Label9.Location = New System.Drawing.Point(9, 20)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(89, 13)
+        Me.Label9.Size = New System.Drawing.Size(104, 13)
         Me.Label9.TabIndex = 25
         Me.Label9.Text = "Monto Abarcado:"
         '
         'lblMontoRestante
         '
         Me.lblMontoRestante.AutoSize = True
+        Me.lblMontoRestante.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMontoRestante.ForeColor = System.Drawing.Color.Black
         Me.lblMontoRestante.Location = New System.Drawing.Point(9, 40)
         Me.lblMontoRestante.Name = "lblMontoRestante"
-        Me.lblMontoRestante.Size = New System.Drawing.Size(86, 13)
+        Me.lblMontoRestante.Size = New System.Drawing.Size(101, 13)
         Me.lblMontoRestante.TabIndex = 23
         Me.lblMontoRestante.Text = "Monto Restante:"
         '
@@ -567,6 +564,14 @@ Partial Class frmSccEditReciboCaja
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmbRuta)
+        Me.PanelControl1.Controls.Add(Me.Label2)
+        Me.PanelControl1.Controls.Add(Me.cbxCobrador)
+        Me.PanelControl1.Controls.Add(Me.lblMarca)
+        Me.PanelControl1.Controls.Add(Me.cmProcesar)
+        Me.PanelControl1.Controls.Add(Me.GroupBox1)
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.grpDatosRecibos)
         Me.PanelControl1.Controls.Add(Me.GrpExpediente)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -577,22 +582,150 @@ Partial Class frmSccEditReciboCaja
         Me.PanelControl1.Size = New System.Drawing.Size(648, 506)
         Me.PanelControl1.TabIndex = 99
         '
+        'cmbRuta
+        '
+        Me.cmbRuta.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbRuta.AllowColMove = False
+        Me.cmbRuta.AllowSort = False
+        Me.cmbRuta.Caption = ""
+        Me.cmbRuta.CaptionHeight = 17
+        Me.cmbRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbRuta.ColumnCaptionHeight = 17
+        Me.cmbRuta.ColumnFooterHeight = 17
+        Me.cmbRuta.ColumnHeaders = False
+        Me.cmbRuta.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cmbRuta.ContentHeight = 15
+        Me.cmbRuta.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbRuta.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbRuta.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbRuta.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbRuta.EditorHeight = 15
+        Me.cmbRuta.Enabled = False
+        Me.cmbRuta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbRuta.Images.Add(CType(resources.GetObject("cmbRuta.Images"), System.Drawing.Image))
+        Me.cmbRuta.ItemHeight = 15
+        Me.cmbRuta.Location = New System.Drawing.Point(333, 124)
+        Me.cmbRuta.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbRuta.MaxDropDownItems = CType(5, Short)
+        Me.cmbRuta.MaxLength = 32767
+        Me.cmbRuta.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbRuta.Name = "cmbRuta"
+        Me.cmbRuta.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbRuta.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbRuta.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbRuta.Size = New System.Drawing.Size(208, 21)
+        Me.cmbRuta.TabIndex = 127
+        Me.cmbRuta.Tag = "OBLIGATORIO"
+        Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(289, 128)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(38, 13)
+        Me.Label2.TabIndex = 126
+        Me.Label2.Text = "Ruta:"
+        '
+        'cbxCobrador
+        '
+        Me.cbxCobrador.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cbxCobrador.Caption = ""
+        Me.cbxCobrador.CaptionHeight = 17
+        Me.cbxCobrador.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cbxCobrador.ColumnCaptionHeight = 17
+        Me.cbxCobrador.ColumnFooterHeight = 17
+        Me.cbxCobrador.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cbxCobrador.ContentHeight = 15
+        Me.cbxCobrador.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cbxCobrador.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cbxCobrador.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbxCobrador.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cbxCobrador.EditorHeight = 15
+        Me.cbxCobrador.Images.Add(CType(resources.GetObject("cbxCobrador.Images"), System.Drawing.Image))
+        Me.cbxCobrador.ItemHeight = 15
+        Me.cbxCobrador.Location = New System.Drawing.Point(80, 124)
+        Me.cbxCobrador.MatchEntryTimeout = CType(2000, Long)
+        Me.cbxCobrador.MaxDropDownItems = CType(5, Short)
+        Me.cbxCobrador.MaxLength = 32767
+        Me.cbxCobrador.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cbxCobrador.Name = "cbxCobrador"
+        Me.cbxCobrador.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cbxCobrador.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cbxCobrador.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cbxCobrador.Size = New System.Drawing.Size(184, 21)
+        Me.cbxCobrador.TabIndex = 23
+        Me.cbxCobrador.Tag = "OBLIGATORIO"
+        Me.cbxCobrador.PropBag = resources.GetString("cbxCobrador.PropBag")
+        '
+        'lblMarca
+        '
+        Me.lblMarca.AutoSize = True
+        Me.lblMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMarca.ForeColor = System.Drawing.Color.Black
+        Me.lblMarca.Location = New System.Drawing.Point(13, 128)
+        Me.lblMarca.Name = "lblMarca"
+        Me.lblMarca.Size = New System.Drawing.Size(62, 13)
+        Me.lblMarca.TabIndex = 24
+        Me.lblMarca.Tag = "OBLIGATORIO"
+        Me.lblMarca.Text = "Cobrador:"
+        '
+        'cmProcesar
+        '
+        Me.cmProcesar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmProcesar.Appearance.Options.UseFont = True
+        Me.cmProcesar.Image = CType(resources.GetObject("cmProcesar.Image"), System.Drawing.Image)
+        Me.cmProcesar.Location = New System.Drawing.Point(463, 444)
+        Me.cmProcesar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmProcesar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmProcesar.Name = "cmProcesar"
+        Me.cmProcesar.Size = New System.Drawing.Size(75, 28)
+        Me.cmProcesar.TabIndex = 22
+        Me.cmProcesar.Tag = "PROCESAR"
+        Me.cmProcesar.Text = "&Procesar"
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(542, 444)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 21
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(380, 444)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 20
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Guardar"
+        '
         'frmSccEditReciboCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.cmdCancelar
         Me.ClientSize = New System.Drawing.Size(648, 506)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txtTotalPagar)
         Me.Controls.Add(Me.txtTotalFact)
         Me.Controls.Add(Me.lblError)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lblTotalFact)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdProcesar)
-        Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.tbControl)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -623,21 +756,19 @@ Partial Class frmSccEditReciboCaja
         Me.GroupBox1.PerformLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents tbControl As System.Windows.Forms.TabControl
     Friend WithEvents tbpDetFact As System.Windows.Forms.TabPage
-    Friend WithEvents tbpFormasPago As System.Windows.Forms.TabPage
     Friend WithEvents grdFacturas As C1.Win.C1TrueDBGrid.C1TrueDBGrid
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
-    Friend WithEvents cmdProcesar As System.Windows.Forms.Button
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents lblTotalFact As System.Windows.Forms.Label
     Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
-    Friend WithEvents cmdEliminar As System.Windows.Forms.Button
     Friend WithEvents ListaImagenes As System.Windows.Forms.ImageList
     Friend WithEvents lblError As System.Windows.Forms.Label
     Friend WithEvents txtTotalFact As C1.Win.C1Input.C1NumericEdit
@@ -656,11 +787,8 @@ Partial Class frmSccEditReciboCaja
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtNumCuenta As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents grpFormaPago As System.Windows.Forms.GroupBox
     Friend WithEvents cmbMoneda As C1.Win.C1List.C1Combo
     Friend WithEvents lblMoneda As System.Windows.Forms.Label
-    Friend WithEvents NumMontoDolares As C1.Win.C1Input.C1NumericEdit
-    Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents chkPrima As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
@@ -670,4 +798,16 @@ Partial Class frmSccEditReciboCaja
     Friend WithEvents lblMontAbon As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmProcesar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cbxCobrador As C1.Win.C1List.C1Combo
+    Friend WithEvents lblMarca As System.Windows.Forms.Label
+    Friend WithEvents tbpFormasPago As System.Windows.Forms.TabPage
+    Friend WithEvents grpFormaPago As System.Windows.Forms.GroupBox
+    Friend WithEvents NumMontoDolares As C1.Win.C1Input.C1NumericEdit
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents cmdEliminar As System.Windows.Forms.Button
+    Friend WithEvents cmbRuta As C1.Win.C1List.C1Combo
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class

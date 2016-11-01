@@ -8,6 +8,7 @@ Imports proyecto.Catalogos.Datos
 
 
 Public Class frmSccCuentas
+
 #Region "Variables del formulario"
     Dim dtCuentas, dtDetalleCuenta As DataTable
     Dim dsCuentas As DataSet
@@ -19,21 +20,52 @@ Public Class frmSccCuentas
 #Region "Procedimientos del formulario"
 
     Public Sub CargarCuentas(Optional ByVal Filtro As String = "ESTADO <> 'CANCELADO'")
-         Try
+        Try
+
+            'dtPedidos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivPedidoID, Numero, Estado, TotalCosto, Fecha, Proveedor ", "vwSivPedidosMaster", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
+            'dtDetallePedidos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivPedidoDetalleID, objPedidoID, objCategoriaID, Categoria, Numero, NombreProducto, CantidadOrdenada, TotalCosto", "vwPedidosDetalle", strFiltro), Me.SqlParametros)
+
+            'dsPedidos = New DataSet
+
+            'dsPedidos.Merge(dtPedidos)
+            'dsPedidos.Tables(0).TableName = "SivPedidos"
+
+            'dsPedidos.Merge(dtDetallePedidos)
+            'dsPedidos.Tables(1).TableName = "SivPedidoDetalle"
+
+            'dsPedidos.Relations.Add("SivPedidos_SivPedidoDetalle", dsPedidos.Tables(0).Columns("SivPedidoID"), dsPedidos.Tables(1).Columns("objPedidoID"), False)
+
+            'Me.grdPedidosMaster.DataSource = dsPedidos
+            'Me.grdPedidosMaster.DataMember = "SivPedidos"
+
+            'Me.grdPedidosDetalle.DataSource = dsPedidos
+            'Me.grdPedidosDetalle.DataMember = "SivPedidos.SivPedidos_SivPedidoDetalle"
+
+            'Me.grdPedidosMaster.Text = "Pedidos (" & Me.grdPedidosMasterTabla.RowCount & ")"
+
             dtCuentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SccCuentaID,SccCuentaID AS Llave,objClienteID,Cliente,Saldo,Cedula,FechaCredito,objEstadoID,Estado, Numero", "vwSccCuenta", Filtro))
             dtDetalleCuenta = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSccCuentaID AS Llave,Numero,SfaFacturaID,Saldo, objEstadoID,EstadoFact,CodigoEstado,Fecha,MontoAbonado,MontoTotal,Plazo,MontoCuota,Estado,objSccCuentaID,objSccCuentaID as SccCuentaID", "vwSccCuentaDetalle", "CodigoEstado<> '00' AND " & Filtro))
+
             dsCuentas = New DataSet
+
             dsCuentas.Merge(dtCuentas)
             dsCuentas.Tables(0).TableName = "SccCuenta"
+
             dsCuentas.Merge(dtDetalleCuenta)
             dsCuentas.Tables(1).TableName = "SccCuentaDetalle"
 
-            dsCuentas.Relations.Add("SccCuenta_SccCuentaDetalle", dsCuentas.Tables(0).Columns("Llave"), dsCuentas.Tables(1).Columns("Llave"))
-            Me.grdCuentas.SetDataBinding(dsCuentas, "SccCuenta", True)
-            dsCuentas.Tables("SccCuenta").PrimaryKey = New DataColumn() {dsCuentas.Tables("SccCuenta").Columns("Llave")}
-            dsCuentas.Tables("SccCuenta").DefaultView.Sort = "Llave"
-            Me.grdDetalleExpedientes.SetDataBinding(dsCuentas, "SccCuenta.SccCuenta_SccCuentaDetalle", True)
-            Me.grdCuentas.Caption = "Expedientes(" & Me.grdCuentas.RowCount & ")"
+            dsCuentas.Relations.Add("Cuenta_CuentaDetalle", dsCuentas.Tables(0).Columns("Llave"), dsCuentas.Tables(1).Columns("Llave"), False)
+
+            Me.grdExpedienteMaster.DataSource = dsCuentas
+            Me.grdExpedienteMaster.DataMember = "SccCuenta"
+
+            Me.grdExpedienteDetalle.DataSource = dsCuentas
+            Me.grdExpedienteDetalle.DataMember = "SccCuenta.Cuenta_CuentaDetalle"
+
+            'dsCuentas.Tables("SccCuenta").PrimaryKey = New DataColumn() {dsCuentas.Tables("SccCuenta").Columns("Llave")}
+            'dsCuentas.Tables("SccCuenta").DefaultView.Sort = "Llave"
+
+            Me.grdExpedienteMaster.Text = "Expedientes (" & Me.grdExpedienteMasterTabla.RowCount & ")"
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -46,40 +78,47 @@ Public Class frmSccCuentas
         Try
 
             Call CargarCuentas()
-            Me.grdCuentas.Splits(0).DisplayColumns("objEstadoID").Visible = False
+            'Me.grdCuentas.Splits(0).DisplayColumns("objEstadoID").Visible = False
 
             Me.AplicarSeguridad()
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
-        
+
     End Sub
 
-    
+
     Private Sub CargarEdicionCuentas()
+        Dim iIndiceRegistro As Integer
         Dim objfrmCuentaEdit As frmSccCuentasEditar
         Try
             objfrmCuentaEdit = New frmSccCuentasEditar
             objfrmCuentaEdit.TypeGUI = 0
             If objfrmCuentaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarCuentas()
-                Me.grdCuentas.Row = Me.dsCuentas.Tables("SccCuenta").DefaultView.Find(objfrmCuentaEdit.CuentaID.ToString)
+                If (Me.dtCuentas.Rows.Count <> 0) Then
+                    iIndiceRegistro = Me.dtCuentas.DefaultView.Find(objfrmCuentaEdit.CuentaID)
+                    Me.dtCuentas.DefaultView.Find(iIndiceRegistro)
+
+                End If
             End If
 
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
-        
+
     End Sub
 
     Private Sub CargarConsultaCuenta()
-        If Me.grdCuentas.RowCount = 0 Then
+        If Me.grdExpedienteMasterTabla.RowCount = 0 Then
             Exit Sub
         End If
+        Dim FilaActual As Integer
         Dim objfrmCuentaEdit As frmSccCuentasEditar
         Try
+            FilaActual = Me.grdExpedienteMasterTabla.FocusedRowHandle
             objfrmCuentaEdit = New frmSccCuentasEditar
-            objfrmCuentaEdit.CuentaID = Me.grdCuentas.Columns("SccCuentaID").Value
+            objfrmCuentaEdit.CuentaID = Integer.Parse(Me.dtCuentas.DefaultView.Item(FilaActual)("SccCuentaID"))
             objfrmCuentaEdit.TypeGUI = 2
             objfrmCuentaEdit.ShowDialog(Me)
         Catch ex As Exception
@@ -90,20 +129,27 @@ Public Class frmSccCuentas
 
     Private Sub CargarEdicionExpediente()
         Dim objfrmCuentaEdit As frmSccCuentasEditar
-        Dim intEstadoReg As Integer
-
+        Dim intEstadoReg, iIndiceRegistro As Integer
+        Dim FilaActual As Integer
         Try
+            FilaActual = Me.grdExpedienteMasterTabla.FocusedRowHandle
             intEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO")
-            If Me.grdCuentas.Columns("objEstadoID").Value <> intEstadoReg Then
+            If Integer.Parse(Me.dtCuentas.DefaultView.Item(FilaActual)("objEstadoID")) <> intEstadoReg Then
                 MsgBox("Solamente Expedientes en Estado REGISTRADO pueden ser Editados")
                 Exit Sub
             End If
             objfrmCuentaEdit = New frmSccCuentasEditar
-            objfrmCuentaEdit.CuentaID = Me.grdCuentas.Columns("SccCuentaID").Value
+            objfrmCuentaEdit.CuentaID = Integer.Parse(Me.dtCuentas.DefaultView.Item(FilaActual)("SccCuentaID"))
             objfrmCuentaEdit.TypeGUI = 1
             If objfrmCuentaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.CargarCuentas()
-                Me.grdCuentas.Row = Me.dsCuentas.Tables("SccCuenta").DefaultView.Find(objfrmCuentaEdit.CuentaID.ToString)
+
+                If (Me.dtCuentas.Rows.Count <> 0) Then
+                    iIndiceRegistro = Me.dtCuentas.DefaultView.Find(objfrmCuentaEdit.CuentaID)
+                    Me.dtCuentas.DefaultView.Find(iIndiceRegistro)
+
+                End If
+
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -128,8 +174,7 @@ Public Class frmSccCuentas
 
     ''' <summary>
     ''' Procedimiento encargado de aplicar la seguridad en la pantalla
-    ''' Autor : Pedro Pablo Tinoco
-    ''' Fecha : 11 de Abril de 2009.
+   
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub AplicarSeguridad()
@@ -152,7 +197,7 @@ Public Class frmSccCuentas
     End Sub
 
     Private Sub cmdEditar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEditar.Click
-        If Me.grdCuentas.RowCount > 0 Then
+        If Me.grdExpedienteMasterTabla.RowCount > 0 Then
             Me.CargarEdicionExpediente()
         End If
     End Sub
@@ -168,20 +213,6 @@ Public Class frmSccCuentas
         End Try
     End Sub
 
-    Private Sub grdCuentas_AfterFilter(ByVal sender As Object, ByVal e As C1.Win.C1TrueDBGrid.FilterEventArgs)
-        Me.grdCuentas.Caption = "Expedientes(" & Me.grdCuentas.RowCount.ToString & ")"
-    End Sub
-
-    
-    Private Sub grdCuentas_Change(ByVal sender As Object, ByVal e As System.EventArgs)
-        Me.grdCuentas.Caption = "Expedientes(" & Me.grdCuentas.RowCount.ToString & ")"
-    End Sub
-
-    Private Sub grdCuentas_FilterChange(ByVal sender As Object, ByVal e As System.EventArgs) Handles grdCuentas.FilterChange
-        Me.grdCuentas.Caption = "Expedientes(" & Me.grdCuentas.RowCount.ToString & ")"
-    End Sub
-
-   
     'Private Sub cmdModificarLimite_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdModificarLimite.Click
 
     '    If Me.grdCuentas.RowCount = 0 Then
@@ -239,19 +270,19 @@ Public Class frmSccCuentas
             '    iErrores += 1
             'End If
 
-            If iErrores = 0 Then
-                'Abrir ventana de Recibos
-                Dim objRecibo As frmSccEditReciboCaja
-                objRecibo = New frmSccEditReciboCaja
-                objRecibo.TypGui = 0
+            'If iErrores = 0 Then
+            '    'Abrir ventana de Recibos
+            '    Dim objRecibo As frmSccEditReciboCaja
+            '    objRecibo = New frmSccEditReciboCaja
+            '    objRecibo.TypGui = 0
 
-                objRecibo.Cliente = Me.grdCuentas.Columns("Cliente").Value
-                objRecibo.IDCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
+            '    objRecibo.Cliente = Me.grdCuentas.Columns("Cliente").Value
+            '    objRecibo.IDCuenta = Me.grdCuentas.Columns("SccCuentaID").Value
 
-                Return objRecibo.ShowDialog(Me) = Windows.Forms.DialogResult.OK
-            Else
-                Return False
-            End If
+            '    Return objRecibo.ShowDialog(Me) = Windows.Forms.DialogResult.OK
+            'Else
+            '    Return False
+            'End If
         Catch ex As Exception
             clsError.CaptarError(ex)
             Return False
@@ -322,7 +353,7 @@ Public Class frmSccCuentas
         Return sCaso
     End Function
 
-   
+
 #End Region
 
 End Class

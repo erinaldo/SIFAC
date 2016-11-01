@@ -7,13 +7,13 @@ Imports System.Data
 
 ''' <summary>
 ''' Pantalla de Guardado y Edicion de Recibos de Caja.
-''' Autor : Pedro Pablo Tinoco Salgado.
-''' Fecha : 24 de Marzo de 2009.
 ''' </summary>
 ''' <remarks></remarks>
 Public Class frmSccEditReciboCaja
 
     Dim DtDatosReciboCaja As New DataTable
+    Dim dtRutas As New DataTable
+    Dim DtCobrador As New DataTable
     Dim DtDatosFactRecibo As DataTable
     Dim m_IDCuenta As String
     Dim m_TyGui As Integer
@@ -80,6 +80,31 @@ Public Class frmSccEditReciboCaja
         End Set
     End Property
 
+    Private Sub CargarRuta(intCobrador As Integer)
+        Dim objRuta As StbRutas
+        Try
+            objRuta = New StbRutas
+            'Rutas
+            If intCobrador <> 0 Then
+                dtRutas = StbRutas.RetrieveDT("ojbCobradorID=" & intCobrador, "", "StbRutaID,Nombre")
+            Else
+                dtRutas = StbRutas.RetrieveDT("1=1", "", "StbRutaID,Nombre")
+            End If
+
+            Me.cmbRuta.DataSource = dtRutas
+            Me.cmbRuta.DisplayMember = "Nombre"
+            Me.cmbRuta.ValueMember = "StbRutaID"
+            Me.cmbRuta.Splits(0).DisplayColumns("StbRutaID").Visible = False
+            Me.cmbRuta.ExtendRightColumn = True
+            Me.cmbRuta.SelectedValue = -1
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objRuta = Nothing
+
+        End Try
+    End Sub
+
     ''' <summary>
     ''' Procedimiento encargado de Cargar los datos principales del Recibo en Nuevo,Edicion y Consulta.
     ''' Autor : Pedro Pablo Tinoco Salgado.
@@ -99,7 +124,8 @@ Public Class frmSccEditReciboCaja
     Private Sub frmSccEditReciboCaja_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             Me.Cursor = Cursors.WaitCursor
-
+            CargarCobrador()
+            CargarRuta(0)
             Me.txtNumRecibo.MaxLength = SccReciboCaja.GetMaxLength("Numero")
             Select Case Me.TypGui
                 Case 0
@@ -115,8 +141,8 @@ Public Class frmSccEditReciboCaja
                     Me.CargarDatosEdicion()
                     Me.BloquearColumnasModoConsulta()
                     Me.cmdExpediente.Enabled = False
-                    Me.cmdAceptar.Enabled = False
-                    Me.cmdProcesar.Enabled = False
+                    Me.cmdGuardar.Enabled = False
+                    Me.cmProcesar.Enabled = False
                     Me.txtNumRecibo.Enabled = False
                     clsProyecto.CargarTemaDefinido(Me)
             End Select
@@ -239,16 +265,41 @@ Public Class frmSccEditReciboCaja
         End Try
     End Sub
 
+    '' Descripción:        Procedimiento encargado de cargar el combo de Cobrador
+    Public Sub CargarCobrador()
+        Try
+            DtCobrador = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
+
+            Dim newCobradorsRow As DataRow
+            newCobradorsRow = DtCobrador.NewRow()
+            newCobradorsRow("SrhEmpleadoID") = "0"
+            newCobradorsRow("NombreCompleto") = "Ninguno"
+            DtCobrador.Rows.Add(newCobradorsRow)
+
+            With cbxCobrador
+                .DataSource = DtCobrador
+                .DisplayMember = "NombreCompleto"
+                .ValueMember = "SrhEmpleadoID"
+                .Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
+                .Splits(0).DisplayColumns("objPersonaID").Visible = False
+                .ColumnHeaders = False
+                .ExtendRightColumn = True
+                .SelectedValue = -1
+            End With
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 
 #Region "EVENTOS DE CONTROLES"
 
-    Private Sub NumMontoDolares_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles NumMontoDolares.KeyPress
+    Private Sub NumMontoDolares_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If e.KeyChar = Microsoft.VisualBasic.ChrW(13) Then
-            Me.cmdAceptar.Focus()
+            Me.cmdGuardar.Focus()
         End If
     End Sub
 
-    Private Sub NumMontoDolares_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles NumMontoDolares.Validating
+    Private Sub NumMontoDolares_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs)
         Dim p As Integer
         Dim s As Integer
         Dim ValorMaximo As Decimal
@@ -270,7 +321,7 @@ Public Class frmSccEditReciboCaja
         End Try
     End Sub
 
-    Private Sub NumMontoDolares_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles NumMontoDolares.ValueChanged
+    Private Sub NumMontoDolares_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs)
         Me.ErrorProv.Clear()
         If Not IsDBNull(Me.NumMontoDolares.Value) Then
             If Me.NumMontoDolares.Value < 0 Then
@@ -528,13 +579,22 @@ Public Class frmSccEditReciboCaja
 
             '--------------------------- Creamos el encabezado del recibo colector--------------------------
             Me.objReciboCaja = New SccReciboCaja
-            Me.objReciboCaja.Numero = Trim(Me.txtNumRecibo.Text)
+            Me.objReciboCaja.Numero = GeneraraNumero(T) '' Trim(Me.txtNumRecibo.Text)
             Me.objReciboCaja.Fecha = Me.dtpFecha.Value.Date
             Me.objReciboCaja.TotalRecibo = Me.DecTotalRecibo
             Me.objReciboCaja.UsuarioCreacion = clsProyecto.Conexion.Usuario
             Me.objReciboCaja.FechaCreacion = clsProyecto.Conexion.FechaServidor
             Me.objReciboCaja.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("EstadoROC", "REGISTRADO")
             Me.objReciboCaja.objSccCuentaID = Me.IDCuenta
+
+            If cbxCobrador.Text <> "" Then
+                Me.objReciboCaja.objSrhEmpleado = cbxCobrador.SelectedValue
+            End If
+
+            If cmbRuta.Text <> "" Then
+                Me.objReciboCaja.objRutaID = cmbRuta.SelectedValue
+            End If
+
             Me.objReciboCaja.EsPagoPrima = Me.chkPrima.Checked
             '-------------------------------------------------------------------- ---------------------------
             Me.objReciboCaja.Insert(T)
@@ -564,8 +624,8 @@ Public Class frmSccEditReciboCaja
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
             BloquearColumnasModoConsulta()
             clsProyecto.CargarTemaDefinido(Me)
-            Me.cmdAceptar.Enabled = False
-            Me.cmdProcesar.Enabled = True
+            Me.cmdGuardar.Enabled = False
+            Me.cmProcesar.Enabled = True
             Boolrst = True
         Catch ex As Exception
             T.RollbackTran()
@@ -596,11 +656,9 @@ Public Class frmSccEditReciboCaja
     End Function
 
     '--------------------------------------------------------------------------------------------------------------
-    ' Autor           : Pedro Tinoco Salgado.
-    ' Fecha Creacion  : 15 de diciembre de 2007.
     ' Descripcion     : Esta funcion se encarga de ir a generar el numero del recibo creado.
     '--------------------------------------------------------------------------------------------------------------
-    Private Function GeneraraNumero() As String
+    Private Function GeneraraNumero(t As TransactionManager) As String
         Dim strNum As String
         Dim dtNum As New DataTable
         Dim dtValParam As New DataTable
@@ -608,11 +666,11 @@ Public Class frmSccEditReciboCaja
         Dim intNumero As Integer
         strNum = ""
         Try
-            dtValParam = StbParametro.RetrieveDT("Nombre = 'CerosRellenoReciboCaja'", , "Valor")
+            dtValParam = StbParametro.RetrieveDT("Nombre = 'CerosRellenoReciboCaja'", , "Valor", t)
             If dtValParam.DefaultView.Count > 0 Then
                 intNCeros = dtValParam.DefaultView.Item(0)("Valor")
             End If
-            dtNum = SccReciboCaja.RetrieveDT(, , "COUNT(*) AS Cantidad,MAX(Numero) as NumeroMax")
+            dtNum = SccReciboCaja.RetrieveDT(, , "COUNT(*) AS Cantidad,MAX(Numero) as NumeroMax", t)
             If dtNum.DefaultView.Item(0)("Cantidad") = 0 Then
                 For Cant As Integer = 1 To intNCeros - 1
                     strNum = strNum + "0"
@@ -643,7 +701,7 @@ Public Class frmSccEditReciboCaja
     Private Sub BloquearColumnasModoConsulta()
         Try
             Me.cmdEliminar.Enabled = False
-            Me.cmdAceptar.Enabled = False
+            Me.cmdGuardar.Enabled = False
             Me.dtpFecha.Enabled = False
             Me.cmdExpediente.Enabled = False
             Me.txtNumRecibo.Enabled = False
@@ -651,7 +709,10 @@ Public Class frmSccEditReciboCaja
             'Me.numMontoCordobas.Enabled = False
             Me.NumMontoDolares.Enabled = False
             Me.cmbMoneda.Enabled = False
-
+            Me.cbxCobrador.Enabled = False
+            Me.cmbRuta.Enabled = False
+            Me.txtCliente.Enabled = False
+            Me.txtEstado.Enabled = False
             For intCantCol As Integer = 0 To Me.grdFacturas.Columns.Count - 1
                 Me.grdFacturas.Columns(intCantCol).Tag = "BLOQUEADO"
             Next
@@ -702,8 +763,8 @@ Public Class frmSccEditReciboCaja
             Me.objReciboCaja.Update(T)
 
             T.CommitTran()
-            Me.cmdAceptar.Enabled = False
-            Me.cmdProcesar.Enabled = False
+            Me.cmdGuardar.Enabled = False
+            Me.cmProcesar.Enabled = False
 
             MsgBox("El Recibo ha sido Procesado Exitosamente.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)         
             Me.DialogResult = Windows.Forms.DialogResult.OK
@@ -747,7 +808,7 @@ Public Class frmSccEditReciboCaja
         End Try
     End Sub
 #End Region
-    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
+    Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
         Select Case Me.TypGui
             Case 0
                 'En caso de Reestructuración de cuenta, se guarda el recibo temporalmente mientras concluye todo el proceso.
@@ -755,7 +816,7 @@ Public Class frmSccEditReciboCaja
 
             Case 1
                 Me.ModificarRecibo()
-        End Select        
+        End Select
     End Sub
 
 #Region "Pago Recibo de Prima"
@@ -785,7 +846,7 @@ Public Class frmSccEditReciboCaja
 #End Region
 
    
-    Private Sub cmdProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdProcesar.Click
+    Private Sub cmdProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmProcesar.Click
         Me.PROCESAR_RECIBO(Me.ReciboCajaID, 0)
     End Sub
 
@@ -821,6 +882,15 @@ Public Class frmSccEditReciboCaja
                 Me.txtEstado.Text = StbValorCatalogo.RetrieveDT("StbValorCatalogoID=" & objSccRecibo.objEstadoID.ToString, , "Descripcion").DefaultView.Item(0)("Descripcion")
                 Me.chkPrima.Checked = objSccRecibo.EsPagoPrima
                 Me.IDCuenta = objSccRecibo.objSccCuentaID
+
+                If Not IsDBNull(objSccRecibo.objSrhEmpleado) Then
+                    Me.cbxCobrador.SelectedValue = objSccRecibo.objSrhEmpleado
+                End If
+
+                If Not IsDBNull(objSccRecibo.objRutaID) Then
+                    Me.cmbRuta.SelectedValue = objSccRecibo.objRutaID
+                End If
+
                 Me.CargarFacturas()
                 If objSccRecibo.EsPagoPrima Then
                     Me.MontoPrima = objSccRecibo.TotalRecibo
@@ -830,6 +900,8 @@ Public Class frmSccEditReciboCaja
                 dtDatos = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SccCuentaID,Cliente", "vwSccCuentasSeleccion", "SccCuentaID='" & Me.IDCuenta.ToString & "'"))
                 Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("SccCuentaID")
                 Me.txtCliente.Text = dtDatos.DefaultView.Item(0)("Cliente")
+
+
                 Me.DetallesAgregados()
                 Me.NumMontoDolares.Value = objSccRecibo.TotalRecibo
 
@@ -974,8 +1046,8 @@ Public Class frmSccEditReciboCaja
             MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
             BloquearColumnasModoConsulta()
             clsProyecto.CargarTemaDefinido(Me)
-            Me.cmdProcesar.Enabled = True
-            Me.cmdAceptar.Enabled = False
+            Me.cmProcesar.Enabled = True
+            Me.cmdGuardar.Enabled = False
             boolRst = True
         Catch ex As Exception
             T.RollbackTran()
@@ -994,4 +1066,12 @@ Public Class frmSccEditReciboCaja
         Me.ErrorProv.Clear()
     End Sub
 
+    Private Sub cbxCobrador_SelectedValueChanged(sender As Object, e As EventArgs) Handles cbxCobrador.SelectedValueChanged
+        If (cbxCobrador.Text <> "") Then
+            CargarRuta(cbxCobrador.SelectedValue)
+        Else
+            CargarRuta(0)
+        End If
+
+    End Sub
 End Class
