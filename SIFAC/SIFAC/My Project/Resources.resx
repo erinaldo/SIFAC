@@ -136,6 +136,9 @@
   <data name="IniciarSesion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IniciarSesion.JPG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_32px_Crystal_Clear_mimetype_source_moc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\32px-Crystal_Clear_mimetype_source_moc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="paste_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paste_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,11 +157,17 @@
   <data name="Guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Guardar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cancel16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancel16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Buscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Buscar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Default.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sello" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sello.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Anular" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Anular.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,17 +181,14 @@
   <data name="MsgConfirmarGuardar" xml:space="preserve">
     <value>¿Desea salir sin guardar los cambios?.</value>
   </data>
-  <data name="MsgSalirSinGuardar" xml:space="preserve">
-    <value>¿Desea salir SIN GUARDAR los cambios realizados?</value>
-  </data>
   <data name="CerrarSesion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CerrarSesion.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Seguridad" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Seguridad.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Boxes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Boxes.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pedidos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pedidos.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MsgEliminado" xml:space="preserve">
     <value>El registro se ha eliminado satisfactoriamente.</value>
@@ -198,6 +204,9 @@
   </data>
   <data name="Productos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Productos.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MsgBusqueda" xml:space="preserve">
+    <value>No existen datos para generar esta búsqueda.</value>
   </data>
   <data name="MsgActualizado" xml:space="preserve">
     <value>El registro se ha actualizado satisfactoriamente.</value>
@@ -222,9 +231,6 @@
   </data>
   <data name="LaST__Cobalt__Library_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LaST (Cobalt) Library Folder.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LaST__Cobalt__Find" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LaST (Cobalt) Find.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon3.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -268,8 +274,8 @@
   <data name="Bonificaciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bonificaciones.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MsgBusqueda" xml:space="preserve">
-    <value>No existen datos para generar esta búsqueda.</value>
+  <data name="LaST__Cobalt__Find" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LaST (Cobalt) Find.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Salir2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Salir2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -319,14 +325,14 @@
   <data name="Prueba" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Prueba.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sello" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sello.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MsgSalirSinGuardar" xml:space="preserve">
+    <value>¿Desea salir SIN GUARDAR los cambios realizados?</value>
   </data>
   <data name="LaST__Cobalt__Fonts_Folders" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LaST (Cobalt) Fonts Folders.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_32px_Crystal_Clear_mimetype_source_moc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\32px-Crystal_Clear_mimetype_source_moc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Boxes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Boxes.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CargosDependecias" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CargosDependecias.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,10 +343,7 @@
   <data name="prefs_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\prefs_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cancel16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cancel16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pedidos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pedidos.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="updated24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\updated24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -251,6 +251,8 @@ Public Class frmPrincipal
             Me.NavBarSincroVentas.Enabled = objSeg.TienePermiso("OpcionSincVentas")
             Me.NavBarSincroAbonos.Enabled = objSeg.TienePermiso("OpcionSincAbonos")
             Me.NavBarSincroDevoluciones.Enabled = objSeg.TienePermiso("OpcionSincDevoluciones")
+
+            Me.NavBarConsolidado.Enabled = objSeg.TienePermiso("OpcionReportes")
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -298,6 +300,8 @@ Public Class frmPrincipal
             Me.NavBarSincroVentas.Enabled = False
             Me.NavBarSincroAbonos.Enabled = False
             Me.NavBarSincroDevoluciones.Enabled = False
+
+            Me.NavBarConsolidado.Enabled = False
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -313,6 +317,10 @@ Public Class frmPrincipal
         Me.CargarCatalogoValor()
     End Sub
 
+
+    Private Sub NavBarConsolidado_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarConsolidado.LinkClicked
+        CargarConsolidado()
+    End Sub
 
     Private Sub NavBarParametros_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarParametros.LinkClicked
         CargarParametros()
@@ -497,6 +505,27 @@ Public Class frmPrincipal
             Me.Cursor = Cursors.Default
         End Try
     End Sub
+
+    '----------------------------------------------------------------------------------
+    Private Sub CargarConsolidado()
+        Dim objfrm As frmReportePivot
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmReportePivot", Me) Then
+                objfrm = New frmReportePivot
+                objfrm.Width = Me.Width - Me.NavBarPrincipal.Width
+                objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                objfrm.MdiParent = Me
+                objfrm.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
 
 #End Region
 

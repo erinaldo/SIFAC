@@ -53,6 +53,8 @@ Partial Class frmPrincipal
         Me.NavBarSincroVentas = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarSincroDevoluciones = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarPrincipal = New DevExpress.XtraNavBar.NavBarControl()
+        Me.NVBarReportes = New DevExpress.XtraNavBar.NavBarGroup()
+        Me.NavBarConsolidado = New DevExpress.XtraNavBar.NavBarItem()
         Me.WindowsMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.CascadeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TileVerticalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -273,10 +275,10 @@ Partial Class frmPrincipal
         '
         'NavBarPrincipal
         '
-        Me.NavBarPrincipal.ActiveGroup = Me.grpCatalogos
+        Me.NavBarPrincipal.ActiveGroup = Me.NVBarReportes
         Me.NavBarPrincipal.Dock = System.Windows.Forms.DockStyle.Left
-        Me.NavBarPrincipal.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpCatalogos, Me.grpCartera, Me.grpInventario, Me.grpFacturacion, Me.grpSincronizacion})
-        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones})
+        Me.NavBarPrincipal.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpCatalogos, Me.grpCartera, Me.grpInventario, Me.grpFacturacion, Me.grpSincronizacion, Me.NVBarReportes})
+        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones, Me.NavBarConsolidado})
         Me.NavBarPrincipal.Location = New System.Drawing.Point(0, 24)
         Me.NavBarPrincipal.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.NavBarPrincipal.LookAndFeel.UseDefaultLookAndFeel = False
@@ -285,6 +287,19 @@ Partial Class frmPrincipal
         Me.NavBarPrincipal.Size = New System.Drawing.Size(175, 561)
         Me.NavBarPrincipal.TabIndex = 17
         Me.NavBarPrincipal.View = New DevExpress.XtraNavBar.ViewInfo.StandardSkinExplorerBarViewInfoRegistrator("Office 2010 Silver")
+        '
+        'NVBarReportes
+        '
+        Me.NVBarReportes.Caption = "Reportes"
+        Me.NVBarReportes.Expanded = True
+        Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado)})
+        Me.NVBarReportes.Name = "NVBarReportes"
+        '
+        'NavBarConsolidado
+        '
+        Me.NavBarConsolidado.Caption = "Consolidado"
+        Me.NavBarConsolidado.Name = "NavBarConsolidado"
+        Me.NavBarConsolidado.SmallImage = CType(resources.GetObject("NavBarConsolidado.SmallImage"), System.Drawing.Image)
         '
         'WindowsMenu
         '
@@ -566,4 +581,6 @@ Partial Class frmPrincipal
     Friend WithEvents NavBarSincroDevoluciones As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarReciboCaja As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarDevoluciones As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents NVBarReportes As DevExpress.XtraNavBar.NavBarGroup
+    Friend WithEvents NavBarConsolidado As DevExpress.XtraNavBar.NavBarItem
 End Class
