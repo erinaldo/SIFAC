@@ -18,7 +18,7 @@ Public Class frmSccClientes
 
         Try
             Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,Nombre1,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero", "vwSccClientes"))
-            Me.dtCliente.PrimaryKey = New DataColumn() {Me.dtCliente.Columns("StbPersonaID")}
+            'Me.dtCliente.PrimaryKey = New DataColumn() {Me.dtCliente.Columns("StbPersonaID")}
             Me.dtCliente.DefaultView.Sort = "StbPersonaID"
             Me.grdClientes.DataSource = dtCliente
 
@@ -121,7 +121,7 @@ Public Class frmSccClientes
             objPersonas.idpersona = Me.dtCliente.DefaultView(FilaActual).Item("StbPersonaID")
            
             If objPersonas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    CargarGridClientes()
+                CargarGridClientes()
                 Seguridad()
             End If
         Catch ex As Exception

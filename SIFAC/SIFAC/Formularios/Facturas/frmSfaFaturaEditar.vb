@@ -24,32 +24,12 @@ Public Class frmSfaFaturaEditar
     Dim DtDatosPlazos, DtDatosFacturas, DtDatosFacturasFiltradas, DtModalidadesPago As DataTable
     Dim m_IdPlazo As Integer
     Dim m_IDCliente As Integer
-
     'Dim m_IDClasificacion As Integer
     Dim m_IDEstado As Integer
     Dim m_IdDetalleFact As Integer
     Dim BoolOK As Boolean
-
     'Usado en caso de Reestructurar la cuenta del cliente
     Dim m_cliente As String
-
-    ''' <summary>
-    ''' Propiedades del Formulario:
-    ''' IDFactura.
-    ''' Tipo de Gui : Nuevo, Edicion, Consulta.
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    '''
-    'Property IDClasificacion() As Integer
-    '    Get
-    '        IDClasificacion = Me.m_IDClasificacion
-    '    End Get
-    '    Set(ByVal value As Integer)
-    '        Me.m_IDClasificacion = value
-    '    End Set
-    'End Property
 
     Property IDEstado() As Integer
         Get
@@ -160,7 +140,7 @@ Public Class frmSfaFaturaEditar
                 Case 0
                     Me.InhabilitarDatos(0, False)
                     Me.Text = "Registro Expediente-Factura"
-
+                    Me.InhabilitarDatos(0, True)
                     'Cargar datos cuando viene desde la cuenta
                     Dim objCuenta As SccCuentaPorCobrar
                     Me.InhabilitarDatos(0, True)
@@ -170,10 +150,17 @@ Public Class frmSfaFaturaEditar
                     IDCliente = objCuenta.objClienteID
                     CargarFacturas()
                     Me.CalculoDiferenciaCredito()
-
-
                 Case 1
                     Me.Text = "Edición de Expediente-Factura"
+                    'Cargar datos cuando viene desde la cuenta
+                    'Dim objCuenta As SccCuentaPorCobrar
+
+                    'objCuenta = New SccCuentaPorCobrar
+                    'objCuenta.Retrieve(Me.IDCuenta)
+                    'Me.dtpFechaCredito.Value = objCuenta.FechaCredito
+                    'IDCliente = objCuenta.objClienteID
+                    'CargarFacturas()
+                    'Me.CalculoDiferenciaCredito()
                 Case 2
                     Me.Text = "Consulta de Expediente-Factura"
                 Case 3
@@ -324,12 +311,67 @@ Public Class frmSfaFaturaEditar
         End Try
     End Function
 
+    Private Function GuardarFacturaTransaccional(t As TransactionManager) As Boolean
+        Dim BoolRst As Boolean
+        Dim objFactura As New SfaFacturas
+        Dim objCuentaCobrarDetalle As New SccCuentaPorCobrarDetalle
+        Try
+            BoolRst = True
+            Try
+
+                T.BeginTran()
+
+                If Me.TypGui = 1 Then
+                    objFactura.Retrieve(Me.IDFactura)
+                    objCuentaCobrarDetalle.RetrieveByFilter("objSccCuentaID='" & Me.IDCuenta & "' AND objSfaFacturaID=" & Me.IDFactura)
+
+                End If
+             
+                '' Creacion del Registro de Detalle de Cuenta de la Factura
+                objCuentaCobrarDetalle.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objCuentaCobrarDetalle.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objCuentaCobrarDetalle.objSfaFacturaID = Trim(Me.cmbFactura.SelectedValue) 'objFactura.SfaFacturaID
+                objCuentaCobrarDetalle.MontoTotal = NumMonto.Value 'objFactura.TotalCordobas
+                objCuentaCobrarDetalle.objSccCuentaID = Me.IDCuenta
+                objCuentaCobrarDetalle.MontoAbonado = 0.0
+                objCuentaCobrarDetalle.Saldo = numSaldo.Value 'objFactura.TotalCordobas
+                objCuentaCobrarDetalle.MontoCuota = Me.numMontoCuotas.Value
+                objCuentaCobrarDetalle.objTeminoPlazoID = Me.cmbPlazo.SelectedValue
+                objCuentaCobrarDetalle.objModalidadPago = Me.cmbModalidadPago.SelectedValue
+
+                objCuentaCobrarDetalle.Descuento = Me.numDescuentoPorc.Value
+                objCuentaCobrarDetalle.objEstadoID = Me.IDEstado
+                objCuentaCobrarDetalle.FechaProximoPago = Me.dtpFechaProximoPago.Value
+                objCuentaCobrarDetalle.FechaVencimiento = Me.dtpFechaVencimiento.Value
+                objCuentaCobrarDetalle.MontoPrima = Me.numPrima.Value
+                If Me.TypGui = 0 Then
+                    objCuentaCobrarDetalle.Insert(T)
+                Else
+                    objCuentaCobrarDetalle.Update(T)
+                End If
+                Me.IDDetalleFact = objCuentaCobrarDetalle.SccCuentaPorCobrarDetalleID
+
+                T.CommitTran()
+                Me.IDFactura = objFactura.SfaFacturaID
+                MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Return BoolRst
+
+            Catch ex As Exception
+                T.RollbackTran()
+                BoolRst = False
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            objFactura = Nothing
+            objCuentaCobrarDetalle = Nothing
+        End Try
+    End Function
+
     Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
         If Me.ValidacionEntradas Then
             If Me.GuardarFactura Then
                 Me.DialogResult = Windows.Forms.DialogResult.OK
             End If
-
         End If
     End Sub
 #End Region

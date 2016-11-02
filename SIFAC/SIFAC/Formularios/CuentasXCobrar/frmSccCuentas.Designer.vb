@@ -33,6 +33,14 @@ Partial Class frmSccCuentas
         Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
         Me.C1Sizer1 = New C1.Win.C1Sizer.C1Sizer()
+        Me.grdExpedienteMaster = New DevExpress.XtraGrid.GridControl()
+        Me.grdExpedienteMasterTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCedula = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdExpedienteDetalle = New DevExpress.XtraGrid.GridControl()
         Me.grdExpedienteDetalleTable = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colNumeroFact = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -42,21 +50,13 @@ Partial Class frmSccCuentas
         Me.colMontoCuota = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colMontoAbonado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEstadoF = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.grdExpedienteMaster = New DevExpress.XtraGrid.GridControl()
-        Me.grdExpedienteMasterTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colCedula = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tbCuentas.SuspendLayout()
         CType(Me.C1Sizer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.C1Sizer1.SuspendLayout()
-        CType(Me.grdExpedienteDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdExpedienteDetalleTable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdExpedienteMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdExpedienteMasterTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdExpedienteDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdExpedienteDetalleTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbCuentas
@@ -173,6 +173,97 @@ Partial Class frmSccCuentas
         Me.C1Sizer1.TabIndex = 1
         Me.C1Sizer1.TabStop = False
         '
+        'grdExpedienteMaster
+        '
+        Me.grdExpedienteMaster.Location = New System.Drawing.Point(4, 4)
+        Me.grdExpedienteMaster.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdExpedienteMaster.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdExpedienteMaster.MainView = Me.grdExpedienteMasterTabla
+        Me.grdExpedienteMaster.Name = "grdExpedienteMaster"
+        Me.grdExpedienteMaster.Size = New System.Drawing.Size(855, 300)
+        Me.grdExpedienteMaster.TabIndex = 13
+        Me.grdExpedienteMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdExpedienteMasterTabla})
+        '
+        'grdExpedienteMasterTabla
+        '
+        Me.grdExpedienteMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colCliente, Me.colSaldo, Me.colEstado, Me.colCedula})
+        Me.grdExpedienteMasterTabla.GridControl = Me.grdExpedienteMaster
+        Me.grdExpedienteMasterTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
+        Me.grdExpedienteMasterTabla.Name = "grdExpedienteMasterTabla"
+        Me.grdExpedienteMasterTabla.OptionsDetail.AllowZoomDetail = False
+        Me.grdExpedienteMasterTabla.OptionsDetail.EnableMasterViewMode = False
+        Me.grdExpedienteMasterTabla.OptionsDetail.ShowDetailTabs = False
+        Me.grdExpedienteMasterTabla.OptionsDetail.SmartDetailExpand = False
+        Me.grdExpedienteMasterTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
+        Me.grdExpedienteMasterTabla.OptionsView.ShowAutoFilterRow = True
+        Me.grdExpedienteMasterTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
+        '
+        'colNumero
+        '
+        Me.colNumero.Caption = "No Expediente" & Global.Microsoft.VisualBasic.ChrW(9)
+        Me.colNumero.FieldName = "Numero"
+        Me.colNumero.Name = "colNumero"
+        Me.colNumero.OptionsColumn.AllowFocus = False
+        Me.colNumero.OptionsColumn.ReadOnly = True
+        Me.colNumero.Visible = True
+        Me.colNumero.VisibleIndex = 0
+        Me.colNumero.Width = 76
+        '
+        'colFecha
+        '
+        Me.colFecha.Caption = "Fecha Credito"
+        Me.colFecha.FieldName = "FechaCredito"
+        Me.colFecha.Name = "colFecha"
+        Me.colFecha.OptionsColumn.AllowFocus = False
+        Me.colFecha.OptionsColumn.ReadOnly = True
+        Me.colFecha.Visible = True
+        Me.colFecha.VisibleIndex = 3
+        Me.colFecha.Width = 78
+        '
+        'colCliente
+        '
+        Me.colCliente.Caption = "Cliente"
+        Me.colCliente.FieldName = "Cliente"
+        Me.colCliente.Name = "colCliente"
+        Me.colCliente.OptionsColumn.AllowFocus = False
+        Me.colCliente.OptionsColumn.ReadOnly = True
+        Me.colCliente.Visible = True
+        Me.colCliente.VisibleIndex = 1
+        Me.colCliente.Width = 218
+        '
+        'colSaldo
+        '
+        Me.colSaldo.Caption = "Saldo"
+        Me.colSaldo.FieldName = "Saldo"
+        Me.colSaldo.Name = "colSaldo"
+        Me.colSaldo.OptionsColumn.AllowFocus = False
+        Me.colSaldo.OptionsColumn.ReadOnly = True
+        Me.colSaldo.Visible = True
+        Me.colSaldo.VisibleIndex = 4
+        Me.colSaldo.Width = 109
+        '
+        'colEstado
+        '
+        Me.colEstado.Caption = "Estado"
+        Me.colEstado.FieldName = "Estado"
+        Me.colEstado.Name = "colEstado"
+        Me.colEstado.OptionsColumn.AllowFocus = False
+        Me.colEstado.OptionsColumn.ReadOnly = True
+        Me.colEstado.Visible = True
+        Me.colEstado.VisibleIndex = 5
+        Me.colEstado.Width = 86
+        '
+        'colCedula
+        '
+        Me.colCedula.Caption = "Cédula"
+        Me.colCedula.FieldName = "Cedula"
+        Me.colCedula.Name = "colCedula"
+        Me.colCedula.OptionsColumn.AllowFocus = False
+        Me.colCedula.OptionsColumn.ReadOnly = True
+        Me.colCedula.Visible = True
+        Me.colCedula.VisibleIndex = 2
+        Me.colCedula.Width = 86
+        '
         'grdExpedienteDetalle
         '
         Me.grdExpedienteDetalle.Location = New System.Drawing.Point(4, 308)
@@ -255,96 +346,6 @@ Partial Class frmSccCuentas
         Me.colEstadoF.Visible = True
         Me.colEstadoF.VisibleIndex = 6
         '
-        'grdExpedienteMaster
-        '
-        Me.grdExpedienteMaster.Location = New System.Drawing.Point(4, 4)
-        Me.grdExpedienteMaster.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.grdExpedienteMaster.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.grdExpedienteMaster.MainView = Me.grdExpedienteMasterTabla
-        Me.grdExpedienteMaster.Name = "grdExpedienteMaster"
-        Me.grdExpedienteMaster.Size = New System.Drawing.Size(855, 300)
-        Me.grdExpedienteMaster.TabIndex = 13
-        Me.grdExpedienteMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdExpedienteMasterTabla})
-        '
-        'grdExpedienteMasterTabla
-        '
-        Me.grdExpedienteMasterTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colCliente, Me.colSaldo, Me.colEstado, Me.colCedula})
-        Me.grdExpedienteMasterTabla.GridControl = Me.grdExpedienteMaster
-        Me.grdExpedienteMasterTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
-        Me.grdExpedienteMasterTabla.Name = "grdExpedienteMasterTabla"
-        Me.grdExpedienteMasterTabla.OptionsDetail.AllowZoomDetail = False
-        Me.grdExpedienteMasterTabla.OptionsDetail.EnableMasterViewMode = False
-        Me.grdExpedienteMasterTabla.OptionsDetail.ShowDetailTabs = False
-        Me.grdExpedienteMasterTabla.OptionsDetail.SmartDetailExpand = False
-        Me.grdExpedienteMasterTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
-        Me.grdExpedienteMasterTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
-        '
-        'colNumero
-        '
-        Me.colNumero.Caption = "No Expediente" & Global.Microsoft.VisualBasic.ChrW(9)
-        Me.colNumero.FieldName = "Numero"
-        Me.colNumero.Name = "colNumero"
-        Me.colNumero.OptionsColumn.AllowFocus = False
-        Me.colNumero.OptionsColumn.ReadOnly = True
-        Me.colNumero.Visible = True
-        Me.colNumero.VisibleIndex = 0
-        Me.colNumero.Width = 76
-        '
-        'colFecha
-        '
-        Me.colFecha.Caption = "Fecha Credito"
-        Me.colFecha.FieldName = "FechaCredito"
-        Me.colFecha.Name = "colFecha"
-        Me.colFecha.OptionsColumn.AllowFocus = False
-        Me.colFecha.OptionsColumn.ReadOnly = True
-        Me.colFecha.Visible = True
-        Me.colFecha.VisibleIndex = 3
-        Me.colFecha.Width = 78
-        '
-        'colCliente
-        '
-        Me.colCliente.Caption = "Cliente"
-        Me.colCliente.FieldName = "Cliente"
-        Me.colCliente.Name = "colCliente"
-        Me.colCliente.OptionsColumn.AllowFocus = False
-        Me.colCliente.OptionsColumn.ReadOnly = True
-        Me.colCliente.Visible = True
-        Me.colCliente.VisibleIndex = 1
-        Me.colCliente.Width = 218
-        '
-        'colSaldo
-        '
-        Me.colSaldo.Caption = "Saldo"
-        Me.colSaldo.FieldName = "Saldo"
-        Me.colSaldo.Name = "colSaldo"
-        Me.colSaldo.OptionsColumn.AllowFocus = False
-        Me.colSaldo.OptionsColumn.ReadOnly = True
-        Me.colSaldo.Visible = True
-        Me.colSaldo.VisibleIndex = 4
-        Me.colSaldo.Width = 109
-        '
-        'colEstado
-        '
-        Me.colEstado.Caption = "Estado"
-        Me.colEstado.FieldName = "Estado"
-        Me.colEstado.Name = "colEstado"
-        Me.colEstado.OptionsColumn.AllowFocus = False
-        Me.colEstado.OptionsColumn.ReadOnly = True
-        Me.colEstado.Visible = True
-        Me.colEstado.VisibleIndex = 5
-        Me.colEstado.Width = 86
-        '
-        'colCedula
-        '
-        Me.colCedula.Caption = "Cédula"
-        Me.colCedula.FieldName = "Cedula"
-        Me.colCedula.Name = "colCedula"
-        Me.colCedula.OptionsColumn.AllowFocus = False
-        Me.colCedula.OptionsColumn.ReadOnly = True
-        Me.colCedula.Visible = True
-        Me.colCedula.VisibleIndex = 2
-        Me.colCedula.Width = 86
-        '
         'frmSccCuentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -360,10 +361,10 @@ Partial Class frmSccCuentas
         Me.tbCuentas.PerformLayout()
         CType(Me.C1Sizer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.C1Sizer1.ResumeLayout(False)
-        CType(Me.grdExpedienteDetalle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdExpedienteDetalleTable, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdExpedienteMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdExpedienteMasterTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdExpedienteDetalle, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdExpedienteDetalleTable, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

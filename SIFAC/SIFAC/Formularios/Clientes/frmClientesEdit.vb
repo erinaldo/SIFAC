@@ -174,19 +174,19 @@ Public Class frmClientesEdit
             End If
 
 
-            For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
-                Dim s As String = dr("TipoEntrada").ToString.Substring(0, 8)
-                If dr("TipoEntrada").ToString.Trim.Length >= 8 Then
-                    If dr("TipoEntrada").ToString.Substring(0, 8) = "Teléfono" Then
-                        Return 0
-                        Exit Function
-                    Else
-                        Me.intResultado = 1
-                    End If
-                Else
-                    Me.intResultado = 1
-                End If
-            Next
+            'For Each dr As DataRow In frmClientesEdit.dtContactos.Rows
+            '    Dim s As String = dr("TipoEntrada").ToString.Substring(0, 8)
+            '    If dr("TipoEntrada").ToString.Trim.Length >= 8 Then
+            '        If dr("TipoEntrada").ToString.Substring(0, 8) = "Teléfono" Then
+            '            Return 0
+            '            Exit Function
+            '        Else
+            '            Me.intResultado = 1
+            '        End If
+            '    Else
+            '        Me.intResultado = 1
+            '    End If
+            'Next
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -248,12 +248,14 @@ Public Class frmClientesEdit
     Private Sub InsertarPersonas()
 
         Dim objPersonas, objPCompara As StbPersona
+        Dim objClientes As SccClientes
         Dim T As New DAL.TransactionManager
 
         Try
             T.BeginTran()
             objPersonas = New StbPersona
             objPCompara = New StbPersona
+            objClientes = New SccClientes
 
             '1.2 Validar que no exista  una persona con la misma cédula
             objPCompara.RetrieveByFilter("Cedula='" + Me.txtCedula.Text + "'")
@@ -285,9 +287,19 @@ Public Class frmClientesEdit
             objPersonas.Direccion = txtDireccion.Text
             objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
-            objPersonas.Insert()
+            objPersonas.Insert(T)
+
+            ''Insertar Clientes
+            objClientes.objPersonaID = objPersonas.StbPersonaID
+            objClientes.OrdenCobro = spnOrdenCobro.Value
+            objClientes.objRutaID = cmbRuta.SelectedValue
+            objClientes.Activo = True
+            objClientes.UsuarioCreacion = clsProyecto.Conexion.Usuario
+            objClientes.FechaCreacion = clsProyecto.Conexion.FechaServidor
+            objClientes.Insert(T)
+
             Me.idpersona = objPersonas.StbPersonaID
-            Me.InsertarDetalle(Me.idpersona)
+            Me.InsertarDetalle(Me.idpersona, T)
             T.CommitTran()
 
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
@@ -307,7 +319,7 @@ Public Class frmClientesEdit
 
 #Region "Insertar Detalle de Personas"
 
-    Private Sub InsertarDetalle(ByVal IDGenerado As String)
+    Private Sub InsertarDetalle(ByVal IDGenerado As String, t As TransactionManager)
 
         Dim objContactos As StbContactos
         Dim objClasifica As StbPersonaClasificacion
@@ -324,14 +336,14 @@ Public Class frmClientesEdit
                 objContactos.Valor = dr("Valor").ToString
                 objContactos.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objContactos.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                objContactos.Insert()
+                objContactos.Insert(t)
             Next
 
             objClasifica.objPersonaID = IDGenerado
             objClasifica.objTipoPersonaID = StbTipoPersona.RetrieveDT("Descripcion='Cliente'").DefaultView.Item(0)("StbTipoPersonaID")
             objClasifica.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objClasifica.FechaCreacion = clsProyecto.Conexion.FechaServidor
-            objClasifica.Insert()
+            objClasifica.Insert(t)
 
 
         Catch ex As Exception
@@ -407,8 +419,11 @@ Public Class frmClientesEdit
 #Region "Modificar Personas"
     Private Sub ModificarPersonas()
         Dim objPersonas As StbPersona
+        Dim objClientes As SccClientes
         Dim T As New DAL.TransactionManager
         Try
+            objClientes = New SccClientes
+
             T.BeginTran()
             objPersonas = New StbPersona
             objPersonas.Retrieve(Me.idpersona)
@@ -436,13 +451,25 @@ Public Class frmClientesEdit
             objPersonas.objCiudadID = cmbCiudad.SelectedValue
             objPersonas.Direccion = txtDireccion.Text
 
-            objPersonas.Update()
+            objPersonas.Update(T)
+
+            ''Actualizar Clientes
+            objClientes.objPersonaID = objPersonas.StbPersonaID
+            objClientes.OrdenCobro = spnOrdenCobro.Value
+            objClientes.objRutaID = cmbRuta.SelectedValue
+            objClientes.Activo = True
+            objClientes.UsuarioModificacion = clsProyecto.Conexion.Usuario
+            objClientes.FechaModificacion = clsProyecto.Conexion.FechaServidor
+            objClientes.Update(T)
+
             Me.ModificarDetalle()
-            Me.InsertarDetalle(Me.idpersona)
+            Me.InsertarDetalle(Me.idpersona, T)
+            T.CommitTran()
+
             MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.DialogResult = Windows.Forms.DialogResult.OK
 
-            T.CommitTran()
+
 
         Catch ex As Exception
             clsError.CaptarError(ex)

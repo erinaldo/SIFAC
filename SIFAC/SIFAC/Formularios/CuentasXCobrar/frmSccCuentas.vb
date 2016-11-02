@@ -43,8 +43,8 @@ Public Class frmSccCuentas
 
             'Me.grdPedidosMaster.Text = "Pedidos (" & Me.grdPedidosMasterTabla.RowCount & ")"
 
-            dtCuentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SccCuentaID,SccCuentaID AS Llave,objClienteID,Cliente,Saldo,Cedula,FechaCredito,objEstadoID,Estado, Numero", "vwSccCuenta", Filtro))
-            dtDetalleCuenta = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSccCuentaID AS Llave,Numero,SfaFacturaID,Saldo, objEstadoID,EstadoFact,CodigoEstado,Fecha,MontoAbonado,MontoTotal,Plazo,MontoCuota,Estado,objSccCuentaID,objSccCuentaID as SccCuentaID", "vwSccCuentaDetalle", "CodigoEstado<> '00' AND " & Filtro))
+            dtCuentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SccCuentaID, SccCuentaID AS Llave,objClienteID,Cliente,Saldo,Cedula,FechaCredito,objEstadoID,Estado, Numero", "vwSccCuenta", Filtro))
+            dtDetalleCuenta = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSccCuentaID AS Llave,Numero,SfaFacturaID,Saldo, objEstadoID,EstadoFact,CodigoEstado,Fecha,MontoAbonado,MontoTotal,Plazo,MontoCuota,Estado,objSccCuentaID,objSccCuentaID as SccCuentaID", "vwSccCuentaDetalle", Filtro))
 
             dsCuentas = New DataSet
 
@@ -62,8 +62,8 @@ Public Class frmSccCuentas
             Me.grdExpedienteDetalle.DataSource = dsCuentas
             Me.grdExpedienteDetalle.DataMember = "SccCuenta.Cuenta_CuentaDetalle"
 
-            'dsCuentas.Tables("SccCuenta").PrimaryKey = New DataColumn() {dsCuentas.Tables("SccCuenta").Columns("Llave")}
-            'dsCuentas.Tables("SccCuenta").DefaultView.Sort = "Llave"
+            dsCuentas.Tables("SccCuenta").PrimaryKey = New DataColumn() {dsCuentas.Tables("SccCuenta").Columns("Llave")}
+            dsCuentas.Tables("SccCuenta").DefaultView.Sort = "Llave"
 
             Me.grdExpedienteMaster.Text = "Expedientes (" & Me.grdExpedienteMasterTabla.RowCount & ")"
 
@@ -96,11 +96,12 @@ Public Class frmSccCuentas
             objfrmCuentaEdit.TypeGUI = 0
             If objfrmCuentaEdit.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarCuentas()
-                If (Me.dtCuentas.Rows.Count <> 0) Then
-                    iIndiceRegistro = Me.dtCuentas.DefaultView.Find(objfrmCuentaEdit.CuentaID)
-                    Me.dtCuentas.DefaultView.Find(iIndiceRegistro)
 
-                End If
+                'If (Me.dtCuentas.Rows.Count <> 0) Then
+                '    iIndiceRegistro = Me.dtCuentas.DefaultView.Find(objfrmCuentaEdit.CuentaID)
+                '    Me.dtCuentas.DefaultView.Find(iIndiceRegistro)
+
+                'End If
             End If
 
         Catch ex As Exception

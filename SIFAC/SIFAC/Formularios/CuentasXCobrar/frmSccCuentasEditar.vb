@@ -96,10 +96,10 @@ Public Class frmSccCuentasEditar
                 PersonaID = Nothing
                 Me.txtEstado.Text = Me.CargarEstados(ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO"))
 
-                'poner invisible los controles de agregar
-                cmdBuscarFacturas.Visible = False
-                cmdProcesarFacturas.Visible = False
-                cmdConsultarFacturas.Visible = False
+                ''poner invisible los controles de agregar
+                'cmdBuscarFacturas.Visible = False
+                'cmdProcesarFacturas.Visible = False
+                'cmdConsultarFacturas.Visible = False
 
             Case 1
                 Me.Text = "Edición de Expediente"
@@ -120,6 +120,35 @@ Public Class frmSccCuentasEditar
     End Sub
 
 #Region "Agregar Cuenta"
+
+    Public Sub RegistarCuenta()
+        Dim objSccCuenta As SccCuentaPorCobrar
+        objSccCuenta = New SccCuentaPorCobrar
+        Dim T As New TransactionManager
+        Try
+            Try
+                T.BeginTran()
+                objSccCuenta.Numero = GenerarCodigo()
+                objSccCuenta.Saldo = Me.numSaldo.Value
+                objSccCuenta.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objSccCuenta.SaldoInicial = 0.0
+                objSccCuenta.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objSccCuenta.objClienteID = strClienteID
+                objSccCuenta.FechaCredito = Me.dtpFechaCredito.Value
+                objSccCuenta.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO")
+                objSccCuenta.Insert(T)
+                T.CommitTran()
+                Me.CuentaID = objSccCuenta.SccCuentaID
+
+            Catch ex As Exception
+                T.RollbackTran()
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            objSccCuenta = Nothing
+        End Try
+    End Sub
+
     Public Sub AgregarCuenta()
         Dim objSccCuenta As SccCuentaPorCobrar
         Dim tx As New DAL.TransactionManager
@@ -138,6 +167,7 @@ Public Class frmSccCuentasEditar
                 objSccCuenta.Insert(tx)
                 tx.CommitTran()
                 Me.CuentaID = objSccCuenta.SccCuentaID
+
                 Me.DialogResult = Windows.Forms.DialogResult.OK
                 MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Catch ex As Exception
@@ -381,12 +411,27 @@ Public Class frmSccCuentasEditar
     Private Sub cmdBuscarFacturas_Click(sender As Object, e As EventArgs) Handles cmdBuscarFacturas.Click
         Dim objfrm As frmSfaFaturaEditar
         objfrm = New frmSfaFaturaEditar
-        'objfrm.Show()
-        objfrm.TypGui = 0
-        objfrm.IDCuenta = Me.CuentaID
-        If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-            CargarFacturas()
-        End If
+        Try
+            Dim objCliente As New SccClientes
+            objfrm.TypGui = TypeGUI
+
+            If TypeGUI = 0 Then
+                If ValidarEntrada() Then
+                    Me.RegistarCuenta()
+                End If
+            End If
+            objCliente.RetrieveByFilter("objPersonaID=" & PersonaID)
+            objfrm.IDCliente = objCliente.ClienteID
+            objfrm.IDCuenta = Me.CuentaID
+            If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                CargarFacturas()
+                Me.TypeGUI = 1
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
 
     End Sub
 
@@ -448,6 +493,8 @@ Public Class frmSccCuentasEditar
                     objSccCuentaCobrar.UsuarioModificacion = clsProyecto.Conexion.Usuario
                     objSccCuentaCobrar.FechaModificacion = clsProyecto.Conexion.FechaServidor
                     objSccCuentaCobrar.Update(T)
+                    numSaldoInicial.Value = objSccCuentaCobrar.Saldo
+                    numSaldo.Value = objSccCuentaCobrar.Saldo
                 End If
                 T.CommitTran()
                 MsgBox("Factura procesada Exitosamente", MsgBoxStyle.Information, clsProyecto.SiglasSistema)

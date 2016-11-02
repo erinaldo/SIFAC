@@ -180,7 +180,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.TabPageGenerales.Controls.Add(Me.Label1)
         Me.TabPageGenerales.Location = New System.Drawing.Point(4, 22)
         Me.TabPageGenerales.Name = "TabPageGenerales"
-        Me.TabPageGenerales.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPageGenerales.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPageGenerales.Size = New System.Drawing.Size(809, 135)
         Me.TabPageGenerales.TabIndex = 0
         Me.TabPageGenerales.Text = "Datos Generales"
@@ -362,7 +362,6 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbVendedor.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbVendedor.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbVendedor.EditorHeight = 15
-        Me.cmbVendedor.Enabled = False
         Me.cmbVendedor.Images.Add(CType(resources.GetObject("cmbVendedor.Images"), System.Drawing.Image))
         Me.cmbVendedor.ItemHeight = 15
         Me.cmbVendedor.Location = New System.Drawing.Point(522, 46)
@@ -499,7 +498,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.TabPageCliente.Controls.Add(Me.Label8)
         Me.TabPageCliente.Location = New System.Drawing.Point(4, 22)
         Me.TabPageCliente.Name = "TabPageCliente"
-        Me.TabPageCliente.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPageCliente.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPageCliente.Size = New System.Drawing.Size(809, 135)
         Me.TabPageCliente.TabIndex = 1
         Me.TabPageCliente.Text = "Datos del Cliente"
@@ -993,7 +992,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.TabPageDescuento.Controls.Add(Me.NumDescuento)
         Me.TabPageDescuento.Location = New System.Drawing.Point(4, 22)
         Me.TabPageDescuento.Name = "TabPageDescuento"
-        Me.TabPageDescuento.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPageDescuento.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPageDescuento.Size = New System.Drawing.Size(133, 60)
         Me.TabPageDescuento.TabIndex = 0
         Me.TabPageDescuento.Text = "Descuento"

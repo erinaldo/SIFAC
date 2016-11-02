@@ -499,7 +499,7 @@ Public Class frmPedidosEdit
     Private Sub CargarDatosEncargo()
         Try
             dtDetallePedido = New DataTable
-            dtDetallePedido = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID, Codigo, objCategoriaID, Producto, Cantidad, 0 AS CostoImpuesto, CostoPromedio AS CostoUnitario,Cantidad* CostoPromedio CostoTotal ", "vwSivEncargosPedidosDetalle", " SivEncargoDetalleID IN(" & strFiltroEncargos & ")"))
+            dtDetallePedido = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID, Codigo, objCategoriaID, Producto, Cantidad, 0 AS CostoImpuesto, CostoUnitario,Cantidad* CostoUnitario CostoTotal ", "vwSivEncargosPedidosDetalle", " SivEncargoDetalleID IN (" & strFiltroEncargos & ")"))
             Me.grdDetallePedidos.DataSource = dtDetallePedido
             CalcularTotal()
         Catch ex As Exception
