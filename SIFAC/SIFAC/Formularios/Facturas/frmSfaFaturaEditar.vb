@@ -121,7 +121,12 @@ Public Class frmSfaFaturaEditar
                 Me.cmbPlazo.Enabled = False
                 Me.cmbModalidadPago.Enabled = False
                 Me.numPrima.Enabled = False
+                'Me.cmdCambioFecha.Enabled = False
 
+            End If
+
+            If TypGui = 3 Then
+                'Me.cmdCambioFecha.Enabled = True
             End If
 
         Catch ex As Exception
@@ -916,13 +921,14 @@ Public Class frmSfaFaturaEditar
         Me.ErrorProvider.Clear()
     End Sub
 
-    Private Sub cmdCambioFecha_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub cmdCambioFecha_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCambioFecha.Click
         Dim objFrmFechas As New frmSfaCambiosPagos
         Try
             objFrmFechas.IdDetalleFact = Me.IDDetalleFact
             If objFrmFechas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.dtpFechaProximoPago.Value = objFrmFechas.dtpNuevoPago.Value
                 Me.BoolOK = True
+                'Me.cmdCambioFecha.Enabled = False
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -939,6 +945,7 @@ Public Class frmSfaFaturaEditar
         Me.dtpFechaCredito.Enabled = False
         Me.cmbPlazo.Enabled = False
         Me.cmbModalidadPago.Enabled = False
+        'Me.cmdCambioFecha.Enabled = False
     End Sub
 
     Private Sub cmdProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -1021,6 +1028,7 @@ Public Class frmSfaFaturaEditar
             Me.NumMonto.Enabled = True
             Me.numDescuentoPorc.Enabled = True
             Me.cmbPlazo.Enabled = True
+            'Me.cmdCambioFecha.Enabled = False
             Me.cmbModalidadPago.Enabled = True
             Me.cmbFactura.SelectedIndex = -1
             Me.numCuotas.Value = 0.0
@@ -1073,4 +1081,6 @@ Public Class frmSfaFaturaEditar
     Private Sub cmbModalidadPago_TextChanged(sender As Object, e As EventArgs) Handles cmbModalidadPago.TextChanged
         Me.ErrorProvider.Clear()
     End Sub
+
+   
 End Class

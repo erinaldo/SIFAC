@@ -63,7 +63,7 @@ Partial Class frmSfaFactura
         Me.tbCuentas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditarFactura, Me.ToolStripSeparator3, Me.cmdNuevaFecha, Me.cmdProcesarExpedienteFact, Me.cmdAnularFactura, Me.ToolStripSeparator4, Me.cmdBuscar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdRefrescar, Me.ToolStripSeparator2, Me.cmdSalir})
         Me.tbCuentas.Location = New System.Drawing.Point(0, 0)
         Me.tbCuentas.Name = "tbCuentas"
-        Me.tbCuentas.Size = New System.Drawing.Size(901, 39)
+        Me.tbCuentas.Size = New System.Drawing.Size(1201, 39)
         Me.tbCuentas.TabIndex = 1
         Me.tbCuentas.Text = "ToolStrip1"
         '
@@ -99,7 +99,6 @@ Partial Class frmSfaFactura
         Me.cmdNuevaFecha.Name = "cmdNuevaFecha"
         Me.cmdNuevaFecha.Size = New System.Drawing.Size(36, 36)
         Me.cmdNuevaFecha.ToolTipText = "Realizar Desplazamiento de Fecha de Pago Próxima"
-        Me.cmdNuevaFecha.Visible = False
         '
         'cmdProcesarExpedienteFact
         '
@@ -174,13 +173,15 @@ Partial Class frmSfaFactura
         'grdFacturas
         '
         Me.grdFacturas.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdFacturas.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdFacturas.Location = New System.Drawing.Point(0, 39)
         Me.grdFacturas.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdFacturas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdFacturas.MainView = Me.grdFacturasTabla
+        Me.grdFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdFacturas.Name = "grdFacturas"
         Me.grdFacturas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
-        Me.grdFacturas.Size = New System.Drawing.Size(901, 520)
+        Me.grdFacturas.Size = New System.Drawing.Size(1201, 649)
         Me.grdFacturas.TabIndex = 9
         Me.grdFacturas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdFacturasTabla})
         '
@@ -308,12 +309,13 @@ Partial Class frmSfaFactura
         '
         'frmSfaFactura
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(901, 559)
+        Me.ClientSize = New System.Drawing.Size(1201, 688)
         Me.Controls.Add(Me.grdFacturas)
         Me.Controls.Add(Me.tbCuentas)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmSfaFactura"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Expediente-Facturas"
