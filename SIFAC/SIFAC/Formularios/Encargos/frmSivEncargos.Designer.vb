@@ -151,7 +151,7 @@ Partial Class frmSivEncargos
         Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.btnAutorizar, Me.btnPedido, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
-        Me.tbProductos.Size = New System.Drawing.Size(1039, 39)
+        Me.tbProductos.Size = New System.Drawing.Size(1385, 39)
         Me.tbProductos.TabIndex = 9
         '
         'btnAutorizar
@@ -187,8 +187,9 @@ Partial Class frmSivEncargos
         Me.PanelControl1.Controls.Add(Me.Contenedor)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 39)
+        Me.PanelControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(1039, 527)
+        Me.PanelControl1.Size = New System.Drawing.Size(1385, 658)
         Me.PanelControl1.TabIndex = 10
         '
         'Contenedor
@@ -196,25 +197,28 @@ Partial Class frmSivEncargos
         Me.Contenedor.Controls.Add(Me.grdEncargosMaster)
         Me.Contenedor.Controls.Add(Me.grdEncargosExcel)
         Me.Contenedor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Contenedor.GridDefinition = "49.1395793499044:False:False;48.565965583174:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.2270531400966:False:" & _
+        Me.Contenedor.GridDefinition = "49.388379204893:False:False;48.7767584097859:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.4207096307024:False:" & _
     "False;"
         Me.Contenedor.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.Contenedor.Location = New System.Drawing.Point(2, 2)
+        Me.Contenedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Contenedor.Name = "Contenedor"
-        Me.Contenedor.Size = New System.Drawing.Size(1035, 523)
+        Me.Contenedor.Size = New System.Drawing.Size(1381, 654)
         Me.Contenedor.TabIndex = 2
         Me.Contenedor.TabStop = False
         '
         'grdEncargosMaster
         '
         Me.grdEncargosMaster.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdEncargosMaster.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdEncargosMaster.Location = New System.Drawing.Point(4, 4)
         Me.grdEncargosMaster.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdEncargosMaster.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdEncargosMaster.MainView = Me.grdEncargosMasterTabla
+        Me.grdEncargosMaster.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdEncargosMaster.Name = "grdEncargosMaster"
         Me.grdEncargosMaster.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
-        Me.grdEncargosMaster.Size = New System.Drawing.Size(1027, 515)
+        Me.grdEncargosMaster.Size = New System.Drawing.Size(1373, 646)
         Me.grdEncargosMaster.TabIndex = 2
         Me.grdEncargosMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdEncargosMasterTabla})
         '
@@ -252,7 +256,7 @@ Partial Class frmSivEncargos
         Me.colFecha.OptionsColumn.AllowFocus = False
         Me.colFecha.OptionsColumn.ReadOnly = True
         Me.colFecha.Visible = True
-        Me.colFecha.VisibleIndex = 3
+        Me.colFecha.VisibleIndex = 2
         Me.colFecha.Width = 89
         '
         'colRuta
@@ -263,7 +267,7 @@ Partial Class frmSivEncargos
         Me.colRuta.OptionsColumn.AllowFocus = False
         Me.colRuta.OptionsColumn.ReadOnly = True
         Me.colRuta.Visible = True
-        Me.colRuta.VisibleIndex = 5
+        Me.colRuta.VisibleIndex = 4
         Me.colRuta.Width = 93
         '
         'colVendedor
@@ -274,7 +278,7 @@ Partial Class frmSivEncargos
         Me.colVendedor.OptionsColumn.AllowFocus = False
         Me.colVendedor.OptionsColumn.ReadOnly = True
         Me.colVendedor.Visible = True
-        Me.colVendedor.VisibleIndex = 4
+        Me.colVendedor.VisibleIndex = 3
         Me.colVendedor.Width = 158
         '
         'colEstado
@@ -285,7 +289,7 @@ Partial Class frmSivEncargos
         Me.colEstado.OptionsColumn.AllowFocus = False
         Me.colEstado.OptionsColumn.ReadOnly = True
         Me.colEstado.Visible = True
-        Me.colEstado.VisibleIndex = 11
+        Me.colEstado.VisibleIndex = 10
         Me.colEstado.Width = 99
         '
         'colCodigoProducto
@@ -300,7 +304,7 @@ Partial Class frmSivEncargos
         Me.ColProducto.FieldName = "NombreProducto"
         Me.ColProducto.Name = "ColProducto"
         Me.ColProducto.Visible = True
-        Me.ColProducto.VisibleIndex = 7
+        Me.ColProducto.VisibleIndex = 6
         Me.ColProducto.Width = 132
         '
         'ColCantidadProducto
@@ -309,7 +313,7 @@ Partial Class frmSivEncargos
         Me.ColCantidadProducto.FieldName = "Cantidad"
         Me.ColCantidadProducto.Name = "ColCantidadProducto"
         Me.ColCantidadProducto.Visible = True
-        Me.ColCantidadProducto.VisibleIndex = 8
+        Me.ColCantidadProducto.VisibleIndex = 7
         Me.ColCantidadProducto.Width = 62
         '
         'colCostoProducto
@@ -318,7 +322,7 @@ Partial Class frmSivEncargos
         Me.colCostoProducto.FieldName = "CostoPromedio"
         Me.colCostoProducto.Name = "colCostoProducto"
         Me.colCostoProducto.Visible = True
-        Me.colCostoProducto.VisibleIndex = 9
+        Me.colCostoProducto.VisibleIndex = 8
         Me.colCostoProducto.Width = 66
         '
         'ColTotalCostoProducto
@@ -327,7 +331,7 @@ Partial Class frmSivEncargos
         Me.ColTotalCostoProducto.FieldName = "TotalCosto"
         Me.ColTotalCostoProducto.Name = "ColTotalCostoProducto"
         Me.ColTotalCostoProducto.Visible = True
-        Me.ColTotalCostoProducto.VisibleIndex = 10
+        Me.ColTotalCostoProducto.VisibleIndex = 9
         Me.ColTotalCostoProducto.Width = 71
         '
         'colCategoriaProducto
@@ -336,7 +340,7 @@ Partial Class frmSivEncargos
         Me.colCategoriaProducto.FieldName = "Categoria"
         Me.colCategoriaProducto.Name = "colCategoriaProducto"
         Me.colCategoriaProducto.Visible = True
-        Me.colCategoriaProducto.VisibleIndex = 6
+        Me.colCategoriaProducto.VisibleIndex = 5
         Me.colCategoriaProducto.Width = 94
         '
         'ColSeleccionar
@@ -363,10 +367,12 @@ Partial Class frmSivEncargos
         '
         'grdEncargosExcel
         '
-        Me.grdEncargosExcel.Location = New System.Drawing.Point(4, 265)
+        Me.grdEncargosExcel.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdEncargosExcel.Location = New System.Drawing.Point(4, 331)
         Me.grdEncargosExcel.MainView = Me.grdvwEncargosExcel
+        Me.grdEncargosExcel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdEncargosExcel.Name = "grdEncargosExcel"
-        Me.grdEncargosExcel.Size = New System.Drawing.Size(1027, 254)
+        Me.grdEncargosExcel.Size = New System.Drawing.Size(1373, 319)
         Me.grdEncargosExcel.TabIndex = 4
         Me.grdEncargosExcel.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdvwEncargosExcel})
         Me.grdEncargosExcel.Visible = False
@@ -447,12 +453,13 @@ Partial Class frmSivEncargos
         '
         'frmSivEncargos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1039, 566)
+        Me.ClientSize = New System.Drawing.Size(1385, 697)
         Me.Controls.Add(Me.PanelControl1)
         Me.Controls.Add(Me.tbProductos)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmSivEncargos"
         Me.Text = "Encargos"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
