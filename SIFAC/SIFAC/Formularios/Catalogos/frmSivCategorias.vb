@@ -60,7 +60,8 @@ Public Class frmSivCategorias
         Dim FilaActual As Integer
         Try
             Try
-                FilaActual = Me.grdCategoriasTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdCategoriasTabla.GetSelectedRows()
+                FilaActual = Me.grdCategoriasTabla.GetDataSourceRowIndex(selectedRow(0))
                 ConsultarCategoria.TypeGui = 2
                 ConsultarCategoria.CategoriaID = Me.dtCategorias.DefaultView.Item(FilaActual)("CategoriaID")
                 ConsultarCategoria.ShowDialog(Me)
@@ -77,7 +78,8 @@ Public Class frmSivCategorias
         Dim FilaActual As Integer
         Try
             Try
-                FilaActual = Me.grdCategoriasTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdCategoriasTabla.GetSelectedRows()
+                FilaActual = Me.grdCategoriasTabla.GetDataSourceRowIndex(selectedRow(0))
                 EditarCategoria.TypeGui = 1
                 EditarCategoria.CategoriaID = Me.dtCategorias.DefaultView.Item(FilaActual)("CategoriaID")
                 EditarCategoria.ShowDialog(Me)

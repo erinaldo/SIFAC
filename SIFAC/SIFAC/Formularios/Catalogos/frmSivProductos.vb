@@ -93,8 +93,9 @@ Public Class frmSivProductos
         Dim editProducto As frmSivProductosEditar
         Dim FilaActual As Integer
         Try
-            FilaActual = Me.grdProductosTabla.FocusedRowHandle
-           
+            Dim selectedRow As Integer() = grdProductosTabla.GetSelectedRows()
+            FilaActual = Me.grdProductosTabla.GetDataSourceRowIndex(selectedRow(0))
+
             Me.Cursor = WaitCursor
             editProducto = New frmSivProductosEditar
             editProducto.TypeGui = 1
@@ -114,7 +115,8 @@ Public Class frmSivProductos
         Dim editProducto As frmSivProductosEditar
         Dim FilaActual As Integer
         Try
-            FilaActual = Me.grdProductosTabla.FocusedRowHandle
+            Dim selectedRow As Integer() = grdProductosTabla.GetSelectedRows()
+            FilaActual = Me.grdProductosTabla.GetDataSourceRowIndex(selectedRow(0))
             Me.Cursor = WaitCursor
             editProducto = New frmSivProductosEditar
             editProducto.TypeGui = 2

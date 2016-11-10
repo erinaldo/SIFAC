@@ -59,7 +59,9 @@ Public Class frmStbBodegas
         Dim FilaActual As Integer
         Try
             Try
-                FilaActual = Me.grdBodegasTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdBodegasTabla.GetSelectedRows()
+                FilaActual = Me.grdBodegasTabla.GetDataSourceRowIndex(selectedRow(0))
+
                 ConsultarBodegas.TypeGui = 3
                 ConsultarBodegas.BodegaID = Me.dtBodegas.DefaultView.Item(FilaActual)("StbBodegaID")
                 ConsultarBodegas.ShowDialog(Me)
@@ -76,7 +78,9 @@ Public Class frmStbBodegas
         Dim FilaActual As Integer
         Try
             Try
-                FilaActual = Me.grdBodegasTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdBodegasTabla.GetSelectedRows()
+                FilaActual = Me.grdBodegasTabla.GetDataSourceRowIndex(selectedRow(0))
+
                 EditarBodega.TypeGui = 2
                 EditarBodega.BodegaID = Me.dtBodegas.DefaultView.Item(FilaActual)("StbBodegaID")
                 EditarBodega.ShowDialog(Me)

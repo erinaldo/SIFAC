@@ -93,6 +93,7 @@ Public Class frmSivCategoriasEditar
             objCategorias.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objCategorias.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objCategorias.Insert()
+            CategoriaID = objCategorias.CategoriaID
             T.CommitTran()
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.boolEditado = False
@@ -144,11 +145,11 @@ Public Class frmSivCategoriasEditar
             Return False
             Exit Function
         End If
-        If txtDescripcion.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(txtDescripcion, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
+        'If txtDescripcion.Text.Trim.Length = 0 Then
+        '    ErrorProv.SetError(txtDescripcion, My.Resources.MsgObligatorio)
+        '    Return False
+        '    Exit Function
+        'End If
 
         Return True
     End Function

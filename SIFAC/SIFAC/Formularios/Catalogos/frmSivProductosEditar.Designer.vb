@@ -60,10 +60,12 @@ Partial Class frmSivProductosEditar
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.cmbMarca = New System.Windows.Forms.ComboBox()
+        Me.cmbCategoria = New System.Windows.Forms.ComboBox()
+        Me.cmdAgregarMarca = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAgregarCategoria = New DevExpress.XtraEditors.SimpleButton()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cbxCategoria = New C1.Win.C1List.C1Combo()
-        Me.cbxMarca = New C1.Win.C1List.C1Combo()
         Me.txtProducto = New System.Windows.Forms.TextBox()
         Me.chkActivo = New System.Windows.Forms.CheckBox()
         Me.lblCilindraje = New System.Windows.Forms.Label()
@@ -88,8 +90,6 @@ Partial Class frmSivProductosEditar
         CType(Me.spnCantidadMinima.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
-        CType(Me.cbxCategoria, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbxMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ErrorProv
@@ -394,10 +394,12 @@ Partial Class frmSivProductosEditar
         '
         'GroupControl1
         '
+        Me.GroupControl1.Controls.Add(Me.cmbMarca)
+        Me.GroupControl1.Controls.Add(Me.cmbCategoria)
+        Me.GroupControl1.Controls.Add(Me.cmdAgregarMarca)
+        Me.GroupControl1.Controls.Add(Me.cmdAgregarCategoria)
         Me.GroupControl1.Controls.Add(Me.txtNombre)
         Me.GroupControl1.Controls.Add(Me.Label1)
-        Me.GroupControl1.Controls.Add(Me.cbxCategoria)
-        Me.GroupControl1.Controls.Add(Me.cbxMarca)
         Me.GroupControl1.Controls.Add(Me.txtProducto)
         Me.GroupControl1.Controls.Add(Me.chkActivo)
         Me.GroupControl1.Controls.Add(Me.lblCilindraje)
@@ -410,6 +412,52 @@ Partial Class frmSivProductosEditar
         Me.GroupControl1.Size = New System.Drawing.Size(416, 201)
         Me.GroupControl1.TabIndex = 0
         Me.GroupControl1.Text = "Datos del Producto"
+        '
+        'cmbMarca
+        '
+        Me.cmbMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMarca.FormattingEnabled = True
+        Me.cmbMarca.Location = New System.Drawing.Point(92, 139)
+        Me.cmbMarca.Name = "cmbMarca"
+        Me.cmbMarca.Size = New System.Drawing.Size(279, 21)
+        Me.cmbMarca.TabIndex = 129
+        '
+        'cmbCategoria
+        '
+        Me.cmbCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCategoria.FormattingEnabled = True
+        Me.cmbCategoria.Location = New System.Drawing.Point(92, 110)
+        Me.cmbCategoria.Name = "cmbCategoria"
+        Me.cmbCategoria.Size = New System.Drawing.Size(279, 21)
+        Me.cmbCategoria.TabIndex = 128
+        '
+        'cmdAgregarMarca
+        '
+        Me.cmdAgregarMarca.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAgregarMarca.Appearance.Options.UseFont = True
+        Me.cmdAgregarMarca.Image = CType(resources.GetObject("cmdAgregarMarca.Image"), System.Drawing.Image)
+        Me.cmdAgregarMarca.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdAgregarMarca.Location = New System.Drawing.Point(377, 136)
+        Me.cmdAgregarMarca.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAgregarMarca.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAgregarMarca.Name = "cmdAgregarMarca"
+        Me.cmdAgregarMarca.Size = New System.Drawing.Size(32, 28)
+        Me.cmdAgregarMarca.TabIndex = 117
+        Me.cmdAgregarMarca.Tag = "AGREGAR MARCA"
+        '
+        'cmdAgregarCategoria
+        '
+        Me.cmdAgregarCategoria.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAgregarCategoria.Appearance.Options.UseFont = True
+        Me.cmdAgregarCategoria.Image = CType(resources.GetObject("cmdAgregarCategoria.Image"), System.Drawing.Image)
+        Me.cmdAgregarCategoria.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdAgregarCategoria.Location = New System.Drawing.Point(377, 105)
+        Me.cmdAgregarCategoria.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAgregarCategoria.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAgregarCategoria.Name = "cmdAgregarCategoria"
+        Me.cmdAgregarCategoria.Size = New System.Drawing.Size(32, 28)
+        Me.cmdAgregarCategoria.TabIndex = 116
+        Me.cmdAgregarCategoria.Tag = "AGREGAR CATEGORIA"
         '
         'txtNombre
         '
@@ -429,68 +477,6 @@ Partial Class frmSivProductosEditar
         Me.Label1.TabIndex = 14
         Me.Label1.Tag = "OBLIGATORIO"
         Me.Label1.Text = "Nombre:"
-        '
-        'cbxCategoria
-        '
-        Me.cbxCategoria.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cbxCategoria.Caption = ""
-        Me.cbxCategoria.CaptionHeight = 17
-        Me.cbxCategoria.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cbxCategoria.ColumnCaptionHeight = 17
-        Me.cbxCategoria.ColumnFooterHeight = 17
-        Me.cbxCategoria.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cbxCategoria.ContentHeight = 15
-        Me.cbxCategoria.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cbxCategoria.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cbxCategoria.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbxCategoria.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cbxCategoria.EditorHeight = 15
-        Me.cbxCategoria.Images.Add(CType(resources.GetObject("cbxCategoria.Images"), System.Drawing.Image))
-        Me.cbxCategoria.ItemHeight = 15
-        Me.cbxCategoria.Location = New System.Drawing.Point(92, 108)
-        Me.cbxCategoria.MatchEntryTimeout = CType(2000, Long)
-        Me.cbxCategoria.MaxDropDownItems = CType(5, Short)
-        Me.cbxCategoria.MaxLength = 32767
-        Me.cbxCategoria.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cbxCategoria.Name = "cbxCategoria"
-        Me.cbxCategoria.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cbxCategoria.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cbxCategoria.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cbxCategoria.Size = New System.Drawing.Size(279, 21)
-        Me.cbxCategoria.TabIndex = 2
-        Me.cbxCategoria.Tag = "OBLIGATORIO"
-        Me.cbxCategoria.PropBag = resources.GetString("cbxCategoria.PropBag")
-        '
-        'cbxMarca
-        '
-        Me.cbxMarca.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cbxMarca.Caption = ""
-        Me.cbxMarca.CaptionHeight = 17
-        Me.cbxMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cbxMarca.ColumnCaptionHeight = 17
-        Me.cbxMarca.ColumnFooterHeight = 17
-        Me.cbxMarca.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cbxMarca.ContentHeight = 15
-        Me.cbxMarca.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cbxMarca.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cbxMarca.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbxMarca.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cbxMarca.EditorHeight = 15
-        Me.cbxMarca.Images.Add(CType(resources.GetObject("cbxMarca.Images"), System.Drawing.Image))
-        Me.cbxMarca.ItemHeight = 15
-        Me.cbxMarca.Location = New System.Drawing.Point(92, 135)
-        Me.cbxMarca.MatchEntryTimeout = CType(2000, Long)
-        Me.cbxMarca.MaxDropDownItems = CType(5, Short)
-        Me.cbxMarca.MaxLength = 32767
-        Me.cbxMarca.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cbxMarca.Name = "cbxMarca"
-        Me.cbxMarca.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cbxMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cbxMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cbxMarca.Size = New System.Drawing.Size(279, 21)
-        Me.cbxMarca.TabIndex = 3
-        Me.cbxMarca.Tag = "OBLIGATORIO"
-        Me.cbxMarca.PropBag = resources.GetString("cbxMarca.PropBag")
         '
         'txtProducto
         '
@@ -581,8 +567,6 @@ Partial Class frmSivProductosEditar
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()
-        CType(Me.cbxCategoria, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbxMarca, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -599,8 +583,6 @@ Partial Class frmSivProductosEditar
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents txtNombre As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents cbxCategoria As C1.Win.C1List.C1Combo
-    Friend WithEvents cbxMarca As C1.Win.C1List.C1Combo
     Friend WithEvents txtProducto As System.Windows.Forms.TextBox
     Friend WithEvents chkActivo As System.Windows.Forms.CheckBox
     Friend WithEvents lblCilindraje As System.Windows.Forms.Label
@@ -620,4 +602,8 @@ Partial Class frmSivProductosEditar
     Friend WithEvents grdProveedor As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents tabpageExistenciaBodega As System.Windows.Forms.TabPage
     Friend WithEvents grdBodegas As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents cmdAgregarMarca As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAgregarCategoria As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmbMarca As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbCategoria As System.Windows.Forms.ComboBox
 End Class

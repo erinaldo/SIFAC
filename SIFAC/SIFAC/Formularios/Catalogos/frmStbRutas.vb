@@ -94,8 +94,9 @@ Public Class frmStbRutas
         Dim editRutas As frmStbRutasEdit
         Dim FilaActual As Integer
         Try
-            FilaActual = Me.grdRutasTabla.FocusedRowHandle
-
+            Dim selectedRow As Integer() = grdRutasTabla.GetSelectedRows()
+            FilaActual = Me.grdRutasTabla.GetDataSourceRowIndex(selectedRow(0))
+          
             Me.Cursor = WaitCursor
             editRutas = New frmStbRutasEdit
             editRutas.TypeGui = 1
@@ -114,7 +115,8 @@ Public Class frmStbRutas
         Dim editRutas As frmStbRutasEdit
         Dim FilaActual As Integer
         Try
-            FilaActual = Me.grdRutasTabla.FocusedRowHandle
+            Dim selectedRow As Integer() = grdRutasTabla.GetSelectedRows()
+            FilaActual = Me.grdRutasTabla.GetDataSourceRowIndex(selectedRow(0))
             Me.Cursor = WaitCursor
             editRutas = New frmStbRutasEdit
             editRutas.TypeGui = 2

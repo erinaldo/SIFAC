@@ -31,20 +31,18 @@ Partial Class frmBodegasEditar
         Me.txtCodigo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmdJefe = New System.Windows.Forms.Button()
-        Me.cmbJefe = New C1.Win.C1List.C1Combo()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
         Me.chkActivo = New System.Windows.Forms.CheckBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.lblDescripcion = New System.Windows.Forms.Label()
         Me.lblSfaPromocionID = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.cmbCiudad = New System.Windows.Forms.ComboBox()
+        Me.cmbJefe = New System.Windows.Forms.ComboBox()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.gbxDatosGenerales.SuspendLayout()
-        CType(Me.cmbJefe, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -92,12 +90,12 @@ Partial Class frmBodegasEditar
         '
         'gbxDatosGenerales
         '
+        Me.gbxDatosGenerales.Controls.Add(Me.cmbJefe)
+        Me.gbxDatosGenerales.Controls.Add(Me.cmbCiudad)
         Me.gbxDatosGenerales.Controls.Add(Me.txtCodigo)
         Me.gbxDatosGenerales.Controls.Add(Me.Label1)
         Me.gbxDatosGenerales.Controls.Add(Me.cmdJefe)
-        Me.gbxDatosGenerales.Controls.Add(Me.cmbJefe)
         Me.gbxDatosGenerales.Controls.Add(Me.Label2)
-        Me.gbxDatosGenerales.Controls.Add(Me.cmbCiudad)
         Me.gbxDatosGenerales.Controls.Add(Me.chkActivo)
         Me.gbxDatosGenerales.Controls.Add(Me.txtNombre)
         Me.gbxDatosGenerales.Controls.Add(Me.lblDescripcion)
@@ -137,37 +135,6 @@ Partial Class frmBodegasEditar
         Me.cmdJefe.Text = "···"
         Me.cmdJefe.UseVisualStyleBackColor = True
         '
-        'cmbJefe
-        '
-        Me.cmbJefe.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbJefe.Caption = ""
-        Me.cmbJefe.CaptionHeight = 17
-        Me.cmbJefe.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbJefe.ColumnCaptionHeight = 17
-        Me.cmbJefe.ColumnFooterHeight = 17
-        Me.cmbJefe.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbJefe.ContentHeight = 15
-        Me.cmbJefe.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbJefe.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbJefe.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbJefe.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbJefe.EditorHeight = 15
-        Me.cmbJefe.Images.Add(CType(resources.GetObject("cmbJefe.Images"), System.Drawing.Image))
-        Me.cmbJefe.ItemHeight = 15
-        Me.cmbJefe.Location = New System.Drawing.Point(181, 103)
-        Me.cmbJefe.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbJefe.MaxDropDownItems = CType(5, Short)
-        Me.cmbJefe.MaxLength = 32767
-        Me.cmbJefe.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbJefe.Name = "cmbJefe"
-        Me.cmbJefe.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbJefe.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbJefe.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbJefe.Size = New System.Drawing.Size(279, 21)
-        Me.cmbJefe.TabIndex = 105
-        Me.cmbJefe.Tag = "OBLIGATORIO"
-        Me.cmbJefe.PropBag = resources.GetString("cmbJefe.PropBag")
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -177,37 +144,6 @@ Partial Class frmBodegasEditar
         Me.Label2.Size = New System.Drawing.Size(50, 13)
         Me.Label2.TabIndex = 103
         Me.Label2.Text = "Ciudad:"
-        '
-        'cmbCiudad
-        '
-        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCiudad.Caption = ""
-        Me.cmbCiudad.CaptionHeight = 17
-        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbCiudad.ColumnCaptionHeight = 17
-        Me.cmbCiudad.ColumnFooterHeight = 17
-        Me.cmbCiudad.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbCiudad.ContentHeight = 15
-        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCiudad.EditorHeight = 15
-        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
-        Me.cmbCiudad.ItemHeight = 15
-        Me.cmbCiudad.Location = New System.Drawing.Point(181, 76)
-        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
-        Me.cmbCiudad.MaxLength = 32767
-        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbCiudad.Name = "cmbCiudad"
-        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCiudad.TabIndex = 100
-        Me.cmbCiudad.Tag = "OBLIGATORIO"
-        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
         '
         'chkActivo
         '
@@ -266,6 +202,24 @@ Partial Class frmBodegasEditar
         Me.ErrorProv.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink
         Me.ErrorProv.ContainerControl = Me
         '
+        'cmbCiudad
+        '
+        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudad.FormattingEnabled = True
+        Me.cmbCiudad.Location = New System.Drawing.Point(181, 76)
+        Me.cmbCiudad.Name = "cmbCiudad"
+        Me.cmbCiudad.Size = New System.Drawing.Size(279, 21)
+        Me.cmbCiudad.TabIndex = 129
+        '
+        'cmbJefe
+        '
+        Me.cmbJefe.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbJefe.FormattingEnabled = True
+        Me.cmbJefe.Location = New System.Drawing.Point(181, 103)
+        Me.cmbJefe.Name = "cmbJefe"
+        Me.cmbJefe.Size = New System.Drawing.Size(279, 21)
+        Me.cmbJefe.TabIndex = 130
+        '
         'frmBodegasEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -283,8 +237,6 @@ Partial Class frmBodegasEditar
         Me.PanelControl1.ResumeLayout(False)
         Me.gbxDatosGenerales.ResumeLayout(False)
         Me.gbxDatosGenerales.PerformLayout()
-        CType(Me.cmbJefe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -299,10 +251,10 @@ Partial Class frmBodegasEditar
     Friend WithEvents lblSfaPromocionID As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents cmbCiudad As C1.Win.C1List.C1Combo
     Friend WithEvents cmdJefe As System.Windows.Forms.Button
-    Friend WithEvents cmbJefe As C1.Win.C1List.C1Combo
     Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
     Friend WithEvents txtCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents cmbJefe As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbCiudad As System.Windows.Forms.ComboBox
 End Class

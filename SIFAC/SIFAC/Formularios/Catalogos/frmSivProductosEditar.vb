@@ -6,7 +6,7 @@ Imports SIFAC.BO
 Public Class frmSivProductosEditar
 
 #Region "Declaracion de Variables"
-    Public DtMarca, DtCilindraje, DtSegmento As DataTable
+    Public DtMarca, DtCategoria, DtSegmento As DataTable
     Public intTypeGui As Integer
     Public intProductoID As Integer
     Public boolEditado As Boolean
@@ -41,49 +41,32 @@ Public Class frmSivProductosEditar
     '' Descripción:        Procedimiento encargado de cargar los valores de Marca
     Public Sub CargarMarca()
         Try
+            cmbMarca.ValueMember = "MarcaID"
+            cmbMarca.DisplayMember = "Nombre"
             DtMarca = SivMarcas.RetrieveDT("Activa=1")
-            With cbxMarca
-                .DataSource = DtMarca
-                .DisplayMember = "Nombre"
-                .ValueMember = "MarcaID"
-                .Splits(0).DisplayColumns("MarcaID").Visible = False
-                .Splits(0).DisplayColumns("Descripcion").Visible = False
-                .Splits(0).DisplayColumns("Activa").Visible = False
-                .Splits(0).DisplayColumns("FechaCreacion").Visible = False
-                .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
-                .Splits(0).DisplayColumns("FechaModificacion").Visible = False
-                .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
-                .ColumnHeaders = False
-                .ExtendRightColumn = True
-            End With
+            cmbMarca.DataSource = DtMarca
+            cmbMarca.Text = ""
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
             DtMarca = Nothing
         End Try
+
     End Sub
 
     '' Descripción:        Procedimiento encargado de cargar los valores de Categorias
     Public Sub CargarCategorias()
         Try
-            DtCilindraje = SivCategorias.RetrieveDT("Activa=1")
-            With cbxCategoria
-                .DataSource = DtCilindraje
-                .DisplayMember = "Nombre"
-                .ValueMember = "CategoriaID"
-                .Splits(0).DisplayColumns("CategoriaID").Visible = False
-                .Splits(0).DisplayColumns("Descripcion").Visible = False
-                .Splits(0).DisplayColumns("Activa").Visible = False
-                .Splits(0).DisplayColumns("FechaCreacion").Visible = False
-                .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
-                .Splits(0).DisplayColumns("FechaModificacion").Visible = False
-                .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
-                .ColumnHeaders = False
-                .ExtendRightColumn = True
-            End With
+            cmbCategoria.ValueMember = "CategoriaID"
+            cmbCategoria.DisplayMember = "Nombre"
+            DtCategoria = SivCategorias.RetrieveDT("Activa=1", " Nombre", "CategoriaID, Nombre")
+            cmbCategoria.DataSource = DtCategoria
+            cmbCategoria.Text = ""
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
+
+       
     End Sub
 
     Private Sub CargarProveedor(ByVal strFiltro As String)
@@ -159,9 +142,9 @@ Public Class frmSivProductosEditar
                 Case 1
                     CargarDatosProducto()
                     chkActivo.Enabled = True
-                    Me.CargarProveedor("objRepuestoID = '" & Me.intProductoID & "'")
+                    Me.CargarProveedor("objProductosID = '" & Me.intProductoID & "'")
                     Me.CargarComboProveedor()
-                    Me.grdProveedor.Splits(0).DisplayColumns(2).Visible = False
+                    Me.grdProveedor.Splits(0).DisplayColumns(1).Visible = False
                     Me.grdProveedor.EmptyRows = False
                     Me.grdProveedor.FilterBar = False
                     Me.grdProveedor.Refresh()
@@ -180,8 +163,8 @@ Public Class frmSivProductosEditar
                     spnPrecioCredito.Enabled = False
                     txtNombre.Enabled = False
                     txtProducto.Enabled = False
-                    cbxMarca.Enabled = False
-                    cbxCategoria.Enabled = False
+                    cmbMarca.Enabled = False
+                    cmbCategoria.Enabled = False
                     chkActivo.Enabled = False
                     cmdGuardar.Enabled = False
                     Me.CargarComboProveedor()
@@ -202,8 +185,8 @@ Public Class frmSivProductosEditar
             objProducto.Retrieve(ProductoID)
             txtProducto.Text = objProducto.Codigo
             txtNombre.Text = objProducto.Nombre
-            cbxCategoria.SelectedValue = objProducto.objCategoriaID
-            cbxMarca.SelectedValue = objProducto.objMarcaID
+            cmbCategoria.SelectedValue = objProducto.objCategoriaID
+            cmbMarca.SelectedValue = objProducto.objMarcaID
             chkActivo.Checked = objProducto.Activo
             spnCantidadMinima.Value = objProducto.Cantidad_Minima
             spnCostoPromedio.Value = IIf(IsDBNull(objProducto.CostoPromedio), 0.0, objProducto.CostoPromedio)
@@ -231,8 +214,8 @@ Public Class frmSivProductosEditar
             objProducto.SivProductoID = ProductoID
             objProducto.Codigo = txtProducto.Text.Trim
             objProducto.Nombre = txtNombre.Text.Trim
-            objProducto.objCategoriaID = cbxCategoria.SelectedValue
-            objProducto.objMarcaID = cbxMarca.SelectedValue
+            objProducto.objCategoriaID = cmbCategoria.SelectedValue
+            objProducto.objMarcaID = cmbMarca.SelectedValue
             objProducto.Activo = chkActivo.Checked
             objProducto.Cantidad_Minima = spnCantidadMinima.Value
             objProducto.CostoPromedio = spnCostoPromedio.Value
@@ -287,8 +270,8 @@ Public Class frmSivProductosEditar
             objProducto.SivProductoID = ProductoID
             objProducto.Codigo = txtProducto.Text.Trim
             objProducto.Nombre = txtNombre.Text.Trim
-            objProducto.objCategoriaID = cbxCategoria.SelectedValue
-            objProducto.objMarcaID = cbxMarca.SelectedValue
+            objProducto.objCategoriaID = cmbCategoria.SelectedValue
+            objProducto.objMarcaID = cmbMarca.SelectedValue
             objProducto.Activo = chkActivo.Checked
             objProducto.Cantidad_Minima = spnCantidadMinima.Value
             objProducto.CostoPromedio = spnCostoPromedio.Value
@@ -466,16 +449,16 @@ Public Class frmSivProductosEditar
                 Return False
                 Exit Function
             End If
-            If cbxMarca.Text.Trim.Length = 0 Then
-                ErrorProv.SetError(cbxMarca, My.Resources.MsgObligatorio)
-                Return False
-                Exit Function
-            End If
-            If cbxCategoria.Text.Trim.Length = 0 Then
-                ErrorProv.SetError(cbxCategoria, My.Resources.MsgObligatorio)
-                Return False
-                Exit Function
-            End If
+            'If cmbMarca.Text.Trim.Length = 0 Then
+            '    ErrorProv.SetError(cmbMarca, My.Resources.MsgObligatorio)
+            '    Return False
+            '    Exit Function
+            'End If
+            'If cmbCategoria.Text.Trim.Length = 0 Then
+            '    ErrorProv.SetError(cmbCategoria, My.Resources.MsgObligatorio)
+            '    Return False
+            '    Exit Function
+            'End If
 
             Return True
         Catch ex As Exception
@@ -526,13 +509,13 @@ Public Class frmSivProductosEditar
         boolEditado = True
     End Sub
 
-    Private Sub cbxMarca_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbxMarca.Change
-        ErrorProv.SetError(cbxMarca, "")
+    Private Sub cbxMarca_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbMarca.SelectedIndexChanged, cmbMarca.TextChanged, cmbMarca.SelectedValueChanged
+        ErrorProv.SetError(cmbMarca, "")
         boolEditado = True
     End Sub
 
-    Private Sub cbxCilindraje_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbxCategoria.Change
-        ErrorProv.SetError(cbxCategoria, "")
+    Private Sub cbxCilindraje_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbCategoria.TextChanged, cmbCategoria.SelectedValueChanged
+        ErrorProv.SetError(cmbCategoria, "")
         boolEditado = True
     End Sub
 
@@ -548,22 +531,22 @@ Public Class frmSivProductosEditar
     Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
         If Asc(e.KeyChar) = 13 Then
             If Me.txtNombre.Text.Trim.Length <> 0 Then
-                Me.cbxCategoria.Focus()
+                Me.cmbCategoria.Focus()
             End If
         End If
     End Sub
 
-    Private Sub cbxCilindraje_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cbxCategoria.KeyPress
+    Private Sub cbxCilindraje_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
-            If Me.cbxCategoria.Text.Trim.Length <> 0 Then
-                Me.cbxMarca.Focus()
+            If Me.cmbCategoria.Text.Trim.Length <> 0 Then
+                Me.cmbMarca.Focus()
             End If
         End If
     End Sub
 
-    Private Sub cbxMarca_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cbxMarca.KeyPress
+    Private Sub cbxMarca_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
-            If Me.cbxMarca.Text.Trim.Length <> 0 Then
+            If Me.cmbMarca.Text.Trim.Length <> 0 Then
                 Me.chkActivo.Focus()
             End If
         End If
@@ -620,8 +603,6 @@ Public Class frmSivProductosEditar
         boolEditado = True
     End Sub
 
-#End Region
-
     Private Sub grdProveedor_KeyDown(sender As Object, e As KeyEventArgs) Handles grdProveedor.KeyDown
         If Me.TypeGui <> 2 Then
             If e.KeyValue = Keys.Delete And Not (Me.grdProveedor.EditActive) Then
@@ -634,4 +615,40 @@ Public Class frmSivProductosEditar
     Private Sub grdProveedor_Leave(sender As Object, e As EventArgs) Handles grdProveedor.Leave
         Me.grdProveedor.UpdateData()
     End Sub
+
+    Private Sub cmdAgregarCategoria_Click(sender As Object, e As EventArgs) Handles cmdAgregarCategoria.Click
+        Dim addCategoria As frmSivCategoriasEditar
+        Try
+
+            addCategoria = New frmSivCategoriasEditar
+            addCategoria.TypeGui = 0
+            If addCategoria.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Me.CargarCategorias()
+                Me.cmbCategoria.SelectedValue = addCategoria.CategoriaID
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            addCategoria = Nothing
+        End Try
+    End Sub
+
+    Private Sub cmdAgregarMarca_Click(sender As Object, e As EventArgs) Handles cmdAgregarMarca.Click
+        Dim editMarcas As frmMarcasEdit
+        Try
+            editMarcas = New frmMarcasEdit
+            editMarcas.TypeGui = 0
+            If editMarcas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Me.CargarMarca()
+                Me.cmbMarca.SelectedValue = editMarcas.MarcaID
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            editMarcas = Nothing
+        End Try
+    End Sub
+
+#End Region
+
 End Class

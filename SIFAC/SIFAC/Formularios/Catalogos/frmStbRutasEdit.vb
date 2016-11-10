@@ -110,48 +110,26 @@ Public Class frmStbRutasEdit
     Public Sub CargarCobrador()
         Try
             DtCobrador = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
+            cbxCobrador.ValueMember = "SrhEmpleadoID"
+            cbxCobrador.DisplayMember = "NombreCompleto"
+            cbxCobrador.DataSource = DtCobrador
+            cbxCobrador.Text = ""
 
-            Dim newCobradorsRow As DataRow
-            newCobradorsRow = DtCobrador.NewRow()
-            newCobradorsRow("SrhEmpleadoID") = "0"
-            newCobradorsRow("NombreCompleto") = "Ninguno"
-            DtCobrador.Rows.Add(newCobradorsRow)
-
-            With cbxCobrador
-                .DataSource = DtCobrador
-                .DisplayMember = "NombreCompleto"
-                .ValueMember = "SrhEmpleadoID"
-                .Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
-                .Splits(0).DisplayColumns("objPersonaID").Visible = False
-                .ColumnHeaders = False
-                .ExtendRightColumn = True
-                .SelectedValue = -1
-            End With
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
+
     End Sub
 
     Public Sub CargarSupervisor()
         Try
             DtSupervisor = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
 
-            Dim newSupervisorsRow As DataRow
-            newSupervisorsRow = DtSupervisor.NewRow()
-            newSupervisorsRow("SrhEmpleadoID") = "0"
-            newSupervisorsRow("NombreCompleto") = "Ninguno"
-            DtSupervisor.Rows.Add(newSupervisorsRow)
-
-            With cmbSupervisor
-                .DataSource = DtSupervisor
-                .DisplayMember = "NombreCompleto"
-                .ValueMember = "SrhEmpleadoID"
-                .Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
-                .Splits(0).DisplayColumns("objPersonaID").Visible = False
-                .ColumnHeaders = False
-                .ExtendRightColumn = True
-                .SelectedValue = -1
-            End With
+            cmbSupervisor.ValueMember = "SrhEmpleadoID"
+            cmbSupervisor.DisplayMember = "NombreCompleto"
+            cmbSupervisor.DataSource = DtSupervisor
+            cmbSupervisor.Text = ""
+          
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -309,17 +287,10 @@ Public Class frmStbRutasEdit
 
             DtCiudad = StbCiudad.RetrieveDT("objPaisID=" & objPais.StbPaisID, "", "StbCiudadID,Nombre")
 
-            Dim newCiudadRow As DataRow
-            newCiudadRow = DtCiudad.NewRow()
-            newCiudadRow("StbCiudadID") = "0"
-            newCiudadRow("Nombre") = "Ninguna"
-            DtCiudad.Rows.Add(newCiudadRow)
-
-            Me.cmbCiudad.DataSource = DtCiudad
-            Me.cmbCiudad.DisplayMember = "Nombre"
-            Me.cmbCiudad.ValueMember = "StbCiudadID"
-            Me.cmbCiudad.Splits(0).DisplayColumns("StbCiudadID").Visible = False
-            Me.cmbCiudad.ExtendRightColumn = True
+            cmbCiudad.ValueMember = "StbCiudadID"
+            cmbCiudad.DisplayMember = "Nombre"
+            cmbCiudad.DataSource = DtCiudad
+            cmbCiudad.Text = ""
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -446,17 +417,17 @@ Public Class frmStbRutasEdit
         boolEditado = True
     End Sub
 
-    Private Sub cbxCobrador_TextChanged(sender As Object, e As EventArgs) Handles cbxCobrador.TextChanged
+    Private Sub cbxCobrador_TextChanged(sender As Object, e As EventArgs)
         ErrorProv.SetError(cbxCobrador, "")
         boolEditado = True
     End Sub
 
-    Private Sub cmbSupervisor_TextChanged(sender As Object, e As EventArgs) Handles cmbSupervisor.TextChanged
+    Private Sub cmbSupervisor_TextChanged(sender As Object, e As EventArgs)
         ErrorProv.SetError(cmbSupervisor, "")
         boolEditado = True
     End Sub
 
-    Private Sub cmbCiudad_TextChanged(sender As Object, e As EventArgs) Handles cmbCiudad.TextChanged
+    Private Sub cmbCiudad_TextChanged(sender As Object, e As EventArgs)
         ErrorProv.SetError(cmbCiudad, "")
         boolEditado = True
     End Sub
@@ -484,19 +455,19 @@ Public Class frmStbRutasEdit
         End If
     End Sub
 
-    Private Sub cbxCobrador_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbxCobrador.KeyPress
+    Private Sub cbxCobrador_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
             Me.cmbSupervisor.Focus()
         End If
     End Sub
 
-    Private Sub cmbSupervisor_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbSupervisor.KeyPress
+    Private Sub cmbSupervisor_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
             Me.cmbCiudad.Focus()
         End If
     End Sub
 
-    Private Sub cmbCiudad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbCiudad.KeyPress
+    Private Sub cmbCiudad_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
             Me.cmbDiaCrobro.Focus()
         End If

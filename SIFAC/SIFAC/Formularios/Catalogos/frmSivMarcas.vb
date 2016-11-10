@@ -57,7 +57,8 @@ Public Class frmSivMarcas
         Dim FilaActual As Integer
         Try
             Try
-                FilaActual = Me.grdMarcasTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdMarcasTabla.GetSelectedRows()
+                FilaActual = Me.grdMarcasTabla.GetDataSourceRowIndex(selectedRow(0))
                 ConsultarMarcas.TypeGui = 2
                 ConsultarMarcas.MarcaID = Me.dtMarcas.DefaultView.Item(FilaActual)("MarcaID")
                 ConsultarMarcas.ShowDialog(Me)
@@ -74,7 +75,9 @@ Public Class frmSivMarcas
         Dim FilaActual As Integer
         Try
             Try
-                FilaActual = Me.grdMarcasTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdMarcasTabla.GetSelectedRows()
+                FilaActual = Me.grdMarcasTabla.GetDataSourceRowIndex(selectedRow(0))
+
                 EditarMarcas.TypeGui = 1
                 EditarMarcas.MarcaID = Me.dtMarcas.DefaultView.Item(FilaActual)("MarcaID")
                 EditarMarcas.ShowDialog(Me)

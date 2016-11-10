@@ -44,20 +44,11 @@ Public Class frmBodegasEditar
         Try
             DtCiudad = StbCiudad.RetrieveDT("", "", "StbCiudadID,Nombre")
 
-            Dim newCiudadsRow As DataRow
-            newCiudadsRow = DtCiudad.NewRow()
-            newCiudadsRow("StbCiudadID") = "0"
-            newCiudadsRow("Nombre") = "Ninguna"
-            DtCiudad.Rows.Add(newCiudadsRow)
+            cmbCiudad.ValueMember = "StbCiudadID"
+            cmbCiudad.DisplayMember = "Nombre"
+            cmbCiudad.DataSource = DtCiudad
+            cmbCiudad.Text = ""
 
-            With cmbCiudad
-                .DataSource = DtCiudad
-                .DisplayMember = "Nombre"
-                .ValueMember = "StbCiudadID"
-                .Splits(0).DisplayColumns("StbCiudadID").Visible = False
-                .ColumnHeaders = False
-                .ExtendRightColumn = True
-            End With
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -68,22 +59,10 @@ Public Class frmBodegasEditar
         Try
             DtJefe = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
 
-            Dim newJefeRow As DataRow
-            newJefeRow = DtJefe.NewRow()
-            newJefeRow("SrhEmpleadoID") = "0"
-            newJefeRow("NombreCompleto") = "Ninguna"
-            DtJefe.Rows.Add(newJefeRow)
-
-            With cmbJefe
-                .DataSource = DtJefe
-                .DisplayMember = "NombreCompleto"
-                .ValueMember = "SrhEmpleadoID"
-                .Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
-                .Splits(0).DisplayColumns("objPersonaID").Visible = False
-                .ColumnHeaders = False
-                .ExtendRightColumn = True
-                .SelectedValue = -1
-            End With
+            cmbJefe.ValueMember = "SrhEmpleadoID"
+            cmbJefe.DisplayMember = "NombreCompleto"
+            cmbJefe.DataSource = DtJefe
+            cmbJefe.Text = ""
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -140,12 +119,14 @@ Public Class frmBodegasEditar
 #Region "Consutar jefe"
     Public Sub ConsultarJefe()
         Dim editEmpleado As frmSrhEmpleadoEditar
+        Dim objEmpleado As New SrhEmpleado
         Try
             Me.Cursor = WaitCursor
             editEmpleado = New frmSrhEmpleadoEditar
             editEmpleado.TypeGUI = 2
-            editEmpleado.EmpleadoID = Me.cmbJefe.Columns("SrhEmpleadoID").Value
-            editEmpleado.PersonaID = Me.cmbJefe.Columns("objPersonaID").Value
+            editEmpleado.EmpleadoID = Me.cmbJefe.SelectedValue
+            objEmpleado.Retrieve(Me.cmbJefe.SelectedValue)
+            editEmpleado.PersonaID = objEmpleado.objPersonaID
             editEmpleado.Text = "Consultar Empleado"
             editEmpleado.ShowDialog(Me)
         Catch ex As Exception
@@ -363,12 +344,12 @@ Public Class frmBodegasEditar
         End Try
     End Sub
 
-    Private Sub cmbCiudad_Change(sender As Object, e As EventArgs) Handles cmbCiudad.Change
+    Private Sub cmbCiudad_Change(sender As Object, e As EventArgs)
         ErrorProv.SetError(cmbCiudad, "")
         boolEditado = True
     End Sub
 
-    Private Sub cmbJefe_Change(sender As Object, e As EventArgs) Handles cmbJefe.Change
+    Private Sub cmbJefe_Change(sender As Object, e As EventArgs)
         ErrorProv.SetError(cmbJefe, "")
         boolEditado = True
     End Sub
@@ -399,7 +380,7 @@ Public Class frmBodegasEditar
         End If
     End Sub
 
-    Private Sub cmbCiudad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbCiudad.KeyPress
+    Private Sub cmbCiudad_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
             If Me.cmbCiudad.Text.Trim.Length <> 0 Then
                 Me.cmbJefe.Focus()
@@ -407,7 +388,7 @@ Public Class frmBodegasEditar
         End If
     End Sub
 
-    Private Sub cmbJefe_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbJefe.KeyPress
+    Private Sub cmbJefe_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
             If Me.cmbJefe.Text.Trim.Length <> 0 Then
                 Me.chkActivo.Focus()
