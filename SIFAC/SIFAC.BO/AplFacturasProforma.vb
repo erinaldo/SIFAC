@@ -14,6 +14,7 @@ Partial Public Class AplFacturasProforma
 	Protected m_objModalidadPagoID As Integer 
 	Protected m_objDescuentoID As Nullable(Of Integer) 
 	Protected m_objRutaID As Nullable(Of Integer) 
+	Protected m_NuevoCredito As Nullable(Of Boolean) 
 	Protected m_Activo As Nullable(Of Boolean) 
 	Protected m_Fecha As Date 
 	Protected m_FechaVencimiento As Nullable(Of Date) 
@@ -99,6 +100,15 @@ Partial Public Class AplFacturasProforma
         End Get
 		Set(ByVal Value As Nullable(Of Integer))					
 			m_objRutaID = Value
+		End Set
+    End Property
+	
+	Public Property NuevoCredito() As Nullable(Of Boolean)
+        Get
+            Return (m_NuevoCredito)
+        End Get
+		Set(ByVal Value As Nullable(Of Boolean))					
+			m_NuevoCredito = Value
 		End Set
     End Property
 	
@@ -304,6 +314,7 @@ Partial Public Class AplFacturasProforma
 			cmdInsert.Parameters.Add("@objModalidadPagoID", SqlDbType.Int, 4, "objModalidadPagoID")
 			cmdInsert.Parameters.Add("@objDescuentoID", SqlDbType.Int, 4, "objDescuentoID")
 			cmdInsert.Parameters.Add("@objRutaID", SqlDbType.Int, 4, "objRutaID")
+			cmdInsert.Parameters.Add("@NuevoCredito", SqlDbType.Bit, 1, "NuevoCredito")
 			cmdInsert.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
 			cmdInsert.Parameters.Add("@Fecha", SqlDbType.DateTime, 8, "Fecha")
 			cmdInsert.Parameters.Add("@FechaVencimiento", SqlDbType.DateTime, 8, "FechaVencimiento")
@@ -317,7 +328,7 @@ Partial Public Class AplFacturasProforma
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
-			cmdInsert.CommandText = "INSERT INTO AplFacturasProforma ( objSccClienteID, objVendedorID, objEstadoID, objTerminoPagoID, objModalidadPagoID, objDescuentoID, objRutaID, Activo, Fecha, FechaVencimiento, Subtotal, Descuento, Total, Prima, Saldo, observaciones, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion) VALUES ( @objSccClienteID, @objVendedorID, @objEstadoID, @objTerminoPagoID, @objModalidadPagoID, @objDescuentoID, @objRutaID, @Activo, @Fecha, @FechaVencimiento, @Subtotal, @Descuento, @Total, @Prima, @Saldo, @observaciones, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion)"
+			cmdInsert.CommandText = "INSERT INTO AplFacturasProforma ( objSccClienteID, objVendedorID, objEstadoID, objTerminoPagoID, objModalidadPagoID, objDescuentoID, objRutaID, NuevoCredito, Activo, Fecha, FechaVencimiento, Subtotal, Descuento, Total, Prima, Saldo, observaciones, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion) VALUES ( @objSccClienteID, @objVendedorID, @objEstadoID, @objTerminoPagoID, @objModalidadPagoID, @objDescuentoID, @objRutaID, @NuevoCredito, @Activo, @Fecha, @FechaVencimiento, @Subtotal, @Descuento, @Total, @Prima, @Saldo, @observaciones, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@objSccClienteID", SqlDbType.Int, 4, "objSccClienteID")
@@ -327,6 +338,7 @@ Partial Public Class AplFacturasProforma
 			cmdUpdate.Parameters.Add("@objModalidadPagoID", SqlDbType.Int, 4, "objModalidadPagoID")
 			cmdUpdate.Parameters.Add("@objDescuentoID", SqlDbType.Int, 4, "objDescuentoID")
 			cmdUpdate.Parameters.Add("@objRutaID", SqlDbType.Int, 4, "objRutaID")
+			cmdUpdate.Parameters.Add("@NuevoCredito", SqlDbType.Bit, 1, "NuevoCredito")
 			cmdUpdate.Parameters.Add("@Activo", SqlDbType.Bit, 1, "Activo")
 			cmdUpdate.Parameters.Add("@Fecha", SqlDbType.DateTime, 8, "Fecha")
 			cmdUpdate.Parameters.Add("@FechaVencimiento", SqlDbType.DateTime, 8, "FechaVencimiento")
@@ -341,7 +353,7 @@ Partial Public Class AplFacturasProforma
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@wSfaFacturaProformaID", SqlDbType.Int, 4, "SfaFacturaProformaID")
-			cmdUpdate.CommandText = "UPDATE AplFacturasProforma SET objSccClienteID=@objSccClienteID, objVendedorID=@objVendedorID, objEstadoID=@objEstadoID, objTerminoPagoID=@objTerminoPagoID, objModalidadPagoID=@objModalidadPagoID, objDescuentoID=@objDescuentoID, objRutaID=@objRutaID, Activo=@Activo, Fecha=@Fecha, FechaVencimiento=@FechaVencimiento, Subtotal=@Subtotal, Descuento=@Descuento, Total=@Total, Prima=@Prima, Saldo=@Saldo, observaciones=@observaciones, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion WHERE SfaFacturaProformaID= @wSfaFacturaProformaID"
+			cmdUpdate.CommandText = "UPDATE AplFacturasProforma SET objSccClienteID=@objSccClienteID, objVendedorID=@objVendedorID, objEstadoID=@objEstadoID, objTerminoPagoID=@objTerminoPagoID, objModalidadPagoID=@objModalidadPagoID, objDescuentoID=@objDescuentoID, objRutaID=@objRutaID, NuevoCredito=@NuevoCredito, Activo=@Activo, Fecha=@Fecha, FechaVencimiento=@FechaVencimiento, Subtotal=@Subtotal, Descuento=@Descuento, Total=@Total, Prima=@Prima, Saldo=@Saldo, observaciones=@observaciones, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion WHERE SfaFacturaProformaID= @wSfaFacturaProformaID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -395,6 +407,7 @@ Partial Public Class AplFacturasProforma
 				m_objModalidadPagoID = IIf(IsDBNull(dr("objModalidadPagoID")), Nothing, dr("objModalidadPagoID"))					
 				m_objDescuentoID = IIf(IsDBNull(dr("objDescuentoID")), Nothing, dr("objDescuentoID"))					
 				m_objRutaID = IIf(IsDBNull(dr("objRutaID")), Nothing, dr("objRutaID"))					
+				m_NuevoCredito = IIf(IsDBNull(dr("NuevoCredito")), Nothing, dr("NuevoCredito"))					
 				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
 				m_Fecha = IIf(IsDBNull(dr("Fecha")), Nothing, dr("Fecha"))					
 				m_FechaVencimiento = IIf(IsDBNull(dr("FechaVencimiento")), Nothing, dr("FechaVencimiento"))					
@@ -449,6 +462,7 @@ Partial Public Class AplFacturasProforma
 				m_objModalidadPagoID = IIf(IsDBNull(dr("objModalidadPagoID")), Nothing, dr("objModalidadPagoID"))					
 				m_objDescuentoID = IIf(IsDBNull(dr("objDescuentoID")), Nothing, dr("objDescuentoID"))					
 				m_objRutaID = IIf(IsDBNull(dr("objRutaID")), Nothing, dr("objRutaID"))					
+				m_NuevoCredito = IIf(IsDBNull(dr("NuevoCredito")), Nothing, dr("NuevoCredito"))					
 				m_Activo = IIf(IsDBNull(dr("Activo")), Nothing, dr("Activo"))					
 				m_Fecha = IIf(IsDBNull(dr("Fecha")), Nothing, dr("Fecha"))					
 				m_FechaVencimiento = IIf(IsDBNull(dr("FechaVencimiento")), Nothing, dr("FechaVencimiento"))					
@@ -594,6 +608,7 @@ Partial Public Class AplFacturasProforma
 		sCommand &= "objModalidadPagoID,"
 		sCommand &= "objDescuentoID,"
 		sCommand &= "objRutaID,"
+		sCommand &= "NuevoCredito,"
 		sCommand &= "Activo,"
 		sCommand &= "Fecha,"
 		sCommand &= "FechaVencimiento,"
@@ -614,6 +629,7 @@ Partial Public Class AplFacturasProforma
 		sCommand &= "@objModalidadPagoID,"
 		sCommand &= "@objDescuentoID,"
 		sCommand &= "@objRutaID,"
+		sCommand &= "@NuevoCredito,"
 		sCommand &= "@Activo,"
 		sCommand &= "@Fecha,"
 		sCommand &= "@FechaVencimiento,"
@@ -633,7 +649,7 @@ Partial Public Class AplFacturasProforma
 		sCommand &= "SfaFacturaProformaID = SCOPE_IDENTITY()"
 		
 		
-		Dim arParams(20) As SqlParameter
+		Dim arParams(21) As SqlParameter
 		arParams(0) = New SqlParameter("@SfaFacturaProformaID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@objSccClienteID", SqlDbType.Int)		
@@ -678,83 +694,89 @@ Partial Public Class AplFacturasProforma
         Else
             arParams(7).Value = m_objRutaID
         End If
-		arParams(8) = New SqlParameter("@Activo", SqlDbType.Bit)		
-		If IsDBNull(m_Activo) Then
+		arParams(8) = New SqlParameter("@NuevoCredito", SqlDbType.Bit)		
+		If IsDBNull(m_NuevoCredito) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_Activo
+            arParams(8).Value = m_NuevoCredito
         End If
-		arParams(9) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
-		If IsDBNull(m_Fecha) Then
+		arParams(9) = New SqlParameter("@Activo", SqlDbType.Bit)		
+		If IsDBNull(m_Activo) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_Fecha
+            arParams(9).Value = m_Activo
         End If
-		arParams(10) = New SqlParameter("@FechaVencimiento", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaVencimiento) Then
+		arParams(10) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
+		If IsDBNull(m_Fecha) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_FechaVencimiento
+            arParams(10).Value = m_Fecha
         End If
-		arParams(11) = New SqlParameter("@Subtotal", SqlDbType.Decimal)		
-		If IsDBNull(m_Subtotal) Then
+		arParams(11) = New SqlParameter("@FechaVencimiento", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaVencimiento) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_Subtotal
+            arParams(11).Value = m_FechaVencimiento
         End If
-		arParams(12) = New SqlParameter("@Descuento", SqlDbType.Decimal)		
-		If IsDBNull(m_Descuento) Then
+		arParams(12) = New SqlParameter("@Subtotal", SqlDbType.Decimal)		
+		If IsDBNull(m_Subtotal) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_Descuento
+            arParams(12).Value = m_Subtotal
         End If
-		arParams(13) = New SqlParameter("@Total", SqlDbType.Decimal)		
-		If IsDBNull(m_Total) Then
+		arParams(13) = New SqlParameter("@Descuento", SqlDbType.Decimal)		
+		If IsDBNull(m_Descuento) Then
             arParams(13).Value = DBNull.Value
         Else
-            arParams(13).Value = m_Total
+            arParams(13).Value = m_Descuento
         End If
-		arParams(14) = New SqlParameter("@Prima", SqlDbType.Decimal)		
-		If IsDBNull(m_Prima) Then
+		arParams(14) = New SqlParameter("@Total", SqlDbType.Decimal)		
+		If IsDBNull(m_Total) Then
             arParams(14).Value = DBNull.Value
         Else
-            arParams(14).Value = m_Prima
+            arParams(14).Value = m_Total
         End If
-		arParams(15) = New SqlParameter("@Saldo", SqlDbType.Decimal)		
-		If IsDBNull(m_Saldo) Then
+		arParams(15) = New SqlParameter("@Prima", SqlDbType.Decimal)		
+		If IsDBNull(m_Prima) Then
             arParams(15).Value = DBNull.Value
         Else
-            arParams(15).Value = m_Saldo
+            arParams(15).Value = m_Prima
         End If
-		arParams(16) = New SqlParameter("@observaciones", SqlDbType.VarChar)		
-		If IsDBNull(m_observaciones) Then
+		arParams(16) = New SqlParameter("@Saldo", SqlDbType.Decimal)		
+		If IsDBNull(m_Saldo) Then
             arParams(16).Value = DBNull.Value
         Else
-            arParams(16).Value = m_observaciones
+            arParams(16).Value = m_Saldo
         End If
-		arParams(17) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(17) = New SqlParameter("@observaciones", SqlDbType.VarChar)		
+		If IsDBNull(m_observaciones) Then
             arParams(17).Value = DBNull.Value
         Else
-            arParams(17).Value = m_UsuarioCreacion
+            arParams(17).Value = m_observaciones
         End If
-		arParams(18) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(18) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(18).Value = DBNull.Value
         Else
-            arParams(18).Value = m_FechaCreacion
+            arParams(18).Value = m_UsuarioCreacion
         End If
-		arParams(19) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(19) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(19).Value = DBNull.Value
         Else
-            arParams(19).Value = m_UsuarioModificacion
+            arParams(19).Value = m_FechaCreacion
         End If
-		arParams(20) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(20) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(20).Value = DBNull.Value
         Else
-            arParams(20).Value = m_FechaModificacion
+            arParams(20).Value = m_UsuarioModificacion
+        End If
+		arParams(21) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
+            arParams(21).Value = DBNull.Value
+        Else
+            arParams(21).Value = m_FechaModificacion
         End If
 	
 		Try
@@ -787,6 +809,7 @@ Partial Public Class AplFacturasProforma
 		sCommand &= "objModalidadPagoID = @objModalidadPagoID,"
 		sCommand &= "objDescuentoID = @objDescuentoID,"
 		sCommand &= "objRutaID = @objRutaID,"
+		sCommand &= "NuevoCredito = @NuevoCredito,"
 		sCommand &= "Activo = @Activo,"
 		sCommand &= "Fecha = @Fecha,"
 		sCommand &= "FechaVencimiento = @FechaVencimiento,"
@@ -803,7 +826,7 @@ Partial Public Class AplFacturasProforma
 		sCommand &= " where "	
 		sCommand &= "SfaFacturaProformaID = @SfaFacturaProformaID"					
 		
-		Dim arParams(20) As SqlParameter
+		Dim arParams(21) As SqlParameter
 		arParams(0) = New SqlParameter("@SfaFacturaProformaID", SqlDbType.Int)		
 		If IsDBNull(m_SfaFacturaProformaID) Then
             arParams(0).Value = DBNull.Value
@@ -852,83 +875,89 @@ Partial Public Class AplFacturasProforma
         Else
             arParams(7).Value = m_objRutaID
         End If
-		arParams(8) = New SqlParameter("@Activo", SqlDbType.Bit)		
-		If IsDBNull(m_Activo) Then
+		arParams(8) = New SqlParameter("@NuevoCredito", SqlDbType.Bit)		
+		If IsDBNull(m_NuevoCredito) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_Activo
+            arParams(8).Value = m_NuevoCredito
         End If
-		arParams(9) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
-		If IsDBNull(m_Fecha) Then
+		arParams(9) = New SqlParameter("@Activo", SqlDbType.Bit)		
+		If IsDBNull(m_Activo) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_Fecha
+            arParams(9).Value = m_Activo
         End If
-		arParams(10) = New SqlParameter("@FechaVencimiento", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaVencimiento) Then
+		arParams(10) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
+		If IsDBNull(m_Fecha) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_FechaVencimiento
+            arParams(10).Value = m_Fecha
         End If
-		arParams(11) = New SqlParameter("@Subtotal", SqlDbType.Decimal)		
-		If IsDBNull(m_Subtotal) Then
+		arParams(11) = New SqlParameter("@FechaVencimiento", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaVencimiento) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_Subtotal
+            arParams(11).Value = m_FechaVencimiento
         End If
-		arParams(12) = New SqlParameter("@Descuento", SqlDbType.Decimal)		
-		If IsDBNull(m_Descuento) Then
+		arParams(12) = New SqlParameter("@Subtotal", SqlDbType.Decimal)		
+		If IsDBNull(m_Subtotal) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_Descuento
+            arParams(12).Value = m_Subtotal
         End If
-		arParams(13) = New SqlParameter("@Total", SqlDbType.Decimal)		
-		If IsDBNull(m_Total) Then
+		arParams(13) = New SqlParameter("@Descuento", SqlDbType.Decimal)		
+		If IsDBNull(m_Descuento) Then
             arParams(13).Value = DBNull.Value
         Else
-            arParams(13).Value = m_Total
+            arParams(13).Value = m_Descuento
         End If
-		arParams(14) = New SqlParameter("@Prima", SqlDbType.Decimal)		
-		If IsDBNull(m_Prima) Then
+		arParams(14) = New SqlParameter("@Total", SqlDbType.Decimal)		
+		If IsDBNull(m_Total) Then
             arParams(14).Value = DBNull.Value
         Else
-            arParams(14).Value = m_Prima
+            arParams(14).Value = m_Total
         End If
-		arParams(15) = New SqlParameter("@Saldo", SqlDbType.Decimal)		
-		If IsDBNull(m_Saldo) Then
+		arParams(15) = New SqlParameter("@Prima", SqlDbType.Decimal)		
+		If IsDBNull(m_Prima) Then
             arParams(15).Value = DBNull.Value
         Else
-            arParams(15).Value = m_Saldo
+            arParams(15).Value = m_Prima
         End If
-		arParams(16) = New SqlParameter("@observaciones", SqlDbType.VarChar)		
-		If IsDBNull(m_observaciones) Then
+		arParams(16) = New SqlParameter("@Saldo", SqlDbType.Decimal)		
+		If IsDBNull(m_Saldo) Then
             arParams(16).Value = DBNull.Value
         Else
-            arParams(16).Value = m_observaciones
+            arParams(16).Value = m_Saldo
         End If
-		arParams(17) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(17) = New SqlParameter("@observaciones", SqlDbType.VarChar)		
+		If IsDBNull(m_observaciones) Then
             arParams(17).Value = DBNull.Value
         Else
-            arParams(17).Value = m_UsuarioCreacion
+            arParams(17).Value = m_observaciones
         End If
-		arParams(18) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(18) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(18).Value = DBNull.Value
         Else
-            arParams(18).Value = m_FechaCreacion
+            arParams(18).Value = m_UsuarioCreacion
         End If
-		arParams(19) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(19) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(19).Value = DBNull.Value
         Else
-            arParams(19).Value = m_UsuarioModificacion
+            arParams(19).Value = m_FechaCreacion
         End If
-		arParams(20) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(20) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(20).Value = DBNull.Value
         Else
-            arParams(20).Value = m_FechaModificacion
+            arParams(20).Value = m_UsuarioModificacion
+        End If
+		arParams(21) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
+            arParams(21).Value = DBNull.Value
+        Else
+            arParams(21).Value = m_FechaModificacion
         End If
 	
 		Try
