@@ -338,7 +338,7 @@ Public Class frmSincronizarVentas
                     objStbValorCatalogo.Retrieve(objModalidadPagoID, t)
                     intFactorModalidadPago = CInt(objStbValorCatalogo.Codigo)
 
-                    If blnCuentaActiva Then
+                    If blnCuentaActiva And Not objAplFacturasProforma.NuevoCredito Then
 
                         'Actualizar Estado y saldo de la cuenta por cobrar
                         objSccCuenta.Saldo = objSccCuenta.Saldo + objSfaFactura.Saldo

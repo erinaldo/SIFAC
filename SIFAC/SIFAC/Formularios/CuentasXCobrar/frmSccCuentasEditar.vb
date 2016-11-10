@@ -413,7 +413,7 @@ Public Class frmSccCuentasEditar
         objfrm = New frmSfaFaturaEditar
         Try
             Dim objCliente As New SccClientes
-            objfrm.TypGui = TypeGUI
+            objfrm.TypGui = 0 'TypeGUI
 
             If TypeGUI = 0 Then
                 If ValidarEntrada() Then
