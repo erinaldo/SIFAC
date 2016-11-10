@@ -5,6 +5,7 @@ Imports System.Windows.Forms.Cursors
 Imports SIFAC.BO
 Imports Proyecto.Catalogos.Datos
 Imports DAL
+Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmSivEncargos
 
@@ -334,13 +335,40 @@ Public Class frmSivEncargos
             blnSeleccionar = CType(sender, DevExpress.XtraEditors.CheckEdit).Checked
             dtEncargos.DefaultView.Item(FilaActual)("Seleccionar") = blnSeleccionar
             dtEncargos.AcceptChanges()
-            
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
-       
+
     End Sub
 #End Region
 
 
+    Private Sub grdEncargosMasterTabla_RowStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles grdEncargosMasterTabla.RowStyle
+        Dim estado As String = ""
+        Dim vista As GridView = sender
+
+        Try
+            estado = vista.GetRowCellValue(e.RowHandle, vista.Columns("Estado")).ToString().Trim()
+        Catch ex As Exception
+
+        End Try
+
+        Select Case estado
+            Case "REGISTRADO"
+                e.Appearance.BackColor = Color.LightSteelBlue
+                e.Appearance.BackColor2 = Color.White
+
+            Case "APROBADO"
+                e.Appearance.BackColor = Color.LimeGreen
+                e.Appearance.BackColor2 = Color.White
+
+            Case "ANULADO"
+                e.Appearance.BackColor = Color.Red
+                e.Appearance.BackColor2 = Color.White
+
+        End Select
+
+
+    End Sub
 End Class
