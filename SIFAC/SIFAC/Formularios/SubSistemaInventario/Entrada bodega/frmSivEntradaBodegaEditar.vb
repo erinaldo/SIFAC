@@ -424,6 +424,7 @@ Public Class frmSivEntradaBodegaEditar
                 GuardarEntradaBodega(T)
                 GuardarEntradaDetalle(T)
                 ActualizarSivBodegaRepuesto(T)
+
                 If (cmbTipoEntrada.SelectedValue = intTipoEntradaCompraLocal) Or (cmbTipoEntrada.SelectedValue = intTipoEntradaImportacion) Then
                     ActualizarPrecioProducto(T)
                 End If
@@ -515,10 +516,14 @@ Public Class frmSivEntradaBodegaEditar
         Dim objSivBodegaProductos As SivBodegaProductos
         Dim objSivProductos As SivProductos
         Dim objSivEntradaDetalle As SivEntradaBodegaDetalle
+        Dim objSivProductosProveedos As SivProductosDetProv
+
         Try
             objSivBodegaProductos = New SivBodegaProductos
             objSivProductos = New SivProductos
             objSivEntradaDetalle = New SivEntradaBodegaDetalle
+            objSivProductosProveedos = New SivProductosDetProv
+
 
             For Each row As DataRow In Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").Rows
 
@@ -556,6 +561,12 @@ Public Class frmSivEntradaBodegaEditar
                         objSivProductos.CostoPromedio = ((objSivProductos.CostoPromedio + row("Costo")) / 2)
                         objSivProductos.Update(T)
                     End If
+
+                End If
+
+                ''Buscar si el proveedor ya esta registrado para este producto
+
+                If objSivProductosProveedos.RetrieveByFilter("objProductoID='" & row("SivProductoID") & "' AND objProveedorID=" & Me.cmbProveedor.SelectedValue) Then
 
                 End If
 
@@ -1204,10 +1215,10 @@ Public Class frmSivEntradaBodegaEditar
         Dim strIndiceCombo As String
         Dim blnVerificaRepuestoAct, blnVerificaCodRepuesto As Boolean
         Dim objSivProductos As SivProductos
-        Dim objRepuestosDetProv As SivRepuestosDetProv
+        Dim objProductosDetProv As SivProductosDetProv
 
         objSivProductos = New SivProductos
-        objRepuestosDetProv = New SivRepuestosDetProv
+        objProductosDetProv = New SivProductosDetProv
 
         FilaActual = Me.grdDetalleEntradasBodegasDETabla.FocusedRowHandle
 

@@ -6,7 +6,73 @@ SIFAC.BO
 </name>
 </assembly>
 <members>
-<member name="P:SIFAC.BO.My.Resources.Resources.ResourceManager">
+<member name="M:SIFAC.BO.SivProductosDetProv.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla SivProductosDetProv en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SivProductosDetProv </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SivProductosDetProv
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SivProductosDetProv usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SivProductosDetProv en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SivProductosDetProv en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SivProductosDetProv en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase SivProductosDetProv.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto SivProductosDetProv en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SivProductosDetProv de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SivProductosDetProv de la base de datos
+ </summary>
+</member><member name="M:SIFAC.BO.SivProductosDetProv.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos SivProductosDetProv de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="P:SIFAC.BO.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
@@ -415,6 +481,72 @@ SIFAC.BO
  </summary>
 	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla SivPedidosDetalle en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SivPedidosDetalle </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SivPedidosDetalle
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SivPedidosDetalle usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SivPedidosDetalle en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SivPedidosDetalle en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SivPedidosDetalle en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase SivPedidosDetalle.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto SivPedidosDetalle en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SivPedidosDetalle de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SivPedidosDetalle de la base de datos
+ </summary>
+</member><member name="M:SIFAC.BO.SivPedidosDetalle.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos SivPedidosDetalle de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
 </member><member name="P:SIFAC.BO.SivProductos.SivProductoID">
 	<summary>
  ID interno del producto
@@ -746,6 +878,10 @@ SIFAC.BO
 </member><member name="P:SIFAC.BO.StbPersona.FechaNacimiento">
 	<summary>
  Fecha de nacimiento
+ </summary>
+</member><member name="P:SIFAC.BO.StbPersona.objEstadoCivilID">
+	<summary>
+ ID del estado civil de la persona.
  </summary>
 </member><member name="P:SIFAC.BO.StbPersona.FechaCreacion">
 	<summary>
@@ -1859,6 +1995,72 @@ SIFAC.BO
  </summary>
 	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="M:SIFAC.BO.AplCobros.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla AplCobros en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla AplCobros </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:SIFAC.BO.AplCobros.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto AplCobros
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.AplCobros.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto AplCobros usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.AplCobros.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos AplCobros en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.AplCobros.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos AplCobros en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.AplCobros.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos AplCobros en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.AplCobros.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase AplCobros.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.AplCobros.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto AplCobros en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.AplCobros.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto AplCobros de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:SIFAC.BO.AplCobros.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto AplCobros de la base de datos
+ </summary>
+</member><member name="M:SIFAC.BO.AplCobros.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos AplCobros de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
 </member><member name="M:SIFAC.BO.clsConsultas.ObtenerValorParametro(System.String,System.String,System.String)">
 	<summary>
  Recupera datos de la Tabla Parámetro
@@ -2225,6 +2427,72 @@ SIFAC.BO
  </summary>
 	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="M:SIFAC.BO.SivPedidos.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla SivPedidos en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SivPedidos </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:SIFAC.BO.SivPedidos.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SivPedidos
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.SivPedidos.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto SivPedidos usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.SivPedidos.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SivPedidos en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.SivPedidos.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SivPedidos en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.SivPedidos.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos SivPedidos en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.SivPedidos.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase SivPedidos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.SivPedidos.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto SivPedidos en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.SivPedidos.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SivPedidos de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:SIFAC.BO.SivPedidos.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto SivPedidos de la base de datos
+ </summary>
+</member><member name="M:SIFAC.BO.SivPedidos.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos SivPedidos de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
 </member><member name="P:SIFAC.BO.StbTasaCambioOficial.UsuarioCreacion">
 	<summary>
  Login del Usuario que cre? el registro. Varchar (30). No permite Null.
@@ -2541,6 +2809,72 @@ SIFAC.BO
  </summary>
 	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+</member><member name="M:SIFAC.BO.AplDevoluciones.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
+	<summary>
+ Salva un DataSet del tipo de la tabla AplDevoluciones en la base de datos.
+ </summary>
+	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla AplDevoluciones </param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
+	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
+</member><member name="M:SIFAC.BO.AplDevoluciones.Retrieve(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto AplDevoluciones
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.AplDevoluciones.RetrieveByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Devuelve de la base de datos un objeto AplDevoluciones usando un filter.
+ </summary>
+	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
+</member><member name="M:SIFAC.BO.AplDevoluciones.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos AplDevoluciones en un objeto DataTable
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.AplDevoluciones.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos AplDevoluciones en un objeto DataSet
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.AplDevoluciones.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
+	<summary>
+ Trae de la base de datos un conjunto de objetos AplDevoluciones en un objeto DataReader
+ </summary>
+	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
+	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
+	<returns></returns>
+</member><member name="M:SIFAC.BO.AplDevoluciones.Insert(DAL.TransactionManager@)">
+	<summary>
+ 	Inserta en la base de datos una nueva instancia de la clase AplDevoluciones.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.AplDevoluciones.Update(DAL.TransactionManager@)">
+	<summary>
+ 	Actualiza el objeto AplDevoluciones en la base de datos.
+ </summary>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.BO.AplDevoluciones.Delete(DAL.TransactionManager)">
+	<summary>
+ Borra un objeto AplDevoluciones de la base de datos.
+ <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
+	</summary>
+</member><member name="M:SIFAC.BO.AplDevoluciones.Delete(System.Int32,DAL.TransactionManager)">
+	<summary>
+ Borra un objeto AplDevoluciones de la base de datos
+ </summary>
+</member><member name="M:SIFAC.BO.AplDevoluciones.DeleteByFilter(System.String,DAL.TransactionManager)">
+	<summary>
+ Borra objetos AplDevoluciones de la base de datos en base al par?metro WHERE
+ </summary>
+	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
+	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
 </member><member name="M:SIFAC.BO.SccReciboCaja.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
 	<summary>
  Salva un DataSet del tipo de la tabla SccReciboCaja en la base de datos.
@@ -2736,72 +3070,6 @@ SIFAC.BO
 </member><member name="M:SIFAC.BO.SivProveedorDetProvision.DeleteByFilter(System.String,DAL.TransactionManager)">
 	<summary>
  Borra objetos SivProveedorDetProvision de la base de datos en base al par?metro WHERE
- </summary>
-	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.BatchUpdate(System.Data.DataSet,DAL.TransactionManager)">
-	<summary>
- Salva un DataSet del tipo de la tabla SivRepuestosDetProv en la base de datos.
- </summary>
-	<param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SivRepuestosDetProv </param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
-	<remarks>Usado para realizar actualizaciones en Batch.</remarks>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.Retrieve(System.Int32,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SivRepuestosDetProv
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.RetrieveByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Devuelve de la base de datos un objeto SivRepuestosDetProv usando un filter.
- </summary>
-	<param name="pFilter">Filtro a aplicar en el select que carga la clase</param>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.RetrieveDT(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SivRepuestosDetProv en un objeto DataTable
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.RetrieveDS(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SivRepuestosDetProv en un objeto DataSet
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.RetrieveDR(System.String,System.String,System.String,DAL.TransactionManager)">
-	<summary>
- Trae de la base de datos un conjunto de objetos SivRepuestosDetProv en un objeto DataReader
- </summary>
-	<param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
-	<param name="OrderBy">Campos por los que se ordenar? la salida</param>
-	<returns></returns>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.Insert(DAL.TransactionManager@)">
-	<summary>
- 	Inserta en la base de datos una nueva instancia de la clase SivRepuestosDetProv.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
-	<remarks></remarks>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.Update(DAL.TransactionManager@)">
-	<summary>
- 	Actualiza el objeto SivRepuestosDetProv en la base de datos.
- </summary>
-	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	<remarks></remarks>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.Delete(DAL.TransactionManager)">
-	<summary>
- Borra un objeto SivRepuestosDetProv de la base de datos.
- <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
-	</summary>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.Delete(System.Int32,DAL.TransactionManager)">
-	<summary>
- Borra un objeto SivRepuestosDetProv de la base de datos
- </summary>
-</member><member name="M:SIFAC.BO.SivRepuestosDetProv.DeleteByFilter(System.String,DAL.TransactionManager)">
-	<summary>
- Borra objetos SivRepuestosDetProv de la base de datos en base al par?metro WHERE
  </summary>
 	<param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
 	<param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>

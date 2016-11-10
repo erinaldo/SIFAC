@@ -17,9 +17,9 @@ Public Class frmSccClientes
     Private Sub CargarGridClientes()
 
         Try
-            Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,Nombre1,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero", "vwSccClientes"))
+            Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,Nombre1,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero,Ruta,OrdenCobro", "vwSccClientes"))
             'Me.dtCliente.PrimaryKey = New DataColumn() {Me.dtCliente.Columns("StbPersonaID")}
-            Me.dtCliente.DefaultView.Sort = "StbPersonaID"
+            Me.dtCliente.DefaultView.Sort = "OrdenCobro"
             Me.grdClientes.DataSource = dtCliente
 
             If Me.dtCliente.DefaultView.Count = 0 Then

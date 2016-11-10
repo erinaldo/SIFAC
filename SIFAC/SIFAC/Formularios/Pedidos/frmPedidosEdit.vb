@@ -790,12 +790,12 @@ Public Class frmPedidosEdit
     End Sub
     Private Sub grdDetallePedidosTabla_CellValueChanged(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles grdDetallePedidosTabla.CellValueChanged
         Dim objSivProductos As SivProductos
-        Dim objRepuestosDetProv As SivRepuestosDetProv
+        Dim objProductosDetProv As SivProductosDetProv
         Dim FilaActual As Integer
         Try
 
         objSivProductos = New SivProductos
-        objRepuestosDetProv = New SivRepuestosDetProv
+            objProductosDetProv = New SivProductosDetProv
 
         FilaActual = Me.grdDetallePedidosTabla.FocusedRowHandle
 

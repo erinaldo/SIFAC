@@ -1,0 +1,143 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Seguridad.Formularios
+</name>
+</assembly>
+<members>
+<member name="M:Seguridad.Formularios.frmSsgPrincipalSeguridad.InicializarForm">
+	<summary>
+ Este metodo se encarga de inicializar el ambiente de Trabajo
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.frmSsgPrincipalSeguridad.CagarInformacionConeccion">
+	<summary>
+ Se configura el estatus bar con todos los valores de coneccion
+ que fueron alimentados con el metodo de inicializacion
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.frmSsgPrincipalSeguridad.tmrPrincipal_Tick(System.Object,System.EventArgs)">
+	<summary>
+ Actualizar la hora cada tick del timer
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="T:Seguridad.Formularios.ConfigFileType">
+	<summary>
+ Este enum representa los dos tipos de archivos de configuracion en .net
+ WebConfig que corresponde al archivo de configuracion de Sitios Web
+ AppConfig que corresponde al archivo de configuracion de Aplicaciones de escritorio
+ </summary>
+	<remarks></remarks>
+</member><member name="P:Seguridad.Formularios.cAppConfig.ConfigType">
+	<summary>
+ Esta propiedad retorna tipo de configuracion que se esta usando
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.cAppConfig.SetValue(System.String,System.String)">
+	<summary>
+ Esta funcion se encarga de setear el valor del archivo de configuracion
+ </summary>
+	<param name="key">Nombre de la llave que se configurara</param>
+	<param name="value">Valor de la llave que se configurara</param>
+	<returns>Retorna un valor booleando, True si se configuro de manera satisfactoria y 
+ False en caso contrario</returns>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.cAppConfig.saveConfigDoc(System.Xml.XmlDocument,System.String)">
+	<summary>
+ Este procedimiento se encarga de salvar el archivo de configuracion
+ </summary>
+	<param name="cfgDoc">Nombre del Documento</param>
+	<param name="cfgDocPath">Direccion del Archivo</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.cAppConfig.removeElement(System.String)">
+	<summary>
+ Esta funcion se encarga de remover el elemento dentro del archivo de 
+ configuracion
+ </summary>
+	<param name="elementKey"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.cAppConfig.loadConfigDoc(System.Xml.XmlDocument)">
+	<summary>
+ Esta funcion se encarga de Cargar el Archivo de configuracion
+ </summary>
+	<param name="cfgDoc">Nombre del Documento que se desea Cargar</param>
+	<returns>Retorna el Documento XML que se ha cargado</returns>
+	<remarks></remarks>
+</member><member name="P:Seguridad.Formularios.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:Seguridad.Formularios.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:Seguridad.Formularios.My.Resources.Resources.BackgroundImage">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Seguridad.Formularios.My.Resources.Resources.Padlock">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:Seguridad.Formularios.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:Seguridad.Formularios.FrmConfig.btnExaminar_Click(System.Object,System.EventArgs)">
+	<summary>
+ Evento del Boton encargado de Examinar o buscar un archivo app.config
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.FrmConfig.Form1_Load(System.Object,System.EventArgs)">
+	<summary>
+ Evento load del formulario
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.FrmConfig.btnCancelar_Click(System.Object,System.EventArgs)">
+	<summary>
+ Evento del Boton cancelar del formulario
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.FrmConfig.btnGuardar_Click(System.Object,System.EventArgs)">
+	<summary>
+ Evento Guardar del formulario
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.FrmConfig.btnEliminar_Click(System.Object,System.EventArgs)">
+	<summary>
+ Evento click del Boton eliminar del formulario
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.FrmConfig.CargarConfigDoc(System.String)">
+	<summary>
+ Este parametro se encarga de Cargar los valores almacenados en el 
+ archivo de App.config de la una aplicacion determinada
+ </summary>
+	<param name="strNombre">Ruta o nombre del archivo que se modificara</param>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.FrmConfig.GuardarCambiosConfigDoc">
+	<summary>
+ Este metodo se encarga de salvar los cambios en el archivo que se encuentra
+ actualmente cargado
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

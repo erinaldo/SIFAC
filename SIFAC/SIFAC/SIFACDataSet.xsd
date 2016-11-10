@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SIFACDataSet" targetNamespace="http://tempuri.org/SIFACDataSet.xsd" xmlns:mstns="http://tempuri.org/SIFACDataSet.xsd" xmlns="http://tempuri.org/SIFACDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SIFACConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SIFACConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIFAC.My.MySettings.GlobalReference.Default.SIFACConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwPedidosDetalleTableAdapter" GeneratorDataComponentClassName="vwPedidosDetalleTableAdapter" Name="vwPedidosDetalle" UserDataComponentName="vwPedidosDetalleTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SIFACConnectionString (MySettings)" DbObjectName="SIFAC.dbo.vwPedidosDetalle" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT SivPedidoDetalleID, objPedidoID, objCategoriaID, Categoria, Numero, NombreProducto, CantidadOrdenada, TotalCosto FROM dbo.vwPedidosDetalle</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SivPedidoDetalleID" DataSetColumn="SivPedidoDetalleID" />
+              <Mapping SourceColumn="objPedidoID" DataSetColumn="objPedidoID" />
+              <Mapping SourceColumn="objCategoriaID" DataSetColumn="objCategoriaID" />
+              <Mapping SourceColumn="Categoria" DataSetColumn="Categoria" />
+              <Mapping SourceColumn="Numero" DataSetColumn="Numero" />
+              <Mapping SourceColumn="NombreProducto" DataSetColumn="NombreProducto" />
+              <Mapping SourceColumn="CantidadOrdenada" DataSetColumn="CantidadOrdenada" />
+              <Mapping SourceColumn="TotalCosto" DataSetColumn="TotalCosto" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SIFACDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SIFACDataSet" msprop:Generator_UserDSName="SIFACDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwPedidosDetalle" msprop:Generator_TableClassName="vwPedidosDetalleDataTable" msprop:Generator_TableVarName="tablevwPedidosDetalle" msprop:Generator_TablePropName="vwPedidosDetalle" msprop:Generator_RowDeletingName="vwPedidosDetalleRowDeleting" msprop:Generator_RowChangingName="vwPedidosDetalleRowChanging" msprop:Generator_RowEvHandlerName="vwPedidosDetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="vwPedidosDetalleRowDeleted" msprop:Generator_UserTableName="vwPedidosDetalle" msprop:Generator_RowChangedName="vwPedidosDetalleRowChanged" msprop:Generator_RowEvArgName="vwPedidosDetalleRowChangeEvent" msprop:Generator_RowClassName="vwPedidosDetalleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SivPedidoDetalleID" msprop:Generator_ColumnVarNameInTable="columnSivPedidoDetalleID" msprop:Generator_ColumnPropNameInRow="SivPedidoDetalleID" msprop:Generator_ColumnPropNameInTable="SivPedidoDetalleIDColumn" msprop:Generator_UserColumnName="SivPedidoDetalleID" type="xs:int" />
+              <xs:element name="objPedidoID" msprop:Generator_ColumnVarNameInTable="columnobjPedidoID" msprop:Generator_ColumnPropNameInRow="objPedidoID" msprop:Generator_ColumnPropNameInTable="objPedidoIDColumn" msprop:Generator_UserColumnName="objPedidoID" type="xs:int" />
+              <xs:element name="objCategoriaID" msprop:Generator_ColumnVarNameInTable="columnobjCategoriaID" msprop:Generator_ColumnPropNameInRow="objCategoriaID" msprop:Generator_ColumnPropNameInTable="objCategoriaIDColumn" msprop:Generator_UserColumnName="objCategoriaID" type="xs:int" />
+              <xs:element name="Categoria" msprop:Generator_ColumnVarNameInTable="columnCategoria" msprop:Generator_ColumnPropNameInRow="Categoria" msprop:Generator_ColumnPropNameInTable="CategoriaColumn" msprop:Generator_UserColumnName="Categoria" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Numero" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnPropNameInTable="NumeroColumn" msprop:Generator_UserColumnName="Numero">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NombreProducto" msprop:Generator_ColumnVarNameInTable="columnNombreProducto" msprop:Generator_ColumnPropNameInRow="NombreProducto" msprop:Generator_ColumnPropNameInTable="NombreProductoColumn" msprop:Generator_UserColumnName="NombreProducto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CantidadOrdenada" msprop:Generator_ColumnVarNameInTable="columnCantidadOrdenada" msprop:Generator_ColumnPropNameInRow="CantidadOrdenada" msprop:Generator_ColumnPropNameInTable="CantidadOrdenadaColumn" msprop:Generator_UserColumnName="CantidadOrdenada" type="xs:double" />
+              <xs:element name="TotalCosto" msprop:Generator_ColumnVarNameInTable="columnTotalCosto" msprop:Generator_ColumnPropNameInRow="TotalCosto" msprop:Generator_ColumnPropNameInTable="TotalCostoColumn" msprop:Generator_UserColumnName="TotalCosto" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwPedidosDetalle" />
+      <xs:field xpath="mstns:SivPedidoDetalleID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

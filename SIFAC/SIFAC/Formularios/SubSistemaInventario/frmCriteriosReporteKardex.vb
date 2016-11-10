@@ -254,7 +254,7 @@ Public Class frmCriteriosReporteKardex
             If dtDatos.Rows.Count <> 0 Then
                 With Visor.VisorReportes
                     .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-                    .LocalReport.ReportEmbeddedResource = "SCCUM.rptKardex.rdlc"
+                    .LocalReport.ReportEmbeddedResource = "SIFAC.rptKardex.rdlc"
                     .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtDatosRptKardex_vwRptKardex", dtDatos))
                     Me.CargarEncabezadoReporte(.LocalReport)
                     'Configurar margenes si los costos no se verán en el reporte

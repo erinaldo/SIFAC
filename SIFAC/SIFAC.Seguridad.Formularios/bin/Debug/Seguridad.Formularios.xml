@@ -6,7 +6,25 @@ Seguridad.Formularios
 </name>
 </assembly>
 <members>
-<member name="T:Seguridad.Formularios.ConfigFileType">
+<member name="M:Seguridad.Formularios.frmSsgPrincipalSeguridad.InicializarForm">
+	<summary>
+ Este metodo se encarga de inicializar el ambiente de Trabajo
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.frmSsgPrincipalSeguridad.CagarInformacionConeccion">
+	<summary>
+ Se configura el estatus bar con todos los valores de coneccion
+ que fueron alimentados con el metodo de inicializacion
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Seguridad.Formularios.frmSsgPrincipalSeguridad.tmrPrincipal_Tick(System.Object,System.EventArgs)">
+	<summary>
+ Actualizar la hora cada tick del timer
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="T:Seguridad.Formularios.ConfigFileType">
 	<summary>
  Este enum representa los dos tipos de archivos de configuracion en .net
  WebConfig que corresponde al archivo de configuracion de Sitios Web
@@ -51,24 +69,6 @@ Seguridad.Formularios
 	<param name="cfgDoc">Nombre del Documento que se desea Cargar</param>
 	<returns>Retorna el Documento XML que se ha cargado</returns>
 	<remarks></remarks>
-</member><member name="M:Seguridad.Formularios.frmSsgPrincipalSeguridad.InicializarForm">
-	<summary>
- Este metodo se encarga de inicializar el ambiente de Trabajo
- </summary>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Formularios.frmSsgPrincipalSeguridad.CagarInformacionConeccion">
-	<summary>
- Se configura el estatus bar con todos los valores de coneccion
- que fueron alimentados con el metodo de inicializacion
- </summary>
-	<remarks></remarks>
-</member><member name="M:Seguridad.Formularios.frmSsgPrincipalSeguridad.tmrPrincipal_Tick(System.Object,System.EventArgs)">
-	<summary>
- Actualizar la hora cada tick del timer
- </summary>
-	<param name="sender"></param>
-	<param name="e"></param>
-	<remarks></remarks>
 </member><member name="P:Seguridad.Formularios.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
@@ -77,6 +77,14 @@ Seguridad.Formularios
 	<summary>
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:Seguridad.Formularios.My.Resources.Resources.BackgroundImage">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Seguridad.Formularios.My.Resources.Resources.Padlock">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="T:Seguridad.Formularios.My.Resources.Resources">
 	<summary>

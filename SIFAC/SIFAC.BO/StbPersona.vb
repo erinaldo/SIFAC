@@ -19,12 +19,14 @@ Partial Public Class StbPersona
 	Protected m_objPaisID As Nullable(Of Integer) 
 	Protected m_objCiudadID As Nullable(Of Integer) 
 	Protected m_Direccion As String = Nothing 
+	Protected m_Referencia As String = Nothing 
 	Protected m_FechaNacimiento As Nullable(Of Date) 
+	Protected m_objEstadoCivilID As Nullable(Of Integer) 
 	Protected m_FechaCreacion As Date 
 	Protected m_UsuarioCreacion As String = Nothing 
 	Protected m_FechaModificacion As Nullable(Of Date) 
 	Protected m_UsuarioModificacion As String = Nothing 
-	Protected m_PersonaJuridica As Boolean 
+	Protected m_PersonaJuridica As Nullable(Of Boolean) 
 	Protected m_RazonSocial As String = Nothing 
 	Protected m_SiglasEmpresa As String = Nothing 
 	Protected m_RUC As String = Nothing 
@@ -172,6 +174,20 @@ Partial Public Class StbPersona
 		End Set
     End Property
 	
+	Public Property Referencia() As String
+        Get
+            Return (m_Referencia)
+        End Get
+		Set(ByVal Value As String)		
+			If Not Value Is Nothing Then
+				If Value.Length > 150 Then
+					Throw New ArgumentOutOfRangeException("Referencia", Value.ToString(), "Valor inv?lido para StbPersona.Referencia. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (150).")
+				End If
+			End If
+			m_Referencia = Value
+		End Set
+    End Property
+	
 	''' <summary>
 	''' Fecha de nacimiento
 	''' </summary>
@@ -181,6 +197,18 @@ Partial Public Class StbPersona
         End Get
 		Set(ByVal Value As Nullable(Of Date))					
 			m_FechaNacimiento = Value
+		End Set
+    End Property
+	
+	''' <summary>
+	''' ID del estado civil de la persona.
+	''' </summary>
+	Public Property objEstadoCivilID() As Nullable(Of Integer)
+        Get
+            Return (m_objEstadoCivilID)
+        End Get
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_objEstadoCivilID = Value
 		End Set
     End Property
 	
@@ -242,11 +270,11 @@ Partial Public Class StbPersona
 		End Set
     End Property
 	
-	Public Property PersonaJuridica() As Boolean
+	Public Property PersonaJuridica() As Nullable(Of Boolean)
         Get
             Return (m_PersonaJuridica)
         End Get
-		Set(ByVal Value As Boolean)					
+		Set(ByVal Value As Nullable(Of Boolean))					
 			m_PersonaJuridica = Value
 		End Set
     End Property
@@ -308,6 +336,8 @@ Partial Public Class StbPersona
 				Return	16
 			Case "Direccion"
 				Return	150
+			Case "Referencia"
+				Return	150
 			Case "UsuarioCreacion"
 				Return	45
 			Case "UsuarioModificacion"
@@ -361,7 +391,9 @@ Partial Public Class StbPersona
 			cmdInsert.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
 			cmdInsert.Parameters.Add("@objCiudadID", SqlDbType.Int, 4, "objCiudadID")
 			cmdInsert.Parameters.Add("@Direccion", SqlDbType.VarChar, 150, "Direccion")
+			cmdInsert.Parameters.Add("@Referencia", SqlDbType.VarChar, 150, "Referencia")
 			cmdInsert.Parameters.Add("@FechaNacimiento", SqlDbType.DateTime, 8, "FechaNacimiento")
+			cmdInsert.Parameters.Add("@objEstadoCivilID", SqlDbType.Int, 4, "objEstadoCivilID")
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 45, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
@@ -370,7 +402,7 @@ Partial Public Class StbPersona
 			cmdInsert.Parameters.Add("@RazonSocial", SqlDbType.VarChar, 255, "RazonSocial")
 			cmdInsert.Parameters.Add("@SiglasEmpresa", SqlDbType.VarChar, 255, "SiglasEmpresa")
 			cmdInsert.Parameters.Add("@RUC", SqlDbType.VarChar, 16, "RUC")
-			cmdInsert.CommandText = "INSERT INTO StbPersona ( Nombre1, Nombre2, Apellido1, Apellido2, objGeneroID, Cedula, objPaisID, objCiudadID, Direccion, FechaNacimiento, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, PersonaJuridica, RazonSocial, SiglasEmpresa, RUC) VALUES ( @Nombre1, @Nombre2, @Apellido1, @Apellido2, @objGeneroID, @Cedula, @objPaisID, @objCiudadID, @Direccion, @FechaNacimiento, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @PersonaJuridica, @RazonSocial, @SiglasEmpresa, @RUC)"
+			cmdInsert.CommandText = "INSERT INTO StbPersona ( Nombre1, Nombre2, Apellido1, Apellido2, objGeneroID, Cedula, objPaisID, objCiudadID, Direccion, Referencia, FechaNacimiento, objEstadoCivilID, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, PersonaJuridica, RazonSocial, SiglasEmpresa, RUC) VALUES ( @Nombre1, @Nombre2, @Apellido1, @Apellido2, @objGeneroID, @Cedula, @objPaisID, @objCiudadID, @Direccion, @Referencia, @FechaNacimiento, @objEstadoCivilID, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @PersonaJuridica, @RazonSocial, @SiglasEmpresa, @RUC)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@Nombre1", SqlDbType.VarChar, 255, "Nombre1")
@@ -382,7 +414,9 @@ Partial Public Class StbPersona
 			cmdUpdate.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
 			cmdUpdate.Parameters.Add("@objCiudadID", SqlDbType.Int, 4, "objCiudadID")
 			cmdUpdate.Parameters.Add("@Direccion", SqlDbType.VarChar, 150, "Direccion")
+			cmdUpdate.Parameters.Add("@Referencia", SqlDbType.VarChar, 150, "Referencia")
 			cmdUpdate.Parameters.Add("@FechaNacimiento", SqlDbType.DateTime, 8, "FechaNacimiento")
+			cmdUpdate.Parameters.Add("@objEstadoCivilID", SqlDbType.Int, 4, "objEstadoCivilID")
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdUpdate.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 45, "UsuarioCreacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
@@ -392,7 +426,7 @@ Partial Public Class StbPersona
 			cmdUpdate.Parameters.Add("@SiglasEmpresa", SqlDbType.VarChar, 255, "SiglasEmpresa")
 			cmdUpdate.Parameters.Add("@RUC", SqlDbType.VarChar, 16, "RUC")
 			cmdUpdate.Parameters.Add("@wStbPersonaID", SqlDbType.Int, 4, "StbPersonaID")
-			cmdUpdate.CommandText = "UPDATE StbPersona SET Nombre1=@Nombre1, Nombre2=@Nombre2, Apellido1=@Apellido1, Apellido2=@Apellido2, objGeneroID=@objGeneroID, Cedula=@Cedula, objPaisID=@objPaisID, objCiudadID=@objCiudadID, Direccion=@Direccion, FechaNacimiento=@FechaNacimiento, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, PersonaJuridica=@PersonaJuridica, RazonSocial=@RazonSocial, SiglasEmpresa=@SiglasEmpresa, RUC=@RUC WHERE StbPersonaID= @wStbPersonaID"
+			cmdUpdate.CommandText = "UPDATE StbPersona SET Nombre1=@Nombre1, Nombre2=@Nombre2, Apellido1=@Apellido1, Apellido2=@Apellido2, objGeneroID=@objGeneroID, Cedula=@Cedula, objPaisID=@objPaisID, objCiudadID=@objCiudadID, Direccion=@Direccion, Referencia=@Referencia, FechaNacimiento=@FechaNacimiento, objEstadoCivilID=@objEstadoCivilID, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, PersonaJuridica=@PersonaJuridica, RazonSocial=@RazonSocial, SiglasEmpresa=@SiglasEmpresa, RUC=@RUC WHERE StbPersonaID= @wStbPersonaID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -448,7 +482,9 @@ Partial Public Class StbPersona
 				m_objPaisID = IIf(IsDBNull(dr("objPaisID")), Nothing, dr("objPaisID"))					
 				m_objCiudadID = IIf(IsDBNull(dr("objCiudadID")), Nothing, dr("objCiudadID"))					
 				m_Direccion = IIf(IsDBNull(dr("Direccion")), Nothing, dr("Direccion"))					
+				m_Referencia = IIf(IsDBNull(dr("Referencia")), Nothing, dr("Referencia"))					
 				m_FechaNacimiento = IIf(IsDBNull(dr("FechaNacimiento")), Nothing, dr("FechaNacimiento"))					
+				m_objEstadoCivilID = IIf(IsDBNull(dr("objEstadoCivilID")), Nothing, dr("objEstadoCivilID"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
@@ -500,7 +536,9 @@ Partial Public Class StbPersona
 				m_objPaisID = IIf(IsDBNull(dr("objPaisID")), Nothing, dr("objPaisID"))					
 				m_objCiudadID = IIf(IsDBNull(dr("objCiudadID")), Nothing, dr("objCiudadID"))					
 				m_Direccion = IIf(IsDBNull(dr("Direccion")), Nothing, dr("Direccion"))					
+				m_Referencia = IIf(IsDBNull(dr("Referencia")), Nothing, dr("Referencia"))					
 				m_FechaNacimiento = IIf(IsDBNull(dr("FechaNacimiento")), Nothing, dr("FechaNacimiento"))					
+				m_objEstadoCivilID = IIf(IsDBNull(dr("objEstadoCivilID")), Nothing, dr("objEstadoCivilID"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
@@ -643,7 +681,9 @@ Partial Public Class StbPersona
 		sCommand &= "objPaisID,"
 		sCommand &= "objCiudadID,"
 		sCommand &= "Direccion,"
+		sCommand &= "Referencia,"
 		sCommand &= "FechaNacimiento,"
+		sCommand &= "objEstadoCivilID,"
 		sCommand &= "FechaCreacion,"
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaModificacion,"
@@ -661,7 +701,9 @@ Partial Public Class StbPersona
 		sCommand &= "@objPaisID,"
 		sCommand &= "@objCiudadID,"
 		sCommand &= "@Direccion,"
+		sCommand &= "@Referencia,"
 		sCommand &= "@FechaNacimiento,"
+		sCommand &= "@objEstadoCivilID,"
 		sCommand &= "@FechaCreacion,"
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaModificacion,"
@@ -676,7 +718,7 @@ Partial Public Class StbPersona
 		sCommand &= "StbPersonaID = SCOPE_IDENTITY()"
 		
 		
-		Dim arParams(18) As SqlParameter
+		Dim arParams(20) As SqlParameter
 		arParams(0) = New SqlParameter("@StbPersonaID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@Nombre1", SqlDbType.VarChar)		
@@ -733,59 +775,71 @@ Partial Public Class StbPersona
         Else
             arParams(9).Value = m_Direccion
         End If
-		arParams(10) = New SqlParameter("@FechaNacimiento", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaNacimiento) Then
+		arParams(10) = New SqlParameter("@Referencia", SqlDbType.VarChar)		
+		If IsDBNull(m_Referencia) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_FechaNacimiento
+            arParams(10).Value = m_Referencia
         End If
-		arParams(11) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(11) = New SqlParameter("@FechaNacimiento", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaNacimiento) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_FechaCreacion
+            arParams(11).Value = m_FechaNacimiento
         End If
-		arParams(12) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(12) = New SqlParameter("@objEstadoCivilID", SqlDbType.Int)		
+		If IsDBNull(m_objEstadoCivilID) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_UsuarioCreacion
+            arParams(12).Value = m_objEstadoCivilID
         End If
-		arParams(13) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(13) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(13).Value = DBNull.Value
         Else
-            arParams(13).Value = m_FechaModificacion
+            arParams(13).Value = m_FechaCreacion
         End If
-		arParams(14) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(14) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(14).Value = DBNull.Value
         Else
-            arParams(14).Value = m_UsuarioModificacion
+            arParams(14).Value = m_UsuarioCreacion
         End If
-		arParams(15) = New SqlParameter("@PersonaJuridica", SqlDbType.Bit)		
-		If IsDBNull(m_PersonaJuridica) Then
+		arParams(15) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(15).Value = DBNull.Value
         Else
-            arParams(15).Value = m_PersonaJuridica
+            arParams(15).Value = m_FechaModificacion
         End If
-		arParams(16) = New SqlParameter("@RazonSocial", SqlDbType.VarChar)		
-		If IsDBNull(m_RazonSocial) Then
+		arParams(16) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(16).Value = DBNull.Value
         Else
-            arParams(16).Value = m_RazonSocial
+            arParams(16).Value = m_UsuarioModificacion
         End If
-		arParams(17) = New SqlParameter("@SiglasEmpresa", SqlDbType.VarChar)		
-		If IsDBNull(m_SiglasEmpresa) Then
+		arParams(17) = New SqlParameter("@PersonaJuridica", SqlDbType.Bit)		
+		If IsDBNull(m_PersonaJuridica) Then
             arParams(17).Value = DBNull.Value
         Else
-            arParams(17).Value = m_SiglasEmpresa
+            arParams(17).Value = m_PersonaJuridica
         End If
-		arParams(18) = New SqlParameter("@RUC", SqlDbType.VarChar)		
-		If IsDBNull(m_RUC) Then
+		arParams(18) = New SqlParameter("@RazonSocial", SqlDbType.VarChar)		
+		If IsDBNull(m_RazonSocial) Then
             arParams(18).Value = DBNull.Value
         Else
-            arParams(18).Value = m_RUC
+            arParams(18).Value = m_RazonSocial
+        End If
+		arParams(19) = New SqlParameter("@SiglasEmpresa", SqlDbType.VarChar)		
+		If IsDBNull(m_SiglasEmpresa) Then
+            arParams(19).Value = DBNull.Value
+        Else
+            arParams(19).Value = m_SiglasEmpresa
+        End If
+		arParams(20) = New SqlParameter("@RUC", SqlDbType.VarChar)		
+		If IsDBNull(m_RUC) Then
+            arParams(20).Value = DBNull.Value
+        Else
+            arParams(20).Value = m_RUC
         End If
 	
 		Try
@@ -820,7 +874,9 @@ Partial Public Class StbPersona
 		sCommand &= "objPaisID = @objPaisID,"
 		sCommand &= "objCiudadID = @objCiudadID,"
 		sCommand &= "Direccion = @Direccion,"
+		sCommand &= "Referencia = @Referencia,"
 		sCommand &= "FechaNacimiento = @FechaNacimiento,"
+		sCommand &= "objEstadoCivilID = @objEstadoCivilID,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
 		sCommand &= "FechaModificacion = @FechaModificacion,"
@@ -832,7 +888,7 @@ Partial Public Class StbPersona
 		sCommand &= " where "	
 		sCommand &= "StbPersonaID = @StbPersonaID"					
 		
-		Dim arParams(18) As SqlParameter
+		Dim arParams(20) As SqlParameter
 		arParams(0) = New SqlParameter("@StbPersonaID", SqlDbType.Int)		
 		If IsDBNull(m_StbPersonaID) Then
             arParams(0).Value = DBNull.Value
@@ -893,59 +949,71 @@ Partial Public Class StbPersona
         Else
             arParams(9).Value = m_Direccion
         End If
-		arParams(10) = New SqlParameter("@FechaNacimiento", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaNacimiento) Then
+		arParams(10) = New SqlParameter("@Referencia", SqlDbType.VarChar)		
+		If IsDBNull(m_Referencia) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_FechaNacimiento
+            arParams(10).Value = m_Referencia
         End If
-		arParams(11) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(11) = New SqlParameter("@FechaNacimiento", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaNacimiento) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_FechaCreacion
+            arParams(11).Value = m_FechaNacimiento
         End If
-		arParams(12) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(12) = New SqlParameter("@objEstadoCivilID", SqlDbType.Int)		
+		If IsDBNull(m_objEstadoCivilID) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_UsuarioCreacion
+            arParams(12).Value = m_objEstadoCivilID
         End If
-		arParams(13) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(13) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(13).Value = DBNull.Value
         Else
-            arParams(13).Value = m_FechaModificacion
+            arParams(13).Value = m_FechaCreacion
         End If
-		arParams(14) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(14) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(14).Value = DBNull.Value
         Else
-            arParams(14).Value = m_UsuarioModificacion
+            arParams(14).Value = m_UsuarioCreacion
         End If
-		arParams(15) = New SqlParameter("@PersonaJuridica", SqlDbType.Bit)		
-		If IsDBNull(m_PersonaJuridica) Then
+		arParams(15) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(15).Value = DBNull.Value
         Else
-            arParams(15).Value = m_PersonaJuridica
+            arParams(15).Value = m_FechaModificacion
         End If
-		arParams(16) = New SqlParameter("@RazonSocial", SqlDbType.VarChar)		
-		If IsDBNull(m_RazonSocial) Then
+		arParams(16) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(16).Value = DBNull.Value
         Else
-            arParams(16).Value = m_RazonSocial
+            arParams(16).Value = m_UsuarioModificacion
         End If
-		arParams(17) = New SqlParameter("@SiglasEmpresa", SqlDbType.VarChar)		
-		If IsDBNull(m_SiglasEmpresa) Then
+		arParams(17) = New SqlParameter("@PersonaJuridica", SqlDbType.Bit)		
+		If IsDBNull(m_PersonaJuridica) Then
             arParams(17).Value = DBNull.Value
         Else
-            arParams(17).Value = m_SiglasEmpresa
+            arParams(17).Value = m_PersonaJuridica
         End If
-		arParams(18) = New SqlParameter("@RUC", SqlDbType.VarChar)		
-		If IsDBNull(m_RUC) Then
+		arParams(18) = New SqlParameter("@RazonSocial", SqlDbType.VarChar)		
+		If IsDBNull(m_RazonSocial) Then
             arParams(18).Value = DBNull.Value
         Else
-            arParams(18).Value = m_RUC
+            arParams(18).Value = m_RazonSocial
+        End If
+		arParams(19) = New SqlParameter("@SiglasEmpresa", SqlDbType.VarChar)		
+		If IsDBNull(m_SiglasEmpresa) Then
+            arParams(19).Value = DBNull.Value
+        Else
+            arParams(19).Value = m_SiglasEmpresa
+        End If
+		arParams(20) = New SqlParameter("@RUC", SqlDbType.VarChar)		
+		If IsDBNull(m_RUC) Then
+            arParams(20).Value = DBNull.Value
+        Else
+            arParams(20).Value = m_RUC
         End If
 	
 		Try

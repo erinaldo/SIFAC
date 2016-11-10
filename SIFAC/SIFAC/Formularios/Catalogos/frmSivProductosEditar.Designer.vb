@@ -20,16 +20,30 @@ Partial Class frmSivProductosEditar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim Style1 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style2 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style3 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style4 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style5 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivProductosEditar))
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim Style6 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style7 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
+        Dim Style8 As C1.Win.C1TrueDBGrid.Style = New C1.Win.C1TrueDBGrid.Style()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.tbcMasDatos = New System.Windows.Forms.TabControl()
+        Me.tabpageProveedor = New System.Windows.Forms.TabPage()
+        Me.CtdbProveedor = New C1.Win.C1TrueDBGrid.C1TrueDBDropdown()
+        Me.grdProveedor = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.tabpageExistenciaBodega = New System.Windows.Forms.TabPage()
+        Me.grdBodegas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
@@ -58,6 +72,12 @@ Partial Class frmSivProductosEditar
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
+        Me.tbcMasDatos.SuspendLayout()
+        Me.tabpageProveedor.SuspendLayout()
+        CType(Me.CtdbProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabpageExistenciaBodega.SuspendLayout()
+        CType(Me.grdBodegas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
         CType(Me.spnPrecioContado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,13 +100,14 @@ Partial Class frmSivProductosEditar
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 269)
+        Me.Panel1.Location = New System.Drawing.Point(0, 566)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(777, 21)
         Me.Panel1.TabIndex = 23
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.tbcMasDatos)
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.GroupControl2)
@@ -96,15 +117,117 @@ Partial Class frmSivProductosEditar
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(777, 290)
+        Me.PanelControl1.Size = New System.Drawing.Size(777, 587)
         Me.PanelControl1.TabIndex = 24
+        '
+        'tbcMasDatos
+        '
+        Me.tbcMasDatos.Controls.Add(Me.tabpageProveedor)
+        Me.tbcMasDatos.Controls.Add(Me.tabpageExistenciaBodega)
+        Me.tbcMasDatos.Location = New System.Drawing.Point(12, 228)
+        Me.tbcMasDatos.Name = "tbcMasDatos"
+        Me.tbcMasDatos.SelectedIndex = 0
+        Me.tbcMasDatos.Size = New System.Drawing.Size(551, 312)
+        Me.tbcMasDatos.TabIndex = 16
+        '
+        'tabpageProveedor
+        '
+        Me.tabpageProveedor.Controls.Add(Me.CtdbProveedor)
+        Me.tabpageProveedor.Controls.Add(Me.grdProveedor)
+        Me.tabpageProveedor.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageProveedor.Name = "tabpageProveedor"
+        Me.tabpageProveedor.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageProveedor.Size = New System.Drawing.Size(543, 286)
+        Me.tabpageProveedor.TabIndex = 0
+        Me.tabpageProveedor.Text = "Proveedor"
+        Me.tabpageProveedor.UseVisualStyleBackColor = True
+        '
+        'CtdbProveedor
+        '
+        Me.CtdbProveedor.AllowColMove = True
+        Me.CtdbProveedor.AllowColSelect = True
+        Me.CtdbProveedor.AllowDrop = True
+        Me.CtdbProveedor.AllowRowSizing = C1.Win.C1TrueDBGrid.RowSizingEnum.AllRows
+        Me.CtdbProveedor.AlternatingRows = False
+        Me.CtdbProveedor.CaptionStyle = Style1
+        Me.CtdbProveedor.ColumnCaptionHeight = 17
+        Me.CtdbProveedor.ColumnFooterHeight = 17
+        Me.CtdbProveedor.ColumnHeaders = False
+        Me.CtdbProveedor.EvenRowStyle = Style2
+        Me.CtdbProveedor.FetchRowStyles = False
+        Me.CtdbProveedor.FooterStyle = Style3
+        Me.CtdbProveedor.HeadingStyle = Style4
+        Me.CtdbProveedor.HighLightRowStyle = Style5
+        Me.CtdbProveedor.Images.Add(CType(resources.GetObject("CtdbProveedor.Images"), System.Drawing.Image))
+        Me.CtdbProveedor.Location = New System.Drawing.Point(39, 89)
+        Me.CtdbProveedor.Name = "CtdbProveedor"
+        Me.CtdbProveedor.OddRowStyle = Style6
+        Me.CtdbProveedor.RecordSelectorStyle = Style7
+        Me.CtdbProveedor.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.CtdbProveedor.RowDivider.Style = C1.Win.C1TrueDBGrid.LineStyleEnum.[Single]
+        Me.CtdbProveedor.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.CtdbProveedor.ScrollTips = False
+        Me.CtdbProveedor.Size = New System.Drawing.Size(223, 88)
+        Me.CtdbProveedor.Style = Style8
+        Me.CtdbProveedor.TabIndex = 1
+        Me.CtdbProveedor.TabStop = False
+        Me.CtdbProveedor.Text = "C1TrueDBDropdown1"
+        Me.CtdbProveedor.Visible = False
+        Me.CtdbProveedor.PropBag = resources.GetString("CtdbProveedor.PropBag")
+        '
+        'grdProveedor
+        '
+        Me.grdProveedor.AllowAddNew = True
+        Me.grdProveedor.AllowColMove = False
+        Me.grdProveedor.AllowFilter = False
+        Me.grdProveedor.Dock = System.Windows.Forms.DockStyle.Top
+        Me.grdProveedor.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdProveedor.Images.Add(CType(resources.GetObject("grdProveedor.Images"), System.Drawing.Image))
+        Me.grdProveedor.Location = New System.Drawing.Point(3, 3)
+        Me.grdProveedor.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.NoMarquee
+        Me.grdProveedor.Name = "grdProveedor"
+        Me.grdProveedor.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdProveedor.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdProveedor.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdProveedor.PrintInfo.PageSettings = CType(resources.GetObject("grdProveedor.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdProveedor.Size = New System.Drawing.Size(537, 277)
+        Me.grdProveedor.TabIndex = 0
+        Me.grdProveedor.PropBag = resources.GetString("grdProveedor.PropBag")
+        '
+        'tabpageExistenciaBodega
+        '
+        Me.tabpageExistenciaBodega.Controls.Add(Me.grdBodegas)
+        Me.tabpageExistenciaBodega.Location = New System.Drawing.Point(4, 22)
+        Me.tabpageExistenciaBodega.Name = "tabpageExistenciaBodega"
+        Me.tabpageExistenciaBodega.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabpageExistenciaBodega.Size = New System.Drawing.Size(543, 286)
+        Me.tabpageExistenciaBodega.TabIndex = 2
+        Me.tabpageExistenciaBodega.Text = "Existencia en Bodegas"
+        Me.tabpageExistenciaBodega.UseVisualStyleBackColor = True
+        '
+        'grdBodegas
+        '
+        Me.grdBodegas.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdBodegas.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdBodegas.Images.Add(CType(resources.GetObject("grdBodegas.Images"), System.Drawing.Image))
+        Me.grdBodegas.Location = New System.Drawing.Point(3, 3)
+        Me.grdBodegas.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.NoMarquee
+        Me.grdBodegas.Name = "grdBodegas"
+        Me.grdBodegas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdBodegas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdBodegas.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdBodegas.PrintInfo.PageSettings = CType(resources.GetObject("grdBodegas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdBodegas.Size = New System.Drawing.Size(537, 280)
+        Me.grdBodegas.TabIndex = 0
+        Me.grdBodegas.Text = "C1TrueDBGrid1"
+        Me.grdBodegas.PropBag = resources.GetString("grdBodegas.PropBag")
         '
         'cmdCancelar
         '
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(674, 228)
+        Me.cmdCancelar.Location = New System.Drawing.Point(673, 508)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -119,7 +242,7 @@ Partial Class frmSivProductosEditar
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(588, 228)
+        Me.cmdGuardar.Location = New System.Drawing.Point(587, 508)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -154,7 +277,7 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioContado.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnPrecioContado.Location = New System.Drawing.Point(174, 83)
         Me.spnPrecioContado.Name = "spnPrecioContado"
-        Me.spnPrecioContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject7, "", Nothing, Nothing, True)})
+        Me.spnPrecioContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
         Me.spnPrecioContado.Size = New System.Drawing.Size(91, 20)
         Me.spnPrecioContado.TabIndex = 7
         '
@@ -163,7 +286,7 @@ Partial Class frmSivProductosEditar
         Me.spnMargenCredito.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnMargenCredito.Location = New System.Drawing.Point(174, 110)
         Me.spnMargenCredito.Name = "spnMargenCredito"
-        Me.spnMargenCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
+        Me.spnMargenCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
         Me.spnMargenCredito.Size = New System.Drawing.Size(91, 20)
         Me.spnMargenCredito.TabIndex = 8
         '
@@ -172,7 +295,7 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioCredito.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnPrecioCredito.Location = New System.Drawing.Point(174, 57)
         Me.spnPrecioCredito.Name = "spnPrecioCredito"
-        Me.spnPrecioCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
+        Me.spnPrecioCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
         Me.spnPrecioCredito.Size = New System.Drawing.Size(91, 20)
         Me.spnPrecioCredito.TabIndex = 6
         '
@@ -181,7 +304,7 @@ Partial Class frmSivProductosEditar
         Me.spnMargenContado.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnMargenContado.Location = New System.Drawing.Point(174, 136)
         Me.spnMargenContado.Name = "spnMargenContado"
-        Me.spnMargenContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
+        Me.spnMargenContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, True)})
         Me.spnMargenContado.Size = New System.Drawing.Size(91, 20)
         Me.spnMargenContado.TabIndex = 0
         '
@@ -190,7 +313,7 @@ Partial Class frmSivProductosEditar
         Me.spnCostoPromedio.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnCostoPromedio.Location = New System.Drawing.Point(174, 27)
         Me.spnCostoPromedio.Name = "spnCostoPromedio"
-        Me.spnCostoPromedio.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, True)})
+        Me.spnCostoPromedio.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, True)})
         Me.spnCostoPromedio.Size = New System.Drawing.Size(91, 20)
         Me.spnCostoPromedio.TabIndex = 5
         '
@@ -199,7 +322,7 @@ Partial Class frmSivProductosEditar
         Me.spnCantidadMinima.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnCantidadMinima.Location = New System.Drawing.Point(174, 163)
         Me.spnCantidadMinima.Name = "spnCantidadMinima"
-        Me.spnCantidadMinima.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, True)})
+        Me.spnCantidadMinima.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject6, "", Nothing, Nothing, True)})
         Me.spnCantidadMinima.Size = New System.Drawing.Size(91, 20)
         Me.spnCantidadMinima.TabIndex = 10
         '
@@ -427,7 +550,7 @@ Partial Class frmSivProductosEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(777, 290)
+        Me.ClientSize = New System.Drawing.Size(777, 587)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -440,6 +563,12 @@ Partial Class frmSivProductosEditar
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
+        Me.tbcMasDatos.ResumeLayout(False)
+        Me.tabpageProveedor.ResumeLayout(False)
+        CType(Me.CtdbProveedor, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdProveedor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabpageExistenciaBodega.ResumeLayout(False)
+        CType(Me.grdBodegas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
         Me.GroupControl2.PerformLayout()
@@ -485,4 +614,10 @@ Partial Class frmSivProductosEditar
     Friend WithEvents spnMargenContado As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents spnCostoPromedio As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents spnCantidadMinima As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents tbcMasDatos As System.Windows.Forms.TabControl
+    Friend WithEvents tabpageProveedor As System.Windows.Forms.TabPage
+    Friend WithEvents CtdbProveedor As C1.Win.C1TrueDBGrid.C1TrueDBDropdown
+    Friend WithEvents grdProveedor As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents tabpageExistenciaBodega As System.Windows.Forms.TabPage
+    Friend WithEvents grdBodegas As C1.Win.C1TrueDBGrid.C1TrueDBGrid
 End Class

@@ -23,6 +23,8 @@ Partial Class frmClientesEdit
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmClientesEdit))
         Me.grpDatos = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtReferencia = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.spnOrdenCobro = New System.Windows.Forms.NumericUpDown()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -86,12 +88,14 @@ Partial Class frmClientesEdit
         Me.grpDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpDatos.Location = New System.Drawing.Point(5, 5)
         Me.grpDatos.Name = "grpDatos"
-        Me.grpDatos.Size = New System.Drawing.Size(905, 374)
+        Me.grpDatos.Size = New System.Drawing.Size(905, 424)
         Me.grpDatos.TabIndex = 0
         Me.grpDatos.TabStop = False
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.txtReferencia)
+        Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.spnOrdenCobro)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Label4)
@@ -102,13 +106,33 @@ Partial Class frmClientesEdit
         Me.GroupBox2.Controls.Add(Me.cmbCiudad)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 240)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(869, 116)
+        Me.GroupBox2.Size = New System.Drawing.Size(869, 178)
         Me.GroupBox2.TabIndex = 29
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ubicacion"
         '
+        'txtReferencia
+        '
+        Me.txtReferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtReferencia.Location = New System.Drawing.Point(142, 106)
+        Me.txtReferencia.Multiline = True
+        Me.txtReferencia.Name = "txtReferencia"
+        Me.txtReferencia.Size = New System.Drawing.Size(328, 57)
+        Me.txtReferencia.TabIndex = 26
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(9, 118)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(73, 13)
+        Me.Label6.TabIndex = 25
+        Me.Label6.Text = "Referencia:"
+        '
         'spnOrdenCobro
         '
+        Me.spnOrdenCobro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.spnOrdenCobro.Location = New System.Drawing.Point(650, 47)
         Me.spnOrdenCobro.Name = "spnOrdenCobro"
         Me.spnOrdenCobro.Size = New System.Drawing.Size(120, 20)
@@ -551,7 +575,7 @@ Partial Class frmClientesEdit
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 428)
+        Me.Panel1.Location = New System.Drawing.Point(0, 476)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(922, 16)
         Me.Panel1.TabIndex = 26
@@ -566,7 +590,7 @@ Partial Class frmClientesEdit
         Me.panelcliente.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.panelcliente.LookAndFeel.UseDefaultLookAndFeel = False
         Me.panelcliente.Name = "panelcliente"
-        Me.panelcliente.Size = New System.Drawing.Size(922, 444)
+        Me.panelcliente.Size = New System.Drawing.Size(922, 492)
         Me.panelcliente.TabIndex = 27
         '
         'SimpleButton1
@@ -574,7 +598,7 @@ Partial Class frmClientesEdit
         Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SimpleButton1.Appearance.Options.UseFont = True
         Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(831, 390)
+        Me.SimpleButton1.Location = New System.Drawing.Point(831, 435)
         Me.SimpleButton1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.SimpleButton1.Name = "SimpleButton1"
@@ -589,7 +613,7 @@ Partial Class frmClientesEdit
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(745, 390)
+        Me.cmdGuardar.Location = New System.Drawing.Point(745, 435)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -602,7 +626,7 @@ Partial Class frmClientesEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(922, 444)
+        Me.ClientSize = New System.Drawing.Size(922, 492)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.panelcliente)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -674,4 +698,6 @@ Partial Class frmClientesEdit
     Friend WithEvents spnOrdenCobro As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents cmdBuscar As System.Windows.Forms.Button
+    Friend WithEvents txtReferencia As System.Windows.Forms.TextBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
 End Class

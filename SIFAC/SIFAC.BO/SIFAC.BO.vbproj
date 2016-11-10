@@ -112,10 +112,10 @@
     <Compile Include="SivPedidos.vb" />
     <Compile Include="SivPedidosDetalle.vb" />
     <Compile Include="SivProductos.vb" />
+    <Compile Include="SivProductosDetProv.vb" />
     <Compile Include="SivProveedor.vb" />
     <Compile Include="SivProveedorDetProvision_CF.vb" />
     <Compile Include="SivRepuestosDetCompat_CF.vb" />
-    <Compile Include="SivRepuestosDetProv_CF.vb" />
     <Compile Include="SivRepuestos_CF.vb" />
     <Compile Include="SivSalidaBodega.vb" />
     <Compile Include="SivSalidaBodegaDetalle.vb" />

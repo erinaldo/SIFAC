@@ -248,7 +248,7 @@ Public Class frmClientesEdit
     Private Sub InsertarPersonas()
 
         Dim objPersonas, objPCompara As StbPersona
-        Dim objClientes As SccClientes
+        Dim objClientes, objComparaClientes As SccClientes
         Dim T As New DAL.TransactionManager
 
         Try
@@ -256,6 +256,7 @@ Public Class frmClientesEdit
             objPersonas = New StbPersona
             objPCompara = New StbPersona
             objClientes = New SccClientes
+            objComparaClientes = New SccClientes
 
             '1.2 Validar que no exista  una persona con la misma cédula
             objPCompara.RetrieveByFilter("Cedula='" + Me.txtCedula.Text + "'")
@@ -264,6 +265,16 @@ Public Class frmClientesEdit
                 Me.txtCedula.Focus()
                 Exit Sub
             End If
+
+            ''Validar orden de cobro no coincida con otro en la misma ruta
+            objComparaClientes.RetrieveByFilter("OrdenCobro=" + Me.spnOrdenCobro.Text + " AND objRutaID=" & cmbRuta.SelectedValue)
+            If objComparaClientes.OrdenCobro IsNot Nothing Then
+                Me.ErrPrv.SetError(Me.spnOrdenCobro, "Ya existe un cliente con el mismo orden de compra.")
+                Me.spnOrdenCobro.Focus()
+                Exit Sub
+            End If
+
+
             'PROCEDER A INGRESAR
             objPersonas.Nombre1 = txtPrimerNombre.Text
             objPersonas.Nombre2 = txtSegundoNombre.Text
@@ -285,13 +296,14 @@ Public Class frmClientesEdit
             objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
             objPersonas.objCiudadID = cmbCiudad.SelectedValue
             objPersonas.Direccion = txtDireccion.Text
+            objPersonas.Referencia = txtReferencia.Text
             objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objPersonas.Insert(T)
 
             ''Insertar Clientes
             objClientes.objPersonaID = objPersonas.StbPersonaID
-            objClientes.OrdenCobro = spnOrdenCobro.Value
+            objClientes.OrdenCobro = Convert.ToInt32(spnOrdenCobro.Value)
             objClientes.objRutaID = cmbRuta.SelectedValue
             objClientes.Activo = True
             objClientes.UsuarioCreacion = clsProyecto.Conexion.Usuario
@@ -383,6 +395,7 @@ Public Class frmClientesEdit
             Me.cmbGenero.SelectedValue = objPersonas.objGeneroID
             Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
             Me.txtDireccion.Text = objPersonas.Direccion
+            Me.txtReferencia.Text = objPersonas.Referencia
 
             objClientes.RetrieveByFilter("objPersonaID=" + Me.idpersona)
             cmbRuta.SelectedValue = objClientes.objRutaID
@@ -418,11 +431,31 @@ Public Class frmClientesEdit
 
 #Region "Modificar Personas"
     Private Sub ModificarPersonas()
-        Dim objPersonas As StbPersona
-        Dim objClientes As SccClientes
+        Dim objPersonas, objPCompara As StbPersona
+        Dim objClientes, objComparaClientes As SccClientes
         Dim T As New DAL.TransactionManager
         Try
+            objPersonas = New StbPersona
+            objPCompara = New StbPersona
             objClientes = New SccClientes
+            objComparaClientes = New SccClientes
+
+            '1.2 Validar que no exista  una persona con la misma cédula
+            objPCompara.RetrieveByFilter("StbPersonaID<> " & idpersona & " AND Cedula='" + Me.txtCedula.Text + "'")
+            If objPCompara.Cedula <> Nothing Then
+                Me.ErrPrv.SetError(Me.txtCedula, "Ya existe una persona con la misma cédula.")
+                Me.txtCedula.Focus()
+                Exit Sub
+            End If
+
+            ''Validar orden de cobro no coincida con otro en la misma ruta
+            objComparaClientes.RetrieveByFilter("objPersonaID <> " & idpersona & " AND OrdenCobro=" + Me.spnOrdenCobro.Text + " AND objRutaID=" & cmbRuta.SelectedValue)
+            If objComparaClientes.OrdenCobro IsNot Nothing Then
+                Me.ErrPrv.SetError(Me.spnOrdenCobro, "Ya existe un cliente con el mismo orden de compra.")
+                Me.spnOrdenCobro.Focus()
+                Exit Sub
+            End If
+
 
             T.BeginTran()
             objPersonas = New StbPersona
@@ -450,12 +483,12 @@ Public Class frmClientesEdit
             objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
             objPersonas.objCiudadID = cmbCiudad.SelectedValue
             objPersonas.Direccion = txtDireccion.Text
-
+            objPersonas.Referencia = txtReferencia.Text
             objPersonas.Update(T)
 
             ''Actualizar Clientes
-            objClientes.objPersonaID = objPersonas.StbPersonaID
-            objClientes.OrdenCobro = spnOrdenCobro.Value
+            objClientes.RetrieveByFilter("objPersonaID=" & idpersona)
+            objClientes.OrdenCobro = Convert.ToInt32(spnOrdenCobro.Value)
             objClientes.objRutaID = cmbRuta.SelectedValue
             objClientes.Activo = True
             objClientes.UsuarioModificacion = clsProyecto.Conexion.Usuario

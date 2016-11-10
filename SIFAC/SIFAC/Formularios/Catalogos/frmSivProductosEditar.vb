@@ -10,6 +10,9 @@ Public Class frmSivProductosEditar
     Public intTypeGui As Integer
     Public intProductoID As Integer
     Public boolEditado As Boolean
+    Dim dtProveedor As DataTable
+    Dim dtProveedorCombo As DataTable
+    Dim dtExistenciaBodega As DataTable
 #End Region
 
 #Region "Propiedades"
@@ -82,6 +85,57 @@ Public Class frmSivProductosEditar
             clsError.CaptarError(ex)
         End Try
     End Sub
+
+    Private Sub CargarProveedor(ByVal strFiltro As String)
+        'dtProveedor = New DataTable
+        Dim sSQL As String
+
+        Try
+            sSQL = ObtenerConsultaGeneral("objProductosID, SivProveedorID, NombreProveedor", "vwSivProveedorProductos", strFiltro)
+
+            Me.dtProveedor = DAL.SqlHelper.ExecuteQueryDT(sSQL)
+            Me.grdProveedor.SetDataBinding(Me.dtProveedor, "", True)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub CargarComboProveedor()
+        dtProveedorCombo = New DataTable
+        Try
+            dtProveedorCombo = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID,NombreProveedor", "vwProveedor_Producto", "1=1"))
+            With CtdbProveedor
+                .DataSource = Me.dtProveedorCombo
+                .DisplayMember = "NombreProveedor"
+                .ValueMember = "SivProveedorID"
+                .DisplayColumns("SivProveedorID").Visible = False
+                .ValueTranslate = True
+                .ExtendRightColumn = True
+            End With
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+    Private Sub CargarExistencia()
+        dtExistenciaBodega = New DataTable
+        Try
+            dtExistenciaBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbBodegaID, Nombre, cast ('' as varchar(100)) as Ubicacion, cast ('' as integer) as Cantidad", "StbBodegas", "Activo=1 "))
+            Me.grdBodegas.SetDataBinding(dtExistenciaBodega, "", True)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub CargarExistenciaEditar()
+        dtExistenciaBodega = New DataTable
+        Try
+            dtExistenciaBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbBodegaID, Nombre, Ubicacion, Cantidad, objProductoID", "vwExistenciaBodegas", "objProductoID = '" & Me.intProductoID & "'"))
+            Me.grdBodegas.SetDataBinding(dtExistenciaBodega, "", True)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
     '' Descripción:        Procedimiento encargado de configurar la interfaz del formulario
     Public Sub ConfigurarGUI()
         Try
@@ -90,9 +144,32 @@ Public Class frmSivProductosEditar
                     Me.Text = "Agregar Producto"
                     chkActivo.Checked = True
                     chkActivo.Enabled = False
+                    Me.CargarProveedor("1=0")
+                    Me.CargarComboProveedor()
+                    Me.grdProveedor.Splits(0).DisplayColumns(2).Visible = False
+                    Me.grdProveedor.EmptyRows = False
+                    Me.grdProveedor.FilterBar = False
+                    Me.grdProveedor.Refresh()
+
+                    Me.CargarExistencia()
+                    Me.grdBodegas.EmptyRows = False
+                    Me.grdBodegas.FilterBar = False
+                    Me.grdBodegas.Refresh()
+                   
                 Case 1
                     CargarDatosProducto()
                     chkActivo.Enabled = True
+                    Me.CargarProveedor("objRepuestoID = '" & Me.intProductoID & "'")
+                    Me.CargarComboProveedor()
+                    Me.grdProveedor.Splits(0).DisplayColumns(2).Visible = False
+                    Me.grdProveedor.EmptyRows = False
+                    Me.grdProveedor.FilterBar = False
+                    Me.grdProveedor.Refresh()
+                  
+                    CargarExistenciaEditar()
+                    Me.grdBodegas.EmptyRows = False
+                    Me.grdBodegas.FilterBar = False
+                    Me.grdBodegas.Refresh()
                 Case 2
                     CargarDatosProducto()
                     spnCantidadMinima.Enabled = False
@@ -107,6 +184,10 @@ Public Class frmSivProductosEditar
                     cbxCategoria.Enabled = False
                     chkActivo.Enabled = False
                     cmdGuardar.Enabled = False
+                    Me.CargarComboProveedor()
+                    Me.CargarExistenciaEditar()
+                    'Formatea los grid para sólo consulta
+                    Me.FormatearGridConsulta()
             End Select
             txtProducto.Focus()
         Catch ex As Exception
@@ -163,11 +244,16 @@ Public Class frmSivProductosEditar
             objProducto.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objProducto.Insert(T)
 
-            ''Insertar en Bodega Productos con cantidad 0
-            objBodegaProductos = New SivBodegaProductos
-            objBodega = New StbBodegas
-            objBodega.RetrieveByFilter("Codigo='" & clsProyecto.Sucursal & "'")
+            If dtExistenciaBodega.Rows.Count > 0 Then
+                Me.GuardarBodegaProductos(T)
+            Else
+                ''Insertar en Bodega Productos con cantidad 0
+                objBodegaProductos = New SivBodegaProductos
+                objBodega = New StbBodegas
+                objBodega.RetrieveByFilter("Codigo='" & clsProyecto.Sucursal & "'")
 
+            End If
+          
             objBodegaProductos.objProductoID = ProductoID
             objBodegaProductos.objBodegaID = objBodega.StbBodegaID
             objBodegaProductos.Cantidad = 0
@@ -175,6 +261,7 @@ Public Class frmSivProductosEditar
             objBodegaProductos.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objBodegaProductos.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objBodegaProductos.Insert(T)
+
             T.CommitTran()
 
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
@@ -191,7 +278,9 @@ Public Class frmSivProductosEditar
     '' Descripción:        Procedimiento encargado de editar la informacion de un producto
     Public Sub EditarProducto()
         Dim objProducto As SivProductos
+        Dim dtDetalleProveedor, dtDetalleBodega As New DataTable
         Dim T As New DAL.TransactionManager
+        Dim fila As DataRow
         Try
             T.BeginTran()
             objProducto = New SivProductos
@@ -212,7 +301,42 @@ Public Class frmSivProductosEditar
             objProducto.UsuarioModificacion = clsProyecto.Conexion.Servidor
             objProducto.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objProducto.FechaModificacion = clsProyecto.Conexion.FechaServidor
-            objProducto.Update()
+            objProducto.Update(T)
+
+            '--Actualizamos los proveedores
+            dtDetalleProveedor = SivProductosDetProv.RetrieveDT("1=0")
+            SivProductosDetProv.DeleteByFilter("objProductosID = '" & Me.intProductoID & "'", T)
+
+            Me.dtProveedor.AcceptChanges()
+            For Each row As DataRow In Me.dtProveedor.Rows
+                fila = dtDetalleProveedor.NewRow
+                fila("objProductosID") = Me.intProductoID
+                fila("objProveedorID") = row("SivProveedorID")
+                fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+                fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+                dtDetalleProveedor.Rows.Add(fila)
+
+            Next
+            dtDetalleProveedor.TableName = "SivProductosDetProv"
+            SivProductosDetProv.BatchUpdate(dtDetalleProveedor.DataSet, T)
+
+            'dtDetalleBodega = SivBodegaRepuestos.RetrieveDT("1=0")
+            'SivBodegaRepuestos.DeleteByFilter("objProductoID = '" & Me.intProductoID & "'")
+
+            'Me.dtExistenciaBodega.AcceptChanges()
+            'For Each drBodega As DataRow In Me.dtExistenciaBodega.Rows
+            '    fila = dtDetalleBodega.NewRow
+            '    fila("objProductoID") = Me.intProductoID
+            '    fila("objBodegaID") = drBodega("StbBodegaID")
+            '    fila("Ubicacion") = drBodega("Ubicacion")
+            '    fila("Cantidad") = drBodega("Cantidad")
+            '    fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+            '    fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+            '    dtDetalleBodega.Rows.Add(fila)
+            'Next
+            'dtDetalleBodega.TableName = "SivBodegaRepuestos"
+            'SivBodegaRepuestos.BatchUpdate(dtDetalleBodega.DataSet, T)
+
             T.CommitTran()
             MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Me.boolEditado = False
@@ -223,6 +347,100 @@ Public Class frmSivProductosEditar
         Finally
             objProducto = Nothing
         End Try
+    End Sub
+
+#End Region
+
+#Region "Formatear Grids para consulta"
+    Private Sub FormatearGridConsulta()
+        'Grid de proveedores
+        With Me.grdProveedor
+            .Splits(0).DisplayColumns("SivProveedorID").Visible = False
+            .Splits(0).DisplayColumns("CodigoRepuesto").Locked = True
+            .Splits(0).DisplayColumns("SivProveedorID").Button = False
+            .Splits(0).DisplayColumns("SivProveedorID").AutoDropDown = False
+            '.Splits(0).DisplayColumns("NombreProveedor").Style.BackColor = Me.grdCompatibilidad.Splits(0).DisplayColumns("Modelo").Style.BackColor
+            '.Splits(0).DisplayColumns("CodigoRepuesto").Style.BackColor = Me.grdCompatibilidad.Splits(0).DisplayColumns("Modelo").Style.BackColor
+            '.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.NoMarquee
+            .EmptyRows = False
+            .FilterBar = False
+            .AllowDelete = False
+            .AllowFilter = False
+            .AllowSort = False
+            .AllowUpdate = False
+            .RecordSelectors = False
+            .Refresh()
+        End With
+
+        'Grid Bedegas
+        With Me.grdBodegas
+            .Splits(0).DisplayColumns("Ubicacion").Locked = True
+            '.Splits(0).DisplayColumns("Ubicacion").Style.BackColor = Me.grdCompatibilidad.Splits(0).DisplayColumns("Modelo").Style.BackColor
+            .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+            .MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.NoMarquee
+            .EmptyRows = False
+            .FilterBar = False
+            .AllowDelete = False
+            .AllowFilter = False
+            .AllowSort = False
+            .AllowUpdate = False
+            .RecordSelectors = False
+            .Refresh()
+        End With
+    End Sub
+
+    Private Sub GuardarBodegaProductos(ByVal T As DAL.TransactionManager)
+        Dim fila As DataRow
+        Dim dtDetalleBodega As New DataTable
+
+        dtDetalleBodega = SivBodegaProductos.RetrieveDT("1=0")
+
+        Me.dtExistenciaBodega.AcceptChanges()
+        For Each drBodega As DataRow In Me.dtExistenciaBodega.Rows
+            fila = dtDetalleBodega.NewRow
+            fila("objProductoID") = Me.intProductoID
+            fila("objBodegaID") = drBodega("StbBodegaID")
+            fila("Ubicacion") = drBodega("Ubicacion")
+            fila("Cantidad") = drBodega("Cantidad")
+            fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+            fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+            dtDetalleBodega.Rows.Add(fila)
+        Next
+        dtDetalleBodega.TableName = "SivBodegaRepuestos"
+        SivBodegaRepuestos.BatchUpdate(dtDetalleBodega.DataSet, T)
+
+    End Sub
+
+    Private Sub GuardarRepuestosProveedor(ByVal T As DAL.TransactionManager)
+        Dim dtDetalleProveedor As New DataTable
+        Dim fila As DataRow
+        Try
+            Try
+
+                'Me.grdProveedor.Refresh()
+                dtDetalleProveedor = SivProductosDetProv.RetrieveDT("1=0")
+
+                
+                Me.dtProveedor.AcceptChanges()
+                For Each row As DataRow In Me.dtProveedor.Rows ' row As DataRow In Me.dtProveedor.Rows
+                    fila = dtDetalleProveedor.NewRow
+                    fila("objProductosID") = Me.intProductoID
+                    fila("objProveedorID") = row("SivProveedorID") 'row("SivProveedorID")
+                    fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+                    fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+                    dtDetalleProveedor.Rows.Add(fila)
+                Next
+
+                dtDetalleProveedor.TableName = "SivProductosDetProv"
+                SivProductosDetProv.BatchUpdate(dtDetalleProveedor.DataSet, T)
+
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            dtDetalleProveedor = Nothing
+        End Try
+
     End Sub
 
 #End Region
@@ -404,4 +622,16 @@ Public Class frmSivProductosEditar
 
 #End Region
 
+    Private Sub grdProveedor_KeyDown(sender As Object, e As KeyEventArgs) Handles grdProveedor.KeyDown
+        If Me.TypeGui <> 2 Then
+            If e.KeyValue = Keys.Delete And Not (Me.grdProveedor.EditActive) Then
+                Me.grdProveedor.Delete(Me.grdProveedor.Row)
+                Me.grdProveedor.UpdateData()
+            End If
+        End If
+    End Sub
+
+    Private Sub grdProveedor_Leave(sender As Object, e As EventArgs) Handles grdProveedor.Leave
+        Me.grdProveedor.UpdateData()
+    End Sub
 End Class

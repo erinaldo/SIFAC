@@ -1,0 +1,1987 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SIFAC
+</name>
+</assembly>
+<members>
+<member name="T:SIFAC.DtSaldoConsolidada.vwCuentaRolesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtSaldoConsolidada.vwCuentaRolesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtSaldoConsolidada.vwCuentaRolesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtSaldoConsolidada">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtSaldoConsolidadaTableAdapters.vwCuentaRolesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmStbBitacora.AplicarSeguridad">
+	<summary>
+ Autor : Pedro Tinoco S.
+ Fecha : 13 de Abril.
+ Procedimiento Encargado de Aplicar la Seguridad.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmStbBitacora">
+	<summary>
+ Formulario Principal de Bitacora de Clientes
+ Autor : Pedro Tinoco 
+ Fecha : 31 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSfaCambiosPagos.AplicarCambios">
+	<summary>
+ Procedimiento Encargado de realizar el cambio correspondiente de Fechas.
+ Autor : Pedro Pablo Tinoco
+ Fecha : 13 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccBuscarRecibo.CargarEstadoRecibo">
+	<summary>
+ Autor : Pedro Pablo Tinoco 
+ Fecha : 24 de Abril de 2009.
+ Descripcion : Procedimiento encargado de cargar los estados posibles de un recibo de caja.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccBuscarRecibo.BuscarSeguimientos">
+	<summary>
+ Procedimiento Encargado de Realizar la Busqueda de los Seguimientos Realizados
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 15 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.SIFACPedidosMaster.vwSivPedidosMasterDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMaster.vwPedidosDetalleDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMaster.vwSivPedidosMasterRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMaster.vwPedidosDetalleRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMaster.vwSivPedidosMasterRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMaster.vwPedidosDetalleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMaster">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMasterTableAdapters.vwSivPedidosMasterTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMasterTableAdapters.vwPedidosDetalleTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.SIFACPedidosMasterTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIFAC.SIFACPedidosMaster,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:SIFAC.SIFACPedidosMasterTableAdapters.TableAdapterManager.UpdateInsertedRows(SIFAC.SIFACPedidosMaster,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:SIFAC.SIFACPedidosMasterTableAdapters.TableAdapterManager.UpdateDeletedRows(SIFAC.SIFACPedidosMaster,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:SIFAC.SIFACPedidosMasterTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:SIFAC.SIFACPedidosMasterTableAdapters.TableAdapterManager.UpdateAll(SIFAC.SIFACPedidosMaster)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMasterTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMasterTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:SIFAC.SIFACPedidosMasterTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="M:SIFAC.frmSccSeleccionCuentas.CargarDatos">
+	<summary>
+ Procedimiento de Carga Total de las cuentas en Estado Diferente a Cancelada.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 24 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmSccSeleccionCuentas">
+	<summary>
+ Formulario de Selección de Cuentas para Generacion de Recibos de Cajas.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 24 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmStbBuscarBitacora.BuscarSeguimientos">
+	<summary>
+ Procedimiento Encargado de Realizar la Busqueda de los Seguimientos Realizados
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 15 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriterioReporteEstadisticoServicios.CargarComboSucursales">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Sucursales
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:40 am.
+ </summary>
+</member><member name="M:SIFAC.frmCriterioReporteEstadisticoServicios.DevolverFiltro">
+	<summary>
+ Función encargada de construir y devolver el filtro que ocupará la consulta del reporte. 
+ este se construye en base a los criterios seleccionados por el usuario
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:56 am.
+ </summary>
+</member><member name="M:SIFAC.clsReportes.Enmarcar(DataDynamics.ActiveReports.Label@)">
+	<summary>
+ Procedimiento para crear borde en los cuatro lados de una etiqueta de active Report
+ Autor: Gelmin Martínez, 14 Junio 2010, 11:28 am.
+ </summary>
+	<param name="etiqueta">Etiqueta (Label) de Active report que desea enmarcar</param>
+</member><member name="M:SIFAC.clsReportes.Enmarcar(DataDynamics.ActiveReports.Label@,System.Drawing.Color)">
+	<summary>
+ Procedimiento para crear borde en los cuatro lados de una etiqueta de active Report
+ Autor: Gelmin Martínez, 14 Junio 2010, 11:28 am.
+ </summary>
+	<param name="etiqueta">Etiqueta (Label) de Active report que desea enmarcar</param>
+	<param name="Color">Color que desea dar al borde </param>
+</member><member name="M:SIFAC.clsReportes.Enmarcar(DataDynamics.ActiveReports.TextBox@)">
+	<summary>
+ Procedimiento para crear borde en los cuatro lados de un textbox de ActiveReport
+ Autor: Gelmin Martínez, 14 Junio 2010, 11:28 am.
+ </summary>
+	<param name="Textbox">Textbox de Active report que desea enmarcar</param>
+</member><member name="M:SIFAC.clsReportes.Enmarcar(DataDynamics.ActiveReports.TextBox@,System.Drawing.Color)">
+	<summary>
+ Procedimiento para crear borde en los cuatro lados de un textbox de ActiveReport
+ Autor: Gelmin Martínez, 14 Junio 2010, 11:28 am.
+ </summary>
+	<param name="Textbox">Textbox de Active report que desea enmarcar</param>
+	<param name="Color">Color que desea dar al borde</param>
+</member><member name="M:SIFAC.clsReportes.BordeSuperior(DataDynamics.ActiveReports.TextBox@)">
+	<summary>
+ Procedimiento para crear borde en la parte superior de un textbox de ActiveReport
+ Autor: Gelmin Martínez, 14 Junio 2010, 11:53 am.
+ </summary>
+	<param name="Textbox">Textbox de Active report en el cual se dibujará el borde superior</param>
+</member><member name="M:SIFAC.clsReportes.BordeSuperior(DataDynamics.ActiveReports.TextBox@,System.Drawing.Color)">
+	<summary>
+ Procedimiento para crear borde en la parte superior de un textbox de ActiveReport
+ Autor: Gelmin Martínez, 14 Junio 2010, 11:53 am.
+ </summary>
+	<param name="Textbox">Textbox de Active report en el cual se dibujará el borde superior</param>
+	<param name="color">Color que desea dar al borde superior</param>
+</member><member name="T:SIFAC.SIFACDataSet.vwPedidosDetalleDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet.vwPedidosDetalleRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet.vwPedidosDetalleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.SIFACDataSetTableAdapters.vwPedidosDetalleTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.SIFACDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIFAC.SIFACDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:SIFAC.SIFACDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(SIFAC.SIFACDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:SIFAC.SIFACDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(SIFAC.SIFACDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:SIFAC.SIFACDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:SIFAC.SIFACDataSetTableAdapters.TableAdapterManager.UpdateAll(SIFAC.SIFACDataSet)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:SIFAC.SIFACDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:SIFAC.SIFACDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:SIFAC.SIFACDataSetTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="T:SIFAC.dtDatosRptComisiones.vwRptComisionesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptComisiones.vwRptComisionesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptComisiones.vwRptComisionesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosRptComisiones">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptComisionesTableAdapters.vwRptComisionesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEstadisticoServicios.usp_CantidadServiciosBySucursalDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEstadisticoServicios.usp_CantidadServiciosBySucursalRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEstadisticoServicios.usp_CantidadServiciosBySucursalRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEstadisticoServicios">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEstadisticoServiciosTableAdapters.usp_CantidadServiciosBySucursalTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmSivEntradaBodega.AplicarSeguridad">
+	<summary>
+ Autor : Enrique Escobar Maradiaag.
+ Fecha : 02 de Junio de 2010.
+ Procedimiento Encargado de Aplicar Seguridad.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmBusquedaRepuestos.CargarComboProveedores">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Proveedores
+ Autor : Gelmin Martinez
+ Fecha 25 de Mayo de 2010, 03:56 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmBusquedaRepuestos.CargarComboTipos">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Tipos de repuesto.
+ Autor : Gelmin Martinez
+ Fecha 25 de Mayo de 2010, 04:36 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmBusquedaRepuestos.CargarComboMarcas">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Marcas de repuestos.
+ Autor : Gelmin Martinez
+ Fecha 25 de Mayo de 2010, 04:42 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmBusquedaRepuestos.CargarComboModelosCompatibles">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Modelos compatibles.
+ Autor : Gelmin Martinez
+ Fecha 25 de Mayo de 2010, 04:43 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="P:SIFAC.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources._32px_Crystal_Clear_action_reload">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources._32px_Crystal_Clear_mimetype_source_moc">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources._Default">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources._Stop">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Anular">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Aprobar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Autorizar_Pedido">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.BackgroundImage">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.balanza">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Bonificaciones">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Boxes">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Buscar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Cancel16">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.CargosDependecias">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Carpeta">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Carpeta1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Catalogos">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Catalogos2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.CatalogoValor">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.CerrarSesion">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Consultar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Empleados">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Fondo">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Forward">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Guardar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Guardar16">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Guardar32">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Home">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.icon3">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.icon6">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.IniciarSesion">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.IniciarSesion1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.LaST__Cobalt__Find">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.LaST__Cobalt__Fonts_Folders">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.LaST__Cobalt__Internet_File">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.LaST__Cobalt__Library_Folder">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.LaST__Cobalt__Users_Folder">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgActualizado">
+	<summary>
+  Looks up a localized string similar to El registro se ha actualizado satisfactoriamente..
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgAgregado">
+	<summary>
+  Looks up a localized string similar to El registro se ha guardado satisfactoriamente..
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgBusqueda">
+	<summary>
+  Looks up a localized string similar to No existen datos para generar esta búsqueda..
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgConfirmarEliminar">
+	<summary>
+  Looks up a localized string similar to ¿Está seguro de eliminar el registro seleccionado?..
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgConfirmarGuardar">
+	<summary>
+  Looks up a localized string similar to ¿Desea salir sin guardar los cambios?..
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgEliminado">
+	<summary>
+  Looks up a localized string similar to El registro se ha eliminado satisfactoriamente..
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgNoPuedeCambiarCodigo">
+	<summary>
+  Looks up a localized string similar to No es posible cambiar el código de repuesto cargado desde la base de datos..
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgObligatorio">
+	<summary>
+  Looks up a localized string similar to Campo Obligatorio.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgReporte">
+	<summary>
+  Looks up a localized string similar to No existen datos para generar el reporte..
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgReservado">
+	<summary>
+  Looks up a localized string similar to La operación solicitada no puede ser efectuada. El registro está siendo usado por otro usuario.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.MsgSalirSinGuardar">
+	<summary>
+  Looks up a localized string similar to ¿Desea salir SIN GUARDAR los cambios realizados?.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.NuevoRegProducto">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Office2003Olive">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.opts_32">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.paste_32">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.pedidos">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.prefs_32">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Procesar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Productos">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.ProveedorEstilo1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Prueba">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Reporte_de_Facturas">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Rol">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Run">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Salir">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Salir2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Secuencias">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Seguridad">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Sello">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.UbicacionesGeograficas">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.UbicacionGeograf">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.UbicacionGeografica">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.updated24x24">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.User">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.User2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Usuario">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Xy">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Zonas">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:SIFAC.My.Resources.Resources.Zonas1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:SIFAC.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="M:SIFAC.clsAppconfiguration.GetAppSettings">
+	<summary>
+ Retorna la configuración definida en la sección appSettings del archivo appconfig.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.clsAppconfiguration.Getkey(System.String)">
+	<summary>
+ Obtiene el valor asociado a la llave especificada
+ </summary>
+	<param name="key"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.clsAppconfiguration.Setkey(System.String,System.String)">
+	<summary>
+ Establece el valor a la llave especificada
+ </summary>
+	<param name="key"></param>
+	<param name="Value"></param>
+	<remarks></remarks>
+</member><member name="T:SIFAC.DtDatosMorosidad.DatosReporteDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtDatosMorosidad.DatosReporteRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtDatosMorosidad.DatosReporteRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtDatosMorosidad">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtDatosMorosidadTableAdapters.AdaptadorReporte">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.DtDatosSeguimiento.DatosSeguimientoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtDatosSeguimiento.DatosSeguimientoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtDatosSeguimiento.DatosSeguimientoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtDatosSeguimiento">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtDatosSeguimientoTableAdapters.AdaptadorSeguimiento">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmSivDespTransferenciaEdit.CargarComboSitioOrigen">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Origen
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivDespTransferenciaEdit.CargarComboSitioDestino">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Destino
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.DtEstadoCuentas.DatosReporteDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtEstadoCuentas.DatosReporteRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtEstadoCuentas.DatosReporteRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtEstadoCuentas">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtEstadoCuentasTableAdapters.AdaptadorReporte">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmSivDespTransferencia.CargaDatos">
+	<summary>
+ Procedimiento encargado de cargar los datos de las solicitudes de transferencias a despachar.
+ Autor : Gelmin Martínez.
+ Fecha : 26 de Mayo de 2010, 01:21 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivDespTransferencia.AplicarSeguridad">
+	<summary>
+ Autor : Gelmin Martínez.
+ Fecha : 26 de Mayo de 2010. 01:28 pm.
+ Procedimiento Encargado de Aplicar Seguridad.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivDespTransferencia.Nuevo_DespachoTransf">
+	<summary>
+ Procedimiento encargado de crear un nuevo despacho de transferencia
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivDespTransferencia.DespacharTransferencia">
+	<summary>
+ Procedimiento encargado de despachar una solicitud transferencia
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmSivDespTransferencia">
+	<summary>
+ Formulario Principal de Despacho de transferencia
+ Autor : Gelmin Martínez
+ Fecha : 26 de Mayo de 2010, 01:19 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.SIFACPIVOT.vwConsolidadoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.SIFACPIVOT.vwConsolidadoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.SIFACPIVOT.vwConsolidadoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.SIFACPIVOT">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.SIFACPIVOTTableAdapters.vwConsolidadoTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.SIFACPIVOTTableAdapters.TableAdapterManager.UpdateUpdatedRows(SIFAC.SIFACPIVOT,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:SIFAC.SIFACPIVOTTableAdapters.TableAdapterManager.UpdateInsertedRows(SIFAC.SIFACPIVOT,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:SIFAC.SIFACPIVOTTableAdapters.TableAdapterManager.UpdateDeletedRows(SIFAC.SIFACPIVOT,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:SIFAC.SIFACPIVOTTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:SIFAC.SIFACPIVOTTableAdapters.TableAdapterManager.UpdateAll(SIFAC.SIFACPIVOT)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:SIFAC.SIFACPIVOTTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:SIFAC.SIFACPIVOTTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:SIFAC.SIFACPIVOTTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="M:SIFAC.frmStbBitacoraClienteEdit.SeleccionarCuenta">
+	<summary>
+ Procedimiento encargado de seleccionar la cuenta.
+ Autor : Pedro Pablo Tinoco
+ Fecha : 26 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmStbBitacoraClienteEdit.CargarConsultaCuenta">
+	<summary>
+ Procedimiento Encargado de Consultar la Cuenta
+ Autor : Pedro Tinoco
+ Fecha : 13 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmStbBitacoraClienteEdit.GuardarDatos">
+	<summary>
+ Funcion Encargado de Guardar los Datos de la Bitacora
+ Autor : Pedro Pablo Tinco
+ Fecha 31 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmStbBitacoraClienteEdit">
+	<summary>
+ Formulario de Edicion y Registro de Bitacoras de Seguimiento a los Clientes
+ Autor : Pedro Tinoco Salgado.
+ Fecha : 31 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditReciboCaja.InicializacionDatos">
+	<summary>
+ Procedimiento encargado de Cargar los datos principales del Recibo en Nuevo,Edicion y Consulta.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 24 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditReciboCaja.SeleccionarCuenta">
+	<summary>
+ Procedimiento encargado de llamar la pantalla para seleccion de cuentas.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha de Creacion : 24 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditReciboCaja.CargarEstados(System.Int32)">
+	<summary>
+ Procedimiento encargado de cargar los estados de un recibo de caja
+ Autor : Pedro Pablo Tinoco Salgado
+ Fecha Creacion : 24 de Marzo de 2009
+ </summary>
+	<param name="IdEstado"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditReciboCaja.CargarInfoCuenta(System.String)">
+	<summary>
+ Procedimiento Encargado de Cargar la Informacion de la Cuenta.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 25 de Marzo de 2009.
+ </summary>
+	<param name="IDCuenta"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditReciboCaja.CargarFacturas">
+	<summary>
+ Procedimiento encargado de cargar las facturas correspondientes.
+ Autor : Pedro Tinoco Salgado.
+ Modificado por: Gelmin Martínez, 13 Abril 2010
+ Fecha : 3 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditReciboCaja.CalcularTotales">
+	<summary>
+ Procedimiento Encargado de Llevar a Cabo el Calculo de Total a Pagar del Recibo.
+ Autor : Pedro Tinoco Salgado.
+ Fecha : 26 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmSccEditReciboCaja">
+	<summary>
+ Pantalla de Guardado y Edicion de Recibos de Caja.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosReporteComisiones.CargarComboSucursales">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Sucursales
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 02:56 pm.
+ </summary>
+</member><member name="M:SIFAC.frmCriteriosReporteComisiones.CargarComboVendedores">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Vendedores
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:47 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosReporteComisiones.DevolverFiltro">
+	<summary>
+ Función encargada de construir y devolver el filtro que ocupará la consulta del reporte. 
+ este se construye en base a los criterios seleccionados por el usuario
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 03:00 pm.
+ </summary>
+</member><member name="M:SIFAC.frmSivSoliTransferenciaEdit.CargarComboSitioOrigen">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Origen
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivSoliTransferenciaEdit.CargarComboSitioDestino">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Destino
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.rptInventarioReporte.CrearEtiquetas(DataDynamics.ActiveReports.Section@,System.String@,System.Drawing.Font@,System.Drawing.PointF@,System.Single,System.Single@)">
+	<summary>
+ Procedimiento que crea una etiqueta formateada para encabezado de columnas 
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 02:41 pm.
+ <param name="rptSeccion">Sección del reporte en la que se creará la etiqueta</param>
+		<param name="Titulo">Título o captión</param>
+		<param name="objFuente">Tipo de fuente de letra</param>
+		<param name="objPunto">Punto del reporte donde se dibujará</param>
+	</summary>
+</member><member name="M:SIFAC.rptInventarioReporte.CrearCamposTextoDetalle(DataDynamics.ActiveReports.Section@)">
+	<summary>
+ Procedimiento que crea un textbox para datos de detalle 
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 02:41 pm.
+ <param name="rptSeccion">Sección del reporte en la que se creará el textbox</param>
+	</summary>
+</member><member name="M:SIFAC.rptInventarioReporte.ColumnasMostrarDetalle">
+	<summary>
+ Procedimiento encargado de seleccionar solamente aquellas columnas que serán dibujadas en el Detalle
+ Autor : Gelmin Martinez
+ Fecha 15 de Junio de 2010, 09:16 am.
+ <return>Devuelve un arreglo de objetos de tipo DataColumn</return>
+	</summary>
+</member><member name="T:SIFAC.dtDatosRptUtilidades.vwRptUtilidadesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptUtilidades.vwRptUtilidadesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptUtilidades.vwRptUtilidadesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosRptUtilidades">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptUtilidadesTableAdapters.vwRptUtilidadesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmCriteriosReporteListadoPrecios.CargarComboTienda">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Tienda
+ Autor : Gelmin Martinez
+ Fecha 11 de Junio de 2010, 03:05 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivRecepTransferencia.CargaDatos">
+	<summary>
+ Procedimiento encargado de cargar los datos de las solicitudes de transferencias a despachar.
+ Autor : Gelmin Martínez.
+ Fecha : 26 de Mayo de 2010, 01:21 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivRecepTransferencia.AplicarSeguridad">
+	<summary>
+ Autor : Gelmin Martínez.
+ Fecha : 01 de Junio de 2010.05:26 pm.
+ Procedimiento Encargado de Aplicar Seguridad.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivRecepTransferencia.RecepcionarTransferencia">
+	<summary>
+ Procedimiento encargado de recepcionar un despacho transferencia
+ Autor : Gelmin Martinez.
+ Fecha : 01 de Junio de 2010, 05:27 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmSivRecepTransferencia">
+	<summary>
+ Formulario Principal de Recepción de transferencia
+ Autor : Gelmin Martínez
+ Fecha : 01 de Junio de 2010, 04:57 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmReportesTransferencias.CargarComboSitioOrigen">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Origen
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmReportesTransferencias.CargarComboSitioDestino">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Destino
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmReportesTransferencias.CargarComboEstados">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de estado de solicitud de transferencia
+ Autor : Gelmin Martinez
+ Fecha 07 de junio de 2010, 06:22 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmStaServicioTaller.AplicarSeguridad">
+	<summary>
+ Autor : Gelmin Martínez.
+ Fecha : 04 de Agosto de 2010. 05:34 pm.
+ Procedimiento Encargado de Aplicar Seguridad.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmStaServicioTaller.AgregarServicioTaller">
+	<summary>
+ Procedimiento encargado de agregar una orden de servicio de taller
+ Autor : Gelmin Martínez.
+ Fecha : 04 de Agosto de 2010, 05:48 pm.
+ </summary>
+</member><member name="M:SIFAC.frmStaServicioTaller.FinalizarServicioTaller(System.Int32)">
+	<summary>
+ Procedimiento encargado de finalizar (Entregar la moto) una orden de servico
+ Autor : Gelmin Martínez.
+ Fecha : 04 de Agosto de 2010, 05:51 pm.
+ </summary>
+</member><member name="M:SIFAC.frmStaServicioTaller.SolicitarRepuesto">
+	<summary>
+ Procedimiento encargado solicitar un repuesto para un servicio 
+ Autor : Gelmin Martínez.
+ Fecha : 11 de Agosto de 2010, 01:38 pm.
+ </summary>
+</member><member name="M:SIFAC.frmStaServicioTaller.ConsultarServicioTaller">
+	<summary>
+ Procedimiento encargado de Consultar una orden de servicio de taller
+ Autor : Gelmin Martínez.
+ Fecha : 04 de Agosto de 2010, 05:56 pm.
+ </summary>
+</member><member name="M:SIFAC.frmStaServicioTaller.ImprimirOrdenServicioSeleccionado(System.Int32,System.String)">
+	<summary>
+ Procedimiento encargado de Imprimir hoja entrega
+ Autor : Gelmin Martínez.
+ Fecha : 04 de Agosto de 2010, 06:02 pm.
+ </summary>
+</member><member name="T:SIFAC.frmStaServicioTaller">
+	<summary>
+ Formulario Principal de Mantenimiento de Servicios de taller
+ Autor : Gelmin Martínez
+ Fecha :04 de Agosto de 2010, 04:30 pm.
+ </summary>
+</member><member name="T:SIFAC.dtRecuperacionComparativo.fnGetRangosRecibosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtRecuperacionComparativo.fnGetRangosRecibosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtRecuperacionComparativo.fnGetRangosRecibosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtRecuperacionComparativo">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtRecuperacionComparativoTableAdapters.fnGetRangosRecibosTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmSfaFaturaEditar.CargarDatos">
+	<summary>
+ Evento de Llamado de Metodos para Cargar Datos.
+ Autor : Pedro Pablo Tinoco.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSfaFaturaEditar.GuardarFactura">
+	<summary>
+ Procedimiento encargado de realizar el guardado de las facturas de credito.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 23 de Marzo de 2009.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSfaFaturaEditar.NumMonto_Validating(System.Object,System.ComponentModel.CancelEventArgs)">
+	<summary>
+ Validaciones correspondientes a las entradas de datos.
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSfaFaturaEditar.ValidacionEntradas">
+	<summary>
+ Procedimiento Encargado de Validar las Entradas Obligatorias.
+ Autor : Pedro Tinoco
+ Fecha : 25 de Marzo de 2009.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSfaFaturaEditar.InhabilitarDatos(System.Int32,System.Boolean)">
+	<summary>
+ Procedimiento encargado de inhabilitar los datos correspondientes a la factura
+ Autor : Pedro Pablo Tinoco 
+ Fecha Creacion : 28 de Marzo de 2009.
+ </summary>
+	<param name="IntOpcion"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSfaFaturaEditar.ProcesarExpedienteFact(System.Int32)">
+	<summary>
+ Procedimiento Encargado de Establecer el Detalle de Factura como Procesado.
+ </summary>
+	<param name="IDDetalleFact"></param>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmSfaFaturaEditar">
+	<summary>
+ Formulario Principal de Carga y Guardado de Facturas.
+ Autor : Enrique José Escobar Maradiaga
+ Fecha : 21 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosReporteUtilidades.CargarComboSucursales">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Sucursales
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:40 am.
+ </summary>
+</member><member name="M:SIFAC.frmCriteriosReporteUtilidades.CargarComboRepuestos">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Repuestos
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:47 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosReporteUtilidades.DevolverFiltro">
+	<summary>
+ Función encargada de construir y devolver el filtro que ocupará la consulta del reporte. 
+ este se construye en base a los criterios seleccionados por el usuario
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:56 am.
+ </summary>
+</member><member name="M:SIFAC.frmSccEditDevolucion.SeleccionarCuenta">
+	<summary>
+ Procedimiento ecnargado de Mandar a Seleccionar el Expediente del para el cual se va a realizar la devolución.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 04 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditDevolucion.CargarFacturas">
+	<summary>
+ Procedimiento encargado de cargar las facturas correspondientes.
+ Autor : Pedro Tinoco Salgado.
+ Fecha : 3 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditDevolucion.CargarEstados(System.Int32)">
+	<summary>
+ Procedimiento encargado de cargar los estados de un recibo de caja
+ Autor : Pedro Pablo Tinoco Salgado
+ Fecha Creacion : 24 de Marzo de 2009
+ </summary>
+	<param name="IdEstado"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditDevolucion.ActualizarDevolucion">
+	<summary>
+ Procedimiento encargado de Actualizar la Devolucion Actual.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 6 de Abril de 2009.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditDevolucion.AutorizarDevolucion">
+	<summary>
+ Procedimiento encargado de autorizar la devolución correspondiente
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 6 de Abril de 2009.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccEditDevolucion.CargarDatosEdicion">
+	<summary>
+ Procedimiento encargado de cargar los datos en modo edicion
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 6 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.DtDatosHistorialClientes.vwRptHistorialClientesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtDatosHistorialClientes.vwRptHistorialClientesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtDatosHistorialClientes.vwRptHistorialClientesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtDatosHistorialClientes">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtDatosHistorialClientesTableAdapters.vwRptHistorialClientesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmSccMinutasCobro.CargarDatos(System.String)">
+	<summary>
+ Procedimiento de Carga Total de las cuentas con Clasificacion "Motos".
+ Autor : Milagros Ruiz Oporta.
+ Fecha : 25 de Marzo de 2010.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccDevoluciones.CargaDatos">
+	<summary>
+ Procedimiento encargado de cargar los datos correspondientes de las devoluciones.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccDevoluciones.AutorizarDevolucion">
+	<summary>
+ Procedimiento encargado de autorizar la devolución correspondiente
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 6 de Abril de 2009.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccDevoluciones.New_Devolucion">
+	<summary>
+ Procedimiento encargado de crear una nueva devolucion
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccDevoluciones.Edit_Devolucion">
+	<summary>
+ Procedimiento encargado de Editar las devoluciones 
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 6 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccDevoluciones.AplicarSeguridad">
+	<summary>
+ Autor : Pedro Pablo Tinoco S.
+ Fecha : 13 de Abril de 2009.
+ Procedimiento Encargado de Aplicar Seguridad.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmSccDevoluciones">
+	<summary>
+ Formulario Principal de Mantenimiento de Devoluciones.
+ Autor : Pedro Tinoco
+ Fecha : 4 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivDespTransferenciaDesp.CargarComboSitioOrigen">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Origen
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivDespTransferenciaDesp.CargarComboSitioDestino">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Destino
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.DtDetalleMinuta.vwRptMinutaDetalleDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtDetalleMinuta.vwRptMinutaDetalleRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtDetalleMinuta.vwRptMinutaDetalleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtDetalleMinuta">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtDetalleMinutaTableAdapters.vwRptMinutaDetalleTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmCriteriosInventarioReporte.CargarComboBodegas">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Bodegas
+ Autor : Gelmin Martinez
+ Fecha 11 de Junio de 2010, 03:55 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosInventarioReporte.CargarComboRepuestos">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Repuestos
+ Autor : Gelmin Martinez
+ Fecha 11 de Junio de 2010, 03:56 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosInventarioReporte.CargarComboTipoRepuestos">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Tipo repuestos
+ Autor : Gelmin Martinez
+ Fecha 11 de Junio de 2010, 03:56 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosInventarioReporte.OpcionesImpresion(DataDynamics.ActiveReports.ActiveReport3@)">
+	<summary>
+ Procedimiento encargado de mostrar el cuadro de diálogo de las opciones de impresión
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 09:14 pm.
+ </summary>
+</member><member name="M:SIFAC.frmCriteriosInventarioReporte.ConstruirFiltro">
+	<summary>
+ Función encargada de construir y devolver el filtro que ocupará la consulta del reporte. 
+ este se construye en base a los criterios seleccionados por el usuario
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 09:15 pm.
+ </summary>
+</member><member name="M:SIFAC.frmStaServicioTallerEditar.CargarComboSucursales">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Sucursales
+ Autor : Gelmin Martinez
+ Fecha 05 de Agosto de 2010, 09:35 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.DtCarteraRangos.vwRptCarteraRangosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtCarteraRangos.vwRptCarteraRangosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtCarteraRangos.vwRptCarteraRangosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtCarteraRangos">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtCarteraRangosTableAdapters.vwRptCarteraRangosTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.DtDatosCuotas.DatosReporteDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtDatosCuotas.DatosReporteRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtDatosCuotas.DatosReporteRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtDatosCuotas">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtDatosCuotasTableAdapters.AdaptadorDatosReporte">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptCotizaciones.vwRptCotizacionesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptCotizaciones.vwRptCotizacionesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptCotizaciones.vwRptCotizacionesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosRptCotizaciones">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptCotizacionesTableAdapters.vwRptCotizacionesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmSccReciboCaja.CargarDatos">
+	<summary>
+ Procedimiento encargado de cargar los datos correspondientes a los recibos de cajas. 
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccReciboCaja.AplicarSeguridad">
+	<summary>
+ Procedimiento Encargado de aplicar la Seguridad.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmSccReciboCaja">
+	<summary>
+ Formulario principal de Recibos de Caja.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivRecepTransferenciaEdit.CargarComboSitioOrigen">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Origen
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivRecepTransferenciaEdit.CargarComboSitioDestino">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de sitio Destino
+ Autor : Gelmin Martinez
+ Fecha 20 de Mayo de 2010, 11:20 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.Modulo.ObtenerMaxValor(System.Object@)">
+	<summary>
+  Obtine el valor máximo permito según el tipo de dato(Byte,Int16,Int32,int64,Decimal,Double)
+ </summary>
+	<param name="T_Propiedad">Propiedad a la cual se desea determinar el máximo valor permitido</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.Modulo.ObtenerMaxValor(System.Int16,System.Int16)">
+	<summary>
+ Obtiene el valor máximo permitido para un tipo el tipo de dato Sql(decimal y numeric) según la 
+ precisión(p) y la escala(s)
+ </summary>
+	<param name="p">Precisión </param>
+	<param name="s">Escala</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.Modulo.RellenarConCeros(System.String,System.Int32,System.Char)">
+	<summary>
+ Relleno de Ceros a una Cadena de Caracteres
+ </summary>
+	<param name="strValor">Cadena que se desea rellenar</param>
+	<param name="intDigito">Cantidad de ceros de relleno</param>
+	<param name="Caracter">Caracter con el que se desea rellenar la cadena. Por defecto es 0</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.Modulo.ConvertirEnLetraLaMoneda(System.Decimal,System.String)">
+	<summary>
+ Convertir una Cantidad Monetaria en Letras... Cordobas por defecto
+ </summary>
+	<param name="Numero">Numero decimal que se desea convertir.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:SIFAC.Modulo.NumeroEnLetra(System.String)">
+	<summary>
+ Convertir un numero en letras. Solo enteros
+ </summary>
+	<param name="Numero">Numero que se desea convertir a letras</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:SIFAC.dtDatosRptKardex.vwRptKardexDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptKardex.vwRptKardexRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptKardex.vwRptKardexRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosRptKardex">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptKardexTableAdapters.vwRptKardexTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptVentasRepuestos.vwRptVentasRepuestosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptVentasRepuestos.vwRptVentasRepuestosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptVentasRepuestos.vwRptVentasRepuestosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosRptVentasRepuestos">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptVentasRepuestosTableAdapters.vwRptVentasRepuestosTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.DtRptRepuestosFacturados.vwRptSfaRepuestosFacturaDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtRptRepuestosFacturados.vwRptSfaRepuestosFacturaRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtRptRepuestosFacturados.vwRptSfaRepuestosFacturaRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtRptRepuestosFacturados">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtRptRepuestosFacturadosTableAdapters.vwRptSfaRepuestosFacturaTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmSccCuentasEditar.EditarCuenta">
+	<summary>
+ Procedimiento Encargado de Editar los Expedientes de Clientes
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 11 de abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccCuentasEditar.CargarEstados(System.Int32)">
+	<summary>
+ Procedimiento encargado de cargar los estados de un recibo de caja
+ Autor : Pedro Pablo Tinoco Salgado
+ Fecha Creacion : 24 de Marzo de 2009
+ </summary>
+	<param name="IdEstado"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSccCuentasEditar.ProcesarExpedienteFact(System.Int32)">
+	<summary>
+ Procedimiento Encargado de Establecer el Detalle de Factura como Procesado.
+ </summary>
+	<param name="IDDetalleFact"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSfaFactura.CargarFacturas(System.Int32)">
+	<summary>
+ Carga de Facturas correspondientes
+ en sus distintos Modos.
+ </summary>
+	<param name="IntOpcion"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSfaFactura.ProcesarExpedienteFact(System.Int32)">
+	<summary>
+ Procedimiento Encargado de Establecer el Detalle de Factura como Procesado.
+ </summary>
+	<param name="IDDetalleFact"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSfaFactura.AnularExpediente(System.Int32)">
+	<summary>
+ Procedimiento Encargado de Anular un Expediente de Factura en Estado Registrado.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha Creacion : 30 de Marzo de 2009.
+ </summary>
+	<param name="IDDetalleCuentas"></param>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmSfaFactura">
+	<summary>
+ Formulario principal de registro de facturas.
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha de Creacion : 20 de Marzo de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.DtDatosRptSfaPromocion.vwRptSfaPromocionDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtDatosRptSfaPromocion.vwRptSfaPromocionRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtDatosRptSfaPromocion.vwRptSfaPromocionRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtDatosRptSfaPromocion">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtDatosRptSfaPromocionTableAdapters.vwRptSfaPromocionTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.DtRptCotizacion.vwRptSfaCotizacionDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtRptCotizacion.vwRptSfaCotizacionRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtRptCotizacion.vwRptSfaCotizacionRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtRptCotizacion">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtRptCotizacionTableAdapters.vwRptSfaCotizacionTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmPrincipal.frmPrincipal_Load(System.Object,System.EventArgs)">
+	<summary>
+ Cargar el Formulario Principal
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmPrincipal.InicializarPropiedades">
+	<summary>
+ Este metodo tiene como objetivo inicializar las propiedades con que 
+ se conecto el sistema
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmPrincipal.CagarInformacionConeccion">
+	<summary>
+ Se configura el estatus bar con todos los valores de coneccion
+ que fueron alimentados con el metodo de inicializacion
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmPrincipal.Reportes(System.String)">
+	<summary>
+ Procedimiento encargado de Presentar la pantalla correspondiente de Reportes.
+ </summary>
+	<param name="Reporte"></param>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosReporteCotizaciones.CargarComboSucursales">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Sucursales
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 02:56 pm.
+ </summary>
+</member><member name="M:SIFAC.frmCriteriosReporteCotizaciones.CargarComboVendedores">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Vendedores
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:47 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosReporteCotizaciones.CargarComboClientes">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de clientes
+ Autor : Gelmin Martinez
+ Fecha 28 de Julio de 2010, 09:47 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosReporteCotizaciones.DevolverFiltro">
+	<summary>
+ Función encargada de construir y devolver el filtro que ocupará la consulta del reporte. 
+ este se construye en base a los criterios seleccionados por el usuario
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 03:00 pm.
+ </summary>
+</member><member name="M:SIFAC.frmCriteriosReporteBitacoraMoto.CargarComboSucursales">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Sucursales
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:40 am.
+ </summary>
+</member><member name="M:SIFAC.frmCriteriosReporteBitacoraMoto.DevolverFiltro">
+	<summary>
+ Función encargada de construir y devolver el filtro que ocupará la consulta del reporte. 
+ este se construye en base a los criterios seleccionados por el usuario
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:56 am.
+ </summary>
+</member><member name="T:SIFAC.SIFACDataSet1.vwConsolidadoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet1.vwConsolidadoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet1.vwConsolidadoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet1">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet1TableAdapters.vwConsolidadoTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.SIFACDataSet1TableAdapters.TableAdapterManager.UpdateUpdatedRows(SIFAC.SIFACDataSet1,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:SIFAC.SIFACDataSet1TableAdapters.TableAdapterManager.UpdateInsertedRows(SIFAC.SIFACDataSet1,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:SIFAC.SIFACDataSet1TableAdapters.TableAdapterManager.UpdateDeletedRows(SIFAC.SIFACDataSet1,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:SIFAC.SIFACDataSet1TableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:SIFAC.SIFACDataSet1TableAdapters.TableAdapterManager.UpdateAll(SIFAC.SIFACDataSet1)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet1TableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:SIFAC.SIFACDataSet1TableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="T:SIFAC.DtDatosDevolucion.DatosDevolucionesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.DtDatosDevolucion.DatosDevolucionesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.DtDatosDevolucion.DatosDevolucionesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.DtDatosDevolucion">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.DtDatosDevolucionTableAdapters.Adaptador">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptHojaRecepcionMoto.vwStaServicioTallerRptHojaRecepcionDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptHojaRecepcionMoto.vwServicioTallerSalidasRepuestoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptHojaRecepcionMoto.vwStaServicioTallerRptHojaRecepcionRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptHojaRecepcionMoto.vwServicioTallerSalidasRepuestoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptHojaRecepcionMoto.vwStaServicioTallerRptHojaRecepcionRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosRptHojaRecepcionMoto.vwServicioTallerSalidasRepuestoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosRptHojaRecepcionMoto">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptHojaRecepcionMotoTableAdapters.vwStaServicioTallerRptHojaRecepcionTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptHojaRecepcionMotoTableAdapters.vwServicioTallerSalidasRepuestoTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.frmCriteriosReporteKardex.CargarComboSucursales">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Sucursales
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:40 am.
+ </summary>
+</member><member name="M:SIFAC.frmCriteriosReporteKardex.CargarComboRepuestos">
+	<summary>
+ Procedimiento encargado de Cargar desplegable de Repuestos
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:47 am.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmCriteriosReporteKardex.DevolverFiltro">
+	<summary>
+ Función encargada de construir y devolver el filtro que ocupará la consulta del reporte. 
+ este se construye en base a los criterios seleccionados por el usuario
+ Autor : Gelmin Martinez
+ Fecha 20 de Julio de 2010, 09:56 am.
+ </summary>
+</member><member name="M:SIFAC.frmSivSoliTransferencia.CargaDatos">
+	<summary>
+ Procedimiento encargado de cargar los datos de las solicitudes de transferencias.
+ Autor : Gelmin Martínez.
+ Fecha : 19 de Mayo de 2010, 03:42 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivSoliTransferencia.AplicarSeguridad">
+	<summary>
+ Autor : Gelmin Martínez.
+ Fecha : 12 de Mayo de 2010.
+ Procedimiento Encargado de Aplicar Seguridad.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmSivSoliTransferencia.Nueva_SolicitudTransf">
+	<summary>
+ Procedimiento encargado de crear un nueva solicitud de transferencia
+ Autor : Gelmin Martinez.
+ Fecha : 19 de Mayo de 2010, 06:00 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.frmSivSoliTransferencia">
+	<summary>
+ Formulario Principal de Solicitudes de transferencia
+ Autor : Gelmin Martínez
+ Fecha : 19 de Mayo de 2010, 03:33 pm.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:SIFAC.dtMinutaCliente.vwSccMinutaCobroDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtMinutaCliente.vwSccMinutaCobroRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtMinutaCliente.vwSccMinutaCobroRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtMinutaCliente">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtMinutaClienteTableAdapters.vwSccMinutaCobroTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.dtvwRptOrdenCompra.vwRptOrdenCompraDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtvwRptOrdenCompra.vwRptOrdenCompraRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtvwRptOrdenCompra.vwRptOrdenCompraRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtvwRptOrdenCompra">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtvwRptOrdenCompraTableAdapters.vwRptOrdenCompraTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEntradasBodega.vwRptEntradasBodegaDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEntradasBodega.vwRptEntradasBodegaRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEntradasBodega.vwRptEntradasBodegaRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEntradasBodega">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtDatosRptEntradasBodegaTableAdapters.vwRptEntradasBodegaTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:SIFAC.dtDatosServicioTallerBitacoraMoto.vwStaServicioTallerBitacoraMotoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:SIFAC.dtDatosServicioTallerBitacoraMoto.vwStaServicioTallerBitacoraMotoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:SIFAC.dtDatosServicioTallerBitacoraMoto.vwStaServicioTallerBitacoraMotoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:SIFAC.dtDatosServicioTallerBitacoraMoto">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:SIFAC.dtDatosServicioTallerBitacoraMotoTableAdapters.vwStaServicioTallerBitacoraMotoTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:SIFAC.rptInventarioReporteBodegas.CrearEtiquetas(DataDynamics.ActiveReports.Section@,System.String@,System.Drawing.Font@,System.Drawing.PointF@,System.Single,System.Single@)">
+	<summary>
+ Procedimiento que crea una etiqueta formateada para encabezado de columnas 
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 02:41 pm.
+ <param name="rptSeccion">Sección del reporte en la que se creará la etiqueta</param>
+		<param name="Titulo">Título o captión</param>
+		<param name="objFuente">Tipo de fuente de letra</param>
+		<param name="objPunto">Punto del reporte donde se dibujará</param>
+	</summary>
+</member><member name="M:SIFAC.rptInventarioReporteBodegas.CrearCamposTextoDetalle(DataDynamics.ActiveReports.Section@)">
+	<summary>
+ Procedimiento que crea un textbox para datos de detalle 
+ Autor : Gelmin Martinez
+ Fecha 14 de Junio de 2010, 02:41 pm.
+ <param name="rptSeccion">Sección del reporte en la que se creará el textbox</param>
+	</summary>
+</member><member name="M:SIFAC.rptInventarioReporteBodegas.ColumnasMostrarDetalle">
+	<summary>
+ Procedimiento encargado de seleccionar solamente aquellas columnas que serán dibujadas en el Detalle
+ Autor : Gelmin Martinez
+ Fecha 15 de Junio de 2010, 09:16 am.
+ <return>Devuelve un arreglo de objetos de tipo DataColumn</return>
+	</summary>
+</member><member name="M:SIFAC.frmStbVisor.CargarTiendas(C1.Win.C1List.C1Combo)">
+	<summary>
+ Procedimiento Encargado de Cargar las Tiendas 
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 6 de Abril dee 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmStbVisor.CargarClientes(C1.Win.C1List.C1Combo)">
+	<summary>
+ Procedimiento encargado de Cargar los Clientes
+ Autor : Pedro Pablo Tinoco 
+ Fecha 06 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmStbVisor.CargarConcepto(C1.Win.C1List.C1Combo)">
+	<summary>
+ Procedimiento encargado de Cargar los Clientes
+ Autor : Pedro Pablo Tinoco 
+ Fecha 06 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:SIFAC.frmStbVisor.BuscarSeguimientos">
+	<summary>
+ Procedimiento Encargado de Realizar la Busqueda de los Seguimientos Realizados
+ Autor : Pedro Pablo Tinoco Salgado.
+ Fecha : 15 de Abril de 2009.
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

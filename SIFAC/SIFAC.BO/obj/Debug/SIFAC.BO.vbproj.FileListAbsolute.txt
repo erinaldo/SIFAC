@@ -16,3 +16,12 @@ C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SIFAC.B
 C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.dll
 C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\Proyecto.BO.xml
 C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SCCUM.BO.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Debug\SIFAC.BO.dll
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Debug\SIFAC.BO.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\bin\Debug\Proyecto.BO.xml
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.vbprojResolveAssemblyReference.cache
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.Resources.resources
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.vbproj.GenerateResource.Cache
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.dll
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\Proyecto.BO.xml
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.BO\obj\Debug\SIFAC.BO.pdb

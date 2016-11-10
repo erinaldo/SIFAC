@@ -49,6 +49,8 @@ Partial Class frmSccClientes
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.objUbicacion = New System.Windows.Forms.SaveFileDialog()
+        Me.colRita = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colOrdenCobro = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tbClientes.SuspendLayout()
         CType(Me.grdClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdClientesTabla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,7 +176,7 @@ Partial Class frmSccClientes
         '
         'grdClientesTabla
         '
-        Me.grdClientesTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre1, Me.colNombre2, Me.colApellido1, Me.colApellido2, Me.colCedula, Me.colGenero})
+        Me.grdClientesTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre1, Me.colNombre2, Me.colApellido1, Me.colApellido2, Me.colCedula, Me.colGenero, Me.colRita, Me.colOrdenCobro})
         Me.grdClientesTabla.GridControl = Me.grdClientes
         Me.grdClientesTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdClientesTabla.Name = "grdClientesTabla"
@@ -203,8 +205,8 @@ Partial Class frmSccClientes
         Me.colNombre1.OptionsColumn.AllowEdit = False
         Me.colNombre1.OptionsColumn.ReadOnly = True
         Me.colNombre1.Visible = True
-        Me.colNombre1.VisibleIndex = 1
-        Me.colNombre1.Width = 180
+        Me.colNombre1.VisibleIndex = 2
+        Me.colNombre1.Width = 151
         '
         'colNombre2
         '
@@ -213,8 +215,8 @@ Partial Class frmSccClientes
         Me.colNombre2.Name = "colNombre2"
         Me.colNombre2.OptionsColumn.AllowEdit = False
         Me.colNombre2.Visible = True
-        Me.colNombre2.VisibleIndex = 2
-        Me.colNombre2.Width = 190
+        Me.colNombre2.VisibleIndex = 3
+        Me.colNombre2.Width = 133
         '
         'colApellido1
         '
@@ -223,8 +225,8 @@ Partial Class frmSccClientes
         Me.colApellido1.Name = "colApellido1"
         Me.colApellido1.OptionsColumn.AllowEdit = False
         Me.colApellido1.Visible = True
-        Me.colApellido1.VisibleIndex = 3
-        Me.colApellido1.Width = 197
+        Me.colApellido1.VisibleIndex = 4
+        Me.colApellido1.Width = 143
         '
         'colApellido2
         '
@@ -233,8 +235,8 @@ Partial Class frmSccClientes
         Me.colApellido2.Name = "colApellido2"
         Me.colApellido2.OptionsColumn.AllowEdit = False
         Me.colApellido2.Visible = True
-        Me.colApellido2.VisibleIndex = 4
-        Me.colApellido2.Width = 152
+        Me.colApellido2.VisibleIndex = 5
+        Me.colApellido2.Width = 126
         '
         'colCedula
         '
@@ -243,8 +245,8 @@ Partial Class frmSccClientes
         Me.colCedula.Name = "colCedula"
         Me.colCedula.OptionsColumn.AllowEdit = False
         Me.colCedula.Visible = True
-        Me.colCedula.VisibleIndex = 0
-        Me.colCedula.Width = 144
+        Me.colCedula.VisibleIndex = 1
+        Me.colCedula.Width = 120
         '
         'colGenero
         '
@@ -253,8 +255,8 @@ Partial Class frmSccClientes
         Me.colGenero.Name = "colGenero"
         Me.colGenero.OptionsColumn.AllowEdit = False
         Me.colGenero.Visible = True
-        Me.colGenero.VisibleIndex = 5
-        Me.colGenero.Width = 107
+        Me.colGenero.VisibleIndex = 6
+        Me.colGenero.Width = 104
         '
         'RepositoryItemCheckEdit1
         '
@@ -271,6 +273,24 @@ Partial Class frmSccClientes
         'objUbicacion
         '
         Me.objUbicacion.Filter = "Microsoft Excel | *.xls"
+        '
+        'colRita
+        '
+        Me.colRita.Caption = "Ruta"
+        Me.colRita.FieldName = "Ruta"
+        Me.colRita.Name = "colRita"
+        Me.colRita.Visible = True
+        Me.colRita.VisibleIndex = 0
+        Me.colRita.Width = 79
+        '
+        'colOrdenCobro
+        '
+        Me.colOrdenCobro.Caption = "Orden de cobro"
+        Me.colOrdenCobro.FieldName = "OrdenCobro"
+        Me.colOrdenCobro.Name = "colOrdenCobro"
+        Me.colOrdenCobro.Visible = True
+        Me.colOrdenCobro.VisibleIndex = 7
+        Me.colOrdenCobro.Width = 114
         '
         'frmSccClientes
         '
@@ -319,4 +339,6 @@ Partial Class frmSccClientes
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents objUbicacion As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents colRita As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colOrdenCobro As DevExpress.XtraGrid.Columns.GridColumn
 End Class

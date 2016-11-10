@@ -20,3 +20,14 @@ C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\
 C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.dll
 C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.xml
 C:\Users\Enrique Escobar\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\Proyecto.Catalogos.Datos.dll
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\Proyecto.Catalogos.Datos.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\Proyecto.Catalogos.Datos.xml
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\SIFAC.BO.dll
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\bin\Debug\SIFAC.BO.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Catalogos.Datos.vbprojResolveAssemblyReference.cache
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.Resources.resources
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Catalogos.Datos.vbproj.GenerateResource.Cache
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.dll
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.xml
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Catalogos.Datos\obj\Debug\Proyecto.Catalogos.Datos.pdb

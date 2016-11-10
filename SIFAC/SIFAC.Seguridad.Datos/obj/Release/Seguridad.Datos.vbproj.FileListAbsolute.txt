@@ -1,11 +1,3 @@
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\bin\Release\Seguridad.Datos.dll
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\bin\Release\Seguridad.Datos.xml
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.dll
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.xml
-C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
 C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.Seguridad.Datos\bin\Release\Seguridad.Datos.dll
 C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
 C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.Seguridad.Datos\bin\Release\Seguridad.Datos.xml
@@ -14,3 +6,11 @@ C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.Seguridad.Datos\obj\
 C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.dll
 C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.xml
 C:\Users\Milagros Ruiz\Documents\GitHub\convert\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\bin\Release\Seguridad.Datos.dll
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\bin\Release\Seguridad.Datos.pdb
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\bin\Release\Seguridad.Datos.xml
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.Resources.resources
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.vbproj.GenerateResource.Cache
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.dll
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.xml
+C:\Users\Milagros Ruiz\Documents\GitHub\SIFAC\SIFAC\SIFAC.Seguridad.Datos\obj\Release\Seguridad.Datos.pdb

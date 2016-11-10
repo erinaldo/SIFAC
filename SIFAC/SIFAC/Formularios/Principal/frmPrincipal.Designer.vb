@@ -291,7 +291,6 @@ Partial Class frmPrincipal
         'NVBarReportes
         '
         Me.NVBarReportes.Caption = "Reportes"
-        Me.NVBarReportes.Expanded = True
         Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado)})
         Me.NVBarReportes.Name = "NVBarReportes"
         '
