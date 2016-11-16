@@ -46,7 +46,7 @@ Partial Class frmSincronizarAbonos
         Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdEditar = New System.Windows.Forms.ToolStripSeparator()
         Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
@@ -62,6 +62,7 @@ Partial Class frmSincronizarAbonos
         Me.cmbEmpleado = New DevExpress.XtraEditors.LookUpEdit()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         CType(Me.grdExpediente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -238,7 +239,7 @@ Partial Class frmSincronizarAbonos
         'tbProductos
         '
         Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAprobar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
+        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAprobar, Me.cmdConsultar, Me.ToolStripButton1, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.cmdEditar, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
         Me.tbProductos.Size = New System.Drawing.Size(837, 39)
@@ -277,10 +278,10 @@ Partial Class frmSincronizarAbonos
         Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
         Me.cmdDesactivar.ToolTipText = "Anular Venta"
         '
-        'ToolStripSeparator2
+        'cmdEditar
         '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
+        Me.cmdEditar.Name = "cmdEditar"
+        Me.cmdEditar.Size = New System.Drawing.Size(6, 39)
         '
         'cmbExportar
         '
@@ -433,6 +434,14 @@ Partial Class frmSincronizarAbonos
         '
         Me.sfdRuta.Filter = "Archivos Excel | *.xls"
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
+        '
         'frmSincronizarAbonos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -469,7 +478,7 @@ Partial Class frmSincronizarAbonos
     Friend WithEvents cmdConsultar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdDesactivar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents cmdEditar As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmbExportar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdCerrar As System.Windows.Forms.ToolStripButton
@@ -503,4 +512,5 @@ Partial Class frmSincronizarAbonos
     Friend WithEvents colProducto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colModeloMarca As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colSaldo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
 End Class

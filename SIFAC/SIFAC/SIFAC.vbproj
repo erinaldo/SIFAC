@@ -1104,6 +1104,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SIFACPIVOT.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Sincronizacion\frmEditarAbono.Designer.vb">
+      <DependentUpon>frmEditarAbono.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronizacion\frmEditarAbono.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Sincronizacion\frmSincronizarAbonos.Designer.vb">
       <DependentUpon>frmSincronizarAbonos.vb</DependentUpon>
     </Compile>
@@ -1643,6 +1649,9 @@
     <EmbeddedResource Include="Reportes\rptTransferenciaSolicitudes.resx">
       <DependentUpon>rptTransferenciaSolicitudes.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sincronizacion\frmEditarAbono.resx">
+      <DependentUpon>frmEditarAbono.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sincronizacion\frmSincronizarAbonos.resx">
       <DependentUpon>frmSincronizarAbonos.vb</DependentUpon>

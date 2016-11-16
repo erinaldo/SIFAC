@@ -89,10 +89,9 @@ Public Class frmReporteProductos
                 End If
 
                 dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, objMarcaID, objCategoriaID, Marca, Categoria, CostoPromedio, Precio_Credito, Precio_Contado, Margen_Utilidad_Contado, Margen_Utilidad_Credito, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProductos", strFiltro))
-                objjReporte.DataSource = dtReporte
+                objjReporte.FilterString = strFiltro
                 Dim pt As New ReportPrintTool(objjReporte)
                 pt.ShowPreview()
-
 
             End If
 
