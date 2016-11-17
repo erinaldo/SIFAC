@@ -304,7 +304,11 @@ Public Class frmClientesEdit
             ''Insertar Clientes
             objClientes.objPersonaID = objPersonas.StbPersonaID
             objClientes.OrdenCobro = Convert.ToInt32(spnOrdenCobro.Value)
-            objClientes.objRutaID = cmbRuta.SelectedValue
+
+            If cmbRuta.Text <> String.Empty Then
+                objClientes.objRutaID = cmbRuta.SelectedValue
+            End If
+
             objClientes.Activo = True
             objClientes.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objClientes.FechaCreacion = clsProyecto.Conexion.FechaServidor
@@ -489,7 +493,11 @@ Public Class frmClientesEdit
             ''Actualizar Clientes
             objClientes.RetrieveByFilter("objPersonaID=" & idpersona)
             objClientes.OrdenCobro = Convert.ToInt32(spnOrdenCobro.Value)
-            objClientes.objRutaID = cmbRuta.SelectedValue
+
+            If cmbRuta.Text <> String.Empty Then
+                objClientes.objRutaID = cmbRuta.SelectedValue
+            End If
+
             objClientes.Activo = True
             objClientes.UsuarioModificacion = clsProyecto.Conexion.Usuario
             objClientes.FechaModificacion = clsProyecto.Conexion.FechaServidor

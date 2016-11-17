@@ -64,8 +64,8 @@ Public Class frmReporteProductos
     End Sub
 
     Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
-        Dim dtReporte As DataTable
-        Dim strFiltro As String
+        Dim ds As DataSet
+        Dim strFiltro As String = String.Empty
         Try
             Dim objjReporte As New rptProductos()
 
@@ -88,7 +88,9 @@ Public Class frmReporteProductos
                     End If
                 End If
 
-                dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Codigo, Producto, objMarcaID, objCategoriaID, Marca, Categoria, CostoPromedio, Precio_Credito, Precio_Contado, Margen_Utilidad_Contado, Margen_Utilidad_Credito, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProductos", strFiltro))
+                ds = DAL.SqlHelper.ExecuteQueryDS(ObtenerConsultaGeneral("Codigo, Producto, objMarcaID, objCategoriaID, Marca, Categoria, CostoPromedio, Precio_Credito, Precio_Contado, Margen_Utilidad_Contado, Margen_Utilidad_Credito, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProductos", strFiltro))
+                objjReporte.DataSource = ds
+                objjReporte.DataMember = ds.Tables(0).TableName
                 objjReporte.FilterString = strFiltro
                 Dim pt As New ReportPrintTool(objjReporte)
                 pt.ShowPreview()
