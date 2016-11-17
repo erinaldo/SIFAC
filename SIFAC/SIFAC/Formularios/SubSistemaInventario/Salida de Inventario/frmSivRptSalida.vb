@@ -4,6 +4,7 @@ Imports System.Windows.Forms.Cursor
 Imports SIFAC.BO.clsConsultas
 Imports SIFAC.BO
 Imports Proyecto.Catalogos.Datos
+Imports DevExpress.XtraReports.UI
 
 Public Class frmSivRptSalida
     Dim dtBodega As New DataTable
@@ -177,7 +178,36 @@ Public Class frmSivRptSalida
 
     Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
         If Me.Validar Then
-            Me.Imprimir()
+            'Me.Imprimir()
+
+            Dim dsReporte As DataSet
+            Dim sCampos, sSQL As String
+            Try
+                Dim objjReporte As New rptListadoSivSalidas()
+
+                sCampos = "distinct dbo.fnRellenarCeros2(SivSalidaBodegaID,dbo.FnGetParametro('CantidadDigitosSalida')) as SivSalidaBodegaID, FechaSalida, StbBodegaID, TipoSalida, objEstadoID, objTipoSalidaID,BodegaCodigo, Estado, Bodega, Codigo, Producto, Cantidad, costo, subtotal, Comentarios,Anulada,Empresa,DireccionEmpresa"
+                sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", Me.ObtenerFiltro & " ORDER BY Bodega,SivSalidaBodegaID")
+                dsReporte = DAL.SqlHelper.ExecuteQueryDS(sSQL)
+
+                If dsReporte.Tables(0).Rows.Count = 0 Then
+                    MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                    Exit Sub
+                End If
+
+
+
+
+                objjReporte.DataSource = dsReporte
+                objjReporte.DataMember = dsReporte.Tables(0).TableName
+                Dim pt As New ReportPrintTool(objjReporte)
+                objjReporte.FechaInicio.Value = Me.dtpFechaDesde.Text
+                objjReporte.FechaFin.Value = Me.dtpFechaHasta.Text
+                pt.ShowPreview()
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+
+
         End If
     End Sub
 #End Region
