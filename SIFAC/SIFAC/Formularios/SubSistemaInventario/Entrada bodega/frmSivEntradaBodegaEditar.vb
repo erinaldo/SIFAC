@@ -558,7 +558,7 @@ Public Class frmSivEntradaBodegaEditar
 
 
                     If objSivProductos.RetrieveByFilter("SivProductoID='" & row("SivProductoID") & "'") Then
-                        objSivProductos.CostoPromedio = ((objSivProductos.CostoPromedio + row("Costo")) / 2)
+                        objSivProductos.CostoPromedio = CDec(row("Costo")) '((objSivProductos.CostoPromedio + row("Costo")) / 2)
                         objSivProductos.Update(T)
                     End If
 
