@@ -191,7 +191,7 @@ Public Class frmSivRptEntradas
         Me.ErrorRptEntrada.SetError(Me.dtpFechaHasta, "")
     End Sub
 
-    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
+    Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
     End Sub
 

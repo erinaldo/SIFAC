@@ -124,28 +124,7 @@ Public Class frmCriteriosInventarioReporte
     ''' Fecha 11 de Junio de 2010, 03:56 pm.
     ''' </summary>
     ''' <remarks></remarks>
-    Private Sub CargarComboTipoRepuestos()
-        Dim dtDatos As New DataTable
-        Try
-            dtDatos = ClsCatalogos.GetValoresCatalogo("TIPOREPUESTO", "StbValorCatalogoID,Descripcion", "Descripcion")
-            With Me.cmbTipoRepuestos
-                .DataSource = dtDatos
-                .DisplayMember = "Descripcion"
-                .ValueMember = "StbValorCatalogoID"
-                .Splits(0).DisplayColumns("StbValorCatalogoID").Visible = False
-                .ExtendRightColumn = True
-                .ColumnHeaders = False
-            End With
-
-            dtDatos.Rows.Add("0", "TODOS")
-            Me.cmbTipoRepuestos.SelectedValue = 0
-
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        Finally
-            dtDatos = Nothing
-        End Try
-    End Sub
+   
 #End Region
 
 #Region "Cargar Formulario"
@@ -153,7 +132,7 @@ Public Class frmCriteriosInventarioReporte
 
         Me.CargarComboBodegas()
         Me.CargarComboRepuestos()
-        Me.CargarComboTipoRepuestos()
+
 
     End Sub
 #End Region
@@ -173,12 +152,7 @@ Public Class frmCriteriosInventarioReporte
         End If
     End Sub
 
-    Private Sub chkTipoRepuesto_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkTipoRepuesto.CheckedChanged
-        Me.cmbTipoRepuestos.Enabled = Me.chkTipoRepuesto.Checked
-        If Not Me.chkTipoRepuesto.Checked Then
-            Me.cmbTipoRepuestos.SelectedValue = 0
-        End If
-    End Sub
+  
 
     Private Sub chkLevInventario_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkLevInventario.CheckedChanged
         'Dim blnValor As Boolean = False
@@ -187,9 +161,6 @@ Public Class frmCriteriosInventarioReporte
             Me.chkRepuesto.Enabled = False
             Me.chkRepuesto.Checked = False
 
-            Me.chkTipoRepuesto.Enabled = False
-            Me.chkTipoRepuesto.Checked = False
-
             Me.chkCostos.Enabled = False
             Me.chkCostos.Checked = False
 
@@ -197,10 +168,10 @@ Public Class frmCriteriosInventarioReporte
             Me.chkPrecios.Checked = False
 
             Me.cmbRepuestos.Enabled = False
-            Me.cmbTipoRepuestos.Enabled = False
+
         Else
             Me.chkRepuesto.Enabled = True
-            Me.chkTipoRepuesto.Enabled = True
+
             Me.chkCostos.Enabled = True
             Me.chkPrecios.Enabled = True
             'Me.cmbRepuestos.Enabled = True
@@ -229,7 +200,7 @@ Public Class frmCriteriosInventarioReporte
     Private Function VerificarCriterios() As Boolean
         Dim blnValido As Boolean = False
 
-        If (Me.chkBodega.Checked Or Me.chkRepuesto.Checked Or Me.chkTipoRepuesto.Checked Or Me.chkLevInventario.Checked) Then
+        If (Me.chkBodega.Checked Or Me.chkRepuesto.Checked Or Me.chkLevInventario.Checked) Then
             blnValido = True
         Else
             MsgBox("No ha seleccionado un criterio para generar el reporte.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
@@ -253,8 +224,8 @@ Public Class frmCriteriosInventarioReporte
 
         'Campos cuando solamente se ha seleccionado [Bodega]
         If Me.TipoSeleccion = BODEGA Then
-            sCampos = "SivRepuestoID, Descripcion, Marca, Ubicacion, Existencia, " + _
-                      "CostoU, TotalCosto, PrecioU, TotalPrecio, NombreBodegaConCodigo, objTiendaID"
+            sCampos = "SivProductoID, Descripcion, Marca, Ubicacion, Existencia, " + _
+                      "CostoU, TotalCosto, PrecioCredito, TotalPrecio, NombreBodegaConCodigo, objTiendaID"
             If String.IsNullOrEmpty(sFiltro) Then
                 sFiltro = "1=1"
             End If
@@ -262,21 +233,10 @@ Public Class frmCriteriosInventarioReporte
             strReporteMostrar = "BODEGA"
         End If
 
-        'campos para reporte si está seleccionado [TiposRepuestos] y cualquiera de los demás
-        If Me.TipoSeleccion = TIPOREPUESTO Or Me.TipoSeleccion = BODEGA_TIPOREPUESTO Or Me.TipoSeleccion = REPUESTO_TIPOREPUESTO Or Me.TipoSeleccion = BODEGA_REPUESTO_TIPOREPUESTO Then
-            sCampos = "SivRepuestoID, Descripcion, TipoRepuesto, Marca, Ubicacion, Existencia, " + _
-                      "CostoU, TotalCosto, PrecioU, TotalPrecio, NombreBodegaConCodigo, objTiendaID, objTipoRepuesto"
-            If String.IsNullOrEmpty(sFiltro) Then
-                sFiltro = "1=1"
-            End If
-            sFiltro += " ORDER BY NombreBodegaConCodigo, TipoRepuesto, Descripcion"
-            strReporteMostrar = "TIPOREPUESTO"
-        End If
-
         'Campos para reporte si está seleccionado [Repuesto] pero no [TipoRepuesto]
         If Me.TipoSeleccion = REPUESTO Or Me.TipoSeleccion = BODEGA_REPUESTO Then
-            sCampos = "(cast(SivRepuestoID as varchar) + ' - ' + Descripcion)as CodigoDescripcion, SivRepuestoID, Ubicacion, Existencia, " + _
-                      "'Costo U: $' + CONVERT(VARCHAR,CostoU) as Costo, 'Precio U: $' + CONVERT(VARCHAR,PrecioU) as Precio, NombreBodega, CodigoBodega"
+            sCampos = "(cast(SivProductoID as varchar) + ' - ' + Descripcion)as CodigoDescripcion, SivProductoID, Ubicacion, Existencia, " + _
+                      "'Costo U:' + CONVERT(VARCHAR,CostoU) as Costo, 'Precio U:' + CONVERT(VARCHAR,PrecioCredito) as Precio, NombreBodega, CodigoBodega"
             If String.IsNullOrEmpty(sFiltro) Then
                 sFiltro = "1=1"
             End If
@@ -301,17 +261,7 @@ Public Class frmCriteriosInventarioReporte
                 End With
                 Me.OpcionesImpresion(objRptInventarioBodega)
             End If
-            'Para el reporte de TipoRepuesto y Bodegas
-            If strReporteMostrar.Equals("TIPOREPUESTO") Then
-                objRptInventario = New rptInventarioReporte
-                With objRptInventario
-                    .dtDatos = dtDatos
-                    .VerCostoU = Me.chkCostos.Checked
-                    .VerPrecioU = Me.chkPrecios.Checked
-                    .VerTotales = Me.chkCostos.Checked Or Me.chkPrecios.Checked
-                End With
-                Me.OpcionesImpresion(objRptInventario)
-            End If
+            
             'Para el Reporte de Repuesto
             If strReporteMostrar.Equals("REPUESTO") Then
                 objRptInventarioRepuesto = New rptInventarioReporteRepuesto
@@ -408,11 +358,6 @@ Public Class frmCriteriosInventarioReporte
                     strFiltro = " SivRepuestoID = '" + Me.cmbRepuestos.SelectedValue.ToString & "'"
                 End If
 
-            Case TIPOREPUESTO  '-------------------------------------------------
-                If Me.cmbTipoRepuestos.SelectedValue <> 0 Then
-                    strFiltro = " objTipoRepuesto='" + Me.cmbTipoRepuestos.SelectedValue.ToString & "'"
-                End If
-
             Case BODEGA_REPUESTO '-------------------------------------------------
                 If Me.cmbBodegas.SelectedValue <> 0 Then
                     strFiltro = " objTiendaID = " + Me.cmbBodegas.SelectedValue.ToString
@@ -429,25 +374,11 @@ Public Class frmCriteriosInventarioReporte
                 If Me.cmbBodegas.SelectedValue <> 0 Then
                     strFiltro = " objTiendaID = " + Me.cmbBodegas.SelectedValue.ToString
                 End If
-                If Me.cmbTipoRepuestos.SelectedValue <> 0 Then
-                    If Not String.IsNullOrEmpty(strFiltro) Then
-                        strFiltro += " AND objTipoRepuesto=" + Me.cmbTipoRepuestos.SelectedValue.ToString
-                    Else
-                        strFiltro = " objTipoRepuesto=" + Me.cmbTipoRepuestos.SelectedValue.ToString
-                    End If
-                End If
+               
 
             Case REPUESTO_TIPOREPUESTO '-------------------------------------------------
                 If Me.cmbRepuestos.Text.Trim.Length <> 0 Then
                     strFiltro = " SivRepuestoID = '" + Me.cmbRepuestos.SelectedValue.ToString & "'"
-                End If
-
-                If Me.cmbTipoRepuestos.SelectedValue <> 0 Then
-                    If Not String.IsNullOrEmpty(strFiltro) Then
-                        strFiltro += " AND objTipoRepuesto=" + Me.cmbTipoRepuestos.SelectedValue.ToString
-                    Else
-                        strFiltro = " objTipoRepuesto=" + Me.cmbTipoRepuestos.SelectedValue.ToString
-                    End If
                 End If
 
             Case BODEGA_REPUESTO_TIPOREPUESTO  '-------------------------------------------------
@@ -463,13 +394,7 @@ Public Class frmCriteriosInventarioReporte
                     End If
                 End If
 
-                If Me.cmbTipoRepuestos.SelectedValue <> 0 Then
-                    If Not String.IsNullOrEmpty(strFiltro) Then
-                        strFiltro += " AND objTipoRepuesto=" + Me.cmbTipoRepuestos.SelectedValue.ToString
-                    Else
-                        strFiltro = " objTipoRepuesto=" + Me.cmbTipoRepuestos.SelectedValue.ToString
-                    End If
-                End If
+               
 
         End Select
 
@@ -509,35 +434,21 @@ Public Class frmCriteriosInventarioReporte
 #Region "Configurar Tipo Selección de Criterios"
     Private Sub ConfigurarTipoSeleccionCriterios()
         'Verificar si sólo seleccionó [Bodega]
-        If Me.chkBodega.Checked And (Not Me.chkRepuesto.Checked And Not Me.chkTipoRepuesto.Checked) Then
+        If Me.chkBodega.Checked And (Not Me.chkRepuesto.Checked) Then
             Me.TipoSeleccion = BODEGA
         End If
         'Verificar si sólo seleccionó [Repuesto]
-        If Me.chkRepuesto.Checked And (Not Me.chkBodega.Checked And Not Me.chkTipoRepuesto.Checked) Then
+        If Me.chkRepuesto.Checked And (Not Me.chkBodega.Checked) Then
             Me.TipoSeleccion = REPUESTO
         End If
-        'Verificar si sólo seleccionó [TipoRepuesto]
-        If Me.chkTipoRepuesto.Checked And (Not Me.chkBodega.Checked And Not Me.chkRepuesto.Checked) Then
-            Me.TipoSeleccion = TIPOREPUESTO
-        End If
-
+        
         'Verificar si seleccionó [Bodega] y [Repuesto]
-        If (Me.chkBodega.Checked And Me.chkRepuesto.Checked) And Not Me.chkTipoRepuesto.Checked Then
+        If (Me.chkBodega.Checked And Me.chkRepuesto.Checked) Then
             Me.TipoSeleccion = BODEGA_REPUESTO
         End If
 
-        'Verificar si seleccionó [Bodega] y [TipoRepuesto]
-        If (Me.chkBodega.Checked And Me.chkTipoRepuesto.Checked) And Not Me.chkRepuesto.Checked Then
-            Me.TipoSeleccion = BODEGA_TIPOREPUESTO
-        End If
-
-        'Verificar si seleccionó [Repuesto] y [TipoRepuesto]
-        If (Me.chkRepuesto.Checked And Me.chkTipoRepuesto.Checked) And Not Me.chkBodega.Checked Then
-            Me.TipoSeleccion = REPUESTO_TIPOREPUESTO
-        End If
-
         'Verificar si se han seleccionado los tres campos [Bodega],[Repuesto],[TipoRepuesto]
-        If Me.chkBodega.Checked And Me.chkRepuesto.Checked And Me.chkTipoRepuesto.Checked Then
+        If Me.chkBodega.Checked And Me.chkRepuesto.Checked Then
             Me.TipoSeleccion = BODEGA_REPUESTO_TIPOREPUESTO
         End If
     End Sub

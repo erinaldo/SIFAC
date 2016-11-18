@@ -36,10 +36,10 @@ Partial Class frmSivBuscarEntrada
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
         Me.ErrorBuscar = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dtpFechaFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNumeroFactura, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -266,39 +266,10 @@ Partial Class frmSivBuscarEntrada
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 178)
+        Me.Panel1.Location = New System.Drawing.Point(0, 167)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(608, 21)
         Me.Panel1.TabIndex = 48
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancelar.Location = New System.Drawing.Point(511, 137)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(80, 30)
-        Me.cmdCancelar.TabIndex = 50
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
-        Me.cmdAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(431, 137)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdAceptar.TabIndex = 49
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdAceptar.UseVisualStyleBackColor = True
         '
         'ErrorBuscar
         '
@@ -306,6 +277,8 @@ Partial Class frmSivBuscarEntrada
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdAceptar)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Controls.Add(Me.GroupBox2)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -313,16 +286,43 @@ Partial Class frmSivBuscarEntrada
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(608, 199)
+        Me.PanelControl1.Size = New System.Drawing.Size(608, 188)
         Me.PanelControl1.TabIndex = 51
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(510, 132)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 14
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(424, 132)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 13
+        Me.cmdAceptar.Tag = "ACEPTAR"
+        Me.cmdAceptar.Text = "&Aceptar"
         '
         'frmSivBuscarEntrada
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(608, 199)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdAceptar)
+        Me.ClientSize = New System.Drawing.Size(608, 188)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -357,8 +357,6 @@ Partial Class frmSivBuscarEntrada
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents dtpFechaHasta As C1.Win.C1Input.C1DateEdit
     Friend WithEvents dtpFechaDesde As C1.Win.C1Input.C1DateEdit
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents ErrorBuscar As System.Windows.Forms.ErrorProvider
     Friend WithEvents txtNumeroEntrada As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents txtNumeroFactura As C1.Win.C1Input.C1NumericEdit
@@ -366,4 +364,6 @@ Partial Class frmSivBuscarEntrada
     Friend WithEvents dtpFechaFactura As C1.Win.C1Input.C1DateEdit
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
 End Class

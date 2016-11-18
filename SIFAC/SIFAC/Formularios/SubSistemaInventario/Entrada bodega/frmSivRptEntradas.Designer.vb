@@ -21,8 +21,6 @@ Partial Class frmSivRptEntradas
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivRptEntradas))
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.cmbTipoEntrada = New C1.Win.C1List.C1Combo()
         Me.cmbBodega = New C1.Win.C1List.C1Combo()
@@ -36,6 +34,8 @@ Partial Class frmSivRptEntradas
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorRptEntrada = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBox2.SuspendLayout()
         CType(Me.cmbTipoEntrada, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbBodega, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,32 +47,6 @@ Partial Class frmSivRptEntradas
         Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancelar.Location = New System.Drawing.Point(209, 232)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(79, 26)
-        Me.cmdCancelar.TabIndex = 7
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
-        Me.cmdAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(128, 232)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(75, 26)
-        Me.cmdAceptar.TabIndex = 6
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdAceptar.UseVisualStyleBackColor = True
-        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.cmbTipoEntrada)
@@ -80,7 +54,7 @@ Partial Class frmSivRptEntradas
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(9, 122)
+        Me.GroupBox2.Location = New System.Drawing.Point(9, 115)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(278, 100)
         Me.GroupBox2.TabIndex = 5
@@ -174,7 +148,7 @@ Partial Class frmSivRptEntradas
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(11, 15)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 8)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(278, 100)
         Me.GroupBox1.TabIndex = 4
@@ -251,7 +225,7 @@ Partial Class frmSivRptEntradas
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 273)
+        Me.Panel1.Location = New System.Drawing.Point(0, 258)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(296, 21)
         Me.Panel1.TabIndex = 97
@@ -262,6 +236,8 @@ Partial Class frmSivRptEntradas
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdAceptar)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Controls.Add(Me.GroupBox2)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -269,17 +245,44 @@ Partial Class frmSivRptEntradas
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(296, 294)
+        Me.PanelControl1.Size = New System.Drawing.Size(296, 279)
         Me.PanelControl1.TabIndex = 98
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(209, 224)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 12
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(123, 224)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 11
+        Me.cmdAceptar.Tag = "ACEPTAR"
+        Me.cmdAceptar.Text = "&Aceptar"
         '
         'frmSivRptEntradas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(296, 294)
+        Me.ClientSize = New System.Drawing.Size(296, 279)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -300,8 +303,6 @@ Partial Class frmSivRptEntradas
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents cmbTipoEntrada As C1.Win.C1List.C1Combo
     Friend WithEvents cmbBodega As C1.Win.C1List.C1Combo
@@ -315,4 +316,6 @@ Partial Class frmSivRptEntradas
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents ErrorRptEntrada As System.Windows.Forms.ErrorProvider
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
 End Class

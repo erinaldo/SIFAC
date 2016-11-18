@@ -566,8 +566,12 @@ Public Class frmSivEntradaBodegaEditar
 
                 ''Buscar si el proveedor ya esta registrado para este producto
 
-                If objSivProductosProveedos.RetrieveByFilter("objProductoID='" & row("SivProductoID") & "' AND objProveedorID=" & Me.cmbProveedor.SelectedValue) Then
-
+                If Not objSivProductosProveedos.RetrieveByFilter("objProductosID='" & row("SivProductoID") & "' AND objProveedorID=" & Me.cmbProveedor.SelectedValue, T) Then
+                    objSivProductosProveedos.objProductosID = row("SivProductoID")
+                    objSivProductosProveedos.objProveedorID = Me.cmbProveedor.SelectedValue
+                    objSivProductosProveedos.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    objSivProductosProveedos.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                    objSivProductosProveedos.Insert(T)
                 End If
 
             Next
@@ -648,7 +652,7 @@ Public Class frmSivEntradaBodegaEditar
             objSivProductos = New SivProductos
             For Each row As DataRow In Me.dsDetalleEntradaBodegaDE.Tables("vwSivEntradaBodegaDetalle").Rows
                 'Filtrar el repuesto para modificar su Precio
-                objSivProductos.RetrieveByFilter("SivProductoID='" & row("SivProductoID") & "'")
+                objSivProductos.RetrieveByFilter("SivProductoID=" & row("SivProductoID"), T)
                 objSivProductos.Precio_Contado = (CDec(row("Costo")) * CDec(((StbParametro.RetrieveDT("Nombre = 'PorcentajeUtilidadContado'", , "Valor").DefaultView.Item(0)("Valor")) / 100))) + CDec(row("Costo"))
                 objSivProductos.Precio_Credito = (CDec(row("Costo")) * CDec(((StbParametro.RetrieveDT("Nombre = 'PorcentajeUtilidadCredito'", , "Valor").DefaultView.Item(0)("Valor")) / 100))) + CDec(row("Costo"))
                 objSivProductos.Update(T)

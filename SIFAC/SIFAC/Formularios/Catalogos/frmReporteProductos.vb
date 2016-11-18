@@ -89,12 +89,14 @@ Public Class frmReporteProductos
                 End If
 
                 ds = DAL.SqlHelper.ExecuteQueryDS(ObtenerConsultaGeneral("Codigo, Producto, objMarcaID, objCategoriaID, Marca, Categoria, CostoPromedio, Precio_Credito, Precio_Contado, Margen_Utilidad_Contado, Margen_Utilidad_Credito, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProductos", strFiltro))
-                objjReporte.DataSource = ds
-                objjReporte.DataMember = ds.Tables(0).TableName
-                objjReporte.FilterString = strFiltro
-                Dim pt As New ReportPrintTool(objjReporte)
-                pt.ShowPreview()
-
+                If ds.Tables(0).Rows.Count <> 0 Then
+                    objjReporte.DataSource = ds
+                    objjReporte.DataMember = ds.Tables(0).TableName
+                    Dim pt As New ReportPrintTool(objjReporte)
+                    pt.ShowPreview()
+                Else
+                    MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                End If
             End If
 
         Catch ex As Exception

@@ -6,6 +6,7 @@ Imports DAL
 Imports SIFAC.BO
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
+Imports DevExpress.XtraReports.UI
 
 Public Class frmCriteriosReporteKardex
 
@@ -53,12 +54,12 @@ Public Class frmCriteriosReporteKardex
     Private Sub CargarComboSucursales()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = StbTienda.RetrieveDT("Activo=1 AND ActivoRepuesto=1", "Nombre", "StbTiendaID, Codigo, Nombre")
+            dtDatos = StbBodegas.RetrieveDT("Activo=1", "Nombre", "StbBodegaID, Codigo, Nombre")
             With Me.cmbBodegas
                 .DataSource = dtDatos
                 .DisplayMember = "Nombre"
-                .ValueMember = "StbTiendaID"
-                .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+                .ValueMember = "StbBodegaID"
+                .Splits(0).DisplayColumns("StbBodegaID").Visible = False
                 .Splits(0).DisplayColumns("Codigo").Width = 30
                 .ExtendRightColumn = True
                 .ColumnHeaders = False
@@ -83,15 +84,15 @@ Public Class frmCriteriosReporteKardex
     Private Sub CargarComboRepuestos()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = SivRepuestos.RetrieveDT("Activo=1 AND SivRepuestoID NOT IN ('1','2', '3')", "DescripcionCorta", "SivRepuestoID, DescripcionCorta")
+            dtDatos = SivProductos.RetrieveDT("Activo=1 ", "Nombre", "SivProductoID, Nombre")
             With Me.cmbRepuestos
                 .DataSource = dtDatos
-                .DisplayMember = "DescripcionCorta"
-                .ValueMember = "SivRepuestoID"
+                .DisplayMember = "Nombre"
+                .ValueMember = "SivProductoID"
                 '.Splits(0).DisplayColumns("SivRepuestoID").Visible = False
-                .Splits(0).DisplayColumns("SivRepuestoID").Width = 40
-                .Columns("DescripcionCorta").Caption = "Descripción"
-                .Columns("SivRepuestoID").Caption = "Código"
+                .Splits(0).DisplayColumns("SivProductoID").Width = 40
+                .Columns("Nombre").Caption = "Descripción"
+                .Columns("SivProductoID").Caption = "Código"
                 .ExtendRightColumn = True
                 .ColumnHeaders = True
             End With
@@ -206,11 +207,11 @@ Public Class frmCriteriosReporteKardex
             strFiltro = " objTiendaID = " + Me.cmbBodegas.SelectedValue.ToString
         End If
 
-        If Me.cmbRepuestos.Text.Trim.Length <> 0 Then
+        If Me.cmbRepuestos.SelectedValue <> 0 Then
             If strFiltro.Length = 0 Then
-                strFiltro = " objRepuestoID = '" + Me.cmbRepuestos.SelectedValue.ToString & "'"
+                strFiltro = " objProductoID = '" + Me.cmbRepuestos.SelectedValue.ToString & "'"
             Else
-                strFiltro += " AND objRepuestoID = '" + Me.cmbRepuestos.SelectedValue.ToString & "'"
+                strFiltro += " AND objProductoID = '" + Me.cmbRepuestos.SelectedValue.ToString & "'"
             End If
         End If
 
@@ -233,45 +234,29 @@ Public Class frmCriteriosReporteKardex
 
 #Region "Imprimir Reporte"
     Private Sub Imprimir_Reporte(ByVal strFiltro As String)
-        Dim dtDatos As DataTable
+        Dim dsDatos As DataSet
         Dim strCampos, strSQL As String
-        Dim parametros(1) As SqlClient.SqlParameter
 
         Me.Cursor = Cursors.WaitCursor
-        Dim Visor As New frmVisorRS
+        Dim objjReporte As New rptKardex()
         Try
-            strCampos = "Convert(varchar,Fecha,103) as Fecha, Transaccion, Tipo, Proveedor_Cliente, objRepuestoID, Costo, objTiendaID, CodigoSucursal, NombreSucursal, Entrada, Salida, CostoProm, DescripcionRepuesto, CodigosProveedor, ExistenciaAnterior, Existencia"
+            strCampos = "Convert(varchar,Fecha,103) as Fecha, Transaccion, Tipo, Proveedor_Cliente, objProductoID, Costo, objTiendaID, CodigoSucursal, NombreSucursal, Entrada, Salida, CostoProm, DescripcionRepuesto, CodigosProveedor, ExistenciaAnterior, Existencia, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa"
             strSQL = clsConsultas.ObtenerConsultaGeneral(strCampos, "dbo.vwRptKardex", strFiltro + " ORDER BY Fecha") 'ORDER BY NombreSucursal, DescripcionRepuesto, Fecha
-            dtDatos = SqlHelper.ExecuteQueryDT(strSQL)
+            dsDatos = SqlHelper.ExecuteQueryDS(strSQL)
 
-            'parametros(0) = New SqlClient.SqlParameter
-            'parametros(0).ParameterName = "@strFiltro"
-            'parametros(0).SqlDbType = SqlDbType.VarChar
-            'parametros(0).Direction = ParameterDirection.Input
-            'parametros(0).Value = strFiltro
-            'dsDatos = SqlHelper.ExecuteDataset(CommandType.StoredProcedure, "usp_UtilidadByRangoFecha", parametros)
-
-            If dtDatos.Rows.Count <> 0 Then
-                With Visor.VisorReportes
-                    .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-                    .LocalReport.ReportEmbeddedResource = "SIFAC.rptKardex.rdlc"
-                    .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtDatosRptKardex_vwRptKardex", dtDatos))
-                    Me.CargarEncabezadoReporte(.LocalReport)
-                    'Configurar margenes si los costos no se verán en el reporte
-                    If Not Me.rbtCantidadCosto.Checked Then
-                        'Pendiente cambio de margen al no ver CantidadCosto.
-                    End If
-                    .RefreshReport()
-                End With
-                Visor.ShowDialog()
+            If dsDatos.Tables(0).Rows.Count <> 0 Then
+                objjReporte.DataSource = dsDatos
+                objjReporte.DataMember = dsDatos.Tables(0).TableName
+                Dim pt As New ReportPrintTool(objjReporte)
+                pt.ShowPreview()
             Else
                 MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
-            dtDatos = Nothing
-            Visor = Nothing
+            dsDatos = Nothing
+
             Me.Cursor = Cursors.Default
         End Try
     End Sub
@@ -291,7 +276,7 @@ Public Class frmCriteriosReporteKardex
         parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("prmTelefonoEmpresa", strTelEmpresa, False))
         parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("prmEmailEmpresa", strEmailEmpresa, False))
         parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("prmUsuarioFecha", clsProyecto.Conexion.Usuario & " , " + Format(clsProyecto.Conexion.FechaServidor, "dd/MM/yyyy"), False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("prmVerCosto", Me.rbtCantidadCosto.Checked.ToString, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("prmVerCosto", Me.rbtCantidadCosto.Checked.ToString, False))
 
         'Agregación de rango de fechas al encabezado
         Dim strDesde, strHasta As String

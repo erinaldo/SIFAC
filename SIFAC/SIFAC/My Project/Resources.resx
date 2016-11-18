@@ -169,14 +169,11 @@
   <data name="Sello" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sello.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Anular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Anular.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Consultar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Consultar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Autorizar_Pedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Autorizar Pedido.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Anular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Anular.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MsgConfirmarGuardar" xml:space="preserve">
     <value>¿Desea salir sin guardar los cambios?.</value>
@@ -192,6 +189,9 @@
   </data>
   <data name="MsgEliminado" xml:space="preserve">
     <value>El registro se ha eliminado satisfactoriamente.</value>
+  </data>
+  <data name="updated24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\updated24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Run" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Run.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -219,6 +219,9 @@
   </data>
   <data name="MsgReporte" xml:space="preserve">
     <value>No existen datos para generar el reporte.</value>
+  </data>
+  <data name="ProveedorEstilo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ProveedorEstilo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_32px_Crystal_Clear_action_reload" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\32px-Crystal_Clear_action_reload.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,8 +256,8 @@
   <data name="Carpeta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Carpeta.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ProveedorEstilo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ProveedorEstilo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Autorizar_Pedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Autorizar Pedido.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="UbicacionesGeograficas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UbicacionesGeograficas.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,13 +340,16 @@
   <data name="CargosDependecias" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CargosDependecias.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="kardex16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kardex16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="UbicacionGeograf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UbicacionGeograf.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="prefs_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\prefs_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="updated24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\updated24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="kardex16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kardex16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

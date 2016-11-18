@@ -916,6 +916,12 @@
     <Compile Include="Reportes SIFAC\rptFacturacionListadoPrecios.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaSalida.Designer.vb">
+      <DependentUpon>rptHojaSalida.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaSalida.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\rptInventarioReporte.Designer.vb">
       <DependentUpon>rptInventarioReporte.vb</DependentUpon>
     </Compile>
@@ -944,6 +950,12 @@
       <DependentUpon>rptKardex.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes SIFAC\rptKardex.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptListadoSivSalidas.Designer.vb">
+      <DependentUpon>rptListadoSivSalidas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptListadoSivSalidas.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptMarcas.Designer.vb">
@@ -1517,6 +1529,9 @@
       <DependentUpon>rptFacturacionListadoPrecios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptHojaEntrada.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptHojaSalida.resx">
+      <DependentUpon>rptHojaSalida.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporte.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporte.vb</DependentUpon>
@@ -1536,6 +1551,9 @@
     <EmbeddedResource Include="Reportes SIFAC\rptKardex.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptKardex.resx">
       <DependentUpon>rptKardex.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptListadoSivSalidas.resx">
+      <DependentUpon>rptListadoSivSalidas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptMarcas.resx">
       <DependentUpon>rptMarcas.vb</DependentUpon>
@@ -2178,6 +2196,8 @@
     <None Include="Resources\Guardar32.png" />
     <None Include="Resources\Guardar16.png" />
     <Content Include="Resources\Home.ico" />
+    <None Include="Resources\kardex16x16.png" />
+    <None Include="Resources\kardex16x161.png" />
     <Content Include="Resources\Logo.jpg" />
     <Content Include="Resources\MdiChild.png" />
     <Content Include="Resources\Office2007Black.jpg" />

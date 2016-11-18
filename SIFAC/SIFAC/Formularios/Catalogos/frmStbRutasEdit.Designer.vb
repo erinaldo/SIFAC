@@ -25,6 +25,9 @@ Partial Class frmStbRutasEdit
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbRutasEdit))
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmbCiudad = New System.Windows.Forms.ComboBox()
+        Me.cbxCobrador = New System.Windows.Forms.ComboBox()
+        Me.cmbSupervisor = New System.Windows.Forms.ComboBox()
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtCodigo = New System.Windows.Forms.TextBox()
@@ -42,9 +45,6 @@ Partial Class frmStbRutasEdit
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmbSupervisor = New System.Windows.Forms.ComboBox()
-        Me.cbxCobrador = New System.Windows.Forms.ComboBox()
-        Me.cmbCiudad = New System.Windows.Forms.ComboBox()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,6 +78,33 @@ Partial Class frmStbRutasEdit
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(735, 250)
         Me.PanelControl1.TabIndex = 25
+        '
+        'cmbCiudad
+        '
+        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudad.FormattingEnabled = True
+        Me.cmbCiudad.Location = New System.Drawing.Point(518, 26)
+        Me.cmbCiudad.Name = "cmbCiudad"
+        Me.cmbCiudad.Size = New System.Drawing.Size(172, 21)
+        Me.cmbCiudad.TabIndex = 131
+        '
+        'cbxCobrador
+        '
+        Me.cbxCobrador.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbxCobrador.FormattingEnabled = True
+        Me.cbxCobrador.Location = New System.Drawing.Point(107, 153)
+        Me.cbxCobrador.Name = "cbxCobrador"
+        Me.cbxCobrador.Size = New System.Drawing.Size(279, 21)
+        Me.cbxCobrador.TabIndex = 130
+        '
+        'cmbSupervisor
+        '
+        Me.cmbSupervisor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbSupervisor.FormattingEnabled = True
+        Me.cmbSupervisor.Location = New System.Drawing.Point(107, 181)
+        Me.cmbSupervisor.Name = "cmbSupervisor"
+        Me.cmbSupervisor.Size = New System.Drawing.Size(279, 21)
+        Me.cmbSupervisor.TabIndex = 129
         '
         'txtDescripcion
         '
@@ -276,33 +303,6 @@ Partial Class frmStbRutasEdit
         'ErrorProv
         '
         Me.ErrorProv.ContainerControl = Me
-        '
-        'cmbSupervisor
-        '
-        Me.cmbSupervisor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbSupervisor.FormattingEnabled = True
-        Me.cmbSupervisor.Location = New System.Drawing.Point(107, 181)
-        Me.cmbSupervisor.Name = "cmbSupervisor"
-        Me.cmbSupervisor.Size = New System.Drawing.Size(279, 21)
-        Me.cmbSupervisor.TabIndex = 129
-        '
-        'cbxCobrador
-        '
-        Me.cbxCobrador.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbxCobrador.FormattingEnabled = True
-        Me.cbxCobrador.Location = New System.Drawing.Point(107, 153)
-        Me.cbxCobrador.Name = "cbxCobrador"
-        Me.cbxCobrador.Size = New System.Drawing.Size(279, 21)
-        Me.cbxCobrador.TabIndex = 130
-        '
-        'cmbCiudad
-        '
-        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.FormattingEnabled = True
-        Me.cmbCiudad.Location = New System.Drawing.Point(518, 26)
-        Me.cmbCiudad.Name = "cmbCiudad"
-        Me.cmbCiudad.Size = New System.Drawing.Size(172, 21)
-        Me.cmbCiudad.TabIndex = 131
         '
         'frmStbRutasEdit
         '

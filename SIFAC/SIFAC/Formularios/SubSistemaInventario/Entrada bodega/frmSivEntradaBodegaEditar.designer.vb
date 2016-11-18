@@ -39,8 +39,6 @@ Partial Class frmSivEntradaBodegaEditar
         Me.grdspnCostoDolares = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdspnTotal = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdGuardar = New System.Windows.Forms.Button()
         Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
         Me.cmbProveedor = New C1.Win.C1List.C1Combo()
         Me.lblProveedor = New System.Windows.Forms.Label()
@@ -66,6 +64,8 @@ Partial Class frmSivEntradaBodegaEditar
         Me.NumCostoTotal = New C1.Win.C1Input.C1NumericEdit()
         Me.gbxDetalle = New System.Windows.Forms.GroupBox()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.grdDetalleEntradasBodegasDE, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDetalleEntradasBodegasDETabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdspnCodigoRepuesto, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -241,35 +241,6 @@ Partial Class frmSivEntradaBodegaEditar
         Me.grdspnTotal.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, False)})
         Me.grdspnTotal.Increment = New Decimal(New Integer() {0, 0, 0, 0})
         Me.grdspnTotal.Name = "grdspnTotal"
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancelar.Location = New System.Drawing.Point(759, 564)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(79, 30)
-        Me.cmdCancelar.TabIndex = 5
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdGuardar
-        '
-        Me.cmdGuardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
-        Me.cmdGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(679, 564)
-        Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdGuardar.TabIndex = 4
-        Me.cmdGuardar.Tag = "ACEPTAR"
-        Me.cmdGuardar.Text = "&Aceptar"
-        Me.cmdGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdGuardar.UseVisualStyleBackColor = True
         '
         'gbxDatosGenerales
         '
@@ -645,6 +616,8 @@ Partial Class frmSivEntradaBodegaEditar
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.lblUsuario)
         Me.PanelControl1.Controls.Add(Me.NumCostoTotal)
         Me.PanelControl1.Controls.Add(Me.gbxDetalle)
@@ -660,14 +633,41 @@ Partial Class frmSivEntradaBodegaEditar
         Me.PanelControl1.Size = New System.Drawing.Size(852, 601)
         Me.PanelControl1.TabIndex = 1
         '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(762, 561)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 105
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(676, 561)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 104
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Guardar"
+        '
         'frmSivEntradaBodegaEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(852, 601)
         Me.Controls.Add(Me.txtComentarios)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdGuardar)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -702,8 +702,6 @@ Partial Class frmSivEntradaBodegaEditar
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdGuardar As System.Windows.Forms.Button
     Friend WithEvents gbxDatosGenerales As System.Windows.Forms.GroupBox
     Friend WithEvents lblTipoEntrada As System.Windows.Forms.Label
     Friend WithEvents lblFechaEntrada As System.Windows.Forms.Label
@@ -743,4 +741,6 @@ Partial Class frmSivEntradaBodegaEditar
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents cmbProveedor As C1.Win.C1List.C1Combo
     Friend WithEvents lblProveedor As System.Windows.Forms.Label
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
 End Class

@@ -83,9 +83,9 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.gbxDatosGenerales.Controls.Add(Me.txtNoTransferencia)
         Me.gbxDatosGenerales.Controls.Add(Me.lblNoTransferencia)
         Me.gbxDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbxDatosGenerales.Location = New System.Drawing.Point(9, 22)
+        Me.gbxDatosGenerales.Location = New System.Drawing.Point(9, 11)
         Me.gbxDatosGenerales.Name = "gbxDatosGenerales"
-        Me.gbxDatosGenerales.Size = New System.Drawing.Size(776, 196)
+        Me.gbxDatosGenerales.Size = New System.Drawing.Size(776, 188)
         Me.gbxDatosGenerales.TabIndex = 83
         Me.gbxDatosGenerales.TabStop = False
         Me.gbxDatosGenerales.Text = "Datos Generales"
@@ -250,10 +250,10 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.lblSitioDestino.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSitioDestino.Location = New System.Drawing.Point(9, 86)
         Me.lblSitioDestino.Name = "lblSitioDestino"
-        Me.lblSitioDestino.Size = New System.Drawing.Size(83, 18)
+        Me.lblSitioDestino.Size = New System.Drawing.Size(105, 18)
         Me.lblSitioDestino.TabIndex = 86
         Me.lblSitioDestino.Tag = ""
-        Me.lblSitioDestino.Text = "Sitio Destino:"
+        Me.lblSitioDestino.Text = "Bodega Destino:"
         '
         'lblSitioOrigen
         '
@@ -261,10 +261,10 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.lblSitioOrigen.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSitioOrigen.Location = New System.Drawing.Point(9, 51)
         Me.lblSitioOrigen.Name = "lblSitioOrigen"
-        Me.lblSitioOrigen.Size = New System.Drawing.Size(83, 18)
+        Me.lblSitioOrigen.Size = New System.Drawing.Size(95, 18)
         Me.lblSitioOrigen.TabIndex = 86
         Me.lblSitioOrigen.Tag = ""
-        Me.lblSitioOrigen.Text = "Sitio Origen:"
+        Me.lblSitioOrigen.Text = "Bodega Origen:"
         '
         'txtSolicitadoPor
         '
@@ -398,14 +398,14 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.grdDetalleTransferencia.DirectionAfterEnter = C1.Win.C1TrueDBGrid.DirectionAfterEnterEnum.MoveDown
         Me.grdDetalleTransferencia.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDetalleTransferencia.Images.Add(CType(resources.GetObject("grdDetalleTransferencia.Images"), System.Drawing.Image))
-        Me.grdDetalleTransferencia.Location = New System.Drawing.Point(12, 227)
+        Me.grdDetalleTransferencia.Location = New System.Drawing.Point(12, 208)
         Me.grdDetalleTransferencia.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightCell
         Me.grdDetalleTransferencia.Name = "grdDetalleTransferencia"
         Me.grdDetalleTransferencia.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdDetalleTransferencia.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdDetalleTransferencia.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDetalleTransferencia.PrintInfo.PageSettings = CType(resources.GetObject("grdDetalleTransferencia.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdDetalleTransferencia.Size = New System.Drawing.Size(773, 233)
+        Me.grdDetalleTransferencia.Size = New System.Drawing.Size(773, 193)
         Me.grdDetalleTransferencia.TabIndex = 0
         Me.grdDetalleTransferencia.PropBag = resources.GetString("grdDetalleTransferencia.PropBag")
         '
@@ -417,7 +417,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 503)
+        Me.Panel1.Location = New System.Drawing.Point(0, 447)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(801, 21)
         Me.Panel1.TabIndex = 95
@@ -432,7 +432,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(801, 524)
+        Me.PanelControl1.Size = New System.Drawing.Size(801, 468)
         Me.PanelControl1.TabIndex = 96
         '
         'cmdCancelar
@@ -440,7 +440,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(705, 469)
+        Me.cmdCancelar.Location = New System.Drawing.Point(703, 412)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -455,7 +455,7 @@ Partial Class frmSivRecepTransferenciaEdit
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(614, 469)
+        Me.cmdGuardar.Location = New System.Drawing.Point(618, 412)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -468,7 +468,7 @@ Partial Class frmSivRecepTransferenciaEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(801, 524)
+        Me.ClientSize = New System.Drawing.Size(801, 468)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.grdDetalleTransferencia)
         Me.Controls.Add(Me.PanelControl1)

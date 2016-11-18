@@ -54,6 +54,7 @@ Partial Class frmPrincipal
         Me.NavBarSincroDevoluciones = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarPrincipal = New DevExpress.XtraNavBar.NavBarControl()
         Me.NVBarReportes = New DevExpress.XtraNavBar.NavBarGroup()
+        Me.NavBarKardex = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarConsolidado = New DevExpress.XtraNavBar.NavBarItem()
         Me.WindowsMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.CascadeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -167,7 +168,6 @@ Partial Class frmPrincipal
         'grpCatalogos
         '
         Me.grpCatalogos.Caption = "Catalogos"
-        Me.grpCatalogos.Expanded = True
         Me.grpCatalogos.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.navBarCatalogos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarParametros), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCategorias), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarMarcas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarBodegas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavProductos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarRutas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEmpleados)})
         Me.grpCatalogos.Name = "grpCatalogos"
         '
@@ -278,7 +278,7 @@ Partial Class frmPrincipal
         Me.NavBarPrincipal.ActiveGroup = Me.NVBarReportes
         Me.NavBarPrincipal.Dock = System.Windows.Forms.DockStyle.Left
         Me.NavBarPrincipal.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpCatalogos, Me.grpCartera, Me.grpInventario, Me.grpFacturacion, Me.grpSincronizacion, Me.NVBarReportes})
-        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones, Me.NavBarConsolidado})
+        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones, Me.NavBarConsolidado, Me.NavBarKardex})
         Me.NavBarPrincipal.Location = New System.Drawing.Point(0, 24)
         Me.NavBarPrincipal.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.NavBarPrincipal.LookAndFeel.UseDefaultLookAndFeel = False
@@ -291,8 +291,16 @@ Partial Class frmPrincipal
         'NVBarReportes
         '
         Me.NVBarReportes.Caption = "Reportes"
-        Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado)})
+        Me.NVBarReportes.Expanded = True
+        Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarKardex), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado)})
         Me.NVBarReportes.Name = "NVBarReportes"
+        '
+        'NavBarKardex
+        '
+        Me.NavBarKardex.Caption = "Kardex"
+        Me.NavBarKardex.LargeImage = Global.SIFAC.My.Resources.Resources.kardex16x16
+        Me.NavBarKardex.Name = "NavBarKardex"
+        Me.NavBarKardex.SmallImage = Global.SIFAC.My.Resources.Resources.kardex16x161
         '
         'NavBarConsolidado
         '
@@ -582,4 +590,5 @@ Partial Class frmPrincipal
     Friend WithEvents NavBarDevoluciones As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NVBarReportes As DevExpress.XtraNavBar.NavBarGroup
     Friend WithEvents NavBarConsolidado As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents NavBarKardex As DevExpress.XtraNavBar.NavBarItem
 End Class

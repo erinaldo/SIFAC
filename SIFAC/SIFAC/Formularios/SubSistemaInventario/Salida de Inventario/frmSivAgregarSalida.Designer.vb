@@ -98,9 +98,9 @@ Partial Class frmSivAgregarSalida
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 17)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 9)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(657, 137)
+        Me.GroupBox1.Size = New System.Drawing.Size(657, 118)
         Me.GroupBox1.TabIndex = 29
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Dartos Generales"
@@ -318,9 +318,9 @@ Partial Class frmSivAgregarSalida
         Me.grbDetalle.Controls.Add(Me.Label7)
         Me.grbDetalle.Controls.Add(Me.numCostoTotal)
         Me.grbDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbDetalle.Location = New System.Drawing.Point(12, 235)
+        Me.grbDetalle.Location = New System.Drawing.Point(12, 199)
         Me.grbDetalle.Name = "grbDetalle"
-        Me.grbDetalle.Size = New System.Drawing.Size(657, 397)
+        Me.grbDetalle.Size = New System.Drawing.Size(657, 338)
         Me.grbDetalle.TabIndex = 30
         Me.grbDetalle.TabStop = False
         Me.grbDetalle.Text = "Detalle"
@@ -328,7 +328,7 @@ Partial Class frmSivAgregarSalida
         'numExistencia
         '
         Me.numExistencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.numExistencia.Location = New System.Drawing.Point(13, 272)
+        Me.numExistencia.Location = New System.Drawing.Point(13, 229)
         Me.numExistencia.Name = "numExistencia"
         Me.numExistencia.Size = New System.Drawing.Size(124, 20)
         Me.numExistencia.TabIndex = 36
@@ -344,7 +344,7 @@ Partial Class frmSivAgregarSalida
         Me.grdSalidaDetalle.MainView = Me.grdSalidaDetalleTable
         Me.grdSalidaDetalle.Name = "grdSalidaDetalle"
         Me.grdSalidaDetalle.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.grptxtCodigo, Me.grdcmbDescripcion, Me.grdSpnExistencia, Me.grdSpnCantidad, Me.grdSpnCosto, Me.grdSpnSubTotal})
-        Me.grdSalidaDetalle.Size = New System.Drawing.Size(634, 241)
+        Me.grdSalidaDetalle.Size = New System.Drawing.Size(634, 195)
         Me.grdSalidaDetalle.TabIndex = 35
         Me.grdSalidaDetalle.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdSalidaDetalleTable})
         '
@@ -502,7 +502,7 @@ Partial Class frmSivAgregarSalida
         'txtcomentarios
         '
         Me.txtcomentarios.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcomentarios.Location = New System.Drawing.Point(13, 323)
+        Me.txtcomentarios.Location = New System.Drawing.Point(13, 273)
         Me.txtcomentarios.Multiline = True
         Me.txtcomentarios.Name = "txtcomentarios"
         Me.txtcomentarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -513,7 +513,7 @@ Partial Class frmSivAgregarSalida
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(10, 307)
+        Me.Label8.Location = New System.Drawing.Point(10, 257)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(80, 13)
         Me.Label8.TabIndex = 32
@@ -523,7 +523,7 @@ Partial Class frmSivAgregarSalida
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(450, 285)
+        Me.Label7.Location = New System.Drawing.Point(450, 236)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(76, 13)
         Me.Label7.TabIndex = 2
@@ -543,7 +543,7 @@ Partial Class frmSivAgregarSalida
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.numCostoTotal.Enabled = False
         Me.numCostoTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.numCostoTotal.Location = New System.Drawing.Point(528, 283)
+        Me.numCostoTotal.Location = New System.Drawing.Point(528, 234)
         Me.numCostoTotal.Name = "numCostoTotal"
         Me.numCostoTotal.Size = New System.Drawing.Size(112, 20)
         Me.numCostoTotal.TabIndex = 1
@@ -558,7 +558,7 @@ Partial Class frmSivAgregarSalida
         '
         Me.lblanular.AutoSize = True
         Me.lblanular.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblanular.Location = New System.Drawing.Point(17, 175)
+        Me.lblanular.Location = New System.Drawing.Point(17, 142)
         Me.lblanular.Name = "lblanular"
         Me.lblanular.Size = New System.Drawing.Size(120, 13)
         Me.lblanular.TabIndex = 33
@@ -566,7 +566,7 @@ Partial Class frmSivAgregarSalida
         '
         'txtComentarioAnular
         '
-        Me.txtComentarioAnular.Location = New System.Drawing.Point(143, 172)
+        Me.txtComentarioAnular.Location = New System.Drawing.Point(143, 139)
         Me.txtComentarioAnular.Multiline = True
         Me.txtComentarioAnular.Name = "txtComentarioAnular"
         Me.txtComentarioAnular.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -577,7 +577,7 @@ Partial Class frmSivAgregarSalida
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 678)
+        Me.Panel1.Location = New System.Drawing.Point(0, 578)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(679, 21)
         Me.Panel1.TabIndex = 48
@@ -603,7 +603,7 @@ Partial Class frmSivAgregarSalida
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(679, 699)
+        Me.PanelControl1.Size = New System.Drawing.Size(679, 599)
         Me.PanelControl1.TabIndex = 50
         '
         'cmdCancelar
@@ -611,7 +611,7 @@ Partial Class frmSivAgregarSalida
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(580, 642)
+        Me.cmdCancelar.Location = New System.Drawing.Point(579, 543)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -626,7 +626,7 @@ Partial Class frmSivAgregarSalida
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(489, 642)
+        Me.cmdGuardar.Location = New System.Drawing.Point(493, 543)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -639,7 +639,7 @@ Partial Class frmSivAgregarSalida
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(679, 699)
+        Me.ClientSize = New System.Drawing.Size(679, 599)
         Me.Controls.Add(Me.lblNombreEmpleado)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtComentarioAnular)

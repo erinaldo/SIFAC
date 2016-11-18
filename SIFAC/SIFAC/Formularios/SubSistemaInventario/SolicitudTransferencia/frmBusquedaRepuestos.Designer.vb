@@ -32,9 +32,9 @@ Partial Class frmBusquedaRepuestos
         Me.cmbModeloCompatible = New C1.Win.C1List.C1Combo()
         Me.cmdFiltrar = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbxResultados.SuspendLayout()
         CType(Me.grdResultados, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbTipo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,11 +49,9 @@ Partial Class frmBusquedaRepuestos
         '
         Me.gbxResultados.Controls.Add(Me.grdResultados)
         Me.gbxResultados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbxResultados.Location = New System.Drawing.Point(11, 199)
-        Me.gbxResultados.Margin = New System.Windows.Forms.Padding(4)
+        Me.gbxResultados.Location = New System.Drawing.Point(8, 124)
         Me.gbxResultados.Name = "gbxResultados"
-        Me.gbxResultados.Padding = New System.Windows.Forms.Padding(4)
-        Me.gbxResultados.Size = New System.Drawing.Size(1011, 306)
+        Me.gbxResultados.Size = New System.Drawing.Size(758, 201)
         Me.gbxResultados.TabIndex = 5
         Me.gbxResultados.TabStop = False
         Me.gbxResultados.Text = "Resultado Filtros"
@@ -64,15 +62,14 @@ Partial Class frmBusquedaRepuestos
         Me.grdResultados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdResultados.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdResultados.Images.Add(CType(resources.GetObject("grdResultados.Images"), System.Drawing.Image))
-        Me.grdResultados.Location = New System.Drawing.Point(19, 30)
-        Me.grdResultados.Margin = New System.Windows.Forms.Padding(4)
+        Me.grdResultados.Location = New System.Drawing.Point(14, 24)
         Me.grdResultados.Name = "grdResultados"
         Me.grdResultados.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdResultados.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdResultados.PreviewInfo.ZoomFactor = 75.0R
         Me.grdResultados.PrintInfo.PageSettings = CType(resources.GetObject("grdResultados.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdResultados.RowHeight = 17
-        Me.grdResultados.Size = New System.Drawing.Size(986, 275)
+        Me.grdResultados.Size = New System.Drawing.Size(740, 167)
         Me.grdResultados.TabIndex = 0
         Me.grdResultados.Text = "Resultados"
         Me.grdResultados.PropBag = resources.GetString("grdResultados.PropBag")
@@ -86,16 +83,15 @@ Partial Class frmBusquedaRepuestos
         Me.cmbTipo.ColumnCaptionHeight = 17
         Me.cmbTipo.ColumnFooterHeight = 17
         Me.cmbTipo.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbTipo.ContentHeight = 18
+        Me.cmbTipo.ContentHeight = 15
         Me.cmbTipo.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbTipo.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbTipo.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTipo.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbTipo.EditorHeight = 18
+        Me.cmbTipo.EditorHeight = 15
         Me.cmbTipo.Images.Add(CType(resources.GetObject("cmbTipo.Images"), System.Drawing.Image))
         Me.cmbTipo.ItemHeight = 15
-        Me.cmbTipo.Location = New System.Drawing.Point(188, 65)
-        Me.cmbTipo.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbTipo.Location = New System.Drawing.Point(141, 39)
         Me.cmbTipo.MatchEntryTimeout = CType(2000, Long)
         Me.cmbTipo.MaxDropDownItems = CType(5, Short)
         Me.cmbTipo.MaxLength = 32767
@@ -104,7 +100,7 @@ Partial Class frmBusquedaRepuestos
         Me.cmbTipo.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbTipo.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbTipo.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbTipo.Size = New System.Drawing.Size(231, 24)
+        Me.cmbTipo.Size = New System.Drawing.Size(173, 21)
         Me.cmbTipo.TabIndex = 1
         Me.cmbTipo.Tag = ""
         Me.cmbTipo.PropBag = resources.GetString("cmbTipo.PropBag")
@@ -118,16 +114,15 @@ Partial Class frmBusquedaRepuestos
         Me.cmbProveedor.ColumnCaptionHeight = 17
         Me.cmbProveedor.ColumnFooterHeight = 17
         Me.cmbProveedor.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbProveedor.ContentHeight = 18
+        Me.cmbProveedor.ContentHeight = 15
         Me.cmbProveedor.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbProveedor.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbProveedor.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbProveedor.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbProveedor.EditorHeight = 18
+        Me.cmbProveedor.EditorHeight = 15
         Me.cmbProveedor.Images.Add(CType(resources.GetObject("cmbProveedor.Images"), System.Drawing.Image))
         Me.cmbProveedor.ItemHeight = 15
-        Me.cmbProveedor.Location = New System.Drawing.Point(188, 27)
-        Me.cmbProveedor.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbProveedor.Location = New System.Drawing.Point(141, 14)
         Me.cmbProveedor.MatchEntryTimeout = CType(2000, Long)
         Me.cmbProveedor.MaxDropDownItems = CType(5, Short)
         Me.cmbProveedor.MaxLength = 32767
@@ -136,7 +131,7 @@ Partial Class frmBusquedaRepuestos
         Me.cmbProveedor.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbProveedor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbProveedor.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbProveedor.Size = New System.Drawing.Size(231, 24)
+        Me.cmbProveedor.Size = New System.Drawing.Size(173, 21)
         Me.cmbProveedor.TabIndex = 0
         Me.cmbProveedor.PropBag = resources.GetString("cmbProveedor.PropBag")
         '
@@ -144,10 +139,9 @@ Partial Class frmBusquedaRepuestos
         '
         Me.lbltipo.BackColor = System.Drawing.Color.Transparent
         Me.lbltipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbltipo.Location = New System.Drawing.Point(28, 68)
-        Me.lbltipo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbltipo.Location = New System.Drawing.Point(21, 40)
         Me.lbltipo.Name = "lbltipo"
-        Me.lbltipo.Size = New System.Drawing.Size(109, 22)
+        Me.lbltipo.Size = New System.Drawing.Size(82, 18)
         Me.lbltipo.TabIndex = 97
         Me.lbltipo.Tag = ""
         Me.lbltipo.Text = "Tipo:"
@@ -156,10 +150,9 @@ Partial Class frmBusquedaRepuestos
         '
         Me.lblProveedor.BackColor = System.Drawing.Color.Transparent
         Me.lblProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblProveedor.Location = New System.Drawing.Point(28, 28)
-        Me.lblProveedor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblProveedor.Location = New System.Drawing.Point(21, 15)
         Me.lblProveedor.Name = "lblProveedor"
-        Me.lblProveedor.Size = New System.Drawing.Size(109, 22)
+        Me.lblProveedor.Size = New System.Drawing.Size(82, 18)
         Me.lblProveedor.TabIndex = 96
         Me.lblProveedor.Tag = ""
         Me.lblProveedor.Text = "Proveedor:"
@@ -168,10 +161,9 @@ Partial Class frmBusquedaRepuestos
         '
         Me.lblMarca.BackColor = System.Drawing.Color.Transparent
         Me.lblMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMarca.Location = New System.Drawing.Point(28, 108)
-        Me.lblMarca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblMarca.Location = New System.Drawing.Point(21, 66)
         Me.lblMarca.Name = "lblMarca"
-        Me.lblMarca.Size = New System.Drawing.Size(109, 22)
+        Me.lblMarca.Size = New System.Drawing.Size(82, 18)
         Me.lblMarca.TabIndex = 96
         Me.lblMarca.Tag = ""
         Me.lblMarca.Text = "Marca:"
@@ -180,10 +172,9 @@ Partial Class frmBusquedaRepuestos
         '
         Me.lblModeloCompatible.BackColor = System.Drawing.Color.Transparent
         Me.lblModeloCompatible.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblModeloCompatible.Location = New System.Drawing.Point(28, 149)
-        Me.lblModeloCompatible.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblModeloCompatible.Location = New System.Drawing.Point(21, 94)
         Me.lblModeloCompatible.Name = "lblModeloCompatible"
-        Me.lblModeloCompatible.Size = New System.Drawing.Size(137, 22)
+        Me.lblModeloCompatible.Size = New System.Drawing.Size(103, 18)
         Me.lblModeloCompatible.TabIndex = 97
         Me.lblModeloCompatible.Tag = ""
         Me.lblModeloCompatible.Text = "Modelo Compatible:"
@@ -197,16 +188,15 @@ Partial Class frmBusquedaRepuestos
         Me.cmbMarca.ColumnCaptionHeight = 17
         Me.cmbMarca.ColumnFooterHeight = 17
         Me.cmbMarca.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbMarca.ContentHeight = 18
+        Me.cmbMarca.ContentHeight = 15
         Me.cmbMarca.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbMarca.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbMarca.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbMarca.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbMarca.EditorHeight = 18
+        Me.cmbMarca.EditorHeight = 15
         Me.cmbMarca.Images.Add(CType(resources.GetObject("cmbMarca.Images"), System.Drawing.Image))
         Me.cmbMarca.ItemHeight = 15
-        Me.cmbMarca.Location = New System.Drawing.Point(188, 107)
-        Me.cmbMarca.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbMarca.Location = New System.Drawing.Point(141, 65)
         Me.cmbMarca.MatchEntryTimeout = CType(2000, Long)
         Me.cmbMarca.MaxDropDownItems = CType(5, Short)
         Me.cmbMarca.MaxLength = 32767
@@ -215,7 +205,7 @@ Partial Class frmBusquedaRepuestos
         Me.cmbMarca.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbMarca.Size = New System.Drawing.Size(231, 24)
+        Me.cmbMarca.Size = New System.Drawing.Size(173, 21)
         Me.cmbMarca.TabIndex = 2
         Me.cmbMarca.PropBag = resources.GetString("cmbMarca.PropBag")
         '
@@ -228,16 +218,15 @@ Partial Class frmBusquedaRepuestos
         Me.cmbModeloCompatible.ColumnCaptionHeight = 17
         Me.cmbModeloCompatible.ColumnFooterHeight = 17
         Me.cmbModeloCompatible.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbModeloCompatible.ContentHeight = 18
+        Me.cmbModeloCompatible.ContentHeight = 15
         Me.cmbModeloCompatible.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbModeloCompatible.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbModeloCompatible.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbModeloCompatible.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbModeloCompatible.EditorHeight = 18
+        Me.cmbModeloCompatible.EditorHeight = 15
         Me.cmbModeloCompatible.Images.Add(CType(resources.GetObject("cmbModeloCompatible.Images"), System.Drawing.Image))
         Me.cmbModeloCompatible.ItemHeight = 15
-        Me.cmbModeloCompatible.Location = New System.Drawing.Point(188, 145)
-        Me.cmbModeloCompatible.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbModeloCompatible.Location = New System.Drawing.Point(141, 91)
         Me.cmbModeloCompatible.MatchEntryTimeout = CType(2000, Long)
         Me.cmbModeloCompatible.MaxDropDownItems = CType(5, Short)
         Me.cmbModeloCompatible.MaxLength = 32767
@@ -246,7 +235,7 @@ Partial Class frmBusquedaRepuestos
         Me.cmbModeloCompatible.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbModeloCompatible.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbModeloCompatible.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbModeloCompatible.Size = New System.Drawing.Size(231, 24)
+        Me.cmbModeloCompatible.Size = New System.Drawing.Size(173, 21)
         Me.cmbModeloCompatible.TabIndex = 3
         Me.cmbModeloCompatible.Tag = ""
         Me.cmbModeloCompatible.PropBag = resources.GetString("cmbModeloCompatible.PropBag")
@@ -254,10 +243,9 @@ Partial Class frmBusquedaRepuestos
         'cmdFiltrar
         '
         Me.cmdFiltrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdFiltrar.Location = New System.Drawing.Point(455, 145)
-        Me.cmdFiltrar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmdFiltrar.Location = New System.Drawing.Point(340, 87)
         Me.cmdFiltrar.Name = "cmdFiltrar"
-        Me.cmdFiltrar.Size = New System.Drawing.Size(115, 32)
+        Me.cmdFiltrar.Size = New System.Drawing.Size(86, 26)
         Me.cmdFiltrar.TabIndex = 4
         Me.cmdFiltrar.Text = "Filtrar"
         Me.cmdFiltrar.UseVisualStyleBackColor = True
@@ -266,45 +254,15 @@ Partial Class frmBusquedaRepuestos
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 575)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel1.Location = New System.Drawing.Point(0, 371)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1021, 26)
+        Me.Panel1.Size = New System.Drawing.Size(766, 21)
         Me.Panel1.TabIndex = 102
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdCancelar.Location = New System.Drawing.Point(892, 529)
-        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(113, 37)
-        Me.cmdCancelar.TabIndex = 104
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
-        Me.cmdAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(785, 529)
-        Me.cmdAceptar.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(99, 37)
-        Me.cmdAceptar.TabIndex = 103
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdAceptar.UseVisualStyleBackColor = True
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdAceptar)
         Me.PanelControl1.Controls.Add(Me.cmbProveedor)
         Me.PanelControl1.Controls.Add(Me.lblProveedor)
         Me.PanelControl1.Controls.Add(Me.lbltipo)
@@ -319,25 +277,50 @@ Partial Class frmBusquedaRepuestos
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.PanelControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(1021, 601)
+        Me.PanelControl1.Size = New System.Drawing.Size(766, 392)
         Me.PanelControl1.TabIndex = 105
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(678, 334)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdCancelar.TabIndex = 99
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(592, 334)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 98
+        Me.cmdAceptar.Tag = "ACEPTAR"
+        Me.cmdAceptar.Text = "&Aceptar"
         '
         'frmBusquedaRepuestos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1021, 601)
+        Me.ClientSize = New System.Drawing.Size(766, 392)
         Me.ControlBox = False
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmBusquedaRepuestos"
@@ -367,7 +350,7 @@ Partial Class frmBusquedaRepuestos
     Friend WithEvents cmdFiltrar As System.Windows.Forms.Button
     Friend WithEvents grdResultados As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
 End Class
