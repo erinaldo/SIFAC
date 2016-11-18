@@ -215,7 +215,9 @@ Public Class frmSccDevoluciones
         Dim FilaActual As Integer
         Try
             If Me.DtDatosDevolucion.Rows.Count > 0 Then
-                FilaActual = Me.grdDevolucionTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdDevolucionTabla.GetSelectedRows()
+                FilaActual = Me.grdDevolucionTabla.GetDataSourceRowIndex(selectedRow(0))
+
                 Me.IDDevolucion = Me.DtDatosDevolucion.DefaultView.Item(FilaActual)("SccDevolucionID")
                 If Me.DtDatosDevolucion.DefaultView.Item(FilaActual)("objEstadoID") <> Me.IDEstadoReg Then
                     MsgBox("Solamente Devoluciones en Estado Registrada pueden ser Editadas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)

@@ -44,6 +44,7 @@ Partial Class frmSincronizarAbonos
         Me.tbProductos = New System.Windows.Forms.ToolStrip()
         Me.cmdAprobar = New System.Windows.Forms.ToolStripButton()
         Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
         Me.cmdEditar = New System.Windows.Forms.ToolStripSeparator()
@@ -62,7 +63,6 @@ Partial Class frmSincronizarAbonos
         Me.cmbEmpleado = New DevExpress.XtraEditors.LookUpEdit()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         CType(Me.grdExpediente, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -264,6 +264,14 @@ Partial Class frmSincronizarAbonos
         Me.cmdConsultar.ToolTipText = "Consultar Producto"
         Me.cmdConsultar.Visible = False
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
+        '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
@@ -433,14 +441,6 @@ Partial Class frmSincronizarAbonos
         'sfdRuta
         '
         Me.sfdRuta.Filter = "Archivos Excel | *.xls"
-        '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
         '
         'frmSincronizarAbonos
         '

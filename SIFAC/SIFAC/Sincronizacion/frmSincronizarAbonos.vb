@@ -4,6 +4,7 @@ Imports Proyecto.Configuracion
 Imports Seguridad.Datos
 Imports SIFAC.BO.clsConsultas
 Imports Proyecto.Catalogos.Datos
+Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmSincronizarAbonos
 
@@ -380,7 +381,7 @@ Public Class frmSincronizarAbonos
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
-       
+
     End Sub
 
     Private Sub cmbExportar_Click(sender As Object, e As EventArgs) Handles cmbExportar.Click
@@ -394,5 +395,33 @@ Public Class frmSincronizarAbonos
     Private Sub cmdDesactivar_Click(sender As Object, e As EventArgs) Handles cmdDesactivar.Click
         AnularAbonos()
         CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
+    End Sub
+
+    Private Sub grdVentasTable_RowStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles grdVentasTable.RowStyle
+        Dim estado As String = ""
+        Dim vista As GridView = sender
+
+        Try
+
+            estado = vista.GetRowCellValue(e.RowHandle, vista.Columns("Estado")).ToString().Trim()
+        Catch ex As Exception
+
+        End Try
+        Select Case estado
+            Case "REGISTRADO"
+                e.Appearance.BackColor = Color.LightSteelBlue
+                e.Appearance.BackColor2 = Color.White
+
+            Case "APROBADO"
+                e.Appearance.BackColor = Color.LimeGreen
+                e.Appearance.BackColor2 = Color.White
+
+            Case "ANULADO"
+                e.Appearance.BackColor = Color.Red
+                e.Appearance.BackColor2 = Color.White
+
+        End Select
+
+          
     End Sub
 End Class

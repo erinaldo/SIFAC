@@ -133,7 +133,9 @@ Public Class frmSccCuentas
         Dim intEstadoReg, iIndiceRegistro As Integer
         Dim FilaActual As Integer
         Try
-            FilaActual = Me.grdExpedienteMasterTabla.FocusedRowHandle
+            Dim selectedRow As Integer() = grdExpedienteMasterTabla.GetSelectedRows()
+            FilaActual = Me.grdExpedienteMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
             intEstadoReg = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "REGISTRADO")
             If Integer.Parse(Me.dtCuentas.DefaultView.Item(FilaActual)("objEstadoID")) <> intEstadoReg Then
                 MsgBox("Solamente Expedientes en Estado REGISTRADO pueden ser Editados")

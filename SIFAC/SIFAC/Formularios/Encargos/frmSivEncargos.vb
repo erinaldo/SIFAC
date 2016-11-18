@@ -183,7 +183,8 @@ Public Class frmSivEncargos
             If foundRowsSeleccionadas.Length > 1 Then
                 MsgBox("Se consulta un registro a la vez, seleccione unicamente 1", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
             Else
-                FilaActual = Me.grdEncargosMasterTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdEncargosMasterTabla.GetSelectedRows()
+                FilaActual = Me.grdEncargosMasterTabla.GetDataSourceRowIndex(selectedRow(0))
                 Me.Cursor = WaitCursor
                 editEncargos = New frmSivEncargosEdit
                 editEncargos.TypeGui = 2
@@ -349,6 +350,7 @@ Public Class frmSivEncargos
         Dim vista As GridView = sender
 
         Try
+
             estado = vista.GetRowCellValue(e.RowHandle, vista.Columns("Estado")).ToString().Trim()
         Catch ex As Exception
 

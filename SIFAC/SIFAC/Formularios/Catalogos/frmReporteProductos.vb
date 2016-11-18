@@ -104,6 +104,18 @@ Public Class frmReporteProductos
         End Try
     End Sub
 
+    Private Sub rbTodos_CheckedChanged(sender As Object, e As EventArgs) Handles rbTodos.CheckedChanged
+        Try
+            If rbTodos.Checked Then
+                cboCategoria.Text = String.Empty
+                cboMarca.Text = String.Empty
+            End If
+           
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
     Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
         Close()
     End Sub
@@ -111,5 +123,6 @@ Public Class frmReporteProductos
 #End Region
 
 
+   
    
 End Class

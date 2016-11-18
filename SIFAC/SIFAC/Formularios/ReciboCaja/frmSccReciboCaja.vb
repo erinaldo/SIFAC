@@ -54,7 +54,9 @@ Public Class frmSccReciboCaja
     Private Sub cmdEditar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEditar.Click
         Dim FilaActual As Integer
         Try
-            FilaActual = Me.grdRecibosCajaTabla.FocusedRowHandle
+            Dim selectedRow As Integer() = grdRecibosCajaTabla.GetSelectedRows()
+            FilaActual = Me.grdRecibosCajaTabla.GetDataSourceRowIndex(selectedRow(0))
+
             If Me.DtRecibosCajas.Rows.Count > 0 Then
                 Dim IDEstadoPagado As Integer
                 IDEstadoPagado = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOROC", "PAGADO")

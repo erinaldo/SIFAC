@@ -110,7 +110,8 @@ Public Class frmPedidos
         Dim editPedidos As frmPedidosEdit
         Dim FilaActual As Integer
         Try
-            FilaActual = Me.grdPedidosMasterTabla.FocusedRowHandle
+            Dim selectedRow As Integer() = grdPedidosMasterTabla.GetSelectedRows()
+            FilaActual = Me.grdPedidosMasterTabla.GetDataSourceRowIndex(selectedRow(0))
 
             Me.Cursor = WaitCursor
             editPedidos = New frmPedidosEdit
