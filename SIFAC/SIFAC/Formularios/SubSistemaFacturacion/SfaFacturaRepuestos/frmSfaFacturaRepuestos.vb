@@ -379,7 +379,9 @@ Public Class frmSfaFacturaRepuestos
         Dim FilaActual As Integer
         Try
             Try
-                FilaActual = Me.grdFacturaMasterTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdFacturaMasterTabla.GetSelectedRows()
+                FilaActual = Me.grdFacturaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
                 ConsultarFactura.TypeGUI = 4
                 ConsultarFactura.SfaFacturaID = Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaID")
                 ConsultarFactura.ShowDialog(Me)

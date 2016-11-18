@@ -96,7 +96,9 @@ Public Class frmSrhEmpleado
         Dim FilaActual As Integer
         Try
             Me.Cursor = WaitCursor
-            FilaActual = Me.grdvwEmpleadosTabla.FocusedRowHandle
+            Dim selectedRow As Integer() = grdvwEmpleadosTabla.GetSelectedRows()
+            FilaActual = Me.grdvwEmpleadosTabla.GetDataSourceRowIndex(selectedRow(0))
+
             editEmpleado = New frmSrhEmpleadoEditar
             editEmpleado.TypeGUI = 1
             editEmpleado.EmpleadoID = Me.DtEmpleados.DefaultView.Item(FilaActual)("SrhEmpleadoID")

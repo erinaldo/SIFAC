@@ -115,7 +115,9 @@ Public Class frmSccClientes
         Dim FilaActual As Integer
         Try
             Me.Cursor = WaitCursor
-            FilaActual = Me.grdClientesTabla.FocusedRowHandle
+            Dim selectedRow As Integer() = grdClientesTabla.GetSelectedRows()
+            FilaActual = Me.grdClientesTabla.GetDataSourceRowIndex(selectedRow(0))
+
             objPersonas = New frmClientesEdit
             objPersonas.TyGui = 2
             objPersonas.idpersona = Me.dtCliente.DefaultView(FilaActual).Item("StbPersonaID")

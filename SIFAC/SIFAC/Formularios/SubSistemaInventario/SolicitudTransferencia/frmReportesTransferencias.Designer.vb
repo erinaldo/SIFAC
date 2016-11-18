@@ -250,18 +250,18 @@ Partial Class frmReportesTransferencias
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(26, 67)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(83, 13)
+        Me.Label2.Size = New System.Drawing.Size(101, 13)
         Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Sitio Destino:"
+        Me.Label2.Text = "Bodega Destino:"
         '
         'lblSitioOrigen
         '
         Me.lblSitioOrigen.AutoSize = True
         Me.lblSitioOrigen.Location = New System.Drawing.Point(26, 31)
         Me.lblSitioOrigen.Name = "lblSitioOrigen"
-        Me.lblSitioOrigen.Size = New System.Drawing.Size(77, 13)
+        Me.lblSitioOrigen.Size = New System.Drawing.Size(95, 13)
         Me.lblSitioOrigen.TabIndex = 0
-        Me.lblSitioOrigen.Text = "Sitio Origen:"
+        Me.lblSitioOrigen.Text = "Bodega Origen:"
         '
         'ErrProveedor
         '

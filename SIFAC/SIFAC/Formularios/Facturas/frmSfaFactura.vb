@@ -64,7 +64,9 @@ Public Class frmSfaFactura
         Try
             Try
                 Me.Cursor = Cursors.WaitCursor
-                FilaActual = Me.grdFacturasTabla.FocusedRowHandle
+                Dim selectedRow As Integer() = grdFacturasTabla.GetSelectedRows()
+                FilaActual = Me.grdFacturasTabla.GetDataSourceRowIndex(selectedRow(0))
+
                 objFacturaEdit.TypGui = 0
                 If IntOpcion > 0 Then
                     If IntOpcion = 1 Then

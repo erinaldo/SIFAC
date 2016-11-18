@@ -96,7 +96,8 @@ Public Class frmSccDescuento
         Dim editDescuento As frmSccDescuentoEdit
         Dim FilaActual As Integer
         Try
-            FilaActual = Me.grdDescuentoTabla.FocusedRowHandle
+            Dim selectedRow As Integer() = grdDescuentoTabla.GetSelectedRows()
+            FilaActual = Me.grdDescuentoTabla.GetDataSourceRowIndex(selectedRow(0))
 
             Me.Cursor = WaitCursor
             editDescuento = New frmSccDescuentoEdit
