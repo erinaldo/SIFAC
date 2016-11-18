@@ -168,6 +168,7 @@ Partial Class frmPrincipal
         'grpCatalogos
         '
         Me.grpCatalogos.Caption = "Catalogos"
+        Me.grpCatalogos.Expanded = True
         Me.grpCatalogos.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.navBarCatalogos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarParametros), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCategorias), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarMarcas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarBodegas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavProductos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarRutas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEmpleados)})
         Me.grpCatalogos.Name = "grpCatalogos"
         '
@@ -291,7 +292,6 @@ Partial Class frmPrincipal
         'NVBarReportes
         '
         Me.NVBarReportes.Caption = "Reportes"
-        Me.NVBarReportes.Expanded = True
         Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarKardex), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado)})
         Me.NVBarReportes.Name = "NVBarReportes"
         '
@@ -313,7 +313,7 @@ Partial Class frmPrincipal
         Me.WindowsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CascadeToolStripMenuItem, Me.TileVerticalToolStripMenuItem, Me.TileHorizontalToolStripMenuItem, Me.CloseAllToolStripMenuItem, Me.tsmEstiloVisual})
         Me.WindowsMenu.ForeColor = System.Drawing.Color.Black
         Me.WindowsMenu.Name = "WindowsMenu"
-        Me.WindowsMenu.Size = New System.Drawing.Size(67, 20)
+        Me.WindowsMenu.Size = New System.Drawing.Size(66, 20)
         Me.WindowsMenu.Text = "&Ventanas"
         '
         'CascadeToolStripMenuItem

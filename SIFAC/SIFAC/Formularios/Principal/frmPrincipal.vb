@@ -253,7 +253,7 @@ Public Class frmPrincipal
             Me.NavBarSincroDevoluciones.Enabled = objSeg.TienePermiso("OpcionSincDevoluciones")
 
             'Me.NavBarConsolidado.Enabled = objSeg.TienePermiso("OpcionReportesConsolidado")
-            'Me.NavBarKardex.Enabled = objSeg.TienePermiso("OpcionReportesInventario")
+            Me.NavBarKardex.Enabled = objSeg.TienePermiso("OpcionReportesInventario")
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -318,7 +318,7 @@ Public Class frmPrincipal
         Me.CargarCatalogoValor()
     End Sub
 
-    Private Sub NavBarPrincipal_Click(sender As Object, e As EventArgs) Handles NavBarPrincipal.Click
+    Private Sub NavBarKardex_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarKardex.LinkClicked
         CargarKardex()
     End Sub
 
@@ -1164,5 +1164,6 @@ Public Class frmPrincipal
 #End Region
 
 
+   
    
 End Class

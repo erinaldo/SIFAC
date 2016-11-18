@@ -95,10 +95,10 @@ Partial Public Class rptKardex
         '
         Me.XrLabel11.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.Transaccion")})
         Me.XrLabel11.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(65.20345!, 0.0!)
+        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(75.62011!, 0.0!)
         Me.XrLabel11.Name = "XrLabel11"
         Me.XrLabel11.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel11.SizeF = New System.Drawing.SizeF(83.82632!, 23.0!)
+        Me.XrLabel11.SizeF = New System.Drawing.SizeF(84.86799!, 23.0!)
         Me.XrLabel11.StylePriority.UseFont = False
         Me.XrLabel11.StylePriority.UseTextAlignment = False
         Me.XrLabel11.Text = "XrLabel11"
@@ -111,7 +111,7 @@ Partial Public Class rptKardex
         Me.XrLabel10.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 0.0!)
         Me.XrLabel10.Name = "XrLabel10"
         Me.XrLabel10.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel10.SizeF = New System.Drawing.SizeF(65.20344!, 23.0!)
+        Me.XrLabel10.SizeF = New System.Drawing.SizeF(75.62011!, 23.0!)
         Me.XrLabel10.StylePriority.UseFont = False
         Me.XrLabel10.StylePriority.UseTextAlignment = False
         Me.XrLabel10.Text = "XrLabel10"
@@ -121,10 +121,10 @@ Partial Public Class rptKardex
         '
         Me.XrLabel12.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.Tipo")})
         Me.XrLabel12.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(149.0298!, 0.0!)
+        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(160.4881!, 0.0!)
         Me.XrLabel12.Name = "XrLabel12"
         Me.XrLabel12.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel12.SizeF = New System.Drawing.SizeF(103.4095!, 23.0!)
+        Me.XrLabel12.SizeF = New System.Drawing.SizeF(91.95119!, 23.0!)
         Me.XrLabel12.StylePriority.UseFont = False
         Me.XrLabel12.StylePriority.UseTextAlignment = False
         Me.XrLabel12.Text = "XrLabel12"
@@ -386,12 +386,18 @@ Partial Public Class rptKardex
         '
         'XrLabel7
         '
+        Me.XrLabel7.BorderColor = System.Drawing.Color.DarkBlue
+        Me.XrLabel7.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
+        Me.XrLabel7.BorderWidth = 2.0!
         Me.XrLabel7.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.XrLabel7.ForeColor = System.Drawing.Color.DarkBlue
         Me.XrLabel7.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 76.45827!)
         Me.XrLabel7.Name = "XrLabel7"
         Me.XrLabel7.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel7.SizeF = New System.Drawing.SizeF(631.0833!, 26.12501!)
+        Me.XrLabel7.StylePriority.UseBorderColor = False
+        Me.XrLabel7.StylePriority.UseBorders = False
+        Me.XrLabel7.StylePriority.UseBorderWidth = False
         Me.XrLabel7.StylePriority.UseFont = False
         Me.XrLabel7.StylePriority.UseForeColor = False
         Me.XrLabel7.StylePriority.UseTextAlignment = False
@@ -474,7 +480,7 @@ Partial Public Class rptKardex
         Me.XrTableCell7.StylePriority.UseForeColor = False
         Me.XrTableCell7.Text = "Fecha"
         Me.XrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
-        Me.XrTableCell7.Weight = 51.350090981083611R
+        Me.XrTableCell7.Weight = 60.384974415111813R
         '
         'XrTableCell9
         '
@@ -490,7 +496,7 @@ Partial Public Class rptKardex
         Me.XrTableCell9.StylePriority.UseTextAlignment = False
         Me.XrTableCell9.Text = "Transaccion"
         Me.XrTableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrTableCell9.Weight = 72.70674724656692R
+        Me.XrTableCell9.Weight = 73.610221031793742R
         '
         'XrTableCell11
         '
@@ -506,7 +512,7 @@ Partial Public Class rptKardex
         Me.XrTableCell11.StylePriority.UseTextAlignment = False
         Me.XrTableCell11.Text = "Tipo"
         Me.XrTableCell11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
-        Me.XrTableCell11.Weight = 83.510536068455579R
+        Me.XrTableCell11.Weight = 79.753831838337931R
         '
         'XrTableCell1
         '
@@ -521,7 +527,7 @@ Partial Public Class rptKardex
         Me.XrTableCell1.StylePriority.UseTextAlignment = False
         Me.XrTableCell1.Text = "Proveedor/Cliente"
         Me.XrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
-        Me.XrTableCell1.Weight = 124.500514558406R
+        Me.XrTableCell1.Weight = 118.31886156926862R
         '
         'XrTableCell2
         '

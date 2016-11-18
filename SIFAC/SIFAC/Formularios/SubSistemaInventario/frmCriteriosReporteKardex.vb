@@ -13,7 +13,7 @@ Public Class frmCriteriosReporteKardex
 #Region "Atributos"
     Private m_IdSucursalCentral As Integer
     Private m_IdSucursalSession As Integer
-    Private m_FechaKardex As Date
+    Private m_FechaKardex As DateTime
 #End Region
 
 #Region "Propiedades"
@@ -35,11 +35,11 @@ Public Class frmCriteriosReporteKardex
         End Set
     End Property
 
-    Property FechaKardex() As Date
+    Property FechaKardex() As DateTime
         Get
             FechaKardex = Me.m_FechaKardex
         End Get
-        Set(ByVal value As Date)
+        Set(ByVal value As DateTime)
             Me.m_FechaKardex = value
         End Set
     End Property
@@ -110,8 +110,10 @@ Public Class frmCriteriosReporteKardex
 
 #Region "Cargar Formulario"
     Private Sub frmCriteriosReporteUtilidades_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Try
 
-        Me.FechaKardex = ClsCatalogos.GetValorParametro("FechaKardex")
+       
+            Me.FechaKardex = Convert.ToDateTime(ClsCatalogos.GetValorParametro("FechaKardex"))
         Me.CargarComboSucursales()
 
         Me.IdSucursalCentral = ClsCatalogos.GetStbTiendaID("C") '-- C=Central
@@ -122,7 +124,11 @@ Public Class frmCriteriosReporteKardex
         Me.CargarComboRepuestos()
 
         Me.dtpFechaDesde.Value = Me.FechaKardex
-        Me.dtpFechaHasta.Value = clsProyecto.Conexion.FechaServidor
+            Me.dtpFechaHasta.Value = clsProyecto.Conexion.FechaServidor
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 #End Region
@@ -247,6 +253,7 @@ Public Class frmCriteriosReporteKardex
             If dsDatos.Tables(0).Rows.Count <> 0 Then
                 objjReporte.DataSource = dsDatos
                 objjReporte.DataMember = dsDatos.Tables(0).TableName
+                objjReporte.txtRangofechas.Text = "Desde " & Format(dtpFechaDesde.Value, "dd/MM/yyyy") & " hasta " & Format(dtpFechaDesde.Value, "dd/MM/yyyy")
                 Dim pt As New ReportPrintTool(objjReporte)
                 pt.ShowPreview()
             Else
