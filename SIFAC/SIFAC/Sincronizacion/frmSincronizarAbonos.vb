@@ -5,6 +5,9 @@ Imports Seguridad.Datos
 Imports SIFAC.BO.clsConsultas
 Imports Proyecto.Catalogos.Datos
 Imports DevExpress.XtraGrid.Views.Grid
+Imports DevExpress.XtraGrid
+Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraGrid.Views.BandedGrid
 
 Public Class frmSincronizarAbonos
 
@@ -83,6 +86,7 @@ Public Class frmSincronizarAbonos
             .Properties.ShowHeader = False
         End With
 
+        cmbEstado.EditValue = ClsCatalogos.GetValorCatalogoID("ESTADOAPLICACION", "01")
 
     End Sub
 #End Region
@@ -95,16 +99,20 @@ Public Class frmSincronizarAbonos
                 DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "1=1"))
             End If
 
-            If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "ObjRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
+            If Not blnTodos And (intEmpleadoID <> 0) And (intRutaID <> 0) Then
+                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "objStbRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
             End If
 
-            If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And Not (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
+            If Not blnTodos And (intEmpleadoID <> 0) And Not (intRutaID <> 0) Then
                 DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
             End If
 
-            If Not blnTodos And Not (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "ObjRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
+            If Not blnTodos And Not (intEmpleadoID <> 0) And (intRutaID <> 0) Then
+                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "objStbRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
+            End If
+
+            If Not blnTodos And Not (intEmpleadoID = 0) And (intRutaID = 0) Then
+                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "objStbRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
             End If
 
             If Not DtAbonos Is Nothing Then
@@ -120,8 +128,14 @@ Public Class frmSincronizarAbonos
                 DtAbonos.PrimaryKey = New DataColumn() {Me.DtAbonos.Columns("AplCobroID")}
                 DtAbonos.DefaultView.Sort = "FechaAbono"
                 Me.grdVentas.DataSource = ds.Tables(0)
+                'Me.grdExpediente.DataSource = ds.Tables(1)
                 Me.grdVentas.Text = "Abonos (" & Me.DtAbonos.Rows.Count & ")"
 
+                'Me.grdVentasTable.Columns("Numero").Visible = False
+
+                'Dim node As GridLevelNode = grdVentas.LevelTree.Nodes("DetalleAbono")
+                'Dim oldView As GridBand = node.LevelTemplate
+                'oldView.Columns(0).Visible = False
             End If
 
         Catch ex As Exception
@@ -339,6 +353,23 @@ Public Class frmSincronizarAbonos
         End Try
     End Sub
 
+    Private Sub Editar()
+        Dim EditarAbono As New frmSincronziacionAbonosEdit
+        Dim FilaActual As Integer
+        Try
+            Try
+                Dim selectedRow As Integer() = grdVentasTable.GetSelectedRows()
+                FilaActual = Me.grdVentasTable.GetDataSourceRowIndex(selectedRow(0))
+                EditarAbono.CobroID = Me.DtAbonos.DefaultView.Item(FilaActual)("AplCobroID")
+                EditarAbono.ShowDialog(Me)
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            EditarAbono = Nothing
+        End Try
+    End Sub
+
     Private Sub AnularAbonos()
         Dim intAplCobroID, intEstadoRegistrado As Integer
         Dim objAplCobros As New AplCobros
@@ -422,6 +453,23 @@ Public Class frmSincronizarAbonos
 
         End Select
 
-          
+
+    End Sub
+
+  
+    Private Sub cmdEditar_Click(sender As Object, e As EventArgs) Handles cmdEditar.Click
+        Editar()
+    End Sub
+
+    Private Sub cmbRuta_TextChanged(sender As Object, e As EventArgs) Handles cmbRuta.TextChanged
+        chkTodos.Checked = False
+    End Sub
+
+    Private Sub cmbEmpleado_TextChanged(sender As Object, e As EventArgs) Handles cmbEmpleado.TextChanged
+        chkTodos.Checked = False
+    End Sub
+
+    Private Sub cmbEstado_TextChanged(sender As Object, e As EventArgs) Handles cmbEstado.TextChanged
+        chkTodos.Checked = False
     End Sub
 End Class

@@ -24,7 +24,7 @@ Partial Class frmSincronizarAbonos
     Private Sub InitializeComponent()
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSincronizarAbonos))
-        Me.grdExpediente = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.CardView1 = New DevExpress.XtraGrid.Views.Card.CardView()
         Me.ColSccCuentaID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colProducto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colModeloMarca = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -44,10 +44,9 @@ Partial Class frmSincronizarAbonos
         Me.tbProductos = New System.Windows.Forms.ToolStrip()
         Me.cmdAprobar = New System.Windows.Forms.ToolStripButton()
         Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.cmdEditar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
-        Me.cmdEditar = New System.Windows.Forms.ToolStripSeparator()
         Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
@@ -63,7 +62,7 @@ Partial Class frmSincronizarAbonos
         Me.cmbEmpleado = New DevExpress.XtraEditors.LookUpEdit()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        CType(Me.grdExpediente, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,22 +79,23 @@ Partial Class frmSincronizarAbonos
         CType(Me.cmbEmpleado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'grdExpediente
+        'CardView1
         '
-        Me.grdExpediente.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColSccCuentaID, Me.colProducto, Me.colModeloMarca, Me.colSaldo})
-        Me.grdExpediente.GridControl = Me.grdVentas
-        Me.grdExpediente.Name = "grdExpediente"
-        Me.grdExpediente.OptionsBehavior.AutoPopulateColumns = False
-        Me.grdExpediente.OptionsBehavior.Editable = False
-        Me.grdExpediente.OptionsBehavior.ReadOnly = True
-        Me.grdExpediente.OptionsView.ShowGroupPanel = False
-        Me.grdExpediente.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never
+        Me.CardView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColSccCuentaID, Me.colProducto, Me.colModeloMarca, Me.colSaldo})
+        Me.CardView1.FocusedCardTopFieldIndex = 0
+        Me.CardView1.GridControl = Me.grdVentas
+        Me.CardView1.Name = "CardView1"
+        Me.CardView1.OptionsBehavior.AutoPopulateColumns = False
+        Me.CardView1.OptionsBehavior.Editable = False
+        Me.CardView1.OptionsBehavior.ReadOnly = True
         '
         'ColSccCuentaID
         '
         Me.ColSccCuentaID.Caption = "SccCuentaID"
         Me.ColSccCuentaID.FieldName = "SccCuentaID"
         Me.ColSccCuentaID.Name = "ColSccCuentaID"
+        Me.ColSccCuentaID.Visible = True
+        Me.ColSccCuentaID.VisibleIndex = 0
         '
         'colProducto
         '
@@ -105,7 +105,7 @@ Partial Class frmSincronizarAbonos
         Me.colProducto.OptionsColumn.AllowEdit = False
         Me.colProducto.OptionsFilter.AllowAutoFilter = False
         Me.colProducto.Visible = True
-        Me.colProducto.VisibleIndex = 0
+        Me.colProducto.VisibleIndex = 1
         '
         'colModeloMarca
         '
@@ -115,7 +115,7 @@ Partial Class frmSincronizarAbonos
         Me.colModeloMarca.OptionsColumn.AllowEdit = False
         Me.colModeloMarca.OptionsFilter.AllowAutoFilter = False
         Me.colModeloMarca.Visible = True
-        Me.colModeloMarca.VisibleIndex = 1
+        Me.colModeloMarca.VisibleIndex = 2
         '
         'colSaldo
         '
@@ -125,12 +125,12 @@ Partial Class frmSincronizarAbonos
         Me.colSaldo.OptionsColumn.AllowEdit = False
         Me.colSaldo.OptionsFilter.AllowAutoFilter = False
         Me.colSaldo.Visible = True
-        Me.colSaldo.VisibleIndex = 2
+        Me.colSaldo.VisibleIndex = 3
         '
         'grdVentas
         '
         Me.grdVentas.Dock = System.Windows.Forms.DockStyle.Fill
-        GridLevelNode1.LevelTemplate = Me.grdExpediente
+        GridLevelNode1.LevelTemplate = Me.CardView1
         GridLevelNode1.RelationName = "LevelExpediente"
         Me.grdVentas.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.grdVentas.Location = New System.Drawing.Point(2, 144)
@@ -141,7 +141,7 @@ Partial Class frmSincronizarAbonos
         Me.grdVentas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2, Me.RepositoryItemDateEdit1})
         Me.grdVentas.Size = New System.Drawing.Size(833, 293)
         Me.grdVentas.TabIndex = 6
-        Me.grdVentas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdVentasTable, Me.grdExpediente})
+        Me.grdVentas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdVentasTable, Me.CardView1})
         '
         'grdVentasTable
         '
@@ -150,6 +150,7 @@ Partial Class frmSincronizarAbonos
         Me.grdVentasTable.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdVentasTable.Name = "grdVentasTable"
         Me.grdVentasTable.OptionsView.ShowAutoFilterRow = True
+        Me.grdVentasTable.OptionsView.ShowFooter = True
         '
         'colSeleccionar
         '
@@ -183,6 +184,7 @@ Partial Class frmSincronizarAbonos
         Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
+        Me.RepositoryItemDateEdit1.ReadOnly = True
         '
         'colRuta
         '
@@ -204,6 +206,8 @@ Partial Class frmSincronizarAbonos
         '
         'colEmpleado
         '
+        Me.colEmpleado.AppearanceCell.BackColor = System.Drawing.Color.Transparent
+        Me.colEmpleado.AppearanceCell.Options.UseBackColor = True
         Me.colEmpleado.Caption = "Empleado"
         Me.colEmpleado.FieldName = "Empleado"
         Me.colEmpleado.Name = "colEmpleado"
@@ -216,9 +220,11 @@ Partial Class frmSincronizarAbonos
         '
         Me.colTotal.Caption = "Total"
         Me.colTotal.FieldName = "MontoAbonado"
+        Me.colTotal.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right
         Me.colTotal.Name = "colTotal"
+        Me.colTotal.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "MontoAbonado", "Total = {0:n2}")})
         Me.colTotal.Visible = True
-        Me.colTotal.VisibleIndex = 5
+        Me.colTotal.VisibleIndex = 6
         '
         'ColEstado
         '
@@ -228,7 +234,7 @@ Partial Class frmSincronizarAbonos
         Me.ColEstado.OptionsColumn.AllowFocus = False
         Me.ColEstado.OptionsColumn.ReadOnly = True
         Me.ColEstado.Visible = True
-        Me.ColEstado.VisibleIndex = 6
+        Me.ColEstado.VisibleIndex = 5
         '
         'RepositoryItemCheckEdit2
         '
@@ -239,7 +245,7 @@ Partial Class frmSincronizarAbonos
         'tbProductos
         '
         Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAprobar, Me.cmdConsultar, Me.ToolStripButton1, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.cmdEditar, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
+        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAprobar, Me.cmdConsultar, Me.cmdEditar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
         Me.tbProductos.Size = New System.Drawing.Size(837, 39)
@@ -264,13 +270,13 @@ Partial Class frmSincronizarAbonos
         Me.cmdConsultar.ToolTipText = "Consultar Producto"
         Me.cmdConsultar.Visible = False
         '
-        'ToolStripButton1
+        'cmdEditar
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
+        Me.cmdEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdEditar.Image = CType(resources.GetObject("cmdEditar.Image"), System.Drawing.Image)
+        Me.cmdEditar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdEditar.Name = "cmdEditar"
+        Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
         '
         'ToolStripSeparator1
         '
@@ -285,11 +291,6 @@ Partial Class frmSincronizarAbonos
         Me.cmdDesactivar.Name = "cmdDesactivar"
         Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
         Me.cmdDesactivar.ToolTipText = "Anular Venta"
-        '
-        'cmdEditar
-        '
-        Me.cmdEditar.Name = "cmdEditar"
-        Me.cmdEditar.Size = New System.Drawing.Size(6, 39)
         '
         'cmbExportar
         '
@@ -381,6 +382,8 @@ Partial Class frmSincronizarAbonos
         'chkTodos
         '
         Me.chkTodos.AutoSize = True
+        Me.chkTodos.Checked = True
+        Me.chkTodos.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkTodos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkTodos.Location = New System.Drawing.Point(321, 111)
         Me.chkTodos.Name = "chkTodos"
@@ -453,7 +456,7 @@ Partial Class frmSincronizarAbonos
         Me.Name = "frmSincronizarAbonos"
         Me.Text = "Sincronizar Abonos"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.grdExpediente, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -478,7 +481,6 @@ Partial Class frmSincronizarAbonos
     Friend WithEvents cmdConsultar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdDesactivar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cmdEditar As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmbExportar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdCerrar As System.Windows.Forms.ToolStripButton
@@ -507,10 +509,10 @@ Partial Class frmSincronizarAbonos
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents ColEstado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents sfdRuta As System.Windows.Forms.SaveFileDialog
-    Friend WithEvents grdExpediente As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents cmdEditar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents CardView1 As DevExpress.XtraGrid.Views.Card.CardView
     Friend WithEvents ColSccCuentaID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colProducto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colModeloMarca As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colSaldo As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
 End Class

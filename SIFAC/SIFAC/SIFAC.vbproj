@@ -1140,6 +1140,12 @@
     <Compile Include="Sincronizacion\frmSincronizarVentas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Sincronizacion\frmSincronziacionAbonosEdit.Designer.vb">
+      <DependentUpon>frmSincronziacionAbonosEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronziacionAbonosEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Formularios\Bitacora\frmSccMinutasCobro.resx">
@@ -1679,6 +1685,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sincronizacion\frmSincronizarVentas.resx">
       <DependentUpon>frmSincronizarVentas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sincronizacion\frmSincronziacionAbonosEdit.resx">
+      <DependentUpon>frmSincronziacionAbonosEdit.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
