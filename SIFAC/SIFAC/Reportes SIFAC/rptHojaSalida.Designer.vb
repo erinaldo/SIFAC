@@ -63,9 +63,9 @@ Partial Public Class rptHojaSalida
         Me.XrLabel11 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel12 = New DevExpress.XtraReports.UI.XRLabel()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
-        Me.XrLabel13 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel14 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLine3 = New DevExpress.XtraReports.UI.XRLine()
+        Me.XrLabel14 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel13 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detail
@@ -514,7 +514,7 @@ Partial Public Class rptHojaSalida
         '
         'XrLabel12
         '
-        Me.XrLabel12.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.subtotal", "{0:c}")})
+        Me.XrLabel12.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.subtotal")})
         Me.XrLabel12.Font = New System.Drawing.Font("Arial", 9.0!)
         Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(534.0834!, 11.54167!)
         Me.XrLabel12.Name = "XrLabel12"
@@ -522,7 +522,8 @@ Partial Public Class rptHojaSalida
         Me.XrLabel12.SizeF = New System.Drawing.SizeF(105.9166!, 23.0!)
         Me.XrLabel12.StylePriority.UseFont = False
         Me.XrLabel12.StylePriority.UseTextAlignment = False
-        XrSummary1.FormatString = "{0:#.00}"
+        XrSummary1.FormatString = "{0:C$ #,#}"
+        XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Page
         Me.XrLabel12.Summary = XrSummary1
         Me.XrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         '
@@ -531,30 +532,6 @@ Partial Public Class rptHojaSalida
         Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine3, Me.XrLabel14, Me.XrLabel13, Me.XrLabel12, Me.XrLabel11})
         Me.ReportFooter.HeightF = 58.70834!
         Me.ReportFooter.Name = "ReportFooter"
-        '
-        'XrLabel13
-        '
-        Me.XrLabel13.ForeColor = System.Drawing.Color.DarkBlue
-        Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 11.54167!)
-        Me.XrLabel13.Name = "XrLabel13"
-        Me.XrLabel13.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel13.SizeF = New System.Drawing.SizeF(97.49827!, 23.0!)
-        Me.XrLabel13.StyleName = "FieldCaption"
-        Me.XrLabel13.StylePriority.UseForeColor = False
-        Me.XrLabel13.StylePriority.UseTextAlignment = False
-        Me.XrLabel13.Text = "Comentarios:"
-        Me.XrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopJustify
-        '
-        'XrLabel14
-        '
-        Me.XrLabel14.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.Comentarios")})
-        Me.XrLabel14.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(97.49827!, 11.54167!)
-        Me.XrLabel14.Name = "XrLabel14"
-        Me.XrLabel14.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 120.0!)
-        Me.XrLabel14.SizeF = New System.Drawing.SizeF(367.5!, 47.16666!)
-        Me.XrLabel14.StylePriority.UseFont = False
-        Me.XrLabel14.Text = "XrLabel14"
         '
         'XrLine3
         '
@@ -568,6 +545,30 @@ Partial Public Class rptHojaSalida
         Me.XrLine3.StylePriority.UseBackColor = False
         Me.XrLine3.StylePriority.UseBorderColor = False
         Me.XrLine3.StylePriority.UseForeColor = False
+        '
+        'XrLabel14
+        '
+        Me.XrLabel14.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.Comentarios")})
+        Me.XrLabel14.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(97.49827!, 11.54167!)
+        Me.XrLabel14.Name = "XrLabel14"
+        Me.XrLabel14.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel14.SizeF = New System.Drawing.SizeF(367.5!, 47.16666!)
+        Me.XrLabel14.StylePriority.UseFont = False
+        Me.XrLabel14.Text = "XrLabel14"
+        '
+        'XrLabel13
+        '
+        Me.XrLabel13.ForeColor = System.Drawing.Color.DarkBlue
+        Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 11.54167!)
+        Me.XrLabel13.Name = "XrLabel13"
+        Me.XrLabel13.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel13.SizeF = New System.Drawing.SizeF(97.49827!, 23.0!)
+        Me.XrLabel13.StyleName = "FieldCaption"
+        Me.XrLabel13.StylePriority.UseForeColor = False
+        Me.XrLabel13.StylePriority.UseTextAlignment = False
+        Me.XrLabel13.Text = "Comentarios:"
+        Me.XrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopJustify
         '
         'rptHojaSalida
         '

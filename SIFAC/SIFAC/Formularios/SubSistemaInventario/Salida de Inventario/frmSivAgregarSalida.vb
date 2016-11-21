@@ -9,6 +9,7 @@ Imports System.IO
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraReports.UI
 
 Public Class frmSivAgregarSalida
 
@@ -631,38 +632,62 @@ Public Class frmSivAgregarSalida
 #Region "Imprimir"
 
     Private Sub Imprimir()
-        Dim objReporte As rptSalidaBodega
-        Dim objImpresion As frmOpcionesImpresion
-        Dim sSQL, sCampos As String
-        Dim dtReporte As New DataTable
+        'Dim objReporte As rptSalidaBodega
+        'Dim objImpresion As frmOpcionesImpresion
+        'Dim sSQL, sCampos As String
+        'Dim dtReporte As New DataTable
 
-        objImpresion = New frmOpcionesImpresion
-        objReporte = New rptSalidaBodega
+        'objImpresion = New frmOpcionesImpresion
+        'objReporte = New rptSalidaBodega
 
-        sCampos = "distinct SivSalidaBodegaID, FechaSalida, TipoSalida, objEstadoID, BodegaCodigo,objTipoSalidaID, Estado, Bodega, Producto, Cantidad, costo, subtotal, Comentarios,Anulada"
-        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", "SivSalidaBodegaID = " & Me.SalidaID)
-        dtReporte = SqlHelper.ExecuteQueryDT(sSQL)
-        objReporte.DataSource = dtReporte
+        'sCampos = "distinct SivSalidaBodegaID, FechaSalida, TipoSalida, objEstadoID, BodegaCodigo,objTipoSalidaID, Estado, Bodega, Producto, Cantidad, costo, subtotal, Comentarios,Anulada"
+        'sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", "SivSalidaBodegaID = " & Me.SalidaID)
+        'dtReporte = SqlHelper.ExecuteQueryDT(sSQL)
+        'objReporte.DataSource = dtReporte
 
-        If dtReporte.Rows.Count = 0 Then
-            MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-            Exit Sub
-        End If
+        'If dtReporte.Rows.Count = 0 Then
+        '    MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+        '    Exit Sub
+        'End If
 
-        If dtReporte.DefaultView.Item(0)("objEstadoID") = Me.EstadoSalidaAutorizadaID Then
-            objReporte.UsuarioAutorizacion = clsProyecto.Conexion.Usuario
-        End If
+        'If dtReporte.DefaultView.Item(0)("objEstadoID") = Me.EstadoSalidaAutorizadaID Then
+        '    objReporte.UsuarioAutorizacion = clsProyecto.Conexion.Usuario
+        'End If
 
-        If objImpresion.ShowDialog = Windows.Forms.DialogResult.OK Then
-            Select Case objImpresion.Seleccion
-                Case 1
-                    clsProyecto.ImprimirEnPantalla(objReporte)
-                Case 2
-                    clsProyecto.ImprimirEnImpresora(objReporte, True)
-                Case 3
-                    clsProyecto.ImprimirEnArchivo(objReporte, Me)
-            End Select
-        End If
+        'If objImpresion.ShowDialog = Windows.Forms.DialogResult.OK Then
+        '    Select Case objImpresion.Seleccion
+        '        Case 1
+        '            clsProyecto.ImprimirEnPantalla(objReporte)
+        '        Case 2
+        '            clsProyecto.ImprimirEnImpresora(objReporte, True)
+        '        Case 3
+        '            clsProyecto.ImprimirEnArchivo(objReporte, Me)
+        '    End Select
+        'End If
+
+
+        Dim dsReporte As DataSet
+        Dim sCampos, sSQL As String
+        Try
+            Dim objjReporte As New rptHojaSalida()
+
+            sCampos = "distinct dbo.fnRellenarCeros2(SivSalidaBodegaID,dbo.FnGetParametro('CantidadDigitosSalida')) as SivSalidaBodegaID, FechaSalida, TipoSalida, objEstadoID, objTipoSalidaID, Estado, Bodega, Codigo, Producto, Cantidad, costo, subtotal, Comentarios,Anulada,Empresa,DireccionEmpresa,UsuarioCreacion,UsuarioModificacion"
+            sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", "SivSalidaBodegaID = " & SalidaID)
+            dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
+
+            If dsReporte.Tables(0).Rows.Count = 0 Then
+                MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Exit Sub
+            End If
+
+            objjReporte.DataSource = dsReporte
+            objjReporte.DataMember = dsReporte.Tables(0).TableName
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
     End Sub
 
 #End Region
