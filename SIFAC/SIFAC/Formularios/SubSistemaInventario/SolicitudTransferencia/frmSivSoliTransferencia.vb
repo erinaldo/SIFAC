@@ -4,6 +4,7 @@ Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
 Imports Seguridad.Datos
 Imports SIFAC.BO
+Imports DevExpress.XtraReports.UI
 
 ''' <summary>
 ''' Formulario Principal de Solicitudes de transferencia
@@ -299,27 +300,53 @@ Public Class frmSivSoliTransferencia
 
     'Procedimiento que imprime UNA sola solicitud después que se ha registrado en el sistema.
     Private Sub Imprimir_Solicitud(ByVal iIdTransferencia As Integer, ByVal EstadoAnulada As Boolean)
-        Dim objRptSoliTransf As rptTransferenciaSolicitud
-        Dim objImpresion As frmOpcionesImpresion
-        Dim sSQL, sCampos, sFiltro As String
+        'Dim objRptSoliTransf As rptTransferenciaSolicitud
+        'Dim objImpresion As frmOpcionesImpresion
+        'Dim sSQL, sCampos, sFiltro As String
 
-        objImpresion = New frmOpcionesImpresion
-        If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            objRptSoliTransf = New rptTransferenciaSolicitud
+        'objImpresion = New frmOpcionesImpresion
+        'If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        '    objRptSoliTransf = New rptTransferenciaSolicitud
+        '    sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
+        '    sCampos = "SivTransferenciaID, SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, SitioDestino,SitioOrigen, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones"
+        '    sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaSolicitud", sFiltro)
+        '    objRptSoliTransf.EstadoAnulada = EstadoAnulada
+        '    objRptSoliTransf.DataSource = SqlHelper.ExecuteQueryDT(sSQL)
+        '    Select Case objImpresion.Seleccion
+        '        Case 1
+        '            clsProyecto.ImprimirEnPantalla(objRptSoliTransf)
+        '        Case 2
+        '            clsProyecto.ImprimirEnImpresora(objRptSoliTransf, True)
+        '        Case 3
+        '            clsProyecto.ImprimirEnArchivo(objRptSoliTransf, Me)
+        '    End Select
+        'End If
+
+
+
+        Dim dsReporte As DataSet
+        Dim sCampos, sSQL, sFiltro As String
+        Try
+            Dim objjReporte As New rptHojaSolicitudTransferencia()
+
             sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
-            sCampos = "SivTransferenciaID, SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, SitioDestino,SitioOrigen, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones"
+            sCampos = "ClaveSitios, SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, CodigoTiendaDestino, CodigoTiendaOrigen, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa"
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaSolicitud", sFiltro)
-            objRptSoliTransf.EstadoAnulada = EstadoAnulada
-            objRptSoliTransf.DataSource = SqlHelper.ExecuteQueryDT(sSQL)
-            Select Case objImpresion.Seleccion
-                Case 1
-                    clsProyecto.ImprimirEnPantalla(objRptSoliTransf)
-                Case 2
-                    clsProyecto.ImprimirEnImpresora(objRptSoliTransf, True)
-                Case 3
-                    clsProyecto.ImprimirEnArchivo(objRptSoliTransf, Me)
-            End Select
-        End If
+            dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
+
+            If dsReporte.Tables(0).Rows.Count = 0 Then
+                MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Exit Sub
+            End If
+
+            objjReporte.DataSource = dsReporte
+            objjReporte.DataMember = dsReporte.Tables(0).TableName
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
     End Sub
 
 #End Region

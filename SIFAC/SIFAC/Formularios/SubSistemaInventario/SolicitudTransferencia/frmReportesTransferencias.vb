@@ -7,6 +7,7 @@ Imports DAL
 Imports SIFAC.BO
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
+Imports DevExpress.XtraReports.UI
 
 Public Class frmReportesTransferencias
 
@@ -308,9 +309,10 @@ Public Class frmReportesTransferencias
 #Region "Imprimir Solicitudes"
     'Procedimiento para la impresión de solicitudes de transferencia
     Public Sub Imprimir_solicitudesTransf()
-        Dim objRptSolicitudes As New rptTransferenciaSolicitudes
+        Dim objjReporte As New rptListSolTransf
         Dim sSQL, sCampos, sFiltro As String
-        Dim dtDatos As DataTable
+        'Dim dtDatos As DataTable
+        Dim dsReporte As DataSet
 
         'Construir el filtro para las solicitudes (112=Fecha en formato ISO, ejemplo: 09 Junio 2010 = 20100609)
         If Not IsDBNull(dtpFechaDesde.Value) And Not IsDBNull(dtpFechaHasta.Value) Then
@@ -331,17 +333,21 @@ Public Class frmReportesTransferencias
         sCampos = "ClaveSitios, CodigoTiendaOrigen, CodigoTiendaDestino, SivProductoID, " + _
                   "Producto, CantidadSolicitada, " + _
                   "ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID," + _
-                  "EstadoTransferencia, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada"
+                  "EstadoTransferencia, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada,Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa"
         sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaSolicitud", sFiltro + " ORDER BY SitioOrigen, SivTransferenciaID, SivProductoID")
-        dtDatos = SqlHelper.ExecuteQueryDT(sSQL)
+        dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
 
-        'Si hay resultados mostrar opciones para mostrar informe
-        'If dtDatos.Rows.Count <> 0 Then
-        objRptSolicitudes.DataSource = dtDatos
-        Me.OpcionesImpresion(objRptSolicitudes)
-        'Else
-        'MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-        'End If
+        If dsReporte.Tables(0).Rows.Count = 0 Then
+            MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+            Exit Sub
+        End If
+
+        objjReporte.DataSource = dsReporte
+        objjReporte.DataMember = dsReporte.Tables(0).TableName
+        Dim pt As New ReportPrintTool(objjReporte)
+        objjReporte.FechaInicio.Value = Me.dtpFechaDesde.Text
+        objjReporte.FechaFin.Value = Me.dtpFechaHasta.Text
+        pt.ShowPreview()
     End Sub
 
 #End Region
