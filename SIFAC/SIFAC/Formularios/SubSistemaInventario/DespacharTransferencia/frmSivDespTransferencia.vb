@@ -4,6 +4,8 @@ Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
 Imports Seguridad.Datos
 Imports SIFAC.BO
+Imports DevExpress.XtraGrid.Views.Grid
+
 
 ''' <summary>
 ''' Formulario Principal de Despacho de transferencia
@@ -151,7 +153,7 @@ Public Class frmSivDespTransferencia
             Me.DtTransferencias.DefaultView.Sort = "SivTransferenciaID"
             Me.grdTrasnferencias.DataSource = Me.DtTransferencias
             'Me.FormatearGridPrincipal()
-            
+
             Me.bloquearBotonesBarra(Me.DtTransferencias.Rows.Count = 0)
             Me.grdTrasnferencias.Text = "Solicitudes de transferencias (" + Me.grdTransferenciasTablas.RowCount.ToString + ")"
 
@@ -170,7 +172,7 @@ Public Class frmSivDespTransferencia
             '    Me.cmdConsultarSolicitud.Enabled = False
             '    Me.cmdDespachar.Enabled = False
             'End If
-            
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -426,7 +428,7 @@ Public Class frmSivDespTransferencia
 #End Region
 
 #Region "Eventos de controles"
-    
+
     Private Sub cmdAgregarSolicitud_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAgregarSolicitud.Click
         Me.Nuevo_DespachoTransf()
     End Sub
@@ -499,7 +501,7 @@ Public Class frmSivDespTransferencia
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
-       
+
     End Sub
 
     Private Sub cmdImprimirFiltro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImprimirFiltro.Click
@@ -525,6 +527,37 @@ Public Class frmSivDespTransferencia
         End Try
     End Sub
 
+    Private Sub grdTransferenciasTablas_RowStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs) Handles grdTransferenciasTablas.RowStyle
+        Dim estado As String = ""
+        Dim vista As GridView = sender
+
+        Try
+
+            estado = vista.GetRowCellValue(e.RowHandle, vista.Columns("Estado")).ToString().Trim()
+        Catch ex As Exception
+
+        End Try
+
+        Select Case estado
+            Case "Solicitada"
+                e.Appearance.BackColor = Color.LightSteelBlue
+                e.Appearance.BackColor2 = Color.White
+
+            Case "Despachada"
+                e.Appearance.BackColor = Color.LimeGreen
+                e.Appearance.BackColor2 = Color.White
+
+            Case "Recibida"
+                e.Appearance.BackColor = Color.Beige
+                e.Appearance.BackColor2 = Color.White
+
+            Case "Anulada"
+                e.Appearance.BackColor = Color.Red
+                e.Appearance.BackColor2 = Color.White
+
+        End Select
+    End Sub
 #End Region
+
 
 End Class

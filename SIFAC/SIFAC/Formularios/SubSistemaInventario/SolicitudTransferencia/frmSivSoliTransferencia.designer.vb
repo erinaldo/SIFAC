@@ -33,9 +33,25 @@ Partial Class frmSivSoliTransferencia
         Me.ToolSeparador1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
-        Me.grdTransferencias = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdTrasnferencias = New DevExpress.XtraGrid.GridControl()
+        Me.grdTransferenciasTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colSivTransferenciaID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSitioOrigen = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSitioDestino = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSolicitadoPor = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.colObjEstadoID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSivProveedorID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colObjTiendaDestinoID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.toolSolicitudesTransferencia.SuspendLayout()
-        CType(Me.grdTransferencias, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdTrasnferencias, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdTransferenciasTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'toolSolicitudesTransferencia
@@ -44,7 +60,7 @@ Partial Class frmSivSoliTransferencia
         Me.toolSolicitudesTransferencia.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregarSolicitud, Me.cmdAnularSolicitud, Me.cmdConsultarSolicitud, Me.cmdImprimir, Me.ToolSeparador1, Me.tsbRefrescar, Me.tsbSalir})
         Me.toolSolicitudesTransferencia.Location = New System.Drawing.Point(0, 0)
         Me.toolSolicitudesTransferencia.Name = "toolSolicitudesTransferencia"
-        Me.toolSolicitudesTransferencia.Size = New System.Drawing.Size(731, 39)
+        Me.toolSolicitudesTransferencia.Size = New System.Drawing.Size(975, 39)
         Me.toolSolicitudesTransferencia.TabIndex = 2
         '
         'cmdAgregarSolicitud
@@ -119,34 +135,141 @@ Partial Class frmSivSoliTransferencia
         Me.tsbSalir.Size = New System.Drawing.Size(36, 36)
         Me.tsbSalir.Text = "Salir"
         '
-        'grdTransferencias
+        'grdTrasnferencias
         '
-        Me.grdTransferencias.Caption = "Solicitudes de transferencias"
-        Me.grdTransferencias.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdTransferencias.EmptyRows = True
-        Me.grdTransferencias.ExtendRightColumn = True
-        Me.grdTransferencias.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
-        Me.grdTransferencias.Images.Add(CType(resources.GetObject("grdTransferencias.Images"), System.Drawing.Image))
-        Me.grdTransferencias.Location = New System.Drawing.Point(0, 39)
-        Me.grdTransferencias.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
-        Me.grdTransferencias.Name = "grdTransferencias"
-        Me.grdTransferencias.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdTransferencias.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdTransferencias.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdTransferencias.PrintInfo.PageSettings = CType(resources.GetObject("grdTransferencias.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdTransferencias.Size = New System.Drawing.Size(731, 513)
-        Me.grdTransferencias.TabIndex = 3
-        Me.grdTransferencias.Tag = "AGRUPAR"
-        Me.grdTransferencias.Text = "Transferencias"
-        Me.grdTransferencias.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
-        Me.grdTransferencias.PropBag = resources.GetString("grdTransferencias.PropBag")
+        Me.grdTrasnferencias.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdTrasnferencias.Location = New System.Drawing.Point(0, 39)
+        Me.grdTrasnferencias.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdTrasnferencias.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdTrasnferencias.MainView = Me.grdTransferenciasTabla
+        Me.grdTrasnferencias.Name = "grdTrasnferencias"
+        Me.grdTrasnferencias.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemDateEdit1})
+        Me.grdTrasnferencias.Size = New System.Drawing.Size(975, 513)
+        Me.grdTrasnferencias.TabIndex = 8
+        Me.grdTrasnferencias.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdTransferenciasTabla})
+        '
+        'grdTransferenciasTabla
+        '
+        Me.grdTransferenciasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colSivTransferenciaID, Me.colSitioOrigen, Me.colSitioDestino, Me.colSolicitadoPor, Me.colFecha, Me.colObjEstadoID, Me.colEstado, Me.colSivProveedorID, Me.colObjTiendaDestinoID})
+        Me.grdTransferenciasTabla.GridControl = Me.grdTrasnferencias
+        Me.grdTransferenciasTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
+        Me.grdTransferenciasTabla.Name = "grdTransferenciasTabla"
+        Me.grdTransferenciasTabla.OptionsView.ShowAutoFilterRow = True
+        Me.grdTransferenciasTabla.Tag = ""
+        '
+        'colSivTransferenciaID
+        '
+        Me.colSivTransferenciaID.Caption = "Número Transferencia"
+        Me.colSivTransferenciaID.FieldName = "SivTransferenciaID"
+        Me.colSivTransferenciaID.Name = "colSivTransferenciaID"
+        Me.colSivTransferenciaID.OptionsColumn.AllowEdit = False
+        Me.colSivTransferenciaID.OptionsColumn.ReadOnly = True
+        Me.colSivTransferenciaID.Visible = True
+        Me.colSivTransferenciaID.VisibleIndex = 0
+        Me.colSivTransferenciaID.Width = 109
+        '
+        'colSitioOrigen
+        '
+        Me.colSitioOrigen.Caption = "Bodega Origen"
+        Me.colSitioOrigen.FieldName = "SitioOrigen"
+        Me.colSitioOrigen.Name = "colSitioOrigen"
+        Me.colSitioOrigen.OptionsColumn.AllowEdit = False
+        Me.colSitioOrigen.OptionsColumn.ReadOnly = True
+        Me.colSitioOrigen.Visible = True
+        Me.colSitioOrigen.VisibleIndex = 1
+        Me.colSitioOrigen.Width = 182
+        '
+        'colSitioDestino
+        '
+        Me.colSitioDestino.Caption = "Bodega Destino"
+        Me.colSitioDestino.FieldName = "SitioDestino"
+        Me.colSitioDestino.Name = "colSitioDestino"
+        Me.colSitioDestino.OptionsColumn.AllowEdit = False
+        Me.colSitioDestino.OptionsColumn.ReadOnly = True
+        Me.colSitioDestino.Visible = True
+        Me.colSitioDestino.VisibleIndex = 2
+        Me.colSitioDestino.Width = 157
+        '
+        'colSolicitadoPor
+        '
+        Me.colSolicitadoPor.Caption = "Solicitado por"
+        Me.colSolicitadoPor.FieldName = "SolicitadoPor"
+        Me.colSolicitadoPor.Name = "colSolicitadoPor"
+        Me.colSolicitadoPor.OptionsColumn.AllowEdit = False
+        Me.colSolicitadoPor.OptionsColumn.ReadOnly = True
+        Me.colSolicitadoPor.Visible = True
+        Me.colSolicitadoPor.VisibleIndex = 3
+        Me.colSolicitadoPor.Width = 208
+        '
+        'colFecha
+        '
+        Me.colFecha.Caption = "Fecha"
+        Me.colFecha.ColumnEdit = Me.RepositoryItemDateEdit1
+        Me.colFecha.FieldName = "Fecha"
+        Me.colFecha.Name = "colFecha"
+        Me.colFecha.OptionsColumn.AllowEdit = False
+        Me.colFecha.OptionsColumn.ReadOnly = True
+        Me.colFecha.Visible = True
+        Me.colFecha.VisibleIndex = 4
+        Me.colFecha.Width = 141
+        '
+        'RepositoryItemDateEdit1
+        '
+        Me.RepositoryItemDateEdit1.AutoHeight = False
+        Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
+        '
+        'colObjEstadoID
+        '
+        Me.colObjEstadoID.Caption = "ObjEstadoID"
+        Me.colObjEstadoID.FieldName = "ObjEstadoID"
+        Me.colObjEstadoID.Name = "colObjEstadoID"
+        Me.colObjEstadoID.OptionsColumn.AllowEdit = False
+        Me.colObjEstadoID.OptionsColumn.ReadOnly = True
+        Me.colObjEstadoID.Width = 51
+        '
+        'colEstado
+        '
+        Me.colEstado.Caption = "Estado"
+        Me.colEstado.FieldName = "Estado"
+        Me.colEstado.Name = "colEstado"
+        Me.colEstado.OptionsColumn.AllowEdit = False
+        Me.colEstado.OptionsColumn.ReadOnly = True
+        Me.colEstado.Visible = True
+        Me.colEstado.VisibleIndex = 5
+        Me.colEstado.Width = 155
+        '
+        'colSivProveedorID
+        '
+        Me.colSivProveedorID.Caption = "SivProveedorID"
+        Me.colSivProveedorID.FieldName = "SivProveedorID"
+        Me.colSivProveedorID.Name = "colSivProveedorID"
+        Me.colSivProveedorID.OptionsColumn.AllowEdit = False
+        Me.colSivProveedorID.OptionsColumn.ReadOnly = True
+        Me.colSivProveedorID.Width = 51
+        '
+        'colObjTiendaDestinoID
+        '
+        Me.colObjTiendaDestinoID.Caption = "ObjTiendaDestinoID"
+        Me.colObjTiendaDestinoID.FieldName = "ObjBodegaDestinoID"
+        Me.colObjTiendaDestinoID.Name = "colObjTiendaDestinoID"
+        Me.colObjTiendaDestinoID.OptionsColumn.AllowEdit = False
+        Me.colObjTiendaDestinoID.OptionsColumn.ReadOnly = True
+        Me.colObjTiendaDestinoID.Width = 80
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSivSoliTransferencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(731, 552)
-        Me.Controls.Add(Me.grdTransferencias)
+        Me.ClientSize = New System.Drawing.Size(975, 552)
+        Me.Controls.Add(Me.grdTrasnferencias)
         Me.Controls.Add(Me.toolSolicitudesTransferencia)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSivSoliTransferencia"
@@ -155,7 +278,11 @@ Partial Class frmSivSoliTransferencia
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.toolSolicitudesTransferencia.ResumeLayout(False)
         Me.toolSolicitudesTransferencia.PerformLayout()
-        CType(Me.grdTransferencias, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdTrasnferencias, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdTransferenciasTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -166,9 +293,21 @@ Partial Class frmSivSoliTransferencia
     Friend WithEvents tsbRefrescar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolSeparador1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
-    Friend WithEvents grdTransferencias As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents cmdAnularSolicitud As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents cmdImprimirSeleccion As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cmdImprimirFiltro As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents grdTrasnferencias As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdTransferenciasTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colSivTransferenciaID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSitioOrigen As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSitioDestino As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSolicitadoPor As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colFecha As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents colObjEstadoID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSivProveedorID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colObjTiendaDestinoID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemDateEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
 End Class

@@ -5,6 +5,10 @@ Imports Proyecto.Catalogos.Datos
 Imports Seguridad.Datos
 Imports SIFAC.BO
 Imports DevExpress.XtraReports.UI
+Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraGrid
+Imports DevExpress.XtraGrid.Views.Grid
 
 ''' <summary>
 ''' Formulario Principal de Solicitudes de transferencia
@@ -126,16 +130,21 @@ Public Class frmSivSoliTransferencia
             Me.DtTransferencias = SqlHelper.ExecuteQueryDT(sSQL)
             Me.DtTransferencias.PrimaryKey = New DataColumn() {Me.DtTransferencias.Columns("SivTransferenciaID")}
             Me.DtTransferencias.DefaultView.Sort = "SivTransferenciaID"
-            Me.grdTransferencias.SetDataBinding(Me.DtTransferencias, "", True)
-            Me.grdTransferencias.Splits(0).DisplayColumns("ObjEstadoID").Visible = False
-            Me.grdTransferencias.Splits(0).DisplayColumns("ObjBodegaDestinoID").Visible = False
-            Me.bloquearBotonesBarra(Me.DtTransferencias.Rows.Count = 0)
-            Me.grdTransferencias.Caption = "Solicitudes de transferencias (" + Me.grdTransferencias.RowCount.ToString + ")"
-            Me.grdTransferencias.Refresh()
+            Me.grdTrasnferencias.DataSource = DtTransferencias
 
-            If Me.grdTransferencias.RowCount <> 0 Then
-                If Not IsDBNull(Me.grdTransferencias.Columns("ObjEstadoID").Value) Then
-                    Me.cmdAnularSolicitud.Enabled = Me.blnAnular And Me.grdTransferencias.Columns("ObjEstadoID").Value = Me.IdEstadoSolicitada
+            'Me.grdTransferencias.SetDataBinding(Me.DtTransferencias, "", True)
+            'Me.grdTransferencias.Splits(0).DisplayColumns("ObjEstadoID").Visible = False
+            'Me.grdTransferencias.Splits(0).DisplayColumns("ObjBodegaDestinoID").Visible = False
+            Me.bloquearBotonesBarra(Me.DtTransferencias.Rows.Count = 0)
+            'Me.grdTransferencias.Caption = "Solicitudes de transferencias (" + Me.grdTransferencias.RowCount.ToString + ")"
+            'Me.grdTransferencias.Refresh()
+
+            Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()
+            Dim FilaActual As Integer = Me.grdTransferenciasTabla.GetDataSourceRowIndex(selectedRow(0))
+
+            If Me.grdTransferenciasTabla.RowCount <> 0 Then
+                If Not IsDBNull(Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID")) Then
+                    Me.cmdAnularSolicitud.Enabled = Me.blnAnular And Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID") = Me.IdEstadoSolicitada
                 Else
                     Me.cmdConsultarSolicitud.Enabled = False
                 End If
@@ -206,12 +215,39 @@ Public Class frmSivSoliTransferencia
                 Me.CargaDatos()
                 If (Me.DtTransferencias.Rows.Count <> 0) Then
                     iIndiceRegistro = Me.DtTransferencias.DefaultView.Find(objTransfEditar.IdSivTransferencia)
-                    Me.grdTransferencias.Row = iIndiceRegistro
-                    If MsgBox("¿Desea imprimir la solicitud de transferencia?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
-                        blnAnulada = Me.grdTransferencias.Columns("ObjEstadoID").Value = Me.IdEstadoAnulada
-                        Imprimir_Solicitud(objTransfEditar.IdSivTransferencia, blnAnulada)
+
+                    'Dim searchID As String = Me.DtTransferencias.DefaultView.Find(SivTransferenciaID).ToString
+                    Dim view As ColumnView = grdTrasnferencias.FocusedView
+                    Dim column As GridColumn = view.Columns("colSivTransferenciaID")
+
+                    If Not IsDBNull(column) Then
+                        Dim rhFound As Integer = view.LocateByDisplayText(view.FocusedRowHandle + 1, column, iIndiceRegistro)
+                        If rhFound <> GridControl.InvalidRowHandle Then
+                            view.FocusedRowHandle = rhFound
+                            view.FocusedColumn = column
+                        End If
+
+                        If MsgBox("¿Desea imprimir la solicitud de transferencia?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
+                            Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()
+                            Dim FilaActual As Integer = Me.grdTransferenciasTabla.GetDataSourceRowIndex(selectedRow(0))
+
+                            blnAnulada = Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID") = Me.IdEstadoAnulada
+                            Imprimir_Solicitud(objTransfEditar.IdSivTransferencia, blnAnulada)
+                        End If
+
+
+                        'If (Me.DtTransferencias.Rows.Count <> 0) Then
+                        '    iIndiceRegistro = Me.DtTransferencias.DefaultView.Find(SivTransferenciaID)
+                        '    Me.grdTransferencias.Row = iIndiceRegistro
+                        'End If
                     End If
-                End If                
+
+                    'Me.grdTransferencias.Row = iIndiceRegistro
+                    'If MsgBox("¿Desea imprimir la solicitud de transferencia?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema) = MsgBoxResult.Yes Then
+                    '    blnAnulada = Me.grdTransferencias.Columns("ObjEstadoID").Value = Me.IdEstadoAnulada
+                    '    Imprimir_Solicitud(objTransfEditar.IdSivTransferencia, blnAnulada)
+                    'End If
+                End If
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -293,9 +329,13 @@ Public Class frmSivSoliTransferencia
 #Region "Imprimir solicitudes transferencia"
     'Procedimiento que imprime varias solicitudes de acuerdo al filtro seleccionado por el usuario
     Public Sub Imprimir_solicitudesTransf()
-        Dim objParamReporte As New frmReportesTransferencias
-        objParamReporte.FormLlamado = Me.Name
-        objParamReporte.ShowDialog()
+        Try
+            Dim objParamReporte As New frmReportesTransferencias
+            objParamReporte.FormLlamado = Me.Name
+            objParamReporte.ShowDialog()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     'Procedimiento que imprime UNA sola solicitud después que se ha registrado en el sistema.
@@ -355,23 +395,31 @@ Public Class frmSivSoliTransferencia
 
 #Region "Bloquear botones barra"
     Private Sub bloquearBotonesBarra(ByVal bValor As Boolean)
-        Me.cmdAnularSolicitud.Enabled = (Not bValor) And blnAnular
-        Me.cmdConsultarSolicitud.Enabled = (Not bValor) And blnConsultar
-        Me.cmdImprimir.Enabled = (Not bValor) And blnImprimir
+        Try
+            Me.cmdAnularSolicitud.Enabled = (Not bValor) And blnAnular
+            Me.cmdConsultarSolicitud.Enabled = (Not bValor) And blnConsultar
+            Me.cmdImprimir.Enabled = (Not bValor) And blnImprimir
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 #End Region
 
 #Region "Eventos de controles"
     Private Sub frmSivSoliTransferencia_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Try
 
-        'SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("StbTiendaID", "dbo.StbTienda", "Codigo='C'")).DefaultView.Item(0)("StbTiendaID")
-        Me.IdSucursalCentral = ClsCatalogos.GetStbTiendaID("C") '-- C=Central
-        Me.IdSucursalSession = ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
-        Me.IdEstadoSolicitada = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "01")   '-- 01=SOLICITADA
-        Me.IdEstadoAnulada = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "04") '-- 04=Anulada
+            'SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("StbTiendaID", "dbo.StbTienda", "Codigo='C'")).DefaultView.Item(0)("StbTiendaID")
+            Me.IdSucursalCentral = ClsCatalogos.GetStbTiendaID("C") '-- C=Central
+            Me.IdSucursalSession = ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
+            Me.IdEstadoSolicitada = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "01")   '-- 01=SOLICITADA
+            Me.IdEstadoAnulada = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "04") '-- 04=Anulada
 
-        Me.AplicarSeguridad()
-        Me.CargaDatos()
+            Me.AplicarSeguridad()
+            Me.CargaDatos()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdAgregarSolicitud_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAgregarSolicitud.Click
@@ -380,68 +428,171 @@ Public Class frmSivSoliTransferencia
 
     Private Sub cmdAnularSolicitud_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAnularSolicitud.Click
         Dim iIndiceRegistro, SivTransferenciaID, objTiendaDestinoID As Integer
-        If Me.grdTransferencias.Columns("SivTransferenciaID").Value.ToString.Trim.Length <> 0 And Me.grdTransferencias.Columns("ObjBodegaDestinoID").Value.ToString.Trim.Length <> 0 Then
-            SivTransferenciaID = Me.grdTransferencias.Columns("SivTransferenciaID").Value
+        Dim FilaActual As Integer
+        Try
+            Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()
+            FilaActual = Me.grdTransferenciasTabla.GetDataSourceRowIndex(selectedRow(0))
 
-            objTiendaDestinoID = Me.grdTransferencias.Columns("ObjBodegaDestinoID").Value
-            Dim Trans As New SivTransferencia
-            Trans.Retrieve(SivTransferenciaID)
-            If Trans.ObjEstadoID = Me.IdEstadoAnulada Then
-                MsgBox("La trasferencia seleccionada ya ha sido anulada, favor refrescar datos.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
-            Else
-                If Me.Anular_SolicitudTransf(SivTransferenciaID, Me.grdTransferencias.Columns("ObjBodegaDestinoID").Value) Then
-                    Me.CargaDatos()
-                    If (Me.DtTransferencias.Rows.Count <> 0) Then
+            If Me.DtTransferencias.DefaultView.Item(FilaActual)("SivTransferenciaID").ToString.Trim.Length <> 0 And Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjBodegaDestinoID").ToString.Trim.Length <> 0 Then
+                SivTransferenciaID = Me.DtTransferencias.DefaultView.Item(FilaActual)("SivTransferenciaID")
+
+                objTiendaDestinoID = Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjBodegaDestinoID")
+                Dim Trans As New SivTransferencia
+                Trans.Retrieve(SivTransferenciaID)
+                If Trans.ObjEstadoID = Me.IdEstadoAnulada Then
+                    MsgBox("La trasferencia seleccionada ya ha sido anulada, favor refrescar datos.", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Else
+                    If Me.Anular_SolicitudTransf(SivTransferenciaID, Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjBodegaDestinoID")) Then
+                        Me.CargaDatos()
+
                         iIndiceRegistro = Me.DtTransferencias.DefaultView.Find(SivTransferenciaID)
-                        Me.grdTransferencias.Row = iIndiceRegistro
+                        Dim view As ColumnView = grdTrasnferencias.FocusedView
+                        Dim column As GridColumn = view.Columns("ObjBodegaDestinoID")
+
+                        If Not IsDBNull(column) Then
+                            Dim rhFound As Integer = view.LocateByDisplayText(view.FocusedRowHandle + 1, column, iIndiceRegistro)
+                            If rhFound <> GridControl.InvalidRowHandle Then
+                                view.FocusedRowHandle = rhFound
+                                view.FocusedColumn = column
+                            End If
+
+                            'If (Me.DtTransferencias.Rows.Count <> 0) Then
+                            '    iIndiceRegistro = Me.DtTransferencias.DefaultView.Find(SivTransferenciaID)
+                            '    Me.grdTransferencias.Row = iIndiceRegistro
+                            'End If
+                        End If
                     End If
                 End If
+
             End If
-        End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdConsultarSolicitud_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultarSolicitud.Click
-        If Me.grdTransferencias.RowCount > 0 Then
-            Me.IdSivTransferencia = Me.grdTransferencias.Columns("SivTransferenciaID").Value
-            Me.Consultar_SolicitudTransf()
-        End If
+        Dim FilaActual As Integer
+        Try
+            Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()
+            FilaActual = Me.grdTransferenciasTabla.GetDataSourceRowIndex(selectedRow(0))
+
+            If Me.grdTransferenciasTabla.RowCount > 0 Then
+                Me.IdSivTransferencia = Me.DtTransferencias.DefaultView.Item(FilaActual)("SivTransferenciaID")
+                Me.Consultar_SolicitudTransf()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub tsbRefrescar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbRefrescar.Click
-        Me.CargaDatos()
+        Try
+            Me.CargaDatos()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub tsbSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbSalir.Click
         Me.Close()
     End Sub
 
-    Private Sub grdTransferencias_FilterChange(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles grdTransferencias.FilterChange
-        Me.grdTransferencias.Caption = "Solicitudes transferencia (" & Me.grdTransferencias.RowCount & ")"
-        If grdTransferencias.RowCount = 0 Then
-            Me.cmdAnularSolicitud.Enabled = False
-            Me.cmdConsultarSolicitud.Enabled = False
-        Else
-            Me.cmdAnularSolicitud.Enabled = Me.blnAnular
-            Me.cmdConsultarSolicitud.Enabled = Me.blnConsultar
-        End If
+    Private Sub grdTransferencias_FilterChange(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Try
+            Me.grdTrasnferencias.Text = "Solicitudes transferencia (" & Me.grdTransferenciasTabla.RowCount & ")"
+            If grdTransferenciasTabla.RowCount = 0 Then
+                Me.cmdAnularSolicitud.Enabled = False
+                Me.cmdConsultarSolicitud.Enabled = False
+            Else
+                Me.cmdAnularSolicitud.Enabled = Me.blnAnular
+                Me.cmdConsultarSolicitud.Enabled = Me.blnConsultar
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
-    Private Sub grdTransferencias_RowColChange(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.RowColChangeEventArgs) Handles grdTransferencias.RowColChange
-        If Me.grdTransferencias.Columns("ObjEstadoID").Value.ToString.Trim.Length <> 0 Then
-            Me.cmdAnularSolicitud.Enabled = Me.blnAnular And Integer.Parse(Me.grdTransferencias.Columns("ObjEstadoID").Value) = Me.IdEstadoSolicitada
-        End If
+    Private Sub grdTransferencias_RowColChange(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.RowColChangeEventArgs)
+        Dim FilaActual As Integer
+        Try
+            Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()
+            FilaActual = Me.grdTransferenciasTabla.GetDataSourceRowIndex(selectedRow(0))
+
+            If Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID").ToString.Trim.Length <> 0 Then
+                Me.cmdAnularSolicitud.Enabled = Me.blnAnular And Integer.Parse(Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID")) = Me.IdEstadoSolicitada
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdImprimirSeleccion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImprimirSeleccion.Click
-        Dim blnAnulada As Boolean
-        blnAnulada = Me.grdTransferencias.Columns("ObjEstadoID").Value = Me.IdEstadoAnulada
-        Imprimir_Solicitud(Me.grdTransferencias.Columns("SivTransferenciaID").Value, blnAnulada)
+        Dim FilaActual As Integer
+        Try
+            Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()
+            FilaActual = Me.grdTransferenciasTabla.GetDataSourceRowIndex(selectedRow(0))
+
+            Dim blnAnulada As Boolean
+            blnAnulada = Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID") = Me.IdEstadoAnulada
+            Imprimir_Solicitud(Me.DtTransferencias.DefaultView.Item(FilaActual)("SivTransferenciaID"), blnAnulada)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdImprimirFiltro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImprimirFiltro.Click
-        Me.Imprimir_solicitudesTransf()
+        Try
+            Me.Imprimir_solicitudesTransf()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
-#End Region
 
+
+    Private Sub grdTransferenciasTabla_RowStyle(sender As Object, e As Views.Grid.RowStyleEventArgs) Handles grdTransferenciasTabla.RowStyle
+        Dim estado As String = ""
+        Dim vista As GridView = sender
+
+        Try
+
+            estado = vista.GetRowCellValue(e.RowHandle, vista.Columns("Estado")).ToString().Trim()
+        Catch ex As Exception
+
+        End Try
+
+        Select Case estado
+            Case "Solicitada"
+                e.Appearance.BackColor = Color.LightSteelBlue
+                e.Appearance.BackColor2 = Color.White
+
+            Case "Despachada"
+                e.Appearance.BackColor = Color.LimeGreen
+                e.Appearance.BackColor2 = Color.White
+
+            Case "Recibida"
+                e.Appearance.BackColor = Color.Beige
+                e.Appearance.BackColor2 = Color.White
+
+            Case "Anulada"
+                e.Appearance.BackColor = Color.Red
+                e.Appearance.BackColor2 = Color.White
+
+        End Select
+    End Sub
+
+    Private Sub grdTransferenciasTabla_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles grdTransferenciasTabla.FocusedRowChanged
+        Dim FilaActual As Integer
+        Try
+            Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()
+            FilaActual = Me.grdTransferenciasTabla.GetDataSourceRowIndex(selectedRow(0))
+
+            If Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID").ToString.Trim.Length <> 0 Then
+                Me.cmdAnularSolicitud.Enabled = Me.blnAnular And Integer.Parse(Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID")) = Me.IdEstadoSolicitada
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
 End Class

@@ -367,7 +367,7 @@ Partial Class frmSivEntradaBodegaAnular
         'txtComentarios
         '
         Me.txtComentarios.AcceptsTab = True
-        Me.txtComentarios.Location = New System.Drawing.Point(17, 612)
+        Me.txtComentarios.Location = New System.Drawing.Point(17, 563)
         Me.txtComentarios.MaxLength = 250
         Me.txtComentarios.Multiline = True
         Me.txtComentarios.Name = "txtComentarios"
@@ -381,7 +381,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.lblObservaciones.AutoSize = True
         Me.lblObservaciones.BackColor = System.Drawing.Color.Transparent
         Me.lblObservaciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblObservaciones.Location = New System.Drawing.Point(17, 594)
+        Me.lblObservaciones.Location = New System.Drawing.Point(17, 545)
         Me.lblObservaciones.Name = "lblObservaciones"
         Me.lblObservaciones.Size = New System.Drawing.Size(95, 13)
         Me.lblObservaciones.TabIndex = 94
@@ -393,7 +393,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.lblCostoTotal.AutoSize = True
         Me.lblCostoTotal.BackColor = System.Drawing.Color.Transparent
         Me.lblCostoTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCostoTotal.Location = New System.Drawing.Point(617, 572)
+        Me.lblCostoTotal.Location = New System.Drawing.Point(617, 523)
         Me.lblCostoTotal.Name = "lblCostoTotal"
         Me.lblCostoTotal.Size = New System.Drawing.Size(96, 13)
         Me.lblCostoTotal.TabIndex = 96
@@ -405,7 +405,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.lblUsuario.AutoSize = True
         Me.lblUsuario.BackColor = System.Drawing.Color.Transparent
         Me.lblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(21, 666)
+        Me.lblUsuario.Location = New System.Drawing.Point(21, 617)
         Me.lblUsuario.Name = "lblUsuario"
         Me.lblUsuario.Size = New System.Drawing.Size(50, 13)
         Me.lblUsuario.TabIndex = 97
@@ -418,7 +418,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.gbxDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbxDetalle.Location = New System.Drawing.Point(12, 291)
         Me.gbxDetalle.Name = "gbxDetalle"
-        Me.gbxDetalle.Size = New System.Drawing.Size(818, 267)
+        Me.gbxDetalle.Size = New System.Drawing.Size(818, 217)
         Me.gbxDetalle.TabIndex = 101
         Me.gbxDetalle.TabStop = False
         Me.gbxDetalle.Text = "Otros Datos"
@@ -436,7 +436,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.grdDetalleEntradasBodegas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDetalleEntradasBodegas.PrintInfo.PageSettings = CType(resources.GetObject("grdDetalleEntradasBodegas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDetalleEntradasBodegas.RowHeight = 17
-        Me.grdDetalleEntradasBodegas.Size = New System.Drawing.Size(815, 238)
+        Me.grdDetalleEntradasBodegas.Size = New System.Drawing.Size(815, 180)
         Me.grdDetalleEntradasBodegas.TabIndex = 0
         Me.grdDetalleEntradasBodegas.Text = "C1TrueDBGrid1"
         Me.grdDetalleEntradasBodegas.PropBag = resources.GetString("grdDetalleEntradasBodegas.PropBag")
@@ -454,7 +454,7 @@ Partial Class frmSivEntradaBodegaAnular
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) _
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.NumCostoTotal.Enabled = False
-        Me.NumCostoTotal.Location = New System.Drawing.Point(723, 569)
+        Me.NumCostoTotal.Location = New System.Drawing.Point(723, 520)
         Me.NumCostoTotal.Name = "NumCostoTotal"
         Me.NumCostoTotal.Size = New System.Drawing.Size(107, 20)
         Me.NumCostoTotal.TabIndex = 102
@@ -528,7 +528,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(852, 717)
+        Me.PanelControl1.Size = New System.Drawing.Size(852, 658)
         Me.PanelControl1.TabIndex = 104
         '
         'cmdCancelar
@@ -536,7 +536,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(752, 670)
+        Me.cmdCancelar.Location = New System.Drawing.Point(752, 621)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -551,7 +551,7 @@ Partial Class frmSivEntradaBodegaAnular
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(661, 670)
+        Me.cmdGuardar.Location = New System.Drawing.Point(661, 621)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -564,7 +564,7 @@ Partial Class frmSivEntradaBodegaAnular
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(852, 717)
+        Me.ClientSize = New System.Drawing.Size(852, 658)
         Me.Controls.Add(Me.txtComentarios)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

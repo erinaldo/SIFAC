@@ -57,17 +57,13 @@ Public Class frmSivSalidaBodega
 
             dsSalidas.Relations.Add("SivSalida_SivSalidaDetalle", dsSalidas.Tables(0).Columns("Numero"), dsSalidas.Tables(1).Columns("Numero"))
 
-            Me.grdSalida.SetDataBinding(dsSalidas, "SivSalida", True)
-            dsSalidas.Tables("SivSalida").PrimaryKey = New DataColumn() {dsSalidas.Tables("SivSalida").Columns("Numero")}
-            dsSalidas.Tables("SivSalida").DefaultView.Sort = "Numero"
+            Me.grdSalidaMaster.DataSource = dsSalidas
+            Me.grdSalidaMaster.DataMember = "SivSalida"
 
-            Me.grdSalidaDetalle.SetDataBinding(dsSalidas, "SivSalida.SivSalida_SivSalidaDetalle", True)
-            Me.grdSalida.Caption = "Salidas (" & Me.grdSalida.RowCount & ")"
-            Me.grdSalida.Splits(0).DisplayColumns(6).Visible = False
-            Me.grdSalida.Splits(0).DisplayColumns("Numero").Visible = False
-            Me.grdSalida.ExtendRightColumn = True
-            Me.grdSalidaDetalle.ExtendRightColumn = True
-            Me.grdSalidaDetalle.Caption = "Repuestos (" & Me.grdSalidaDetalle.RowCount & ")"
+            Me.grdSalidaDetalle.DataSource = dsSalidas
+            Me.grdSalidaDetalle.DataMember = "SivSalida.SivSalida_SivSalidaDetalle"
+
+            Me.grdSalidaMaster.Text = "Productos (" & Me.grdSalidaDetalleTable.RowCount & ")"
 
             If Me.dtSalidas.Rows.Count = 0 Then
                 Me.cmdAgregar.Enabled = boolAgregar
@@ -123,9 +119,12 @@ Public Class frmSivSalidaBodega
     Private Sub Autorizar()
         Dim AgregarSalida As frmSivAgregarSalida
         Try
+            Dim selectedRow As Integer() = grdSalidaMasterTabla.GetSelectedRows()
+            Dim FilaActual As Integer = Me.grdSalidaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
             AgregarSalida = New frmSivAgregarSalida
             AgregarSalida.TypeGui = 1
-            AgregarSalida.SalidaID = Me.grdSalida.Columns("Numero").Value
+            AgregarSalida.SalidaID = Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("Numero")
             If AgregarSalida.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.CargarSalidas("1=1")
             End If
@@ -140,9 +139,12 @@ Public Class frmSivSalidaBodega
         Dim AgregarSalida As frmSivAgregarSalida
 
         Try
+            Dim selectedRow As Integer() = grdSalidaMasterTabla.GetSelectedRows()
+            Dim FilaActual As Integer = Me.grdSalidaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
             AgregarSalida = New frmSivAgregarSalida
             AgregarSalida.TypeGui = 2
-            AgregarSalida.SalidaID = Me.grdSalida.Columns("Numero").Value
+            AgregarSalida.SalidaID = Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("Numero")
             If AgregarSalida.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.CargarSalidas("1=1")
             End If
@@ -157,9 +159,12 @@ Public Class frmSivSalidaBodega
         Dim AgregarSalida As frmSivAgregarSalida
 
         Try
+            Dim selectedRow As Integer() = grdSalidaMasterTabla.GetSelectedRows()
+            Dim FilaActual As Integer = Me.grdSalidaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
             AgregarSalida = New frmSivAgregarSalida
             AgregarSalida.TypeGui = 3
-            AgregarSalida.SalidaID = Me.grdSalida.Columns("Numero").Value
+            AgregarSalida.SalidaID = Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("Numero")
             If AgregarSalida.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.CargarSalidas("1=1")
             End If
@@ -212,8 +217,11 @@ Public Class frmSivSalidaBodega
         objImpresion = New frmOpcionesImpresion
         objReporte = New rptSalidaBodega
 
+        Dim selectedRow As Integer() = grdSalidaMasterTabla.GetSelectedRows()
+        Dim FilaActual As Integer = Me.grdSalidaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
         sCampos = "distinct dbo.fnRellenarCeros2(SivSalidaBodegaID,dbo.FnGetParametro('CantidadDigitosSalida')) as SivSalidaBodegaID, FechaSalida, TipoSalida, objEstadoID, objTipoSalidaID, Estado, Bodega, Codigo, Producto, Cantidad, costo, subtotal, Comentarios,Anulada,UsuarioCreacion,UsuarioModificacion"
-        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", "SivSalidaBodegaID = " & Me.grdSalida.Columns("Numero").Value)
+        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", "SivSalidaBodegaID = " & Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("Numero"))
         dtReporte = SqlHelper.ExecuteQueryDT(sSQL)
         objReporte.DataSource = dtReporte
 
@@ -259,7 +267,7 @@ Public Class frmSivSalidaBodega
         End Try
     End Sub
 
-    Private Sub grdSalida_RowColChange(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.RowColChangeEventArgs) Handles grdSalida.RowColChange
+    Private Sub grdSalida_RowColChange(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.RowColChangeEventArgs)
         '--Manejar estados
         Me.VerificarEstadoSalida()
         'If Me.dtSalidas.Rows.Count > 0 Then
@@ -313,9 +321,11 @@ Public Class frmSivSalidaBodega
         Dim sCampos, sSQL As String
         Try
             Dim objjReporte As New rptHojaSalida()
+            Dim selectedRow As Integer() = grdSalidaMasterTabla.GetSelectedRows()
+            Dim FilaActual As Integer = Me.grdSalidaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
 
             sCampos = "distinct dbo.fnRellenarCeros2(SivSalidaBodegaID,dbo.FnGetParametro('CantidadDigitosSalida')) as SivSalidaBodegaID, FechaSalida, TipoSalida, objEstadoID, objTipoSalidaID, Estado, Bodega, Codigo, Producto, Cantidad, costo, subtotal, Comentarios,Anulada,Empresa,DireccionEmpresa,UsuarioCreacion,UsuarioModificacion"
-            sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", "SivSalidaBodegaID = " & Me.grdSalida.Columns("Numero").Value)
+            sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSalidaBodega", "SivSalidaBodegaID = " & Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("Numero"))
             dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
 
             If dsReporte.Tables(0).Rows.Count = 0 Then
@@ -368,10 +378,13 @@ Public Class frmSivSalidaBodega
 #Region "Verificar estado Salida"
     Private Sub VerificarEstadoSalida()
         Try
+
             If Me.dtSalidas.Rows.Count > 0 Then
-                If Not IsDBNull(Me.grdSalida.Columns("Numero").Value) AndAlso grdSalida.Columns("objEstadoID").Value.ToString.Trim.Length <> 0 Then
-                    Me.cmdCancelar.Enabled = Me.boolAnular And (Me.grdSalida.Columns("objEstadoID").Value = glb_EstadoRegistradaID Or Me.grdSalida.Columns("objEstadoID").Value = glb_EstadoAutorizadaID)
-                    Me.cmdAutorizar.Enabled = Me.boolAutorizar And (Me.grdSalida.Columns("objEstadoID").Value = glb_EstadoRegistradaID)
+                Dim selectedRow As Integer() = grdSalidaMasterTabla.GetSelectedRows()
+                Dim FilaActual As Integer = Me.grdSalidaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+                If Not IsDBNull(Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("Numero")) AndAlso Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("objEstadoID").ToString.Trim.Length <> 0 Then
+                    Me.cmdCancelar.Enabled = Me.boolAnular And (Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("objEstadoID") = glb_EstadoRegistradaID Or Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("objEstadoID") = glb_EstadoAutorizadaID)
+                    Me.cmdAutorizar.Enabled = Me.boolAutorizar And (Me.dsSalidas.Tables("SivSalida").DefaultView.Item(FilaActual)("objEstadoID") = glb_EstadoRegistradaID)
                 End If
             End If
         Catch ex As Exception
@@ -394,6 +407,11 @@ Public Class frmSivSalidaBodega
 
 #End Region
 
+    Private Sub grdSalidaMasterTabla_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles grdSalidaMasterTabla.FocusedRowChanged
+        Me.VerificarEstadoSalida()
+    End Sub
+
 #End Region
 
+   
 End Class

@@ -922,6 +922,12 @@
     <Compile Include="Reportes SIFAC\rptHojaSalida.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaSolicitudTransferencia.Designer.vb">
+      <DependentUpon>rptHojaSolicitudTransferencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaSolicitudTransferencia.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\rptInventarioReporte.Designer.vb">
       <DependentUpon>rptInventarioReporte.vb</DependentUpon>
     </Compile>
@@ -956,6 +962,12 @@
       <DependentUpon>rptListadoSivSalidas.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes SIFAC\rptListadoSivSalidas.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptListSolTransf.Designer.vb">
+      <DependentUpon>rptListSolTransf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptListSolTransf.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptMarcas.Designer.vb">
@@ -1538,6 +1550,9 @@
     <EmbeddedResource Include="Reportes SIFAC\rptHojaSalida.resx">
       <DependentUpon>rptHojaSalida.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptHojaSolicitudTransferencia.resx">
+      <DependentUpon>rptHojaSolicitudTransferencia.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporte.resx">
       <SubType>Designer</SubType>
       <DependentUpon>rptInventarioReporte.vb</DependentUpon>
@@ -1560,6 +1575,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptListadoSivSalidas.resx">
       <DependentUpon>rptListadoSivSalidas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptListSolTransf.resx">
+      <DependentUpon>rptListSolTransf.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptMarcas.resx">
       <DependentUpon>rptMarcas.vb</DependentUpon>

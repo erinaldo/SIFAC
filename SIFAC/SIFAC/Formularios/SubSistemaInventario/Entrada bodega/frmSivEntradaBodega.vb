@@ -4,8 +4,12 @@ Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
 Imports SIFAC.BO.clsConsultas
 Imports SIFAC.BO
-Imports proyecto.Catalogos.Datos
+Imports Proyecto.Catalogos.Datos
 Imports Microsoft.Reporting.WinForms
+Imports DevExpress.XtraGrid.Views.Grid
+Imports DevExpress.XtraGrid
+Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraGrid.Columns
 
 Public Class frmSivEntradaBodega
 
@@ -18,6 +22,7 @@ Public Class frmSivEntradaBodega
 #Region "Inicializar Pantalla"
 
 #Region "Seguridad"
+    Dim grdEntradaBodega As Object
 
     ''' <summary>
     ''' Autor : Enrique Escobar Maradiaag.
@@ -54,8 +59,9 @@ Public Class frmSivEntradaBodega
         Dim DiasEntradasRecientes As Integer
         Try
             DiasEntradasRecientes = StbParametro.RetrieveDT("Nombre = 'DiasEntradas'", , "Valor").DefaultView.Item(0)("Valor")
+
             dtEntradaBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("NumeroEntrada, convert(varchar,Fecha,103) Fecha, TipoEntrada,objTipoEntradaID, NumeroFactura, FechaFactura, CostoTotal, Anulada", "vwSivEntradaBodega", Filtro & " AND Fecha BETWEEN GETDATE()-" & DiasEntradasRecientes + 1 & " AND GETDATE()" & " ORDER BY NumeroEntrada DESC"))
-            dtEntradaBodegaDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objEntradaBodegaID, SivProductoID, Producto, Cantidad, Costo, Total", "vwSivEntradaBodegaDetalle", Filtro & " AND Fecha BETWEEN GETDATE()-366 AND GETDATE() ORDER BY objEntradaBodegaID DESC"))
+            dtEntradaBodegaDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objEntradaBodegaID,CodigoProducto, SivProductoID, Producto, CantidaEntrada, Costo, Total", "vwSivEntradaBodegaDetalle", Filtro & " AND Fecha BETWEEN GETDATE()-366 AND GETDATE() ORDER BY objEntradaBodegaID DESC"))
             dsEntradaBodega = New DataSet
             dsEntradaBodega.Merge(dtEntradaBodega)
             dsEntradaBodega.Tables(0).TableName = "SivEntradabodega"
@@ -63,11 +69,21 @@ Public Class frmSivEntradaBodega
             dsEntradaBodega.Tables(1).TableName = "SivEntradaBodegaDetalle"
 
             dsEntradaBodega.Relations.Add("SivEntradabodega_SivEntradabodegaDetalle", dsEntradaBodega.Tables(0).Columns("NumeroEntrada"), dsEntradaBodega.Tables(1).Columns("objEntradaBodegaID"))
-            Me.grdEntradaBodega.SetDataBinding(dsEntradaBodega, "SivEntradabodega", True)
-            dsEntradaBodega.Tables("SivEntradabodega").PrimaryKey = New DataColumn() {dsEntradaBodega.Tables("SivEntradabodega").Columns("NumeroEntrada")}
-            dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Sort = "NumeroEntrada"
-            Me.grdDetalleEntradaBodega.SetDataBinding(dsEntradaBodega, "SivEntradabodega.SivEntradabodega_SivEntradabodegaDetalle", True)
-            Me.grdEntradaBodega.Caption = "Entradas Bodegas(" & Me.grdEntradaBodega.RowCount & ")"
+
+            Me.grdEntradaMaster.DataSource = dsEntradaBodega
+            Me.grdEntradaMaster.DataMember = "SivEntradabodega"
+
+            Me.grdEntradaDetalle.DataSource = dsEntradaBodega
+            Me.grdEntradaDetalle.DataMember = "SivEntradabodega.SivEntradabodega_SivEntradabodegaDetalle"
+
+            Me.grdEntradaMaster.Text = "Entradas Bodegas (" & Me.grdEntradaMasterTabla.RowCount & ")"
+
+
+            'Me.grdEntradaBodega.SetDataBinding(dsEntradaBodega, "SivEntradabodega", True)
+            'dsEntradaBodega.Tables("SivEntradabodega").PrimaryKey = New DataColumn() {dsEntradaBodega.Tables("SivEntradabodega").Columns("NumeroEntrada")}
+            'dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Sort = "NumeroEntrada"
+            'Me.grdDetalleEntradaBodega.SetDataBinding(dsEntradaBodega, "SivEntradabodega.SivEntradabodega_SivEntradabodegaDetalle", True)
+            'Me.grdEntradaBodega.Caption = "Entradas Bodegas(" & Me.grdEntradaBodega.RowCount & ")"
             Me.bloquearBotonesBarra(Me.dtEntradaBodega.Rows.Count = 0)
 
         Catch ex As Exception
@@ -104,19 +120,32 @@ Public Class frmSivEntradaBodega
 #Region "Anular"
 
     Private Sub Anular()
-        If Me.grdEntradaBodega.RowCount = 0 Then
+        If Me.grdEntradaMasterTabla.RowCount = 0 Then
             Exit Sub
         End If
         Dim objfrmSivEntradaBodegaAnular As frmSivEntradaBodegaAnular
         Try
             Try
+                Dim selectedRow As Integer() = grdEntradaMasterTabla.GetSelectedRows()
+                Dim FilaActual As Integer = Me.grdEntradaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
                 objfrmSivEntradaBodegaAnular = New frmSivEntradaBodegaAnular
                 objfrmSivEntradaBodegaAnular.TypeGui = 1
-                objfrmSivEntradaBodegaAnular.SivEntradaBodegaID = Me.grdEntradaBodega.Columns("NumeroEntrada").Value
-                If objfrmSivEntradaBodegaAnular.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                objfrmSivEntradaBodegaAnular.SivEntradaBodegaID = Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Item(FilaActual)("NumeroEntrada")
                     CargarEntradas("1=1")
-                    Me.grdEntradaBodega.Row = Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Find(frmSivEntradaBodegaAnular.SivEntradaBodegaID)
-                End If
+
+                    Dim view As ColumnView = grdEntradaMaster.FocusedView
+                    Dim column As GridColumn = view.Columns("NumeroEntrada")
+
+                    If Not IsDBNull(column) Then
+                        Dim rhFound As Integer = view.LocateByDisplayText(view.FocusedRowHandle + 1, column, frmSivEntradaBodegaAnular.SivEntradaBodegaID)
+                        If rhFound <> GridControl.InvalidRowHandle Then
+                            view.FocusedRowHandle = rhFound
+                            view.FocusedColumn = column
+                        End If
+                    End If
+                    'Me.grdEntradaBodega.Row = Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Find(frmSivEntradaBodegaAnular.SivEntradaBodegaID)
+
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
@@ -129,15 +158,18 @@ Public Class frmSivEntradaBodega
 
 #Region "Consultar"
     Private Sub Consultar()
-        If Me.grdEntradaBodega.RowCount = 0 Then
+        If Me.grdEntradaMasterTabla.RowCount = 0 Then
             Exit Sub
         End If
         Dim objfrmSivEntradaBodegaAnular As frmSivEntradaBodegaAnular
         Try
             Try
+                Dim selectedRow As Integer() = grdEntradaMasterTabla.GetSelectedRows()
+                Dim FilaActual As Integer = Me.grdEntradaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
                 objfrmSivEntradaBodegaAnular = New frmSivEntradaBodegaAnular
                 objfrmSivEntradaBodegaAnular.TypeGui = 2
-                objfrmSivEntradaBodegaAnular.SivEntradaBodegaID = Me.grdEntradaBodega.Columns("NumeroEntrada").Value
+                objfrmSivEntradaBodegaAnular.SivEntradaBodegaID = Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Item(FilaActual)("NumeroEntrada")
                 objfrmSivEntradaBodegaAnular.ShowDialog(Me)
             Catch ex As Exception
                 clsError.CaptarError(ex)
@@ -191,15 +223,16 @@ Public Class frmSivEntradaBodega
 
 #Region "Imprimir"
     Private Sub Imprimir()
-        If Me.grdEntradaBodega.RowCount = 0 Then
+        If Me.grdEntradaMasterTabla.RowCount = 0 Then
             Exit Sub
         End If
         Dim strFiltro, strSQL, strCampos As String
         Dim dtDatos As DataTable
         Dim Visor As New frmVisorRS
         Try
-
-            strFiltro = "NumeroEntrada=" & Me.grdEntradaBodega.Columns("NumeroEntrada").Value.ToString
+            Dim selectedRow As Integer() = grdEntradaMasterTabla.GetSelectedRows()
+            Dim FilaActual As Integer = Me.grdEntradaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+            strFiltro = "NumeroEntrada=" & Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Item(FilaActual)("NumeroEntrada").ToString
 
             strCampos = "NumeroRelleno, NumeroEntrada, objStbBodegaID, Bodega, NumeroFactura, objTipoEntradaID, TipoEntrada, FechaEntrada, FechaFactura, Anulada, CodigoRepuesto, Descripcion, CantidadEntrante, CostoUnitario, SubTotal, Comentarios"
             strSQL = clsConsultas.ObtenerConsultaGeneral(strCampos, "dbo.vwrptSivEntradaBodega", strFiltro + " ORDER BY NumeroEntrada")
@@ -246,7 +279,7 @@ Public Class frmSivEntradaBodega
         End Try
     End Sub
 
-    Private Sub grdCuentas_FilterChange(ByVal sender As Object, ByVal e As System.EventArgs) Handles grdEntradaBodega.FilterChange
+    Private Sub grdCuentas_FilterChange(ByVal sender As Object, ByVal e As System.EventArgs)
         Me.grdEntradaBodega.Caption = "Entradas Bodega(" & Me.grdEntradaBodega.RowCount.ToString & ")"
         If grdEntradaBodega.RowCount = 0 Then
             Me.cmdAnular.Enabled = False
@@ -260,7 +293,7 @@ Public Class frmSivEntradaBodega
         End If
     End Sub
 
-    Private Sub grdEntradaBodega_RowColChange(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.RowColChangeEventArgs) Handles grdEntradaBodega.RowColChange
+    Private Sub grdEntradaBodega_RowColChange(ByVal sender As System.Object, ByVal e As C1.Win.C1TrueDBGrid.RowColChangeEventArgs)
         If Me.dtEntradaBodega.Rows.Count > 0 Then
             If grdEntradaBodega.Columns("Anulada").Value.ToString = "True" Then
                 Me.cmdAnular.Enabled = False

@@ -87,7 +87,7 @@ Partial Class frmSivSoliTransferenciaEdit
         Me.gbxDatosGenerales.Controls.Add(Me.txtNoTransferencia)
         Me.gbxDatosGenerales.Controls.Add(Me.lblNoTransferencia)
         Me.gbxDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbxDatosGenerales.Location = New System.Drawing.Point(4, 21)
+        Me.gbxDatosGenerales.Location = New System.Drawing.Point(4, 11)
         Me.gbxDatosGenerales.Name = "gbxDatosGenerales"
         Me.gbxDatosGenerales.Size = New System.Drawing.Size(818, 186)
         Me.gbxDatosGenerales.TabIndex = 73
@@ -208,20 +208,20 @@ Partial Class frmSivSoliTransferenciaEdit
         Me.lblSitioDestino.BackColor = System.Drawing.Color.Transparent
         Me.lblSitioDestino.Location = New System.Drawing.Point(15, 85)
         Me.lblSitioDestino.Name = "lblSitioDestino"
-        Me.lblSitioDestino.Size = New System.Drawing.Size(83, 18)
+        Me.lblSitioDestino.Size = New System.Drawing.Size(113, 18)
         Me.lblSitioDestino.TabIndex = 86
         Me.lblSitioDestino.Tag = ""
-        Me.lblSitioDestino.Text = "Sitio Destino:"
+        Me.lblSitioDestino.Text = "Bodega Destino:"
         '
         'lblSitioOrigen
         '
         Me.lblSitioOrigen.BackColor = System.Drawing.Color.Transparent
         Me.lblSitioOrigen.Location = New System.Drawing.Point(15, 53)
         Me.lblSitioOrigen.Name = "lblSitioOrigen"
-        Me.lblSitioOrigen.Size = New System.Drawing.Size(83, 18)
+        Me.lblSitioOrigen.Size = New System.Drawing.Size(113, 18)
         Me.lblSitioOrigen.TabIndex = 86
         Me.lblSitioOrigen.Tag = ""
-        Me.lblSitioOrigen.Text = "Sitio Origen:"
+        Me.lblSitioOrigen.Text = "Bodega Origen:"
         '
         'dtpFecha
         '
@@ -297,7 +297,7 @@ Partial Class frmSivSoliTransferenciaEdit
         Me.cmbDescripcionRepuesto.HeadingStyle = Style4
         Me.cmbDescripcionRepuesto.HighLightRowStyle = Style5
         Me.cmbDescripcionRepuesto.Images.Add(CType(resources.GetObject("cmbDescripcionRepuesto.Images"), System.Drawing.Image))
-        Me.cmbDescripcionRepuesto.Location = New System.Drawing.Point(131, 281)
+        Me.cmbDescripcionRepuesto.Location = New System.Drawing.Point(131, 259)
         Me.cmbDescripcionRepuesto.Name = "cmbDescripcionRepuesto"
         Me.cmbDescripcionRepuesto.OddRowStyle = Style6
         Me.cmbDescripcionRepuesto.RecordSelectorStyle = Style7
@@ -333,7 +333,7 @@ Partial Class frmSivSoliTransferenciaEdit
         Me.grdDetalleTransferencia.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdDetalleTransferencia.Images.Add(CType(resources.GetObject("grdDetalleTransferencia.Images"), System.Drawing.Image))
         Me.grdDetalleTransferencia.LinesPerRow = 2
-        Me.grdDetalleTransferencia.Location = New System.Drawing.Point(15, 252)
+        Me.grdDetalleTransferencia.Location = New System.Drawing.Point(15, 237)
         Me.grdDetalleTransferencia.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightCell
         Me.grdDetalleTransferencia.Name = "grdDetalleTransferencia"
         Me.grdDetalleTransferencia.PreviewInfo.Location = New System.Drawing.Point(0, 0)
@@ -348,7 +348,7 @@ Partial Class frmSivSoliTransferenciaEdit
         '
         Me.cmdBuscarRepuesto.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.cmdBuscarRepuesto.Image = CType(resources.GetObject("cmdBuscarRepuesto.Image"), System.Drawing.Image)
-        Me.cmdBuscarRepuesto.Location = New System.Drawing.Point(786, 223)
+        Me.cmdBuscarRepuesto.Location = New System.Drawing.Point(786, 206)
         Me.cmdBuscarRepuesto.Name = "cmdBuscarRepuesto"
         Me.cmdBuscarRepuesto.Size = New System.Drawing.Size(29, 25)
         Me.cmdBuscarRepuesto.TabIndex = 3
@@ -372,7 +372,7 @@ Partial Class frmSivSoliTransferenciaEdit
         Me.cmbDesplegableCodigo.HeadingStyle = Style12
         Me.cmbDesplegableCodigo.HighLightRowStyle = Style13
         Me.cmbDesplegableCodigo.Images.Add(CType(resources.GetObject("cmbDesplegableCodigo.Images"), System.Drawing.Image))
-        Me.cmbDesplegableCodigo.Location = New System.Drawing.Point(31, 292)
+        Me.cmbDesplegableCodigo.Location = New System.Drawing.Point(31, 270)
         Me.cmbDesplegableCodigo.Name = "cmbDesplegableCodigo"
         Me.cmbDesplegableCodigo.OddRowStyle = Style14
         Me.cmbDesplegableCodigo.RecordSelectorStyle = Style15
@@ -391,7 +391,7 @@ Partial Class frmSivSoliTransferenciaEdit
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 482)
+        Me.Panel1.Location = New System.Drawing.Point(0, 467)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(830, 21)
         Me.Panel1.TabIndex = 95
@@ -406,7 +406,7 @@ Partial Class frmSivSoliTransferenciaEdit
         Me.PanelControl2.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl2.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(830, 503)
+        Me.PanelControl2.Size = New System.Drawing.Size(830, 488)
         Me.PanelControl2.TabIndex = 96
         '
         'cmdCancelar
@@ -414,7 +414,7 @@ Partial Class frmSivSoliTransferenciaEdit
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(736, 445)
+        Me.cmdCancelar.Location = New System.Drawing.Point(736, 429)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -429,7 +429,7 @@ Partial Class frmSivSoliTransferenciaEdit
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(650, 445)
+        Me.cmdGuardar.Location = New System.Drawing.Point(650, 429)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -442,7 +442,7 @@ Partial Class frmSivSoliTransferenciaEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(830, 503)
+        Me.ClientSize = New System.Drawing.Size(830, 488)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.cmdBuscarRepuesto)
         Me.Controls.Add(Me.cmbDesplegableCodigo)
