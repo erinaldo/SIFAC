@@ -5,6 +5,7 @@ Imports Proyecto.Catalogos.Datos
 Imports Seguridad.Datos
 Imports SIFAC.BO
 Imports DevExpress.XtraGrid.Views.Grid
+Imports DevExpress.XtraReports.UI
 
 
 ''' <summary>
@@ -392,27 +393,57 @@ Public Class frmSivDespTransferencia
 
     'Procedimiento que imprime UN sólo despacho después que se ha registrado en el sistema.
     Private Sub Imprimir_Despacho(ByVal iIdTransferencia As Integer, ByVal EstadoAnulada As Boolean)
-        Dim objRptSoliTransf As New rptTransferenciaDespacho
-        Dim objImpresion As frmOpcionesImpresion
-        Dim sSQL, sCampos, sFiltro As String
+        'Dim objRptSoliTransf As New rptTransferenciaDespacho
+        'Dim objImpresion As frmOpcionesImpresion
+        'Dim sSQL, sCampos, sFiltro As String
 
-        objImpresion = New frmOpcionesImpresion
-        If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        'objImpresion = New frmOpcionesImpresion
+        'If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        '    sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
+        '    sCampos = "ClaveSitios, SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, CodigoTiendaDestino, CodigoTiendaOrigen, Fechadespacho, DespachadoPor, CantidadDespachada"
+        '    sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaDespacho", sFiltro)
+
+        '    objRptSoliTransf.EstadoAnulada = EstadoAnulada
+        '    objRptSoliTransf.DataSource = SqlHelper.ExecuteQueryDT(sSQL)
+        '    Select Case objImpresion.Seleccion
+        '        Case 1
+        '            clsProyecto.ImprimirEnPantalla(objRptSoliTransf)
+        '        Case 2
+        '            clsProyecto.ImprimirEnImpresora(objRptSoliTransf, True)
+        '        Case 3
+        '            clsProyecto.ImprimirEnArchivo(objRptSoliTransf, Me)
+        '    End Select
+        'End If
+
+
+        Dim dsReporte As DataSet
+        Dim sCampos, sSQL, sFiltro As String
+        Try
+            Dim objjReporte As New rptHojaDespachoTransferencia()
+            Dim selectedRow As Integer() = grdTransferenciasTablas.GetSelectedRows()
+            Dim FilaActual As Integer = Me.grdTransferenciasTablas.GetDataSourceRowIndex(selectedRow(0))
+
             sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
-            sCampos = "ClaveSitios, SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, CodigoTiendaDestino, CodigoTiendaOrigen, Fechadespacho, DespachadoPor, CantidadDespachada"
+            sCampos = "ClaveSitios, SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, EstadoTransferencia, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, CodigoTiendaDestino, CodigoTiendaOrigen, Fechadespacho, DespachadoPor, CantidadDespachada, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa"
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaDespacho", sFiltro)
+            dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
 
-            objRptSoliTransf.EstadoAnulada = EstadoAnulada
-            objRptSoliTransf.DataSource = SqlHelper.ExecuteQueryDT(sSQL)
-            Select Case objImpresion.Seleccion
-                Case 1
-                    clsProyecto.ImprimirEnPantalla(objRptSoliTransf)
-                Case 2
-                    clsProyecto.ImprimirEnImpresora(objRptSoliTransf, True)
-                Case 3
-                    clsProyecto.ImprimirEnArchivo(objRptSoliTransf, Me)
-            End Select
-        End If
+            If dsReporte.Tables(0).Rows.Count = 0 Then
+                MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Exit Sub
+            End If
+
+            objjReporte.DataSource = dsReporte
+            objjReporte.DataMember = dsReporte.Tables(0).TableName
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
+
+
+
     End Sub
 #End Region
 
