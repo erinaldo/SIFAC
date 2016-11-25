@@ -22,7 +22,6 @@ Partial Class frmSincronizarVentas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSincronizarVentas))
         Me.grdDetalleVentas = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colCategoria = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -176,9 +175,6 @@ Partial Class frmSincronizarVentas
         'grdVentas
         '
         Me.grdVentas.Dock = System.Windows.Forms.DockStyle.Fill
-        GridLevelNode1.LevelTemplate = Me.grdDetalleVentas
-        GridLevelNode1.RelationName = "LevelDetalle"
-        Me.grdVentas.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.grdVentas.Location = New System.Drawing.Point(2, 144)
         Me.grdVentas.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdVentas.LookAndFeel.UseDefaultLookAndFeel = False

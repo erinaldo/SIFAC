@@ -8,6 +8,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.BandedGrid
+Imports DevExpress.XtraGrid.Views.Card
 
 Public Class frmSincronizarAbonos
 
@@ -117,25 +118,31 @@ Public Class frmSincronizarAbonos
 
             If Not DtAbonos Is Nothing Then
 
-                DtAbonosDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SccCuentaID as Numero,  Producto, ModeloMarca, Saldo", "vwSfaExpedienteCliente", "1=1"))
+                DtAbonosDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objAplCobroID, SccCuentaID as Numero,  Producto, ModeloMarca, Saldo", "vwSfaExpedienteCliente", "1=1"))
                 ds = New DataSet
                 ds.Merge(DtAbonos)
                 ds.Tables(0).TableName = "Abonos"
                 ds.Merge(DtAbonosDetalle)
                 ds.Tables(1).TableName = "DetalleAbono"
 
-                ds.Relations.Add("Detalle", ds.Tables(0).Columns("objSccCuentaID"), ds.Tables(1).Columns("Numero"), False)
-                DtAbonos.PrimaryKey = New DataColumn() {Me.DtAbonos.Columns("AplCobroID")}
-                DtAbonos.DefaultView.Sort = "FechaAbono"
-                Me.grdVentas.DataSource = ds.Tables(0)
-                'Me.grdExpediente.DataSource = ds.Tables(1)
-                Me.grdVentas.Text = "Abonos (" & Me.DtAbonos.Rows.Count & ")"
+                Dim keyColumn As DataColumn = ds.Tables("Abonos").Columns("AplCobroID")
+                Dim foreignKeyColumn As DataColumn = ds.Tables("DetalleAbono").Columns("objAplCobroID")
+                ds.Relations.Add("Expediente", keyColumn, foreignKeyColumn)
 
-                'Me.grdVentasTable.Columns("Numero").Visible = False
+                grdVentas.DataSource = ds.Tables("Abonos")
+                grdVentas.ForceInitialize()
 
-                'Dim node As GridLevelNode = grdVentas.LevelTree.Nodes("DetalleAbono")
-                'Dim oldView As GridBand = node.LevelTemplate
-                'oldView.Columns(0).Visible = False
+                Dim GridViewDetalle As New GridView(grdVentas)
+                grdVentas.LevelTree.Nodes.Add("Expediente", GridViewDetalle)
+                GridViewDetalle.PopulateColumns(ds.Tables("DetalleAbono"))
+
+                GridViewDetalle.Columns("objAplCobroID").Visible = False
+             
+                GridViewDetalle.Columns("Numero").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Producto").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("ModeloMarca").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Saldo").OptionsColumn.AllowEdit = False
+
             End If
 
         Catch ex As Exception
@@ -161,7 +168,7 @@ Public Class frmSincronizarAbonos
             objseg.ServicioUsuario = "frmSincronizarAbonos"
             objseg.Usuario = clsProyecto.Conexion.Usuario
             boolAprobar = objseg.TienePermiso("AprobarAbonos")
-            boolConsultar = objseg.TienePermiso("ConsultarAbonos")
+            boolConsultar = objseg.TienePermiso("EditarAbonos")
             boolExportar = objseg.TienePermiso("ExportarAbonos")
             boolDesactivar = objseg.TienePermiso("InactivarAbonos")
 
@@ -456,7 +463,7 @@ Public Class frmSincronizarAbonos
 
     End Sub
 
-  
+
     Private Sub cmdEditar_Click(sender As Object, e As EventArgs) Handles cmdEditar.Click
         Editar()
     End Sub
