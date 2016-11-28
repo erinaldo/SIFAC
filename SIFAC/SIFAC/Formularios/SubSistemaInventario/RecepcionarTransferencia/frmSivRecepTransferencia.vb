@@ -7,6 +7,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraReports.UI
 
 ''' <summary>
 ''' Formulario Principal de Recepción de transferencia
@@ -274,27 +275,51 @@ Public Class frmSivRecepTransferencia
 
     'Procedimiento que imprime UNA sola recepción después que se ha registrado en el sistema.
     Private Sub Imprimir_Recepcion(ByVal iIdTransferencia As Integer, ByVal EstadoAnulada As Boolean)
-        Dim objRptSoliTransf As New rptTransferenciaRecepcion
-        Dim objImpresion As frmOpcionesImpresion
-        Dim sSQL, sCampos, sFiltro As String
+        'Dim objRptSoliTransf As New rptTransferenciaRecepcion
+        'Dim objImpresion As frmOpcionesImpresion
+        'Dim sSQL, sCampos, sFiltro As String
 
-        objImpresion = New frmOpcionesImpresion
-        If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        'objImpresion = New frmOpcionesImpresion
+        'If objImpresion.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        '    sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
+        '    sCampos = "SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, Fechadespacho, DespachadoPor, CantidadDespachada, Fecharecibido, RecibidoPor, CantidadRecibida"
+        '    sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaRecepcion", sFiltro)
+
+        '    objRptSoliTransf.EstadoAnulada = EstadoAnulada
+        '    objRptSoliTransf.DataSource = SqlHelper.ExecuteQueryDT(sSQL)
+        '    Select Case objImpresion.Seleccion
+        '        Case 1
+        '            clsProyecto.ImprimirEnPantalla(objRptSoliTransf)
+        '        Case 2
+        '            clsProyecto.ImprimirEnImpresora(objRptSoliTransf, True)
+        '        Case 3
+        '            clsProyecto.ImprimirEnArchivo(objRptSoliTransf, Me)
+        '    End Select
+        'End If
+
+        Dim dsReporte As DataSet
+        Dim sCampos, sSQL, sFiltro As String
+        Try
+            Dim objjReporte As New rptHojaTransfRecepcion()
+
             sFiltro = "SivTransferenciaID=" + iIdTransferencia.ToString
-            sCampos = "SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, Fechadespacho, DespachadoPor, CantidadDespachada, Fecharecibido, RecibidoPor, CantidadRecibida"
+            sCampos = "SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, SolicitadoPor, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, Anulada, Fechadespacho, DespachadoPor, CantidadDespachada, Fecharecibido, RecibidoPor, CantidadRecibida,Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa"
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaRecepcion", sFiltro)
+            dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
 
-            objRptSoliTransf.EstadoAnulada = EstadoAnulada
-            objRptSoliTransf.DataSource = SqlHelper.ExecuteQueryDT(sSQL)
-            Select Case objImpresion.Seleccion
-                Case 1
-                    clsProyecto.ImprimirEnPantalla(objRptSoliTransf)
-                Case 2
-                    clsProyecto.ImprimirEnImpresora(objRptSoliTransf, True)
-                Case 3
-                    clsProyecto.ImprimirEnArchivo(objRptSoliTransf, Me)
-            End Select
-        End If
+            If dsReporte.Tables(0).Rows.Count = 0 Then
+                MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Exit Sub
+            End If
+
+            objjReporte.DataSource = dsReporte
+            objjReporte.DataMember = dsReporte.Tables(0).TableName
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
     End Sub
 
     'Procedmiento para imprimir diferencias entre lo solicitado y recepcionado
