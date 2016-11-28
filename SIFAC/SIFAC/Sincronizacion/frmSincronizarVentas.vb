@@ -117,6 +117,25 @@ Public Class frmSincronizarVentas
                 ds.Merge(DTVentasDetalle)
                 ds.Tables(1).TableName = "VentasDetalle"
 
+                Dim keyColumn As DataColumn = ds.Tables("Abonos").Columns("AplCobroID")
+                Dim foreignKeyColumn As DataColumn = ds.Tables("DetalleAbono").Columns("objAplCobroID")
+                ds.Relations.Add("Expediente", keyColumn, foreignKeyColumn)
+
+                grdVentas.DataSource = ds.Tables("Abonos")
+                grdVentas.ForceInitialize()
+
+                Dim GridViewDetalle As New GridView(grdVentas)
+                grdVentas.LevelTree.Nodes.Add("Expediente", GridViewDetalle)
+                GridViewDetalle.PopulateColumns(ds.Tables("DetalleAbono"))
+
+                GridViewDetalle.Columns("objAplCobroID").Visible = False
+
+                GridViewDetalle.Columns("Numero").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Producto").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("ModeloMarca").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Saldo").OptionsColumn.AllowEdit = False
+
+
                 ds.Relations.Add("Detalle", ds.Tables(0).Columns("SfaFacturaProformaID"), ds.Tables(1).Columns("Numero"), False)
 
                 DtVentas.PrimaryKey = New DataColumn() {Me.DtVentas.Columns("SfaFacturaProformaID")}

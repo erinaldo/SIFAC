@@ -22,13 +22,7 @@ Partial Class frmSincronizarAbonos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSincronizarAbonos))
-        Me.CardView1 = New DevExpress.XtraGrid.Views.Card.CardView()
-        Me.ColSccCuentaID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colProducto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colModeloMarca = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.grdVentas = New DevExpress.XtraGrid.GridControl()
         Me.grdVentasTable = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colSeleccionar = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -62,7 +56,11 @@ Partial Class frmSincronizarAbonos
         Me.cmbEmpleado = New DevExpress.XtraEditors.LookUpEdit()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.ColSccCuentaID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colProducto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colModeloMarca = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,62 +75,12 @@ Partial Class frmSincronizarAbonos
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbRuta.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbEmpleado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'CardView1
-        '
-        Me.CardView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColSccCuentaID, Me.colProducto, Me.colModeloMarca, Me.colSaldo})
-        Me.CardView1.FocusedCardTopFieldIndex = 0
-        Me.CardView1.GridControl = Me.grdVentas
-        Me.CardView1.Name = "CardView1"
-        Me.CardView1.OptionsBehavior.AutoPopulateColumns = False
-        Me.CardView1.OptionsBehavior.Editable = False
-        Me.CardView1.OptionsBehavior.ReadOnly = True
-        '
-        'ColSccCuentaID
-        '
-        Me.ColSccCuentaID.Caption = "SccCuentaID"
-        Me.ColSccCuentaID.FieldName = "SccCuentaID"
-        Me.ColSccCuentaID.Name = "ColSccCuentaID"
-        Me.ColSccCuentaID.Visible = True
-        Me.ColSccCuentaID.VisibleIndex = 0
-        '
-        'colProducto
-        '
-        Me.colProducto.Caption = "Producto"
-        Me.colProducto.FieldName = "Producto"
-        Me.colProducto.Name = "colProducto"
-        Me.colProducto.OptionsColumn.AllowEdit = False
-        Me.colProducto.OptionsFilter.AllowAutoFilter = False
-        Me.colProducto.Visible = True
-        Me.colProducto.VisibleIndex = 1
-        '
-        'colModeloMarca
-        '
-        Me.colModeloMarca.Caption = "Modelo/Marca"
-        Me.colModeloMarca.FieldName = "ModeloMarca"
-        Me.colModeloMarca.Name = "colModeloMarca"
-        Me.colModeloMarca.OptionsColumn.AllowEdit = False
-        Me.colModeloMarca.OptionsFilter.AllowAutoFilter = False
-        Me.colModeloMarca.Visible = True
-        Me.colModeloMarca.VisibleIndex = 2
-        '
-        'colSaldo
-        '
-        Me.colSaldo.Caption = "Saldo"
-        Me.colSaldo.FieldName = "Saldo"
-        Me.colSaldo.Name = "colSaldo"
-        Me.colSaldo.OptionsColumn.AllowEdit = False
-        Me.colSaldo.OptionsFilter.AllowAutoFilter = False
-        Me.colSaldo.Visible = True
-        Me.colSaldo.VisibleIndex = 3
         '
         'grdVentas
         '
         Me.grdVentas.Dock = System.Windows.Forms.DockStyle.Fill
-        GridLevelNode1.LevelTemplate = Me.CardView1
-        GridLevelNode1.RelationName = "LevelExpediente"
-        Me.grdVentas.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.grdVentas.Location = New System.Drawing.Point(2, 144)
         Me.grdVentas.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdVentas.LookAndFeel.UseDefaultLookAndFeel = False
@@ -141,7 +89,7 @@ Partial Class frmSincronizarAbonos
         Me.grdVentas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2, Me.RepositoryItemDateEdit1})
         Me.grdVentas.Size = New System.Drawing.Size(833, 293)
         Me.grdVentas.TabIndex = 6
-        Me.grdVentas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdVentasTable, Me.CardView1})
+        Me.grdVentas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdVentasTable, Me.GridView1})
         '
         'grdVentasTable
         '
@@ -445,6 +393,54 @@ Partial Class frmSincronizarAbonos
         '
         Me.sfdRuta.Filter = "Archivos Excel | *.xls"
         '
+        'GridView1
+        '
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColSccCuentaID, Me.colProducto, Me.colModeloMarca, Me.colSaldo})
+        Me.GridView1.GridControl = Me.grdVentas
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.AutoPopulateColumns = False
+        Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView1.OptionsBehavior.ReadOnly = True
+        Me.GridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never
+        '
+        'ColSccCuentaID
+        '
+        Me.ColSccCuentaID.Caption = "SccCuentaID"
+        Me.ColSccCuentaID.FieldName = "SccCuentaID"
+        Me.ColSccCuentaID.Name = "ColSccCuentaID"
+        Me.ColSccCuentaID.Visible = True
+        Me.ColSccCuentaID.VisibleIndex = 0
+        '
+        'colProducto
+        '
+        Me.colProducto.Caption = "Producto"
+        Me.colProducto.FieldName = "Producto"
+        Me.colProducto.Name = "colProducto"
+        Me.colProducto.OptionsColumn.AllowEdit = False
+        Me.colProducto.OptionsFilter.AllowAutoFilter = False
+        Me.colProducto.Visible = True
+        Me.colProducto.VisibleIndex = 1
+        '
+        'colModeloMarca
+        '
+        Me.colModeloMarca.Caption = "Modelo/Marca"
+        Me.colModeloMarca.FieldName = "ModeloMarca"
+        Me.colModeloMarca.Name = "colModeloMarca"
+        Me.colModeloMarca.OptionsColumn.AllowEdit = False
+        Me.colModeloMarca.OptionsFilter.AllowAutoFilter = False
+        Me.colModeloMarca.Visible = True
+        Me.colModeloMarca.VisibleIndex = 2
+        '
+        'colSaldo
+        '
+        Me.colSaldo.Caption = "Saldo"
+        Me.colSaldo.FieldName = "Saldo"
+        Me.colSaldo.Name = "colSaldo"
+        Me.colSaldo.OptionsColumn.AllowEdit = False
+        Me.colSaldo.OptionsFilter.AllowAutoFilter = False
+        Me.colSaldo.Visible = True
+        Me.colSaldo.VisibleIndex = 3
+        '
         'frmSincronizarAbonos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -456,7 +452,6 @@ Partial Class frmSincronizarAbonos
         Me.Name = "frmSincronizarAbonos"
         Me.Text = "Sincronizar Abonos"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -473,6 +468,7 @@ Partial Class frmSincronizarAbonos
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbRuta.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbEmpleado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -510,7 +506,7 @@ Partial Class frmSincronizarAbonos
     Friend WithEvents ColEstado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents sfdRuta As System.Windows.Forms.SaveFileDialog
     Friend WithEvents cmdEditar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents CardView1 As DevExpress.XtraGrid.Views.Card.CardView
+    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents ColSccCuentaID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colProducto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colModeloMarca As DevExpress.XtraGrid.Columns.GridColumn
