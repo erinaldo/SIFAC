@@ -194,9 +194,6 @@ Public Class frmSivRptSalida
                     Exit Sub
                 End If
 
-
-
-
                 objjReporte.DataSource = dsReporte
                 objjReporte.DataMember = dsReporte.Tables(0).TableName
                 Dim pt As New ReportPrintTool(objjReporte)
@@ -206,7 +203,6 @@ Public Class frmSivRptSalida
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
-
 
         End If
     End Sub
