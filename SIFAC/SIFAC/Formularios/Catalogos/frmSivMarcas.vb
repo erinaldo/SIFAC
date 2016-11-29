@@ -149,13 +149,19 @@ Public Class frmSivMarcas
     End Sub
 
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
-        Dim dtReporte As DataTable
+        Dim dtReporte As DataSet
         Try
             Dim objjReporte As New rptMarcas
-            dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MarcaID, Nombre, Descripcion, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptMarcas", ))
-            objjReporte.DataSource = dtReporte
-            Dim pt As New ReportPrintTool(objjReporte)
-            pt.ShowPreviewDialog()
+            dtReporte = DAL.SqlHelper.ExecuteQueryDS(ObtenerConsultaGeneral("MarcaID, Nombre, Descripcion, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptMarcas", ))
+
+            If dtReporte.Tables(0).Rows.Count <> 0 Then
+                objjReporte.DataSource = dtReporte
+                objjReporte.DataMember = dtReporte.Tables(0).TableName
+                Dim pt As New ReportPrintTool(objjReporte)
+                pt.ShowPreview()
+            Else
+                MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+            End If
 
         Catch ex As Exception
             clsError.CaptarError(ex)

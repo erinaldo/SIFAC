@@ -117,33 +117,29 @@ Public Class frmSincronizarVentas
                 ds.Merge(DTVentasDetalle)
                 ds.Tables(1).TableName = "VentasDetalle"
 
-                Dim keyColumn As DataColumn = ds.Tables("Abonos").Columns("AplCobroID")
-                Dim foreignKeyColumn As DataColumn = ds.Tables("DetalleAbono").Columns("objAplCobroID")
-                ds.Relations.Add("Expediente", keyColumn, foreignKeyColumn)
+                Dim keyColumn As DataColumn = ds.Tables("Ventas").Columns("SfaFacturaProformaID")
+                Dim foreignKeyColumn As DataColumn = ds.Tables("VentasDetalle").Columns("Numero")
+                ds.Relations.Add("DetalleVentas", keyColumn, foreignKeyColumn)
 
-                grdVentas.DataSource = ds.Tables("Abonos")
+                grdVentas.DataSource = ds.Tables("Ventas")
                 grdVentas.ForceInitialize()
 
                 Dim GridViewDetalle As New GridView(grdVentas)
-                grdVentas.LevelTree.Nodes.Add("Expediente", GridViewDetalle)
-                GridViewDetalle.PopulateColumns(ds.Tables("DetalleAbono"))
+                grdVentas.LevelTree.Nodes.Add("DetalleVentas", GridViewDetalle)
+                GridViewDetalle.PopulateColumns(ds.Tables("VentasDetalle"))
 
-                GridViewDetalle.Columns("objAplCobroID").Visible = False
+                GridViewDetalle.Columns("Numero").Visible = False
 
-                GridViewDetalle.Columns("Numero").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Categoria").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Marca").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Codigo").OptionsColumn.AllowEdit = False
                 GridViewDetalle.Columns("Producto").OptionsColumn.AllowEdit = False
-                GridViewDetalle.Columns("ModeloMarca").OptionsColumn.AllowEdit = False
-                GridViewDetalle.Columns("Saldo").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Cantidad").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Precio").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Subtotal").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Descuento").OptionsColumn.AllowEdit = False
+                GridViewDetalle.Columns("Total").OptionsColumn.AllowEdit = False
 
-
-                ds.Relations.Add("Detalle", ds.Tables(0).Columns("SfaFacturaProformaID"), ds.Tables(1).Columns("Numero"), False)
-
-                DtVentas.PrimaryKey = New DataColumn() {Me.DtVentas.Columns("SfaFacturaProformaID")}
-                DtVentas.DefaultView.Sort = "fecha"
-                Me.grdVentas.DataSource = ds.Tables(0)
-                Me.grdVentas.Text = "Ventas (" & Me.DtVentas.Rows.Count & ")"
-
-                FormatearGridDetalle()
             End If
 
         Catch ex As Exception

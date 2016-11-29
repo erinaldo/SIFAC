@@ -65,7 +65,7 @@ Partial Class frmMarcasEdit
         Me.chkActivo.Location = New System.Drawing.Point(400, 24)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
-        Me.chkActivo.TabIndex = 2
+        Me.chkActivo.TabIndex = 1
         Me.chkActivo.Text = "Activa"
         Me.chkActivo.UseVisualStyleBackColor = True
         '
@@ -76,7 +76,7 @@ Partial Class frmMarcasEdit
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtDescripcion.Size = New System.Drawing.Size(362, 65)
-        Me.txtDescripcion.TabIndex = 2
+        Me.txtDescripcion.TabIndex = 1
         Me.txtDescripcion.Tag = ""
         '
         'txtNombreMarca

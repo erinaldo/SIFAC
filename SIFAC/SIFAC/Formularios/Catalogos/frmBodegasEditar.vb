@@ -59,10 +59,11 @@ Public Class frmBodegasEditar
         Try
             DtJefe = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
 
+            cmbJefe.DataSource = DtJefe
             cmbJefe.ValueMember = "SrhEmpleadoID"
             cmbJefe.DisplayMember = "NombreCompleto"
-            cmbJefe.DataSource = DtJefe
-            cmbJefe.Text = ""
+
+            cmbJefe.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -79,6 +80,7 @@ Public Class frmBodegasEditar
             If Not String.IsNullOrEmpty(objBodega.Codigo) Then
                 txtCodigo.Text = objBodega.Codigo
             End If
+
             cmbCiudad.SelectedValue = objBodega.objCiudadID
             cmbJefe.SelectedValue = objBodega.objJefeBodegaID
 
@@ -350,8 +352,8 @@ Public Class frmBodegasEditar
     End Sub
 
     Private Sub cmbJefe_Change(sender As Object, e As EventArgs)
-        ErrorProv.SetError(cmbJefe, "")
-        boolEditado = True
+        'ErrorProv.SetError(cmbJefe, "")
+        'boolEditado = True
     End Sub
 
     Private Sub frmBodegasEditar_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing

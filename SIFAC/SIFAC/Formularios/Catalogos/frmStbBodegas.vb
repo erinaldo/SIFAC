@@ -153,4 +153,7 @@ Public Class frmStbBodegas
 #End Region
 
 
+    Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
+
+    End Sub
 End Class

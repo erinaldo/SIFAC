@@ -916,6 +916,12 @@
     <Compile Include="Reportes SIFAC\rptFacturacionListadoPrecios.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaDespachoTransferencia.Designer.vb">
+      <DependentUpon>rptHojaDespachoTransferencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaDespachoTransferencia.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\rptHojaSalida.Designer.vb">
       <DependentUpon>rptHojaSalida.vb</DependentUpon>
     </Compile>
@@ -926,6 +932,12 @@
       <DependentUpon>rptHojaSolicitudTransferencia.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes SIFAC\rptHojaSolicitudTransferencia.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaTransfRecepcion.Designer.vb">
+      <DependentUpon>rptHojaTransfRecepcion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaTransfRecepcion.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptInventarioReporte.Designer.vb">
@@ -962,6 +974,12 @@
       <DependentUpon>rptListadoSivSalidas.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes SIFAC\rptListadoSivSalidas.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptListDespTransf.Designer.vb">
+      <DependentUpon>rptListDespTransf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptListDespTransf.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptListSolTransf.Designer.vb">
@@ -1150,6 +1168,12 @@
       <DependentUpon>frmSincronizarVentas.vb</DependentUpon>
     </Compile>
     <Compile Include="Sincronizacion\frmSincronizarVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarVentasEdit.Designer.vb">
+      <DependentUpon>frmSincronizarVentasEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sincronizacion\frmSincronizarVentasEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Sincronizacion\frmSincronziacionAbonosEdit.Designer.vb">
@@ -1546,12 +1570,18 @@
       <SubType>Designer</SubType>
       <DependentUpon>rptFacturacionListadoPrecios.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptHojaDespachoTransferencia.resx">
+      <DependentUpon>rptHojaDespachoTransferencia.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptHojaEntrada.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptHojaSalida.resx">
       <DependentUpon>rptHojaSalida.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptHojaSolicitudTransferencia.resx">
       <DependentUpon>rptHojaSolicitudTransferencia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptHojaTransfRecepcion.resx">
+      <DependentUpon>rptHojaTransfRecepcion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporte.resx">
       <SubType>Designer</SubType>
@@ -1575,6 +1605,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptListadoSivSalidas.resx">
       <DependentUpon>rptListadoSivSalidas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptListDespTransf.resx">
+      <DependentUpon>rptListDespTransf.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptListSolTransf.resx">
       <DependentUpon>rptListSolTransf.vb</DependentUpon>
@@ -1703,6 +1736,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sincronizacion\frmSincronizarVentas.resx">
       <DependentUpon>frmSincronizarVentas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sincronizacion\frmSincronizarVentasEdit.resx">
+      <DependentUpon>frmSincronizarVentasEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sincronizacion\frmSincronziacionAbonosEdit.resx">
       <DependentUpon>frmSincronziacionAbonosEdit.vb</DependentUpon>
