@@ -454,9 +454,10 @@ Public Class frmReportesTransferencias
 
 #Region "Imprimir Diferencias"
     Public Sub Imprimir_Diferencias()
-        Dim objRptTransf As New rptTransferenciaDiferencias
+        Dim objRptTransf As New rptListadoDiferencias
         Dim sSQL, sCampos, sFiltro As String
-        Dim dtDatos As DataTable
+        'Dim dtDatos As DataTable
+        Dim dsReporte As DataSet
 
         'Construir el filtro para las recepciones (112=Fecha en formato ISO, ejemplo: 09 Junio 2010 = 20100609)
         If Not IsDBNull(dtpFechaDesde.Value) And Not IsDBNull(dtpFechaHasta.Value) Then
@@ -478,16 +479,21 @@ Public Class frmReportesTransferencias
         End If
 
         'Obtener datos para la generación del reporte
-        sCampos = "SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, CodigoTiendaDestino, Anulada, CantidadDespachada, CantidadRecibida, Diferencia, Fecharecibido"
+        sCampos = "SivProductoID, Producto, CantidadSolicitada, ObjBodegaOrigenID, ObjBodegaDestinoID, Fechasolicitud, ObjEstadoID, Observaciones, SivTransferenciaID, SitioDestino, SitioOrigen, CodigoTiendaDestino, Anulada, CantidadDespachada, CantidadRecibida, Diferencia, Fecharecibido,Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa"
         sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwRptTransferenciaDiferencias", sFiltro + " ORDER BY SivProductoID, Fechasolicitud, SivTransferenciaID")
-        dtDatos = SqlHelper.ExecuteQueryDT(sSQL)
+        dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
 
-        If dtDatos.Rows.Count <> 0 Then
-            objRptTransf.DataSource = dtDatos
-            Me.OpcionesImpresion(objRptTransf)
-        Else
-            MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+        If dsReporte.Tables(0).Rows.Count = 0 Then
+            MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+            Exit Sub
         End If
+
+        objRptTransf.DataSource = dsReporte
+        objRptTransf.DataMember = dsReporte.Tables(0).TableName
+        Dim pt As New ReportPrintTool(objRptTransf)
+        objRptTransf.FechaInicio.Value = Me.dtpFechaDesde.Text
+        objRptTransf.FechaFin.Value = Me.dtpFechaHasta.Text
+        pt.ShowPreview()
 
     End Sub
 
