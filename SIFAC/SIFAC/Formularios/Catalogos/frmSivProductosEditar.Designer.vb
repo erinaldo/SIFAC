@@ -102,7 +102,7 @@ Partial Class frmSivProductosEditar
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 566)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(777, 21)
+        Me.Panel1.Size = New System.Drawing.Size(769, 21)
         Me.Panel1.TabIndex = 23
         '
         'PanelControl1
@@ -117,7 +117,7 @@ Partial Class frmSivProductosEditar
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(777, 587)
+        Me.PanelControl1.Size = New System.Drawing.Size(769, 587)
         Me.PanelControl1.TabIndex = 24
         '
         'tbcMasDatos
@@ -180,7 +180,7 @@ Partial Class frmSivProductosEditar
         Me.grdProveedor.AllowAddNew = True
         Me.grdProveedor.AllowColMove = False
         Me.grdProveedor.AllowFilter = False
-        Me.grdProveedor.Dock = System.Windows.Forms.DockStyle.Top
+        Me.grdProveedor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdProveedor.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdProveedor.Images.Add(CType(resources.GetObject("grdProveedor.Images"), System.Drawing.Image))
         Me.grdProveedor.Location = New System.Drawing.Point(3, 3)
@@ -190,7 +190,7 @@ Partial Class frmSivProductosEditar
         Me.grdProveedor.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdProveedor.PreviewInfo.ZoomFactor = 75.0R
         Me.grdProveedor.PrintInfo.PageSettings = CType(resources.GetObject("grdProveedor.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdProveedor.Size = New System.Drawing.Size(537, 277)
+        Me.grdProveedor.Size = New System.Drawing.Size(537, 280)
         Me.grdProveedor.TabIndex = 0
         Me.grdProveedor.PropBag = resources.GetString("grdProveedor.PropBag")
         '
@@ -278,6 +278,9 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioContado.Location = New System.Drawing.Point(174, 83)
         Me.spnPrecioContado.Name = "spnPrecioContado"
         Me.spnPrecioContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
+        Me.spnPrecioContado.Properties.DisplayFormat.FormatString = "n"
+        Me.spnPrecioContado.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.spnPrecioContado.Properties.Mask.EditMask = "n"
         Me.spnPrecioContado.Size = New System.Drawing.Size(91, 20)
         Me.spnPrecioContado.TabIndex = 7
         '
@@ -287,6 +290,9 @@ Partial Class frmSivProductosEditar
         Me.spnMargenCredito.Location = New System.Drawing.Point(174, 110)
         Me.spnMargenCredito.Name = "spnMargenCredito"
         Me.spnMargenCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
+        Me.spnMargenCredito.Properties.DisplayFormat.FormatString = "n"
+        Me.spnMargenCredito.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.spnMargenCredito.Properties.Mask.EditMask = "n"
         Me.spnMargenCredito.Size = New System.Drawing.Size(91, 20)
         Me.spnMargenCredito.TabIndex = 8
         '
@@ -296,6 +302,9 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioCredito.Location = New System.Drawing.Point(174, 57)
         Me.spnPrecioCredito.Name = "spnPrecioCredito"
         Me.spnPrecioCredito.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
+        Me.spnPrecioCredito.Properties.DisplayFormat.FormatString = "n"
+        Me.spnPrecioCredito.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.spnPrecioCredito.Properties.Mask.EditMask = "n"
         Me.spnPrecioCredito.Size = New System.Drawing.Size(91, 20)
         Me.spnPrecioCredito.TabIndex = 6
         '
@@ -305,6 +314,9 @@ Partial Class frmSivProductosEditar
         Me.spnMargenContado.Location = New System.Drawing.Point(174, 136)
         Me.spnMargenContado.Name = "spnMargenContado"
         Me.spnMargenContado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, True)})
+        Me.spnMargenContado.Properties.DisplayFormat.FormatString = "n"
+        Me.spnMargenContado.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.spnMargenContado.Properties.Mask.EditMask = "n"
         Me.spnMargenContado.Size = New System.Drawing.Size(91, 20)
         Me.spnMargenContado.TabIndex = 0
         '
@@ -314,6 +326,9 @@ Partial Class frmSivProductosEditar
         Me.spnCostoPromedio.Location = New System.Drawing.Point(174, 27)
         Me.spnCostoPromedio.Name = "spnCostoPromedio"
         Me.spnCostoPromedio.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, True)})
+        Me.spnCostoPromedio.Properties.DisplayFormat.FormatString = "n"
+        Me.spnCostoPromedio.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.spnCostoPromedio.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.spnCostoPromedio.Size = New System.Drawing.Size(91, 20)
         Me.spnCostoPromedio.TabIndex = 5
         '
@@ -536,7 +551,7 @@ Partial Class frmSivProductosEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(777, 587)
+        Me.ClientSize = New System.Drawing.Size(769, 587)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -599,11 +614,11 @@ Partial Class frmSivProductosEditar
     Friend WithEvents tbcMasDatos As System.Windows.Forms.TabControl
     Friend WithEvents tabpageProveedor As System.Windows.Forms.TabPage
     Friend WithEvents CtdbProveedor As C1.Win.C1TrueDBGrid.C1TrueDBDropdown
-    Friend WithEvents grdProveedor As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents tabpageExistenciaBodega As System.Windows.Forms.TabPage
     Friend WithEvents grdBodegas As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents cmdAgregarMarca As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdAgregarCategoria As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmbMarca As System.Windows.Forms.ComboBox
     Friend WithEvents cmbCategoria As System.Windows.Forms.ComboBox
+    Friend WithEvents grdProveedor As C1.Win.C1TrueDBGrid.C1TrueDBGrid
 End Class

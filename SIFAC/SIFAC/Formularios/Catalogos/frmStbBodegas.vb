@@ -2,6 +2,7 @@
 Imports SIFAC.BO.clsConsultas
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
+Imports DevExpress.XtraReports.UI
 
 
 Public Class frmStbBodegas
@@ -31,7 +32,7 @@ Public Class frmStbBodegas
 
 
     Public Sub AplicarSeguridad()
-        objSeg = New SsgSeguridad
+        objseg = New SsgSeguridad
         Try
             objseg.ServicioUsuario = "frmStbBodegas"
             objseg.Usuario = clsProyecto.Conexion.Usuario
@@ -150,10 +151,30 @@ Public Class frmStbBodegas
     Private Sub tsbSalir_Click(sender As Object, e As EventArgs) Handles tsbSalir.Click
         Close()
     End Sub
+
+    Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
+        Dim ds As DataSet
+        Try
+            Dim objjReporte As New rptBodegas()
+
+            ds = DAL.SqlHelper.ExecuteQueryDS(ObtenerConsultaGeneral(" StbBodegaID, Codigo, Bodega, Responsable, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptBodegas", ))
+
+            If ds.Tables(0).Rows.Count <> 0 Then
+                objjReporte.DataSource = ds
+                objjReporte.DataMember = ds.Tables(0).TableName
+                Dim pt As New ReportPrintTool(objjReporte)
+                pt.ShowPreview()
+            Else
+                MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+            End If
+
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 #End Region
 
 
-    Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
 
-    End Sub
 End Class

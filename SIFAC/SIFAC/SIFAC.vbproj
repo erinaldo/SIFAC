@@ -970,6 +970,12 @@
     <Compile Include="Reportes SIFAC\rptKardex.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\rptListadoDiferencias.Designer.vb">
+      <DependentUpon>rptListadoDiferencias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptListadoDiferencias.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\rptListadoSivSalidas.Designer.vb">
       <DependentUpon>rptListadoSivSalidas.vb</DependentUpon>
     </Compile>
@@ -980,6 +986,12 @@
       <DependentUpon>rptListDespTransf.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes SIFAC\rptListDespTransf.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptListRecepTransf.Designer.vb">
+      <DependentUpon>rptListRecepTransf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptListRecepTransf.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptListSolTransf.Designer.vb">
@@ -1004,6 +1016,12 @@
       <DependentUpon>rptProductos.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes SIFAC\rptProductos.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptRutasvb.Designer.vb">
+      <DependentUpon>rptRutasvb.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptRutasvb.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptSalidaBodega.Designer.vb">
@@ -1603,11 +1621,17 @@
     <EmbeddedResource Include="Reportes SIFAC\rptKardex.resx">
       <DependentUpon>rptKardex.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptListadoDiferencias.resx">
+      <DependentUpon>rptListadoDiferencias.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptListadoSivSalidas.resx">
       <DependentUpon>rptListadoSivSalidas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptListDespTransf.resx">
       <DependentUpon>rptListDespTransf.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptListRecepTransf.resx">
+      <DependentUpon>rptListRecepTransf.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptListSolTransf.resx">
       <DependentUpon>rptListSolTransf.vb</DependentUpon>
@@ -1625,6 +1649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptPromocion.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptPromociones.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptRutasvb.resx">
+      <DependentUpon>rptRutasvb.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptSalidaBodega.resx">
       <DependentUpon>rptSalidaBodega.vb</DependentUpon>
       <SubType>Designer</SubType>

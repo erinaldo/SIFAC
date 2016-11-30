@@ -28,6 +28,8 @@ Partial Class frmBodegasEditar
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.cmbJefe = New System.Windows.Forms.ComboBox()
+        Me.cmbCiudad = New System.Windows.Forms.ComboBox()
         Me.txtCodigo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmdJefe = New System.Windows.Forms.Button()
@@ -38,8 +40,6 @@ Partial Class frmBodegasEditar
         Me.lblSfaPromocionID = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmbCiudad = New System.Windows.Forms.ComboBox()
-        Me.cmbJefe = New System.Windows.Forms.ComboBox()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.gbxDatosGenerales.SuspendLayout()
@@ -105,6 +105,24 @@ Partial Class frmBodegasEditar
         Me.gbxDatosGenerales.Size = New System.Drawing.Size(522, 164)
         Me.gbxDatosGenerales.TabIndex = 1
         Me.gbxDatosGenerales.TabStop = False
+        '
+        'cmbJefe
+        '
+        Me.cmbJefe.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbJefe.FormattingEnabled = True
+        Me.cmbJefe.Location = New System.Drawing.Point(181, 103)
+        Me.cmbJefe.Name = "cmbJefe"
+        Me.cmbJefe.Size = New System.Drawing.Size(279, 21)
+        Me.cmbJefe.TabIndex = 130
+        '
+        'cmbCiudad
+        '
+        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudad.FormattingEnabled = True
+        Me.cmbCiudad.Location = New System.Drawing.Point(181, 76)
+        Me.cmbCiudad.Name = "cmbCiudad"
+        Me.cmbCiudad.Size = New System.Drawing.Size(279, 21)
+        Me.cmbCiudad.TabIndex = 129
         '
         'txtCodigo
         '
@@ -201,24 +219,6 @@ Partial Class frmBodegasEditar
         '
         Me.ErrorProv.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink
         Me.ErrorProv.ContainerControl = Me
-        '
-        'cmbCiudad
-        '
-        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.FormattingEnabled = True
-        Me.cmbCiudad.Location = New System.Drawing.Point(181, 76)
-        Me.cmbCiudad.Name = "cmbCiudad"
-        Me.cmbCiudad.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCiudad.TabIndex = 129
-        '
-        'cmbJefe
-        '
-        Me.cmbJefe.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbJefe.FormattingEnabled = True
-        Me.cmbJefe.Location = New System.Drawing.Point(181, 103)
-        Me.cmbJefe.Name = "cmbJefe"
-        Me.cmbJefe.Size = New System.Drawing.Size(279, 21)
-        Me.cmbJefe.TabIndex = 130
         '
         'frmBodegasEditar
         '

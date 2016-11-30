@@ -35,6 +35,11 @@ Partial Class frmSincronizarAbonos
         Me.colTotal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ColEstado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.ColSccCuentaID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colProducto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colModeloMarca = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tbProductos = New System.Windows.Forms.ToolStrip()
         Me.cmdAprobar = New System.Windows.Forms.ToolStripButton()
         Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
@@ -56,17 +61,13 @@ Partial Class frmSincronizarAbonos
         Me.cmbEmpleado = New DevExpress.XtraEditors.LookUpEdit()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.ColSccCuentaID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colProducto = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colModeloMarca = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbProductos.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
@@ -75,7 +76,6 @@ Partial Class frmSincronizarAbonos
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbRuta.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbEmpleado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grdVentas
@@ -189,6 +189,54 @@ Partial Class frmSincronizarAbonos
         Me.RepositoryItemCheckEdit2.AutoHeight = False
         Me.RepositoryItemCheckEdit2.Caption = "Check"
         Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
+        '
+        'GridView1
+        '
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColSccCuentaID, Me.colProducto, Me.colModeloMarca, Me.colSaldo})
+        Me.GridView1.GridControl = Me.grdVentas
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.AutoPopulateColumns = False
+        Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView1.OptionsBehavior.ReadOnly = True
+        Me.GridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never
+        '
+        'ColSccCuentaID
+        '
+        Me.ColSccCuentaID.Caption = "SccCuentaID"
+        Me.ColSccCuentaID.FieldName = "SccCuentaID"
+        Me.ColSccCuentaID.Name = "ColSccCuentaID"
+        Me.ColSccCuentaID.Visible = True
+        Me.ColSccCuentaID.VisibleIndex = 0
+        '
+        'colProducto
+        '
+        Me.colProducto.Caption = "Producto"
+        Me.colProducto.FieldName = "Producto"
+        Me.colProducto.Name = "colProducto"
+        Me.colProducto.OptionsColumn.AllowEdit = False
+        Me.colProducto.OptionsFilter.AllowAutoFilter = False
+        Me.colProducto.Visible = True
+        Me.colProducto.VisibleIndex = 1
+        '
+        'colModeloMarca
+        '
+        Me.colModeloMarca.Caption = "Modelo/Marca"
+        Me.colModeloMarca.FieldName = "ModeloMarca"
+        Me.colModeloMarca.Name = "colModeloMarca"
+        Me.colModeloMarca.OptionsColumn.AllowEdit = False
+        Me.colModeloMarca.OptionsFilter.AllowAutoFilter = False
+        Me.colModeloMarca.Visible = True
+        Me.colModeloMarca.VisibleIndex = 2
+        '
+        'colSaldo
+        '
+        Me.colSaldo.Caption = "Saldo"
+        Me.colSaldo.FieldName = "Saldo"
+        Me.colSaldo.Name = "colSaldo"
+        Me.colSaldo.OptionsColumn.AllowEdit = False
+        Me.colSaldo.OptionsFilter.AllowAutoFilter = False
+        Me.colSaldo.Visible = True
+        Me.colSaldo.VisibleIndex = 3
         '
         'tbProductos
         '
@@ -393,54 +441,6 @@ Partial Class frmSincronizarAbonos
         '
         Me.sfdRuta.Filter = "Archivos Excel | *.xls"
         '
-        'GridView1
-        '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColSccCuentaID, Me.colProducto, Me.colModeloMarca, Me.colSaldo})
-        Me.GridView1.GridControl = Me.grdVentas
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsBehavior.AutoPopulateColumns = False
-        Me.GridView1.OptionsBehavior.Editable = False
-        Me.GridView1.OptionsBehavior.ReadOnly = True
-        Me.GridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never
-        '
-        'ColSccCuentaID
-        '
-        Me.ColSccCuentaID.Caption = "SccCuentaID"
-        Me.ColSccCuentaID.FieldName = "SccCuentaID"
-        Me.ColSccCuentaID.Name = "ColSccCuentaID"
-        Me.ColSccCuentaID.Visible = True
-        Me.ColSccCuentaID.VisibleIndex = 0
-        '
-        'colProducto
-        '
-        Me.colProducto.Caption = "Producto"
-        Me.colProducto.FieldName = "Producto"
-        Me.colProducto.Name = "colProducto"
-        Me.colProducto.OptionsColumn.AllowEdit = False
-        Me.colProducto.OptionsFilter.AllowAutoFilter = False
-        Me.colProducto.Visible = True
-        Me.colProducto.VisibleIndex = 1
-        '
-        'colModeloMarca
-        '
-        Me.colModeloMarca.Caption = "Modelo/Marca"
-        Me.colModeloMarca.FieldName = "ModeloMarca"
-        Me.colModeloMarca.Name = "colModeloMarca"
-        Me.colModeloMarca.OptionsColumn.AllowEdit = False
-        Me.colModeloMarca.OptionsFilter.AllowAutoFilter = False
-        Me.colModeloMarca.Visible = True
-        Me.colModeloMarca.VisibleIndex = 2
-        '
-        'colSaldo
-        '
-        Me.colSaldo.Caption = "Saldo"
-        Me.colSaldo.FieldName = "Saldo"
-        Me.colSaldo.Name = "colSaldo"
-        Me.colSaldo.OptionsColumn.AllowEdit = False
-        Me.colSaldo.OptionsFilter.AllowAutoFilter = False
-        Me.colSaldo.Visible = True
-        Me.colSaldo.VisibleIndex = 3
-        '
         'frmSincronizarAbonos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -458,6 +458,7 @@ Partial Class frmSincronizarAbonos
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbProductos.ResumeLayout(False)
         Me.tbProductos.PerformLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -468,7 +469,6 @@ Partial Class frmSincronizarAbonos
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbRuta.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbEmpleado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -26,31 +26,31 @@ Partial Public Class rptBodegas
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.SqlDataSource1 = New DevExpress.DataAccess.Sql.SqlDataSource("SIFAC.My.MySettings.SIFACConnectionString")
         Me.PageHeaderBand1 = New DevExpress.XtraReports.UI.PageHeaderBand()
-        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
-        Me.XrLine2 = New DevExpress.XtraReports.UI.XRLine()
-        Me.GroupHeaderBand1 = New DevExpress.XtraReports.UI.GroupHeaderBand()
         Me.XrLabel4 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.GroupHeaderBand2 = New DevExpress.XtraReports.UI.GroupHeaderBand()
         Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.GroupHeaderBand3 = New DevExpress.XtraReports.UI.GroupHeaderBand()
         Me.XrLabel6 = New DevExpress.XtraReports.UI.XRLabel()
         Me.PageFooterBand1 = New DevExpress.XtraReports.UI.PageFooterBand()
         Me.XrPageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
         Me.XrPageInfo2 = New DevExpress.XtraReports.UI.XRPageInfo()
         Me.ReportHeaderBand1 = New DevExpress.XtraReports.UI.ReportHeaderBand()
-        Me.XrLabel7 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLine3 = New DevExpress.XtraReports.UI.XRLine()
         Me.Title = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.FieldCaption = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.PageInfo = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.DataField = New DevExpress.XtraReports.UI.XRControlStyle()
+        Me.XrLabel7 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel8 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
+        Me.XrLabel9 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
+        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLine3 = New DevExpress.XtraReports.UI.XRLine()
+        Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detail
         '
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel5, Me.XrLabel6, Me.XrLabel4})
         Me.Detail.HeightF = 23.0!
         Me.Detail.Name = "Detail"
         Me.Detail.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
@@ -59,7 +59,7 @@ Partial Public Class rptBodegas
         '
         'TopMargin
         '
-        Me.TopMargin.HeightF = 100.0!
+        Me.TopMargin.HeightF = 29.16667!
         Me.TopMargin.Name = "TopMargin"
         Me.TopMargin.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
         Me.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
@@ -80,92 +80,27 @@ Partial Public Class rptBodegas
         '
         'PageHeaderBand1
         '
-        Me.PageHeaderBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel1, Me.XrLabel2, Me.XrLabel3, Me.XrLine1, Me.XrLine2})
-        Me.PageHeaderBand1.HeightF = 45.0!
+        Me.PageHeaderBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel3, Me.XrLine1, Me.XrLabel1, Me.XrLabel2, Me.XrLine3})
+        Me.PageHeaderBand1.HeightF = 59.62502!
         Me.PageHeaderBand1.Name = "PageHeaderBand1"
-        '
-        'XrLabel1
-        '
-        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 7.0!)
-        Me.XrLabel1.Name = "XrLabel1"
-        Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel1.SizeF = New System.Drawing.SizeF(177.2222!, 36.0!)
-        Me.XrLabel1.StyleName = "FieldCaption"
-        Me.XrLabel1.Text = "Bodega"
-        '
-        'XrLabel2
-        '
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(183.2222!, 7.0!)
-        Me.XrLabel2.Name = "XrLabel2"
-        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel2.SizeF = New System.Drawing.SizeF(167.5556!, 36.0!)
-        Me.XrLabel2.StyleName = "FieldCaption"
-        Me.XrLabel2.Text = "Codigo"
-        '
-        'XrLabel3
-        '
-        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(350.7778!, 7.0!)
-        Me.XrLabel3.Name = "XrLabel3"
-        Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel3.SizeF = New System.Drawing.SizeF(293.2222!, 36.0!)
-        Me.XrLabel3.StyleName = "FieldCaption"
-        Me.XrLabel3.Text = "Responsable"
-        '
-        'XrLine1
-        '
-        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 5.0!)
-        Me.XrLine1.Name = "XrLine1"
-        Me.XrLine1.SizeF = New System.Drawing.SizeF(638.0!, 2.0!)
-        '
-        'XrLine2
-        '
-        Me.XrLine2.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 43.0!)
-        Me.XrLine2.Name = "XrLine2"
-        Me.XrLine2.SizeF = New System.Drawing.SizeF(638.0!, 2.0!)
-        '
-        'GroupHeaderBand1
-        '
-        Me.GroupHeaderBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel4})
-        Me.GroupHeaderBand1.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("Bodega", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
-        Me.GroupHeaderBand1.HeightF = 23.0!
-        Me.GroupHeaderBand1.Level = 2
-        Me.GroupHeaderBand1.Name = "GroupHeaderBand1"
-        Me.GroupHeaderBand1.StyleName = "DataField"
         '
         'XrLabel4
         '
         Me.XrLabel4.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.Bodega")})
-        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 0.0!)
+        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(173.5556!, 0.0!)
         Me.XrLabel4.Name = "XrLabel4"
         Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel4.SizeF = New System.Drawing.SizeF(177.2222!, 23.0!)
         Me.XrLabel4.Text = "XrLabel4"
         '
-        'GroupHeaderBand2
-        '
-        Me.GroupHeaderBand2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel5})
-        Me.GroupHeaderBand2.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("Codigo", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
-        Me.GroupHeaderBand2.HeightF = 23.0!
-        Me.GroupHeaderBand2.Level = 1
-        Me.GroupHeaderBand2.Name = "GroupHeaderBand2"
-        Me.GroupHeaderBand2.StyleName = "DataField"
-        '
         'XrLabel5
         '
         Me.XrLabel5.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.Codigo")})
-        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(183.2222!, 0.0!)
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(6.00001!, 0.0!)
         Me.XrLabel5.Name = "XrLabel5"
         Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel5.SizeF = New System.Drawing.SizeF(167.5556!, 23.0!)
         Me.XrLabel5.Text = "XrLabel5"
-        '
-        'GroupHeaderBand3
-        '
-        Me.GroupHeaderBand3.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel6})
-        Me.GroupHeaderBand3.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("Responsable", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
-        Me.GroupHeaderBand3.HeightF = 23.0!
-        Me.GroupHeaderBand3.Name = "GroupHeaderBand3"
-        Me.GroupHeaderBand3.StyleName = "DataField"
         '
         'XrLabel6
         '
@@ -184,43 +119,32 @@ Partial Public Class rptBodegas
         '
         'XrPageInfo1
         '
+        Me.XrPageInfo1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.XrPageInfo1.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 6.0!)
         Me.XrPageInfo1.Name = "XrPageInfo1"
         Me.XrPageInfo1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime
         Me.XrPageInfo1.SizeF = New System.Drawing.SizeF(313.0!, 23.0!)
         Me.XrPageInfo1.StyleName = "PageInfo"
+        Me.XrPageInfo1.StylePriority.UseFont = False
         '
         'XrPageInfo2
         '
+        Me.XrPageInfo2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.XrPageInfo2.Format = "Page {0} of {1}"
         Me.XrPageInfo2.LocationFloat = New DevExpress.Utils.PointFloat(331.0!, 6.0!)
         Me.XrPageInfo2.Name = "XrPageInfo2"
         Me.XrPageInfo2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrPageInfo2.SizeF = New System.Drawing.SizeF(313.0!, 23.0!)
         Me.XrPageInfo2.StyleName = "PageInfo"
+        Me.XrPageInfo2.StylePriority.UseFont = False
         Me.XrPageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         '
         'ReportHeaderBand1
         '
-        Me.ReportHeaderBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel7, Me.XrLine3})
-        Me.ReportHeaderBand1.HeightF = 61.0!
+        Me.ReportHeaderBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel7, Me.XrLabel8, Me.XrPictureBox1, Me.XrLabel9})
+        Me.ReportHeaderBand1.HeightF = 125.5833!
         Me.ReportHeaderBand1.Name = "ReportHeaderBand1"
-        '
-        'XrLabel7
-        '
-        Me.XrLabel7.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 2.0!)
-        Me.XrLabel7.Name = "XrLabel7"
-        Me.XrLabel7.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel7.SizeF = New System.Drawing.SizeF(638.0!, 43.0!)
-        Me.XrLabel7.StyleName = "Title"
-        Me.XrLabel7.Text = "Lista de bodegas activas"
-        '
-        'XrLine3
-        '
-        Me.XrLine3.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 0.0!)
-        Me.XrLine3.Name = "XrLine3"
-        Me.XrLine3.SizeF = New System.Drawing.SizeF(638.0!, 2.0!)
         '
         'Title
         '
@@ -263,11 +187,133 @@ Partial Public Class rptBodegas
         Me.DataField.Name = "DataField"
         Me.DataField.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         '
+        'XrLabel7
+        '
+        Me.XrLabel7.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.DireccionEmpresa")})
+        Me.XrLabel7.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.XrLabel7.ForeColor = System.Drawing.Color.DarkBlue
+        Me.XrLabel7.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 42.29169!)
+        Me.XrLabel7.Name = "XrLabel7"
+        Me.XrLabel7.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel7.SizeF = New System.Drawing.SizeF(523.3129!, 23.0!)
+        Me.XrLabel7.StylePriority.UseFont = False
+        Me.XrLabel7.StylePriority.UseForeColor = False
+        Me.XrLabel7.StylePriority.UseTextAlignment = False
+        Me.XrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'XrLabel8
+        '
+        Me.XrLabel8.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.Empresa")})
+        Me.XrLabel8.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.XrLabel8.ForeColor = System.Drawing.Color.DarkBlue
+        Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 19.29169!)
+        Me.XrLabel8.Name = "XrLabel8"
+        Me.XrLabel8.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel8.SizeF = New System.Drawing.SizeF(524.5!, 23.0!)
+        Me.XrLabel8.StylePriority.UseFont = False
+        Me.XrLabel8.StylePriority.UseForeColor = False
+        Me.XrLabel8.StylePriority.UseTextAlignment = False
+        Me.XrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'XrPictureBox1
+        '
+        Me.XrPictureBox1.Image = CType(resources.GetObject("XrPictureBox1.Image"), System.Drawing.Image)
+        Me.XrPictureBox1.LocationFloat = New DevExpress.Utils.PointFloat(531.5!, 2.708359!)
+        Me.XrPictureBox1.Name = "XrPictureBox1"
+        Me.XrPictureBox1.SizeF = New System.Drawing.SizeF(112.5!, 62.58334!)
+        Me.XrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
+        '
+        'XrLabel9
+        '
+        Me.XrLabel9.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.XrLabel9.ForeColor = System.Drawing.Color.DarkBlue
+        Me.XrLabel9.LocationFloat = New DevExpress.Utils.PointFloat(6.0!, 96.74996!)
+        Me.XrLabel9.Name = "XrLabel9"
+        Me.XrLabel9.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel9.SizeF = New System.Drawing.SizeF(631.0833!, 26.12501!)
+        Me.XrLabel9.StylePriority.UseFont = False
+        Me.XrLabel9.StylePriority.UseForeColor = False
+        Me.XrLabel9.StylePriority.UseTextAlignment = False
+        Me.XrLabel9.Text = "Lista de bodegas  activas"
+        Me.XrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'XrLine1
+        '
+        Me.XrLine1.BackColor = System.Drawing.Color.Transparent
+        Me.XrLine1.BorderColor = System.Drawing.Color.Navy
+        Me.XrLine1.ForeColor = System.Drawing.Color.Navy
+        Me.XrLine1.LineWidth = 2
+        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(3.0!, 0.0!)
+        Me.XrLine1.Name = "XrLine1"
+        Me.XrLine1.SizeF = New System.Drawing.SizeF(644.0!, 11.54167!)
+        Me.XrLine1.StylePriority.UseBackColor = False
+        Me.XrLine1.StylePriority.UseBorderColor = False
+        Me.XrLine1.StylePriority.UseForeColor = False
+        '
+        'XrLabel1
+        '
+        Me.XrLabel1.BackColor = System.Drawing.Color.Gainsboro
+        Me.XrLabel1.ForeColor = System.Drawing.Color.DarkBlue
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(3.000005!, 12.08337!)
+        Me.XrLabel1.Name = "XrLabel1"
+        Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel1.SizeF = New System.Drawing.SizeF(170.5556!, 36.0!)
+        Me.XrLabel1.StyleName = "FieldCaption"
+        Me.XrLabel1.StylePriority.UseBackColor = False
+        Me.XrLabel1.StylePriority.UseForeColor = False
+        Me.XrLabel1.StylePriority.UseTextAlignment = False
+        Me.XrLabel1.Text = "Código"
+        Me.XrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'XrLabel2
+        '
+        Me.XrLabel2.BackColor = System.Drawing.Color.Gainsboro
+        Me.XrLabel2.ForeColor = System.Drawing.Color.DarkBlue
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(344.1113!, 12.08337!)
+        Me.XrLabel2.Name = "XrLabel2"
+        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel2.SizeF = New System.Drawing.SizeF(302.8887!, 36.0!)
+        Me.XrLabel2.StyleName = "FieldCaption"
+        Me.XrLabel2.StylePriority.UseBackColor = False
+        Me.XrLabel2.StylePriority.UseForeColor = False
+        Me.XrLabel2.StylePriority.UseTextAlignment = False
+        Me.XrLabel2.Text = "Responsable"
+        Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'XrLine3
+        '
+        Me.XrLine3.BackColor = System.Drawing.Color.Transparent
+        Me.XrLine3.BorderColor = System.Drawing.Color.Navy
+        Me.XrLine3.ForeColor = System.Drawing.Color.Navy
+        Me.XrLine3.LineWidth = 2
+        Me.XrLine3.LocationFloat = New DevExpress.Utils.PointFloat(3.0!, 48.08334!)
+        Me.XrLine3.Name = "XrLine3"
+        Me.XrLine3.SizeF = New System.Drawing.SizeF(644.0!, 11.54167!)
+        Me.XrLine3.StylePriority.UseBackColor = False
+        Me.XrLine3.StylePriority.UseBorderColor = False
+        Me.XrLine3.StylePriority.UseForeColor = False
+        '
+        'XrLabel3
+        '
+        Me.XrLabel3.BackColor = System.Drawing.Color.Gainsboro
+        Me.XrLabel3.ForeColor = System.Drawing.Color.DarkBlue
+        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(173.5556!, 12.08337!)
+        Me.XrLabel3.Name = "XrLabel3"
+        Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel3.SizeF = New System.Drawing.SizeF(170.5556!, 36.0!)
+        Me.XrLabel3.StyleName = "FieldCaption"
+        Me.XrLabel3.StylePriority.UseBackColor = False
+        Me.XrLabel3.StylePriority.UseForeColor = False
+        Me.XrLabel3.StylePriority.UseTextAlignment = False
+        Me.XrLabel3.Text = "Bodega"
+        Me.XrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
         'rptBodegas
         '
-        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.PageHeaderBand1, Me.GroupHeaderBand1, Me.GroupHeaderBand2, Me.GroupHeaderBand3, Me.PageFooterBand1, Me.ReportHeaderBand1})
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.PageHeaderBand1, Me.PageFooterBand1, Me.ReportHeaderBand1})
         Me.DataMember = "CustomSqlQuery"
         Me.DataSource = Me.SqlDataSource1
+        Me.Margins = New System.Drawing.Printing.Margins(100, 100, 29, 100)
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.Title, Me.FieldCaption, Me.PageInfo, Me.DataField})
         Me.Version = "14.1"
@@ -279,25 +325,24 @@ Partial Public Class rptBodegas
     Friend WithEvents BottomMargin As DevExpress.XtraReports.UI.BottomMarginBand
     Friend WithEvents SqlDataSource1 As DevExpress.DataAccess.Sql.SqlDataSource
     Friend WithEvents PageHeaderBand1 As DevExpress.XtraReports.UI.PageHeaderBand
-    Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLine1 As DevExpress.XtraReports.UI.XRLine
-    Friend WithEvents XrLine2 As DevExpress.XtraReports.UI.XRLine
-    Friend WithEvents GroupHeaderBand1 As DevExpress.XtraReports.UI.GroupHeaderBand
     Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents GroupHeaderBand2 As DevExpress.XtraReports.UI.GroupHeaderBand
     Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents GroupHeaderBand3 As DevExpress.XtraReports.UI.GroupHeaderBand
     Friend WithEvents XrLabel6 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents PageFooterBand1 As DevExpress.XtraReports.UI.PageFooterBand
     Friend WithEvents XrPageInfo1 As DevExpress.XtraReports.UI.XRPageInfo
     Friend WithEvents XrPageInfo2 As DevExpress.XtraReports.UI.XRPageInfo
     Friend WithEvents ReportHeaderBand1 As DevExpress.XtraReports.UI.ReportHeaderBand
-    Friend WithEvents XrLabel7 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLine3 As DevExpress.XtraReports.UI.XRLine
     Friend WithEvents Title As DevExpress.XtraReports.UI.XRControlStyle
     Friend WithEvents FieldCaption As DevExpress.XtraReports.UI.XRControlStyle
     Friend WithEvents PageInfo As DevExpress.XtraReports.UI.XRControlStyle
     Friend WithEvents DataField As DevExpress.XtraReports.UI.XRControlStyle
+    Friend WithEvents XrLabel7 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel8 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrPictureBox1 As DevExpress.XtraReports.UI.XRPictureBox
+    Friend WithEvents XrLabel9 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLine1 As DevExpress.XtraReports.UI.XRLine
+    Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLine3 As DevExpress.XtraReports.UI.XRLine
 End Class

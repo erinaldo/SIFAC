@@ -38,6 +38,65 @@ Public Class frmSivProductosEditar
 
 #Region "Procedimientos del formulario"
 
+    ''Calcular el precio de credito tomando en cuenta el costo y margen
+    Public Sub CargarPrecioCredito()
+        Try
+            If spnCostoPromedio.Value <> 0 And spnMargenCredito.Value <> 0 Then
+                spnPrecioCredito.Value = spnCostoPromedio.Value + (spnCostoPromedio.Value * (spnMargenCredito.Value / 100))
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            DtMarca = Nothing
+        End Try
+
+    End Sub
+    ''Calcular el precio de contado tomando el cuenta el costo y margen
+    Public Sub CargarPrecioContado()
+        Try
+            If spnCostoPromedio.Value <> 0 And spnMargenContado.Value <> 0 Then
+                spnPrecioContado.Value = spnCostoPromedio.Value + (spnCostoPromedio.Value * (spnMargenContado.Value / 100))
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            DtMarca = Nothing
+        End Try
+
+    End Sub
+
+    ''Calcular el margen de credito tomando en cuenta el costo y precio de credito
+    Public Sub CargarMargenCredito()
+        Try
+            If spnCostoPromedio.Value <> 0 And spnPrecioCredito.Value <> 0 Then
+                spnMargenCredito.Value = ((spnPrecioCredito.Value - spnCostoPromedio.Value) / spnCostoPromedio.Value) * 100
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            DtMarca = Nothing
+        End Try
+    End Sub
+
+    ''Calcular el precio de contado tomando el cuenta el costo y margen
+    Public Sub CargarMargenContado()
+        Try
+            If spnCostoPromedio.Value <> 0 And spnPrecioContado.Value <> 0 Then
+                spnMargenContado.Value = ((spnPrecioContado.Value - spnCostoPromedio.Value) / spnCostoPromedio.Value) * 100
+
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            DtMarca = Nothing
+        End Try
+    End Sub
+    ''Calcular el margen de contado tomando en cuenta el costo y el precio de contado
+
     '' Descripción:        Procedimiento encargado de cargar los valores de Marca
     Public Sub CargarMarca()
         Try
@@ -45,7 +104,7 @@ Public Class frmSivProductosEditar
             cmbMarca.DisplayMember = "Nombre"
             DtMarca = SivMarcas.RetrieveDT("Activa=1")
             cmbMarca.DataSource = DtMarca
-            cmbMarca.Text = ""
+            cmbMarca.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -61,7 +120,7 @@ Public Class frmSivProductosEditar
             cmbCategoria.DisplayMember = "Nombre"
             DtCategoria = SivCategorias.RetrieveDT("Activa=1", " Nombre", "CategoriaID, Nombre")
             cmbCategoria.DataSource = DtCategoria
-            cmbCategoria.Text = ""
+            cmbCategoria.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -94,6 +153,7 @@ Public Class frmSivProductosEditar
                 .DisplayColumns("SivProveedorID").Visible = False
                 .ValueTranslate = True
                 .ExtendRightColumn = True
+
             End With
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -129,7 +189,7 @@ Public Class frmSivProductosEditar
                     chkActivo.Enabled = False
                     Me.CargarProveedor("1=0")
                     Me.CargarComboProveedor()
-                    Me.grdProveedor.Splits(0).DisplayColumns(2).Visible = False
+                    Me.grdProveedor.Splits(0).DisplayColumns(1).Visible = False
                     Me.grdProveedor.EmptyRows = False
                     Me.grdProveedor.FilterBar = False
                     Me.grdProveedor.Refresh()
@@ -138,10 +198,9 @@ Public Class frmSivProductosEditar
                     Me.grdBodegas.EmptyRows = False
                     Me.grdBodegas.FilterBar = False
                     Me.grdBodegas.Refresh()
-                   
+                    Me.FormatearGridConsultaBodegas()
                 Case 1
                     CargarDatosProducto()
-                    chkActivo.Enabled = True
                     Me.CargarProveedor("objProductosID = '" & Me.intProductoID & "'")
                     Me.CargarComboProveedor()
                     Me.grdProveedor.Splits(0).DisplayColumns(1).Visible = False
@@ -153,8 +212,10 @@ Public Class frmSivProductosEditar
                     Me.grdBodegas.EmptyRows = False
                     Me.grdBodegas.FilterBar = False
                     Me.grdBodegas.Refresh()
+                    Me.FormatearGridConsultaBodegas()
                 Case 2
                     CargarDatosProducto()
+
                     spnCantidadMinima.Enabled = False
                     spnCostoPromedio.Enabled = False
                     spnMargenContado.Enabled = False
@@ -167,10 +228,23 @@ Public Class frmSivProductosEditar
                     cmbCategoria.Enabled = False
                     chkActivo.Enabled = False
                     cmdGuardar.Enabled = False
+                    cmdAgregarCategoria.Enabled = False
+                    cmdAgregarMarca.Enabled = False
+
+                    Me.CargarProveedor("objProductosID = '" & Me.intProductoID & "'")
                     Me.CargarComboProveedor()
+                    Me.grdProveedor.Splits(0).DisplayColumns(1).Visible = False
+                    Me.grdProveedor.EmptyRows = False
+                    Me.grdProveedor.FilterBar = False
+                    Me.grdProveedor.Refresh()
+                    FormatearGridConsultaProveedor()
+
                     Me.CargarExistenciaEditar()
-                    'Formatea los grid para sólo consulta
-                    Me.FormatearGridConsulta()
+                    Me.grdBodegas.EmptyRows = False
+                    Me.grdBodegas.FilterBar = False
+                    Me.grdBodegas.Refresh()
+                    Me.FormatearGridConsultaBodegas()
+                  
             End Select
             txtProducto.Focus()
         Catch ex As Exception
@@ -189,6 +263,7 @@ Public Class frmSivProductosEditar
             cmbMarca.SelectedValue = objProducto.objMarcaID
             chkActivo.Checked = objProducto.Activo
             spnCantidadMinima.Value = objProducto.Cantidad_Minima
+
             spnCostoPromedio.Value = IIf(IsDBNull(objProducto.CostoPromedio), 0.0, objProducto.CostoPromedio)
             spnMargenContado.Value = IIf(IsDBNull(objProducto.Margen_Utilidad_Contado), 0.0, objProducto.Margen_Utilidad_Contado)
             spnMargenCredito.Value = IIf(IsDBNull(objProducto.Margen_Utilidad_Credito), 0.0, objProducto.Margen_Utilidad_Credito)
@@ -206,6 +281,7 @@ Public Class frmSivProductosEditar
         Dim objProducto As SivProductos
         Dim objBodega As StbBodegas
         Dim objBodegaProductos As SivBodegaProductos
+        Dim dtBodegas As DataTable
         Dim T As New DAL.TransactionManager
         Try
             T.BeginTran()
@@ -226,24 +302,24 @@ Public Class frmSivProductosEditar
             objProducto.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objProducto.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objProducto.Insert(T)
+           
+            ''Insertar en Bodega Productos con cantidad 0
+            objBodegaProductos = New SivBodegaProductos
+            objBodega = New StbBodegas
+            dtBodegas = StbBodegas.RetrieveDT("Activo=1", , "StbBodegaID")
 
-            If dtExistenciaBodega.Rows.Count > 0 Then
-                Me.GuardarBodegaProductos(T)
-            Else
-                ''Insertar en Bodega Productos con cantidad 0
-                objBodegaProductos = New SivBodegaProductos
-                objBodega = New StbBodegas
-                objBodega.RetrieveByFilter("Codigo='" & clsProyecto.Sucursal & "'")
+            ''Recorrer bodegas existentes
+            For Each row As DataRow In dtBodegas.Rows
+                objBodegaProductos.objProductoID = ProductoID
+                objBodegaProductos.objBodegaID = row("StbBodegaID")
+                objBodegaProductos.Cantidad = 0
+                objBodegaProductos.CantidadTransito = 0
+                objBodegaProductos.UsuarioCreacion = clsProyecto.Conexion.Servidor
+                objBodegaProductos.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objBodegaProductos.Insert(T)
+            Next
 
-            End If
-          
-            objBodegaProductos.objProductoID = ProductoID
-            objBodegaProductos.objBodegaID = objBodega.StbBodegaID
-            objBodegaProductos.Cantidad = 0
-            objBodegaProductos.CantidadTransito = 0
-            objBodegaProductos.UsuarioCreacion = clsProyecto.Conexion.Servidor
-            objBodegaProductos.FechaCreacion = clsProyecto.Conexion.FechaServidor
-            objBodegaProductos.Insert(T)
+            'Me.GuardarBodegaProductos(T)
 
             T.CommitTran()
 
@@ -335,16 +411,14 @@ Public Class frmSivProductosEditar
 #End Region
 
 #Region "Formatear Grids para consulta"
-    Private Sub FormatearGridConsulta()
+
+    Private Sub FormatearGridConsultaProveedor()
         'Grid de proveedores
         With Me.grdProveedor
-            .Splits(0).DisplayColumns("SivProveedorID").Visible = False
-            .Splits(0).DisplayColumns("CodigoRepuesto").Locked = True
-            .Splits(0).DisplayColumns("SivProveedorID").Button = False
-            .Splits(0).DisplayColumns("SivProveedorID").AutoDropDown = False
-            '.Splits(0).DisplayColumns("NombreProveedor").Style.BackColor = Me.grdCompatibilidad.Splits(0).DisplayColumns("Modelo").Style.BackColor
-            '.Splits(0).DisplayColumns("CodigoRepuesto").Style.BackColor = Me.grdCompatibilidad.Splits(0).DisplayColumns("Modelo").Style.BackColor
-            '.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.NoMarquee
+           
+            .Splits(0).DisplayColumns(0).Locked = False
+            .Splits(0).DisplayColumns(1).Visible = False
+            .MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.NoMarquee
             .EmptyRows = False
             .FilterBar = False
             .AllowDelete = False
@@ -353,13 +427,15 @@ Public Class frmSivProductosEditar
             .AllowUpdate = False
             .RecordSelectors = False
             .Refresh()
-        End With
 
+        End With
+    End Sub
+
+    Private Sub FormatearGridConsultaBodegas()
         'Grid Bedegas
         With Me.grdBodegas
             .Splits(0).DisplayColumns("Ubicacion").Locked = True
-            '.Splits(0).DisplayColumns("Ubicacion").Style.BackColor = Me.grdCompatibilidad.Splits(0).DisplayColumns("Modelo").Style.BackColor
-            .Splits(0).DisplayColumns("StbTiendaID").Visible = False
+            .Splits(0).DisplayColumns("StbBodegaID").Visible = False
             .MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.NoMarquee
             .EmptyRows = False
             .FilterBar = False
@@ -403,7 +479,7 @@ Public Class frmSivProductosEditar
                 'Me.grdProveedor.Refresh()
                 dtDetalleProveedor = SivProductosDetProv.RetrieveDT("1=0")
 
-                
+
                 Me.dtProveedor.AcceptChanges()
                 For Each row As DataRow In Me.dtProveedor.Rows ' row As DataRow In Me.dtProveedor.Rows
                     fila = dtDetalleProveedor.NewRow
@@ -651,4 +727,48 @@ Public Class frmSivProductosEditar
 
 #End Region
 
+    Private Sub spnCostoPromedio_EditValueChanged(sender As Object, e As EventArgs) Handles spnCostoPromedio.EditValueChanged
+        Try
+            CargarMargenContado()
+            CargarMargenCredito()
+            CargarPrecioContado()
+            CargarPrecioCredito()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+   
+
+    Private Sub spnPrecioContado_EditValueChanged(sender As Object, e As EventArgs) Handles spnPrecioContado.EditValueChanged
+        Try
+            CargarMargenContado()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub spnMargenCredito_EditValueChanged(sender As Object, e As EventArgs) Handles spnMargenCredito.EditValueChanged
+        Try
+            CargarPrecioCredito()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub spnMargenContado_EditValueChanged(sender As Object, e As EventArgs) Handles spnMargenContado.EditValueChanged
+        Try
+            CargarPrecioContado()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub spnPrecioCredito_EditValueChanged(sender As Object, e As EventArgs) Handles spnPrecioCredito.EditValueChanged
+        Try
+            CargarMargenCredito()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 End Class

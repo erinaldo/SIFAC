@@ -336,6 +336,12 @@ Public Class frmStbRutasEdit
                 Exit Function
             End If
 
+            If cmbSupervisor.Text.Trim.Length = 0 Or cbxCobrador.Text = "Ninguno" Then
+                ErrorProv.SetError(cmbSupervisor, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
+
             ''Validar que no existe otra ruta, mismo vendedor, en el mismo dia y ciudad
             objStbRuta = New StbRutas
             
@@ -437,6 +443,16 @@ Public Class frmStbRutasEdit
         boolEditado = True
     End Sub
 
+    Private Sub cbxCobrador_SelectedValueChanged(sender As Object, e As EventArgs) Handles cbxCobrador.SelectedValueChanged
+        ErrorProv.SetError(cbxCobrador, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub cmbSupervisor_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbSupervisor.SelectedValueChanged
+        ErrorProv.SetError(cmbSupervisor, "")
+        boolEditado = True
+    End Sub
+
     Private Sub txtCodigo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCodigo.KeyPress
         If Asc(e.KeyChar) = 13 Then
             Me.txtNombre.Focus()
@@ -492,4 +508,6 @@ Public Class frmStbRutasEdit
     End Sub
 #End Region
 
+  
+    
 End Class

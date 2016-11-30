@@ -25,8 +25,8 @@ Public Class frmReporteProductos
             cboCategoria.DataSource = Me.dtCategorias
             cboCategoria.DisplayMember = "Nombre"
             cboCategoria.ValueMember = "CategoriaID"
-            cboCategoria.Splits(0).DisplayColumns("CategoriaID").Visible = False
-            cboCategoria.ExtendRightColumn = True
+            cboCategoria.SelectedIndex = -1
+           
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -44,8 +44,8 @@ Public Class frmReporteProductos
             cboMarca.DataSource = Me.dtMarcas
             cboMarca.DisplayMember = "Nombre"
             cboMarca.ValueMember = "MarcaID"
-            cboMarca.Splits(0).DisplayColumns("MarcaID").Visible = False
-            cboMarca.ExtendRightColumn = True
+            cboMarca.SelectedIndex = -1
+            
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -120,9 +120,30 @@ Public Class frmReporteProductos
         Close()
     End Sub
 
+
+    Private Sub cboCategoria_SelectedValueChanged_1(sender As Object, e As EventArgs) Handles cboCategoria.SelectedValueChanged
+        Try
+            If cboCategoria.SelectedIndex <> -1 Then
+                rbTodos.Checked = False
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub cboMarca_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboMarca.SelectedValueChanged
+        Try
+            If cboMarca.SelectedIndex <> -1 Then
+                rbTodos.Checked = False
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
 #End Region
 
 
-   
-   
+
+    
 End Class

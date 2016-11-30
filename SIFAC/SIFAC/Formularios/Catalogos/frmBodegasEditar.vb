@@ -78,7 +78,7 @@ Public Class frmBodegasEditar
 
             txtNombre.Text = objBodega.Nombre
             If Not String.IsNullOrEmpty(objBodega.Codigo) Then
-                txtCodigo.Text = objBodega.Codigo
+                txtCodigo.Text = objBodega.Codigo.Trim
             End If
 
             cmbCiudad.SelectedValue = objBodega.objCiudadID
@@ -272,27 +272,53 @@ Public Class frmBodegasEditar
 
     '' Descripción:        Función encargada de validar la entrada del usuario
     Public Function ValidarEntrada() As Boolean
-        If txtNombre.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(txtNombre, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
-        If txtCodigo.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(txtCodigo, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
+        Dim dtVerificarCodigoBodega As DataTable
+        Try
+            If txtNombre.Text.Trim.Length = 0 Then
+                ErrorProv.SetError(txtNombre, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
+            If txtCodigo.Text.Trim.Length = 0 Then
+                ErrorProv.SetError(txtCodigo, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
 
-        If cmbCiudad.Text.Trim.Length = 0 Then
-            ErrorProv.SetError(cmbCiudad, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
-        If cmbJefe.Text.Trim = "" Then
-            ErrorProv.SetError(cmbJefe, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
+            If cmbCiudad.Text.Trim.Length = 0 Then
+                ErrorProv.SetError(cmbCiudad, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
+            If cmbJefe.Text.Trim = "" Then
+                ErrorProv.SetError(cmbJefe, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
+
+            ''Validar que no existe una bodega con el mismo codigo           
+           
+            Select Case TypeGui
+                Case 1
+                    dtVerificarCodigoBodega = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("Codigo", "StbBodegas", "Activo =1 and Ltrim(Rtrim(Codigo))='" & txtCodigo.Text.Trim & "'"))
+
+                    If dtVerificarCodigoBodega.Rows.Count > 0 Then
+                        ErrorProv.SetError(cmbJefe, "El Código de bodega ya existe. Registre uno diferente.")
+                        Return False
+                    End If
+                Case 2
+                    dtVerificarCodigoBodega = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("Codigo", "StbBodegas", "Activo =1 and Ltrim(Rtrim(Codigo))='" & txtCodigo.Text.Trim & "' and StbBodegaID<>" & BodegaID))
+
+                    If dtVerificarCodigoBodega.Rows.Count > 0 Then
+                        ErrorProv.SetError(txtCodigo, "El Código de bodega ya existe. Registre uno diferente.")
+                        Return False
+                    End If
+            End Select
+
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
         Return True
     End Function
 #End Region
@@ -336,9 +362,9 @@ Public Class frmBodegasEditar
 
     Private Sub cmdJefe_Click(sender As Object, e As EventArgs) Handles cmdJefe.Click
         Try
-            If cmbJefe.SelectedText = "" Then
-                Me.NuevoJefe()
-            Else
+            If cmbJefe.SelectedIndex = -1 Then
+                    Me.NuevoJefe()
+               Else
                 Me.ConsultarJefe()
             End If
         Catch ex As Exception
@@ -348,6 +374,11 @@ Public Class frmBodegasEditar
 
     Private Sub cmbCiudad_Change(sender As Object, e As EventArgs)
         ErrorProv.SetError(cmbCiudad, "")
+        boolEditado = True
+    End Sub
+
+    Private Sub txtCodigo_TextChanged(sender As Object, e As EventArgs) Handles txtCodigo.TextChanged
+        ErrorProv.SetError(txtCodigo, "")
         boolEditado = True
     End Sub
 
@@ -407,4 +438,5 @@ Public Class frmBodegasEditar
 
 #End Region
 
+   
 End Class

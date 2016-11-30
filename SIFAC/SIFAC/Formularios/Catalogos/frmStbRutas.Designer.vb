@@ -34,18 +34,26 @@ Partial Class frmStbRutas
         Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
-        Me.grdRutas = New DevExpress.XtraGrid.GridControl()
-        Me.grdRutasTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colCobrador = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.grdVentas = New DevExpress.XtraGrid.GridControl()
+        Me.grdVentasTable = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.ColCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSupervisor = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.ColSccCuentaID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colProducto = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colModeloMarca = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSaldo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tbProductos.SuspendLayout()
-        CType(Me.grdRutas, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdRutasTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbProductos
@@ -135,84 +143,27 @@ Partial Class frmStbRutas
         Me.cmdCerrar.Size = New System.Drawing.Size(36, 36)
         Me.cmdCerrar.ToolTipText = "Salir de Catálogo de Rutas"
         '
-        'grdRutas
+        'grdVentas
         '
-        Me.grdRutas.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdRutas.Location = New System.Drawing.Point(0, 39)
-        Me.grdRutas.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.grdRutas.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.grdRutas.MainView = Me.grdRutasTabla
-        Me.grdRutas.Name = "grdRutas"
-        Me.grdRutas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
-        Me.grdRutas.Size = New System.Drawing.Size(691, 383)
-        Me.grdRutas.TabIndex = 8
-        Me.grdRutas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdRutasTabla})
+        Me.grdVentas.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdVentas.Location = New System.Drawing.Point(0, 39)
+        Me.grdVentas.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdVentas.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdVentas.MainView = Me.grdVentasTable
+        Me.grdVentas.Name = "grdVentas"
+        Me.grdVentas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2, Me.RepositoryItemDateEdit1})
+        Me.grdVentas.Size = New System.Drawing.Size(691, 383)
+        Me.grdVentas.TabIndex = 7
+        Me.grdVentas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdVentasTable, Me.GridView1})
         '
-        'grdRutasTabla
+        'grdVentasTable
         '
-        Me.grdRutasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colCobrador, Me.colActiva})
-        Me.grdRutasTabla.GridControl = Me.grdRutas
-        Me.grdRutasTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
-        Me.grdRutasTabla.Name = "grdRutasTabla"
-        Me.grdRutasTabla.OptionsDetail.AllowZoomDetail = False
-        Me.grdRutasTabla.OptionsDetail.EnableMasterViewMode = False
-        Me.grdRutasTabla.OptionsDetail.ShowDetailTabs = False
-        Me.grdRutasTabla.OptionsDetail.SmartDetailExpand = False
-        Me.grdRutasTabla.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckDefaultDetail
-        Me.grdRutasTabla.OptionsView.ShowAutoFilterRow = True
-        Me.grdRutasTabla.ViewCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
-        '
-        'colNumero
-        '
-        Me.colNumero.Caption = "Número"
-        Me.colNumero.FieldName = "StbRutaID"
-        Me.colNumero.Name = "colNumero"
-        Me.colNumero.OptionsColumn.AllowFocus = False
-        Me.colNumero.OptionsColumn.ReadOnly = True
-        Me.colNumero.Width = 76
-        '
-        'colNombre
-        '
-        Me.colNombre.Caption = "Nombre"
-        Me.colNombre.FieldName = "Nombre"
-        Me.colNombre.Name = "colNombre"
-        Me.colNombre.OptionsColumn.AllowFocus = False
-        Me.colNombre.OptionsColumn.ReadOnly = True
-        Me.colNombre.Visible = True
-        Me.colNombre.VisibleIndex = 0
-        Me.colNombre.Width = 148
-        '
-        'colDescripcion
-        '
-        Me.colDescripcion.Caption = "Descripcion"
-        Me.colDescripcion.FieldName = "Descripcion"
-        Me.colDescripcion.Name = "colDescripcion"
-        Me.colDescripcion.OptionsColumn.AllowFocus = False
-        Me.colDescripcion.OptionsColumn.ReadOnly = True
-        Me.colDescripcion.Visible = True
-        Me.colDescripcion.VisibleIndex = 1
-        Me.colDescripcion.Width = 219
-        '
-        'colCobrador
-        '
-        Me.colCobrador.Caption = "Cobrador"
-        Me.colCobrador.FieldName = "Cobrador"
-        Me.colCobrador.Name = "colCobrador"
-        Me.colCobrador.Visible = True
-        Me.colCobrador.VisibleIndex = 2
-        Me.colCobrador.Width = 150
-        '
-        'colActiva
-        '
-        Me.colActiva.Caption = "Activa"
-        Me.colActiva.ColumnEdit = Me.RepositoryItemCheckEdit1
-        Me.colActiva.FieldName = "Activo"
-        Me.colActiva.Name = "colActiva"
-        Me.colActiva.OptionsColumn.AllowFocus = False
-        Me.colActiva.OptionsColumn.ReadOnly = True
-        Me.colActiva.Visible = True
-        Me.colActiva.VisibleIndex = 3
-        Me.colActiva.Width = 95
+        Me.grdVentasTable.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColCodigo, Me.colSupervisor})
+        Me.grdVentasTable.GridControl = Me.grdVentas
+        Me.grdVentasTable.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
+        Me.grdVentasTable.Name = "grdVentasTable"
+        Me.grdVentasTable.OptionsView.ShowAutoFilterRow = True
+        Me.grdVentasTable.OptionsView.ShowFooter = True
         '
         'RepositoryItemCheckEdit1
         '
@@ -220,12 +171,92 @@ Partial Class frmStbRutas
         Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
+        'RepositoryItemDateEdit1
+        '
+        Me.RepositoryItemDateEdit1.AutoHeight = False
+        Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
+        Me.RepositoryItemDateEdit1.ReadOnly = True
+        '
+        'ColCodigo
+        '
+        Me.ColCodigo.Caption = "objSupervisor"
+        Me.ColCodigo.FieldName = "Cliente"
+        Me.ColCodigo.Name = "ColCodigo"
+        '
+        'colSupervisor
+        '
+        Me.colSupervisor.AppearanceCell.BackColor = System.Drawing.Color.Transparent
+        Me.colSupervisor.AppearanceCell.Options.UseBackColor = True
+        Me.colSupervisor.Caption = "Supervisor"
+        Me.colSupervisor.FieldName = "Supervisor"
+        Me.colSupervisor.Name = "colSupervisor"
+        Me.colSupervisor.OptionsColumn.AllowFocus = False
+        Me.colSupervisor.OptionsColumn.ReadOnly = True
+        Me.colSupervisor.Visible = True
+        Me.colSupervisor.VisibleIndex = 0
+        '
+        'RepositoryItemCheckEdit2
+        '
+        Me.RepositoryItemCheckEdit2.AutoHeight = False
+        Me.RepositoryItemCheckEdit2.Caption = "Check"
+        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
+        '
+        'GridView1
+        '
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ColSccCuentaID, Me.colProducto, Me.colModeloMarca, Me.colSaldo})
+        Me.GridView1.GridControl = Me.grdVentas
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.AutoPopulateColumns = False
+        Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView1.OptionsBehavior.ReadOnly = True
+        Me.GridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never
+        '
+        'ColSccCuentaID
+        '
+        Me.ColSccCuentaID.Caption = "SccCuentaID"
+        Me.ColSccCuentaID.FieldName = "SccCuentaID"
+        Me.ColSccCuentaID.Name = "ColSccCuentaID"
+        Me.ColSccCuentaID.Visible = True
+        Me.ColSccCuentaID.VisibleIndex = 0
+        '
+        'colProducto
+        '
+        Me.colProducto.Caption = "Producto"
+        Me.colProducto.FieldName = "Producto"
+        Me.colProducto.Name = "colProducto"
+        Me.colProducto.OptionsColumn.AllowEdit = False
+        Me.colProducto.OptionsFilter.AllowAutoFilter = False
+        Me.colProducto.Visible = True
+        Me.colProducto.VisibleIndex = 1
+        '
+        'colModeloMarca
+        '
+        Me.colModeloMarca.Caption = "Modelo/Marca"
+        Me.colModeloMarca.FieldName = "ModeloMarca"
+        Me.colModeloMarca.Name = "colModeloMarca"
+        Me.colModeloMarca.OptionsColumn.AllowEdit = False
+        Me.colModeloMarca.OptionsFilter.AllowAutoFilter = False
+        Me.colModeloMarca.Visible = True
+        Me.colModeloMarca.VisibleIndex = 2
+        '
+        'colSaldo
+        '
+        Me.colSaldo.Caption = "Saldo"
+        Me.colSaldo.FieldName = "Saldo"
+        Me.colSaldo.Name = "colSaldo"
+        Me.colSaldo.OptionsColumn.AllowEdit = False
+        Me.colSaldo.OptionsFilter.AllowAutoFilter = False
+        Me.colSaldo.Visible = True
+        Me.colSaldo.VisibleIndex = 3
+        '
         'frmStbRutas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(691, 422)
-        Me.Controls.Add(Me.grdRutas)
+        Me.Controls.Add(Me.grdVentas)
         Me.Controls.Add(Me.tbProductos)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmStbRutas"
@@ -233,9 +264,13 @@ Partial Class frmStbRutas
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.tbProductos.ResumeLayout(False)
         Me.tbProductos.PerformLayout()
-        CType(Me.grdRutas, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdRutasTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -251,12 +286,16 @@ Partial Class frmStbRutas
     Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdCerrar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents grdRutas As DevExpress.XtraGrid.GridControl
-    Friend WithEvents grdRutasTabla As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colCobrador As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colActiva As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents grdVentas As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdVentasTable As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents ColCodigo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSupervisor As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents RepositoryItemCheckEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents RepositoryItemDateEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents ColSccCuentaID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colProducto As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colModeloMarca As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSaldo As DevExpress.XtraGrid.Columns.GridColumn
 End Class

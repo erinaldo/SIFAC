@@ -186,7 +186,7 @@ Partial Class frmPrincipal
         '
         'NavBarReciboCaja
         '
-        Me.NavBarReciboCaja.Caption = "Recibo de Caja"
+        Me.NavBarReciboCaja.Caption = "Abonos"
         Me.NavBarReciboCaja.Name = "NavBarReciboCaja"
         Me.NavBarReciboCaja.SmallImage = CType(resources.GetObject("NavBarReciboCaja.SmallImage"), System.Drawing.Image)
         '
