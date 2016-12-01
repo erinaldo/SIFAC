@@ -10,7 +10,8 @@ Imports DevExpress.XtraReports.UI
 Public Class frmStbRutas
 
 #Region "Declaracion de Variables Globales"
-    Public DtRutas As DataTable
+
+    Public DtRutas, DtRutasDetalle As DataTable
     Public objSeg As SsgSeguridad
     Public boolAgregar, boolEditar, boolConsultar, boolDesactivar, boolImprimir As Boolean
 #End Region
@@ -20,7 +21,6 @@ Public Class frmStbRutas
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
         Dim ds As DataSet
-        Dim DtRutasDetalle As DataTable
         Try
             DtRutas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSupervisor, Supervisor", "vwStbRutasMaster", "Activa=1"))
             'DtRutas.PrimaryKey = New DataColumn() {Me.DtRutas.Columns("StbRutaID")}
@@ -139,7 +139,7 @@ Public Class frmStbRutas
             Me.Cursor = WaitCursor
             editRutas = New frmStbRutasEdit
             editRutas.TypeGui = 1
-            editRutas.RutaID = Me.DtRutas.DefaultView.Item(FilaActual)("StbRutaID")
+            editRutas.RutaID = Me.DtRutasDetalle.DefaultView.Item(FilaActual)("StbRutaID")
             If editRutas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
             End If
