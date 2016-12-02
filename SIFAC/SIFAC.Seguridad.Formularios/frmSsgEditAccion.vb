@@ -103,21 +103,22 @@ Public Class frmSsgEditAccion
     End Sub
 
     Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
-        Try
-            If blnModifico Then
-                Select Case MsgBox("¿Desea guardar los cambios ?", MsgBoxStyle.Question + MsgBoxStyle.YesNoCancel)
-                    Case MsgBoxResult.Yes
-                        SalvarAccion()
-                    Case MsgBoxResult.No
-                        Me.DialogResult = Windows.Forms.DialogResult.Cancel
-                    Case MsgBoxResult.Cancel
-                End Select
-            Else
-                Me.DialogResult = Windows.Forms.DialogResult.Cancel
-            End If
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
+        Close()
+        'Try
+        '    If blnModifico Then
+        '        Select Case MsgBox("¿Desea guardar los cambios ?", MsgBoxStyle.Question + MsgBoxStyle.YesNoCancel)
+        '            Case MsgBoxResult.Yes
+        '                SalvarAccion()
+        '            Case MsgBoxResult.No
+        '                Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        '            Case MsgBoxResult.Cancel
+        '        End Select
+        '    Else
+        '        Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        '    End If
+        'Catch ex As Exception
+        '    clsError.CaptarError(ex)
+        'End Try
     End Sub
 
 

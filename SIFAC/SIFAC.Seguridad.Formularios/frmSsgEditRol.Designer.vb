@@ -19,7 +19,6 @@ Partial Class frmSsgEditRol
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSsgEditRol))
         Me.TabAcciones = New System.Windows.Forms.TabControl()
         Me.TabRol = New System.Windows.Forms.TabPage()
@@ -35,7 +34,7 @@ Partial Class frmSsgEditRol
         Me.txtNombreA = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.grdAcciones = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
@@ -208,6 +207,7 @@ Partial Class frmSsgEditRol
         Me.grdAcciones.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdAcciones.EmptyRows = True
         Me.grdAcciones.ExtendRightColumn = True
+        Me.grdAcciones.FilterBar = True
         Me.grdAcciones.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
         Me.grdAcciones.Images.Add(CType(resources.GetObject("grdAcciones.Images"), System.Drawing.Image))
         Me.grdAcciones.Location = New System.Drawing.Point(3, 3)
