@@ -53,6 +53,11 @@ Partial Class frmPrincipal
         Me.NavBarSincroVentas = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarSincroDevoluciones = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarPrincipal = New DevExpress.XtraNavBar.NavBarControl()
+        Me.grpCaja = New DevExpress.XtraNavBar.NavBarGroup()
+        Me.NavBarArqueo = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarNotaDebito = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarNotaCredito = New DevExpress.XtraNavBar.NavBarItem()
+        Me.grpConfiguraciones = New DevExpress.XtraNavBar.NavBarGroup()
         Me.NVBarReportes = New DevExpress.XtraNavBar.NavBarGroup()
         Me.NavBarKardex = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarConsolidado = New DevExpress.XtraNavBar.NavBarItem()
@@ -168,14 +173,13 @@ Partial Class frmPrincipal
         'grpCatalogos
         '
         Me.grpCatalogos.Caption = "Catalogos"
-        Me.grpCatalogos.Expanded = True
-        Me.grpCatalogos.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.navBarCatalogos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarParametros), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCategorias), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarMarcas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarBodegas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavProductos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarRutas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEmpleados)})
+        Me.grpCatalogos.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCategorias), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarMarcas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarBodegas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavProductos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarRutas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEmpleados), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarClientes), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarProveedor)})
         Me.grpCatalogos.Name = "grpCatalogos"
         '
         'grpCartera
         '
         Me.grpCartera.Caption = "Cartera y Cobro"
-        Me.grpCartera.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarClientes), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCuentas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReciboCaja), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarDevoluciones)})
+        Me.grpCartera.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCuentas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReciboCaja), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarDevoluciones)})
         Me.grpCartera.Name = "grpCartera"
         '
         'NavBarCuentas
@@ -199,7 +203,7 @@ Partial Class frmPrincipal
         'grpInventario
         '
         Me.grpInventario.Caption = "Inventario"
-        Me.grpInventario.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarOrdenCompra), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEncargos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarProveedor), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEntrada), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSalidas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSolicitud), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarDespacho), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarRecepcion)})
+        Me.grpInventario.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarOrdenCompra), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEncargos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEntrada), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSalidas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSolicitud), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarDespacho), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarRecepcion)})
         Me.grpInventario.Name = "grpInventario"
         '
         'NavBarOrdenCompra
@@ -247,7 +251,7 @@ Partial Class frmPrincipal
         'grpFacturacion
         '
         Me.grpFacturacion.Caption = "Facturacion"
-        Me.grpFacturacion.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarDescuentos), New DevExpress.XtraNavBar.NavBarItemLink(Me.navBarFacturacion)})
+        Me.grpFacturacion.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.navBarFacturacion)})
         Me.grpFacturacion.Name = "grpFacturacion"
         '
         'grpSincronizacion
@@ -276,10 +280,10 @@ Partial Class frmPrincipal
         '
         'NavBarPrincipal
         '
-        Me.NavBarPrincipal.ActiveGroup = Me.NVBarReportes
+        Me.NavBarPrincipal.ActiveGroup = Me.grpCaja
         Me.NavBarPrincipal.Dock = System.Windows.Forms.DockStyle.Left
-        Me.NavBarPrincipal.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpCatalogos, Me.grpCartera, Me.grpInventario, Me.grpFacturacion, Me.grpSincronizacion, Me.NVBarReportes})
-        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones, Me.NavBarConsolidado, Me.NavBarKardex})
+        Me.NavBarPrincipal.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpConfiguraciones, Me.grpCatalogos, Me.grpCartera, Me.grpCaja, Me.grpInventario, Me.grpFacturacion, Me.grpSincronizacion, Me.NVBarReportes})
+        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones, Me.NavBarConsolidado, Me.NavBarKardex, Me.NavBarNotaCredito, Me.NavBarNotaDebito, Me.NavBarArqueo})
         Me.NavBarPrincipal.Location = New System.Drawing.Point(0, 24)
         Me.NavBarPrincipal.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.NavBarPrincipal.LookAndFeel.UseDefaultLookAndFeel = False
@@ -288,6 +292,38 @@ Partial Class frmPrincipal
         Me.NavBarPrincipal.Size = New System.Drawing.Size(175, 561)
         Me.NavBarPrincipal.TabIndex = 17
         Me.NavBarPrincipal.View = New DevExpress.XtraNavBar.ViewInfo.StandardSkinExplorerBarViewInfoRegistrator("Office 2010 Silver")
+        '
+        'grpCaja
+        '
+        Me.grpCaja.Caption = "Caja"
+        Me.grpCaja.Expanded = True
+        Me.grpCaja.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarArqueo), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarNotaDebito), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarNotaCredito)})
+        Me.grpCaja.Name = "grpCaja"
+        '
+        'NavBarArqueo
+        '
+        Me.NavBarArqueo.Caption = "Arqueo"
+        Me.NavBarArqueo.Name = "NavBarArqueo"
+        Me.NavBarArqueo.SmallImage = CType(resources.GetObject("NavBarArqueo.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarNotaDebito
+        '
+        Me.NavBarNotaDebito.Caption = "Notas de debito"
+        Me.NavBarNotaDebito.Name = "NavBarNotaDebito"
+        Me.NavBarNotaDebito.SmallImage = CType(resources.GetObject("NavBarNotaDebito.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarNotaCredito
+        '
+        Me.NavBarNotaCredito.Caption = "Notas de crédito"
+        Me.NavBarNotaCredito.Name = "NavBarNotaCredito"
+        Me.NavBarNotaCredito.SmallImage = CType(resources.GetObject("NavBarNotaCredito.SmallImage"), System.Drawing.Image)
+        '
+        'grpConfiguraciones
+        '
+        Me.grpConfiguraciones.Caption = "Configuraciones"
+        Me.grpConfiguraciones.Expanded = True
+        Me.grpConfiguraciones.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarParametros), New DevExpress.XtraNavBar.NavBarItemLink(Me.navBarCatalogos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarDescuentos)})
+        Me.grpConfiguraciones.Name = "grpConfiguraciones"
         '
         'NVBarReportes
         '
@@ -591,4 +627,9 @@ Partial Class frmPrincipal
     Friend WithEvents NVBarReportes As DevExpress.XtraNavBar.NavBarGroup
     Friend WithEvents NavBarConsolidado As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarKardex As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents grpConfiguraciones As DevExpress.XtraNavBar.NavBarGroup
+    Friend WithEvents grpCaja As DevExpress.XtraNavBar.NavBarGroup
+    Friend WithEvents NavBarArqueo As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents NavBarNotaDebito As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents NavBarNotaCredito As DevExpress.XtraNavBar.NavBarItem
 End Class

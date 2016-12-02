@@ -298,6 +298,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dtDatosServicioTallerBitacoraMoto.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Arqueo\frmSccArquo.Designer.vb">
+      <DependentUpon>frmSccArquo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Arqueo\frmSccArquo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Bitacora\frmSccMinutasCobro.Designer.vb">
       <DependentUpon>frmSccMinutasCobro.vb</DependentUpon>
     </Compile>
@@ -452,6 +458,42 @@
       <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Facturas\frmSfaFaturaEditar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\NotaCredito\frmSccEditNotaCredito.Designer.vb">
+      <DependentUpon>frmSccEditNotaCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\NotaCredito\frmSccEditNotaCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\NotaCredito\frmSccMantNotaCredito.Designer.vb">
+      <DependentUpon>frmSccMantNotaCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\NotaCredito\frmSccMantNotaCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\NotaCredito\frmSccParamBuscarNotaCredito.designer.vb">
+      <DependentUpon>frmSccParamBuscarNotaCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\NotaCredito\frmSccParamBuscarNotaCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\NotaDebito\frmSccEditNotaDebito.designer.vb">
+      <DependentUpon>frmSccEditNotaDebito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\NotaDebito\frmSccEditNotaDebito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\NotaDebito\frmSccMantNotaDebito.Designer.vb">
+      <DependentUpon>frmSccMantNotaDebito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\NotaDebito\frmSccMantNotaDebito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\NotaDebito\frmSccParamBuscarNotaDebito.Designer.vb">
+      <DependentUpon>frmSccParamBuscarNotaDebito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\NotaDebito\frmSccParamBuscarNotaDebito.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Pedidos\frmPedidos.Designer.vb">
@@ -1202,6 +1244,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\Arqueo\frmSccArquo.resx">
+      <DependentUpon>frmSccArquo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Bitacora\frmSccMinutasCobro.resx">
       <DependentUpon>frmSccMinutasCobro.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1288,6 +1333,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Facturas\frmSfaFaturaEditar.resx">
       <DependentUpon>frmSfaFaturaEditar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\NotaCredito\frmSccEditNotaCredito.resx">
+      <DependentUpon>frmSccEditNotaCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\NotaCredito\frmSccMantNotaCredito.resx">
+      <DependentUpon>frmSccMantNotaCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\NotaCredito\frmSccParamBuscarNotaCredito.resx">
+      <DependentUpon>frmSccParamBuscarNotaCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\NotaDebito\frmSccEditNotaDebito.resx">
+      <DependentUpon>frmSccEditNotaDebito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\NotaDebito\frmSccMantNotaDebito.resx">
+      <DependentUpon>frmSccMantNotaDebito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\NotaDebito\frmSccParamBuscarNotaDebito.resx">
+      <DependentUpon>frmSccParamBuscarNotaDebito.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Pedidos\frmPedidos.resx">
       <DependentUpon>frmPedidos.vb</DependentUpon>

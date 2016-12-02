@@ -6,12 +6,14 @@ Imports SIFAC.BO.clsConsultas
 Imports SIFAC.BO
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraReports.UI
+Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraGrid
 
 Public Class frmStbRutas
 
 #Region "Declaracion de Variables Globales"
 
-    Public DtRutas, DtRutasDetalle As DataTable
+    Public DtRutas As DataTable
     Public objSeg As SsgSeguridad
     Public boolAgregar, boolEditar, boolConsultar, boolDesactivar, boolImprimir As Boolean
 #End Region
@@ -20,47 +22,47 @@ Public Class frmStbRutas
 
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
-        Dim ds As DataSet
+        'Dim ds As DataSet
         Try
-            DtRutas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSupervisor, Supervisor", "vwStbRutasMaster", "Activa=1"))
-            'DtRutas.PrimaryKey = New DataColumn() {Me.DtRutas.Columns("StbRutaID")}
-            'DtRutas.DefaultView.Sort = "StbRutaID"
-            'Me.grdRutas.DataSource = DtRutas
-            'Me.grdRutas.Text = "Rutas (" & Me.DtRutas.Rows.Count & ")"
+            DtRutas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbRutaID, Codigo, Nombre, Descripcion, Cobrador, Supervisor, CargarDiferenciada, Activa, Ciudad", "vwStbRutas", "Activa=1"))
+            DtRutas.PrimaryKey = New DataColumn() {Me.DtRutas.Columns("StbRutaID")}
+            DtRutas.DefaultView.Sort = "StbRutaID"
+            Me.grdRutas.DataSource = DtRutas
+            Me.grdRutas.Text = "Rutas (" & Me.DtRutas.Rows.Count & ")"
 
-            If Not DtRutas Is Nothing Then
+            'If Not DtRutas Is Nothing Then
 
-                DtRutasDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSupervisorID, Codigo, StbRutaID, Nombre, Descripcion, Ciudad, Cobrador, CargarDiferenciada", "vwStbRutasDetalle", "Activa=1"))
-                ds = New DataSet
+            '    DtRutasDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSupervisorID, Codigo, StbRutaID, Nombre, Descripcion, Ciudad, Cobrador, CargarDiferenciada", "vwStbRutasDetalle", "Activa=1"))
+            '    ds = New DataSet
 
-                ds.Merge(DtRutas)
-                ds.Tables(0).TableName = "Rutas"
+            '    ds.Merge(DtRutas)
+            '    ds.Tables(0).TableName = "Rutas"
 
-                ds.Merge(DtRutasDetalle)
-                ds.Tables(1).TableName = "RutasDetalle"
+            '    ds.Merge(DtRutasDetalle)
+            '    ds.Tables(1).TableName = "RutasDetalle"
 
-                Dim keyColumn As DataColumn = ds.Tables("Rutas").Columns("objSupervisor")
-                Dim foreignKeyColumn As DataColumn = ds.Tables("RutasDetalle").Columns("objSupervisorID")
-                ds.Relations.Add("RutasAsignadas", keyColumn, foreignKeyColumn)
+            '    Dim keyColumn As DataColumn = ds.Tables("Rutas").Columns("objSupervisor")
+            '    Dim foreignKeyColumn As DataColumn = ds.Tables("RutasDetalle").Columns("objSupervisorID")
+            '    ds.Relations.Add("RutasAsignadas", keyColumn, foreignKeyColumn)
 
-                grdVentas.DataSource = ds.Tables("Rutas")
-                grdVentas.ForceInitialize()
+            '    grdVentas.DataSource = ds.Tables("Rutas")
+            '    grdVentas.ForceInitialize()
 
-                Dim GridViewDetalle As New GridView(grdVentas)
-                grdVentas.LevelTree.Nodes.Add("RutasAsignadas", GridViewDetalle)
-                GridViewDetalle.PopulateColumns(ds.Tables("RutasDetalle"))
+            '    GridViewDetalle = New GridView(grdVentas)
+            '    grdVentas.LevelTree.Nodes.Add("RutasAsignadas", GridViewDetalle)
+            '    GridViewDetalle.PopulateColumns(ds.Tables("RutasDetalle"))
 
-                GridViewDetalle.Columns("objSupervisorID").Visible = False
-                GridViewDetalle.Columns("StbRutaID").Visible = False
+            '    GridViewDetalle.Columns("objSupervisorID").Visible = False
+            '    GridViewDetalle.Columns("StbRutaID").Visible = False
 
-                GridViewDetalle.Columns("Codigo").OptionsColumn.AllowEdit = False
-                GridViewDetalle.Columns("Nombre").OptionsColumn.AllowEdit = False
-                GridViewDetalle.Columns("Descripcion").OptionsColumn.AllowEdit = False
-                GridViewDetalle.Columns("Ciudad").OptionsColumn.AllowEdit = False
-                GridViewDetalle.Columns("Cobrador").OptionsColumn.AllowEdit = False
-                GridViewDetalle.Columns("CargarDiferenciada").OptionsColumn.AllowEdit = False
+            '    GridViewDetalle.Columns("Codigo").OptionsColumn.AllowEdit = False
+            '    GridViewDetalle.Columns("Nombre").OptionsColumn.AllowEdit = False
+            '    GridViewDetalle.Columns("Descripcion").OptionsColumn.AllowEdit = False
+            '    GridViewDetalle.Columns("Ciudad").OptionsColumn.AllowEdit = False
+            '    GridViewDetalle.Columns("Cobrador").OptionsColumn.AllowEdit = False
+            '    GridViewDetalle.Columns("CargarDiferenciada").OptionsColumn.AllowEdit = False
 
-            End If
+            'End If
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -133,13 +135,12 @@ Public Class frmStbRutas
         Dim editRutas As frmStbRutasEdit
         Dim FilaActual As Integer
         Try
-            Dim selectedRow As Integer() = grdVentasTable.GetSelectedRows()
-            FilaActual = Me.grdVentasTable.GetDataSourceRowIndex(selectedRow(0))
-
+            Dim selectedRow As Integer() = grdRutasTabla.GetSelectedRows()
+            FilaActual = Me.grdRutasTabla.GetDataSourceRowIndex(selectedRow(0))
             Me.Cursor = WaitCursor
             editRutas = New frmStbRutasEdit
             editRutas.TypeGui = 1
-            editRutas.RutaID = Me.DtRutasDetalle.DefaultView.Item(FilaActual)("StbRutaID")
+            editRutas.RutaID = Me.DtRutas.DefaultView.Item(FilaActual)("StbRutaID")
             If editRutas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
             End If
@@ -154,8 +155,8 @@ Public Class frmStbRutas
         Dim editRutas As frmStbRutasEdit
         Dim FilaActual As Integer
         Try
-            Dim selectedRow As Integer() = grdVentasTable.GetSelectedRows()
-            FilaActual = Me.grdVentasTable.GetDataSourceRowIndex(selectedRow(0))
+            Dim selectedRow As Integer() = grdRutasTabla.GetSelectedRows()
+            FilaActual = Me.grdRutasTabla.GetDataSourceRowIndex(selectedRow(0))
             Me.Cursor = WaitCursor
             editRutas = New frmStbRutasEdit
             editRutas.TypeGui = 2
@@ -173,7 +174,7 @@ Public Class frmStbRutas
         Dim Rutas As New StbRutas
         Dim FilaActual As Integer
         Try
-            FilaActual = Me.grdVentasTable.FocusedRowHandle
+            FilaActual = Me.grdRutasTabla.FocusedRowHandle
             Select Case MsgBox("¿Está seguro de Inactivar la Ruta?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
                 Case MsgBoxResult.Yes
                     IDRuta = Me.DtRutas.DefaultView.Item(FilaActual)("StbRutaID")

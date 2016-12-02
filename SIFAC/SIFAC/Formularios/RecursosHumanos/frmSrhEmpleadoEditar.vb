@@ -482,13 +482,16 @@ Public Class frmSrhEmpleadoEditar
             Me.chkActivo.Checked = objEmpleado.Activo
             Me.dtpFechaIngreso.DateTime = objEmpleado.FechaIngreso
             Me.txtCodigoIME.Text = objEmpleado.Imei
+
             If objEmpleado.FechaEgreso.HasValue Then
 
                 If Not IsDBNull(objEmpleado.FechaEgreso) Then
                     Me.dtpFechaEgresoE.DateTime = objEmpleado.FechaEgreso
                 End If
-
+            Else
+                Me.dtpFechaEgresoE.Text = String.Empty
             End If
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

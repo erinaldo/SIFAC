@@ -37,7 +37,7 @@ Partial Class frmSivMarcas
         Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colValor = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.SnapDockManager1 = New DevExpress.Snap.Extensions.SnapDockManager(Me.components)
         Me.toolTramitesLegales.SuspendLayout()
@@ -135,7 +135,7 @@ Partial Class frmSivMarcas
         '
         'grdMarcasTabla
         '
-        Me.grdMarcasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colActiva})
+        Me.grdMarcasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colValor})
         Me.grdMarcasTabla.GridControl = Me.grdMarcas
         Me.grdMarcasTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdMarcasTabla.Name = "grdMarcasTabla"
@@ -145,7 +145,7 @@ Partial Class frmSivMarcas
         'colNumero
         '
         Me.colNumero.Caption = "Numero"
-        Me.colNumero.FieldName = "MarcaID"
+        Me.colNumero.FieldName = "StbParametroID"
         Me.colNumero.Name = "colNumero"
         Me.colNumero.OptionsColumn.AllowEdit = False
         Me.colNumero.OptionsColumn.ReadOnly = True
@@ -158,6 +158,7 @@ Partial Class frmSivMarcas
         Me.colNombre.OptionsColumn.AllowEdit = False
         Me.colNombre.Visible = True
         Me.colNombre.VisibleIndex = 0
+        Me.colNombre.Width = 174
         '
         'colDescripcion
         '
@@ -168,19 +169,18 @@ Partial Class frmSivMarcas
         Me.colDescripcion.OptionsColumn.ReadOnly = True
         Me.colDescripcion.Visible = True
         Me.colDescripcion.VisibleIndex = 1
-        Me.colDescripcion.Width = 293
+        Me.colDescripcion.Width = 234
         '
-        'colActiva
+        'colValor
         '
-        Me.colActiva.Caption = "Activa"
-        Me.colActiva.ColumnEdit = Me.RepositoryItemCheckEdit1
-        Me.colActiva.FieldName = "Activa"
-        Me.colActiva.Name = "colActiva"
-        Me.colActiva.OptionsColumn.AllowEdit = False
-        Me.colActiva.OptionsColumn.ReadOnly = True
-        Me.colActiva.Visible = True
-        Me.colActiva.VisibleIndex = 2
-        Me.colActiva.Width = 124
+        Me.colValor.Caption = "Valor"
+        Me.colValor.FieldName = "Valor"
+        Me.colValor.Name = "colValor"
+        Me.colValor.OptionsColumn.AllowEdit = False
+        Me.colValor.OptionsColumn.ReadOnly = True
+        Me.colValor.Visible = True
+        Me.colValor.VisibleIndex = 2
+        Me.colValor.Width = 213
         '
         'RepositoryItemCheckEdit1
         '
@@ -229,6 +229,6 @@ Partial Class frmSivMarcas
     Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colActiva As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colValor As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

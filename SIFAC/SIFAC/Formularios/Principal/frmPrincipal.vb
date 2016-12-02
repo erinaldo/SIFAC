@@ -211,49 +211,52 @@ Public Class frmPrincipal
             'Me.cmdSeguridad.Enabled = objSeg.TienePermiso("OpcionSeguridad")
             '----- Opcion Catalogos
             If objSeg.TienePermiso("MantCatalogos") Then
-                Me.navBarCatalogos.Enabled = True
+                Me.navBarCatalogos.Visible = True
             Else
-                Me.navBarCatalogos.Enabled = False
+                Me.navBarCatalogos.Visible = False
             End If
 
             'Catálogos
-            Me.NavBarClientes.Enabled = objSeg.TienePermiso("OpcionPersonas")
-            Me.NavBarBodegas.Enabled = objSeg.TienePermiso("OpcionBodegas")
-            Me.NavProductos.Enabled = objSeg.TienePermiso("OpcionProducto")
-            Me.NavBarEmpleados.Enabled = objSeg.TienePermiso("OpcionEmpleado")
-            Me.NavBarParametros.Enabled = objSeg.TienePermiso("OpcionParametros")
-            Me.NavBarProveedor.Enabled = objSeg.TienePermiso("OpcionProveedor")
-            Me.NavBarMarcas.Enabled = objSeg.TienePermiso("OpcionMarcas")
-            Me.NavBarCategorias.Enabled = objSeg.TienePermiso("OpcionCategorias")
-            Me.NavBarRutas.Enabled = objSeg.TienePermiso("OpcionRutas")
+            Me.NavBarClientes.Visible = objSeg.TienePermiso("OpcionPersonas")
+            Me.NavBarBodegas.Visible = objSeg.TienePermiso("OpcionBodegas")
+            Me.NavProductos.Visible = objSeg.TienePermiso("OpcionProducto")
+            Me.NavBarEmpleados.Visible = objSeg.TienePermiso("OpcionEmpleado")
+            Me.NavBarParametros.Visible = objSeg.TienePermiso("OpcionParametros")
+            Me.NavBarProveedor.Visible = objSeg.TienePermiso("OpcionProveedor")
+            Me.NavBarMarcas.Visible = objSeg.TienePermiso("OpcionMarcas")
+            Me.NavBarCategorias.Visible = objSeg.TienePermiso("OpcionCategorias")
+            Me.NavBarRutas.Visible = objSeg.TienePermiso("OpcionRutas")
 
             'Cartera y Cobro
-            Me.navBarFacturacion.Enabled = objSeg.TienePermiso("OpcionFacturaExpediente")
-            Me.NavBarDescuentos.Enabled = objSeg.TienePermiso("OpcionDescuentos")
-            Me.NavBarCuentas.Enabled = objSeg.TienePermiso("OpcionCuentaXCobrar")
-            Me.NavBarReciboCaja.Enabled = objSeg.TienePermiso("OpcionReciboCaja")
-            Me.NavBarDevoluciones.Enabled = objSeg.TienePermiso("OpcionDevoluciones")
+            Me.navBarFacturacion.Visible = objSeg.TienePermiso("OpcionFacturaExpediente")
+            Me.NavBarDescuentos.Visible = objSeg.TienePermiso("OpcionDescuentos")
+            Me.NavBarCuentas.Visible = objSeg.TienePermiso("OpcionCuentaXCobrar")
+            Me.NavBarReciboCaja.Visible = objSeg.TienePermiso("OpcionReciboCaja")
+            Me.NavBarDevoluciones.Visible = objSeg.TienePermiso("OpcionDevoluciones")
 
-
+            ''Caja
+            Me.NavBarArqueo.Visible = objSeg.TienePermiso("OpcionArqueo")
+            Me.NavBarNotaCredito.Visible = objSeg.TienePermiso("OpcionNotaCredito")
+            Me.NavBarNotaDebito.Visible = objSeg.TienePermiso("OpcionNotaDebito")
 
             'Inventario
-            Me.NavBarSolicitud.Enabled = objSeg.TienePermiso("OpcionSolicitudTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
-            Me.NavBarDespacho.Enabled = objSeg.TienePermiso("OpcionDespacharTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
-            Me.NavBarRecepcion.Enabled = objSeg.TienePermiso("OpcionRecibirTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
-            Me.NavBarSalidas.Enabled = objSeg.TienePermiso("OpcionSalidaBodega") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
-            Me.NavBarEntrada.Enabled = objSeg.TienePermiso("OpcionEntradaBodega") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
-            Me.NavBarOrdenCompra.Enabled = objSeg.TienePermiso("OpcionEncargos")
+            Me.NavBarSolicitud.Visible = objSeg.TienePermiso("OpcionSolicitudTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            Me.NavBarDespacho.Visible = objSeg.TienePermiso("OpcionDespacharTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            Me.NavBarRecepcion.Visible = objSeg.TienePermiso("OpcionRecibirTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            Me.NavBarSalidas.Visible = objSeg.TienePermiso("OpcionSalidaBodega") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            Me.NavBarEntrada.Visible = objSeg.TienePermiso("OpcionEntradaBodega") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
+            Me.NavBarOrdenCompra.Visible = objSeg.TienePermiso("OpcionEncargos")
 
             'Facturación
-            Me.navBarFacturacion.Enabled = objSeg.TienePermiso("OpcionFacturas")
+            Me.navBarFacturacion.Visible = objSeg.TienePermiso("OpcionFacturas")
 
             ''Sincronizar
-            Me.NavBarSincroVentas.Enabled = objSeg.TienePermiso("OpcionSincVentas")
-            Me.NavBarSincroAbonos.Enabled = objSeg.TienePermiso("OpcionSincAbonos")
-            Me.NavBarSincroDevoluciones.Enabled = objSeg.TienePermiso("OpcionSincDevoluciones")
+            Me.NavBarSincroVentas.Visible = objSeg.TienePermiso("OpcionSincVentas")
+            Me.NavBarSincroAbonos.Visible = objSeg.TienePermiso("OpcionSincAbonos")
+            Me.NavBarSincroDevoluciones.Visible = objSeg.TienePermiso("OpcionSincDevoluciones")
 
             'Me.NavBarConsolidado.Enabled = objSeg.TienePermiso("OpcionReportesConsolidado")
-            Me.NavBarKardex.Enabled = objSeg.TienePermiso("OpcionReportesInventario")
+            Me.NavBarKardex.Visible = objSeg.TienePermiso("OpcionReportesInventario")
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -275,7 +278,6 @@ Public Class frmPrincipal
             Me.NavBarParametros.Enabled = False
             Me.NavBarMarcas.Enabled = False
             Me.NavBarEmpleados.Enabled = False
-
           
             'Inventario
             Me.NavBarSolicitud.Enabled = False
@@ -296,6 +298,11 @@ Public Class frmPrincipal
             Me.NavBarEncargos.Enabled = False
             Me.NavBarRutas.Enabled = False
             Me.NavBarOrdenCompra.Enabled = False
+
+            '' Caja
+            Me.NavBarArqueo.Enabled = False
+            Me.NavBarNotaDebito.Enabled = False
+            Me.NavBarNotaCredito.Enabled = False
 
             ''Sincronizar
             Me.NavBarSincroVentas.Enabled = False
@@ -375,6 +382,15 @@ Public Class frmPrincipal
     Private Sub NavBarCuentas_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarCuentas.LinkClicked
         CargarCuentas()
     End Sub
+
+    Private Sub NavBarNotaCredito_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarNotaCredito.LinkClicked
+        CargarNotascredito()
+    End Sub
+
+    Private Sub NavBarNotaDebito_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarNotaDebito.LinkClicked
+        CargarNotasDebito()
+    End Sub
+
 #End Region
 
 #Region "Inventario"
@@ -784,7 +800,55 @@ Public Class frmPrincipal
 
 #End Region
 
+#Region "Cargar Notas de Debito"
 
+    Private Sub CargarNotasDebito()
+        Dim objNotasDebito As frmSccMantNotaDebito
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario("frmSccMantNotaDebito", Me) Then
+                    objNotasDebito = New frmSccMantNotaDebito
+                    objNotasDebito.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objNotasDebito.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objNotasDebito.MdiParent = Me
+                    objNotasDebito.Show()
+                End If
+
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+#End Region
+
+#Region "Cargar Notas de Credito"
+    Private Sub CargarNotascredito()
+        Dim objNotasCredito As frmSccMantNotaCredito
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario("frmSccMantNotaCredito", Me) Then
+                    objNotasCredito = New frmSccMantNotaCredito
+                    objNotasCredito.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objNotasCredito.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objNotasCredito.MdiParent = Me
+                    objNotasCredito.Show()
+                End If
+
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+
+    End Sub
+
+#End Region
 
 #Region "Cargar Configuracion de Descuentos"
 
@@ -1065,7 +1129,6 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
-
 #Region "Cargar Facturas Repuestos"
     Private Sub CargarFacturasRepuestos()
         Dim objForm As New frmSfaFacturaRepuestos
@@ -1164,6 +1227,4 @@ Public Class frmPrincipal
 #End Region
 
 
-   
-   
 End Class

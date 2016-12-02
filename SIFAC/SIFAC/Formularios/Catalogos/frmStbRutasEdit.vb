@@ -113,7 +113,7 @@ Public Class frmStbRutasEdit
             cbxCobrador.ValueMember = "SrhEmpleadoID"
             cbxCobrador.DisplayMember = "NombreCompleto"
             cbxCobrador.DataSource = DtCobrador
-            cbxCobrador.Text = ""
+            cbxCobrador.SelectedIndex = -1
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -128,7 +128,7 @@ Public Class frmStbRutasEdit
             cmbSupervisor.ValueMember = "SrhEmpleadoID"
             cmbSupervisor.DisplayMember = "NombreCompleto"
             cmbSupervisor.DataSource = DtSupervisor
-            cmbSupervisor.Text = ""
+            cmbSupervisor.SelectedIndex = -1
           
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -179,13 +179,7 @@ Public Class frmStbRutasEdit
             txtCodigo.Text = objRutas.Codigo
             txtNombre.Text = objRutas.Nombre
             cbxCobrador.SelectedValue = objRutas.ojbCobradorID
-
-            If IsDBNull(objRutas.objSupervisor) Then
-                cmbSupervisor.SelectedValue = "0"
-            Else
-                cmbSupervisor.SelectedValue = IsDBNull(objRutas.objSupervisor)
-            End If
-
+            cmbSupervisor.SelectedValue = objRutas.objSupervisor
             cmbDiaCrobro.SelectedValue = objRutas.DiaCobro
             cmbCiudad.SelectedValue = objRutas.objCiudadID
             chkActivo.Checked = objRutas.Activa
