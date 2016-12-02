@@ -25,6 +25,7 @@ Partial Public Class SccCuentaPorCobrarDetalle
 	Protected m_FechaCreacion As Date 
 	Protected m_UsuarioModificacion As String = Nothing 
 	Protected m_FechaModificacion As Nullable(Of Date) 
+	Protected m_SaldoND As Nullable(Of Decimal) 
 #End Region
 
 #Region " Propiedades "
@@ -209,6 +210,15 @@ Partial Public Class SccCuentaPorCobrarDetalle
 		End Set
     End Property
 	
+	Public Property SaldoND() As Nullable(Of Decimal)
+        Get
+            Return (m_SaldoND)
+        End Get
+		Set(ByVal Value As Nullable(Of Decimal))					
+			m_SaldoND = Value
+		End Set
+    End Property
+	
 
 	Public Shared Function GetMaxLength(ProperyName as String) as Integer
 		Select Case ProperyName
@@ -228,6 +238,8 @@ Partial Public Class SccCuentaPorCobrarDetalle
 				Return	50
 			Case "UsuarioModificacion"
 				Return	50
+			Case "SaldoND"
+				Return	11
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
 		End Select
@@ -246,6 +258,8 @@ Partial Public Class SccCuentaPorCobrarDetalle
 			Case "MontoCuota"
 				Return	2
 			Case "Descuento"
+				Return	2
+			Case "SaldoND"
 				Return	2
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
@@ -292,7 +306,8 @@ Partial Public Class SccCuentaPorCobrarDetalle
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
-			cmdInsert.CommandText = "INSERT INTO SccCuentaPorCobrarDetalle ( objSccCuentaID, objSfaFacturaID, objTeminoPlazoID, objModalidadPago, objEstadoID, Saldo, MontoTotal, MontoPrima, MontoAbonado, MontoCuota, Descuento, FechaUltimoPago, FechaProximoPago, FechaVencimiento, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion) VALUES ( @objSccCuentaID, @objSfaFacturaID, @objTeminoPlazoID, @objModalidadPago, @objEstadoID, @Saldo, @MontoTotal, @MontoPrima, @MontoAbonado, @MontoCuota, @Descuento, @FechaUltimoPago, @FechaProximoPago, @FechaVencimiento, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion)"
+			cmdInsert.Parameters.Add("@SaldoND", SqlDbType.Decimal, 9, "SaldoND")
+			cmdInsert.CommandText = "INSERT INTO SccCuentaPorCobrarDetalle ( objSccCuentaID, objSfaFacturaID, objTeminoPlazoID, objModalidadPago, objEstadoID, Saldo, MontoTotal, MontoPrima, MontoAbonado, MontoCuota, Descuento, FechaUltimoPago, FechaProximoPago, FechaVencimiento, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion, SaldoND) VALUES ( @objSccCuentaID, @objSfaFacturaID, @objTeminoPlazoID, @objModalidadPago, @objEstadoID, @Saldo, @MontoTotal, @MontoPrima, @MontoAbonado, @MontoCuota, @Descuento, @FechaUltimoPago, @FechaProximoPago, @FechaVencimiento, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion, @SaldoND)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@objSccCuentaID", SqlDbType.Int, 4, "objSccCuentaID")
@@ -313,8 +328,9 @@ Partial Public Class SccCuentaPorCobrarDetalle
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
+			cmdUpdate.Parameters.Add("@SaldoND", SqlDbType.Decimal, 9, "SaldoND")
 			cmdUpdate.Parameters.Add("@wSccCuentaPorCobrarDetalleID", SqlDbType.Int, 4, "SccCuentaPorCobrarDetalleID")
-			cmdUpdate.CommandText = "UPDATE SccCuentaPorCobrarDetalle SET objSccCuentaID=@objSccCuentaID, objSfaFacturaID=@objSfaFacturaID, objTeminoPlazoID=@objTeminoPlazoID, objModalidadPago=@objModalidadPago, objEstadoID=@objEstadoID, Saldo=@Saldo, MontoTotal=@MontoTotal, MontoPrima=@MontoPrima, MontoAbonado=@MontoAbonado, MontoCuota=@MontoCuota, Descuento=@Descuento, FechaUltimoPago=@FechaUltimoPago, FechaProximoPago=@FechaProximoPago, FechaVencimiento=@FechaVencimiento, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion WHERE SccCuentaPorCobrarDetalleID= @wSccCuentaPorCobrarDetalleID"
+			cmdUpdate.CommandText = "UPDATE SccCuentaPorCobrarDetalle SET objSccCuentaID=@objSccCuentaID, objSfaFacturaID=@objSfaFacturaID, objTeminoPlazoID=@objTeminoPlazoID, objModalidadPago=@objModalidadPago, objEstadoID=@objEstadoID, Saldo=@Saldo, MontoTotal=@MontoTotal, MontoPrima=@MontoPrima, MontoAbonado=@MontoAbonado, MontoCuota=@MontoCuota, Descuento=@Descuento, FechaUltimoPago=@FechaUltimoPago, FechaProximoPago=@FechaProximoPago, FechaVencimiento=@FechaVencimiento, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion, SaldoND=@SaldoND WHERE SccCuentaPorCobrarDetalleID= @wSccCuentaPorCobrarDetalleID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -379,6 +395,7 @@ Partial Public Class SccCuentaPorCobrarDetalle
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
+				m_SaldoND = IIf(IsDBNull(dr("SaldoND")), Nothing, dr("SaldoND"))					
 				Return True
 			Else
 				Return False
@@ -431,6 +448,7 @@ Partial Public Class SccCuentaPorCobrarDetalle
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
+				m_SaldoND = IIf(IsDBNull(dr("SaldoND")), Nothing, dr("SaldoND"))					
 				Return True
 			Else
 				Return False
@@ -573,7 +591,8 @@ Partial Public Class SccCuentaPorCobrarDetalle
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaCreacion,"
 		sCommand &= "UsuarioModificacion,"
-		sCommand &= "FechaModificacion) values ("		
+		sCommand &= "FechaModificacion,"
+		sCommand &= "SaldoND) values ("		
 		sCommand &= "@objSccCuentaID,"
 		sCommand &= "@objSfaFacturaID,"
 		sCommand &= "@objTeminoPlazoID,"
@@ -591,14 +610,15 @@ Partial Public Class SccCuentaPorCobrarDetalle
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaCreacion,"
 		sCommand &= "@UsuarioModificacion,"
-		sCommand &= "@FechaModificacion)"		
+		sCommand &= "@FechaModificacion,"
+		sCommand &= "@SaldoND)"		
 	
 		sCommand &= " select "
 		sCommand &= "@SccCuentaPorCobrarDetalleID = SccCuentaPorCobrarDetalleID from SccCuentaPorCobrarDetalle where "		
 		sCommand &= "SccCuentaPorCobrarDetalleID = SCOPE_IDENTITY()"
 		
 		
-		Dim arParams(18) As SqlParameter
+		Dim arParams(19) As SqlParameter
 		arParams(0) = New SqlParameter("@SccCuentaPorCobrarDetalleID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@objSccCuentaID", SqlDbType.Int)		
@@ -709,6 +729,12 @@ Partial Public Class SccCuentaPorCobrarDetalle
         Else
             arParams(18).Value = m_FechaModificacion
         End If
+		arParams(19) = New SqlParameter("@SaldoND", SqlDbType.Decimal)		
+		If IsDBNull(m_SaldoND) Then
+            arParams(19).Value = DBNull.Value
+        Else
+            arParams(19).Value = m_SaldoND
+        End If
 	
 		Try
             If pTransac Is Nothing Then
@@ -750,11 +776,12 @@ Partial Public Class SccCuentaPorCobrarDetalle
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
 		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
-		sCommand &= "FechaModificacion = @FechaModificacion"		
+		sCommand &= "FechaModificacion = @FechaModificacion,"
+		sCommand &= "SaldoND = @SaldoND"		
 		sCommand &= " where "	
 		sCommand &= "SccCuentaPorCobrarDetalleID = @SccCuentaPorCobrarDetalleID"					
 		
-		Dim arParams(18) As SqlParameter
+		Dim arParams(19) As SqlParameter
 		arParams(0) = New SqlParameter("@SccCuentaPorCobrarDetalleID", SqlDbType.Int)		
 		If IsDBNull(m_SccCuentaPorCobrarDetalleID) Then
             arParams(0).Value = DBNull.Value
@@ -868,6 +895,12 @@ Partial Public Class SccCuentaPorCobrarDetalle
             arParams(18).Value = DBNull.Value
         Else
             arParams(18).Value = m_FechaModificacion
+        End If
+		arParams(19) = New SqlParameter("@SaldoND", SqlDbType.Decimal)		
+		If IsDBNull(m_SaldoND) Then
+            arParams(19).Value = DBNull.Value
+        Else
+            arParams(19).Value = m_SaldoND
         End If
 	
 		Try

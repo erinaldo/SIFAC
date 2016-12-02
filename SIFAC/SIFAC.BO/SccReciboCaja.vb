@@ -19,6 +19,7 @@ Partial Public Class SccReciboCaja
 	Protected m_FechaCreacion As Date 
 	Protected m_UsuarioModificacion As String = Nothing 
 	Protected m_FechaModificacion As Nullable(Of Date) 
+	Protected m_objCajaID As Nullable(Of Integer) 
 #End Region
 
 #Region " Propiedades "
@@ -154,6 +155,15 @@ Partial Public Class SccReciboCaja
 		End Set
     End Property
 	
+	Public Property objCajaID() As Nullable(Of Integer)
+        Get
+            Return (m_objCajaID)
+        End Get
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_objCajaID = Value
+		End Set
+    End Property
+	
 
 	Public Shared Function GetMaxLength(ProperyName as String) as Integer
 		Select Case ProperyName
@@ -213,7 +223,8 @@ Partial Public Class SccReciboCaja
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
-			cmdInsert.CommandText = "INSERT INTO SccReciboCaja ( objEstadoID, objSccCuentaID, objSrhEmpleado, objRutaID, Numero, Fecha, TotalRecibo, EsPagoPrima, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion) VALUES ( @objEstadoID, @objSccCuentaID, @objSrhEmpleado, @objRutaID, @Numero, @Fecha, @TotalRecibo, @EsPagoPrima, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion)"
+			cmdInsert.Parameters.Add("@objCajaID", SqlDbType.Int, 4, "objCajaID")
+			cmdInsert.CommandText = "INSERT INTO SccReciboCaja ( objEstadoID, objSccCuentaID, objSrhEmpleado, objRutaID, Numero, Fecha, TotalRecibo, EsPagoPrima, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion, objCajaID) VALUES ( @objEstadoID, @objSccCuentaID, @objSrhEmpleado, @objRutaID, @Numero, @Fecha, @TotalRecibo, @EsPagoPrima, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion, @objCajaID)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@objEstadoID", SqlDbType.Int, 4, "objEstadoID")
@@ -228,8 +239,9 @@ Partial Public Class SccReciboCaja
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
+			cmdUpdate.Parameters.Add("@objCajaID", SqlDbType.Int, 4, "objCajaID")
 			cmdUpdate.Parameters.Add("@wSccReciboCajaID", SqlDbType.Int, 4, "SccReciboCajaID")
-			cmdUpdate.CommandText = "UPDATE SccReciboCaja SET objEstadoID=@objEstadoID, objSccCuentaID=@objSccCuentaID, objSrhEmpleado=@objSrhEmpleado, objRutaID=@objRutaID, Numero=@Numero, Fecha=@Fecha, TotalRecibo=@TotalRecibo, EsPagoPrima=@EsPagoPrima, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion WHERE SccReciboCajaID= @wSccReciboCajaID"
+			cmdUpdate.CommandText = "UPDATE SccReciboCaja SET objEstadoID=@objEstadoID, objSccCuentaID=@objSccCuentaID, objSrhEmpleado=@objSrhEmpleado, objRutaID=@objRutaID, Numero=@Numero, Fecha=@Fecha, TotalRecibo=@TotalRecibo, EsPagoPrima=@EsPagoPrima, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion, objCajaID=@objCajaID WHERE SccReciboCajaID= @wSccReciboCajaID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -288,6 +300,7 @@ Partial Public Class SccReciboCaja
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
+				m_objCajaID = IIf(IsDBNull(dr("objCajaID")), Nothing, dr("objCajaID"))					
 				Return True
 			Else
 				Return False
@@ -334,6 +347,7 @@ Partial Public Class SccReciboCaja
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
+				m_objCajaID = IIf(IsDBNull(dr("objCajaID")), Nothing, dr("objCajaID"))					
 				Return True
 			Else
 				Return False
@@ -470,7 +484,8 @@ Partial Public Class SccReciboCaja
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaCreacion,"
 		sCommand &= "UsuarioModificacion,"
-		sCommand &= "FechaModificacion) values ("		
+		sCommand &= "FechaModificacion,"
+		sCommand &= "objCajaID) values ("		
 		sCommand &= "@objEstadoID,"
 		sCommand &= "@objSccCuentaID,"
 		sCommand &= "@objSrhEmpleado,"
@@ -482,14 +497,15 @@ Partial Public Class SccReciboCaja
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaCreacion,"
 		sCommand &= "@UsuarioModificacion,"
-		sCommand &= "@FechaModificacion)"		
+		sCommand &= "@FechaModificacion,"
+		sCommand &= "@objCajaID)"		
 	
 		sCommand &= " select "
 		sCommand &= "@SccReciboCajaID = SccReciboCajaID from SccReciboCaja where "		
 		sCommand &= "SccReciboCajaID = SCOPE_IDENTITY()"
 		
 		
-		Dim arParams(12) As SqlParameter
+		Dim arParams(13) As SqlParameter
 		arParams(0) = New SqlParameter("@SccReciboCajaID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@objEstadoID", SqlDbType.Int)		
@@ -564,6 +580,12 @@ Partial Public Class SccReciboCaja
         Else
             arParams(12).Value = m_FechaModificacion
         End If
+		arParams(13) = New SqlParameter("@objCajaID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaID) Then
+            arParams(13).Value = DBNull.Value
+        Else
+            arParams(13).Value = m_objCajaID
+        End If
 	
 		Try
             If pTransac Is Nothing Then
@@ -599,11 +621,12 @@ Partial Public Class SccReciboCaja
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
 		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
-		sCommand &= "FechaModificacion = @FechaModificacion"		
+		sCommand &= "FechaModificacion = @FechaModificacion,"
+		sCommand &= "objCajaID = @objCajaID"		
 		sCommand &= " where "	
 		sCommand &= "SccReciboCajaID = @SccReciboCajaID"					
 		
-		Dim arParams(12) As SqlParameter
+		Dim arParams(13) As SqlParameter
 		arParams(0) = New SqlParameter("@SccReciboCajaID", SqlDbType.Int)		
 		If IsDBNull(m_SccReciboCajaID) Then
             arParams(0).Value = DBNull.Value
@@ -681,6 +704,12 @@ Partial Public Class SccReciboCaja
             arParams(12).Value = DBNull.Value
         Else
             arParams(12).Value = m_FechaModificacion
+        End If
+		arParams(13) = New SqlParameter("@objCajaID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaID) Then
+            arParams(13).Value = DBNull.Value
+        Else
+            arParams(13).Value = m_objCajaID
         End If
 	
 		Try

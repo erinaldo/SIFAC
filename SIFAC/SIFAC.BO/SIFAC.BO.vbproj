@@ -75,20 +75,23 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="radTecnico_CF.vb" />
+    <Compile Include="SccCajas.vb" />
     <Compile Include="SccClientes.vb" />
+    <Compile Include="SccComisiones.vb" />
     <Compile Include="SccCuentaFiador_CF.vb" />
     <Compile Include="SccCuentaPorCobrar.vb" />
     <Compile Include="SccCuentaPorCobrarDetalle.vb" />
     <Compile Include="SccDescuentoPlazo.vb" />
     <Compile Include="SccDetalleMovimientos_CF.vb" />
     <Compile Include="SccDevolucion.vb" />
-    <Compile Include="SccNotaCredito_CF.vb" />
-    <Compile Include="SccNotaDebito_CF.vb" />
+    <Compile Include="SccNotaCredito.vb" />
+    <Compile Include="SccNotaDebito.vb" />
     <Compile Include="SccPersonasCuentas_CF.vb" />
     <Compile Include="SccReciboCaja.vb" />
     <Compile Include="SccReciboDetFactura.vb" />
     <Compile Include="SccReciboDetNC_CF.vb" />
     <Compile Include="SccReciboDetND_CF.vb" />
+    <Compile Include="SccSalidasEfectivo.vb" />
     <Compile Include="SccTramiteLegal_CF.vb" />
     <Compile Include="ScpOrdenCompra.vb" />
     <Compile Include="ScpOrdenCompraDetalle.vb" />
