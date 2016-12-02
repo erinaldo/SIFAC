@@ -7,6 +7,7 @@ Imports SIFAC.BO
 Imports System.Data.SqlClient
 Imports System.IO
 Imports Proyecto.Catalogos.Datos.ClsCatalogos
+Imports DevExpress.XtraReports.UI
 
 Public Class frmReporteEncargos
 
@@ -50,30 +51,38 @@ Public Class frmReporteEncargos
 #Region "Operaciones"
 
     Private Sub Imprimir()
-        'Dim objRptProveedores As rptProveedores
-        ''Dim objImpresion As frmOpcionesImpresion
-        ''objImpresion = New frmOpcionesImpresion
+        Dim ds As New DataSet
+        Dim objjReporte As New rptEncargos()
 
-        'objRptProveedores = New rptProveedores
-        'If Me.rbProveedor.Checked Then
-        '    dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "SivProveedorID=" & Me.cmbProveedor.SelectedValue))
-        'End If
-        'If Me.rbTodos.Checked Then
-        '    dtRptProveedor = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", "1=1"))
-        'End If
+        If Me.rbProveedor.Checked Then
+            ds = DAL.SqlHelper.ExecuteQueryDS(ObtenerConsultaGeneral("Ruta, Empleado, Categoria, Producto, Cantidad, CostoPromedio, TotalCosto, Observaciones, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwEncargosExcel", "SrhEmpleadoID=" & cmbVendedor.SelectedValue))
+        End If
+        If Me.rbTodos.Checked Then
+            ds = DAL.SqlHelper.ExecuteQueryDS(ObtenerConsultaGeneral("Ruta, Empleado, Categoria, Producto, Cantidad, CostoPromedio, TotalCosto, Observaciones, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwEncargosExcel", "1=1"))
+        End If
 
-        'objRptProveedores.DataSource = Me.dtRptProveedor
-        'clsProyecto.ImprimirEnPantalla(objRptProveedores)
+        If ds.Tables(0).Rows.Count <> 0 Then
+            objjReporte.DataSource = ds
+            objjReporte.DataMember = ds.Tables(0).TableName
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
+        Else
+            MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+        End If
 
-      
     End Sub
 
 #End Region
 
 #Region "Eventos"
+
     Private Sub frmReporteEncargos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarEstados()
         CargarVendedor()
+    End Sub
+
+    Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click, cmdCancelar.Click
+        Close()
     End Sub
 
     Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click

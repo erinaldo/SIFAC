@@ -246,7 +246,15 @@ Public Class frmSivEncargos
     End Sub
 
     Private Sub cmbExportar_Click(sender As Object, e As EventArgs) Handles cmbExportar.Click
-        ExportarExcel()
+        Dim objFormReporte As frmReporteEncargos
+        Try
+            objFormReporte = New frmReporteEncargos
+            objFormReporte.ShowDialog()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objFormReporte = Nothing
+        End Try
     End Sub
 
     Private Sub btnAutorizar_Click(sender As Object, e As EventArgs) Handles btnAutorizar.Click

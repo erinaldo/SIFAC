@@ -28,7 +28,9 @@ Public Class frmSfaFaturaEditar
     Dim m_IDEstado As Integer
     Dim m_IdDetalleFact As Integer
     Dim BoolOK As Boolean
+
     'Usado en caso de Reestructurar la cuenta del cliente
+    Public blnReestructurarCuenta As Boolean
     Dim m_cliente As String
 
     Property IDEstado() As Integer
@@ -91,6 +93,15 @@ Public Class frmSfaFaturaEditar
         End Get
         Set(ByVal value As Integer)
             Me.m_IdDetalleFact = value
+        End Set
+    End Property
+
+    Property Cliente() As String
+        Get
+            Cliente = m_cliente
+        End Get
+        Set(ByVal value As String)
+            Me.m_cliente = value
         End Set
     End Property
 

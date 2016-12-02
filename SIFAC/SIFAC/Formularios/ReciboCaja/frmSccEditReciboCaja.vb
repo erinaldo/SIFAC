@@ -12,6 +12,8 @@ Imports System.Data
 Public Class frmSccEditReciboCaja
 
     Dim DtDatosReciboCaja As New DataTable
+    Dim DtDatosNotasCredito As DataTable
+    Dim DtdatosNotasDebito As DataTable
     Dim dtRutas As New DataTable
     Dim DtCobrador As New DataTable
     Dim DtDatosFactRecibo As DataTable
@@ -32,6 +34,10 @@ Public Class frmSccEditReciboCaja
     Dim objReciboCaja As SccReciboCaja
     Dim objSeg As SsgSeguridad
     Dim m_Cliente As String
+
+    'Variables para tratamiento de "Reestructuración de Cuenta"
+    Public blnReestructurarCuenta As Boolean = False
+
 
     'Variables para tratamiento de "Reestructuración de Cuenta"
 
@@ -105,6 +111,53 @@ Public Class frmSccEditReciboCaja
         End Try
     End Sub
 
+    Private Sub CargarNotasDebito()
+        Dim Autorizada As Integer
+        Try
+            Autorizada = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOND", "AUTORIZADA")
+            Me.DtdatosNotasDebito = New DataTable
+            DtdatosNotasDebito = New DataTable
+            If Me.TypGui = 2 Then
+                DtdatosNotasDebito = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*,CAST(0 AS BIT) AS Seleccion", "vwReciboNotaDB", "SccCuentaID='" + Me.IDCuenta.ToString + "' "))
+            Else
+                DtdatosNotasDebito = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*,CAST(0 AS BIT) AS Seleccion", "vwReciboNotaDB", "SccCuentaID='" + Me.IDCuenta.ToString + "' AND objEstadoID= " & Autorizada.ToString))
+            End If
+            Me.grdNotaDebito.SetDataBinding(DtdatosNotasDebito, "", True)
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
+    End Sub
+
+    Private Sub CargarNotasCredito()
+        Dim sSQL As String
+        Dim Autorizada As Integer
+        Try
+            Autorizada = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADONC", "AUTORIZADA")
+            DtDatosNotasCredito = New DataTable
+            If Me.TypGui = 2 Then
+                DtDatosNotasCredito = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*,CAST(0 AS BIT) AS Seleccion", "vwReciboDetNC", "SccCuentaID='" + Me.IDCuenta.ToString + "' "))
+            Else
+                'En caso de reestructuración de cuenta los datos de las notas de crédito se obtienen de la tabla operativa temporal "txRC_NotaCredito_Step1"
+                If Not Me.blnReestructurarCuenta Then
+                    sSQL = clsConsultas.ObtenerConsultaGeneral("*,CAST(0 AS BIT) AS Seleccion", "vwReciboDetNC", "SccCuentaID='" + Me.IDCuenta.ToString + "' and  objEstadoID=" & Autorizada.ToString)
+                Else
+                    Dim sConsulta As String = "SELECT CAST(0 AS BIT) AS Seleccion, Fecha, Monto, SccNotaCreditoID, dbo.FnGetValorCatalogoId('CONCEPTONC', objConceptoID, 1) AS Concepto, objEstadoID, objConceptoID, " & _
+                                              " dbo.fnRellenarCeros(Numero) AS Numero, objSccCuentaID AS SccCuentaId, objTiendaID " & _
+                                              " FROM dbo.txRC_NotaCredito_Step1 "
+                    Dim sFiltro = " WHERE objSccCuentaID='" + Me.IDCuenta.ToString + "'  AND objEstadoID=" & Autorizada.ToString
+
+                    sSQL = sConsulta + sFiltro + " GROUP BY Fecha, Monto, SccNotaCreditoID, dbo.FnGetValorCatalogoId('CONCEPTONC', objConceptoID, 1), objEstadoID, objConceptoID, dbo.fnRellenarCeros(Numero), objSccCuentaID, objTiendaID"
+                End If
+                DtDatosNotasCredito = SqlHelper.ExecuteQueryDT(sSQL)
+            End If
+            Me.grdNotasCredito.SetDataBinding(DtDatosNotasCredito, "", True)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
     ''' <summary>
     ''' Procedimiento encargado de Cargar los datos principales del Recibo en Nuevo,Edicion y Consulta.
     ''' Autor : Pedro Pablo Tinoco Salgado.
@@ -147,6 +200,67 @@ Public Class frmSccEditReciboCaja
                     clsProyecto.CargarTemaDefinido(Me)
             End Select
             Me.grdFacturas.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.FloatingEditor
+
+
+            'En caso de Reestructuración de Cuenta, cargar datos recibidos y bloquear controles
+            If Me.blnReestructurarCuenta Then
+                Me.Text = Me.Text + " - [REESTRUCTURACION CUENTA]"
+                Me.txtNumCuenta.Text = Me.IDCuenta
+                Me.txtNumCuenta.Size = New Size(163, 20)
+                Me.txtCliente.Text = Me.Cliente
+
+                Me.txtNumCuenta.Enabled = False
+                Me.txtCliente.Enabled = False
+                Me.txtNumRecibo.Enabled = False
+                Me.cmdExpediente.Visible = False
+
+                'Facturas
+                Me.CargarFacturas()
+                For I As Integer = 0 To Me.DtDatosFactRecibo.DefaultView.Count - 1
+                    Me.DtDatosFactRecibo.DefaultView.Item(I)("Seleccion") = True
+                    Me.DtDatosFactRecibo.DefaultView.Item(I)("Abonar") = False
+                    Me.DtDatosFactRecibo.DefaultView.Item(I)("Cancelar") = True
+                    Me.DtDatosFactRecibo.DefaultView.Item(I)("CantAbonar") = Me.DtDatosFactRecibo.DefaultView.Item(I)("SaldoFactura")
+                Next
+                Me.DtDatosFactRecibo.AcceptChanges()
+                Me.grdFacturas.Splits(0).Locked = True
+                Me.grdFacturas.Splits(0).FilterBar = False
+
+                'Notas de Débito
+                Me.CargarNotasDebito()
+                For I As Integer = 0 To Me.DtdatosNotasDebito.DefaultView.Count - 1
+                    Me.DtdatosNotasDebito.DefaultView.Item(I)("Seleccion") = True
+                Next
+                Me.DtdatosNotasDebito.AcceptChanges()
+                Me.grdNotaDebito.Splits(0).Locked = True
+                Me.grdNotaDebito.Splits(0).FilterBar = False
+
+                'Notas de Crédito
+                Me.CargarNotasCredito()
+                For I As Integer = 0 To Me.DtDatosNotasCredito.DefaultView.Count - 1
+                    Me.DtDatosNotasCredito.DefaultView.Item(I)("Seleccion") = True
+                Next
+                Me.DtDatosNotasCredito.AcceptChanges()
+
+                Me.grdNotasCredito.Splits(0).Locked = True
+                Me.grdNotasCredito.Splits(0).FilterBar = False
+                Me.grdFacturas.Refresh()
+                Me.grdNotaDebito.Refresh()
+                Me.grdNotasCredito.Refresh()
+
+                'Cargar moneda y deshabilitar
+                Me.cmbMoneda.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("MONEDA", "USD")
+                Me.cmbMoneda.Enabled = False
+                Me.NumMontoDolares.Enabled = False
+                Me.dtpFecha.Value = clsProyecto.Conexion.FechaServidor
+                Me.dtpFecha.Enabled = False
+                Me.chkPrima.Enabled = False
+                'Me.cmbSucursal.Enabled = False
+                Me.NumMontoDolares.Value = Me.DtDatosNotasCredito.DefaultView.Item(0)("Monto")
+
+                Me.CalcularTotales()
+                Me.CalculoMontoAbonado()
+            End If
 
             Me.Cursor = Cursors.Default
 
@@ -713,9 +827,18 @@ Public Class frmSccEditReciboCaja
             Me.cmbRuta.Enabled = False
             Me.txtCliente.Enabled = False
             Me.txtEstado.Enabled = False
+
             For intCantCol As Integer = 0 To Me.grdFacturas.Columns.Count - 1
                 Me.grdFacturas.Columns(intCantCol).Tag = "BLOQUEADO"
             Next
+            For intCantCol As Integer = 0 To Me.grdNotaDebito.Columns.Count - 1
+                Me.grdNotaDebito.Columns(intCantCol).Tag = "BLOQUEADO"
+            Next
+
+            For intCantCol As Integer = 0 To Me.grdNotasCredito.Columns.Count - 1
+                Me.grdNotasCredito.Columns(intCantCol).Tag = "BLOQUEADO"
+            Next
+
             Me.cmbMoneda.Enabled = False
             'Me.numMontoCordobas.Enabled = False
             Me.NumMontoDolares.Enabled = False
@@ -831,6 +954,17 @@ Public Class frmSccEditReciboCaja
                 Next
             End If
 
+            If Not Me.DtDatosNotasCredito Is Nothing Then
+                For Each Rw As DataRow In Me.DtDatosNotasCredito.Rows
+                    Rw("Seleccion") = False
+                Next
+            End If
+
+            If Not Me.DtdatosNotasDebito Is Nothing Then
+                For Each Rw As DataRow In Me.DtdatosNotasDebito.Rows
+                    Rw("Seleccion") = False
+                Next
+            End If
             
             Me.CalcularTotales()
             Me.DecTotalRecibo = Me.MontoPrima
@@ -1073,5 +1207,50 @@ Public Class frmSccEditReciboCaja
             CargarRuta(0)
         End If
 
+    End Sub
+
+    Private Sub grdNotasCredito_AfterColEdit(sender As Object, e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles grdNotasCredito.AfterColEdit
+        Try
+            Select Case Me.grdNotasCredito.Columns("Incluir").Value
+                Case True
+                    Me.DtDatosNotasCredito.DefaultView.Item(Me.grdNotasCredito.Row)("Seleccion") = True
+                Case False
+                    Me.DtDatosNotasCredito.DefaultView.Item(Me.grdNotasCredito.Row)("Seleccion") = False
+            End Select
+            Me.DtDatosNotasCredito.AcceptChanges()
+            Me.CalcularTotales()
+            CalculoMontoAbonado()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub grdNotaDebito_AfterColEdit(sender As Object, e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles grdNotaDebito.AfterColEdit
+        Try
+            Select Case Me.grdNotaDebito.Columns("Incluir").Value
+                Case True
+                    Me.DtdatosNotasDebito.DefaultView.Item(Me.grdNotaDebito.Row)("Seleccion") = True
+                Case False
+                    Me.DtdatosNotasDebito.DefaultView.Item(Me.grdNotaDebito.Row)("Seleccion") = False
+            End Select
+            Me.DtdatosNotasDebito.AcceptChanges()
+            Me.CalcularTotales()
+            CalculoMontoAbonado()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub grdNotaDebito_AfterColUpdate(sender As Object, e As C1.Win.C1TrueDBGrid.ColEventArgs) Handles grdNotaDebito.AfterColUpdate
+        Try
+            CalculoMontoAbonado()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub grdNotaDebito_Error_1(sender As Object, e As C1.Win.C1TrueDBGrid.ErrorEventArgs) Handles grdNotaDebito.Error
+        e.Handled = True
+        e.Continue = True
     End Sub
 End Class

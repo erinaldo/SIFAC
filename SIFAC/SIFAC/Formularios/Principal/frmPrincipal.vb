@@ -235,9 +235,10 @@ Public Class frmPrincipal
             Me.NavBarDevoluciones.Visible = objSeg.TienePermiso("OpcionDevoluciones")
 
             ''Caja
-            Me.NavBarArqueo.Visible = objSeg.TienePermiso("OpcionArqueo")
+            Me.NavBarArqueo.Visible = objSeg.TienePermiso("OpcionArqueoCaja")
             Me.NavBarNotaCredito.Visible = objSeg.TienePermiso("OpcionNotaCredito")
-            Me.NavBarNotaDebito.Visible = objSeg.TienePermiso("OpcionNotaDebito")
+            Me.NavBarNotaDebito.Visible = objSeg.TienePermiso("OpcionNotasDebito")
+            Me.NavBarConfiguracionCaja.Visible = objSeg.TienePermiso("OpcionConfiguracionCajas")
 
             'Inventario
             Me.NavBarSolicitud.Visible = objSeg.TienePermiso("OpcionSolicitudTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
@@ -303,6 +304,7 @@ Public Class frmPrincipal
             Me.NavBarArqueo.Enabled = False
             Me.NavBarNotaDebito.Enabled = False
             Me.NavBarNotaCredito.Enabled = False
+            Me.NavBarConfiguracionCaja.Enabled = False
 
             ''Sincronizar
             Me.NavBarSincroVentas.Enabled = False
@@ -477,6 +479,8 @@ Public Class frmPrincipal
 #End Region
 
 #Region "Cargar Formularios"
+
+#End Region
 
 #Region "Cargar Catalogos Generales"
 
@@ -1066,6 +1070,26 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
+#Region "Cargar configuracion de cajas"
+    Private Sub CargarConfiguracionCajas()
+        Dim objForm As New frmSccConfiguracionCajas
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario(frmSccConfiguracionCajas.Name, Me) Then
+                    objForm.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objForm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objForm.MdiParent = Me
+                    objForm.Show()
+                End If
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
 #Region "Cargar Sincronizar Ventas"
     Private Sub CargarSincronizarVentas()
         Dim objForm As New frmSincronizarVentas
@@ -1209,7 +1233,9 @@ Public Class frmPrincipal
     Private Sub NavBarSincroDevoluciones_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarSincroDevoluciones.LinkClicked
         CargarSincronizarDevoluciones()
     End Sub
-
+    Private Sub NavBarConfiguracionCaja_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarConfiguracionCaja.LinkClicked
+        CargarConfiguracionCajas()
+    End Sub
 #End Region
 
 #Region "Liberar Memoria"
@@ -1225,6 +1251,7 @@ Public Class frmPrincipal
         End Try
     End Sub
 #End Region
+
 
 
 End Class

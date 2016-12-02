@@ -46,6 +46,9 @@ Partial Class frmSccEditNotaCredito
         Me.txtCodTienda = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.C1Combo1 = New C1.Win.C1List.C1Combo()
         Me.C1NumericEdit1 = New C1.Win.C1Input.C1NumericEdit()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -58,9 +61,6 @@ Partial Class frmSccEditNotaCredito
         Me.Label5 = New System.Windows.Forms.Label()
         Me.C1DateEdit1 = New C1.Win.C1Input.C1DateEdit()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupBox1.SuspendLayout()
         CType(Me.cmbEstado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numMonto, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -398,6 +398,44 @@ Partial Class frmSccEditNotaCredito
         Me.PanelControl1.Size = New System.Drawing.Size(411, 411)
         Me.PanelControl1.TabIndex = 102
         '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(325, 347)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 103
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(237, 347)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 102
+        Me.cmdGuardar.Tag = "GUARDAR"
+        Me.cmdGuardar.Text = "&Guardar"
+        '
+        'Panel2
+        '
+        Me.Panel2.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.Location = New System.Drawing.Point(2, 388)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(407, 21)
+        Me.Panel2.TabIndex = 101
+        '
         'C1Combo1
         '
         Me.C1Combo1.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
@@ -416,6 +454,7 @@ Partial Class frmSccEditNotaCredito
         Me.C1Combo1.EditorHeight = 15
         Me.C1Combo1.Enabled = False
         Me.C1Combo1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.C1Combo1.Images.Add(CType(resources.GetObject("C1Combo1.Images"), System.Drawing.Image))
         Me.C1Combo1.ItemHeight = 15
         Me.C1Combo1.LimitToList = True
         Me.C1Combo1.Location = New System.Drawing.Point(77, 210)
@@ -578,44 +617,6 @@ Partial Class frmSccEditNotaCredito
         Me.Label6.Size = New System.Drawing.Size(46, 13)
         Me.Label6.TabIndex = 64
         Me.Label6.Tag = "OBLIGATORIO"
-        '
-        'Panel2
-        '
-        Me.Panel2.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(2, 388)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(407, 21)
-        Me.Panel2.TabIndex = 101
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Appearance.Options.UseFont = True
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(325, 347)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 103
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        '
-        'cmdGuardar
-        '
-        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdGuardar.Appearance.Options.UseFont = True
-        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
-        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(237, 347)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 102
-        Me.cmdGuardar.Tag = "GUARDAR"
-        Me.cmdGuardar.Text = "&Guardar"
         '
         'frmSccEditNotaCredito
         '

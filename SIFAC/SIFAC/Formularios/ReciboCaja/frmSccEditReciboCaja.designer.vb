@@ -68,6 +68,8 @@ Partial Class frmSccEditReciboCaja
         Me.cmProcesar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
+        Me.grdNotasCredito = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdNotaDebito = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.tbControl.SuspendLayout()
         Me.tbpDetFact.SuspendLayout()
         CType(Me.grdFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,25 +88,28 @@ Partial Class frmSccEditReciboCaja
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdNotasCredito, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdNotaDebito, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbControl
         '
         Me.tbControl.Controls.Add(Me.tbpDetFact)
         Me.tbControl.Controls.Add(Me.tbpFormasPago)
-        Me.tbControl.Location = New System.Drawing.Point(0, 168)
+        Me.tbControl.Location = New System.Drawing.Point(0, 158)
         Me.tbControl.Name = "tbControl"
         Me.tbControl.SelectedIndex = 0
-        Me.tbControl.Size = New System.Drawing.Size(642, 206)
+        Me.tbControl.Size = New System.Drawing.Size(642, 249)
         Me.tbControl.TabIndex = 2
         '
         'tbpDetFact
         '
+        Me.tbpDetFact.Controls.Add(Me.grdNotaDebito)
         Me.tbpDetFact.Controls.Add(Me.grdFacturas)
         Me.tbpDetFact.Location = New System.Drawing.Point(4, 22)
         Me.tbpDetFact.Name = "tbpDetFact"
         Me.tbpDetFact.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbpDetFact.Size = New System.Drawing.Size(634, 180)
+        Me.tbpDetFact.Size = New System.Drawing.Size(634, 223)
         Me.tbpDetFact.TabIndex = 0
         Me.tbpDetFact.Text = "Detalle de Facturas"
         Me.tbpDetFact.UseVisualStyleBackColor = True
@@ -127,18 +132,19 @@ Partial Class frmSccEditReciboCaja
         Me.grdFacturas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdFacturas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdFacturas.PrintInfo.PageSettings = CType(resources.GetObject("grdFacturas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdFacturas.Size = New System.Drawing.Size(628, 169)
+        Me.grdFacturas.Size = New System.Drawing.Size(628, 122)
         Me.grdFacturas.TabIndex = 7
         Me.grdFacturas.PropBag = resources.GetString("grdFacturas.PropBag")
         '
         'tbpFormasPago
         '
+        Me.tbpFormasPago.Controls.Add(Me.grdNotasCredito)
         Me.tbpFormasPago.Controls.Add(Me.grpFormaPago)
         Me.tbpFormasPago.Controls.Add(Me.cmdEliminar)
         Me.tbpFormasPago.Location = New System.Drawing.Point(4, 22)
         Me.tbpFormasPago.Name = "tbpFormasPago"
         Me.tbpFormasPago.Padding = New System.Windows.Forms.Padding(3)
-        Me.tbpFormasPago.Size = New System.Drawing.Size(634, 180)
+        Me.tbpFormasPago.Size = New System.Drawing.Size(634, 223)
         Me.tbpFormasPago.TabIndex = 2
         Me.tbpFormasPago.Text = "Pago"
         Me.tbpFormasPago.UseVisualStyleBackColor = True
@@ -147,7 +153,7 @@ Partial Class frmSccEditReciboCaja
         '
         Me.grpFormaPago.Controls.Add(Me.NumMontoDolares)
         Me.grpFormaPago.Controls.Add(Me.Label7)
-        Me.grpFormaPago.Location = New System.Drawing.Point(6, 14)
+        Me.grpFormaPago.Location = New System.Drawing.Point(8, 135)
         Me.grpFormaPago.Name = "grpFormaPago"
         Me.grpFormaPago.Size = New System.Drawing.Size(620, 61)
         Me.grpFormaPago.TabIndex = 14
@@ -241,7 +247,7 @@ Partial Class frmSccEditReciboCaja
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(402, 412)
+        Me.Label3.Location = New System.Drawing.Point(402, 445)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(77, 13)
         Me.Label3.TabIndex = 9
@@ -251,7 +257,7 @@ Partial Class frmSccEditReciboCaja
         '
         Me.lblTotalFact.AutoSize = True
         Me.lblTotalFact.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalFact.Location = New System.Drawing.Point(402, 386)
+        Me.lblTotalFact.Location = New System.Drawing.Point(402, 419)
         Me.lblTotalFact.Name = "lblTotalFact"
         Me.lblTotalFact.Size = New System.Drawing.Size(69, 13)
         Me.lblTotalFact.TabIndex = 7
@@ -279,7 +285,7 @@ Partial Class frmSccEditReciboCaja
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.txtTotalFact.Enabled = False
         Me.txtTotalFact.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.txtTotalFact.Location = New System.Drawing.Point(489, 384)
+        Me.txtTotalFact.Location = New System.Drawing.Point(489, 417)
         Me.txtTotalFact.Name = "txtTotalFact"
         Me.txtTotalFact.Size = New System.Drawing.Size(123, 20)
         Me.txtTotalFact.TabIndex = 15
@@ -301,7 +307,7 @@ Partial Class frmSccEditReciboCaja
             Or C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd), C1.Win.C1Input.FormatInfoInheritFlags)
         Me.txtTotalPagar.Enabled = False
         Me.txtTotalPagar.FormatType = C1.Win.C1Input.FormatTypeEnum.Percent
-        Me.txtTotalPagar.Location = New System.Drawing.Point(489, 408)
+        Me.txtTotalPagar.Location = New System.Drawing.Point(489, 441)
         Me.txtTotalPagar.Name = "txtTotalPagar"
         Me.txtTotalPagar.Size = New System.Drawing.Size(123, 20)
         Me.txtTotalPagar.TabIndex = 17
@@ -497,7 +503,7 @@ Partial Class frmSccEditReciboCaja
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.lblMontoRestante)
         Me.GroupBox1.Controls.Add(Me.lblMontoAbonado)
-        Me.GroupBox1.Location = New System.Drawing.Point(7, 386)
+        Me.GroupBox1.Location = New System.Drawing.Point(22, 437)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(229, 59)
         Me.GroupBox1.TabIndex = 21
@@ -557,7 +563,7 @@ Partial Class frmSccEditReciboCaja
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 488)
+        Me.Panel1.Location = New System.Drawing.Point(0, 513)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(648, 18)
         Me.Panel1.TabIndex = 22
@@ -570,6 +576,7 @@ Partial Class frmSccEditReciboCaja
         Me.PanelControl1.Controls.Add(Me.lblMarca)
         Me.PanelControl1.Controls.Add(Me.cmProcesar)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
+        Me.PanelControl1.Controls.Add(Me.tbControl)
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.grpDatosRecibos)
@@ -579,7 +586,7 @@ Partial Class frmSccEditReciboCaja
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(648, 506)
+        Me.PanelControl1.Size = New System.Drawing.Size(648, 531)
         Me.PanelControl1.TabIndex = 99
         '
         'cmbRuta
@@ -677,7 +684,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmProcesar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmProcesar.Appearance.Options.UseFont = True
         Me.cmProcesar.Image = CType(resources.GetObject("cmProcesar.Image"), System.Drawing.Image)
-        Me.cmProcesar.Location = New System.Drawing.Point(463, 444)
+        Me.cmProcesar.Location = New System.Drawing.Point(463, 477)
         Me.cmProcesar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmProcesar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmProcesar.Name = "cmProcesar"
@@ -691,7 +698,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(542, 444)
+        Me.cmdCancelar.Location = New System.Drawing.Point(542, 477)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -706,7 +713,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(380, 444)
+        Me.cmdGuardar.Location = New System.Drawing.Point(380, 477)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -715,18 +722,53 @@ Partial Class frmSccEditReciboCaja
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
+        'grdNotasCredito
+        '
+        Me.grdNotasCredito.AllowColMove = False
+        Me.grdNotasCredito.Caption = "Notas de Crédito"
+        Me.grdNotasCredito.Dock = System.Windows.Forms.DockStyle.Top
+        Me.grdNotasCredito.ExtendRightColumn = True
+        Me.grdNotasCredito.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdNotasCredito.Images.Add(CType(resources.GetObject("grdNotasCredito.Images"), System.Drawing.Image))
+        Me.grdNotasCredito.Location = New System.Drawing.Point(3, 3)
+        Me.grdNotasCredito.Name = "grdNotasCredito"
+        Me.grdNotasCredito.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdNotasCredito.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdNotasCredito.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdNotasCredito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotasCredito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdNotasCredito.Size = New System.Drawing.Size(628, 119)
+        Me.grdNotasCredito.TabIndex = 15
+        Me.grdNotasCredito.PropBag = resources.GetString("grdNotasCredito.PropBag")
+        '
+        'grdNotaDebito
+        '
+        Me.grdNotaDebito.AllowColMove = False
+        Me.grdNotaDebito.Caption = "Notas de Débito"
+        Me.grdNotaDebito.Dock = System.Windows.Forms.DockStyle.Top
+        Me.grdNotaDebito.ExtendRightColumn = True
+        Me.grdNotaDebito.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdNotaDebito.Images.Add(CType(resources.GetObject("grdNotaDebito.Images"), System.Drawing.Image))
+        Me.grdNotaDebito.Location = New System.Drawing.Point(3, 125)
+        Me.grdNotaDebito.Name = "grdNotaDebito"
+        Me.grdNotaDebito.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdNotaDebito.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdNotaDebito.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdNotaDebito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotaDebito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdNotaDebito.Size = New System.Drawing.Size(628, 101)
+        Me.grdNotaDebito.TabIndex = 11
+        Me.grdNotaDebito.PropBag = resources.GetString("grdNotaDebito.PropBag")
+        '
         'frmSccEditReciboCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(648, 506)
+        Me.ClientSize = New System.Drawing.Size(648, 531)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtTotalPagar)
         Me.Controls.Add(Me.txtTotalFact)
         Me.Controls.Add(Me.lblError)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lblTotalFact)
-        Me.Controls.Add(Me.tbControl)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -759,6 +801,8 @@ Partial Class frmSccEditReciboCaja
         Me.PanelControl1.PerformLayout()
         CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdNotasCredito, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdNotaDebito, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -810,4 +854,6 @@ Partial Class frmSccEditReciboCaja
     Friend WithEvents cmdEliminar As System.Windows.Forms.Button
     Friend WithEvents cmbRuta As C1.Win.C1List.C1Combo
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents grdNotasCredito As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents grdNotaDebito As C1.Win.C1TrueDBGrid.C1TrueDBGrid
 End Class

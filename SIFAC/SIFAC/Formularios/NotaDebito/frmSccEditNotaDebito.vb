@@ -1,6 +1,4 @@
 '-----------------------------------------------------------------------
-''-- Nombre del Autor        : Pedro Pablo Tinoco Salgado.
-''-- Fecha de Elaboración    : 20 de Febrero de 2009.
 ''----------------------------------------------------------------------
 ''-------------------------------------------------------------------------
 ''--    Formulario de Edición y Modificación de Cátalogo Nota de Débito
@@ -206,15 +204,12 @@ Public Class frmSccEditNotaDebito
 #End Region
 
     Private Sub frmSccEditNotaCredito_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        clsProyecto.CargarTemaDefinido(Me)
         Me.CargaDatos()
         Me.Panel2.BackColor = Color.White
     End Sub
 
     ''' <summary>
     ''' Procedimiento principal de Carga de Datos
-    ''' Autor : Pedro Pablo Tinoco Salgado
-    ''' Fecha : 26 de Marzo de 2009.
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub CargaDatos()
@@ -238,8 +233,6 @@ Public Class frmSccEditNotaDebito
 
     ''' <summary>
     ''' Procedimiento encargado de cargar las estados posibles de las notas de credito
-    ''' Autor : Pedro Pablo Tinoco Salgado.
-    ''' Fecha : 26 de Marzo de 2009.
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub CargarEstado()

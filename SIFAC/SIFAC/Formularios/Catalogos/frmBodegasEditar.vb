@@ -59,11 +59,11 @@ Public Class frmBodegasEditar
         Try
             DtJefe = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
 
-            cmbJefe.DataSource = DtJefe
-            cmbJefe.ValueMember = "SrhEmpleadoID"
-            cmbJefe.DisplayMember = "NombreCompleto"
+            cmbCajero.DataSource = DtJefe
+            cmbCajero.ValueMember = "SrhEmpleadoID"
+            cmbCajero.DisplayMember = "NombreCompleto"
 
-            cmbJefe.SelectedIndex = -1
+            cmbCajero.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -82,12 +82,12 @@ Public Class frmBodegasEditar
             End If
 
             cmbCiudad.SelectedValue = objBodega.objCiudadID
-            cmbJefe.SelectedValue = objBodega.objJefeBodegaID
+            cmbCajero.SelectedValue = objBodega.objJefeBodegaID
 
             If objBodega.Activo.HasValue Then
                 chkActivo.Checked = objBodega.Activo
             End If
-           
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -107,7 +107,7 @@ Public Class frmBodegasEditar
             editEmpleado.TypeGUI = 0
             If editEmpleado.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarJefe()
-                cmbJefe.SelectedValue = editEmpleado.intEmpleadoID
+                cmbCajero.SelectedValue = editEmpleado.intEmpleadoID
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -126,8 +126,8 @@ Public Class frmBodegasEditar
             Me.Cursor = WaitCursor
             editEmpleado = New frmSrhEmpleadoEditar
             editEmpleado.TypeGUI = 2
-            editEmpleado.EmpleadoID = Me.cmbJefe.SelectedValue
-            objEmpleado.Retrieve(Me.cmbJefe.SelectedValue)
+            editEmpleado.EmpleadoID = Me.cmbCajero.SelectedValue
+            objEmpleado.Retrieve(Me.cmbCajero.SelectedValue)
             editEmpleado.PersonaID = objEmpleado.objPersonaID
             editEmpleado.Text = "Consultar Empleado"
             editEmpleado.ShowDialog(Me)
@@ -158,7 +158,7 @@ Public Class frmBodegasEditar
                 Me.txtNombre.Enabled = False
                 Me.txtCodigo.Enabled = False
                 Me.cmbCiudad.Enabled = False
-                Me.cmbJefe.Enabled = False
+                Me.cmbCajero.Enabled = False
                 Me.cmdJefe.Enabled = False
                 Me.chkActivo.Enabled = False
                 Me.cmdGuardar.Enabled = False
@@ -206,7 +206,7 @@ Public Class frmBodegasEditar
             objBodega.Nombre = txtNombre.Text.Trim
             objBodega.Codigo = txtCodigo.Text.Trim
             objBodega.objCiudadID = cmbCiudad.SelectedValue
-            objBodega.objJefeBodegaID = cmbJefe.SelectedValue
+            objBodega.objJefeBodegaID = cmbCajero.SelectedValue
             objBodega.Activo = chkActivo.Checked
 
             objBodega.UsuarioCreacion = clsProyecto.Conexion.Usuario
@@ -246,7 +246,7 @@ Public Class frmBodegasEditar
             objBodega.Nombre = txtNombre.Text.Trim
             objBodega.Codigo = txtCodigo.Text.Trim
             objBodega.objCiudadID = cmbCiudad.SelectedValue
-            objBodega.objJefeBodegaID = cmbJefe.SelectedValue
+            objBodega.objJefeBodegaID = cmbCajero.SelectedValue
             objBodega.Activo = chkActivo.Checked
 
             objBodega.UsuarioCreacion = clsProyecto.Conexion.Usuario
@@ -290,20 +290,20 @@ Public Class frmBodegasEditar
                 Return False
                 Exit Function
             End If
-            If cmbJefe.Text.Trim = "" Then
-                ErrorProv.SetError(cmbJefe, My.Resources.MsgObligatorio)
+            If cmbCajero.Text.Trim = "" Then
+                ErrorProv.SetError(cmbCajero, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
             End If
 
             ''Validar que no existe una bodega con el mismo codigo           
-           
+
             Select Case TypeGui
                 Case 1
                     dtVerificarCodigoBodega = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("Codigo", "StbBodegas", "Activo =1 and Ltrim(Rtrim(Codigo))='" & txtCodigo.Text.Trim & "'"))
 
                     If dtVerificarCodigoBodega.Rows.Count > 0 Then
-                        ErrorProv.SetError(cmbJefe, "El Código de bodega ya existe. Registre uno diferente.")
+                        ErrorProv.SetError(cmbCajero, "El Código de bodega ya existe. Registre uno diferente.")
                         Return False
                     End If
                 Case 2
@@ -362,9 +362,9 @@ Public Class frmBodegasEditar
 
     Private Sub cmdJefe_Click(sender As Object, e As EventArgs) Handles cmdJefe.Click
         Try
-            If cmbJefe.SelectedIndex = -1 Then
-                    Me.NuevoJefe()
-               Else
+            If cmbCajero.SelectedIndex = -1 Then
+                Me.NuevoJefe()
+            Else
                 Me.ConsultarJefe()
             End If
         Catch ex As Exception
@@ -416,14 +416,14 @@ Public Class frmBodegasEditar
     Private Sub cmbCiudad_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
             If Me.cmbCiudad.Text.Trim.Length <> 0 Then
-                Me.cmbJefe.Focus()
+                Me.cmbCajero.Focus()
             End If
         End If
     End Sub
 
     Private Sub cmbJefe_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) = 13 Then
-            If Me.cmbJefe.Text.Trim.Length <> 0 Then
+            If Me.cmbCajero.Text.Trim.Length <> 0 Then
                 Me.chkActivo.Focus()
             End If
         End If

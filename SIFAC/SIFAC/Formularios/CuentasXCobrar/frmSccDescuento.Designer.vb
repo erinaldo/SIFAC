@@ -150,6 +150,7 @@ Partial Class frmSccDescuento
         Me.grdDescuentoTabla.GridControl = Me.grdDescuento
         Me.grdDescuentoTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdDescuentoTabla.Name = "grdDescuentoTabla"
+        Me.grdDescuentoTabla.OptionsView.ShowAutoFilterRow = True
         '
         'colPlazoPago
         '

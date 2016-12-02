@@ -51,6 +51,7 @@ Partial Class frmSfaFactura
         Me.colSfaFacturaID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSccCuentaPorCobrarDetalleID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.tbCuentas.SuspendLayout()
         CType(Me.grdFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdFacturasTabla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,10 +61,10 @@ Partial Class frmSfaFactura
         'tbCuentas
         '
         Me.tbCuentas.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbCuentas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditarFactura, Me.ToolStripSeparator3, Me.cmdNuevaFecha, Me.cmdProcesarExpedienteFact, Me.cmdAnularFactura, Me.ToolStripSeparator4, Me.cmdBuscar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdRefrescar, Me.ToolStripSeparator2, Me.cmdSalir})
+        Me.tbCuentas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditarFactura, Me.ToolStripSeparator3, Me.cmdNuevaFecha, Me.ToolStripButton1, Me.cmdProcesarExpedienteFact, Me.cmdAnularFactura, Me.ToolStripSeparator4, Me.cmdBuscar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdRefrescar, Me.ToolStripSeparator2, Me.cmdSalir})
         Me.tbCuentas.Location = New System.Drawing.Point(0, 0)
         Me.tbCuentas.Name = "tbCuentas"
-        Me.tbCuentas.Size = New System.Drawing.Size(1201, 39)
+        Me.tbCuentas.Size = New System.Drawing.Size(901, 39)
         Me.tbCuentas.TabIndex = 1
         Me.tbCuentas.Text = "ToolStrip1"
         '
@@ -173,15 +174,13 @@ Partial Class frmSfaFactura
         'grdFacturas
         '
         Me.grdFacturas.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdFacturas.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdFacturas.Location = New System.Drawing.Point(0, 39)
         Me.grdFacturas.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdFacturas.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdFacturas.MainView = Me.grdFacturasTabla
-        Me.grdFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdFacturas.Name = "grdFacturas"
         Me.grdFacturas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
-        Me.grdFacturas.Size = New System.Drawing.Size(1201, 649)
+        Me.grdFacturas.Size = New System.Drawing.Size(901, 520)
         Me.grdFacturas.TabIndex = 9
         Me.grdFacturas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdFacturasTabla})
         '
@@ -307,15 +306,23 @@ Partial Class frmSfaFactura
         Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButton1.Text = "cmdReestructurar"
+        '
         'frmSfaFactura
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1201, 688)
+        Me.ClientSize = New System.Drawing.Size(901, 559)
         Me.Controls.Add(Me.grdFacturas)
         Me.Controls.Add(Me.tbCuentas)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmSfaFactura"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Expediente-Facturas"
@@ -357,4 +364,5 @@ Partial Class frmSfaFactura
     Friend WithEvents colSfaFacturaID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colSccCuentaPorCobrarDetalleID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
 End Class

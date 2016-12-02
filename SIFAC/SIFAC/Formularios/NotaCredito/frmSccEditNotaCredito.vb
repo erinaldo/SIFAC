@@ -1,6 +1,4 @@
 '--------------------------------------------------------------------------
-''-- Nombre del Autor        : Pedro Pablo Tinoco Salgado.
-''-- Fecha de Elaboración    : 20 de Marzo de 2009.
 ''-------------------------------------------------------------------------
 ''--    Formulario de Edición y Modificación de Cátalogo Nota de Crédito
 ''-------------------------------------------------------------------------
@@ -103,9 +101,7 @@ Public Class frmSccEditNotaCredito
     End Sub
 
     ''' <summary>
-    ''' Procedimiento encargado de cargar el concepto de la nota de credito.
-    ''' Autor : Pedro Tinoco
-    ''' Fecha : 26 de Marzo de 2009.
+    ''' Procedimiento encargado de cargar el concepto de la nota de credito. 
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub CargarConceptoNC()
@@ -229,7 +225,7 @@ Public Class frmSccEditNotaCredito
 #End Region
 
     Private Sub frmSccEditNotaCredito_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        clsProyecto.CargarTemaDefinido(Me)
+
         Me.CargaDatos()
         
         'En caso de Reestructuración de Cuenta, cargar datos recibidos y bloquear controles
@@ -260,8 +256,7 @@ Public Class frmSccEditNotaCredito
 
     ''' <summary>
     ''' Procedimiento principal de Carga de Datos
-    ''' Autor : Pedro Pablo Tinoco Salgado
-    ''' Fecha : 26 de Marzo de 2009.
+ 
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub CargaDatos()

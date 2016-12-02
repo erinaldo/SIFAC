@@ -19,7 +19,7 @@ Public Class frmSccDescuento
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
         Try
-            DtDescuento = SccDescuentoPlazo.RetrieveDT("1=1", "SccDescuentoID", "SccDescuentoID, CAST(PlazoPago AS VARCHAR)  + ' Meses' AS PlazoPago, DescuentoMaximo, DescuentoMinimo")
+            DtDescuento = SccDescuentoPlazo.RetrieveDT("Activo=1", "SccDescuentoID", "SccDescuentoID, CAST(PlazoPago AS VARCHAR)  + ' Meses' AS PlazoPago, DescuentoMaximo, DescuentoMinimo")
             DtDescuento.PrimaryKey = New DataColumn() {Me.DtDescuento.Columns("SccDescuentoID")}
             DtDescuento.DefaultView.Sort = "SccDescuentoID"
             Me.grdDescuento.DataSource = DtDescuento
@@ -84,6 +84,7 @@ Public Class frmSccDescuento
             editDescuento.TypeGui = 0
             If editDescuento.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
+                AplicarSeguridad()
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -167,13 +168,20 @@ Public Class frmSccDescuento
 #End Region
 
     Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
-        Dim dtReporte As DataTable
+
+        Dim dtReporte As DataSet
         Try
-            Dim objjReporte As New rptDescuentos()
-            dtReporte = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwRptDescuentosPlazos", ))
-            objjReporte.DataSource = dtReporte
-            Dim pt As New ReportPrintTool(objjReporte)
-            pt.ShowPreview()
+            Dim objjReporte As New rptDescuentos
+            dtReporte = DAL.SqlHelper.ExecuteQueryDS(ObtenerConsultaGeneral("*", "vwRptDescuentosPlazos", ))
+
+            If dtReporte.Tables(0).Rows.Count <> 0 Then
+                objjReporte.DataSource = dtReporte
+                objjReporte.DataMember = dtReporte.Tables(0).TableName
+                Dim pt As New ReportPrintTool(objjReporte)
+                pt.ShowPreview()
+            Else
+                MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+            End If
 
         Catch ex As Exception
             clsError.CaptarError(ex)
