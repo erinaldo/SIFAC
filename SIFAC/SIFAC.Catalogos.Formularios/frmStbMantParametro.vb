@@ -1,6 +1,4 @@
 ''-------------------------------------------------------------------------------------------------
-''-- Nombre del Autor        : Michelle Valezka Reyes Tijerino.
-''-- Fecha de Elaboración    : 30 de Enero de 2008.
 ''----------------------------------------------------------------------
 ''--    Formulario Principal Catálogo Parámetro
 ''----------------------------------------------------------------------
@@ -38,8 +36,9 @@ Public Class frmStbMantParametro
         Try
             '-- Instanciar
             dtParametro = Proyecto.Catalogos.Datos.StbParametro.RetrieveDT(, "Nombre", "StbParametroID, Nombre, Descripcion, Valor")
-            tdgParametro.SetDataBinding(dtParametro, "", True)
-            tdgParametro.Caption = "Parámetros (" & dtParametro.Rows.Count & ")"
+            Me.grdParametros.DataSource = dtParametro
+            Me.grdParametros.Text = "Parámetros (" & Me.dtParametro.Rows.Count & ")"
+          
             If dtParametro.Rows.Count = 0 Then
                 Me.tsbModificarParametro.Enabled = False
             Else
@@ -47,7 +46,7 @@ Public Class frmStbMantParametro
                     Me.tsbModificarParametro.Enabled = True
                 End If
             End If
-            tdgParametro.Refresh()
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -92,12 +91,12 @@ Public Class frmStbMantParametro
             If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
                 Seguridad()
-                For Each dr As DataRow In Me.dtParametro.Rows
-                    If dr("StbParametroID") = objfrm.TipoParamID Then
-                        Me.tdgParametro.Row = Me.dtParametro.Rows.IndexOf(dr)
-                        Exit For
-                    End If
-                Next
+                'For Each dr As DataRow In Me.dtParametro.Rows
+                '    If dr("StbParametroID") = objfrm.TipoParamID Then
+                '        Me.tdgParametro.Row = Me.dtParametro.Rows.IndexOf(dr)
+                '        Exit For
+                '    End If
+                'Next
                 MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             End If
         Catch ex As Exception
@@ -107,23 +106,28 @@ Public Class frmStbMantParametro
         End Try
     End Sub
 
-    Private Sub tsbModificarParametro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbModificarParametro.Click, tdgParametro.DoubleClick
+    Private Sub tsbModificarParametro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbModificarParametro.Click
         '-- Declaracion de Variables y Objetos
         Dim objfrm As frmStbEditParametro
+        Dim FilaActual As Integer
         Try
             Me.Cursor = WaitCursor
             If Me.dtParametro.DefaultView.Count > 0 Then
                 If Me.blnModificar Then
                     objfrm = New frmStbEditParametro
-                    objfrm.TipoParamID = dtParametro.DefaultView(Me.tdgParametro.Row).Item("StbParametroID")
+                    Dim selectedRow As Integer() = grdParametrosTabla.GetSelectedRows()
+                    FilaActual = Me.grdParametrosTabla.GetDataSourceRowIndex(selectedRow(0))
+
+                    objfrm.TipoParamID = Me.dtParametro.DefaultView.Item(FilaActual)("StbParametroID")
+
                     If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                         CargarGrid()
-                        For Each dr As DataRow In Me.dtParametro.Rows
-                            If dr("StbParametroID") = objfrm.TipoParamID Then
-                                Me.tdgParametro.Row = Me.dtParametro.Rows.IndexOf(dr)
-                                Exit For
-                            End If
-                        Next
+                        'For Each dr As DataRow In Me.dtParametro.Rows
+                        '    If dr("StbParametroID") = objfrm.TipoParamID Then
+                        '        Me.tdgParametro.Row = Me.dtParametro.Rows.IndexOf(dr)
+                        '        Exit For
+                        '    End If
+                        'Next
                         MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
                     End If
                 End If
@@ -136,9 +140,24 @@ Public Class frmStbMantParametro
         End Try
     End Sub
 
-    Private Sub tdgParametro_AfterFilter(ByVal sender As Object, ByVal e As C1.Win.C1TrueDBGrid.FilterEventArgs) Handles tdgParametro.AfterFilter
+  
+
+    Private Sub tsbRefrescar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbRefrescar.Click
+        CargarGrid()
+    End Sub
+
+    Private Sub tsbSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbSalir.Click
+
+        dtParametro = Nothing
+        objseg = Nothing
+        blnModificar = Nothing
+        Me.Close()
+    End Sub
+
+    Private Sub grdParametrosTabla_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles grdParametrosTabla.FocusedRowChanged
+
         Try
-            tdgParametro.Caption = "Parámetros (" & dtParametro.DefaultView.Count & ")"
+
             If dtParametro.DefaultView.Count = 0 Then
                 Me.tsbModificarParametro.Enabled = False
             Else
@@ -146,23 +165,14 @@ Public Class frmStbMantParametro
                     Me.tsbModificarParametro.Enabled = True
                 End If
             End If
+
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
 
-    Private Sub tsbRefrescar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbRefrescar.Click
-        CargarGrid()
-    End Sub
-
-    Private Sub tsbSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbSalir.Click
-        tdgParametro = Nothing
-        dtParametro = Nothing
-        objseg = Nothing
-        blnModificar = Nothing
-        Me.Close()
-    End Sub
-
 #End Region
 
+   
 End Class

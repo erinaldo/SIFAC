@@ -27,9 +27,17 @@ Partial Class frmStbMantParametro
         Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
-        Me.tdgParametro = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
+        Me.grdParametros = New DevExpress.XtraGrid.GridControl()
+        Me.grdParametrosTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colActiva = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.ToolStrip1.SuspendLayout()
-        CType(Me.tdgParametro, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdParametros, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdParametrosTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -38,7 +46,7 @@ Partial Class frmStbMantParametro
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbAgregarParametro, Me.tsbModificarParametro, Me.ToolStripSeparator1, Me.tsbRefrescar, Me.ToolStripSeparator2, Me.tsbSalir})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(563, 39)
+        Me.ToolStrip1.Size = New System.Drawing.Size(850, 39)
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -90,34 +98,80 @@ Partial Class frmStbMantParametro
         Me.tsbSalir.Size = New System.Drawing.Size(36, 36)
         Me.tsbSalir.Text = "Salir"
         '
-        'tdgParametro
+        'grdParametros
         '
-        Me.tdgParametro.Caption = "Parámetros"
-        Me.tdgParametro.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tdgParametro.EmptyRows = True
-        Me.tdgParametro.ExtendRightColumn = True
-        Me.tdgParametro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tdgParametro.GroupByCaption = "Arrastre hacia acá la etiqueta del campo por la cual desea agrupar los datos"
-        Me.tdgParametro.Images.Add(CType(resources.GetObject("tdgParametro.Images"), System.Drawing.Image))
-        Me.tdgParametro.Location = New System.Drawing.Point(0, 39)
-        Me.tdgParametro.MarqueeStyle = C1.Win.C1TrueDBGrid.MarqueeEnum.HighlightRow
-        Me.tdgParametro.Name = "tdgParametro"
-        Me.tdgParametro.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.tdgParametro.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.tdgParametro.PreviewInfo.ZoomFactor = 75.0R
-        Me.tdgParametro.PrintInfo.PageSettings = CType(resources.GetObject("tdgParametro.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.tdgParametro.Size = New System.Drawing.Size(563, 430)
-        Me.tdgParametro.TabIndex = 2
-        Me.tdgParametro.Tag = ""
-        Me.tdgParametro.Text = "Parámetro"
-        Me.tdgParametro.PropBag = resources.GetString("tdgParametro.PropBag")
+        Me.grdParametros.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdParametros.Location = New System.Drawing.Point(0, 39)
+        Me.grdParametros.LookAndFeel.SkinName = "Office 2010 Blue"
+        Me.grdParametros.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.grdParametros.MainView = Me.grdParametrosTabla
+        Me.grdParametros.Name = "grdParametros"
+        Me.grdParametros.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
+        Me.grdParametros.Size = New System.Drawing.Size(850, 430)
+        Me.grdParametros.TabIndex = 8
+        Me.grdParametros.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdParametrosTabla})
+        '
+        'grdParametrosTabla
+        '
+        Me.grdParametrosTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre, Me.colDescripcion, Me.colActiva})
+        Me.grdParametrosTabla.GridControl = Me.grdParametros
+        Me.grdParametrosTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
+        Me.grdParametrosTabla.Name = "grdParametrosTabla"
+        Me.grdParametrosTabla.OptionsView.ShowAutoFilterRow = True
+        Me.grdParametrosTabla.Tag = ""
+        '
+        'colNumero
+        '
+        Me.colNumero.Caption = "Numero"
+        Me.colNumero.FieldName = "MarcaID"
+        Me.colNumero.Name = "colNumero"
+        Me.colNumero.OptionsColumn.AllowEdit = False
+        Me.colNumero.OptionsColumn.ReadOnly = True
+        '
+        'colNombre
+        '
+        Me.colNombre.Caption = "Nombre"
+        Me.colNombre.FieldName = "Nombre"
+        Me.colNombre.Name = "colNombre"
+        Me.colNombre.OptionsColumn.AllowEdit = False
+        Me.colNombre.Visible = True
+        Me.colNombre.VisibleIndex = 0
+        '
+        'colDescripcion
+        '
+        Me.colDescripcion.Caption = "Descripcion"
+        Me.colDescripcion.FieldName = "Descripcion"
+        Me.colDescripcion.Name = "colDescripcion"
+        Me.colDescripcion.OptionsColumn.AllowEdit = False
+        Me.colDescripcion.OptionsColumn.ReadOnly = True
+        Me.colDescripcion.Visible = True
+        Me.colDescripcion.VisibleIndex = 1
+        Me.colDescripcion.Width = 293
+        '
+        'colActiva
+        '
+        Me.colActiva.Caption = "Activa"
+        Me.colActiva.ColumnEdit = Me.RepositoryItemCheckEdit1
+        Me.colActiva.FieldName = "Activa"
+        Me.colActiva.Name = "colActiva"
+        Me.colActiva.OptionsColumn.AllowEdit = False
+        Me.colActiva.OptionsColumn.ReadOnly = True
+        Me.colActiva.Visible = True
+        Me.colActiva.VisibleIndex = 2
+        Me.colActiva.Width = 124
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmStbMantParametro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(563, 469)
-        Me.Controls.Add(Me.tdgParametro)
+        Me.ClientSize = New System.Drawing.Size(850, 469)
+        Me.Controls.Add(Me.grdParametros)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmStbMantParametro"
@@ -126,7 +180,9 @@ Partial Class frmStbMantParametro
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        CType(Me.tdgParametro, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdParametros, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdParametrosTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -138,5 +194,11 @@ Partial Class frmStbMantParametro
     Friend WithEvents tsbRefrescar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
-    Friend WithEvents tdgParametro As C1.Win.C1TrueDBGrid.C1TrueDBGrid
+    Friend WithEvents grdParametros As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdParametrosTabla As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNombre As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colActiva As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
 End Class

@@ -62,7 +62,7 @@ Partial Class frmStbMantCatalogo
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdEliminar, Me.ToolStripSeparator1, Me.cmdimprimir, Me.cmdRefrescar, Me.ToolStripSeparator2, Me.cmdSalir})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(731, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(731, 39)
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -72,7 +72,7 @@ Partial Class frmStbMantCatalogo
         Me.cmdAgregar.Image = CType(resources.GetObject("cmdAgregar.Image"), System.Drawing.Image)
         Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAgregar.Name = "cmdAgregar"
-        Me.cmdAgregar.Size = New System.Drawing.Size(23, 22)
+        Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
         '
         'cmdEditar
         '
@@ -80,7 +80,7 @@ Partial Class frmStbMantCatalogo
         Me.cmdEditar.Image = CType(resources.GetObject("cmdEditar.Image"), System.Drawing.Image)
         Me.cmdEditar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdEditar.Name = "cmdEditar"
-        Me.cmdEditar.Size = New System.Drawing.Size(23, 22)
+        Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
         Me.cmdEditar.Text = "ToolStripButton2"
         '
         'cmdEliminar
@@ -89,13 +89,13 @@ Partial Class frmStbMantCatalogo
         Me.cmdEliminar.Image = CType(resources.GetObject("cmdEliminar.Image"), System.Drawing.Image)
         Me.cmdEliminar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdEliminar.Name = "cmdEliminar"
-        Me.cmdEliminar.Size = New System.Drawing.Size(23, 22)
+        Me.cmdEliminar.Size = New System.Drawing.Size(36, 36)
         Me.cmdEliminar.Text = "ToolStripButton3"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
         '
         'cmdimprimir
         '
@@ -103,8 +103,9 @@ Partial Class frmStbMantCatalogo
         Me.cmdimprimir.Image = CType(resources.GetObject("cmdimprimir.Image"), System.Drawing.Image)
         Me.cmdimprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdimprimir.Name = "cmdimprimir"
-        Me.cmdimprimir.Size = New System.Drawing.Size(23, 22)
+        Me.cmdimprimir.Size = New System.Drawing.Size(36, 36)
         Me.cmdimprimir.Text = "ToolStripButton5"
+        Me.cmdimprimir.Visible = False
         '
         'cmdRefrescar
         '
@@ -112,13 +113,13 @@ Partial Class frmStbMantCatalogo
         Me.cmdRefrescar.Image = CType(resources.GetObject("cmdRefrescar.Image"), System.Drawing.Image)
         Me.cmdRefrescar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdRefrescar.Name = "cmdRefrescar"
-        Me.cmdRefrescar.Size = New System.Drawing.Size(23, 22)
+        Me.cmdRefrescar.Size = New System.Drawing.Size(36, 36)
         Me.cmdRefrescar.Text = "ToolStripButton4"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
         '
         'cmdSalir
         '
@@ -126,19 +127,19 @@ Partial Class frmStbMantCatalogo
         Me.cmdSalir.Image = CType(resources.GetObject("cmdSalir.Image"), System.Drawing.Image)
         Me.cmdSalir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdSalir.Name = "cmdSalir"
-        Me.cmdSalir.Size = New System.Drawing.Size(23, 22)
+        Me.cmdSalir.Size = New System.Drawing.Size(36, 36)
         '
         'CzContenedor
         '
         Me.CzContenedor.Controls.Add(Me.grdDatosvalores)
         Me.CzContenedor.Controls.Add(Me.grdDatosCatalogos)
         Me.CzContenedor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CzContenedor.GridDefinition = "98.8059701492537:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "32.96853625171:False:False;65.389876880985:False:Fa" & _
-    "lse;"
+        Me.CzContenedor.GridDefinition = "98.780487804878:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "32.96853625171:False:False;65.389876880985:False:Fal" & _
+    "se;"
         Me.CzContenedor.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.CzContenedor.Location = New System.Drawing.Point(0, 25)
+        Me.CzContenedor.Location = New System.Drawing.Point(0, 39)
         Me.CzContenedor.Name = "CzContenedor"
-        Me.CzContenedor.Size = New System.Drawing.Size(731, 670)
+        Me.CzContenedor.Size = New System.Drawing.Size(731, 656)
         Me.CzContenedor.TabIndex = 4
         Me.CzContenedor.TabStop = False
         '
@@ -157,7 +158,7 @@ Partial Class frmStbMantCatalogo
         Me.grdDatosvalores.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdDatosvalores.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDatosvalores.PrintInfo.PageSettings = CType(resources.GetObject("grdDatosvalores.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdDatosvalores.Size = New System.Drawing.Size(478, 662)
+        Me.grdDatosvalores.Size = New System.Drawing.Size(478, 648)
         Me.grdDatosvalores.TabIndex = 4
         Me.grdDatosvalores.Tag = "AGRUPAR"
         Me.grdDatosvalores.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
@@ -178,7 +179,7 @@ Partial Class frmStbMantCatalogo
         Me.grdDatosCatalogos.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdDatosCatalogos.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDatosCatalogos.PrintInfo.PageSettings = CType(resources.GetObject("grdDatosCatalogos.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdDatosCatalogos.Size = New System.Drawing.Size(241, 662)
+        Me.grdDatosCatalogos.Size = New System.Drawing.Size(241, 648)
         Me.grdDatosCatalogos.TabIndex = 3
         Me.grdDatosCatalogos.Tag = "AGRUPAR"
         Me.grdDatosCatalogos.VisualStyle = C1.Win.C1TrueDBGrid.VisualStyle.Office2007Silver
