@@ -19,9 +19,8 @@ Partial Class frmSsgEditCuenta
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSsgEditCuenta))
-        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider()
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.TabCuenta = New System.Windows.Forms.TabPage()
         Me.grpDatosCuenta = New System.Windows.Forms.GroupBox()

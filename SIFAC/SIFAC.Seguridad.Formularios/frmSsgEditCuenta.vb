@@ -131,9 +131,9 @@ Public Class frmSsgEditCuenta
 
     Private Sub CargarEmpleados()
         Try
-            dtEmpleados = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto ,objPersonaID", "vwSrhEmpleado", "Activo =1"))
+            dtEmpleados = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto as Nombre ,objPersonaID", "vwSrhEmpleado", "Activo =1"))
 
-            dtEmpleados = SrhEmpleado.RetrieveDT(, "Nombre", "SrhEmpleadoID,  NombreCompleto as Nombre")
+            'dtEmpleados = SrhEmpleado.RetrieveDT(, "Nombre", "SrhEmpleadoID,  NombreCompleto as Nombre")
             dtEmpleados.PrimaryKey = New DataColumn() {Me.dtEmpleados.Columns("SrhEmpleadoID")}
             dtEmpleados.DefaultView.Sort = "SrhEmpleadoID"
             Me.cboEmpleado.DataSource = dtEmpleados
