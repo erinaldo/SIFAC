@@ -3531,5 +3531,6 @@ Public Class frmSfaFacturaRepuestosEditar
     
     Private Sub NumDescuento_EditValueChanged(sender As Object, e As EventArgs) Handles NumDescuento.EditValueChanged
         numTotalDescuento.Value = NumDescuento.Value
+        CalcularTotales()
     End Sub
 End Class
