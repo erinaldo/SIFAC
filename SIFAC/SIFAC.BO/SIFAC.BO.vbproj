@@ -78,6 +78,7 @@
     <Compile Include="SccCajas.vb" />
     <Compile Include="SccClientes.vb" />
     <Compile Include="SccComisiones.vb" />
+    <Compile Include="SccComisionesArqueo.vb" />
     <Compile Include="SccCuentaFiador_CF.vb" />
     <Compile Include="SccCuentaPorCobrar.vb" />
     <Compile Include="SccCuentaPorCobrarDetalle.vb" />
