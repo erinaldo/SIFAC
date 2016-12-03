@@ -3,6 +3,8 @@ Imports SIFAC.BO.clsConsultas
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
 Imports SIFAC.BO
+Imports DevExpress.XtraReports.UI
+Imports DAL
 
 Public Class frmPedidos
 
@@ -185,7 +187,33 @@ Public Class frmPedidos
     End Sub
 #End Region
 
-    
-    
+
+
+    Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
+        'Me.Imprimir()
+        Dim dsReporte As DataSet
+        Dim sCampos, sSQL As String
+        Try
+            Dim objjReporte As New rptHojaPedido
+            Dim selectedRow As Integer() = grdPedidosMasterTabla.GetSelectedRows()
+            Dim FilaActual As Integer = Me.grdPedidosMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
+            sCampos = "SivPedidoID, FechaPedido, FechaAutorizacion, Activo, Observaciones, CodProd, Producto, CantidadOrdenada, CostoUnitario, CostoSubtotal, CostoImpuesto, CostoTotal, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa"
+            sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptPedidos", "SivPedidoID = " & Me.dsPedidos.Tables("SivPedidos").DefaultView.Item(FilaActual)("Numero"))
+            dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
+
+            If dsReporte.Tables(0).Rows.Count = 0 Then
+                MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Exit Sub
+            End If
+
+            objjReporte.DataSource = dsReporte
+            objjReporte.DataMember = dsReporte.Tables(0).TableName
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 End Class
 
