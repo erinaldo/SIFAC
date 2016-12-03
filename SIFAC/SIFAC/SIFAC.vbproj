@@ -994,6 +994,12 @@
     <Compile Include="Reportes SIFAC\rptHojaDespachoTransferencia.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaPedido.Designer.vb">
+      <DependentUpon>rptHojaPedido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptHojaPedido.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\rptHojaSalida.Designer.vb">
       <DependentUpon>rptHojaSalida.vb</DependentUpon>
     </Compile>
@@ -1100,6 +1106,12 @@
       <DependentUpon>rptSalidaBodega.vb</DependentUpon>
     </Compile>
     <Compile Include="Reportes SIFAC\rptSalidaBodega.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptSfaFactura.Designer.vb">
+      <DependentUpon>rptSfaFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptSfaFactura.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes SIFAC\rptSivRepuestos.Designer.vb">
@@ -1697,6 +1709,9 @@
       <DependentUpon>rptHojaDespachoTransferencia.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptHojaEntrada.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptHojaPedido.resx">
+      <DependentUpon>rptHojaPedido.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptHojaSalida.resx">
       <DependentUpon>rptHojaSalida.vb</DependentUpon>
     </EmbeddedResource>
@@ -1762,6 +1777,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptServicioTallerBitacoraMoto.rdlc" />
+    <EmbeddedResource Include="Reportes SIFAC\rptSfaFactura.resx">
+      <DependentUpon>rptSfaFactura.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptSfaFacturaMoto.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptSfaFacturaRepuesto.rdlc" />
     <EmbeddedResource Include="Reportes SIFAC\rptSfaReporteFacturas.rdlc" />
