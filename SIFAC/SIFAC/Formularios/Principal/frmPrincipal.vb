@@ -239,6 +239,8 @@ Public Class frmPrincipal
             Me.NavBarNotaCredito.Visible = objSeg.TienePermiso("OpcionNotaCredito")
             Me.NavBarNotaDebito.Visible = objSeg.TienePermiso("OpcionNotasDebito")
             Me.NavBarConfiguracionCaja.Visible = objSeg.TienePermiso("OpcionConfiguracionCajas")
+            Me.NavBarComisiones.Visible = objSeg.TienePermiso("OpcionComisiones")
+            Me.NavBarSalidasEfectivo.Visible = objSeg.TienePermiso("OpcionSalidasEfectivo")
 
             'Inventario
             Me.NavBarSolicitud.Visible = objSeg.TienePermiso("OpcionSolicitudTransf") Or objSeg.TienePermiso("AUTORIZACIONGERENTE")
@@ -305,6 +307,8 @@ Public Class frmPrincipal
             Me.NavBarNotaDebito.Enabled = False
             Me.NavBarNotaCredito.Enabled = False
             Me.NavBarConfiguracionCaja.Enabled = False
+            Me.NavBarComisiones.Enabled = False
+            Me.NavBarSalidasEfectivo.Enabled = False
 
             ''Sincronizar
             Me.NavBarSincroVentas.Enabled = False
@@ -876,6 +880,56 @@ Public Class frmPrincipal
     End Sub
 #End Region
 
+#Region "Cargar Comisiones"
+    Private Sub CargarComisiones()
+        Dim objComisiones As frmSccComisiones
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario("frmSccComisiones", Me) Then
+                    objComisiones = New frmSccComisiones
+                    objComisiones.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objComisiones.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objComisiones.MdiParent = Me
+                    objComisiones.Show()
+                End If
+
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+
+    End Sub
+
+#End Region
+
+#Region "Cargar Salidas de efectivo"
+    Private Sub CargarSalidasEfectivo()
+        Dim objSalidasEfectivo As frmSccSalidasEfectivo
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario("frmSccSalidasEfectivo", Me) Then
+                    objSalidasEfectivo = New frmSccSalidasEfectivo
+                    objSalidasEfectivo.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objSalidasEfectivo.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objSalidasEfectivo.MdiParent = Me
+                    objSalidasEfectivo.Show()
+                End If
+
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+
+    End Sub
+
+#End Region
+
 #Region "Cargar Recibos de Caja"
     Private Sub CargarRecibosCaja()
         Dim objReciboCaja As frmSccReciboCaja
@@ -1236,6 +1290,13 @@ Public Class frmPrincipal
     Private Sub NavBarConfiguracionCaja_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarConfiguracionCaja.LinkClicked
         CargarConfiguracionCajas()
     End Sub
+
+    Private Sub NavBarComisiones_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarComisiones.LinkClicked
+        CargarComisiones()
+    End Sub
+    Private Sub NavBarSalidasEfectivo_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarSalidasEfectivo.LinkClicked
+        CargarSalidasEfectivo()
+    End Sub
 #End Region
 
 #Region "Liberar Memoria"
@@ -1254,4 +1315,5 @@ Public Class frmPrincipal
 
 
 
+   
 End Class

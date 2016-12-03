@@ -340,6 +340,12 @@
     <Compile Include="Formularios\Caja\frmSccConfiguracionCajasEdit.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Caja\frmSccSalidasEfectivo.Designer.vb">
+      <DependentUpon>frmSccSalidasEfectivo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Caja\frmSccSalidasEfectivo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Catalogos\frmBodegasEditar.Designer.vb">
       <DependentUpon>frmBodegasEditar.vb</DependentUpon>
     </Compile>
@@ -404,6 +410,12 @@
       <DependentUpon>frmSccComisiones.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Comisiones\frmSccComisiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Comisiones\frmSccComisionesEdit.Designer.vb">
+      <DependentUpon>frmSccComisionesEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Comisiones\frmSccComisionesEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\CuentasXCobrar\frmSccBuscarCuentas.Designer.vb">
@@ -1320,6 +1332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Comisiones\frmSccComisiones.resx">
       <DependentUpon>frmSccComisiones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Comisiones\frmSccComisionesEdit.resx">
+      <DependentUpon>frmSccComisionesEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\CuentasXCobrar\frmSccBuscarCuentas.resx">
       <SubType>Designer</SubType>

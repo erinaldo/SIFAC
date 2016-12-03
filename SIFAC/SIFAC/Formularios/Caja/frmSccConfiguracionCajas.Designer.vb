@@ -29,16 +29,16 @@ Partial Class frmSccConfiguracionCajas
         Me.colNombre = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCajera = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coUbicacion = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.toolTramitesLegales = New System.Windows.Forms.ToolStrip()
         Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
         Me.cmdEditar = New System.Windows.Forms.ToolStripButton()
         Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
-        Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
+        Me.cmdInactivar = New System.Windows.Forms.ToolStripButton()
         Me.ToolSeparador1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
-        Me.colCodigo = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.grdCajas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdCajasTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +110,15 @@ Partial Class frmSccConfiguracionCajas
         Me.coUbicacion.VisibleIndex = 4
         Me.coUbicacion.Width = 187
         '
+        'colCodigo
+        '
+        Me.colCodigo.Caption = "Código"
+        Me.colCodigo.FieldName = "Codigo"
+        Me.colCodigo.Name = "colCodigo"
+        Me.colCodigo.OptionsColumn.AllowEdit = False
+        Me.colCodigo.Visible = True
+        Me.colCodigo.VisibleIndex = 1
+        '
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
@@ -119,7 +128,7 @@ Partial Class frmSccConfiguracionCajas
         'toolTramitesLegales
         '
         Me.toolTramitesLegales.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.toolTramitesLegales.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.cmdImprimir, Me.ToolSeparador1, Me.tsbRefrescar, Me.tsbSalir})
+        Me.toolTramitesLegales.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.cmdInactivar, Me.ToolSeparador1, Me.tsbRefrescar, Me.tsbSalir})
         Me.toolTramitesLegales.Location = New System.Drawing.Point(0, 0)
         Me.toolTramitesLegales.Name = "toolTramitesLegales"
         Me.toolTramitesLegales.Size = New System.Drawing.Size(694, 39)
@@ -156,15 +165,15 @@ Partial Class frmSccConfiguracionCajas
         Me.cmdConsultar.Text = "ToolStripButton1"
         Me.cmdConsultar.ToolTipText = "Consultar Marca"
         '
-        'cmdImprimir
+        'cmdInactivar
         '
-        Me.cmdImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdImprimir.Image = CType(resources.GetObject("cmdImprimir.Image"), System.Drawing.Image)
-        Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdImprimir.Name = "cmdImprimir"
-        Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
-        Me.cmdImprimir.Text = "Imprimir Proveedor"
-        Me.cmdImprimir.ToolTipText = "Imprimir Marcas"
+        Me.cmdInactivar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdInactivar.Image = CType(resources.GetObject("cmdInactivar.Image"), System.Drawing.Image)
+        Me.cmdInactivar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdInactivar.Name = "cmdInactivar"
+        Me.cmdInactivar.Size = New System.Drawing.Size(36, 36)
+        Me.cmdInactivar.Text = "Imprimir Proveedor"
+        Me.cmdInactivar.ToolTipText = "Inactivar Caja"
         '
         'ToolSeparador1
         '
@@ -188,15 +197,6 @@ Partial Class frmSccConfiguracionCajas
         Me.tsbSalir.Name = "tsbSalir"
         Me.tsbSalir.Size = New System.Drawing.Size(36, 36)
         Me.tsbSalir.Text = "Salir"
-        '
-        'colCodigo
-        '
-        Me.colCodigo.Caption = "Código"
-        Me.colCodigo.FieldName = "Codigo"
-        Me.colCodigo.Name = "colCodigo"
-        Me.colCodigo.OptionsColumn.AllowEdit = False
-        Me.colCodigo.Visible = True
-        Me.colCodigo.VisibleIndex = 1
         '
         'frmSccConfiguracionCajas
         '
@@ -229,7 +229,7 @@ Partial Class frmSccConfiguracionCajas
     Friend WithEvents cmdAgregar As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdEditar As System.Windows.Forms.ToolStripButton
     Friend WithEvents cmdConsultar As System.Windows.Forms.ToolStripButton
-    Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripButton
+    Friend WithEvents cmdInactivar As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolSeparador1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tsbRefrescar As System.Windows.Forms.ToolStripButton
     Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton

@@ -61,6 +61,7 @@ Partial Class frmSincronizarAbonos
         Me.cmbEmpleado = New DevExpress.XtraEditors.LookUpEdit()
         Me.lblModeloCompatible = New System.Windows.Forms.Label()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
+        Me.cmdComisiones = New System.Windows.Forms.ToolStripButton()
         CType(Me.grdVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdVentasTable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -241,7 +242,7 @@ Partial Class frmSincronizarAbonos
         'tbProductos
         '
         Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAprobar, Me.cmdConsultar, Me.cmdEditar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar})
+        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAprobar, Me.cmdConsultar, Me.cmdEditar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.cmbExportar, Me.ToolStripSeparator3, Me.cmdCerrar, Me.cmdComisiones})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
         Me.tbProductos.Size = New System.Drawing.Size(837, 39)
@@ -441,6 +442,15 @@ Partial Class frmSincronizarAbonos
         '
         Me.sfdRuta.Filter = "Archivos Excel | *.xls"
         '
+        'cmdComisiones
+        '
+        Me.cmdComisiones.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdComisiones.Image = CType(resources.GetObject("cmdComisiones.Image"), System.Drawing.Image)
+        Me.cmdComisiones.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdComisiones.Name = "cmdComisiones"
+        Me.cmdComisiones.Size = New System.Drawing.Size(36, 36)
+        Me.cmdComisiones.Text = "Comisiones"
+        '
         'frmSincronizarAbonos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -511,4 +521,5 @@ Partial Class frmSincronizarAbonos
     Friend WithEvents colProducto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colModeloMarca As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colSaldo As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmdComisiones As System.Windows.Forms.ToolStripButton
 End Class

@@ -55,13 +55,13 @@ Public Class frmSccConfiguracionCajasEdit
     '' Descripción:        Procedimiento encargado de configurar la interfaz del formulario
     Public Sub ConfigurarGUI()
         Try
+            CargarCajeros()
 
             Select Case TypeGui
                 Case 0
                     Me.Text = "Agregar Caja"
                     chkActivo.Checked = True
                     chkActivo.Enabled = False
-
                 Case 1
                     Me.Text = "Editar Caja"
                     CargarDatosCaja()
@@ -70,6 +70,7 @@ Public Class frmSccConfiguracionCajasEdit
                 Case 2
                     Me.Text = "Consultar Caja"
                     CargarDatosCaja()
+                    txtCodigo.Enabled = False
                     txtNombreCaja.Enabled = False
                     txtUbicacion.Enabled = False
                     cmbCajero.Enabled = False
@@ -90,6 +91,7 @@ Public Class frmSccConfiguracionCajasEdit
             objCajas = New SccCajas
             objCajas.Retrieve(CajaID)
             txtNumero.Text = objCajas.SccCajaID
+            txtCodigo.Text = objCajas.Codigo
             txtNombreCaja.Text = objCajas.Nombre
             txtUbicacion.Text = objCajas.Ubicacion
             cmbCajero.SelectedValue = objCajas.objCajeroID
@@ -109,6 +111,7 @@ Public Class frmSccConfiguracionCajasEdit
             T.BeginTran()
             objCajas = New SccCajas
             objCajas.Nombre = txtNombreCaja.Text.Trim
+            objCajas.Codigo = txtCodigo.Text
             objCajas.Ubicacion = txtUbicacion.Text.Trim
             objCajas.objCajeroID = cmbCajero.SelectedValue
             objCajas.Activa = chkActivo.Checked

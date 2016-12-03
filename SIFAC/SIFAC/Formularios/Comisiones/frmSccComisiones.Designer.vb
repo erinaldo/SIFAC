@@ -301,6 +301,7 @@ Partial Class frmSccComisiones
         Me.Name = "frmSccComisiones"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registro de comisiones"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.tstND.ResumeLayout(False)
         Me.tstND.PerformLayout()
         CType(Me.grdComisiones, System.ComponentModel.ISupportInitialize).EndInit()
