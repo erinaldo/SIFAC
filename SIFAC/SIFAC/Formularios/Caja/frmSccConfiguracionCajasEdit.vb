@@ -111,7 +111,7 @@ Public Class frmSccConfiguracionCajasEdit
             T.BeginTran()
             objCajas = New SccCajas
             objCajas.Nombre = txtNombreCaja.Text.Trim
-            objCajas.Codigo = txtCodigo.Text
+            objCajas.Codigo = txtCodigo.Text.Trim
             objCajas.Ubicacion = txtUbicacion.Text.Trim
             objCajas.objCajeroID = cmbCajero.SelectedValue
             objCajas.Activa = chkActivo.Checked
@@ -140,6 +140,7 @@ Public Class frmSccConfiguracionCajasEdit
             objCajas = New SccCajas
             objCajas.SccCajaID = CajaID
             objCajas.Nombre = txtNombreCaja.Text.Trim
+            objCajas.Codigo = txtCodigo.Text.Trim
             objCajas.Ubicacion = txtUbicacion.Text.Trim
             objCajas.objCajeroID = cmbCajero.SelectedValue
             objCajas.Activa = chkActivo.Checked

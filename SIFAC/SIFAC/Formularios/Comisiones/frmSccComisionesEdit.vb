@@ -11,6 +11,7 @@ Public Class frmSccComisionesEdit
     Public intComisionID As Integer
     Public boolEditado As Boolean
     Dim fechaServidor As Date
+    Dim strTipo As String
 #End Region
 
 #Region "Propiedades"
@@ -29,6 +30,16 @@ Public Class frmSccComisionesEdit
         End Get
         Set(ByVal value As Integer)
             intComisionID = value
+        End Set
+    End Property
+
+
+    Property Tipo() As String
+        Get
+            Return strTipo
+        End Get
+        Set(ByVal value As String)
+            strTipo = value
         End Set
     End Property
 
@@ -122,29 +133,69 @@ Public Class frmSccComisionesEdit
 
     '' Descripción:        Procedimiento encargado de configurar la interfaz según el modo en que se encuentre
     Public Sub ConfigurarGUI()
-        Select Case TypeGui
-            Case 1
-                Me.Text = "Nueva Comision"
-                Me.dtFecha.EditValue = Date.Now
-                Me.txtEstado.Enabled = False
-            Case 2
-                Me.Text = "Editar Comision"
-                Me.dtFecha.Enabled = False
-                Me.txtEstado.Enabled = False
-                Me.CargarDatosComision()
-            Case 3
-                Me.Text = "Consultar Comision"
-                Me.CargarDatosComision()
-                Me.cmbEmpleado.Enabled = False
-                Me.SpnTotalRecuperado.Enabled = False
-                Me.SpnPorcentaje.Enabled = False
-                Me.SpnTotal.Enabled = False
-                Me.dtFecha.Enabled = False
-                Me.txtEstado.Enabled = False
-                Me.cmdGuardar.Enabled = False
-        End Select
+        Try
+            CargarEmpleado()
+
+            Select Case TypeGui
+                Case 0
+                    Me.Text = "Nueva Comision"
+                    Me.dtFecha.EditValue = Date.Now
+
+                    If Tipo = "Sincronizacion" Then
+                        dtFecha.Enabled = False
+                    End If
+                    Me.txtEstado.Enabled = False
+                Case 1
+                    Me.Text = "Editar Comision"
+                    Me.dtFecha.Enabled = False
+                    Me.txtEstado.Enabled = False
+                    Me.CargarDatosComision()
+                Case 2
+                    Me.Text = "Consultar Comision"
+                    Me.CargarDatosComision()
+                    Me.cmbEmpleado.Enabled = False
+                    Me.SpnTotalRecuperado.Enabled = False
+                    Me.SpnPorcentaje.Enabled = False
+                    Me.SpnTotal.Enabled = False
+                    Me.dtFecha.Enabled = False
+                    Me.txtEstado.Enabled = False
+                    Me.cmdGuardar.Enabled = False
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
+#End Region
+
+#Region "Calculos"
+    Private Sub TotalRecaudado()
+        Dim dtRecudado As New DataTable
+        Try
+            If dtFecha.Text <> String.Empty Then
+                Dim fecha As String = dtFecha.DateTime.ToString("yyyyMMdd")
+                dtRecudado = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("TotalRecaudado", "vwRecuperacionVendedor", "objSrhEmpleado =" & cmbEmpleado.SelectedValue & " And convert(varchar(10),Fecha,112)='" & fecha & "'"))
+                If dtRecudado.Rows.Count > 0 Then
+                    SpnTotalRecuperado.Value = dtRecudado.Rows(0)("TotalRecaudado")
+                End If
+
+            End If
+            
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Public Sub CargarTotalComision()
+        Try
+            If SpnPorcentaje.Value <> 0 Then
+                SpnTotal.Value = ((SpnPorcentaje.Value / 100) * SpnTotalRecuperado.Value)
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 #End Region
 
 
@@ -269,16 +320,15 @@ Public Class frmSccComisionesEdit
             ''Validar que no existe una comision registara para este dia y para el mismo vendedor           
 
             Select Case TypeGui
-                Case 1
-
-                    dtVerificarFechaEmpleado = SccComisiones.RetrieveDT("*", , " Activa =1 and Ltrim(Rtrim(Codigo))=" & dtFecha.EditValue)
+                Case 0
+                    dtVerificarFechaEmpleado = SccComisiones.RetrieveDT("*", , " Activa =1 and convert(varchar(10),Fecha,112)='" & dtFecha.EditValue.ToString("yyyyMMdd") & "'")
 
                     If dtVerificarFechaEmpleado.Rows.Count > 0 Then
                         ErrorProv.SetError(dtFecha, "Existe una comision registrada para este dia.")
                         Return False
                     End If
-                Case 2
-                    dtVerificarFechaEmpleado = SccComisiones.RetrieveDT("*", , " Activa =1 and Ltrim(Rtrim(Codigo))=" & dtFecha.EditValue & " and StbBodegaID<>" & ComisionID)
+                Case 1
+                    dtVerificarFechaEmpleado = SccComisiones.RetrieveDT("*", , " Activa =1 and convert(varchar(10),Fecha,112)='" & dtFecha.EditValue.ToString("yyyyMMdd") & "' and SccComisionID<>" & ComisionID)
 
                     If dtVerificarFechaEmpleado.Rows.Count > 0 Then
                         ErrorProv.SetError(dtFecha, "Existe una comision registrada para este dia.")
@@ -332,6 +382,7 @@ Public Class frmSccComisionesEdit
 
 
     Private Sub cmbEmpleado_TextChanged(sender As Object, e As EventArgs) Handles cmbEmpleado.TextChanged
+        TotalRecaudado()
         ErrorProv.Clear()
         boolEditado = True
     End Sub
@@ -352,5 +403,16 @@ Public Class frmSccComisionesEdit
         ErrorProv.Clear()
         boolEditado = True
     End Sub
+    Private Sub cmbEmpleado_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbEmpleado.SelectedValueChanged
+        TotalRecaudado()
+    End Sub
+
+  
+    Private Sub SpnPorcentaje_EditValueChanged(sender As Object, e As EventArgs) Handles SpnPorcentaje.EditValueChanged
+        CargarTotalComision()
+    End Sub
 #End Region
+
+  
+   
 End Class

@@ -1311,6 +1311,9 @@
     <EmbeddedResource Include="Formularios\Caja\frmSccConfiguracionCajasEdit.resx">
       <DependentUpon>frmSccConfiguracionCajasEdit.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Caja\frmSccSalidasEfectivo.resx">
+      <DependentUpon>frmSccSalidasEfectivo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmBodegasEditar.resx">
       <DependentUpon>frmBodegasEditar.vb</DependentUpon>
     </EmbeddedResource>

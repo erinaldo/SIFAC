@@ -46,11 +46,11 @@ Partial Class frmSccClientes
         Me.colApellido2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCedula = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colGenero = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRita = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colOrdenCobro = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.objUbicacion = New System.Windows.Forms.SaveFileDialog()
-        Me.colRita = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colOrdenCobro = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tbClientes.SuspendLayout()
         CType(Me.grdClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdClientesTabla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -258,6 +258,26 @@ Partial Class frmSccClientes
         Me.colGenero.VisibleIndex = 6
         Me.colGenero.Width = 104
         '
+        'colRita
+        '
+        Me.colRita.Caption = "Ruta"
+        Me.colRita.FieldName = "Ruta"
+        Me.colRita.Name = "colRita"
+        Me.colRita.OptionsColumn.AllowEdit = False
+        Me.colRita.Visible = True
+        Me.colRita.VisibleIndex = 0
+        Me.colRita.Width = 79
+        '
+        'colOrdenCobro
+        '
+        Me.colOrdenCobro.Caption = "Orden de cobro"
+        Me.colOrdenCobro.FieldName = "OrdenCobro"
+        Me.colOrdenCobro.Name = "colOrdenCobro"
+        Me.colOrdenCobro.OptionsColumn.AllowEdit = False
+        Me.colOrdenCobro.Visible = True
+        Me.colOrdenCobro.VisibleIndex = 7
+        Me.colOrdenCobro.Width = 114
+        '
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
@@ -273,24 +293,6 @@ Partial Class frmSccClientes
         'objUbicacion
         '
         Me.objUbicacion.Filter = "Microsoft Excel | *.xls"
-        '
-        'colRita
-        '
-        Me.colRita.Caption = "Ruta"
-        Me.colRita.FieldName = "Ruta"
-        Me.colRita.Name = "colRita"
-        Me.colRita.Visible = True
-        Me.colRita.VisibleIndex = 0
-        Me.colRita.Width = 79
-        '
-        'colOrdenCobro
-        '
-        Me.colOrdenCobro.Caption = "Orden de cobro"
-        Me.colOrdenCobro.FieldName = "OrdenCobro"
-        Me.colOrdenCobro.Name = "colOrdenCobro"
-        Me.colOrdenCobro.Visible = True
-        Me.colOrdenCobro.VisibleIndex = 7
-        Me.colOrdenCobro.Width = 114
         '
         'frmSccClientes
         '

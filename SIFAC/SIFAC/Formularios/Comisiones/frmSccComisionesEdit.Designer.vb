@@ -159,6 +159,7 @@ Partial Class frmSccComisionesEdit
         'SpnTotalRecuperado
         '
         Me.SpnTotalRecuperado.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.SpnTotalRecuperado.Enabled = False
         Me.SpnTotalRecuperado.Location = New System.Drawing.Point(141, 93)
         Me.SpnTotalRecuperado.Name = "SpnTotalRecuperado"
         Me.SpnTotalRecuperado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -187,6 +188,7 @@ Partial Class frmSccComisionesEdit
         'SpnTotal
         '
         Me.SpnTotal.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.SpnTotal.Enabled = False
         Me.SpnTotal.Location = New System.Drawing.Point(141, 145)
         Me.SpnTotal.Name = "SpnTotal"
         Me.SpnTotal.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})

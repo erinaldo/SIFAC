@@ -82,6 +82,20 @@ Public Class frmSivProductosEditar
     End Sub
 
     ''Calcular el precio de contado tomando el cuenta el costo y margen
+    Public Sub CargarTotalComision()
+        Try
+            If spnCostoPromedio.Value <> 0 And spnPrecioContado.Value <> 0 Then
+                spnMargenContado.Value = ((spnPrecioContado.Value - spnCostoPromedio.Value) / spnCostoPromedio.Value) * 100
+
+            End If
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            DtMarca = Nothing
+        End Try
+    End Sub
+    ''Calcular el precio de contado tomando el cuenta el costo y margen
     Public Sub CargarMargenContado()
         Try
             If spnCostoPromedio.Value <> 0 And spnPrecioContado.Value <> 0 Then
@@ -95,8 +109,6 @@ Public Class frmSivProductosEditar
             DtMarca = Nothing
         End Try
     End Sub
-    ''Calcular el margen de contado tomando en cuenta el costo y el precio de contado
-
     '' Descripción:        Procedimiento encargado de cargar los valores de Marca
     Public Sub CargarMarca()
         Try

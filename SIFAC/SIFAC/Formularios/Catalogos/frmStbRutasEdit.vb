@@ -284,7 +284,7 @@ Public Class frmStbRutasEdit
             cmbCiudad.ValueMember = "StbCiudadID"
             cmbCiudad.DisplayMember = "Nombre"
             cmbCiudad.DataSource = DtCiudad
-            cmbCiudad.Text = ""
+            cmbCiudad.SelectedItem = -1
 
         Catch ex As Exception
             clsError.CaptarError(ex)

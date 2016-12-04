@@ -995,6 +995,32 @@ Public Class frmClientesEdit
         End Try
     End Sub
 
+    Private Sub spnOrdenCobro_ValueChanged(sender As Object, e As EventArgs) Handles spnOrdenCobro.ValueChanged
+
+        Me.ErrPrv.SetError(spnOrdenCobro, "")
+
+    End Sub
+
+    Private Sub txtPrimerNombre_TextChanged(sender As Object, e As EventArgs) Handles txtPrimerNombre.TextChanged
+        Me.ErrPrv.SetError(txtPrimerNombre, "")
+    End Sub
+
+    Private Sub txtPrimerApellido_TextChanged(sender As Object, e As EventArgs) Handles txtPrimerApellido.TextChanged
+        Me.ErrPrv.SetError(txtPrimerApellido, "")
+    End Sub
+
+    Private Sub cmbCiudad_TextChanged(sender As Object, e As EventArgs) Handles cmbCiudad.TextChanged
+        Me.ErrPrv.SetError(cmbCiudad, "")
+    End Sub
+
+    Private Sub cmbGenero_TextChanged(sender As Object, e As EventArgs) Handles cmbGenero.TextChanged
+        Me.ErrPrv.SetError(cmbGenero, "")
+    End Sub
+
+    Private Sub txtDireccion_TextChanged(sender As Object, e As EventArgs) Handles txtDireccion.TextChanged
+        Me.ErrPrv.SetError(txtDireccion, "")
+    End Sub
+
 #End Region
 
 #Region "Cargar el Formulario"
@@ -1072,4 +1098,6 @@ Public Class frmClientesEdit
     End Sub
 #End Region
 
+    
+  
 End Class

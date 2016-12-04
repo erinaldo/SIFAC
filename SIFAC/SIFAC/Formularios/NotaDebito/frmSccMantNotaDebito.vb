@@ -58,8 +58,6 @@ Public Class frmSccMantNotaDebito
 
 #Region "Seguridad"
     '-----------------------------------------------------------------------
-    ''-- Nombre del Autor        : Pedro Pablo Tinoco Salgado.
-    ''-- Fecha de Elaboración    : 20 de Febrero de 2009.
     ''----------------------------------------------------------------------
     '-- Descripcion         :   Aplica la Seguridad al Formulario
     '-----------------------------------------------------------------------------------
@@ -230,8 +228,7 @@ Public Class frmSccMantNotaDebito
 #Region "Eventos del Toolbar"
 
     '-----------------------------------------------------------------------
-    ''-- Nombre del Autor        : Pedro Pablo Tinoco Salgado.
-    ''-- Fecha de Elaboración    : 20 de Febrero de 2009.
+   
     ''----------------------------------------------------------------------
     '-- Descripcion         :   Agregar una Nota de Debito
     '-----------------------------------------------------------------------------------
@@ -494,8 +491,6 @@ Public Class frmSccMantNotaDebito
     End Sub
 
     '-----------------------------------------------------------------------
-    ''-- Nombre del Autor        : Pedro Pablo Tinoco Salgado.
-    ''-- Fecha de Elaboración    : 20 de Febrero de 2009.
     ''----------------------------------------------------------------------
     '-- Descripcion         :   Consultar una Nota de Debito. 
     '-----------------------------------------------------------------------------------
@@ -518,8 +513,6 @@ Public Class frmSccMantNotaDebito
     End Sub
 
     '-----------------------------------------------------------------------
-    ''-- Nombre del Autor        : Pedro Pablo Tinoco Salgado.
-    ''-- Fecha de Elaboración    : 20 de Febrero de 2009.
     ''----------------------------------------------------------------------
     '-- Descripcion         :   Imprimir una Nota de Debito. 
     '--                     :   Solo para ND con Estado AUTORIZADA

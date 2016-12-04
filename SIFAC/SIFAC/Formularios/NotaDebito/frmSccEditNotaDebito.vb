@@ -4,7 +4,6 @@
 ''--    Formulario de Edición y Modificación de Cátalogo Nota de Débito
 ''-------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports Proyecto.Catalogos.Datos
@@ -13,7 +12,7 @@ Imports System.Data.SqlClient
 Imports SIFAC.BO
 
 Public Class frmSccEditNotaDebito
-
+    Dim DtEmpleado, dtCajas As DataTable
     Dim m_IDCuenta As String
     Dim m_IDTienda As Integer
     Dim dtConcepto As DataTable
@@ -21,6 +20,17 @@ Public Class frmSccEditNotaDebito
     Dim m_TypeGui As Integer
     Dim m_IDNotaDebito As Integer
     Dim DtFacturas As New DataTable
+    Dim intComisionID As Integer
+    Dim StrTipo As String
+
+    Property IDComisionID() As Integer
+        Get
+            intComisionID = Me.m_IDNotaDebito
+        End Get
+        Set(ByVal value As Integer)
+            Me.intComisionID = value
+        End Set
+    End Property
 
     Property IDNotaDebito() As Integer
         Get
@@ -59,6 +69,50 @@ Public Class frmSccEditNotaDebito
         End Set
     End Property
 
+    Property Tipo() As String
+        Get
+            Tipo = Me.StrTipo
+        End Get
+        Set(ByVal value As String)
+            Me.StrTipo = value
+        End Set
+    End Property
+
+#Region "Cargar Empleados"
+
+    '' Descripción:        Procedimiento encargado de cargar el combo de jefe de tienda
+    Public Sub CargarEmpleado()
+        Try
+            DtEmpleado = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
+
+            cmbEmpleado.DataSource = DtEmpleado
+            cmbEmpleado.ValueMember = "SrhEmpleadoID"
+            cmbEmpleado.DisplayMember = "NombreCompleto"
+
+            cmbEmpleado.SelectedIndex = -1
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
+
+#Region "Cargar Cajas"
+
+    '' Descripción:        Procedimiento encargado de cargar el combo de jefe de tienda
+    Public Sub CargarCajas()
+        Try
+            dtCajas = SccCajas.RetrieveDT("SccCajaID,Codigo + '-' + Nombre as Caja, objCajeroID, Ubicacion, Activa,", , "Activa=1")
+
+            cmbCajas.DataSource = DtEmpleado
+            cmbCajas.ValueMember = "SccCajaID"
+            cmbCajas.DisplayMember = "Caja"
+
+            cmbCajas.SelectedIndex = -1
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
 
     ''' <summary>
     ''' Procedimiento encargado de seleccionar la cuenta. 
@@ -185,6 +239,10 @@ Public Class frmSccEditNotaDebito
                 objNC.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 DtDatos = Me.DtFacturas.Select("Seleccion = 1")
                 objNC.objFacturaID = DtDatos(0)("SfaFacturaID")
+                objNC.objCajaID = cmbCajas.SelectedValue
+                If IDComisionID <> 0 And IDComisionID.ToString.Trim.Length <> 0 Then
+                    objNC.objEmpleadoID = cmbEmpleado.SelectedValue
+                End If
                 objNC.Insert(T)
                 Me.IDNotaDebito = objNC.SccNotaDebitoID
                 T.CommitTran()
@@ -205,7 +263,7 @@ Public Class frmSccEditNotaDebito
 
     Private Sub frmSccEditNotaCredito_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Me.CargaDatos()
-        Me.Panel2.BackColor = Color.White
+
     End Sub
 
     ''' <summary>
@@ -216,6 +274,9 @@ Public Class frmSccEditNotaDebito
         Try
             Me.CargarConceptoNC()
             Me.CargarEstado()
+            CargarEmpleado()
+            CargarCajas()
+
             If Me.TypeGui > 0 Then
                 Me.CargarDatosEdicion()
                 If Me.TypeGui = 2 Then
@@ -225,7 +286,45 @@ Public Class frmSccEditNotaDebito
                     Me.numMonto.Enabled = False
                     Me.cmdGuardar.Enabled = False
                 End If
+            Else
+                Me.cmbCajas.SelectedValue = ClsCatalogos.GetStbCajaID(frmPrincipal.gblCaja)
+
             End If
+
+            If IDComisionID <> 0 And IDComisionID.ToString.Trim.Length > 0 Then
+                Dim objComision As New SccComisiones
+                objComision.Retrieve(IDComisionID)
+                Me.cmbEmpleado.Visible = True
+                Me.Text = "Pagos de comisiones"
+                Me.txtCliente.Enabled = False
+                Me.cmbEstado.Enabled = False
+                Me.cmbConcepto.Enabled = False
+                Me.txtNumCuenta.Enabled = False
+                Me.cmdExpediente.Enabled = False
+                Me.grdFacturas.Enabled = False
+                Me.txtDescripcion.Text = "Pago de comision a " & cmbEmpleado.Text
+                Me.cmbEstado.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOND", "PAGADA")
+                Me.cmbEstado.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("CONCEPTOND", "PAGOCOMISION")
+                Me.numMonto.Value = objComision.Monto
+                Me.dtpFecha.Value = objComision.Fecha
+                Me.cmbEmpleado.Visible = True
+            Else
+                Me.cmbEmpleado.Visible = False
+            End If
+
+            If Tipo = "Salida" Then
+                Me.Text = "Salida de Efectivo"
+                Me.cmbEstado.Enabled = False
+                Me.cmbCajas.Enabled = False
+                Me.txtCliente.Enabled = False
+                Me.cmbEstado.Enabled = False
+                Me.cmbConcepto.Enabled = False
+                Me.txtNumCuenta.Enabled = False
+                Me.cmdExpediente.Enabled = False
+                Me.grdFacturas.Enabled = False
+                Me.cmbEstado.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("SALIDAEFEC", "PAGOCOMISION")
+            End If
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -278,7 +377,6 @@ Public Class frmSccEditNotaDebito
                 Me.txtNumero.Text = dtDatos.DefaultView.Item(0)("NumeroND")
                 Me.txtDescripcion.Text = dtDatos.DefaultView.Item(0)("Descripcion")
                 Me.txtCliente.Text = dtDatos.DefaultView.Item(0)("Cliente")
-                Me.txtCodTienda.Text = dtDatos.DefaultView.Item(0)("CodigoTienda")
                 Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("SccCuentaID")
                 Me.numMonto.Value = dtDatos.DefaultView.Item(0)("Monto")
                 Me.dtpFecha.Value = dtDatos.DefaultView.Item(0)("Fecha")

@@ -16,6 +16,7 @@ Public Class frmPrincipal
     Public Shared glbVentanaSolicDescuentoAbierta As Boolean
     Public Shared glbVentanaSolicRepuestoAbierta As Boolean
     Public Shared glbObjTiendaCentralID As Integer
+    Public Shared gblCaja As String
 
 #Region "Declaracion de Variables Locales y Objetos"
     Dim BkColor As System.Drawing.Color
@@ -55,6 +56,7 @@ Public Class frmPrincipal
             
             clsProyecto.SiglasSistema = Me.clsAppConfig.Getkey("NombreSistema")
             clsProyecto.Sucursal = Me.clsAppConfig.Getkey("Bodega")
+            gblCaja = Me.clsAppConfig.Getkey("Caja")
 
             clsProyecto.RESOURCE_PATH = Application.StartupPath
             clsProyecto.Conexion.BaseDeDatos = info.DatabaseName

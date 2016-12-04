@@ -857,6 +857,7 @@ Public Class frmSrhEmpleadoEditar
         Me.boolEditado = True
         Me.ErrorProv.SetError(txtCedula, "")
     End Sub
+
 #End Region
    
    

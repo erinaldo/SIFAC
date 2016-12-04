@@ -381,7 +381,6 @@ Public Class frmSincronizarAbonos
         Dim intAplCobroID, intEstadoRegistrado As Integer
         Dim objAplCobros As New AplCobros
         Dim blnSeleccionado As Boolean = False
-
         Dim t As New TransactionManager
 
         Try
@@ -459,8 +458,6 @@ Public Class frmSincronizarAbonos
                 e.Appearance.BackColor2 = Color.White
 
         End Select
-
-
     End Sub
 
 
@@ -478,5 +475,19 @@ Public Class frmSincronizarAbonos
 
     Private Sub cmbEstado_TextChanged(sender As Object, e As EventArgs) Handles cmbEstado.TextChanged
         chkTodos.Checked = False
+    End Sub
+
+    Private Sub cmdComisiones_Click(sender As Object, e As EventArgs) Handles cmdComisiones.Click
+        Dim editComision As New frmSccComisionesEdit
+        Try
+            editComision = New frmSccComisionesEdit
+            editComision.TypeGui = 0
+            editComision.Tipo = "Sincronizacion"
+            editComision.ShowDialog(Me)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            editComision = Nothing
+        End Try
     End Sub
 End Class

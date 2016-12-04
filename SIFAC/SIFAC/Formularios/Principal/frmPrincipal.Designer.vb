@@ -57,6 +57,8 @@ Partial Class frmPrincipal
         Me.NavBarConfiguracionCaja = New DevExpress.XtraNavBar.NavBarItem()
         Me.grpCaja = New DevExpress.XtraNavBar.NavBarGroup()
         Me.NavBarArqueo = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarComisiones = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarSalidasEfectivo = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarNotaDebito = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarNotaCredito = New DevExpress.XtraNavBar.NavBarItem()
         Me.NVBarReportes = New DevExpress.XtraNavBar.NavBarGroup()
@@ -91,8 +93,6 @@ Partial Class frmPrincipal
         Me.RibbonSeparator1 = New C1.Win.C1Ribbon.RibbonSeparator()
         Me.lblServidor = New C1.Win.C1Ribbon.RibbonLabel()
         Me.stbPrincipal = New C1.Win.C1Ribbon.C1StatusBar()
-        Me.NavBarComisiones = New DevExpress.XtraNavBar.NavBarItem()
-        Me.NavBarSalidasEfectivo = New DevExpress.XtraNavBar.NavBarItem()
         CType(Me.NavBarPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
         CType(Me.stbPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -322,6 +322,18 @@ Partial Class frmPrincipal
         Me.NavBarArqueo.Name = "NavBarArqueo"
         Me.NavBarArqueo.SmallImage = CType(resources.GetObject("NavBarArqueo.SmallImage"), System.Drawing.Image)
         '
+        'NavBarComisiones
+        '
+        Me.NavBarComisiones.Caption = "Comisiones"
+        Me.NavBarComisiones.Name = "NavBarComisiones"
+        Me.NavBarComisiones.SmallImage = CType(resources.GetObject("NavBarComisiones.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarSalidasEfectivo
+        '
+        Me.NavBarSalidasEfectivo.Caption = "Salidas de Efectivo"
+        Me.NavBarSalidasEfectivo.Name = "NavBarSalidasEfectivo"
+        Me.NavBarSalidasEfectivo.SmallImage = CType(resources.GetObject("NavBarSalidasEfectivo.SmallImage"), System.Drawing.Image)
+        '
         'NavBarNotaDebito
         '
         Me.NavBarNotaDebito.Caption = "Notas de debito"
@@ -546,18 +558,6 @@ Partial Class frmPrincipal
         Me.stbPrincipal.Size = New System.Drawing.Size(795, 22)
         Me.stbPrincipal.TabIndex = 14
         Me.stbPrincipal.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Silver
-        '
-        'NavBarComisiones
-        '
-        Me.NavBarComisiones.Caption = "Comisiones"
-        Me.NavBarComisiones.Name = "NavBarComisiones"
-        Me.NavBarComisiones.SmallImage = CType(resources.GetObject("NavBarComisiones.SmallImage"), System.Drawing.Image)
-        '
-        'NavBarSalidasEfectivo
-        '
-        Me.NavBarSalidasEfectivo.Caption = "Salidas de Efectivo"
-        Me.NavBarSalidasEfectivo.Name = "NavBarSalidasEfectivo"
-        Me.NavBarSalidasEfectivo.SmallImage = CType(resources.GetObject("NavBarSalidasEfectivo.SmallImage"), System.Drawing.Image)
         '
         'frmPrincipal
         '
