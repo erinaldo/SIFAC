@@ -296,7 +296,11 @@ Public Class frmSincronizarVentas
                         .objVendedorID = CInt(drFilaVenta("objVendedorID"))
                         .objEstadoID = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOFACT", "PROCESADA"))
                         .objTerminoPagoID = CInt(ClsCatalogos.GetValorCatalogoID("TERMINOPAGO", "02"))
-                        .objDescuentoID = CInt(drFilaVenta("objDescuentoID"))
+                        If IsDBNull(drFilaVenta("objDescuentoID")) Then
+                            .objDescuentoID = Nothing
+                        Else
+                            .objDescuentoID = CInt(drFilaVenta("objDescuentoID"))
+                        End If
                         .Subtotal = CDec(drFilaVenta("Subtotal"))
                         .Descuento = CDec(drFilaVenta("Descuento"))
                         .Impuesto = 0
@@ -369,6 +373,7 @@ Public Class frmSincronizarVentas
                     Else
                         '3.2 GUARDAR CUENTA
                         With objSccCuenta
+                            objSccCuenta.Numero = GenerarCodigoCta()
                             .Saldo = objSfaFactura.Saldo
                             .UsuarioCreacion = clsProyecto.Conexion.Usuario
                             .SaldoInicial = 0.0
@@ -469,6 +474,22 @@ lblGuardarDetalleCuenta:
 
     End Function
 
+    Private Function GenerarCodigoCta() As String
+        Dim strNumero As String = ""
+        Dim dtMaximoNumero As New DataTable
+        Try
+            Try
+                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("COUNT(*)+ 1 as NumeroMaximo", "SccCuentaPorCobrar"))
+                strNumero = String.Format("C{0}-{1}", ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal), dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"))
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            dtMaximoNumero = Nothing
+        End Try
+        Return strNumero.Trim
+    End Function
+
     Private Sub cmdAprobar_Click(sender As Object, e As EventArgs) Handles cmdAprobar.Click
         SincronizarVentas()
         CargarGrid(chkTodos.Checked, cmbEstado.EditValue, cmbEmpleado.EditValue, cmbRuta.EditValue)
@@ -514,4 +535,6 @@ lblGuardarDetalleCuenta:
 
 
     End Sub
+
+
 End Class
