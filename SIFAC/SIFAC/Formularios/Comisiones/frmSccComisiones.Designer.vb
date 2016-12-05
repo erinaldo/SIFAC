@@ -38,6 +38,7 @@ Partial Class frmSccComisiones
         Me.grdComisionesTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.colMonto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colobjConceptoID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEmpleado = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -47,6 +48,8 @@ Partial Class frmSccComisiones
         Me.tstND.SuspendLayout()
         CType(Me.grdComisiones, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdComisionesTabla, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -151,7 +154,7 @@ Partial Class frmSccComisiones
         Me.grdComisiones.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdComisiones.MainView = Me.grdComisionesTabla
         Me.grdComisiones.Name = "grdComisiones"
-        Me.grdComisiones.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
+        Me.grdComisiones.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemDateEdit1})
         Me.grdComisiones.Size = New System.Drawing.Size(829, 472)
         Me.grdComisiones.TabIndex = 10
         Me.grdComisiones.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdComisionesTabla})
@@ -168,7 +171,7 @@ Partial Class frmSccComisiones
         'colNumero
         '
         Me.colNumero.Caption = "Numero"
-        Me.colNumero.FieldName = "SccNotaDebitoID"
+        Me.colNumero.FieldName = "Numero"
         Me.colNumero.Name = "colNumero"
         Me.colNumero.OptionsColumn.AllowEdit = False
         Me.colNumero.OptionsColumn.ReadOnly = True
@@ -176,12 +179,20 @@ Partial Class frmSccComisiones
         'colFecha
         '
         Me.colFecha.Caption = "Fecha"
+        Me.colFecha.ColumnEdit = Me.RepositoryItemDateEdit1
         Me.colFecha.FieldName = "Fecha"
         Me.colFecha.Name = "colFecha"
         Me.colFecha.OptionsColumn.AllowEdit = False
         Me.colFecha.Visible = True
         Me.colFecha.VisibleIndex = 0
         Me.colFecha.Width = 111
+        '
+        'RepositoryItemDateEdit1
+        '
+        Me.RepositoryItemDateEdit1.AutoHeight = False
+        Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
         '
         'colMonto
         '
@@ -255,6 +266,8 @@ Partial Class frmSccComisiones
         Me.tstND.PerformLayout()
         CType(Me.grdComisiones, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdComisionesTabla, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -281,4 +294,5 @@ Partial Class frmSccComisiones
     Friend WithEvents colConcepto As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents RepositoryItemDateEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
 End Class

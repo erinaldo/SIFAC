@@ -38,12 +38,10 @@ Partial Class frmSccEditNotaCredito
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.GrpExpediente = New System.Windows.Forms.GroupBox()
         Me.cmdConsultar = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
         Me.cmdExpediente = New System.Windows.Forms.Button()
         Me.txtCliente = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtNumCuenta = New System.Windows.Forms.TextBox()
-        Me.txtCodTienda = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
@@ -293,12 +291,10 @@ Partial Class frmSccEditNotaCredito
         'GrpExpediente
         '
         Me.GrpExpediente.Controls.Add(Me.cmdConsultar)
-        Me.GrpExpediente.Controls.Add(Me.Label10)
         Me.GrpExpediente.Controls.Add(Me.cmdExpediente)
         Me.GrpExpediente.Controls.Add(Me.txtCliente)
         Me.GrpExpediente.Controls.Add(Me.Label11)
         Me.GrpExpediente.Controls.Add(Me.txtNumCuenta)
-        Me.GrpExpediente.Controls.Add(Me.txtCodTienda)
         Me.GrpExpediente.Controls.Add(Me.Label12)
         Me.GrpExpediente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GrpExpediente.Location = New System.Drawing.Point(20, 12)
@@ -316,16 +312,6 @@ Partial Class frmSccEditNotaCredito
         Me.cmdConsultar.Size = New System.Drawing.Size(24, 23)
         Me.cmdConsultar.TabIndex = 19
         Me.cmdConsultar.UseVisualStyleBackColor = True
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Location = New System.Drawing.Point(153, 20)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(15, 13)
-        Me.Label10.TabIndex = 17
-        Me.Label10.Text = "--"
         '
         'cmdExpediente
         '
@@ -358,20 +344,11 @@ Partial Class frmSccEditNotaCredito
         'txtNumCuenta
         '
         Me.txtNumCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNumCuenta.Location = New System.Drawing.Point(168, 17)
+        Me.txtNumCuenta.Location = New System.Drawing.Point(86, 17)
         Me.txtNumCuenta.Name = "txtNumCuenta"
-        Me.txtNumCuenta.Size = New System.Drawing.Size(158, 20)
+        Me.txtNumCuenta.Size = New System.Drawing.Size(240, 20)
         Me.txtNumCuenta.TabIndex = 3
         Me.txtNumCuenta.Tag = "BLOQUEADO"
-        '
-        'txtCodTienda
-        '
-        Me.txtCodTienda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCodTienda.Location = New System.Drawing.Point(86, 17)
-        Me.txtCodTienda.Name = "txtCodTienda"
-        Me.txtCodTienda.Size = New System.Drawing.Size(63, 20)
-        Me.txtCodTienda.TabIndex = 2
-        Me.txtCodTienda.Tag = "BLOQUEADO"
         '
         'Label12
         '
@@ -666,12 +643,10 @@ Partial Class frmSccEditNotaCredito
     Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents GrpExpediente As System.Windows.Forms.GroupBox
-    Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents cmdExpediente As System.Windows.Forms.Button
     Friend WithEvents txtCliente As System.Windows.Forms.TextBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents txtNumCuenta As System.Windows.Forms.TextBox
-    Friend WithEvents txtCodTienda As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cmdConsultar As System.Windows.Forms.Button
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl

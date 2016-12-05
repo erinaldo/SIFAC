@@ -89,7 +89,7 @@ Public Class frmSccEditNotaCredito
         Try
             Dim objCuentasSeleccion As New frmSccSeleccionCuentas
             If objCuentasSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                Me.txtNumCuenta.Text = objCuentasSeleccion.SccCuentaID
+                Me.txtNumCuenta.Text = objCuentasSeleccion.NumeroCuenta
                 Me.IdCuenta = objCuentasSeleccion.SccCuentaID
                 Me.txtCliente.Text = objCuentasSeleccion.Cliente
                 Me.cmdGuardar.Enabled = True
@@ -231,11 +231,8 @@ Public Class frmSccEditNotaCredito
         'En caso de Reestructuración de Cuenta, cargar datos recibidos y bloquear controles
         If Me.blnReestructurarCuenta Then
             Me.Text = Me.Text + " - [REESTRUCTURACION CUENTA]"
-            Me.txtCodTienda.Text = Me.IDTienda
             Me.txtNumCuenta.Text = Me.IdCuenta
             Me.txtCliente.Text = Me.Cliente
-
-            Me.txtCodTienda.Enabled = False
             Me.txtNumCuenta.Enabled = False
             Me.txtCliente.Enabled = False
             'Colocar combo de Concepto de NC en "Reestructuración de cuenta" codigo=10
@@ -324,13 +321,12 @@ Public Class frmSccEditNotaCredito
             Me.txtNumero.Text = dtDatos.DefaultView.Item(0)("NumeroNC")
             Me.txtDescripcion.Text = dtDatos.DefaultView.Item(0)("Descripcion")
             Me.txtCliente.Text = dtDatos.DefaultView.Item(0)("Cliente")
-            Me.txtCodTienda.Text = dtDatos.DefaultView.Item(0)("CodigoTienda")
-            Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("SccCuentaID")
+            Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("NumeroCuenta")
             Me.numMonto.Value = dtDatos.DefaultView.Item(0)("Monto")
             Me.dtpFecha.Value = dtDatos.DefaultView.Item(0)("Fecha")
             Me.cmdExpediente.Enabled = False
             Me.IdCuenta = dtDatos.DefaultView.Item(0)("SccCuentaID")
-            Me.IDTienda = dtDatos.DefaultView.Item(0)("StbTiendaID")
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

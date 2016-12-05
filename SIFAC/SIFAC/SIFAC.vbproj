@@ -20,7 +20,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\Users\Milagros Ruiz\Documents\InstaladorSIFAC\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -30,9 +30,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -55,6 +56,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5D452C5F637D76DB095C3D6BA40AB9D067C5981E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SIFAC_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ActiveReports.Chart">
@@ -129,6 +142,7 @@
     <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\..\..\..\..\..\comercializadora\SCCUM\SCCUM\Fuente\DLLS\Microsoft.ReportViewer.WinForms.dll</HintPath>
@@ -338,6 +352,12 @@
       <DependentUpon>frmSccConfiguracionCajasEdit.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Caja\frmSccConfiguracionCajasEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Caja\frmSccConsultarArqueo.Designer.vb">
+      <DependentUpon>frmSccConsultarArqueo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Caja\frmSccConsultarArqueo.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Caja\frmSccSalidasEfectivo.Designer.vb">
@@ -1311,6 +1331,9 @@
     <EmbeddedResource Include="Formularios\Caja\frmSccConfiguracionCajasEdit.resx">
       <DependentUpon>frmSccConfiguracionCajasEdit.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Caja\frmSccConsultarArqueo.resx">
+      <DependentUpon>frmSccConsultarArqueo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Caja\frmSccSalidasEfectivo.resx">
       <DependentUpon>frmSccSalidasEfectivo.vb</DependentUpon>
     </EmbeddedResource>
@@ -1955,6 +1978,7 @@
     <None Include="SIFACPIVOT.xss">
       <DependentUpon>SIFACPIVOT.xsd</DependentUpon>
     </None>
+    <None Include="SIFAC_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Anular.png" />

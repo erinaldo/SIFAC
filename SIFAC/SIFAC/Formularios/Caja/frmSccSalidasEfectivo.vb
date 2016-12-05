@@ -15,6 +15,7 @@ Public Class frmSccSalidasEfectivo
     Dim CerosRellenoND As Integer
     Dim EstadoRegistrada As Integer
     Dim EstadoAutorizada As Integer
+    Dim EstadoPagada As Integer
     Dim EstadoAnulada As Integer
     Dim strCampos As String
     Dim strFiltro As String
@@ -26,6 +27,67 @@ Public Class frmSccSalidasEfectivo
     Dim blnConsultarND As Boolean = False
 
 #End Region
+
+#Region "Procedimientos"
+
+    Private Sub ModificarND()
+        Dim objfrm As frmSccEditNotaDebito
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            objfrm = New frmSccEditNotaDebito
+            objfrm.IDNotaDebito = IDND
+            objfrm.TypeGui = 1
+            objfrm.Tipo = "Salida"
+            If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                CargarGridNotaDebito()
+                Me.dtND.DefaultView.Find(objfrm.IDNotaDebito)
+
+
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub AutorizarND()
+        Dim T As New TransactionManager
+        Dim objND As New SccNotaDebito
+        Try
+            Select Case MsgBox("¿Seguro que desea autorizar la salida de efectivo?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
+                Case MsgBoxResult.Yes
+                    Me.Cursor = Cursors.WaitCursor
+
+                    '-- Reservar Registro
+                    '   ReservarRegistro("SccNotaDebito", Me.IDND)
+
+                    T.BeginTran()
+
+                    '-- Actualizar el Estado de la Nota de Credito
+                    objND.Retrieve(Me.IDND)
+                    objND.objEstadoID = Me.EstadoPagada
+                    objND.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    objND.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    objND.Update(T)
+
+                    T.CommitTran()
+
+                    '-- Seleccionar el Registro que se ha modificado
+                    CargarGridNotaDebito()
+                    Me.dtND.DefaultView.Find(objND.SccNotaDebitoID)
+
+                    MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+            End Select
+        Catch ex As Exception
+            T.RollbackTran()
+            clsError.CaptarError(ex)
+        Finally
+            
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
 
 
     Private Sub frmSccSalidasEfectivo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -42,6 +104,8 @@ Public Class frmSccSalidasEfectivo
             Me.Cursor = Cursors.Default
         End Try
     End Sub
+
+#End Region
 
 #Region "Seguridad"
     '-----------------------------------------------------------------------
@@ -73,6 +137,7 @@ Public Class frmSccSalidasEfectivo
             Else
                 blnAnularND = False
             End If
+
             If objSeg.TienePermiso("ConsultarSalidaEfectivo") Then
                 Me.cmdConsultar.Enabled = True
                 blnConsultarND = True
@@ -115,6 +180,15 @@ Public Class frmSccSalidasEfectivo
                 EstadoAutorizada = dtTemp.Rows(0).Item("StbValorCatalogoID")
             End If
 
+            '-- Obtener ID del Estado de Nota de Debito PAGADA
+            strCampos = " StbValorCatalogoID "
+            strFiltro = " Nombre= 'EstadoND' AND Codigo='PAGADA' "
+            strSQL = clsConsultas.ObtenerCatalogoValor(strCampos, strFiltro)
+            dtTemp = SqlHelper.ExecuteQueryDT(strSQL)
+            If dtTemp.Rows.Count > 0 Then
+                EstadoPagada = dtTemp.Rows(0).Item("StbValorCatalogoID")
+            End If
+
             '-- Obtener ID del Estado de Nota de Debito ANULADA
             strCampos = " StbValorCatalogoID "
             strFiltro = " Nombre= 'EstadoND' AND Codigo='ANULADA' "
@@ -140,6 +214,11 @@ Public Class frmSccSalidasEfectivo
     Private Sub CargarGridNotaDebito()
         Dim FilaActual As Integer
         Try
+
+            strCampos = " * "
+            strOrden = " Fecha DESC "
+            dtND = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccSaldiasEfectivo", "1=1"))
+
             If dtND.Rows.Count > 0 Then
 
                 '-- Mostrar los datos en el Grid
@@ -174,6 +253,7 @@ Public Class frmSccSalidasEfectivo
                     Else
                         Me.cmdAnular.Enabled = False
                     End If
+
                     Me.cmdConsultar.Enabled = blnConsultarND
                 End If
             End If
@@ -183,6 +263,8 @@ Public Class frmSccSalidasEfectivo
     End Sub
 
 #End Region
+
+#Region "Eventos del Formulario"
 
     Private Sub cmdAgregar_Click(sender As Object, e As EventArgs) Handles cmdAgregar.Click
         Dim objfrm As frmSccEditNotaDebito
@@ -194,29 +276,111 @@ Public Class frmSccSalidasEfectivo
             objfrm.Tipo = "Salida"
             If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGridNotaDebito()
+                AplicarSeguridad()
                 Me.dtND.DefaultView.Find(objfrm.IDNotaDebito)
-                MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                'Me.IDND = objfrm.TipoNDID
-                'strRecibo = objfrm.strRecibo
-                'ReciboID = objfrm.ReciboID
-            Else
-                'strRecibo = objfrm.strRecibo
-                'ReciboID = objfrm.ReciboID
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
-            '-- Liberar Registro
-            ''  LiberarRegistro("SccNotaDebito", Me.IDND)
+           
             Me.Cursor = Cursors.Default
-            ''-- Liberar Recibo
-            'If Not strRecibo = "" And Not ReciboID = 0 Then
-            '    If strRecibo = "Colector" Then
-            '        LiberarRegistro("SccReciboColector", ReciboID)
-            '    ElseIf strRecibo = "Caja" Then
-            '        LiberarRegistro("SccReciboCaja", ReciboID)
-            '    End If
-            'End If
+           
         End Try
     End Sub
+
+    Private Sub cmdSalir_Click(sender As Object, e As EventArgs) Handles cmdSalir.Click
+        Close()
+    End Sub
+
+
+
+    Private Sub cmdEditar_Click(sender As Object, e As EventArgs) Handles cmdEditar.Click
+        Try
+            If dtND.DefaultView.Count > 0 And blnModificarND And EstadoND = EstadoRegistrada Then
+                ModificarND()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub cmdAutotizar_Click(sender As Object, e As EventArgs) Handles cmdAutotizar.Click
+        Try
+            If dtND.DefaultView.Count > 0 And blnAutorizarND And EstadoND = EstadoRegistrada Then
+                AutorizarND()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+
+    Private Sub cmdRefrescar_Click(sender As Object, e As EventArgs) Handles cmdRefrescar.Click
+        Try
+            CargarGridNotaDebito()
+            AplicarSeguridad()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+
+
+    Private Sub cmdConsultar_Click(sender As Object, e As EventArgs) Handles cmdConsultar.Click
+        Dim objfrm As New frmSccEditNotaDebito
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            If dtND.DefaultView.Count > 0 And blnConsultarND And dtND.Rows.Count > 0 Then
+                objfrm.TypeGui = 2
+                objfrm.Tipo = "Salida"
+                objfrm.IDNotaDebito = Me.IDND
+                If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    '*******************
+                End If
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+
+    Private Sub grdSalidaTabla_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles grdSalidaTabla.FocusedRowChanged
+        Dim FilaActual As Integer
+        Try
+            If Me.grdSalidaTabla.RowCount > 0 Then
+
+                Dim selectedRow As Integer() = grdSalidaTabla.GetSelectedRows()
+                FilaActual = Me.grdSalidaTabla.GetDataSourceRowIndex(selectedRow(0))
+
+                IDND = Me.dtND.DefaultView.Item(FilaActual)("SccNotaDebitoID")
+                EstadoND = Me.dtND.DefaultView.Item(FilaActual)("objEstadoID")
+
+                '-- Habilitar - Deshabilitar Opciones
+                If blnModificarND And EstadoND = EstadoRegistrada Then
+                    Me.cmdEditar.Enabled = True
+                Else
+                    Me.cmdEditar.Enabled = False
+                End If
+                If blnAutorizarND And EstadoND = EstadoRegistrada Then
+                    Me.cmdAutotizar.Enabled = True
+                Else
+                    Me.cmdAutotizar.Enabled = False
+                End If
+                If blnAnularND And EstadoND = EstadoRegistrada Then
+                    Me.cmdAnular.Enabled = True
+                Else
+                    Me.cmdAnular.Enabled = False
+                End If
+                
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+
+
+#End Region
 End Class

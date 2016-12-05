@@ -23,10 +23,11 @@ Partial Class frmReportePivot
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim XyDiagram3 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
+        Dim XyDiagram1 As DevExpress.XtraCharts.XYDiagram = New DevExpress.XtraCharts.XYDiagram()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReportePivot))
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.Contenedor = New C1.Win.C1Sizer.C1Sizer()
+        Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.PivotConsolidado = New DevExpress.XtraPivotGrid.PivotGridControl()
         Me.SIFACPIVOTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SIFACPIVOT = New SIFAC.SIFACPIVOT()
@@ -40,34 +41,33 @@ Partial Class frmReportePivot
         Me.colNombreCliente = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.colCiudad = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.colSupervisor = New DevExpress.XtraPivotGrid.PivotGridField()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.colAnio = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.ColMes = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.ColDia = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.gbxPeriodo = New System.Windows.Forms.GroupBox()
         Me.dtpFechaHasta = New C1.Win.C1Input.C1DateEdit()
         Me.lblHasta = New System.Windows.Forms.Label()
         Me.dtpFechaDesde = New C1.Win.C1Input.C1DateEdit()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.colAnio = New DevExpress.XtraPivotGrid.PivotGridField()
-        Me.ColMes = New DevExpress.XtraPivotGrid.PivotGridField()
-        Me.ColDia = New DevExpress.XtraPivotGrid.PivotGridField()
-        Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.tbProductos = New System.Windows.Forms.ToolStrip()
+        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.cmbExportar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdCerrar = New System.Windows.Forms.ToolStripButton()
-        Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.sfdRuta = New System.Windows.Forms.SaveFileDialog()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Contenedor.SuspendLayout()
+        CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PivotConsolidado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SIFACPIVOTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SIFACPIVOT, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxPeriodo.SuspendLayout()
         CType(Me.dtpFechaHasta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaDesde, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(XyDiagram3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbProductos.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -98,6 +98,26 @@ Partial Class frmReportePivot
         Me.Contenedor.TabIndex = 132
         Me.Contenedor.TabStop = False
         '
+        'ChartControl1
+        '
+        Me.ChartControl1.DataSource = Me.PivotConsolidado
+        XyDiagram1.AxisX.Title.Text = "Supervisor Ruta Cobrador"
+        XyDiagram1.AxisX.VisibleInPanesSerializable = "-1"
+        XyDiagram1.AxisY.Title.Text = "Monto Pagado"
+        XyDiagram1.AxisY.VisibleInPanesSerializable = "-1"
+        Me.ChartControl1.Diagram = XyDiagram1
+        Me.ChartControl1.Legend.MaxHorizontalPercentage = 30.0R
+        Me.ChartControl1.Location = New System.Drawing.Point(4, 361)
+        Me.ChartControl1.Name = "ChartControl1"
+        Me.ChartControl1.SeriesDataMember = "Series"
+        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
+        Me.ChartControl1.SeriesTemplate.ArgumentDataMember = "Arguments"
+        Me.ChartControl1.SeriesTemplate.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Qualitative
+        Me.ChartControl1.SeriesTemplate.SynchronizePointOptions = False
+        Me.ChartControl1.SeriesTemplate.ValueDataMembersSerializable = "Values"
+        Me.ChartControl1.Size = New System.Drawing.Size(998, 250)
+        Me.ChartControl1.TabIndex = 105
+        '
         'PivotConsolidado
         '
         Me.PivotConsolidado.DataSource = Me.SIFACPIVOTBindingSource
@@ -121,8 +141,7 @@ Partial Class frmReportePivot
         '
         'colSaldoInicial
         '
-        Me.colSaldoInicial.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
-        Me.colSaldoInicial.AreaIndex = 0
+        Me.colSaldoInicial.AreaIndex = 7
         Me.colSaldoInicial.Caption = "Saldo Inicial"
         Me.colSaldoInicial.FieldName = "SaldoInicial"
         Me.colSaldoInicial.Name = "colSaldoInicial"
@@ -130,15 +149,14 @@ Partial Class frmReportePivot
         'colMontoPagado
         '
         Me.colMontoPagado.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
-        Me.colMontoPagado.AreaIndex = 1
+        Me.colMontoPagado.AreaIndex = 0
         Me.colMontoPagado.Caption = "Monto Pagado"
         Me.colMontoPagado.FieldName = "MontoPagado"
         Me.colMontoPagado.Name = "colMontoPagado"
         '
         'colSaldo
         '
-        Me.colSaldo.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
-        Me.colSaldo.AreaIndex = 2
+        Me.colSaldo.AreaIndex = 6
         Me.colSaldo.Caption = "Saldo"
         Me.colSaldo.FieldName = "Saldo"
         Me.colSaldo.Name = "colSaldo"
@@ -168,7 +186,7 @@ Partial Class frmReportePivot
         'colCobrador
         '
         Me.colCobrador.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea
-        Me.colCobrador.AreaIndex = 3
+        Me.colCobrador.AreaIndex = 2
         Me.colCobrador.Caption = "Cobrador"
         Me.colCobrador.FieldName = "Cobrador"
         Me.colCobrador.Name = "colCobrador"
@@ -182,8 +200,7 @@ Partial Class frmReportePivot
         '
         'colCiudad
         '
-        Me.colCiudad.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea
-        Me.colCiudad.AreaIndex = 0
+        Me.colCiudad.AreaIndex = 5
         Me.colCiudad.Caption = "Ciudad"
         Me.colCiudad.FieldName = "Ciudad"
         Me.colCiudad.Name = "colCiudad"
@@ -191,19 +208,32 @@ Partial Class frmReportePivot
         'colSupervisor
         '
         Me.colSupervisor.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea
-        Me.colSupervisor.AreaIndex = 2
+        Me.colSupervisor.AreaIndex = 0
         Me.colSupervisor.Caption = "Supervisor"
         Me.colSupervisor.FieldName = "Supervisor"
         Me.colSupervisor.Name = "colSupervisor"
         '
-        'Panel1
+        'colAnio
         '
-        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(2, 617)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1006, 22)
-        Me.Panel1.TabIndex = 131
+        Me.colAnio.AreaIndex = 3
+        Me.colAnio.Caption = "Año"
+        Me.colAnio.FieldName = "Anio"
+        Me.colAnio.Name = "colAnio"
+        '
+        'ColMes
+        '
+        Me.ColMes.AreaIndex = 4
+        Me.ColMes.Caption = "Mes"
+        Me.ColMes.FieldName = "Mes"
+        Me.ColMes.Name = "ColMes"
+        '
+        'ColDia
+        '
+        Me.ColDia.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea
+        Me.ColDia.AreaIndex = 0
+        Me.ColDia.Caption = "Dia"
+        Me.ColDia.FieldName = "Dia"
+        Me.ColDia.Name = "ColDia"
         '
         'gbxPeriodo
         '
@@ -287,48 +317,14 @@ Partial Class frmReportePivot
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Desde:"
         '
-        'colAnio
+        'Panel1
         '
-        Me.colAnio.AreaIndex = 3
-        Me.colAnio.Caption = "Año"
-        Me.colAnio.FieldName = "Anio"
-        Me.colAnio.Name = "colAnio"
-        '
-        'ColMes
-        '
-        Me.ColMes.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea
-        Me.ColMes.AreaIndex = 0
-        Me.ColMes.Caption = "Mes"
-        Me.ColMes.FieldName = "Mes"
-        Me.ColMes.Name = "ColMes"
-        '
-        'ColDia
-        '
-        Me.ColDia.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea
-        Me.ColDia.AreaIndex = 1
-        Me.ColDia.Caption = "Dia"
-        Me.ColDia.FieldName = "Dia"
-        Me.ColDia.Name = "ColDia"
-        '
-        'ChartControl1
-        '
-        Me.ChartControl1.DataSource = Me.PivotConsolidado
-        XyDiagram3.AxisX.Title.Text = "Ciudad Ruta Supervisor Cobrador"
-        XyDiagram3.AxisX.VisibleInPanesSerializable = "-1"
-        XyDiagram3.AxisY.Title.Text = "Saldo Inicial Monto Pagado Saldo"
-        XyDiagram3.AxisY.VisibleInPanesSerializable = "-1"
-        Me.ChartControl1.Diagram = XyDiagram3
-        Me.ChartControl1.Legend.MaxHorizontalPercentage = 30.0R
-        Me.ChartControl1.Location = New System.Drawing.Point(4, 361)
-        Me.ChartControl1.Name = "ChartControl1"
-        Me.ChartControl1.SeriesDataMember = "Series"
-        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series(-1) {}
-        Me.ChartControl1.SeriesTemplate.ArgumentDataMember = "Arguments"
-        Me.ChartControl1.SeriesTemplate.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Qualitative
-        Me.ChartControl1.SeriesTemplate.SynchronizePointOptions = False
-        Me.ChartControl1.SeriesTemplate.ValueDataMembersSerializable = "Values"
-        Me.ChartControl1.Size = New System.Drawing.Size(998, 250)
-        Me.ChartControl1.TabIndex = 105
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(2, 617)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1006, 22)
+        Me.Panel1.TabIndex = 131
         '
         'tbProductos
         '
@@ -338,6 +334,15 @@ Partial Class frmReportePivot
         Me.tbProductos.Name = "tbProductos"
         Me.tbProductos.Size = New System.Drawing.Size(1010, 39)
         Me.tbProductos.TabIndex = 10
+        '
+        'cmdRefrescar
+        '
+        Me.cmdRefrescar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdRefrescar.Image = CType(resources.GetObject("cmdRefrescar.Image"), System.Drawing.Image)
+        Me.cmdRefrescar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdRefrescar.Name = "cmdRefrescar"
+        Me.cmdRefrescar.Size = New System.Drawing.Size(36, 36)
+        Me.cmdRefrescar.ToolTipText = "Refrescar Datos"
         '
         'cmbExportar
         '
@@ -363,15 +368,6 @@ Partial Class frmReportePivot
         Me.cmdCerrar.Size = New System.Drawing.Size(36, 36)
         Me.cmdCerrar.ToolTipText = "Salir de Catálogo de Productos"
         '
-        'cmdRefrescar
-        '
-        Me.cmdRefrescar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdRefrescar.Image = CType(resources.GetObject("cmdRefrescar.Image"), System.Drawing.Image)
-        Me.cmdRefrescar.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdRefrescar.Name = "cmdRefrescar"
-        Me.cmdRefrescar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdRefrescar.ToolTipText = "Refrescar Datos"
-        '
         'sfdRuta
         '
         Me.sfdRuta.Filter = "Archivos Excel | *.xls"
@@ -391,6 +387,8 @@ Partial Class frmReportePivot
         Me.PanelControl1.ResumeLayout(False)
         CType(Me.Contenedor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Contenedor.ResumeLayout(False)
+        CType(XyDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PivotConsolidado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SIFACPIVOTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SIFACPIVOT, System.ComponentModel.ISupportInitialize).EndInit()
@@ -398,8 +396,6 @@ Partial Class frmReportePivot
         Me.gbxPeriodo.PerformLayout()
         CType(Me.dtpFechaHasta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaDesde, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(XyDiagram3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbProductos.ResumeLayout(False)
         Me.tbProductos.PerformLayout()
         Me.ResumeLayout(False)

@@ -64,7 +64,7 @@ Public Class frmSccMantNotaDebito
     Private Sub AplicarSeguridad()
         Try
             objSeg = New SsgSeguridad
-            objSeg.ServicioUsuario = "FRMSCCNOTADEBITO"
+            objSeg.ServicioUsuario = "frmSccMantNotaDebito"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
             If objSeg.TienePermiso("AgregarND") Then
                 Me.tsbAgregarND.Enabled = True
@@ -367,7 +367,7 @@ Public Class frmSccMantNotaDebito
                     objND.FechaModificacion = clsProyecto.Conexion.FechaServidor
                     objND.Update(T)
 
-                    objSccCuentaDetalle.RetrieveByFilter("objSccCuentaID ='" & objND.objSccCuentaID & "'" & "  AND objFacturaID = " & objND.objFacturaID.Value.ToString, T)
+                    objSccCuentaDetalle.RetrieveByFilter("objSccCuentaID ='" & objND.objSccCuentaID & "'" & "  AND objSfaFacturaID = " & objND.objFacturaID.Value.ToString, T)
                     objSccCuentaDetalle.Saldo = objSccCuentaDetalle.Saldo + objND.Monto
 
                     If (objSccCuentaDetalle.SaldoND.HasValue) Then

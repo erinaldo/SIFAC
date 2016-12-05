@@ -345,9 +345,9 @@ Partial Class frmSccEditNotaDebito
         '
         Me.GroupBox1.Controls.Add(Me.grdFacturas)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 151)
+        Me.GroupBox1.Location = New System.Drawing.Point(34, 152)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(379, 150)
+        Me.GroupBox1.Size = New System.Drawing.Size(334, 150)
         Me.GroupBox1.TabIndex = 28
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Facturas"
@@ -365,7 +365,7 @@ Partial Class frmSccEditNotaDebito
         Me.grdFacturas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdFacturas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdFacturas.PrintInfo.PageSettings = CType(resources.GetObject("grdFacturas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdFacturas.Size = New System.Drawing.Size(373, 131)
+        Me.grdFacturas.Size = New System.Drawing.Size(328, 131)
         Me.grdFacturas.TabIndex = 0
         Me.grdFacturas.PropBag = resources.GetString("grdFacturas.PropBag")
         '

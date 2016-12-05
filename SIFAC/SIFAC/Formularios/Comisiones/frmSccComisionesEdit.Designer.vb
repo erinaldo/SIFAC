@@ -125,6 +125,7 @@ Partial Class frmSccComisionesEdit
         Me.txtEstado.TabIndex = 137
         Me.txtEstado.TabStop = False
         Me.txtEstado.Tag = "BLOQUEADO"
+        Me.txtEstado.Text = "REGISTRADA"
         '
         'Label4
         '

@@ -60,7 +60,7 @@ Public Class frmSccComisionesEdit
             SpnPorcentaje.Value = objComision.Porcentaje
             SpnTotal.Value = objComision.Monto
             dtFecha.EditValue = objComision.Fecha
-
+            SpnTotalRecuperado.Value = objComision.TotalRecuperado
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -321,14 +321,14 @@ Public Class frmSccComisionesEdit
 
             Select Case TypeGui
                 Case 0
-                    dtVerificarFechaEmpleado = SccComisiones.RetrieveDT("*", , " Activa =1 and convert(varchar(10),Fecha,112)='" & dtFecha.EditValue.ToString("yyyyMMdd") & "'")
+                    dtVerificarFechaEmpleado = SccComisiones.RetrieveDT(" Activa =1 and convert(varchar(10),Fecha,112)='" & dtFecha.DateTime.ToString("yyyyMMdd") & "'", , "*")
 
                     If dtVerificarFechaEmpleado.Rows.Count > 0 Then
                         ErrorProv.SetError(dtFecha, "Existe una comision registrada para este dia.")
                         Return False
                     End If
                 Case 1
-                    dtVerificarFechaEmpleado = SccComisiones.RetrieveDT("*", , " Activa =1 and convert(varchar(10),Fecha,112)='" & dtFecha.EditValue.ToString("yyyyMMdd") & "' and SccComisionID<>" & ComisionID)
+                    dtVerificarFechaEmpleado = SccComisiones.RetrieveDT(" Activa =1 and convert(varchar(10),Fecha,112)='" & dtFecha.DateTime.ToString("yyyyMMdd") & "' and SccComisionID<>" & ComisionID, , "*")
 
                     If dtVerificarFechaEmpleado.Rows.Count > 0 Then
                         ErrorProv.SetError(dtFecha, "Existe una comision registrada para este dia.")
@@ -368,9 +368,9 @@ Public Class frmSccComisionesEdit
     Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
         If ValidarEntrada() Then
             Select Case TypeGui
-                Case 1
+                Case 0
                     GuardarComisiones()
-                Case 2
+                Case 1
                     ActualizarComision()
             End Select
         End If

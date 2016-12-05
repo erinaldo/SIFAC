@@ -31,6 +31,7 @@ Partial Class frmSccSalidasEfectivo
         Me.colobjConceptoID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNumeroDebito = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.tstND = New System.Windows.Forms.ToolStrip()
         Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
@@ -43,7 +44,6 @@ Partial Class frmSccSalidasEfectivo
         Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdSalir = New System.Windows.Forms.ToolStripButton()
-        Me.colNumeroDebito = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.grdSalidas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdSalidaTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,6 +130,15 @@ Partial Class frmSccSalidasEfectivo
         Me.colEstado.VisibleIndex = 4
         Me.colEstado.Width = 134
         '
+        'colNumeroDebito
+        '
+        Me.colNumeroDebito.Caption = "Numero"
+        Me.colNumeroDebito.FieldName = "NumeroND"
+        Me.colNumeroDebito.Name = "colNumeroDebito"
+        Me.colNumeroDebito.OptionsColumn.AllowEdit = False
+        Me.colNumeroDebito.Visible = True
+        Me.colNumeroDebito.VisibleIndex = 0
+        '
         'RepositoryItemCheckEdit1
         '
         Me.RepositoryItemCheckEdit1.AutoHeight = False
@@ -200,6 +209,7 @@ Partial Class frmSccSalidasEfectivo
         Me.cmdAnular.Name = "cmdAnular"
         Me.cmdAnular.Size = New System.Drawing.Size(36, 36)
         Me.cmdAnular.Text = "Anular Salida de efectivo"
+        Me.cmdAnular.Visible = False
         '
         'ToolStripSeparator2
         '
@@ -228,15 +238,6 @@ Partial Class frmSccSalidasEfectivo
         Me.cmdSalir.Name = "cmdSalir"
         Me.cmdSalir.Size = New System.Drawing.Size(36, 36)
         Me.cmdSalir.Text = "Salir"
-        '
-        'colNumeroDebito
-        '
-        Me.colNumeroDebito.Caption = "Numero"
-        Me.colNumeroDebito.FieldName = "Numero"
-        Me.colNumeroDebito.Name = "colNumeroDebito"
-        Me.colNumeroDebito.OptionsColumn.AllowEdit = False
-        Me.colNumeroDebito.Visible = True
-        Me.colNumeroDebito.VisibleIndex = 0
         '
         'frmSccSalidasEfectivo
         '

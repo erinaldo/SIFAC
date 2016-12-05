@@ -46,8 +46,8 @@ Partial Class frmSccMantNotaCredito
         Me.colConcepto = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEstado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNumeroCN = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.colobjClienteID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.tstNotaCredito.SuspendLayout()
         CType(Me.grdNotaCredito, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdNotaCreditoTabla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -219,7 +219,7 @@ Partial Class frmSccMantNotaCredito
         Me.colMonto.OptionsColumn.AllowEdit = False
         Me.colMonto.OptionsColumn.ReadOnly = True
         Me.colMonto.Visible = True
-        Me.colMonto.VisibleIndex = 6
+        Me.colMonto.VisibleIndex = 5
         Me.colMonto.Width = 138
         '
         'colobjConceptoID
@@ -234,7 +234,7 @@ Partial Class frmSccMantNotaCredito
         'colNumCuenta
         '
         Me.colNumCuenta.Caption = "Expediente"
-        Me.colNumCuenta.FieldName = "NumCuenta"
+        Me.colNumCuenta.FieldName = "NumeroCuenta"
         Me.colNumCuenta.Name = "colNumCuenta"
         Me.colNumCuenta.OptionsColumn.AllowEdit = False
         Me.colNumCuenta.Visible = True
@@ -256,7 +256,7 @@ Partial Class frmSccMantNotaCredito
         Me.colCliente.Name = "colCliente"
         Me.colCliente.OptionsColumn.AllowEdit = False
         Me.colCliente.Visible = True
-        Me.colCliente.VisibleIndex = 4
+        Me.colCliente.VisibleIndex = 3
         Me.colCliente.Width = 205
         '
         'colConcepto
@@ -266,7 +266,7 @@ Partial Class frmSccMantNotaCredito
         Me.colConcepto.Name = "colConcepto"
         Me.colConcepto.OptionsColumn.AllowEdit = False
         Me.colConcepto.Visible = True
-        Me.colConcepto.VisibleIndex = 5
+        Me.colConcepto.VisibleIndex = 4
         Me.colConcepto.Width = 186
         '
         'colEstado
@@ -276,7 +276,7 @@ Partial Class frmSccMantNotaCredito
         Me.colEstado.Name = "colEstado"
         Me.colEstado.OptionsColumn.AllowEdit = False
         Me.colEstado.Visible = True
-        Me.colEstado.VisibleIndex = 7
+        Me.colEstado.VisibleIndex = 6
         Me.colEstado.Width = 134
         '
         'colNumeroCN
@@ -289,17 +289,17 @@ Partial Class frmSccMantNotaCredito
         Me.colNumeroCN.VisibleIndex = 0
         Me.colNumeroCN.Width = 96
         '
-        'RepositoryItemCheckEdit1
-        '
-        Me.RepositoryItemCheckEdit1.AutoHeight = False
-        Me.RepositoryItemCheckEdit1.Caption = "Check"
-        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
-        '
         'colobjClienteID
         '
         Me.colobjClienteID.Caption = "objClienteID"
         Me.colobjClienteID.FieldName = "objClienteID"
         Me.colobjClienteID.Name = "colobjClienteID"
+        '
+        'RepositoryItemCheckEdit1
+        '
+        Me.RepositoryItemCheckEdit1.AutoHeight = False
+        Me.RepositoryItemCheckEdit1.Caption = "Check"
+        Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
         '
         'frmSccMantNotaCredito
         '

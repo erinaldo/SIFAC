@@ -13,6 +13,7 @@ Imports Proyecto.Catalogos.Datos
 Public Class frmSccSeleccionCuentas
     Dim DtDatosCuentas As New DataTable
     Dim m_SccCuentaID As String
+    Dim m_NumeroCuenta As String
     Dim m_Cliente As String
     Dim m_CodigoTienda As String
     Dim m_IDTienda As Integer
@@ -28,6 +29,15 @@ Public Class frmSccSeleccionCuentas
         End Get
         Set(ByVal value As String)
             m_SccCuentaID = value
+        End Set
+    End Property
+
+    Property NumeroCuenta() As String
+        Get
+            NumeroCuenta = m_NumeroCuenta
+        End Get
+        Set(ByVal value As String)
+            m_NumeroCuenta = value
         End Set
     End Property
 
@@ -68,7 +78,7 @@ Public Class frmSccSeleccionCuentas
     Private Sub CargarDatos()
         Dim strConsulta As String = ""
         Try
-            strConsulta = clsConsultas.ObtenerConsultaGeneral("Cast(0 as Bit) as Seleccion,SccCuentaID,Cliente,StbPersonaID", "vwSccCuentasSeleccion", "Codigo<> 'CANCELADO' AND Codigo <> 'DEVOLUCION'")
+            strConsulta = clsConsultas.ObtenerConsultaGeneral("Cast(0 as Bit) as Seleccion,SccCuentaID,NumeroCuenta,Cliente,StbPersonaID", "vwSccCuentasSeleccion", "Codigo<> 'CANCELADO' AND Codigo <> 'DEVOLUCION'")
             Me.DtDatosCuentas = SqlHelper.ExecuteQueryDT(strConsulta)
             Me.grdSeleccion.SetDataBinding(Me.DtDatosCuentas, "", True)
             'Me.grdSeleccion.Splits(0).DisplayColumns("CodigoTienda").Visible = False
@@ -99,6 +109,7 @@ Public Class frmSccSeleccionCuentas
                 DtDatos = Me.DtDatosCuentas.Select("Seleccion=1")
                 ''  Me.DtDatosCuentas.DefaultView.RowFilter = "Seleccion = 1"
                 Me.SccCuentaID = DtDatos(0)("SccCuentaID")
+                Me.NumeroCuenta = DtDatos(0)("NumeroCuenta")
                 Me.Cliente = DtDatos(0)("Cliente")
                 Me.DialogResult = Windows.Forms.DialogResult.OK
             End If

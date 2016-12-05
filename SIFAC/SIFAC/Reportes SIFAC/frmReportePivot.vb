@@ -16,7 +16,7 @@ Public Class frmReportePivot
                 Filtro = "1=1"
             End If
 
-            dtConsolidado = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Supervisor, Cobrador, CodigoRuta, Ruta, FechaPago, NombreCliente, Ciudad, SaldoInicial, MontoPagado, Saldo", "vwConsolidado", Filtro))
+            dtConsolidado = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Supervisor, Cobrador, Anio, Dia, Mes, Ruta, FechaPago, NombreCliente, Ciudad, SaldoInicial, MontoPagado, Saldo", "vwConsolidado", Filtro))
             PivotConsolidado.DataSource = dtConsolidado
         Catch ex As Exception
             clsError.CaptarError(ex)

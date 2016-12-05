@@ -289,7 +289,7 @@ Partial Class frmSccMantNotaDebito
         '
         'colCliente
         '
-        Me.colCliente.Caption = "Cliente"
+        Me.colCliente.Caption = "Cliente/Empleado"
         Me.colCliente.FieldName = "Cliente"
         Me.colCliente.Name = "colCliente"
         Me.colCliente.OptionsColumn.AllowEdit = False

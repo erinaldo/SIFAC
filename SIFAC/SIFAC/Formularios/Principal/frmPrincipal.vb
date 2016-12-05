@@ -907,7 +907,33 @@ Public Class frmPrincipal
 
 #End Region
 
-#Region "Cargar Salidas de efectivo"
+#Region "Cargar Arqueo"
+    Private Sub CargarArqueoCaja()
+        Dim objfrmArqueo As frmSccArquo
+        Try
+            Try
+                Me.Cursor = Cursors.WaitCursor
+                If Not clsProyecto.MostrarFormulario("frmSccArquo", Me) Then
+                    objfrmArqueo = New frmSccArquo
+                    objfrmArqueo.Width = Me.Width - Me.NavBarPrincipal.Width
+                    objfrmArqueo.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                    objfrmArqueo.MdiParent = Me
+                    objfrmArqueo.Show()
+                End If
+
+            Catch ex As Exception
+                clsError.CaptarError(ex)
+            End Try
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+
+    End Sub
+
+
+#End Region
+
+#Region "Salida Efecito "
     Private Sub CargarSalidasEfectivo()
         Dim objSalidasEfectivo As frmSccSalidasEfectivo
         Try
@@ -929,6 +955,7 @@ Public Class frmPrincipal
         End Try
 
     End Sub
+
 
 #End Region
 
@@ -1299,6 +1326,10 @@ Public Class frmPrincipal
     Private Sub NavBarSalidasEfectivo_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarSalidasEfectivo.LinkClicked
         CargarSalidasEfectivo()
     End Sub
+
+    Private Sub NavBarArqueo_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarArqueo.LinkClicked
+        CargarArqueoCaja()
+    End Sub
 #End Region
 
 #Region "Liberar Memoria"
@@ -1317,5 +1348,6 @@ Public Class frmPrincipal
 
 
 
+   
    
 End Class

@@ -312,7 +312,6 @@ Partial Class frmPrincipal
         'grpCaja
         '
         Me.grpCaja.Caption = "Caja"
-        Me.grpCaja.Expanded = True
         Me.grpCaja.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarArqueo), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarComisiones), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarSalidasEfectivo), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarNotaDebito), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarNotaCredito)})
         Me.grpCaja.Name = "grpCaja"
         '

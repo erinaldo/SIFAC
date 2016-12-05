@@ -40,12 +40,12 @@ Partial Class frmSccParamBuscarNotaDebito
         Me.chkNumero = New System.Windows.Forms.CheckBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.C1Combo1 = New C1.Win.C1List.C1Combo()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.cmbEstado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -297,6 +297,44 @@ Partial Class frmSccParamBuscarNotaDebito
         Me.PanelControl1.Size = New System.Drawing.Size(326, 367)
         Me.PanelControl1.TabIndex = 101
         '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(239, 305)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 104
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdGuardar
+        '
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
+        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdGuardar.Location = New System.Drawing.Point(151, 305)
+        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Name = "cmdGuardar"
+        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.TabIndex = 103
+        Me.cmdGuardar.Tag = "ACEPTAR"
+        Me.cmdGuardar.Text = "&Aceptar"
+        '
+        'Panel2
+        '
+        Me.Panel2.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.Location = New System.Drawing.Point(2, 344)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(322, 21)
+        Me.Panel2.TabIndex = 100
+        '
         'C1Combo1
         '
         Me.C1Combo1.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
@@ -313,6 +351,7 @@ Partial Class frmSccParamBuscarNotaDebito
         Me.C1Combo1.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.C1Combo1.EditorHeight = 15
         Me.C1Combo1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.C1Combo1.Images.Add(CType(resources.GetObject("C1Combo1.Images"), System.Drawing.Image))
         Me.C1Combo1.ItemHeight = 15
         Me.C1Combo1.LimitToList = True
         Me.C1Combo1.Location = New System.Drawing.Point(60, 18)
@@ -345,44 +384,6 @@ Partial Class frmSccParamBuscarNotaDebito
         Me.Label3.Size = New System.Drawing.Size(50, 13)
         Me.Label3.TabIndex = 61
         Me.Label3.Tag = ""
-        '
-        'Panel2
-        '
-        Me.Panel2.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(2, 344)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(322, 21)
-        Me.Panel2.TabIndex = 100
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Appearance.Options.UseFont = True
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(239, 305)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 104
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        '
-        'cmdGuardar
-        '
-        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdGuardar.Appearance.Options.UseFont = True
-        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
-        Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(151, 305)
-        Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 103
-        Me.cmdGuardar.Tag = "ACEPTAR"
-        Me.cmdGuardar.Text = "&Aceptar"
         '
         'frmSccParamBuscarNotaDebito
         '

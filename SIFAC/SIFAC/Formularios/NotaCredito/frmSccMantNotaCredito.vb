@@ -50,8 +50,7 @@ Public Class frmSccMantNotaCredito
             AplicarSeguridad()
             PropiedadesFormulario()
             CargarGridNotaCredito()
-            clsProyecto.CargarTemaDefinido(Me)
-
+          
                 Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -63,14 +62,12 @@ Public Class frmSccMantNotaCredito
 
 #Region "Seguridad"
     '----------------------------------------------------------------------------------
-    '-- Nombre del Autor    :   Michelle Valezka Reyes Tijerino
-    '-- Fecha de Creación   :   04 de Diciembre del 2007
     '-- Descripcion         :   Aplica la Seguridad al Formulario
     '-----------------------------------------------------------------------------------
     Private Sub AplicarSeguridad()
         Try
             objSeg = New SsgSeguridad
-            objSeg.ServicioUsuario = "FRMSCCNOTACREDITO"
+            objSeg.ServicioUsuario = "frmSccMantNotaCredito"
             objSeg.Usuario = clsProyecto.Conexion.Usuario
             If objSeg.TienePermiso("AgregarNC") Then
                 Me.tsbAgregarNC.Enabled = True
