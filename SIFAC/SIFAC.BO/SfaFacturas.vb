@@ -30,6 +30,7 @@ Partial Public Class SfaFacturas
 	Protected m_UsuarioModificacion As String = Nothing 
 	Protected m_FechaModificacion As Nullable(Of Date) 
 	Protected m_objStbBodegaID As Nullable(Of Integer) 
+	Protected m_objCajaID As Nullable(Of Integer) 
 #End Region
 
 #Region " Propiedades "
@@ -269,6 +270,15 @@ Partial Public Class SfaFacturas
 		End Set
     End Property
 	
+	Public Property objCajaID() As Nullable(Of Integer)
+        Get
+            Return (m_objCajaID)
+        End Get
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_objCajaID = Value
+		End Set
+    End Property
+	
 
 	Public Shared Function GetMaxLength(ProperyName as String) as Integer
 		Select Case ProperyName
@@ -369,7 +379,8 @@ Partial Public Class SfaFacturas
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@objStbBodegaID", SqlDbType.Int, 4, "objStbBodegaID")
-			cmdInsert.CommandText = "INSERT INTO SfaFacturas ( Numero, Fecha, objSccClienteID, objVendedorID, objEstadoID, objTerminoPagoID, objMotivoAnularID, objDescuentoID, AtencionA, Subtotal, Descuento, Impuesto, TotalCordobas, TotalDolares, TasaCambio, Prima, Saldo, observaciones, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion, objStbBodegaID) VALUES ( @Numero, @Fecha, @objSccClienteID, @objVendedorID, @objEstadoID, @objTerminoPagoID, @objMotivoAnularID, @objDescuentoID, @AtencionA, @Subtotal, @Descuento, @Impuesto, @TotalCordobas, @TotalDolares, @TasaCambio, @Prima, @Saldo, @observaciones, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion, @objStbBodegaID)"
+			cmdInsert.Parameters.Add("@objCajaID", SqlDbType.Int, 4, "objCajaID")
+			cmdInsert.CommandText = "INSERT INTO SfaFacturas ( Numero, Fecha, objSccClienteID, objVendedorID, objEstadoID, objTerminoPagoID, objMotivoAnularID, objDescuentoID, AtencionA, Subtotal, Descuento, Impuesto, TotalCordobas, TotalDolares, TasaCambio, Prima, Saldo, observaciones, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion, objStbBodegaID, objCajaID) VALUES ( @Numero, @Fecha, @objSccClienteID, @objVendedorID, @objEstadoID, @objTerminoPagoID, @objMotivoAnularID, @objDescuentoID, @AtencionA, @Subtotal, @Descuento, @Impuesto, @TotalCordobas, @TotalDolares, @TasaCambio, @Prima, @Saldo, @observaciones, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion, @objStbBodegaID, @objCajaID)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@Numero", SqlDbType.Int, 4, "Numero")
@@ -395,8 +406,9 @@ Partial Public Class SfaFacturas
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@objStbBodegaID", SqlDbType.Int, 4, "objStbBodegaID")
+			cmdUpdate.Parameters.Add("@objCajaID", SqlDbType.Int, 4, "objCajaID")
 			cmdUpdate.Parameters.Add("@wSfaFacturaID", SqlDbType.Int, 4, "SfaFacturaID")
-			cmdUpdate.CommandText = "UPDATE SfaFacturas SET Numero=@Numero, Fecha=@Fecha, objSccClienteID=@objSccClienteID, objVendedorID=@objVendedorID, objEstadoID=@objEstadoID, objTerminoPagoID=@objTerminoPagoID, objMotivoAnularID=@objMotivoAnularID, objDescuentoID=@objDescuentoID, AtencionA=@AtencionA, Subtotal=@Subtotal, Descuento=@Descuento, Impuesto=@Impuesto, TotalCordobas=@TotalCordobas, TotalDolares=@TotalDolares, TasaCambio=@TasaCambio, Prima=@Prima, Saldo=@Saldo, observaciones=@observaciones, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion, objStbBodegaID=@objStbBodegaID WHERE SfaFacturaID= @wSfaFacturaID"
+			cmdUpdate.CommandText = "UPDATE SfaFacturas SET Numero=@Numero, Fecha=@Fecha, objSccClienteID=@objSccClienteID, objVendedorID=@objVendedorID, objEstadoID=@objEstadoID, objTerminoPagoID=@objTerminoPagoID, objMotivoAnularID=@objMotivoAnularID, objDescuentoID=@objDescuentoID, AtencionA=@AtencionA, Subtotal=@Subtotal, Descuento=@Descuento, Impuesto=@Impuesto, TotalCordobas=@TotalCordobas, TotalDolares=@TotalDolares, TasaCambio=@TasaCambio, Prima=@Prima, Saldo=@Saldo, observaciones=@observaciones, UsuarioCreacion=@UsuarioCreacion, FechaCreacion=@FechaCreacion, UsuarioModificacion=@UsuarioModificacion, FechaModificacion=@FechaModificacion, objStbBodegaID=@objStbBodegaID, objCajaID=@objCajaID WHERE SfaFacturaID= @wSfaFacturaID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -466,6 +478,7 @@ Partial Public Class SfaFacturas
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_objStbBodegaID = IIf(IsDBNull(dr("objStbBodegaID")), Nothing, dr("objStbBodegaID"))					
+				m_objCajaID = IIf(IsDBNull(dr("objCajaID")), Nothing, dr("objCajaID"))					
 				Return True
 			Else
 				Return False
@@ -523,6 +536,7 @@ Partial Public Class SfaFacturas
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_objStbBodegaID = IIf(IsDBNull(dr("objStbBodegaID")), Nothing, dr("objStbBodegaID"))					
+				m_objCajaID = IIf(IsDBNull(dr("objCajaID")), Nothing, dr("objCajaID"))					
 				Return True
 			Else
 				Return False
@@ -670,7 +684,8 @@ Partial Public Class SfaFacturas
 		sCommand &= "FechaCreacion,"
 		sCommand &= "UsuarioModificacion,"
 		sCommand &= "FechaModificacion,"
-		sCommand &= "objStbBodegaID) values ("		
+		sCommand &= "objStbBodegaID,"
+		sCommand &= "objCajaID) values ("		
 		sCommand &= "@Numero,"
 		sCommand &= "@Fecha,"
 		sCommand &= "@objSccClienteID,"
@@ -693,14 +708,15 @@ Partial Public Class SfaFacturas
 		sCommand &= "@FechaCreacion,"
 		sCommand &= "@UsuarioModificacion,"
 		sCommand &= "@FechaModificacion,"
-		sCommand &= "@objStbBodegaID)"		
+		sCommand &= "@objStbBodegaID,"
+		sCommand &= "@objCajaID)"		
 	
 		sCommand &= " select "
 		sCommand &= "@SfaFacturaID = SfaFacturaID from SfaFacturas where "		
 		sCommand &= "SfaFacturaID = SCOPE_IDENTITY()"
 		
 		
-		Dim arParams(23) As SqlParameter
+		Dim arParams(24) As SqlParameter
 		arParams(0) = New SqlParameter("@SfaFacturaID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@Numero", SqlDbType.Int)		
@@ -841,6 +857,12 @@ Partial Public Class SfaFacturas
         Else
             arParams(23).Value = m_objStbBodegaID
         End If
+		arParams(24) = New SqlParameter("@objCajaID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaID) Then
+            arParams(24).Value = DBNull.Value
+        Else
+            arParams(24).Value = m_objCajaID
+        End If
 	
 		Try
             If pTransac Is Nothing Then
@@ -887,11 +909,12 @@ Partial Public Class SfaFacturas
 		sCommand &= "FechaCreacion = @FechaCreacion,"
 		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
 		sCommand &= "FechaModificacion = @FechaModificacion,"
-		sCommand &= "objStbBodegaID = @objStbBodegaID"		
+		sCommand &= "objStbBodegaID = @objStbBodegaID,"
+		sCommand &= "objCajaID = @objCajaID"		
 		sCommand &= " where "	
 		sCommand &= "SfaFacturaID = @SfaFacturaID"					
 		
-		Dim arParams(23) As SqlParameter
+		Dim arParams(24) As SqlParameter
 		arParams(0) = New SqlParameter("@SfaFacturaID", SqlDbType.Int)		
 		If IsDBNull(m_SfaFacturaID) Then
             arParams(0).Value = DBNull.Value
@@ -1035,6 +1058,12 @@ Partial Public Class SfaFacturas
             arParams(23).Value = DBNull.Value
         Else
             arParams(23).Value = m_objStbBodegaID
+        End If
+		arParams(24) = New SqlParameter("@objCajaID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaID) Then
+            arParams(24).Value = DBNull.Value
+        Else
+            arParams(24).Value = m_objCajaID
         End If
 	
 		Try
