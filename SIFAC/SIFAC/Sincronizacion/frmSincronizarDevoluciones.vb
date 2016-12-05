@@ -196,7 +196,7 @@ Public Class frmSincronizarDevoluciones
     Private Sub SincronizarDevoluciones()
         Dim intEstadoRegistrado As Integer
         Dim blnSeleccionado As Boolean
-        Dim intAplDevolucionID, intobjSccCuentaID, intobjSfaFacturaID As Integer
+        Dim intAplDevolucionID, intobjSccCuentaID, intobjSfaFacturaID, intSivEntradaBodegaID As Integer
         Dim dtFecha As Date
         Dim decTotalDevolucion As Decimal
         Dim objAplDevoluciones As New AplDevoluciones
@@ -256,6 +256,52 @@ Public Class frmSincronizarDevoluciones
                     objSccCuentaCobrar.FechaModificacion = clsProyecto.Conexion.FechaServidor
                     objSccCuentaCobrar.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "DEVOLUCION")
                     objSccCuentaCobrar.Update(t)
+
+                    '4.Crear Entrada por devolución
+
+                    '4.1. Cabecera Entrada
+                    Dim objSivEntradaBodega As SivEntradaBodega
+
+                    objSivEntradaBodega = New SivEntradaBodega
+                    objSivEntradaBodega.objStbBodegaID = ClsCatalogos.GetStbTiendaID("C")
+                    objSivEntradaBodega.objTipoEntradaID = ClsCatalogos.ObtenerIDSTbCatalogo("TIPOENTRADA", "DEVOLUCION")
+                    objSivEntradaBodega.FechaEntrada = Now.Date
+                    objSivEntradaBodega.CostoTotal = CDec(drFilaDevoluciones("TotalDevolucion"))
+                    objSivEntradaBodega.NumeroFactura = Nothing
+                    objSivEntradaBodega.FechaFactura = Nothing
+                    objSivEntradaBodega.Comentarios = "Devolución desde la Sincronización devoluciones"
+                    objSivEntradaBodega.Anulada = 0
+                    objSivEntradaBodega.ComentarioAnular = "---"
+                    objSivEntradaBodega.objProvededorID = Nothing
+                    objSivEntradaBodega.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    objSivEntradaBodega.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                    objSivEntradaBodega.Insert(t)
+                    intSivEntradaBodegaID = objSivEntradaBodega.SivEntradaBodegaID
+
+                    '4.2. Detalle de Entrada
+                    Dim objSivEntradaBodegaDetalle As New SivEntradaBodegaDetalle
+                    Dim objSivBodegaProductos As New SivBodegaProductos
+
+                    objSivEntradaBodegaDetalle.SivEntradaBodegaDetID = intSivEntradaBodegaID
+                    objSivEntradaBodegaDetalle.objProductoID = CInt(drFilaDevoluciones("objSivProductoID"))
+
+                    If objSivBodegaProductos.RetrieveByFilter("objProductoID='" & CInt(drFilaDevoluciones("objSivProductoID")) & "' AND objBodegaID=" & objSivEntradaBodega.objStbBodegaID) Then
+                        objSivEntradaBodegaDetalle.ExistenciaAnterior = objSivBodegaProductos.Cantidad
+                    End If
+                    objSivEntradaBodegaDetalle.Cantidad = 1
+                    objSivEntradaBodegaDetalle.Costo = decTotalDevolucion
+                    objSivEntradaBodegaDetalle.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                    objSivEntradaBodegaDetalle.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                    objSivEntradaBodegaDetalle.Insert(t)
+
+                    '4.3. Sumar el producto devuelto a la bodega
+                    objSivBodegaProductos.RetrieveByFilter("objProductoID='" & CInt(drFilaDevoluciones("objSivProductoID")) & "' AND objBodegaID=" & objSivEntradaBodega.objStbBodegaID)
+                    objSivBodegaProductos.Cantidad = objSivBodegaProductos.Cantidad + 1
+                    objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    objSivBodegaProductos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    objSivBodegaProductos.Update(t)
+
+
 
                 End If
             Next
