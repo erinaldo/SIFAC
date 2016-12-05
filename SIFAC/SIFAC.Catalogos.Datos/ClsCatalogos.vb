@@ -205,6 +205,18 @@ Public Class ClsCatalogos
         Return iResultado
     End Function
 
+    Public Shared Function GetStbCajaID(ByVal sCodigoCaja As String) As Integer
+        Dim sSQL As String
+        Dim iResultado As Integer
+        sSQL = SIFAC.BO.clsConsultas.ObtenerConsultaGeneral("SccCajaID", "dbo.SccCajas", "Codigo='" + sCodigoCaja + "'")
+        Try
+            iResultado = DAL.SqlHelper.ExecuteQueryDT(sSQL).DefaultView.Item(0)("SccCajaID")
+        Catch ex As Exception
+            iResultado = 0
+        End Try
+        Return iResultado
+    End Function
+
     '----------------------------------------------------------------------------------------------------
     '-- Nombre del Autor        :   Gelmin Martínez
     '-- Fecha de Elaboración    :   20 de Mayo del 2010, 01:24 pm.
