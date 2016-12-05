@@ -25,189 +25,191 @@ Partial Public Class AplDevoluciones
 #End Region
 
 #Region " Propiedades "
-	Public Property AplDevolucionID() As Integer
+
+    Public Property AplDevolucionID() As Integer
         Get
             Return (m_AplDevolucionID)
         End Get
-		Set(ByVal Value As Integer)					
-			m_AplDevolucionID = Value
-		End Set
+        Set(ByVal Value As Integer)
+            m_AplDevolucionID = Value
+        End Set
     End Property
-	
-	Public Property objSccClienteID() As Nullable(Of Integer)
+
+
+    Public Property objSccClienteID() As Nullable(Of Integer)
         Get
             Return (m_objSccClienteID)
         End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objSccClienteID = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Integer))
+            m_objSccClienteID = Value
+        End Set
     End Property
-	
-	Public Property objSccCuentaID() As Nullable(Of Integer)
+
+    Public Property objSccCuentaID() As Nullable(Of Integer)
         Get
             Return (m_objSccCuentaID)
         End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objSccCuentaID = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Integer))
+            m_objSccCuentaID = Value
+        End Set
     End Property
-	
-	Public Property objStbRutaID() As Nullable(Of Integer)
+
+    Public Property objStbRutaID() As Nullable(Of Integer)
         Get
             Return (m_objStbRutaID)
         End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objStbRutaID = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Integer))
+            m_objStbRutaID = Value
+        End Set
     End Property
-	
-	Public Property objSivProductoID() As Nullable(Of Integer)
+
+    Public Property objSivProductoID() As Nullable(Of Integer)
         Get
             Return (m_objSivProductoID)
         End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objSivProductoID = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Integer))
+            m_objSivProductoID = Value
+        End Set
     End Property
-	
-	Public Property objSfaFacturaID() As Nullable(Of Integer)
+
+    Public Property objSfaFacturaID() As Nullable(Of Integer)
         Get
             Return (m_objSfaFacturaID)
         End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objSfaFacturaID = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Integer))
+            m_objSfaFacturaID = Value
+        End Set
     End Property
-	
-	Public Property objVendedorID() As Nullable(Of Integer)
+
+    Public Property objVendedorID() As Nullable(Of Integer)
         Get
             Return (m_objVendedorID)
         End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objVendedorID = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Integer))
+            m_objVendedorID = Value
+        End Set
     End Property
-	
-	Public Property objEstadoID() As Nullable(Of Integer)
+
+    Public Property objEstadoID() As Nullable(Of Integer)
         Get
             Return (m_objEstadoID)
         End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objEstadoID = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Integer))
+            m_objEstadoID = Value
+        End Set
     End Property
-	
-	Public Property Activo() As Nullable(Of Boolean)
+
+    Public Property Activo() As Nullable(Of Boolean)
         Get
             Return (m_Activo)
         End Get
-		Set(ByVal Value As Nullable(Of Boolean))					
-			m_Activo = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Boolean))
+            m_Activo = Value
+        End Set
     End Property
-	
-	Public Property RazonDevolucion() As String
+
+    Public Property RazonDevolucion() As String
         Get
             Return (m_RazonDevolucion)
         End Get
-		Set(ByVal Value As String)		
-			If Not Value Is Nothing Then
-				If Value.Length > 100 Then
-					Throw New ArgumentOutOfRangeException("RazonDevolucion", Value.ToString(), "Valor inv?lido para AplDevoluciones.RazonDevolucion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (100).")
-				End If
-			End If
-			m_RazonDevolucion = Value
-		End Set
+        Set(ByVal Value As String)
+            If Not Value Is Nothing Then
+                If Value.Length > 100 Then
+                    Throw New ArgumentOutOfRangeException("RazonDevolucion", Value.ToString(), "Valor inv?lido para AplDevoluciones.RazonDevolucion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (100).")
+                End If
+            End If
+            m_RazonDevolucion = Value
+        End Set
     End Property
-	
-	Public Property Fecha() As Nullable(Of Date)
+
+    Public Property Fecha() As Nullable(Of Date)
         Get
             Return (m_Fecha)
         End Get
-		Set(ByVal Value As Nullable(Of Date))					
-			m_Fecha = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Date))
+            m_Fecha = Value
+        End Set
     End Property
-	
-	Public Property TotalDevolucion() As Nullable(Of Decimal)
+
+    Public Property TotalDevolucion() As Nullable(Of Decimal)
         Get
             Return (m_TotalDevolucion)
         End Get
-		Set(ByVal Value As Nullable(Of Decimal))					
-			m_TotalDevolucion = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Decimal))
+            m_TotalDevolucion = Value
+        End Set
     End Property
-	
-	Public Property UsuarioCreacion() As String
+
+    Public Property UsuarioCreacion() As String
         Get
             Return (m_UsuarioCreacion)
         End Get
-		Set(ByVal Value As String)		
-			If Not Value Is Nothing Then
-				If Value.Length > 50 Then
-					Throw New ArgumentOutOfRangeException("UsuarioCreacion", Value.ToString(), "Valor inv?lido para AplDevoluciones.UsuarioCreacion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
-				End If
-			End If
-			m_UsuarioCreacion = Value
-		End Set
+        Set(ByVal Value As String)
+            If Not Value Is Nothing Then
+                If Value.Length > 50 Then
+                    Throw New ArgumentOutOfRangeException("UsuarioCreacion", Value.ToString(), "Valor inv?lido para AplDevoluciones.UsuarioCreacion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
+                End If
+            End If
+            m_UsuarioCreacion = Value
+        End Set
     End Property
-	
-	Public Property FechaCreacion() As Nullable(Of Date)
+
+    Public Property FechaCreacion() As Nullable(Of Date)
         Get
             Return (m_FechaCreacion)
         End Get
-		Set(ByVal Value As Nullable(Of Date))					
-			m_FechaCreacion = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Date))
+            m_FechaCreacion = Value
+        End Set
     End Property
-	
-	Public Property UsuarioModificacion() As String
+
+    Public Property UsuarioModificacion() As String
         Get
             Return (m_UsuarioModificacion)
         End Get
-		Set(ByVal Value As String)		
-			If Not Value Is Nothing Then
-				If Value.Length > 50 Then
-					Throw New ArgumentOutOfRangeException("UsuarioModificacion", Value.ToString(), "Valor inv?lido para AplDevoluciones.UsuarioModificacion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
-				End If
-			End If
-			m_UsuarioModificacion = Value
-		End Set
+        Set(ByVal Value As String)
+            If Not Value Is Nothing Then
+                If Value.Length > 50 Then
+                    Throw New ArgumentOutOfRangeException("UsuarioModificacion", Value.ToString(), "Valor inv?lido para AplDevoluciones.UsuarioModificacion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
+                End If
+            End If
+            m_UsuarioModificacion = Value
+        End Set
     End Property
-	
-	Public Property FechaModificacion() As Nullable(Of Date)
+
+    Public Property FechaModificacion() As Nullable(Of Date)
         Get
             Return (m_FechaModificacion)
         End Get
-		Set(ByVal Value As Nullable(Of Date))					
-			m_FechaModificacion = Value
-		End Set
+        Set(ByVal Value As Nullable(Of Date))
+            m_FechaModificacion = Value
+        End Set
     End Property
-	
 
-	Public Shared Function GetMaxLength(ProperyName as String) as Integer
-		Select Case ProperyName
-			Case "RazonDevolucion"
-				Return	100
-			Case "TotalDevolucion"
-				Return	18
-			Case "UsuarioCreacion"
-				Return	50
-			Case "UsuarioModificacion"
-				Return	50
-			Case Else
-				Throw New Exception("Nombre de propiedad desconocida.")
-		End Select
-	End Function
-	
-	Public Shared Function GetScale(ProperyName as String) as Integer
-		Select Case ProperyName
-			Case "TotalDevolucion"
-				Return	2
-			Case Else
-				Throw New Exception("Nombre de propiedad desconocida.")
-		End Select
-	End Function
+
+    Public Shared Function GetMaxLength(ProperyName As String) As Integer
+        Select Case ProperyName
+            Case "RazonDevolucion"
+                Return 100
+            Case "TotalDevolucion"
+                Return 18
+            Case "UsuarioCreacion"
+                Return 50
+            Case "UsuarioModificacion"
+                Return 50
+            Case Else
+                Throw New Exception("Nombre de propiedad desconocida.")
+        End Select
+    End Function
+
+    Public Shared Function GetScale(ProperyName As String) As Integer
+        Select Case ProperyName
+            Case "TotalDevolucion"
+                Return 2
+            Case Else
+                Throw New Exception("Nombre de propiedad desconocida.")
+        End Select
+    End Function
 #End Region
 
 #Region " Batch Update " 

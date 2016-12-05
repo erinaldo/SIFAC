@@ -19,7 +19,6 @@ Partial Class frmSsgEditAccion
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSsgEditAccion))
         Me.grpDatosAplicacion = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -33,7 +32,7 @@ Partial Class frmSsgEditAccion
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtCodInterno = New System.Windows.Forms.TextBox()
-        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
@@ -91,7 +90,7 @@ Partial Class frmSsgEditAccion
         Me.txtNombreS.Name = "txtNombreS"
         Me.txtNombreS.Size = New System.Drawing.Size(304, 20)
         Me.txtNombreS.TabIndex = 3
-        Me.txtNombreS.Tag = "BLOQUEADO"
+        Me.txtNombreS.Tag = ""
         '
         'txtCodInternoS
         '
@@ -101,7 +100,7 @@ Partial Class frmSsgEditAccion
         Me.txtCodInternoS.Name = "txtCodInternoS"
         Me.txtCodInternoS.Size = New System.Drawing.Size(304, 20)
         Me.txtCodInternoS.TabIndex = 1
-        Me.txtCodInternoS.Tag = "BLOQUEADO"
+        Me.txtCodInternoS.Tag = ""
         '
         'GroupBox1
         '
