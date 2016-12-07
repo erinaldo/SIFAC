@@ -11,7 +11,6 @@ Partial Public Class SccArqueoCaja
 	Protected m_EntradaEfectivo As Nullable(Of Decimal) 
 	Protected m_SalidaEfectivo As Nullable(Of Decimal) 
 	Protected m_Faltante As Nullable(Of Decimal) 
-	Protected m_objEstadoID As Nullable(Of Integer) 
 	Protected m_AprobadoPor As String = Nothing 
 	Protected m_objCajaID As Nullable(Of Integer) 
 	Protected m_objCajeroID As Nullable(Of Integer) 
@@ -19,8 +18,6 @@ Partial Public Class SccArqueoCaja
 	Protected m_UsuarioCreacion As String = Nothing 
 	Protected m_FechaModificacion As Nullable(Of Date) 
 	Protected m_UsuarioModificacion As String = Nothing 
-	Protected m_objRutaID As Nullable(Of Integer) 
-	Protected m_Aprobado As Nullable(Of Boolean) 
 #End Region
 
 #Region " Propiedades "
@@ -66,15 +63,6 @@ Partial Public Class SccArqueoCaja
         End Get
 		Set(ByVal Value As Nullable(Of Decimal))					
 			m_Faltante = Value
-		End Set
-    End Property
-	
-	Public Property objEstadoID() As Nullable(Of Integer)
-        Get
-            Return (m_objEstadoID)
-        End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objEstadoID = Value
 		End Set
     End Property
 	
@@ -156,24 +144,6 @@ Partial Public Class SccArqueoCaja
 		End Set
     End Property
 	
-	Public Property objRutaID() As Nullable(Of Integer)
-        Get
-            Return (m_objRutaID)
-        End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objRutaID = Value
-		End Set
-    End Property
-	
-	Public Property Aprobado() As Nullable(Of Boolean)
-        Get
-            Return (m_Aprobado)
-        End Get
-		Set(ByVal Value As Nullable(Of Boolean))					
-			m_Aprobado = Value
-		End Set
-    End Property
-	
 
 	Public Shared Function GetMaxLength(ProperyName as String) as Integer
 		Select Case ProperyName
@@ -233,7 +203,6 @@ Partial Public Class SccArqueoCaja
 			cmdInsert.Parameters.Add("@EntradaEfectivo", SqlDbType.Decimal, 9, "EntradaEfectivo")
 			cmdInsert.Parameters.Add("@SalidaEfectivo", SqlDbType.Decimal, 9, "SalidaEfectivo")
 			cmdInsert.Parameters.Add("@Faltante", SqlDbType.Decimal, 9, "Faltante")
-			cmdInsert.Parameters.Add("@objEstadoID", SqlDbType.Int, 4, "objEstadoID")
 			cmdInsert.Parameters.Add("@AprobadoPor", SqlDbType.VarChar, 50, "AprobadoPor")
 			cmdInsert.Parameters.Add("@objCajaID", SqlDbType.Int, 4, "objCajaID")
 			cmdInsert.Parameters.Add("@objCajeroID", SqlDbType.Int, 4, "objCajeroID")
@@ -241,16 +210,13 @@ Partial Public Class SccArqueoCaja
 			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 50, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
-			cmdInsert.Parameters.Add("@objRutaID", SqlDbType.Int, 4, "objRutaID")
-			cmdInsert.Parameters.Add("@Aprobado", SqlDbType.Bit, 1, "Aprobado")
-			cmdInsert.CommandText = "INSERT INTO SccArqueoCaja ( Fecha, EntradaEfectivo, SalidaEfectivo, Faltante, objEstadoID, AprobadoPor, objCajaID, objCajeroID, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, objRutaID, Aprobado) VALUES ( @Fecha, @EntradaEfectivo, @SalidaEfectivo, @Faltante, @objEstadoID, @AprobadoPor, @objCajaID, @objCajeroID, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @objRutaID, @Aprobado)"
+			cmdInsert.CommandText = "INSERT INTO SccArqueoCaja ( Fecha, EntradaEfectivo, SalidaEfectivo, Faltante, AprobadoPor, objCajaID, objCajeroID, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion) VALUES ( @Fecha, @EntradaEfectivo, @SalidaEfectivo, @Faltante, @AprobadoPor, @objCajaID, @objCajeroID, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@Fecha", SqlDbType.DateTime, 8, "Fecha")
 			cmdUpdate.Parameters.Add("@EntradaEfectivo", SqlDbType.Decimal, 9, "EntradaEfectivo")
 			cmdUpdate.Parameters.Add("@SalidaEfectivo", SqlDbType.Decimal, 9, "SalidaEfectivo")
 			cmdUpdate.Parameters.Add("@Faltante", SqlDbType.Decimal, 9, "Faltante")
-			cmdUpdate.Parameters.Add("@objEstadoID", SqlDbType.Int, 4, "objEstadoID")
 			cmdUpdate.Parameters.Add("@AprobadoPor", SqlDbType.VarChar, 50, "AprobadoPor")
 			cmdUpdate.Parameters.Add("@objCajaID", SqlDbType.Int, 4, "objCajaID")
 			cmdUpdate.Parameters.Add("@objCajeroID", SqlDbType.Int, 4, "objCajeroID")
@@ -258,10 +224,8 @@ Partial Public Class SccArqueoCaja
 			cmdUpdate.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 50, "UsuarioCreacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
-			cmdUpdate.Parameters.Add("@objRutaID", SqlDbType.Int, 4, "objRutaID")
-			cmdUpdate.Parameters.Add("@Aprobado", SqlDbType.Bit, 1, "Aprobado")
 			cmdUpdate.Parameters.Add("@wArqueoID", SqlDbType.Int, 4, "ArqueoID")
-			cmdUpdate.CommandText = "UPDATE SccArqueoCaja SET Fecha=@Fecha, EntradaEfectivo=@EntradaEfectivo, SalidaEfectivo=@SalidaEfectivo, Faltante=@Faltante, objEstadoID=@objEstadoID, AprobadoPor=@AprobadoPor, objCajaID=@objCajaID, objCajeroID=@objCajeroID, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, objRutaID=@objRutaID, Aprobado=@Aprobado WHERE ArqueoID= @wArqueoID"
+			cmdUpdate.CommandText = "UPDATE SccArqueoCaja SET Fecha=@Fecha, EntradaEfectivo=@EntradaEfectivo, SalidaEfectivo=@SalidaEfectivo, Faltante=@Faltante, AprobadoPor=@AprobadoPor, objCajaID=@objCajaID, objCajeroID=@objCajeroID, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion WHERE ArqueoID= @wArqueoID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -312,7 +276,6 @@ Partial Public Class SccArqueoCaja
 				m_EntradaEfectivo = IIf(IsDBNull(dr("EntradaEfectivo")), Nothing, dr("EntradaEfectivo"))					
 				m_SalidaEfectivo = IIf(IsDBNull(dr("SalidaEfectivo")), Nothing, dr("SalidaEfectivo"))					
 				m_Faltante = IIf(IsDBNull(dr("Faltante")), Nothing, dr("Faltante"))					
-				m_objEstadoID = IIf(IsDBNull(dr("objEstadoID")), Nothing, dr("objEstadoID"))					
 				m_AprobadoPor = IIf(IsDBNull(dr("AprobadoPor")), Nothing, dr("AprobadoPor"))					
 				m_objCajaID = IIf(IsDBNull(dr("objCajaID")), Nothing, dr("objCajaID"))					
 				m_objCajeroID = IIf(IsDBNull(dr("objCajeroID")), Nothing, dr("objCajeroID"))					
@@ -320,8 +283,6 @@ Partial Public Class SccArqueoCaja
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
-				m_objRutaID = IIf(IsDBNull(dr("objRutaID")), Nothing, dr("objRutaID"))					
-				m_Aprobado = IIf(IsDBNull(dr("Aprobado")), Nothing, dr("Aprobado"))					
 				Return True
 			Else
 				Return False
@@ -360,7 +321,6 @@ Partial Public Class SccArqueoCaja
 				m_EntradaEfectivo = IIf(IsDBNull(dr("EntradaEfectivo")), Nothing, dr("EntradaEfectivo"))					
 				m_SalidaEfectivo = IIf(IsDBNull(dr("SalidaEfectivo")), Nothing, dr("SalidaEfectivo"))					
 				m_Faltante = IIf(IsDBNull(dr("Faltante")), Nothing, dr("Faltante"))					
-				m_objEstadoID = IIf(IsDBNull(dr("objEstadoID")), Nothing, dr("objEstadoID"))					
 				m_AprobadoPor = IIf(IsDBNull(dr("AprobadoPor")), Nothing, dr("AprobadoPor"))					
 				m_objCajaID = IIf(IsDBNull(dr("objCajaID")), Nothing, dr("objCajaID"))					
 				m_objCajeroID = IIf(IsDBNull(dr("objCajeroID")), Nothing, dr("objCajeroID"))					
@@ -368,8 +328,6 @@ Partial Public Class SccArqueoCaja
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
-				m_objRutaID = IIf(IsDBNull(dr("objRutaID")), Nothing, dr("objRutaID"))					
-				m_Aprobado = IIf(IsDBNull(dr("Aprobado")), Nothing, dr("Aprobado"))					
 				Return True
 			Else
 				Return False
@@ -499,37 +457,31 @@ Partial Public Class SccArqueoCaja
 		sCommand &= "EntradaEfectivo,"
 		sCommand &= "SalidaEfectivo,"
 		sCommand &= "Faltante,"
-		sCommand &= "objEstadoID,"
 		sCommand &= "AprobadoPor,"
 		sCommand &= "objCajaID,"
 		sCommand &= "objCajeroID,"
 		sCommand &= "FechaCreacion,"
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaModificacion,"
-		sCommand &= "UsuarioModificacion,"
-		sCommand &= "objRutaID,"
-		sCommand &= "Aprobado) values ("		
+		sCommand &= "UsuarioModificacion) values ("		
 		sCommand &= "@Fecha,"
 		sCommand &= "@EntradaEfectivo,"
 		sCommand &= "@SalidaEfectivo,"
 		sCommand &= "@Faltante,"
-		sCommand &= "@objEstadoID,"
 		sCommand &= "@AprobadoPor,"
 		sCommand &= "@objCajaID,"
 		sCommand &= "@objCajeroID,"
 		sCommand &= "@FechaCreacion,"
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaModificacion,"
-		sCommand &= "@UsuarioModificacion,"
-		sCommand &= "@objRutaID,"
-		sCommand &= "@Aprobado)"		
+		sCommand &= "@UsuarioModificacion)"		
 	
 		sCommand &= " select "
 		sCommand &= "@ArqueoID = ArqueoID from SccArqueoCaja where "		
 		sCommand &= "ArqueoID = SCOPE_IDENTITY()"
 		
 		
-		Dim arParams(14) As SqlParameter
+		Dim arParams(11) As SqlParameter
 		arParams(0) = New SqlParameter("@ArqueoID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
@@ -556,65 +508,47 @@ Partial Public Class SccArqueoCaja
         Else
             arParams(4).Value = m_Faltante
         End If
-		arParams(5) = New SqlParameter("@objEstadoID", SqlDbType.Int)		
-		If IsDBNull(m_objEstadoID) Then
+		arParams(5) = New SqlParameter("@AprobadoPor", SqlDbType.VarChar)		
+		If IsDBNull(m_AprobadoPor) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_objEstadoID
+            arParams(5).Value = m_AprobadoPor
         End If
-		arParams(6) = New SqlParameter("@AprobadoPor", SqlDbType.VarChar)		
-		If IsDBNull(m_AprobadoPor) Then
+		arParams(6) = New SqlParameter("@objCajaID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaID) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_AprobadoPor
+            arParams(6).Value = m_objCajaID
         End If
-		arParams(7) = New SqlParameter("@objCajaID", SqlDbType.Int)		
-		If IsDBNull(m_objCajaID) Then
+		arParams(7) = New SqlParameter("@objCajeroID", SqlDbType.Int)		
+		If IsDBNull(m_objCajeroID) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_objCajaID
+            arParams(7).Value = m_objCajeroID
         End If
-		arParams(8) = New SqlParameter("@objCajeroID", SqlDbType.Int)		
-		If IsDBNull(m_objCajeroID) Then
+		arParams(8) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_objCajeroID
+            arParams(8).Value = m_FechaCreacion
         End If
-		arParams(9) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(9) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_FechaCreacion
+            arParams(9).Value = m_UsuarioCreacion
         End If
-		arParams(10) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(10) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_UsuarioCreacion
+            arParams(10).Value = m_FechaModificacion
         End If
-		arParams(11) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(11) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_FechaModificacion
-        End If
-		arParams(12) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
-            arParams(12).Value = DBNull.Value
-        Else
-            arParams(12).Value = m_UsuarioModificacion
-        End If
-		arParams(13) = New SqlParameter("@objRutaID", SqlDbType.Int)		
-		If IsDBNull(m_objRutaID) Then
-            arParams(13).Value = DBNull.Value
-        Else
-            arParams(13).Value = m_objRutaID
-        End If
-		arParams(14) = New SqlParameter("@Aprobado", SqlDbType.Bit)		
-		If IsDBNull(m_Aprobado) Then
-            arParams(14).Value = DBNull.Value
-        Else
-            arParams(14).Value = m_Aprobado
+            arParams(11).Value = m_UsuarioModificacion
         End If
 	
 		Try
@@ -644,20 +578,17 @@ Partial Public Class SccArqueoCaja
 		sCommand &= "EntradaEfectivo = @EntradaEfectivo,"
 		sCommand &= "SalidaEfectivo = @SalidaEfectivo,"
 		sCommand &= "Faltante = @Faltante,"
-		sCommand &= "objEstadoID = @objEstadoID,"
 		sCommand &= "AprobadoPor = @AprobadoPor,"
 		sCommand &= "objCajaID = @objCajaID,"
 		sCommand &= "objCajeroID = @objCajeroID,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
 		sCommand &= "FechaModificacion = @FechaModificacion,"
-		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
-		sCommand &= "objRutaID = @objRutaID,"
-		sCommand &= "Aprobado = @Aprobado"		
+		sCommand &= "UsuarioModificacion = @UsuarioModificacion"		
 		sCommand &= " where "	
 		sCommand &= "ArqueoID = @ArqueoID"					
 		
-		Dim arParams(14) As SqlParameter
+		Dim arParams(11) As SqlParameter
 		arParams(0) = New SqlParameter("@ArqueoID", SqlDbType.Int)		
 		If IsDBNull(m_ArqueoID) Then
             arParams(0).Value = DBNull.Value
@@ -688,65 +619,47 @@ Partial Public Class SccArqueoCaja
         Else
             arParams(4).Value = m_Faltante
         End If
-		arParams(5) = New SqlParameter("@objEstadoID", SqlDbType.Int)		
-		If IsDBNull(m_objEstadoID) Then
+		arParams(5) = New SqlParameter("@AprobadoPor", SqlDbType.VarChar)		
+		If IsDBNull(m_AprobadoPor) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_objEstadoID
+            arParams(5).Value = m_AprobadoPor
         End If
-		arParams(6) = New SqlParameter("@AprobadoPor", SqlDbType.VarChar)		
-		If IsDBNull(m_AprobadoPor) Then
+		arParams(6) = New SqlParameter("@objCajaID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaID) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_AprobadoPor
+            arParams(6).Value = m_objCajaID
         End If
-		arParams(7) = New SqlParameter("@objCajaID", SqlDbType.Int)		
-		If IsDBNull(m_objCajaID) Then
+		arParams(7) = New SqlParameter("@objCajeroID", SqlDbType.Int)		
+		If IsDBNull(m_objCajeroID) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_objCajaID
+            arParams(7).Value = m_objCajeroID
         End If
-		arParams(8) = New SqlParameter("@objCajeroID", SqlDbType.Int)		
-		If IsDBNull(m_objCajeroID) Then
+		arParams(8) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_objCajeroID
+            arParams(8).Value = m_FechaCreacion
         End If
-		arParams(9) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(9) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_FechaCreacion
+            arParams(9).Value = m_UsuarioCreacion
         End If
-		arParams(10) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(10) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_UsuarioCreacion
+            arParams(10).Value = m_FechaModificacion
         End If
-		arParams(11) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(11) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_FechaModificacion
-        End If
-		arParams(12) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
-            arParams(12).Value = DBNull.Value
-        Else
-            arParams(12).Value = m_UsuarioModificacion
-        End If
-		arParams(13) = New SqlParameter("@objRutaID", SqlDbType.Int)		
-		If IsDBNull(m_objRutaID) Then
-            arParams(13).Value = DBNull.Value
-        Else
-            arParams(13).Value = m_objRutaID
-        End If
-		arParams(14) = New SqlParameter("@Aprobado", SqlDbType.Bit)		
-		If IsDBNull(m_Aprobado) Then
-            arParams(14).Value = DBNull.Value
-        Else
-            arParams(14).Value = m_Aprobado
+            arParams(11).Value = m_UsuarioModificacion
         End If
 	
 		Try

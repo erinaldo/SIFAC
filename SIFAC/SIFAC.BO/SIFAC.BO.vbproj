@@ -75,6 +75,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="radTecnico_CF.vb" />
+    <Compile Include="SccAbonoArqueoDetalle.vb" />
     <Compile Include="SccArqueoCaja.vb" />
     <Compile Include="SccCajas.vb" />
     <Compile Include="SccClientes.vb" />
@@ -95,6 +96,7 @@
     <Compile Include="SccReciboDetFactura.vb" />
     <Compile Include="SccReciboDetNC_CF.vb" />
     <Compile Include="SccReciboDetND_CF.vb" />
+    <Compile Include="SccRecuperacion.vb" />
     <Compile Include="SccSalidasEfectivo.vb" />
     <Compile Include="SccSalidasEfectivoArqueo.vb" />
     <Compile Include="SccTramiteLegal_CF.vb" />

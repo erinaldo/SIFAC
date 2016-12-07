@@ -16,7 +16,7 @@ Partial Public Class SccComisiones
 	Protected m_UsuarioCreacion As String = Nothing 
 	Protected m_FechaModificacion As Nullable(Of Date) 
 	Protected m_UsuarioModificacion As String = Nothing 
-	Protected m_objNotaDebitoID As Nullable(Of Integer) 
+	Protected m_objNotaCreditoID As Nullable(Of Integer) 
 	Protected m_Activa As Nullable(Of Boolean) 
 	Protected m_TotalRecuperado As Nullable(Of Decimal) 
 #End Region
@@ -122,12 +122,12 @@ Partial Public Class SccComisiones
 		End Set
     End Property
 	
-	Public Property objNotaDebitoID() As Nullable(Of Integer)
+	Public Property objNotaCreditoID() As Nullable(Of Integer)
         Get
-            Return (m_objNotaDebitoID)
+            Return (m_objNotaCreditoID)
         End Get
 		Set(ByVal Value As Nullable(Of Integer))					
-			m_objNotaDebitoID = Value
+			m_objNotaCreditoID = Value
 		End Set
     End Property
 	
@@ -211,10 +211,10 @@ Partial Public Class SccComisiones
 			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 50, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
-			cmdInsert.Parameters.Add("@objNotaDebitoID", SqlDbType.Int, 4, "objNotaDebitoID")
+			cmdInsert.Parameters.Add("@objNotaCreditoID", SqlDbType.Int, 4, "objNotaCreditoID")
 			cmdInsert.Parameters.Add("@Activa", SqlDbType.Bit, 1, "Activa")
 			cmdInsert.Parameters.Add("@TotalRecuperado", SqlDbType.Decimal, 9, "TotalRecuperado")
-			cmdInsert.CommandText = "INSERT INTO SccComisiones ( objCajaID, objEmpleadoID, Porcentaje, Fecha, Monto, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, objNotaDebitoID, Activa, TotalRecuperado) VALUES ( @objCajaID, @objEmpleadoID, @Porcentaje, @Fecha, @Monto, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @objNotaDebitoID, @Activa, @TotalRecuperado)"
+			cmdInsert.CommandText = "INSERT INTO SccComisiones ( objCajaID, objEmpleadoID, Porcentaje, Fecha, Monto, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, objNotaCreditoID, Activa, TotalRecuperado) VALUES ( @objCajaID, @objEmpleadoID, @Porcentaje, @Fecha, @Monto, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @objNotaCreditoID, @Activa, @TotalRecuperado)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@objCajaID", SqlDbType.Int, 4, "objCajaID")
@@ -226,11 +226,11 @@ Partial Public Class SccComisiones
 			cmdUpdate.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 50, "UsuarioCreacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
-			cmdUpdate.Parameters.Add("@objNotaDebitoID", SqlDbType.Int, 4, "objNotaDebitoID")
+			cmdUpdate.Parameters.Add("@objNotaCreditoID", SqlDbType.Int, 4, "objNotaCreditoID")
 			cmdUpdate.Parameters.Add("@Activa", SqlDbType.Bit, 1, "Activa")
 			cmdUpdate.Parameters.Add("@TotalRecuperado", SqlDbType.Decimal, 9, "TotalRecuperado")
 			cmdUpdate.Parameters.Add("@wSccComisionID", SqlDbType.Int, 4, "SccComisionID")
-			cmdUpdate.CommandText = "UPDATE SccComisiones SET objCajaID=@objCajaID, objEmpleadoID=@objEmpleadoID, Porcentaje=@Porcentaje, Fecha=@Fecha, Monto=@Monto, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, objNotaDebitoID=@objNotaDebitoID, Activa=@Activa, TotalRecuperado=@TotalRecuperado WHERE SccComisionID= @wSccComisionID"
+			cmdUpdate.CommandText = "UPDATE SccComisiones SET objCajaID=@objCajaID, objEmpleadoID=@objEmpleadoID, Porcentaje=@Porcentaje, Fecha=@Fecha, Monto=@Monto, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, objNotaCreditoID=@objNotaCreditoID, Activa=@Activa, TotalRecuperado=@TotalRecuperado WHERE SccComisionID= @wSccComisionID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -286,7 +286,7 @@ Partial Public Class SccComisiones
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
-				m_objNotaDebitoID = IIf(IsDBNull(dr("objNotaDebitoID")), Nothing, dr("objNotaDebitoID"))					
+				m_objNotaCreditoID = IIf(IsDBNull(dr("objNotaCreditoID")), Nothing, dr("objNotaCreditoID"))					
 				m_Activa = IIf(IsDBNull(dr("Activa")), Nothing, dr("Activa"))					
 				m_TotalRecuperado = IIf(IsDBNull(dr("TotalRecuperado")), Nothing, dr("TotalRecuperado"))					
 				Return True
@@ -332,7 +332,7 @@ Partial Public Class SccComisiones
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
-				m_objNotaDebitoID = IIf(IsDBNull(dr("objNotaDebitoID")), Nothing, dr("objNotaDebitoID"))					
+				m_objNotaCreditoID = IIf(IsDBNull(dr("objNotaCreditoID")), Nothing, dr("objNotaCreditoID"))					
 				m_Activa = IIf(IsDBNull(dr("Activa")), Nothing, dr("Activa"))					
 				m_TotalRecuperado = IIf(IsDBNull(dr("TotalRecuperado")), Nothing, dr("TotalRecuperado"))					
 				Return True
@@ -469,7 +469,7 @@ Partial Public Class SccComisiones
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaModificacion,"
 		sCommand &= "UsuarioModificacion,"
-		sCommand &= "objNotaDebitoID,"
+		sCommand &= "objNotaCreditoID,"
 		sCommand &= "Activa,"
 		sCommand &= "TotalRecuperado) values ("		
 		sCommand &= "@objCajaID,"
@@ -481,7 +481,7 @@ Partial Public Class SccComisiones
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaModificacion,"
 		sCommand &= "@UsuarioModificacion,"
-		sCommand &= "@objNotaDebitoID,"
+		sCommand &= "@objNotaCreditoID,"
 		sCommand &= "@Activa,"
 		sCommand &= "@TotalRecuperado)"		
 	
@@ -547,11 +547,11 @@ Partial Public Class SccComisiones
         Else
             arParams(9).Value = m_UsuarioModificacion
         End If
-		arParams(10) = New SqlParameter("@objNotaDebitoID", SqlDbType.Int)		
-		If IsDBNull(m_objNotaDebitoID) Then
+		arParams(10) = New SqlParameter("@objNotaCreditoID", SqlDbType.Int)		
+		If IsDBNull(m_objNotaCreditoID) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_objNotaDebitoID
+            arParams(10).Value = m_objNotaCreditoID
         End If
 		arParams(11) = New SqlParameter("@Activa", SqlDbType.Bit)		
 		If IsDBNull(m_Activa) Then
@@ -598,7 +598,7 @@ Partial Public Class SccComisiones
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
 		sCommand &= "FechaModificacion = @FechaModificacion,"
 		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
-		sCommand &= "objNotaDebitoID = @objNotaDebitoID,"
+		sCommand &= "objNotaCreditoID = @objNotaCreditoID,"
 		sCommand &= "Activa = @Activa,"
 		sCommand &= "TotalRecuperado = @TotalRecuperado"		
 		sCommand &= " where "	
@@ -665,11 +665,11 @@ Partial Public Class SccComisiones
         Else
             arParams(9).Value = m_UsuarioModificacion
         End If
-		arParams(10) = New SqlParameter("@objNotaDebitoID", SqlDbType.Int)		
-		If IsDBNull(m_objNotaDebitoID) Then
+		arParams(10) = New SqlParameter("@objNotaCreditoID", SqlDbType.Int)		
+		If IsDBNull(m_objNotaCreditoID) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_objNotaDebitoID
+            arParams(10).Value = m_objNotaCreditoID
         End If
 		arParams(11) = New SqlParameter("@Activa", SqlDbType.Bit)		
 		If IsDBNull(m_Activa) Then

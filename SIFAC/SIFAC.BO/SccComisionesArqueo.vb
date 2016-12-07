@@ -6,23 +6,23 @@ Imports System.Data.SqlTypes
 Partial Public Class SccComisionesArqueo		
 
 #Region " Variables Miembro " 
-	Protected m_ComisionesArqueoID As Integer 
+	Protected m_SccComisionesArqueoID As Integer 
 	Protected m_objArqueoID As Nullable(Of Integer) 
-	Protected m_Fecha As Nullable(Of Date) 
+	Protected m_objComisionID As Nullable(Of Integer) 
+	Protected m_Total As Nullable(Of Decimal) 
 	Protected m_FechaCreacion As Nullable(Of Date) 
 	Protected m_FechaModificacion As Nullable(Of Date) 
 	Protected m_UsuarioCreacion As String = Nothing 
 	Protected m_UsuarioModificacion As Byte() 
-	Protected m_Total As Nullable(Of Decimal) 
 #End Region
 
 #Region " Propiedades "
-	Public Property ComisionesArqueoID() As Integer
+	Public Property SccComisionesArqueoID() As Integer
         Get
-            Return (m_ComisionesArqueoID)
+            Return (m_SccComisionesArqueoID)
         End Get
 		Set(ByVal Value As Integer)					
-			m_ComisionesArqueoID = Value
+			m_SccComisionesArqueoID = Value
 		End Set
     End Property
 	
@@ -35,12 +35,21 @@ Partial Public Class SccComisionesArqueo
 		End Set
     End Property
 	
-	Public Property Fecha() As Nullable(Of Date)
+	Public Property objComisionID() As Nullable(Of Integer)
         Get
-            Return (m_Fecha)
+            Return (m_objComisionID)
         End Get
-		Set(ByVal Value As Nullable(Of Date))					
-			m_Fecha = Value
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_objComisionID = Value
+		End Set
+    End Property
+	
+	Public Property Total() As Nullable(Of Decimal)
+        Get
+            Return (m_Total)
+        End Get
+		Set(ByVal Value As Nullable(Of Decimal))					
+			m_Total = Value
 		End Set
     End Property
 	
@@ -85,22 +94,13 @@ Partial Public Class SccComisionesArqueo
 		End Set
     End Property
 	
-	Public Property Total() As Nullable(Of Decimal)
-        Get
-            Return (m_Total)
-        End Get
-		Set(ByVal Value As Nullable(Of Decimal))					
-			m_Total = Value
-		End Set
-    End Property
-	
 
 	Public Shared Function GetMaxLength(ProperyName as String) as Integer
 		Select Case ProperyName
-			Case "UsuarioCreacion"
-				Return	50
 			Case "Total"
 				Return	18
+			Case "UsuarioCreacion"
+				Return	50
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
 		End Select
@@ -133,29 +133,29 @@ Partial Public Class SccComisionesArqueo
 			cmdUpdate = New SqlCommand
 			cmdDelete = New SqlCommand
 			'CREACION DEL COMANDO DELETE
-			cmdDelete.Parameters.Add("@ComisionesArqueoID", SqlDbType.Int, 4, "ComisionesArqueoID" )
-			cmdDelete.CommandText = "DELETE FROM  SccComisionesArqueo WHERE ComisionesArqueoID= @ComisionesArqueoID" 	
+			cmdDelete.Parameters.Add("@SccComisionesArqueoID", SqlDbType.Int, 4, "SccComisionesArqueoID" )
+			cmdDelete.CommandText = "DELETE FROM  SccComisionesArqueo WHERE SccComisionesArqueoID= @SccComisionesArqueoID" 	
 
 			'CREACION DEL COMANDO INSERT
 			cmdInsert.Parameters.Add("@objArqueoID", SqlDbType.Int, 4, "objArqueoID")
-			cmdInsert.Parameters.Add("@Fecha", SqlDbType.DateTime, 8, "Fecha")
+			cmdInsert.Parameters.Add("@objComisionID", SqlDbType.Int, 4, "objComisionID")
+			cmdInsert.Parameters.Add("@Total", SqlDbType.Decimal, 9, "Total")
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 50, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.Binary, 50, "UsuarioModificacion")
-			cmdInsert.Parameters.Add("@Total", SqlDbType.Decimal, 9, "Total")
-			cmdInsert.CommandText = "INSERT INTO SccComisionesArqueo ( objArqueoID, Fecha, FechaCreacion, FechaModificacion, UsuarioCreacion, UsuarioModificacion, Total) VALUES ( @objArqueoID, @Fecha, @FechaCreacion, @FechaModificacion, @UsuarioCreacion, @UsuarioModificacion, @Total)"
+			cmdInsert.CommandText = "INSERT INTO SccComisionesArqueo ( objArqueoID, objComisionID, Total, FechaCreacion, FechaModificacion, UsuarioCreacion, UsuarioModificacion) VALUES ( @objArqueoID, @objComisionID, @Total, @FechaCreacion, @FechaModificacion, @UsuarioCreacion, @UsuarioModificacion)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@objArqueoID", SqlDbType.Int, 4, "objArqueoID")
-			cmdUpdate.Parameters.Add("@Fecha", SqlDbType.DateTime, 8, "Fecha")
+			cmdUpdate.Parameters.Add("@objComisionID", SqlDbType.Int, 4, "objComisionID")
+			cmdUpdate.Parameters.Add("@Total", SqlDbType.Decimal, 9, "Total")
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 50, "UsuarioCreacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.Binary, 50, "UsuarioModificacion")
-			cmdUpdate.Parameters.Add("@Total", SqlDbType.Decimal, 9, "Total")
-			cmdUpdate.Parameters.Add("@wComisionesArqueoID", SqlDbType.Int, 4, "ComisionesArqueoID")
-			cmdUpdate.CommandText = "UPDATE SccComisionesArqueo SET objArqueoID=@objArqueoID, Fecha=@Fecha, FechaCreacion=@FechaCreacion, FechaModificacion=@FechaModificacion, UsuarioCreacion=@UsuarioCreacion, UsuarioModificacion=@UsuarioModificacion, Total=@Total WHERE ComisionesArqueoID= @wComisionesArqueoID"
+			cmdUpdate.Parameters.Add("@wSccComisionesArqueoID", SqlDbType.Int, 4, "SccComisionesArqueoID")
+			cmdUpdate.CommandText = "UPDATE SccComisionesArqueo SET objArqueoID=@objArqueoID, objComisionID=@objComisionID, Total=@Total, FechaCreacion=@FechaCreacion, FechaModificacion=@FechaModificacion, UsuarioCreacion=@UsuarioCreacion, UsuarioModificacion=@UsuarioModificacion WHERE SccComisionesArqueoID= @wSccComisionesArqueoID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -189,8 +189,8 @@ Partial Public Class SccComisionesArqueo
     ''' Devuelve de la base de datos un objeto SccComisionesArqueo
     ''' </summary>    
 	''' <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>    	
-    Public Function Retrieve(Byval p_ComisionesArqueoID as Integer, optional Byval pTransac as TransactionManager = Nothing) As Boolean
-        Dim sSQL As String = "select * from SccComisionesArqueo where " & " ComisionesArqueoID = " & p_ComisionesArqueoID		
+    Public Function Retrieve(Byval p_SccComisionesArqueoID as Integer, optional Byval pTransac as TransactionManager = Nothing) As Boolean
+        Dim sSQL As String = "select * from SccComisionesArqueo where " & " SccComisionesArqueoID = " & p_SccComisionesArqueoID		
 		Dim dr As SqlDataReader = Nothing	
 		
         Try
@@ -201,14 +201,14 @@ Partial Public Class SccComisionesArqueo
             End If
 			
 			If dr.Read() Then		
-				m_ComisionesArqueoID = dr("ComisionesArqueoID")
+				m_SccComisionesArqueoID = dr("SccComisionesArqueoID")
 				m_objArqueoID = IIf(IsDBNull(dr("objArqueoID")), Nothing, dr("objArqueoID"))					
-				m_Fecha = IIf(IsDBNull(dr("Fecha")), Nothing, dr("Fecha"))					
+				m_objComisionID = IIf(IsDBNull(dr("objComisionID")), Nothing, dr("objComisionID"))					
+				m_Total = IIf(IsDBNull(dr("Total")), Nothing, dr("Total"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
-				m_Total = IIf(IsDBNull(dr("Total")), Nothing, dr("Total"))					
 				Return True
 			Else
 				Return False
@@ -242,14 +242,14 @@ Partial Public Class SccComisionesArqueo
             End If
 				
 			If dr.Read() Then
-				m_ComisionesArqueoID = dr("ComisionesArqueoID")
+				m_SccComisionesArqueoID = dr("SccComisionesArqueoID")
 				m_objArqueoID = IIf(IsDBNull(dr("objArqueoID")), Nothing, dr("objArqueoID"))					
-				m_Fecha = IIf(IsDBNull(dr("Fecha")), Nothing, dr("Fecha"))					
+				m_objComisionID = IIf(IsDBNull(dr("objComisionID")), Nothing, dr("objComisionID"))					
+				m_Total = IIf(IsDBNull(dr("Total")), Nothing, dr("Total"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
-				m_Total = IIf(IsDBNull(dr("Total")), Nothing, dr("Total"))					
 				Return True
 			Else
 				Return False
@@ -376,27 +376,27 @@ Partial Public Class SccComisionesArqueo
 	Public Sub Insert(Optional ByRef pTransac As TransactionManager = Nothing)
 		Dim sCommand As String = "insert into SccComisionesArqueo("
 		sCommand &= "objArqueoID,"
-		sCommand &= "Fecha,"
+		sCommand &= "objComisionID,"
+		sCommand &= "Total,"
 		sCommand &= "FechaCreacion,"
 		sCommand &= "FechaModificacion,"
 		sCommand &= "UsuarioCreacion,"
-		sCommand &= "UsuarioModificacion,"
-		sCommand &= "Total) values ("		
+		sCommand &= "UsuarioModificacion) values ("		
 		sCommand &= "@objArqueoID,"
-		sCommand &= "@Fecha,"
+		sCommand &= "@objComisionID,"
+		sCommand &= "@Total,"
 		sCommand &= "@FechaCreacion,"
 		sCommand &= "@FechaModificacion,"
 		sCommand &= "@UsuarioCreacion,"
-		sCommand &= "@UsuarioModificacion,"
-		sCommand &= "@Total)"		
+		sCommand &= "@UsuarioModificacion)"		
 	
 		sCommand &= " select "
-		sCommand &= "@ComisionesArqueoID = ComisionesArqueoID from SccComisionesArqueo where "		
-		sCommand &= "ComisionesArqueoID = SCOPE_IDENTITY()"
+		sCommand &= "@SccComisionesArqueoID = SccComisionesArqueoID from SccComisionesArqueo where "		
+		sCommand &= "SccComisionesArqueoID = SCOPE_IDENTITY()"
 		
 		
 		Dim arParams(7) As SqlParameter
-		arParams(0) = New SqlParameter("@ComisionesArqueoID", SqlDbType.Int)		
+		arParams(0) = New SqlParameter("@SccComisionesArqueoID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@objArqueoID", SqlDbType.Int)		
 		If IsDBNull(m_objArqueoID) Then
@@ -404,41 +404,41 @@ Partial Public Class SccComisionesArqueo
         Else
             arParams(1).Value = m_objArqueoID
         End If
-		arParams(2) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
-		If IsDBNull(m_Fecha) Then
+		arParams(2) = New SqlParameter("@objComisionID", SqlDbType.Int)		
+		If IsDBNull(m_objComisionID) Then
             arParams(2).Value = DBNull.Value
         Else
-            arParams(2).Value = m_Fecha
+            arParams(2).Value = m_objComisionID
         End If
-		arParams(3) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(3) = New SqlParameter("@Total", SqlDbType.Decimal)		
+		If IsDBNull(m_Total) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_FechaCreacion
+            arParams(3).Value = m_Total
         End If
-		arParams(4) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(4) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_FechaModificacion
+            arParams(4).Value = m_FechaCreacion
         End If
-		arParams(5) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(5) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_UsuarioCreacion
+            arParams(5).Value = m_FechaModificacion
         End If
-		arParams(6) = New SqlParameter("@UsuarioModificacion", SqlDbType.Binary)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioModificacion
+            arParams(6).Value = m_UsuarioCreacion
         End If
-		arParams(7) = New SqlParameter("@Total", SqlDbType.Decimal)		
-		If IsDBNull(m_Total) Then
+		arParams(7) = New SqlParameter("@UsuarioModificacion", SqlDbType.Binary)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_Total
+            arParams(7).Value = m_UsuarioModificacion
         End If
 	
 		Try
@@ -448,7 +448,7 @@ Partial Public Class SccComisionesArqueo
 				SqlHelper.ExecuteNonQuery(pTransac.Transaction, CommandType.Text, sCommand, arParams)        
 			End If					
 			
-			m_ComisionesArqueoID = arParams(0).Value
+			m_SccComisionesArqueoID = arParams(0).Value
         Catch ex As Exception
             Throw        
         End Try
@@ -465,21 +465,21 @@ Partial Public Class SccComisionesArqueo
 	Public Sub Update(Optional ByRef pTransac As TransactionManager = Nothing)        		
 		Dim sCommand As String = "update SccComisionesArqueo set "		
 		sCommand &= "objArqueoID = @objArqueoID,"
-		sCommand &= "Fecha = @Fecha,"
+		sCommand &= "objComisionID = @objComisionID,"
+		sCommand &= "Total = @Total,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
 		sCommand &= "FechaModificacion = @FechaModificacion,"
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
-		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
-		sCommand &= "Total = @Total"		
+		sCommand &= "UsuarioModificacion = @UsuarioModificacion"		
 		sCommand &= " where "	
-		sCommand &= "ComisionesArqueoID = @ComisionesArqueoID"					
+		sCommand &= "SccComisionesArqueoID = @SccComisionesArqueoID"					
 		
 		Dim arParams(7) As SqlParameter
-		arParams(0) = New SqlParameter("@ComisionesArqueoID", SqlDbType.Int)		
-		If IsDBNull(m_ComisionesArqueoID) Then
+		arParams(0) = New SqlParameter("@SccComisionesArqueoID", SqlDbType.Int)		
+		If IsDBNull(m_SccComisionesArqueoID) Then
             arParams(0).Value = DBNull.Value
         Else
-            arParams(0).Value = m_ComisionesArqueoID
+            arParams(0).Value = m_SccComisionesArqueoID
         End If
 		arParams(1) = New SqlParameter("@objArqueoID", SqlDbType.Int)		
 		If IsDBNull(m_objArqueoID) Then
@@ -487,41 +487,41 @@ Partial Public Class SccComisionesArqueo
         Else
             arParams(1).Value = m_objArqueoID
         End If
-		arParams(2) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
-		If IsDBNull(m_Fecha) Then
+		arParams(2) = New SqlParameter("@objComisionID", SqlDbType.Int)		
+		If IsDBNull(m_objComisionID) Then
             arParams(2).Value = DBNull.Value
         Else
-            arParams(2).Value = m_Fecha
+            arParams(2).Value = m_objComisionID
         End If
-		arParams(3) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(3) = New SqlParameter("@Total", SqlDbType.Decimal)		
+		If IsDBNull(m_Total) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_FechaCreacion
+            arParams(3).Value = m_Total
         End If
-		arParams(4) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(4) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_FechaModificacion
+            arParams(4).Value = m_FechaCreacion
         End If
-		arParams(5) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(5) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_UsuarioCreacion
+            arParams(5).Value = m_FechaModificacion
         End If
-		arParams(6) = New SqlParameter("@UsuarioModificacion", SqlDbType.Binary)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(6) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_UsuarioModificacion
+            arParams(6).Value = m_UsuarioCreacion
         End If
-		arParams(7) = New SqlParameter("@Total", SqlDbType.Decimal)		
-		If IsDBNull(m_Total) Then
+		arParams(7) = New SqlParameter("@UsuarioModificacion", SqlDbType.Binary)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_Total
+            arParams(7).Value = m_UsuarioModificacion
         End If
 	
 		Try
@@ -545,7 +545,7 @@ Partial Public Class SccComisionesArqueo
     ''' </summary>    
     Public Sub Delete(optional Byval pTransac as TransactionManager = Nothing)
 		Try
-			Dim sSQL As String = "delete from SccComisionesArqueo where " & " ComisionesArqueoID = " & m_ComisionesArqueoID
+			Dim sSQL As String = "delete from SccComisionesArqueo where " & " SccComisionesArqueoID = " & m_SccComisionesArqueoID
 			If pTransac Is Nothing Then
 				SqlHelper.ExecuteNonQuery(CommandType.Text, sSQL)
 			Else
@@ -559,9 +559,9 @@ Partial Public Class SccComisionesArqueo
     ''' <summary>
     ''' Borra un objeto SccComisionesArqueo de la base de datos
     ''' </summary>    
-    Public Shared Sub Delete(Byval p_ComisionesArqueoID as Integer, optional Byval pTransac as TransactionManager = Nothing)
+    Public Shared Sub Delete(Byval p_SccComisionesArqueoID as Integer, optional Byval pTransac as TransactionManager = Nothing)
 		Try
-			Dim sSQL As String = "delete from SccComisionesArqueo where " & " ComisionesArqueoID = " & p_ComisionesArqueoID
+			Dim sSQL As String = "delete from SccComisionesArqueo where " & " SccComisionesArqueoID = " & p_SccComisionesArqueoID
 			If pTransac Is Nothing Then
 				SqlHelper.ExecuteNonQuery(CommandType.Text, sSQL)
 			Else
