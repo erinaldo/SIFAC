@@ -20,17 +20,6 @@ Public Class frmSccEditNotaDebito
     Dim m_TypeGui As Integer
     Dim m_IDNotaDebito As Integer
     Dim DtFacturas As New DataTable
-    Dim intComisionID As Integer
-    Dim StrTipo As String
-
-    Property IDComisionID() As Integer
-        Get
-            IDComisionID = Me.intComisionID
-        End Get
-        Set(ByVal value As Integer)
-            Me.intComisionID = value
-        End Set
-    End Property
 
     Property IDNotaDebito() As Integer
         Get
@@ -69,32 +58,7 @@ Public Class frmSccEditNotaDebito
         End Set
     End Property
 
-    Property Tipo() As String
-        Get
-            Tipo = Me.StrTipo
-        End Get
-        Set(ByVal value As String)
-            Me.StrTipo = value
-        End Set
-    End Property
 
-#Region "Cargar Empleados"
-
-    '' Descripción:        Procedimiento encargado de cargar el combo de jefe de tienda
-    Public Sub CargarEmpleado()
-        Try
-            DtEmpleado = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
-
-            cmbEmpleado.DataSource = DtEmpleado
-            cmbEmpleado.ValueMember = "SrhEmpleadoID"
-            cmbEmpleado.DisplayMember = "NombreCompleto"
-
-            cmbEmpleado.SelectedIndex = -1
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
-    End Sub
-#End Region
 
 #Region "Cargar Cajas"
 
@@ -162,28 +126,21 @@ Public Class frmSccEditNotaDebito
     Private Function ValidarDatos() As Boolean
         Dim obj As Object
         Try
-            If Tipo <> "Comisiones" And Tipo <> "Salida" Then
-                If Me.grdFacturas.RowCount = 0 Then
-                    Return False
-                    Exit Function
-                End If
-
-
-                If Not Me.DtFacturas Is Nothing Then
-                    obj = Me.DtFacturas.Compute("COUNT(Seleccion)", "Seleccion=1")
-                    If Not IsDBNull(obj) Then
-                        If obj = 0 Then
-                            MsgBox("Necesita Seleccionar una Factura", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                            Return False
-                            Exit Function
-                        End If
+            If Not Me.DtFacturas Is Nothing Then
+                obj = Me.DtFacturas.Compute("COUNT(Seleccion)", "Seleccion=1")
+                If Not IsDBNull(obj) Then
+                    If obj = 0 Then
+                        MsgBox("Necesita Seleccionar una Factura", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                        Return False
+                        Exit Function
                     End If
-                Else
-                    MsgBox("No hay facturas cargadas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                    Return False
-                    Exit Function
                 End If
+            Else
+                MsgBox("No hay facturas cargadas", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                Return False
+                Exit Function
             End If
+
 
             If IsDBNull(Me.dtpFecha.Value) Then
                 Me.ErrorProv.SetError(Me.dtpFecha, "Campo Obligatorio")
@@ -239,27 +196,13 @@ Public Class frmSccEditNotaDebito
                 objNC.Numero = SccNotaDebito.RetrieveDT(, , "(ISNULL(MAX(Numero),0) + 1) as Maximo", T).DefaultView.Item(0)("Maximo")
                 objNC.UsuarioCreacion = clsProyecto.Conexion.Usuario
 
-                If Tipo <> "Comisiones" And Tipo <> "Salida" Then
-                    objNC.objSccCuentaID = Me.IdCuenta
-                    DtDatos = Me.DtFacturas.Select("Seleccion = 1")
-                    objNC.objFacturaID = DtDatos(0)("SfaFacturaID")
-                End If
+                objNC.objSccCuentaID = Me.IdCuenta
+                DtDatos = Me.DtFacturas.Select("Seleccion = 1")
+                objNC.objFacturaID = DtDatos(0)("SfaFacturaID")
                
                 objNC.objCajaID = cmbCajas.SelectedValue
-                If IDComisionID <> 0 And IDComisionID.ToString.Trim.Length <> 0 Then
-                    objNC.objEmpleadoID = cmbEmpleado.SelectedValue
-                End If
                 objNC.Insert(T)
                 Me.IDNotaDebito = objNC.SccNotaDebitoID
-
-                If Tipo = "Comisiones" Then
-                    Dim objComision As New SccComisiones
-                    objComision.Retrieve(IDComisionID)
-                    objComision.objNotaDebitoID = IDNotaDebito
-                    objComision.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                    objComision.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                    objComision.Update(T)
-                End If
 
                 T.CommitTran()
                 MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
@@ -292,7 +235,6 @@ Public Class frmSccEditNotaDebito
         Try
             Me.CargarConceptoNC()
             Me.CargarEstado()
-            CargarEmpleado()
             CargarCajas()
 
             If Me.TypeGui > 0 Then
@@ -305,7 +247,6 @@ Public Class frmSccEditNotaDebito
                     Me.cmbConcepto.Enabled = False
                     Me.numMonto.Enabled = False
                     cmbCajas.Enabled = False
-                    cmbEmpleado.Enabled = False
                     Me.cmdGuardar.Enabled = False
                 End If
             Else
@@ -313,46 +254,7 @@ Public Class frmSccEditNotaDebito
 
             End If
 
-            If IDComisionID <> 0 And IDComisionID.ToString.Trim.Length > 0 Then
-                Dim objComision As New SccComisiones
-                objComision.Retrieve(IDComisionID)
-                Me.Text = "Pagos de comisiones"
-                Me.txtCliente.Enabled = False
-                Me.cmbEstado.Enabled = False
-                Me.cmbConcepto.Enabled = False
-                Me.txtNumCuenta.Enabled = False
-                Me.cmdExpediente.Enabled = False
-                Me.grdFacturas.Enabled = False
-                Me.txtDescripcion.Text = "Pago de comision a " & cmbEmpleado.Text
-
-                Me.cmbEstado.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOND", "PAGADA")
-                Me.cmbConcepto.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("CONCEPTOND", "PAGOCOMISION")
-                Me.numMonto.Value = objComision.Monto
-                Me.cmbEmpleado.SelectedValue = objComision.objEmpleadoID
-                Me.cmbCajas.SelectedValue = ClsCatalogos.GetStbCajaID(frmPrincipal.gblCaja)
-                Me.dtpFecha.Value = objComision.Fecha
-            End If
-
-            'If Tipo = "Comisiones" Then
-            '    Me.cmbEmpleado.Visible = True
-            'Else
-            '    Me.cmbEmpleado.Visible = False
-            'End If
-
-            If Tipo = "Salida" Then
-                Me.Text = "Salida de Efectivo"
-                Me.cmbEmpleado.Enabled = False
-                Me.cmbEstado.Enabled = False
-                Me.cmbCajas.Enabled = False
-                Me.txtCliente.Enabled = False
-                Me.cmbEstado.Enabled = False
-                Me.cmbConcepto.Enabled = False
-                Me.txtNumCuenta.Enabled = False
-                Me.cmdExpediente.Enabled = False
-                Me.grdFacturas.Enabled = False
-                Me.cmbConcepto.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("CONCEPTOND", "SALIDAEFEC")
-            End If
-
+           
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -419,10 +321,6 @@ Public Class frmSccEditNotaDebito
 
                 If Not IsDBNull(dtDatos.DefaultView.Item(0)("objCajaID")) Then
                     Me.cmbCajas.SelectedValue = dtDatos.DefaultView.Item(0)("objCajaID")
-                End If
-
-                If Not IsDBNull(dtDatos.DefaultView.Item(0)("objEmpleadoID")) Then
-                    Me.cmbEmpleado.SelectedValue = dtDatos.DefaultView.Item(0)("objEmpleadoID")
                 End If
 
                 Me.numMonto.Value = dtDatos.DefaultView.Item(0)("Monto")

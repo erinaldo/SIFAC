@@ -19,7 +19,7 @@ Public Class frmSccArquo
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
         Try
-            dtArqueos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ArqueoID, Fecha, EntradaEfectivo, SalidaEfectivo, Faltante, AprobadoPor, Cajero,  Aprobado", "vwSccArqueoCaja", "1=1"))
+            dtArqueos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ArqueoID, Fecha, EntradaEfectivo, SalidaEfectivo, Faltante, AprobadoPor, Cajero", "vwSccArqueoCaja", "1=1"))
             dtArqueos.DefaultView.Sort = "Fecha"
             Me.grdArqueo.DataSource = dtArqueos
             Me.grdArqueo.Text = "Arqueos (" & Me.dtArqueos.Rows.Count & ")"
@@ -31,7 +31,6 @@ Public Class frmSccArquo
 
     Public Sub AplicarSeguridad()
         objseg = New SsgSeguridad
-        Dim FilaActual As Integer
         Try
             objseg.ServicioUsuario = "frmSccArqueoCaja"
             objseg.Usuario = clsProyecto.Conexion.Usuario
@@ -42,25 +41,25 @@ Public Class frmSccArquo
 
             cmdAgregar.Enabled = boolAgregar
             cmdConsultar.Enabled = boolConsultar And dtArqueos.Rows.Count > 0
-            cmdAprobar.Enabled = boolAprobar And dtArqueos.Rows.Count > 0
+            cmdAprobar.Enabled = boolAprobar ''And dtArqueos.Rows.Count > 0
             cmdImprimir.Enabled = boolImprimir And dtArqueos.Rows.Count > 0
 
-            If dtArqueos.Rows.Count > 0 Then
+            'If dtArqueos.Rows.Count > 0 Then
 
-                Dim selectedRow As Integer() = grdArqueoabla.GetSelectedRows()
-                FilaActual = Me.grdArqueoabla.GetDataSourceRowIndex(selectedRow(0))
+            '    Dim selectedRow As Integer() = grdArqueoabla.GetSelectedRows()
+            '    FilaActual = Me.grdArqueoabla.GetDataSourceRowIndex(selectedRow(0))
 
-                If Me.dtArqueos.DefaultView.Item(FilaActual)("Aprobado").ToString.Trim.Length <> 0 Then
+            '    If Me.dtArqueos.DefaultView.Item(FilaActual)("Aprobado").ToString.Trim.Length <> 0 Then
 
-                    If Me.dtArqueos.DefaultView.Item(FilaActual)("Aprobado") Then
-                        Me.cmdAprobar.Enabled = False
-                    Else
-                        Me.cmdAprobar.Enabled = True
-                    End If
+            '        If Me.dtArqueos.DefaultView.Item(FilaActual)("Aprobado") Then
+            '            Me.cmdAprobar.Enabled = False
+            '        Else
+            '            Me.cmdAprobar.Enabled = True
+            '        End If
 
-                End If
+            '    End If
 
-            End If
+            'End If
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -95,18 +94,21 @@ Public Class frmSccArquo
 
     Private Sub Abprobar()
         Dim aprobararqueo As New frmSccConsultarArqueo
-        Dim FilaActual As Integer
-
+        ''  Dim FilaActual As Integer
+        Dim dtArqueoAprobado As New DataTable
         Try
             Try
-                Dim selectedRow As Integer() = grdArqueoabla.GetSelectedRows()
-                FilaActual = Me.grdArqueoabla.GetDataSourceRowIndex(selectedRow(0))
-                aprobararqueo.ArqueoID = Me.dtArqueos.DefaultView.Item(FilaActual)("ArqueoID")
-                aprobararqueo.TypeGui = 1
-                If aprobararqueo.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    CargarGrid()
-                    AplicarSeguridad()
+                dtArqueoAprobado = SccArqueoCaja.RetrieveDT("convert(varchar(10),Fecha,112)='" & Date.Now.ToString("yyyyMMdd") & "'")
+                If dtArqueoAprobado.Rows.Count > 0 Then
+                    MsgBox("Ya se realizo el cierre de caja del dia en curso.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                Else
+                    aprobararqueo.TypeGui = 1
+                    If aprobararqueo.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                        CargarGrid()
+                        AplicarSeguridad()
+                    End If
                 End If
+               
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
@@ -154,22 +156,26 @@ Public Class frmSccArquo
     End Sub
 
     Private Sub grdArqueoabla_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles grdArqueoabla.FocusedRowChanged
-        Dim FilaActual As Integer
-        Try
-            Dim selectedRow As Integer() = grdArqueoabla.GetSelectedRows()
-            FilaActual = Me.grdArqueoabla.GetDataSourceRowIndex(selectedRow(0))
+        'Dim FilaActual As Integer
+        'Try
+        '    Dim selectedRow As Integer() = grdArqueoabla.GetSelectedRows()
+        '    FilaActual = Me.grdArqueoabla.GetDataSourceRowIndex(selectedRow(0))
 
-            If Me.dtArqueos.DefaultView.Item(FilaActual)("Aprobado").ToString.Trim.Length <> 0 Then
+        '    If Me.dtArqueos.DefaultView.Item(FilaActual)("Aprobado").ToString.Trim.Length <> 0 Then
 
-                If Me.dtArqueos.DefaultView.Item(FilaActual)("Aprobado") Then
-                    Me.cmdAprobar.Enabled = False
-                Else
-                    Me.cmdAprobar.Enabled = True
-                End If
+        '        If Me.dtArqueos.DefaultView.Item(FilaActual)("Aprobado") Then
+        '            Me.cmdAprobar.Enabled = False
+        '        Else
+        '            Me.cmdAprobar.Enabled = True
+        '        End If
 
-            End If
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
+        '    End If
+        'Catch ex As Exception
+        '    clsError.CaptarError(ex)
+        'End Try
+    End Sub
+
+    Private Sub cmdConsultar_Click(sender As Object, e As EventArgs) Handles cmdConsultar.Click
+        Consultar()
     End Sub
 End Class

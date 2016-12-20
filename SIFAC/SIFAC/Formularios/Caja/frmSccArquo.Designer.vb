@@ -32,10 +32,9 @@ Partial Class frmSccArquo
         Me.colCajero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSalidaEfectivo = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFaltante = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colAprobado = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.colAprobadoPor = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.tstND = New System.Windows.Forms.ToolStrip()
         Me.cmdAgregar = New System.Windows.Forms.ToolStripButton()
         Me.cmdAprobar = New System.Windows.Forms.ToolStripButton()
@@ -50,8 +49,8 @@ Partial Class frmSccArquo
         CType(Me.grdArqueoabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tstND.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -70,7 +69,7 @@ Partial Class frmSccArquo
         '
         'grdArqueoabla
         '
-        Me.grdArqueoabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colEntradaEfectivo, Me.colCajero, Me.colSalidaEfectivo, Me.colFaltante, Me.colAprobado, Me.colAprobadoPor})
+        Me.grdArqueoabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colFecha, Me.colEntradaEfectivo, Me.colCajero, Me.colSalidaEfectivo, Me.colFaltante, Me.colAprobadoPor})
         Me.grdArqueoabla.GridControl = Me.grdArqueo
         Me.grdArqueoabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdArqueoabla.Name = "grdArqueoabla"
@@ -144,23 +143,6 @@ Partial Class frmSccArquo
         Me.colFaltante.VisibleIndex = 4
         Me.colFaltante.Width = 115
         '
-        'colAprobado
-        '
-        Me.colAprobado.Caption = "Aprobado"
-        Me.colAprobado.ColumnEdit = Me.RepositoryItemCheckEdit2
-        Me.colAprobado.FieldName = "Aprobado"
-        Me.colAprobado.Name = "colAprobado"
-        Me.colAprobado.OptionsColumn.AllowEdit = False
-        Me.colAprobado.Visible = True
-        Me.colAprobado.VisibleIndex = 5
-        Me.colAprobado.Width = 154
-        '
-        'RepositoryItemCheckEdit2
-        '
-        Me.RepositoryItemCheckEdit2.AutoHeight = False
-        Me.RepositoryItemCheckEdit2.Caption = "Check"
-        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
-        '
         'colAprobadoPor
         '
         Me.colAprobadoPor.Caption = "Aprobado Por"
@@ -168,7 +150,7 @@ Partial Class frmSccArquo
         Me.colAprobadoPor.Name = "colAprobadoPor"
         Me.colAprobadoPor.OptionsColumn.AllowEdit = False
         Me.colAprobadoPor.Visible = True
-        Me.colAprobadoPor.VisibleIndex = 6
+        Me.colAprobadoPor.VisibleIndex = 5
         Me.colAprobadoPor.Width = 98
         '
         'RepositoryItemCheckEdit1
@@ -176,6 +158,12 @@ Partial Class frmSccArquo
         Me.RepositoryItemCheckEdit1.AutoHeight = False
         Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
+        '
+        'RepositoryItemCheckEdit2
+        '
+        Me.RepositoryItemCheckEdit2.AutoHeight = False
+        Me.RepositoryItemCheckEdit2.Caption = "Check"
+        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
         '
         'tstND
         '
@@ -274,8 +262,8 @@ Partial Class frmSccArquo
         CType(Me.grdArqueoabla, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tstND.ResumeLayout(False)
         Me.tstND.PerformLayout()
         Me.ResumeLayout(False)
@@ -290,7 +278,6 @@ Partial Class frmSccArquo
     Friend WithEvents colEntradaEfectivo As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCajero As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colFaltante As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colAprobado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents tstND As System.Windows.Forms.ToolStrip
     Friend WithEvents cmdAgregar As System.Windows.Forms.ToolStripButton

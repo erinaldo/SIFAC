@@ -48,20 +48,22 @@ Public Class frmSccComisiones
             cmdPagar.Enabled = boolPagar And dComisiones.Rows.Count > 0
             cmdAnular.Enabled = boolAnular And dComisiones.Rows.Count > 0
 
-            Dim selectedRow As Integer() = grdComisionesTabla.GetSelectedRows()
-            FilaActual = Me.grdComisionesTabla.GetDataSourceRowIndex(selectedRow(0))
+            If dComisiones.Rows.Count > 0 Then
+                Dim selectedRow As Integer() = grdComisionesTabla.GetSelectedRows()
 
-            If Me.dComisiones.DefaultView.Item(FilaActual)("EsNotaDebito").ToString.Trim.Length <> 0 Then
+                FilaActual = Me.grdComisionesTabla.GetDataSourceRowIndex(selectedRow(0))
 
-                If Me.dComisiones.DefaultView.Item(FilaActual)("EsNotaDebito") <> 0 Then
+                If Me.dComisiones.DefaultView.Item(FilaActual)("EsNotaDebito").ToString.Trim.Length <> 0 Then
 
-                    Me.cmdAnular.Enabled = False
-                    Me.cmdEditar.Enabled = False
-                    Me.cmdPagar.Enabled = False
-                Else
-                    Me.cmdAnular.Enabled = True
-                    Me.cmdEditar.Enabled = True
-                    Me.cmdPagar.Enabled = True
+                    If Me.dComisiones.DefaultView.Item(FilaActual)("EsNotaDebito") <> 0 Then
+                        Me.cmdAnular.Enabled = False
+                        Me.cmdEditar.Enabled = False
+                        Me.cmdPagar.Enabled = False
+                    Else
+                        Me.cmdAnular.Enabled = True
+                        Me.cmdEditar.Enabled = True
+                        Me.cmdPagar.Enabled = True
+                    End If
                 End If
 
             End If
@@ -104,7 +106,7 @@ Public Class frmSccComisiones
 
     Private Sub Consultar()
         Dim ConsultarComision As New frmSccComisionesEdit
-        Dim ConsultarNotaDebito As New frmSccEditNotaDebito
+        Dim ConsultarNotaDebito As New frmSccEditNotaCredito
         Dim FilaActual As Integer
         Try
             Try
@@ -119,7 +121,7 @@ Public Class frmSccComisiones
                 Else
                     ConsultarNotaDebito.TypeGui = 2
                     ConsultarNotaDebito.Tipo = "Comisiones"
-                    ConsultarNotaDebito.IDNotaDebito = Me.dComisiones.DefaultView.Item(FilaActual)("Numero")
+                    ConsultarNotaDebito.IDNotaCredito = Me.dComisiones.DefaultView.Item(FilaActual)("Numero")
                     ConsultarNotaDebito.ShowDialog(Me)
                 End If
             Catch ex As Exception
@@ -131,9 +133,9 @@ Public Class frmSccComisiones
     End Sub
 
     Private Sub Pagar()
-        Dim ConsultarNotaDebito As New frmSccEditNotaDebito
+        Dim ConsultarNotaDebito As New frmSccEditNotaCredito
         Dim FilaActual As Integer
-        Dim str As String
+
         Try
             Try
                 Dim selectedRow As Integer() = grdComisionesTabla.GetSelectedRows()

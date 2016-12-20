@@ -455,9 +455,9 @@ Public Class frmPrincipal
     Private Sub CargarAyuda()
         Dim EjecutarProceso As Process
         Try
-            EjecutarProceso = New Process
-            EjecutarProceso.StartInfo.FileName = My.Application.Info.DirectoryPath & "\prjSCCUMHELP_Help"
-            EjecutarProceso.Start()
+            'EjecutarProceso = New Process
+            'EjecutarProceso.StartInfo.FileName = My.Application.Info.DirectoryPath & "\prjSCCUMHELP_Help"
+            'EjecutarProceso.Start()
 
         Catch ex As Win32Exception
             Select Case ex.NativeErrorCode

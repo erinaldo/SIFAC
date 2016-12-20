@@ -37,13 +37,16 @@ Partial Class frmSccEditNotaCredito
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.GrpExpediente = New System.Windows.Forms.GroupBox()
+        Me.cmbEmpleado = New System.Windows.Forms.ComboBox()
         Me.cmdConsultar = New System.Windows.Forms.Button()
         Me.cmdExpediente = New System.Windows.Forms.Button()
         Me.txtCliente = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblCliente = New System.Windows.Forms.Label()
         Me.txtNumCuenta = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmbCajas = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -89,7 +92,7 @@ Partial Class frmSccEditNotaCredito
         Me.GroupBox1.Controls.Add(Me.dtpFecha)
         Me.GroupBox1.Controls.Add(Me.lblFecha)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(19, 93)
+        Me.GroupBox1.Location = New System.Drawing.Point(19, 121)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(379, 245)
         Me.GroupBox1.TabIndex = 0
@@ -290,19 +293,29 @@ Partial Class frmSccEditNotaCredito
         '
         'GrpExpediente
         '
+        Me.GrpExpediente.Controls.Add(Me.cmbEmpleado)
         Me.GrpExpediente.Controls.Add(Me.cmdConsultar)
         Me.GrpExpediente.Controls.Add(Me.cmdExpediente)
         Me.GrpExpediente.Controls.Add(Me.txtCliente)
-        Me.GrpExpediente.Controls.Add(Me.Label11)
+        Me.GrpExpediente.Controls.Add(Me.lblCliente)
         Me.GrpExpediente.Controls.Add(Me.txtNumCuenta)
         Me.GrpExpediente.Controls.Add(Me.Label12)
         Me.GrpExpediente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GrpExpediente.Location = New System.Drawing.Point(20, 12)
+        Me.GrpExpediente.Location = New System.Drawing.Point(20, 40)
         Me.GrpExpediente.Name = "GrpExpediente"
         Me.GrpExpediente.Size = New System.Drawing.Size(380, 75)
         Me.GrpExpediente.TabIndex = 20
         Me.GrpExpediente.TabStop = False
-        Me.GrpExpediente.Text = "Datos Expediente"
+        Me.GrpExpediente.Text = "Datos "
+        '
+        'cmbEmpleado
+        '
+        Me.cmbEmpleado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbEmpleado.FormattingEnabled = True
+        Me.cmbEmpleado.Location = New System.Drawing.Point(86, 44)
+        Me.cmbEmpleado.Name = "cmbEmpleado"
+        Me.cmbEmpleado.Size = New System.Drawing.Size(279, 21)
+        Me.cmbEmpleado.TabIndex = 132
         '
         'cmdConsultar
         '
@@ -331,15 +344,15 @@ Partial Class frmSccEditNotaCredito
         Me.txtCliente.TabIndex = 5
         Me.txtCliente.Tag = "BLOQUEADO"
         '
-        'Label11
+        'lblCliente
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(16, 47)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(50, 13)
-        Me.Label11.TabIndex = 4
-        Me.Label11.Tag = "OBLIGATORIO"
-        Me.Label11.Text = "Cliente:"
+        Me.lblCliente.AutoSize = True
+        Me.lblCliente.Location = New System.Drawing.Point(16, 47)
+        Me.lblCliente.Name = "lblCliente"
+        Me.lblCliente.Size = New System.Drawing.Size(50, 13)
+        Me.lblCliente.TabIndex = 4
+        Me.lblCliente.Tag = "OBLIGATORIO"
+        Me.lblCliente.Text = "Cliente:"
         '
         'txtNumCuenta
         '
@@ -362,6 +375,8 @@ Partial Class frmSccEditNotaCredito
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmbCajas)
+        Me.PanelControl1.Controls.Add(Me.Label7)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Controls.Add(Me.GrpExpediente)
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
@@ -372,15 +387,36 @@ Partial Class frmSccEditNotaCredito
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(411, 411)
+        Me.PanelControl1.Size = New System.Drawing.Size(411, 429)
         Me.PanelControl1.TabIndex = 102
+        '
+        'cmbCajas
+        '
+        Me.cmbCajas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCajas.FormattingEnabled = True
+        Me.cmbCajas.Location = New System.Drawing.Point(106, 11)
+        Me.cmbCajas.Name = "cmbCajas"
+        Me.cmbCajas.Size = New System.Drawing.Size(240, 21)
+        Me.cmbCajas.TabIndex = 134
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.Black
+        Me.Label7.Location = New System.Drawing.Point(26, 14)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(36, 13)
+        Me.Label7.TabIndex = 133
+        Me.Label7.Tag = "OBLIGATORIO"
+        Me.Label7.Text = "Caja:"
         '
         'cmdCancelar
         '
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(325, 347)
+        Me.cmdCancelar.Location = New System.Drawing.Point(325, 372)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -395,7 +431,7 @@ Partial Class frmSccEditNotaCredito
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(237, 347)
+        Me.cmdGuardar.Location = New System.Drawing.Point(237, 372)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -408,7 +444,7 @@ Partial Class frmSccEditNotaCredito
         '
         Me.Panel2.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(2, 388)
+        Me.Panel2.Location = New System.Drawing.Point(2, 406)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(407, 21)
         Me.Panel2.TabIndex = 101
@@ -599,7 +635,7 @@ Partial Class frmSccEditNotaCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(411, 411)
+        Me.ClientSize = New System.Drawing.Size(411, 429)
         Me.Controls.Add(Me.PanelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -620,6 +656,7 @@ Partial Class frmSccEditNotaCredito
         Me.GrpExpediente.PerformLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
+        Me.PanelControl1.PerformLayout()
         CType(Me.C1Combo1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1NumericEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1Combo2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -645,7 +682,7 @@ Partial Class frmSccEditNotaCredito
     Friend WithEvents GrpExpediente As System.Windows.Forms.GroupBox
     Friend WithEvents cmdExpediente As System.Windows.Forms.Button
     Friend WithEvents txtCliente As System.Windows.Forms.TextBox
-    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents lblCliente As System.Windows.Forms.Label
     Friend WithEvents txtNumCuenta As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents cmdConsultar As System.Windows.Forms.Button
@@ -665,4 +702,7 @@ Partial Class frmSccEditNotaCredito
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmbCajas As System.Windows.Forms.ComboBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents cmbEmpleado As System.Windows.Forms.ComboBox
 End Class

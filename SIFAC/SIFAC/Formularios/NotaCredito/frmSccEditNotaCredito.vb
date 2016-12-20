@@ -3,7 +3,6 @@
 ''--    Formulario de Edición y Modificación de Cátalogo Nota de Crédito
 ''-------------------------------------------------------------------------
 Imports DAL
-Imports SCCUM.BO
 Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Windows.Forms
@@ -18,13 +17,32 @@ Public Class frmSccEditNotaCredito
     Dim dtEstado As DataTable
     Dim m_TypeGui As Integer
     Dim m_IDNotaCredito As Integer
-
+    Dim DtEmpleado, dtCajas As DataTable
     'para uso en reestructuración de cuenta
     Dim m_Cliente As String
     Dim m_SaldoCuenta As Decimal
-
+    Dim intComisionID As Integer
+    Dim StrTipo As String
     'variable utilizada en el caso que este formulario se llame desde la operación "ReestructurarCuenta" de interfaz Expedientes
     Public blnReestructurarCuenta As Boolean = False
+
+    Property IDComisionID() As Integer
+        Get
+            IDComisionID = Me.intComisionID
+        End Get
+        Set(ByVal value As Integer)
+            Me.intComisionID = value
+        End Set
+    End Property
+
+    Property Tipo() As String
+        Get
+            Tipo = Me.StrTipo
+        End Get
+        Set(ByVal value As String)
+            Me.StrTipo = value
+        End Set
+    End Property
 
     Property IDNotaCredito() As Integer
         Get
@@ -125,30 +143,31 @@ Public Class frmSccEditNotaCredito
 
     Private Function ValidarDatos() As Boolean
         Try
-            If IsDBNull(Me.dtpFecha.Value) Then
-                Me.ErrorProv.SetError(Me.dtpFecha, "Campo Obligatorio")
-                Return False
-                Exit Function
-            End If
 
-            If Me.dtpFecha.Value > clsProyecto.Conexion.FechaServidor Then
-                Me.ErrorProv.SetError(Me.dtpFecha, "Fecha de Nota de Crédito Incorrecta")
-                Return False
-                Exit Function
-            End If
+                If IsDBNull(Me.dtpFecha.Value) Then
+                    Me.ErrorProv.SetError(Me.dtpFecha, "Campo Obligatorio")
+                    Return False
+                    Exit Function
+                End If
 
-            If Me.cmbConcepto.Text = "" Then
-                Me.ErrorProv.SetError(Me.cmbConcepto, "Campo Obligatorio")
-                Return False
-                Exit Function
-            End If
+                If Me.dtpFecha.Value > clsProyecto.Conexion.FechaServidor Then
+                    Me.ErrorProv.SetError(Me.dtpFecha, "Fecha de Nota de Crédito Incorrecta")
+                    Return False
+                    Exit Function
+                End If
 
-            If Me.numMonto.Value <= 0 Then
-                Me.ErrorProv.SetError(Me.numMonto, "Monto debe ser mayor que cero")
-                Return False
-                Exit Function
-            End If
-            Return True
+                If Me.cmbConcepto.Text = "" Then
+                    Me.ErrorProv.SetError(Me.cmbConcepto, "Campo Obligatorio")
+                    Return False
+                    Exit Function
+                End If
+
+                If Me.numMonto.Value <= 0 Then
+                    Me.ErrorProv.SetError(Me.numMonto, "Monto debe ser mayor que cero")
+                    Return False
+                    Exit Function
+                End If
+                Return True
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -172,11 +191,32 @@ Public Class frmSccEditNotaCredito
             objNC.Monto = Me.numMonto.Value
             objNC.objConceptoID = cmbConcepto.SelectedValue
             objNC.objEstadoID = Me.cmbEstado.SelectedValue
-            objNC.objSccCuentaID = Me.IdCuenta
+
             objNC.Numero = SccNotaCredito.RetrieveDT(, , "(ISNULL(MAX(Numero),0) + 1) as Maximo", T).DefaultView.Item(0)("Maximo")
             objNC.UsuarioCreacion = clsProyecto.Conexion.Usuario
+
+            If Tipo <> "Comisiones" And Tipo <> "Salida" Then
+               objNC.objSccCuentaID = Me.IdCuenta
+            End If
+
+            objNC.objCajaID = cmbCajas.SelectedValue
+
+            If IDComisionID <> 0 And IDComisionID.ToString.Trim.Length <> 0 Then
+                objNC.objEmpleadoID = cmbEmpleado.SelectedValue
+            End If
+
             objNC.Insert(T)
             Me.IDNotaCredito = objNC.SccNotaCreditoID
+
+            If Tipo = "Comisiones" Then
+                Dim objComision As New SccComisiones
+                objComision.Retrieve(IDComisionID)
+                objComision.objNotaCreditoID = IDNotaCredito
+                objComision.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                objComision.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                objComision.Update(T)
+            End If
+
             T.CommitTran()
             BoolRst = True
         Catch ex As Exception
@@ -260,6 +300,7 @@ Public Class frmSccEditNotaCredito
         Try
             Me.CargarConceptoNC()
             Me.CargarEstado()
+            CargarCajas()
             If Me.TypeGui > 0 Then
                 Me.CargarDatosEdicion()
                 If Me.TypeGui = 2 Then
@@ -268,12 +309,91 @@ Public Class frmSccEditNotaCredito
                     Me.cmbConcepto.Enabled = False
                     Me.numMonto.Enabled = False
                     Me.cmdGuardar.Enabled = False
+
                 End If
+            Else
+                Me.cmbCajas.SelectedValue = ClsCatalogos.GetStbCajaID(frmPrincipal.gblCaja)
             End If
+
+            If IDComisionID <> 0 And IDComisionID.ToString.Trim.Length > 0 Then
+                Dim objComision As New SccComisiones
+                objComision.Retrieve(IDComisionID)
+                Me.Text = "Pagos de comisiones"
+                Me.txtCliente.Enabled = False
+                Me.cmbEstado.Enabled = False
+                Me.cmbConcepto.Enabled = False
+                Me.txtNumCuenta.Enabled = False
+                Me.cmdExpediente.Enabled = False
+                Me.txtDescripcion.Text = "Pago de comision a " & cmbEmpleado.Text
+
+                Me.lblCliente.Text = "Empleado: "
+                Me.txtCliente.Visible = False
+
+                Me.cmbEstado.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADONC", "PAGADA")
+                Me.cmbConcepto.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("CONCEPTONC", "PAGOCOMISION")
+                Me.numMonto.Value = objComision.Monto
+                Me.cmbEmpleado.SelectedValue = objComision.objEmpleadoID
+                Me.cmbCajas.SelectedValue = ClsCatalogos.GetStbCajaID(frmPrincipal.gblCaja)
+                Me.dtpFecha.Value = objComision.Fecha
+            End If
+
+
+            If Tipo = "Salida" Then
+                Me.Text = "Salida de Efectivo"
+                Me.cmbEmpleado.Enabled = False
+                Me.cmbEstado.Enabled = False
+                Me.cmbCajas.Enabled = False
+                Me.txtCliente.Enabled = False
+                Me.cmbEstado.Enabled = False
+                Me.cmbConcepto.Enabled = False
+                Me.txtNumCuenta.Enabled = False
+                Me.cmdExpediente.Enabled = False
+                Me.lblCliente.Text = "Empleado: "
+                Me.txtCliente.Visible = False
+                Me.cmbConcepto.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("CONCEPTONC", "SALIDAEFEC")
+            End If
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
+
+
+#Region "Cargar Empleados"
+
+    '' Descripción:        Procedimiento encargado de cargar el combo de jefe de tienda
+    Public Sub CargarEmpleado()
+        Try
+            DtEmpleado = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SrhEmpleadoID,NombreCompleto,objPersonaID", "vwSrhEmpleado", "Activo =1"))
+
+            cmbEmpleado.DataSource = DtEmpleado
+            cmbEmpleado.ValueMember = "SrhEmpleadoID"
+            cmbEmpleado.DisplayMember = "NombreCompleto"
+
+            cmbEmpleado.SelectedIndex = -1
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
+
+#Region "Cargar Cajas"
+
+    '' Descripción:        Procedimiento encargado de cargar el combo de jefe de tienda
+    Public Sub CargarCajas()
+        Try
+            dtCajas = SccCajas.RetrieveDT("Activa=1", , "SccCajaID, Codigo + '-' + Nombre as Caja, objCajeroID, Ubicacion, Activa")
+
+            cmbCajas.DataSource = dtCajas
+            cmbCajas.ValueMember = "SccCajaID"
+            cmbCajas.DisplayMember = "Caja"
+
+            cmbCajas.SelectedIndex = -1
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+#End Region
 
     ''' <summary>
     ''' Procedimiento encargado de cargar las estados posibles de las notas de credito
@@ -318,15 +438,27 @@ Public Class frmSccEditNotaCredito
             dtDatos = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccNotaCredito", "SccNotaCreditoID=" & Me.IDNotaCredito.ToString))
             Me.cmbEstado.SelectedValue = dtDatos.DefaultView.Item(0)("objEstadoID")
             Me.cmbConcepto.SelectedValue = dtDatos.DefaultView.Item(0)("objConceptoID")
+
             Me.txtNumero.Text = dtDatos.DefaultView.Item(0)("NumeroNC")
             Me.txtDescripcion.Text = dtDatos.DefaultView.Item(0)("Descripcion")
-            Me.txtCliente.Text = dtDatos.DefaultView.Item(0)("Cliente")
-            Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("NumeroCuenta")
+
+            If Not IsDBNull(dtDatos.DefaultView.Item(0)("Cliente")) Then
+                Me.txtCliente.Text = dtDatos.DefaultView.Item(0)("Cliente")
+            End If
+
+            If Not IsDBNull(dtDatos.DefaultView.Item(0)("NumeroCuenta")) Then
+                Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("NumeroCuenta")
+            End If
+
             Me.numMonto.Value = dtDatos.DefaultView.Item(0)("Monto")
             Me.dtpFecha.Value = dtDatos.DefaultView.Item(0)("Fecha")
             Me.cmdExpediente.Enabled = False
-            Me.IdCuenta = dtDatos.DefaultView.Item(0)("SccCuentaID")
 
+            If Not IsDBNull(dtDatos.DefaultView.Item(0)("SccCuentaID")) Then
+                Me.IdCuenta = dtDatos.DefaultView.Item(0)("SccCuentaID")
+            End If
+
+            
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

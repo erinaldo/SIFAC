@@ -31,18 +31,16 @@ Public Class frmSccSalidasEfectivo
 #Region "Procedimientos"
 
     Private Sub ModificarND()
-        Dim objfrm As frmSccEditNotaDebito
+        Dim objfrm As frmSccEditNotaCredito
         Try
             Me.Cursor = Cursors.WaitCursor
-            objfrm = New frmSccEditNotaDebito
-            objfrm.IDNotaDebito = IDND
+            objfrm = New frmSccEditNotaCredito
+            objfrm.IDNotaCredito = IDND
             objfrm.TypeGui = 1
             objfrm.Tipo = "Salida"
             If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGridNotaDebito()
-                Me.dtND.DefaultView.Find(objfrm.IDNotaDebito)
-
-
+                Me.dtND.DefaultView.Find(objfrm.IDNotaCredito)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -54,7 +52,7 @@ Public Class frmSccSalidasEfectivo
 
     Private Sub AutorizarND()
         Dim T As New TransactionManager
-        Dim objND As New SccNotaDebito
+        Dim objND As New SccNotaCredito
         Try
             Select Case MsgBox("¿Seguro que desea autorizar la salida de efectivo?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
                 Case MsgBoxResult.Yes
@@ -76,7 +74,7 @@ Public Class frmSccSalidasEfectivo
 
                     '-- Seleccionar el Registro que se ha modificado
                     CargarGridNotaDebito()
-                    Me.dtND.DefaultView.Find(objND.SccNotaDebitoID)
+                    Me.dtND.DefaultView.Find(objND.SccNotaCreditoID)
 
                     MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             End Select
@@ -164,7 +162,7 @@ Public Class frmSccSalidasEfectivo
 
             '-- Obtener ID del Estado de Nota de Debito REGISTRADA
             strCampos = " StbValorCatalogoID "
-            strFiltro = " Nombre= 'EstadoND' AND Codigo='REGISTRADA' "
+            strFiltro = " Nombre= 'EstadoNC' AND Codigo='REGISTRADA' "
             strSQL = clsConsultas.ObtenerCatalogoValor(strCampos, strFiltro)
             dtTemp = SqlHelper.ExecuteQueryDT(strSQL)
             If dtTemp.Rows.Count > 0 Then
@@ -173,7 +171,7 @@ Public Class frmSccSalidasEfectivo
 
             '-- Obtener ID del Estado de Nota de Debito AUTORIZADA
             strCampos = " StbValorCatalogoID "
-            strFiltro = " Nombre= 'EstadoND' AND Codigo='AUTORIZADA' "
+            strFiltro = " Nombre= 'EstadoNC' AND Codigo='AUTORIZADA' "
             strSQL = clsConsultas.ObtenerCatalogoValor(strCampos, strFiltro)
             dtTemp = SqlHelper.ExecuteQueryDT(strSQL)
             If dtTemp.Rows.Count > 0 Then
@@ -182,7 +180,7 @@ Public Class frmSccSalidasEfectivo
 
             '-- Obtener ID del Estado de Nota de Debito PAGADA
             strCampos = " StbValorCatalogoID "
-            strFiltro = " Nombre= 'EstadoND' AND Codigo='PAGADA' "
+            strFiltro = " Nombre= 'EstadoNC' AND Codigo='PAGADA' "
             strSQL = clsConsultas.ObtenerCatalogoValor(strCampos, strFiltro)
             dtTemp = SqlHelper.ExecuteQueryDT(strSQL)
             If dtTemp.Rows.Count > 0 Then
@@ -191,7 +189,7 @@ Public Class frmSccSalidasEfectivo
 
             '-- Obtener ID del Estado de Nota de Debito ANULADA
             strCampos = " StbValorCatalogoID "
-            strFiltro = " Nombre= 'EstadoND' AND Codigo='ANULADA' "
+            strFiltro = " Nombre= 'EstadoNC' AND Codigo='ANULADA' "
             strSQL = clsConsultas.ObtenerCatalogoValor(strCampos, strFiltro)
             dtTemp = SqlHelper.ExecuteQueryDT(strSQL)
             If dtTemp.Rows.Count > 0 Then
@@ -222,8 +220,8 @@ Public Class frmSccSalidasEfectivo
             If dtND.Rows.Count > 0 Then
 
                 '-- Mostrar los datos en el Grid
-                dtND.PrimaryKey = New DataColumn() {dtND.Columns("SccNotaDebitoID")}
-                Me.dtND.DefaultView.Sort = "SccNotaDebitoID"
+                dtND.PrimaryKey = New DataColumn() {dtND.Columns("SccNotaCreditoID")}
+                Me.dtND.DefaultView.Sort = "SccNotaCreditoID"
 
                 Me.grdSalidas.DataSource = dtND
                 Me.grdSalidas.Text = "Salida de Efectivo (" & dtND.Rows.Count & ")"
@@ -234,7 +232,7 @@ Public Class frmSccSalidasEfectivo
                     Dim selectedRow As Integer() = grdSalidaTabla.GetSelectedRows()
                     FilaActual = Me.grdSalidaTabla.GetDataSourceRowIndex(selectedRow(0))
 
-                    IDND = Me.dtND.DefaultView.Item(FilaActual)("SccNotaDebitoID")
+                    IDND = Me.dtND.DefaultView.Item(FilaActual)("SccNotaCreditoID")
                     EstadoND = Me.dtND.DefaultView.Item(FilaActual)("objEstadoID")
 
                     '-- Habilitar Opciones
@@ -254,7 +252,8 @@ Public Class frmSccSalidasEfectivo
                         Me.cmdAnular.Enabled = False
                     End If
 
-                    Me.cmdConsultar.Enabled = blnConsultarND
+                    cmdConsultar.Enabled = blnConsultarND And dtND.Rows.Count > 0
+
                 End If
             End If
         Catch ex As Exception
@@ -267,17 +266,17 @@ Public Class frmSccSalidasEfectivo
 #Region "Eventos del Formulario"
 
     Private Sub cmdAgregar_Click(sender As Object, e As EventArgs) Handles cmdAgregar.Click
-        Dim objfrm As frmSccEditNotaDebito
+        Dim objfrm As frmSccEditNotaCredito
        
         Try
             Me.Cursor = Cursors.WaitCursor
-            objfrm = New frmSccEditNotaDebito
+            objfrm = New frmSccEditNotaCredito
             objfrm.TypeGui = 0
             objfrm.Tipo = "Salida"
             If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGridNotaDebito()
                 AplicarSeguridad()
-                Me.dtND.DefaultView.Find(objfrm.IDNotaDebito)
+                Me.dtND.DefaultView.Find(objfrm.IDNotaCredito)
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -327,13 +326,13 @@ Public Class frmSccSalidasEfectivo
 
 
     Private Sub cmdConsultar_Click(sender As Object, e As EventArgs) Handles cmdConsultar.Click
-        Dim objfrm As New frmSccEditNotaDebito
+        Dim objfrm As New frmSccEditNotaCredito
         Try
             Me.Cursor = Cursors.WaitCursor
             If dtND.DefaultView.Count > 0 And blnConsultarND And dtND.Rows.Count > 0 Then
                 objfrm.TypeGui = 2
                 objfrm.Tipo = "Salida"
-                objfrm.IDNotaDebito = Me.IDND
+                objfrm.IDNotaCredito = Me.IDND
                 If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     '*******************
                 End If
@@ -354,7 +353,7 @@ Public Class frmSccSalidasEfectivo
                 Dim selectedRow As Integer() = grdSalidaTabla.GetSelectedRows()
                 FilaActual = Me.grdSalidaTabla.GetDataSourceRowIndex(selectedRow(0))
 
-                IDND = Me.dtND.DefaultView.Item(FilaActual)("SccNotaDebitoID")
+                IDND = Me.dtND.DefaultView.Item(FilaActual)("SccNotaCreditoID")
                 EstadoND = Me.dtND.DefaultView.Item(FilaActual)("objEstadoID")
 
                 '-- Habilitar - Deshabilitar Opciones

@@ -76,6 +76,7 @@ Partial Class frmSccMantNotaCredito
         'tsbModificarNC
         '
         Me.tsbModificarNC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbModificarNC.Enabled = False
         Me.tsbModificarNC.Image = CType(resources.GetObject("tsbModificarNC.Image"), System.Drawing.Image)
         Me.tsbModificarNC.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbModificarNC.Name = "tsbModificarNC"
@@ -126,6 +127,7 @@ Partial Class frmSccMantNotaCredito
         'tsbConsultarNC
         '
         Me.tsbConsultarNC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbConsultarNC.Enabled = False
         Me.tsbConsultarNC.Image = CType(resources.GetObject("tsbConsultarNC.Image"), System.Drawing.Image)
         Me.tsbConsultarNC.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbConsultarNC.Name = "tsbConsultarNC"
