@@ -29,6 +29,7 @@ Partial Class frmStbRutas
         Me.cmdConsultar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
+        Me.cmdReubicar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
@@ -54,7 +55,7 @@ Partial Class frmStbRutas
         'tbProductos
         '
         Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdImprimir, Me.ToolStripSeparator3, Me.cmdCerrar})
+        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.cmdReubicar, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdImprimir, Me.ToolStripSeparator3, Me.cmdCerrar})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
         Me.tbProductos.Size = New System.Drawing.Size(997, 39)
@@ -100,6 +101,15 @@ Partial Class frmStbRutas
         Me.cmdDesactivar.Name = "cmdDesactivar"
         Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
         Me.cmdDesactivar.ToolTipText = "Inactivar Ruta"
+        '
+        'cmdReubicar
+        '
+        Me.cmdReubicar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.cmdReubicar.Image = CType(resources.GetObject("cmdReubicar.Image"), System.Drawing.Image)
+        Me.cmdReubicar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdReubicar.Name = "cmdReubicar"
+        Me.cmdReubicar.Size = New System.Drawing.Size(36, 36)
+        Me.cmdReubicar.Text = "Reubicar"
         '
         'ToolStripSeparator2
         '
@@ -289,4 +299,5 @@ Partial Class frmStbRutas
     Friend WithEvents colDescripcion As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCobrador As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCiudad As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmdReubicar As System.Windows.Forms.ToolStripButton
 End Class

@@ -169,6 +169,24 @@ Public Class frmStbRutas
         End Try
     End Sub
 
+    Private Sub cmdReubicar_Click(sender As Object, e As EventArgs) Handles cmdReubicar.Click
+        Dim objfrmReunicar As frmReubicarClientes
+        Dim FilaActual As Integer
+        Try
+            Dim selectedRow As Integer() = grdRutasTabla.GetSelectedRows()
+            FilaActual = Me.grdRutasTabla.GetDataSourceRowIndex(selectedRow(0))
+            Me.Cursor = WaitCursor
+            objfrmReunicar = New frmReubicarClientes
+            objfrmReunicar.NombreRuta = Me.DtRutas.DefaultView.Item(FilaActual)("Ruta")
+            objfrmReunicar.RutaID = Me.DtRutas.DefaultView.Item(FilaActual)("StbRutaID")
+            objfrmReunicar.ShowDialog(Me)
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
+    End Sub
+
     Private Sub cmdDesactivar_Click(sender As Object, e As EventArgs) Handles cmdDesactivar.Click
         Dim IDRuta As Integer
         Dim Rutas As New StbRutas
@@ -228,4 +246,5 @@ Public Class frmStbRutas
 #End Region
 
 
+   
 End Class

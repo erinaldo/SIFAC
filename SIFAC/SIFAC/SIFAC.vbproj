@@ -372,10 +372,22 @@
     <Compile Include="Formularios\Catalogos\frmBodegasEditar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Catalogos\frmCambioRuta.Designer.vb">
+      <DependentUpon>frmCambioRuta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmCambioRuta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Catalogos\frmReporteProductos.Designer.vb">
       <DependentUpon>frmReporteProductos.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Catalogos\frmReporteProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmReubicarClientes.Designer.vb">
+      <DependentUpon>frmReubicarClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmReubicarClientes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Catalogos\frmSivCategorias.Designer.vb">
@@ -424,6 +436,12 @@
       <DependentUpon>frmClientesEdit.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Clientes\frmClientesEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Comisiones\frmDetalleComision.Designer.vb">
+      <DependentUpon>frmDetalleComision.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Comisiones\frmDetalleComision.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Comisiones\frmSccComisiones.Designer.vb">
@@ -1340,8 +1358,14 @@
     <EmbeddedResource Include="Formularios\Catalogos\frmBodegasEditar.resx">
       <DependentUpon>frmBodegasEditar.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmCambioRuta.resx">
+      <DependentUpon>frmCambioRuta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmReporteProductos.resx">
       <DependentUpon>frmReporteProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmReubicarClientes.resx">
+      <DependentUpon>frmReubicarClientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmSivCategorias.resx">
       <DependentUpon>frmSivCategorias.vb</DependentUpon>
@@ -1367,6 +1391,9 @@
     <EmbeddedResource Include="Formularios\Clientes\frmClientesEdit.resx">
       <DependentUpon>frmClientesEdit.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Comisiones\frmDetalleComision.resx">
+      <DependentUpon>frmDetalleComision.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Comisiones\frmSccComisiones.resx">
       <DependentUpon>frmSccComisiones.vb</DependentUpon>
