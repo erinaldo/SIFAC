@@ -412,6 +412,7 @@ lblGuardarDetalleCuenta:
             Next
 
             t.CommitTran()
+
             MsgBox("Ventas aplicadas correctamente", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
         Catch ex As Exception
             t.RollbackTran()

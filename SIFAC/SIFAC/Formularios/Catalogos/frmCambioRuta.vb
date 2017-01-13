@@ -183,10 +183,10 @@ Public Class frmCambioRuta
 
                                 objDetalleCuenta.Retrieve(CInt(drFilaCuentasDetalle("SccCuentaPorCobrarDetalleID")))
 
-                                diaanterior = objDetalleCuenta.FechaProximoPago.Value.DayOfWeek
+                                diaanterior = objDetalleCuenta.FechaProximoPago.Value.DayOfWeek + 1
                                 dia = cmbDiaCrobro.SelectedValue
 
-                                objDetalleCuenta.FechaProximoPago = objDetalleCuenta.FechaProximoPago.Value.AddDays(Math.Abs(diaanterior - dia))
+                                objDetalleCuenta.FechaProximoPago = objDetalleCuenta.FechaProximoPago.Value.AddDays(Math.Abs(diaanterior - dia + 1))
                                objDetalleCuenta.FechaModificacion = clsProyecto.Conexion.FechaServidor
                                 objDetalleCuenta.UsuarioModificacion = clsProyecto.Conexion.Usuario
                                 objDetalleCuenta.Update(t)
