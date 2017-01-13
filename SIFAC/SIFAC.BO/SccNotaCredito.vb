@@ -14,7 +14,7 @@ Partial Public Class SccNotaCredito
 	Protected m_Descripcion As String = Nothing 
 	Protected m_objEstadoID As Nullable(Of Integer) 
 	Protected m_objDevolucionID As Nullable(Of Integer) 
-	Protected m_objSccCuentaID As Integer 
+	Protected m_objSccCuentaID As Nullable(Of Integer) 
 	Protected m_objCajaID As Nullable(Of Integer) 
 	Protected m_objEmpleadoID As Nullable(Of Integer) 
 	Protected m_UsuarioCreacion As String = Nothing 
@@ -101,11 +101,11 @@ Partial Public Class SccNotaCredito
 		End Set
     End Property
 	
-	Public Property objSccCuentaID() As Integer
+	Public Property objSccCuentaID() As Nullable(Of Integer)
         Get
             Return (m_objSccCuentaID)
         End Get
-		Set(ByVal Value As Integer)					
+		Set(ByVal Value As Nullable(Of Integer))					
 			m_objSccCuentaID = Value
 		End Set
     End Property

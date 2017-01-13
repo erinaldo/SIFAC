@@ -7,7 +7,7 @@ Partial Public Class SccSalidasEfectivoArqueo
 
 #Region " Variables Miembro " 
 	Protected m_SccSalidaEfectivoID As Integer 
-	Protected m_objArqueoDetalleID As Nullable(Of Integer) 
+	Protected m_objArqueoID As Nullable(Of Integer) 
 	Protected m_objSccNotaCreditoID As Nullable(Of Integer) 
 	Protected m_Total As Nullable(Of Decimal) 
 	Protected m_FechaCreacion As Nullable(Of Date) 
@@ -26,12 +26,12 @@ Partial Public Class SccSalidasEfectivoArqueo
 		End Set
     End Property
 	
-	Public Property objArqueoDetalleID() As Nullable(Of Integer)
+	Public Property objArqueoID() As Nullable(Of Integer)
         Get
-            Return (m_objArqueoDetalleID)
+            Return (m_objArqueoID)
         End Get
 		Set(ByVal Value As Nullable(Of Integer))					
-			m_objArqueoDetalleID = Value
+			m_objArqueoID = Value
 		End Set
     End Property
 	
@@ -137,17 +137,17 @@ Partial Public Class SccSalidasEfectivoArqueo
 			cmdDelete.CommandText = "DELETE FROM  SccSalidasEfectivoArqueo WHERE SccSalidaEfectivoID= @SccSalidaEfectivoID" 	
 
 			'CREACION DEL COMANDO INSERT
-			cmdInsert.Parameters.Add("@objArqueoDetalleID", SqlDbType.Int, 4, "objArqueoDetalleID")
+			cmdInsert.Parameters.Add("@objArqueoID", SqlDbType.Int, 4, "objArqueoID")
 			cmdInsert.Parameters.Add("@objSccNotaCreditoID", SqlDbType.Int, 4, "objSccNotaCreditoID")
 			cmdInsert.Parameters.Add("@Total", SqlDbType.Decimal, 9, "Total")
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
 			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 50, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacio", SqlDbType.DateTime, 8, "UsuarioModificacio")
-			cmdInsert.CommandText = "INSERT INTO SccSalidasEfectivoArqueo ( objArqueoDetalleID, objSccNotaCreditoID, Total, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacio) VALUES ( @objArqueoDetalleID, @objSccNotaCreditoID, @Total, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacio)"
+			cmdInsert.CommandText = "INSERT INTO SccSalidasEfectivoArqueo ( objArqueoID, objSccNotaCreditoID, Total, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacio) VALUES ( @objArqueoID, @objSccNotaCreditoID, @Total, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacio)"
 
 			'CREACION DEL COMANDO UPDATE
-			cmdUpdate.Parameters.Add("@objArqueoDetalleID", SqlDbType.Int, 4, "objArqueoDetalleID")
+			cmdUpdate.Parameters.Add("@objArqueoID", SqlDbType.Int, 4, "objArqueoID")
 			cmdUpdate.Parameters.Add("@objSccNotaCreditoID", SqlDbType.Int, 4, "objSccNotaCreditoID")
 			cmdUpdate.Parameters.Add("@Total", SqlDbType.Decimal, 9, "Total")
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
@@ -155,7 +155,7 @@ Partial Public Class SccSalidasEfectivoArqueo
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacio", SqlDbType.DateTime, 8, "UsuarioModificacio")
 			cmdUpdate.Parameters.Add("@wSccSalidaEfectivoID", SqlDbType.Int, 4, "SccSalidaEfectivoID")
-			cmdUpdate.CommandText = "UPDATE SccSalidasEfectivoArqueo SET objArqueoDetalleID=@objArqueoDetalleID, objSccNotaCreditoID=@objSccNotaCreditoID, Total=@Total, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacio=@UsuarioModificacio WHERE SccSalidaEfectivoID= @wSccSalidaEfectivoID"
+			cmdUpdate.CommandText = "UPDATE SccSalidasEfectivoArqueo SET objArqueoID=@objArqueoID, objSccNotaCreditoID=@objSccNotaCreditoID, Total=@Total, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacio=@UsuarioModificacio WHERE SccSalidaEfectivoID= @wSccSalidaEfectivoID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -202,7 +202,7 @@ Partial Public Class SccSalidasEfectivoArqueo
 			
 			If dr.Read() Then		
 				m_SccSalidaEfectivoID = dr("SccSalidaEfectivoID")
-				m_objArqueoDetalleID = IIf(IsDBNull(dr("objArqueoDetalleID")), Nothing, dr("objArqueoDetalleID"))					
+				m_objArqueoID = IIf(IsDBNull(dr("objArqueoID")), Nothing, dr("objArqueoID"))					
 				m_objSccNotaCreditoID = IIf(IsDBNull(dr("objSccNotaCreditoID")), Nothing, dr("objSccNotaCreditoID"))					
 				m_Total = IIf(IsDBNull(dr("Total")), Nothing, dr("Total"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -243,7 +243,7 @@ Partial Public Class SccSalidasEfectivoArqueo
 				
 			If dr.Read() Then
 				m_SccSalidaEfectivoID = dr("SccSalidaEfectivoID")
-				m_objArqueoDetalleID = IIf(IsDBNull(dr("objArqueoDetalleID")), Nothing, dr("objArqueoDetalleID"))					
+				m_objArqueoID = IIf(IsDBNull(dr("objArqueoID")), Nothing, dr("objArqueoID"))					
 				m_objSccNotaCreditoID = IIf(IsDBNull(dr("objSccNotaCreditoID")), Nothing, dr("objSccNotaCreditoID"))					
 				m_Total = IIf(IsDBNull(dr("Total")), Nothing, dr("Total"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -375,14 +375,14 @@ Partial Public Class SccSalidasEfectivoArqueo
     ''' <remarks></remarks>
 	Public Sub Insert(Optional ByRef pTransac As TransactionManager = Nothing)
 		Dim sCommand As String = "insert into SccSalidasEfectivoArqueo("
-		sCommand &= "objArqueoDetalleID,"
+		sCommand &= "objArqueoID,"
 		sCommand &= "objSccNotaCreditoID,"
 		sCommand &= "Total,"
 		sCommand &= "FechaCreacion,"
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaModificacion,"
 		sCommand &= "UsuarioModificacio) values ("		
-		sCommand &= "@objArqueoDetalleID,"
+		sCommand &= "@objArqueoID,"
 		sCommand &= "@objSccNotaCreditoID,"
 		sCommand &= "@Total,"
 		sCommand &= "@FechaCreacion,"
@@ -398,11 +398,11 @@ Partial Public Class SccSalidasEfectivoArqueo
 		Dim arParams(7) As SqlParameter
 		arParams(0) = New SqlParameter("@SccSalidaEfectivoID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
-		arParams(1) = New SqlParameter("@objArqueoDetalleID", SqlDbType.Int)		
-		If IsDBNull(m_objArqueoDetalleID) Then
+		arParams(1) = New SqlParameter("@objArqueoID", SqlDbType.Int)		
+		If IsDBNull(m_objArqueoID) Then
             arParams(1).Value = DBNull.Value
         Else
-            arParams(1).Value = m_objArqueoDetalleID
+            arParams(1).Value = m_objArqueoID
         End If
 		arParams(2) = New SqlParameter("@objSccNotaCreditoID", SqlDbType.Int)		
 		If IsDBNull(m_objSccNotaCreditoID) Then
@@ -464,7 +464,7 @@ Partial Public Class SccSalidasEfectivoArqueo
     ''' <remarks></remarks>
 	Public Sub Update(Optional ByRef pTransac As TransactionManager = Nothing)        		
 		Dim sCommand As String = "update SccSalidasEfectivoArqueo set "		
-		sCommand &= "objArqueoDetalleID = @objArqueoDetalleID,"
+		sCommand &= "objArqueoID = @objArqueoID,"
 		sCommand &= "objSccNotaCreditoID = @objSccNotaCreditoID,"
 		sCommand &= "Total = @Total,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
@@ -481,11 +481,11 @@ Partial Public Class SccSalidasEfectivoArqueo
         Else
             arParams(0).Value = m_SccSalidaEfectivoID
         End If
-		arParams(1) = New SqlParameter("@objArqueoDetalleID", SqlDbType.Int)		
-		If IsDBNull(m_objArqueoDetalleID) Then
+		arParams(1) = New SqlParameter("@objArqueoID", SqlDbType.Int)		
+		If IsDBNull(m_objArqueoID) Then
             arParams(1).Value = DBNull.Value
         Else
-            arParams(1).Value = m_objArqueoDetalleID
+            arParams(1).Value = m_objArqueoID
         End If
 		arParams(2) = New SqlParameter("@objSccNotaCreditoID", SqlDbType.Int)		
 		If IsDBNull(m_objSccNotaCreditoID) Then

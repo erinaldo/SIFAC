@@ -10,6 +10,8 @@ Partial Public Class SccComisiones
 	Protected m_objCajaID As Nullable(Of Integer) 
 	Protected m_objEmpleadoID As Nullable(Of Integer) 
 	Protected m_Porcentaje As Nullable(Of Decimal) 
+	Protected m_Desde As Nullable(Of Date) 
+	Protected m_Hasta As Nullable(Of Date) 
 	Protected m_Fecha As Nullable(Of Date) 
 	Protected m_Monto As Nullable(Of Decimal) 
 	Protected m_FechaCreacion As Nullable(Of Date) 
@@ -55,6 +57,24 @@ Partial Public Class SccComisiones
         End Get
 		Set(ByVal Value As Nullable(Of Decimal))					
 			m_Porcentaje = Value
+		End Set
+    End Property
+	
+	Public Property Desde() As Nullable(Of Date)
+        Get
+            Return (m_Desde)
+        End Get
+		Set(ByVal Value As Nullable(Of Date))					
+			m_Desde = Value
+		End Set
+    End Property
+	
+	Public Property Hasta() As Nullable(Of Date)
+        Get
+            Return (m_Hasta)
+        End Get
+		Set(ByVal Value As Nullable(Of Date))					
+			m_Hasta = Value
 		End Set
     End Property
 	
@@ -205,6 +225,8 @@ Partial Public Class SccComisiones
 			cmdInsert.Parameters.Add("@objCajaID", SqlDbType.Int, 4, "objCajaID")
 			cmdInsert.Parameters.Add("@objEmpleadoID", SqlDbType.Int, 4, "objEmpleadoID")
 			cmdInsert.Parameters.Add("@Porcentaje", SqlDbType.Decimal, 9, "Porcentaje")
+			cmdInsert.Parameters.Add("@Desde", SqlDbType.DateTime, 8, "Desde")
+			cmdInsert.Parameters.Add("@Hasta", SqlDbType.DateTime, 8, "Hasta")
 			cmdInsert.Parameters.Add("@Fecha", SqlDbType.DateTime, 8, "Fecha")
 			cmdInsert.Parameters.Add("@Monto", SqlDbType.Decimal, 9, "Monto")
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
@@ -214,12 +236,14 @@ Partial Public Class SccComisiones
 			cmdInsert.Parameters.Add("@objNotaCreditoID", SqlDbType.Int, 4, "objNotaCreditoID")
 			cmdInsert.Parameters.Add("@Activa", SqlDbType.Bit, 1, "Activa")
 			cmdInsert.Parameters.Add("@TotalRecuperado", SqlDbType.Decimal, 9, "TotalRecuperado")
-			cmdInsert.CommandText = "INSERT INTO SccComisiones ( objCajaID, objEmpleadoID, Porcentaje, Fecha, Monto, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, objNotaCreditoID, Activa, TotalRecuperado) VALUES ( @objCajaID, @objEmpleadoID, @Porcentaje, @Fecha, @Monto, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @objNotaCreditoID, @Activa, @TotalRecuperado)"
+			cmdInsert.CommandText = "INSERT INTO SccComisiones ( objCajaID, objEmpleadoID, Porcentaje, Desde, Hasta, Fecha, Monto, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, objNotaCreditoID, Activa, TotalRecuperado) VALUES ( @objCajaID, @objEmpleadoID, @Porcentaje, @Desde, @Hasta, @Fecha, @Monto, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @objNotaCreditoID, @Activa, @TotalRecuperado)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@objCajaID", SqlDbType.Int, 4, "objCajaID")
 			cmdUpdate.Parameters.Add("@objEmpleadoID", SqlDbType.Int, 4, "objEmpleadoID")
 			cmdUpdate.Parameters.Add("@Porcentaje", SqlDbType.Decimal, 9, "Porcentaje")
+			cmdUpdate.Parameters.Add("@Desde", SqlDbType.DateTime, 8, "Desde")
+			cmdUpdate.Parameters.Add("@Hasta", SqlDbType.DateTime, 8, "Hasta")
 			cmdUpdate.Parameters.Add("@Fecha", SqlDbType.DateTime, 8, "Fecha")
 			cmdUpdate.Parameters.Add("@Monto", SqlDbType.Decimal, 9, "Monto")
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
@@ -230,7 +254,7 @@ Partial Public Class SccComisiones
 			cmdUpdate.Parameters.Add("@Activa", SqlDbType.Bit, 1, "Activa")
 			cmdUpdate.Parameters.Add("@TotalRecuperado", SqlDbType.Decimal, 9, "TotalRecuperado")
 			cmdUpdate.Parameters.Add("@wSccComisionID", SqlDbType.Int, 4, "SccComisionID")
-			cmdUpdate.CommandText = "UPDATE SccComisiones SET objCajaID=@objCajaID, objEmpleadoID=@objEmpleadoID, Porcentaje=@Porcentaje, Fecha=@Fecha, Monto=@Monto, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, objNotaCreditoID=@objNotaCreditoID, Activa=@Activa, TotalRecuperado=@TotalRecuperado WHERE SccComisionID= @wSccComisionID"
+			cmdUpdate.CommandText = "UPDATE SccComisiones SET objCajaID=@objCajaID, objEmpleadoID=@objEmpleadoID, Porcentaje=@Porcentaje, Desde=@Desde, Hasta=@Hasta, Fecha=@Fecha, Monto=@Monto, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, objNotaCreditoID=@objNotaCreditoID, Activa=@Activa, TotalRecuperado=@TotalRecuperado WHERE SccComisionID= @wSccComisionID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -280,6 +304,8 @@ Partial Public Class SccComisiones
 				m_objCajaID = IIf(IsDBNull(dr("objCajaID")), Nothing, dr("objCajaID"))					
 				m_objEmpleadoID = IIf(IsDBNull(dr("objEmpleadoID")), Nothing, dr("objEmpleadoID"))					
 				m_Porcentaje = IIf(IsDBNull(dr("Porcentaje")), Nothing, dr("Porcentaje"))					
+				m_Desde = IIf(IsDBNull(dr("Desde")), Nothing, dr("Desde"))					
+				m_Hasta = IIf(IsDBNull(dr("Hasta")), Nothing, dr("Hasta"))					
 				m_Fecha = IIf(IsDBNull(dr("Fecha")), Nothing, dr("Fecha"))					
 				m_Monto = IIf(IsDBNull(dr("Monto")), Nothing, dr("Monto"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -326,6 +352,8 @@ Partial Public Class SccComisiones
 				m_objCajaID = IIf(IsDBNull(dr("objCajaID")), Nothing, dr("objCajaID"))					
 				m_objEmpleadoID = IIf(IsDBNull(dr("objEmpleadoID")), Nothing, dr("objEmpleadoID"))					
 				m_Porcentaje = IIf(IsDBNull(dr("Porcentaje")), Nothing, dr("Porcentaje"))					
+				m_Desde = IIf(IsDBNull(dr("Desde")), Nothing, dr("Desde"))					
+				m_Hasta = IIf(IsDBNull(dr("Hasta")), Nothing, dr("Hasta"))					
 				m_Fecha = IIf(IsDBNull(dr("Fecha")), Nothing, dr("Fecha"))					
 				m_Monto = IIf(IsDBNull(dr("Monto")), Nothing, dr("Monto"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -463,6 +491,8 @@ Partial Public Class SccComisiones
 		sCommand &= "objCajaID,"
 		sCommand &= "objEmpleadoID,"
 		sCommand &= "Porcentaje,"
+		sCommand &= "Desde,"
+		sCommand &= "Hasta,"
 		sCommand &= "Fecha,"
 		sCommand &= "Monto,"
 		sCommand &= "FechaCreacion,"
@@ -475,6 +505,8 @@ Partial Public Class SccComisiones
 		sCommand &= "@objCajaID,"
 		sCommand &= "@objEmpleadoID,"
 		sCommand &= "@Porcentaje,"
+		sCommand &= "@Desde,"
+		sCommand &= "@Hasta,"
 		sCommand &= "@Fecha,"
 		sCommand &= "@Monto,"
 		sCommand &= "@FechaCreacion,"
@@ -490,7 +522,7 @@ Partial Public Class SccComisiones
 		sCommand &= "SccComisionID = SCOPE_IDENTITY()"
 		
 		
-		Dim arParams(12) As SqlParameter
+		Dim arParams(14) As SqlParameter
 		arParams(0) = New SqlParameter("@SccComisionID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@objCajaID", SqlDbType.Int)		
@@ -511,59 +543,71 @@ Partial Public Class SccComisiones
         Else
             arParams(3).Value = m_Porcentaje
         End If
-		arParams(4) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
-		If IsDBNull(m_Fecha) Then
+		arParams(4) = New SqlParameter("@Desde", SqlDbType.DateTime)		
+		If IsDBNull(m_Desde) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_Fecha
+            arParams(4).Value = m_Desde
         End If
-		arParams(5) = New SqlParameter("@Monto", SqlDbType.Decimal)		
-		If IsDBNull(m_Monto) Then
+		arParams(5) = New SqlParameter("@Hasta", SqlDbType.DateTime)		
+		If IsDBNull(m_Hasta) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_Monto
+            arParams(5).Value = m_Hasta
         End If
-		arParams(6) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(6) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
+		If IsDBNull(m_Fecha) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_FechaCreacion
+            arParams(6).Value = m_Fecha
         End If
-		arParams(7) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(7) = New SqlParameter("@Monto", SqlDbType.Decimal)		
+		If IsDBNull(m_Monto) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_UsuarioCreacion
+            arParams(7).Value = m_Monto
         End If
-		arParams(8) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(8) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_FechaModificacion
+            arParams(8).Value = m_FechaCreacion
         End If
-		arParams(9) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(9) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_UsuarioModificacion
+            arParams(9).Value = m_UsuarioCreacion
         End If
-		arParams(10) = New SqlParameter("@objNotaCreditoID", SqlDbType.Int)		
-		If IsDBNull(m_objNotaCreditoID) Then
+		arParams(10) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_objNotaCreditoID
+            arParams(10).Value = m_FechaModificacion
         End If
-		arParams(11) = New SqlParameter("@Activa", SqlDbType.Bit)		
-		If IsDBNull(m_Activa) Then
+		arParams(11) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_Activa
+            arParams(11).Value = m_UsuarioModificacion
         End If
-		arParams(12) = New SqlParameter("@TotalRecuperado", SqlDbType.Decimal)		
-		If IsDBNull(m_TotalRecuperado) Then
+		arParams(12) = New SqlParameter("@objNotaCreditoID", SqlDbType.Int)		
+		If IsDBNull(m_objNotaCreditoID) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_TotalRecuperado
+            arParams(12).Value = m_objNotaCreditoID
+        End If
+		arParams(13) = New SqlParameter("@Activa", SqlDbType.Bit)		
+		If IsDBNull(m_Activa) Then
+            arParams(13).Value = DBNull.Value
+        Else
+            arParams(13).Value = m_Activa
+        End If
+		arParams(14) = New SqlParameter("@TotalRecuperado", SqlDbType.Decimal)		
+		If IsDBNull(m_TotalRecuperado) Then
+            arParams(14).Value = DBNull.Value
+        Else
+            arParams(14).Value = m_TotalRecuperado
         End If
 	
 		Try
@@ -592,6 +636,8 @@ Partial Public Class SccComisiones
 		sCommand &= "objCajaID = @objCajaID,"
 		sCommand &= "objEmpleadoID = @objEmpleadoID,"
 		sCommand &= "Porcentaje = @Porcentaje,"
+		sCommand &= "Desde = @Desde,"
+		sCommand &= "Hasta = @Hasta,"
 		sCommand &= "Fecha = @Fecha,"
 		sCommand &= "Monto = @Monto,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
@@ -604,7 +650,7 @@ Partial Public Class SccComisiones
 		sCommand &= " where "	
 		sCommand &= "SccComisionID = @SccComisionID"					
 		
-		Dim arParams(12) As SqlParameter
+		Dim arParams(14) As SqlParameter
 		arParams(0) = New SqlParameter("@SccComisionID", SqlDbType.Int)		
 		If IsDBNull(m_SccComisionID) Then
             arParams(0).Value = DBNull.Value
@@ -629,59 +675,71 @@ Partial Public Class SccComisiones
         Else
             arParams(3).Value = m_Porcentaje
         End If
-		arParams(4) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
-		If IsDBNull(m_Fecha) Then
+		arParams(4) = New SqlParameter("@Desde", SqlDbType.DateTime)		
+		If IsDBNull(m_Desde) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_Fecha
+            arParams(4).Value = m_Desde
         End If
-		arParams(5) = New SqlParameter("@Monto", SqlDbType.Decimal)		
-		If IsDBNull(m_Monto) Then
+		arParams(5) = New SqlParameter("@Hasta", SqlDbType.DateTime)		
+		If IsDBNull(m_Hasta) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_Monto
+            arParams(5).Value = m_Hasta
         End If
-		arParams(6) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(6) = New SqlParameter("@Fecha", SqlDbType.DateTime)		
+		If IsDBNull(m_Fecha) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_FechaCreacion
+            arParams(6).Value = m_Fecha
         End If
-		arParams(7) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(7) = New SqlParameter("@Monto", SqlDbType.Decimal)		
+		If IsDBNull(m_Monto) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_UsuarioCreacion
+            arParams(7).Value = m_Monto
         End If
-		arParams(8) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(8) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_FechaModificacion
+            arParams(8).Value = m_FechaCreacion
         End If
-		arParams(9) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(9) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_UsuarioModificacion
+            arParams(9).Value = m_UsuarioCreacion
         End If
-		arParams(10) = New SqlParameter("@objNotaCreditoID", SqlDbType.Int)		
-		If IsDBNull(m_objNotaCreditoID) Then
+		arParams(10) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_objNotaCreditoID
+            arParams(10).Value = m_FechaModificacion
         End If
-		arParams(11) = New SqlParameter("@Activa", SqlDbType.Bit)		
-		If IsDBNull(m_Activa) Then
+		arParams(11) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_Activa
+            arParams(11).Value = m_UsuarioModificacion
         End If
-		arParams(12) = New SqlParameter("@TotalRecuperado", SqlDbType.Decimal)		
-		If IsDBNull(m_TotalRecuperado) Then
+		arParams(12) = New SqlParameter("@objNotaCreditoID", SqlDbType.Int)		
+		If IsDBNull(m_objNotaCreditoID) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_TotalRecuperado
+            arParams(12).Value = m_objNotaCreditoID
+        End If
+		arParams(13) = New SqlParameter("@Activa", SqlDbType.Bit)		
+		If IsDBNull(m_Activa) Then
+            arParams(13).Value = DBNull.Value
+        Else
+            arParams(13).Value = m_Activa
+        End If
+		arParams(14) = New SqlParameter("@TotalRecuperado", SqlDbType.Decimal)		
+		If IsDBNull(m_TotalRecuperado) Then
+            arParams(14).Value = DBNull.Value
+        Else
+            arParams(14).Value = m_TotalRecuperado
         End If
 	
 		Try
