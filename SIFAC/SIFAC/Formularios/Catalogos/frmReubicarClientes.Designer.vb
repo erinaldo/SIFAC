@@ -36,7 +36,6 @@ Partial Class frmReubicarClientes
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.colCedula = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ColCliente = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.grdDetalleVentas = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colCategoria = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -55,7 +54,6 @@ Partial Class frmReubicarClientes
         CType(Me.grdClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdClientesTable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDetalleVentas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,7 +76,7 @@ Partial Class frmReubicarClientes
         Me.cmdReubicar.Name = "cmdReubicar"
         Me.cmdReubicar.Size = New System.Drawing.Size(36, 36)
         Me.cmdReubicar.Tag = "Cambiar Ruta"
-        Me.cmdReubicar.Text = "Aprobar"
+        Me.cmdReubicar.Text = "Cambiar Ruta"
         '
         'ToolStripSeparator3
         '
@@ -92,7 +90,7 @@ Partial Class frmReubicarClientes
         Me.cmdCerrar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdCerrar.Name = "cmdCerrar"
         Me.cmdCerrar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdCerrar.ToolTipText = "Salir de Catálogo de Productos"
+        Me.cmdCerrar.ToolTipText = "Salir de reubicar clientes"
         '
         'PanelControl2
         '
@@ -108,6 +106,7 @@ Partial Class frmReubicarClientes
         '
         'txtRuta
         '
+        Me.txtRuta.Enabled = False
         Me.txtRuta.Location = New System.Drawing.Point(75, 17)
         Me.txtRuta.Name = "txtRuta"
         Me.txtRuta.Size = New System.Drawing.Size(279, 20)
@@ -134,7 +133,7 @@ Partial Class frmReubicarClientes
         Me.grdClientes.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdClientes.MainView = Me.grdClientesTable
         Me.grdClientes.Name = "grdClientes"
-        Me.grdClientes.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemCheckEdit2, Me.RepositoryItemDateEdit1})
+        Me.grdClientes.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1, Me.RepositoryItemDateEdit1})
         Me.grdClientes.Size = New System.Drawing.Size(788, 305)
         Me.grdClientes.TabIndex = 13
         Me.grdClientes.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdClientesTable, Me.grdDetalleVentas})
@@ -182,12 +181,6 @@ Partial Class frmReubicarClientes
         Me.ColCliente.Visible = True
         Me.ColCliente.VisibleIndex = 2
         Me.ColCliente.Width = 372
-        '
-        'RepositoryItemCheckEdit2
-        '
-        Me.RepositoryItemCheckEdit2.AutoHeight = False
-        Me.RepositoryItemCheckEdit2.Caption = "Check"
-        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
         '
         'RepositoryItemDateEdit1
         '
@@ -314,7 +307,6 @@ Partial Class frmReubicarClientes
         CType(Me.grdClientes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdClientesTable, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdDetalleVentas, System.ComponentModel.ISupportInitialize).EndInit()
@@ -335,7 +327,6 @@ Partial Class frmReubicarClientes
     Friend WithEvents colCedula As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemDateEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
     Friend WithEvents ColCliente As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents RepositoryItemCheckEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents grdDetalleVentas As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colCategoria As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colMarca As DevExpress.XtraGrid.Columns.GridColumn

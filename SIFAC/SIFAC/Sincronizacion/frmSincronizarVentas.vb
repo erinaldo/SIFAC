@@ -393,7 +393,7 @@ lblGuardarDetalleCuenta:
                             .objSccCuentaID = objSccCuenta.SccCuentaID
                             .objSfaFacturaID = SfaFacturaID
                             .objTeminoPlazoID = objTerminoPagoID
-                            .objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "01")
+                            .objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE")
                             .Saldo = objSfaFactura.Saldo
                             .MontoTotal = objSfaFactura.Subtotal
                             .MontoPrima = objSfaFactura.Prima
@@ -407,8 +407,6 @@ lblGuardarDetalleCuenta:
                             .Insert(t)
                         End With
                     End If
-
-                    MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
 
                 End If
             Next
@@ -461,7 +459,7 @@ lblGuardarDetalleCuenta:
         Dim dtMaximoNumero As New DataTable
         Try
             Try
-                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero)+ 1 as NumeroMaximo", "SfaFacturas"))
+                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ISNULL(MAX(Numero), 0) + 1 as NumeroMaximo", "SfaFacturas"))
                 strNumero = dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo")
             Catch ex As Exception
                 clsError.CaptarError(ex)

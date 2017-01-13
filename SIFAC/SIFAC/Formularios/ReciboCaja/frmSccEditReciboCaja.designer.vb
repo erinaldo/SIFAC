@@ -23,8 +23,10 @@ Partial Class frmSccEditReciboCaja
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSccEditReciboCaja))
         Me.tbControl = New System.Windows.Forms.TabControl()
         Me.tbpDetFact = New System.Windows.Forms.TabPage()
+        Me.grdNotaDebito = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.grdFacturas = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.tbpFormasPago = New System.Windows.Forms.TabPage()
+        Me.grdNotasCredito = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.grpFormaPago = New System.Windows.Forms.GroupBox()
         Me.NumMontoDolares = New C1.Win.C1Input.C1NumericEdit()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -68,12 +70,12 @@ Partial Class frmSccEditReciboCaja
         Me.cmProcesar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
-        Me.grdNotasCredito = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
-        Me.grdNotaDebito = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.tbControl.SuspendLayout()
         Me.tbpDetFact.SuspendLayout()
+        CType(Me.grdNotaDebito, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbpFormasPago.SuspendLayout()
+        CType(Me.grdNotasCredito, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpFormaPago.SuspendLayout()
         CType(Me.NumMontoDolares, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbMoneda, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,8 +90,6 @@ Partial Class frmSccEditReciboCaja
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdNotasCredito, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdNotaDebito, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbControl
@@ -113,6 +113,24 @@ Partial Class frmSccEditReciboCaja
         Me.tbpDetFact.TabIndex = 0
         Me.tbpDetFact.Text = "Detalle de Facturas"
         Me.tbpDetFact.UseVisualStyleBackColor = True
+        '
+        'grdNotaDebito
+        '
+        Me.grdNotaDebito.AllowColMove = False
+        Me.grdNotaDebito.Caption = "Notas de Débito"
+        Me.grdNotaDebito.Dock = System.Windows.Forms.DockStyle.Top
+        Me.grdNotaDebito.ExtendRightColumn = True
+        Me.grdNotaDebito.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdNotaDebito.Images.Add(CType(resources.GetObject("grdNotaDebito.Images"), System.Drawing.Image))
+        Me.grdNotaDebito.Location = New System.Drawing.Point(3, 125)
+        Me.grdNotaDebito.Name = "grdNotaDebito"
+        Me.grdNotaDebito.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdNotaDebito.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdNotaDebito.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdNotaDebito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotaDebito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdNotaDebito.Size = New System.Drawing.Size(628, 101)
+        Me.grdNotaDebito.TabIndex = 11
+        Me.grdNotaDebito.PropBag = resources.GetString("grdNotaDebito.PropBag")
         '
         'grdFacturas
         '
@@ -148,6 +166,24 @@ Partial Class frmSccEditReciboCaja
         Me.tbpFormasPago.TabIndex = 2
         Me.tbpFormasPago.Text = "Pago"
         Me.tbpFormasPago.UseVisualStyleBackColor = True
+        '
+        'grdNotasCredito
+        '
+        Me.grdNotasCredito.AllowColMove = False
+        Me.grdNotasCredito.Caption = "Notas de Crédito"
+        Me.grdNotasCredito.Dock = System.Windows.Forms.DockStyle.Top
+        Me.grdNotasCredito.ExtendRightColumn = True
+        Me.grdNotasCredito.GroupByCaption = "Drag a column header here to group by that column"
+        Me.grdNotasCredito.Images.Add(CType(resources.GetObject("grdNotasCredito.Images"), System.Drawing.Image))
+        Me.grdNotasCredito.Location = New System.Drawing.Point(3, 3)
+        Me.grdNotasCredito.Name = "grdNotasCredito"
+        Me.grdNotasCredito.PreviewInfo.Location = New System.Drawing.Point(0, 0)
+        Me.grdNotasCredito.PreviewInfo.Size = New System.Drawing.Size(0, 0)
+        Me.grdNotasCredito.PreviewInfo.ZoomFactor = 75.0R
+        Me.grdNotasCredito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotasCredito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
+        Me.grdNotasCredito.Size = New System.Drawing.Size(628, 119)
+        Me.grdNotasCredito.TabIndex = 15
+        Me.grdNotasCredito.PropBag = resources.GetString("grdNotasCredito.PropBag")
         '
         'grpFormaPago
         '
@@ -722,42 +758,6 @@ Partial Class frmSccEditReciboCaja
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
-        'grdNotasCredito
-        '
-        Me.grdNotasCredito.AllowColMove = False
-        Me.grdNotasCredito.Caption = "Notas de Crédito"
-        Me.grdNotasCredito.Dock = System.Windows.Forms.DockStyle.Top
-        Me.grdNotasCredito.ExtendRightColumn = True
-        Me.grdNotasCredito.GroupByCaption = "Drag a column header here to group by that column"
-        Me.grdNotasCredito.Images.Add(CType(resources.GetObject("grdNotasCredito.Images"), System.Drawing.Image))
-        Me.grdNotasCredito.Location = New System.Drawing.Point(3, 3)
-        Me.grdNotasCredito.Name = "grdNotasCredito"
-        Me.grdNotasCredito.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdNotasCredito.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdNotasCredito.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdNotasCredito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotasCredito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdNotasCredito.Size = New System.Drawing.Size(628, 119)
-        Me.grdNotasCredito.TabIndex = 15
-        Me.grdNotasCredito.PropBag = resources.GetString("grdNotasCredito.PropBag")
-        '
-        'grdNotaDebito
-        '
-        Me.grdNotaDebito.AllowColMove = False
-        Me.grdNotaDebito.Caption = "Notas de Débito"
-        Me.grdNotaDebito.Dock = System.Windows.Forms.DockStyle.Top
-        Me.grdNotaDebito.ExtendRightColumn = True
-        Me.grdNotaDebito.GroupByCaption = "Drag a column header here to group by that column"
-        Me.grdNotaDebito.Images.Add(CType(resources.GetObject("grdNotaDebito.Images"), System.Drawing.Image))
-        Me.grdNotaDebito.Location = New System.Drawing.Point(3, 125)
-        Me.grdNotaDebito.Name = "grdNotaDebito"
-        Me.grdNotaDebito.PreviewInfo.Location = New System.Drawing.Point(0, 0)
-        Me.grdNotaDebito.PreviewInfo.Size = New System.Drawing.Size(0, 0)
-        Me.grdNotaDebito.PreviewInfo.ZoomFactor = 75.0R
-        Me.grdNotaDebito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotaDebito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdNotaDebito.Size = New System.Drawing.Size(628, 101)
-        Me.grdNotaDebito.TabIndex = 11
-        Me.grdNotaDebito.PropBag = resources.GetString("grdNotaDebito.PropBag")
-        '
         'frmSccEditReciboCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -780,8 +780,10 @@ Partial Class frmSccEditReciboCaja
         Me.Text = "Modificar Recibo Caja"
         Me.tbControl.ResumeLayout(False)
         Me.tbpDetFact.ResumeLayout(False)
+        CType(Me.grdNotaDebito, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdFacturas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbpFormasPago.ResumeLayout(False)
+        CType(Me.grdNotasCredito, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpFormaPago.ResumeLayout(False)
         Me.grpFormaPago.PerformLayout()
         CType(Me.NumMontoDolares, System.ComponentModel.ISupportInitialize).EndInit()
@@ -801,8 +803,6 @@ Partial Class frmSccEditReciboCaja
         Me.PanelControl1.PerformLayout()
         CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbxCobrador, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdNotasCredito, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdNotaDebito, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

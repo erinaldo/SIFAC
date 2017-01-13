@@ -38,9 +38,13 @@ Public Class frmReubicarClientes
     Private Sub CargarGridClientes()
 
         Try
-            Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID, Cliente, Cedula, objGeneroID, Genero, ClienteID, Ruta, OrdenCobro, StbRutaID", "vwSccClientesRutas", "StbRutaID=" & RutaID))
-            Me.dtCliente.DefaultView.Sort = "Cliente"
-            Me.grdClientes.DataSource = dtCliente
+            Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Seleccionar, Cliente, Cedula,  cast(ClienteID as int) as ClienteID, Ruta, StbRutaID", "vwSccClientesRutas", "StbRutaID=" & RutaID))
+            If Not dtCliente Is Nothing Then
+                dtCliente.PrimaryKey = New DataColumn() {Me.dtCliente.Columns("ClienteID")}
+                Me.dtCliente.DefaultView.Sort = "ClienteID"
+                Me.grdClientes.DataSource = dtCliente
+            End If
+
             Me.txtRuta.Text = NombreRuta
             If Me.dtCliente.DefaultView.Count = 0 Then
                 Me.cmdReubicar.Enabled = False
@@ -78,7 +82,7 @@ Public Class frmReubicarClientes
             objfrmCambiarRuta = New frmCambioRuta
             objfrmCambiarRuta.DatadtClientes = dtCliente.Copy()
 
-            If objfrmCambiarRuta.DialogResult = Windows.Forms.DialogResult.OK Then
+            If objfrmCambiarRuta.ShowDialog = Windows.Forms.DialogResult.OK Then
                 Me.CargarGridClientes()
             End If
         Catch ex As Exception
@@ -87,8 +91,23 @@ Public Class frmReubicarClientes
             objfrmCambiarRuta = Nothing
         End Try
     End Sub
+
+    Private Sub RepositoryItemCheckEdit1_CheckedChanged(sender As Object, e As EventArgs) Handles RepositoryItemCheckEdit1.CheckedChanged
+        Dim FilaActual As Integer
+        FilaActual = Me.grdClientesTable.FocusedRowHandle
+
+        Dim objConsultas As clsConsultas
+        objConsultas = New clsConsultas
+
+        Dim blnSeleccionar As Boolean
+      
+        blnSeleccionar = CType(sender, DevExpress.XtraEditors.CheckEdit).Checked
+        dtCliente = objConsultas.actualizarColumnaDT(dtCliente, "ClienteID", CInt(dtCliente.Rows(FilaActual)("ClienteID")), "Seleccionar", blnSeleccionar)
+
+    End Sub
 #End Region
     
+   
    
    
 End Class

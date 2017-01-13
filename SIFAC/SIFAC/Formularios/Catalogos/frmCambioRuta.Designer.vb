@@ -22,6 +22,7 @@ Partial Class frmCambioRuta
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCambioRuta))
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmbRutas = New C1.Win.C1List.C1Combo()
@@ -31,10 +32,12 @@ Partial Class frmCambioRuta
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbRutas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -50,7 +53,7 @@ Partial Class frmCambioRuta
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(305, 147)
+        Me.PanelControl1.Size = New System.Drawing.Size(358, 147)
         Me.PanelControl1.TabIndex = 26
         '
         'cmbRutas
@@ -79,7 +82,7 @@ Partial Class frmCambioRuta
         Me.cmbRutas.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbRutas.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbRutas.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbRutas.Size = New System.Drawing.Size(172, 21)
+        Me.cmbRutas.Size = New System.Drawing.Size(223, 21)
         Me.cmbRutas.TabIndex = 25
         Me.cmbRutas.Tag = "OBLIGATORIO"
         Me.cmbRutas.PropBag = resources.GetString("cmbRutas.PropBag")
@@ -111,7 +114,7 @@ Partial Class frmCambioRuta
         Me.cmbDiaCrobro.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbDiaCrobro.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbDiaCrobro.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbDiaCrobro.Size = New System.Drawing.Size(172, 21)
+        Me.cmbDiaCrobro.Size = New System.Drawing.Size(223, 21)
         Me.cmbDiaCrobro.TabIndex = 6
         Me.cmbDiaCrobro.Tag = "OBLIGATORIO"
         Me.cmbDiaCrobro.PropBag = resources.GetString("cmbDiaCrobro.PropBag")
@@ -143,7 +146,7 @@ Partial Class frmCambioRuta
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(202, 87)
+        Me.cmdCancelar.Location = New System.Drawing.Point(255, 82)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -158,7 +161,7 @@ Partial Class frmCambioRuta
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(116, 87)
+        Me.cmdGuardar.Location = New System.Drawing.Point(169, 82)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -173,14 +176,18 @@ Partial Class frmCambioRuta
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 126)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(305, 21)
+        Me.Panel1.Size = New System.Drawing.Size(358, 21)
         Me.Panel1.TabIndex = 27
+        '
+        'ErrorProv
+        '
+        Me.ErrorProv.ContainerControl = Me
         '
         'frmCambioRuta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(305, 147)
+        Me.ClientSize = New System.Drawing.Size(358, 147)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -194,6 +201,7 @@ Partial Class frmCambioRuta
         Me.PanelControl1.PerformLayout()
         CType(Me.cmbRutas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -205,4 +213,5 @@ Partial Class frmCambioRuta
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmbRutas As C1.Win.C1List.C1Combo
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
 End Class

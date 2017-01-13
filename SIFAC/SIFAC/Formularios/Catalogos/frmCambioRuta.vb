@@ -127,9 +127,27 @@ Public Class frmCambioRuta
         End Try
     End Sub
 
+    Public Function ValidarEntrada() As Boolean
+        If cmbRutas.Text.Trim.Length = 0 Then
+            ErrorProv.SetError(cmbRutas, My.Resources.MsgObligatorio)
+            Return False
+            Exit Function
+        End If
+
+        If cmbDiaCrobro.Text.Trim.Length = 0 Then
+            ErrorProv.SetError(cmbDiaCrobro, My.Resources.MsgObligatorio)
+            Return False
+            Exit Function
+        End If
+
+        Return True
+    End Function
+
     Private Sub GuardarCambioRutas()
-        Dim dtClientesSeleccionados As DataTable
+        Dim dtClientesSeleccionados, dtCuentas, dtCuentasDetalle As DataTable
         Dim objClientes As New SccClientes
+        Dim dia, diaanterior As Integer
+
         Dim t As New TransactionManager
         Try
             ''Clonar estructura del DataTable
@@ -149,6 +167,33 @@ Public Class frmCambioRuta
                 objClientes.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objClientes.UsuarioModificacion = clsProyecto.Conexion.Usuario
                 objClientes.Update(t)
+
+                ''Buscar las cuentas de este cliente
+                Dim objCuentas As New SccCuentaPorCobrar
+                dtCuentas = SccCuentaPorCobrar.RetrieveDT("objClienteID=" & CInt(drFilaClientes("ClienteID")) & " AND objEstadoID=" & ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE"))
+
+                If dtCuentas.Rows.Count > 0 Then
+
+                    For Each drFilaCuentas As DataRow In dtCuentas.Rows
+                        dtCuentasDetalle = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID=" & CInt(drFilaCuentas("SccCuentaID")) & " AND objEstadoID= " & ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE"))
+
+                        If dtCuentasDetalle.Rows.Count > 0 Then
+                            For Each drFilaCuentasDetalle As DataRow In dtCuentasDetalle.Rows
+                                Dim objDetalleCuenta As New SccCuentaPorCobrarDetalle
+
+                                objDetalleCuenta.Retrieve(CInt(drFilaCuentasDetalle("SccCuentaPorCobrarDetalleID")))
+
+                                diaanterior = objDetalleCuenta.FechaProximoPago.Value.DayOfWeek
+                                dia = cmbDiaCrobro.SelectedValue
+
+                                objDetalleCuenta.FechaProximoPago = objDetalleCuenta.FechaProximoPago.Value.AddDays(Math.Abs(diaanterior - dia))
+                               objDetalleCuenta.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                                objDetalleCuenta.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                                objDetalleCuenta.Update(t)
+                            Next
+                        End If
+                    Next
+                End If
             Next
             t.CommitTran()
             MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
@@ -166,7 +211,10 @@ Public Class frmCambioRuta
 #Region "Eventos del Formulario"
     Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
         Try
-            GuardarCambioRutas()
+            If ValidarEntrada() Then
+                GuardarCambioRutas()
+            End If
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -175,6 +223,33 @@ Public Class frmCambioRuta
     Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
         Close()
     End Sub
-#End Region
   
+    Private Sub frmCambioRuta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+           CargarDatosIniciales
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub cmbRutas_TextChanged(sender As Object, e As EventArgs) Handles cmbRutas.TextChanged
+        Dim objRuta As New StbRutas
+        Try
+            ErrorProv.SetError(cmbRutas, "")
+
+            ''Buscar dia de la ruta seleccionada
+            objRuta.Retrieve(cmbRutas.SelectedValue)
+            cmbDiaCrobro.SelectedValue = objRuta.DiaCobro
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objRuta = Nothing
+        End Try
+
+
+
+    End Sub
+
+#End Region
 End Class

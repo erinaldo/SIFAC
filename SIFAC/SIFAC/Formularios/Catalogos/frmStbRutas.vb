@@ -177,7 +177,7 @@ Public Class frmStbRutas
             FilaActual = Me.grdRutasTabla.GetDataSourceRowIndex(selectedRow(0))
             Me.Cursor = WaitCursor
             objfrmReunicar = New frmReubicarClientes
-            objfrmReunicar.NombreRuta = Me.DtRutas.DefaultView.Item(FilaActual)("Ruta")
+            objfrmReunicar.NombreRuta = Me.DtRutas.DefaultView.Item(FilaActual)("Nombre")
             objfrmReunicar.RutaID = Me.DtRutas.DefaultView.Item(FilaActual)("StbRutaID")
             objfrmReunicar.ShowDialog(Me)
         Catch ex As Exception
