@@ -43,7 +43,7 @@ Partial Class frmSccEditNotaCredito
         Me.txtCliente = New System.Windows.Forms.TextBox()
         Me.lblCliente = New System.Windows.Forms.Label()
         Me.txtNumCuenta = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblCuenta = New System.Windows.Forms.Label()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmbCajas = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -299,7 +299,7 @@ Partial Class frmSccEditNotaCredito
         Me.GrpExpediente.Controls.Add(Me.txtCliente)
         Me.GrpExpediente.Controls.Add(Me.lblCliente)
         Me.GrpExpediente.Controls.Add(Me.txtNumCuenta)
-        Me.GrpExpediente.Controls.Add(Me.Label12)
+        Me.GrpExpediente.Controls.Add(Me.lblCuenta)
         Me.GrpExpediente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GrpExpediente.Location = New System.Drawing.Point(20, 40)
         Me.GrpExpediente.Name = "GrpExpediente"
@@ -363,15 +363,15 @@ Partial Class frmSccEditNotaCredito
         Me.txtNumCuenta.TabIndex = 3
         Me.txtNumCuenta.Tag = "BLOQUEADO"
         '
-        'Label12
+        'lblCuenta
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(16, 20)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(56, 13)
-        Me.Label12.TabIndex = 1
-        Me.Label12.Tag = "OBLIGATORIO"
-        Me.Label12.Text = "No. Exp:"
+        Me.lblCuenta.AutoSize = True
+        Me.lblCuenta.Location = New System.Drawing.Point(16, 20)
+        Me.lblCuenta.Name = "lblCuenta"
+        Me.lblCuenta.Size = New System.Drawing.Size(56, 13)
+        Me.lblCuenta.TabIndex = 1
+        Me.lblCuenta.Tag = "OBLIGATORIO"
+        Me.lblCuenta.Text = "No. Exp:"
         '
         'PanelControl1
         '
@@ -684,7 +684,7 @@ Partial Class frmSccEditNotaCredito
     Friend WithEvents txtCliente As System.Windows.Forms.TextBox
     Friend WithEvents lblCliente As System.Windows.Forms.Label
     Friend WithEvents txtNumCuenta As System.Windows.Forms.TextBox
-    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents lblCuenta As System.Windows.Forms.Label
     Friend WithEvents cmdConsultar As System.Windows.Forms.Button
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents C1Combo1 As C1.Win.C1List.C1Combo

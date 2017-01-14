@@ -36,10 +36,12 @@ Partial Class frmSccComisionesEdit
         Me.cmdJefe = New System.Windows.Forms.Button()
         Me.dtDesde = New DevExpress.XtraEditors.DateEdit()
         Me.cmbCajero = New System.Windows.Forms.ComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblCajero = New System.Windows.Forms.Label()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.dtFechaPago = New DevExpress.XtraEditors.DateEdit()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.cmdVerDetalle = New System.Windows.Forms.Button()
         Me.txtEstado = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -51,8 +53,6 @@ Partial Class frmSccComisionesEdit
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.dtFechaPago = New DevExpress.XtraEditors.DateEdit()
-        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -61,12 +61,12 @@ Partial Class frmSccComisionesEdit
         CType(Me.dtDesde.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtDesde.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxDatosGenerales.SuspendLayout()
+        CType(Me.dtFechaPago.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtFechaPago.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpnTotalRecuperado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpnPorcentaje.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpnTotal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtFechaPago.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtFechaPago.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -74,7 +74,7 @@ Partial Class frmSccComisionesEdit
         Me.PanelControl1.Controls.Add(Me.lblCaja)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Controls.Add(Me.cmbCajero)
-        Me.PanelControl1.Controls.Add(Me.Label5)
+        Me.PanelControl1.Controls.Add(Me.lblCajero)
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
         Me.PanelControl1.Controls.Add(Me.gbxDatosGenerales)
@@ -83,14 +83,14 @@ Partial Class frmSccComisionesEdit
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(510, 407)
+        Me.PanelControl1.Size = New System.Drawing.Size(510, 393)
         Me.PanelControl1.TabIndex = 99
         '
         'lblCaja
         '
         Me.lblCaja.AutoSize = True
         Me.lblCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCaja.Location = New System.Drawing.Point(431, 7)
+        Me.lblCaja.Location = New System.Drawing.Point(27, 333)
         Me.lblCaja.Name = "lblCaja"
         Me.lblCaja.Size = New System.Drawing.Size(40, 13)
         Me.lblCaja.TabIndex = 146
@@ -108,7 +108,7 @@ Partial Class frmSccComisionesEdit
         Me.GroupBox1.Controls.Add(Me.cmdJefe)
         Me.GroupBox1.Controls.Add(Me.dtDesde)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(14, 66)
+        Me.GroupBox1.Location = New System.Drawing.Point(14, 10)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(481, 113)
         Me.GroupBox1.TabIndex = 4
@@ -198,30 +198,31 @@ Partial Class frmSccComisionesEdit
         '
         'cmbCajero
         '
+        Me.cmbCajero.Enabled = False
         Me.cmbCajero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCajero.FormattingEnabled = True
-        Me.cmbCajero.Location = New System.Drawing.Point(153, 30)
+        Me.cmbCajero.Location = New System.Drawing.Point(153, 298)
         Me.cmbCajero.Name = "cmbCajero"
         Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
         Me.cmbCajero.TabIndex = 148
         '
-        'Label5
+        'lblCajero
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(26, 33)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(62, 13)
-        Me.Label5.TabIndex = 147
-        Me.Label5.Tag = "OBLIGATORIO"
-        Me.Label5.Text = "Cajero(a):"
+        Me.lblCajero.AutoSize = True
+        Me.lblCajero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCajero.Location = New System.Drawing.Point(26, 305)
+        Me.lblCajero.Name = "lblCajero"
+        Me.lblCajero.Size = New System.Drawing.Size(62, 13)
+        Me.lblCajero.TabIndex = 147
+        Me.lblCajero.Tag = "OBLIGATORIO"
+        Me.lblCajero.Text = "Cajero(a):"
         '
         'cmdCancelar
         '
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(423, 352)
+        Me.cmdCancelar.Location = New System.Drawing.Point(423, 334)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -236,7 +237,7 @@ Partial Class frmSccComisionesEdit
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(337, 352)
+        Me.cmdGuardar.Location = New System.Drawing.Point(337, 334)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
@@ -258,11 +259,31 @@ Partial Class frmSccComisionesEdit
         Me.gbxDatosGenerales.Controls.Add(Me.SpnPorcentaje)
         Me.gbxDatosGenerales.Controls.Add(Me.SpnTotal)
         Me.gbxDatosGenerales.Controls.Add(Me.Label1)
-        Me.gbxDatosGenerales.Location = New System.Drawing.Point(12, 185)
+        Me.gbxDatosGenerales.Location = New System.Drawing.Point(12, 129)
         Me.gbxDatosGenerales.Name = "gbxDatosGenerales"
         Me.gbxDatosGenerales.Size = New System.Drawing.Size(483, 161)
         Me.gbxDatosGenerales.TabIndex = 1
         Me.gbxDatosGenerales.TabStop = False
+        '
+        'dtFechaPago
+        '
+        Me.dtFechaPago.EditValue = Nothing
+        Me.dtFechaPago.Location = New System.Drawing.Point(141, 126)
+        Me.dtFechaPago.Name = "dtFechaPago"
+        Me.dtFechaPago.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtFechaPago.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtFechaPago.Size = New System.Drawing.Size(148, 20)
+        Me.dtFechaPago.TabIndex = 152
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(18, 129)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(96, 13)
+        Me.Label7.TabIndex = 151
+        Me.Label7.Text = "Fecha de pago:"
         '
         'cmdVerDetalle
         '
@@ -358,7 +379,7 @@ Partial Class frmSccComisionesEdit
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 386)
+        Me.Panel1.Location = New System.Drawing.Point(0, 372)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(510, 21)
         Me.Panel1.TabIndex = 100
@@ -368,31 +389,11 @@ Partial Class frmSccComisionesEdit
         Me.ErrorProv.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink
         Me.ErrorProv.ContainerControl = Me
         '
-        'dtFechaPago
-        '
-        Me.dtFechaPago.EditValue = Nothing
-        Me.dtFechaPago.Location = New System.Drawing.Point(141, 126)
-        Me.dtFechaPago.Name = "dtFechaPago"
-        Me.dtFechaPago.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtFechaPago.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.dtFechaPago.Size = New System.Drawing.Size(148, 20)
-        Me.dtFechaPago.TabIndex = 152
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(18, 129)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(96, 13)
-        Me.Label7.TabIndex = 151
-        Me.Label7.Text = "Fecha de pago:"
-        '
         'frmSccComisionesEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(510, 407)
+        Me.ClientSize = New System.Drawing.Size(510, 393)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -412,12 +413,12 @@ Partial Class frmSccComisionesEdit
         CType(Me.dtDesde.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbxDatosGenerales.ResumeLayout(False)
         Me.gbxDatosGenerales.PerformLayout()
+        CType(Me.dtFechaPago.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtFechaPago.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpnTotalRecuperado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpnPorcentaje.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SpnTotal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtFechaPago.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtFechaPago.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -443,7 +444,7 @@ Partial Class frmSccComisionesEdit
     Friend WithEvents cmdVerDetalle As System.Windows.Forms.Button
     Friend WithEvents lblCaja As System.Windows.Forms.Label
     Friend WithEvents cmbCajero As System.Windows.Forms.ComboBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents lblCajero As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents dtHasta As DevExpress.XtraEditors.DateEdit
     Friend WithEvents Label6 As System.Windows.Forms.Label

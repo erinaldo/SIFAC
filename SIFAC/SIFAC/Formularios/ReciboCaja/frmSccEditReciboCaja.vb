@@ -827,7 +827,7 @@ Public Class frmSccEditReciboCaja
             Me.cmbRuta.Enabled = False
             Me.txtCliente.Enabled = False
             Me.txtEstado.Enabled = False
-
+            Me.txtNumCuenta.Enabled = False
             For intCantCol As Integer = 0 To Me.grdFacturas.Columns.Count - 1
                 Me.grdFacturas.Columns(intCantCol).Tag = "BLOQUEADO"
             Next
@@ -1031,8 +1031,8 @@ Public Class frmSccEditReciboCaja
                 End If
 
                 Me.DecTotalRecibo = objSccRecibo.TotalRecibo
-                dtDatos = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SccCuentaID,Cliente", "vwSccCuentasSeleccion", "SccCuentaID='" & Me.IDCuenta.ToString & "'"))
-                Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("SccCuentaID")
+                dtDatos = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SccCuentaID,NumeroCuenta,Cliente", "vwSccCuentasSeleccion", "SccCuentaID='" & Me.IDCuenta.ToString & "'"))
+                Me.txtNumCuenta.Text = dtDatos.DefaultView.Item(0)("NumeroCuenta")
                 Me.txtCliente.Text = dtDatos.DefaultView.Item(0)("Cliente")
 
 

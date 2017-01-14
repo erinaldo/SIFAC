@@ -53,15 +53,39 @@ Public Class frmSccComisionesEdit
     '' Descripción:        Procedimiento encargado de mostrar los datos de una comision en modo de edición
     Public Sub CargarDatosComision()
         Dim objComision As SccComisiones
+        Dim objCaja As SccCajas
         Try
             objComision = New SccComisiones
+
+            objCaja = New SccCajas
             objComision.Retrieve(ComisionID)
 
             cmbEmpleado.SelectedValue = objComision.objEmpleadoID
             SpnPorcentaje.Value = objComision.Porcentaje
             SpnTotal.Value = objComision.Monto
-            dtDesde.EditValue = objComision.Fecha
+            dtDesde.EditValue = objComision.Desde
+            dtHasta.EditValue = objComision.Hasta
+            dtFechaPago.EditValue = objComision.Fecha
             SpnTotalRecuperado.Value = objComision.TotalRecuperado
+
+            Dim fechaDesde As String = dtDesde.DateTime.ToString("yyyyMMdd")
+            Dim fechaHasta As String = dtHasta.DateTime.ToString("yyyyMMdd")
+
+
+            dtDetallecomision = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwRecuperacionVendedorDetalle", "objSrhEmpleado =" & cmbEmpleado.SelectedValue & " And convert(varchar(10),Fecha,112)>='" & fechaDesde & "' AND convert(varchar(10),Fecha,112)<='" & fechaHasta & "'"))
+
+
+            If Not IsNothing(objComision.objCajaID) Then
+                objCaja.Retrieve(objComision.objCajaID)
+                lblCaja.Text = "Caja: " & objCaja.Codigo
+                cmbCajero.SelectedValue = objCaja.objCajeroID
+            Else
+                lblCaja.Text = "Caja: " & frmPrincipal.gblCaja
+                objCaja.RetrieveByFilter("Codigo='" & frmPrincipal.gblCaja & "'")
+                cmbCajero.SelectedValue = objCaja.objCajeroID
+            End If
+
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -160,15 +184,21 @@ Public Class frmSccComisionesEdit
                     Me.Text = "Nueva Comision"
                     Me.dtDesde.EditValue = Date.Now
                     Me.dtHasta.EditValue = Date.Now
+                    Me.dtFechaPago.EditValue = Date.Now
+
                     If Tipo = "Sincronizacion" Then
-                        dtDesde.Enabled = False
+                        lblCaja.Visible = False
+                        lblCajero.Visible = False
+                        cmbCajero.Visible = False
+                        'dtDesde.Enabled = False
+                        'dtHasta.Enabled = False
                     Else
                         lblCaja.Text = "Caja: " & frmPrincipal.gblCaja
                     End If
                     Me.txtEstado.Enabled = False
                 Case 1
                     Me.Text = "Editar Comision"
-                    Me.dtDesde.Enabled = False
+                    'Me.dtDesde.Enabled = False
                     Me.txtEstado.Enabled = False
                     Me.CargarDatosComision()
                 Case 2
@@ -194,13 +224,17 @@ Public Class frmSccComisionesEdit
     Private Sub TotalRecaudado()
         Dim dtRecudado As New DataTable
         Try
+            If cmbEmpleado.Text = String.Empty Then
+                ErrorProv.SetError(cmbEmpleado, "Debe seleccionar un cobrador.")
+            End If
+
             If dtDesde.Text <> String.Empty Then
                 Dim fechaDesde As String = dtDesde.DateTime.ToString("yyyyMMdd")
                 Dim fechaHasta As String = dtHasta.DateTime.ToString("yyyyMMdd")
 
                 dtRecudado = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("TotalRecaudado", "vwRecuperacionVendedor", "objSrhEmpleado =" & cmbEmpleado.SelectedValue & " And convert(varchar(10),Fecha,112)>='" & fechaDesde & "' AND convert(varchar(10),Fecha,112)<='" & fechaHasta & "'"))
                 dtDetallecomision = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwRecuperacionVendedorDetalle", "objSrhEmpleado =" & cmbEmpleado.SelectedValue & " And convert(varchar(10),Fecha,112)>='" & fechaDesde & "' AND convert(varchar(10),Fecha,112)<='" & fechaHasta & "'"))
-              
+
                 If dtRecudado.Rows.Count > 0 Then
                     SpnTotalRecuperado.Value = dtRecudado.Rows(0)("TotalRecaudado")
                 End If
@@ -400,6 +434,14 @@ Public Class frmSccComisionesEdit
                 Exit Function
             End If
 
+            If Tipo <> "Sincronizacion" Then
+                If cmbCajero.Text.Trim.Length = 0 Or cmbCajero.SelectedValue = 0 Then
+                    ErrorProv.SetError(cmbCajero, My.Resources.MsgObligatorio)
+                    Return False
+                    Exit Function
+                End If
+            End If
+
             ''Validar que no existe una comision registara para este dia y para el mismo vendedor           
 
             Select Case TypeGui
@@ -486,7 +528,10 @@ Public Class frmSccComisionesEdit
         boolEditado = True
     End Sub
  
-
+    Private Sub cmbCajero_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbCajero.SelectedValueChanged
+        ErrorProv.Clear()
+        boolEditado = True
+    End Sub
 
     Private Sub SpnPorcentaje_EditValueChanged(sender As Object, e As EventArgs) Handles SpnPorcentaje.EditValueChanged
         CargarTotalComision()
@@ -514,4 +559,5 @@ Public Class frmSccComisionesEdit
    
     
  
+   
 End Class

@@ -84,6 +84,7 @@ Public Class frmSccConsultarArqueo
 
     '' Descripción:        Procedimiento encargado de configurar la interfaz del formulario
     Public Sub ConfigurarGUI()
+        Dim objCajero As New SccCajas
         Try
             CargarCajeros()
 
@@ -95,12 +96,19 @@ Public Class frmSccConsultarArqueo
                     spnFaltante.Enabled = False
                     txtAprobadoPor.Enabled = False
                     lblCaja.Text = "Caja: " & frmPrincipal.gblCaja
+
+                    objCajero.RetrieveByFilter("Codigo='" & frmPrincipal.gblCaja & "'")
+                    cmbCajero.SelectedValue = objCajero.objCajeroID
+
                     CargarInformacionArqueoInicial()
                     '' Me.cmbCajas.SelectedValue = ClsCatalogos.GetStbCajaID(frmPrincipal.gblCaja)
                 Case 1
                     Me.Text = "Aprobar arqueo"
                     Me.dtFecha.DateTime = Date.Now
                     lblCaja.Text = "Caja: " & frmPrincipal.gblCaja
+                    objCajero.RetrieveByFilter("Codigo='" & frmPrincipal.gblCaja & "'")
+                    cmbCajero.SelectedValue = objCajero.objCajeroID
+
                     txtAprobadoPor.Enabled = True
                     spnFaltante.Enabled = True
                     CargarInformacionArqueoInicial()
@@ -122,6 +130,8 @@ Public Class frmSccConsultarArqueo
     Public Sub CargarDatosArqueo()
         Dim objArqueo As SccArqueoCaja
         Dim objcaja As SccCajas
+        Dim objCajero As New SccCajas
+
         Try
             objArqueo = New SccArqueoCaja
             objcaja = New SccCajas
@@ -137,6 +147,8 @@ Public Class frmSccConsultarArqueo
             objcaja.Retrieve(objArqueo.objCajaID)
 
             lblCaja.Text = "Caja: " & objcaja.Codigo
+            objCajero.RetrieveByFilter("Codigo='" & frmPrincipal.gblCaja & "'")
+            cmbCajero.SelectedValue = objCajero.objCajeroID
 
             dtDetallaFacturas = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SfaFacturaID, Fecha, TotalCordobas", "vwRptFacturaContadoArqueo", "convert(varchar(10),Fecha,112) =" & dtFecha.DateTime.ToString("yyyyMMdd")))
             dtDetalleComisiones = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SccNotaCreditoID, SccComisionID, Empleado, Fecha, objEmpleadoID, Monto", "vwComiscionesArqueo", "convert(varchar(10),Fecha,112) =" & dtFecha.DateTime.ToString("yyyyMMdd")))
@@ -198,7 +210,7 @@ Public Class frmSccConsultarArqueo
             ''Guardar abonos
             For Each drw As DataRow In Me.dtDetalleAbonos.Rows
                 objAbonos.objSccArqueoDetalleID = ArqueoID
-                objAbonos.Monto = drw("SfaFacturaID")
+                objAbonos.Monto = drw("Monto")
                 objAbonos.objRecuparacionID = drw("SccRecuperacion")
                 objAbonos.FechaCreacion = clsProyecto.Conexion.FechaServidor
                 objAbonos.UsuarioCreacion = clsProyecto.Conexion.Servidor

@@ -46,6 +46,7 @@ Partial Class frmStbRutas
         Me.colDescripcion = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCobrador = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCiudad = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDia = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.tbProductos.SuspendLayout()
         CType(Me.grdRutas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdRutasTabla, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,7 +164,7 @@ Partial Class frmStbRutas
         '
         'grdRutasTabla
         '
-        Me.grdRutasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombreSupervisor, Me.colNombreRuta, Me.colCargarDiferenciada, Me.colCodigo, Me.colDescripcion, Me.colCobrador, Me.colCiudad})
+        Me.grdRutasTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombreSupervisor, Me.colNombreRuta, Me.colCargarDiferenciada, Me.colCodigo, Me.colDescripcion, Me.colCobrador, Me.colCiudad, Me.colDia})
         Me.grdRutasTabla.GridControl = Me.grdRutas
         Me.grdRutasTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdRutasTabla.Name = "grdRutasTabla"
@@ -186,7 +187,7 @@ Partial Class frmStbRutas
         Me.colNombreSupervisor.OptionsColumn.AllowEdit = False
         Me.colNombreSupervisor.Visible = True
         Me.colNombreSupervisor.VisibleIndex = 0
-        Me.colNombreSupervisor.Width = 145
+        Me.colNombreSupervisor.Width = 159
         '
         'colNombreRuta
         '
@@ -196,8 +197,8 @@ Partial Class frmStbRutas
         Me.colNombreRuta.OptionsColumn.AllowEdit = False
         Me.colNombreRuta.OptionsColumn.ReadOnly = True
         Me.colNombreRuta.Visible = True
-        Me.colNombreRuta.VisibleIndex = 2
-        Me.colNombreRuta.Width = 130
+        Me.colNombreRuta.VisibleIndex = 3
+        Me.colNombreRuta.Width = 134
         '
         'colCargarDiferenciada
         '
@@ -208,8 +209,8 @@ Partial Class frmStbRutas
         Me.colCargarDiferenciada.OptionsColumn.AllowEdit = False
         Me.colCargarDiferenciada.OptionsColumn.ReadOnly = True
         Me.colCargarDiferenciada.Visible = True
-        Me.colCargarDiferenciada.VisibleIndex = 6
-        Me.colCargarDiferenciada.Width = 158
+        Me.colCargarDiferenciada.VisibleIndex = 7
+        Me.colCargarDiferenciada.Width = 102
         '
         'RepositoryItemCheckEdit1
         '
@@ -224,8 +225,8 @@ Partial Class frmStbRutas
         Me.colCodigo.Name = "colCodigo"
         Me.colCodigo.OptionsColumn.AllowEdit = False
         Me.colCodigo.Visible = True
-        Me.colCodigo.VisibleIndex = 1
-        Me.colCodigo.Width = 110
+        Me.colCodigo.VisibleIndex = 2
+        Me.colCodigo.Width = 98
         '
         'colDescripcion
         '
@@ -234,8 +235,8 @@ Partial Class frmStbRutas
         Me.colDescripcion.Name = "colDescripcion"
         Me.colDescripcion.OptionsColumn.AllowEdit = False
         Me.colDescripcion.Visible = True
-        Me.colDescripcion.VisibleIndex = 3
-        Me.colDescripcion.Width = 198
+        Me.colDescripcion.VisibleIndex = 4
+        Me.colDescripcion.Width = 153
         '
         'colCobrador
         '
@@ -244,8 +245,8 @@ Partial Class frmStbRutas
         Me.colCobrador.Name = "colCobrador"
         Me.colCobrador.OptionsColumn.AllowEdit = False
         Me.colCobrador.Visible = True
-        Me.colCobrador.VisibleIndex = 4
-        Me.colCobrador.Width = 139
+        Me.colCobrador.VisibleIndex = 5
+        Me.colCobrador.Width = 134
         '
         'colCiudad
         '
@@ -254,8 +255,18 @@ Partial Class frmStbRutas
         Me.colCiudad.Name = "colCiudad"
         Me.colCiudad.OptionsColumn.AllowEdit = False
         Me.colCiudad.Visible = True
-        Me.colCiudad.VisibleIndex = 5
-        Me.colCiudad.Width = 99
+        Me.colCiudad.VisibleIndex = 6
+        Me.colCiudad.Width = 80
+        '
+        'colDia
+        '
+        Me.colDia.Caption = "Dia"
+        Me.colDia.FieldName = "Dia"
+        Me.colDia.Name = "colDia"
+        Me.colDia.OptionsColumn.AllowEdit = False
+        Me.colDia.Visible = True
+        Me.colDia.VisibleIndex = 1
+        Me.colDia.Width = 119
         '
         'frmStbRutas
         '
@@ -300,4 +311,5 @@ Partial Class frmStbRutas
     Friend WithEvents colCobrador As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCiudad As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents cmdReubicar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents colDia As DevExpress.XtraGrid.Columns.GridColumn
 End Class

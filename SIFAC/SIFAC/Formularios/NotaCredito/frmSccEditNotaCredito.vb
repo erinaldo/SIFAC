@@ -301,15 +301,18 @@ Public Class frmSccEditNotaCredito
             Me.CargarConceptoNC()
             Me.CargarEstado()
             CargarCajas()
+            CargarEmpleado()
+
             If Me.TypeGui > 0 Then
                 Me.CargarDatosEdicion()
                 If Me.TypeGui = 2 Then
                     Me.dtpFecha.Enabled = False
                     Me.txtDescripcion.Enabled = False
                     Me.cmbConcepto.Enabled = False
+                    Me.cmbEmpleado.Enabled = False
+                    Me.cmbCajas.Enabled = False
                     Me.numMonto.Enabled = False
                     Me.cmdGuardar.Enabled = False
-
                 End If
             Else
                 Me.cmbCajas.SelectedValue = ClsCatalogos.GetStbCajaID(frmPrincipal.gblCaja)
@@ -324,15 +327,19 @@ Public Class frmSccEditNotaCredito
                 Me.cmbConcepto.Enabled = False
                 Me.txtNumCuenta.Enabled = False
                 Me.cmdExpediente.Enabled = False
-                Me.txtDescripcion.Text = "Pago de comision a " & cmbEmpleado.Text
+                Me.cmbEmpleado.SelectedValue = objComision.objEmpleadoID
 
+                Me.txtDescripcion.Text = "Pago de comision a " & cmbEmpleado.Text
                 Me.lblCliente.Text = "Empleado: "
                 Me.txtCliente.Visible = False
-
+                Me.cmdExpediente.Visible = False
+                Me.lblCuenta.Visible = False
+                Me.txtNumCuenta.Visible = False
+                Me.cmdConsultar.Visible = False
                 Me.cmbEstado.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADONC", "PAGADA")
                 Me.cmbConcepto.SelectedValue = ClsCatalogos.ObtenerIDSTbCatalogo("CONCEPTONC", "PAGOCOMISION")
                 Me.numMonto.Value = objComision.Monto
-                Me.cmbEmpleado.SelectedValue = objComision.objEmpleadoID
+
                 Me.cmbCajas.SelectedValue = ClsCatalogos.GetStbCajaID(frmPrincipal.gblCaja)
                 Me.dtpFecha.Value = objComision.Fecha
             End If
@@ -458,7 +465,26 @@ Public Class frmSccEditNotaCredito
                 Me.IdCuenta = dtDatos.DefaultView.Item(0)("SccCuentaID")
             End If
 
-            
+            If Not IsDBNull(dtDatos.DefaultView.Item(0)("SccComisionID")) Then
+                Me.IDComisionID = dtDatos.DefaultView.Item(0)("SccComisionID")
+            End If
+
+            If IDComisionID <> 0 And IDComisionID.ToString.Trim.Length > 0 Then
+                Me.txtCliente.Enabled = False
+                Me.cmbEstado.Enabled = False
+                Me.cmbConcepto.Enabled = False
+                Me.txtNumCuenta.Enabled = False
+                Me.cmdExpediente.Enabled = False
+                Me.lblCliente.Text = "Empleado: "
+                Me.txtCliente.Visible = False
+                Me.cmdExpediente.Visible = False
+                Me.lblCuenta.Visible = False
+                Me.txtNumCuenta.Visible = False
+                Me.cmdConsultar.Visible = False
+                Me.cmbEmpleado.SelectedValue = dtDatos.DefaultView.Item(0)("objEmpleadoID")
+            End If
+
+            cmbCajas.SelectedValue = dtDatos.DefaultView.Item(0)("objEmpleadoID")
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

@@ -184,6 +184,7 @@ Partial Class frmSccArquo
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
         Me.cmdAgregar.Text = "Agregar Comision"
+        Me.cmdAgregar.ToolTipText = "Agregar Arqueo"
         '
         'cmdAprobar
         '

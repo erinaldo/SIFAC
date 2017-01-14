@@ -321,6 +321,7 @@ Partial Class frmSccConsultarArqueo
         '
         'cmbCajero
         '
+        Me.cmbCajero.Enabled = False
         Me.cmbCajero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCajero.FormattingEnabled = True
         Me.cmbCajero.Location = New System.Drawing.Point(138, 43)

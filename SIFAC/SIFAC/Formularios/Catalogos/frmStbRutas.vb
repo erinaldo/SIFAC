@@ -24,7 +24,7 @@ Public Class frmStbRutas
     Public Sub CargarGrid()
         'Dim ds As DataSet
         Try
-            DtRutas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbRutaID, Codigo, Nombre, Descripcion, Cobrador, Supervisor, CargarDiferenciada, Activa, Ciudad", "vwStbRutas", "Activa=1"))
+            DtRutas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbRutaID, Dia,Codigo, Nombre, Descripcion, Cobrador, Supervisor, CargarDiferenciada, Activa, Ciudad", "vwStbRutas", "Activa=1"))
             DtRutas.PrimaryKey = New DataColumn() {Me.DtRutas.Columns("StbRutaID")}
             DtRutas.DefaultView.Sort = "StbRutaID"
             Me.grdRutas.DataSource = DtRutas
