@@ -178,4 +178,33 @@ Public Class frmSccArquo
     Private Sub cmdConsultar_Click(sender As Object, e As EventArgs) Handles cmdConsultar.Click
         Consultar()
     End Sub
+
+    Private Sub cmdImprimir_Click(sender As Object, e As EventArgs) Handles cmdImprimir.Click
+        Dim ds As DataSet
+        Dim FilaActual As Integer
+        Dim ArqueoID As Integer
+        Try
+            Dim selectedRow As Integer() = grdArqueoabla.GetSelectedRows()
+            FilaActual = Me.grdArqueoabla.GetDataSourceRowIndex(selectedRow(0))
+            ArqueoID = Me.dtArqueos.DefaultView.Item(FilaActual)("ArqueoID")
+
+            Dim objjReporte As New RptArqueoCaja()
+
+            ds = DAL.SqlHelper.ExecuteQueryDS(ObtenerConsultaGeneral("*", "vwRptArqueoCaja", "ArqueoID=" & ArqueoID))
+
+            If ds.Tables(0).Rows.Count <> 0 Then
+                objjReporte.DataSource = ds
+                objjReporte.DataMember = ds.Tables(0).TableName
+                objjReporte.txtRangofechas.Visible = False
+                Dim pt As New ReportPrintTool(objjReporte)
+                pt.ShowPreview()
+            Else
+                MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+            End If
+
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 End Class

@@ -312,6 +312,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dtDatosServicioTallerBitacoraMoto.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Caja\frmRptArqueo.Designer.vb">
+      <DependentUpon>frmRptArqueo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Caja\frmRptArqueo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Caja\frmSccArquo.Designer.vb">
       <DependentUpon>frmSccArquo.vb</DependentUpon>
     </Compile>
@@ -364,6 +370,12 @@
       <DependentUpon>frmSccSalidasEfectivo.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Caja\frmSccSalidasEfectivo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Caja\frmTrasladoCajas.Designer.vb">
+      <DependentUpon>frmTrasladoCajas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Caja\frmTrasladoCajas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Catalogos\frmBodegasEditar.Designer.vb">
@@ -996,6 +1008,12 @@
     <Compile Include="Reportes SIFAC\frmVisorRS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\RptArqueoCaja.Designer.vb">
+      <DependentUpon>RptArqueoCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\RptArqueoCaja.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\rptBodegas.Designer.vb">
       <DependentUpon>rptBodegas.vb</DependentUpon>
     </Compile>
@@ -1324,6 +1342,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\Caja\frmRptArqueo.resx">
+      <DependentUpon>frmRptArqueo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Caja\frmSccArquo.resx">
       <DependentUpon>frmSccArquo.vb</DependentUpon>
     </EmbeddedResource>
@@ -1354,6 +1375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Caja\frmSccSalidasEfectivo.resx">
       <DependentUpon>frmSccSalidasEfectivo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Caja\frmTrasladoCajas.resx">
+      <DependentUpon>frmTrasladoCajas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmBodegasEditar.resx">
       <DependentUpon>frmBodegasEditar.vb</DependentUpon>
@@ -1734,6 +1758,9 @@
     <EmbeddedResource Include="Reportes SIFAC\frmVisorRS.resx">
       <DependentUpon>frmVisorRS.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\RptArqueoCaja.resx">
+      <DependentUpon>RptArqueoCaja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptBodegas.resx">
       <DependentUpon>rptBodegas.vb</DependentUpon>

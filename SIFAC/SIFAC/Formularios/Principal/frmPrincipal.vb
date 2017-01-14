@@ -340,7 +340,9 @@ Public Class frmPrincipal
     Private Sub NavBarConsolidado_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarConsolidado.LinkClicked
         CargarConsolidado()
     End Sub
-
+    Private Sub NavBarReporteArqueo_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarReporteArqueo.LinkClicked
+        CargarReporteArqueo()
+    End Sub
     Private Sub NavBarParametros_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarParametros.LinkClicked
         CargarParametros()
     End Sub
@@ -566,6 +568,23 @@ Public Class frmPrincipal
                 'objfrm.Width = Me.Width - Me.NavBarPrincipal.Width
                 'objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
                 'objfrm.MdiParent = Me
+                objfrm.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub CargarReporteArqueo()
+        Dim objfrm As frmRptArqueo
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmRptArqueo", Me) Then
+                objfrm = New frmRptArqueo
+
                 objfrm.Show()
             End If
         Catch ex As Exception
@@ -1350,4 +1369,5 @@ Public Class frmPrincipal
 
    
    
+  
 End Class

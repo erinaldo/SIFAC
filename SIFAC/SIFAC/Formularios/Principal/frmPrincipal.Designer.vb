@@ -93,6 +93,7 @@ Partial Class frmPrincipal
         Me.RibbonSeparator1 = New C1.Win.C1Ribbon.RibbonSeparator()
         Me.lblServidor = New C1.Win.C1Ribbon.RibbonLabel()
         Me.stbPrincipal = New C1.Win.C1Ribbon.C1StatusBar()
+        Me.NavBarReporteArqueo = New DevExpress.XtraNavBar.NavBarItem()
         CType(Me.NavBarPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
         CType(Me.stbPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -286,7 +287,7 @@ Partial Class frmPrincipal
         Me.NavBarPrincipal.ActiveGroup = Me.grpConfiguraciones
         Me.NavBarPrincipal.Dock = System.Windows.Forms.DockStyle.Left
         Me.NavBarPrincipal.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpConfiguraciones, Me.grpCatalogos, Me.grpCartera, Me.grpCaja, Me.grpInventario, Me.grpFacturacion, Me.grpSincronizacion, Me.NVBarReportes})
-        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones, Me.NavBarConsolidado, Me.NavBarKardex, Me.NavBarNotaCredito, Me.NavBarNotaDebito, Me.NavBarArqueo, Me.NavBarConfiguracionCaja, Me.NavBarComisiones, Me.NavBarSalidasEfectivo})
+        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones, Me.NavBarConsolidado, Me.NavBarKardex, Me.NavBarNotaCredito, Me.NavBarNotaDebito, Me.NavBarArqueo, Me.NavBarConfiguracionCaja, Me.NavBarComisiones, Me.NavBarSalidasEfectivo, Me.NavBarReporteArqueo})
         Me.NavBarPrincipal.Location = New System.Drawing.Point(0, 24)
         Me.NavBarPrincipal.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.NavBarPrincipal.LookAndFeel.UseDefaultLookAndFeel = False
@@ -348,7 +349,8 @@ Partial Class frmPrincipal
         'NVBarReportes
         '
         Me.NVBarReportes.Caption = "Reportes"
-        Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarKardex), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado)})
+        Me.NVBarReportes.Expanded = True
+        Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarKardex), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReporteArqueo)})
         Me.NVBarReportes.Name = "NVBarReportes"
         '
         'NavBarKardex
@@ -558,6 +560,13 @@ Partial Class frmPrincipal
         Me.stbPrincipal.TabIndex = 14
         Me.stbPrincipal.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Silver
         '
+        'NavBarReporteArqueo
+        '
+        Me.NavBarReporteArqueo.Caption = "Arqueo de Caja"
+        Me.NavBarReporteArqueo.LargeImage = CType(resources.GetObject("NavBarReporteArqueo.LargeImage"), System.Drawing.Image)
+        Me.NavBarReporteArqueo.Name = "NavBarReporteArqueo"
+        Me.NavBarReporteArqueo.SmallImage = CType(resources.GetObject("NavBarReporteArqueo.SmallImage"), System.Drawing.Image)
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -655,4 +664,5 @@ Partial Class frmPrincipal
     Friend WithEvents NavBarConfiguracionCaja As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarComisiones As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarSalidasEfectivo As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents NavBarReporteArqueo As DevExpress.XtraNavBar.NavBarItem
 End Class
