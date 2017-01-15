@@ -262,6 +262,8 @@ Public Class frmPrincipal
 
             'Me.NavBarConsolidado.Enabled = objSeg.TienePermiso("OpcionReportesConsolidado")
             Me.NavBarKardex.Visible = objSeg.TienePermiso("OpcionReportesInventario")
+            Me.NavBarReporteArqueo.Visible = objSeg.TienePermiso("OpcionReporteArqueoCaja")
+            Me.NavBarCuotasVencidas.Visible = objSeg.TienePermiso("OpcionReporteCuotasVencidas")
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

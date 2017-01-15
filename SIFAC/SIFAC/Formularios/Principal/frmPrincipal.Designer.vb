@@ -65,6 +65,7 @@ Partial Class frmPrincipal
         Me.NavBarKardex = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarConsolidado = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarReporteArqueo = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarCuotasVencidas = New DevExpress.XtraNavBar.NavBarItem()
         Me.WindowsMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.CascadeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TileVerticalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -94,7 +95,6 @@ Partial Class frmPrincipal
         Me.RibbonSeparator1 = New C1.Win.C1Ribbon.RibbonSeparator()
         Me.lblServidor = New C1.Win.C1Ribbon.RibbonLabel()
         Me.stbPrincipal = New C1.Win.C1Ribbon.C1StatusBar()
-        Me.NavBarCuotasVencidas = New DevExpress.XtraNavBar.NavBarItem()
         CType(Me.NavBarPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
         CType(Me.stbPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,6 +178,7 @@ Partial Class frmPrincipal
         'grpCatalogos
         '
         Me.grpCatalogos.Caption = "Catalogos"
+        Me.grpCatalogos.Expanded = True
         Me.grpCatalogos.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCategorias), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarMarcas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarBodegas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavProductos), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarRutas), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarEmpleados), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarClientes), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarProveedor)})
         Me.grpCatalogos.Name = "grpCatalogos"
         '
@@ -349,7 +350,6 @@ Partial Class frmPrincipal
         'NVBarReportes
         '
         Me.NVBarReportes.Caption = "Reportes"
-        Me.NVBarReportes.Expanded = True
         Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarKardex), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReporteArqueo), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCuotasVencidas)})
         Me.NVBarReportes.Name = "NVBarReportes"
         '
@@ -372,6 +372,13 @@ Partial Class frmPrincipal
         Me.NavBarReporteArqueo.LargeImage = CType(resources.GetObject("NavBarReporteArqueo.LargeImage"), System.Drawing.Image)
         Me.NavBarReporteArqueo.Name = "NavBarReporteArqueo"
         Me.NavBarReporteArqueo.SmallImage = CType(resources.GetObject("NavBarReporteArqueo.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarCuotasVencidas
+        '
+        Me.NavBarCuotasVencidas.Caption = "Cuotas Vencidas"
+        Me.NavBarCuotasVencidas.LargeImage = CType(resources.GetObject("NavBarCuotasVencidas.LargeImage"), System.Drawing.Image)
+        Me.NavBarCuotasVencidas.Name = "NavBarCuotasVencidas"
+        Me.NavBarCuotasVencidas.SmallImage = CType(resources.GetObject("NavBarCuotasVencidas.SmallImage"), System.Drawing.Image)
         '
         'WindowsMenu
         '
@@ -566,13 +573,6 @@ Partial Class frmPrincipal
         Me.stbPrincipal.Size = New System.Drawing.Size(795, 22)
         Me.stbPrincipal.TabIndex = 14
         Me.stbPrincipal.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Silver
-        '
-        'NavBarCuotasVencidas
-        '
-        Me.NavBarCuotasVencidas.Caption = "Cuotas Vencidas"
-        Me.NavBarCuotasVencidas.LargeImage = CType(resources.GetObject("NavBarCuotasVencidas.LargeImage"), System.Drawing.Image)
-        Me.NavBarCuotasVencidas.Name = "NavBarCuotasVencidas"
-        Me.NavBarCuotasVencidas.SmallImage = CType(resources.GetObject("NavBarCuotasVencidas.SmallImage"), System.Drawing.Image)
         '
         'frmPrincipal
         '
