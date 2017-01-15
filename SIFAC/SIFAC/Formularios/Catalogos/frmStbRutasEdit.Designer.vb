@@ -223,6 +223,7 @@ Partial Class frmStbRutasEdit
         '
         'txtNombre
         '
+        Me.txtNombre.Enabled = False
         Me.txtNombre.Location = New System.Drawing.Point(107, 57)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(279, 20)

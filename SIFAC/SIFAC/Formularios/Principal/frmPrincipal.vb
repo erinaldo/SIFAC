@@ -343,6 +343,9 @@ Public Class frmPrincipal
     Private Sub NavBarReporteArqueo_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarReporteArqueo.LinkClicked
         CargarReporteArqueo()
     End Sub
+    Private Sub NavBarCuotasVencidas_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarCuotasVencidas.LinkClicked
+        CargarReporteCuotas()
+    End Sub
     Private Sub NavBarParametros_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarParametros.LinkClicked
         CargarParametros()
     End Sub
@@ -594,6 +597,27 @@ Public Class frmPrincipal
         End Try
     End Sub
 
+    '----------------------------------------------------------------------------------
+    Private Sub CargarReporteCuotas()
+        Dim objfrm As frmReportePivotCuotasVencidas
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmReportePivotCuotasVencidas", Me) Then
+                objfrm = New frmReportePivotCuotasVencidas
+                objfrm.Width = Me.Width - Me.NavBarPrincipal.Width
+                objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                objfrm.MdiParent = Me
+                objfrm.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    
 #End Region
 
 #Region "Cargar Marcas"
@@ -1369,5 +1393,6 @@ Public Class frmPrincipal
 
    
    
+  
   
 End Class

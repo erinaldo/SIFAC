@@ -990,6 +990,12 @@
     <Compile Include="Formularios\Tiendas\frmStbTiendas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\frmReportePivotCuotasVencidas.Designer.vb">
+      <DependentUpon>frmReportePivotCuotasVencidas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\frmReportePivotCuotasVencidas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\frmReportePivot.Designer.vb">
       <DependentUpon>frmReportePivot.vb</DependentUpon>
     </Compile>
@@ -1748,6 +1754,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tiendas\frmStbTiendas.resx">
       <DependentUpon>frmStbTiendas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\frmReportePivotCuotasVencidas.resx">
+      <DependentUpon>frmReportePivotCuotasVencidas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\frmReportePivot.resx">
       <DependentUpon>frmReportePivot.vb</DependentUpon>

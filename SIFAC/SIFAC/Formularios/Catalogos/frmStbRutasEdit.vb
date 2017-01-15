@@ -216,7 +216,9 @@ Public Class frmStbRutasEdit
             objRutas.FechaCreacion = clsProyecto.Conexion.FechaServidor
 
             objRutas.Insert(T)
-            objRutas.Codigo = "RUT" + cmbCiudad.Text.Substring(0, 3) + objRutas.StbRutaID.ToString
+            objRutas.Codigo = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
+            objRutas.Nombre = "RUT" + cmbCiudad.Text.Substring(0, 3) + objRutas.StbRutaID.ToString
+
             objRutas.Update(T)
             T.CommitTran()
             txtCodigo.Text = objRutas.Codigo
@@ -239,7 +241,7 @@ Public Class frmStbRutasEdit
             T.BeginTran()
             objRutas = New StbRutas
             objRutas.StbRutaID = RutaID
-            objRutas.Nombre = txtNombre.Text.Trim
+            objRutas.Nombre = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
             objRutas.Descripcion = txtDescripcion.Text.Trim
             objRutas.Activa = chkActivo.Checked
             objRutas.Codigo = txtCodigo.Text
