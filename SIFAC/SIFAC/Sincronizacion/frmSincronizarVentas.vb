@@ -393,6 +393,7 @@ lblGuardarDetalleCuenta:
                             .objSccCuentaID = objSccCuenta.SccCuentaID
                             .objSfaFacturaID = SfaFacturaID
                             .objTeminoPlazoID = objTerminoPagoID
+                            .objModalidadPago = objModalidadPagoID
                             .objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE")
                             .Saldo = objSfaFactura.Saldo
                             .MontoTotal = objSfaFactura.Subtotal
