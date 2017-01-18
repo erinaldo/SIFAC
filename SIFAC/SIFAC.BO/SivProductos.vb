@@ -9,8 +9,8 @@ Partial Public Class SivProductos
 	Protected m_SivProductoID As Integer 
 	Protected m_Codigo As String = Nothing 
 	Protected m_Nombre As String = Nothing 
-	Protected m_objCategoriaID As Integer 
-	Protected m_objMarcaID As Integer 
+	Protected m_objCategoriaID As Nullable(Of Integer) 
+	Protected m_objMarcaID As Nullable(Of Integer) 
 	Protected m_CostoPromedio As Nullable(Of Decimal) 
 	Protected m_Precio_Credito As Nullable(Of Decimal) 
 	Protected m_Precio_Contado As Nullable(Of Decimal) 
@@ -60,8 +60,8 @@ Partial Public Class SivProductos
         End Get
 		Set(ByVal Value As String)		
 			If Not Value Is Nothing Then
-				If Value.Length > 100 Then
-					Throw New ArgumentOutOfRangeException("Nombre", Value.ToString(), "Valor inv?lido para SivProductos.Nombre. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (100).")
+				If Value.Length > 500 Then
+					Throw New ArgumentOutOfRangeException("Nombre", Value.ToString(), "Valor inv?lido para SivProductos.Nombre. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (500).")
 				End If
 			End If
 			m_Nombre = Value
@@ -71,11 +71,11 @@ Partial Public Class SivProductos
 	''' <summary>
 	''' ID de la Marca
 	''' </summary>
-	Public Property objCategoriaID() As Integer
+	Public Property objCategoriaID() As Nullable(Of Integer)
         Get
             Return (m_objCategoriaID)
         End Get
-		Set(ByVal Value As Integer)					
+		Set(ByVal Value As Nullable(Of Integer))					
 			m_objCategoriaID = Value
 		End Set
     End Property
@@ -83,11 +83,11 @@ Partial Public Class SivProductos
 	''' <summary>
 	''' ID del Cilindraje
 	''' </summary>
-	Public Property objMarcaID() As Integer
+	Public Property objMarcaID() As Nullable(Of Integer)
         Get
             Return (m_objMarcaID)
         End Get
-		Set(ByVal Value As Integer)					
+		Set(ByVal Value As Nullable(Of Integer))					
 			m_objMarcaID = Value
 		End Set
     End Property
@@ -222,7 +222,7 @@ Partial Public Class SivProductos
 			Case "Codigo"
 				Return	50
 			Case "Nombre"
-				Return	100
+				Return	500
 			Case "CostoPromedio"
 				Return	11
 			Case "Precio_Credito"
@@ -285,9 +285,8 @@ Partial Public Class SivProductos
 			cmdDelete.CommandText = "DELETE FROM  SivProductos WHERE SivProductoID= @SivProductoID" 	
 
 			'CREACION DEL COMANDO INSERT
-			cmdInsert.Parameters.Add("@SivProductoID", SqlDbType.Int, 4, "SivProductoID")
 			cmdInsert.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
-			cmdInsert.Parameters.Add("@Nombre", SqlDbType.VarChar, 100, "Nombre")
+			cmdInsert.Parameters.Add("@Nombre", SqlDbType.VarChar, 500, "Nombre")
 			cmdInsert.Parameters.Add("@objCategoriaID", SqlDbType.Int, 4, "objCategoriaID")
 			cmdInsert.Parameters.Add("@objMarcaID", SqlDbType.Int, 4, "objMarcaID")
 			cmdInsert.Parameters.Add("@CostoPromedio", SqlDbType.Decimal, 9, "CostoPromedio")
@@ -301,12 +300,11 @@ Partial Public Class SivProductos
 			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 30, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
-			cmdInsert.CommandText = "INSERT INTO SivProductos ( SivProductoID, Codigo, Nombre, objCategoriaID, objMarcaID, CostoPromedio, Precio_Credito, Precio_Contado, Margen_Utilidad_Credito, Margen_Utilidad_Contado, Cantidad_Minima, Activo, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion) VALUES ( @SivProductoID, @Codigo, @Nombre, @objCategoriaID, @objMarcaID, @CostoPromedio, @Precio_Credito, @Precio_Contado, @Margen_Utilidad_Credito, @Margen_Utilidad_Contado, @Cantidad_Minima, @Activo, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion)"
+			cmdInsert.CommandText = "INSERT INTO SivProductos ( Codigo, Nombre, objCategoriaID, objMarcaID, CostoPromedio, Precio_Credito, Precio_Contado, Margen_Utilidad_Credito, Margen_Utilidad_Contado, Cantidad_Minima, Activo, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion) VALUES ( @Codigo, @Nombre, @objCategoriaID, @objMarcaID, @CostoPromedio, @Precio_Credito, @Precio_Contado, @Margen_Utilidad_Credito, @Margen_Utilidad_Contado, @Cantidad_Minima, @Activo, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion)"
 
 			'CREACION DEL COMANDO UPDATE
-			cmdUpdate.Parameters.Add("@SivProductoID", SqlDbType.Int, 4, "SivProductoID")
 			cmdUpdate.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
-			cmdUpdate.Parameters.Add("@Nombre", SqlDbType.VarChar, 100, "Nombre")
+			cmdUpdate.Parameters.Add("@Nombre", SqlDbType.VarChar, 500, "Nombre")
 			cmdUpdate.Parameters.Add("@objCategoriaID", SqlDbType.Int, 4, "objCategoriaID")
 			cmdUpdate.Parameters.Add("@objMarcaID", SqlDbType.Int, 4, "objMarcaID")
 			cmdUpdate.Parameters.Add("@CostoPromedio", SqlDbType.Decimal, 9, "CostoPromedio")
@@ -321,7 +319,7 @@ Partial Public Class SivProductos
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@wSivProductoID", SqlDbType.Int, 4, "SivProductoID")
-			cmdUpdate.CommandText = "UPDATE SivProductos SET SivProductoID=@SivProductoID, Codigo=@Codigo, Nombre=@Nombre, objCategoriaID=@objCategoriaID, objMarcaID=@objMarcaID, CostoPromedio=@CostoPromedio, Precio_Credito=@Precio_Credito, Precio_Contado=@Precio_Contado, Margen_Utilidad_Credito=@Margen_Utilidad_Credito, Margen_Utilidad_Contado=@Margen_Utilidad_Contado, Cantidad_Minima=@Cantidad_Minima, Activo=@Activo, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion WHERE SivProductoID= @wSivProductoID"
+			cmdUpdate.CommandText = "UPDATE SivProductos SET Codigo=@Codigo, Nombre=@Nombre, objCategoriaID=@objCategoriaID, objMarcaID=@objMarcaID, CostoPromedio=@CostoPromedio, Precio_Credito=@Precio_Credito, Precio_Contado=@Precio_Contado, Margen_Utilidad_Credito=@Margen_Utilidad_Credito, Margen_Utilidad_Contado=@Margen_Utilidad_Contado, Cantidad_Minima=@Cantidad_Minima, Activo=@Activo, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion WHERE SivProductoID= @wSivProductoID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -367,7 +365,7 @@ Partial Public Class SivProductos
             End If
 			
 			If dr.Read() Then		
-				m_SivProductoID = IIf(IsDBNull(dr("SivProductoID")), Nothing, dr("SivProductoID"))					
+				m_SivProductoID = dr("SivProductoID")
 				m_Codigo = IIf(IsDBNull(dr("Codigo")), Nothing, dr("Codigo"))					
 				m_Nombre = IIf(IsDBNull(dr("Nombre")), Nothing, dr("Nombre"))					
 				m_objCategoriaID = IIf(IsDBNull(dr("objCategoriaID")), Nothing, dr("objCategoriaID"))					
@@ -416,7 +414,7 @@ Partial Public Class SivProductos
             End If
 				
 			If dr.Read() Then
-				m_SivProductoID = IIf(IsDBNull(dr("SivProductoID")), Nothing, dr("SivProductoID"))					
+				m_SivProductoID = dr("SivProductoID")
 				m_Codigo = IIf(IsDBNull(dr("Codigo")), Nothing, dr("Codigo"))					
 				m_Nombre = IIf(IsDBNull(dr("Nombre")), Nothing, dr("Nombre"))					
 				m_objCategoriaID = IIf(IsDBNull(dr("objCategoriaID")), Nothing, dr("objCategoriaID"))					
@@ -557,7 +555,6 @@ Partial Public Class SivProductos
     ''' <remarks></remarks>
 	Public Sub Insert(Optional ByRef pTransac As TransactionManager = Nothing)
 		Dim sCommand As String = "insert into SivProductos("
-		sCommand &= "SivProductoID,"
 		sCommand &= "Codigo,"
 		sCommand &= "Nombre,"
 		sCommand &= "objCategoriaID,"
@@ -573,7 +570,6 @@ Partial Public Class SivProductos
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaModificacion,"
 		sCommand &= "UsuarioModificacion) values ("		
-		sCommand &= "@SivProductoID,"
 		sCommand &= "@Codigo,"
 		sCommand &= "@Nombre,"
 		sCommand &= "@objCategoriaID,"
@@ -589,14 +585,15 @@ Partial Public Class SivProductos
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaModificacion,"
 		sCommand &= "@UsuarioModificacion)"		
+	
+		sCommand &= " select "
+		sCommand &= "@SivProductoID = SivProductoID from SivProductos where "		
+		sCommand &= "SivProductoID = SCOPE_IDENTITY()"
+		
 		
 		Dim arParams(15) As SqlParameter
 		arParams(0) = New SqlParameter("@SivProductoID", SqlDbType.Int)		
-		If IsDBNull(m_SivProductoID) Then
-            arParams(0).Value = DBNull.Value
-        Else
-            arParams(0).Value = m_SivProductoID
-        End If
+		arParams(0).Direction = ParameterDirection.Output
 		arParams(1) = New SqlParameter("@Codigo", SqlDbType.VarChar)		
 		If IsDBNull(m_Codigo) Then
             arParams(1).Value = DBNull.Value
@@ -695,6 +692,7 @@ Partial Public Class SivProductos
 				SqlHelper.ExecuteNonQuery(pTransac.Transaction, CommandType.Text, sCommand, arParams)        
 			End If					
 			
+			m_SivProductoID = arParams(0).Value
         Catch ex As Exception
             Throw        
         End Try
@@ -710,7 +708,6 @@ Partial Public Class SivProductos
     ''' <remarks></remarks>
 	Public Sub Update(Optional ByRef pTransac As TransactionManager = Nothing)        		
 		Dim sCommand As String = "update SivProductos set "		
-		sCommand &= "SivProductoID = @SivProductoID,"
 		sCommand &= "Codigo = @Codigo,"
 		sCommand &= "Nombre = @Nombre,"
 		sCommand &= "objCategoriaID = @objCategoriaID,"

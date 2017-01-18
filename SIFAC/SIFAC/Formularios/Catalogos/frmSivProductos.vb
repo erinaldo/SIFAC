@@ -20,7 +20,7 @@ Public Class frmSivProductos
         Try
             DtProductos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Codigo,Nombre,Marca,Categoria,Activo", "vwStbProductos", ))
             DtProductos.PrimaryKey = New DataColumn() {Me.DtProductos.Columns("SivProductoID")}
-            DtProductos.DefaultView.Sort = "SivProductoID"
+            DtProductos.DefaultView.Sort = "SivProductoID desc"
             Me.grdProductos.DataSource = DtProductos
             Me.grdProductos.Text = "Productos (" & Me.DtProductos.Rows.Count & ")"
         Catch ex As Exception
@@ -70,6 +70,7 @@ Public Class frmSivProductos
 
     Private Sub cmdRefrescar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdRefrescar.Click
         CargarGrid()
+        Me.AplicarSeguridad()
     End Sub
 
     Private Sub cmdAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAgregar.Click

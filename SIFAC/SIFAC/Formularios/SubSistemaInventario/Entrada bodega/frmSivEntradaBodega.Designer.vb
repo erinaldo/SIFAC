@@ -114,6 +114,7 @@ Partial Class frmSivEntradaBodega
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
         Me.cmdImprimir.ToolTipText = "Imprimir Entrada Bodega"
+        Me.cmdImprimir.Visible = False
         '
         'ToolStripSeparator2
         '

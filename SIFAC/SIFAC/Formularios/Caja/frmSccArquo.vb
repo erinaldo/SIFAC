@@ -20,7 +20,7 @@ Public Class frmSccArquo
     Public Sub CargarGrid()
         Try
             dtArqueos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ArqueoID, Fecha, EntradaEfectivo, SalidaEfectivo, Faltante, AprobadoPor, Cajero", "vwSccArqueoCaja", "1=1"))
-            dtArqueos.DefaultView.Sort = "Fecha"
+            dtArqueos.DefaultView.Sort = "Fecha Desc"
             Me.grdArqueo.DataSource = dtArqueos
             Me.grdArqueo.Text = "Arqueos (" & Me.dtArqueos.Rows.Count & ")"
         Catch ex As Exception
@@ -206,5 +206,10 @@ Public Class frmSccArquo
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
+    End Sub
+
+    Private Sub cmdRefrescar_Click(sender As Object, e As EventArgs) Handles cmdRefrescar.Click
+        CargarGrid()
+        AplicarSeguridad()
     End Sub
 End Class

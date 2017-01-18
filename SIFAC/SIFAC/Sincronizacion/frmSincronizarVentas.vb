@@ -294,7 +294,7 @@ Public Class frmSincronizarVentas
                         .Fecha = CDate(drFilaVenta("Fecha"))
                         .objSccClienteID = CInt(drFilaVenta("objSccClienteID"))
                         .objVendedorID = CInt(drFilaVenta("objVendedorID"))
-                        .objEstadoID = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOFACT", "PROCESADA"))
+                        .objEstadoID = CInt(ClsCatalogos.GetValorCatalogoID("ESTADOFACT", " "))
                         .objTerminoPagoID = CInt(ClsCatalogos.GetValorCatalogoID("TERMINOPAGO", "02"))
                         If IsDBNull(drFilaVenta("objDescuentoID")) Then
                             .objDescuentoID = Nothing
@@ -394,7 +394,7 @@ lblGuardarDetalleCuenta:
                             .objSfaFacturaID = SfaFacturaID
                             .objTeminoPlazoID = objTerminoPagoID
                             .objModalidadPago = objModalidadPagoID
-                            .objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE")
+                            .objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "01")
                             .Saldo = objSfaFactura.Saldo
                             .MontoTotal = objSfaFactura.Subtotal
                             .MontoPrima = objSfaFactura.Prima
@@ -479,8 +479,10 @@ lblGuardarDetalleCuenta:
         Dim dtMaximoNumero As New DataTable
         Try
             Try
-                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("COUNT(*)+ 1 as NumeroMaximo", "SccCuentaPorCobrar"))
-                strNumero = String.Format("C{0}-{1}", ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal), dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"))
+                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Numero + 1 as NumeroMaximo", "SccCuentaPorCobrar"))
+                ''strNumero = String.Format("C{0}-{1}", ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal), dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"))
+                strNumero = String.Format(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"))
+
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try

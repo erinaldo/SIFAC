@@ -3,101 +3,110 @@ Imports System.Xml
 Imports System.Data.SqlClient
 Imports System.Data.SqlTypes
 
-Partial Public Class StbRutas		
+Partial Public Class SfaTransferenciaCaja		
 
 #Region " Variables Miembro " 
-	Protected m_StbRutaID As Integer 
-	Protected m_Nombre As String = Nothing 
-	Protected m_ojbCobradorID As Nullable(Of Integer) 
-	Protected m_objSupervisor As Nullable(Of Integer) 
-	Protected m_DiaCobro As Nullable(Of Integer) 
-	Protected m_objPaisID As Nullable(Of Integer) 
-	Protected m_objCiudadID As Nullable(Of Integer) 
-	Protected m_CargarDiferenciada As Nullable(Of Boolean) 
+	Protected m_SfaTranferenciaID As Integer 
+	Protected m_objCajaOrigenID As Nullable(Of Integer) 
+	Protected m_objCajeroOrigen As Nullable(Of Integer) 
+	Protected m_objCajaDestinoID As Nullable(Of Integer) 
+	Protected m_objCajeroDestino As Nullable(Of Integer) 
+	Protected m_Monto As Nullable(Of Decimal) 
+	Protected m_Comentarios As Byte() 
+	Protected m_Aprobada As Nullable(Of Boolean) 
+	Protected m_AutorizadoPor As String = Nothing 
 	Protected m_Activa As Nullable(Of Boolean) 
+	Protected m_FechaAprobacion As Nullable(Of Date) 
 	Protected m_FechaCreacion As Nullable(Of Date) 
 	Protected m_UsuarioCreacion As String = Nothing 
 	Protected m_FechaModificacion As Nullable(Of Date) 
 	Protected m_UsuarioModificacion As String = Nothing 
-	Protected m_Descripcion As String = Nothing 
-	Protected m_Codigo As String = Nothing 
 #End Region
 
 #Region " Propiedades "
-	Public Property StbRutaID() As Integer
+	Public Property SfaTranferenciaID() As Integer
         Get
-            Return (m_StbRutaID)
+            Return (m_SfaTranferenciaID)
         End Get
 		Set(ByVal Value As Integer)					
-			m_StbRutaID = Value
+			m_SfaTranferenciaID = Value
 		End Set
     End Property
 	
-	Public Property Nombre() As String
+	Public Property objCajaOrigenID() As Nullable(Of Integer)
         Get
-            Return (m_Nombre)
+            Return (m_objCajaOrigenID)
+        End Get
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_objCajaOrigenID = Value
+		End Set
+    End Property
+	
+	Public Property objCajeroOrigen() As Nullable(Of Integer)
+        Get
+            Return (m_objCajeroOrigen)
+        End Get
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_objCajeroOrigen = Value
+		End Set
+    End Property
+	
+	Public Property objCajaDestinoID() As Nullable(Of Integer)
+        Get
+            Return (m_objCajaDestinoID)
+        End Get
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_objCajaDestinoID = Value
+		End Set
+    End Property
+	
+	Public Property objCajeroDestino() As Nullable(Of Integer)
+        Get
+            Return (m_objCajeroDestino)
+        End Get
+		Set(ByVal Value As Nullable(Of Integer))					
+			m_objCajeroDestino = Value
+		End Set
+    End Property
+	
+	Public Property Monto() As Nullable(Of Decimal)
+        Get
+            Return (m_Monto)
+        End Get
+		Set(ByVal Value As Nullable(Of Decimal))					
+			m_Monto = Value
+		End Set
+    End Property
+	
+	Public Property Comentarios() As Byte()
+        Get
+            Return (m_Comentarios)
+        End Get
+		Set(ByVal Value As Byte())					
+			m_Comentarios = Value
+		End Set
+    End Property
+	
+	Public Property Aprobada() As Nullable(Of Boolean)
+        Get
+            Return (m_Aprobada)
+        End Get
+		Set(ByVal Value As Nullable(Of Boolean))					
+			m_Aprobada = Value
+		End Set
+    End Property
+	
+	Public Property AutorizadoPor() As String
+        Get
+            Return (m_AutorizadoPor)
         End Get
 		Set(ByVal Value As String)		
 			If Not Value Is Nothing Then
-				If Value.Length > 2147483645 Then
-					Throw New ArgumentOutOfRangeException("Nombre", Value.ToString(), "Valor inv?lido para StbRutas.Nombre. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (2147483645).")
+				If Value.Length > 50 Then
+					Throw New ArgumentOutOfRangeException("AutorizadoPor", Value.ToString(), "Valor inv?lido para SfaTransferenciaCaja.AutorizadoPor. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
 				End If
 			End If
-			m_Nombre = Value
-		End Set
-    End Property
-	
-	Public Property ojbCobradorID() As Nullable(Of Integer)
-        Get
-            Return (m_ojbCobradorID)
-        End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_ojbCobradorID = Value
-		End Set
-    End Property
-	
-	Public Property objSupervisor() As Nullable(Of Integer)
-        Get
-            Return (m_objSupervisor)
-        End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objSupervisor = Value
-		End Set
-    End Property
-	
-	Public Property DiaCobro() As Nullable(Of Integer)
-        Get
-            Return (m_DiaCobro)
-        End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_DiaCobro = Value
-		End Set
-    End Property
-	
-	Public Property objPaisID() As Nullable(Of Integer)
-        Get
-            Return (m_objPaisID)
-        End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objPaisID = Value
-		End Set
-    End Property
-	
-	Public Property objCiudadID() As Nullable(Of Integer)
-        Get
-            Return (m_objCiudadID)
-        End Get
-		Set(ByVal Value As Nullable(Of Integer))					
-			m_objCiudadID = Value
-		End Set
-    End Property
-	
-	Public Property CargarDiferenciada() As Nullable(Of Boolean)
-        Get
-            Return (m_CargarDiferenciada)
-        End Get
-		Set(ByVal Value As Nullable(Of Boolean))					
-			m_CargarDiferenciada = Value
+			m_AutorizadoPor = Value
 		End Set
     End Property
 	
@@ -107,6 +116,15 @@ Partial Public Class StbRutas
         End Get
 		Set(ByVal Value As Nullable(Of Boolean))					
 			m_Activa = Value
+		End Set
+    End Property
+	
+	Public Property FechaAprobacion() As Nullable(Of Date)
+        Get
+            Return (m_FechaAprobacion)
+        End Get
+		Set(ByVal Value As Nullable(Of Date))					
+			m_FechaAprobacion = Value
 		End Set
     End Property
 	
@@ -125,8 +143,8 @@ Partial Public Class StbRutas
         End Get
 		Set(ByVal Value As String)		
 			If Not Value Is Nothing Then
-				If Value.Length > 30 Then
-					Throw New ArgumentOutOfRangeException("UsuarioCreacion", Value.ToString(), "Valor inv?lido para StbRutas.UsuarioCreacion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (30).")
+				If Value.Length > 50 Then
+					Throw New ArgumentOutOfRangeException("UsuarioCreacion", Value.ToString(), "Valor inv?lido para SfaTransferenciaCaja.UsuarioCreacion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
 				End If
 			End If
 			m_UsuarioCreacion = Value
@@ -148,54 +166,24 @@ Partial Public Class StbRutas
         End Get
 		Set(ByVal Value As String)		
 			If Not Value Is Nothing Then
-				If Value.Length > 30 Then
-					Throw New ArgumentOutOfRangeException("UsuarioModificacion", Value.ToString(), "Valor inv?lido para StbRutas.UsuarioModificacion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (30).")
+				If Value.Length > 50 Then
+					Throw New ArgumentOutOfRangeException("UsuarioModificacion", Value.ToString(), "Valor inv?lido para SfaTransferenciaCaja.UsuarioModificacion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
 				End If
 			End If
 			m_UsuarioModificacion = Value
 		End Set
     End Property
 	
-	Public Property Descripcion() As String
-        Get
-            Return (m_Descripcion)
-        End Get
-		Set(ByVal Value As String)		
-			If Not Value Is Nothing Then
-				If Value.Length > 2147483645 Then
-					Throw New ArgumentOutOfRangeException("Descripcion", Value.ToString(), "Valor inv?lido para StbRutas.Descripcion. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (2147483645).")
-				End If
-			End If
-			m_Descripcion = Value
-		End Set
-    End Property
-	
-	Public Property Codigo() As String
-        Get
-            Return (m_Codigo)
-        End Get
-		Set(ByVal Value As String)		
-			If Not Value Is Nothing Then
-				If Value.Length > 50 Then
-					Throw New ArgumentOutOfRangeException("Codigo", Value.ToString(), "Valor inv?lido para StbRutas.Codigo. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
-				End If
-			End If
-			m_Codigo = Value
-		End Set
-    End Property
-	
 
 	Public Shared Function GetMaxLength(ProperyName as String) as Integer
 		Select Case ProperyName
-			Case "Nombre"
-				Return	2147483645
+			Case "Monto"
+				Return	18
+			Case "AutorizadoPor"
+				Return	50
 			Case "UsuarioCreacion"
-				Return	30
+				Return	50
 			Case "UsuarioModificacion"
-				Return	30
-			Case "Descripcion"
-				Return	2147483645
-			Case "Codigo"
 				Return	50
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
@@ -204,6 +192,8 @@ Partial Public Class StbRutas
 	
 	Public Shared Function GetScale(ProperyName as String) as Integer
 		Select Case ProperyName
+			Case "Monto"
+				Return	2
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
 		End Select
@@ -212,9 +202,9 @@ Partial Public Class StbRutas
 
 #Region " Batch Update " 
 	''' <summary>
-    ''' Salva un DataSet del tipo de la tabla StbRutas en la base de datos.
+    ''' Salva un DataSet del tipo de la tabla SfaTransferenciaCaja en la base de datos.
     ''' </summary>
-    ''' <param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla StbRutas </param>    
+    ''' <param name="DS">Dataset a salvar. El DS debe necesariamente ser un select a la tabla SfaTransferenciaCaja </param>    
 	''' <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo BatchUpdate.</param>
     ''' <remarks>Usado para realizar actualizaciones en Batch.</remarks>
 	public Shared Sub BatchUpdate( DS as Dataset, optional Byval pTransac as TransactionManager = Nothing )
@@ -227,43 +217,43 @@ Partial Public Class StbRutas
 			cmdUpdate = New SqlCommand
 			cmdDelete = New SqlCommand
 			'CREACION DEL COMANDO DELETE
-			cmdDelete.Parameters.Add("@StbRutaID", SqlDbType.Int, 4, "StbRutaID" )
-			cmdDelete.CommandText = "DELETE FROM  StbRutas WHERE StbRutaID= @StbRutaID" 	
+			cmdDelete.Parameters.Add("@SfaTranferenciaID", SqlDbType.Int, 4, "SfaTranferenciaID" )
+			cmdDelete.CommandText = "DELETE FROM  SfaTransferenciaCaja WHERE SfaTranferenciaID= @SfaTranferenciaID" 	
 
 			'CREACION DEL COMANDO INSERT
-			cmdInsert.Parameters.Add("@Nombre", SqlDbType.VarChar, -1, "Nombre")
-			cmdInsert.Parameters.Add("@ojbCobradorID", SqlDbType.Int, 4, "ojbCobradorID")
-			cmdInsert.Parameters.Add("@objSupervisor", SqlDbType.Int, 4, "objSupervisor")
-			cmdInsert.Parameters.Add("@DiaCobro", SqlDbType.Int, 4, "DiaCobro")
-			cmdInsert.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
-			cmdInsert.Parameters.Add("@objCiudadID", SqlDbType.Int, 4, "objCiudadID")
-			cmdInsert.Parameters.Add("@CargarDiferenciada", SqlDbType.Bit, 1, "CargarDiferenciada")
+			cmdInsert.Parameters.Add("@objCajaOrigenID", SqlDbType.Int, 4, "objCajaOrigenID")
+			cmdInsert.Parameters.Add("@objCajeroOrigen", SqlDbType.Int, 4, "objCajeroOrigen")
+			cmdInsert.Parameters.Add("@objCajaDestinoID", SqlDbType.Int, 4, "objCajaDestinoID")
+			cmdInsert.Parameters.Add("@objCajeroDestino", SqlDbType.Int, 4, "objCajeroDestino")
+			cmdInsert.Parameters.Add("@Monto", SqlDbType.Decimal, 9, "Monto")
+			cmdInsert.Parameters.Add("@Comentarios", SqlDbType.Binary, -1, "Comentarios")
+			cmdInsert.Parameters.Add("@Aprobada", SqlDbType.Bit, 1, "Aprobada")
+			cmdInsert.Parameters.Add("@AutorizadoPor", SqlDbType.VarChar, 50, "AutorizadoPor")
 			cmdInsert.Parameters.Add("@Activa", SqlDbType.Bit, 1, "Activa")
+			cmdInsert.Parameters.Add("@FechaAprobacion", SqlDbType.DateTime, 8, "FechaAprobacion")
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
-			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 30, "UsuarioCreacion")
+			cmdInsert.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 50, "UsuarioCreacion")
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
-			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
-			cmdInsert.Parameters.Add("@Descripcion", SqlDbType.VarChar, -1, "Descripcion")
-			cmdInsert.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
-			cmdInsert.CommandText = "INSERT INTO StbRutas ( Nombre, ojbCobradorID, objSupervisor, DiaCobro, objPaisID, objCiudadID, CargarDiferenciada, Activa, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, Descripcion, Codigo) VALUES ( @Nombre, @ojbCobradorID, @objSupervisor, @DiaCobro, @objPaisID, @objCiudadID, @CargarDiferenciada, @Activa, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @Descripcion, @Codigo)"
+			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
+			cmdInsert.CommandText = "INSERT INTO SfaTransferenciaCaja ( objCajaOrigenID, objCajeroOrigen, objCajaDestinoID, objCajeroDestino, Monto, Comentarios, Aprobada, AutorizadoPor, Activa, FechaAprobacion, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion) VALUES ( @objCajaOrigenID, @objCajeroOrigen, @objCajaDestinoID, @objCajeroDestino, @Monto, @Comentarios, @Aprobada, @AutorizadoPor, @Activa, @FechaAprobacion, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion)"
 
 			'CREACION DEL COMANDO UPDATE
-			cmdUpdate.Parameters.Add("@Nombre", SqlDbType.VarChar, -1, "Nombre")
-			cmdUpdate.Parameters.Add("@ojbCobradorID", SqlDbType.Int, 4, "ojbCobradorID")
-			cmdUpdate.Parameters.Add("@objSupervisor", SqlDbType.Int, 4, "objSupervisor")
-			cmdUpdate.Parameters.Add("@DiaCobro", SqlDbType.Int, 4, "DiaCobro")
-			cmdUpdate.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
-			cmdUpdate.Parameters.Add("@objCiudadID", SqlDbType.Int, 4, "objCiudadID")
-			cmdUpdate.Parameters.Add("@CargarDiferenciada", SqlDbType.Bit, 1, "CargarDiferenciada")
+			cmdUpdate.Parameters.Add("@objCajaOrigenID", SqlDbType.Int, 4, "objCajaOrigenID")
+			cmdUpdate.Parameters.Add("@objCajeroOrigen", SqlDbType.Int, 4, "objCajeroOrigen")
+			cmdUpdate.Parameters.Add("@objCajaDestinoID", SqlDbType.Int, 4, "objCajaDestinoID")
+			cmdUpdate.Parameters.Add("@objCajeroDestino", SqlDbType.Int, 4, "objCajeroDestino")
+			cmdUpdate.Parameters.Add("@Monto", SqlDbType.Decimal, 9, "Monto")
+			cmdUpdate.Parameters.Add("@Comentarios", SqlDbType.Binary, -1, "Comentarios")
+			cmdUpdate.Parameters.Add("@Aprobada", SqlDbType.Bit, 1, "Aprobada")
+			cmdUpdate.Parameters.Add("@AutorizadoPor", SqlDbType.VarChar, 50, "AutorizadoPor")
 			cmdUpdate.Parameters.Add("@Activa", SqlDbType.Bit, 1, "Activa")
+			cmdUpdate.Parameters.Add("@FechaAprobacion", SqlDbType.DateTime, 8, "FechaAprobacion")
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
-			cmdUpdate.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 30, "UsuarioCreacion")
+			cmdUpdate.Parameters.Add("@UsuarioCreacion", SqlDbType.VarChar, 50, "UsuarioCreacion")
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
-			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
-			cmdUpdate.Parameters.Add("@Descripcion", SqlDbType.VarChar, -1, "Descripcion")
-			cmdUpdate.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
-			cmdUpdate.Parameters.Add("@wStbRutaID", SqlDbType.Int, 4, "StbRutaID")
-			cmdUpdate.CommandText = "UPDATE StbRutas SET Nombre=@Nombre, ojbCobradorID=@ojbCobradorID, objSupervisor=@objSupervisor, DiaCobro=@DiaCobro, objPaisID=@objPaisID, objCiudadID=@objCiudadID, CargarDiferenciada=@CargarDiferenciada, Activa=@Activa, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, Descripcion=@Descripcion, Codigo=@Codigo WHERE StbRutaID= @wStbRutaID"
+			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 50, "UsuarioModificacion")
+			cmdUpdate.Parameters.Add("@wSfaTranferenciaID", SqlDbType.Int, 4, "SfaTranferenciaID")
+			cmdUpdate.CommandText = "UPDATE SfaTransferenciaCaja SET objCajaOrigenID=@objCajaOrigenID, objCajeroOrigen=@objCajeroOrigen, objCajaDestinoID=@objCajaDestinoID, objCajeroDestino=@objCajeroDestino, Monto=@Monto, Comentarios=@Comentarios, Aprobada=@Aprobada, AutorizadoPor=@AutorizadoPor, Activa=@Activa, FechaAprobacion=@FechaAprobacion, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion WHERE SfaTranferenciaID= @wSfaTranferenciaID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -275,7 +265,7 @@ Partial Public Class StbRutas
 				cmdUpdate.Transaction = pTransac.Transaction
 			End If
 				
-			sqlHelper.UpdateDataset (cmdInsert, cmdDelete, cmdUpdate, DS, "StbRutas")
+			sqlHelper.UpdateDataset (cmdInsert, cmdDelete, cmdUpdate, DS, "SfaTransferenciaCaja")
 		Catch ex As Exception
             Throw
         Finally
@@ -294,11 +284,11 @@ Partial Public Class StbRutas
 
 #Region " Retrieve "
 	''' <summary>
-    ''' Devuelve de la base de datos un objeto StbRutas
+    ''' Devuelve de la base de datos un objeto SfaTransferenciaCaja
     ''' </summary>    
 	''' <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>    	
-    Public Function Retrieve(Byval p_StbRutaID as Integer, optional Byval pTransac as TransactionManager = Nothing) As Boolean
-        Dim sSQL As String = "select * from StbRutas where " & " StbRutaID = " & p_StbRutaID		
+    Public Function Retrieve(Byval p_SfaTranferenciaID as Integer, optional Byval pTransac as TransactionManager = Nothing) As Boolean
+        Dim sSQL As String = "select * from SfaTransferenciaCaja where " & " SfaTranferenciaID = " & p_SfaTranferenciaID		
 		Dim dr As SqlDataReader = Nothing	
 		
         Try
@@ -309,21 +299,21 @@ Partial Public Class StbRutas
             End If
 			
 			If dr.Read() Then		
-				m_StbRutaID = dr("StbRutaID")
-				m_Nombre = IIf(IsDBNull(dr("Nombre")), Nothing, dr("Nombre"))					
-				m_ojbCobradorID = IIf(IsDBNull(dr("ojbCobradorID")), Nothing, dr("ojbCobradorID"))					
-				m_objSupervisor = IIf(IsDBNull(dr("objSupervisor")), Nothing, dr("objSupervisor"))					
-				m_DiaCobro = IIf(IsDBNull(dr("DiaCobro")), Nothing, dr("DiaCobro"))					
-				m_objPaisID = IIf(IsDBNull(dr("objPaisID")), Nothing, dr("objPaisID"))					
-				m_objCiudadID = IIf(IsDBNull(dr("objCiudadID")), Nothing, dr("objCiudadID"))					
-				m_CargarDiferenciada = IIf(IsDBNull(dr("CargarDiferenciada")), Nothing, dr("CargarDiferenciada"))					
+				m_SfaTranferenciaID = dr("SfaTranferenciaID")
+				m_objCajaOrigenID = IIf(IsDBNull(dr("objCajaOrigenID")), Nothing, dr("objCajaOrigenID"))					
+				m_objCajeroOrigen = IIf(IsDBNull(dr("objCajeroOrigen")), Nothing, dr("objCajeroOrigen"))					
+				m_objCajaDestinoID = IIf(IsDBNull(dr("objCajaDestinoID")), Nothing, dr("objCajaDestinoID"))					
+				m_objCajeroDestino = IIf(IsDBNull(dr("objCajeroDestino")), Nothing, dr("objCajeroDestino"))					
+				m_Monto = IIf(IsDBNull(dr("Monto")), Nothing, dr("Monto"))					
+				m_Comentarios = IIf(IsDBNull(dr("Comentarios")), Nothing, dr("Comentarios"))					
+				m_Aprobada = IIf(IsDBNull(dr("Aprobada")), Nothing, dr("Aprobada"))					
+				m_AutorizadoPor = IIf(IsDBNull(dr("AutorizadoPor")), Nothing, dr("AutorizadoPor"))					
 				m_Activa = IIf(IsDBNull(dr("Activa")), Nothing, dr("Activa"))					
+				m_FechaAprobacion = IIf(IsDBNull(dr("FechaAprobacion")), Nothing, dr("FechaAprobacion"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
-				m_Descripcion = IIf(IsDBNull(dr("Descripcion")), Nothing, dr("Descripcion"))					
-				m_Codigo = IIf(IsDBNull(dr("Codigo")), Nothing, dr("Codigo"))					
 				Return True
 			Else
 				Return False
@@ -341,12 +331,12 @@ Partial Public Class StbRutas
     End Function
 
 	''' <summary>
-    ''' Devuelve de la base de datos un objeto StbRutas usando un filter.
+    ''' Devuelve de la base de datos un objeto SfaTransferenciaCaja usando un filter.
     ''' </summary>
     ''' <param name="pFilter">Filtro a aplicar en el select que carga la clase</param>    
 	''' <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Retrieve.</param>    
     Public Function RetrieveByFilter(ByVal pFilter as String, optional Byval pTransac as TransactionManager = Nothing) As Boolean
-        Dim sSQL As String = "select * from StbRutas where " & pFilter				
+        Dim sSQL As String = "select * from SfaTransferenciaCaja where " & pFilter				
         Dim dr As SqlDataReader = Nothing
 		
         Try
@@ -357,21 +347,21 @@ Partial Public Class StbRutas
             End If
 				
 			If dr.Read() Then
-				m_StbRutaID = dr("StbRutaID")
-				m_Nombre = IIf(IsDBNull(dr("Nombre")), Nothing, dr("Nombre"))					
-				m_ojbCobradorID = IIf(IsDBNull(dr("ojbCobradorID")), Nothing, dr("ojbCobradorID"))					
-				m_objSupervisor = IIf(IsDBNull(dr("objSupervisor")), Nothing, dr("objSupervisor"))					
-				m_DiaCobro = IIf(IsDBNull(dr("DiaCobro")), Nothing, dr("DiaCobro"))					
-				m_objPaisID = IIf(IsDBNull(dr("objPaisID")), Nothing, dr("objPaisID"))					
-				m_objCiudadID = IIf(IsDBNull(dr("objCiudadID")), Nothing, dr("objCiudadID"))					
-				m_CargarDiferenciada = IIf(IsDBNull(dr("CargarDiferenciada")), Nothing, dr("CargarDiferenciada"))					
+				m_SfaTranferenciaID = dr("SfaTranferenciaID")
+				m_objCajaOrigenID = IIf(IsDBNull(dr("objCajaOrigenID")), Nothing, dr("objCajaOrigenID"))					
+				m_objCajeroOrigen = IIf(IsDBNull(dr("objCajeroOrigen")), Nothing, dr("objCajeroOrigen"))					
+				m_objCajaDestinoID = IIf(IsDBNull(dr("objCajaDestinoID")), Nothing, dr("objCajaDestinoID"))					
+				m_objCajeroDestino = IIf(IsDBNull(dr("objCajeroDestino")), Nothing, dr("objCajeroDestino"))					
+				m_Monto = IIf(IsDBNull(dr("Monto")), Nothing, dr("Monto"))					
+				m_Comentarios = IIf(IsDBNull(dr("Comentarios")), Nothing, dr("Comentarios"))					
+				m_Aprobada = IIf(IsDBNull(dr("Aprobada")), Nothing, dr("Aprobada"))					
+				m_AutorizadoPor = IIf(IsDBNull(dr("AutorizadoPor")), Nothing, dr("AutorizadoPor"))					
 				m_Activa = IIf(IsDBNull(dr("Activa")), Nothing, dr("Activa"))					
+				m_FechaAprobacion = IIf(IsDBNull(dr("FechaAprobacion")), Nothing, dr("FechaAprobacion"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
 				m_UsuarioCreacion = IIf(IsDBNull(dr("UsuarioCreacion")), Nothing, dr("UsuarioCreacion"))					
 				m_FechaModificacion = IIf(IsDBNull(dr("FechaModificacion")), Nothing, dr("FechaModificacion"))					
 				m_UsuarioModificacion = IIf(IsDBNull(dr("UsuarioModificacion")), Nothing, dr("UsuarioModificacion"))					
-				m_Descripcion = IIf(IsDBNull(dr("Descripcion")), Nothing, dr("Descripcion"))					
-				m_Codigo = IIf(IsDBNull(dr("Codigo")), Nothing, dr("Codigo"))					
 				Return True
 			Else
 				Return False
@@ -389,13 +379,13 @@ Partial Public Class StbRutas
     End Function
 
 	''' <summary>
-    ''' Trae de la base de datos un conjunto de objetos StbRutas en un objeto DataTable
+    ''' Trae de la base de datos un conjunto de objetos SfaTransferenciaCaja en un objeto DataTable
     ''' </summary>
     ''' <param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
     ''' <param name="OrderBy">Campos por los que se ordenar? la salida</param>
     ''' <returns></returns> 
     Public Shared Function RetrieveDT(Optional ByVal sFilter As String = "", Optional ByVal OrderBy As String = "", Optional Byval pFields as String = "*", optional Byval pTransac as TransactionManager = Nothing) As DataTable
-        Dim sSQL As String = "select " & pFields &" from StbRutas"
+        Dim sSQL As String = "select " & pFields &" from SfaTransferenciaCaja"
 
         If sFilter <> "" Then
             sSQL &= " where " & sFilter
@@ -412,7 +402,7 @@ Partial Public Class StbRutas
 			Else
 				ds = SqlHelper.ExecuteDataset(pTransac.Transaction, CommandType.Text, sSQL)
 			End If
-			ds.Tables(0).TableName = "StbRutas"
+			ds.Tables(0).TableName = "SfaTransferenciaCaja"
 			Return (ds.Tables(0))
 		Catch ex As Exception
 			Throw        
@@ -420,13 +410,13 @@ Partial Public Class StbRutas
     End Function
 
 	''' <summary>
-    ''' Trae de la base de datos un conjunto de objetos StbRutas en un objeto DataSet
+    ''' Trae de la base de datos un conjunto de objetos SfaTransferenciaCaja en un objeto DataSet
     ''' </summary>
     ''' <param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
     ''' <param name="OrderBy">Campos por los que se ordenar? la salida</param>
     ''' <returns></returns> 
     Public Shared Function RetrieveDS(Optional ByVal sFilter As String = "", Optional ByVal OrderBy As String = "", Optional Byval pFields as String = "*", optional Byval pTransac as TransactionManager = Nothing) As DataSet
-        Dim sSQL As String = "select " & pFields &" from StbRutas"
+        Dim sSQL As String = "select " & pFields &" from SfaTransferenciaCaja"
 
         If sFilter <> "" Then
             sSQL &= " where " & sFilter
@@ -443,7 +433,7 @@ Partial Public Class StbRutas
 			Else
 				ds = SqlHelper.ExecuteDataset(pTransac.Transaction, CommandType.Text, sSQL)
 			End If
-			ds.Tables(0).TableName = "StbRutas"
+			ds.Tables(0).TableName = "SfaTransferenciaCaja"
 			Return (ds)
 		Catch ex As Exception
 			Throw        
@@ -451,13 +441,13 @@ Partial Public Class StbRutas
     End Function
 
     ''' <summary>
-    ''' Trae de la base de datos un conjunto de objetos StbRutas en un objeto DataReader
+    ''' Trae de la base de datos un conjunto de objetos SfaTransferenciaCaja en un objeto DataReader
     ''' </summary>
     ''' <param name="sFilter">Condici?n que filtra los objetos a traer (WHERE)</param>
     ''' <param name="OrderBy">Campos por los que se ordenar? la salida</param>
     ''' <returns></returns>
     Public Shared Function RetrieveDR(Optional ByVal sFilter As String = "", Optional ByVal OrderBy As String = "", Optional Byval pFields as String = "*", optional Byval pTransac as TransactionManager = Nothing) As SqlDataReader
-        Dim sSQL As String = "select " & pFields &" from StbRutas"
+        Dim sSQL As String = "select " & pFields &" from SfaTransferenciaCaja"
 
         If sFilter <> "" Then
             sSQL &= " where " & sFilter
@@ -491,132 +481,132 @@ Partial Public Class StbRutas
 #Region " Insert "
 
 	''' <summary>
-    ''' 	Inserta en la base de datos una nueva instancia de la clase StbRutas.
+    ''' 	Inserta en la base de datos una nueva instancia de la clase SfaTransferenciaCaja.
     ''' </summary>	
     ''' <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el m?todo Insert.</param>
     ''' <remarks></remarks>
 	Public Sub Insert(Optional ByRef pTransac As TransactionManager = Nothing)
-		Dim sCommand As String = "insert into StbRutas("
-		sCommand &= "Nombre,"
-		sCommand &= "ojbCobradorID,"
-		sCommand &= "objSupervisor,"
-		sCommand &= "DiaCobro,"
-		sCommand &= "objPaisID,"
-		sCommand &= "objCiudadID,"
-		sCommand &= "CargarDiferenciada,"
+		Dim sCommand As String = "insert into SfaTransferenciaCaja("
+		sCommand &= "objCajaOrigenID,"
+		sCommand &= "objCajeroOrigen,"
+		sCommand &= "objCajaDestinoID,"
+		sCommand &= "objCajeroDestino,"
+		sCommand &= "Monto,"
+		sCommand &= "Comentarios,"
+		sCommand &= "Aprobada,"
+		sCommand &= "AutorizadoPor,"
 		sCommand &= "Activa,"
+		sCommand &= "FechaAprobacion,"
 		sCommand &= "FechaCreacion,"
 		sCommand &= "UsuarioCreacion,"
 		sCommand &= "FechaModificacion,"
-		sCommand &= "UsuarioModificacion,"
-		sCommand &= "Descripcion,"
-		sCommand &= "Codigo) values ("		
-		sCommand &= "@Nombre,"
-		sCommand &= "@ojbCobradorID,"
-		sCommand &= "@objSupervisor,"
-		sCommand &= "@DiaCobro,"
-		sCommand &= "@objPaisID,"
-		sCommand &= "@objCiudadID,"
-		sCommand &= "@CargarDiferenciada,"
+		sCommand &= "UsuarioModificacion) values ("		
+		sCommand &= "@objCajaOrigenID,"
+		sCommand &= "@objCajeroOrigen,"
+		sCommand &= "@objCajaDestinoID,"
+		sCommand &= "@objCajeroDestino,"
+		sCommand &= "@Monto,"
+		sCommand &= "@Comentarios,"
+		sCommand &= "@Aprobada,"
+		sCommand &= "@AutorizadoPor,"
 		sCommand &= "@Activa,"
+		sCommand &= "@FechaAprobacion,"
 		sCommand &= "@FechaCreacion,"
 		sCommand &= "@UsuarioCreacion,"
 		sCommand &= "@FechaModificacion,"
-		sCommand &= "@UsuarioModificacion,"
-		sCommand &= "@Descripcion,"
-		sCommand &= "@Codigo)"		
+		sCommand &= "@UsuarioModificacion)"		
 	
 		sCommand &= " select "
-		sCommand &= "@StbRutaID = StbRutaID from StbRutas where "		
-		sCommand &= "StbRutaID = SCOPE_IDENTITY()"
+		sCommand &= "@SfaTranferenciaID = SfaTranferenciaID from SfaTransferenciaCaja where "		
+		sCommand &= "SfaTranferenciaID = SCOPE_IDENTITY()"
 		
 		
 		Dim arParams(14) As SqlParameter
-		arParams(0) = New SqlParameter("@StbRutaID", SqlDbType.Int)		
+		arParams(0) = New SqlParameter("@SfaTranferenciaID", SqlDbType.Int)		
 		arParams(0).Direction = ParameterDirection.Output
-		arParams(1) = New SqlParameter("@Nombre", SqlDbType.VarChar)		
-		If IsDBNull(m_Nombre) Then
+		arParams(1) = New SqlParameter("@objCajaOrigenID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaOrigenID) Then
             arParams(1).Value = DBNull.Value
         Else
-            arParams(1).Value = m_Nombre
+            arParams(1).Value = m_objCajaOrigenID
         End If
-		arParams(2) = New SqlParameter("@ojbCobradorID", SqlDbType.Int)		
-		If IsDBNull(m_ojbCobradorID) Then
+		arParams(2) = New SqlParameter("@objCajeroOrigen", SqlDbType.Int)		
+		If IsDBNull(m_objCajeroOrigen) Then
             arParams(2).Value = DBNull.Value
         Else
-            arParams(2).Value = m_ojbCobradorID
+            arParams(2).Value = m_objCajeroOrigen
         End If
-		arParams(3) = New SqlParameter("@objSupervisor", SqlDbType.Int)		
-		If IsDBNull(m_objSupervisor) Then
+		arParams(3) = New SqlParameter("@objCajaDestinoID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaDestinoID) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_objSupervisor
+            arParams(3).Value = m_objCajaDestinoID
         End If
-		arParams(4) = New SqlParameter("@DiaCobro", SqlDbType.Int)		
-		If IsDBNull(m_DiaCobro) Then
+		arParams(4) = New SqlParameter("@objCajeroDestino", SqlDbType.Int)		
+		If IsDBNull(m_objCajeroDestino) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_DiaCobro
+            arParams(4).Value = m_objCajeroDestino
         End If
-		arParams(5) = New SqlParameter("@objPaisID", SqlDbType.Int)		
-		If IsDBNull(m_objPaisID) Then
+		arParams(5) = New SqlParameter("@Monto", SqlDbType.Decimal)		
+		If IsDBNull(m_Monto) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_objPaisID
+            arParams(5).Value = m_Monto
         End If
-		arParams(6) = New SqlParameter("@objCiudadID", SqlDbType.Int)		
-		If IsDBNull(m_objCiudadID) Then
+		arParams(6) = New SqlParameter("@Comentarios", SqlDbType.Binary)		
+		If IsDBNull(m_Comentarios) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_objCiudadID
+            arParams(6).Value = m_Comentarios
         End If
-		arParams(7) = New SqlParameter("@CargarDiferenciada", SqlDbType.Bit)		
-		If IsDBNull(m_CargarDiferenciada) Then
+		arParams(7) = New SqlParameter("@Aprobada", SqlDbType.Bit)		
+		If IsDBNull(m_Aprobada) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_CargarDiferenciada
+            arParams(7).Value = m_Aprobada
         End If
-		arParams(8) = New SqlParameter("@Activa", SqlDbType.Bit)		
-		If IsDBNull(m_Activa) Then
+		arParams(8) = New SqlParameter("@AutorizadoPor", SqlDbType.VarChar)		
+		If IsDBNull(m_AutorizadoPor) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_Activa
+            arParams(8).Value = m_AutorizadoPor
         End If
-		arParams(9) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(9) = New SqlParameter("@Activa", SqlDbType.Bit)		
+		If IsDBNull(m_Activa) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_FechaCreacion
+            arParams(9).Value = m_Activa
         End If
-		arParams(10) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(10) = New SqlParameter("@FechaAprobacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaAprobacion) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_UsuarioCreacion
+            arParams(10).Value = m_FechaAprobacion
         End If
-		arParams(11) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(11) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_FechaModificacion
+            arParams(11).Value = m_FechaCreacion
         End If
-		arParams(12) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(12) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_UsuarioModificacion
+            arParams(12).Value = m_UsuarioCreacion
         End If
-		arParams(13) = New SqlParameter("@Descripcion", SqlDbType.VarChar)		
-		If IsDBNull(m_Descripcion) Then
+		arParams(13) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(13).Value = DBNull.Value
         Else
-            arParams(13).Value = m_Descripcion
+            arParams(13).Value = m_FechaModificacion
         End If
-		arParams(14) = New SqlParameter("@Codigo", SqlDbType.VarChar)		
-		If IsDBNull(m_Codigo) Then
+		arParams(14) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(14).Value = DBNull.Value
         Else
-            arParams(14).Value = m_Codigo
+            arParams(14).Value = m_UsuarioModificacion
         End If
 	
 		Try
@@ -626,7 +616,7 @@ Partial Public Class StbRutas
 				SqlHelper.ExecuteNonQuery(pTransac.Transaction, CommandType.Text, sCommand, arParams)        
 			End If					
 			
-			m_StbRutaID = arParams(0).Value
+			m_SfaTranferenciaID = arParams(0).Value
         Catch ex As Exception
             Throw        
         End Try
@@ -636,119 +626,119 @@ Partial Public Class StbRutas
 #Region " Update "
 
 	''' <summary>
-    ''' 	Actualiza el objeto StbRutas en la base de datos.
+    ''' 	Actualiza el objeto SfaTransferenciaCaja en la base de datos.
     ''' </summary>	
     ''' <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
     ''' <remarks></remarks>
 	Public Sub Update(Optional ByRef pTransac As TransactionManager = Nothing)        		
-		Dim sCommand As String = "update StbRutas set "		
-		sCommand &= "Nombre = @Nombre,"
-		sCommand &= "ojbCobradorID = @ojbCobradorID,"
-		sCommand &= "objSupervisor = @objSupervisor,"
-		sCommand &= "DiaCobro = @DiaCobro,"
-		sCommand &= "objPaisID = @objPaisID,"
-		sCommand &= "objCiudadID = @objCiudadID,"
-		sCommand &= "CargarDiferenciada = @CargarDiferenciada,"
+		Dim sCommand As String = "update SfaTransferenciaCaja set "		
+		sCommand &= "objCajaOrigenID = @objCajaOrigenID,"
+		sCommand &= "objCajeroOrigen = @objCajeroOrigen,"
+		sCommand &= "objCajaDestinoID = @objCajaDestinoID,"
+		sCommand &= "objCajeroDestino = @objCajeroDestino,"
+		sCommand &= "Monto = @Monto,"
+		sCommand &= "Comentarios = @Comentarios,"
+		sCommand &= "Aprobada = @Aprobada,"
+		sCommand &= "AutorizadoPor = @AutorizadoPor,"
 		sCommand &= "Activa = @Activa,"
+		sCommand &= "FechaAprobacion = @FechaAprobacion,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
 		sCommand &= "UsuarioCreacion = @UsuarioCreacion,"
 		sCommand &= "FechaModificacion = @FechaModificacion,"
-		sCommand &= "UsuarioModificacion = @UsuarioModificacion,"
-		sCommand &= "Descripcion = @Descripcion,"
-		sCommand &= "Codigo = @Codigo"		
+		sCommand &= "UsuarioModificacion = @UsuarioModificacion"		
 		sCommand &= " where "	
-		sCommand &= "StbRutaID = @StbRutaID"					
+		sCommand &= "SfaTranferenciaID = @SfaTranferenciaID"					
 		
 		Dim arParams(14) As SqlParameter
-		arParams(0) = New SqlParameter("@StbRutaID", SqlDbType.Int)		
-		If IsDBNull(m_StbRutaID) Then
+		arParams(0) = New SqlParameter("@SfaTranferenciaID", SqlDbType.Int)		
+		If IsDBNull(m_SfaTranferenciaID) Then
             arParams(0).Value = DBNull.Value
         Else
-            arParams(0).Value = m_StbRutaID
+            arParams(0).Value = m_SfaTranferenciaID
         End If
-		arParams(1) = New SqlParameter("@Nombre", SqlDbType.VarChar)		
-		If IsDBNull(m_Nombre) Then
+		arParams(1) = New SqlParameter("@objCajaOrigenID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaOrigenID) Then
             arParams(1).Value = DBNull.Value
         Else
-            arParams(1).Value = m_Nombre
+            arParams(1).Value = m_objCajaOrigenID
         End If
-		arParams(2) = New SqlParameter("@ojbCobradorID", SqlDbType.Int)		
-		If IsDBNull(m_ojbCobradorID) Then
+		arParams(2) = New SqlParameter("@objCajeroOrigen", SqlDbType.Int)		
+		If IsDBNull(m_objCajeroOrigen) Then
             arParams(2).Value = DBNull.Value
         Else
-            arParams(2).Value = m_ojbCobradorID
+            arParams(2).Value = m_objCajeroOrigen
         End If
-		arParams(3) = New SqlParameter("@objSupervisor", SqlDbType.Int)		
-		If IsDBNull(m_objSupervisor) Then
+		arParams(3) = New SqlParameter("@objCajaDestinoID", SqlDbType.Int)		
+		If IsDBNull(m_objCajaDestinoID) Then
             arParams(3).Value = DBNull.Value
         Else
-            arParams(3).Value = m_objSupervisor
+            arParams(3).Value = m_objCajaDestinoID
         End If
-		arParams(4) = New SqlParameter("@DiaCobro", SqlDbType.Int)		
-		If IsDBNull(m_DiaCobro) Then
+		arParams(4) = New SqlParameter("@objCajeroDestino", SqlDbType.Int)		
+		If IsDBNull(m_objCajeroDestino) Then
             arParams(4).Value = DBNull.Value
         Else
-            arParams(4).Value = m_DiaCobro
+            arParams(4).Value = m_objCajeroDestino
         End If
-		arParams(5) = New SqlParameter("@objPaisID", SqlDbType.Int)		
-		If IsDBNull(m_objPaisID) Then
+		arParams(5) = New SqlParameter("@Monto", SqlDbType.Decimal)		
+		If IsDBNull(m_Monto) Then
             arParams(5).Value = DBNull.Value
         Else
-            arParams(5).Value = m_objPaisID
+            arParams(5).Value = m_Monto
         End If
-		arParams(6) = New SqlParameter("@objCiudadID", SqlDbType.Int)		
-		If IsDBNull(m_objCiudadID) Then
+		arParams(6) = New SqlParameter("@Comentarios", SqlDbType.Binary)		
+		If IsDBNull(m_Comentarios) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_objCiudadID
+            arParams(6).Value = m_Comentarios
         End If
-		arParams(7) = New SqlParameter("@CargarDiferenciada", SqlDbType.Bit)		
-		If IsDBNull(m_CargarDiferenciada) Then
+		arParams(7) = New SqlParameter("@Aprobada", SqlDbType.Bit)		
+		If IsDBNull(m_Aprobada) Then
             arParams(7).Value = DBNull.Value
         Else
-            arParams(7).Value = m_CargarDiferenciada
+            arParams(7).Value = m_Aprobada
         End If
-		arParams(8) = New SqlParameter("@Activa", SqlDbType.Bit)		
-		If IsDBNull(m_Activa) Then
+		arParams(8) = New SqlParameter("@AutorizadoPor", SqlDbType.VarChar)		
+		If IsDBNull(m_AutorizadoPor) Then
             arParams(8).Value = DBNull.Value
         Else
-            arParams(8).Value = m_Activa
+            arParams(8).Value = m_AutorizadoPor
         End If
-		arParams(9) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaCreacion) Then
+		arParams(9) = New SqlParameter("@Activa", SqlDbType.Bit)		
+		If IsDBNull(m_Activa) Then
             arParams(9).Value = DBNull.Value
         Else
-            arParams(9).Value = m_FechaCreacion
+            arParams(9).Value = m_Activa
         End If
-		arParams(10) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioCreacion) Then
+		arParams(10) = New SqlParameter("@FechaAprobacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaAprobacion) Then
             arParams(10).Value = DBNull.Value
         Else
-            arParams(10).Value = m_UsuarioCreacion
+            arParams(10).Value = m_FechaAprobacion
         End If
-		arParams(11) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
-		If IsDBNull(m_FechaModificacion) Then
+		arParams(11) = New SqlParameter("@FechaCreacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaCreacion) Then
             arParams(11).Value = DBNull.Value
         Else
-            arParams(11).Value = m_FechaModificacion
+            arParams(11).Value = m_FechaCreacion
         End If
-		arParams(12) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
-		If IsDBNull(m_UsuarioModificacion) Then
+		arParams(12) = New SqlParameter("@UsuarioCreacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioCreacion) Then
             arParams(12).Value = DBNull.Value
         Else
-            arParams(12).Value = m_UsuarioModificacion
+            arParams(12).Value = m_UsuarioCreacion
         End If
-		arParams(13) = New SqlParameter("@Descripcion", SqlDbType.VarChar)		
-		If IsDBNull(m_Descripcion) Then
+		arParams(13) = New SqlParameter("@FechaModificacion", SqlDbType.DateTime)		
+		If IsDBNull(m_FechaModificacion) Then
             arParams(13).Value = DBNull.Value
         Else
-            arParams(13).Value = m_Descripcion
+            arParams(13).Value = m_FechaModificacion
         End If
-		arParams(14) = New SqlParameter("@Codigo", SqlDbType.VarChar)		
-		If IsDBNull(m_Codigo) Then
+		arParams(14) = New SqlParameter("@UsuarioModificacion", SqlDbType.VarChar)		
+		If IsDBNull(m_UsuarioModificacion) Then
             arParams(14).Value = DBNull.Value
         Else
-            arParams(14).Value = m_Codigo
+            arParams(14).Value = m_UsuarioModificacion
         End If
 	
 		Try
@@ -767,12 +757,12 @@ Partial Public Class StbRutas
 #Region " Delete "
 
 	''' <summary>
-    ''' Borra un objeto StbRutas de la base de datos.
+    ''' Borra un objeto SfaTransferenciaCaja de la base de datos.
 	''' <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
     ''' </summary>    
     Public Sub Delete(optional Byval pTransac as TransactionManager = Nothing)
 		Try
-			Dim sSQL As String = "delete from StbRutas where " & " StbRutaID = " & m_StbRutaID
+			Dim sSQL As String = "delete from SfaTransferenciaCaja where " & " SfaTranferenciaID = " & m_SfaTranferenciaID
 			If pTransac Is Nothing Then
 				SqlHelper.ExecuteNonQuery(CommandType.Text, sSQL)
 			Else
@@ -784,11 +774,11 @@ Partial Public Class StbRutas
     End Sub
 
     ''' <summary>
-    ''' Borra un objeto StbRutas de la base de datos
+    ''' Borra un objeto SfaTransferenciaCaja de la base de datos
     ''' </summary>    
-    Public Shared Sub Delete(Byval p_StbRutaID as Integer, optional Byval pTransac as TransactionManager = Nothing)
+    Public Shared Sub Delete(Byval p_SfaTranferenciaID as Integer, optional Byval pTransac as TransactionManager = Nothing)
 		Try
-			Dim sSQL As String = "delete from StbRutas where " & " StbRutaID = " & p_StbRutaID
+			Dim sSQL As String = "delete from SfaTransferenciaCaja where " & " SfaTranferenciaID = " & p_SfaTranferenciaID
 			If pTransac Is Nothing Then
 				SqlHelper.ExecuteNonQuery(CommandType.Text, sSQL)
 			Else
@@ -800,13 +790,13 @@ Partial Public Class StbRutas
     End Sub	
 
     ''' <summary>
-    ''' Borra objetos StbRutas de la base de datos en base al par?metro WHERE
+    ''' Borra objetos SfaTransferenciaCaja de la base de datos en base al par?metro WHERE
     ''' </summary>
     ''' <param name="pWhere">Condici?n usada para borrar los objetos de la base de datos.</param>
 	''' <param name="pTransac">Opcional. La transacci?n en cuyo ?mbito ser? ejecutado el Update del objeto.</param>
     Public Shared Sub DeleteByFilter(Byval pWhere as String, optional Byval pTransac as TransactionManager = Nothing)
 		Try
-			Dim sSQL As String = "delete from StbRutas where " & pWhere
+			Dim sSQL As String = "delete from SfaTransferenciaCaja where " & pWhere
 			If pTransac Is Nothing Then
 				SqlHelper.ExecuteNonQuery(CommandType.Text, sSQL)
 			Else

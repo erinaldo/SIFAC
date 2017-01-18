@@ -244,7 +244,8 @@ Public Class frmStbRutasEdit
             objRutas.Nombre = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
             objRutas.Descripcion = txtDescripcion.Text.Trim
             objRutas.Activa = chkActivo.Checked
-            objRutas.Codigo = txtCodigo.Text
+            objRutas.Codigo = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
+            'objRutas.Codigo = txtCodigo.Text
             objRutas.ojbCobradorID = cbxCobrador.SelectedValue
 
             If Not cmbSupervisor.Text = "Ninguno" Then
@@ -271,28 +272,18 @@ Public Class frmStbRutasEdit
     End Sub
 
     Private Sub CargarCiudad()
-        Dim objparametro As StbParametro
-        Dim objPais As StbPais
+       
         Try
-            objparametro = New StbParametro
-            objPais = New StbPais
+            DtCiudad = StbZona.RetrieveDT("1=1", "", "StbZonaID,Nombre")
 
-            'Ciudad
-            objparametro.RetrieveByFilter("Nombre='Pais'")
-            objPais.RetrieveByFilter("Nombre='" & objparametro.Valor & "'")
-
-            DtCiudad = StbCiudad.RetrieveDT("objPaisID=" & objPais.StbPaisID, "", "StbCiudadID,Nombre")
-
-            cmbCiudad.ValueMember = "StbCiudadID"
+            cmbCiudad.ValueMember = "StbZonaID"
             cmbCiudad.DisplayMember = "Nombre"
             cmbCiudad.DataSource = DtCiudad
             cmbCiudad.SelectedItem = -1
 
         Catch ex As Exception
             clsError.CaptarError(ex)
-        Finally
-            objPais = Nothing
-            objparametro = Nothing
+       
 
         End Try
     End Sub
@@ -502,8 +493,27 @@ Public Class frmStbRutasEdit
             Me.cmdGuardar.Focus()
         End If
     End Sub
+
+    Private Sub cmdAgregarCategoria_Click(sender As Object, e As EventArgs) Handles cmdAgregarCategoria.Click
+        Dim addZona As frmZonaEdit
+        Try
+
+            addZona = New frmZonaEdit
+            addZona.TypeGui = 0
+            If addZona.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                Me.CargarCiudad()
+                Me.cmbCiudad.SelectedValue = addZona.MarcaID
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            addZona = Nothing
+        End Try
+    End Sub
+
 #End Region
 
   
     
+   
 End Class

@@ -316,6 +316,7 @@ Partial Class frmSccEditNotaCredito
         Me.cmbEmpleado.Name = "cmbEmpleado"
         Me.cmbEmpleado.Size = New System.Drawing.Size(279, 21)
         Me.cmbEmpleado.TabIndex = 132
+        Me.cmbEmpleado.Visible = False
         '
         'cmdConsultar
         '

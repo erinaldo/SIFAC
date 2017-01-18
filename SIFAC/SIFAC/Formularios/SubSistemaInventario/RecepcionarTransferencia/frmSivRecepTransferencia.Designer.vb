@@ -26,7 +26,6 @@ Partial Class frmSivRecepTransferencia
         Me.cmdImprimir = New System.Windows.Forms.ToolStripDropDownButton()
         Me.cmdImprimirSeleccion = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmdImprimirFiltro = New System.Windows.Forms.ToolStripMenuItem()
-        Me.cmdImprimirDiferencias = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolSeparador1 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsbRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
@@ -82,7 +81,7 @@ Partial Class frmSivRecepTransferencia
         'cmdImprimir
         '
         Me.cmdImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.cmdImprimir.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdImprimirSeleccion, Me.cmdImprimirFiltro, Me.cmdImprimirDiferencias})
+        Me.cmdImprimir.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdImprimirSeleccion, Me.cmdImprimirFiltro})
         Me.cmdImprimir.Image = CType(resources.GetObject("cmdImprimir.Image"), System.Drawing.Image)
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
@@ -92,20 +91,14 @@ Partial Class frmSivRecepTransferencia
         'cmdImprimirSeleccion
         '
         Me.cmdImprimirSeleccion.Name = "cmdImprimirSeleccion"
-        Me.cmdImprimirSeleccion.Size = New System.Drawing.Size(143, 22)
+        Me.cmdImprimirSeleccion.Size = New System.Drawing.Size(152, 22)
         Me.cmdImprimirSeleccion.Text = "Seleccionada"
         '
         'cmdImprimirFiltro
         '
         Me.cmdImprimirFiltro.Name = "cmdImprimirFiltro"
-        Me.cmdImprimirFiltro.Size = New System.Drawing.Size(143, 22)
+        Me.cmdImprimirFiltro.Size = New System.Drawing.Size(152, 22)
         Me.cmdImprimirFiltro.Text = "Por Filtro"
-        '
-        'cmdImprimirDiferencias
-        '
-        Me.cmdImprimirDiferencias.Name = "cmdImprimirDiferencias"
-        Me.cmdImprimirDiferencias.Size = New System.Drawing.Size(143, 22)
-        Me.cmdImprimirDiferencias.Text = "Diferencias"
         '
         'ToolSeparador1
         '
@@ -303,7 +296,6 @@ Partial Class frmSivRecepTransferencia
     Friend WithEvents cmdImprimir As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents cmdImprimirSeleccion As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cmdImprimirFiltro As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents cmdImprimirDiferencias As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents grdTrasnferencias As DevExpress.XtraGrid.GridControl
     Friend WithEvents grdTransferenciasTabla As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colSivTransferenciaID As DevExpress.XtraGrid.Columns.GridColumn

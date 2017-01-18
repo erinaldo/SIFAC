@@ -45,6 +45,7 @@ Partial Class frmStbRutasEdit
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.cmdAgregarCategoria = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,6 +54,7 @@ Partial Class frmStbRutasEdit
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdAgregarCategoria)
         Me.PanelControl1.Controls.Add(Me.cmbCiudad)
         Me.PanelControl1.Controls.Add(Me.cbxCobrador)
         Me.PanelControl1.Controls.Add(Me.cmbSupervisor)
@@ -76,7 +78,7 @@ Partial Class frmStbRutasEdit
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(735, 250)
+        Me.PanelControl1.Size = New System.Drawing.Size(746, 250)
         Me.PanelControl1.TabIndex = 25
         '
         'cmbCiudad
@@ -247,10 +249,10 @@ Partial Class frmStbRutasEdit
         Me.lblCilindraje.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCilindraje.Location = New System.Drawing.Point(427, 29)
         Me.lblCilindraje.Name = "lblCilindraje"
-        Me.lblCilindraje.Size = New System.Drawing.Size(50, 13)
+        Me.lblCilindraje.Size = New System.Drawing.Size(40, 13)
         Me.lblCilindraje.TabIndex = 19
         Me.lblCilindraje.Tag = "OBLIGATORIO"
-        Me.lblCilindraje.Text = "Ciudad:"
+        Me.lblCilindraje.Text = "Zona:"
         '
         'lblMarca
         '
@@ -298,18 +300,32 @@ Partial Class frmStbRutasEdit
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 229)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(735, 21)
+        Me.Panel1.Size = New System.Drawing.Size(746, 21)
         Me.Panel1.TabIndex = 26
         '
         'ErrorProv
         '
         Me.ErrorProv.ContainerControl = Me
         '
+        'cmdAgregarCategoria
+        '
+        Me.cmdAgregarCategoria.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAgregarCategoria.Appearance.Options.UseFont = True
+        Me.cmdAgregarCategoria.Image = CType(resources.GetObject("cmdAgregarCategoria.Image"), System.Drawing.Image)
+        Me.cmdAgregarCategoria.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdAgregarCategoria.Location = New System.Drawing.Point(696, 25)
+        Me.cmdAgregarCategoria.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAgregarCategoria.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAgregarCategoria.Name = "cmdAgregarCategoria"
+        Me.cmdAgregarCategoria.Size = New System.Drawing.Size(32, 28)
+        Me.cmdAgregarCategoria.TabIndex = 132
+        Me.cmdAgregarCategoria.Tag = "AGREGAR CATEGORIA"
+        '
         'frmStbRutasEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(735, 250)
+        Me.ClientSize = New System.Drawing.Size(746, 250)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -347,4 +363,5 @@ Partial Class frmStbRutasEdit
     Friend WithEvents cbxCobrador As System.Windows.Forms.ComboBox
     Friend WithEvents cmbSupervisor As System.Windows.Forms.ComboBox
     Friend WithEvents cmbCiudad As System.Windows.Forms.ComboBox
+    Friend WithEvents cmdAgregarCategoria As DevExpress.XtraEditors.SimpleButton
 End Class

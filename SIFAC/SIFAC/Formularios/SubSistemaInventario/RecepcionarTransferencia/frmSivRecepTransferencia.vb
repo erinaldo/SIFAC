@@ -428,7 +428,7 @@ Public Class frmSivRecepTransferencia
         End Try
     End Sub
 
-    Private Sub cmdImprimirDiferencias_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdImprimirDiferencias.Click
+    Private Sub cmdImprimirDiferencias_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim FilaActual As Integer
         Try
             Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()

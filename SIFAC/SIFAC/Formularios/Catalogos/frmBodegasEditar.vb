@@ -48,7 +48,6 @@ Public Class frmBodegasEditar
             cmbCiudad.DisplayMember = "Nombre"
             cmbCiudad.DataSource = DtCiudad
             cmbCiudad.Text = ""
-
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -351,6 +350,8 @@ Public Class frmBodegasEditar
         End If
     End Sub
 
+
+
 #End Region
 
 #Region "KeyPress controles"
@@ -438,5 +439,6 @@ Public Class frmBodegasEditar
 
 #End Region
 
+   
    
 End Class

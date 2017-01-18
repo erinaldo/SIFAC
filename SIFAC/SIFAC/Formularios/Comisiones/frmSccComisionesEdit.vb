@@ -226,6 +226,7 @@ Public Class frmSccComisionesEdit
         Try
             If cmbEmpleado.Text = String.Empty Then
                 ErrorProv.SetError(cmbEmpleado, "Debe seleccionar un cobrador.")
+                Exit Sub
             End If
 
             If dtDesde.Text <> String.Empty Then

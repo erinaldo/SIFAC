@@ -109,6 +109,7 @@
     <Compile Include="SfaPromocionDetalle_CF.vb" />
     <Compile Include="SfaPromocionDetTienda_CF.vb" />
     <Compile Include="SfaPromocion_CF.vb" />
+    <Compile Include="SfaTransferenciaCaja.vb" />
     <Compile Include="SivBodegaProductos.vb" />
     <Compile Include="SivBodegaRepuestos_CF.vb" />
     <Compile Include="SivCategorias.vb" />
@@ -146,6 +147,7 @@
     <Compile Include="StbTienda_CF.vb" />
     <Compile Include="StbTipoPersona_CF.vb" />
     <Compile Include="StbTiposEntrada_CF.vb" />
+    <Compile Include="StbZona.vb" />
     <Compile Include="txRC_FacturaDetalle_Step3_CF.vb" />
     <Compile Include="txRC_Factura_Step3_CF.vb" />
     <Compile Include="txRC_NotaCredito_Step1_CF.vb" />

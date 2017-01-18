@@ -841,7 +841,7 @@ Public Class frmSfaFaturaEditar
         Try
             Me.numCuotas.Value = Me.cmbPlazo.Columns("Codigo").Value
             Me.numFinancimiento.Value = Me.NumMonto.Value - Me.numPrima.Value
-            Me.numMontoCuotas.Value = Me.numFinancimiento.Value / Me.cmbPlazo.Columns("Codigo").Value
+            Me.numMontoCuotas.Value = Math.Round(Me.numFinancimiento.Value / Me.cmbPlazo.Columns("Codigo").Value)
             Me.numSaldo.Value = Me.NumMonto.Value
         Catch ex As Exception
             Me.numCuotas.Value = 0

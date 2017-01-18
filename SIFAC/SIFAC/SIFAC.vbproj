@@ -372,12 +372,6 @@
     <Compile Include="Formularios\Caja\frmSccSalidasEfectivo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Caja\frmTrasladoCajas.Designer.vb">
-      <DependentUpon>frmTrasladoCajas.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Caja\frmTrasladoCajas.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Catalogos\frmBodegasEditar.Designer.vb">
       <DependentUpon>frmBodegasEditar.vb</DependentUpon>
     </Compile>
@@ -436,6 +430,12 @@
       <DependentUpon>frmStbRutasEdit.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Catalogos\frmStbRutasEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmZonaEdit.Designer.vb">
+      <DependentUpon>frmZonaEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Catalogos\frmZonaEdit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Clientes\frmSccClientes.Designer.vb">
@@ -1382,9 +1382,6 @@
     <EmbeddedResource Include="Formularios\Caja\frmSccSalidasEfectivo.resx">
       <DependentUpon>frmSccSalidasEfectivo.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Caja\frmTrasladoCajas.resx">
-      <DependentUpon>frmTrasladoCajas.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmBodegasEditar.resx">
       <DependentUpon>frmBodegasEditar.vb</DependentUpon>
     </EmbeddedResource>
@@ -1414,6 +1411,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Catalogos\frmStbRutasEdit.resx">
       <DependentUpon>frmStbRutasEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Catalogos\frmZonaEdit.resx">
+      <DependentUpon>frmZonaEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\frmSccClientes.resx">
       <DependentUpon>frmSccClientes.vb</DependentUpon>

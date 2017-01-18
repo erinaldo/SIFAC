@@ -137,12 +137,12 @@ Public Class frmSivSoliTransferencia
             'Me.grdTransferencias.Splits(0).DisplayColumns("ObjBodegaDestinoID").Visible = False
             Me.bloquearBotonesBarra(Me.DtTransferencias.Rows.Count = 0)
             'Me.grdTransferencias.Caption = "Solicitudes de transferencias (" + Me.grdTransferencias.RowCount.ToString + ")"
-            'Me.grdTransferencias.Refresh()
-
-            Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()
-            Dim FilaActual As Integer = Me.grdTransferenciasTabla.GetDataSourceRowIndex(selectedRow(0))
-
+            'Me.grdTransferencias.Refresh()            
+           
             If Me.grdTransferenciasTabla.RowCount <> 0 Then
+                Dim selectedRow As Integer() = grdTransferenciasTabla.GetSelectedRows()
+                Dim FilaActual As Integer = Me.grdTransferenciasTabla.GetDataSourceRowIndex(selectedRow(0))
+
                 If Not IsDBNull(Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID")) Then
                     Me.cmdAnularSolicitud.Enabled = Me.blnAnular And Me.DtTransferencias.DefaultView.Item(FilaActual)("ObjEstadoID") = Me.IdEstadoSolicitada
                 Else

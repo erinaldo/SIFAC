@@ -78,7 +78,7 @@ Public Class frmSccSeleccionCuentas
     Private Sub CargarDatos()
         Dim strConsulta As String = ""
         Try
-            strConsulta = clsConsultas.ObtenerConsultaGeneral("Cast(0 as Bit) as Seleccion,SccCuentaID,NumeroCuenta,Cliente,StbPersonaID", "vwSccCuentasSeleccion", "Codigo<> 'CANCELADO' AND Codigo <> 'DEVOLUCION'")
+            strConsulta = clsConsultas.ObtenerConsultaGeneral("Cast(0 as Bit) as Seleccion,SccCuentaID,Cedula,NumeroCuenta,Cliente,StbPersonaID", "vwSccCuentasSeleccion", "Codigo<> 'CANCELADO' AND Codigo <> 'DEVOLUCION'")
             Me.DtDatosCuentas = SqlHelper.ExecuteQueryDT(strConsulta)
             Me.grdSeleccion.SetDataBinding(Me.DtDatosCuentas, "", True)
             'Me.grdSeleccion.Splits(0).DisplayColumns("CodigoTienda").Visible = False

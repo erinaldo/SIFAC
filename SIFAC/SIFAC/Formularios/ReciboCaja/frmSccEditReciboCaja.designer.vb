@@ -656,7 +656,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmbRuta.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbRuta.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbRuta.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbRuta.Size = New System.Drawing.Size(208, 21)
+        Me.cmbRuta.Size = New System.Drawing.Size(302, 21)
         Me.cmbRuta.TabIndex = 127
         Me.cmbRuta.Tag = "OBLIGATORIO"
         Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")

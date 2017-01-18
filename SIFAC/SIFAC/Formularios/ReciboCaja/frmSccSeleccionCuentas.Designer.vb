@@ -24,11 +24,11 @@ Partial Class frmSccSeleccionCuentas
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSccSeleccionCuentas))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.grdSeleccion = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
-        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel1.SuspendLayout()
         CType(Me.grdSeleccion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -42,6 +42,35 @@ Partial Class frmSccSeleccionCuentas
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(683, 33)
         Me.Panel1.TabIndex = 0
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(595, 4)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 106
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(507, 4)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 105
+        Me.cmdAceptar.Tag = "ACEPTAR"
+        Me.cmdAceptar.Text = "&Aceptar"
         '
         'grdSeleccion
         '
@@ -76,35 +105,6 @@ Partial Class frmSccSeleccionCuentas
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(683, 354)
         Me.PanelControl1.TabIndex = 99
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdCancelar.Appearance.Options.UseFont = True
-        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(595, 4)
-        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 106
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdAceptar.Appearance.Options.UseFont = True
-        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
-        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(507, 4)
-        Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdAceptar.TabIndex = 105
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
         '
         'frmSccSeleccionCuentas
         '

@@ -59,7 +59,7 @@ Public Class frmSccCuentasEditar
                 Case 2
                     FiltroCliente = "Descripcion = 'Cliente' "
             End Select
-            dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Direccion,Cedula,Genero,Descripcion,TipoPersona,Nacionalidad,ClienteID,objRutaID", "vwPersonaClasificacion", FiltroCliente))
+            dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Direccion,Cedula,Genero,Descripcion,TipoPersona,ClienteID,objRutaID", "vwPersonaClasificacion", FiltroCliente))
             dtCliente.DefaultView.RowFilter = "1=0"
 
         Catch ex As Exception
@@ -75,13 +75,11 @@ Public Class frmSccCuentasEditar
             Me.txtDireccion.Text = String.Empty
             Me.txtCedula.Text = String.Empty
             Me.txtGenero.Text = String.Empty
-            Me.txtNacionalidad.Text = String.Empty
             Me.txtTipoPersona.Text = String.Empty
             Me.txtNombre.Text = IIf(IsDBNull(foundRows(0)("NombreCompleto")), String.Empty, foundRows(0)("NombreCompleto"))
             Me.txtDireccion.Text = IIf(IsDBNull(foundRows(0)("Direccion")), String.Empty, foundRows(0)("Direccion"))
             Me.txtCedula.Text = IIf(IsDBNull(foundRows(0)("Cedula")), String.Empty, foundRows(0)("Cedula"))
             Me.txtGenero.Text = IIf(IsDBNull(foundRows(0)("Genero")), String.Empty, foundRows(0)("Genero"))
-            Me.txtNacionalidad.Text = IIf(IsDBNull(foundRows(0)("Nacionalidad")), String.Empty, foundRows(0)("Nacionalidad"))
             Me.txtTipoPersona.Text = IIf(IsDBNull(foundRows(0)("TipoPersona")), String.Empty, foundRows(0)("TipoPersona"))
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -115,6 +113,15 @@ Public Class frmSccCuentasEditar
                 Me.dtpFechaCredito.Enabled = False
                 Me.cmdBuscarCliente.Enabled = False
                 Me.cmdGuardar.Enabled = False
+                cmdBuscarFacturas.Enabled = False
+                cmdProcesarFacturas.Enabled = False
+                ''Deshabilitar controles
+                txtNombre.Enabled = False
+                txtDireccion.Enabled = False
+                txtCedula.Enabled = False
+                txtGenero.Enabled = False
+                txtTipoPersona.Enabled = False
+                cmdBuscarCliente.Enabled = False
         End Select
 
     End Sub

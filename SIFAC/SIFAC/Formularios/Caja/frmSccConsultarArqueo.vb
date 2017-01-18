@@ -140,16 +140,28 @@ Public Class frmSccConsultarArqueo
             txtAprobadoPor.Text = objArqueo.AprobadoPor
             spnEgreso.Value = objArqueo.SalidaEfectivo
             spnIngreso.Value = objArqueo.EntradaEfectivo
-            cmbCajero.SelectedValue = objArqueo.objCajeroID
+
+            If Not IsNothing(objCajero.objCajeroID) Then
+                cmbCajero.SelectedValue = objArqueo.objCajeroID
+            End If
+
             dtFecha.DateTime = objArqueo.Fecha
             spnFaltante.Value = objArqueo.Faltante
             spnDisponible.Value = spnIngreso.Value - spnEgreso.Value
-            objcaja.Retrieve(objArqueo.objCajaID)
 
-            lblCaja.Text = "Caja: " & objcaja.Codigo
-            objCajero.RetrieveByFilter("Codigo='" & frmPrincipal.gblCaja & "'")
-            cmbCajero.SelectedValue = objCajero.objCajeroID
+            If Not IsNothing(objArqueo.objCajaID) Then
+                objcaja.Retrieve(objArqueo.objCajaID)
+                lblCaja.Text = "Caja: " & objcaja.Codigo
+            Else
+                lblCaja.Text = "Caja: Migracion "
+            End If
+            
+            'objCajero.RetrieveByFilter("Codigo='" & frmPrincipal.gblCaja & "'")
 
+            'If Not IsDBNull(objCajero.objCajeroID) Then
+            '    cmbCajero.SelectedValue = objCajero.objCajeroID
+            'End If
+            
             dtDetallaFacturas = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SfaFacturaID, Fecha, TotalCordobas", "vwRptFacturaContadoArqueo", "convert(varchar(10),Fecha,112) =" & dtFecha.DateTime.ToString("yyyyMMdd")))
             dtDetalleComisiones = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SccNotaCreditoID, SccComisionID, Empleado, Fecha, objEmpleadoID, Monto", "vwComiscionesArqueo", "convert(varchar(10),Fecha,112) =" & dtFecha.DateTime.ToString("yyyyMMdd")))
             dtDetalleAbonos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("SccRecuperacion, Fecha, Monto", "vwRecuperacionArqueo", "convert(varchar(10),Fecha,112) =" & dtFecha.DateTime.ToString("yyyyMMdd")))

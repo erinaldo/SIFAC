@@ -253,40 +253,7 @@ Public Class frmSccMantNotaCredito
     End Sub
 
     Private Sub grdNotaCredito_RowColChange(ByVal sender As Object, ByVal e As C1.Win.C1TrueDBGrid.RowColChangeEventArgs)
-        Dim FilaActual As Integer
-        Try
-            If Me.grdNotaCreditoTabla.RowCount > 0 Then
-                Dim selectedRow As Integer() = grdNotaCreditoTabla.GetSelectedRows()
-                FilaActual = Me.grdNotaCreditoTabla.GetDataSourceRowIndex(selectedRow(0))
-
-                Me.NCID = Me.dtNC.DefaultView.Item(FilaActual)("SccNotaCreditoID")
-                Me.EstadoNC = Me.dtNC.DefaultView.Item(FilaActual)("objEstadoID")
-                Me.ConceptoNC = Me.dtNC.DefaultView.Item(FilaActual)("objConceptoID")
-
-                If blnModificarNC And EstadoNC = EstadoRegistrada And Not ConceptoNC = ConceptoDevolucion Then
-                    Me.tsbModificarNC.Enabled = True
-                Else
-                    Me.tsbModificarNC.Enabled = False
-                End If
-                If blnAutorizarNC And EstadoNC = EstadoRegistrada Then
-                    Me.tsbAutorizarNC.Enabled = True
-                Else
-                    Me.tsbAutorizarNC.Enabled = False
-                End If
-                If blnAnularNC And (EstadoNC = EstadoRegistrada Or EstadoNC = EstadoAutorizada) Then
-                    Me.tsbAnularNC.Enabled = True
-                Else
-                    Me.tsbAnularNC.Enabled = False
-                End If
-                If blnImprimirNC And EstadoNC = EstadoAutorizada Then
-                    Me.tsbImprimir.Enabled = True
-                Else
-                    Me.tsbImprimir.Enabled = False
-                End If
-            End If
-        Catch ex As Exception
-            clsError.CaptarError(ex)
-        End Try
+        
     End Sub
 
 #End Region
@@ -593,4 +560,40 @@ Public Class frmSccMantNotaCredito
 
 #End Region
 
+    Private Sub grdNotaCreditoTabla_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles grdNotaCreditoTabla.FocusedRowChanged
+        Dim FilaActual As Integer
+        Try
+            If Me.grdNotaCreditoTabla.RowCount > 0 Then
+                Dim selectedRow As Integer() = grdNotaCreditoTabla.GetSelectedRows()
+                FilaActual = Me.grdNotaCreditoTabla.GetDataSourceRowIndex(selectedRow(0))
+
+                Me.NCID = Me.dtNC.DefaultView.Item(FilaActual)("SccNotaCreditoID")
+                Me.EstadoNC = Me.dtNC.DefaultView.Item(FilaActual)("objEstadoID")
+                Me.ConceptoNC = Me.dtNC.DefaultView.Item(FilaActual)("objConceptoID")
+
+                If blnModificarNC And EstadoNC = EstadoRegistrada And Not ConceptoNC = ConceptoDevolucion Then
+                    Me.tsbModificarNC.Enabled = True
+                Else
+                    Me.tsbModificarNC.Enabled = False
+                End If
+                If blnAutorizarNC And EstadoNC = EstadoRegistrada Then
+                    Me.tsbAutorizarNC.Enabled = True
+                Else
+                    Me.tsbAutorizarNC.Enabled = False
+                End If
+                If blnAnularNC And (EstadoNC = EstadoRegistrada Or EstadoNC = EstadoAutorizada) Then
+                    Me.tsbAnularNC.Enabled = True
+                Else
+                    Me.tsbAnularNC.Enabled = False
+                End If
+                If blnImprimirNC And EstadoNC = EstadoAutorizada Then
+                    Me.tsbImprimir.Enabled = True
+                Else
+                    Me.tsbImprimir.Enabled = False
+                End If
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
 End Class

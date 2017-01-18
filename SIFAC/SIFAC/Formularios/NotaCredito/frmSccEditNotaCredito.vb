@@ -327,6 +327,7 @@ Public Class frmSccEditNotaCredito
                 Me.cmbConcepto.Enabled = False
                 Me.txtNumCuenta.Enabled = False
                 Me.cmdExpediente.Enabled = False
+                cmbEmpleado.Visible = True
                 Me.cmbEmpleado.SelectedValue = objComision.objEmpleadoID
 
                 Me.txtDescripcion.Text = "Pago de comision a " & cmbEmpleado.Text
@@ -341,6 +342,9 @@ Public Class frmSccEditNotaCredito
                 Me.numMonto.Value = objComision.Monto
 
                 Me.cmbCajas.SelectedValue = ClsCatalogos.GetStbCajaID(frmPrincipal.gblCaja)
+                'objCajero.RetrieveByFilter("Codigo='" & frmPrincipal.gblCaja & "'")
+                'cmbCajero.SelectedValue = objCajero.objCajeroID
+
                 Me.dtpFecha.Value = objComision.Fecha
             End If
 
@@ -442,7 +446,7 @@ Public Class frmSccEditNotaCredito
     Private Sub CargarDatosEdicion()
         Dim dtDatos As New DataTable
         Try
-            dtDatos = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccNotaCredito", "SccNotaCreditoID=" & Me.IDNotaCredito.ToString))
+            dtDatos = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccNotaCreditoDatos", "SccNotaCreditoID=" & Me.IDNotaCredito.ToString))
             Me.cmbEstado.SelectedValue = dtDatos.DefaultView.Item(0)("objEstadoID")
             Me.cmbConcepto.SelectedValue = dtDatos.DefaultView.Item(0)("objConceptoID")
 
@@ -469,6 +473,10 @@ Public Class frmSccEditNotaCredito
                 Me.IDComisionID = dtDatos.DefaultView.Item(0)("SccComisionID")
             End If
 
+            If Not IsDBNull(dtDatos.DefaultView.Item(0)("objCajaID")) Then
+                Me.cmbCajas.SelectedValue = dtDatos.DefaultView.Item(0)("objCajaID")
+            End If
+
             If IDComisionID <> 0 And IDComisionID.ToString.Trim.Length > 0 Then
                 Me.txtCliente.Enabled = False
                 Me.cmbEstado.Enabled = False
@@ -484,7 +492,7 @@ Public Class frmSccEditNotaCredito
                 Me.cmbEmpleado.SelectedValue = dtDatos.DefaultView.Item(0)("objEmpleadoID")
             End If
 
-            cmbCajas.SelectedValue = dtDatos.DefaultView.Item(0)("objEmpleadoID")
+            cmbEmpleado.SelectedValue = dtDatos.DefaultView.Item(0)("objEmpleadoID")
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

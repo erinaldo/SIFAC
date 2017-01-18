@@ -560,7 +560,7 @@ Public Class frmPedidosEdit
                     CargarDatosPedido()
                     Me.cmbEstado.Enabled = True
                 Case 2
-                    Me.Text = "Consultar Encargo"
+                    Me.Text = "Consultar Pedido"
                     CargarDatosPedido()
                     DeshabilitarControles()
                     cmdGuardar.Enabled = False

@@ -315,7 +315,7 @@ Public Class frmSfaFacturaRepuestosEditar
                 Me.CargarDescripcion("1=1")
                 'End If
                 Me.BloquearControles()
-                Me.grdDetalleFactura.Enabled = False
+                'Me.grdDetalleFactura.Enabled = False
                 'Me.grdDetalleMoto.Enabled = False
 
             Case 5
@@ -366,7 +366,9 @@ Public Class frmSfaFacturaRepuestosEditar
             Try
                 objSfaFactura.Retrieve(Me.SfaFacturaID)
 
-                Me.cmbBodega.SelectedValue = objSfaFactura.objStbBodegaID
+                If Not IsNothing(objSfaFactura.objStbBodegaID) Then
+                    Me.cmbBodega.SelectedValue = objSfaFactura.objStbBodegaID
+                End If
 
                 If Not String.IsNullOrEmpty(objSfaFactura.objSccClienteID) Then
                     Me.cmbCliente.SelectedValue = objSfaFactura.objSccClienteID
@@ -1153,16 +1155,17 @@ Public Class frmSfaFacturaRepuestosEditar
         Try
             Try
                 If Not String.IsNullOrEmpty(Me.cmbCliente.Text) Then
-                    dtDatosCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID, NombreCompleto, Direccion, Email, TelefonoParticular,TelefonoTrabajo, Celular", "vwSfaClienteFactura", "ClienteID = '" & Me.cmbCliente.SelectedValue & "'"))
+                    dtDatosCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID, NombreCompleto, Direccion, Email, TelefonoParticular, Celular", "vwSfaClienteFactura", "ClienteID = '" & Me.cmbCliente.SelectedValue & "'"))
 
                     If IsDBNull(dtDatosCliente.DefaultView.Item(0)("TelefonoParticular")) Then
-                        If Not IsDBNull(dtDatosCliente.DefaultView.Item(0)("TelefonoTrabajo")) Then
-                            Me.txtTelefono.Text = "Trab: " & dtDatosCliente.DefaultView.Item(0)("TelefonoTrabajo")
+                        If Not IsDBNull(dtDatosCliente.DefaultView.Item(0)("Celular")) Then
+                            Me.txtTelefono.Text = "Cel: " & dtDatosCliente.DefaultView.Item(0)("Celular")
                         Else
                             Me.txtTelefono.Text = ""
                         End If
-                    ElseIf Not IsDBNull(dtDatosCliente.DefaultView.Item(0)("TelefonoTrabajo")) Then
-                        Me.txtTelefono.Text = "Part: " & dtDatosCliente.DefaultView.Item(0)("TelefonoParticular") & " Trab: " & dtDatosCliente.DefaultView.Item(0)("TelefonoTrabajo")
+
+                    ElseIf Not IsDBNull(dtDatosCliente.DefaultView.Item(0)("Celular")) Then
+                        Me.txtTelefono.Text = "Part: " & dtDatosCliente.DefaultView.Item(0)("TelefonoParticular")
                     Else
                         Me.txtTelefono.Text = "Part: " & dtDatosCliente.DefaultView.Item(0)("TelefonoParticular")
                     End If
@@ -1178,8 +1181,6 @@ Public Class frmSfaFacturaRepuestosEditar
                     Else
                         Me.txtEmail.Text = dtDatosCliente.DefaultView.Item(0)("Email")
                     End If
-                    'Me.chkExonerado.Checked = dtDatosCliente.DefaultView.Item(0)("Exonerado")
-
                     If Me.cmbCliente.Text.Trim.Length <> 0 Then
                         Me.txtCodigoCliente.Text = Me.cmbCliente.SelectedValue
                     End If
@@ -1567,7 +1568,7 @@ Public Class frmSfaFacturaRepuestosEditar
         'Dim dtTiendaMaximo As New DataTable
         Try
             Try
-                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero)+ 1 as NumeroMaximo", "SfaFacturas", "objStbBodegaID = " & Me.cmbBodega.SelectedValue.ToString))
+                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero)+ 1 as NumeroMaximo", "SfaFacturas"))
                 'If dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo").ToString.Trim.Length = 0 Then
                 '    dtTiendaMaximo = StbTienda.RetrieveDT("StbTiendaID =" & Me.cmbBodega.SelectedValue, "", "ProximaFactura,Seriefactura")
                 '    strSerie = dtTiendaMaximo.DefaultView.Item(0)("Seriefactura")

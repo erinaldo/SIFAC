@@ -42,9 +42,7 @@ Partial Class frmSccCuentasEditar
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.cmdConsultarCliente = New System.Windows.Forms.Button()
         Me.txtTipoPersona = New System.Windows.Forms.TextBox()
-        Me.txtNacionalidad = New System.Windows.Forms.TextBox()
         Me.lblTipoPersona = New System.Windows.Forms.Label()
-        Me.lblNacionalidad = New System.Windows.Forms.Label()
         Me.txtGenero = New System.Windows.Forms.TextBox()
         Me.lblGenero = New System.Windows.Forms.Label()
         Me.cmdBuscarCliente = New System.Windows.Forms.Button()
@@ -304,7 +302,7 @@ Partial Class frmSccCuentasEditar
         Me.pgClientes.Controls.Add(Me.GroupBox6)
         Me.pgClientes.Location = New System.Drawing.Point(4, 22)
         Me.pgClientes.Name = "pgClientes"
-        Me.pgClientes.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.pgClientes.Padding = New System.Windows.Forms.Padding(3)
         Me.pgClientes.Size = New System.Drawing.Size(596, 149)
         Me.pgClientes.TabIndex = 0
         Me.pgClientes.Text = "Cliente"
@@ -314,9 +312,7 @@ Partial Class frmSccCuentasEditar
         '
         Me.GroupBox6.Controls.Add(Me.cmdConsultarCliente)
         Me.GroupBox6.Controls.Add(Me.txtTipoPersona)
-        Me.GroupBox6.Controls.Add(Me.txtNacionalidad)
         Me.GroupBox6.Controls.Add(Me.lblTipoPersona)
-        Me.GroupBox6.Controls.Add(Me.lblNacionalidad)
         Me.GroupBox6.Controls.Add(Me.txtGenero)
         Me.GroupBox6.Controls.Add(Me.lblGenero)
         Me.GroupBox6.Controls.Add(Me.cmdBuscarCliente)
@@ -349,38 +345,20 @@ Partial Class frmSccCuentasEditar
         'txtTipoPersona
         '
         Me.txtTipoPersona.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTipoPersona.Location = New System.Drawing.Point(440, 106)
+        Me.txtTipoPersona.Location = New System.Drawing.Point(192, 104)
         Me.txtTipoPersona.Name = "txtTipoPersona"
         Me.txtTipoPersona.Size = New System.Drawing.Size(135, 20)
         Me.txtTipoPersona.TabIndex = 14
         Me.txtTipoPersona.Tag = "BLOQUEADO"
         '
-        'txtNacionalidad
-        '
-        Me.txtNacionalidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNacionalidad.Location = New System.Drawing.Point(192, 103)
-        Me.txtNacionalidad.Name = "txtNacionalidad"
-        Me.txtNacionalidad.Size = New System.Drawing.Size(149, 20)
-        Me.txtNacionalidad.TabIndex = 13
-        Me.txtNacionalidad.Tag = "BLOQUEADO"
-        '
         'lblTipoPersona
         '
         Me.lblTipoPersona.AutoSize = True
-        Me.lblTipoPersona.Location = New System.Drawing.Point(348, 109)
+        Me.lblTipoPersona.Location = New System.Drawing.Point(3, 107)
         Me.lblTipoPersona.Name = "lblTipoPersona"
         Me.lblTipoPersona.Size = New System.Drawing.Size(86, 13)
         Me.lblTipoPersona.TabIndex = 12
         Me.lblTipoPersona.Text = "Tipo Persona:"
-        '
-        'lblNacionalidad
-        '
-        Me.lblNacionalidad.AutoSize = True
-        Me.lblNacionalidad.Location = New System.Drawing.Point(2, 106)
-        Me.lblNacionalidad.Name = "lblNacionalidad"
-        Me.lblNacionalidad.Size = New System.Drawing.Size(85, 13)
-        Me.lblNacionalidad.TabIndex = 11
-        Me.lblNacionalidad.Text = "Nacionalidad:"
         '
         'txtGenero
         '
@@ -539,7 +517,7 @@ Partial Class frmSccCuentasEditar
         Me.PGFacturas.Controls.Add(Me.grdFacturas)
         Me.PGFacturas.Location = New System.Drawing.Point(4, 22)
         Me.PGFacturas.Name = "PGFacturas"
-        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(3)
         Me.PGFacturas.Size = New System.Drawing.Size(596, 139)
         Me.PGFacturas.TabIndex = 0
         Me.PGFacturas.Text = "Facturas"
@@ -721,11 +699,9 @@ Partial Class frmSccCuentasEditar
     Friend WithEvents txtDireccion As System.Windows.Forms.TextBox
     Friend WithEvents cmdBuscarCliente As System.Windows.Forms.Button
     Friend WithEvents txtCedula As System.Windows.Forms.TextBox
-    Friend WithEvents lblNacionalidad As System.Windows.Forms.Label
     Friend WithEvents txtGenero As System.Windows.Forms.TextBox
     Friend WithEvents lblGenero As System.Windows.Forms.Label
     Friend WithEvents txtTipoPersona As System.Windows.Forms.TextBox
-    Friend WithEvents txtNacionalidad As System.Windows.Forms.TextBox
     Friend WithEvents lblTipoPersona As System.Windows.Forms.Label
     Friend WithEvents numSaldo As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents lblSaldo As System.Windows.Forms.Label

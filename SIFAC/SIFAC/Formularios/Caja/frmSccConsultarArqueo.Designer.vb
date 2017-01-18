@@ -233,6 +233,7 @@ Partial Class frmSccConsultarArqueo
         Me.spnDisponible.Location = New System.Drawing.Point(429, 117)
         Me.spnDisponible.Name = "spnDisponible"
         Me.spnDisponible.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.spnDisponible.Properties.Mask.EditMask = "n"
         Me.spnDisponible.Size = New System.Drawing.Size(141, 20)
         Me.spnDisponible.TabIndex = 144
         '
@@ -275,6 +276,7 @@ Partial Class frmSccConsultarArqueo
         Me.spnFaltante.Location = New System.Drawing.Point(138, 148)
         Me.spnFaltante.Name = "spnFaltante"
         Me.spnFaltante.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.spnFaltante.Properties.Mask.EditMask = "n"
         Me.spnFaltante.Size = New System.Drawing.Size(100, 20)
         Me.spnFaltante.TabIndex = 140
         '
@@ -285,6 +287,7 @@ Partial Class frmSccConsultarArqueo
         Me.spnEgreso.Location = New System.Drawing.Point(138, 122)
         Me.spnEgreso.Name = "spnEgreso"
         Me.spnEgreso.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.spnEgreso.Properties.Mask.EditMask = "n"
         Me.spnEgreso.Size = New System.Drawing.Size(100, 20)
         Me.spnEgreso.TabIndex = 139
         '
@@ -295,6 +298,7 @@ Partial Class frmSccConsultarArqueo
         Me.spnIngreso.Location = New System.Drawing.Point(138, 96)
         Me.spnIngreso.Name = "spnIngreso"
         Me.spnIngreso.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.spnIngreso.Properties.Mask.EditMask = "c"
         Me.spnIngreso.Size = New System.Drawing.Size(100, 20)
         Me.spnIngreso.TabIndex = 138
         '

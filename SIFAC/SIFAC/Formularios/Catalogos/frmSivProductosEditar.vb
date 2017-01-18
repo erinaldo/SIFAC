@@ -271,8 +271,15 @@ Public Class frmSivProductosEditar
             objProducto.Retrieve(ProductoID)
             txtProducto.Text = objProducto.Codigo
             txtNombre.Text = objProducto.Nombre
-            cmbCategoria.SelectedValue = objProducto.objCategoriaID
-            cmbMarca.SelectedValue = objProducto.objMarcaID
+
+            If Not IsNothing(objProducto.objCategoriaID) Then
+                cmbCategoria.SelectedValue = objProducto.objCategoriaID
+            End If
+
+            If Not IsNothing(objProducto.objMarcaID) Then
+                cmbMarca.SelectedValue = objProducto.objMarcaID
+            End If
+
             chkActivo.Checked = objProducto.Activo
             spnCantidadMinima.Value = objProducto.Cantidad_Minima
 
@@ -298,8 +305,8 @@ Public Class frmSivProductosEditar
         Try
             T.BeginTran()
             objProducto = New SivProductos
-            ProductoID = SivProductos.RetrieveDT(, , "ISNULL(MAX(SivProductoID),0)+1 AS ID").DefaultView.Item(0)("ID")
-            objProducto.SivProductoID = ProductoID
+            'ProductoID = SivProductos.RetrieveDT(, , "ISNULL(MAX(SivProductoID),0)+1 AS ID").DefaultView.Item(0)("ID")
+            'objProducto.SivProductoID = ProductoID
             objProducto.Codigo = txtProducto.Text.Trim
             objProducto.Nombre = txtNombre.Text.Trim
             objProducto.objCategoriaID = cmbCategoria.SelectedValue
