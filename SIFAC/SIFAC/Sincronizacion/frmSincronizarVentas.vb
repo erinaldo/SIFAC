@@ -373,7 +373,7 @@ Public Class frmSincronizarVentas
                     Else
                         '3.2 GUARDAR CUENTA
                         With objSccCuenta
-                            objSccCuenta.Numero = GenerarCodigoCta()
+                            'objSccCuenta.Numero = GenerarCodigoCta()
                             .Saldo = objSfaFactura.Saldo
                             .UsuarioCreacion = clsProyecto.Conexion.Usuario
                             .SaldoInicial = 0.0
@@ -382,6 +382,8 @@ Public Class frmSincronizarVentas
                             .FechaCredito = objSfaFactura.Fecha
                             .objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE")
                             objSccCuenta.Insert(t)
+                            objSccCuenta.Numero = "C-" + objSccCuenta.SccCuentaID.ToString()
+                            objSccCuenta.Update(t)
                         End With
 
 lblGuardarDetalleCuenta:
@@ -479,9 +481,9 @@ lblGuardarDetalleCuenta:
         Dim dtMaximoNumero As New DataTable
         Try
             Try
-                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Numero + 1 as NumeroMaximo", "SccCuentaPorCobrar"))
+                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(SccCuentaID) as NumeroMaximo", "SccCuentaPorCobrar"))
                 ''strNumero = String.Format("C{0}-{1}", ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal), dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"))
-                strNumero = String.Format(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"))
+                strNumero = "C-" + String.Format(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"))
 
             Catch ex As Exception
                 clsError.CaptarError(ex)

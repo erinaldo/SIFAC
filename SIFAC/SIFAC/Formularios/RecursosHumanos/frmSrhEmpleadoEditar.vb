@@ -139,8 +139,11 @@ Public Class frmSrhEmpleadoEditar
             If DtPersona.Rows.Count > 0 Then
                 boolPersonaExistente = True
                 Me.PersonaID = DtPersona.Rows(0)("StbPersonaID")
-                txtDireccion.Text = DtPersona.Rows(0)("Direccion")
 
+                If Not IsDBNull(DtPersona.Rows(0)("Direccion")) Then
+                    txtDireccion.Text = DtPersona.Rows(0)("Direccion")
+                End If
+                
                 Me.txtPersonaID.DataBindings.Add("text", DtPersona, "NombreCompleto", False, DataSourceUpdateMode.OnPropertyChanged)
                 Me.txtNombre1.DataBindings.Add("text", DtPersona, "Nombre1", False, DataSourceUpdateMode.OnPropertyChanged)
                 Me.txtNombre2.DataBindings.Add("text", DtPersona, "Nombre2", False, DataSourceUpdateMode.OnPropertyChanged)
@@ -424,8 +427,12 @@ Public Class frmSrhEmpleadoEditar
                 Else
                     objPersonas.FechaNacimiento = Nothing
                 End If
-                objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
-                objPersonas.objCiudadID = cmbCiudad.SelectedValue
+
+                If Not IsNothing(cmbCiudad.SelectedValue) Then
+                    objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                    objPersonas.objCiudadID = cmbCiudad.SelectedValue
+                End If
+               
                 objPersonas.Direccion = txtDireccion.Text
 
                 objPersonas.Update(T)
@@ -451,7 +458,11 @@ Public Class frmSrhEmpleadoEditar
                         objCuenta.Update(T)
                     End If
                 End If
-                objEmpleado.FechaIngreso = dtpFechaIngreso.DateTime
+
+                If Not IsDBNull(dtpFechaIngreso.DateTime) Then
+                    objEmpleado.FechaIngreso = dtpFechaIngreso.DateTime
+                End If
+
                 objEmpleado.Activo = chkActivo.Checked
 
                 objEmpleado.UsuarioCreacion = clsProyecto.Conexion.Usuario
@@ -478,9 +489,17 @@ Public Class frmSrhEmpleadoEditar
             Dim objEmpleado As SrhEmpleado
             objEmpleado = New SrhEmpleado
             objEmpleado.Retrieve(EmpleadoID)
-            Me.cmbCargo.SelectedValue = objEmpleado.objCargoID
+
+            If Not IsNothing(objEmpleado.objCargoID) Then
+                Me.cmbCargo.SelectedValue = objEmpleado.objCargoID
+            End If
+
             Me.chkActivo.Checked = objEmpleado.Activo
-            Me.dtpFechaIngreso.DateTime = objEmpleado.FechaIngreso
+
+            If Not IsNothing(objEmpleado.FechaIngreso) Then
+                Me.dtpFechaIngreso.DateTime = objEmpleado.FechaIngreso
+            End If
+
             Me.txtCodigoIME.Text = objEmpleado.Imei
 
             If objEmpleado.FechaEgreso.HasValue Then
@@ -505,7 +524,7 @@ Public Class frmSrhEmpleadoEditar
     Private Sub ModificarDetalle(T As DAL.TransactionManager)
 
         Try
-            StbPersonaClasificacion.DeleteByFilter("objTipoPersonaID = (SELECT StbTipoPersonaID FROM StbTipoPersona WHERE Descripcion='Empleado') AND objPersonaID=" + Me.PersonaID)
+            StbPersonaClasificacion.DeleteByFilter("objTipoPersonaID = (SELECT StbTipoPersonaID FROM StbTipoPersona WHERE Descripcion='Empleado') AND objPersonaID=" + Me.PersonaID, T)
             StbContactos.DeleteByFilter("objPersonaID='" + Me.PersonaID + "'", T)
 
         Catch ex As Exception

@@ -53,6 +53,12 @@ Partial Class frmPrincipal
         Me.NavBarSincroVentas = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarSincroDevoluciones = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarPrincipal = New DevExpress.XtraNavBar.NavBarControl()
+        Me.NVBarReportes = New DevExpress.XtraNavBar.NavBarGroup()
+        Me.NavBarReporteInventario = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarKardex = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarConsolidado = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarReporteArqueo = New DevExpress.XtraNavBar.NavBarItem()
+        Me.NavBarCuotasVencidas = New DevExpress.XtraNavBar.NavBarItem()
         Me.grpConfiguraciones = New DevExpress.XtraNavBar.NavBarGroup()
         Me.NavBarConfiguracionCaja = New DevExpress.XtraNavBar.NavBarItem()
         Me.grpCaja = New DevExpress.XtraNavBar.NavBarGroup()
@@ -61,11 +67,6 @@ Partial Class frmPrincipal
         Me.NavBarSalidasEfectivo = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarNotaDebito = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarNotaCredito = New DevExpress.XtraNavBar.NavBarItem()
-        Me.NVBarReportes = New DevExpress.XtraNavBar.NavBarGroup()
-        Me.NavBarKardex = New DevExpress.XtraNavBar.NavBarItem()
-        Me.NavBarConsolidado = New DevExpress.XtraNavBar.NavBarItem()
-        Me.NavBarReporteArqueo = New DevExpress.XtraNavBar.NavBarItem()
-        Me.NavBarCuotasVencidas = New DevExpress.XtraNavBar.NavBarItem()
         Me.WindowsMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.CascadeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TileVerticalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -286,10 +287,10 @@ Partial Class frmPrincipal
         '
         'NavBarPrincipal
         '
-        Me.NavBarPrincipal.ActiveGroup = Me.grpConfiguraciones
+        Me.NavBarPrincipal.ActiveGroup = Me.NVBarReportes
         Me.NavBarPrincipal.Dock = System.Windows.Forms.DockStyle.Left
         Me.NavBarPrincipal.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.grpConfiguraciones, Me.grpCatalogos, Me.grpCartera, Me.grpCaja, Me.grpInventario, Me.grpFacturacion, Me.grpSincronizacion, Me.NVBarReportes})
-        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones, Me.NavBarConsolidado, Me.NavBarKardex, Me.NavBarNotaCredito, Me.NavBarNotaDebito, Me.NavBarArqueo, Me.NavBarConfiguracionCaja, Me.NavBarComisiones, Me.NavBarSalidasEfectivo, Me.NavBarReporteArqueo, Me.NavBarCuotasVencidas})
+        Me.NavBarPrincipal.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navBarFacturacion, Me.navBarCatalogos, Me.NavBarParametros, Me.NavBarCategorias, Me.NavBarMarcas, Me.NavBarBodegas, Me.NavProductos, Me.NavBarRutas, Me.NavBarClientes, Me.NavBarEmpleados, Me.NavBarProveedor, Me.NavBarDescuentos, Me.NavBarEntrada, Me.NavBarSalidas, Me.NavBarSolicitud, Me.NavBarDespacho, Me.NavBarRecepcion, Me.NavBarEncargos, Me.NavBarOrdenCompra, Me.NavBarCuentas, Me.NavBarSincroAbonos, Me.NavBarSincroVentas, Me.NavBarSincroDevoluciones, Me.NavBarReciboCaja, Me.NavBarDevoluciones, Me.NavBarConsolidado, Me.NavBarKardex, Me.NavBarNotaCredito, Me.NavBarNotaDebito, Me.NavBarArqueo, Me.NavBarConfiguracionCaja, Me.NavBarComisiones, Me.NavBarSalidasEfectivo, Me.NavBarReporteArqueo, Me.NavBarCuotasVencidas, Me.NavBarReporteInventario})
         Me.NavBarPrincipal.Location = New System.Drawing.Point(0, 24)
         Me.NavBarPrincipal.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.NavBarPrincipal.LookAndFeel.UseDefaultLookAndFeel = False
@@ -298,6 +299,45 @@ Partial Class frmPrincipal
         Me.NavBarPrincipal.Size = New System.Drawing.Size(175, 561)
         Me.NavBarPrincipal.TabIndex = 17
         Me.NavBarPrincipal.View = New DevExpress.XtraNavBar.ViewInfo.StandardSkinExplorerBarViewInfoRegistrator("Office 2010 Silver")
+        '
+        'NVBarReportes
+        '
+        Me.NVBarReportes.Caption = "Reportes"
+        Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReporteInventario), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarKardex), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReporteArqueo), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCuotasVencidas)})
+        Me.NVBarReportes.Name = "NVBarReportes"
+        '
+        'NavBarReporteInventario
+        '
+        Me.NavBarReporteInventario.Caption = "Inventario"
+        Me.NavBarReporteInventario.Name = "NavBarReporteInventario"
+        Me.NavBarReporteInventario.SmallImage = CType(resources.GetObject("NavBarReporteInventario.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarKardex
+        '
+        Me.NavBarKardex.Caption = "Kardex"
+        Me.NavBarKardex.LargeImage = Global.SIFAC.My.Resources.Resources.kardex16x16
+        Me.NavBarKardex.Name = "NavBarKardex"
+        Me.NavBarKardex.SmallImage = CType(resources.GetObject("NavBarKardex.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarConsolidado
+        '
+        Me.NavBarConsolidado.Caption = "Consolidado"
+        Me.NavBarConsolidado.Name = "NavBarConsolidado"
+        Me.NavBarConsolidado.SmallImage = CType(resources.GetObject("NavBarConsolidado.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarReporteArqueo
+        '
+        Me.NavBarReporteArqueo.Caption = "Arqueo de Caja"
+        Me.NavBarReporteArqueo.LargeImage = CType(resources.GetObject("NavBarReporteArqueo.LargeImage"), System.Drawing.Image)
+        Me.NavBarReporteArqueo.Name = "NavBarReporteArqueo"
+        Me.NavBarReporteArqueo.SmallImage = CType(resources.GetObject("NavBarReporteArqueo.SmallImage"), System.Drawing.Image)
+        '
+        'NavBarCuotasVencidas
+        '
+        Me.NavBarCuotasVencidas.Caption = "Cuotas Vencidas"
+        Me.NavBarCuotasVencidas.LargeImage = CType(resources.GetObject("NavBarCuotasVencidas.LargeImage"), System.Drawing.Image)
+        Me.NavBarCuotasVencidas.Name = "NavBarCuotasVencidas"
+        Me.NavBarCuotasVencidas.SmallImage = CType(resources.GetObject("NavBarCuotasVencidas.SmallImage"), System.Drawing.Image)
         '
         'grpConfiguraciones
         '
@@ -346,39 +386,6 @@ Partial Class frmPrincipal
         Me.NavBarNotaCredito.Caption = "Notas de crédito"
         Me.NavBarNotaCredito.Name = "NavBarNotaCredito"
         Me.NavBarNotaCredito.SmallImage = CType(resources.GetObject("NavBarNotaCredito.SmallImage"), System.Drawing.Image)
-        '
-        'NVBarReportes
-        '
-        Me.NVBarReportes.Caption = "Reportes"
-        Me.NVBarReportes.ItemLinks.AddRange(New DevExpress.XtraNavBar.NavBarItemLink() {New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarKardex), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarConsolidado), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarReporteArqueo), New DevExpress.XtraNavBar.NavBarItemLink(Me.NavBarCuotasVencidas)})
-        Me.NVBarReportes.Name = "NVBarReportes"
-        '
-        'NavBarKardex
-        '
-        Me.NavBarKardex.Caption = "Kardex"
-        Me.NavBarKardex.LargeImage = Global.SIFAC.My.Resources.Resources.kardex16x16
-        Me.NavBarKardex.Name = "NavBarKardex"
-        Me.NavBarKardex.SmallImage = Global.SIFAC.My.Resources.Resources.kardex16x161
-        '
-        'NavBarConsolidado
-        '
-        Me.NavBarConsolidado.Caption = "Consolidado"
-        Me.NavBarConsolidado.Name = "NavBarConsolidado"
-        Me.NavBarConsolidado.SmallImage = CType(resources.GetObject("NavBarConsolidado.SmallImage"), System.Drawing.Image)
-        '
-        'NavBarReporteArqueo
-        '
-        Me.NavBarReporteArqueo.Caption = "Arqueo de Caja"
-        Me.NavBarReporteArqueo.LargeImage = CType(resources.GetObject("NavBarReporteArqueo.LargeImage"), System.Drawing.Image)
-        Me.NavBarReporteArqueo.Name = "NavBarReporteArqueo"
-        Me.NavBarReporteArqueo.SmallImage = CType(resources.GetObject("NavBarReporteArqueo.SmallImage"), System.Drawing.Image)
-        '
-        'NavBarCuotasVencidas
-        '
-        Me.NavBarCuotasVencidas.Caption = "Cuotas Vencidas"
-        Me.NavBarCuotasVencidas.LargeImage = CType(resources.GetObject("NavBarCuotasVencidas.LargeImage"), System.Drawing.Image)
-        Me.NavBarCuotasVencidas.Name = "NavBarCuotasVencidas"
-        Me.NavBarCuotasVencidas.SmallImage = CType(resources.GetObject("NavBarCuotasVencidas.SmallImage"), System.Drawing.Image)
         '
         'WindowsMenu
         '
@@ -673,4 +680,5 @@ Partial Class frmPrincipal
     Friend WithEvents NavBarSalidasEfectivo As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarReporteArqueo As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarCuotasVencidas As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents NavBarReporteInventario As DevExpress.XtraNavBar.NavBarItem
 End Class

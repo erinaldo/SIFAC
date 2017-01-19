@@ -389,21 +389,31 @@ Public Class frmClientesEdit
             Me.txtSegundoNombre.Text = objPersonas.Nombre2
             Me.txtPrimerApellido.Text = objPersonas.Apellido1
             Me.txtSegundoApellido.Text = objPersonas.Apellido2
-            Me.cmbGenero.SelectedValue = objPersonas.objGeneroID
+            'Me.cmbGenero.SelectedValue = objPersonas.objGeneroID
             Me.txtCedula.Text = objPersonas.Cedula
 
             If objPersonas.FechaNacimiento.ToString.Length <> 0 Then
                 Me.dtpFechaNacimiento.Value = objPersonas.FechaNacimiento
             End If
 
-            Me.cmbGenero.SelectedValue = objPersonas.objGeneroID
-            Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
+            If Not IsNothing(objPersonas.objGeneroID) Then
+                Me.cmbGenero.SelectedValue = objPersonas.objGeneroID
+            End If
+
+            If Not IsNothing(objPersonas.objCiudadID) Then
+                Me.cmbCiudad.SelectedValue = objPersonas.objCiudadID
+            End If
+
             Me.txtDireccion.Text = objPersonas.Direccion
             Me.txtReferencia.Text = objPersonas.Referencia
 
             objClientes.RetrieveByFilter("objPersonaID=" + Me.idpersona)
             cmbRuta.SelectedValue = objClientes.objRutaID
-            spnOrdenCobro.Value = objClientes.OrdenCobro
+
+            If Not IsNothing(objClientes.OrdenCobro) Then
+                spnOrdenCobro.Value = objClientes.OrdenCobro
+            End If
+
 
         Catch ex As Exception
             clsError.CaptarError(ex)

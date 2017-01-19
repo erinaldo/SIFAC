@@ -135,12 +135,13 @@ Public Class frmCriteriosReporteKardex
 
 #Region "Verificar Sucursal Repuesto"
     Private Sub VerificarSucursalRepuesto()
+
         If String.IsNullOrEmpty(clsProyecto.Sucursal) Then
-            MsgBox("No ha configurado la sucursal en el utilitario de configuración del sistema.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+            MsgBox("No ha configurado la bodega en el utilitario de configuración del sistema.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
             Me.DialogResult = Windows.Forms.DialogResult.Cancel
         Else
             If Me.cmbBodegas.FindStringExact(Me.IdSucursalSession.ToString, 0, 0) = -1 Then
-                MsgBox("La sucursal configurada en la sesión del sistema, no es una sucursal de Repuestos", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                MsgBox("La bodega configurada en la sesión del sistema, no esta registrada en el sistema.", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
                 Me.DialogResult = Windows.Forms.DialogResult.Cancel
             Else
                 Me.cmbBodegas.SelectedValue = Me.IdSucursalSession

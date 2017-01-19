@@ -273,7 +273,7 @@ Public Class frmSfaFacturaRepuestos
 
                 AgregarFactura.MontoTasaCambio = Me.dblTasaCambio
                 If AgregarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
+                    Me.CargarFacturas("datediff(DAY,Fecha,GETDATE())<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
                     dtFactura.DefaultView.Sort = "SfaFacturaID"
                     Me.dtFactura.DefaultView.Find(AgregarFactura.SfaFacturaID)
                 End If

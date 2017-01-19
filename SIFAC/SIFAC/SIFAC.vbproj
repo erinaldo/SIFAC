@@ -1080,6 +1080,12 @@
     <Compile Include="Reportes SIFAC\rptHojaTransfRecepcion.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes SIFAC\rptInventario.Designer.vb">
+      <DependentUpon>rptInventario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes SIFAC\rptInventario.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes SIFAC\rptInventarioReporte.Designer.vb">
       <DependentUpon>rptInventarioReporte.vb</DependentUpon>
     </Compile>
@@ -1809,6 +1815,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptHojaTransfRecepcion.resx">
       <DependentUpon>rptHojaTransfRecepcion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes SIFAC\rptInventario.resx">
+      <DependentUpon>rptInventario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes SIFAC\rptInventarioReporte.resx">
       <SubType>Designer</SubType>

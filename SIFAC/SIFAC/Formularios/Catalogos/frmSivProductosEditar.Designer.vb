@@ -542,10 +542,10 @@ Partial Class frmSivProductosEditar
         Me.lblModelo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblModelo.Location = New System.Drawing.Point(19, 59)
         Me.lblModelo.Name = "lblModelo"
-        Me.lblModelo.Size = New System.Drawing.Size(50, 13)
+        Me.lblModelo.Size = New System.Drawing.Size(52, 13)
         Me.lblModelo.TabIndex = 6
         Me.lblModelo.Tag = "OBLIGATORIO"
-        Me.lblModelo.Text = "Codigo:"
+        Me.lblModelo.Text = "Modelo:"
         '
         'frmSivProductosEditar
         '

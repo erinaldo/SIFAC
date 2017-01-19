@@ -260,8 +260,9 @@ Public Class frmPrincipal
             Me.NavBarSincroAbonos.Visible = objSeg.TienePermiso("OpcionSincAbonos")
             Me.NavBarSincroDevoluciones.Visible = objSeg.TienePermiso("OpcionSincDevoluciones")
 
-            'Me.NavBarConsolidado.Enabled = objSeg.TienePermiso("OpcionReportesConsolidado")
+            Me.NavBarConsolidado.Enabled = objSeg.TienePermiso("OpcionReportesConsolidado")
             Me.NavBarKardex.Visible = objSeg.TienePermiso("OpcionReportesInventario")
+            Me.NavBarReporteInventario.Visible = objSeg.TienePermiso("OpcionReportesInventario")
             Me.NavBarReporteArqueo.Visible = objSeg.TienePermiso("OpcionReporteArqueoCaja")
             Me.NavBarCuotasVencidas.Visible = objSeg.TienePermiso("OpcionReporteCuotasVencidas")
         Catch ex As Exception
@@ -338,7 +339,9 @@ Public Class frmPrincipal
     Private Sub NavBarKardex_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarKardex.LinkClicked
         CargarKardex()
     End Sub
-
+    Private Sub NavBarReporteInventario_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarReporteInventario.LinkClicked
+        CargarReporteInventario()
+    End Sub
     Private Sub NavBarConsolidado_LinkClicked(sender As Object, e As DevExpress.XtraNavBar.NavBarLinkEventArgs) Handles NavBarConsolidado.LinkClicked
         CargarConsolidado()
     End Sub
@@ -570,6 +573,25 @@ Public Class frmPrincipal
             Me.Cursor = Cursors.WaitCursor
             If Not clsProyecto.MostrarFormulario("frmCriteriosReporteKardex", Me) Then
                 objfrm = New frmCriteriosReporteKardex
+                'objfrm.Width = Me.Width - Me.NavBarPrincipal.Width
+                'objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
+                'objfrm.MdiParent = Me
+                objfrm.Show()
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub CargarReporteInventario()
+        Dim objfrm As frmCriteriosInventarioReporte
+        Try
+            '-- Instanciar
+            Me.Cursor = Cursors.WaitCursor
+            If Not clsProyecto.MostrarFormulario("frmCriteriosInventarioReporte", Me) Then
+                objfrm = New frmCriteriosInventarioReporte
                 'objfrm.Width = Me.Width - Me.NavBarPrincipal.Width
                 'objfrm.Height = Me.Height - Me.MenuPrincipal.Height - Me.stbPrincipal.Height
                 'objfrm.MdiParent = Me
@@ -1392,9 +1414,4 @@ Public Class frmPrincipal
 #End Region
 
 
-
-   
-   
-  
-  
 End Class

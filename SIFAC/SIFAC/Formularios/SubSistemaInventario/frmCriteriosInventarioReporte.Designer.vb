@@ -21,71 +21,85 @@ Partial Class frmCriteriosInventarioReporte
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCriteriosInventarioReporte))
         Me.gbxCriterios = New System.Windows.Forms.GroupBox()
-        Me.cmbRepuestos = New C1.Win.C1List.C1Combo()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cmbMarca = New C1.Win.C1List.C1Combo()
+        Me.lblBodega = New System.Windows.Forms.Label()
         Me.cmbBodegas = New C1.Win.C1List.C1Combo()
-        Me.chkRepuesto = New System.Windows.Forms.CheckBox()
-        Me.chkBodega = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.gbxVer = New System.Windows.Forms.GroupBox()
-        Me.chkPrecios = New System.Windows.Forms.CheckBox()
-        Me.chkCostos = New System.Windows.Forms.CheckBox()
-        Me.chkLevInventario = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkTodos = New System.Windows.Forms.CheckBox()
         Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbxCriterios.SuspendLayout()
-        CType(Me.cmbRepuestos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbBodegas, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbxVer.SuspendLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'gbxCriterios
         '
-        Me.gbxCriterios.Controls.Add(Me.cmbRepuestos)
+        Me.gbxCriterios.Controls.Add(Me.Label2)
+        Me.gbxCriterios.Controls.Add(Me.cmbMarca)
+        Me.gbxCriterios.Controls.Add(Me.lblBodega)
         Me.gbxCriterios.Controls.Add(Me.cmbBodegas)
-        Me.gbxCriterios.Controls.Add(Me.chkRepuesto)
-        Me.gbxCriterios.Controls.Add(Me.chkBodega)
         Me.gbxCriterios.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbxCriterios.Location = New System.Drawing.Point(15, 37)
         Me.gbxCriterios.Name = "gbxCriterios"
-        Me.gbxCriterios.Size = New System.Drawing.Size(328, 80)
+        Me.gbxCriterios.Size = New System.Drawing.Size(374, 80)
         Me.gbxCriterios.TabIndex = 9
         Me.gbxCriterios.TabStop = False
         Me.gbxCriterios.Text = "Criterios"
         '
-        'cmbRepuestos
+        'Label2
         '
-        Me.cmbRepuestos.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbRepuestos.Caption = ""
-        Me.cmbRepuestos.CaptionHeight = 17
-        Me.cmbRepuestos.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbRepuestos.ColumnCaptionHeight = 17
-        Me.cmbRepuestos.ColumnFooterHeight = 17
-        Me.cmbRepuestos.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbRepuestos.ContentHeight = 15
-        Me.cmbRepuestos.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbRepuestos.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbRepuestos.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbRepuestos.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbRepuestos.EditorHeight = 15
-        Me.cmbRepuestos.Enabled = False
-        Me.cmbRepuestos.Images.Add(CType(resources.GetObject("cmbRepuestos.Images"), System.Drawing.Image))
-        Me.cmbRepuestos.ItemHeight = 15
-        Me.cmbRepuestos.Location = New System.Drawing.Point(147, 54)
-        Me.cmbRepuestos.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbRepuestos.MaxDropDownItems = CType(5, Short)
-        Me.cmbRepuestos.MaxLength = 32767
-        Me.cmbRepuestos.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbRepuestos.Name = "cmbRepuestos"
-        Me.cmbRepuestos.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbRepuestos.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbRepuestos.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbRepuestos.Size = New System.Drawing.Size(161, 21)
-        Me.cmbRepuestos.TabIndex = 3
-        Me.cmbRepuestos.PropBag = resources.GetString("cmbRepuestos.PropBag")
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(29, 54)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(46, 13)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Text = "Marca:"
+        '
+        'cmbMarca
+        '
+        Me.cmbMarca.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbMarca.Caption = ""
+        Me.cmbMarca.CaptionHeight = 17
+        Me.cmbMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbMarca.ColumnCaptionHeight = 17
+        Me.cmbMarca.ColumnFooterHeight = 17
+        Me.cmbMarca.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
+        Me.cmbMarca.ContentHeight = 15
+        Me.cmbMarca.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbMarca.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbMarca.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMarca.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbMarca.EditorHeight = 15
+        Me.cmbMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMarca.Images.Add(CType(resources.GetObject("cmbMarca.Images"), System.Drawing.Image))
+        Me.cmbMarca.ItemHeight = 15
+        Me.cmbMarca.Location = New System.Drawing.Point(105, 46)
+        Me.cmbMarca.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbMarca.MaxDropDownItems = CType(5, Short)
+        Me.cmbMarca.MaxLength = 32767
+        Me.cmbMarca.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbMarca.Name = "cmbMarca"
+        Me.cmbMarca.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbMarca.Size = New System.Drawing.Size(205, 21)
+        Me.cmbMarca.TabIndex = 6
+        Me.cmbMarca.PropBag = resources.GetString("cmbMarca.PropBag")
+        '
+        'lblBodega
+        '
+        Me.lblBodega.AutoSize = True
+        Me.lblBodega.Location = New System.Drawing.Point(29, 25)
+        Me.lblBodega.Name = "lblBodega"
+        Me.lblBodega.Size = New System.Drawing.Size(54, 13)
+        Me.lblBodega.TabIndex = 5
+        Me.lblBodega.Text = "Bodega:"
         '
         'cmbBodegas
         '
@@ -105,7 +119,7 @@ Partial Class frmCriteriosInventarioReporte
         Me.cmbBodegas.Enabled = False
         Me.cmbBodegas.Images.Add(CType(resources.GetObject("cmbBodegas.Images"), System.Drawing.Image))
         Me.cmbBodegas.ItemHeight = 15
-        Me.cmbBodegas.Location = New System.Drawing.Point(147, 25)
+        Me.cmbBodegas.Location = New System.Drawing.Point(105, 19)
         Me.cmbBodegas.MatchEntryTimeout = CType(2000, Long)
         Me.cmbBodegas.MaxDropDownItems = CType(5, Short)
         Me.cmbBodegas.MaxLength = 32767
@@ -114,29 +128,9 @@ Partial Class frmCriteriosInventarioReporte
         Me.cmbBodegas.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbBodegas.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbBodegas.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbBodegas.Size = New System.Drawing.Size(161, 21)
+        Me.cmbBodegas.Size = New System.Drawing.Size(205, 21)
         Me.cmbBodegas.TabIndex = 3
         Me.cmbBodegas.PropBag = resources.GetString("cmbBodegas.PropBag")
-        '
-        'chkRepuesto
-        '
-        Me.chkRepuesto.AutoSize = True
-        Me.chkRepuesto.Location = New System.Drawing.Point(24, 56)
-        Me.chkRepuesto.Name = "chkRepuesto"
-        Me.chkRepuesto.Size = New System.Drawing.Size(84, 17)
-        Me.chkRepuesto.TabIndex = 0
-        Me.chkRepuesto.Text = "Repuesto:"
-        Me.chkRepuesto.UseVisualStyleBackColor = True
-        '
-        'chkBodega
-        '
-        Me.chkBodega.AutoSize = True
-        Me.chkBodega.Location = New System.Drawing.Point(24, 27)
-        Me.chkBodega.Name = "chkBodega"
-        Me.chkBodega.Size = New System.Drawing.Size(73, 17)
-        Me.chkBodega.TabIndex = 0
-        Me.chkBodega.Text = "Bodega:"
-        Me.chkBodega.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -148,72 +142,28 @@ Partial Class frmCriteriosInventarioReporte
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "Seleccione criterios para su reporte:"
         '
-        'gbxVer
-        '
-        Me.gbxVer.Controls.Add(Me.chkPrecios)
-        Me.gbxVer.Controls.Add(Me.chkCostos)
-        Me.gbxVer.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbxVer.Location = New System.Drawing.Point(349, 37)
-        Me.gbxVer.Name = "gbxVer"
-        Me.gbxVer.Size = New System.Drawing.Size(95, 82)
-        Me.gbxVer.TabIndex = 9
-        Me.gbxVer.TabStop = False
-        Me.gbxVer.Text = "Ver"
-        '
-        'chkPrecios
-        '
-        Me.chkPrecios.AutoSize = True
-        Me.chkPrecios.Location = New System.Drawing.Point(16, 44)
-        Me.chkPrecios.Name = "chkPrecios"
-        Me.chkPrecios.Size = New System.Drawing.Size(68, 17)
-        Me.chkPrecios.TabIndex = 0
-        Me.chkPrecios.Text = "Precios"
-        Me.chkPrecios.UseVisualStyleBackColor = True
-        '
-        'chkCostos
-        '
-        Me.chkCostos.AutoSize = True
-        Me.chkCostos.Location = New System.Drawing.Point(16, 19)
-        Me.chkCostos.Name = "chkCostos"
-        Me.chkCostos.Size = New System.Drawing.Size(64, 17)
-        Me.chkCostos.TabIndex = 0
-        Me.chkCostos.Text = "Costos"
-        Me.chkCostos.UseVisualStyleBackColor = True
-        '
-        'chkLevInventario
-        '
-        Me.chkLevInventario.AutoSize = True
-        Me.chkLevInventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkLevInventario.Location = New System.Drawing.Point(15, 125)
-        Me.chkLevInventario.Name = "chkLevInventario"
-        Me.chkLevInventario.Size = New System.Drawing.Size(232, 17)
-        Me.chkLevInventario.TabIndex = 0
-        Me.chkLevInventario.Text = "Formato levantamiento de inventario"
-        Me.chkLevInventario.UseVisualStyleBackColor = True
-        '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 174)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(457, 21)
+        Me.Panel1.Size = New System.Drawing.Size(412, 21)
         Me.Panel1.TabIndex = 95
         '
         'PanelControl1
         '
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.chkTodos)
         Me.PanelControl1.Controls.Add(Me.cmdAceptar)
         Me.PanelControl1.Controls.Add(Me.Label1)
         Me.PanelControl1.Controls.Add(Me.gbxCriterios)
-        Me.PanelControl1.Controls.Add(Me.gbxVer)
-        Me.PanelControl1.Controls.Add(Me.chkLevInventario)
         Me.PanelControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(457, 195)
+        Me.PanelControl1.Size = New System.Drawing.Size(412, 195)
         Me.PanelControl1.TabIndex = 96
         '
         'cmdCancelar
@@ -221,7 +171,7 @@ Partial Class frmCriteriosInventarioReporte
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(366, 135)
+        Me.cmdCancelar.Location = New System.Drawing.Point(309, 130)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
@@ -230,13 +180,24 @@ Partial Class frmCriteriosInventarioReporte
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
+        'chkTodos
+        '
+        Me.chkTodos.AutoSize = True
+        Me.chkTodos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkTodos.Location = New System.Drawing.Point(15, 123)
+        Me.chkTodos.Name = "chkTodos"
+        Me.chkTodos.Size = New System.Drawing.Size(141, 17)
+        Me.chkTodos.TabIndex = 4
+        Me.chkTodos.Text = "Todos los productos"
+        Me.chkTodos.UseVisualStyleBackColor = True
+        '
         'cmdAceptar
         '
         Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdAceptar.Appearance.Options.UseFont = True
         Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
         Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdAceptar.Location = New System.Drawing.Point(280, 135)
+        Me.cmdAceptar.Location = New System.Drawing.Point(223, 130)
         Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAceptar.Name = "cmdAceptar"
@@ -249,7 +210,7 @@ Partial Class frmCriteriosInventarioReporte
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(457, 195)
+        Me.ClientSize = New System.Drawing.Size(412, 195)
         Me.ControlBox = False
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
@@ -260,10 +221,8 @@ Partial Class frmCriteriosInventarioReporte
         Me.Text = "Imprimir Reporte de Inventario"
         Me.gbxCriterios.ResumeLayout(False)
         Me.gbxCriterios.PerformLayout()
-        CType(Me.cmbRepuestos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbMarca, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbBodegas, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gbxVer.ResumeLayout(False)
-        Me.gbxVer.PerformLayout()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
         Me.PanelControl1.PerformLayout()
@@ -271,17 +230,14 @@ Partial Class frmCriteriosInventarioReporte
 
     End Sub
     Friend WithEvents gbxCriterios As System.Windows.Forms.GroupBox
-    Friend WithEvents cmbBodegas As C1.Win.C1List.C1Combo
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents gbxVer As System.Windows.Forms.GroupBox
-    Friend WithEvents chkPrecios As System.Windows.Forms.CheckBox
-    Friend WithEvents chkCostos As System.Windows.Forms.CheckBox
-    Friend WithEvents cmbRepuestos As C1.Win.C1List.C1Combo
-    Friend WithEvents chkRepuesto As System.Windows.Forms.CheckBox
-    Friend WithEvents chkBodega As System.Windows.Forms.CheckBox
-    Friend WithEvents chkLevInventario As System.Windows.Forms.CheckBox
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents chkTodos As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbBodegas As C1.Win.C1List.C1Combo
+    Friend WithEvents lblBodega As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents cmbMarca As C1.Win.C1List.C1Combo
 End Class
