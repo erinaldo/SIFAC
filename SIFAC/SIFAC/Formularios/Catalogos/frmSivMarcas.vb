@@ -19,9 +19,9 @@ Public Class frmSivMarcas
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
         Try
-            dtMarcas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MarcaID,Nombre,Descripcion,Activa", "vwStbMarcas", ))
+            dtMarcas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MarcaID,Nombre,Descripcion,Activa,FechaCreacion", "vwStbMarcas", ))
             dtMarcas.PrimaryKey = New DataColumn() {Me.dtMarcas.Columns("MarcaID")}
-            dtMarcas.DefaultView.Sort = "MarcaID"
+            dtMarcas.DefaultView.Sort = "MarcaID desc"
             Me.grdMarcas.DataSource = dtMarcas
             Me.grdMarcas.Text = "Marcas (" & Me.dtMarcas.Rows.Count & ")"
         Catch ex As Exception

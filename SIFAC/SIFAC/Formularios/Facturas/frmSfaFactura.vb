@@ -21,7 +21,7 @@ Public Class frmSfaFactura
             strConsulta = clsConsultas.ObtenerConsultaGeneral("*,ISNULL(MontoCredito,0) - ISNULL(MontoPrima,0) as Financiamiento", "vwFacturas", " Fecha BETWEEN GETDATE()-" & FacturasRecientes + 1 & " AND GETDATE()")
             dtDatosFact = SqlHelper.ExecuteQueryDT(strConsulta)
             Me.dtDatosFact.PrimaryKey = New DataColumn() {Me.dtDatosFact.Columns("SfaFacturaID")}
-            Me.dtDatosFact.DefaultView.Sort = "SfaFacturaID"
+            Me.dtDatosFact.DefaultView.Sort = "SfaFacturaID desc"
             Me.grdFacturas.DataSource = dtDatosFact
           
         Catch ex As Exception

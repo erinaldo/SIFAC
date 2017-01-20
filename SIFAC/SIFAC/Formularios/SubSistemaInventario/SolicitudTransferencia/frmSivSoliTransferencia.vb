@@ -129,7 +129,7 @@ Public Class frmSivSoliTransferencia
 
             Me.DtTransferencias = SqlHelper.ExecuteQueryDT(sSQL)
             Me.DtTransferencias.PrimaryKey = New DataColumn() {Me.DtTransferencias.Columns("SivTransferenciaID")}
-            Me.DtTransferencias.DefaultView.Sort = "SivTransferenciaID"
+            Me.DtTransferencias.DefaultView.Sort = "SivTransferenciaID desc"
             Me.grdTrasnferencias.DataSource = DtTransferencias
 
             'Me.grdTransferencias.SetDataBinding(Me.DtTransferencias, "", True)

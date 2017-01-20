@@ -96,19 +96,19 @@ Public Class frmSincronizarVentas
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionVentas", "ObjRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
+                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionVentas", "ObjRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID & " order by SfaFacturaProformaID desc"))
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And Not (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionVentas", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
+                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionVentas", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID & " order by SfaFacturaProformaID desc"))
             End If
 
             If Not blnTodos And Not (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionVentas", "ObjRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
+                DtVentas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionVentas", "ObjRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID & " Order by SfaFacturaProformaID desc"))
             End If
 
             If Not DtVentas Is Nothing Then
-                DTVentasDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSfaFacturaProformaID as Numero,Categoria, Marca, Codigo, Producto, Cantidad, Precio, Subtotal, Descuento, Total", "vwAplicacionVentasDetalle", "1=1"))
+                DTVentasDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSfaFacturaProformaID as Numero,Categoria, Marca, Codigo, Producto, Cantidad, Precio, Subtotal, Descuento, Total", "vwAplicacionVentasDetalle", "1=1 order by objSfaFacturaProformaID desc"))
                 ds = New DataSet
 
                 ds.Merge(DtVentas)

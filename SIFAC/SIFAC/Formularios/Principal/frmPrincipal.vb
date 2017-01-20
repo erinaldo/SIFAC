@@ -260,7 +260,7 @@ Public Class frmPrincipal
             Me.NavBarSincroAbonos.Visible = objSeg.TienePermiso("OpcionSincAbonos")
             Me.NavBarSincroDevoluciones.Visible = objSeg.TienePermiso("OpcionSincDevoluciones")
 
-            Me.NavBarConsolidado.Enabled = objSeg.TienePermiso("OpcionReportesConsolidado")
+            Me.NavBarConsolidado.Visible = objSeg.TienePermiso("OpcionReportesConsolidado")
             Me.NavBarKardex.Visible = objSeg.TienePermiso("OpcionReportesInventario")
             Me.NavBarReporteInventario.Visible = objSeg.TienePermiso("OpcionReportesInventario")
             Me.NavBarReporteArqueo.Visible = objSeg.TienePermiso("OpcionReporteArqueoCaja")

@@ -181,7 +181,7 @@ Public Class frmStbRutasEdit
             cbxCobrador.SelectedValue = objRutas.ojbCobradorID
             cmbSupervisor.SelectedValue = objRutas.objSupervisor
             cmbDiaCrobro.SelectedValue = objRutas.DiaCobro
-            cmbCiudad.SelectedValue = objRutas.objCiudadID
+            cmbCiudad.SelectedValue = objRutas.objZonaID
             chkActivo.Checked = objRutas.Activa
             ckdCargaDiferenciada.Checked = objRutas.CargarDiferenciada
             txtDescripcion.Text = objRutas.Descripcion
@@ -208,8 +208,8 @@ Public Class frmStbRutasEdit
                 objRutas.objSupervisor = cmbSupervisor.SelectedValue
             End If
 
-            objRutas.objCiudadID = cmbCiudad.SelectedValue
-            objRutas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+            objRutas.objZonaID = cmbCiudad.SelectedValue
+            objRutas.objPaisID = 558 ''StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
             objRutas.DiaCobro = cmbDiaCrobro.SelectedValue
             objRutas.CargarDiferenciada = ckdCargaDiferenciada.Checked
             objRutas.UsuarioCreacion = clsProyecto.Conexion.Servidor
@@ -252,8 +252,8 @@ Public Class frmStbRutasEdit
                 objRutas.objSupervisor = cmbSupervisor.SelectedValue
             End If
 
-            objRutas.objCiudadID = cmbCiudad.SelectedValue
-            objRutas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+            objRutas.objZonaID = cmbCiudad.SelectedValue
+            objRutas.objPaisID = 558 ''StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
             objRutas.DiaCobro = cmbDiaCrobro.SelectedValue
             objRutas.CargarDiferenciada = ckdCargaDiferenciada.Checked
             objRutas.UsuarioModificacion = clsProyecto.Conexion.Servidor
@@ -332,7 +332,7 @@ Public Class frmStbRutasEdit
             ''Validar que no existe otra ruta, mismo vendedor, en el mismo dia y ciudad
             objStbRuta = New StbRutas
             
-            dtCompara = StbRutas.RetrieveDT("ojbCobradorID=" & Me.cbxCobrador.SelectedValue & "  AND DiaCobro=" & cmbDiaCrobro.SelectedValue & " AND objCiudadID=" & cmbCiudad.SelectedValue & " AND Activa=1")
+            dtCompara = StbRutas.RetrieveDT("ojbCobradorID=" & Me.cbxCobrador.SelectedValue & "  AND DiaCobro=" & cmbDiaCrobro.SelectedValue & " AND objZonaID=" & cmbCiudad.SelectedValue & " AND Activa=1")
 
             Select Case TypeGui
                 Case 0

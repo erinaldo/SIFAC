@@ -59,7 +59,7 @@ Public Class frmCriteriosInventarioReporte
                 .ColumnHeaders = False
             End With
 
-            dtDatos.Rows.Add("0", "-", "TODAS")
+            'dtDatos.Rows.Add("0", "-", "TODAS")
             Me.cmbBodegas.SelectedValue = 0
 
         Catch ex As Exception
@@ -92,8 +92,9 @@ Public Class frmCriteriosInventarioReporte
         Try
             cmbMarca.ValueMember = "MarcaID"
             cmbMarca.DisplayMember = "Nombre"
-            DtMarca = SivMarcas.RetrieveDT("Activa=1")
+            DtMarca = SivMarcas.RetrieveDT("Activa=1 and len(ltrim(rtrim(Nombre)))>0")
             cmbMarca.DataSource = DtMarca
+            cmbMarca.Splits(0).DisplayColumns("MarcaID").Visible = False
             cmbMarca.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -163,7 +164,7 @@ Public Class frmCriteriosInventarioReporte
                 blnValido = False
             Else
                 blnValido = True
-                Exit Function
+
             End If
         Else
             blnValido = True
@@ -232,7 +233,7 @@ Public Class frmCriteriosInventarioReporte
                     strFiltro = "objBodegaID= " & Me.cmbBodegas.SelectedValue.ToString
                 End If
             Else
-                strFiltro = "1=1= "
+                strFiltro = "1=1 "
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)

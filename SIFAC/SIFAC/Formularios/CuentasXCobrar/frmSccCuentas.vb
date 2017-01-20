@@ -63,7 +63,7 @@ Public Class frmSccCuentas
             Me.grdExpedienteDetalle.DataMember = "SccCuenta.Cuenta_CuentaDetalle"
 
             dsCuentas.Tables("SccCuenta").PrimaryKey = New DataColumn() {dsCuentas.Tables("SccCuenta").Columns("Llave")}
-            dsCuentas.Tables("SccCuenta").DefaultView.Sort = "Llave"
+            dsCuentas.Tables("SccCuenta").DefaultView.Sort = "Llave desc"
 
             Me.grdExpedienteMaster.Text = "Expedientes (" & Me.grdExpedienteMasterTabla.RowCount & ")"
 

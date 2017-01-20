@@ -114,7 +114,8 @@ Public Class frmSivProductosEditar
         Try
             cmbMarca.ValueMember = "MarcaID"
             cmbMarca.DisplayMember = "Nombre"
-            DtMarca = SivMarcas.RetrieveDT("Activa=1")
+            DtMarca = SivMarcas.RetrieveDT("Activa=1 and len(ltrim(rtrim(Nombre)))>0")
+            'cmbMarca.Splits(0).DisplayColumns("MarcaID").Visible = False
             cmbMarca.DataSource = DtMarca
             cmbMarca.SelectedIndex = -1
         Catch ex As Exception

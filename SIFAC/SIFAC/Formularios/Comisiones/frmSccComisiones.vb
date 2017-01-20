@@ -21,7 +21,7 @@ Public Class frmSccComisiones
         Try
             dComisiones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Numero, Fecha,Empleado,EsNotaDebito, Concepto, Monto, Estado", "vwComisiones", "Activa=1"))
             'dComisiones.PrimaryKey = New DataColumn() {Me.dComisiones.Columns("Numero")}
-            dComisiones.DefaultView.Sort = "Numero"
+            dComisiones.DefaultView.Sort = "Numero desc"
             Me.grdComisiones.DataSource = dComisiones
             Me.grdComisiones.Text = "Comisiones (" & Me.dComisiones.Rows.Count & ")"
         Catch ex As Exception

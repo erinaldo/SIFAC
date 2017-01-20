@@ -40,7 +40,7 @@ Public Class frmReporteProductos
 
     Private Sub CargarMarcas()
         Try
-            dtMarcas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MarcaID, Nombre", "vwRptMarcas", "1=1"))
+            dtMarcas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MarcaID, Nombre", "vwRptMarcas", "len(ltrim(rtrim(Nombre)))>0 and 1=1"))
             cboMarca.DataSource = Me.dtMarcas
             cboMarca.DisplayMember = "Nombre"
             cboMarca.ValueMember = "MarcaID"

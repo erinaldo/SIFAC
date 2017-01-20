@@ -29,7 +29,7 @@ Public Class frmSivEncargos
 
             If Not dtEncargos Is Nothing Then
                 'dtEncargos.PrimaryKey = New DataColumn() {Me.dtEncargos.Columns("NumeroDetalle")}
-                dtEncargos.DefaultView.Sort = "Fecha"
+                dtEncargos.DefaultView.Sort = "Numero desc"
                 Me.grdEncargosMaster.DataSource = dtEncargos
                 Me.grdEncargosMaster.Text = "Encargos (" & Me.dtEncargos.Rows.Count & ")"
             End If

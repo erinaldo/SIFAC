@@ -97,28 +97,28 @@ Public Class frmSincronizarAbonos
         Try
 
             If blnTodos Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "1=1"))
+                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "1=1 order by AplCobroID desc"))
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0) And (intRutaID <> 0) Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "objStbRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
+                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "objStbRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID & " order by AplCobroID desc"))
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0) And Not (intRutaID <> 0) Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
+                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID & " order by AplCobroID desc"))
             End If
 
             If Not blnTodos And Not (intEmpleadoID <> 0) And (intRutaID <> 0) Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "objStbRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
+                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "objStbRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID & " order by AplCobroID"))
             End If
 
             If Not blnTodos And Not (intEmpleadoID = 0) And (intRutaID = 0) Then
-                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "objStbRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
+                DtAbonos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionAbonos", "objStbRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID & " order by AplCobroID desc"))
             End If
 
             If Not DtAbonos Is Nothing Then
 
-                DtAbonosDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objAplCobroID, SccCuentaID as Numero,  Producto, ModeloMarca, Saldo", "vwSfaExpedienteCliente", "1=1"))
+                DtAbonosDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objAplCobroID, SccCuentaID as Numero,  Producto, ModeloMarca, Saldo", "vwSfaExpedienteCliente", "1=1 order by objAplCobroID desc"))
                 ds = New DataSet
                 ds.Merge(DtAbonos)
                 ds.Tables(0).TableName = "Abonos"

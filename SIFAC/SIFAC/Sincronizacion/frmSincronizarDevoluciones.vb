@@ -96,15 +96,15 @@ Public Class frmSincronizarDevoluciones
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "ObjRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
+                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "ObjRutaID =" & intRutaID & " AND SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID & " order by AplDevolucionID"))
             End If
 
             If Not blnTodos And (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And Not (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID))
+                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", " SrhEmpleadoID=" & intEmpleadoID & " AND objEstadoID=" & intEstadoID & " order by AplDevolucionID desc"))
             End If
 
             If Not blnTodos And Not (intEmpleadoID <> 0 Or IsDBNull(intEmpleadoID)) And (intRutaID <> 0 Or IsDBNull(intRutaID)) Then
-                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "ObjRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID))
+                DtDevoluciones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("*", "vwAplicacionDevoluciones", "ObjRutaID =" & intRutaID & "  AND objEstadoID=" & intEstadoID & " order by AplDevolucionID desc"))
             End If
 
             If Not DtDevoluciones Is Nothing Then

@@ -20,7 +20,7 @@ Public Class frmSrhEmpleado
         Try
             DtEmpleados = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SrhEmpleadoID,objPersonaID,Nombre1,Nombre2,Apellido1,Apellido2,Genero,Cargo,Activo", "vwSrhEmpleado"))
             DtEmpleados.PrimaryKey = New DataColumn() {Me.DtEmpleados.Columns("SrhEmpleadoID")}
-            DtEmpleados.DefaultView.Sort = "SrhEmpleadoID"
+            DtEmpleados.DefaultView.Sort = "SrhEmpleadoID desc"
             Me.grdvwEmpleados.DataSource = DtEmpleados
             Me.grdvwEmpleados.Text = "Empleados (" & Me.DtEmpleados.Rows.Count & ")"
             Me.AplicarSeguridad()

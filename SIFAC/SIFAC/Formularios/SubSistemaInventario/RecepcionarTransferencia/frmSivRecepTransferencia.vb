@@ -120,7 +120,7 @@ Public Class frmSivRecepTransferencia
 
             Me.DtTransferencias = SqlHelper.ExecuteQueryDT(sSQL)
             Me.DtTransferencias.PrimaryKey = New DataColumn() {Me.DtTransferencias.Columns("SivTransferenciaID")}
-            Me.DtTransferencias.DefaultView.Sort = "SivTransferenciaID"
+            Me.DtTransferencias.DefaultView.Sort = "SivTransferenciaID desc"
             Me.grdTrasnferencias.DataSource = DtTransferencias
 
             'Me.grdTransferencias.SetDataBinding(Me.DtTransferencias, "", True)
@@ -141,17 +141,22 @@ Public Class frmSivRecepTransferencia
 
 #Region "Cargar Formulario"
     Private Sub frmSivDespTransferencia_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Try
 
-        Me.AplicarSeguridad()
+            Me.AplicarSeguridad()
 
-        gblEstadoRecibidaID = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "03") '-- 03=RECIBIDA
-        gblEstadoDespachadaID = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "02") '-- 02=Despachada
-        gblEstadoAnuladaID = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "04") '-- 04=Anulada
+            gblEstadoRecibidaID = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "03") '-- 03=RECIBIDA
+            gblEstadoDespachadaID = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "02") '-- 02=Despachada
+            gblEstadoAnuladaID = ClsCatalogos.GetValorCatalogoID("ESTADOSTRANSFERENCIA", "04") '-- 04=Anulada
 
-        Me.IdSucursalCentral = ClsCatalogos.GetStbTiendaID("C") '-- C=Central
-        Me.IdSucursalSession = ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
+            Me.IdSucursalCentral = ClsCatalogos.GetStbTiendaID("C") '-- C=Central
+            Me.IdSucursalSession = ClsCatalogos.GetStbTiendaID(clsProyecto.Sucursal)
 
-        Me.CargaDatos()
+            Me.CargaDatos()
+
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
 #End Region

@@ -64,6 +64,7 @@ Partial Class frmCriteriosInventarioReporte
         'cmbMarca
         '
         Me.cmbMarca.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbMarca.AutoCompletion = True
         Me.cmbMarca.Caption = ""
         Me.cmbMarca.CaptionHeight = 17
         Me.cmbMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -104,12 +105,12 @@ Partial Class frmCriteriosInventarioReporte
         'cmbBodegas
         '
         Me.cmbBodegas.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbBodegas.AutoCompletion = True
         Me.cmbBodegas.Caption = ""
         Me.cmbBodegas.CaptionHeight = 17
         Me.cmbBodegas.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbBodegas.ColumnCaptionHeight = 17
         Me.cmbBodegas.ColumnFooterHeight = 17
-        Me.cmbBodegas.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbBodegas.ContentHeight = 15
         Me.cmbBodegas.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbBodegas.EditorBackColor = System.Drawing.SystemColors.Window
@@ -218,6 +219,7 @@ Partial Class frmCriteriosInventarioReporte
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmCriteriosInventarioReporte"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Imprimir Reporte de Inventario"
         Me.gbxCriterios.ResumeLayout(False)
         Me.gbxCriterios.PerformLayout()

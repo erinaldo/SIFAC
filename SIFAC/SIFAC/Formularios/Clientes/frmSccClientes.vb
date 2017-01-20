@@ -19,7 +19,7 @@ Public Class frmSccClientes
         Try
             Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,Nombre1,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero,Ruta,OrdenCobro", "vwSccClientes"))
             'Me.dtCliente.PrimaryKey = New DataColumn() {Me.dtCliente.Columns("StbPersonaID")}
-            Me.dtCliente.DefaultView.Sort = "OrdenCobro"
+            Me.dtCliente.DefaultView.Sort = "StbPersonaID desc"
             Me.grdClientes.DataSource = dtCliente
 
             If Me.dtCliente.DefaultView.Count = 0 Then

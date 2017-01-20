@@ -21,7 +21,7 @@ Public Class frmSivCategorias
         Try
             dtCategorias = BO.SivCategorias.RetrieveDT("1=1")
             dtCategorias.PrimaryKey = New DataColumn() {Me.dtCategorias.Columns("CategoriaID")}
-            dtCategorias.DefaultView.Sort = "CategoriaID"
+            dtCategorias.DefaultView.Sort = "CategoriaID desc"
             Me.grdCategorias.DataSource = dtCategorias
             Me.grdCategorias.Text = "Categorias (" & Me.dtCategorias.Rows.Count & ")"
         Catch ex As Exception

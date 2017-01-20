@@ -22,7 +22,7 @@ Public Class frmStbBodegas
         Try
             dtBodegas = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbBodegaID,Bodega,Codigo,Activo,Ciudad,Jefe", "vwBodegas", ))
             dtBodegas.PrimaryKey = New DataColumn() {Me.dtBodegas.Columns("StbBodegaID")}
-            dtBodegas.DefaultView.Sort = "StbBodegaID"
+            dtBodegas.DefaultView.Sort = "StbBodegaID desc"
             Me.grdBodegas.DataSource = dtBodegas
             Me.grdBodegas.Text = "Bodegas (" & Me.dtBodegas.Rows.Count & ")"
         Catch ex As Exception

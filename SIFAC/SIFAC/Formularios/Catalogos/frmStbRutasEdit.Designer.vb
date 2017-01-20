@@ -25,6 +25,7 @@ Partial Class frmStbRutasEdit
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmStbRutasEdit))
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdAgregarCategoria = New DevExpress.XtraEditors.SimpleButton()
         Me.cmbCiudad = New System.Windows.Forms.ComboBox()
         Me.cbxCobrador = New System.Windows.Forms.ComboBox()
         Me.cmbSupervisor = New System.Windows.Forms.ComboBox()
@@ -45,7 +46,6 @@ Partial Class frmStbRutasEdit
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmdAgregarCategoria = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         CType(Me.cmbDiaCrobro, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,6 +80,20 @@ Partial Class frmStbRutasEdit
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(746, 250)
         Me.PanelControl1.TabIndex = 25
+        '
+        'cmdAgregarCategoria
+        '
+        Me.cmdAgregarCategoria.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAgregarCategoria.Appearance.Options.UseFont = True
+        Me.cmdAgregarCategoria.Image = CType(resources.GetObject("cmdAgregarCategoria.Image"), System.Drawing.Image)
+        Me.cmdAgregarCategoria.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
+        Me.cmdAgregarCategoria.Location = New System.Drawing.Point(696, 25)
+        Me.cmdAgregarCategoria.LookAndFeel.SkinName = "Caramel"
+        Me.cmdAgregarCategoria.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAgregarCategoria.Name = "cmdAgregarCategoria"
+        Me.cmdAgregarCategoria.Size = New System.Drawing.Size(32, 28)
+        Me.cmdAgregarCategoria.TabIndex = 132
+        Me.cmdAgregarCategoria.Tag = "AGREGAR CATEGORIA"
         '
         'cmbCiudad
         '
@@ -306,20 +320,6 @@ Partial Class frmStbRutasEdit
         'ErrorProv
         '
         Me.ErrorProv.ContainerControl = Me
-        '
-        'cmdAgregarCategoria
-        '
-        Me.cmdAgregarCategoria.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdAgregarCategoria.Appearance.Options.UseFont = True
-        Me.cmdAgregarCategoria.Image = CType(resources.GetObject("cmdAgregarCategoria.Image"), System.Drawing.Image)
-        Me.cmdAgregarCategoria.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter
-        Me.cmdAgregarCategoria.Location = New System.Drawing.Point(696, 25)
-        Me.cmdAgregarCategoria.LookAndFeel.SkinName = "Caramel"
-        Me.cmdAgregarCategoria.LookAndFeel.UseDefaultLookAndFeel = False
-        Me.cmdAgregarCategoria.Name = "cmdAgregarCategoria"
-        Me.cmdAgregarCategoria.Size = New System.Drawing.Size(32, 28)
-        Me.cmdAgregarCategoria.TabIndex = 132
-        Me.cmdAgregarCategoria.Tag = "AGREGAR CATEGORIA"
         '
         'frmStbRutasEdit
         '

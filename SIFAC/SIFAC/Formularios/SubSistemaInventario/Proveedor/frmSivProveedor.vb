@@ -46,7 +46,7 @@ Public Class frmSivProveedor
             sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "dbo.vwSivProveedores", sFiltro)
             Me.DtProveedores = SqlHelper.ExecuteQueryDT(sSQL)
             Me.DtProveedores.PrimaryKey = New DataColumn() {Me.DtProveedores.Columns("SivProveedorID")}
-            Me.DtProveedores.DefaultView.Sort = "SivProveedorID"
+            Me.DtProveedores.DefaultView.Sort = "SivProveedorID desc"
             grdvwProveedores.DataSource = DtProveedores
             'Me.grdProveedores.SetDataBinding(Me.DtProveedores, "", True)
             Me.bloquearBotonesBarra(Me.DtProveedores.Rows.Count = 0)

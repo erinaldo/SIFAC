@@ -113,7 +113,7 @@ Partial Class frmSivEntradaBodegaEditar
         '
         Me.colCodigoProducto.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.colCodigoProducto.AppearanceHeader.Options.UseFont = True
-        Me.colCodigoProducto.Caption = "Código"
+        Me.colCodigoProducto.Caption = "Codigo"
         Me.colCodigoProducto.ColumnEdit = Me.grdspnCodigoRepuesto
         Me.colCodigoProducto.FieldName = "SivProductoID"
         Me.colCodigoProducto.Name = "colCodigoProducto"
@@ -265,6 +265,7 @@ Partial Class frmSivEntradaBodegaEditar
         'cmbProveedor
         '
         Me.cmbProveedor.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbProveedor.AutoCompletion = True
         Me.cmbProveedor.Caption = ""
         Me.cmbProveedor.CaptionHeight = 17
         Me.cmbProveedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -289,7 +290,7 @@ Partial Class frmSivEntradaBodegaEditar
         Me.cmbProveedor.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbProveedor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbProveedor.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbProveedor.Size = New System.Drawing.Size(174, 21)
+        Me.cmbProveedor.Size = New System.Drawing.Size(245, 21)
         Me.cmbProveedor.TabIndex = 97
         Me.cmbProveedor.PropBag = resources.GetString("cmbProveedor.PropBag")
         '
@@ -308,6 +309,7 @@ Partial Class frmSivEntradaBodegaEditar
         'cmbTipoEntrada
         '
         Me.cmbTipoEntrada.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbTipoEntrada.AutoCompletion = True
         Me.cmbTipoEntrada.Caption = ""
         Me.cmbTipoEntrada.CaptionHeight = 17
         Me.cmbTipoEntrada.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -339,6 +341,7 @@ Partial Class frmSivEntradaBodegaEditar
         'cmbBodega
         '
         Me.cmbBodega.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbBodega.AutoCompletion = True
         Me.cmbBodega.Caption = ""
         Me.cmbBodega.CaptionHeight = 17
         Me.cmbBodega.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -364,7 +367,7 @@ Partial Class frmSivEntradaBodegaEditar
         Me.cmbBodega.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbBodega.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbBodega.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbBodega.Size = New System.Drawing.Size(174, 21)
+        Me.cmbBodega.Size = New System.Drawing.Size(244, 21)
         Me.cmbBodega.TabIndex = 0
         Me.cmbBodega.Tag = "BLOQUEADO"
         Me.cmbBodega.PropBag = resources.GetString("cmbBodega.PropBag")
