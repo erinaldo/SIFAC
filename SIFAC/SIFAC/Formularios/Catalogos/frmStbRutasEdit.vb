@@ -279,7 +279,7 @@ Public Class frmStbRutasEdit
             cmbCiudad.ValueMember = "StbZonaID"
             cmbCiudad.DisplayMember = "Nombre"
             cmbCiudad.DataSource = DtCiudad
-            cmbCiudad.SelectedItem = -1
+            cmbCiudad.SelectedValue = -1
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -430,12 +430,12 @@ Public Class frmStbRutasEdit
         boolEditado = True
     End Sub
 
-    Private Sub cbxCobrador_SelectedValueChanged(sender As Object, e As EventArgs) Handles cbxCobrador.SelectedValueChanged
+    Private Sub cbxCobrador_SelectedValueChanged(sender As Object, e As EventArgs)
         ErrorProv.SetError(cbxCobrador, "")
         boolEditado = True
     End Sub
 
-    Private Sub cmbSupervisor_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbSupervisor.SelectedValueChanged
+    Private Sub cmbSupervisor_SelectedValueChanged(sender As Object, e As EventArgs)
         ErrorProv.SetError(cmbSupervisor, "")
         boolEditado = True
     End Sub

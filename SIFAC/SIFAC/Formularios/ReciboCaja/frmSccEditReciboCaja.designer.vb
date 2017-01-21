@@ -630,6 +630,8 @@ Partial Class frmSccEditReciboCaja
         Me.cmbRuta.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
         Me.cmbRuta.AllowColMove = False
         Me.cmbRuta.AllowSort = False
+        Me.cmbRuta.AutoCompletion = True
+        Me.cmbRuta.AutoDropDown = True
         Me.cmbRuta.Caption = ""
         Me.cmbRuta.CaptionHeight = 17
         Me.cmbRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -675,6 +677,8 @@ Partial Class frmSccEditReciboCaja
         'cbxCobrador
         '
         Me.cbxCobrador.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cbxCobrador.AutoCompletion = True
+        Me.cbxCobrador.AutoDropDown = True
         Me.cbxCobrador.Caption = ""
         Me.cbxCobrador.CaptionHeight = 17
         Me.cbxCobrador.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal

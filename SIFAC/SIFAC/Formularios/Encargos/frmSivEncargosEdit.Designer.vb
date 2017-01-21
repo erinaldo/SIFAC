@@ -549,13 +549,14 @@ Partial Class frmSivEncargosEdit
         'cboEstado
         '
         Me.cboEstado.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cboEstado.AutoCompletion = True
+        Me.cboEstado.AutoDropDown = True
         Me.cboEstado.Caption = ""
         Me.cboEstado.CaptionHeight = 17
         Me.cboEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cboEstado.ColumnCaptionHeight = 17
         Me.cboEstado.ColumnFooterHeight = 17
         Me.cboEstado.ColumnHeaders = False
-        Me.cboEstado.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cboEstado.ContentHeight = 15
         Me.cboEstado.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cboEstado.EditorBackColor = System.Drawing.SystemColors.Window
@@ -582,13 +583,14 @@ Partial Class frmSivEncargosEdit
         Me.cmbRuta.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
         Me.cmbRuta.AllowColMove = False
         Me.cmbRuta.AllowSort = False
+        Me.cmbRuta.AutoCompletion = True
+        Me.cmbRuta.AutoDropDown = True
         Me.cmbRuta.Caption = ""
         Me.cmbRuta.CaptionHeight = 17
         Me.cmbRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbRuta.ColumnCaptionHeight = 17
         Me.cmbRuta.ColumnFooterHeight = 17
         Me.cmbRuta.ColumnHeaders = False
-        Me.cmbRuta.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbRuta.ContentHeight = 15
         Me.cmbRuta.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbRuta.EditorBackColor = System.Drawing.SystemColors.Window
@@ -700,13 +702,14 @@ Partial Class frmSivEncargosEdit
         'cmbVendedor
         '
         Me.cmbVendedor.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbVendedor.AutoCompletion = True
+        Me.cmbVendedor.AutoDropDown = True
         Me.cmbVendedor.Caption = ""
         Me.cmbVendedor.CaptionHeight = 17
         Me.cmbVendedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbVendedor.ColumnCaptionHeight = 17
         Me.cmbVendedor.ColumnFooterHeight = 17
         Me.cmbVendedor.ColumnHeaders = False
-        Me.cmbVendedor.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbVendedor.ContentHeight = 15
         Me.cmbVendedor.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbVendedor.EditorBackColor = System.Drawing.SystemColors.Window
@@ -731,13 +734,14 @@ Partial Class frmSivEncargosEdit
         'cmbCliente
         '
         Me.cmbCliente.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCliente.AutoCompletion = True
+        Me.cmbCliente.AutoDropDown = True
         Me.cmbCliente.Caption = ""
         Me.cmbCliente.CaptionHeight = 17
         Me.cmbCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbCliente.ColumnCaptionHeight = 17
         Me.cmbCliente.ColumnFooterHeight = 17
         Me.cmbCliente.ColumnHeaders = False
-        Me.cmbCliente.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbCliente.ContentHeight = 15
         Me.cmbCliente.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbCliente.EditorBackColor = System.Drawing.SystemColors.Window

@@ -102,6 +102,8 @@ Partial Class frmSccEditNotaCredito
         'cmbEstado
         '
         Me.cmbEstado.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbEstado.AutoCompletion = True
+        Me.cmbEstado.AutoDropDown = True
         Me.cmbEstado.Caption = ""
         Me.cmbEstado.CaptionHeight = 17
         Me.cmbEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -186,6 +188,8 @@ Partial Class frmSccEditNotaCredito
         'cmbConcepto
         '
         Me.cmbConcepto.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbConcepto.AutoCompletion = True
+        Me.cmbConcepto.AutoDropDown = True
         Me.cmbConcepto.Caption = ""
         Me.cmbConcepto.CaptionHeight = 17
         Me.cmbConcepto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal

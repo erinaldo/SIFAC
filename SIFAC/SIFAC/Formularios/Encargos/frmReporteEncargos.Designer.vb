@@ -99,13 +99,14 @@ Partial Class frmReporteEncargos
         'cboEstado
         '
         Me.cboEstado.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cboEstado.AutoCompletion = True
+        Me.cboEstado.AutoDropDown = True
         Me.cboEstado.Caption = ""
         Me.cboEstado.CaptionHeight = 17
         Me.cboEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cboEstado.ColumnCaptionHeight = 17
         Me.cboEstado.ColumnFooterHeight = 17
         Me.cboEstado.ColumnHeaders = False
-        Me.cboEstado.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cboEstado.ContentHeight = 15
         Me.cboEstado.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cboEstado.EditorBackColor = System.Drawing.SystemColors.Window
@@ -143,13 +144,14 @@ Partial Class frmReporteEncargos
         Me.cmbVendedor.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
         Me.cmbVendedor.AllowColMove = False
         Me.cmbVendedor.AllowSort = False
+        Me.cmbVendedor.AutoCompletion = True
+        Me.cmbVendedor.AutoDropDown = True
         Me.cmbVendedor.Caption = ""
         Me.cmbVendedor.CaptionHeight = 17
         Me.cmbVendedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbVendedor.ColumnCaptionHeight = 17
         Me.cmbVendedor.ColumnFooterHeight = 17
         Me.cmbVendedor.ColumnHeaders = False
-        Me.cmbVendedor.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbVendedor.ContentHeight = 15
         Me.cmbVendedor.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbVendedor.EditorBackColor = System.Drawing.SystemColors.Window

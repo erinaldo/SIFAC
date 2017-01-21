@@ -507,7 +507,7 @@ Public Class frmSccComisionesEdit
     End Sub
 
 
-    Private Sub cmbEmpleado_TextChanged(sender As Object, e As EventArgs) Handles cmbEmpleado.TextChanged
+    Private Sub cmbEmpleado_TextChanged(sender As Object, e As EventArgs)
 
         ErrorProv.Clear()
         boolEditado = True
@@ -529,7 +529,7 @@ Public Class frmSccComisionesEdit
         boolEditado = True
     End Sub
  
-    Private Sub cmbCajero_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbCajero.SelectedValueChanged
+    Private Sub cmbCajero_SelectedValueChanged(sender As Object, e As EventArgs)
         ErrorProv.Clear()
         boolEditado = True
     End Sub

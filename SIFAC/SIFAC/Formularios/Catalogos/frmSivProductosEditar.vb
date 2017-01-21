@@ -115,7 +115,7 @@ Public Class frmSivProductosEditar
             cmbMarca.ValueMember = "MarcaID"
             cmbMarca.DisplayMember = "Nombre"
             DtMarca = SivMarcas.RetrieveDT("Activa=1 and len(ltrim(rtrim(Nombre)))>0")
-            'cmbMarca.Splits(0).DisplayColumns("MarcaID").Visible = False
+            cmbMarca.Splits(0).DisplayColumns("MarcaID").Visible = False
             cmbMarca.DataSource = DtMarca
             cmbMarca.SelectedIndex = -1
         Catch ex As Exception
@@ -133,6 +133,7 @@ Public Class frmSivProductosEditar
             cmbCategoria.DisplayMember = "Nombre"
             DtCategoria = SivCategorias.RetrieveDT("Activa=1", " Nombre", "CategoriaID, Nombre")
             cmbCategoria.DataSource = DtCategoria
+            cmbCategoria.Splits(0).DisplayColumns("CategoriaID").Visible = False
             cmbCategoria.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -282,7 +283,11 @@ Public Class frmSivProductosEditar
             End If
 
             chkActivo.Checked = objProducto.Activo
-            spnCantidadMinima.Value = objProducto.Cantidad_Minima
+
+            If Not IsNothing(objProducto.Cantidad_Minima) Then
+                spnCantidadMinima.Value = objProducto.Cantidad_Minima
+            End If
+
 
             spnCostoPromedio.Value = IIf(IsDBNull(objProducto.CostoPromedio), 0.0, objProducto.CostoPromedio)
             spnMargenContado.Value = IIf(IsDBNull(objProducto.Margen_Utilidad_Contado), 0.0, objProducto.Margen_Utilidad_Contado)
@@ -605,12 +610,12 @@ Public Class frmSivProductosEditar
         boolEditado = True
     End Sub
 
-    Private Sub cbxMarca_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbMarca.SelectedIndexChanged, cmbMarca.TextChanged, cmbMarca.SelectedValueChanged
+    Private Sub cbxMarca_Change(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ErrorProv.SetError(cmbMarca, "")
         boolEditado = True
     End Sub
 
-    Private Sub cbxCilindraje_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbCategoria.TextChanged, cmbCategoria.SelectedValueChanged
+    Private Sub cbxCilindraje_Change(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ErrorProv.SetError(cmbCategoria, "")
         boolEditado = True
     End Sub

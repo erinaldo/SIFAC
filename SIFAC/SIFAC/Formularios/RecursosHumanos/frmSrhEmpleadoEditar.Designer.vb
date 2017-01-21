@@ -163,6 +163,8 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
         Me.cmbCiudad.AllowColMove = False
         Me.cmbCiudad.AllowSort = False
+        Me.cmbCiudad.AutoCompletion = True
+        Me.cmbCiudad.AutoDropDown = True
         Me.cmbCiudad.Caption = ""
         Me.cmbCiudad.CaptionHeight = 17
         Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -198,6 +200,8 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmbGenero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
         Me.cmbGenero.AllowColMove = False
         Me.cmbGenero.AllowSort = False
+        Me.cmbGenero.AutoCompletion = True
+        Me.cmbGenero.AutoDropDown = True
         Me.cmbGenero.Caption = ""
         Me.cmbGenero.CaptionHeight = 17
         Me.cmbGenero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -427,6 +431,8 @@ Partial Class frmSrhEmpleadoEditar
         'cmbCargo
         '
         Me.cmbCargo.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCargo.AutoCompletion = True
+        Me.cmbCargo.AutoDropDown = True
         Me.cmbCargo.Caption = ""
         Me.cmbCargo.CaptionHeight = 17
         Me.cmbCargo.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal

@@ -59,12 +59,13 @@ Partial Class frmCambioRuta
         'cmbRutas
         '
         Me.cmbRutas.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbRutas.AutoCompletion = True
+        Me.cmbRutas.AutoDropDown = True
         Me.cmbRutas.Caption = ""
         Me.cmbRutas.CaptionHeight = 17
         Me.cmbRutas.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbRutas.ColumnCaptionHeight = 17
         Me.cmbRutas.ColumnFooterHeight = 17
-        Me.cmbRutas.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbRutas.ContentHeight = 15
         Me.cmbRutas.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbRutas.EditorBackColor = System.Drawing.SystemColors.Window
@@ -90,12 +91,13 @@ Partial Class frmCambioRuta
         'cmbDiaCrobro
         '
         Me.cmbDiaCrobro.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbDiaCrobro.AutoCompletion = True
+        Me.cmbDiaCrobro.AutoDropDown = True
         Me.cmbDiaCrobro.Caption = ""
         Me.cmbDiaCrobro.CaptionHeight = 17
         Me.cmbDiaCrobro.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbDiaCrobro.ColumnCaptionHeight = 17
         Me.cmbDiaCrobro.ColumnFooterHeight = 17
-        Me.cmbDiaCrobro.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbDiaCrobro.ContentHeight = 15
         Me.cmbDiaCrobro.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbDiaCrobro.EditorBackColor = System.Drawing.SystemColors.Window

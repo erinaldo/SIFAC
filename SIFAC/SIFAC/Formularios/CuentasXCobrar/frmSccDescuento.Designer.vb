@@ -61,7 +61,7 @@ Partial Class frmSccDescuento
         Me.cmdAgregar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdAgregar.ToolTipText = "Nuevo Producto"
+        Me.cmdAgregar.ToolTipText = "Nuevo Descuento"
         '
         'cmdEditar
         '
@@ -70,7 +70,7 @@ Partial Class frmSccDescuento
         Me.cmdEditar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdEditar.ToolTipText = "Editar Producto"
+        Me.cmdEditar.ToolTipText = "Editar Descuento"
         '
         'cmdConsultar
         '
@@ -79,7 +79,7 @@ Partial Class frmSccDescuento
         Me.cmdConsultar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdConsultar.ToolTipText = "Consultar Producto"
+        Me.cmdConsultar.ToolTipText = "Consultar Descuento"
         '
         'ToolStripSeparator1
         '
@@ -93,7 +93,7 @@ Partial Class frmSccDescuento
         Me.cmdDesactivar.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdDesactivar.Name = "cmdDesactivar"
         Me.cmdDesactivar.Size = New System.Drawing.Size(36, 36)
-        Me.cmdDesactivar.ToolTipText = "Inactivar Producto"
+        Me.cmdDesactivar.ToolTipText = "Inactivar Descuento"
         '
         'ToolStripSeparator2
         '
@@ -116,7 +116,7 @@ Partial Class frmSccDescuento
         Me.cmdImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
-        Me.cmdImprimir.ToolTipText = "Imprimir Datos de Productos"
+        Me.cmdImprimir.ToolTipText = "Imprimir Descuentos"
         '
         'ToolStripSeparator3
         '

@@ -29,12 +29,12 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.cmbCajero = New C1.Win.C1List.C1Combo()
         Me.txtCodigo = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtNumero = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtUbicacion = New System.Windows.Forms.TextBox()
-        Me.cmbCajero = New System.Windows.Forms.ComboBox()
         Me.cmdJefe = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.chkActivo = New System.Windows.Forms.CheckBox()
@@ -45,6 +45,7 @@ Partial Class frmSccConfiguracionCajasEdit
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.gbxDatosGenerales.SuspendLayout()
+        CType(Me.cmbCajero, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -102,12 +103,12 @@ Partial Class frmSccConfiguracionCajasEdit
         '
         'gbxDatosGenerales
         '
+        Me.gbxDatosGenerales.Controls.Add(Me.cmbCajero)
         Me.gbxDatosGenerales.Controls.Add(Me.txtCodigo)
         Me.gbxDatosGenerales.Controls.Add(Me.Label3)
         Me.gbxDatosGenerales.Controls.Add(Me.txtNumero)
         Me.gbxDatosGenerales.Controls.Add(Me.Label2)
         Me.gbxDatosGenerales.Controls.Add(Me.txtUbicacion)
-        Me.gbxDatosGenerales.Controls.Add(Me.cmbCajero)
         Me.gbxDatosGenerales.Controls.Add(Me.cmdJefe)
         Me.gbxDatosGenerales.Controls.Add(Me.Label1)
         Me.gbxDatosGenerales.Controls.Add(Me.chkActivo)
@@ -119,6 +120,38 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.gbxDatosGenerales.Size = New System.Drawing.Size(486, 152)
         Me.gbxDatosGenerales.TabIndex = 1
         Me.gbxDatosGenerales.TabStop = False
+        '
+        'cmbCajero
+        '
+        Me.cmbCajero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCajero.AutoCompletion = True
+        Me.cmbCajero.AutoDropDown = True
+        Me.cmbCajero.Caption = ""
+        Me.cmbCajero.CaptionHeight = 17
+        Me.cmbCajero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCajero.ColumnCaptionHeight = 17
+        Me.cmbCajero.ColumnFooterHeight = 17
+        Me.cmbCajero.ContentHeight = 15
+        Me.cmbCajero.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCajero.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCajero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCajero.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCajero.EditorHeight = 15
+        Me.cmbCajero.Images.Add(CType(resources.GetObject("cmbCajero.Images"), System.Drawing.Image))
+        Me.cmbCajero.ItemHeight = 15
+        Me.cmbCajero.Location = New System.Drawing.Point(126, 115)
+        Me.cmbCajero.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCajero.MaxDropDownItems = CType(5, Short)
+        Me.cmbCajero.MaxLength = 32767
+        Me.cmbCajero.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCajero.Name = "cmbCajero"
+        Me.cmbCajero.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCajero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCajero.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
+        Me.cmbCajero.TabIndex = 136
+        Me.cmbCajero.Tag = "OBLIGATORIO"
+        Me.cmbCajero.PropBag = resources.GetString("cmbCajero.PropBag")
         '
         'txtCodigo
         '
@@ -167,15 +200,6 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.txtUbicacion.TabIndex = 134
         Me.txtUbicacion.TabStop = False
         Me.txtUbicacion.Tag = "BLOQUEADO"
-        '
-        'cmbCajero
-        '
-        Me.cmbCajero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCajero.FormattingEnabled = True
-        Me.cmbCajero.Location = New System.Drawing.Point(126, 116)
-        Me.cmbCajero.Name = "cmbCajero"
-        Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCajero.TabIndex = 133
         '
         'cmdJefe
         '
@@ -263,6 +287,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.PanelControl1.ResumeLayout(False)
         Me.gbxDatosGenerales.ResumeLayout(False)
         Me.gbxDatosGenerales.PerformLayout()
+        CType(Me.cmbCajero, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -277,7 +302,6 @@ Partial Class frmSccConfiguracionCajasEdit
     Friend WithEvents lblSfaPromocionID As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents txtUbicacion As System.Windows.Forms.TextBox
-    Friend WithEvents cmbCajero As System.Windows.Forms.ComboBox
     Friend WithEvents cmdJefe As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtNumero As System.Windows.Forms.TextBox
@@ -285,4 +309,5 @@ Partial Class frmSccConfiguracionCajasEdit
     Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
     Friend WithEvents txtCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents cmbCajero As C1.Win.C1List.C1Combo
 End Class

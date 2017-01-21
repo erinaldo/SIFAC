@@ -196,6 +196,8 @@ Partial Class frmSfaFacturaRepuestosEditar
         'cmbMotivoAnular
         '
         Me.cmbMotivoAnular.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbMotivoAnular.AutoCompletion = True
+        Me.cmbMotivoAnular.AutoDropDown = True
         Me.cmbMotivoAnular.Caption = ""
         Me.cmbMotivoAnular.CaptionHeight = 17
         Me.cmbMotivoAnular.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -286,6 +288,8 @@ Partial Class frmSfaFacturaRepuestosEditar
         'cmbTPago
         '
         Me.cmbTPago.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbTPago.AutoCompletion = True
+        Me.cmbTPago.AutoDropDown = True
         Me.cmbTPago.Caption = ""
         Me.cmbTPago.CaptionHeight = 17
         Me.cmbTPago.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -317,6 +321,8 @@ Partial Class frmSfaFacturaRepuestosEditar
         'cmbBodega
         '
         Me.cmbBodega.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbBodega.AutoCompletion = True
+        Me.cmbBodega.AutoDropDown = True
         Me.cmbBodega.Caption = ""
         Me.cmbBodega.CaptionHeight = 17
         Me.cmbBodega.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -349,6 +355,8 @@ Partial Class frmSfaFacturaRepuestosEditar
         'cmbVendedor
         '
         Me.cmbVendedor.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbVendedor.AutoCompletion = True
+        Me.cmbVendedor.AutoDropDown = True
         Me.cmbVendedor.Caption = ""
         Me.cmbVendedor.CaptionHeight = 17
         Me.cmbVendedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -380,6 +388,8 @@ Partial Class frmSfaFacturaRepuestosEditar
         'cmbCliente
         '
         Me.cmbCliente.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCliente.AutoCompletion = True
+        Me.cmbCliente.AutoDropDown = True
         Me.cmbCliente.Caption = ""
         Me.cmbCliente.CaptionHeight = 17
         Me.cmbCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal

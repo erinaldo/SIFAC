@@ -304,7 +304,7 @@ Public Class frmSccConsultarArqueo
         Me.ErrorProv.Clear()
     End Sub
 
-    Private Sub cmbCajero_TextChanged(sender As Object, e As EventArgs) Handles cmbCajero.TextChanged
+    Private Sub cmbCajero_TextChanged(sender As Object, e As EventArgs)
         Me.ErrorProv.Clear()
     End Sub
 End Class

@@ -45,7 +45,7 @@ Public Class frmSccConfiguracionCajasEdit
             cmbCajero.DataSource = dtCajeros
             cmbCajero.ValueMember = "SrhEmpleadoID"
             cmbCajero.DisplayMember = "NombreCompleto"
-
+            cmbCajero.Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
             cmbCajero.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -94,7 +94,11 @@ Public Class frmSccConfiguracionCajasEdit
             txtCodigo.Text = objCajas.Codigo
             txtNombreCaja.Text = objCajas.Nombre
             txtUbicacion.Text = objCajas.Ubicacion
-            cmbCajero.SelectedValue = objCajas.objCajeroID
+
+            If IsNothing(objCajas.objCajeroID) Then
+                cmbCajero.SelectedValue = objCajas.objCajeroID
+            End If
+
             chkActivo.Checked = objCajas.Activa
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -258,7 +262,7 @@ Public Class frmSccConfiguracionCajasEdit
         boolEditado = True
     End Sub
 
-    Private Sub cmbCajero_TextChanged(sender As Object, e As EventArgs) Handles cmbCajero.TextChanged
+    Private Sub cmbCajero_TextChanged(sender As Object, e As EventArgs)
         ErrorProv.SetError(cmbCajero, "")
         boolEditado = True
     End Sub

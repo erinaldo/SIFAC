@@ -154,6 +154,8 @@ Partial Class frmSccEditNotaDebito
         'cmbEstado
         '
         Me.cmbEstado.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbEstado.AutoCompletion = True
+        Me.cmbEstado.AutoDropDown = True
         Me.cmbEstado.Caption = ""
         Me.cmbEstado.CaptionHeight = 17
         Me.cmbEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -238,6 +240,8 @@ Partial Class frmSccEditNotaDebito
         'cmbConcepto
         '
         Me.cmbConcepto.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbConcepto.AutoCompletion = True
+        Me.cmbConcepto.AutoDropDown = True
         Me.cmbConcepto.Caption = ""
         Me.cmbConcepto.CaptionHeight = 17
         Me.cmbConcepto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
@@ -264,7 +268,7 @@ Partial Class frmSccEditNotaDebito
         Me.cmbConcepto.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbConcepto.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbConcepto.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbConcepto.Size = New System.Drawing.Size(188, 21)
+        Me.cmbConcepto.Size = New System.Drawing.Size(201, 21)
         Me.cmbConcepto.TabIndex = 5
         Me.cmbConcepto.PropBag = resources.GetString("cmbConcepto.PropBag")
         '

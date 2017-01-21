@@ -33,16 +33,17 @@ Partial Class frmRptArqueo
         Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.lblEncabezado = New System.Windows.Forms.Label()
         Me.gbxCriterios = New System.Windows.Forms.GroupBox()
+        Me.chkTodasCajas = New System.Windows.Forms.CheckBox()
         Me.lblBodega = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.chkTodasCajas = New System.Windows.Forms.CheckBox()
-        Me.cmbCajas = New System.Windows.Forms.ComboBox()
+        Me.cmbCajas = New C1.Win.C1List.C1Combo()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.gbxPeriodo.SuspendLayout()
         CType(Me.dtpFechaHasta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaDesde, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxCriterios.SuspendLayout()
+        CType(Me.cmbCajas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -191,6 +192,19 @@ Partial Class frmRptArqueo
         Me.gbxCriterios.TabIndex = 103
         Me.gbxCriterios.TabStop = False
         '
+        'chkTodasCajas
+        '
+        Me.chkTodasCajas.AutoSize = True
+        Me.chkTodasCajas.Checked = True
+        Me.chkTodasCajas.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkTodasCajas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkTodasCajas.Location = New System.Drawing.Point(68, 56)
+        Me.chkTodasCajas.Name = "chkTodasCajas"
+        Me.chkTodasCajas.Size = New System.Drawing.Size(65, 17)
+        Me.chkTodasCajas.TabIndex = 5
+        Me.chkTodasCajas.Text = "Todas "
+        Me.chkTodasCajas.UseVisualStyleBackColor = True
+        '
         'lblBodega
         '
         Me.lblBodega.AutoSize = True
@@ -209,27 +223,37 @@ Partial Class frmRptArqueo
         Me.Panel1.Size = New System.Drawing.Size(564, 21)
         Me.Panel1.TabIndex = 113
         '
-        'chkTodasCajas
-        '
-        Me.chkTodasCajas.AutoSize = True
-        Me.chkTodasCajas.Checked = True
-        Me.chkTodasCajas.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkTodasCajas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkTodasCajas.Location = New System.Drawing.Point(68, 56)
-        Me.chkTodasCajas.Name = "chkTodasCajas"
-        Me.chkTodasCajas.Size = New System.Drawing.Size(65, 17)
-        Me.chkTodasCajas.TabIndex = 5
-        Me.chkTodasCajas.Text = "Todas "
-        Me.chkTodasCajas.UseVisualStyleBackColor = True
-        '
         'cmbCajas
         '
-        Me.cmbCajas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCajas.FormattingEnabled = True
-        Me.cmbCajas.Location = New System.Drawing.Point(68, 28)
+        Me.cmbCajas.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCajas.AutoCompletion = True
+        Me.cmbCajas.AutoDropDown = True
+        Me.cmbCajas.Caption = ""
+        Me.cmbCajas.CaptionHeight = 17
+        Me.cmbCajas.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCajas.ColumnCaptionHeight = 17
+        Me.cmbCajas.ColumnFooterHeight = 17
+        Me.cmbCajas.ContentHeight = 15
+        Me.cmbCajas.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCajas.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCajas.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCajas.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCajas.EditorHeight = 15
+        Me.cmbCajas.Images.Add(CType(resources.GetObject("cmbCajas.Images"), System.Drawing.Image))
+        Me.cmbCajas.ItemHeight = 15
+        Me.cmbCajas.Location = New System.Drawing.Point(68, 25)
+        Me.cmbCajas.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCajas.MaxDropDownItems = CType(5, Short)
+        Me.cmbCajas.MaxLength = 32767
+        Me.cmbCajas.MouseCursor = System.Windows.Forms.Cursors.Default
         Me.cmbCajas.Name = "cmbCajas"
+        Me.cmbCajas.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCajas.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCajas.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCajas.Size = New System.Drawing.Size(221, 21)
-        Me.cmbCajas.TabIndex = 135
+        Me.cmbCajas.TabIndex = 137
+        Me.cmbCajas.Tag = "OBLIGATORIO"
+        Me.cmbCajas.PropBag = resources.GetString("cmbCajas.PropBag")
         '
         'frmRptArqueo
         '
@@ -253,6 +277,7 @@ Partial Class frmRptArqueo
         CType(Me.dtpFechaDesde, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbxCriterios.ResumeLayout(False)
         Me.gbxCriterios.PerformLayout()
+        CType(Me.cmbCajas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -269,5 +294,5 @@ Partial Class frmRptArqueo
     Friend WithEvents lblBodega As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents chkTodasCajas As System.Windows.Forms.CheckBox
-    Friend WithEvents cmbCajas As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbCajas As C1.Win.C1List.C1Combo
 End Class

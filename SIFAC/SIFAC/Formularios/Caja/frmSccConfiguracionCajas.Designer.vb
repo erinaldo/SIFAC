@@ -143,7 +143,7 @@ Partial Class frmSccConfiguracionCajas
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(36, 36)
         Me.cmdAgregar.Text = "Agregar Proveedor"
-        Me.cmdAgregar.ToolTipText = "Agregar Marcas"
+        Me.cmdAgregar.ToolTipText = "Agregar Caja"
         '
         'cmdEditar
         '
@@ -153,7 +153,7 @@ Partial Class frmSccConfiguracionCajas
         Me.cmdEditar.Name = "cmdEditar"
         Me.cmdEditar.Size = New System.Drawing.Size(36, 36)
         Me.cmdEditar.Text = "Editar Proveedor"
-        Me.cmdEditar.ToolTipText = "Editar Marcas"
+        Me.cmdEditar.ToolTipText = "Editar Caja"
         '
         'cmdConsultar
         '
@@ -163,7 +163,7 @@ Partial Class frmSccConfiguracionCajas
         Me.cmdConsultar.Name = "cmdConsultar"
         Me.cmdConsultar.Size = New System.Drawing.Size(36, 36)
         Me.cmdConsultar.Text = "ToolStripButton1"
-        Me.cmdConsultar.ToolTipText = "Consultar Marca"
+        Me.cmdConsultar.ToolTipText = "Consultar Caja"
         '
         'cmdInactivar
         '

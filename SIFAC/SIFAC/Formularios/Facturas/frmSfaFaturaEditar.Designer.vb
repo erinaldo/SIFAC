@@ -177,12 +177,13 @@ Partial Class frmSfaFaturaEditar
         'cmbFactura
         '
         Me.cmbFactura.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbFactura.AutoCompletion = True
+        Me.cmbFactura.AutoDropDown = True
         Me.cmbFactura.Caption = ""
         Me.cmbFactura.CaptionHeight = 17
         Me.cmbFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbFactura.ColumnCaptionHeight = 17
         Me.cmbFactura.ColumnFooterHeight = 17
-        Me.cmbFactura.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbFactura.ContentHeight = 15
         Me.cmbFactura.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbFactura.EditorBackColor = System.Drawing.SystemColors.Window

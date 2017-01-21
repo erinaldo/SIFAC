@@ -565,13 +565,14 @@ Public Class frmSivEntradaBodegaEditar
                 End If
 
                 ''Buscar si el proveedor ya esta registrado para este producto
-
-                If Not objSivProductosProveedos.RetrieveByFilter("objProductosID='" & row("SivProductoID") & "' AND objProveedorID=" & Me.cmbProveedor.SelectedValue, T) Then
-                    objSivProductosProveedos.objProductosID = row("SivProductoID")
-                    objSivProductosProveedos.objProveedorID = Me.cmbProveedor.SelectedValue
-                    objSivProductosProveedos.FechaCreacion = clsProyecto.Conexion.FechaServidor
-                    objSivProductosProveedos.UsuarioCreacion = clsProyecto.Conexion.Usuario
-                    objSivProductosProveedos.Insert(T)
+                If cmbProveedor.Text.Trim.Length > 0 Then
+                    If Not objSivProductosProveedos.RetrieveByFilter("objProductosID='" & row("SivProductoID") & "' AND objProveedorID=" & Me.cmbProveedor.SelectedValue, T) Then
+                        objSivProductosProveedos.objProductosID = row("SivProductoID")
+                        objSivProductosProveedos.objProveedorID = Me.cmbProveedor.SelectedValue
+                        objSivProductosProveedos.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                        objSivProductosProveedos.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                        objSivProductosProveedos.Insert(T)
+                    End If
                 End If
 
             Next

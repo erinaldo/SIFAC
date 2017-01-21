@@ -36,6 +36,7 @@ Partial Class frmSccConsultarArqueo
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.cmbCajero = New C1.Win.C1List.C1Combo()
         Me.lblCaja = New System.Windows.Forms.Label()
         Me.spnDisponible = New DevExpress.XtraEditors.SpinEdit()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -46,7 +47,6 @@ Partial Class frmSccConsultarArqueo
         Me.spnIngreso = New DevExpress.XtraEditors.SpinEdit()
         Me.dtFecha = New DevExpress.XtraEditors.DateEdit()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.cmbCajero = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtAprobadoPor = New System.Windows.Forms.TextBox()
         Me.lblDescripcion = New System.Windows.Forms.Label()
@@ -59,6 +59,7 @@ Partial Class frmSccConsultarArqueo
         CType(Me.grdDetalleTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxDatosGenerales.SuspendLayout()
+        CType(Me.cmbCajero, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spnDisponible.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spnFaltante.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spnEgreso.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -193,6 +194,7 @@ Partial Class frmSccConsultarArqueo
         '
         'gbxDatosGenerales
         '
+        Me.gbxDatosGenerales.Controls.Add(Me.cmbCajero)
         Me.gbxDatosGenerales.Controls.Add(Me.lblCaja)
         Me.gbxDatosGenerales.Controls.Add(Me.spnDisponible)
         Me.gbxDatosGenerales.Controls.Add(Me.Label5)
@@ -203,7 +205,6 @@ Partial Class frmSccConsultarArqueo
         Me.gbxDatosGenerales.Controls.Add(Me.spnIngreso)
         Me.gbxDatosGenerales.Controls.Add(Me.dtFecha)
         Me.gbxDatosGenerales.Controls.Add(Me.Label2)
-        Me.gbxDatosGenerales.Controls.Add(Me.cmbCajero)
         Me.gbxDatosGenerales.Controls.Add(Me.Label1)
         Me.gbxDatosGenerales.Controls.Add(Me.txtAprobadoPor)
         Me.gbxDatosGenerales.Controls.Add(Me.lblDescripcion)
@@ -214,6 +215,38 @@ Partial Class frmSccConsultarArqueo
         Me.gbxDatosGenerales.TabIndex = 1
         Me.gbxDatosGenerales.TabStop = False
         Me.gbxDatosGenerales.Text = "Informacion General"
+        '
+        'cmbCajero
+        '
+        Me.cmbCajero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCajero.AutoCompletion = True
+        Me.cmbCajero.AutoDropDown = True
+        Me.cmbCajero.Caption = ""
+        Me.cmbCajero.CaptionHeight = 17
+        Me.cmbCajero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCajero.ColumnCaptionHeight = 17
+        Me.cmbCajero.ColumnFooterHeight = 17
+        Me.cmbCajero.ContentHeight = 15
+        Me.cmbCajero.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCajero.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCajero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCajero.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCajero.EditorHeight = 15
+        Me.cmbCajero.Images.Add(CType(resources.GetObject("cmbCajero.Images"), System.Drawing.Image))
+        Me.cmbCajero.ItemHeight = 15
+        Me.cmbCajero.Location = New System.Drawing.Point(138, 43)
+        Me.cmbCajero.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCajero.MaxDropDownItems = CType(5, Short)
+        Me.cmbCajero.MaxLength = 32767
+        Me.cmbCajero.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCajero.Name = "cmbCajero"
+        Me.cmbCajero.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCajero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCajero.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
+        Me.cmbCajero.TabIndex = 146
+        Me.cmbCajero.Tag = "OBLIGATORIO"
+        Me.cmbCajero.PropBag = resources.GetString("cmbCajero.PropBag")
         '
         'lblCaja
         '
@@ -323,16 +356,6 @@ Partial Class frmSccConsultarArqueo
         Me.Label2.TabIndex = 136
         Me.Label2.Text = "Fecha:"
         '
-        'cmbCajero
-        '
-        Me.cmbCajero.Enabled = False
-        Me.cmbCajero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCajero.FormattingEnabled = True
-        Me.cmbCajero.Location = New System.Drawing.Point(138, 43)
-        Me.cmbCajero.Name = "cmbCajero"
-        Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCajero.TabIndex = 133
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -398,6 +421,7 @@ Partial Class frmSccConsultarArqueo
         CType(Me.RepositoryItemCheckEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbxDatosGenerales.ResumeLayout(False)
         Me.gbxDatosGenerales.PerformLayout()
+        CType(Me.cmbCajero, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spnDisponible.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spnFaltante.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spnEgreso.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -413,7 +437,6 @@ Partial Class frmSccConsultarArqueo
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents gbxDatosGenerales As System.Windows.Forms.GroupBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents cmbCajero As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtAprobadoPor As System.Windows.Forms.TextBox
     Friend WithEvents lblDescripcion As System.Windows.Forms.Label
@@ -436,4 +459,5 @@ Partial Class frmSccConsultarArqueo
     Friend WithEvents cmdAprobar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lblCaja As System.Windows.Forms.Label
     Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
+    Friend WithEvents cmbCajero As C1.Win.C1List.C1Combo
 End Class
