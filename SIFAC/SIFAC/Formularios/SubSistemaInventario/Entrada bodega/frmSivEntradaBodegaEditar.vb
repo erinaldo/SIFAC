@@ -1254,11 +1254,24 @@ Public Class frmSivEntradaBodegaEditar
             End If
         End If
 
+       
+
         'Descripción
         If e.Column.Equals(Me.colDescripcion) Then
+
             strIndiceCombo = grdDetalleEntradasBodegasDETabla.ActiveEditor.EditValue.ToString
+            'Verifica si el Repuesto está activo (REVISAR ESTA VALIDACION POR REGLAS DE NEGOCIO)
+            blnVerificaRepuestoAct = objSivProductos.RetrieveByFilter("SivProductoID=" & "'" & strIndiceCombo & "'" & " AND Activo=0")
+            If (blnVerificaRepuestoAct = True) Then
+                MsgBox("El producto está inactivo", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                Me.ElminarFilaSinPreguntar()
+                Me.InsertarNuevaFilaGrid()
+                Exit Sub
+            End If
             RellenarDatosGrid(strIndiceCombo, FilaActual)
         End If
+       
+
 
         'Validacion del repetido
         If e.Column.Equals(Me.colCodigoProducto) Or e.Column.Equals(Me.colDescripcion) Then
