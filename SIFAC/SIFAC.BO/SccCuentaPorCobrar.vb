@@ -35,8 +35,8 @@ Partial Public Class SccCuentaPorCobrar
         End Get
 		Set(ByVal Value As String)		
 			If Not Value Is Nothing Then
-				If Value.Length > 10 Then
-					Throw New ArgumentOutOfRangeException("Numero", Value.ToString(), "Valor inv?lido para SccCuentaPorCobrar.Numero. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (10).")
+				If Value.Length > 2147483645 Then
+					Throw New ArgumentOutOfRangeException("Numero", Value.ToString(), "Valor inv?lido para SccCuentaPorCobrar.Numero. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (2147483645).")
 				End If
 			End If
 			m_Numero = Value
@@ -138,7 +138,7 @@ Partial Public Class SccCuentaPorCobrar
 	Public Shared Function GetMaxLength(ProperyName as String) as Integer
 		Select Case ProperyName
 			Case "Numero"
-				Return	10
+				Return	2147483645
 			Case "SaldoInicial"
 				Return	11
 			Case "Saldo"
@@ -185,7 +185,7 @@ Partial Public Class SccCuentaPorCobrar
 			cmdDelete.CommandText = "DELETE FROM  SccCuentaPorCobrar WHERE SccCuentaID= @SccCuentaID" 	
 
 			'CREACION DEL COMANDO INSERT
-			cmdInsert.Parameters.Add("@Numero", SqlDbType.VarChar, 10, "Numero")
+			cmdInsert.Parameters.Add("@Numero", SqlDbType.VarChar, -1, "Numero")
 			cmdInsert.Parameters.Add("@objClienteID", SqlDbType.Int, 4, "objClienteID")
 			cmdInsert.Parameters.Add("@objEstadoID", SqlDbType.Int, 4, "objEstadoID")
 			cmdInsert.Parameters.Add("@SaldoInicial", SqlDbType.Decimal, 9, "SaldoInicial")
@@ -198,7 +198,7 @@ Partial Public Class SccCuentaPorCobrar
 			cmdInsert.CommandText = "INSERT INTO SccCuentaPorCobrar ( Numero, objClienteID, objEstadoID, SaldoInicial, Saldo, FechaCredito, UsuarioCreacion, FechaCreacion, UsuarioModificacion, FechaModificacion) VALUES ( @Numero, @objClienteID, @objEstadoID, @SaldoInicial, @Saldo, @FechaCredito, @UsuarioCreacion, @FechaCreacion, @UsuarioModificacion, @FechaModificacion)"
 
 			'CREACION DEL COMANDO UPDATE
-			cmdUpdate.Parameters.Add("@Numero", SqlDbType.VarChar, 10, "Numero")
+			cmdUpdate.Parameters.Add("@Numero", SqlDbType.VarChar, -1, "Numero")
 			cmdUpdate.Parameters.Add("@objClienteID", SqlDbType.Int, 4, "objClienteID")
 			cmdUpdate.Parameters.Add("@objEstadoID", SqlDbType.Int, 4, "objEstadoID")
 			cmdUpdate.Parameters.Add("@SaldoInicial", SqlDbType.Decimal, 9, "SaldoInicial")

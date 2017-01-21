@@ -12,7 +12,7 @@ Partial Public Class StbRutas
 	Protected m_objSupervisor As Nullable(Of Integer) 
 	Protected m_DiaCobro As Nullable(Of Integer) 
 	Protected m_objPaisID As Nullable(Of Integer) 
-	Protected m_objCiudadID As Nullable(Of Integer) 
+	Protected m_objZonaID As Nullable(Of Integer) 
 	Protected m_CargarDiferenciada As Nullable(Of Boolean) 
 	Protected m_Activa As Nullable(Of Boolean) 
 	Protected m_FechaCreacion As Nullable(Of Date) 
@@ -83,12 +83,12 @@ Partial Public Class StbRutas
 		End Set
     End Property
 	
-	Public Property objCiudadID() As Nullable(Of Integer)
+	Public Property objZonaID() As Nullable(Of Integer)
         Get
-            Return (m_objCiudadID)
+            Return (m_objZonaID)
         End Get
 		Set(ByVal Value As Nullable(Of Integer))					
-			m_objCiudadID = Value
+			m_objZonaID = Value
 		End Set
     End Property
 	
@@ -176,8 +176,8 @@ Partial Public Class StbRutas
         End Get
 		Set(ByVal Value As String)		
 			If Not Value Is Nothing Then
-				If Value.Length > 50 Then
-					Throw New ArgumentOutOfRangeException("Codigo", Value.ToString(), "Valor inv?lido para StbRutas.Codigo. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (50).")
+				If Value.Length > 2147483645 Then
+					Throw New ArgumentOutOfRangeException("Codigo", Value.ToString(), "Valor inv?lido para StbRutas.Codigo. La longitud del valor (" & Value.Length & ") excede la longitud m?xima de la propiedad (2147483645).")
 				End If
 			End If
 			m_Codigo = Value
@@ -196,7 +196,7 @@ Partial Public Class StbRutas
 			Case "Descripcion"
 				Return	2147483645
 			Case "Codigo"
-				Return	50
+				Return	2147483645
 			Case Else
 				Throw New Exception("Nombre de propiedad desconocida.")
 		End Select
@@ -236,7 +236,7 @@ Partial Public Class StbRutas
 			cmdInsert.Parameters.Add("@objSupervisor", SqlDbType.Int, 4, "objSupervisor")
 			cmdInsert.Parameters.Add("@DiaCobro", SqlDbType.Int, 4, "DiaCobro")
 			cmdInsert.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
-			cmdInsert.Parameters.Add("@objCiudadID", SqlDbType.Int, 4, "objCiudadID")
+			cmdInsert.Parameters.Add("@objZonaID", SqlDbType.Int, 4, "objZonaID")
 			cmdInsert.Parameters.Add("@CargarDiferenciada", SqlDbType.Bit, 1, "CargarDiferenciada")
 			cmdInsert.Parameters.Add("@Activa", SqlDbType.Bit, 1, "Activa")
 			cmdInsert.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
@@ -244,8 +244,8 @@ Partial Public Class StbRutas
 			cmdInsert.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdInsert.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdInsert.Parameters.Add("@Descripcion", SqlDbType.VarChar, -1, "Descripcion")
-			cmdInsert.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
-			cmdInsert.CommandText = "INSERT INTO StbRutas ( Nombre, ojbCobradorID, objSupervisor, DiaCobro, objPaisID, objCiudadID, CargarDiferenciada, Activa, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, Descripcion, Codigo) VALUES ( @Nombre, @ojbCobradorID, @objSupervisor, @DiaCobro, @objPaisID, @objCiudadID, @CargarDiferenciada, @Activa, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @Descripcion, @Codigo)"
+			cmdInsert.Parameters.Add("@Codigo", SqlDbType.VarChar, -1, "Codigo")
+			cmdInsert.CommandText = "INSERT INTO StbRutas ( Nombre, ojbCobradorID, objSupervisor, DiaCobro, objPaisID, objZonaID, CargarDiferenciada, Activa, FechaCreacion, UsuarioCreacion, FechaModificacion, UsuarioModificacion, Descripcion, Codigo) VALUES ( @Nombre, @ojbCobradorID, @objSupervisor, @DiaCobro, @objPaisID, @objZonaID, @CargarDiferenciada, @Activa, @FechaCreacion, @UsuarioCreacion, @FechaModificacion, @UsuarioModificacion, @Descripcion, @Codigo)"
 
 			'CREACION DEL COMANDO UPDATE
 			cmdUpdate.Parameters.Add("@Nombre", SqlDbType.VarChar, -1, "Nombre")
@@ -253,7 +253,7 @@ Partial Public Class StbRutas
 			cmdUpdate.Parameters.Add("@objSupervisor", SqlDbType.Int, 4, "objSupervisor")
 			cmdUpdate.Parameters.Add("@DiaCobro", SqlDbType.Int, 4, "DiaCobro")
 			cmdUpdate.Parameters.Add("@objPaisID", SqlDbType.Int, 4, "objPaisID")
-			cmdUpdate.Parameters.Add("@objCiudadID", SqlDbType.Int, 4, "objCiudadID")
+			cmdUpdate.Parameters.Add("@objZonaID", SqlDbType.Int, 4, "objZonaID")
 			cmdUpdate.Parameters.Add("@CargarDiferenciada", SqlDbType.Bit, 1, "CargarDiferenciada")
 			cmdUpdate.Parameters.Add("@Activa", SqlDbType.Bit, 1, "Activa")
 			cmdUpdate.Parameters.Add("@FechaCreacion", SqlDbType.DateTime, 8, "FechaCreacion")
@@ -261,9 +261,9 @@ Partial Public Class StbRutas
 			cmdUpdate.Parameters.Add("@FechaModificacion", SqlDbType.DateTime, 8, "FechaModificacion")
 			cmdUpdate.Parameters.Add("@UsuarioModificacion", SqlDbType.VarChar, 30, "UsuarioModificacion")
 			cmdUpdate.Parameters.Add("@Descripcion", SqlDbType.VarChar, -1, "Descripcion")
-			cmdUpdate.Parameters.Add("@Codigo", SqlDbType.VarChar, 50, "Codigo")
+			cmdUpdate.Parameters.Add("@Codigo", SqlDbType.VarChar, -1, "Codigo")
 			cmdUpdate.Parameters.Add("@wStbRutaID", SqlDbType.Int, 4, "StbRutaID")
-			cmdUpdate.CommandText = "UPDATE StbRutas SET Nombre=@Nombre, ojbCobradorID=@ojbCobradorID, objSupervisor=@objSupervisor, DiaCobro=@DiaCobro, objPaisID=@objPaisID, objCiudadID=@objCiudadID, CargarDiferenciada=@CargarDiferenciada, Activa=@Activa, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, Descripcion=@Descripcion, Codigo=@Codigo WHERE StbRutaID= @wStbRutaID"
+			cmdUpdate.CommandText = "UPDATE StbRutas SET Nombre=@Nombre, ojbCobradorID=@ojbCobradorID, objSupervisor=@objSupervisor, DiaCobro=@DiaCobro, objPaisID=@objPaisID, objZonaID=@objZonaID, CargarDiferenciada=@CargarDiferenciada, Activa=@Activa, FechaCreacion=@FechaCreacion, UsuarioCreacion=@UsuarioCreacion, FechaModificacion=@FechaModificacion, UsuarioModificacion=@UsuarioModificacion, Descripcion=@Descripcion, Codigo=@Codigo WHERE StbRutaID= @wStbRutaID"
 			If Not pTransac Is Nothing Then
 				cmdDelete.Connection = pTransac.Transaction.Connection
 				cmdDelete.Transaction = pTransac.Transaction
@@ -315,7 +315,7 @@ Partial Public Class StbRutas
 				m_objSupervisor = IIf(IsDBNull(dr("objSupervisor")), Nothing, dr("objSupervisor"))					
 				m_DiaCobro = IIf(IsDBNull(dr("DiaCobro")), Nothing, dr("DiaCobro"))					
 				m_objPaisID = IIf(IsDBNull(dr("objPaisID")), Nothing, dr("objPaisID"))					
-				m_objCiudadID = IIf(IsDBNull(dr("objCiudadID")), Nothing, dr("objCiudadID"))					
+				m_objZonaID = IIf(IsDBNull(dr("objZonaID")), Nothing, dr("objZonaID"))					
 				m_CargarDiferenciada = IIf(IsDBNull(dr("CargarDiferenciada")), Nothing, dr("CargarDiferenciada"))					
 				m_Activa = IIf(IsDBNull(dr("Activa")), Nothing, dr("Activa"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -363,7 +363,7 @@ Partial Public Class StbRutas
 				m_objSupervisor = IIf(IsDBNull(dr("objSupervisor")), Nothing, dr("objSupervisor"))					
 				m_DiaCobro = IIf(IsDBNull(dr("DiaCobro")), Nothing, dr("DiaCobro"))					
 				m_objPaisID = IIf(IsDBNull(dr("objPaisID")), Nothing, dr("objPaisID"))					
-				m_objCiudadID = IIf(IsDBNull(dr("objCiudadID")), Nothing, dr("objCiudadID"))					
+				m_objZonaID = IIf(IsDBNull(dr("objZonaID")), Nothing, dr("objZonaID"))					
 				m_CargarDiferenciada = IIf(IsDBNull(dr("CargarDiferenciada")), Nothing, dr("CargarDiferenciada"))					
 				m_Activa = IIf(IsDBNull(dr("Activa")), Nothing, dr("Activa"))					
 				m_FechaCreacion = IIf(IsDBNull(dr("FechaCreacion")), Nothing, dr("FechaCreacion"))					
@@ -502,7 +502,7 @@ Partial Public Class StbRutas
 		sCommand &= "objSupervisor,"
 		sCommand &= "DiaCobro,"
 		sCommand &= "objPaisID,"
-		sCommand &= "objCiudadID,"
+		sCommand &= "objZonaID,"
 		sCommand &= "CargarDiferenciada,"
 		sCommand &= "Activa,"
 		sCommand &= "FechaCreacion,"
@@ -516,7 +516,7 @@ Partial Public Class StbRutas
 		sCommand &= "@objSupervisor,"
 		sCommand &= "@DiaCobro,"
 		sCommand &= "@objPaisID,"
-		sCommand &= "@objCiudadID,"
+		sCommand &= "@objZonaID,"
 		sCommand &= "@CargarDiferenciada,"
 		sCommand &= "@Activa,"
 		sCommand &= "@FechaCreacion,"
@@ -564,11 +564,11 @@ Partial Public Class StbRutas
         Else
             arParams(5).Value = m_objPaisID
         End If
-		arParams(6) = New SqlParameter("@objCiudadID", SqlDbType.Int)		
-		If IsDBNull(m_objCiudadID) Then
+		arParams(6) = New SqlParameter("@objZonaID", SqlDbType.Int)		
+		If IsDBNull(m_objZonaID) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_objCiudadID
+            arParams(6).Value = m_objZonaID
         End If
 		arParams(7) = New SqlParameter("@CargarDiferenciada", SqlDbType.Bit)		
 		If IsDBNull(m_CargarDiferenciada) Then
@@ -647,7 +647,7 @@ Partial Public Class StbRutas
 		sCommand &= "objSupervisor = @objSupervisor,"
 		sCommand &= "DiaCobro = @DiaCobro,"
 		sCommand &= "objPaisID = @objPaisID,"
-		sCommand &= "objCiudadID = @objCiudadID,"
+		sCommand &= "objZonaID = @objZonaID,"
 		sCommand &= "CargarDiferenciada = @CargarDiferenciada,"
 		sCommand &= "Activa = @Activa,"
 		sCommand &= "FechaCreacion = @FechaCreacion,"
@@ -696,11 +696,11 @@ Partial Public Class StbRutas
         Else
             arParams(5).Value = m_objPaisID
         End If
-		arParams(6) = New SqlParameter("@objCiudadID", SqlDbType.Int)		
-		If IsDBNull(m_objCiudadID) Then
+		arParams(6) = New SqlParameter("@objZonaID", SqlDbType.Int)		
+		If IsDBNull(m_objZonaID) Then
             arParams(6).Value = DBNull.Value
         Else
-            arParams(6).Value = m_objCiudadID
+            arParams(6).Value = m_objZonaID
         End If
 		arParams(7) = New SqlParameter("@CargarDiferenciada", SqlDbType.Bit)		
 		If IsDBNull(m_CargarDiferenciada) Then
