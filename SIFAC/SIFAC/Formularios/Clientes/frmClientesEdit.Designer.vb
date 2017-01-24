@@ -23,16 +23,16 @@ Partial Class frmClientesEdit
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmClientesEdit))
         Me.grpDatos = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cmbciudad = New C1.Win.C1List.C1Combo()
+        Me.cmbRuta = New C1.Win.C1List.C1Combo()
         Me.txtReferencia = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.spnOrdenCobro = New System.Windows.Forms.NumericUpDown()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.cmbRuta = New C1.Win.C1List.C1Combo()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.tabAdicionales = New System.Windows.Forms.TabControl()
         Me.tabContactos = New System.Windows.Forms.TabPage()
@@ -41,10 +41,10 @@ Partial Class frmClientesEdit
         Me.cmdAgregarContacto = New System.Windows.Forms.ToolStripButton()
         Me.cmdEliminarContacto = New System.Windows.Forms.ToolStripButton()
         Me.grpPersonaNatural = New System.Windows.Forms.GroupBox()
+        Me.cmbGenero = New C1.Win.C1List.C1Combo()
         Me.cmdBuscar = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtpFechaNacimiento = New C1.Win.C1Input.C1DateEdit()
-        Me.cmbGenero = New C1.Win.C1List.C1Combo()
         Me.txtCedula = New System.Windows.Forms.MaskedTextBox()
         Me.txtSegundoApellido = New System.Windows.Forms.TextBox()
         Me.txtPrimerApellido = New System.Windows.Forms.TextBox()
@@ -62,107 +62,90 @@ Partial Class frmClientesEdit
         Me.panelcliente = New DevExpress.XtraEditors.PanelControl()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
-        Me.grpDatos.SuspendLayout
-        Me.GroupBox2.SuspendLayout
-        CType(Me.spnOrdenCobro,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.cmbRuta,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.cmbCiudad,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupBox1.SuspendLayout
-        Me.tabAdicionales.SuspendLayout
-        Me.tabContactos.SuspendLayout
-        CType(Me.tdbContactos,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.barContactos.SuspendLayout
-        Me.grpPersonaNatural.SuspendLayout
-        CType(Me.dtpFechaNacimiento,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.cmbGenero,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ErrPrv,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.panelcliente,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.panelcliente.SuspendLayout
-        Me.SuspendLayout
+        Me.grpDatos.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        CType(Me.cmbciudad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.spnOrdenCobro, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.tabAdicionales.SuspendLayout()
+        Me.tabContactos.SuspendLayout()
+        CType(Me.tdbContactos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.barContactos.SuspendLayout()
+        Me.grpPersonaNatural.SuspendLayout()
+        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtpFechaNacimiento, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrPrv, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.panelcliente, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelcliente.SuspendLayout()
+        Me.SuspendLayout()
         '
         'grpDatos
         '
         Me.grpDatos.Controls.Add(Me.GroupBox2)
         Me.grpDatos.Controls.Add(Me.GroupBox1)
         Me.grpDatos.Controls.Add(Me.grpPersonaNatural)
-        Me.grpDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grpDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpDatos.Location = New System.Drawing.Point(5, 5)
         Me.grpDatos.Name = "grpDatos"
-        Me.grpDatos.Size = New System.Drawing.Size(905, 424)
+        Me.grpDatos.Size = New System.Drawing.Size(935, 424)
         Me.grpDatos.TabIndex = 0
-        Me.grpDatos.TabStop = false
+        Me.grpDatos.TabStop = False
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.cmbciudad)
+        Me.GroupBox2.Controls.Add(Me.cmbRuta)
         Me.GroupBox2.Controls.Add(Me.txtReferencia)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.spnOrdenCobro)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.cmbRuta)
         Me.GroupBox2.Controls.Add(Me.txtDireccion)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.cmbCiudad)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 240)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(869, 178)
+        Me.GroupBox2.Size = New System.Drawing.Size(917, 178)
         Me.GroupBox2.TabIndex = 29
-        Me.GroupBox2.TabStop = false
+        Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ubicacion"
         '
-        'txtReferencia
+        'cmbciudad
         '
-        Me.txtReferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.txtReferencia.Location = New System.Drawing.Point(142, 106)
-        Me.txtReferencia.Multiline = true
-        Me.txtReferencia.Name = "txtReferencia"
-        Me.txtReferencia.Size = New System.Drawing.Size(328, 57)
-        Me.txtReferencia.TabIndex = 26
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = true
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Label6.Location = New System.Drawing.Point(9, 118)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(73, 13)
-        Me.Label6.TabIndex = 25
-        Me.Label6.Text = "Referencia:"
-        '
-        'spnOrdenCobro
-        '
-        Me.spnOrdenCobro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.spnOrdenCobro.Location = New System.Drawing.Point(650, 47)
-        Me.spnOrdenCobro.Name = "spnOrdenCobro"
-        Me.spnOrdenCobro.Size = New System.Drawing.Size(120, 20)
-        Me.spnOrdenCobro.TabIndex = 24
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = true
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Label5.Location = New System.Drawing.Point(519, 49)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(100, 13)
-        Me.Label5.TabIndex = 23
-        Me.Label5.Text = "Orden de Cobro:"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = true
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.Label4.Location = New System.Drawing.Point(519, 24)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(38, 13)
-        Me.Label4.TabIndex = 21
-        Me.Label4.Text = "Ruta:"
+        Me.cmbciudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbciudad.AutoCompletion = True
+        Me.cmbciudad.AutoDropDown = True
+        Me.cmbciudad.Caption = ""
+        Me.cmbciudad.CaptionHeight = 17
+        Me.cmbciudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbciudad.ColumnCaptionHeight = 17
+        Me.cmbciudad.ColumnFooterHeight = 17
+        Me.cmbciudad.ContentHeight = 15
+        Me.cmbciudad.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbciudad.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbciudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbciudad.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbciudad.EditorHeight = 15
+        Me.cmbciudad.Images.Add(CType(resources.GetObject("cmbciudad.Images"), System.Drawing.Image))
+        Me.cmbciudad.ItemHeight = 15
+        Me.cmbciudad.Location = New System.Drawing.Point(142, 16)
+        Me.cmbciudad.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbciudad.MaxDropDownItems = CType(5, Short)
+        Me.cmbciudad.MaxLength = 32767
+        Me.cmbciudad.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbciudad.Name = "cmbciudad"
+        Me.cmbciudad.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbciudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbciudad.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbciudad.Size = New System.Drawing.Size(229, 21)
+        Me.cmbciudad.TabIndex = 136
+        Me.cmbciudad.Tag = "OBLIGATORIO"
+        Me.cmbciudad.PropBag = resources.GetString("cmbciudad.PropBag")
         '
         'cmbRuta
         '
         Me.cmbRuta.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbRuta.AllowColMove = false
-        Me.cmbRuta.AllowSort = false
         Me.cmbRuta.AutoCompletion = True
         Me.cmbRuta.AutoDropDown = True
         Me.cmbRuta.Caption = ""
@@ -170,18 +153,15 @@ Partial Class frmClientesEdit
         Me.cmbRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbRuta.ColumnCaptionHeight = 17
         Me.cmbRuta.ColumnFooterHeight = 17
-        Me.cmbRuta.ColumnHeaders = False
-        Me.cmbRuta.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbRuta.ContentHeight = 15
         Me.cmbRuta.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbRuta.EditorBackColor = System.Drawing.SystemColors.Window
         Me.cmbRuta.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbRuta.EditorForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbRuta.EditorHeight = 15
-        Me.cmbRuta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbRuta.Images.Add(CType(resources.GetObject("cmbRuta.Images"), System.Drawing.Image))
         Me.cmbRuta.ItemHeight = 15
-        Me.cmbRuta.Location = New System.Drawing.Point(650, 19)
+        Me.cmbRuta.Location = New System.Drawing.Point(607, 19)
         Me.cmbRuta.MatchEntryTimeout = CType(2000, Long)
         Me.cmbRuta.MaxDropDownItems = CType(5, Short)
         Me.cmbRuta.MaxLength = 32767
@@ -190,10 +170,57 @@ Partial Class frmClientesEdit
         Me.cmbRuta.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbRuta.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbRuta.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbRuta.Size = New System.Drawing.Size(186, 21)
-        Me.cmbRuta.TabIndex = 22
+        Me.cmbRuta.Size = New System.Drawing.Size(271, 21)
+        Me.cmbRuta.TabIndex = 135
         Me.cmbRuta.Tag = "OBLIGATORIO"
         Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")
+        '
+        'txtReferencia
+        '
+        Me.txtReferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtReferencia.Location = New System.Drawing.Point(142, 106)
+        Me.txtReferencia.Multiline = True
+        Me.txtReferencia.Name = "txtReferencia"
+        Me.txtReferencia.Size = New System.Drawing.Size(328, 57)
+        Me.txtReferencia.TabIndex = 26
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(9, 118)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(73, 13)
+        Me.Label6.TabIndex = 25
+        Me.Label6.Text = "Referencia:"
+        '
+        'spnOrdenCobro
+        '
+        Me.spnOrdenCobro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spnOrdenCobro.Location = New System.Drawing.Point(607, 47)
+        Me.spnOrdenCobro.Name = "spnOrdenCobro"
+        Me.spnOrdenCobro.Size = New System.Drawing.Size(120, 20)
+        Me.spnOrdenCobro.TabIndex = 24
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(476, 49)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(100, 13)
+        Me.Label5.TabIndex = 23
+        Me.Label5.Text = "Orden de Cobro:"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(476, 24)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(38, 13)
+        Me.Label4.TabIndex = 21
+        Me.Label4.Text = "Ruta:"
         '
         'txtDireccion
         '
@@ -224,47 +251,10 @@ Partial Class frmClientesEdit
         Me.Label1.TabIndex = 17
         Me.Label1.Text = "Ciudad:"
         '
-        'cmbCiudad
-        '
-        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCiudad.AllowColMove = False
-        Me.cmbCiudad.AllowSort = False
-        Me.cmbCiudad.AutoCompletion = True
-        Me.cmbCiudad.AutoDropDown = True
-        Me.cmbCiudad.Caption = ""
-        Me.cmbCiudad.CaptionHeight = 17
-        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbCiudad.ColumnCaptionHeight = 17
-        Me.cmbCiudad.ColumnFooterHeight = 17
-        Me.cmbCiudad.ColumnHeaders = False
-        Me.cmbCiudad.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbCiudad.ContentHeight = 15
-        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCiudad.EditorHeight = 15
-        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
-        Me.cmbCiudad.ItemHeight = 15
-        Me.cmbCiudad.Location = New System.Drawing.Point(142, 16)
-        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
-        Me.cmbCiudad.MaxLength = 32767
-        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbCiudad.Name = "cmbCiudad"
-        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.Size = New System.Drawing.Size(186, 21)
-        Me.cmbCiudad.TabIndex = 18
-        Me.cmbCiudad.Tag = "OBLIGATORIO"
-        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
-        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.tabAdicionales)
-        Me.GroupBox1.Location = New System.Drawing.Point(472, 14)
+        Me.GroupBox1.Location = New System.Drawing.Point(491, 14)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(409, 212)
         Me.GroupBox1.TabIndex = 0
@@ -347,10 +337,10 @@ Partial Class frmClientesEdit
         '
         'grpPersonaNatural
         '
+        Me.grpPersonaNatural.Controls.Add(Me.cmbGenero)
         Me.grpPersonaNatural.Controls.Add(Me.cmdBuscar)
         Me.grpPersonaNatural.Controls.Add(Me.Label3)
         Me.grpPersonaNatural.Controls.Add(Me.dtpFechaNacimiento)
-        Me.grpPersonaNatural.Controls.Add(Me.cmbGenero)
         Me.grpPersonaNatural.Controls.Add(Me.txtCedula)
         Me.grpPersonaNatural.Controls.Add(Me.txtSegundoApellido)
         Me.grpPersonaNatural.Controls.Add(Me.txtPrimerApellido)
@@ -368,6 +358,38 @@ Partial Class frmClientesEdit
         Me.grpPersonaNatural.TabIndex = 2
         Me.grpPersonaNatural.TabStop = False
         Me.grpPersonaNatural.Text = "Persona"
+        '
+        'cmbGenero
+        '
+        Me.cmbGenero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbGenero.AutoCompletion = True
+        Me.cmbGenero.AutoDropDown = True
+        Me.cmbGenero.Caption = ""
+        Me.cmbGenero.CaptionHeight = 17
+        Me.cmbGenero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbGenero.ColumnCaptionHeight = 17
+        Me.cmbGenero.ColumnFooterHeight = 17
+        Me.cmbGenero.ContentHeight = 15
+        Me.cmbGenero.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbGenero.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbGenero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbGenero.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbGenero.EditorHeight = 15
+        Me.cmbGenero.Images.Add(CType(resources.GetObject("cmbGenero.Images"), System.Drawing.Image))
+        Me.cmbGenero.ItemHeight = 15
+        Me.cmbGenero.Location = New System.Drawing.Point(150, 124)
+        Me.cmbGenero.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbGenero.MaxDropDownItems = CType(5, Short)
+        Me.cmbGenero.MaxLength = 32767
+        Me.cmbGenero.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbGenero.Name = "cmbGenero"
+        Me.cmbGenero.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbGenero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbGenero.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbGenero.Size = New System.Drawing.Size(170, 21)
+        Me.cmbGenero.TabIndex = 137
+        Me.cmbGenero.Tag = "OBLIGATORIO"
+        Me.cmbGenero.PropBag = resources.GetString("cmbGenero.PropBag")
         '
         'cmdBuscar
         '
@@ -424,46 +446,9 @@ Partial Class frmClientesEdit
         Me.dtpFechaNacimiento.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         Me.dtpFechaNacimiento.VisualStyle = C1.Win.C1Input.VisualStyle.System
         '
-        'cmbGenero
-        '
-        Me.cmbGenero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbGenero.AllowColMove = False
-        Me.cmbGenero.AllowSort = False
-        Me.cmbGenero.AutoCompletion = True
-        Me.cmbGenero.AutoDropDown = True
-        Me.cmbGenero.Caption = ""
-        Me.cmbGenero.CaptionHeight = 17
-        Me.cmbGenero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbGenero.ColumnCaptionHeight = 17
-        Me.cmbGenero.ColumnFooterHeight = 17
-        Me.cmbGenero.ColumnHeaders = false
-        Me.cmbGenero.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbGenero.ContentHeight = 15
-        Me.cmbGenero.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbGenero.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbGenero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbGenero.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbGenero.EditorHeight = 15
-        Me.cmbGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmbGenero.Images.Add(CType(resources.GetObject("cmbGenero.Images"),System.Drawing.Image))
-        Me.cmbGenero.ItemHeight = 15
-        Me.cmbGenero.Location = New System.Drawing.Point(150, 125)
-        Me.cmbGenero.MatchEntryTimeout = CType(2000,Long)
-        Me.cmbGenero.MaxDropDownItems = CType(5,Short)
-        Me.cmbGenero.MaxLength = 32767
-        Me.cmbGenero.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbGenero.Name = "cmbGenero"
-        Me.cmbGenero.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbGenero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbGenero.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbGenero.Size = New System.Drawing.Size(170, 21)
-        Me.cmbGenero.TabIndex = 6
-        Me.cmbGenero.Tag = "OBLIGATORIO"
-        Me.cmbGenero.PropBag = resources.GetString("cmbGenero.PropBag")
-        '
         'txtCedula
         '
-        Me.txtCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCedula.Location = New System.Drawing.Point(150, 181)
         Me.txtCedula.Mask = "000-000000-0000L"
         Me.txtCedula.Name = "txtCedula"
@@ -472,7 +457,7 @@ Partial Class frmClientesEdit
         '
         'txtSegundoApellido
         '
-        Me.txtSegundoApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtSegundoApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSegundoApellido.Location = New System.Drawing.Point(150, 98)
         Me.txtSegundoApellido.Name = "txtSegundoApellido"
         Me.txtSegundoApellido.Size = New System.Drawing.Size(170, 20)
@@ -480,7 +465,7 @@ Partial Class frmClientesEdit
         '
         'txtPrimerApellido
         '
-        Me.txtPrimerApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPrimerApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPrimerApellido.Location = New System.Drawing.Point(150, 73)
         Me.txtPrimerApellido.Name = "txtPrimerApellido"
         Me.txtPrimerApellido.Size = New System.Drawing.Size(170, 20)
@@ -489,7 +474,7 @@ Partial Class frmClientesEdit
         '
         'txtSegundoNombre
         '
-        Me.txtSegundoNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtSegundoNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSegundoNombre.Location = New System.Drawing.Point(150, 48)
         Me.txtSegundoNombre.Name = "txtSegundoNombre"
         Me.txtSegundoNombre.Size = New System.Drawing.Size(170, 20)
@@ -497,7 +482,7 @@ Partial Class frmClientesEdit
         '
         'txtPrimerNombre
         '
-        Me.txtPrimerNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.txtPrimerNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPrimerNombre.Location = New System.Drawing.Point(150, 23)
         Me.txtPrimerNombre.Name = "txtPrimerNombre"
         Me.txtPrimerNombre.Size = New System.Drawing.Size(170, 20)
@@ -506,8 +491,8 @@ Partial Class frmClientesEdit
         '
         'lblFechaNacimiento
         '
-        Me.lblFechaNacimiento.AutoSize = true
-        Me.lblFechaNacimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblFechaNacimiento.AutoSize = True
+        Me.lblFechaNacimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFechaNacimiento.Location = New System.Drawing.Point(10, 157)
         Me.lblFechaNacimiento.Name = "lblFechaNacimiento"
         Me.lblFechaNacimiento.Size = New System.Drawing.Size(131, 13)
@@ -516,8 +501,8 @@ Partial Class frmClientesEdit
         '
         'lblSegundoApellido
         '
-        Me.lblSegundoApellido.AutoSize = true
-        Me.lblSegundoApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblSegundoApellido.AutoSize = True
+        Me.lblSegundoApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSegundoApellido.Location = New System.Drawing.Point(10, 103)
         Me.lblSegundoApellido.Name = "lblSegundoApellido"
         Me.lblSegundoApellido.Size = New System.Drawing.Size(110, 13)
@@ -526,8 +511,8 @@ Partial Class frmClientesEdit
         '
         'lblGenero
         '
-        Me.lblGenero.AutoSize = true
-        Me.lblGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblGenero.AutoSize = True
+        Me.lblGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblGenero.Location = New System.Drawing.Point(10, 130)
         Me.lblGenero.Name = "lblGenero"
         Me.lblGenero.Size = New System.Drawing.Size(52, 13)
@@ -537,8 +522,8 @@ Partial Class frmClientesEdit
         '
         'lblPrimerApellido
         '
-        Me.lblPrimerApellido.AutoSize = true
-        Me.lblPrimerApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblPrimerApellido.AutoSize = True
+        Me.lblPrimerApellido.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPrimerApellido.Location = New System.Drawing.Point(10, 78)
         Me.lblPrimerApellido.Name = "lblPrimerApellido"
         Me.lblPrimerApellido.Size = New System.Drawing.Size(95, 13)
@@ -548,8 +533,8 @@ Partial Class frmClientesEdit
         '
         'lblPrimerNombre
         '
-        Me.lblPrimerNombre.AutoSize = true
-        Me.lblPrimerNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblPrimerNombre.AutoSize = True
+        Me.lblPrimerNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPrimerNombre.Location = New System.Drawing.Point(10, 28)
         Me.lblPrimerNombre.Name = "lblPrimerNombre"
         Me.lblPrimerNombre.Size = New System.Drawing.Size(93, 13)
@@ -559,8 +544,8 @@ Partial Class frmClientesEdit
         '
         'lblSegundoNombre
         '
-        Me.lblSegundoNombre.AutoSize = true
-        Me.lblSegundoNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblSegundoNombre.AutoSize = True
+        Me.lblSegundoNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSegundoNombre.Location = New System.Drawing.Point(10, 53)
         Me.lblSegundoNombre.Name = "lblSegundoNombre"
         Me.lblSegundoNombre.Size = New System.Drawing.Size(108, 13)
@@ -583,30 +568,30 @@ Partial Class frmClientesEdit
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 476)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(922, 16)
+        Me.Panel1.Size = New System.Drawing.Size(952, 16)
         Me.Panel1.TabIndex = 26
         '
         'panelcliente
         '
-        Me.panelcliente.Controls.Add(Me.grpDatos)
         Me.panelcliente.Controls.Add(Me.SimpleButton1)
         Me.panelcliente.Controls.Add(Me.cmdGuardar)
+        Me.panelcliente.Controls.Add(Me.grpDatos)
         Me.panelcliente.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelcliente.Location = New System.Drawing.Point(0, 0)
         Me.panelcliente.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.panelcliente.LookAndFeel.UseDefaultLookAndFeel = false
+        Me.panelcliente.LookAndFeel.UseDefaultLookAndFeel = False
         Me.panelcliente.Name = "panelcliente"
-        Me.panelcliente.Size = New System.Drawing.Size(922, 492)
+        Me.panelcliente.Size = New System.Drawing.Size(952, 492)
         Me.panelcliente.TabIndex = 27
         '
         'SimpleButton1
         '
-        Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.SimpleButton1.Appearance.Options.UseFont = true
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"),System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(831, 435)
+        Me.SimpleButton1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SimpleButton1.Appearance.Options.UseFont = True
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(865, 435)
         Me.SimpleButton1.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = false
+        Me.SimpleButton1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(75, 28)
         Me.SimpleButton1.TabIndex = 5
@@ -615,13 +600,13 @@ Partial Class frmClientesEdit
         '
         'cmdGuardar
         '
-        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.cmdGuardar.Appearance.Options.UseFont = true
-        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"),System.Drawing.Image)
+        Me.cmdGuardar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdGuardar.Appearance.Options.UseFont = True
+        Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(745, 435)
+        Me.cmdGuardar.Location = New System.Drawing.Point(779, 435)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
-        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = false
+        Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
         Me.cmdGuardar.TabIndex = 4
@@ -630,41 +615,41 @@ Partial Class frmClientesEdit
         '
         'frmClientesEdit
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(922, 492)
+        Me.ClientSize = New System.Drawing.Size(952, 492)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.panelcliente)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
-        Me.MaximizeBox = false
-        Me.MinimizeBox = false
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmClientesEdit"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Clientes"
-        Me.grpDatos.ResumeLayout(false)
-        Me.GroupBox2.ResumeLayout(false)
-        Me.GroupBox2.PerformLayout
-        CType(Me.spnOrdenCobro,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.cmbRuta,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.cmbCiudad,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox1.ResumeLayout(false)
-        Me.tabAdicionales.ResumeLayout(false)
-        Me.tabContactos.ResumeLayout(false)
-        Me.tabContactos.PerformLayout
-        CType(Me.tdbContactos,System.ComponentModel.ISupportInitialize).EndInit
-        Me.barContactos.ResumeLayout(false)
-        Me.barContactos.PerformLayout
-        Me.grpPersonaNatural.ResumeLayout(false)
-        Me.grpPersonaNatural.PerformLayout
-        CType(Me.dtpFechaNacimiento,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.cmbGenero,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ErrPrv,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.panelcliente,System.ComponentModel.ISupportInitialize).EndInit
-        Me.panelcliente.ResumeLayout(false)
-        Me.ResumeLayout(false)
+        Me.grpDatos.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        CType(Me.cmbciudad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spnOrdenCobro, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.tabAdicionales.ResumeLayout(False)
+        Me.tabContactos.ResumeLayout(False)
+        Me.tabContactos.PerformLayout()
+        CType(Me.tdbContactos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.barContactos.ResumeLayout(False)
+        Me.barContactos.PerformLayout()
+        Me.grpPersonaNatural.ResumeLayout(False)
+        Me.grpPersonaNatural.PerformLayout()
+        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtpFechaNacimiento, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrPrv, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.panelcliente, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelcliente.ResumeLayout(False)
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
     Friend WithEvents grpDatos As System.Windows.Forms.GroupBox
     Friend WithEvents grpPersonaNatural As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -686,24 +671,24 @@ End Sub
     Friend WithEvents txtPrimerApellido As System.Windows.Forms.TextBox
     Friend WithEvents txtSegundoNombre As System.Windows.Forms.TextBox
     Friend WithEvents ErrPrv As System.Windows.Forms.ErrorProvider
-    Friend WithEvents cmbGenero As C1.Win.C1List.C1Combo
     Friend WithEvents ArchivoDialogo As System.Windows.Forms.OpenFileDialog
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Public WithEvents dtpFechaNacimiento As C1.Win.C1Input.C1DateEdit
     Friend WithEvents panelcliente As DevExpress.XtraEditors.PanelControl
     Friend WithEvents txtDireccion As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents cmbCiudad As C1.Win.C1List.C1Combo
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents cmbRuta As C1.Win.C1List.C1Combo
     Friend WithEvents spnOrdenCobro As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents cmdBuscar As System.Windows.Forms.Button
     Friend WithEvents txtReferencia As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents cmbciudad As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbRuta As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbGenero As C1.Win.C1List.C1Combo
 End Class

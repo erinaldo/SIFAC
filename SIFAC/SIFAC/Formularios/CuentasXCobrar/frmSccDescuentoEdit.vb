@@ -149,11 +149,7 @@ Public Class frmSccDescuentoEdit
             Return False
             Exit Function
         End If
-        If spnDescuentoMinimo.Value = 0.0 Then
-            ErrorProv.SetError(spnDescuentoMinimo, My.Resources.MsgObligatorio)
-            Return False
-            Exit Function
-        End If
+       
         If spnDescuentoMaximo.Value = 0.0 Then
             ErrorProv.SetError(spnDescuentoMaximo, My.Resources.MsgObligatorio)
             Return False

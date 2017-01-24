@@ -23,11 +23,11 @@ Partial Class frmPedidosEdit
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPedidosEdit))
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.dtaFechaAutorizado = New C1.Win.C1Input.C1DateEdit()
@@ -52,14 +52,14 @@ Partial Class frmPedidosEdit
         Me.colCostoTotal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCostoUnitario = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cmbNombreProducto = New C1.Win.C1List.C1Combo()
+        Me.cmbMarca = New C1.Win.C1List.C1Combo()
+        Me.cmbCategoria = New C1.Win.C1List.C1Combo()
         Me.spnImpuestoUnitario = New DevExpress.XtraEditors.SpinEdit()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.spnCostoUnitario = New DevExpress.XtraEditors.SpinEdit()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.cmbNombreProducto = New DevExpress.XtraEditors.LookUpEdit()
-        Me.cmbMarca = New DevExpress.XtraEditors.LookUpEdit()
         Me.cmdAgregar = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmbCategoria = New DevExpress.XtraEditors.LookUpEdit()
         Me.dtpFecha = New C1.Win.C1Input.C1DateEdit()
         Me.lblNombreProducto = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -89,11 +89,11 @@ Partial Class frmPedidosEdit
         CType(Me.grdDetallePedidos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdDetallePedidosTabla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.cmbNombreProducto, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbMarca, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbCategoria, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spnImpuestoUnitario.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spnCostoUnitario.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.spnCantidad.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -252,7 +252,7 @@ Partial Class frmPedidosEdit
         Me.spnTotalCosto.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnTotalCosto.Location = New System.Drawing.Point(662, 309)
         Me.spnTotalCosto.Name = "spnTotalCosto"
-        Me.spnTotalCosto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, "", Nothing, Nothing, True)})
+        Me.spnTotalCosto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
         Me.spnTotalCosto.Size = New System.Drawing.Size(128, 20)
         Me.spnTotalCosto.TabIndex = 129
         '
@@ -406,14 +406,14 @@ Partial Class frmPedidosEdit
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.cmbNombreProducto)
+        Me.GroupBox2.Controls.Add(Me.cmbMarca)
+        Me.GroupBox2.Controls.Add(Me.cmbCategoria)
         Me.GroupBox2.Controls.Add(Me.spnImpuestoUnitario)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Controls.Add(Me.spnCostoUnitario)
         Me.GroupBox2.Controls.Add(Me.Label11)
-        Me.GroupBox2.Controls.Add(Me.cmbNombreProducto)
-        Me.GroupBox2.Controls.Add(Me.cmbMarca)
         Me.GroupBox2.Controls.Add(Me.cmdAgregar)
-        Me.GroupBox2.Controls.Add(Me.cmbCategoria)
         Me.GroupBox2.Controls.Add(Me.dtpFecha)
         Me.GroupBox2.Controls.Add(Me.lblNombreProducto)
         Me.GroupBox2.Controls.Add(Me.Label5)
@@ -429,12 +429,109 @@ Partial Class frmPedidosEdit
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Buscar Producto"
         '
+        'cmbNombreProducto
+        '
+        Me.cmbNombreProducto.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbNombreProducto.AutoCompletion = True
+        Me.cmbNombreProducto.AutoDropDown = True
+        Me.cmbNombreProducto.Caption = ""
+        Me.cmbNombreProducto.CaptionHeight = 17
+        Me.cmbNombreProducto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbNombreProducto.ColumnCaptionHeight = 17
+        Me.cmbNombreProducto.ColumnFooterHeight = 17
+        Me.cmbNombreProducto.ContentHeight = 15
+        Me.cmbNombreProducto.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbNombreProducto.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbNombreProducto.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbNombreProducto.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbNombreProducto.EditorHeight = 15
+        Me.cmbNombreProducto.ExtendRightColumn = True
+        Me.cmbNombreProducto.Images.Add(CType(resources.GetObject("cmbNombreProducto.Images"), System.Drawing.Image))
+        Me.cmbNombreProducto.ItemHeight = 15
+        Me.cmbNombreProducto.Location = New System.Drawing.Point(129, 81)
+        Me.cmbNombreProducto.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbNombreProducto.MaxDropDownItems = CType(5, Short)
+        Me.cmbNombreProducto.MaxLength = 32767
+        Me.cmbNombreProducto.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbNombreProducto.Name = "cmbNombreProducto"
+        Me.cmbNombreProducto.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbNombreProducto.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbNombreProducto.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbNombreProducto.Size = New System.Drawing.Size(166, 21)
+        Me.cmbNombreProducto.TabIndex = 137
+        Me.cmbNombreProducto.Tag = "OBLIGATORIO"
+        Me.cmbNombreProducto.PropBag = resources.GetString("cmbNombreProducto.PropBag")
+        '
+        'cmbMarca
+        '
+        Me.cmbMarca.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbMarca.AutoCompletion = True
+        Me.cmbMarca.AutoDropDown = True
+        Me.cmbMarca.Caption = ""
+        Me.cmbMarca.CaptionHeight = 17
+        Me.cmbMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbMarca.ColumnCaptionHeight = 17
+        Me.cmbMarca.ColumnFooterHeight = 17
+        Me.cmbMarca.ContentHeight = 15
+        Me.cmbMarca.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbMarca.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbMarca.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMarca.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbMarca.EditorHeight = 15
+        Me.cmbMarca.Images.Add(CType(resources.GetObject("cmbMarca.Images"), System.Drawing.Image))
+        Me.cmbMarca.ItemHeight = 15
+        Me.cmbMarca.Location = New System.Drawing.Point(129, 56)
+        Me.cmbMarca.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbMarca.MaxDropDownItems = CType(5, Short)
+        Me.cmbMarca.MaxLength = 32767
+        Me.cmbMarca.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbMarca.Name = "cmbMarca"
+        Me.cmbMarca.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbMarca.Size = New System.Drawing.Size(166, 21)
+        Me.cmbMarca.TabIndex = 136
+        Me.cmbMarca.Tag = "OBLIGATORIO"
+        Me.cmbMarca.PropBag = resources.GetString("cmbMarca.PropBag")
+        '
+        'cmbCategoria
+        '
+        Me.cmbCategoria.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCategoria.AutoCompletion = True
+        Me.cmbCategoria.AutoDropDown = True
+        Me.cmbCategoria.Caption = ""
+        Me.cmbCategoria.CaptionHeight = 17
+        Me.cmbCategoria.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCategoria.ColumnCaptionHeight = 17
+        Me.cmbCategoria.ColumnFooterHeight = 17
+        Me.cmbCategoria.ContentHeight = 15
+        Me.cmbCategoria.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCategoria.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCategoria.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCategoria.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCategoria.EditorHeight = 15
+        Me.cmbCategoria.Images.Add(CType(resources.GetObject("cmbCategoria.Images"), System.Drawing.Image))
+        Me.cmbCategoria.ItemHeight = 15
+        Me.cmbCategoria.Location = New System.Drawing.Point(129, 30)
+        Me.cmbCategoria.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCategoria.MaxDropDownItems = CType(5, Short)
+        Me.cmbCategoria.MaxLength = 32767
+        Me.cmbCategoria.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCategoria.Name = "cmbCategoria"
+        Me.cmbCategoria.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCategoria.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCategoria.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCategoria.Size = New System.Drawing.Size(166, 21)
+        Me.cmbCategoria.TabIndex = 135
+        Me.cmbCategoria.Tag = "OBLIGATORIO"
+        Me.cmbCategoria.PropBag = resources.GetString("cmbCategoria.PropBag")
+        '
         'spnImpuestoUnitario
         '
         Me.spnImpuestoUnitario.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnImpuestoUnitario.Location = New System.Drawing.Point(457, 85)
         Me.spnImpuestoUnitario.Name = "spnImpuestoUnitario"
-        Me.spnImpuestoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
+        Me.spnImpuestoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
         Me.spnImpuestoUnitario.Size = New System.Drawing.Size(80, 20)
         Me.spnImpuestoUnitario.TabIndex = 129
         '
@@ -454,7 +551,7 @@ Partial Class frmPedidosEdit
         Me.spnCostoUnitario.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnCostoUnitario.Location = New System.Drawing.Point(457, 59)
         Me.spnCostoUnitario.Name = "spnCostoUnitario"
-        Me.spnCostoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
+        Me.spnCostoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
         Me.spnCostoUnitario.Size = New System.Drawing.Size(80, 20)
         Me.spnCostoUnitario.TabIndex = 127
         '
@@ -469,28 +566,6 @@ Partial Class frmPedidosEdit
         Me.Label11.Tag = ""
         Me.Label11.Text = "Costo unitario:"
         '
-        'cmbNombreProducto
-        '
-        Me.cmbNombreProducto.Location = New System.Drawing.Point(129, 84)
-        Me.cmbNombreProducto.Name = "cmbNombreProducto"
-        Me.cmbNombreProducto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbNombreProducto.Properties.NullText = ""
-        Me.cmbNombreProducto.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
-        Me.cmbNombreProducto.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.cmbNombreProducto.Size = New System.Drawing.Size(166, 20)
-        Me.cmbNombreProducto.TabIndex = 125
-        '
-        'cmbMarca
-        '
-        Me.cmbMarca.Location = New System.Drawing.Point(129, 58)
-        Me.cmbMarca.Name = "cmbMarca"
-        Me.cmbMarca.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbMarca.Properties.NullText = ""
-        Me.cmbMarca.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
-        Me.cmbMarca.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.cmbMarca.Size = New System.Drawing.Size(166, 20)
-        Me.cmbMarca.TabIndex = 124
-        '
         'cmdAgregar
         '
         Me.cmdAgregar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -504,17 +579,6 @@ Partial Class frmPedidosEdit
         Me.cmdAgregar.Size = New System.Drawing.Size(32, 28)
         Me.cmdAgregar.TabIndex = 115
         Me.cmdAgregar.Tag = "AGREGAR"
-        '
-        'cmbCategoria
-        '
-        Me.cmbCategoria.Location = New System.Drawing.Point(129, 32)
-        Me.cmbCategoria.Name = "cmbCategoria"
-        Me.cmbCategoria.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cmbCategoria.Properties.NullText = ""
-        Me.cmbCategoria.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete
-        Me.cmbCategoria.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.cmbCategoria.Size = New System.Drawing.Size(166, 20)
-        Me.cmbCategoria.TabIndex = 123
         '
         'dtpFecha
         '
@@ -570,7 +634,7 @@ Partial Class frmPedidosEdit
         Me.spnCantidad.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
         Me.spnCantidad.Location = New System.Drawing.Point(457, 31)
         Me.spnCantidad.Name = "spnCantidad"
-        Me.spnCantidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
+        Me.spnCantidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, True)})
         Me.spnCantidad.Size = New System.Drawing.Size(80, 20)
         Me.spnCantidad.TabIndex = 117
         '
@@ -743,11 +807,11 @@ Partial Class frmPedidosEdit
         CType(Me.grdDetallePedidosTabla, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.cmbNombreProducto, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbMarca, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbCategoria, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spnImpuestoUnitario.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spnCostoUnitario.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbNombreProducto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbMarca.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbCategoria.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFecha, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spnCantidad.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbEstado.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -784,10 +848,7 @@ Partial Class frmPedidosEdit
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents spnCostoUnitario As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents cmbNombreProducto As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents cmbMarca As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents cmdAgregar As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents cmbCategoria As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents dtpFecha As C1.Win.C1Input.C1DateEdit
     Friend WithEvents lblNombreProducto As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -805,4 +866,7 @@ Partial Class frmPedidosEdit
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents ErrorFactura As System.Windows.Forms.ErrorProvider
+    Friend WithEvents cmbNombreProducto As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbMarca As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbCategoria As C1.Win.C1List.C1Combo
 End Class

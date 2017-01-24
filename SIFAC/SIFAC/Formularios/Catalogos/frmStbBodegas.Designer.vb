@@ -199,7 +199,7 @@ Partial Class frmStbBodegas
         '
         Me.colActiva.Caption = "Activa"
         Me.colActiva.ColumnEdit = Me.RepositoryItemCheckEdit1
-        Me.colActiva.FieldName = "Activa"
+        Me.colActiva.FieldName = "Activo"
         Me.colActiva.Name = "colActiva"
         Me.colActiva.OptionsColumn.AllowEdit = False
         Me.colActiva.OptionsColumn.ReadOnly = True

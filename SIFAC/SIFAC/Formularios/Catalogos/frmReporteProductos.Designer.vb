@@ -27,14 +27,16 @@ Partial Class frmReporteProductos
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cboMarca = New C1.Win.C1List.C1Combo()
+        Me.cboCategoria = New C1.Win.C1List.C1Combo()
         Me.rbTodos = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.cboCategoria = New System.Windows.Forms.ComboBox()
-        Me.cboMarca = New System.Windows.Forms.ComboBox()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.cboMarca, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboCategoria, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdCancelar
@@ -92,6 +94,70 @@ Partial Class frmReporteProductos
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Criterios"
         '
+        'cboMarca
+        '
+        Me.cboMarca.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cboMarca.AutoCompletion = True
+        Me.cboMarca.AutoDropDown = True
+        Me.cboMarca.Caption = ""
+        Me.cboMarca.CaptionHeight = 17
+        Me.cboMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cboMarca.ColumnCaptionHeight = 17
+        Me.cboMarca.ColumnFooterHeight = 17
+        Me.cboMarca.ContentHeight = 15
+        Me.cboMarca.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cboMarca.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cboMarca.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboMarca.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cboMarca.EditorHeight = 15
+        Me.cboMarca.Images.Add(CType(resources.GetObject("cboMarca.Images"), System.Drawing.Image))
+        Me.cboMarca.ItemHeight = 15
+        Me.cboMarca.Location = New System.Drawing.Point(106, 55)
+        Me.cboMarca.MatchEntryTimeout = CType(2000, Long)
+        Me.cboMarca.MaxDropDownItems = CType(5, Short)
+        Me.cboMarca.MaxLength = 32767
+        Me.cboMarca.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cboMarca.Name = "cboMarca"
+        Me.cboMarca.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cboMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cboMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cboMarca.Size = New System.Drawing.Size(206, 21)
+        Me.cboMarca.TabIndex = 136
+        Me.cboMarca.Tag = "OBLIGATORIO"
+        Me.cboMarca.PropBag = resources.GetString("cboMarca.PropBag")
+        '
+        'cboCategoria
+        '
+        Me.cboCategoria.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cboCategoria.AutoCompletion = True
+        Me.cboCategoria.AutoDropDown = True
+        Me.cboCategoria.Caption = ""
+        Me.cboCategoria.CaptionHeight = 17
+        Me.cboCategoria.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cboCategoria.ColumnCaptionHeight = 17
+        Me.cboCategoria.ColumnFooterHeight = 17
+        Me.cboCategoria.ContentHeight = 15
+        Me.cboCategoria.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cboCategoria.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cboCategoria.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboCategoria.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cboCategoria.EditorHeight = 15
+        Me.cboCategoria.Images.Add(CType(resources.GetObject("cboCategoria.Images"), System.Drawing.Image))
+        Me.cboCategoria.ItemHeight = 15
+        Me.cboCategoria.Location = New System.Drawing.Point(106, 25)
+        Me.cboCategoria.MatchEntryTimeout = CType(2000, Long)
+        Me.cboCategoria.MaxDropDownItems = CType(5, Short)
+        Me.cboCategoria.MaxLength = 32767
+        Me.cboCategoria.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cboCategoria.Name = "cboCategoria"
+        Me.cboCategoria.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cboCategoria.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cboCategoria.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cboCategoria.Size = New System.Drawing.Size(206, 21)
+        Me.cboCategoria.TabIndex = 137
+        Me.cboCategoria.Tag = "OBLIGATORIO"
+        Me.cboCategoria.PropBag = resources.GetString("cboCategoria.PropBag")
+        '
         'rbTodos
         '
         Me.rbTodos.AutoSize = True
@@ -124,24 +190,6 @@ Partial Class frmReporteProductos
         Me.Label2.Tag = "OBLIGATORIO"
         Me.Label2.Text = "Categoria:"
         '
-        'cboCategoria
-        '
-        Me.cboCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboCategoria.FormattingEnabled = True
-        Me.cboCategoria.Location = New System.Drawing.Point(106, 28)
-        Me.cboCategoria.Name = "cboCategoria"
-        Me.cboCategoria.Size = New System.Drawing.Size(206, 21)
-        Me.cboCategoria.TabIndex = 131
-        '
-        'cboMarca
-        '
-        Me.cboMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboMarca.FormattingEnabled = True
-        Me.cboMarca.Location = New System.Drawing.Point(106, 55)
-        Me.cboMarca.Name = "cboMarca"
-        Me.cboMarca.Size = New System.Drawing.Size(206, 21)
-        Me.cboMarca.TabIndex = 132
-        '
         'frmReporteProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -160,6 +208,8 @@ Partial Class frmReporteProductos
         Me.PanelControl1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.cboMarca, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboCategoria, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -170,6 +220,6 @@ Partial Class frmReporteProductos
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents rbTodos As System.Windows.Forms.CheckBox
-    Friend WithEvents cboMarca As System.Windows.Forms.ComboBox
-    Friend WithEvents cboCategoria As System.Windows.Forms.ComboBox
+    Friend WithEvents cboMarca As C1.Win.C1List.C1Combo
+    Friend WithEvents cboCategoria As C1.Win.C1List.C1Combo
 End Class

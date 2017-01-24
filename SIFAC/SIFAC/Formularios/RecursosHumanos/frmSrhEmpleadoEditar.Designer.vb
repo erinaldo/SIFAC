@@ -22,12 +22,11 @@ Partial Class frmSrhEmpleadoEditar
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSrhEmpleadoEditar))
         Me.grbDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
         Me.dtpFechaNacimiento = New DevExpress.XtraEditors.DateEdit()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
-        Me.cmbGenero = New C1.Win.C1List.C1Combo()
         Me.txtCedula = New System.Windows.Forms.MaskedTextBox()
         Me.lblFechaNacimiento = New System.Windows.Forms.Label()
         Me.txtApellido2 = New System.Windows.Forms.TextBox()
@@ -44,11 +43,11 @@ Partial Class frmSrhEmpleadoEditar
         Me.lblNombre1 = New System.Windows.Forms.Label()
         Me.lblPersonaID = New System.Windows.Forms.Label()
         Me.grbRH = New System.Windows.Forms.GroupBox()
+        Me.cmbCargo = New C1.Win.C1List.C1Combo()
         Me.dtpFechaIngreso = New DevExpress.XtraEditors.DateEdit()
         Me.dtpFechaEgresoE = New DevExpress.XtraEditors.DateEdit()
         Me.txtCodigoIME = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cmbCargo = New C1.Win.C1List.C1Combo()
         Me.lblFechaEgreso = New System.Windows.Forms.Label()
         Me.lblFechaIngreso = New System.Windows.Forms.Label()
         Me.lblCargo = New System.Windows.Forms.Label()
@@ -58,6 +57,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmbGenero = New C1.Win.C1List.C1Combo()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.tabAdicionales = New System.Windows.Forms.TabControl()
         Me.tabContactos = New System.Windows.Forms.TabPage()
@@ -67,19 +67,19 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmdEliminarContacto = New System.Windows.Forms.ToolStripButton()
         Me.ErrPrv = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.grbDatosGenerales.SuspendLayout()
+        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grbRH.SuspendLayout()
+        CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaIngreso.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaIngreso.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaEgresoE.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaEgresoE.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
+        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.tabAdicionales.SuspendLayout()
         Me.tabContactos.SuspendLayout()
@@ -90,12 +90,11 @@ Partial Class frmSrhEmpleadoEditar
         '
         'grbDatosGenerales
         '
+        Me.grbDatosGenerales.Controls.Add(Me.cmbCiudad)
         Me.grbDatosGenerales.Controls.Add(Me.dtpFechaNacimiento)
         Me.grbDatosGenerales.Controls.Add(Me.txtDireccion)
         Me.grbDatosGenerales.Controls.Add(Me.Label4)
         Me.grbDatosGenerales.Controls.Add(Me.Label5)
-        Me.grbDatosGenerales.Controls.Add(Me.cmbCiudad)
-        Me.grbDatosGenerales.Controls.Add(Me.cmbGenero)
         Me.grbDatosGenerales.Controls.Add(Me.txtCedula)
         Me.grbDatosGenerales.Controls.Add(Me.lblFechaNacimiento)
         Me.grbDatosGenerales.Controls.Add(Me.txtApellido2)
@@ -118,6 +117,38 @@ Partial Class frmSrhEmpleadoEditar
         Me.grbDatosGenerales.TabIndex = 0
         Me.grbDatosGenerales.TabStop = False
         Me.grbDatosGenerales.Text = "Datos Generales"
+        '
+        'cmbCiudad
+        '
+        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCiudad.AutoCompletion = True
+        Me.cmbCiudad.AutoDropDown = True
+        Me.cmbCiudad.Caption = ""
+        Me.cmbCiudad.CaptionHeight = 17
+        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCiudad.ColumnCaptionHeight = 17
+        Me.cmbCiudad.ColumnFooterHeight = 17
+        Me.cmbCiudad.ContentHeight = 15
+        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCiudad.EditorHeight = 15
+        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
+        Me.cmbCiudad.ItemHeight = 15
+        Me.cmbCiudad.Location = New System.Drawing.Point(449, 126)
+        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
+        Me.cmbCiudad.MaxLength = 32767
+        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCiudad.Name = "cmbCiudad"
+        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCiudad.Size = New System.Drawing.Size(170, 21)
+        Me.cmbCiudad.TabIndex = 136
+        Me.cmbCiudad.Tag = "OBLIGATORIO"
+        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
         '
         'dtpFechaNacimiento
         '
@@ -157,80 +188,6 @@ Partial Class frmSrhEmpleadoEditar
         Me.Label5.Size = New System.Drawing.Size(50, 13)
         Me.Label5.TabIndex = 27
         Me.Label5.Text = "Ciudad:"
-        '
-        'cmbCiudad
-        '
-        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCiudad.AllowColMove = False
-        Me.cmbCiudad.AllowSort = False
-        Me.cmbCiudad.AutoCompletion = True
-        Me.cmbCiudad.AutoDropDown = True
-        Me.cmbCiudad.Caption = ""
-        Me.cmbCiudad.CaptionHeight = 17
-        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbCiudad.ColumnCaptionHeight = 17
-        Me.cmbCiudad.ColumnFooterHeight = 17
-        Me.cmbCiudad.ColumnHeaders = False
-        Me.cmbCiudad.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbCiudad.ContentHeight = 15
-        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCiudad.EditorHeight = 15
-        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
-        Me.cmbCiudad.ItemHeight = 15
-        Me.cmbCiudad.Location = New System.Drawing.Point(449, 126)
-        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
-        Me.cmbCiudad.MaxLength = 32767
-        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbCiudad.Name = "cmbCiudad"
-        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.Size = New System.Drawing.Size(170, 21)
-        Me.cmbCiudad.TabIndex = 28
-        Me.cmbCiudad.Tag = "OBLIGATORIO"
-        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
-        '
-        'cmbGenero
-        '
-        Me.cmbGenero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbGenero.AllowColMove = False
-        Me.cmbGenero.AllowSort = False
-        Me.cmbGenero.AutoCompletion = True
-        Me.cmbGenero.AutoDropDown = True
-        Me.cmbGenero.Caption = ""
-        Me.cmbGenero.CaptionHeight = 17
-        Me.cmbGenero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbGenero.ColumnCaptionHeight = 17
-        Me.cmbGenero.ColumnFooterHeight = 17
-        Me.cmbGenero.ColumnHeaders = False
-        Me.cmbGenero.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbGenero.ContentHeight = 15
-        Me.cmbGenero.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbGenero.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbGenero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbGenero.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbGenero.EditorHeight = 15
-        Me.cmbGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbGenero.Images.Add(CType(resources.GetObject("cmbGenero.Images"), System.Drawing.Image))
-        Me.cmbGenero.ItemHeight = 15
-        Me.cmbGenero.Location = New System.Drawing.Point(449, 99)
-        Me.cmbGenero.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbGenero.MaxDropDownItems = CType(5, Short)
-        Me.cmbGenero.MaxLength = 32767
-        Me.cmbGenero.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbGenero.Name = "cmbGenero"
-        Me.cmbGenero.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbGenero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbGenero.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbGenero.Size = New System.Drawing.Size(170, 21)
-        Me.cmbGenero.TabIndex = 25
-        Me.cmbGenero.Tag = "OBLIGATORIO"
-        Me.cmbGenero.PropBag = resources.GetString("cmbGenero.PropBag")
         '
         'txtCedula
         '
@@ -374,11 +331,11 @@ Partial Class frmSrhEmpleadoEditar
         '
         'grbRH
         '
+        Me.grbRH.Controls.Add(Me.cmbCargo)
         Me.grbRH.Controls.Add(Me.dtpFechaIngreso)
         Me.grbRH.Controls.Add(Me.dtpFechaEgresoE)
         Me.grbRH.Controls.Add(Me.txtCodigoIME)
         Me.grbRH.Controls.Add(Me.Label1)
-        Me.grbRH.Controls.Add(Me.cmbCargo)
         Me.grbRH.Controls.Add(Me.lblFechaEgreso)
         Me.grbRH.Controls.Add(Me.lblFechaIngreso)
         Me.grbRH.Controls.Add(Me.lblCargo)
@@ -389,6 +346,38 @@ Partial Class frmSrhEmpleadoEditar
         Me.grbRH.TabIndex = 1
         Me.grbRH.TabStop = False
         Me.grbRH.Text = "Recursos Humanos"
+        '
+        'cmbCargo
+        '
+        Me.cmbCargo.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCargo.AutoCompletion = True
+        Me.cmbCargo.AutoDropDown = True
+        Me.cmbCargo.Caption = ""
+        Me.cmbCargo.CaptionHeight = 17
+        Me.cmbCargo.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCargo.ColumnCaptionHeight = 17
+        Me.cmbCargo.ColumnFooterHeight = 17
+        Me.cmbCargo.ContentHeight = 15
+        Me.cmbCargo.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCargo.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCargo.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCargo.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCargo.EditorHeight = 15
+        Me.cmbCargo.Images.Add(CType(resources.GetObject("cmbCargo.Images"), System.Drawing.Image))
+        Me.cmbCargo.ItemHeight = 15
+        Me.cmbCargo.Location = New System.Drawing.Point(115, 20)
+        Me.cmbCargo.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCargo.MaxDropDownItems = CType(5, Short)
+        Me.cmbCargo.MaxLength = 32767
+        Me.cmbCargo.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCargo.Name = "cmbCargo"
+        Me.cmbCargo.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCargo.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCargo.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCargo.Size = New System.Drawing.Size(233, 21)
+        Me.cmbCargo.TabIndex = 134
+        Me.cmbCargo.Tag = "OBLIGATORIO"
+        Me.cmbCargo.PropBag = resources.GetString("cmbCargo.PropBag")
         '
         'dtpFechaIngreso
         '
@@ -427,39 +416,6 @@ Partial Class frmSrhEmpleadoEditar
         Me.Label1.Size = New System.Drawing.Size(76, 13)
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "Código IME:"
-        '
-        'cmbCargo
-        '
-        Me.cmbCargo.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCargo.AutoCompletion = True
-        Me.cmbCargo.AutoDropDown = True
-        Me.cmbCargo.Caption = ""
-        Me.cmbCargo.CaptionHeight = 17
-        Me.cmbCargo.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbCargo.ColumnCaptionHeight = 17
-        Me.cmbCargo.ColumnFooterHeight = 17
-        Me.cmbCargo.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbCargo.ContentHeight = 15
-        Me.cmbCargo.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbCargo.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCargo.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCargo.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCargo.EditorHeight = 15
-        Me.cmbCargo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCargo.Images.Add(CType(resources.GetObject("cmbCargo.Images"), System.Drawing.Image))
-        Me.cmbCargo.ItemHeight = 15
-        Me.cmbCargo.Location = New System.Drawing.Point(115, 20)
-        Me.cmbCargo.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbCargo.MaxDropDownItems = CType(5, Short)
-        Me.cmbCargo.MaxLength = 32767
-        Me.cmbCargo.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbCargo.Name = "cmbCargo"
-        Me.cmbCargo.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbCargo.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbCargo.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCargo.Size = New System.Drawing.Size(161, 21)
-        Me.cmbCargo.TabIndex = 6
-        Me.cmbCargo.PropBag = resources.GetString("cmbCargo.PropBag")
         '
         'lblFechaEgreso
         '
@@ -544,6 +500,7 @@ Partial Class frmSrhEmpleadoEditar
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmbGenero)
         Me.PanelControl1.Controls.Add(Me.cmdCancelar)
         Me.PanelControl1.Controls.Add(Me.GroupBox1)
         Me.PanelControl1.Controls.Add(Me.cmdGuardar)
@@ -557,6 +514,38 @@ Partial Class frmSrhEmpleadoEditar
         Me.PanelControl1.Name = "PanelControl1"
         Me.PanelControl1.Size = New System.Drawing.Size(1088, 361)
         Me.PanelControl1.TabIndex = 31
+        '
+        'cmbGenero
+        '
+        Me.cmbGenero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbGenero.AutoCompletion = True
+        Me.cmbGenero.AutoDropDown = True
+        Me.cmbGenero.Caption = ""
+        Me.cmbGenero.CaptionHeight = 17
+        Me.cmbGenero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbGenero.ColumnCaptionHeight = 17
+        Me.cmbGenero.ColumnFooterHeight = 17
+        Me.cmbGenero.ContentHeight = 15
+        Me.cmbGenero.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbGenero.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbGenero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbGenero.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbGenero.EditorHeight = 15
+        Me.cmbGenero.Images.Add(CType(resources.GetObject("cmbGenero.Images"), System.Drawing.Image))
+        Me.cmbGenero.ItemHeight = 15
+        Me.cmbGenero.Location = New System.Drawing.Point(458, 112)
+        Me.cmbGenero.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbGenero.MaxDropDownItems = CType(5, Short)
+        Me.cmbGenero.MaxLength = 32767
+        Me.cmbGenero.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbGenero.Name = "cmbGenero"
+        Me.cmbGenero.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbGenero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbGenero.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbGenero.Size = New System.Drawing.Size(170, 21)
+        Me.cmbGenero.TabIndex = 135
+        Me.cmbGenero.Tag = "OBLIGATORIO"
+        Me.cmbGenero.PropBag = resources.GetString("cmbGenero.PropBag")
         '
         'GroupBox1
         '
@@ -663,21 +652,21 @@ Partial Class frmSrhEmpleadoEditar
         Me.Text = "Nuevo Empleado"
         Me.grbDatosGenerales.ResumeLayout(False)
         Me.grbDatosGenerales.PerformLayout()
+        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grbRH.ResumeLayout(False)
         Me.grbRH.PerformLayout()
+        CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaIngreso.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaIngreso.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaEgresoE.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaEgresoE.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbCargo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelControl1.ResumeLayout(False)
         Me.PanelControl1.PerformLayout()
+        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.tabAdicionales.ResumeLayout(False)
         Me.tabContactos.ResumeLayout(False)
@@ -708,7 +697,6 @@ Partial Class frmSrhEmpleadoEditar
     Friend WithEvents lblFechaIngreso As System.Windows.Forms.Label
     Friend WithEvents chkActivo As System.Windows.Forms.CheckBox
     Friend WithEvents lblCargo As System.Windows.Forms.Label
-    Friend WithEvents cmbCargo As C1.Win.C1List.C1Combo
     Friend WithEvents ErrorProv As System.Windows.Forms.ErrorProvider
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
@@ -725,13 +713,14 @@ Partial Class frmSrhEmpleadoEditar
     Friend WithEvents cmdEliminarContacto As System.Windows.Forms.ToolStripButton
     Friend WithEvents lblFechaNacimiento As System.Windows.Forms.Label
     Friend WithEvents txtCedula As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents cmbGenero As C1.Win.C1List.C1Combo
     Friend WithEvents txtDireccion As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents cmbCiudad As C1.Win.C1List.C1Combo
     Friend WithEvents ErrPrv As System.Windows.Forms.ErrorProvider
     Friend WithEvents dtpFechaNacimiento As DevExpress.XtraEditors.DateEdit
     Friend WithEvents dtpFechaIngreso As DevExpress.XtraEditors.DateEdit
     Friend WithEvents dtpFechaEgresoE As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents cmbCiudad As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbCargo As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbGenero As C1.Win.C1List.C1Combo
 End Class

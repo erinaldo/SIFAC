@@ -266,7 +266,7 @@ Public Class frmSccConsultarArqueo
 
     Private Function ValidarDatos() As Boolean
         Try
-            If Me.cmbCajero.Text = String.Empty Then
+            If Me.cmbCajero.Text = String.Empty Or IsNothing(cmbCajero.SelectedValue) Then
                 Me.ErrorProv.SetError(Me.cmbCajero, "Campo Obligatorio")
                 Return False
                 Exit Function

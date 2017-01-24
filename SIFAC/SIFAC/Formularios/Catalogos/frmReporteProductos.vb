@@ -25,6 +25,9 @@ Public Class frmReporteProductos
             cboCategoria.DataSource = Me.dtCategorias
             cboCategoria.DisplayMember = "Nombre"
             cboCategoria.ValueMember = "CategoriaID"
+            cboCategoria.Splits(0).DisplayColumns("CategoriaID").Visible = False
+            cboCategoria.ColumnHeaders = False
+            cboCategoria.ExtendRightColumn = True
             cboCategoria.SelectedIndex = -1
            
         Catch ex As Exception
@@ -44,6 +47,9 @@ Public Class frmReporteProductos
             cboMarca.DataSource = Me.dtMarcas
             cboMarca.DisplayMember = "Nombre"
             cboMarca.ValueMember = "MarcaID"
+            cboMarca.Splits(0).DisplayColumns("MarcaID").Visible = False
+            cboMarca.ColumnHeaders = False
+            cboMarca.ExtendRightColumn = True
             cboMarca.SelectedIndex = -1
             
         Catch ex As Exception
@@ -69,19 +75,19 @@ Public Class frmReporteProductos
         Try
             Dim objjReporte As New rptProductos()
 
-            If ((Not rbTodos.Checked) And (cboCategoria.SelectedValue = 0 Or cboCategoria.Text = "") And (cboMarca.SelectedValue = 0 Or cboMarca.Text = "")) Then
+            If ((Not rbTodos.Checked) And (cboCategoria.SelectedValue = 0 Or cboCategoria.Text = "" Or IsNothing(cboCategoria.SelectedValue)) And (cboMarca.SelectedValue = 0 Or cboMarca.Text = "" Or IsNothing(cboMarca.SelectedValue))) Then
                 MsgBox("Debe seleccionar un criterio.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Else
                 If rbTodos.Checked Then
                     strFiltro = "1=1"
                 Else
-                    If (cboCategoria.SelectedValue = 0 Or cboCategoria.Text = "") And (cboMarca.SelectedValue <> 0 And cboMarca.Text <> "") Then
+                    If (cboCategoria.SelectedValue = 0 Or cboCategoria.Text = "" Or IsNothing(cboCategoria.SelectedValue)) And (cboMarca.SelectedValue <> 0 And cboMarca.Text <> "" And Not IsNothing(cboMarca.SelectedValue)) Then
                         strFiltro = "objMarcaID=" & cboMarca.SelectedValue
                     Else
-                        If (cboCategoria.SelectedValue <> 0 And cboCategoria.Text <> "") And (cboMarca.SelectedValue = 0 Or cboMarca.Text = "") Then
+                        If (cboCategoria.SelectedValue <> 0 And cboCategoria.Text <> "" And Not (IsNothing(cboCategoria.SelectedValue)) And (cboMarca.SelectedValue = 0 Or cboMarca.Text = "" Or IsNothing(cboMarca.SelectedValue))) Then
                             strFiltro = "objCategoriaID=" & cboCategoria.SelectedValue
                         Else
-                            If (cboCategoria.SelectedValue <> 0 And cboCategoria.Text <> "") And (cboMarca.SelectedValue <> 0 And cboMarca.Text <> "") Then
+                            If (cboCategoria.SelectedValue <> 0 And cboCategoria.Text <> "" And Not (IsNothing(cboCategoria.SelectedValue)) And (cboMarca.SelectedValue <> 0 And cboMarca.Text <> "" And Not (IsNothing(cboMarca)))) Then
                                 strFiltro = "objCategoriaID=" & cboCategoria.SelectedValue & " AND objMarcaID=" & cboMarca.SelectedValue
                             End If
                         End If
@@ -121,7 +127,7 @@ Public Class frmReporteProductos
     End Sub
 
 
-    Private Sub cboCategoria_SelectedValueChanged_1(sender As Object, e As EventArgs) Handles cboCategoria.SelectedValueChanged
+    Private Sub cboCategoria_SelectedValueChanged_1(sender As Object, e As EventArgs)
         Try
             If cboCategoria.SelectedIndex <> -1 Then
                 rbTodos.Checked = False
@@ -131,7 +137,7 @@ Public Class frmReporteProductos
         End Try
     End Sub
 
-    Private Sub cboMarca_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboMarca.SelectedValueChanged
+    Private Sub cboMarca_SelectedValueChanged(sender As Object, e As EventArgs)
         Try
             If cboMarca.SelectedIndex <> -1 Then
                 rbTodos.Checked = False

@@ -46,6 +46,9 @@ Public Class frmSccConfiguracionCajasEdit
             cmbCajero.ValueMember = "SrhEmpleadoID"
             cmbCajero.DisplayMember = "NombreCompleto"
             cmbCajero.Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
+            cmbCajero.Splits(0).DisplayColumns("objPersonaID").Visible = False
+            cmbCajero.ColumnHeaders = False
+            cmbCajero.ExtendRightColumn = True
             cmbCajero.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -93,9 +96,12 @@ Public Class frmSccConfiguracionCajasEdit
             txtNumero.Text = objCajas.SccCajaID
             txtCodigo.Text = objCajas.Codigo
             txtNombreCaja.Text = objCajas.Nombre
-            txtUbicacion.Text = objCajas.Ubicacion
 
-            If IsNothing(objCajas.objCajeroID) Then
+            If Not IsNothing(objCajas.Ubicacion) Then
+                txtUbicacion.Text = objCajas.Ubicacion
+            End If
+            
+            If Not IsNothing(objCajas.objCajeroID) Then
                 cmbCajero.SelectedValue = objCajas.objCajeroID
             End If
 
@@ -218,7 +224,7 @@ Public Class frmSccConfiguracionCajasEdit
                 Exit Function
             End If
 
-            If cmbCajero.Text.Trim.Length = 0 Then
+            If cmbCajero.Text.Trim.Length = 0 Or IsNothing(cmbCajero.SelectedValue) Then
                 ErrorProv.SetError(cmbCajero, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
@@ -262,7 +268,7 @@ Public Class frmSccConfiguracionCajasEdit
         boolEditado = True
     End Sub
 
-    Private Sub cmbCajero_TextChanged(sender As Object, e As EventArgs)
+    Private Sub cmbCajero_TextChanged(sender As Object, e As EventArgs) Handles cmbCajero.TextChanged
         ErrorProv.SetError(cmbCajero, "")
         boolEditado = True
     End Sub

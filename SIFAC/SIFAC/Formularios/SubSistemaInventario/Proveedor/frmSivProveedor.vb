@@ -266,4 +266,7 @@ Public Class frmSivProveedor
 
 #End Region
 
+    Private Sub toolTramitesLegales_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles toolTramitesLegales.ItemClicked
+
+    End Sub
 End Class

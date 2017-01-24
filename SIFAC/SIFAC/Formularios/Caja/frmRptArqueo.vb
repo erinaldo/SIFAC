@@ -55,7 +55,7 @@ Public Class frmRptArqueo
         Try
             Dim objjReporte As New RptArqueoCaja()
 
-            If ((Not chkTodasCajas.Checked Or cmbCajas.SelectedValue = 0 Or dtpFechaDesde.Text = "") And (dtpFechaDesde.Text = "") And (dtpFechaHasta.Text = "")) Then
+            If ((Not chkTodasCajas.Checked Or cmbCajas.SelectedValue = 0 Or IsNothing(cmbCajas.SelectedValue) Or dtpFechaDesde.Text = "") And (dtpFechaDesde.Text = "") And (dtpFechaHasta.Text = "")) Then
                 MsgBox("Debe seleccionar un criterio.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             Else
                 If chkTodasCajas.Checked Then

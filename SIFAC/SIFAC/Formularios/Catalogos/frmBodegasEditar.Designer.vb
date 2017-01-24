@@ -28,6 +28,8 @@ Partial Class frmBodegasEditar
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
+        Me.cmbCajero = New C1.Win.C1List.C1Combo()
+        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
         Me.txtCodigo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmdJefe = New System.Windows.Forms.Button()
@@ -38,14 +40,12 @@ Partial Class frmBodegasEditar
         Me.lblSfaPromocionID = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ErrorProv = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
-        Me.cmbCajero = New C1.Win.C1List.C1Combo()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.gbxDatosGenerales.SuspendLayout()
-        CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cmbCajero, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelControl1
@@ -107,6 +107,70 @@ Partial Class frmBodegasEditar
         Me.gbxDatosGenerales.Size = New System.Drawing.Size(522, 164)
         Me.gbxDatosGenerales.TabIndex = 1
         Me.gbxDatosGenerales.TabStop = False
+        '
+        'cmbCajero
+        '
+        Me.cmbCajero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCajero.AutoCompletion = True
+        Me.cmbCajero.AutoDropDown = True
+        Me.cmbCajero.Caption = ""
+        Me.cmbCajero.CaptionHeight = 17
+        Me.cmbCajero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCajero.ColumnCaptionHeight = 17
+        Me.cmbCajero.ColumnFooterHeight = 17
+        Me.cmbCajero.ContentHeight = 15
+        Me.cmbCajero.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCajero.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCajero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCajero.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCajero.EditorHeight = 15
+        Me.cmbCajero.Images.Add(CType(resources.GetObject("cmbCajero.Images"), System.Drawing.Image))
+        Me.cmbCajero.ItemHeight = 15
+        Me.cmbCajero.Location = New System.Drawing.Point(181, 104)
+        Me.cmbCajero.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCajero.MaxDropDownItems = CType(5, Short)
+        Me.cmbCajero.MaxLength = 32767
+        Me.cmbCajero.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCajero.Name = "cmbCajero"
+        Me.cmbCajero.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCajero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCajero.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
+        Me.cmbCajero.TabIndex = 132
+        Me.cmbCajero.Tag = "OBLIGATORIO"
+        Me.cmbCajero.PropBag = resources.GetString("cmbCajero.PropBag")
+        '
+        'cmbCiudad
+        '
+        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCiudad.AutoCompletion = True
+        Me.cmbCiudad.AutoDropDown = True
+        Me.cmbCiudad.Caption = ""
+        Me.cmbCiudad.CaptionHeight = 17
+        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCiudad.ColumnCaptionHeight = 17
+        Me.cmbCiudad.ColumnFooterHeight = 17
+        Me.cmbCiudad.ContentHeight = 15
+        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCiudad.EditorHeight = 15
+        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
+        Me.cmbCiudad.ItemHeight = 15
+        Me.cmbCiudad.Location = New System.Drawing.Point(181, 77)
+        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
+        Me.cmbCiudad.MaxLength = 32767
+        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCiudad.Name = "cmbCiudad"
+        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCiudad.Size = New System.Drawing.Size(279, 21)
+        Me.cmbCiudad.TabIndex = 131
+        Me.cmbCiudad.Tag = "OBLIGATORIO"
+        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
         '
         'txtCodigo
         '
@@ -204,70 +268,6 @@ Partial Class frmBodegasEditar
         Me.ErrorProv.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink
         Me.ErrorProv.ContainerControl = Me
         '
-        'cmbCiudad
-        '
-        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCiudad.AutoCompletion = True
-        Me.cmbCiudad.AutoDropDown = True
-        Me.cmbCiudad.Caption = ""
-        Me.cmbCiudad.CaptionHeight = 17
-        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbCiudad.ColumnCaptionHeight = 17
-        Me.cmbCiudad.ColumnFooterHeight = 17
-        Me.cmbCiudad.ContentHeight = 15
-        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCiudad.EditorHeight = 15
-        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
-        Me.cmbCiudad.ItemHeight = 15
-        Me.cmbCiudad.Location = New System.Drawing.Point(181, 77)
-        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
-        Me.cmbCiudad.MaxLength = 32767
-        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbCiudad.Name = "cmbCiudad"
-        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCiudad.TabIndex = 131
-        Me.cmbCiudad.Tag = "OBLIGATORIO"
-        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
-        '
-        'cmbCajero
-        '
-        Me.cmbCajero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCajero.AutoCompletion = True
-        Me.cmbCajero.AutoDropDown = True
-        Me.cmbCajero.Caption = ""
-        Me.cmbCajero.CaptionHeight = 17
-        Me.cmbCajero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbCajero.ColumnCaptionHeight = 17
-        Me.cmbCajero.ColumnFooterHeight = 17
-        Me.cmbCajero.ContentHeight = 15
-        Me.cmbCajero.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbCajero.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCajero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCajero.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCajero.EditorHeight = 15
-        Me.cmbCajero.Images.Add(CType(resources.GetObject("cmbCajero.Images"), System.Drawing.Image))
-        Me.cmbCajero.ItemHeight = 15
-        Me.cmbCajero.Location = New System.Drawing.Point(181, 104)
-        Me.cmbCajero.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbCajero.MaxDropDownItems = CType(5, Short)
-        Me.cmbCajero.MaxLength = 32767
-        Me.cmbCajero.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbCajero.Name = "cmbCajero"
-        Me.cmbCajero.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbCajero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbCajero.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCajero.TabIndex = 132
-        Me.cmbCajero.Tag = "OBLIGATORIO"
-        Me.cmbCajero.PropBag = resources.GetString("cmbCajero.PropBag")
-        '
         'frmBodegasEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -285,9 +285,9 @@ Partial Class frmBodegasEditar
         Me.PanelControl1.ResumeLayout(False)
         Me.gbxDatosGenerales.ResumeLayout(False)
         Me.gbxDatosGenerales.PerformLayout()
-        CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cmbCajero, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

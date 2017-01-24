@@ -783,6 +783,13 @@ Public Class frmSivProveedorEdit
                 Exit Function
             End If
 
+            If IsNothing(objContactoId) Or objContactoId = 0 Then
+                MsgBox("Debe indicar un contacto principal." + vbCrLf + "Definir un contacto principal.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+                Return False
+                Exit Function
+
+            End If
+
             Return True
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -834,18 +841,18 @@ Public Class frmSivProveedorEdit
         Try
             'Si estamos en modo consulta entonces mostrar los datos de persona
             If Me.TypeGui = 2 Then
-                Dim objPers As frmClientesEdit
-                objPers = New frmClientesEdit
-                objPers.TyGui = 3
-                objPers.idpersona = Me.objPersonaId
-                objPers.Text = "Consultando contacto"
-                If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Me.objPersonaId = objPers.idpersona
-                    If objPers.idpersona.Length <> 0 Then
-                        CargarDatosPersona(objPers.idpersona)
-                        Me.ModificoProveedor = True
-                    End If
-                End If
+                'Dim objPers As frmClientesEdit
+                'objPers = New frmClientesEdit
+                'objPers.TyGui = 3
+                'objPers.idpersona = Me.objPersonaId
+                'objPers.Text = "Consultando contacto"
+                'If objPers.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                '    Me.objPersonaId = objPers.idpersona
+                '    If objPers.idpersona.Length <> 0 Then
+                '        CargarDatosPersona(objPers.idpersona)
+                '        Me.ModificoProveedor = True
+                '    End If
+                'End If
             Else 'si no mostrar el selector de personas
                 Dim frmSeleccionarPersona As New frmPersonaSelector
                 frmSeleccionarPersona.Filtro = "  StbPersonaID NOT IN (SELECT objPersonaID FROM SivProveedor)"

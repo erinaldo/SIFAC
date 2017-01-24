@@ -186,8 +186,8 @@ Partial Class frmStbRutas
         Me.colNombreSupervisor.Name = "colNombreSupervisor"
         Me.colNombreSupervisor.OptionsColumn.AllowEdit = False
         Me.colNombreSupervisor.Visible = True
-        Me.colNombreSupervisor.VisibleIndex = 0
-        Me.colNombreSupervisor.Width = 159
+        Me.colNombreSupervisor.VisibleIndex = 2
+        Me.colNombreSupervisor.Width = 169
         '
         'colNombreRuta
         '
@@ -198,7 +198,7 @@ Partial Class frmStbRutas
         Me.colNombreRuta.OptionsColumn.ReadOnly = True
         Me.colNombreRuta.Visible = True
         Me.colNombreRuta.VisibleIndex = 3
-        Me.colNombreRuta.Width = 134
+        Me.colNombreRuta.Width = 142
         '
         'colCargarDiferenciada
         '
@@ -209,8 +209,8 @@ Partial Class frmStbRutas
         Me.colCargarDiferenciada.OptionsColumn.AllowEdit = False
         Me.colCargarDiferenciada.OptionsColumn.ReadOnly = True
         Me.colCargarDiferenciada.Visible = True
-        Me.colCargarDiferenciada.VisibleIndex = 7
-        Me.colCargarDiferenciada.Width = 102
+        Me.colCargarDiferenciada.VisibleIndex = 6
+        Me.colCargarDiferenciada.Width = 118
         '
         'RepositoryItemCheckEdit1
         '
@@ -224,8 +224,6 @@ Partial Class frmStbRutas
         Me.colCodigo.FieldName = "Codigo"
         Me.colCodigo.Name = "colCodigo"
         Me.colCodigo.OptionsColumn.AllowEdit = False
-        Me.colCodigo.Visible = True
-        Me.colCodigo.VisibleIndex = 2
         Me.colCodigo.Width = 98
         '
         'colDescripcion
@@ -236,7 +234,7 @@ Partial Class frmStbRutas
         Me.colDescripcion.OptionsColumn.AllowEdit = False
         Me.colDescripcion.Visible = True
         Me.colDescripcion.VisibleIndex = 4
-        Me.colDescripcion.Width = 153
+        Me.colDescripcion.Width = 163
         '
         'colCobrador
         '
@@ -245,18 +243,18 @@ Partial Class frmStbRutas
         Me.colCobrador.Name = "colCobrador"
         Me.colCobrador.OptionsColumn.AllowEdit = False
         Me.colCobrador.Visible = True
-        Me.colCobrador.VisibleIndex = 5
-        Me.colCobrador.Width = 134
+        Me.colCobrador.VisibleIndex = 1
+        Me.colCobrador.Width = 215
         '
         'colCiudad
         '
-        Me.colCiudad.Caption = "Ciudad"
+        Me.colCiudad.Caption = "Zona"
         Me.colCiudad.FieldName = "Ciudad"
         Me.colCiudad.Name = "colCiudad"
         Me.colCiudad.OptionsColumn.AllowEdit = False
         Me.colCiudad.Visible = True
-        Me.colCiudad.VisibleIndex = 6
-        Me.colCiudad.Width = 80
+        Me.colCiudad.VisibleIndex = 5
+        Me.colCiudad.Width = 84
         '
         'colDia
         '
@@ -265,8 +263,8 @@ Partial Class frmStbRutas
         Me.colDia.Name = "colDia"
         Me.colDia.OptionsColumn.AllowEdit = False
         Me.colDia.Visible = True
-        Me.colDia.VisibleIndex = 1
-        Me.colDia.Width = 119
+        Me.colDia.VisibleIndex = 0
+        Me.colDia.Width = 88
         '
         'frmStbRutas
         '

@@ -62,7 +62,7 @@ Public Class frmPedidosEdit
     '' Descripción:        Funcion encargada de validar la entrada del usuario
     Public Function ValidarEntradaDetalle() As Boolean
 
-        If cmbNombreProducto.Text.Trim.Length = 0 Or cmbNombreProducto.EditValue = "0" Then
+        If cmbNombreProducto.Text.Trim.Length = 0 Or cmbNombreProducto.SelectedValue = "0" Or IsNothing(cmbNombreProducto.SelectedValue) Then
             ErrorFactura.SetError(cmbNombreProducto, My.Resources.MsgObligatorio)
             Return False
             Exit Function
@@ -83,7 +83,7 @@ Public Class frmPedidosEdit
         'Buscar el pdoducto en la lista'
         If dtDetallePedido.Rows.Count > 0 Then
             Dim foundRows() As Data.DataRow
-            foundRows = dtDetallePedido.Select("SivProductoID = " & cmbNombreProducto.EditValue)
+            foundRows = dtDetallePedido.Select("SivProductoID = " & cmbNombreProducto.SelectedValue)
 
             If foundRows.Length > 0 Then
                 MsgBox("El producto seleccionado ya existe en la lista del pedido.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
@@ -304,20 +304,18 @@ Public Class frmPedidosEdit
             DtMarca.Rows.Add(newMarcasRow)
 
             With cmbMarca
-                .Properties.DataSource = DtMarca
-                .Properties.DisplayMember = "Nombre"
-                .Properties.ValueMember = "MarcaID"
-                .Properties.PopulateColumns()
-                .Properties.Columns("MarcaID").Visible = False
-                .Properties.Columns("Descripcion").Visible = False
-                .Properties.Columns("Activa").Visible = False
-                .Properties.Columns("FechaCreacion").Visible = False
-                .Properties.Columns("UsuarioCreacion").Visible = False
-                .Properties.Columns("FechaModificacion").Visible = False
-                .Properties.Columns("UsuarioModificacion").Visible = False
-                .Properties.AutoHeight = True
-                .Properties.ShowHeader = False
-
+                .DataSource = DtMarca
+                .DisplayMember = "Nombre"
+                .ValueMember = "MarcaID"
+                .Splits(0).DisplayColumns("MarcaID").Visible = False
+                .Splits(0).DisplayColumns("Descripcion").Visible = False
+                .Splits(0).DisplayColumns("Activa").Visible = False
+                .Splits(0).DisplayColumns("FechaCreacion").Visible = False
+                .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
+                .Splits(0).DisplayColumns("FechaModificacion").Visible = False
+                .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
+                .ExtendRightColumn = True
+                .SelectedValue = -1
             End With
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -342,13 +340,13 @@ Public Class frmPedidosEdit
             DtCategoria.Rows.Add(newCategoriaRow)
 
             With cmbCategoria
-                .Properties.DataSource = DtCategoria
-                .Properties.DisplayMember = "Nombre"
-                .Properties.ValueMember = "CategoriaID"
-                .Properties.PopulateColumns()
-                .Properties.Columns("CategoriaID").Visible = False
-                .Properties.AutoHeight = True
-                .Properties.ShowHeader = False
+                .DataSource = DtCategoria
+                .DisplayMember = "Nombre"
+                .ValueMember = "CategoriaID"
+                .Splits(0).DisplayColumns("CategoriaID").Visible = False
+                .ExtendRightColumn = True
+                .SelectedValue = -1
+
             End With
 
         Catch ex As Exception
@@ -364,19 +362,21 @@ Public Class frmPedidosEdit
     Public Sub CargarProductos(CategoriaID As Integer, MarcaID As Integer)
         Dim strfiltro As String
         Try
-            If (cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.EditValue = "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.EditValue <> "0") Then
+            If (cmbCategoria.Text.Trim.Length = 0 Or cmbCategoria.SelectedValue = "0" Or IsNothing(cmbCategoria.SelectedValue)) And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.SelectedValue <> "0" And IsNothing(cmbMarca.SelectedValue)) Then
                 strfiltro = "Activo=1  AND objMarcaID=" & MarcaID.ToString()
             Else
-                If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.EditValue <> "0") And (cmbMarca.Text.Trim.Length = 0 Or cmbMarca.EditValue = "0") Then
+                If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.SelectedValue <> "0" And Not (IsNothing(cmbCategoria.SelectedValue)) And (cmbMarca.Text.Trim.Length = 0 Or cmbMarca.SelectedValue = "0" Or IsNothing(cmbMarca.SelectedValue))) Then
                     strfiltro = "Activo=1  AND objCategoriaID=" & CategoriaID.ToString()
                 Else
-                    If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.EditValue <> "0") And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.EditValue <> "0") Then
+                    If (cmbCategoria.Text.Trim.Length <> 0 And cmbCategoria.SelectedValue <> "0" And Not (IsNothing(cmbCategoria.SelectedValue)) And (cmbMarca.Text.Trim.Length <> 0 And cmbMarca.SelectedValue <> "0" Or IsNothing(cmbMarca.SelectedValue))) Then
                         strfiltro = "Activo=1 AND objCategoriaID=" & CategoriaID.ToString() & " AND objMarcaID=" & MarcaID.ToString()
                     Else
-                        strfiltro = "1=1"
+                        strfiltro = "1=1 "
                     End If
                 End If
             End If
+
+            strfiltro = strfiltro & " AND SivProductoID not in (select p.SivProductoID from  SivProductos p where UsuarioCreacion='Migracion' and Activo=0)"
 
             DtNombreProducto = SivProductos.RetrieveDT(strfiltro, " Nombre", " SivProductoID, (Codigo  + '-' +  Nombre) AS Nombre")
 
@@ -388,14 +388,12 @@ Public Class frmPedidosEdit
 
 
             With cmbNombreProducto
-                .Properties.DataSource = DtNombreProducto
-                .Properties.DisplayMember = "Nombre"
-                .Properties.ValueMember = "SivProductoID"
-                .Properties.PopulateColumns()
-                .Properties.Columns("SivProductoID").Visible = False
-                .Properties.AutoHeight = True
-                .Properties.ShowHeader = False
-
+                .DataSource = DtNombreProducto
+                .DisplayMember = "Nombre"
+                .ValueMember = "SivProductoID"
+                .Splits(0).DisplayColumns("SivProductoID").Visible = False
+                .ExtendRightColumn = True
+                .SelectedValue = -1
             End With
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -491,6 +489,7 @@ Public Class frmPedidosEdit
             ''Cargar Detalle del pedido
             CargarDetallePedidos("objPedidoID=" & PedidoID)
 
+            CalcularTotal()
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -608,7 +607,7 @@ Public Class frmPedidosEdit
         Dim objSivProducto As SivProductos
         Try
             filas = dtDetallePedido.NewRow
-            ProductoID = cmbNombreProducto.EditValue
+            ProductoID = cmbNombreProducto.SelectedValue
             objSivProducto = New SivProductos
 
             objSivProducto.Retrieve(ProductoID)
@@ -619,11 +618,25 @@ Public Class frmPedidosEdit
             filas("Cantidad") = spnCantidad.Value
             filas("CostoUnitario") = spnCostoUnitario.Value
             filas("CostoImpuesto") = spnImpuestoUnitario.Value
-            filas("objCategoriaID") = objSivProducto.objCategoriaID
+
+            If Not IsNothing(objSivProducto.objCategoriaID) Then
+                filas("objCategoriaID") = objSivProducto.objCategoriaID
+            End If
+
             filas("CostoTotal") = spnCantidad.Value * (spnCostoUnitario.Value - spnImpuestoUnitario.Value)
 
             dtDetallePedido.Rows.Add(filas)
-            spnTotalCosto.Value = spnTotalCosto.Value + filas("CostoTotal")
+
+            CalcularTotal()
+
+            ''Limpiar controles
+            Me.cmbMarca.SelectedValue = -1
+            Me.cmbCategoria.SelectedValue = -1
+            Me.cmbNombreProducto.SelectedValue = -1
+
+            Me.spnCantidad.Value = 0
+            Me.spnCostoUnitario.Value = 0
+            Me.spnImpuestoUnitario.Value = 0
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -639,18 +652,18 @@ Public Class frmPedidosEdit
         ConfigurarGUI()
     End Sub
 
-    Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs) Handles cmbCategoria.EditValueChanged
+    Private Sub cmbCategoria_EditValueChanged(sender As Object, e As EventArgs)
         Try
-            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
+            CargarProductos(Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbMarca.SelectedValue))
 
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
     End Sub
 
-    Private Sub cmbMarca_EditValueChanged(sender As Object, e As EventArgs) Handles cmbMarca.EditValueChanged
+    Private Sub cmbMarca_EditValueChanged(sender As Object, e As EventArgs)
         Try
-            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
+            CargarProductos(Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbMarca.SelectedValue))
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -671,37 +684,7 @@ Public Class frmPedidosEdit
         End If
     End Sub
 
-    Private Sub grdDetallePedidos_KeyDown(sender As Object, e As KeyEventArgs) Handles grdDetallePedidos.KeyDown, grdDetallePedidosTabla.KeyDown
-        
-        '---- Delete
-        If e.KeyCode = Keys.Delete Then
-            Dim view As GridView = CType(sender, GridView)
-            If view.RowCount <> 0 Then
-                If Me.EsFilaVacia Then
-                    Me.ElminarFilaSinPreguntar()
-                Else
-                    Me.EliminarFila()
-                    Me.CalcularTotal()
-                End If
-            End If
-        End If
-        If e.KeyCode = Keys.Enter Then
-            'Costo Dólares
-            If Me.grdDetallePedidosTabla.FocusedColumn.Equals(Me.colCostoUnitario) Then
-                Me.grdDetallePedidosTabla.FocusedColumn = Me.colCostoUnitario
-
-                SendKeys.Send("{down}")
-                Exit Sub
-            End If
-
-        End If
-        
-        'Si se preciona TAB estando en la última Celda editable
-        If e.KeyCode = Keys.Tab AndAlso Me.grdDetallePedidosTabla.FocusedColumn.Equals(Me.colCostoUnitario) Then
-            Me.cmdGuardar.Focus()
-        End If
-
-    End Sub
+    
 
     Private Sub cmdGuardar_Click(sender As Object, e As EventArgs) Handles cmdGuardar.Click
         Try
@@ -738,7 +721,7 @@ Public Class frmPedidosEdit
 
     Private Sub cmbNombreProducto_Enter(sender As Object, e As EventArgs) Handles cmbNombreProducto.Enter
         Try
-            CargarProductos(Convert.ToInt32(cmbCategoria.EditValue), Convert.ToInt32(cmbMarca.EditValue))
+            CargarProductos(Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbMarca.SelectedValue))
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -749,7 +732,7 @@ Public Class frmPedidosEdit
         boolEditado = True
     End Sub
 
-    Private Sub cmbNombreProducto_TextChanged(sender As Object, e As EventArgs) Handles cmbNombreProducto.TextChanged
+    Private Sub cmbNombreProducto_TextChanged(sender As Object, e As EventArgs)
         ErrorFactura.SetError(cmbNombreProducto, "")
         boolEditado = True
     End Sub
@@ -813,5 +796,36 @@ Public Class frmPedidosEdit
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
+    End Sub
+
+    Private Sub grdDetallePedidosTabla_KeyDown(sender As Object, e As KeyEventArgs) Handles grdDetallePedidosTabla.KeyDown
+        '---- Delete
+        If e.KeyCode = Keys.Delete Then
+            Dim view As GridView = CType(sender, GridView)
+            If view.RowCount <> 0 Then
+                If Me.EsFilaVacia Then
+                    Me.ElminarFilaSinPreguntar()
+                Else
+                    Me.EliminarFila()
+                    Me.CalcularTotal()
+                End If
+            End If
+        End If
+        If e.KeyCode = Keys.Enter Then
+            'Costo Dólares
+            If Me.grdDetallePedidosTabla.FocusedColumn.Equals(Me.colCostoUnitario) Then
+                Me.grdDetallePedidosTabla.FocusedColumn = Me.colCostoUnitario
+
+                SendKeys.Send("{down}")
+                Exit Sub
+            End If
+
+        End If
+
+        'Si se preciona TAB estando en la última Celda editable
+        If e.KeyCode = Keys.Tab AndAlso Me.grdDetallePedidosTabla.FocusedColumn.Equals(Me.colCostoUnitario) Then
+            Me.cmdGuardar.Focus()
+        End If
+
     End Sub
 End Class

@@ -47,7 +47,12 @@ Public Class frmBodegasEditar
             cmbCiudad.ValueMember = "StbCiudadID"
             cmbCiudad.DisplayMember = "Nombre"
             cmbCiudad.DataSource = DtCiudad
-            cmbCiudad.Text = ""
+            cmbCiudad.Splits(0).DisplayColumns("StbCiudadID").Visible = False
+            cmbCiudad.ColumnHeaders = False
+            cmbCiudad.ExtendRightColumn = True
+            cmbCiudad.SelectedIndex = -1
+
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -62,7 +67,12 @@ Public Class frmBodegasEditar
             cmbCajero.ValueMember = "SrhEmpleadoID"
             cmbCajero.DisplayMember = "NombreCompleto"
 
+            cmbCajero.Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
+            cmbCajero.Splits(0).DisplayColumns("objPersonaID").Visible = False
+            cmbCajero.ColumnHeaders = False
+            cmbCajero.ExtendRightColumn = True
             cmbCajero.SelectedIndex = -1
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -284,12 +294,12 @@ Public Class frmBodegasEditar
                 Exit Function
             End If
 
-            If cmbCiudad.Text.Trim.Length = 0 Then
+            If cmbCiudad.Text.Trim.Length = 0 Or IsNothing(cmbCiudad.SelectedValue) Then
                 ErrorProv.SetError(cmbCiudad, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
             End If
-            If cmbCajero.Text.Trim = "" Then
+            If cmbCajero.Text.Trim = "" Or IsNothing(cmbCajero.SelectedValue) Then
                 ErrorProv.SetError(cmbCajero, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
@@ -373,7 +383,7 @@ Public Class frmBodegasEditar
         End Try
     End Sub
 
-    Private Sub cmbCiudad_Change(sender As Object, e As EventArgs)
+    Private Sub cmbCiudad_Change(sender As Object, e As EventArgs) Handles cmbCiudad.TextChanged
         ErrorProv.SetError(cmbCiudad, "")
         boolEditado = True
     End Sub
@@ -383,9 +393,9 @@ Public Class frmBodegasEditar
         boolEditado = True
     End Sub
 
-    Private Sub cmbJefe_Change(sender As Object, e As EventArgs)
-        'ErrorProv.SetError(cmbJefe, "")
-        'boolEditado = True
+    Private Sub cmbJefe_Change(sender As Object, e As EventArgs) Handles cmbCajero.TextChanged
+        ErrorProv.SetError(cmbCajero, "")
+        boolEditado = True
     End Sub
 
     Private Sub frmBodegasEditar_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing

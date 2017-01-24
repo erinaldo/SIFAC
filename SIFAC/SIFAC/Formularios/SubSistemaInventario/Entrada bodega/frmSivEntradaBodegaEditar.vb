@@ -179,7 +179,7 @@ Public Class frmSivEntradaBodegaEditar
     Private Sub CargarDescripcionDE(ByVal strFiltro As String)
         Dim riLookComboDescripcion As New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
         Try
-            dtDescripcionEntrada = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Nombre", "SivProductos", strFiltro & " ORDER BY Nombre"))
+            dtDescripcionEntrada = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Nombre", "SivProductos", strFiltro & " AND SivProductoID not in (select p.SivProductoID from  SivProductos p where UsuarioCreacion='Migracion' and Activo=0) ORDER BY Nombre"))
             riLookComboDescripcion = Me.grdDetalleEntradasBodegasDE.RepositoryItems(0)
             riLookComboDescripcion.DataSource = dtDescripcionEntrada
         Catch ex As Exception
@@ -989,8 +989,7 @@ Public Class frmSivEntradaBodegaEditar
 
 #End Region
 
-#End Region
-
+#Region "Grid"
     Private Sub grdDetalleEntradasBodegasDE_EditorKeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles grdDetalleEntradasBodegasDE.EditorKeyDown
         'Borra en modo de edición del grid, para ello se debe presionar la tecla control + delete
         If (e.KeyCode = Keys.Delete And e.Modifiers = Keys.Control) Then
@@ -1254,7 +1253,7 @@ Public Class frmSivEntradaBodegaEditar
             End If
         End If
 
-       
+
 
         'Descripción
         If e.Column.Equals(Me.colDescripcion) Then
@@ -1270,7 +1269,7 @@ Public Class frmSivEntradaBodegaEditar
             End If
             RellenarDatosGrid(strIndiceCombo, FilaActual)
         End If
-       
+
 
 
         'Validacion del repetido
@@ -1308,6 +1307,9 @@ Public Class frmSivEntradaBodegaEditar
 
         Me.boolModificado = True
     End Sub
+#End Region
+
+#End Region
 
 #Region "RellenarDatosGrid"
     Private Sub RellenarDatosGrid(ByVal strFiltro As String, ByVal intFilaActual As Integer)

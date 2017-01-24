@@ -1334,7 +1334,9 @@ Public Class frmStbPersonasEditar
 
     End Sub
 
-#End Region
+    Private Sub txtCedula_TextChanged(sender As Object, e As EventArgs) Handles txtCedula.TextChanged
+        Me.ErrPrv.SetError(Me.txtCedula, "")
+    End Sub
 
     Private Sub cmdConsultarCedula_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim objVisor As frmVisorCedula
@@ -1343,6 +1345,9 @@ Public Class frmStbPersonasEditar
         objVisor.CedulaReverso = Me.CedulaReverso
         objVisor.ShowDialog(Me)
     End Sub
+#End Region
+
+   
 
     'Private Sub chkCedulaNacionalidad_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
@@ -1353,4 +1358,7 @@ Public Class frmStbPersonasEditar
     '            Me.txtCedula.Mask = ""
     '    End Select
     'End Sub
+
+  
+    
 End Class

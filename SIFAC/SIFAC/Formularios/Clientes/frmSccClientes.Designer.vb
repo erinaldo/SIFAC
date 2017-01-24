@@ -41,9 +41,6 @@ Partial Class frmSccClientes
         Me.grdClientesTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colNumero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNombre1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colNombre2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colApellido1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colApellido2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCedula = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colGenero = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colRita = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -132,6 +129,7 @@ Partial Class frmSccClientes
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
         Me.cmdImprimir.Text = "Imprimir"
+        Me.cmdImprimir.Visible = False
         '
         'ToolStripSeparator6
         '
@@ -176,7 +174,7 @@ Partial Class frmSccClientes
         '
         'grdClientesTabla
         '
-        Me.grdClientesTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre1, Me.colNombre2, Me.colApellido1, Me.colApellido2, Me.colCedula, Me.colGenero, Me.colRita, Me.colOrdenCobro})
+        Me.grdClientesTabla.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNumero, Me.colNombre1, Me.colCedula, Me.colGenero, Me.colRita, Me.colOrdenCobro})
         Me.grdClientesTabla.GridControl = Me.grdClientes
         Me.grdClientesTabla.GroupPanelText = "Arrastrar un encabezado de columna aquí para agrupar por esa columna"
         Me.grdClientesTabla.Name = "grdClientesTabla"
@@ -199,44 +197,14 @@ Partial Class frmSccClientes
         '
         'colNombre1
         '
-        Me.colNombre1.Caption = "Primer Nombre"
-        Me.colNombre1.FieldName = "Nombre1"
+        Me.colNombre1.Caption = "Nombre Cliente"
+        Me.colNombre1.FieldName = "NombreCompleto"
         Me.colNombre1.Name = "colNombre1"
         Me.colNombre1.OptionsColumn.AllowEdit = False
         Me.colNombre1.OptionsColumn.ReadOnly = True
         Me.colNombre1.Visible = True
-        Me.colNombre1.VisibleIndex = 2
-        Me.colNombre1.Width = 151
-        '
-        'colNombre2
-        '
-        Me.colNombre2.Caption = "Segundo Nombre"
-        Me.colNombre2.FieldName = "Nombre2"
-        Me.colNombre2.Name = "colNombre2"
-        Me.colNombre2.OptionsColumn.AllowEdit = False
-        Me.colNombre2.Visible = True
-        Me.colNombre2.VisibleIndex = 3
-        Me.colNombre2.Width = 133
-        '
-        'colApellido1
-        '
-        Me.colApellido1.Caption = "Primer Apellido "
-        Me.colApellido1.FieldName = "Apellido1"
-        Me.colApellido1.Name = "colApellido1"
-        Me.colApellido1.OptionsColumn.AllowEdit = False
-        Me.colApellido1.Visible = True
-        Me.colApellido1.VisibleIndex = 4
-        Me.colApellido1.Width = 143
-        '
-        'colApellido2
-        '
-        Me.colApellido2.Caption = "Segundo Apellido"
-        Me.colApellido2.FieldName = "Apellido2"
-        Me.colApellido2.Name = "colApellido2"
-        Me.colApellido2.OptionsColumn.AllowEdit = False
-        Me.colApellido2.Visible = True
-        Me.colApellido2.VisibleIndex = 5
-        Me.colApellido2.Width = 126
+        Me.colNombre1.VisibleIndex = 1
+        Me.colNombre1.Width = 224
         '
         'colCedula
         '
@@ -245,8 +213,8 @@ Partial Class frmSccClientes
         Me.colCedula.Name = "colCedula"
         Me.colCedula.OptionsColumn.AllowEdit = False
         Me.colCedula.Visible = True
-        Me.colCedula.VisibleIndex = 1
-        Me.colCedula.Width = 120
+        Me.colCedula.VisibleIndex = 0
+        Me.colCedula.Width = 128
         '
         'colGenero
         '
@@ -255,8 +223,8 @@ Partial Class frmSccClientes
         Me.colGenero.Name = "colGenero"
         Me.colGenero.OptionsColumn.AllowEdit = False
         Me.colGenero.Visible = True
-        Me.colGenero.VisibleIndex = 6
-        Me.colGenero.Width = 104
+        Me.colGenero.VisibleIndex = 2
+        Me.colGenero.Width = 129
         '
         'colRita
         '
@@ -265,8 +233,8 @@ Partial Class frmSccClientes
         Me.colRita.Name = "colRita"
         Me.colRita.OptionsColumn.AllowEdit = False
         Me.colRita.Visible = True
-        Me.colRita.VisibleIndex = 0
-        Me.colRita.Width = 79
+        Me.colRita.VisibleIndex = 3
+        Me.colRita.Width = 345
         '
         'colOrdenCobro
         '
@@ -275,8 +243,8 @@ Partial Class frmSccClientes
         Me.colOrdenCobro.Name = "colOrdenCobro"
         Me.colOrdenCobro.OptionsColumn.AllowEdit = False
         Me.colOrdenCobro.Visible = True
-        Me.colOrdenCobro.VisibleIndex = 7
-        Me.colOrdenCobro.Width = 114
+        Me.colOrdenCobro.VisibleIndex = 4
+        Me.colOrdenCobro.Width = 144
         '
         'RepositoryItemCheckEdit1
         '
@@ -325,11 +293,8 @@ Partial Class frmSccClientes
     Friend WithEvents grdClientesTabla As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colNumero As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colNombre1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNombre2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colApellido1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemCheckEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents RepositoryItemCheckEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
-    Friend WithEvents colApellido2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCedula As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colGenero As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator

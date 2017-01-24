@@ -6,6 +6,8 @@ Imports SIFAC.BO.clsConsultas
 Imports SIFAC.BO
 Imports System.Data.SqlClient
 Imports System.IO
+Imports DevExpress.XtraReports.UI
+
 Public Class frmSivReporteProveedor
 
 #Region "Declaración de Variables propias del formulario"
@@ -43,7 +45,8 @@ Public Class frmSivReporteProveedor
             cmbProveedor.DisplayMember = "Proveedor"
             cmbProveedor.ValueMember = "SivProveedorID"
             cmbProveedor.Splits(0).DisplayColumns("SivProveedorID").Visible = False
-            cmbProveedor.ExtendRightColumn = True
+            Me.cmbProveedor.ExtendRightColumn = True
+            Me.cmbProveedor.SelectedValue = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -58,29 +61,39 @@ Public Class frmSivReporteProveedor
 #Region "Operaciones"
 
     Private Sub Imprimir()
-        Dim objReporte As frmRptVisor
+
+        Dim ds As DataSet
+        Dim strFiltro As String = String.Empty
         Try
-            objReporte = New frmRptVisor
-            objReporte.IDReporte = "Proveedores"
+            Dim objjReporte As New rptProveedores()
 
             If Me.rbProveedor.Checked Then
-                objReporte.strFiltro = "SivProveedorID=" & Me.cmbProveedor.SelectedValue
+                strFiltro = "SivProveedorID=" & Me.cmbProveedor.SelectedValue
             End If
             If Me.rbTodos.Checked Then
-                objReporte.strFiltro = "1=1"
+                strFiltro = "1=1"
             End If
             If Me.rbActivos.Checked Then
-                objReporte.strFiltro = "Activo=1"
+                strFiltro = "Activo=1"
             End If
             If Me.rbInactivos.Checked Then
-                objReporte.strFiltro = "Activo=0"
+                strFiltro = "Activo=0"
             End If
 
-            objReporte.Show()
-
+            ds = DAL.SqlHelper.ExecuteQueryDS(ObtenerConsultaGeneral("SivProveedorID, objPersonaID, Proveedor, RUCID, FechaIngreso, Activo, Direccion, Telefono, Email, Contacto, EmailContacto, CelularContacto, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa, Fecha", "vwRptProveedor", strFiltro))
+            If ds.Tables(0).Rows.Count <> 0 Then
+                objjReporte.DataSource = ds
+                objjReporte.DataMember = ds.Tables(0).TableName
+                Dim pt As New ReportPrintTool(objjReporte)
+                pt.ShowPreview()
+            Else
+                MsgBox(My.Resources.MsgReporte, MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+            End If
+            
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
+
     End Sub
 
 #End Region
@@ -95,7 +108,7 @@ Public Class frmSivReporteProveedor
 
     Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGuardar.Click
         Try
-            If Me.rbProveedor.Checked And Me.cmbProveedor.Text = "" Then
+            If Me.rbProveedor.Checked And (Me.cmbProveedor.Text = "" Or IsNothing(cmbProveedor.SelectedValue)) Then
                 MsgBox("Seleccione un proveedor", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
                 Me.cmbProveedor.Focus()
                 Exit Sub
@@ -122,11 +135,11 @@ Public Class frmSivReporteProveedor
         Me.cmbProveedor.SelectedIndex = -1
     End Sub
 
-    Private Sub cmbProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbProveedor.Click
+    Private Sub cmbProveedor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.rbProveedor.Checked = True
     End Sub
 
-    Private Sub cmbProveedor_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbProveedor.TextChanged
+    Private Sub cmbProveedor_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.rbProveedor.Checked = True
     End Sub
 

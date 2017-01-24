@@ -113,6 +113,11 @@ Public Class frmStbRutasEdit
             cbxCobrador.ValueMember = "SrhEmpleadoID"
             cbxCobrador.DisplayMember = "NombreCompleto"
             cbxCobrador.DataSource = DtCobrador
+
+            cbxCobrador.Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
+            cbxCobrador.Splits(0).DisplayColumns("objPersonaID").Visible = False
+            cbxCobrador.ColumnHeaders = False
+            cbxCobrador.ExtendRightColumn = True
             cbxCobrador.SelectedIndex = -1
 
         Catch ex As Exception
@@ -128,6 +133,12 @@ Public Class frmStbRutasEdit
             cmbSupervisor.ValueMember = "SrhEmpleadoID"
             cmbSupervisor.DisplayMember = "NombreCompleto"
             cmbSupervisor.DataSource = DtSupervisor
+
+            cmbSupervisor.Splits(0).DisplayColumns("SrhEmpleadoID").Visible = False
+            cmbSupervisor.Splits(0).DisplayColumns("objPersonaID").Visible = False
+            cmbSupervisor.ColumnHeaders = False
+            cmbSupervisor.ExtendRightColumn = True
+
             cmbSupervisor.SelectedIndex = -1
           
         Catch ex As Exception
@@ -176,12 +187,22 @@ Public Class frmStbRutasEdit
         Try
             objRutas = New StbRutas
             objRutas.Retrieve(RutaID)
-            txtCodigo.Text = objRutas.Codigo
+
+            If Not IsNothing(objRutas.Codigo) Then
+                txtCodigo.Text = objRutas.Codigo
+            End If
+
             txtNombre.Text = objRutas.Nombre
             cbxCobrador.SelectedValue = objRutas.ojbCobradorID
             cmbSupervisor.SelectedValue = objRutas.objSupervisor
-            cmbDiaCrobro.SelectedValue = objRutas.DiaCobro
-            cmbCiudad.SelectedValue = objRutas.objZonaID
+
+            If Not IsNothing(objRutas.DiaCobro) Then
+                cmbDiaCrobro.SelectedValue = objRutas.DiaCobro
+            End If
+
+            If Not IsNothing(objRutas.objZonaID) Then
+                cmbCiudad.SelectedValue = objRutas.objZonaID
+            End If
             chkActivo.Checked = objRutas.Activa
             ckdCargaDiferenciada.Checked = objRutas.CargarDiferenciada
             txtDescripcion.Text = objRutas.Descripcion
@@ -241,7 +262,10 @@ Public Class frmStbRutasEdit
             T.BeginTran()
             objRutas = New StbRutas
             objRutas.StbRutaID = RutaID
+
             objRutas.Nombre = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
+            objRutas.Codigo = "RUT" + cmbCiudad.Text.Substring(0, 3) + objRutas.StbRutaID.ToString
+
             objRutas.Descripcion = txtDescripcion.Text.Trim
             objRutas.Activa = chkActivo.Checked
             objRutas.Codigo = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
@@ -279,6 +303,10 @@ Public Class frmStbRutasEdit
             cmbCiudad.ValueMember = "StbZonaID"
             cmbCiudad.DisplayMember = "Nombre"
             cmbCiudad.DataSource = DtCiudad
+            cmbCiudad.Splits(0).DisplayColumns("StbZonaID").Visible = False
+            cmbCiudad.ColumnHeaders = False
+            cmbCiudad.ExtendRightColumn = True
+
             cmbCiudad.SelectedValue = -1
 
         Catch ex As Exception
@@ -299,31 +327,31 @@ Public Class frmStbRutasEdit
         Dim dtCompara As DataTable
         Try
 
-            If txtNombre.Text.Trim.Length = 0 Then
-                ErrorProv.SetError(txtNombre, My.Resources.MsgObligatorio)
-                Return False
-                Exit Function
-            End If
+            'If txtNombre.Text.Trim.Length = 0 Then
+            '    ErrorProv.SetError(txtNombre, My.Resources.MsgObligatorio)
+            '    Return False
+            '    Exit Function
+            'End If
 
-            If cmbDiaCrobro.Text.Trim.Length = 0 Or cmbDiaCrobro.Text = "Ninguno" Then
+            If cmbDiaCrobro.Text.Trim.Length = 0 Or cmbDiaCrobro.Text = "Ninguno" Or IsNothing(cmbDiaCrobro.SelectedValue) Then
                 ErrorProv.SetError(cmbDiaCrobro, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
             End If
 
-            If cmbCiudad.Text.Trim.Length = 0 Or cmbCiudad.Text = "Ninguna" Then
+            If cmbCiudad.Text.Trim.Length = 0 Or cmbCiudad.Text = "Ninguna" Or IsNothing(cmbCiudad.SelectedValue) Then
                 ErrorProv.SetError(cmbCiudad, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
             End If
 
-            If cbxCobrador.Text.Trim.Length = 0 Or cbxCobrador.Text = "Ninguno" Then
+            If cbxCobrador.Text.Trim.Length = 0 Or cbxCobrador.Text = "Ninguno" Or IsNothing(cbxCobrador.SelectedValue) Then
                 ErrorProv.SetError(cbxCobrador, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function
             End If
 
-            If cmbSupervisor.Text.Trim.Length = 0 Or cbxCobrador.Text = "Ninguno" Then
+            If cmbSupervisor.Text.Trim.Length = 0 Or cbxCobrador.Text = "Ninguno" Or IsNothing(cmbSupervisor.SelectedValue) Then
                 ErrorProv.SetError(cmbSupervisor, My.Resources.MsgObligatorio)
                 Return False
                 Exit Function

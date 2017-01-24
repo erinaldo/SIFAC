@@ -33,10 +33,10 @@ Partial Class frmRptArqueo
         Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.lblEncabezado = New System.Windows.Forms.Label()
         Me.gbxCriterios = New System.Windows.Forms.GroupBox()
+        Me.cmbCajas = New C1.Win.C1List.C1Combo()
         Me.chkTodasCajas = New System.Windows.Forms.CheckBox()
         Me.lblBodega = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.cmbCajas = New C1.Win.C1List.C1Combo()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.gbxPeriodo.SuspendLayout()
@@ -192,37 +192,6 @@ Partial Class frmRptArqueo
         Me.gbxCriterios.TabIndex = 103
         Me.gbxCriterios.TabStop = False
         '
-        'chkTodasCajas
-        '
-        Me.chkTodasCajas.AutoSize = True
-        Me.chkTodasCajas.Checked = True
-        Me.chkTodasCajas.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkTodasCajas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkTodasCajas.Location = New System.Drawing.Point(68, 56)
-        Me.chkTodasCajas.Name = "chkTodasCajas"
-        Me.chkTodasCajas.Size = New System.Drawing.Size(65, 17)
-        Me.chkTodasCajas.TabIndex = 5
-        Me.chkTodasCajas.Text = "Todas "
-        Me.chkTodasCajas.UseVisualStyleBackColor = True
-        '
-        'lblBodega
-        '
-        Me.lblBodega.AutoSize = True
-        Me.lblBodega.Location = New System.Drawing.Point(13, 32)
-        Me.lblBodega.Name = "lblBodega"
-        Me.lblBodega.Size = New System.Drawing.Size(36, 13)
-        Me.lblBodega.TabIndex = 4
-        Me.lblBodega.Text = "Caja:"
-        '
-        'Panel1
-        '
-        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 162)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(564, 21)
-        Me.Panel1.TabIndex = 113
-        '
         'cmbCajas
         '
         Me.cmbCajas.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
@@ -254,6 +223,37 @@ Partial Class frmRptArqueo
         Me.cmbCajas.TabIndex = 137
         Me.cmbCajas.Tag = "OBLIGATORIO"
         Me.cmbCajas.PropBag = resources.GetString("cmbCajas.PropBag")
+        '
+        'chkTodasCajas
+        '
+        Me.chkTodasCajas.AutoSize = True
+        Me.chkTodasCajas.Checked = True
+        Me.chkTodasCajas.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkTodasCajas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkTodasCajas.Location = New System.Drawing.Point(68, 56)
+        Me.chkTodasCajas.Name = "chkTodasCajas"
+        Me.chkTodasCajas.Size = New System.Drawing.Size(65, 17)
+        Me.chkTodasCajas.TabIndex = 5
+        Me.chkTodasCajas.Text = "Todas "
+        Me.chkTodasCajas.UseVisualStyleBackColor = True
+        '
+        'lblBodega
+        '
+        Me.lblBodega.AutoSize = True
+        Me.lblBodega.Location = New System.Drawing.Point(13, 32)
+        Me.lblBodega.Name = "lblBodega"
+        Me.lblBodega.Size = New System.Drawing.Size(36, 13)
+        Me.lblBodega.TabIndex = 4
+        Me.lblBodega.Text = "Caja:"
+        '
+        'Panel1
+        '
+        Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(0, 162)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(564, 21)
+        Me.Panel1.TabIndex = 113
         '
         'frmRptArqueo
         '

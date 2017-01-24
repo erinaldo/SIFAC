@@ -689,7 +689,7 @@ Public Class frmSrhEmpleadoEditar
                         Return False
                         Exit Function
                     End If
-                    If cmbCargo.Text.Trim.Length = 0 Then
+                    If cmbCargo.Text.Trim.Length = 0 Or IsNothing(cmbCargo.SelectedValue) Then
                         ErrorProv.SetError(cmbCargo, My.Resources.MsgObligatorio)
                         Return False
                         Exit Function
@@ -706,7 +706,7 @@ Public Class frmSrhEmpleadoEditar
                     End If
 
                 Case 1
-                    If cmbCargo.Text.Trim.Length = 0 Then
+                    If cmbCargo.Text.Trim.Length = 0 Or IsNothing(cmbCargo.SelectedValue) Then
                         ErrorProv.SetError(cmbCargo, My.Resources.MsgObligatorio)
                         Return False
                         Exit Function
@@ -792,7 +792,7 @@ Public Class frmSrhEmpleadoEditar
         End Try
     End Sub
 
-    Private Sub cmbCargo_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbCargo.Change
+    Private Sub cmbCargo_Change(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.boolEditado = True
         Me.ErrorProv.SetError(cmbCargo, "")
         'Dim dtCargo As New DataTable

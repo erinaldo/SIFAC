@@ -112,11 +112,13 @@ Public Class frmSivProductosEditar
     '' Descripción:        Procedimiento encargado de cargar los valores de Marca
     Public Sub CargarMarca()
         Try
+            DtMarca = SivMarcas.RetrieveDT("Activa=1 and len(ltrim(rtrim(Nombre)))>0", , "MarcaID,Nombre")
             cmbMarca.ValueMember = "MarcaID"
             cmbMarca.DisplayMember = "Nombre"
-            DtMarca = SivMarcas.RetrieveDT("Activa=1 and len(ltrim(rtrim(Nombre)))>0")
-            cmbMarca.Splits(0).DisplayColumns("MarcaID").Visible = False
             cmbMarca.DataSource = DtMarca
+            cmbMarca.Splits(0).DisplayColumns("MarcaID").Visible = False
+            cmbMarca.ColumnHeaders = False
+            cmbMarca.ExtendRightColumn = True
             cmbMarca.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -134,6 +136,8 @@ Public Class frmSivProductosEditar
             DtCategoria = SivCategorias.RetrieveDT("Activa=1", " Nombre", "CategoriaID, Nombre")
             cmbCategoria.DataSource = DtCategoria
             cmbCategoria.Splits(0).DisplayColumns("CategoriaID").Visible = False
+            cmbCategoria.ColumnHeaders = False
+            cmbCategoria.ExtendRightColumn = True
             cmbCategoria.SelectedIndex = -1
         Catch ex As Exception
             clsError.CaptarError(ex)

@@ -22,8 +22,8 @@ Partial Class frmSivProveedorEdit
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivProveedorEdit))
         Me.gbxDatosJuridico = New System.Windows.Forms.GroupBox()
+        Me.cmbciudad = New C1.Win.C1List.C1Combo()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cmbCiudad = New C1.Win.C1List.C1Combo()
         Me.txtDireccion = New System.Windows.Forms.TextBox()
         Me.lblCedulaRUC = New System.Windows.Forms.Label()
         Me.lblDireccion = New System.Windows.Forms.Label()
@@ -60,12 +60,12 @@ Partial Class frmSivProveedorEdit
         Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
         Me.grbDatosNatural = New System.Windows.Forms.GroupBox()
+        Me.cmbGenero = New C1.Win.C1List.C1Combo()
+        Me.cmbCiudadNatural = New C1.Win.C1List.C1Combo()
         Me.dtpFechaNacimiento = New DevExpress.XtraEditors.DateEdit()
         Me.txtdireccionNatural = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.cmbCiudadNatural = New C1.Win.C1List.C1Combo()
-        Me.cmbGenero = New C1.Win.C1List.C1Combo()
         Me.txtCedula = New System.Windows.Forms.MaskedTextBox()
         Me.lblFechaNacimiento = New System.Windows.Forms.Label()
         Me.txtApellido2 = New System.Windows.Forms.TextBox()
@@ -79,7 +79,7 @@ Partial Class frmSivProveedorEdit
         Me.lblNombre2 = New System.Windows.Forms.Label()
         Me.lblNombre1 = New System.Windows.Forms.Label()
         Me.gbxDatosJuridico.SuspendLayout()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbciudad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaIngreso, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,16 +95,16 @@ Partial Class frmSivProveedorEdit
         CType(Me.tdbContactos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.barContactos.SuspendLayout()
         Me.grbDatosNatural.SuspendLayout()
+        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbCiudadNatural, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbCiudadNatural, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'gbxDatosJuridico
         '
+        Me.gbxDatosJuridico.Controls.Add(Me.cmbciudad)
         Me.gbxDatosJuridico.Controls.Add(Me.Label1)
-        Me.gbxDatosJuridico.Controls.Add(Me.cmbCiudad)
         Me.gbxDatosJuridico.Controls.Add(Me.txtDireccion)
         Me.gbxDatosJuridico.Controls.Add(Me.lblCedulaRUC)
         Me.gbxDatosJuridico.Controls.Add(Me.lblDireccion)
@@ -121,6 +121,38 @@ Partial Class frmSivProveedorEdit
         Me.gbxDatosJuridico.TabStop = False
         Me.gbxDatosJuridico.Text = "Datos personales"
         '
+        'cmbciudad
+        '
+        Me.cmbciudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbciudad.AutoCompletion = True
+        Me.cmbciudad.AutoDropDown = True
+        Me.cmbciudad.Caption = ""
+        Me.cmbciudad.CaptionHeight = 17
+        Me.cmbciudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbciudad.ColumnCaptionHeight = 17
+        Me.cmbciudad.ColumnFooterHeight = 17
+        Me.cmbciudad.ContentHeight = 15
+        Me.cmbciudad.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbciudad.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbciudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbciudad.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbciudad.EditorHeight = 15
+        Me.cmbciudad.Images.Add(CType(resources.GetObject("cmbciudad.Images"), System.Drawing.Image))
+        Me.cmbciudad.ItemHeight = 15
+        Me.cmbciudad.Location = New System.Drawing.Point(140, 111)
+        Me.cmbciudad.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbciudad.MaxDropDownItems = CType(5, Short)
+        Me.cmbciudad.MaxLength = 32767
+        Me.cmbciudad.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbciudad.Name = "cmbciudad"
+        Me.cmbciudad.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbciudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbciudad.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbciudad.Size = New System.Drawing.Size(229, 21)
+        Me.cmbciudad.TabIndex = 137
+        Me.cmbciudad.Tag = "OBLIGATORIO"
+        Me.cmbciudad.PropBag = resources.GetString("cmbciudad.PropBag")
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -130,41 +162,6 @@ Partial Class frmSivProveedorEdit
         Me.Label1.Size = New System.Drawing.Size(50, 13)
         Me.Label1.TabIndex = 99
         Me.Label1.Text = "Ciudad:"
-        '
-        'cmbCiudad
-        '
-        Me.cmbCiudad.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCiudad.AllowColMove = False
-        Me.cmbCiudad.AllowSort = False
-        Me.cmbCiudad.Caption = ""
-        Me.cmbCiudad.CaptionHeight = 17
-        Me.cmbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbCiudad.ColumnCaptionHeight = 17
-        Me.cmbCiudad.ColumnFooterHeight = 17
-        Me.cmbCiudad.ColumnHeaders = False
-        Me.cmbCiudad.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbCiudad.ContentHeight = 15
-        Me.cmbCiudad.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbCiudad.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCiudad.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCiudad.EditorHeight = 15
-        Me.cmbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudad.Images.Add(CType(resources.GetObject("cmbCiudad.Images"), System.Drawing.Image))
-        Me.cmbCiudad.ItemHeight = 15
-        Me.cmbCiudad.Location = New System.Drawing.Point(142, 109)
-        Me.cmbCiudad.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbCiudad.MaxDropDownItems = CType(5, Short)
-        Me.cmbCiudad.MaxLength = 32767
-        Me.cmbCiudad.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbCiudad.Name = "cmbCiudad"
-        Me.cmbCiudad.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCiudad.Size = New System.Drawing.Size(186, 21)
-        Me.cmbCiudad.TabIndex = 100
-        Me.cmbCiudad.Tag = "OBLIGATORIO"
-        Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
         '
         'txtDireccion
         '
@@ -575,12 +572,12 @@ Partial Class frmSivProveedorEdit
         '
         'grbDatosNatural
         '
+        Me.grbDatosNatural.Controls.Add(Me.cmbGenero)
+        Me.grbDatosNatural.Controls.Add(Me.cmbCiudadNatural)
         Me.grbDatosNatural.Controls.Add(Me.dtpFechaNacimiento)
         Me.grbDatosNatural.Controls.Add(Me.txtdireccionNatural)
         Me.grbDatosNatural.Controls.Add(Me.Label4)
         Me.grbDatosNatural.Controls.Add(Me.Label5)
-        Me.grbDatosNatural.Controls.Add(Me.cmbCiudadNatural)
-        Me.grbDatosNatural.Controls.Add(Me.cmbGenero)
         Me.grbDatosNatural.Controls.Add(Me.txtCedula)
         Me.grbDatosNatural.Controls.Add(Me.lblFechaNacimiento)
         Me.grbDatosNatural.Controls.Add(Me.txtApellido2)
@@ -601,6 +598,70 @@ Partial Class frmSivProveedorEdit
         Me.grbDatosNatural.TabStop = False
         Me.grbDatosNatural.Text = "Datos Generales"
         Me.grbDatosNatural.Visible = False
+        '
+        'cmbGenero
+        '
+        Me.cmbGenero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbGenero.AutoCompletion = True
+        Me.cmbGenero.AutoDropDown = True
+        Me.cmbGenero.Caption = ""
+        Me.cmbGenero.CaptionHeight = 17
+        Me.cmbGenero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbGenero.ColumnCaptionHeight = 17
+        Me.cmbGenero.ColumnFooterHeight = 17
+        Me.cmbGenero.ContentHeight = 15
+        Me.cmbGenero.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbGenero.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbGenero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbGenero.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbGenero.EditorHeight = 15
+        Me.cmbGenero.Images.Add(CType(resources.GetObject("cmbGenero.Images"), System.Drawing.Image))
+        Me.cmbGenero.ItemHeight = 15
+        Me.cmbGenero.Location = New System.Drawing.Point(449, 76)
+        Me.cmbGenero.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbGenero.MaxDropDownItems = CType(5, Short)
+        Me.cmbGenero.MaxLength = 32767
+        Me.cmbGenero.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbGenero.Name = "cmbGenero"
+        Me.cmbGenero.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbGenero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbGenero.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbGenero.Size = New System.Drawing.Size(170, 21)
+        Me.cmbGenero.TabIndex = 138
+        Me.cmbGenero.Tag = "OBLIGATORIO"
+        Me.cmbGenero.PropBag = resources.GetString("cmbGenero.PropBag")
+        '
+        'cmbCiudadNatural
+        '
+        Me.cmbCiudadNatural.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCiudadNatural.AutoCompletion = True
+        Me.cmbCiudadNatural.AutoDropDown = True
+        Me.cmbCiudadNatural.Caption = ""
+        Me.cmbCiudadNatural.CaptionHeight = 17
+        Me.cmbCiudadNatural.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCiudadNatural.ColumnCaptionHeight = 17
+        Me.cmbCiudadNatural.ColumnFooterHeight = 17
+        Me.cmbCiudadNatural.ContentHeight = 15
+        Me.cmbCiudadNatural.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCiudadNatural.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCiudadNatural.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCiudadNatural.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCiudadNatural.EditorHeight = 15
+        Me.cmbCiudadNatural.Images.Add(CType(resources.GetObject("cmbCiudadNatural.Images"), System.Drawing.Image))
+        Me.cmbCiudadNatural.ItemHeight = 15
+        Me.cmbCiudadNatural.Location = New System.Drawing.Point(449, 104)
+        Me.cmbCiudadNatural.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCiudadNatural.MaxDropDownItems = CType(5, Short)
+        Me.cmbCiudadNatural.MaxLength = 32767
+        Me.cmbCiudadNatural.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbCiudadNatural.Name = "cmbCiudadNatural"
+        Me.cmbCiudadNatural.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCiudadNatural.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCiudadNatural.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbCiudadNatural.Size = New System.Drawing.Size(170, 21)
+        Me.cmbCiudadNatural.TabIndex = 137
+        Me.cmbCiudadNatural.Tag = "OBLIGATORIO"
+        Me.cmbCiudadNatural.PropBag = resources.GetString("cmbCiudadNatural.PropBag")
         '
         'dtpFechaNacimiento
         '
@@ -640,76 +701,6 @@ Partial Class frmSivProveedorEdit
         Me.Label5.Size = New System.Drawing.Size(50, 13)
         Me.Label5.TabIndex = 27
         Me.Label5.Text = "Ciudad:"
-        '
-        'cmbCiudadNatural
-        '
-        Me.cmbCiudadNatural.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbCiudadNatural.AllowColMove = False
-        Me.cmbCiudadNatural.AllowSort = False
-        Me.cmbCiudadNatural.Caption = ""
-        Me.cmbCiudadNatural.CaptionHeight = 17
-        Me.cmbCiudadNatural.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbCiudadNatural.ColumnCaptionHeight = 17
-        Me.cmbCiudadNatural.ColumnFooterHeight = 17
-        Me.cmbCiudadNatural.ColumnHeaders = False
-        Me.cmbCiudadNatural.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbCiudadNatural.ContentHeight = 15
-        Me.cmbCiudadNatural.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbCiudadNatural.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbCiudadNatural.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudadNatural.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbCiudadNatural.EditorHeight = 15
-        Me.cmbCiudadNatural.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCiudadNatural.Images.Add(CType(resources.GetObject("cmbCiudadNatural.Images"), System.Drawing.Image))
-        Me.cmbCiudadNatural.ItemHeight = 15
-        Me.cmbCiudadNatural.Location = New System.Drawing.Point(449, 104)
-        Me.cmbCiudadNatural.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbCiudadNatural.MaxDropDownItems = CType(5, Short)
-        Me.cmbCiudadNatural.MaxLength = 32767
-        Me.cmbCiudadNatural.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbCiudadNatural.Name = "cmbCiudadNatural"
-        Me.cmbCiudadNatural.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbCiudadNatural.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbCiudadNatural.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbCiudadNatural.Size = New System.Drawing.Size(170, 21)
-        Me.cmbCiudadNatural.TabIndex = 28
-        Me.cmbCiudadNatural.Tag = "OBLIGATORIO"
-        Me.cmbCiudadNatural.PropBag = resources.GetString("cmbCiudadNatural.PropBag")
-        '
-        'cmbGenero
-        '
-        Me.cmbGenero.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbGenero.AllowColMove = False
-        Me.cmbGenero.AllowSort = False
-        Me.cmbGenero.Caption = ""
-        Me.cmbGenero.CaptionHeight = 17
-        Me.cmbGenero.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Me.cmbGenero.ColumnCaptionHeight = 17
-        Me.cmbGenero.ColumnFooterHeight = 17
-        Me.cmbGenero.ColumnHeaders = False
-        Me.cmbGenero.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
-        Me.cmbGenero.ContentHeight = 15
-        Me.cmbGenero.DeadAreaBackColor = System.Drawing.Color.Empty
-        Me.cmbGenero.EditorBackColor = System.Drawing.SystemColors.Window
-        Me.cmbGenero.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbGenero.EditorForeColor = System.Drawing.SystemColors.WindowText
-        Me.cmbGenero.EditorHeight = 15
-        Me.cmbGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbGenero.Images.Add(CType(resources.GetObject("cmbGenero.Images"), System.Drawing.Image))
-        Me.cmbGenero.ItemHeight = 15
-        Me.cmbGenero.Location = New System.Drawing.Point(449, 77)
-        Me.cmbGenero.MatchEntryTimeout = CType(2000, Long)
-        Me.cmbGenero.MaxDropDownItems = CType(5, Short)
-        Me.cmbGenero.MaxLength = 32767
-        Me.cmbGenero.MouseCursor = System.Windows.Forms.Cursors.Default
-        Me.cmbGenero.Name = "cmbGenero"
-        Me.cmbGenero.RowDivider.Color = System.Drawing.Color.DarkGray
-        Me.cmbGenero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
-        Me.cmbGenero.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbGenero.Size = New System.Drawing.Size(170, 21)
-        Me.cmbGenero.TabIndex = 25
-        Me.cmbGenero.Tag = "OBLIGATORIO"
-        Me.cmbGenero.PropBag = resources.GetString("cmbGenero.PropBag")
         '
         'txtCedula
         '
@@ -841,7 +832,7 @@ Partial Class frmSivProveedorEdit
         Me.Text = "Proveedor"
         Me.gbxDatosJuridico.ResumeLayout(False)
         Me.gbxDatosJuridico.PerformLayout()
-        CType(Me.cmbCiudad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbciudad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaIngreso, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgProveedor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).EndInit()
@@ -861,10 +852,10 @@ Partial Class frmSivProveedorEdit
         Me.barContactos.PerformLayout()
         Me.grbDatosNatural.ResumeLayout(False)
         Me.grbDatosNatural.PerformLayout()
+        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbCiudadNatural, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaNacimiento.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtpFechaNacimiento.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbCiudadNatural, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cmbGenero, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
 End Sub
@@ -897,7 +888,6 @@ End Sub
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents cmbCiudad As C1.Win.C1List.C1Combo
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents tabAdicionales As System.Windows.Forms.TabControl
     Friend WithEvents tabContactos As System.Windows.Forms.TabPage
@@ -910,8 +900,6 @@ End Sub
     Friend WithEvents txtdireccionNatural As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents cmbCiudadNatural As C1.Win.C1List.C1Combo
-    Friend WithEvents cmbGenero As C1.Win.C1List.C1Combo
     Friend WithEvents txtCedula As System.Windows.Forms.MaskedTextBox
     Friend WithEvents lblFechaNacimiento As System.Windows.Forms.Label
     Friend WithEvents txtApellido2 As System.Windows.Forms.TextBox
@@ -925,4 +913,7 @@ End Sub
     Friend WithEvents lblNombre2 As System.Windows.Forms.Label
     Friend WithEvents lblNombre1 As System.Windows.Forms.Label
     Friend WithEvents chkJuridico As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbCiudadNatural As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbciudad As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbGenero As C1.Win.C1List.C1Combo
 End Class

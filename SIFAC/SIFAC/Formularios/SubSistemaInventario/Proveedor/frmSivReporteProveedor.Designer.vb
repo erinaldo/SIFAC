@@ -53,15 +53,13 @@ Partial Class frmSivReporteProveedor
         'cmbProveedor
         '
         Me.cmbProveedor.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.cmbProveedor.AllowColMove = False
-        Me.cmbProveedor.AllowSort = False
+        Me.cmbProveedor.AutoCompletion = True
+        Me.cmbProveedor.AutoDropDown = True
         Me.cmbProveedor.Caption = ""
         Me.cmbProveedor.CaptionHeight = 17
         Me.cmbProveedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
         Me.cmbProveedor.ColumnCaptionHeight = 17
         Me.cmbProveedor.ColumnFooterHeight = 17
-        Me.cmbProveedor.ColumnHeaders = False
-        Me.cmbProveedor.ComboStyle = C1.Win.C1List.ComboStyleEnum.DropdownList
         Me.cmbProveedor.ContentHeight = 15
         Me.cmbProveedor.DeadAreaBackColor = System.Drawing.Color.Empty
         Me.cmbProveedor.EditorBackColor = System.Drawing.SystemColors.Window
@@ -70,7 +68,7 @@ Partial Class frmSivReporteProveedor
         Me.cmbProveedor.EditorHeight = 15
         Me.cmbProveedor.Images.Add(CType(resources.GetObject("cmbProveedor.Images"), System.Drawing.Image))
         Me.cmbProveedor.ItemHeight = 15
-        Me.cmbProveedor.Location = New System.Drawing.Point(106, 28)
+        Me.cmbProveedor.Location = New System.Drawing.Point(115, 28)
         Me.cmbProveedor.MatchEntryTimeout = CType(2000, Long)
         Me.cmbProveedor.MaxDropDownItems = CType(5, Short)
         Me.cmbProveedor.MaxLength = 32767
@@ -79,8 +77,9 @@ Partial Class frmSivReporteProveedor
         Me.cmbProveedor.RowDivider.Color = System.Drawing.Color.DarkGray
         Me.cmbProveedor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbProveedor.RowSubDividerColor = System.Drawing.Color.DarkGray
-        Me.cmbProveedor.Size = New System.Drawing.Size(206, 21)
-        Me.cmbProveedor.TabIndex = 4
+        Me.cmbProveedor.Size = New System.Drawing.Size(192, 21)
+        Me.cmbProveedor.TabIndex = 138
+        Me.cmbProveedor.Tag = "OBLIGATORIO"
         Me.cmbProveedor.PropBag = resources.GetString("cmbProveedor.PropBag")
         '
         'rbInactivos
@@ -193,8 +192,8 @@ Partial Class frmSivReporteProveedor
     Friend WithEvents rbProveedor As System.Windows.Forms.RadioButton
     Friend WithEvents rbInactivos As System.Windows.Forms.RadioButton
     Friend WithEvents rbActivos As System.Windows.Forms.RadioButton
-    Friend WithEvents cmbProveedor As C1.Win.C1List.C1Combo
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmbProveedor As C1.Win.C1List.C1Combo
 End Class

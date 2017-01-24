@@ -942,11 +942,11 @@ Public Class frmClientesEdit
         Me.ErrPrv.SetError(Me.txtCedula, "")
     End Sub
 
-    Private Sub cmbGenero_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbGenero.Click
+    Private Sub cmbGenero_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.ErrPrv.SetError(Me.cmbGenero, "")
     End Sub
 
-    Private Sub cmbGenero_ValueMemberChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbGenero.ValueMemberChanged
+    Private Sub cmbGenero_ValueMemberChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.ErrPrv.SetError(Me.cmbGenero, "")
     End Sub
 
@@ -954,7 +954,7 @@ Public Class frmClientesEdit
 
 #Region "Varios"
 
-    Private Sub cmbGenero_KeyPress_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cmbGenero.KeyPress
+    Private Sub cmbGenero_KeyPress_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         Me.ErrPrv.SetError(Me.cmbGenero, "")
         If Asc(e.KeyChar) = 13 Then
             Me.dtpFechaNacimiento.Focus()

@@ -17,7 +17,7 @@ Public Class frmSccClientes
     Private Sub CargarGridClientes()
 
         Try
-            Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,Nombre1,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero,Ruta,OrdenCobro", "vwSccClientes"))
+            Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,Nombre1,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero,Ruta,OrdenCobro,NombreCompleto", "vwSccClientes"))
             'Me.dtCliente.PrimaryKey = New DataColumn() {Me.dtCliente.Columns("StbPersonaID")}
             Me.dtCliente.DefaultView.Sort = "StbPersonaID desc"
             Me.grdClientes.DataSource = dtCliente
