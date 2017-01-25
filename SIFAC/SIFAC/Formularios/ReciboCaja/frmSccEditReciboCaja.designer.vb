@@ -129,7 +129,7 @@ Partial Class frmSccEditReciboCaja
         Me.grdNotaDebito.PreviewInfo.ZoomFactor = 75.0R
         Me.grdNotaDebito.PrintInfo.PageSettings = CType(resources.GetObject("grdNotaDebito.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdNotaDebito.Size = New System.Drawing.Size(628, 101)
-        Me.grdNotaDebito.TabIndex = 11
+        Me.grdNotaDebito.TabIndex = 1
         Me.grdNotaDebito.PropBag = resources.GetString("grdNotaDebito.PropBag")
         '
         'grdFacturas
@@ -151,7 +151,7 @@ Partial Class frmSccEditReciboCaja
         Me.grdFacturas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdFacturas.PrintInfo.PageSettings = CType(resources.GetObject("grdFacturas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdFacturas.Size = New System.Drawing.Size(628, 122)
-        Me.grdFacturas.TabIndex = 7
+        Me.grdFacturas.TabIndex = 0
         Me.grdFacturas.PropBag = resources.GetString("grdFacturas.PropBag")
         '
         'tbpFormasPago
@@ -324,7 +324,7 @@ Partial Class frmSccEditReciboCaja
         Me.txtTotalFact.Location = New System.Drawing.Point(489, 417)
         Me.txtTotalFact.Name = "txtTotalFact"
         Me.txtTotalFact.Size = New System.Drawing.Size(123, 20)
-        Me.txtTotalFact.TabIndex = 15
+        Me.txtTotalFact.TabIndex = 0
         Me.txtTotalFact.Tag = "BLOQUEADO"
         Me.txtTotalFact.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtTotalFact.Value = New Decimal(New Integer() {0, 0, 0, 65536})
@@ -346,7 +346,7 @@ Partial Class frmSccEditReciboCaja
         Me.txtTotalPagar.Location = New System.Drawing.Point(489, 441)
         Me.txtTotalPagar.Name = "txtTotalPagar"
         Me.txtTotalPagar.Size = New System.Drawing.Size(123, 20)
-        Me.txtTotalPagar.TabIndex = 17
+        Me.txtTotalPagar.TabIndex = 1
         Me.txtTotalPagar.Tag = "BLOQUEADO"
         Me.txtTotalPagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtTotalPagar.Value = New Decimal(New Integer() {0, 0, 0, 65536})
@@ -386,7 +386,7 @@ Partial Class frmSccEditReciboCaja
         Me.txtEstado.Location = New System.Drawing.Point(73, 43)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.Size = New System.Drawing.Size(159, 20)
-        Me.txtEstado.TabIndex = 5
+        Me.txtEstado.TabIndex = 1
         Me.txtEstado.Tag = "BLOQUEADO"
         '
         'dtpFecha
@@ -416,7 +416,7 @@ Partial Class frmSccEditReciboCaja
         Me.dtpFecha.Location = New System.Drawing.Point(73, 69)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(160, 20)
-        Me.dtpFecha.TabIndex = 4
+        Me.dtpFecha.TabIndex = 2
         Me.dtpFecha.Tag = Nothing
         Me.dtpFecha.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -438,7 +438,7 @@ Partial Class frmSccEditReciboCaja
         Me.txtNumRecibo.Location = New System.Drawing.Point(73, 17)
         Me.txtNumRecibo.Name = "txtNumRecibo"
         Me.txtNumRecibo.Size = New System.Drawing.Size(159, 20)
-        Me.txtNumRecibo.TabIndex = 1
+        Me.txtNumRecibo.TabIndex = 0
         Me.txtNumRecibo.Tag = ""
         '
         'lblRecibo
@@ -486,7 +486,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmdExpediente.Location = New System.Drawing.Point(325, 14)
         Me.cmdExpediente.Name = "cmdExpediente"
         Me.cmdExpediente.Size = New System.Drawing.Size(24, 23)
-        Me.cmdExpediente.TabIndex = 6
+        Me.cmdExpediente.TabIndex = 1
         Me.cmdExpediente.Text = "..."
         Me.cmdExpediente.UseVisualStyleBackColor = True
         '
@@ -496,7 +496,7 @@ Partial Class frmSccEditReciboCaja
         Me.txtCliente.Location = New System.Drawing.Point(86, 44)
         Me.txtCliente.Name = "txtCliente"
         Me.txtCliente.Size = New System.Drawing.Size(263, 20)
-        Me.txtCliente.TabIndex = 5
+        Me.txtCliente.TabIndex = 2
         Me.txtCliente.Tag = "BLOQUEADO"
         '
         'Label4
@@ -517,7 +517,7 @@ Partial Class frmSccEditReciboCaja
         Me.txtNumCuenta.Location = New System.Drawing.Point(155, 17)
         Me.txtNumCuenta.Name = "txtNumCuenta"
         Me.txtNumCuenta.Size = New System.Drawing.Size(163, 20)
-        Me.txtNumCuenta.TabIndex = 3
+        Me.txtNumCuenta.TabIndex = 0
         Me.txtNumCuenta.Tag = "BLOQUEADO"
         '
         'Label5
@@ -659,7 +659,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmbRuta.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbRuta.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbRuta.Size = New System.Drawing.Size(302, 21)
-        Me.cmbRuta.TabIndex = 127
+        Me.cmbRuta.TabIndex = 1
         Me.cmbRuta.Tag = "OBLIGATORIO"
         Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")
         '
@@ -703,7 +703,7 @@ Partial Class frmSccEditReciboCaja
         Me.cbxCobrador.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cbxCobrador.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cbxCobrador.Size = New System.Drawing.Size(184, 21)
-        Me.cbxCobrador.TabIndex = 23
+        Me.cbxCobrador.TabIndex = 0
         Me.cbxCobrador.Tag = "OBLIGATORIO"
         Me.cbxCobrador.PropBag = resources.GetString("cbxCobrador.PropBag")
         '
@@ -729,7 +729,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmProcesar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmProcesar.Name = "cmProcesar"
         Me.cmProcesar.Size = New System.Drawing.Size(75, 28)
-        Me.cmProcesar.TabIndex = 22
+        Me.cmProcesar.TabIndex = 4
         Me.cmProcesar.Tag = "PROCESAR"
         Me.cmProcesar.Text = "&Procesar"
         '
@@ -743,7 +743,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 21
+        Me.cmdCancelar.TabIndex = 5
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -758,7 +758,7 @@ Partial Class frmSccEditReciboCaja
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 20
+        Me.cmdGuardar.TabIndex = 3
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '

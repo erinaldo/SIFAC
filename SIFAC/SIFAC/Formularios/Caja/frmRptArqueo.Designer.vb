@@ -71,7 +71,7 @@ Partial Class frmRptArqueo
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdCancelar.TabIndex = 84
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -166,7 +166,7 @@ Partial Class frmRptArqueo
         Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdAceptar.TabIndex = 83
+        Me.cmdAceptar.TabIndex = 0
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
         '
@@ -220,7 +220,7 @@ Partial Class frmRptArqueo
         Me.cmbCajas.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCajas.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCajas.Size = New System.Drawing.Size(221, 21)
-        Me.cmbCajas.TabIndex = 137
+        Me.cmbCajas.TabIndex = 0
         Me.cmbCajas.Tag = "OBLIGATORIO"
         Me.cmbCajas.PropBag = resources.GetString("cmbCajas.PropBag")
         '
@@ -233,7 +233,7 @@ Partial Class frmRptArqueo
         Me.chkTodasCajas.Location = New System.Drawing.Point(68, 56)
         Me.chkTodasCajas.Name = "chkTodasCajas"
         Me.chkTodasCajas.Size = New System.Drawing.Size(65, 17)
-        Me.chkTodasCajas.TabIndex = 5
+        Me.chkTodasCajas.TabIndex = 1
         Me.chkTodasCajas.Text = "Todas "
         Me.chkTodasCajas.UseVisualStyleBackColor = True
         '

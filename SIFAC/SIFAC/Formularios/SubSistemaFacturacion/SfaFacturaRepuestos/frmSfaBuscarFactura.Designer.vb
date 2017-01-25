@@ -95,7 +95,7 @@ Partial Class frmSfaBuscarFactura
         Me.cmbCliente.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCliente.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCliente.Size = New System.Drawing.Size(229, 21)
-        Me.cmbCliente.TabIndex = 5
+        Me.cmbCliente.TabIndex = 2
         Me.cmbCliente.PropBag = resources.GetString("cmbCliente.PropBag")
         '
         'cmbSucursal
@@ -127,7 +127,7 @@ Partial Class frmSfaBuscarFactura
         Me.cmbSucursal.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbSucursal.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbSucursal.Size = New System.Drawing.Size(229, 21)
-        Me.cmbSucursal.TabIndex = 4
+        Me.cmbSucursal.TabIndex = 1
         Me.cmbSucursal.PropBag = resources.GetString("cmbSucursal.PropBag")
         '
         'txtNumeroFactura
@@ -135,7 +135,7 @@ Partial Class frmSfaBuscarFactura
         Me.txtNumeroFactura.Location = New System.Drawing.Point(107, 22)
         Me.txtNumeroFactura.Name = "txtNumeroFactura"
         Me.txtNumeroFactura.Size = New System.Drawing.Size(100, 20)
-        Me.txtNumeroFactura.TabIndex = 3
+        Me.txtNumeroFactura.TabIndex = 0
         Me.txtNumeroFactura.Text = "TODAS"
         '
         'Label3
@@ -180,7 +180,7 @@ Partial Class frmSfaBuscarFactura
         Me.cmdAceptar.Location = New System.Drawing.Point(512, 144)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdAceptar.TabIndex = 2
+        Me.cmdAceptar.TabIndex = 0
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
         Me.cmdAceptar.UseVisualStyleBackColor = True
@@ -224,7 +224,7 @@ Partial Class frmSfaBuscarFactura
         Me.dtpHasta.Location = New System.Drawing.Point(96, 59)
         Me.dtpHasta.Name = "dtpHasta"
         Me.dtpHasta.Size = New System.Drawing.Size(159, 20)
-        Me.dtpHasta.TabIndex = 4
+        Me.dtpHasta.TabIndex = 1
         Me.dtpHasta.Tag = Nothing
         Me.dtpHasta.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -254,7 +254,7 @@ Partial Class frmSfaBuscarFactura
         Me.dtpDesde.Location = New System.Drawing.Point(96, 33)
         Me.dtpDesde.Name = "dtpDesde"
         Me.dtpDesde.Size = New System.Drawing.Size(159, 20)
-        Me.dtpDesde.TabIndex = 3
+        Me.dtpDesde.TabIndex = 0
         Me.dtpDesde.Tag = Nothing
         Me.dtpDesde.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '

@@ -234,7 +234,7 @@ Partial Class frmSivProductosEditar
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 12
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -249,7 +249,7 @@ Partial Class frmSivProductosEditar
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 11
+        Me.cmdGuardar.TabIndex = 0
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
@@ -284,7 +284,7 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioContado.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.spnPrecioContado.Properties.Mask.EditMask = "n"
         Me.spnPrecioContado.Size = New System.Drawing.Size(91, 20)
-        Me.spnPrecioContado.TabIndex = 7
+        Me.spnPrecioContado.TabIndex = 2
         '
         'spnMargenCredito
         '
@@ -296,7 +296,7 @@ Partial Class frmSivProductosEditar
         Me.spnMargenCredito.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.spnMargenCredito.Properties.Mask.EditMask = "n"
         Me.spnMargenCredito.Size = New System.Drawing.Size(91, 20)
-        Me.spnMargenCredito.TabIndex = 8
+        Me.spnMargenCredito.TabIndex = 3
         '
         'spnPrecioCredito
         '
@@ -308,7 +308,7 @@ Partial Class frmSivProductosEditar
         Me.spnPrecioCredito.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.spnPrecioCredito.Properties.Mask.EditMask = "n"
         Me.spnPrecioCredito.Size = New System.Drawing.Size(91, 20)
-        Me.spnPrecioCredito.TabIndex = 6
+        Me.spnPrecioCredito.TabIndex = 1
         '
         'spnMargenContado
         '
@@ -320,7 +320,7 @@ Partial Class frmSivProductosEditar
         Me.spnMargenContado.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.spnMargenContado.Properties.Mask.EditMask = "n"
         Me.spnMargenContado.Size = New System.Drawing.Size(91, 20)
-        Me.spnMargenContado.TabIndex = 0
+        Me.spnMargenContado.TabIndex = 4
         '
         'spnCostoPromedio
         '
@@ -332,7 +332,7 @@ Partial Class frmSivProductosEditar
         Me.spnCostoPromedio.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.spnCostoPromedio.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.spnCostoPromedio.Size = New System.Drawing.Size(91, 20)
-        Me.spnCostoPromedio.TabIndex = 5
+        Me.spnCostoPromedio.TabIndex = 0
         '
         'spnCantidadMinima
         '
@@ -341,7 +341,7 @@ Partial Class frmSivProductosEditar
         Me.spnCantidadMinima.Name = "spnCantidadMinima"
         Me.spnCantidadMinima.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject6, "", Nothing, Nothing, True)})
         Me.spnCantidadMinima.Size = New System.Drawing.Size(91, 20)
-        Me.spnCantidadMinima.TabIndex = 10
+        Me.spnCantidadMinima.TabIndex = 5
         '
         'Label7
         '
@@ -458,7 +458,7 @@ Partial Class frmSivProductosEditar
         Me.cmbMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbMarca.Size = New System.Drawing.Size(279, 21)
-        Me.cmbMarca.TabIndex = 134
+        Me.cmbMarca.TabIndex = 4
         Me.cmbMarca.Tag = "OBLIGATORIO"
         Me.cmbMarca.PropBag = resources.GetString("cmbMarca.PropBag")
         '
@@ -490,7 +490,7 @@ Partial Class frmSivProductosEditar
         Me.cmbCategoria.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCategoria.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCategoria.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCategoria.TabIndex = 135
+        Me.cmbCategoria.TabIndex = 2
         Me.cmbCategoria.Tag = "OBLIGATORIO"
         Me.cmbCategoria.PropBag = resources.GetString("cmbCategoria.PropBag")
         '
@@ -505,7 +505,7 @@ Partial Class frmSivProductosEditar
         Me.cmdAgregarMarca.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAgregarMarca.Name = "cmdAgregarMarca"
         Me.cmdAgregarMarca.Size = New System.Drawing.Size(32, 28)
-        Me.cmdAgregarMarca.TabIndex = 117
+        Me.cmdAgregarMarca.TabIndex = 5
         Me.cmdAgregarMarca.Tag = "AGREGAR MARCA"
         '
         'cmdAgregarCategoria
@@ -519,7 +519,7 @@ Partial Class frmSivProductosEditar
         Me.cmdAgregarCategoria.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAgregarCategoria.Name = "cmdAgregarCategoria"
         Me.cmdAgregarCategoria.Size = New System.Drawing.Size(32, 28)
-        Me.cmdAgregarCategoria.TabIndex = 116
+        Me.cmdAgregarCategoria.TabIndex = 3
         Me.cmdAgregarCategoria.Tag = "AGREGAR CATEGORIA"
         '
         'txtNombre
@@ -558,7 +558,7 @@ Partial Class frmSivProductosEditar
         Me.chkActivo.Location = New System.Drawing.Point(311, 171)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
-        Me.chkActivo.TabIndex = 4
+        Me.chkActivo.TabIndex = 6
         Me.chkActivo.Text = "Activo"
         Me.chkActivo.UseVisualStyleBackColor = True
         '

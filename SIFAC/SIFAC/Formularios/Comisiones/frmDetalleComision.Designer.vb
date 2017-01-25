@@ -29,13 +29,13 @@ Partial Class frmDetalleComision
         Me.gbxDatosGenerales = New System.Windows.Forms.GroupBox()
         Me.grdDetalle = New DevExpress.XtraGrid.GridControl()
         Me.grdDetalleTabla = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNumCuenta = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colRuta = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCliente = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSccReciboCajaID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTotalRecaudado = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemCheckEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
-        Me.colFecha = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl1.SuspendLayout()
         Me.gbxDatosGenerales.SuspendLayout()
@@ -77,7 +77,7 @@ Partial Class frmDetalleComision
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 3
+        Me.cmdCancelar.TabIndex = 0
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -100,7 +100,7 @@ Partial Class frmDetalleComision
         Me.grdDetalle.Name = "grdDetalle"
         Me.grdDetalle.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
         Me.grdDetalle.Size = New System.Drawing.Size(584, 172)
-        Me.grdDetalle.TabIndex = 11
+        Me.grdDetalle.TabIndex = 0
         Me.grdDetalle.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDetalleTabla})
         '
         'grdDetalleTabla
@@ -111,6 +111,15 @@ Partial Class frmDetalleComision
         Me.grdDetalleTabla.Name = "grdDetalleTabla"
         Me.grdDetalleTabla.OptionsView.ShowGroupPanel = False
         Me.grdDetalleTabla.Tag = ""
+        '
+        'colFecha
+        '
+        Me.colFecha.Caption = "Fecha"
+        Me.colFecha.FieldName = "Fecha"
+        Me.colFecha.Name = "colFecha"
+        Me.colFecha.Visible = True
+        Me.colFecha.VisibleIndex = 0
+        Me.colFecha.Width = 100
         '
         'colNumCuenta
         '
@@ -166,15 +175,6 @@ Partial Class frmDetalleComision
         Me.RepositoryItemCheckEdit1.AutoHeight = False
         Me.RepositoryItemCheckEdit1.Caption = "Check"
         Me.RepositoryItemCheckEdit1.Name = "RepositoryItemCheckEdit1"
-        '
-        'colFecha
-        '
-        Me.colFecha.Caption = "Fecha"
-        Me.colFecha.FieldName = "Fecha"
-        Me.colFecha.Name = "colFecha"
-        Me.colFecha.Visible = True
-        Me.colFecha.VisibleIndex = 0
-        Me.colFecha.Width = 100
         '
         'frmDetalleComision
         '

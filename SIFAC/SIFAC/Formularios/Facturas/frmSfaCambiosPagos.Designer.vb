@@ -67,7 +67,7 @@ Partial Class frmSfaCambiosPagos
         Me.txtusuario.Location = New System.Drawing.Point(112, 77)
         Me.txtusuario.Name = "txtusuario"
         Me.txtusuario.Size = New System.Drawing.Size(160, 20)
-        Me.txtusuario.TabIndex = 21
+        Me.txtusuario.TabIndex = 2
         Me.txtusuario.Tag = "BLOQUEADO"
         '
         'Label1
@@ -105,7 +105,7 @@ Partial Class frmSfaCambiosPagos
         Me.dtpNuevoPago.Location = New System.Drawing.Point(112, 50)
         Me.dtpNuevoPago.Name = "dtpNuevoPago"
         Me.dtpNuevoPago.Size = New System.Drawing.Size(160, 20)
-        Me.dtpNuevoPago.TabIndex = 19
+        Me.dtpNuevoPago.TabIndex = 1
         Me.dtpNuevoPago.Tag = "BLOQUEADO"
         Me.dtpNuevoPago.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -145,7 +145,7 @@ Partial Class frmSfaCambiosPagos
         Me.dtpFechaProximoPago.Location = New System.Drawing.Point(112, 24)
         Me.dtpFechaProximoPago.Name = "dtpFechaProximoPago"
         Me.dtpFechaProximoPago.Size = New System.Drawing.Size(160, 20)
-        Me.dtpFechaProximoPago.TabIndex = 17
+        Me.dtpFechaProximoPago.TabIndex = 0
         Me.dtpFechaProximoPago.Tag = "BLOQUEADO"
         Me.dtpFechaProximoPago.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -163,7 +163,7 @@ Partial Class frmSfaCambiosPagos
         Me.cmdCancelar.Location = New System.Drawing.Point(230, 174)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 26
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         Me.cmdCancelar.UseVisualStyleBackColor = True
@@ -173,7 +173,7 @@ Partial Class frmSfaCambiosPagos
         Me.cmdAceptar.Location = New System.Drawing.Point(149, 174)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdAceptar.TabIndex = 25
+        Me.cmdAceptar.TabIndex = 0
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
         Me.cmdAceptar.UseVisualStyleBackColor = True

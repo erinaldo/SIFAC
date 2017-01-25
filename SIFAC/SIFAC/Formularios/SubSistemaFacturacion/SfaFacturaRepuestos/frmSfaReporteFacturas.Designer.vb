@@ -125,7 +125,7 @@ Partial Class frmSfaReporteFacturas
         Me.cmbVendedor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbVendedor.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbVendedor.Size = New System.Drawing.Size(191, 21)
-        Me.cmbVendedor.TabIndex = 12
+        Me.cmbVendedor.TabIndex = 2
         Me.cmbVendedor.PropBag = resources.GetString("cmbVendedor.PropBag")
         '
         'cmbCliente
@@ -156,7 +156,7 @@ Partial Class frmSfaReporteFacturas
         Me.cmbCliente.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCliente.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCliente.Size = New System.Drawing.Size(191, 21)
-        Me.cmbCliente.TabIndex = 11
+        Me.cmbCliente.TabIndex = 1
         Me.cmbCliente.PropBag = resources.GetString("cmbCliente.PropBag")
         '
         'cmbSucursal
@@ -188,7 +188,7 @@ Partial Class frmSfaReporteFacturas
         Me.cmbSucursal.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbSucursal.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbSucursal.Size = New System.Drawing.Size(191, 21)
-        Me.cmbSucursal.TabIndex = 4
+        Me.cmbSucursal.TabIndex = 0
         Me.cmbSucursal.PropBag = resources.GetString("cmbSucursal.PropBag")
         '
         'Label4
@@ -347,7 +347,7 @@ Partial Class frmSfaReporteFacturas
         Me.dtpHasta.Location = New System.Drawing.Point(75, 55)
         Me.dtpHasta.Name = "dtpHasta"
         Me.dtpHasta.Size = New System.Drawing.Size(176, 20)
-        Me.dtpHasta.TabIndex = 3
+        Me.dtpHasta.TabIndex = 1
         Me.dtpHasta.Tag = Nothing
         Me.dtpHasta.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -376,7 +376,7 @@ Partial Class frmSfaReporteFacturas
         Me.dtpDesde.Location = New System.Drawing.Point(75, 20)
         Me.dtpDesde.Name = "dtpDesde"
         Me.dtpDesde.Size = New System.Drawing.Size(176, 20)
-        Me.dtpDesde.TabIndex = 2
+        Me.dtpDesde.TabIndex = 0
         Me.dtpDesde.Tag = Nothing
         Me.dtpDesde.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -403,7 +403,7 @@ Partial Class frmSfaReporteFacturas
         Me.cmdAceptar.Location = New System.Drawing.Point(435, 236)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdAceptar.TabIndex = 57
+        Me.cmdAceptar.TabIndex = 0
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
         Me.cmdAceptar.UseVisualStyleBackColor = True
@@ -413,7 +413,7 @@ Partial Class frmSfaReporteFacturas
         Me.cmdCancelar.Location = New System.Drawing.Point(524, 236)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdCancelar.TabIndex = 58
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         Me.cmdCancelar.UseVisualStyleBackColor = True

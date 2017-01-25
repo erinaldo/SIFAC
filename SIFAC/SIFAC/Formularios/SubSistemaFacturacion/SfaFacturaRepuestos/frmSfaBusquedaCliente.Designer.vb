@@ -60,7 +60,7 @@ Partial Class frmSfaBusquedaCliente
         Me.grdCliente.PreviewInfo.ZoomFactor = 75.0R
         Me.grdCliente.PrintInfo.PageSettings = CType(resources.GetObject("grdCliente.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdCliente.Size = New System.Drawing.Size(551, 245)
-        Me.grdCliente.TabIndex = 1
+        Me.grdCliente.TabIndex = 0
         Me.grdCliente.PropBag = resources.GetString("grdCliente.PropBag")
         '
         'Panel3
@@ -77,7 +77,7 @@ Partial Class frmSfaBusquedaCliente
         Me.cmdCancelar.Location = New System.Drawing.Point(488, 300)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 32
+        Me.cmdCancelar.TabIndex = 2
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         Me.cmdCancelar.UseVisualStyleBackColor = True
@@ -87,7 +87,7 @@ Partial Class frmSfaBusquedaCliente
         Me.cmdAceptar.Location = New System.Drawing.Point(407, 300)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdAceptar.TabIndex = 31
+        Me.cmdAceptar.TabIndex = 1
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
         Me.cmdAceptar.UseVisualStyleBackColor = True
@@ -98,7 +98,7 @@ Partial Class frmSfaBusquedaCliente
         Me.cmdNuevaPersona.Location = New System.Drawing.Point(361, 297)
         Me.cmdNuevaPersona.Name = "cmdNuevaPersona"
         Me.cmdNuevaPersona.Size = New System.Drawing.Size(40, 35)
-        Me.cmdNuevaPersona.TabIndex = 33
+        Me.cmdNuevaPersona.TabIndex = 0
         Me.cmdNuevaPersona.UseVisualStyleBackColor = True
         '
         'PanelControl1

@@ -319,9 +319,12 @@ Public Class frmSivEntradaBodega
     End Sub
 
     Private Sub cmdEditar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAnular.Click
-        If Me.grdEntradaBodega.RowCount > 0 Then
+        Try
             Me.Anular()
-        End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+        
     End Sub
     Private Sub cmdConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultar.Click
         Call Consultar()

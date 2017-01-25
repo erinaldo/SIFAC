@@ -71,7 +71,7 @@ Partial Class frmBodegasEditar
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 3
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -86,7 +86,7 @@ Partial Class frmBodegasEditar
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 2
+        Me.cmdGuardar.TabIndex = 0
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
@@ -136,7 +136,7 @@ Partial Class frmBodegasEditar
         Me.cmbCajero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCajero.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCajero.TabIndex = 132
+        Me.cmbCajero.TabIndex = 3
         Me.cmbCajero.Tag = "OBLIGATORIO"
         Me.cmbCajero.PropBag = resources.GetString("cmbCajero.PropBag")
         '
@@ -168,7 +168,7 @@ Partial Class frmBodegasEditar
         Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCiudad.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCiudad.TabIndex = 131
+        Me.cmbCiudad.TabIndex = 2
         Me.cmbCiudad.Tag = "OBLIGATORIO"
         Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
         '
@@ -177,7 +177,7 @@ Partial Class frmBodegasEditar
         Me.txtCodigo.Location = New System.Drawing.Point(181, 51)
         Me.txtCodigo.Name = "txtCodigo"
         Me.txtCodigo.Size = New System.Drawing.Size(279, 20)
-        Me.txtCodigo.TabIndex = 107
+        Me.txtCodigo.TabIndex = 1
         Me.txtCodigo.TabStop = False
         Me.txtCodigo.Tag = "BLOQUEADO"
         '
@@ -197,7 +197,7 @@ Partial Class frmBodegasEditar
         Me.cmdJefe.Location = New System.Drawing.Point(466, 104)
         Me.cmdJefe.Name = "cmdJefe"
         Me.cmdJefe.Size = New System.Drawing.Size(33, 21)
-        Me.cmdJefe.TabIndex = 106
+        Me.cmdJefe.TabIndex = 4
         Me.cmdJefe.Text = "···"
         Me.cmdJefe.UseVisualStyleBackColor = True
         '
@@ -220,7 +220,7 @@ Partial Class frmBodegasEditar
         Me.chkActivo.Location = New System.Drawing.Point(181, 139)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
-        Me.chkActivo.TabIndex = 2
+        Me.chkActivo.TabIndex = 5
         Me.chkActivo.Text = "Activa"
         Me.chkActivo.UseVisualStyleBackColor = True
         '

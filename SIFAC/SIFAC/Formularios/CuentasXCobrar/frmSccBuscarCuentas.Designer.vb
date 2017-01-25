@@ -72,7 +72,7 @@ Partial Class frmSccBuscarCuentas
         Me.txtCedula.Mask = "000-000000-0000L"
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(209, 20)
-        Me.txtCedula.TabIndex = 83
+        Me.txtCedula.TabIndex = 1
         '
         'cmbEstado
         '
@@ -102,7 +102,7 @@ Partial Class frmSccBuscarCuentas
         Me.cmbEstado.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbEstado.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbEstado.Size = New System.Drawing.Size(210, 21)
-        Me.cmbEstado.TabIndex = 7
+        Me.cmbEstado.TabIndex = 2
         Me.cmbEstado.PropBag = resources.GetString("cmbEstado.PropBag")
         '
         'Label4
@@ -129,7 +129,7 @@ Partial Class frmSccBuscarCuentas
         Me.txtNumExp.Location = New System.Drawing.Point(121, 30)
         Me.txtNumExp.Name = "txtNumExp"
         Me.txtNumExp.Size = New System.Drawing.Size(210, 20)
-        Me.txtNumExp.TabIndex = 1
+        Me.txtNumExp.TabIndex = 0
         '
         'Label1
         '
@@ -163,7 +163,7 @@ Partial Class frmSccBuscarCuentas
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 18
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -178,7 +178,7 @@ Partial Class frmSccBuscarCuentas
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 17
+        Me.cmdGuardar.TabIndex = 0
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '

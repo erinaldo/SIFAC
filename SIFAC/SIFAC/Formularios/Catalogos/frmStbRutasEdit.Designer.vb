@@ -112,7 +112,7 @@ Partial Class frmStbRutasEdit
         Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCiudad.Size = New System.Drawing.Size(172, 21)
-        Me.cmbCiudad.TabIndex = 135
+        Me.cmbCiudad.TabIndex = 3
         Me.cmbCiudad.Tag = "OBLIGATORIO"
         Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
         '
@@ -144,7 +144,7 @@ Partial Class frmStbRutasEdit
         Me.cmbSupervisor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbSupervisor.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbSupervisor.Size = New System.Drawing.Size(279, 21)
-        Me.cmbSupervisor.TabIndex = 134
+        Me.cmbSupervisor.TabIndex = 2
         Me.cmbSupervisor.Tag = "OBLIGATORIO"
         Me.cmbSupervisor.PropBag = resources.GetString("cmbSupervisor.PropBag")
         '
@@ -176,7 +176,7 @@ Partial Class frmStbRutasEdit
         Me.cbxCobrador.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cbxCobrador.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cbxCobrador.Size = New System.Drawing.Size(279, 21)
-        Me.cbxCobrador.TabIndex = 133
+        Me.cbxCobrador.TabIndex = 1
         Me.cbxCobrador.Tag = "OBLIGATORIO"
         Me.cbxCobrador.PropBag = resources.GetString("cbxCobrador.PropBag")
         '
@@ -191,7 +191,7 @@ Partial Class frmStbRutasEdit
         Me.cmdAgregarCategoria.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAgregarCategoria.Name = "cmdAgregarCategoria"
         Me.cmdAgregarCategoria.Size = New System.Drawing.Size(32, 28)
-        Me.cmdAgregarCategoria.TabIndex = 132
+        Me.cmdAgregarCategoria.TabIndex = 5
         Me.cmdAgregarCategoria.Tag = "AGREGAR CATEGORIA"
         '
         'txtDescripcion
@@ -200,7 +200,7 @@ Partial Class frmStbRutasEdit
         Me.txtDescripcion.Multiline = True
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(279, 48)
-        Me.txtDescripcion.TabIndex = 2
+        Me.txtDescripcion.TabIndex = 0
         Me.txtDescripcion.Tag = "OBLIGATORIO"
         '
         'Label5
@@ -222,6 +222,7 @@ Partial Class frmStbRutasEdit
         Me.txtCodigo.Size = New System.Drawing.Size(170, 20)
         Me.txtCodigo.TabIndex = 0
         Me.txtCodigo.Tag = "OBLIGATORIO"
+        Me.txtCodigo.Text = "Autogenerado"
         '
         'Label4
         '
@@ -241,7 +242,7 @@ Partial Class frmStbRutasEdit
         Me.ckdCargaDiferenciada.Location = New System.Drawing.Point(430, 119)
         Me.ckdCargaDiferenciada.Name = "ckdCargaDiferenciada"
         Me.ckdCargaDiferenciada.Size = New System.Drawing.Size(135, 17)
-        Me.ckdCargaDiferenciada.TabIndex = 8
+        Me.ckdCargaDiferenciada.TabIndex = 7
         Me.ckdCargaDiferenciada.Text = "Cobro Diferenciado"
         Me.ckdCargaDiferenciada.UseVisualStyleBackColor = True
         '
@@ -254,7 +255,7 @@ Partial Class frmStbRutasEdit
         Me.chkActivo.Location = New System.Drawing.Point(430, 91)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
-        Me.chkActivo.TabIndex = 7
+        Me.chkActivo.TabIndex = 6
         Me.chkActivo.Text = "Activa"
         Me.chkActivo.UseVisualStyleBackColor = True
         '
@@ -286,7 +287,7 @@ Partial Class frmStbRutasEdit
         Me.cmbDiaCrobro.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbDiaCrobro.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbDiaCrobro.Size = New System.Drawing.Size(172, 21)
-        Me.cmbDiaCrobro.TabIndex = 6
+        Me.cmbDiaCrobro.TabIndex = 4
         Me.cmbDiaCrobro.Tag = "OBLIGATORIO"
         Me.cmbDiaCrobro.PropBag = resources.GetString("cmbDiaCrobro.PropBag")
         '
@@ -320,6 +321,7 @@ Partial Class frmStbRutasEdit
         Me.txtNombre.Size = New System.Drawing.Size(279, 20)
         Me.txtNombre.TabIndex = 1
         Me.txtNombre.Tag = "OBLIGATORIO"
+        Me.txtNombre.Text = "Autogenerado"
         '
         'Label1
         '
@@ -364,7 +366,7 @@ Partial Class frmStbRutasEdit
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 10
+        Me.cmdCancelar.TabIndex = 9
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -379,7 +381,7 @@ Partial Class frmStbRutasEdit
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 9
+        Me.cmdGuardar.TabIndex = 8
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '

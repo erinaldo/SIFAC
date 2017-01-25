@@ -233,12 +233,12 @@ Public Class frmStbRutasEdit
             objRutas.objPaisID = 558 ''StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
             objRutas.DiaCobro = cmbDiaCrobro.SelectedValue
             objRutas.CargarDiferenciada = ckdCargaDiferenciada.Checked
-            objRutas.UsuarioCreacion = clsProyecto.Conexion.Servidor
+            objRutas.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objRutas.FechaCreacion = clsProyecto.Conexion.FechaServidor
 
             objRutas.Insert(T)
-            objRutas.Codigo = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
-            objRutas.Nombre = "RUT" + cmbCiudad.Text.Substring(0, 3) + objRutas.StbRutaID.ToString
+            objRutas.Nombre = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
+            objRutas.Codigo = "RUT" + cmbCiudad.Text.Substring(0, 3) + objRutas.StbRutaID.ToString
 
             objRutas.Update(T)
             T.CommitTran()
@@ -268,7 +268,7 @@ Public Class frmStbRutasEdit
 
             objRutas.Descripcion = txtDescripcion.Text.Trim
             objRutas.Activa = chkActivo.Checked
-            objRutas.Codigo = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
+            'objRutas.Codigo = cbxCobrador.Text.Trim + "-" + cmbDiaCrobro.Text + "-" + cmbCiudad.Text.Trim
             'objRutas.Codigo = txtCodigo.Text
             objRutas.ojbCobradorID = cbxCobrador.SelectedValue
 
@@ -280,7 +280,7 @@ Public Class frmStbRutasEdit
             objRutas.objPaisID = 558 ''StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
             objRutas.DiaCobro = cmbDiaCrobro.SelectedValue
             objRutas.CargarDiferenciada = ckdCargaDiferenciada.Checked
-            objRutas.UsuarioModificacion = clsProyecto.Conexion.Servidor
+            objRutas.UsuarioModificacion = clsProyecto.Conexion.Usuario
             objRutas.FechaModificacion = clsProyecto.Conexion.FechaServidor
             objRutas.Update(T)
             T.CommitTran()

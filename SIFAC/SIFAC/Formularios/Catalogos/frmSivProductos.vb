@@ -82,6 +82,7 @@ Public Class frmSivProductos
             editProducto.TypeGui = 0
             If editProducto.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
+                AplicarSeguridad()
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)

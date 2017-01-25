@@ -86,7 +86,7 @@ Partial Class frmSccEditDevolucion
         Me.txtEstado.Location = New System.Drawing.Point(62, 43)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.Size = New System.Drawing.Size(200, 20)
-        Me.txtEstado.TabIndex = 44
+        Me.txtEstado.TabIndex = 1
         Me.txtEstado.Tag = "BLOQUEADO"
         '
         'Label1
@@ -130,7 +130,7 @@ Partial Class frmSccEditDevolucion
         Me.cmdExpediente.Location = New System.Drawing.Point(316, 14)
         Me.cmdExpediente.Name = "cmdExpediente"
         Me.cmdExpediente.Size = New System.Drawing.Size(24, 23)
-        Me.cmdExpediente.TabIndex = 0
+        Me.cmdExpediente.TabIndex = 1
         Me.cmdExpediente.Text = "..."
         Me.cmdExpediente.UseVisualStyleBackColor = True
         '
@@ -140,7 +140,7 @@ Partial Class frmSccEditDevolucion
         Me.txtCliente.Location = New System.Drawing.Point(86, 44)
         Me.txtCliente.Name = "txtCliente"
         Me.txtCliente.Size = New System.Drawing.Size(254, 20)
-        Me.txtCliente.TabIndex = 5
+        Me.txtCliente.TabIndex = 2
         Me.txtCliente.Tag = "BLOQUEADO"
         '
         'Label11
@@ -160,7 +160,7 @@ Partial Class frmSccEditDevolucion
         Me.txtNumCuenta.Location = New System.Drawing.Point(168, 17)
         Me.txtNumCuenta.Name = "txtNumCuenta"
         Me.txtNumCuenta.Size = New System.Drawing.Size(142, 20)
-        Me.txtNumCuenta.TabIndex = 3
+        Me.txtNumCuenta.TabIndex = 0
         Me.txtNumCuenta.Tag = "BLOQUEADO"
         '
         'Label12
@@ -191,7 +191,7 @@ Partial Class frmSccEditDevolucion
         Me.dtpFecha.Location = New System.Drawing.Point(62, 68)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(200, 20)
-        Me.dtpFecha.TabIndex = 1
+        Me.dtpFecha.TabIndex = 2
         Me.dtpFecha.Tag = Nothing
         Me.dtpFecha.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -250,7 +250,7 @@ Partial Class frmSccEditDevolucion
         Me.numTotal.Location = New System.Drawing.Point(65, 19)
         Me.numTotal.Name = "numTotal"
         Me.numTotal.Size = New System.Drawing.Size(147, 20)
-        Me.numTotal.TabIndex = 2
+        Me.numTotal.TabIndex = 0
         Me.numTotal.Tag = "BLOQUEADO"
         Me.numTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numTotal.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -287,7 +287,7 @@ Partial Class frmSccEditDevolucion
         Me.tbFacturas.Name = "tbFacturas"
         Me.tbFacturas.SelectedIndex = 0
         Me.tbFacturas.Size = New System.Drawing.Size(665, 147)
-        Me.tbFacturas.TabIndex = 12
+        Me.tbFacturas.TabIndex = 0
         '
         'PGFacturas
         '
@@ -357,7 +357,7 @@ Partial Class frmSccEditDevolucion
         Me.cmdAutorizar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAutorizar.Name = "cmdAutorizar"
         Me.cmdAutorizar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdAutorizar.TabIndex = 15
+        Me.cmdAutorizar.TabIndex = 2
         Me.cmdAutorizar.Tag = "AUTORIZAR"
         Me.cmdAutorizar.Text = "A&utorizar"
         '
@@ -371,7 +371,7 @@ Partial Class frmSccEditDevolucion
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 14
+        Me.cmdCancelar.TabIndex = 3
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -386,7 +386,7 @@ Partial Class frmSccEditDevolucion
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 13
+        Me.cmdGuardar.TabIndex = 1
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '

@@ -191,7 +191,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.txtCodigoCliente.Location = New System.Drawing.Point(77, 48)
         Me.txtCodigoCliente.Name = "txtCodigoCliente"
         Me.txtCodigoCliente.Size = New System.Drawing.Size(103, 20)
-        Me.txtCodigoCliente.TabIndex = 20
+        Me.txtCodigoCliente.TabIndex = 2
         '
         'cmbMotivoAnular
         '
@@ -224,7 +224,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbMotivoAnular.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbMotivoAnular.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbMotivoAnular.Size = New System.Drawing.Size(172, 21)
-        Me.cmbMotivoAnular.TabIndex = 19
+        Me.cmbMotivoAnular.TabIndex = 8
         Me.cmbMotivoAnular.Visible = False
         Me.cmbMotivoAnular.PropBag = resources.GetString("cmbMotivoAnular.PropBag")
         '
@@ -281,7 +281,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.dtpFecha.Location = New System.Drawing.Point(497, 13)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(121, 20)
-        Me.dtpFecha.TabIndex = 14
+        Me.dtpFecha.TabIndex = 5
         Me.dtpFecha.Tag = Nothing
         Me.dtpFecha.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -315,7 +315,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbTPago.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbTPago.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbTPago.Size = New System.Drawing.Size(115, 21)
-        Me.cmbTPago.TabIndex = 13
+        Me.cmbTPago.TabIndex = 6
         Me.cmbTPago.PropBag = resources.GetString("cmbTPago.PropBag")
         '
         'cmbBodega
@@ -349,7 +349,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbBodega.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbBodega.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbBodega.Size = New System.Drawing.Size(130, 21)
-        Me.cmbBodega.TabIndex = 12
+        Me.cmbBodega.TabIndex = 1
         Me.cmbBodega.PropBag = resources.GetString("cmbBodega.PropBag")
         '
         'cmbVendedor
@@ -382,7 +382,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbVendedor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbVendedor.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbVendedor.Size = New System.Drawing.Size(172, 21)
-        Me.cmbVendedor.TabIndex = 11
+        Me.cmbVendedor.TabIndex = 7
         Me.cmbVendedor.PropBag = resources.GetString("cmbVendedor.PropBag")
         '
         'cmbCliente
@@ -415,7 +415,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmbCliente.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCliente.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCliente.Size = New System.Drawing.Size(191, 21)
-        Me.cmbCliente.TabIndex = 10
+        Me.cmbCliente.TabIndex = 3
         Me.cmbCliente.PropBag = resources.GetString("cmbCliente.PropBag")
         '
         'txtAtencionA
@@ -423,7 +423,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.txtAtencionA.Location = New System.Drawing.Point(77, 79)
         Me.txtAtencionA.Name = "txtAtencionA"
         Me.txtAtencionA.Size = New System.Drawing.Size(300, 20)
-        Me.txtAtencionA.TabIndex = 9
+        Me.txtAtencionA.TabIndex = 4
         '
         'txtNumero
         '
@@ -431,7 +431,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.txtNumero.Location = New System.Drawing.Point(77, 13)
         Me.txtNumero.Name = "txtNumero"
         Me.txtNumero.Size = New System.Drawing.Size(81, 20)
-        Me.txtNumero.TabIndex = 7
+        Me.txtNumero.TabIndex = 0
         Me.txtNumero.Tag = "BLOQUEADO"
         '
         'Label7
@@ -865,7 +865,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmdBuscar.Location = New System.Drawing.Point(778, 199)
         Me.cmdBuscar.Name = "cmdBuscar"
         Me.cmdBuscar.Size = New System.Drawing.Size(40, 23)
-        Me.cmdBuscar.TabIndex = 11
+        Me.cmdBuscar.TabIndex = 2
         Me.cmdBuscar.TextAlign = System.Drawing.ContentAlignment.TopLeft
         Me.cmdBuscar.UseVisualStyleBackColor = True
         Me.cmdBuscar.Visible = False
@@ -886,7 +886,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numSaldo.Location = New System.Drawing.Point(453, 199)
         Me.numSaldo.Name = "numSaldo"
         Me.numSaldo.Size = New System.Drawing.Size(108, 20)
-        Me.numSaldo.TabIndex = 12
+        Me.numSaldo.TabIndex = 1
         Me.numSaldo.Tag = Nothing
         Me.numSaldo.Value = New Decimal(New Integer() {0, 0, 0, 65536})
         Me.numSaldo.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
@@ -907,7 +907,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numPrima.Location = New System.Drawing.Point(280, 199)
         Me.numPrima.Name = "numPrima"
         Me.numPrima.Size = New System.Drawing.Size(104, 20)
-        Me.numPrima.TabIndex = 13
+        Me.numPrima.TabIndex = 0
         Me.numPrima.Tag = Nothing
         Me.numPrima.Value = New Decimal(New Integer() {0, 0, 0, 65536})
         Me.numPrima.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
@@ -986,7 +986,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.txtObervaciones.Name = "txtObervaciones"
         Me.txtObervaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtObervaciones.Size = New System.Drawing.Size(315, 56)
-        Me.txtObervaciones.TabIndex = 20
+        Me.txtObervaciones.TabIndex = 0
         '
         'TabDescuento
         '
@@ -1019,7 +1019,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.NumDescuento.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.NumDescuento.Properties.Increment = New Decimal(New Integer() {0, 0, 0, 0})
         Me.NumDescuento.Size = New System.Drawing.Size(101, 20)
-        Me.NumDescuento.TabIndex = 71
+        Me.NumDescuento.TabIndex = 0
         '
         'Label16
         '
@@ -1071,7 +1071,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmdAceptar.Location = New System.Drawing.Point(577, 626)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdAceptar.TabIndex = 28
+        Me.cmdAceptar.TabIndex = 6
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
         Me.cmdAceptar.UseVisualStyleBackColor = True
@@ -1084,7 +1084,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmdProcesar.Location = New System.Drawing.Point(658, 626)
         Me.cmdProcesar.Name = "cmdProcesar"
         Me.cmdProcesar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdProcesar.TabIndex = 29
+        Me.cmdProcesar.TabIndex = 7
         Me.cmdProcesar.Text = "Procesar"
         Me.cmdProcesar.UseVisualStyleBackColor = True
         '
@@ -1093,7 +1093,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.cmdCancelar.Location = New System.Drawing.Point(739, 626)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 30
+        Me.cmdCancelar.TabIndex = 8
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         Me.cmdCancelar.UseVisualStyleBackColor = True
@@ -1111,7 +1111,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numSubTotal.Location = New System.Drawing.Point(730, 485)
         Me.numSubTotal.Name = "numSubTotal"
         Me.numSubTotal.Size = New System.Drawing.Size(83, 20)
-        Me.numSubTotal.TabIndex = 31
+        Me.numSubTotal.TabIndex = 1
         Me.numSubTotal.Tag = "BLOQUEADO"
         Me.numSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numSubTotal.Value = New Decimal(New Integer() {0, 0, 0, 65536})
@@ -1130,7 +1130,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numTotalDescuento.Location = New System.Drawing.Point(730, 511)
         Me.numTotalDescuento.Name = "numTotalDescuento"
         Me.numTotalDescuento.Size = New System.Drawing.Size(83, 20)
-        Me.numTotalDescuento.TabIndex = 32
+        Me.numTotalDescuento.TabIndex = 2
         Me.numTotalDescuento.Tag = "BLOQUEADO"
         Me.numTotalDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numTotalDescuento.Value = New Decimal(New Integer() {0, 0, 0, 65536})
@@ -1149,7 +1149,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numIVA.Location = New System.Drawing.Point(730, 537)
         Me.numIVA.Name = "numIVA"
         Me.numIVA.Size = New System.Drawing.Size(83, 20)
-        Me.numIVA.TabIndex = 33
+        Me.numIVA.TabIndex = 3
         Me.numIVA.Tag = "BLOQUEADO"
         Me.numIVA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numIVA.Value = New Decimal(New Integer() {0, 0, 0, 65536})
@@ -1168,7 +1168,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numTotalC.Location = New System.Drawing.Point(730, 561)
         Me.numTotalC.Name = "numTotalC"
         Me.numTotalC.Size = New System.Drawing.Size(83, 20)
-        Me.numTotalC.TabIndex = 34
+        Me.numTotalC.TabIndex = 4
         Me.numTotalC.Tag = "BLOQUEADO"
         Me.numTotalC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numTotalC.Value = New Decimal(New Integer() {0, 0, 0, 65536})
@@ -1187,7 +1187,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.numTotalD.Location = New System.Drawing.Point(730, 586)
         Me.numTotalD.Name = "numTotalD"
         Me.numTotalD.Size = New System.Drawing.Size(83, 20)
-        Me.numTotalD.TabIndex = 35
+        Me.numTotalD.TabIndex = 5
         Me.numTotalD.Tag = "BLOQUEADO"
         Me.numTotalD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numTotalD.Value = New Decimal(New Integer() {0, 0, 0, 65536})

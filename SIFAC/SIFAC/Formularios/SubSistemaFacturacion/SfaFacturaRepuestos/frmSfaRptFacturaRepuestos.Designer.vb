@@ -105,7 +105,7 @@ Partial Class frmSfaRptFacturaRepuestos
         Me.cmbTipoRepuesto.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbTipoRepuesto.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbTipoRepuesto.Size = New System.Drawing.Size(293, 21)
-        Me.cmbTipoRepuesto.TabIndex = 5
+        Me.cmbTipoRepuesto.TabIndex = 2
         Me.cmbTipoRepuesto.PropBag = resources.GetString("cmbTipoRepuesto.PropBag")
         '
         'cmbRepuesto
@@ -136,7 +136,7 @@ Partial Class frmSfaRptFacturaRepuestos
         Me.cmbRepuesto.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbRepuesto.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbRepuesto.Size = New System.Drawing.Size(293, 21)
-        Me.cmbRepuesto.TabIndex = 4
+        Me.cmbRepuesto.TabIndex = 1
         Me.cmbRepuesto.PropBag = resources.GetString("cmbRepuesto.PropBag")
         '
         'cmbSucursal
@@ -168,7 +168,7 @@ Partial Class frmSfaRptFacturaRepuestos
         Me.cmbSucursal.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbSucursal.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbSucursal.Size = New System.Drawing.Size(201, 21)
-        Me.cmbSucursal.TabIndex = 3
+        Me.cmbSucursal.TabIndex = 0
         Me.cmbSucursal.PropBag = resources.GetString("cmbSucursal.PropBag")
         '
         'Label4
@@ -207,7 +207,7 @@ Partial Class frmSfaRptFacturaRepuestos
         Me.GroupBox2.Location = New System.Drawing.Point(435, 40)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(227, 128)
-        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Período"
         '
@@ -236,7 +236,7 @@ Partial Class frmSfaRptFacturaRepuestos
         Me.dtpHasta.Location = New System.Drawing.Point(54, 65)
         Me.dtpHasta.Name = "dtpHasta"
         Me.dtpHasta.Size = New System.Drawing.Size(157, 20)
-        Me.dtpHasta.TabIndex = 3
+        Me.dtpHasta.TabIndex = 1
         Me.dtpHasta.Tag = Nothing
         Me.dtpHasta.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -265,7 +265,7 @@ Partial Class frmSfaRptFacturaRepuestos
         Me.dtpDesde.Location = New System.Drawing.Point(54, 25)
         Me.dtpDesde.Name = "dtpDesde"
         Me.dtpDesde.Size = New System.Drawing.Size(157, 20)
-        Me.dtpDesde.TabIndex = 2
+        Me.dtpDesde.TabIndex = 0
         Me.dtpDesde.Tag = Nothing
         Me.dtpDesde.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -292,7 +292,7 @@ Partial Class frmSfaRptFacturaRepuestos
         Me.cmdAceptar.Location = New System.Drawing.Point(507, 174)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdAceptar.TabIndex = 4
+        Me.cmdAceptar.TabIndex = 1
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
         Me.cmdAceptar.UseVisualStyleBackColor = True
@@ -302,7 +302,7 @@ Partial Class frmSfaRptFacturaRepuestos
         Me.cmdCancelar.Location = New System.Drawing.Point(587, 174)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdCancelar.TabIndex = 3
+        Me.cmdCancelar.TabIndex = 2
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         Me.cmdCancelar.UseVisualStyleBackColor = True

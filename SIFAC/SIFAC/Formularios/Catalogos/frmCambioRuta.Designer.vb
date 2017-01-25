@@ -84,7 +84,7 @@ Partial Class frmCambioRuta
         Me.cmbRutas.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbRutas.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbRutas.Size = New System.Drawing.Size(223, 21)
-        Me.cmbRutas.TabIndex = 25
+        Me.cmbRutas.TabIndex = 0
         Me.cmbRutas.Tag = "OBLIGATORIO"
         Me.cmbRutas.PropBag = resources.GetString("cmbRutas.PropBag")
         '
@@ -117,7 +117,7 @@ Partial Class frmCambioRuta
         Me.cmbDiaCrobro.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbDiaCrobro.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbDiaCrobro.Size = New System.Drawing.Size(223, 21)
-        Me.cmbDiaCrobro.TabIndex = 6
+        Me.cmbDiaCrobro.TabIndex = 1
         Me.cmbDiaCrobro.Tag = "OBLIGATORIO"
         Me.cmbDiaCrobro.PropBag = resources.GetString("cmbDiaCrobro.PropBag")
         '
@@ -153,7 +153,7 @@ Partial Class frmCambioRuta
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 10
+        Me.cmdCancelar.TabIndex = 3
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -168,7 +168,7 @@ Partial Class frmCambioRuta
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 9
+        Me.cmdGuardar.TabIndex = 2
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '

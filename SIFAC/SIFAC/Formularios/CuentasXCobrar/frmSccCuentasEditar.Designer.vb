@@ -121,7 +121,7 @@ Partial Class frmSccCuentasEditar
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.ReadOnly = True
         Me.txtEstado.Size = New System.Drawing.Size(185, 20)
-        Me.txtEstado.TabIndex = 15
+        Me.txtEstado.TabIndex = 1
         Me.txtEstado.Tag = "BLOQUEADO"
         '
         'GroupBox2
@@ -162,7 +162,7 @@ Partial Class frmSccCuentasEditar
         Me.dtpFechaCredito.Location = New System.Drawing.Point(102, 11)
         Me.dtpFechaCredito.Name = "dtpFechaCredito"
         Me.dtpFechaCredito.Size = New System.Drawing.Size(184, 20)
-        Me.dtpFechaCredito.TabIndex = 2
+        Me.dtpFechaCredito.TabIndex = 0
         Me.dtpFechaCredito.Tag = Nothing
         Me.dtpFechaCredito.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -182,7 +182,7 @@ Partial Class frmSccCuentasEditar
         Me.txtCuenta.Name = "txtCuenta"
         Me.txtCuenta.ReadOnly = True
         Me.txtCuenta.Size = New System.Drawing.Size(122, 20)
-        Me.txtCuenta.TabIndex = 1
+        Me.txtCuenta.TabIndex = 0
         Me.txtCuenta.Tag = "BLOQUEADO"
         '
         'lblCuenta
@@ -217,7 +217,7 @@ Partial Class frmSccCuentasEditar
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.ReadOnly = True
         Me.txtUsuario.Size = New System.Drawing.Size(147, 20)
-        Me.txtUsuario.TabIndex = 19
+        Me.txtUsuario.TabIndex = 2
         Me.txtUsuario.Tag = "BLOQUEADO"
         '
         'Label4
@@ -240,7 +240,7 @@ Partial Class frmSccCuentasEditar
         Me.numSaldoInicial.Name = "numSaldoInicial"
         Me.numSaldoInicial.ReadOnly = True
         Me.numSaldoInicial.Size = New System.Drawing.Size(147, 18)
-        Me.numSaldoInicial.TabIndex = 17
+        Me.numSaldoInicial.TabIndex = 0
         Me.numSaldoInicial.Tag = "BLOQUEADO"
         Me.numSaldoInicial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numSaldoInicial.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -267,7 +267,7 @@ Partial Class frmSccCuentasEditar
         Me.numSaldo.Name = "numSaldo"
         Me.numSaldo.ReadOnly = True
         Me.numSaldo.Size = New System.Drawing.Size(147, 18)
-        Me.numSaldo.TabIndex = 15
+        Me.numSaldo.TabIndex = 1
         Me.numSaldo.Tag = "BLOQUEADO"
         Me.numSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numSaldo.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -348,7 +348,7 @@ Partial Class frmSccCuentasEditar
         Me.txtTipoPersona.Location = New System.Drawing.Point(192, 104)
         Me.txtTipoPersona.Name = "txtTipoPersona"
         Me.txtTipoPersona.Size = New System.Drawing.Size(135, 20)
-        Me.txtTipoPersona.TabIndex = 14
+        Me.txtTipoPersona.TabIndex = 5
         Me.txtTipoPersona.Tag = "BLOQUEADO"
         '
         'lblTipoPersona
@@ -366,7 +366,7 @@ Partial Class frmSccCuentasEditar
         Me.txtGenero.Location = New System.Drawing.Point(440, 78)
         Me.txtGenero.Name = "txtGenero"
         Me.txtGenero.Size = New System.Drawing.Size(135, 20)
-        Me.txtGenero.TabIndex = 10
+        Me.txtGenero.TabIndex = 4
         Me.txtGenero.Tag = "BLOQUEADO"
         '
         'lblGenero
@@ -383,7 +383,7 @@ Partial Class frmSccCuentasEditar
         Me.cmdBuscarCliente.Location = New System.Drawing.Point(531, 22)
         Me.cmdBuscarCliente.Name = "cmdBuscarCliente"
         Me.cmdBuscarCliente.Size = New System.Drawing.Size(28, 23)
-        Me.cmdBuscarCliente.TabIndex = 7
+        Me.cmdBuscarCliente.TabIndex = 2
         Me.cmdBuscarCliente.Text = "..."
         Me.cmdBuscarCliente.UseVisualStyleBackColor = True
         '
@@ -393,7 +393,7 @@ Partial Class frmSccCuentasEditar
         Me.txtCedula.Location = New System.Drawing.Point(192, 78)
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(149, 20)
-        Me.txtCedula.TabIndex = 5
+        Me.txtCedula.TabIndex = 3
         Me.txtCedula.Tag = "BLOQUEADO"
         '
         'txtDireccion
@@ -402,7 +402,7 @@ Partial Class frmSccCuentasEditar
         Me.txtDireccion.Location = New System.Drawing.Point(192, 52)
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(383, 20)
-        Me.txtDireccion.TabIndex = 4
+        Me.txtDireccion.TabIndex = 1
         Me.txtDireccion.Tag = "BLOQUEADO"
         '
         'lblCedula
@@ -429,7 +429,7 @@ Partial Class frmSccCuentasEditar
         Me.txtNombre.Location = New System.Drawing.Point(192, 24)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(335, 20)
-        Me.txtNombre.TabIndex = 1
+        Me.txtNombre.TabIndex = 0
         Me.txtNombre.Tag = "BLOQUEADO"
         '
         'lblNombre
@@ -587,7 +587,7 @@ Partial Class frmSccCuentasEditar
         Me.cmdProcesarFacturas.Location = New System.Drawing.Point(558, 335)
         Me.cmdProcesarFacturas.Name = "cmdProcesarFacturas"
         Me.cmdProcesarFacturas.Size = New System.Drawing.Size(23, 23)
-        Me.cmdProcesarFacturas.TabIndex = 18
+        Me.cmdProcesarFacturas.TabIndex = 1
         Me.cmdProcesarFacturas.Text = "..."
         Me.cmdProcesarFacturas.UseVisualStyleBackColor = True
         '
@@ -597,7 +597,7 @@ Partial Class frmSccCuentasEditar
         Me.cmdConsultarFacturas.Location = New System.Drawing.Point(587, 335)
         Me.cmdConsultarFacturas.Name = "cmdConsultarFacturas"
         Me.cmdConsultarFacturas.Size = New System.Drawing.Size(23, 23)
-        Me.cmdConsultarFacturas.TabIndex = 17
+        Me.cmdConsultarFacturas.TabIndex = 2
         Me.cmdConsultarFacturas.Text = "..."
         Me.cmdConsultarFacturas.UseVisualStyleBackColor = True
         '
@@ -607,7 +607,7 @@ Partial Class frmSccCuentasEditar
         Me.cmdBuscarFacturas.Location = New System.Drawing.Point(529, 335)
         Me.cmdBuscarFacturas.Name = "cmdBuscarFacturas"
         Me.cmdBuscarFacturas.Size = New System.Drawing.Size(23, 23)
-        Me.cmdBuscarFacturas.TabIndex = 16
+        Me.cmdBuscarFacturas.TabIndex = 0
         Me.cmdBuscarFacturas.Text = "..."
         Me.cmdBuscarFacturas.UseVisualStyleBackColor = True
         '
@@ -621,7 +621,7 @@ Partial Class frmSccCuentasEditar
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 12
+        Me.cmdCancelar.TabIndex = 4
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -636,7 +636,7 @@ Partial Class frmSccCuentasEditar
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 11
+        Me.cmdGuardar.TabIndex = 3
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '

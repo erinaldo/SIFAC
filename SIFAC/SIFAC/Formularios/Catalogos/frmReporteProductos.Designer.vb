@@ -49,7 +49,7 @@ Partial Class frmReporteProductos
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdCancelar.TabIndex = 79
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -64,7 +64,7 @@ Partial Class frmReporteProductos
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 78
+        Me.cmdGuardar.TabIndex = 0
         Me.cmdGuardar.Tag = "ACEPTAR"
         Me.cmdGuardar.Text = "&Aceptar"
         '
@@ -122,7 +122,7 @@ Partial Class frmReporteProductos
         Me.cboMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cboMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cboMarca.Size = New System.Drawing.Size(206, 21)
-        Me.cboMarca.TabIndex = 136
+        Me.cboMarca.TabIndex = 1
         Me.cboMarca.Tag = "OBLIGATORIO"
         Me.cboMarca.PropBag = resources.GetString("cboMarca.PropBag")
         '
@@ -154,7 +154,7 @@ Partial Class frmReporteProductos
         Me.cboCategoria.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cboCategoria.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cboCategoria.Size = New System.Drawing.Size(206, 21)
-        Me.cboCategoria.TabIndex = 137
+        Me.cboCategoria.TabIndex = 0
         Me.cboCategoria.Tag = "OBLIGATORIO"
         Me.cboCategoria.PropBag = resources.GetString("cboCategoria.PropBag")
         '
@@ -164,7 +164,7 @@ Partial Class frmReporteProductos
         Me.rbTodos.Location = New System.Drawing.Point(106, 89)
         Me.rbTodos.Name = "rbTodos"
         Me.rbTodos.Size = New System.Drawing.Size(61, 17)
-        Me.rbTodos.TabIndex = 11
+        Me.rbTodos.TabIndex = 2
         Me.rbTodos.Text = "Todos"
         Me.rbTodos.UseVisualStyleBackColor = True
         '

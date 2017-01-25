@@ -95,7 +95,7 @@ Partial Class frmSccConsultarArqueo
         Me.cmdAprobar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAprobar.Name = "cmdAprobar"
         Me.cmdAprobar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdAprobar.TabIndex = 98
+        Me.cmdAprobar.TabIndex = 0
         Me.cmdAprobar.Tag = "APROBAR"
         Me.cmdAprobar.Text = "&Aprobar"
         '
@@ -119,7 +119,7 @@ Partial Class frmSccConsultarArqueo
         Me.grdDetalle.Name = "grdDetalle"
         Me.grdDetalle.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCheckEdit1})
         Me.grdDetalle.Size = New System.Drawing.Size(596, 133)
-        Me.grdDetalle.TabIndex = 10
+        Me.grdDetalle.TabIndex = 0
         Me.grdDetalle.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDetalleTabla})
         '
         'grdDetalleTabla
@@ -188,7 +188,7 @@ Partial Class frmSccConsultarArqueo
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 4
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -244,7 +244,7 @@ Partial Class frmSccConsultarArqueo
         Me.cmbCajero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCajero.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCajero.TabIndex = 146
+        Me.cmbCajero.TabIndex = 1
         Me.cmbCajero.Tag = "OBLIGATORIO"
         Me.cmbCajero.PropBag = resources.GetString("cmbCajero.PropBag")
         '
@@ -255,7 +255,7 @@ Partial Class frmSccConsultarArqueo
         Me.lblCaja.Location = New System.Drawing.Point(462, 18)
         Me.lblCaja.Name = "lblCaja"
         Me.lblCaja.Size = New System.Drawing.Size(40, 13)
-        Me.lblCaja.TabIndex = 145
+        Me.lblCaja.TabIndex = 7
         Me.lblCaja.Tag = ""
         Me.lblCaja.Text = "Caja: "
         '
@@ -268,7 +268,7 @@ Partial Class frmSccConsultarArqueo
         Me.spnDisponible.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.spnDisponible.Properties.Mask.EditMask = "n"
         Me.spnDisponible.Size = New System.Drawing.Size(141, 20)
-        Me.spnDisponible.TabIndex = 144
+        Me.spnDisponible.TabIndex = 6
         '
         'Label5
         '
@@ -311,7 +311,7 @@ Partial Class frmSccConsultarArqueo
         Me.spnFaltante.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.spnFaltante.Properties.Mask.EditMask = "n"
         Me.spnFaltante.Size = New System.Drawing.Size(100, 20)
-        Me.spnFaltante.TabIndex = 140
+        Me.spnFaltante.TabIndex = 5
         '
         'spnEgreso
         '
@@ -322,7 +322,7 @@ Partial Class frmSccConsultarArqueo
         Me.spnEgreso.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.spnEgreso.Properties.Mask.EditMask = "n"
         Me.spnEgreso.Size = New System.Drawing.Size(100, 20)
-        Me.spnEgreso.TabIndex = 139
+        Me.spnEgreso.TabIndex = 4
         '
         'spnIngreso
         '
@@ -333,7 +333,7 @@ Partial Class frmSccConsultarArqueo
         Me.spnIngreso.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.spnIngreso.Properties.Mask.EditMask = "c"
         Me.spnIngreso.Size = New System.Drawing.Size(100, 20)
-        Me.spnIngreso.TabIndex = 138
+        Me.spnIngreso.TabIndex = 3
         '
         'dtFecha
         '
@@ -344,7 +344,7 @@ Partial Class frmSccConsultarArqueo
         Me.dtFecha.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtFecha.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtFecha.Size = New System.Drawing.Size(177, 20)
-        Me.dtFecha.TabIndex = 137
+        Me.dtFecha.TabIndex = 0
         '
         'Label2
         '
@@ -372,7 +372,7 @@ Partial Class frmSccConsultarArqueo
         Me.txtAprobadoPor.Location = New System.Drawing.Point(138, 70)
         Me.txtAprobadoPor.Name = "txtAprobadoPor"
         Me.txtAprobadoPor.Size = New System.Drawing.Size(279, 20)
-        Me.txtAprobadoPor.TabIndex = 0
+        Me.txtAprobadoPor.TabIndex = 2
         Me.txtAprobadoPor.TabStop = False
         Me.txtAprobadoPor.Tag = "BLOQUEADO"
         '

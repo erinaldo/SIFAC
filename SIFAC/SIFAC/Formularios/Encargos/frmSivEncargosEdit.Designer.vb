@@ -171,7 +171,7 @@ Partial Class frmSivEncargosEdit
         Me.GroupBox2.Location = New System.Drawing.Point(19, 29)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(771, 149)
-        Me.GroupBox2.TabIndex = 119
+        Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Buscar Producto"
         '
@@ -204,7 +204,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbNombreProducto.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbNombreProducto.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbNombreProducto.Size = New System.Drawing.Size(166, 21)
-        Me.cmbNombreProducto.TabIndex = 138
+        Me.cmbNombreProducto.TabIndex = 2
         Me.cmbNombreProducto.Tag = "OBLIGATORIO"
         Me.cmbNombreProducto.PropBag = resources.GetString("cmbNombreProducto.PropBag")
         '
@@ -236,7 +236,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbMarca.Size = New System.Drawing.Size(166, 21)
-        Me.cmbMarca.TabIndex = 137
+        Me.cmbMarca.TabIndex = 1
         Me.cmbMarca.Tag = "OBLIGATORIO"
         Me.cmbMarca.PropBag = resources.GetString("cmbMarca.PropBag")
         '
@@ -268,7 +268,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbCategoria.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCategoria.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCategoria.Size = New System.Drawing.Size(166, 21)
-        Me.cmbCategoria.TabIndex = 136
+        Me.cmbCategoria.TabIndex = 0
         Me.cmbCategoria.Tag = "OBLIGATORIO"
         Me.cmbCategoria.PropBag = resources.GetString("cmbCategoria.PropBag")
         '
@@ -323,7 +323,7 @@ Partial Class frmSivEncargosEdit
         Me.txtObservaciones.Location = New System.Drawing.Point(457, 77)
         Me.txtObservaciones.Name = "txtObservaciones"
         Me.txtObservaciones.Size = New System.Drawing.Size(292, 61)
-        Me.txtObservaciones.TabIndex = 119
+        Me.txtObservaciones.TabIndex = 4
         Me.txtObservaciones.UseOptimizedRendering = True
         '
         'Label7
@@ -354,7 +354,7 @@ Partial Class frmSivEncargosEdit
         Me.spnCantidad.Name = "spnCantidad"
         Me.spnCantidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
         Me.spnCantidad.Size = New System.Drawing.Size(62, 20)
-        Me.spnCantidad.TabIndex = 117
+        Me.spnCantidad.TabIndex = 3
         '
         'Label11
         '
@@ -418,7 +418,7 @@ Partial Class frmSivEncargosEdit
         Me.grdDetalleEncargos.MainView = Me.grdDetalleEncargosTabla
         Me.grdDetalleEncargos.Name = "grdDetalleEncargos"
         Me.grdDetalleEncargos.Size = New System.Drawing.Size(768, 160)
-        Me.grdDetalleEncargos.TabIndex = 2
+        Me.grdDetalleEncargos.TabIndex = 0
         Me.grdDetalleEncargos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDetalleEncargosTabla})
         '
         'grdDetalleEncargosTabla
@@ -552,7 +552,7 @@ Partial Class frmSivEncargosEdit
         Me.cmdAgregar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(32, 28)
-        Me.cmdAgregar.TabIndex = 115
+        Me.cmdAgregar.TabIndex = 1
         Me.cmdAgregar.Tag = "AGREGAR"
         '
         'cmdCancelar
@@ -565,7 +565,7 @@ Partial Class frmSivEncargosEdit
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 10
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -580,7 +580,7 @@ Partial Class frmSivEncargosEdit
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 9
+        Me.cmdGuardar.TabIndex = 0
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
@@ -648,7 +648,7 @@ Partial Class frmSivEncargosEdit
         Me.cboEstado.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cboEstado.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cboEstado.Size = New System.Drawing.Size(172, 21)
-        Me.cboEstado.TabIndex = 126
+        Me.cboEstado.TabIndex = 6
         Me.cboEstado.PropBag = resources.GetString("cboEstado.PropBag")
         '
         'cmbRuta
@@ -684,7 +684,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbRuta.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbRuta.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbRuta.Size = New System.Drawing.Size(300, 21)
-        Me.cmbRuta.TabIndex = 125
+        Me.cmbRuta.TabIndex = 3
         Me.cmbRuta.Tag = "OBLIGATORIO"
         Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")
         '
@@ -710,7 +710,7 @@ Partial Class frmSivEncargosEdit
         Me.cmdCliente.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCliente.Name = "cmdCliente"
         Me.cmdCliente.Size = New System.Drawing.Size(25, 26)
-        Me.cmdCliente.TabIndex = 117
+        Me.cmdCliente.TabIndex = 2
         Me.cmdCliente.Tag = "BUSCAR"
         '
         'cmdAgregarCliente
@@ -742,7 +742,7 @@ Partial Class frmSivEncargosEdit
         Me.txtCodigoCliente.Location = New System.Drawing.Point(77, 43)
         Me.txtCodigoCliente.Name = "txtCodigoCliente"
         Me.txtCodigoCliente.Size = New System.Drawing.Size(103, 20)
-        Me.txtCodigoCliente.TabIndex = 20
+        Me.txtCodigoCliente.TabIndex = 0
         '
         'dtpFecha
         '
@@ -768,7 +768,7 @@ Partial Class frmSivEncargosEdit
         Me.dtpFecha.Location = New System.Drawing.Point(592, 13)
         Me.dtpFecha.Name = "dtpFecha"
         Me.dtpFecha.Size = New System.Drawing.Size(121, 20)
-        Me.dtpFecha.TabIndex = 14
+        Me.dtpFecha.TabIndex = 4
         Me.dtpFecha.Tag = Nothing
         Me.dtpFecha.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -801,7 +801,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbVendedor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbVendedor.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbVendedor.Size = New System.Drawing.Size(172, 21)
-        Me.cmbVendedor.TabIndex = 11
+        Me.cmbVendedor.TabIndex = 5
         Me.cmbVendedor.PropBag = resources.GetString("cmbVendedor.PropBag")
         '
         'cmbCliente
@@ -833,7 +833,7 @@ Partial Class frmSivEncargosEdit
         Me.cmbCliente.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCliente.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCliente.Size = New System.Drawing.Size(191, 21)
-        Me.cmbCliente.TabIndex = 10
+        Me.cmbCliente.TabIndex = 1
         Me.cmbCliente.PropBag = resources.GetString("cmbCliente.PropBag")
         '
         'txtNumero

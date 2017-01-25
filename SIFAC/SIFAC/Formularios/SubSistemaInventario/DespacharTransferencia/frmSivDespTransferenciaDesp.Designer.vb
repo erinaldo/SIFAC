@@ -167,7 +167,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.cmbSitioDestino.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbSitioDestino.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbSitioDestino.Size = New System.Drawing.Size(174, 21)
-        Me.cmbSitioDestino.TabIndex = 0
+        Me.cmbSitioDestino.TabIndex = 2
         Me.cmbSitioDestino.Tag = ""
         Me.cmbSitioDestino.PropBag = resources.GetString("cmbSitioDestino.PropBag")
         '
@@ -199,7 +199,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.cmbSitioOrigen.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbSitioOrigen.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbSitioOrigen.Size = New System.Drawing.Size(174, 21)
-        Me.cmbSitioOrigen.TabIndex = 0
+        Me.cmbSitioOrigen.TabIndex = 1
         Me.cmbSitioOrigen.TabStop = False
         Me.cmbSitioOrigen.Tag = "BLOQUEADO"
         Me.cmbSitioOrigen.PropBag = resources.GetString("cmbSitioOrigen.PropBag")
@@ -213,7 +213,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.txtObservaciones.Name = "txtObservaciones"
         Me.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtObservaciones.Size = New System.Drawing.Size(673, 55)
-        Me.txtObservaciones.TabIndex = 1
+        Me.txtObservaciones.TabIndex = 3
         Me.txtObservaciones.Tag = ""
         '
         'lblSolicitadoPor
@@ -307,7 +307,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.dtpFechaRecepcion.Location = New System.Drawing.Point(640, 88)
         Me.dtpFechaRecepcion.Name = "dtpFechaRecepcion"
         Me.dtpFechaRecepcion.Size = New System.Drawing.Size(155, 18)
-        Me.dtpFechaRecepcion.TabIndex = 0
+        Me.dtpFechaRecepcion.TabIndex = 9
         Me.dtpFechaRecepcion.Tag = "BLOQUEADO"
         Me.dtpFechaRecepcion.Visible = False
         Me.dtpFechaRecepcion.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
@@ -317,7 +317,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.txtSolicitadoPor.Location = New System.Drawing.Point(466, 18)
         Me.txtSolicitadoPor.Name = "txtSolicitadoPor"
         Me.txtSolicitadoPor.Size = New System.Drawing.Size(156, 20)
-        Me.txtSolicitadoPor.TabIndex = 0
+        Me.txtSolicitadoPor.TabIndex = 4
         Me.txtSolicitadoPor.TabStop = False
         Me.txtSolicitadoPor.Tag = "BLOQUEADO"
         '
@@ -341,7 +341,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.dtpFechaDespacho.Location = New System.Drawing.Point(640, 54)
         Me.dtpFechaDespacho.Name = "dtpFechaDespacho"
         Me.dtpFechaDespacho.Size = New System.Drawing.Size(155, 18)
-        Me.dtpFechaDespacho.TabIndex = 0
+        Me.dtpFechaDespacho.TabIndex = 8
         Me.dtpFechaDespacho.Tag = "BLOQUEADO"
         Me.dtpFechaDespacho.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
         '
@@ -350,7 +350,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.txtRecibidoPor.Location = New System.Drawing.Point(466, 88)
         Me.txtRecibidoPor.Name = "txtRecibidoPor"
         Me.txtRecibidoPor.Size = New System.Drawing.Size(156, 20)
-        Me.txtRecibidoPor.TabIndex = 0
+        Me.txtRecibidoPor.TabIndex = 6
         Me.txtRecibidoPor.TabStop = False
         Me.txtRecibidoPor.Tag = "BLOQUEADO"
         Me.txtRecibidoPor.Visible = False
@@ -375,7 +375,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.dtpFechaSolicitud.Location = New System.Drawing.Point(640, 17)
         Me.dtpFechaSolicitud.Name = "dtpFechaSolicitud"
         Me.dtpFechaSolicitud.Size = New System.Drawing.Size(155, 18)
-        Me.dtpFechaSolicitud.TabIndex = 0
+        Me.dtpFechaSolicitud.TabIndex = 7
         Me.dtpFechaSolicitud.Tag = "BLOQUEADO"
         Me.dtpFechaSolicitud.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.None
         '
@@ -384,7 +384,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.txtDespachadoPor.Location = New System.Drawing.Point(466, 54)
         Me.txtDespachadoPor.Name = "txtDespachadoPor"
         Me.txtDespachadoPor.Size = New System.Drawing.Size(156, 20)
-        Me.txtDespachadoPor.TabIndex = 0
+        Me.txtDespachadoPor.TabIndex = 5
         Me.txtDespachadoPor.TabStop = False
         Me.txtDespachadoPor.Tag = "BLOQUEADO"
         '
@@ -481,7 +481,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.cmdBuscarRepuesto.Location = New System.Drawing.Point(791, 209)
         Me.cmdBuscarRepuesto.Name = "cmdBuscarRepuesto"
         Me.cmdBuscarRepuesto.Size = New System.Drawing.Size(29, 25)
-        Me.cmdBuscarRepuesto.TabIndex = 85
+        Me.cmdBuscarRepuesto.TabIndex = 0
         Me.cmdBuscarRepuesto.UseVisualStyleBackColor = True
         '
         'imgIconos
@@ -506,7 +506,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.grdDetalleTransferencia.PreviewInfo.ZoomFactor = 75.0R
         Me.grdDetalleTransferencia.PrintInfo.PageSettings = CType(resources.GetObject("grdDetalleTransferencia.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdDetalleTransferencia.Size = New System.Drawing.Size(809, 233)
-        Me.grdDetalleTransferencia.TabIndex = 84
+        Me.grdDetalleTransferencia.TabIndex = 1
         Me.grdDetalleTransferencia.PropBag = resources.GetString("grdDetalleTransferencia.PropBag")
         '
         'cmdCancelar
@@ -518,7 +518,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.cmdCancelar.Location = New System.Drawing.Point(742, 491)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(79, 30)
-        Me.cmdCancelar.TabIndex = 89
+        Me.cmdCancelar.TabIndex = 3
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         Me.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -532,7 +532,7 @@ Partial Class frmSivDespTransferenciaDesp
         Me.cmdGuardar.Location = New System.Drawing.Point(662, 491)
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(74, 30)
-        Me.cmdGuardar.TabIndex = 88
+        Me.cmdGuardar.TabIndex = 2
         Me.cmdGuardar.Tag = "ACEPTAR"
         Me.cmdGuardar.Text = "&Aceptar"
         Me.cmdGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight

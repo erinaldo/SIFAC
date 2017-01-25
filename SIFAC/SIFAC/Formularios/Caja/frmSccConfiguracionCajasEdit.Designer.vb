@@ -82,7 +82,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 4
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -97,7 +97,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 3
+        Me.cmdGuardar.TabIndex = 0
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
@@ -149,7 +149,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.cmbCajero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCajero.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCajero.TabIndex = 136
+        Me.cmbCajero.TabIndex = 4
         Me.cmbCajero.Tag = "OBLIGATORIO"
         Me.cmbCajero.PropBag = resources.GetString("cmbCajero.PropBag")
         '
@@ -158,7 +158,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.txtCodigo.Location = New System.Drawing.Point(126, 40)
         Me.txtCodigo.Name = "txtCodigo"
         Me.txtCodigo.Size = New System.Drawing.Size(177, 20)
-        Me.txtCodigo.TabIndex = 137
+        Me.txtCodigo.TabIndex = 1
         Me.txtCodigo.TabStop = False
         Me.txtCodigo.Tag = "BLOQUEADO"
         '
@@ -178,7 +178,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.txtNumero.Location = New System.Drawing.Point(126, 15)
         Me.txtNumero.Name = "txtNumero"
         Me.txtNumero.Size = New System.Drawing.Size(122, 20)
-        Me.txtNumero.TabIndex = 135
+        Me.txtNumero.TabIndex = 0
         Me.txtNumero.TabStop = False
         Me.txtNumero.Tag = "BLOQUEADO"
         '
@@ -197,7 +197,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.txtUbicacion.Location = New System.Drawing.Point(126, 90)
         Me.txtUbicacion.Name = "txtUbicacion"
         Me.txtUbicacion.Size = New System.Drawing.Size(177, 20)
-        Me.txtUbicacion.TabIndex = 134
+        Me.txtUbicacion.TabIndex = 3
         Me.txtUbicacion.TabStop = False
         Me.txtUbicacion.Tag = "BLOQUEADO"
         '
@@ -207,7 +207,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.cmdJefe.Location = New System.Drawing.Point(411, 115)
         Me.cmdJefe.Name = "cmdJefe"
         Me.cmdJefe.Size = New System.Drawing.Size(33, 21)
-        Me.cmdJefe.TabIndex = 132
+        Me.cmdJefe.TabIndex = 5
         Me.cmdJefe.Text = "···"
         Me.cmdJefe.UseVisualStyleBackColor = True
         '
@@ -233,7 +233,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.chkActivo.Location = New System.Drawing.Point(400, 37)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
-        Me.chkActivo.TabIndex = 1
+        Me.chkActivo.TabIndex = 6
         Me.chkActivo.Text = "Activa"
         Me.chkActivo.UseVisualStyleBackColor = True
         '
@@ -242,7 +242,7 @@ Partial Class frmSccConfiguracionCajasEdit
         Me.txtNombreCaja.Location = New System.Drawing.Point(126, 64)
         Me.txtNombreCaja.Name = "txtNombreCaja"
         Me.txtNombreCaja.Size = New System.Drawing.Size(177, 20)
-        Me.txtNombreCaja.TabIndex = 0
+        Me.txtNombreCaja.TabIndex = 2
         Me.txtNombreCaja.TabStop = False
         Me.txtNombreCaja.Tag = "BLOQUEADO"
         '

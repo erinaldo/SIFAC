@@ -53,7 +53,7 @@ Partial Class frmSccSeleccionCuentas
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 106
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -68,7 +68,7 @@ Partial Class frmSccSeleccionCuentas
         Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdAceptar.TabIndex = 105
+        Me.cmdAceptar.TabIndex = 0
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Aceptar"
         '
@@ -83,7 +83,7 @@ Partial Class frmSccSeleccionCuentas
         Me.grdSeleccion.PreviewInfo.ZoomFactor = 75.0R
         Me.grdSeleccion.PrintInfo.PageSettings = CType(resources.GetObject("grdSeleccion.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
         Me.grdSeleccion.Size = New System.Drawing.Size(683, 288)
-        Me.grdSeleccion.TabIndex = 1
+        Me.grdSeleccion.TabIndex = 0
         Me.grdSeleccion.Tag = "AGRUPAR"
         Me.grdSeleccion.PropBag = resources.GetString("grdSeleccion.PropBag")
         '

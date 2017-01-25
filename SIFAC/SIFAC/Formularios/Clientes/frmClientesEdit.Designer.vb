@@ -139,7 +139,7 @@ Partial Class frmClientesEdit
         Me.cmbciudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbciudad.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbciudad.Size = New System.Drawing.Size(229, 21)
-        Me.cmbciudad.TabIndex = 136
+        Me.cmbciudad.TabIndex = 0
         Me.cmbciudad.Tag = "OBLIGATORIO"
         Me.cmbciudad.PropBag = resources.GetString("cmbciudad.PropBag")
         '
@@ -171,7 +171,7 @@ Partial Class frmClientesEdit
         Me.cmbRuta.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbRuta.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbRuta.Size = New System.Drawing.Size(271, 21)
-        Me.cmbRuta.TabIndex = 135
+        Me.cmbRuta.TabIndex = 3
         Me.cmbRuta.Tag = "OBLIGATORIO"
         Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")
         '
@@ -182,7 +182,7 @@ Partial Class frmClientesEdit
         Me.txtReferencia.Multiline = True
         Me.txtReferencia.Name = "txtReferencia"
         Me.txtReferencia.Size = New System.Drawing.Size(328, 57)
-        Me.txtReferencia.TabIndex = 26
+        Me.txtReferencia.TabIndex = 2
         '
         'Label6
         '
@@ -200,7 +200,7 @@ Partial Class frmClientesEdit
         Me.spnOrdenCobro.Location = New System.Drawing.Point(607, 47)
         Me.spnOrdenCobro.Name = "spnOrdenCobro"
         Me.spnOrdenCobro.Size = New System.Drawing.Size(120, 20)
-        Me.spnOrdenCobro.TabIndex = 24
+        Me.spnOrdenCobro.TabIndex = 4
         '
         'Label5
         '
@@ -229,7 +229,7 @@ Partial Class frmClientesEdit
         Me.txtDireccion.Multiline = True
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(328, 57)
-        Me.txtDireccion.TabIndex = 20
+        Me.txtDireccion.TabIndex = 1
         '
         'Label2
         '
@@ -387,7 +387,7 @@ Partial Class frmClientesEdit
         Me.cmbGenero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbGenero.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbGenero.Size = New System.Drawing.Size(170, 21)
-        Me.cmbGenero.TabIndex = 137
+        Me.cmbGenero.TabIndex = 5
         Me.cmbGenero.Tag = "OBLIGATORIO"
         Me.cmbGenero.PropBag = resources.GetString("cmbGenero.PropBag")
         '
@@ -396,7 +396,7 @@ Partial Class frmClientesEdit
         Me.cmdBuscar.Location = New System.Drawing.Point(326, 23)
         Me.cmdBuscar.Name = "cmdBuscar"
         Me.cmdBuscar.Size = New System.Drawing.Size(24, 23)
-        Me.cmdBuscar.TabIndex = 22
+        Me.cmdBuscar.TabIndex = 1
         Me.cmdBuscar.Tag = "Buscar Existente"
         Me.cmdBuscar.Text = "..."
         Me.cmdBuscar.UseVisualStyleBackColor = True
@@ -440,7 +440,7 @@ Partial Class frmClientesEdit
         Me.dtpFechaNacimiento.Name = "dtpFechaNacimiento"
         Me.dtpFechaNacimiento.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.dtpFechaNacimiento.Size = New System.Drawing.Size(170, 20)
-        Me.dtpFechaNacimiento.TabIndex = 7
+        Me.dtpFechaNacimiento.TabIndex = 6
         Me.dtpFechaNacimiento.Tag = Nothing
         Me.dtpFechaNacimiento.TrimStart = True
         Me.dtpFechaNacimiento.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
@@ -453,7 +453,7 @@ Partial Class frmClientesEdit
         Me.txtCedula.Mask = "000-000000-0000L"
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(170, 20)
-        Me.txtCedula.TabIndex = 8
+        Me.txtCedula.TabIndex = 7
         '
         'txtSegundoApellido
         '
@@ -461,7 +461,7 @@ Partial Class frmClientesEdit
         Me.txtSegundoApellido.Location = New System.Drawing.Point(150, 98)
         Me.txtSegundoApellido.Name = "txtSegundoApellido"
         Me.txtSegundoApellido.Size = New System.Drawing.Size(170, 20)
-        Me.txtSegundoApellido.TabIndex = 5
+        Me.txtSegundoApellido.TabIndex = 4
         '
         'txtPrimerApellido
         '
@@ -469,7 +469,7 @@ Partial Class frmClientesEdit
         Me.txtPrimerApellido.Location = New System.Drawing.Point(150, 73)
         Me.txtPrimerApellido.Name = "txtPrimerApellido"
         Me.txtPrimerApellido.Size = New System.Drawing.Size(170, 20)
-        Me.txtPrimerApellido.TabIndex = 4
+        Me.txtPrimerApellido.TabIndex = 3
         Me.txtPrimerApellido.Tag = "OBLIGATORIO"
         '
         'txtSegundoNombre
@@ -478,7 +478,7 @@ Partial Class frmClientesEdit
         Me.txtSegundoNombre.Location = New System.Drawing.Point(150, 48)
         Me.txtSegundoNombre.Name = "txtSegundoNombre"
         Me.txtSegundoNombre.Size = New System.Drawing.Size(170, 20)
-        Me.txtSegundoNombre.TabIndex = 3
+        Me.txtSegundoNombre.TabIndex = 2
         '
         'txtPrimerNombre
         '
@@ -486,7 +486,7 @@ Partial Class frmClientesEdit
         Me.txtPrimerNombre.Location = New System.Drawing.Point(150, 23)
         Me.txtPrimerNombre.Name = "txtPrimerNombre"
         Me.txtPrimerNombre.Size = New System.Drawing.Size(170, 20)
-        Me.txtPrimerNombre.TabIndex = 2
+        Me.txtPrimerNombre.TabIndex = 0
         Me.txtPrimerNombre.Tag = "OBLIGATORIO"
         '
         'lblFechaNacimiento

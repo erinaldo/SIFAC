@@ -87,7 +87,7 @@ Partial Class frmSccEditNotaDebito
         Me.cmdExpediente.Location = New System.Drawing.Point(255, 16)
         Me.cmdExpediente.Name = "cmdExpediente"
         Me.cmdExpediente.Size = New System.Drawing.Size(24, 23)
-        Me.cmdExpediente.TabIndex = 6
+        Me.cmdExpediente.TabIndex = 1
         Me.cmdExpediente.Text = "..."
         Me.cmdExpediente.UseVisualStyleBackColor = True
         '
@@ -97,7 +97,7 @@ Partial Class frmSccEditNotaDebito
         Me.txtCliente.Location = New System.Drawing.Point(86, 44)
         Me.txtCliente.Name = "txtCliente"
         Me.txtCliente.Size = New System.Drawing.Size(275, 20)
-        Me.txtCliente.TabIndex = 5
+        Me.txtCliente.TabIndex = 2
         Me.txtCliente.Tag = "BLOQUEADO"
         '
         'Label11
@@ -116,7 +116,7 @@ Partial Class frmSccEditNotaDebito
         Me.txtNumCuenta.Location = New System.Drawing.Point(86, 17)
         Me.txtNumCuenta.Name = "txtNumCuenta"
         Me.txtNumCuenta.Size = New System.Drawing.Size(163, 20)
-        Me.txtNumCuenta.TabIndex = 3
+        Me.txtNumCuenta.TabIndex = 0
         Me.txtNumCuenta.Tag = "BLOQUEADO"
         '
         'Label12
@@ -184,7 +184,7 @@ Partial Class frmSccEditNotaDebito
         Me.cmbEstado.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbEstado.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbEstado.Size = New System.Drawing.Size(188, 21)
-        Me.cmbEstado.TabIndex = 8
+        Me.cmbEstado.TabIndex = 5
         Me.cmbEstado.Tag = "BLOQUEADO"
         Me.cmbEstado.PropBag = resources.GetString("cmbEstado.PropBag")
         '
@@ -201,7 +201,7 @@ Partial Class frmSccEditNotaDebito
         Me.numMonto.Location = New System.Drawing.Point(84, 184)
         Me.numMonto.Name = "numMonto"
         Me.numMonto.Size = New System.Drawing.Size(188, 20)
-        Me.numMonto.TabIndex = 7
+        Me.numMonto.TabIndex = 4
         Me.numMonto.Tag = Nothing
         Me.numMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numMonto.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -224,7 +224,7 @@ Partial Class frmSccEditNotaDebito
         Me.txtDescripcion.Multiline = True
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(202, 80)
-        Me.txtDescripcion.TabIndex = 6
+        Me.txtDescripcion.TabIndex = 3
         Me.txtDescripcion.Tag = ""
         '
         'lblDescripcion
@@ -269,7 +269,7 @@ Partial Class frmSccEditNotaDebito
         Me.cmbConcepto.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbConcepto.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbConcepto.Size = New System.Drawing.Size(201, 21)
-        Me.cmbConcepto.TabIndex = 5
+        Me.cmbConcepto.TabIndex = 2
         Me.cmbConcepto.PropBag = resources.GetString("cmbConcepto.PropBag")
         '
         'lblConcepto
@@ -404,7 +404,7 @@ Partial Class frmSccEditNotaDebito
         Me.cmbCajas.Location = New System.Drawing.Point(97, 16)
         Me.cmbCajas.Name = "cmbCajas"
         Me.cmbCajas.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCajas.TabIndex = 132
+        Me.cmbCajas.TabIndex = 0
         '
         'Label2
         '
@@ -428,7 +428,7 @@ Partial Class frmSccEditNotaDebito
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 5
+        Me.cmdCancelar.TabIndex = 2
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -443,7 +443,7 @@ Partial Class frmSccEditNotaDebito
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 4
+        Me.cmdGuardar.TabIndex = 1
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '

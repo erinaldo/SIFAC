@@ -312,6 +312,8 @@ Public Class frmSivProductosEditar
         Dim objBodegaProductos As SivBodegaProductos
         Dim dtBodegas As DataTable
         Dim T As New DAL.TransactionManager
+        Dim dtDetalleProveedor As DataTable
+        Dim fila As DataRow
         Try
             T.BeginTran()
             objProducto = New SivProductos
@@ -331,7 +333,8 @@ Public Class frmSivProductosEditar
             objProducto.UsuarioCreacion = clsProyecto.Conexion.Servidor
             objProducto.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objProducto.Insert(T)
-           
+            ProductoID = objProducto.SivProductoID
+
             ''Insertar en Bodega Productos con cantidad 0
             objBodegaProductos = New SivBodegaProductos
             objBodega = New StbBodegas
@@ -348,8 +351,24 @@ Public Class frmSivProductosEditar
                 objBodegaProductos.Insert(T)
             Next
 
-            'Me.GuardarBodegaProductos(T)
+            If dtProveedor.Rows.Count > 0 Then
+                '--Actualizamos los proveedores
+                dtDetalleProveedor = SivProductosDetProv.RetrieveDT("1=0")
 
+                Me.dtProveedor.AcceptChanges()
+                For Each row As DataRow In Me.dtProveedor.Rows
+                    fila = dtDetalleProveedor.NewRow
+                    fila("objProductosID") = Me.intProductoID
+                    fila("objProveedorID") = row("SivProveedorID")
+                    fila("UsuarioCreacion") = clsProyecto.Conexion.Usuario
+                    fila("FechaCreacion") = clsProyecto.Conexion.FechaServidor
+                    dtDetalleProveedor.Rows.Add(fila)
+
+                Next
+                dtDetalleProveedor.TableName = "SivProductosDetProv"
+                SivProductosDetProv.BatchUpdate(dtDetalleProveedor.DataSet, T)
+                'Me.GuardarBodegaProductos(T)
+            End If
             T.CommitTran()
 
             MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)

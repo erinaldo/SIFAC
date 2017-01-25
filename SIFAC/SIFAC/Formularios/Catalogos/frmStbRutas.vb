@@ -123,6 +123,7 @@ Public Class frmStbRutas
             editRutas.TypeGui = 0
             If editRutas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
+                AplicarSeguridad()
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)

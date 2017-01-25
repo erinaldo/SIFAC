@@ -18,6 +18,7 @@ Public Class frmClientesEdit
     Public DtPersona As DataTable
     Dim intTelefonoCliente, intResultado As Integer
     Dim imgCedulaAnverso, imgCedulaReverso As Byte()
+    Public boolPersonaExistente As Boolean
 #End Region
    
 #Region "Busqueda"
@@ -25,8 +26,8 @@ Public Class frmClientesEdit
     Public Sub CargarPersona()
         Try
             Dim strFiltro As String = ""
-            strFiltro = " Descripcion = 'Cliente' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SccClientes)"
-            DtPersona = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero", "vwPersonaClasificacion", strFiltro))
+            strFiltro = " Descripcion <> 'Cliente' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SccClientes) and PersonaJuridica=0"
+            DtPersona = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("StbPersonaID,NombreCompleto,Nombre1,Nombre2,Apellido1,Apellido2,Cedula,Genero,Direccion,objCiudadID,FechaNacimiento,objGeneroID", "vwPersonaClasificacion", strFiltro))
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -35,7 +36,6 @@ Public Class frmClientesEdit
     '' Descripción:        Procedimiento encargado de vincular los controles al origen de datos
     Public Sub VincularControles()
         Try
-
             Me.txtPrimerNombre.DataBindings.Clear()
             Me.txtSegundoNombre.DataBindings.Clear()
             Me.txtCedula.DataBindings.Clear()
@@ -43,12 +43,13 @@ Public Class frmClientesEdit
             Me.txtSegundoApellido.DataBindings.Clear()
             Me.cmbGenero.DataBindings.Clear()
             Me.dtpFechaNacimiento.DataBindings.Clear()
-            Me.cmbCiudad.DataBindings.Clear()
+            Me.cmbciudad.DataBindings.Clear()
             Me.txtDireccion.DataBindings.Clear()
             Me.cmbRuta.DataBindings.Clear()
             Me.spnOrdenCobro.DataBindings.Clear()
 
             Me.idpersona = DtPersona.Rows(0)("StbPersonaID")
+            boolPersonaExistente = True
             Me.txtPrimerNombre.DataBindings.Add("text", DtPersona, "Nombre1", False, DataSourceUpdateMode.OnPropertyChanged)
             Me.txtSegundoNombre.DataBindings.Add("text", DtPersona, "Nombre2", False, DataSourceUpdateMode.OnPropertyChanged)
             Me.txtCedula.DataBindings.Add("text", DtPersona, "Cedula", False, DataSourceUpdateMode.OnPropertyChanged)
@@ -56,8 +57,9 @@ Public Class frmClientesEdit
             Me.txtSegundoApellido.DataBindings.Add("text", DtPersona, "Apellido2", False, DataSourceUpdateMode.OnPropertyChanged)
             Me.txtDireccion.DataBindings.Add("text", DtPersona, "Direccion", False, DataSourceUpdateMode.OnPropertyChanged)
             Me.cmbGenero.SelectedValue = DtPersona.Rows(0)("objGeneroID")
-            Me.cmbCiudad.SelectedValue = DtPersona.Rows(0)("objCiudadID")
+            Me.cmbciudad.SelectedValue = DtPersona.Rows(0)("objCiudadID")
             Me.dtpFechaNacimiento.Value = DtPersona.Rows(0)("FechaNacimiento")
+
 
             'Cargar Contactos
             frmClientesEdit.dtContactos = DAL.SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("objPersonaID,SecuencialContacto,objTipoEntradaID,TipoEntrada,Valor", "vwPersonaContactos", "objPersonaID=" & Me.idpersona))
@@ -233,7 +235,11 @@ Public Class frmClientesEdit
             Select Case Me.ValidarNumeroTelefono
                 Case 0
                     Me.ValidarPersonasNaturales()
-                    Me.InsertarPersonas()
+                    If Not boolPersonaExistente Then
+                        Me.InsertarPersonas()
+                    Else
+                        AsociarPersonaClientes()
+                    End If
                 Case 1
                     MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos un teléfono como Contacto del Cliente", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
                     Me.GuardarContactosTemp()
@@ -241,6 +247,95 @@ Public Class frmClientesEdit
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
+    End Sub
+#End Region
+
+#Region "Asociar Personas"
+    Private Sub AsociarPersonaClientes()
+        Dim objPersonas, objPCompara As StbPersona
+        Dim objClientes, objComparaClientes As SccClientes
+        Dim T As New DAL.TransactionManager
+        Try
+            objPersonas = New StbPersona
+            objPCompara = New StbPersona
+            objClientes = New SccClientes
+            objComparaClientes = New SccClientes
+
+            '1.2 Validar que no exista  una persona con la misma cédula
+            objPCompara.RetrieveByFilter("StbPersonaID<> " & idpersona & " AND Cedula='" + Me.txtCedula.Text + "'")
+            If objPCompara.Cedula <> Nothing Then
+                Me.ErrPrv.SetError(Me.txtCedula, "Ya existe una persona con la misma cédula.")
+                Me.txtCedula.Focus()
+                Exit Sub
+            End If
+
+            If cmbRuta.SelectedValue > 0 Then
+                ''Validar orden de cobro no coincida con otro en la misma ruta
+                objComparaClientes.RetrieveByFilter("objPersonaID <> " & idpersona & " AND OrdenCobro=" + Me.spnOrdenCobro.Text + " AND objRutaID=" & cmbRuta.SelectedValue)
+                If objComparaClientes.OrdenCobro IsNot Nothing Then
+                    Me.ErrPrv.SetError(Me.spnOrdenCobro, "Ya existe un cliente con el mismo orden de compra.")
+                    Me.spnOrdenCobro.Focus()
+                    Exit Sub
+                End If
+            End If
+
+            T.BeginTran()
+            objPersonas = New StbPersona
+            objPersonas.Retrieve(Me.idpersona)
+            objPersonas.UsuarioModificacion = clsProyecto.Conexion.Usuario
+            objPersonas.FechaModificacion = clsProyecto.Conexion.FechaServidor
+
+            objPersonas.Nombre1 = Me.txtPrimerNombre.Text.Trim
+            objPersonas.Nombre2 = Me.txtSegundoNombre.Text.Trim
+            objPersonas.Apellido1 = Me.txtPrimerApellido.Text.Trim
+            objPersonas.Apellido2 = Me.txtSegundoApellido.Text.Trim
+            objPersonas.objGeneroID = Me.cmbGenero.SelectedValue
+
+            If Me.txtCedula.Text.Trim <> "-      -" Then
+                objPersonas.Cedula = Me.txtCedula.Text
+            Else
+                objPersonas.Cedula = Nothing
+            End If
+            If Me.dtpFechaNacimiento.Text.Trim.Length <> 0 Then
+                objPersonas.FechaNacimiento = Me.dtpFechaNacimiento.Text
+            Else
+                objPersonas.FechaNacimiento = Nothing
+            End If
+
+            objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbciudad.SelectedValue).DefaultView(0)("objPaisID")
+            objPersonas.objCiudadID = cmbciudad.SelectedValue
+            objPersonas.Direccion = txtDireccion.Text
+            objPersonas.Referencia = txtReferencia.Text
+            objPersonas.Update(T)
+
+            ''Insertar Clientes
+            objClientes.objPersonaID = objPersonas.StbPersonaID
+            objClientes.OrdenCobro = Convert.ToInt32(spnOrdenCobro.Value)
+
+            If cmbRuta.Text <> String.Empty Then
+                objClientes.objRutaID = cmbRuta.SelectedValue
+            End If
+
+            objClientes.Activo = True
+            objClientes.UsuarioCreacion = clsProyecto.Conexion.Usuario
+            objClientes.FechaCreacion = clsProyecto.Conexion.FechaServidor
+            objClientes.Insert(T)
+
+            Me.idpersona = objPersonas.StbPersonaID
+            Me.ModificarDetalle()
+            Me.InsertarDetalle(Me.idpersona, T)
+            T.CommitTran()
+        
+            MsgBox(My.Resources.MsgAgregado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+            Me.DialogResult = Windows.Forms.DialogResult.OK
+
+        Catch ex As Exception
+            T.RollbackTran()
+            clsError.CaptarError(ex)
+        Finally
+            objPersonas = Nothing
+        End Try
+
     End Sub
 #End Region
 
@@ -360,9 +455,8 @@ Public Class frmClientesEdit
             objClasifica.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objClasifica.FechaCreacion = clsProyecto.Conexion.FechaServidor
             objClasifica.Insert(t)
-
-
         Catch ex As Exception
+            t.RollbackTran()
             clsError.CaptarError(ex)
         Finally
             objContactos = Nothing
@@ -408,7 +502,10 @@ Public Class frmClientesEdit
             Me.txtReferencia.Text = objPersonas.Referencia
 
             objClientes.RetrieveByFilter("objPersonaID=" + Me.idpersona)
-            cmbRuta.SelectedValue = objClientes.objRutaID
+
+            If Not IsNothing(objClientes.objRutaID) Then
+                cmbRuta.SelectedValue = objClientes.objRutaID
+            End If
 
             If Not IsNothing(objClientes.OrdenCobro) Then
                 spnOrdenCobro.Value = objClientes.OrdenCobro
@@ -462,15 +559,16 @@ Public Class frmClientesEdit
                 Exit Sub
             End If
 
-            ''Validar orden de cobro no coincida con otro en la misma ruta
-            objComparaClientes.RetrieveByFilter("objPersonaID <> " & idpersona & " AND OrdenCobro=" + Me.spnOrdenCobro.Text + " AND objRutaID=" & cmbRuta.SelectedValue)
-            If objComparaClientes.OrdenCobro IsNot Nothing Then
-                Me.ErrPrv.SetError(Me.spnOrdenCobro, "Ya existe un cliente con el mismo orden de compra.")
-                Me.spnOrdenCobro.Focus()
-                Exit Sub
+            If cmbRuta.SelectedValue > 0 Then
+                ''Validar orden de cobro no coincida con otro en la misma ruta
+                objComparaClientes.RetrieveByFilter("objPersonaID <> " & idpersona & " AND OrdenCobro=" + Me.spnOrdenCobro.Text + " AND objRutaID=" & cmbRuta.SelectedValue)
+                If objComparaClientes.OrdenCobro IsNot Nothing Then
+                    Me.ErrPrv.SetError(Me.spnOrdenCobro, "Ya existe un cliente con el mismo orden de compra.")
+                    Me.spnOrdenCobro.Focus()
+                    Exit Sub
+                End If
             End If
-
-
+           
             T.BeginTran()
             objPersonas = New StbPersona
             objPersonas.Retrieve(Me.idpersona)
@@ -696,9 +794,24 @@ Public Class frmClientesEdit
             Return False
             Exit Function
         End If
+       
+
         'Validar que la fecha de nacimiento sea igual al número de cédula
         If Me.dtpFechaNacimiento.Text.Trim.Length <> 0 And Me.txtCedula.Text.Trim.Length = 16 Then
-            If Me.dtpFechaNacimiento.Text.Substring(0, 6) & Me.dtpFechaNacimiento.Text.Substring(8, 2) <> (Me.txtCedula.Text.Substring(4, 2) & "/" & Me.txtCedula.Text.Substring(6, 2) & "/" & Me.txtCedula.Text.Substring(8, 2)) Then
+            Dim TestString As String = Me.dtpFechaNacimiento.Text
+            Dim TestArray() As String = Split(TestString, "/")
+
+            Dim Dia As String = TestArray(0)
+            Dim Mes As String
+            If TestArray(1).Length = 1 Then
+                Mes = "0" & TestArray(1)
+            Else
+                Mes = TestArray(1)
+            End If
+
+            Dim Anio As String = TestArray(2).Substring(2, 2)
+
+            If Dia & "/" & Mes & "/" & Anio <> (Me.txtCedula.Text.Substring(4, 2) & "/" & Me.txtCedula.Text.Substring(6, 2) & "/" & Me.txtCedula.Text.Substring(8, 2)) Then
                 Me.ErrPrv.SetError(Me.dtpFechaNacimiento, "La fecha de nacimiento debe coincidir con los dígitos centrales de la cédula")
                 Me.dtpFechaNacimiento.Focus()
                 Return False
@@ -1037,6 +1150,7 @@ Public Class frmClientesEdit
 
     Private Sub frmStbPersonasEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            boolPersonaExistente = False
             Me.CargarLongitudesMaximas()
             CargarGenero()
             CargarCiudad()
@@ -1050,6 +1164,7 @@ Public Class frmClientesEdit
                     Me.Text = "Editanto datos de Cliente: " & Me.idpersona
                     Me.CargarDatosEditar()
                     Me.txtPrimerNombre.Focus()
+                    Me.cmdBuscar.Enabled = False
                 Case 3
                     Me.Text = "Consultando datos de Cliente: " & Me.idpersona
 
@@ -1065,7 +1180,7 @@ Public Class frmClientesEdit
                     Me.txtPrimerApellido.Enabled = False
                     Me.txtSegundoApellido.Enabled = False
                     Me.cmbGenero.Enabled = False
-                    Me.cmbCiudad.Enabled = False
+                    Me.cmbciudad.Enabled = False
                     Me.txtDireccion.Enabled = False
                     Me.spnOrdenCobro.Enabled = False
                     Me.cmbRuta.Enabled = False
@@ -1077,7 +1192,7 @@ Public Class frmClientesEdit
                     Me.txtSegundoApellido.Tag = "BLOQUEADO"
                     Me.txtCedula.Tag = "BLOQUEADO"
                     Me.cmbGenero.Tag = "BLOQUEADO"
-                    Me.cmbCiudad.Tag = "BLOQUEADO"
+                    Me.cmbciudad.Tag = "BLOQUEADO"
                     Me.txtDireccion.Tag = "BLOQUEADO"
                     Me.spnOrdenCobro.Tag = "BLOQUEADO"
                     Me.cmbRuta.Tag = "BLOQUEADO"
@@ -1094,7 +1209,7 @@ Public Class frmClientesEdit
         Try
             Dim objSeleccion As frmPersonaSelector
             objSeleccion = New frmPersonaSelector
-            objSeleccion.Filtro = " Descripcion = 'Cliente' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SccClientes)"
+            objSeleccion.Filtro = " Descripcion <> 'Cliente' AND StbPersonaID NOT IN (SELECT objPersonaID FROM SccClientes) and PersonaJuridica=0"
             objSeleccion.Opcion = 1
             If objSeleccion.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 Me.idpersona = objSeleccion.Seleccion

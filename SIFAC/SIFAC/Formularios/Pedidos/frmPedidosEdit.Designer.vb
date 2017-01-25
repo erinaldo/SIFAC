@@ -161,7 +161,7 @@ Partial Class frmPedidosEdit
         Me.dtaFechaAutorizado.Location = New System.Drawing.Point(143, 101)
         Me.dtaFechaAutorizado.Name = "dtaFechaAutorizado"
         Me.dtaFechaAutorizado.Size = New System.Drawing.Size(171, 20)
-        Me.dtaFechaAutorizado.TabIndex = 130
+        Me.dtaFechaAutorizado.TabIndex = 6
         Me.dtaFechaAutorizado.Tag = Nothing
         Me.dtaFechaAutorizado.Visible = False
         Me.dtaFechaAutorizado.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
@@ -200,7 +200,7 @@ Partial Class frmPedidosEdit
         Me.dtaFechaaPedir.Location = New System.Drawing.Point(143, 75)
         Me.dtaFechaaPedir.Name = "dtaFechaaPedir"
         Me.dtaFechaaPedir.Size = New System.Drawing.Size(171, 20)
-        Me.dtaFechaaPedir.TabIndex = 128
+        Me.dtaFechaaPedir.TabIndex = 5
         Me.dtaFechaaPedir.Tag = Nothing
         Me.dtaFechaaPedir.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -220,7 +220,7 @@ Partial Class frmPedidosEdit
         Me.txtNombreProveedor.Location = New System.Drawing.Point(251, 23)
         Me.txtNombreProveedor.Name = "txtNombreProveedor"
         Me.txtNombreProveedor.Size = New System.Drawing.Size(200, 20)
-        Me.txtNombreProveedor.TabIndex = 126
+        Me.txtNombreProveedor.TabIndex = 1
         '
         'txtCodigoProveedor
         '
@@ -228,7 +228,7 @@ Partial Class frmPedidosEdit
         Me.txtCodigoProveedor.Location = New System.Drawing.Point(143, 23)
         Me.txtCodigoProveedor.Name = "txtCodigoProveedor"
         Me.txtCodigoProveedor.Size = New System.Drawing.Size(103, 20)
-        Me.txtCodigoProveedor.TabIndex = 125
+        Me.txtCodigoProveedor.TabIndex = 0
         '
         'GroupControl1
         '
@@ -254,7 +254,7 @@ Partial Class frmPedidosEdit
         Me.spnTotalCosto.Name = "spnTotalCosto"
         Me.spnTotalCosto.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
         Me.spnTotalCosto.Size = New System.Drawing.Size(128, 20)
-        Me.spnTotalCosto.TabIndex = 129
+        Me.spnTotalCosto.TabIndex = 0
         '
         'Label13
         '
@@ -295,7 +295,7 @@ Partial Class frmPedidosEdit
         Me.grdDetallePedidos.MainView = Me.grdDetallePedidosTabla
         Me.grdDetallePedidos.Name = "grdDetallePedidos"
         Me.grdDetallePedidos.Size = New System.Drawing.Size(768, 126)
-        Me.grdDetallePedidos.TabIndex = 2
+        Me.grdDetallePedidos.TabIndex = 0
         Me.grdDetallePedidos.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdDetallePedidosTabla})
         '
         'grdDetallePedidosTabla
@@ -458,7 +458,7 @@ Partial Class frmPedidosEdit
         Me.cmbNombreProducto.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbNombreProducto.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbNombreProducto.Size = New System.Drawing.Size(166, 21)
-        Me.cmbNombreProducto.TabIndex = 137
+        Me.cmbNombreProducto.TabIndex = 2
         Me.cmbNombreProducto.Tag = "OBLIGATORIO"
         Me.cmbNombreProducto.PropBag = resources.GetString("cmbNombreProducto.PropBag")
         '
@@ -490,7 +490,7 @@ Partial Class frmPedidosEdit
         Me.cmbMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbMarca.Size = New System.Drawing.Size(166, 21)
-        Me.cmbMarca.TabIndex = 136
+        Me.cmbMarca.TabIndex = 1
         Me.cmbMarca.Tag = "OBLIGATORIO"
         Me.cmbMarca.PropBag = resources.GetString("cmbMarca.PropBag")
         '
@@ -522,7 +522,7 @@ Partial Class frmPedidosEdit
         Me.cmbCategoria.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCategoria.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCategoria.Size = New System.Drawing.Size(166, 21)
-        Me.cmbCategoria.TabIndex = 135
+        Me.cmbCategoria.TabIndex = 0
         Me.cmbCategoria.Tag = "OBLIGATORIO"
         Me.cmbCategoria.PropBag = resources.GetString("cmbCategoria.PropBag")
         '
@@ -533,7 +533,7 @@ Partial Class frmPedidosEdit
         Me.spnImpuestoUnitario.Name = "spnImpuestoUnitario"
         Me.spnImpuestoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject2, "", Nothing, Nothing, True)})
         Me.spnImpuestoUnitario.Size = New System.Drawing.Size(80, 20)
-        Me.spnImpuestoUnitario.TabIndex = 129
+        Me.spnImpuestoUnitario.TabIndex = 5
         '
         'Label12
         '
@@ -553,7 +553,7 @@ Partial Class frmPedidosEdit
         Me.spnCostoUnitario.Name = "spnCostoUnitario"
         Me.spnCostoUnitario.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject3, "", Nothing, Nothing, True)})
         Me.spnCostoUnitario.Size = New System.Drawing.Size(80, 20)
-        Me.spnCostoUnitario.TabIndex = 127
+        Me.spnCostoUnitario.TabIndex = 4
         '
         'Label11
         '
@@ -577,7 +577,7 @@ Partial Class frmPedidosEdit
         Me.cmdAgregar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAgregar.Name = "cmdAgregar"
         Me.cmdAgregar.Size = New System.Drawing.Size(32, 28)
-        Me.cmdAgregar.TabIndex = 115
+        Me.cmdAgregar.TabIndex = 6
         Me.cmdAgregar.Tag = "AGREGAR"
         '
         'dtpFecha
@@ -636,7 +636,7 @@ Partial Class frmPedidosEdit
         Me.spnCantidad.Name = "spnCantidad"
         Me.spnCantidad.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject4, "", Nothing, Nothing, True)})
         Me.spnCantidad.Size = New System.Drawing.Size(80, 20)
-        Me.spnCantidad.TabIndex = 117
+        Me.spnCantidad.TabIndex = 3
         '
         'Label4
         '
@@ -678,7 +678,7 @@ Partial Class frmPedidosEdit
         Me.cmbEstado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cmbEstado.Properties.NullText = ""
         Me.cmbEstado.Size = New System.Drawing.Size(172, 20)
-        Me.cmbEstado.TabIndex = 124
+        Me.cmbEstado.TabIndex = 4
         '
         'cmdCancelar
         '
@@ -690,7 +690,7 @@ Partial Class frmPedidosEdit
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 10
+        Me.cmdCancelar.TabIndex = 9
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -705,7 +705,7 @@ Partial Class frmPedidosEdit
         Me.cmdAgregarProveedor.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAgregarProveedor.Name = "cmdAgregarProveedor"
         Me.cmdAgregarProveedor.Size = New System.Drawing.Size(25, 26)
-        Me.cmdAgregarProveedor.TabIndex = 116
+        Me.cmdAgregarProveedor.TabIndex = 3
         Me.cmdAgregarProveedor.Tag = "AGREGAR"
         '
         'Label9
@@ -724,7 +724,7 @@ Partial Class frmPedidosEdit
         Me.txtObservaciones.Location = New System.Drawing.Point(538, 46)
         Me.txtObservaciones.Name = "txtObservaciones"
         Me.txtObservaciones.Size = New System.Drawing.Size(292, 61)
-        Me.txtObservaciones.TabIndex = 119
+        Me.txtObservaciones.TabIndex = 7
         Me.txtObservaciones.UseOptimizedRendering = True
         '
         'Label7
@@ -749,7 +749,7 @@ Partial Class frmPedidosEdit
         Me.cmdProveedor.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdProveedor.Name = "cmdProveedor"
         Me.cmdProveedor.Size = New System.Drawing.Size(25, 26)
-        Me.cmdProveedor.TabIndex = 117
+        Me.cmdProveedor.TabIndex = 2
         Me.cmdProveedor.Tag = "BUSCAR"
         '
         'cmdGuardar
@@ -763,7 +763,7 @@ Partial Class frmPedidosEdit
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 9
+        Me.cmdGuardar.TabIndex = 8
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '

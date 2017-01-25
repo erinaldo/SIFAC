@@ -146,7 +146,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmbCiudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCiudad.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCiudad.Size = New System.Drawing.Size(170, 21)
-        Me.cmbCiudad.TabIndex = 136
+        Me.cmbCiudad.TabIndex = 6
         Me.cmbCiudad.Tag = "OBLIGATORIO"
         Me.cmbCiudad.PropBag = resources.GetString("cmbCiudad.PropBag")
         '
@@ -158,7 +158,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.dtpFechaNacimiento.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtpFechaNacimiento.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.dtpFechaNacimiento.Size = New System.Drawing.Size(161, 20)
-        Me.dtpFechaNacimiento.TabIndex = 31
+        Me.dtpFechaNacimiento.TabIndex = 5
         '
         'txtDireccion
         '
@@ -167,7 +167,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.txtDireccion.Multiline = True
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.Size = New System.Drawing.Size(286, 57)
-        Me.txtDireccion.TabIndex = 30
+        Me.txtDireccion.TabIndex = 7
         '
         'Label4
         '
@@ -196,7 +196,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.txtCedula.Mask = "000-000000-0000L"
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(161, 20)
-        Me.txtCedula.TabIndex = 24
+        Me.txtCedula.TabIndex = 4
         '
         'lblFechaNacimiento
         '
@@ -214,7 +214,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.txtApellido2.Location = New System.Drawing.Point(449, 72)
         Me.txtApellido2.Name = "txtApellido2"
         Me.txtApellido2.Size = New System.Drawing.Size(161, 20)
-        Me.txtApellido2.TabIndex = 13
+        Me.txtApellido2.TabIndex = 3
         Me.txtApellido2.Tag = "BLOQUEADO"
         '
         'txtApellido1
@@ -223,7 +223,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.txtApellido1.Location = New System.Drawing.Point(449, 47)
         Me.txtApellido1.Name = "txtApellido1"
         Me.txtApellido1.Size = New System.Drawing.Size(161, 20)
-        Me.txtApellido1.TabIndex = 12
+        Me.txtApellido1.TabIndex = 2
         Me.txtApellido1.Tag = "BLOQUEADO"
         '
         'txtNombre2
@@ -232,7 +232,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.txtNombre2.Location = New System.Drawing.Point(148, 72)
         Me.txtNombre2.Name = "txtNombre2"
         Me.txtNombre2.Size = New System.Drawing.Size(161, 20)
-        Me.txtNombre2.TabIndex = 10
+        Me.txtNombre2.TabIndex = 1
         Me.txtNombre2.Tag = "BLOQUEADO"
         '
         'txtNombre1
@@ -241,7 +241,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.txtNombre1.Location = New System.Drawing.Point(148, 47)
         Me.txtNombre1.Name = "txtNombre1"
         Me.txtNombre1.Size = New System.Drawing.Size(161, 20)
-        Me.txtNombre1.TabIndex = 9
+        Me.txtNombre1.TabIndex = 0
         Me.txtNombre1.Tag = "BLOQUEADO"
         '
         'cmdBuscar
@@ -250,16 +250,17 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmdBuscar.Location = New System.Drawing.Point(582, 21)
         Me.cmdBuscar.Name = "cmdBuscar"
         Me.cmdBuscar.Size = New System.Drawing.Size(24, 23)
-        Me.cmdBuscar.TabIndex = 8
+        Me.cmdBuscar.TabIndex = 0
         Me.cmdBuscar.UseVisualStyleBackColor = True
         '
         'txtPersonaID
         '
+        Me.txtPersonaID.Enabled = False
         Me.txtPersonaID.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPersonaID.Location = New System.Drawing.Point(148, 23)
         Me.txtPersonaID.Name = "txtPersonaID"
         Me.txtPersonaID.Size = New System.Drawing.Size(419, 20)
-        Me.txtPersonaID.TabIndex = 7
+        Me.txtPersonaID.TabIndex = 0
         Me.txtPersonaID.Tag = "BLOQUEADO"
         '
         'lblGenero
@@ -375,7 +376,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmbCargo.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCargo.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCargo.Size = New System.Drawing.Size(233, 21)
-        Me.cmbCargo.TabIndex = 134
+        Me.cmbCargo.TabIndex = 0
         Me.cmbCargo.Tag = "OBLIGATORIO"
         Me.cmbCargo.PropBag = resources.GetString("cmbCargo.PropBag")
         '
@@ -387,7 +388,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.dtpFechaIngreso.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtpFechaIngreso.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.dtpFechaIngreso.Size = New System.Drawing.Size(161, 20)
-        Me.dtpFechaIngreso.TabIndex = 33
+        Me.dtpFechaIngreso.TabIndex = 2
         '
         'dtpFechaEgresoE
         '
@@ -397,7 +398,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.dtpFechaEgresoE.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtpFechaEgresoE.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.dtpFechaEgresoE.Size = New System.Drawing.Size(161, 20)
-        Me.dtpFechaEgresoE.TabIndex = 32
+        Me.dtpFechaEgresoE.TabIndex = 3
         '
         'txtCodigoIME
         '
@@ -405,7 +406,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.txtCodigoIME.Location = New System.Drawing.Point(115, 47)
         Me.txtCodigoIME.Name = "txtCodigoIME"
         Me.txtCodigoIME.Size = New System.Drawing.Size(233, 20)
-        Me.txtCodigoIME.TabIndex = 12
+        Me.txtCodigoIME.TabIndex = 1
         Me.txtCodigoIME.Tag = "BLOQUEADO"
         '
         'Label1
@@ -479,7 +480,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 30
+        Me.cmdCancelar.TabIndex = 3
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -494,7 +495,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 29
+        Me.cmdGuardar.TabIndex = 2
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
@@ -543,7 +544,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.cmbGenero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbGenero.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbGenero.Size = New System.Drawing.Size(170, 21)
-        Me.cmbGenero.TabIndex = 135
+        Me.cmbGenero.TabIndex = 0
         Me.cmbGenero.Tag = "OBLIGATORIO"
         Me.cmbGenero.PropBag = resources.GetString("cmbGenero.PropBag")
         '
@@ -565,7 +566,7 @@ Partial Class frmSrhEmpleadoEditar
         Me.tabAdicionales.Name = "tabAdicionales"
         Me.tabAdicionales.SelectedIndex = 0
         Me.tabAdicionales.Size = New System.Drawing.Size(403, 193)
-        Me.tabAdicionales.TabIndex = 1
+        Me.tabAdicionales.TabIndex = 0
         '
         'tabContactos
         '

@@ -90,7 +90,7 @@ Partial Class frmSccBuscarRecibo
         Me.dtpFechFinSeg.Location = New System.Drawing.Point(97, 43)
         Me.dtpFechFinSeg.Name = "dtpFechFinSeg"
         Me.dtpFechFinSeg.Size = New System.Drawing.Size(210, 20)
-        Me.dtpFechFinSeg.TabIndex = 114
+        Me.dtpFechFinSeg.TabIndex = 1
         Me.dtpFechFinSeg.Tag = "BLOQUEADO"
         Me.dtpFechFinSeg.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -120,7 +120,7 @@ Partial Class frmSccBuscarRecibo
         Me.dtpFecIniSeg.Location = New System.Drawing.Point(97, 17)
         Me.dtpFecIniSeg.Name = "dtpFecIniSeg"
         Me.dtpFecIniSeg.Size = New System.Drawing.Size(211, 20)
-        Me.dtpFecIniSeg.TabIndex = 113
+        Me.dtpFecIniSeg.TabIndex = 0
         Me.dtpFecIniSeg.Tag = Nothing
         Me.dtpFecIniSeg.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -158,7 +158,7 @@ Partial Class frmSccBuscarRecibo
         Me.txtNumExp.Location = New System.Drawing.Point(109, 106)
         Me.txtNumExp.Name = "txtNumExp"
         Me.txtNumExp.Size = New System.Drawing.Size(210, 20)
-        Me.txtNumExp.TabIndex = 119
+        Me.txtNumExp.TabIndex = 1
         '
         'Label1
         '
@@ -174,7 +174,7 @@ Partial Class frmSccBuscarRecibo
         Me.cmdCancelar.Location = New System.Drawing.Point(255, 262)
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 29)
-        Me.cmdCancelar.TabIndex = 117
+        Me.cmdCancelar.TabIndex = 5
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         Me.cmdCancelar.UseVisualStyleBackColor = True
@@ -184,7 +184,7 @@ Partial Class frmSccBuscarRecibo
         Me.cmdAceptar.Location = New System.Drawing.Point(174, 262)
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(75, 29)
-        Me.cmdAceptar.TabIndex = 116
+        Me.cmdAceptar.TabIndex = 4
         Me.cmdAceptar.Tag = "ACEPTAR"
         Me.cmdAceptar.Text = "&Filtrar"
         Me.cmdAceptar.UseVisualStyleBackColor = True
@@ -214,7 +214,7 @@ Partial Class frmSccBuscarRecibo
         Me.txtNumeroRecibo.Location = New System.Drawing.Point(96, 19)
         Me.txtNumeroRecibo.Name = "txtNumeroRecibo"
         Me.txtNumeroRecibo.Size = New System.Drawing.Size(210, 20)
-        Me.txtNumeroRecibo.TabIndex = 121
+        Me.txtNumeroRecibo.TabIndex = 0
         '
         'Label3
         '
@@ -231,7 +231,7 @@ Partial Class frmSccBuscarRecibo
         Me.txtCedula.Mask = "000-000000-0000L"
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(210, 20)
-        Me.txtCedula.TabIndex = 121
+        Me.txtCedula.TabIndex = 2
         '
         'cmbEstado
         '
@@ -261,7 +261,7 @@ Partial Class frmSccBuscarRecibo
         Me.cmbEstado.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbEstado.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbEstado.Size = New System.Drawing.Size(211, 21)
-        Me.cmbEstado.TabIndex = 129
+        Me.cmbEstado.TabIndex = 0
         Me.cmbEstado.Tag = ""
         Me.cmbEstado.PropBag = resources.GetString("cmbEstado.PropBag")
         '
@@ -280,7 +280,7 @@ Partial Class frmSccBuscarRecibo
         Me.cmdExportar.Location = New System.Drawing.Point(93, 262)
         Me.cmdExportar.Name = "cmdExportar"
         Me.cmdExportar.Size = New System.Drawing.Size(75, 29)
-        Me.cmdExportar.TabIndex = 133
+        Me.cmdExportar.TabIndex = 3
         Me.cmdExportar.Tag = ""
         Me.cmdExportar.Text = "&Exportar"
         Me.cmdExportar.UseVisualStyleBackColor = True

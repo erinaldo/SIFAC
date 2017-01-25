@@ -149,7 +149,7 @@ Partial Class frmSivProveedorEdit
         Me.cmbciudad.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbciudad.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbciudad.Size = New System.Drawing.Size(229, 21)
-        Me.cmbciudad.TabIndex = 137
+        Me.cmbciudad.TabIndex = 3
         Me.cmbciudad.Tag = "OBLIGATORIO"
         Me.cmbciudad.PropBag = resources.GetString("cmbciudad.PropBag")
         '
@@ -172,7 +172,7 @@ Partial Class frmSivProveedorEdit
         Me.txtDireccion.Name = "txtDireccion"
         Me.txtDireccion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtDireccion.Size = New System.Drawing.Size(411, 55)
-        Me.txtDireccion.TabIndex = 93
+        Me.txtDireccion.TabIndex = 4
         Me.txtDireccion.TabStop = False
         Me.txtDireccion.Tag = "BLOQUEADO"
         '
@@ -249,7 +249,7 @@ Partial Class frmSivProveedorEdit
         Me.txtCedulaRUC.Location = New System.Drawing.Point(140, 84)
         Me.txtCedulaRUC.Name = "txtCedulaRUC"
         Me.txtCedulaRUC.Size = New System.Drawing.Size(157, 20)
-        Me.txtCedulaRUC.TabIndex = 0
+        Me.txtCedulaRUC.TabIndex = 2
         Me.txtCedulaRUC.TabStop = False
         Me.txtCedulaRUC.Tag = "BLOQUEADO"
         '
@@ -259,7 +259,7 @@ Partial Class frmSivProveedorEdit
         Me.txtRazonSocial.Location = New System.Drawing.Point(140, 58)
         Me.txtRazonSocial.Name = "txtRazonSocial"
         Me.txtRazonSocial.Size = New System.Drawing.Size(411, 20)
-        Me.txtRazonSocial.TabIndex = 0
+        Me.txtRazonSocial.TabIndex = 1
         Me.txtRazonSocial.TabStop = False
         Me.txtRazonSocial.Tag = "BLOQUEADO"
         '
@@ -270,7 +270,7 @@ Partial Class frmSivProveedorEdit
         Me.cmdBuscarProv.Location = New System.Drawing.Point(271, 21)
         Me.cmdBuscarProv.Name = "cmdBuscarProv"
         Me.cmdBuscarProv.Size = New System.Drawing.Size(21, 21)
-        Me.cmdBuscarProv.TabIndex = 3
+        Me.cmdBuscarProv.TabIndex = 0
         Me.cmdBuscarProv.UseVisualStyleBackColor = True
         '
         'imgIconos
@@ -291,7 +291,7 @@ Partial Class frmSivProveedorEdit
         Me.chkActivo.Location = New System.Drawing.Point(530, 26)
         Me.chkActivo.Name = "chkActivo"
         Me.chkActivo.Size = New System.Drawing.Size(62, 17)
-        Me.chkActivo.TabIndex = 96
+        Me.chkActivo.TabIndex = 2
         Me.chkActivo.Tag = "BLOQUEADO"
         Me.chkActivo.Text = "Activo"
         Me.chkActivo.UseVisualStyleBackColor = True
@@ -407,7 +407,7 @@ Partial Class frmSivProveedorEdit
         Me.cmdBuscarContacto.Location = New System.Drawing.Point(508, 265)
         Me.cmdBuscarContacto.Name = "cmdBuscarContacto"
         Me.cmdBuscarContacto.Size = New System.Drawing.Size(21, 21)
-        Me.cmdBuscarContacto.TabIndex = 4
+        Me.cmdBuscarContacto.TabIndex = 1
         Me.cmdBuscarContacto.UseVisualStyleBackColor = True
         '
         'cmdEditarContactoPrincipal
@@ -417,7 +417,7 @@ Partial Class frmSivProveedorEdit
         Me.cmdEditarContactoPrincipal.Location = New System.Drawing.Point(482, 264)
         Me.cmdEditarContactoPrincipal.Name = "cmdEditarContactoPrincipal"
         Me.cmdEditarContactoPrincipal.Size = New System.Drawing.Size(21, 21)
-        Me.cmdEditarContactoPrincipal.TabIndex = 21
+        Me.cmdEditarContactoPrincipal.TabIndex = 0
         Me.cmdEditarContactoPrincipal.UseVisualStyleBackColor = True
         '
         'PanelControl1
@@ -452,7 +452,7 @@ Partial Class frmSivProveedorEdit
         Me.chkJuridico.Location = New System.Drawing.Point(440, 26)
         Me.chkJuridico.Name = "chkJuridico"
         Me.chkJuridico.Size = New System.Drawing.Size(72, 17)
-        Me.chkJuridico.TabIndex = 101
+        Me.chkJuridico.TabIndex = 1
         Me.chkJuridico.Tag = ""
         Me.chkJuridico.Text = "Jurídico"
         Me.chkJuridico.UseVisualStyleBackColor = True
@@ -475,7 +475,7 @@ Partial Class frmSivProveedorEdit
         Me.tabAdicionales.Name = "tabAdicionales"
         Me.tabAdicionales.SelectedIndex = 0
         Me.tabAdicionales.Size = New System.Drawing.Size(403, 193)
-        Me.tabAdicionales.TabIndex = 1
+        Me.tabAdicionales.TabIndex = 0
         '
         'tabContactos
         '
@@ -551,7 +551,7 @@ Partial Class frmSivProveedorEdit
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdCancelar.TabIndex = 74
+        Me.cmdCancelar.TabIndex = 4
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -566,7 +566,7 @@ Partial Class frmSivProveedorEdit
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 73
+        Me.cmdGuardar.TabIndex = 3
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
@@ -627,7 +627,7 @@ Partial Class frmSivProveedorEdit
         Me.cmbGenero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbGenero.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbGenero.Size = New System.Drawing.Size(170, 21)
-        Me.cmbGenero.TabIndex = 138
+        Me.cmbGenero.TabIndex = 7
         Me.cmbGenero.Tag = "OBLIGATORIO"
         Me.cmbGenero.PropBag = resources.GetString("cmbGenero.PropBag")
         '
@@ -659,7 +659,7 @@ Partial Class frmSivProveedorEdit
         Me.cmbCiudadNatural.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCiudadNatural.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCiudadNatural.Size = New System.Drawing.Size(170, 21)
-        Me.cmbCiudadNatural.TabIndex = 137
+        Me.cmbCiudadNatural.TabIndex = 8
         Me.cmbCiudadNatural.Tag = "OBLIGATORIO"
         Me.cmbCiudadNatural.PropBag = resources.GetString("cmbCiudadNatural.PropBag")
         '
@@ -671,7 +671,7 @@ Partial Class frmSivProveedorEdit
         Me.dtpFechaNacimiento.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtpFechaNacimiento.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.dtpFechaNacimiento.Size = New System.Drawing.Size(161, 20)
-        Me.dtpFechaNacimiento.TabIndex = 31
+        Me.dtpFechaNacimiento.TabIndex = 5
         '
         'txtdireccionNatural
         '
@@ -680,7 +680,7 @@ Partial Class frmSivProveedorEdit
         Me.txtdireccionNatural.Multiline = True
         Me.txtdireccionNatural.Name = "txtdireccionNatural"
         Me.txtdireccionNatural.Size = New System.Drawing.Size(286, 57)
-        Me.txtdireccionNatural.TabIndex = 30
+        Me.txtdireccionNatural.TabIndex = 6
         '
         'Label4
         '
@@ -709,7 +709,7 @@ Partial Class frmSivProveedorEdit
         Me.txtCedula.Mask = "000-000000-0000L"
         Me.txtCedula.Name = "txtCedula"
         Me.txtCedula.Size = New System.Drawing.Size(161, 20)
-        Me.txtCedula.TabIndex = 24
+        Me.txtCedula.TabIndex = 4
         '
         'lblFechaNacimiento
         '
@@ -727,7 +727,7 @@ Partial Class frmSivProveedorEdit
         Me.txtApellido2.Location = New System.Drawing.Point(449, 50)
         Me.txtApellido2.Name = "txtApellido2"
         Me.txtApellido2.Size = New System.Drawing.Size(161, 20)
-        Me.txtApellido2.TabIndex = 13
+        Me.txtApellido2.TabIndex = 3
         Me.txtApellido2.Tag = "BLOQUEADO"
         '
         'txtApellido1
@@ -736,7 +736,7 @@ Partial Class frmSivProveedorEdit
         Me.txtApellido1.Location = New System.Drawing.Point(449, 25)
         Me.txtApellido1.Name = "txtApellido1"
         Me.txtApellido1.Size = New System.Drawing.Size(161, 20)
-        Me.txtApellido1.TabIndex = 12
+        Me.txtApellido1.TabIndex = 2
         Me.txtApellido1.Tag = "BLOQUEADO"
         '
         'txtNombre2
@@ -745,7 +745,7 @@ Partial Class frmSivProveedorEdit
         Me.txtNombre2.Location = New System.Drawing.Point(148, 50)
         Me.txtNombre2.Name = "txtNombre2"
         Me.txtNombre2.Size = New System.Drawing.Size(161, 20)
-        Me.txtNombre2.TabIndex = 10
+        Me.txtNombre2.TabIndex = 1
         Me.txtNombre2.Tag = "BLOQUEADO"
         '
         'txtNombre1
@@ -754,7 +754,7 @@ Partial Class frmSivProveedorEdit
         Me.txtNombre1.Location = New System.Drawing.Point(148, 25)
         Me.txtNombre1.Name = "txtNombre1"
         Me.txtNombre1.Size = New System.Drawing.Size(161, 20)
-        Me.txtNombre1.TabIndex = 9
+        Me.txtNombre1.TabIndex = 0
         Me.txtNombre1.Tag = "BLOQUEADO"
         '
         'lblGenero

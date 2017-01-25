@@ -116,7 +116,7 @@ Partial Class frmSccComisionesEdit
         Me.cmbCajero.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbCajero.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCajero.Size = New System.Drawing.Size(279, 21)
-        Me.cmbCajero.TabIndex = 153
+        Me.cmbCajero.TabIndex = 0
         Me.cmbCajero.Tag = "OBLIGATORIO"
         Me.cmbCajero.PropBag = resources.GetString("cmbCajero.PropBag")
         '
@@ -177,7 +177,7 @@ Partial Class frmSccComisionesEdit
         Me.cmbEmpleado.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbEmpleado.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbEmpleado.Size = New System.Drawing.Size(279, 21)
-        Me.cmbEmpleado.TabIndex = 152
+        Me.cmbEmpleado.TabIndex = 0
         Me.cmbEmpleado.Tag = "OBLIGATORIO"
         Me.cmbEmpleado.PropBag = resources.GetString("cmbEmpleado.PropBag")
         '
@@ -188,7 +188,7 @@ Partial Class frmSccComisionesEdit
         Me.cmdCargar.Location = New System.Drawing.Point(293, 74)
         Me.cmdCargar.Name = "cmdCargar"
         Me.cmdCargar.Size = New System.Drawing.Size(36, 27)
-        Me.cmdCargar.TabIndex = 151
+        Me.cmdCargar.TabIndex = 4
         Me.cmdCargar.Tag = "Ver Detalle"
         Me.cmdCargar.UseVisualStyleBackColor = True
         '
@@ -200,7 +200,7 @@ Partial Class frmSccComisionesEdit
         Me.dtHasta.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtHasta.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtHasta.Size = New System.Drawing.Size(148, 20)
-        Me.dtHasta.TabIndex = 150
+        Me.dtHasta.TabIndex = 3
         '
         'Label6
         '
@@ -239,7 +239,7 @@ Partial Class frmSccComisionesEdit
         Me.cmdJefe.Location = New System.Drawing.Point(424, 24)
         Me.cmdJefe.Name = "cmdJefe"
         Me.cmdJefe.Size = New System.Drawing.Size(33, 21)
-        Me.cmdJefe.TabIndex = 106
+        Me.cmdJefe.TabIndex = 1
         Me.cmdJefe.Text = "···"
         Me.cmdJefe.UseVisualStyleBackColor = True
         '
@@ -251,7 +251,7 @@ Partial Class frmSccComisionesEdit
         Me.dtDesde.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtDesde.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtDesde.Size = New System.Drawing.Size(148, 20)
-        Me.dtDesde.TabIndex = 135
+        Me.dtDesde.TabIndex = 2
         '
         'lblCajero
         '
@@ -274,7 +274,7 @@ Partial Class frmSccComisionesEdit
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 3
+        Me.cmdCancelar.TabIndex = 2
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -289,7 +289,7 @@ Partial Class frmSccComisionesEdit
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 2
+        Me.cmdGuardar.TabIndex = 1
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
@@ -320,7 +320,7 @@ Partial Class frmSccComisionesEdit
         Me.dtFechaPago.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtFechaPago.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtFechaPago.Size = New System.Drawing.Size(148, 20)
-        Me.dtFechaPago.TabIndex = 152
+        Me.dtFechaPago.TabIndex = 5
         '
         'Label7
         '
@@ -339,7 +339,7 @@ Partial Class frmSccComisionesEdit
         Me.cmdVerDetalle.Location = New System.Drawing.Point(279, 45)
         Me.cmdVerDetalle.Name = "cmdVerDetalle"
         Me.cmdVerDetalle.Size = New System.Drawing.Size(33, 21)
-        Me.cmdVerDetalle.TabIndex = 138
+        Me.cmdVerDetalle.TabIndex = 2
         Me.cmdVerDetalle.Tag = "Ver Detalle"
         Me.cmdVerDetalle.UseVisualStyleBackColor = True
         '
@@ -348,7 +348,7 @@ Partial Class frmSccComisionesEdit
         Me.txtEstado.Location = New System.Drawing.Point(141, 19)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.Size = New System.Drawing.Size(279, 20)
-        Me.txtEstado.TabIndex = 137
+        Me.txtEstado.TabIndex = 0
         Me.txtEstado.TabStop = False
         Me.txtEstado.Tag = "BLOQUEADO"
         Me.txtEstado.Text = "REGISTRADA"
@@ -381,7 +381,7 @@ Partial Class frmSccComisionesEdit
         Me.SpnTotalRecuperado.Name = "SpnTotalRecuperado"
         Me.SpnTotalRecuperado.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.SpnTotalRecuperado.Size = New System.Drawing.Size(134, 20)
-        Me.SpnTotalRecuperado.TabIndex = 133
+        Me.SpnTotalRecuperado.TabIndex = 1
         '
         'Label2
         '
@@ -400,7 +400,7 @@ Partial Class frmSccComisionesEdit
         Me.SpnPorcentaje.Name = "SpnPorcentaje"
         Me.SpnPorcentaje.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.SpnPorcentaje.Size = New System.Drawing.Size(134, 20)
-        Me.SpnPorcentaje.TabIndex = 132
+        Me.SpnPorcentaje.TabIndex = 3
         '
         'SpnTotal
         '
@@ -410,7 +410,7 @@ Partial Class frmSccComisionesEdit
         Me.SpnTotal.Name = "SpnTotal"
         Me.SpnTotal.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.SpnTotal.Size = New System.Drawing.Size(134, 20)
-        Me.SpnTotal.TabIndex = 131
+        Me.SpnTotal.TabIndex = 4
         '
         'Label1
         '

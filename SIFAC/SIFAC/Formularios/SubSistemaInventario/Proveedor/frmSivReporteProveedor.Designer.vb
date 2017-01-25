@@ -78,7 +78,7 @@ Partial Class frmSivReporteProveedor
         Me.cmbProveedor.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbProveedor.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbProveedor.Size = New System.Drawing.Size(192, 21)
-        Me.cmbProveedor.TabIndex = 138
+        Me.cmbProveedor.TabIndex = 1
         Me.cmbProveedor.Tag = "OBLIGATORIO"
         Me.cmbProveedor.PropBag = resources.GetString("cmbProveedor.PropBag")
         '
@@ -88,7 +88,7 @@ Partial Class frmSivReporteProveedor
         Me.rbInactivos.Location = New System.Drawing.Point(16, 97)
         Me.rbInactivos.Name = "rbInactivos"
         Me.rbInactivos.Size = New System.Drawing.Size(77, 17)
-        Me.rbInactivos.TabIndex = 3
+        Me.rbInactivos.TabIndex = 4
         Me.rbInactivos.Text = "Inactivos"
         Me.rbInactivos.UseVisualStyleBackColor = True
         '
@@ -98,7 +98,7 @@ Partial Class frmSivReporteProveedor
         Me.rbActivos.Location = New System.Drawing.Point(16, 74)
         Me.rbActivos.Name = "rbActivos"
         Me.rbActivos.Size = New System.Drawing.Size(67, 17)
-        Me.rbActivos.TabIndex = 2
+        Me.rbActivos.TabIndex = 3
         Me.rbActivos.Text = "Activos"
         Me.rbActivos.UseVisualStyleBackColor = True
         '
@@ -108,7 +108,7 @@ Partial Class frmSivReporteProveedor
         Me.rbTodos.Location = New System.Drawing.Point(16, 51)
         Me.rbTodos.Name = "rbTodos"
         Me.rbTodos.Size = New System.Drawing.Size(60, 17)
-        Me.rbTodos.TabIndex = 1
+        Me.rbTodos.TabIndex = 2
         Me.rbTodos.Text = "Todos"
         Me.rbTodos.UseVisualStyleBackColor = True
         '
@@ -147,7 +147,7 @@ Partial Class frmSivReporteProveedor
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdCancelar.TabIndex = 76
+        Me.cmdCancelar.TabIndex = 1
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -162,7 +162,7 @@ Partial Class frmSivReporteProveedor
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdGuardar.Name = "cmdGuardar"
         Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdGuardar.TabIndex = 75
+        Me.cmdGuardar.TabIndex = 0
         Me.cmdGuardar.Tag = "ACEPTAR"
         Me.cmdGuardar.Text = "&Aceptar"
         '

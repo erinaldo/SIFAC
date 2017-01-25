@@ -291,9 +291,9 @@ Public Class frmSccClientes
     Private Sub frmSccClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Me.Cursor = WaitCursor
-            Me.Seguridad()
+
             Me.CargarGridClientes()
-          
+            Me.Seguridad()
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally

@@ -564,6 +564,7 @@ Public Class frmSivEncargosEdit
             objEncargoDetalle = New SivEncargosDetalle
 
             objEncargoMaster.Retrieve(EncargoID)
+            txtNumero.Text = objEncargoMaster.SivEncargoID
             cmbCliente.SelectedValue = objEncargoMaster.objSccClienteID
             cboEstado.SelectedValue = objEncargoMaster.ObjEstadoID
             cmbVendedor.SelectedValue = objEncargoMaster.objSrhEmpleadoID

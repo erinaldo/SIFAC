@@ -157,7 +157,7 @@ Partial Class frmSfaFaturaEditar
         Me.numDescuentoPorc.Location = New System.Drawing.Point(105, 99)
         Me.numDescuentoPorc.Name = "numDescuentoPorc"
         Me.numDescuentoPorc.Size = New System.Drawing.Size(249, 18)
-        Me.numDescuentoPorc.TabIndex = 30
+        Me.numDescuentoPorc.TabIndex = 3
         Me.numDescuentoPorc.Tag = "-"
         Me.numDescuentoPorc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numDescuentoPorc.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -203,7 +203,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmbFactura.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbFactura.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbFactura.Size = New System.Drawing.Size(249, 21)
-        Me.cmbFactura.TabIndex = 28
+        Me.cmbFactura.TabIndex = 0
         Me.cmbFactura.PropBag = resources.GetString("cmbFactura.PropBag")
         '
         'Label14
@@ -227,7 +227,7 @@ Partial Class frmSfaFaturaEditar
         Me.numFinancimiento.Name = "numFinancimiento"
         Me.numFinancimiento.ReadOnly = True
         Me.numFinancimiento.Size = New System.Drawing.Size(249, 18)
-        Me.numFinancimiento.TabIndex = 26
+        Me.numFinancimiento.TabIndex = 4
         Me.numFinancimiento.Tag = "BLOQUEADO"
         Me.numFinancimiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numFinancimiento.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -255,7 +255,7 @@ Partial Class frmSfaFaturaEditar
         Me.numPrima.Name = "numPrima"
         Me.numPrima.ReadOnly = True
         Me.numPrima.Size = New System.Drawing.Size(249, 18)
-        Me.numPrima.TabIndex = 4
+        Me.numPrima.TabIndex = 2
         Me.numPrima.Tag = "BLOQUEADO"
         Me.numPrima.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numPrima.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -272,7 +272,7 @@ Partial Class frmSfaFaturaEditar
         Me.numCuotas.Name = "numCuotas"
         Me.numCuotas.ReadOnly = True
         Me.numCuotas.Size = New System.Drawing.Size(249, 18)
-        Me.numCuotas.TabIndex = 23
+        Me.numCuotas.TabIndex = 5
         Me.numCuotas.Tag = "BLOQUEADO"
         Me.numCuotas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numCuotas.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -311,7 +311,7 @@ Partial Class frmSfaFaturaEditar
         Me.numSaldo.Name = "numSaldo"
         Me.numSaldo.ReadOnly = True
         Me.numSaldo.Size = New System.Drawing.Size(249, 18)
-        Me.numSaldo.TabIndex = 20
+        Me.numSaldo.TabIndex = 7
         Me.numSaldo.Tag = "BLOQUEADO"
         Me.numSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numSaldo.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -339,7 +339,7 @@ Partial Class frmSfaFaturaEditar
         Me.NumMonto.Name = "NumMonto"
         Me.NumMonto.ReadOnly = True
         Me.NumMonto.Size = New System.Drawing.Size(249, 18)
-        Me.NumMonto.TabIndex = 3
+        Me.NumMonto.TabIndex = 1
         Me.NumMonto.Tag = "BLOQUEADO"
         Me.NumMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.NumMonto.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -356,7 +356,7 @@ Partial Class frmSfaFaturaEditar
         Me.numMontoCuotas.Name = "numMontoCuotas"
         Me.numMontoCuotas.ReadOnly = True
         Me.numMontoCuotas.Size = New System.Drawing.Size(249, 18)
-        Me.numMontoCuotas.TabIndex = 17
+        Me.numMontoCuotas.TabIndex = 6
         Me.numMontoCuotas.Tag = "BLOQUEADO"
         Me.numMontoCuotas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.numMontoCuotas.Value = New Decimal(New Integer() {0, 0, 0, 0})
@@ -447,7 +447,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmbModalidadPago.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbModalidadPago.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbModalidadPago.Size = New System.Drawing.Size(147, 21)
-        Me.cmbModalidadPago.TabIndex = 16
+        Me.cmbModalidadPago.TabIndex = 2
         Me.cmbModalidadPago.PropBag = resources.GetString("cmbModalidadPago.PropBag")
         '
         'lblModalidadPago
@@ -467,7 +467,7 @@ Partial Class frmSfaFaturaEditar
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.ReadOnly = True
         Me.txtEstado.Size = New System.Drawing.Size(146, 20)
-        Me.txtEstado.TabIndex = 14
+        Me.txtEstado.TabIndex = 0
         Me.txtEstado.Tag = "BLOQUEADO"
         '
         'lblEstado
@@ -521,7 +521,7 @@ Partial Class frmSfaFaturaEditar
         Me.dtpUltimoPago.Location = New System.Drawing.Point(124, 45)
         Me.dtpUltimoPago.Name = "dtpUltimoPago"
         Me.dtpUltimoPago.Size = New System.Drawing.Size(147, 20)
-        Me.dtpUltimoPago.TabIndex = 15
+        Me.dtpUltimoPago.TabIndex = 1
         Me.dtpUltimoPago.Tag = "BLOQUEADO"
         Me.dtpUltimoPago.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -563,7 +563,7 @@ Partial Class frmSfaFaturaEditar
         Me.dtpFechaProximoPago.Location = New System.Drawing.Point(124, 19)
         Me.dtpFechaProximoPago.Name = "dtpFechaProximoPago"
         Me.dtpFechaProximoPago.Size = New System.Drawing.Size(147, 20)
-        Me.dtpFechaProximoPago.TabIndex = 13
+        Me.dtpFechaProximoPago.TabIndex = 0
         Me.dtpFechaProximoPago.Tag = "BLOQUEADO"
         Me.dtpFechaProximoPago.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -605,7 +605,7 @@ Partial Class frmSfaFaturaEditar
         Me.dtpFechaVencimiento.Location = New System.Drawing.Point(128, 124)
         Me.dtpFechaVencimiento.Name = "dtpFechaVencimiento"
         Me.dtpFechaVencimiento.Size = New System.Drawing.Size(147, 20)
-        Me.dtpFechaVencimiento.TabIndex = 7
+        Me.dtpFechaVencimiento.TabIndex = 4
         Me.dtpFechaVencimiento.Tag = "BLOQUEADO"
         Me.dtpFechaVencimiento.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -636,7 +636,7 @@ Partial Class frmSfaFaturaEditar
         Me.dtpFechaCredito.Location = New System.Drawing.Point(128, 98)
         Me.dtpFechaCredito.Name = "dtpFechaCredito"
         Me.dtpFechaCredito.Size = New System.Drawing.Size(147, 20)
-        Me.dtpFechaCredito.TabIndex = 6
+        Me.dtpFechaCredito.TabIndex = 3
         Me.dtpFechaCredito.Tag = "BLOQUEADO"
         Me.dtpFechaCredito.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
         '
@@ -668,7 +668,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmbPlazo.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
         Me.cmbPlazo.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbPlazo.Size = New System.Drawing.Size(147, 21)
-        Me.cmbPlazo.TabIndex = 5
+        Me.cmbPlazo.TabIndex = 1
         Me.cmbPlazo.PropBag = resources.GetString("cmbPlazo.PropBag")
         '
         'lblFechaVencimiento
@@ -739,7 +739,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmdCambioFecha.Location = New System.Drawing.Point(393, 267)
         Me.cmdCambioFecha.Name = "cmdCambioFecha"
         Me.cmdCambioFecha.Size = New System.Drawing.Size(36, 41)
-        Me.cmdCambioFecha.TabIndex = 121
+        Me.cmdCambioFecha.TabIndex = 0
         Me.cmdCambioFecha.Tag = ""
         Me.cmdCambioFecha.UseVisualStyleBackColor = True
         '
@@ -754,7 +754,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmdProcesar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdProcesar.Name = "cmdProcesar"
         Me.cmdProcesar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdProcesar.TabIndex = 120
+        Me.cmdProcesar.TabIndex = 2
         Me.cmdProcesar.Tag = "PROCESAR"
         Me.cmdProcesar.Text = "&Procesar"
         '
@@ -768,7 +768,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdCancelar.Name = "cmdCancelar"
         Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 119
+        Me.cmdCancelar.TabIndex = 3
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
         '
@@ -783,7 +783,7 @@ Partial Class frmSfaFaturaEditar
         Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
         Me.cmdAceptar.Name = "cmdAceptar"
         Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
-        Me.cmdAceptar.TabIndex = 118
+        Me.cmdAceptar.TabIndex = 1
         Me.cmdAceptar.Tag = "GUARDAR"
         Me.cmdAceptar.Text = "&Guardar"
         '
