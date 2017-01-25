@@ -4,6 +4,7 @@ Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
 Imports DevExpress.XtraReports.UI
 Imports SIFAC.BO
+Imports Proyecto.Catalogos.Datos
 
 Public Class frmSccComisiones
 
@@ -12,13 +13,29 @@ Public Class frmSccComisiones
     Dim EsNotaDebito As Integer
     Dim objseg As SsgSeguridad
     Dim boolAgregar, boolEditar, boolConsultar, boolAnular, boolPagar As Boolean
+
+    Private m_DiasComisionesRecientes As Integer
+
+    Property DiascomisionesRecientes() As Integer
+        Get
+            DiascomisionesRecientes = Me.m_DiasComisionesRecientes
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_DiasComisionesRecientes = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Incializar GUI"
 
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
+        Dim strFiltro As String
         Try
+            Me.DiascomisionesRecientes = ClsCatalogos.GetValorParametro("DiasComisionesRecientes")
+            strFiltro = " (DATEDIFF(DAY, Fecha, GETDATE()) <= " + Me.DiascomisionesRecientes.ToString + ")"
+
             dComisiones = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Numero, Fecha,Empleado,EsNotaDebito, Concepto, Monto, Estado", "vwComisiones", "Activa=1"))
             'dComisiones.PrimaryKey = New DataColumn() {Me.dComisiones.Columns("Numero")}
             dComisiones.DefaultView.Sort = "Numero desc"
@@ -171,7 +188,7 @@ Public Class frmSccComisiones
     End Sub
 
     Private Sub cmdEditar_Click(sender As Object, e As EventArgs) Handles cmdEditar.Click
-       Try
+        Try
             Me.Cursor = WaitCursor
             Editar()
             CargarGrid()
@@ -268,5 +285,5 @@ Public Class frmSccComisiones
 
 #End Region
 
-   
+
 End Class

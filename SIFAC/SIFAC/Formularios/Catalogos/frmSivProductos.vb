@@ -18,7 +18,8 @@ Public Class frmSivProductos
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
         Try
-            DtProductos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Codigo,Nombre,Marca,Categoria,Activo", "vwStbProductos", ))
+
+            DtProductos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivProductoID,Codigo,Nombre,Marca,Categoria,Activo", "vwStbProductos", " SivProductoID not in (select p.SivProductoID from  SivProductos p where UsuarioCreacion='Migracion' and Activo=0)"))
             DtProductos.PrimaryKey = New DataColumn() {Me.DtProductos.Columns("SivProductoID")}
             DtProductos.DefaultView.Sort = "SivProductoID desc"
             Me.grdProductos.DataSource = DtProductos

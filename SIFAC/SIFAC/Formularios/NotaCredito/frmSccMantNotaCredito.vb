@@ -34,6 +34,18 @@ Public Class frmSccMantNotaCredito
     Dim blnConsultarNC As Boolean = False
     Dim blnImprimirNC As Boolean = False
     Dim blnBusqueda As Boolean = False
+
+    Private m_DiasNotasCreditoRecientes As Integer
+
+    Property DiasNotasCreditoRecientes() As Integer
+        Get
+            DiasNotasCreditoRecientes = Me.m_DiasNotasCreditoRecientes
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_DiasNotasCreditoRecientes = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Eventos del Formulario"
@@ -181,11 +193,15 @@ Public Class frmSccMantNotaCredito
 #Region "Grid"
     Private Sub CargarGridNotaCredito()
         Dim FilaActual As Integer
+        Dim strFiltroCargaInicial As String
         Try
             If Not blnBusqueda Then
+                Me.DiasNotasCreditoRecientes = ClsCatalogos.GetValorParametro("DiasNotasCreditoRecientes")
+                strFiltroCargaInicial = " (DATEDIFF(DAY, Fecha, GETDATE()) <= " + Me.DiasNotasCreditoRecientes.ToString + ")"
+
                 strCampos = " * "
                 strOrden = " Fecha DESC"
-                strSQL = clsConsultas.ObtenerNotaCredito(strCampos, , strOrden)
+                strSQL = clsConsultas.ObtenerNotaCredito(strCampos, strFiltroCargaInicial, strOrden)
                 dtNC = SqlHelper.ExecuteQueryDT(strSQL)
             End If
 

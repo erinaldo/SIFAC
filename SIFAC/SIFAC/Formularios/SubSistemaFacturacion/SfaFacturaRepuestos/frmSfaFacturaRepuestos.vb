@@ -273,7 +273,7 @@ Public Class frmSfaFacturaRepuestos
 
                 AgregarFactura.MontoTasaCambio = Me.dblTasaCambio
                 If AgregarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Me.CargarFacturas("datediff(DAY,Fecha,GETDATE())<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
+                    Me.CargarFacturas("datediff(DAY,Fecha,GETDATE())<= " & ClsCatalogos.GetValorParametro("DiasFacturasRecientes"))
                     dtFactura.DefaultView.Sort = "SfaFacturaID"
                     Me.dtFactura.DefaultView.Find(AgregarFactura.SfaFacturaID)
                 End If
@@ -1164,7 +1164,7 @@ Public Class frmSfaFacturaRepuestos
     Private Sub frmSfaFacturaRepuestos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
 
-            CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
+            CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturasRecientes"))
             Me.AplicarSeguridad()
         Catch ex As Exception
             clsError.CaptarError(ex)

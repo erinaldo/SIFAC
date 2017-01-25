@@ -4,6 +4,7 @@ Imports Proyecto.Configuracion
 Imports System.Windows.Forms.Cursors
 Imports DevExpress.XtraReports.UI
 Imports SIFAC.BO
+Imports Proyecto.Catalogos.Datos
 
 Public Class frmSccArquo
 
@@ -12,14 +13,30 @@ Public Class frmSccArquo
     Dim EsNotaDebito As Integer
     Dim objseg As SsgSeguridad
     Dim boolAgregar, boolEditar, boolConsultar, boolAprobar, boolImprimir As Boolean
+
+    Private m_DiasArqueosRecientes As Integer
+
+    Property DiasArqueosRecientes() As Integer
+        Get
+            DiasArqueosRecientes = Me.m_DiasArqueosRecientes
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_DiasArqueosRecientes = value
+        End Set
+    End Property
 #End Region
 
 #Region "Incializar GUI"
 
     ''Descripción:      Metodo encargado de cargar la informacion de productos registrados en la grilla
     Public Sub CargarGrid()
+        Dim strFiltro As String = String.Empty
         Try
-            dtArqueos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ArqueoID, Fecha, EntradaEfectivo, SalidaEfectivo, Faltante, AprobadoPor, Cajero", "vwSccArqueoCaja", "1=1"))
+            Me.DiasArqueosRecientes = ClsCatalogos.GetValorParametro("DiasArqueosRecientes")
+
+            strFiltro = " (DATEDIFF(DAY, Fecha, GETDATE()) <= " & Me.DiasArqueosRecientes.ToString & ")"
+
+            dtArqueos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ArqueoID, Fecha, EntradaEfectivo, SalidaEfectivo, Faltante, AprobadoPor, Cajero", "vwSccArqueoCaja", strFiltro))
             dtArqueos.DefaultView.Sort = "Fecha Desc"
             Me.grdArqueo.DataSource = dtArqueos
             Me.grdArqueo.Text = "Arqueos (" & Me.dtArqueos.Rows.Count & ")"
@@ -67,7 +84,7 @@ Public Class frmSccArquo
         End Try
     End Sub
 
-   
+
 
     Private Sub Consultar()
         Dim Consultararqueo As New frmSccConsultarArqueo
@@ -108,7 +125,7 @@ Public Class frmSccArquo
                         AplicarSeguridad()
                     End If
                 End If
-               
+
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
@@ -119,10 +136,10 @@ Public Class frmSccArquo
 
     Private Sub Agregar()
         Dim aprobararqueo As New frmSccConsultarArqueo
-       
+
         Try
             Try
-                
+
                 aprobararqueo.TypeGui = 0
                 If aprobararqueo.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                     CargarGrid()

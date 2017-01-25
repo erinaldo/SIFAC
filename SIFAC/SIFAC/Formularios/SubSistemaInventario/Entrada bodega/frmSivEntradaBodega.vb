@@ -58,7 +58,7 @@ Public Class frmSivEntradaBodega
     Public Sub CargarEntradas(ByVal Filtro As String)
         Dim DiasEntradasRecientes As Integer
         Try
-            DiasEntradasRecientes = StbParametro.RetrieveDT("Nombre = 'DiasEntradas'", , "Valor").DefaultView.Item(0)("Valor")
+            DiasEntradasRecientes = StbParametro.RetrieveDT("Nombre = 'DiasEntradasRecientes'", , "Valor").DefaultView.Item(0)("Valor")
 
             dtEntradaBodega = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("NumeroEntrada, convert(varchar,Fecha,103) Fecha, TipoEntrada,objTipoEntradaID, NumeroFactura, FechaFactura, CostoTotal, Anulada", "vwSivEntradaBodega", Filtro & " AND Fecha BETWEEN GETDATE()-" & DiasEntradasRecientes + 1 & " AND GETDATE()" & " ORDER BY NumeroEntrada DESC"))
             dtEntradaBodegaDetalle = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objEntradaBodegaID,CodigoProducto, SivProductoID, Producto, CantidaEntrada, Costo, Total", "vwSivEntradaBodegaDetalle", Filtro & " AND Fecha BETWEEN GETDATE()-366 AND GETDATE() ORDER BY objEntradaBodegaID DESC"))

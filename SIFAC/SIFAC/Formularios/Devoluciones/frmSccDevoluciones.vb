@@ -19,6 +19,16 @@ Public Class frmSccDevoluciones
     Dim m_IDEstadoRegistrado As Integer
 
 #Region "Propiedades de Devoluciones"
+    Private m_DiasDevolucionesRecientes As Integer
+
+    Property DiasDevolucionesRecientes() As Integer
+        Get
+            DiasDevolucionesRecientes = Me.m_DiasDevolucionesRecientes
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_DiasDevolucionesRecientes = value
+        End Set
+    End Property
 
     Property IDEstadoReg() As Integer
         Get
@@ -62,9 +72,14 @@ Public Class frmSccDevoluciones
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub CargaDatos()
+        Dim strFiltro As String
         Try
+            Me.m_DiasDevolucionesRecientes = ClsCatalogos.GetValorParametro("DiasDevolucionesRecientes")
+
+            strFiltro = " (DATEDIFF(DAY, Fecha, GETDATE()) <= " + Me.m_DiasDevolucionesRecientes.ToString + ")"
+
             Me.DtDatosDevolucion = New DataTable
-            Me.DtDatosDevolucion = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccDevolucion"))
+            Me.DtDatosDevolucion = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccDevolucion", strFiltro))
             Me.DtDatosDevolucion.PrimaryKey = New DataColumn() {Me.DtDatosDevolucion.Columns("SccDevolucionID")}
             Me.DtDatosDevolucion.DefaultView.Sort = "SccDevolucionID desc"
             Me.grdDevolucion.DataSource = DtDatosDevolucion

@@ -174,7 +174,7 @@ Public Class frmSccReciboCaja
     Private Sub CargarDatos()
         Dim DiasRecibosRecientes As Integer
         Try
-            DiasRecibosRecientes = StbParametro.RetrieveDT("Nombre = 'CantidadRecibosRecientes'", , "Valor").DefaultView.Item(0)("Valor")
+            DiasRecibosRecientes = StbParametro.RetrieveDT("Nombre = 'DiasRecibosRecientes'", , "Valor").DefaultView.Item(0)("Valor")
 
             Me.DtRecibosCajas = SqlHelper.ExecuteQueryDT("SELECT Expediente, Fecha, Numero, SccReciboCajaID, TotalRecibo,objEstadoId, EsPagoPrima,objClienteId, Cliente, Estado, NumeroRecibo FROM vwSccReciboCaja WHERE Fecha BETWEEN GETDATE()-" & DiasRecibosRecientes & " AND GETDATE()")
             Me.DtRecibosCajas.DefaultView.Sort = "SccReciboCajaID desc"

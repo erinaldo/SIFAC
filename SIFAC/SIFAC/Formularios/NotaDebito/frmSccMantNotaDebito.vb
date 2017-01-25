@@ -7,6 +7,7 @@ Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Data.SqlClient
 Imports SIFAC.BO
+Imports Proyecto.Catalogos.Datos
 
 Public Class frmSccMantNotaDebito
 
@@ -31,6 +32,17 @@ Public Class frmSccMantNotaDebito
     Dim blnConsultarND As Boolean = False
     Dim blnImprimirND As Boolean = False
     Dim blnBusqueda As Boolean = False
+
+    Private m_DiasNotaDebitoRecientes As Integer
+
+    Property DiasNotaDebitoRecientes() As Integer
+        Get
+            DiasNotaDebitoRecientes = Me.m_DiasNotaDebitoRecientes
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_DiasNotaDebitoRecientes = value
+        End Set
+    End Property
 #End Region
 
 #Region "Eventos del Formulario"
@@ -42,11 +54,11 @@ Public Class frmSccMantNotaDebito
     Private Sub frmSccMantNotaDebito_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             Me.Cursor = Cursors.WaitCursor
-          
+
             AplicarSeguridad()
             PropiedadesFormulario()
             CargarGridNotaDebito()
-         
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -167,11 +179,15 @@ Public Class frmSccMantNotaDebito
     '-----------------------------------------------------------------------------------
     Private Sub CargarGridNotaDebito()
         Dim FilaActual As Integer
+        Dim strFiltroCargaInicia As String
         Try
             If Not blnBusqueda Then
+                Me.DiasNotaDebitoRecientes = ClsCatalogos.GetValorParametro("DiasNotasDebitoRecientes")
+
+                strFiltroCargaInicia = " (DATEDIFF(DAY, Fecha, GETDATE()) <= " + Me.DiasNotaDebitoRecientes.ToString + ")"
                 strCampos = " * "
                 strOrden = " Fecha DESC "
-                dtND = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccNotaDebito", "1=1"))
+                dtND = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccNotaDebito", strFiltroCargaInicia))
             End If
 
             If dtND.Rows.Count > 0 Then
@@ -228,7 +244,7 @@ Public Class frmSccMantNotaDebito
 #Region "Eventos del Toolbar"
 
     '-----------------------------------------------------------------------
-   
+
     ''----------------------------------------------------------------------
     '-- Descripcion         :   Agregar una Nota de Debito
     '-----------------------------------------------------------------------------------

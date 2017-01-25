@@ -89,10 +89,9 @@ Public Class frmReporteEncargos
         Try
             If Me.rbProveedor.Checked And Me.cmbVendedor.Text = "" Then
                 MsgBox("Seleccione un vendedor", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                Me.cmbVendedor.Focus()
-                Exit Sub
+            Else
+                Imprimir()
             End If
-            Imprimir()
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

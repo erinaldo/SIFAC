@@ -30,6 +30,7 @@ Partial Class frmPedidos
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdDesactivar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnAutorizar = New System.Windows.Forms.ToolStripButton()
         Me.cmdRefrescar = New System.Windows.Forms.ToolStripButton()
         Me.cmdImprimir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -61,7 +62,7 @@ Partial Class frmPedidos
         'tbProductos
         '
         Me.tbProductos.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdImprimir, Me.ToolStripSeparator3, Me.cmdCerrar})
+        Me.tbProductos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdEditar, Me.cmdConsultar, Me.ToolStripSeparator1, Me.cmdDesactivar, Me.ToolStripSeparator2, Me.btnAutorizar, Me.cmdRefrescar, Me.cmdImprimir, Me.ToolStripSeparator3, Me.cmdCerrar})
         Me.tbProductos.Location = New System.Drawing.Point(0, 0)
         Me.tbProductos.Name = "tbProductos"
         Me.tbProductos.Size = New System.Drawing.Size(865, 39)
@@ -112,6 +113,15 @@ Partial Class frmPedidos
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
+        '
+        'btnAutorizar
+        '
+        Me.btnAutorizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnAutorizar.Image = CType(resources.GetObject("btnAutorizar.Image"), System.Drawing.Image)
+        Me.btnAutorizar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnAutorizar.Name = "btnAutorizar"
+        Me.btnAutorizar.Size = New System.Drawing.Size(36, 36)
+        Me.btnAutorizar.Text = "Aprobar pedido"
         '
         'cmdRefrescar
         '
@@ -358,4 +368,5 @@ Partial Class frmPedidos
     Friend WithEvents colProveedor As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colEstado As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colTotalCosto As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents btnAutorizar As System.Windows.Forms.ToolStripButton
 End Class

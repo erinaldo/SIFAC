@@ -237,8 +237,12 @@ Public Class frmSivEncargosEdit
             For Each row As DataRow In dtDetalleEncargo.Rows
                 objEncargoDetalle.objSivEncargoID = objEncargoMaster.SivEncargoID
 
-                If row("objCategoriaID") <> 0 Then
-                    objEncargoDetalle.objCategoriaID = row("objCategoriaID")
+                If Not IsNothing(row("objCategoriaID")) Then
+                    If Not IsDBNull(row("objCategoriaID")) Then
+                        If row("objCategoriaID") <> 0 Then
+                            objEncargoDetalle.objCategoriaID = row("objCategoriaID")
+                        End If
+                    End If
                 End If
 
                 If Not IsDBNull(row("SivProductoID")) Then
@@ -304,7 +308,20 @@ Public Class frmSivEncargosEdit
             cmbMarca.DisplayMember = "Nombre"
             DtMarca = SivMarcas.RetrieveDT("Activa=1")
             cmbMarca.DataSource = DtMarca
-            cmbMarca.Text = ""
+            With cmbMarca
+                .DataSource = DtMarca
+                .DisplayMember = "Nombre"
+                .ValueMember = "MarcaID"
+                .Splits(0).DisplayColumns("MarcaID").Visible = False
+                .Splits(0).DisplayColumns("Descripcion").Visible = False
+                .Splits(0).DisplayColumns("Activa").Visible = False
+                .Splits(0).DisplayColumns("FechaCreacion").Visible = False
+                .Splits(0).DisplayColumns("UsuarioCreacion").Visible = False
+                .Splits(0).DisplayColumns("FechaModificacion").Visible = False
+                .Splits(0).DisplayColumns("UsuarioModificacion").Visible = False
+                .ExtendRightColumn = True
+                .SelectedValue = -1
+            End With
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -324,7 +341,17 @@ Public Class frmSivEncargosEdit
             cmbCategoria.DisplayMember = "Nombre"
             DtCategoria = SivCategorias.RetrieveDT("Activa=1", " Nombre", "CategoriaID, Nombre")
             cmbCategoria.DataSource = DtCategoria
-            cmbCategoria.Text = ""
+
+
+            With cmbCategoria
+                .DataSource = DtCategoria
+                .DisplayMember = "Nombre"
+                .ValueMember = "CategoriaID"
+                .Splits(0).DisplayColumns("CategoriaID").Visible = False
+                .ExtendRightColumn = True
+                .SelectedValue = -1
+
+            End With
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -351,13 +378,22 @@ Public Class frmSivEncargosEdit
                     End If
                 End If
             End If
-           
+
+            strfiltro = strfiltro & " AND SivProductoID not in (select p.SivProductoID from  SivProductos p where UsuarioCreacion='Migracion' and Activo=0)"
+
             cmbNombreProducto.ValueMember = "SivProductoID"
             cmbNombreProducto.DisplayMember = "Nombre"
-            DtNombreProducto = SivProductos.RetrieveDT(strfiltro, " Nombre", " SivProductoID, (Codigo  + '-' +  Nombre) AS Nombre")
+            DtNombreProducto = SivProductos.RetrieveDT(strfiltro, " Nombre", " SivProductoID, Nombre ")
 
-            cmbNombreProducto.DataSource = DtNombreProducto
-            cmbNombreProducto.Text = ""
+            With cmbNombreProducto
+                .DataSource = DtNombreProducto
+                .DisplayMember = "Nombre"
+                .ValueMember = "SivProductoID"
+                .Splits(0).DisplayColumns("SivProductoID").Visible = False
+                .ExtendRightColumn = True
+                .SelectedValue = -1
+            End With
+           
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -643,7 +679,12 @@ Public Class frmSivEncargosEdit
 
             filas("Cantidad") = spnCantidad.Value
             filas("Observaciones") = txtObservaciones.Text
-            filas("CostoPromedio") = objSivProducto.CostoPromedio
+
+            If Not IsNothing(objSivProducto.CostoPromedio) Then
+                filas("CostoPromedio") = objSivProducto.CostoPromedio
+            Else
+                filas("CostoPromedio") = 0.0
+            End If
 
             If cmbCategoria.Text = "" Then
                 filas("objCategoriaID") = 0
@@ -658,6 +699,7 @@ Public Class frmSivEncargosEdit
             cmbNombreProducto.Text = String.Empty
             txtNombreProducto.Text = String.Empty
             txtObservaciones.Text = String.Empty
+            cmbMarca.Text = String.Empty
             spnCantidad.Value = 0.0
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -682,7 +724,7 @@ Public Class frmSivEncargosEdit
         End Try
     End Sub
 
-    Private Sub cmbCategoria_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbCategoria.SelectedValueChanged
+    Private Sub cmbCategoria_SelectedValueChanged(sender As Object, e As EventArgs)
         Try
             CargarProductos(Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbMarca.SelectedValue))
 
@@ -817,9 +859,13 @@ Public Class frmSivEncargosEdit
         CargarProductos(Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbMarca.SelectedValue))
     End Sub
 
-    Private Sub cmbNombreProducto_TextChanged_2(sender As Object, e As EventArgs) Handles cmbNombreProducto.TextChanged
+    Private Sub cmbNombreProducto_TextChanged_2(sender As Object, e As EventArgs)
         ErrorFactura.SetError(cmbNombreProducto, "")
         boolEditado = True
+    End Sub
+
+    Private Sub spnCantidad_TextChanged_1(sender As Object, e As EventArgs) Handles spnCantidad.TextChanged
+        Me.ErrorFactura.SetError(Me.spnCantidad, "")
     End Sub
 #End Region
 
@@ -828,4 +874,5 @@ Public Class frmSivEncargosEdit
 
    
    
+    
 End Class

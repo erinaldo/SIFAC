@@ -378,7 +378,7 @@ Public Class frmPedidosEdit
 
             strfiltro = strfiltro & " AND SivProductoID not in (select p.SivProductoID from  SivProductos p where UsuarioCreacion='Migracion' and Activo=0)"
 
-            DtNombreProducto = SivProductos.RetrieveDT(strfiltro, " Nombre", " SivProductoID, (Codigo  + '-' +  Nombre) AS Nombre")
+            DtNombreProducto = SivProductos.RetrieveDT(strfiltro, " Nombre", " SivProductoID, Nombre")
 
             Dim newProductosRow As DataRow
             newProductosRow = DtNombreProducto.NewRow()
@@ -405,7 +405,7 @@ Public Class frmPedidosEdit
 #Region "Cargar Estados"
     Public Sub CargarEstados()
         Try
-            dtEstados = ObtenerValCat("ESTADOENCARGO")
+            dtEstados = ObtenerValCat("ESTADOPEDIDO")
             With cmbEstado
                 .Properties.DataSource = dtEstados
                 .Properties.DisplayMember = "Descripcion"
@@ -593,8 +593,13 @@ Public Class frmPedidosEdit
 
     Private Sub CalcularTotal()
         Try
+            spnTotalCosto.Value = 0.0
             For Each row As DataRow In dtDetallePedido.Rows
-                spnTotalCosto.Value = spnTotalCosto.Value + row("CostoTotal")
+                If Not IsDBNull(row("CostoTotal")) Then
+                    spnTotalCosto.Value = spnTotalCosto.Value + row("CostoTotal")
+                Else
+                    spnTotalCosto.Value = 0.0
+                End If
             Next
 
         Catch ex As Exception

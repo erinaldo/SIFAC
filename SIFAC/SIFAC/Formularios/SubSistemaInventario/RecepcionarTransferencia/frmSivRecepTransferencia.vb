@@ -95,7 +95,7 @@ Public Class frmSivRecepTransferencia
     ''' <remarks></remarks>
     Private Sub CargaDatos()
         Dim sSQL, sSQL1, sSQL2, sCampos, sFiltro1, sFiltro2 As String
-        Me.DiasTransferenciasRecientes = ClsCatalogos.GetValorParametro("diasTransfRecientes")
+        Me.DiasTransferenciasRecientes = ClsCatalogos.GetValorParametro("DiasTransfRecientes")
 
         Dim strFiltroSitio As String = " ObjBodegaDestinoID = " + Me.IdSucursalSession.ToString
         sCampos = "CONVERT(VARCHAR,Fechasolicitud,103) AS Fechasolicitud, CONVERT(VARCHAR,Fechadespacho,103) AS Fechadespacho, " + _

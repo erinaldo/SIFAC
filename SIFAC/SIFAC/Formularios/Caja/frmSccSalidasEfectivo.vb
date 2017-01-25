@@ -3,6 +3,7 @@ Imports Seguridad.Datos
 Imports Proyecto.Configuracion
 Imports System.Data.SqlClient
 Imports SIFAC.BO
+Imports Proyecto.Catalogos.Datos
 
 Public Class frmSccSalidasEfectivo
 
@@ -25,6 +26,18 @@ Public Class frmSccSalidasEfectivo
     Dim blnAutorizarND As Boolean = False
     Dim blnAnularND As Boolean = False
     Dim blnConsultarND As Boolean = False
+
+    Private m_DiasSalidasEfectivoRecientes As Integer
+
+    Property DiasSalidasEfectivoRecientes() As Integer
+        Get
+            DiasSalidasEfectivoRecientes = Me.m_DiasSalidasEfectivoRecientes
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_DiasSalidasEfectivoRecientes = value
+        End Set
+    End Property
+
 
 #End Region
 
@@ -82,7 +95,7 @@ Public Class frmSccSalidasEfectivo
             T.RollbackTran()
             clsError.CaptarError(ex)
         Finally
-            
+
             Me.Cursor = Cursors.Default
         End Try
     End Sub
@@ -143,7 +156,7 @@ Public Class frmSccSalidasEfectivo
                 Me.cmdConsultar.Enabled = False
                 blnConsultarND = False
             End If
-           
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -153,7 +166,7 @@ Public Class frmSccSalidasEfectivo
 
 #Region "Propiedades del Formulario"
 
-     ''----------------------------------------------------------------------
+    ''----------------------------------------------------------------------
     '-- Descripcion         :   Valores de Parametros para el Formulario
     '-----------------------------------------------------------------------------------
     Private Sub PropiedadesFormulario()
@@ -211,11 +224,15 @@ Public Class frmSccSalidasEfectivo
     '-----------------------------------------------------------------------------------
     Private Sub CargarGridNotaDebito()
         Dim FilaActual As Integer
+        Dim striFiltroCargaInicial As String = String.Empty
         Try
+            Me.DiasSalidasEfectivoRecientes = ClsCatalogos.GetValorParametro("DiasSalidasEfectivoRecientes")
+
+            striFiltroCargaInicial = " (DATEDIFF(DAY, Fecha, GETDATE()) <= " + Me.DiasSalidasEfectivoRecientes.ToString + ")"
 
             strCampos = " * "
             strOrden = " Fecha DESC "
-            dtND = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccSaldiasEfectivo", "1=1"))
+            dtND = SqlHelper.ExecuteQueryDT(clsConsultas.ObtenerConsultaGeneral("*", "vwSccSaldiasEfectivo", striFiltroCargaInicial))
 
             If dtND.Rows.Count > 0 Then
 
@@ -267,7 +284,7 @@ Public Class frmSccSalidasEfectivo
 
     Private Sub cmdAgregar_Click(sender As Object, e As EventArgs) Handles cmdAgregar.Click
         Dim objfrm As frmSccEditNotaCredito
-       
+
         Try
             Me.Cursor = Cursors.WaitCursor
             objfrm = New frmSccEditNotaCredito
@@ -281,9 +298,9 @@ Public Class frmSccSalidasEfectivo
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
-           
+
             Me.Cursor = Cursors.Default
-           
+
         End Try
     End Sub
 
@@ -372,7 +389,7 @@ Public Class frmSccSalidasEfectivo
                 Else
                     Me.cmdAnular.Enabled = False
                 End If
-                
+
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)

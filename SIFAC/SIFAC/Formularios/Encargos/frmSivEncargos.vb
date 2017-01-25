@@ -13,8 +13,20 @@ Public Class frmSivEncargos
     Dim dtEncargos, dtEncargosExcel, dtDetalleEncargos As DataTable
     Dim dsEncargos As DataSet
     Dim objseg As SsgSeguridad
-    Dim boolAgregar, boolEditar, boolConsultar, boolImprimir, boolBuscar, boolDesactivar As Boolean
+    Dim boolAgregar, boolEditar, boolConsultar, boolImprimir, boolBuscar, boolDesactivar, boolGenerarPedido, boolAutorizarEncargo As Boolean
     Dim SqlParametros(5) As SqlClient.SqlParameter
+
+    Private m_DiasEncargosRecientes As Integer
+
+    Property DiasEncargosRecientes() As Integer
+        Get
+            DiasEncargosRecientes = Me.m_DiasEncargosRecientes
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_DiasEncargosRecientes = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Incializar GUI"
@@ -25,6 +37,10 @@ Public Class frmSivEncargos
     Private Sub CargarEncargos(ByVal strFiltro As String)
 
         Try
+            Me.DiasEncargosRecientes = ClsCatalogos.GetValorParametro("DiasEncargosRecientes")
+
+            strFiltro = strFiltro + " AND (DATEDIFF(DAY, Fecha, GETDATE()) <= " + Me.DiasEncargosRecientes.ToString + ")"
+
             dtEncargos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("CAST(0 AS BIT) AS Seleccionar,Numero, NumeroDetalle, Ruta, Fecha, Vendedor, Cliente, Estado, Categoria, CodigoProducto, NombreProducto, Cantidad, CostoPromedio, TotalCosto", "VWEncargosConsolidado", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
 
             If Not dtEncargos Is Nothing Then
@@ -54,12 +70,17 @@ Public Class frmSivEncargos
             boolEditar = objseg.TienePermiso("EditarEncargo")
             boolImprimir = objseg.TienePermiso("ImprimirEncargo")
             boolDesactivar = objseg.TienePermiso("InactivarEncargo")
+            boolGenerarPedido = objseg.TienePermiso("GenerarPedido")
+            boolAutorizarEncargo = objseg.TienePermiso("AutorizarEncargo")
 
             cmdAgregar.Enabled = boolAgregar
             cmdEditar.Enabled = boolEditar And dtEncargos.Rows.Count > 0
             cmdConsultar.Enabled = boolConsultar And dtEncargos.Rows.Count > 0
             cmdDesactivar.Enabled = boolDesactivar And dtEncargos.Rows.Count > 0
             cmbExportar.Enabled = boolImprimir And dtEncargos.Rows.Count > 0
+            btnAutorizar.Enabled = boolAutorizarEncargo And dtEncargos.Rows.Count > 0
+            btnPedido.Enabled = boolGenerarPedido And dtEncargos.Rows.Count > 0
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -136,6 +157,7 @@ Public Class frmSivEncargos
             editEncargos.TypeGui = 0
             If editEncargos.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarEncargos("1=1")
+                Me.AplicarSeguridad()
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -265,27 +287,32 @@ Public Class frmSivEncargos
         Dim foundRowsSeleccionadas() As Data.DataRow
         Dim t As New TransactionManager
         Try
+            foundRowsSeleccionadas = dtEncargos.Select("Seleccionar = 1")
+            If foundRowsSeleccionadas.Length > 0 Then
+                Select Case MsgBox("¿Está seguro de aprobar los encargos seleccionados?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
+                    Case MsgBoxResult.Yes
+                        t.BeginTran()
 
-            Select Case MsgBox("¿Está seguro de aprobar los encargos seleccionados?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
-                Case MsgBoxResult.Yes
-                    t.BeginTran()
-                    foundRowsSeleccionadas = dtEncargos.Select("Seleccionar = 1")
-                    For Each row As DataRow In foundRowsSeleccionadas
-                        IDEncargo = row("Numero")
-                        Encargos.Retrieve(IDEncargo)
-                        Catalogos.RetrieveByFilter("Nombre='ESTADOENCARGO'")
-                        ValorCatalogo.RetrieveByFilter("objCatalogoID=" & Catalogos.StbCatalogoID & " AND Codigo='03'")
-                        Encargos.ObjEstadoID = ValorCatalogo.StbValorCatalogoID
-                        Encargos.UsuarioModificacion = clsProyecto.Conexion.Usuario
-                        Encargos.FechaModificacion = clsProyecto.Conexion.FechaServidor
-                        Encargos.Update(t)
-                    Next
-                    t.CommitTran()
-                    CargarEncargos("1=1")
-                    MsgBox("Encargos aprobado correctamente.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-                Case MsgBoxResult.No
-                    Exit Sub
-            End Select
+                        For Each row As DataRow In foundRowsSeleccionadas
+                            IDEncargo = row("Numero")
+                            Encargos.Retrieve(IDEncargo)
+                            Catalogos.RetrieveByFilter("Nombre='ESTADOENCARGO'")
+                            ValorCatalogo.RetrieveByFilter("objCatalogoID=" & Catalogos.StbCatalogoID & " AND Codigo='03'")
+                            Encargos.ObjEstadoID = ValorCatalogo.StbValorCatalogoID
+                            Encargos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                            Encargos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                            Encargos.Update(t)
+                        Next
+                        t.CommitTran()
+                        CargarEncargos("1=1")
+                        MsgBox("Encargos aprobado correctamente.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+                    Case MsgBoxResult.No
+                        Exit Sub
+                End Select
+            Else
+                MsgBox("Debe seleccionar el encargo.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
+            End If
+           
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally
@@ -305,27 +332,33 @@ Public Class frmSivEncargos
         Try
             strFiltro = String.Empty
             foundRowsSeleccionadas = dtEncargos.Select("Seleccionar = 1")
-            For Each row As DataRow In foundRowsSeleccionadas
-                strEstado = row("Estado").ToString
 
-                If strEstado <> "APROBADO" Then
-                    MsgBox("Los encargos seleccionados deben estar aprobados para generar pedido", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
-                    Exit Sub
-                Else
-                    If strFiltro.Length = 0 Then
-                        strFiltro = row("NumeroDetalle").ToString
+            If foundRowsSeleccionadas.Length > 0 Then
+
+                For Each row As DataRow In foundRowsSeleccionadas
+                    strEstado = row("Estado").ToString
+
+                    If strEstado <> "APROBADO" Then
+                        MsgBox("Los encargos seleccionados deben estar aprobados para generar pedido", MsgBoxStyle.Critical, clsProyecto.SiglasSistema)
+                        Exit Sub
                     Else
-                        strFiltro = strFiltro & "," & row("NumeroDetalle").ToString
+                        If strFiltro.Length = 0 Then
+                            strFiltro = row("NumeroDetalle").ToString
+                        Else
+                            strFiltro = strFiltro & "," & row("NumeroDetalle").ToString
+                        End If
                     End If
+
+                Next
+
+                editPedidos = New frmPedidosEdit
+                editPedidos.TypeGui = 3
+                editPedidos.strFiltroEncargos = strFiltro
+                If editPedidos.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+                    CargarEncargos("1=1")
                 End If
-
-            Next
-
-            editPedidos = New frmPedidosEdit
-            editPedidos.TypeGui = 3
-            editPedidos.strFiltroEncargos = strFiltro
-            If editPedidos.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                CargarEncargos("1=1")
+            Else
+                MsgBox("Debe seleccionar el encargo.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
             End If
 
         Catch ex As Exception

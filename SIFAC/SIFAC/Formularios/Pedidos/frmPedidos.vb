@@ -5,16 +5,30 @@ Imports System.Windows.Forms.Cursors
 Imports SIFAC.BO
 Imports DevExpress.XtraReports.UI
 Imports DAL
+Imports Proyecto.Catalogos.Datos
 
 Public Class frmPedidos
 
 #Region "Variables del formulario"
     Dim dtPedidos, dtPedidosExcel, dtDetallePedidos As DataTable
+    Dim gblEstadoAprobadaID As Integer
     Dim dsPedidos As DataSet
     Dim objseg As SsgSeguridad
     Dim boolAgregar, boolEditar, boolConsultar, boolImprimir, boolBuscar, boolDesactivar, boolAutorizar As Boolean
     Dim SqlParametros(5) As SqlClient.SqlParameter
+
+    Private m_DiasPedidosRecientes As Integer
+
+    Property DiasPedidosRecientes() As Integer
+        Get
+            DiasPedidosRecientes = Me.m_DiasPedidosRecientes
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_DiasPedidosRecientes = value
+        End Set
+    End Property
 #End Region
+
 
 #Region "Incializar GUI"
 
@@ -23,8 +37,9 @@ Public Class frmPedidos
 
     Private Sub CargarPedidos(ByVal strFiltro As String)
         Try
+            Me.DiasPedidosRecientes = ClsCatalogos.GetValorParametro("DiasPedidosRecientes")
 
-            dtPedidos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivPedidoID, Numero, Estado, TotalCosto, Fecha, Proveedor ", "vwSivPedidosMaster", strFiltro & " ORDER BY Fecha DESC"), Me.SqlParametros)
+            dtPedidos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivPedidoID, Numero, Estado, TotalCosto, Fecha, Proveedor ,objEstadoID", "vwSivPedidosMaster", strFiltro & " AND (DATEDIFF(DAY, Fecha, GETDATE()) <= " + Me.DiasPedidosRecientes.ToString + ")  ORDER BY Fecha DESC"), Me.SqlParametros)
             dtDetallePedidos = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SivPedidoDetalleID, objPedidoID, objCategoriaID, Categoria, Numero, NombreProducto, CantidadOrdenada, TotalCosto", "vwPedidosDetalle", strFiltro), Me.SqlParametros)
 
             dsPedidos = New DataSet
@@ -44,6 +59,8 @@ Public Class frmPedidos
             Me.grdPedidosDetalle.DataMember = "SivPedidos.SivPedidos_SivPedidoDetalle"
 
             Me.grdPedidosMaster.Text = "Pedidos (" & Me.grdPedidosMasterTabla.RowCount & ")"
+
+           
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -68,7 +85,7 @@ Public Class frmPedidos
             cmdConsultar.Enabled = boolConsultar And dtPedidos.Rows.Count > 0
             cmdImprimir.Enabled = boolImprimir And dtPedidos.Rows.Count > 0
             cmdDesactivar.Enabled = boolDesactivar And dtPedidos.Rows.Count > 0
-
+            btnAutorizar.Enabled = boolBuscar And dtPedidos.Rows.Count > 0
 
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -84,8 +101,20 @@ Public Class frmPedidos
 
     Private Sub frmPedidos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            gblEstadoAprobadaID = ClsCatalogos.GetValorCatalogoID("ESTADOPEDIDO", "02") '-- 02=Aprobada
             CargarPedidos("1=1")
             Me.AplicarSeguridad()
+
+            Dim FilaActual As Integer
+
+            If dtPedidos.Rows.Count > 0 Then
+                Dim selectedRow As Integer() = grdPedidosMasterTabla.GetSelectedRows()
+                FilaActual = Me.grdPedidosMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+
+                Me.btnAutorizar.Enabled = Not Integer.Parse(Me.dtPedidos.DefaultView.Item(FilaActual)("ObjEstadoID")) = gblEstadoAprobadaID
+                Me.cmdEditar.Enabled = Not Integer.Parse(Me.dtPedidos.DefaultView.Item(FilaActual)("ObjEstadoID")) = gblEstadoAprobadaID
+            End If
+           
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -161,6 +190,7 @@ Public Class frmPedidos
                     Pedidos.Activo = False
                     Pedidos.Update()
                     CargarPedidos("1=1")
+                    'Me.dtPedidos.DefaultView.Find(Pedidos.SivPedidoID)
                     Me.AplicarSeguridad()
                 Case MsgBoxResult.No
                     Exit Sub
@@ -211,6 +241,60 @@ Public Class frmPedidos
             objjReporte.DataMember = dsReporte.Tables(0).TableName
             Dim pt As New ReportPrintTool(objjReporte)
             pt.ShowPreview()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
+
+    Private Sub btnAutorizar_Click(sender As Object, e As EventArgs) Handles btnAutorizar.Click
+        Dim IDPedido As Integer
+        Dim Pedidos As New SivPedidos
+        Dim Catalogos As New StbCatalogo
+        Dim ValorCatalogo As New StbValorCatalogo
+        Dim FilaActual As Integer
+        Try
+            FilaActual = Me.grdPedidosMasterTabla.FocusedRowHandle
+            Select Case MsgBox("¿Está seguro de aprobar el pedido seleccionado?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, clsProyecto.SiglasSistema)
+                Case MsgBoxResult.Yes
+                    IDPedido = Me.dtPedidos.DefaultView.Item(FilaActual)("SivPedidoID")
+                    Pedidos.Retrieve(IDPedido)
+                    Catalogos.RetrieveByFilter("Nombre='ESTADOPEDIDO'")
+                    ValorCatalogo.RetrieveByFilter("objCatalogoID=" & Catalogos.StbCatalogoID & " AND Codigo='02'")
+                    Pedidos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                    Pedidos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                    Pedidos.ObjEstadoID = ValorCatalogo.StbValorCatalogoID
+                    Pedidos.Update()
+                    CargarPedidos("1=1")
+                    Me.AplicarSeguridad()
+                Case MsgBoxResult.No
+                    Exit Sub
+            End Select
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            Me.Cursor = [Default]
+        End Try
+
+     
+    End Sub
+
+    Private Sub grdPedidosMasterTabla_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles grdPedidosMasterTabla.FocusedRowChanged
+        Dim FilaActual As Integer
+        Try
+            If dtPedidos.Rows.Count > 0 Then
+                If not IsNothing(grdPedidosMasterTabla.GetSelectedRows()) Then
+                    Dim selectedRow As Integer() = grdPedidosMasterTabla.GetSelectedRows()
+                    FilaActual = Me.grdPedidosMasterTabla.GetDataSourceRowIndex(selectedRow(0))
+                    If FilaActual >= 0 Then
+                        If Me.dtPedidos.DefaultView.Item(FilaActual)("ObjEstadoID").ToString.Trim.Length <> 0 Then
+                            Me.btnAutorizar.Enabled = Not Integer.Parse(Me.dtPedidos.DefaultView.Item(FilaActual)("ObjEstadoID")) = gblEstadoAprobadaID
+                            Me.cmdEditar.Enabled = Not Integer.Parse(Me.dtPedidos.DefaultView.Item(FilaActual)("ObjEstadoID")) = gblEstadoAprobadaID
+                        End If
+                    End If
+
+                End If
+            End If
+
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

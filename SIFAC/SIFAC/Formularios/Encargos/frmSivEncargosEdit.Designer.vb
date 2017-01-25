@@ -23,14 +23,14 @@ Partial Class frmSivEncargosEdit
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSivEncargosEdit))
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.cmbNombreProducto = New System.Windows.Forms.ComboBox()
-        Me.cmbMarca = New System.Windows.Forms.ComboBox()
-        Me.cmbCategoria = New System.Windows.Forms.ComboBox()
+        Me.cmbNombreProducto = New C1.Win.C1List.C1Combo()
+        Me.cmbMarca = New C1.Win.C1List.C1Combo()
+        Me.cmbCategoria = New C1.Win.C1List.C1Combo()
         Me.C1DateEdit1 = New C1.Win.C1Input.C1DateEdit()
         Me.txtNombreProducto = New DevExpress.XtraEditors.TextEdit()
         Me.lblNombreProducto = New System.Windows.Forms.Label()
@@ -94,6 +94,9 @@ Partial Class frmSivEncargosEdit
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.cmbNombreProducto, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbMarca, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cmbCategoria, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNombreProducto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,30 +177,100 @@ Partial Class frmSivEncargosEdit
         '
         'cmbNombreProducto
         '
-        Me.cmbNombreProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbNombreProducto.FormattingEnabled = True
-        Me.cmbNombreProducto.Location = New System.Drawing.Point(127, 104)
+        Me.cmbNombreProducto.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbNombreProducto.AutoCompletion = True
+        Me.cmbNombreProducto.AutoDropDown = True
+        Me.cmbNombreProducto.Caption = ""
+        Me.cmbNombreProducto.CaptionHeight = 17
+        Me.cmbNombreProducto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbNombreProducto.ColumnCaptionHeight = 17
+        Me.cmbNombreProducto.ColumnFooterHeight = 17
+        Me.cmbNombreProducto.ContentHeight = 15
+        Me.cmbNombreProducto.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbNombreProducto.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbNombreProducto.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbNombreProducto.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbNombreProducto.EditorHeight = 15
+        Me.cmbNombreProducto.ExtendRightColumn = True
+        Me.cmbNombreProducto.Images.Add(CType(resources.GetObject("cmbNombreProducto.Images"), System.Drawing.Image))
+        Me.cmbNombreProducto.ItemHeight = 15
+        Me.cmbNombreProducto.Location = New System.Drawing.Point(127, 102)
+        Me.cmbNombreProducto.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbNombreProducto.MaxDropDownItems = CType(5, Short)
+        Me.cmbNombreProducto.MaxLength = 32767
+        Me.cmbNombreProducto.MouseCursor = System.Windows.Forms.Cursors.Default
         Me.cmbNombreProducto.Name = "cmbNombreProducto"
+        Me.cmbNombreProducto.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbNombreProducto.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbNombreProducto.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbNombreProducto.Size = New System.Drawing.Size(166, 21)
-        Me.cmbNombreProducto.TabIndex = 128
+        Me.cmbNombreProducto.TabIndex = 138
+        Me.cmbNombreProducto.Tag = "OBLIGATORIO"
+        Me.cmbNombreProducto.PropBag = resources.GetString("cmbNombreProducto.PropBag")
         '
         'cmbMarca
         '
-        Me.cmbMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbMarca.FormattingEnabled = True
-        Me.cmbMarca.Location = New System.Drawing.Point(127, 77)
+        Me.cmbMarca.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbMarca.AutoCompletion = True
+        Me.cmbMarca.AutoDropDown = True
+        Me.cmbMarca.Caption = ""
+        Me.cmbMarca.CaptionHeight = 17
+        Me.cmbMarca.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbMarca.ColumnCaptionHeight = 17
+        Me.cmbMarca.ColumnFooterHeight = 17
+        Me.cmbMarca.ContentHeight = 15
+        Me.cmbMarca.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbMarca.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbMarca.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMarca.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbMarca.EditorHeight = 15
+        Me.cmbMarca.Images.Add(CType(resources.GetObject("cmbMarca.Images"), System.Drawing.Image))
+        Me.cmbMarca.ItemHeight = 15
+        Me.cmbMarca.Location = New System.Drawing.Point(127, 76)
+        Me.cmbMarca.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbMarca.MaxDropDownItems = CType(5, Short)
+        Me.cmbMarca.MaxLength = 32767
+        Me.cmbMarca.MouseCursor = System.Windows.Forms.Cursors.Default
         Me.cmbMarca.Name = "cmbMarca"
+        Me.cmbMarca.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbMarca.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbMarca.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbMarca.Size = New System.Drawing.Size(166, 21)
-        Me.cmbMarca.TabIndex = 127
+        Me.cmbMarca.TabIndex = 137
+        Me.cmbMarca.Tag = "OBLIGATORIO"
+        Me.cmbMarca.PropBag = resources.GetString("cmbMarca.PropBag")
         '
         'cmbCategoria
         '
-        Me.cmbCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbCategoria.FormattingEnabled = True
-        Me.cmbCategoria.Location = New System.Drawing.Point(127, 51)
+        Me.cmbCategoria.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbCategoria.AutoCompletion = True
+        Me.cmbCategoria.AutoDropDown = True
+        Me.cmbCategoria.Caption = ""
+        Me.cmbCategoria.CaptionHeight = 17
+        Me.cmbCategoria.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbCategoria.ColumnCaptionHeight = 17
+        Me.cmbCategoria.ColumnFooterHeight = 17
+        Me.cmbCategoria.ContentHeight = 15
+        Me.cmbCategoria.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbCategoria.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbCategoria.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCategoria.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbCategoria.EditorHeight = 15
+        Me.cmbCategoria.Images.Add(CType(resources.GetObject("cmbCategoria.Images"), System.Drawing.Image))
+        Me.cmbCategoria.ItemHeight = 15
+        Me.cmbCategoria.Location = New System.Drawing.Point(127, 48)
+        Me.cmbCategoria.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbCategoria.MaxDropDownItems = CType(5, Short)
+        Me.cmbCategoria.MaxLength = 32767
+        Me.cmbCategoria.MouseCursor = System.Windows.Forms.Cursors.Default
         Me.cmbCategoria.Name = "cmbCategoria"
+        Me.cmbCategoria.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbCategoria.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbCategoria.RowSubDividerColor = System.Drawing.Color.DarkGray
         Me.cmbCategoria.Size = New System.Drawing.Size(166, 21)
-        Me.cmbCategoria.TabIndex = 126
+        Me.cmbCategoria.TabIndex = 136
+        Me.cmbCategoria.Tag = "OBLIGATORIO"
+        Me.cmbCategoria.PropBag = resources.GetString("cmbCategoria.PropBag")
         '
         'C1DateEdit1
         '
@@ -968,6 +1041,9 @@ Partial Class frmSivEncargosEdit
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.cmbNombreProducto, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbMarca, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cmbCategoria, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1DateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNombreProducto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtObservaciones.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1057,7 +1133,7 @@ Partial Class frmSivEncargosEdit
     Friend WithEvents lblMarca As System.Windows.Forms.Label
     Friend WithEvents lblModeloCompatible As System.Windows.Forms.Label
     Friend WithEvents cboEstado As C1.Win.C1List.C1Combo
-    Friend WithEvents cmbCategoria As System.Windows.Forms.ComboBox
-    Friend WithEvents cmbNombreProducto As System.Windows.Forms.ComboBox
-    Friend WithEvents cmbMarca As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbCategoria As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbMarca As C1.Win.C1List.C1Combo
+    Friend WithEvents cmbNombreProducto As C1.Win.C1List.C1Combo
 End Class

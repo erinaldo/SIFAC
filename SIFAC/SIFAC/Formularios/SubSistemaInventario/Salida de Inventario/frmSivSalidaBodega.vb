@@ -21,7 +21,16 @@ Public Class frmSivSalidaBodega
     Public Shared glb_EstadoRegistradaID As Integer
     Public Shared glb_EstadoAutorizadaID As Integer
     Public Shared glb_EstadoAnuladaID As Integer
+    Private m_DiasSalidasRecientes As Integer
 
+    Property DiasSalidasRecientes() As Integer
+        Get
+            DiasSalidasRecientes = Me.m_DiasSalidasRecientes
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_DiasSalidasRecientes = value
+        End Set
+    End Property
 #End Region
 
 #Region "Cargar Datos"
@@ -29,6 +38,8 @@ Public Class frmSivSalidaBodega
     Private Sub CargarSalidas(ByVal Filtro As String)
         Dim strSQL, strCampos As String
         Try
+            Me.DiasSalidasRecientes = ClsCatalogos.GetValorParametro("DiasSalidasRecientes")
+
             'Si es central mostrar todas las salidas sino mostrar sólo las de la sucursal logueada
             If glb_SucursalCentralID <> glb_SucursalSessionID Then
                 If Not String.IsNullOrEmpty(Filtro) Then
@@ -38,6 +49,7 @@ Public Class frmSivSalidaBodega
                 End If
             End If
 
+            Filtro = Filtro + " AND (DATEDIFF(DAY, FechaSalida, GETDATE()) <= " + Me.DiasSalidasRecientes.ToString + ")"
             strCampos = "Numero, dbo.fnRellenarCeros2(Numero, dbo.FnGetParametro('CantidadDigitosSalida')) as NumeroFormato, Estado, TipoSalida, FechaSalida, objTipoSalidaID, Total, Bodega, objEstadoID,objStbBodegaID"
             strSQL = ObtenerConsultaGeneral(strCampos, "vwSivSalidaBodega", Filtro & " Order by Numero desc")
             dtSalidas = DAL.SqlHelper.ExecuteQueryDT(strSQL)
