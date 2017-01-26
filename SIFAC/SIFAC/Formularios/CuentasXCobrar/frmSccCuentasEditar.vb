@@ -10,7 +10,7 @@ Imports Proyecto.Catalogos.Datos
 Public Class frmSccCuentasEditar
 
 #Region "Variables del formulario"
-    Public dtCliente, dtFacturas As DataTable
+    Public dtCliente, dtFacturas, dtRutas As DataTable
     Public intTypeGUI, intobjRutaID As Integer
     Public strCuentaID, FiltroCliente, strClienteID, strPersonaID As String
     Dim foundRows() As DataRow
@@ -48,6 +48,25 @@ Public Class frmSccCuentasEditar
 #End Region
 
 #Region "Procedimientos del formulario"
+    Private Sub CargarRuta()
+        Dim objRuta As StbRutas
+        Try
+            objRuta = New StbRutas
+            'Rutas
+            dtRutas = StbRutas.RetrieveDT("1=1", "", "StbRutaID,Nombre")
+            Me.cmbRuta.DataSource = dtRutas
+            Me.cmbRuta.DisplayMember = "Nombre"
+            Me.cmbRuta.ValueMember = "StbRutaID"
+            Me.cmbRuta.Splits(0).DisplayColumns("StbRutaID").Visible = False
+            Me.cmbRuta.ExtendRightColumn = True
+            Me.cmbRuta.SelectedValue = -1
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        Finally
+            objRuta = Nothing
+            Me.Cursor = [Default]
+        End Try
+    End Sub
 
     Public Sub CargarCliente()
         Try
@@ -81,6 +100,7 @@ Public Class frmSccCuentasEditar
             Me.txtCedula.Text = IIf(IsDBNull(foundRows(0)("Cedula")), String.Empty, foundRows(0)("Cedula"))
             Me.txtGenero.Text = IIf(IsDBNull(foundRows(0)("Genero")), String.Empty, foundRows(0)("Genero"))
             Me.txtTipoPersona.Text = IIf(IsDBNull(foundRows(0)("TipoPersona")), String.Empty, foundRows(0)("TipoPersona"))
+            Me.cmbRuta.SelectedValue = intobjRutaID
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
@@ -275,12 +295,16 @@ Public Class frmSccCuentasEditar
         Me.ToolTip.Hide(Me.lblinfo)
     End Sub
     Private Sub frmSccCuentasEditar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Try
+            Me.txtUsuario.Text = clsProyecto.Conexion.Usuario
+            CargarRuta()
+            CargarCliente()
+            ConfigurarGUI()
 
-        Me.txtUsuario.Text = clsProyecto.Conexion.Usuario
-        CargarCliente()
-        ConfigurarGUI()
-
-        Me.grdFacturas.Splits(0).FilterBar = False
+            Me.grdFacturas.Splits(0).FilterBar = False
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
     Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
@@ -421,7 +445,7 @@ Public Class frmSccCuentasEditar
         Try
             Dim objCliente As New SccClientes
             objfrm.TypGui = 0 'TypeGUI
-
+            objfrm.IDRuta = intobjRutaID
             If TypeGUI = 0 Then
                 If ValidarEntrada() Then
                     Me.RegistarCuenta()
@@ -448,6 +472,7 @@ Public Class frmSccCuentasEditar
             objfrm = New frmSfaFaturaEditar
             'objfrm.Show()
             objfrm.TypGui = 2
+            objfrm.IDRuta = intobjRutaID
             objfrm.IDFactura = Me.grdFacturas.Columns("SfaFacturaID").Value
             If objfrm.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarFacturas()

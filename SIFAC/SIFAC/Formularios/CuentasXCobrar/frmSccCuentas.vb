@@ -200,9 +200,14 @@ Public Class frmSccCuentas
     End Sub
 
     Private Sub cmdEditar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdEditar.Click
-        If Me.grdExpedienteMasterTabla.RowCount > 0 Then
+        Try
             Me.CargarEdicionExpediente()
-        End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+        'If Me.grdExpedienteMasterTabla.RowCount > 0 Then
+
+        'End If
     End Sub
 
     Private Sub cmdBuscarExpedientes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdBuscarExpedientes.Click

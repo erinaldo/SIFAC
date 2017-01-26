@@ -26,6 +26,7 @@ Public Class frmSfaFaturaEditar
     Dim m_IDCliente As Integer
     'Dim m_IDClasificacion As Integer
     Dim m_IDEstado As Integer
+    Dim m_IDRuta As Integer
     Dim m_IdDetalleFact As Integer
     Dim BoolOK As Boolean
 
@@ -39,6 +40,15 @@ Public Class frmSfaFaturaEditar
         End Get
         Set(ByVal value As Integer)
             Me.m_IDEstado = value
+        End Set
+    End Property
+
+    Property IDRuta() As Integer
+        Get
+            IDRuta = Me.m_IDRuta
+        End Get
+        Set(ByVal value As Integer)
+            Me.m_IDRuta = value
         End Set
     End Property
 
@@ -132,8 +142,8 @@ Public Class frmSfaFaturaEditar
                 Me.cmbPlazo.Enabled = False
                 Me.cmbModalidadPago.Enabled = False
                 Me.numPrima.Enabled = False
-                'Me.cmdCambioFecha.Enabled = False
-
+                Me.cmdCambioFecha.Enabled = False
+                Me.cmdProcesar.Enabled = False
             End If
 
             If TypGui = 3 Then
@@ -726,13 +736,13 @@ Public Class frmSfaFaturaEditar
     End Sub
 
     Private Sub cmbPlazo_Change(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbPlazo.Change
-        If Me.dtpFechaCredito.Text.Trim.Length <> 0 Then
-            Me.dtpFechaCredito.UpdateValueWithCurrentText()
-            If Not dtpFechaCredito.ValueIsDbNull Then
-                Me.dtpFechaProximoPago.Value = dtpFechaCredito.Value.AddMonths(1)
-                Me.dtpFechaVencimiento.Value = dtpFechaCredito.Value.AddMonths(Me.cmbPlazo.Columns("Codigo").Value)
-            End If
-        End If
+        'If Me.dtpFechaCredito.Text.Trim.Length <> 0 Then
+        '    Me.dtpFechaCredito.UpdateValueWithCurrentText()
+        '    If Not dtpFechaCredito.ValueIsDbNull Then
+        '        Me.dtpFechaProximoPago.Value = dtpFechaCredito.Value.AddMonths(1)
+        '        Me.dtpFechaVencimiento.Value = dtpFechaCredito.Value.AddMonths(Me.cmbPlazo.Columns("Codigo").Value)
+        '    End If
+        'End If
 
         If Me.NumMonto.Text.Trim.Length > 0 Then
             If Convert.ToDouble(NumMonto.Text) > 0 Then
@@ -740,23 +750,6 @@ Public Class frmSfaFaturaEditar
             End If
         End If
         Me.ErrorProvider.Clear()
-    End Sub
-
-    Private Sub cmbPlazo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cmbPlazo.KeyPress
-        If cmbPlazo.Text.Trim.Length > 0 Then
-            If Me.dtpFechaCredito.Text.Trim.Length <> 0 Then
-                If Asc(e.KeyChar) = 13 Then
-                    Me.dtpFechaCredito.UpdateValueWithCurrentText()
-                    If Not dtpFechaCredito.ValueIsDbNull Then
-                        Me.dtpFechaProximoPago.Value = dtpFechaCredito.Value.AddMonths(1)
-                        Me.dtpFechaVencimiento.Value = dtpFechaCredito.Value.AddMonths(Me.cmbPlazo.Columns("Codigo").Value)
-                    End If
-                End If
-            End If
-        End If
-
-        If Asc(e.KeyChar) = 13 Then
-        End If
     End Sub
 
     Private Sub NumMonto_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles NumMonto.KeyPress
@@ -1079,19 +1072,75 @@ Public Class frmSfaFaturaEditar
     End Sub
 
     Private Sub cmbFactura_SelectedValueChanged(sender As Object, e As EventArgs) Handles cmbFactura.SelectedValueChanged
-        Me.DtDatosFacturasFiltradas = New DataTable
-        Me.DtDatosFacturasFiltradas = SqlHelper.ExecuteQueryDT(String.Format("SELECT TotalCordobas,Prima,Descuento FROM vwFacturasXCuentas WHERE SfaFacturaID = '{0}'", cmbFactura.SelectedValue))
+        Try
+            Me.DtDatosFacturasFiltradas = New DataTable
+            Me.DtDatosFacturasFiltradas = SqlHelper.ExecuteQueryDT(String.Format("SELECT TotalCordobas,Prima,Descuento FROM vwFacturasXCuentas WHERE SfaFacturaID = '{0}'", cmbFactura.SelectedValue))
 
-        NumMonto.Value = CDec(DtDatosFacturasFiltradas.Rows(0)("TotalCordobas"))
-        numPrima.Value = CDec(DtDatosFacturasFiltradas.Rows(0)("Prima"))
-        numDescuentoPorc.Value = CDec(DtDatosFacturasFiltradas.Rows(0)("Descuento"))
-
+            NumMonto.Value = CDec(DtDatosFacturasFiltradas.Rows(0)("TotalCordobas"))
+            numPrima.Value = CDec(DtDatosFacturasFiltradas.Rows(0)("Prima"))
+            numDescuentoPorc.Value = CDec(DtDatosFacturasFiltradas.Rows(0)("Descuento"))
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
     End Sub
 
+    Private Sub Calcularfechas()
+        Dim diaanterior, dia, diasModalidad, diferenciadias As Integer
+        Dim FechaProximoPagoTemp As DateTime
+        Try
+            dia = Convert.ToInt32(StbRutas.RetrieveDT("StbRutaID=" & m_IDRuta).Rows(0)("DiaCobro"))
+            diasModalidad = Me.cmbModalidadPago.Columns("Codigo").Value
+            diaanterior = dtpFechaCredito.Value.AddDays(diasModalidad).DayOfWeek + 1
+            diferenciadias = diaanterior - dia
 
+            FechaProximoPagoTemp = dtpFechaCredito.Value.AddDays(Me.cmbModalidadPago.Columns("Codigo").Value)
+            Me.dtpFechaProximoPago.Value = FechaProximoPagoTemp.AddDays(-diferenciadias)
+
+            If dtpFechaProximoPago.Value < Date.Now Then
+                Me.dtpFechaProximoPago.Value = dtpFechaProximoPago.Value.AddDays(diasModalidad)
+            End If
+
+            Me.dtpFechaVencimiento.Value = dtpFechaCredito.Value.AddDays(Convert.ToInt32(Me.cmbPlazo.Columns("Codigo").Value) * Convert.ToInt32(Me.cmbModalidadPago.Columns("Codigo").Value))
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+    End Sub
     Private Sub cmbModalidadPago_TextChanged(sender As Object, e As EventArgs) Handles cmbModalidadPago.TextChanged
-        Me.ErrorProvider.Clear()
-    End Sub
 
+        Try
+            If cmbModalidadPago.Text.Trim.Length > 0 Then
+                If Me.dtpFechaCredito.Text.Trim.Length <> 0 Then
+                    Me.dtpFechaCredito.UpdateValueWithCurrentText()
+                    If Not dtpFechaCredito.ValueIsDbNull Then
+                        Calcularfechas()
+                        'Me.dtpFechaProximoPago.Value = dtpFechaCredito.Value.AddDays(Me.cmbModalidadPago.Columns("Codigo").Value)
+                        'Me.dtpFechaVencimiento.Value = dtpFechaCredito.Value.AddDays(Convert.ToInt32(Me.cmbPlazo.Columns("Codigo").Value) * Convert.ToInt32(Me.cmbModalidadPago.Columns("Codigo").Value))
+                    End If
+                End If
+            End If
+            Me.ErrorProvider.Clear()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
+    End Sub
    
+ 
+    Private Sub cmbPlazo_TextChanged_1(sender As Object, e As EventArgs) Handles cmbPlazo.TextChanged
+        Try
+            If cmbPlazo.Text.Trim.Length > 0 Then
+                If Me.dtpFechaCredito.Text.Trim.Length <> 0 Then
+                    Me.dtpFechaCredito.UpdateValueWithCurrentText()
+                    If Not dtpFechaCredito.ValueIsDbNull Then
+                        Calcularfechas()
+                        'Me.dtpFechaProximoPago.Value = dtpFechaCredito.Value.AddDays(Me.cmbModalidadPago.Columns("Codigo").Value)
+                        'Me.dtpFechaVencimiento.Value = dtpFechaCredito.Value.AddDays(Convert.ToInt32(Me.cmbPlazo.Columns("Codigo").Value) * Convert.ToInt32(Me.cmbModalidadPago.Columns("Codigo").Value))
+                    End If
+                End If
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+       
+    End Sub
 End Class

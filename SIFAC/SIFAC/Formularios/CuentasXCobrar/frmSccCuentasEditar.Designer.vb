@@ -40,6 +40,8 @@ Partial Class frmSccCuentasEditar
         Me.tbcCuentas = New System.Windows.Forms.TabControl()
         Me.pgClientes = New System.Windows.Forms.TabPage()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.cmbRuta = New C1.Win.C1List.C1Combo()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.cmdConsultarCliente = New System.Windows.Forms.Button()
         Me.txtTipoPersona = New System.Windows.Forms.TextBox()
         Me.lblTipoPersona = New System.Windows.Forms.Label()
@@ -79,6 +81,7 @@ Partial Class frmSccCuentasEditar
         Me.tbcCuentas.SuspendLayout()
         Me.pgClientes.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         CType(Me.C1TrueDBGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -291,10 +294,10 @@ Partial Class frmSccCuentasEditar
         'tbcCuentas
         '
         Me.tbcCuentas.Controls.Add(Me.pgClientes)
-        Me.tbcCuentas.Location = New System.Drawing.Point(7, 143)
+        Me.tbcCuentas.Location = New System.Drawing.Point(7, 142)
         Me.tbcCuentas.Name = "tbcCuentas"
         Me.tbcCuentas.SelectedIndex = 0
-        Me.tbcCuentas.Size = New System.Drawing.Size(604, 175)
+        Me.tbcCuentas.Size = New System.Drawing.Size(604, 187)
         Me.tbcCuentas.TabIndex = 8
         '
         'pgClientes
@@ -303,13 +306,15 @@ Partial Class frmSccCuentasEditar
         Me.pgClientes.Location = New System.Drawing.Point(4, 22)
         Me.pgClientes.Name = "pgClientes"
         Me.pgClientes.Padding = New System.Windows.Forms.Padding(3)
-        Me.pgClientes.Size = New System.Drawing.Size(596, 149)
+        Me.pgClientes.Size = New System.Drawing.Size(596, 161)
         Me.pgClientes.TabIndex = 0
         Me.pgClientes.Text = "Cliente"
         Me.pgClientes.UseVisualStyleBackColor = True
         '
         'GroupBox6
         '
+        Me.GroupBox6.Controls.Add(Me.cmbRuta)
+        Me.GroupBox6.Controls.Add(Me.Label1)
         Me.GroupBox6.Controls.Add(Me.cmdConsultarCliente)
         Me.GroupBox6.Controls.Add(Me.txtTipoPersona)
         Me.GroupBox6.Controls.Add(Me.lblTipoPersona)
@@ -326,11 +331,54 @@ Partial Class frmSccCuentasEditar
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox6.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(590, 143)
+        Me.GroupBox6.Size = New System.Drawing.Size(590, 155)
         Me.GroupBox6.TabIndex = 9
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Tag = "BLOQUEADO"
         Me.GroupBox6.Text = "Datos de cliente"
+        '
+        'cmbRuta
+        '
+        Me.cmbRuta.AddItemSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.cmbRuta.AutoCompletion = True
+        Me.cmbRuta.AutoDropDown = True
+        Me.cmbRuta.Caption = ""
+        Me.cmbRuta.CaptionHeight = 17
+        Me.cmbRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Me.cmbRuta.ColumnCaptionHeight = 17
+        Me.cmbRuta.ColumnFooterHeight = 17
+        Me.cmbRuta.ContentHeight = 15
+        Me.cmbRuta.DeadAreaBackColor = System.Drawing.Color.Empty
+        Me.cmbRuta.EditorBackColor = System.Drawing.SystemColors.Window
+        Me.cmbRuta.EditorFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbRuta.EditorForeColor = System.Drawing.SystemColors.WindowText
+        Me.cmbRuta.EditorHeight = 15
+        Me.cmbRuta.Images.Add(CType(resources.GetObject("cmbRuta.Images"), System.Drawing.Image))
+        Me.cmbRuta.ItemHeight = 15
+        Me.cmbRuta.Location = New System.Drawing.Point(192, 130)
+        Me.cmbRuta.MatchEntryTimeout = CType(2000, Long)
+        Me.cmbRuta.MaxDropDownItems = CType(5, Short)
+        Me.cmbRuta.MaxLength = 32767
+        Me.cmbRuta.MouseCursor = System.Windows.Forms.Cursors.Default
+        Me.cmbRuta.Name = "cmbRuta"
+        Me.cmbRuta.ReadOnly = True
+        Me.cmbRuta.RowDivider.Color = System.Drawing.Color.DarkGray
+        Me.cmbRuta.RowDivider.Style = C1.Win.C1List.LineStyleEnum.None
+        Me.cmbRuta.RowSubDividerColor = System.Drawing.Color.DarkGray
+        Me.cmbRuta.Size = New System.Drawing.Size(375, 21)
+        Me.cmbRuta.TabIndex = 22
+        Me.cmbRuta.Tag = "OBLIGATORIO"
+        Me.cmbRuta.PropBag = resources.GetString("cmbRuta.PropBag")
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 138)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(38, 13)
+        Me.Label1.TabIndex = 23
+        Me.Label1.Text = "Ruta:"
         '
         'cmdConsultarCliente
         '
@@ -347,6 +395,7 @@ Partial Class frmSccCuentasEditar
         Me.txtTipoPersona.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTipoPersona.Location = New System.Drawing.Point(192, 104)
         Me.txtTipoPersona.Name = "txtTipoPersona"
+        Me.txtTipoPersona.ReadOnly = True
         Me.txtTipoPersona.Size = New System.Drawing.Size(135, 20)
         Me.txtTipoPersona.TabIndex = 5
         Me.txtTipoPersona.Tag = "BLOQUEADO"
@@ -365,6 +414,7 @@ Partial Class frmSccCuentasEditar
         Me.txtGenero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtGenero.Location = New System.Drawing.Point(440, 78)
         Me.txtGenero.Name = "txtGenero"
+        Me.txtGenero.ReadOnly = True
         Me.txtGenero.Size = New System.Drawing.Size(135, 20)
         Me.txtGenero.TabIndex = 4
         Me.txtGenero.Tag = "BLOQUEADO"
@@ -392,6 +442,7 @@ Partial Class frmSccCuentasEditar
         Me.txtCedula.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCedula.Location = New System.Drawing.Point(192, 78)
         Me.txtCedula.Name = "txtCedula"
+        Me.txtCedula.ReadOnly = True
         Me.txtCedula.Size = New System.Drawing.Size(149, 20)
         Me.txtCedula.TabIndex = 3
         Me.txtCedula.Tag = "BLOQUEADO"
@@ -401,6 +452,7 @@ Partial Class frmSccCuentasEditar
         Me.txtDireccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDireccion.Location = New System.Drawing.Point(192, 52)
         Me.txtDireccion.Name = "txtDireccion"
+        Me.txtDireccion.ReadOnly = True
         Me.txtDireccion.Size = New System.Drawing.Size(383, 20)
         Me.txtDireccion.TabIndex = 1
         Me.txtDireccion.Tag = "BLOQUEADO"
@@ -428,6 +480,7 @@ Partial Class frmSccCuentasEditar
         Me.txtNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNombre.Location = New System.Drawing.Point(192, 24)
         Me.txtNombre.Name = "txtNombre"
+        Me.txtNombre.ReadOnly = True
         Me.txtNombre.Size = New System.Drawing.Size(335, 20)
         Me.txtNombre.TabIndex = 0
         Me.txtNombre.Tag = "BLOQUEADO"
@@ -668,6 +721,7 @@ Partial Class frmSccCuentasEditar
         Me.pgClientes.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
+        CType(Me.cmbRuta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
@@ -732,4 +786,6 @@ Partial Class frmSccCuentasEditar
     Friend WithEvents cmdBuscarFacturas As System.Windows.Forms.Button
     Friend WithEvents cmdConsultarFacturas As System.Windows.Forms.Button
     Friend WithEvents cmdProcesarFacturas As System.Windows.Forms.Button
+    Friend WithEvents cmbRuta As C1.Win.C1List.C1Combo
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

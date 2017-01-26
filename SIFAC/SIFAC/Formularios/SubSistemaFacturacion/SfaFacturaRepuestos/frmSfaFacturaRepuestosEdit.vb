@@ -219,8 +219,8 @@ Public Class frmSfaFacturaRepuestosEditar
     Private Sub ConfigurarGUI()
         Dim puntoBoton As New Point
 
-        puntoBoton.X = 860
-        puntoBoton.Y = 770
+        puntoBoton.X = 652
+        puntoBoton.Y = 627
 
         Me.CargarTienda()
         Me.CargarClientes()
@@ -467,6 +467,7 @@ Public Class frmSfaFacturaRepuestosEditar
         Me.NumDescuento.Enabled = False
         Me.cmdCliente.Enabled = False
         Me.cmdAgregarCliente.Enabled = False
+        Me.cmbVendedor.Enabled = False
     End Sub
 #End Region
 

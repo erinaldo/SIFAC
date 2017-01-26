@@ -38,7 +38,7 @@ Public Class frmReubicarClientes
     Private Sub CargarGridClientes()
 
         Try
-            Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Seleccionar, Cliente, Cedula,  cast(ClienteID as int) as ClienteID, Ruta, StbRutaID", "vwSccClientesRutas", "StbRutaID=" & RutaID))
+            Me.dtCliente = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Seleccionar, Cliente, Cedula,  cast(ClienteID as int) as ClienteID, Ruta, StbRutaID", "vwSccClientesRutasCuentas", "StbRutaID=" & RutaID))
             If Not dtCliente Is Nothing Then
                 dtCliente.PrimaryKey = New DataColumn() {Me.dtCliente.Columns("ClienteID")}
                 Me.dtCliente.DefaultView.Sort = "ClienteID"

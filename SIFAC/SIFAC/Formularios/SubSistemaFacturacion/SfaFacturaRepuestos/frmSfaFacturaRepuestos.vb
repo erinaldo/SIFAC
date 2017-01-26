@@ -359,7 +359,7 @@ Public Class frmSfaFacturaRepuestos
 
                 ProcesarFactura.SfaFacturaID = Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaID")
                 If ProcesarFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
+                    Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturasRecientes"))
                     dtFactura.DefaultView.Sort = "SfaFacturaID"
                     Me.dtFactura.DefaultView.Find(ProcesarFactura.SfaFacturaID)
                     Me.AplicarSeguridad()
@@ -407,7 +407,7 @@ Public Class frmSfaFacturaRepuestos
                 AnularFactura.TypeGUI = 5
                 AnularFactura.SfaFacturaID = Me.dsFactura.Tables("SfaFactura").DefaultView.Item(FilaActual)("SfaFacturaID")
                 If AnularFactura.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
-                    Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
+                    Me.CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturasRecientes"))
                     dtFactura.DefaultView.Sort = "SfaFacturaID"
                     Me.dtFactura.DefaultView.Find(AnularFactura.SfaFacturaID)
                     Me.AplicarSeguridad()
@@ -1215,7 +1215,7 @@ Public Class frmSfaFacturaRepuestos
     End Sub
 
     Private Sub cmdActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdActualizar.Click
-        CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturas"))
+        CargarFacturas(" datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturasRecientes"))
     End Sub
 
     Private Sub cmdConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultar.Click

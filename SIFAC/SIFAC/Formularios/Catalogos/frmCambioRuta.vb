@@ -146,8 +146,7 @@ Public Class frmCambioRuta
     Private Sub GuardarCambioRutas()
         Dim dtClientesSeleccionados, dtCuentas, dtCuentasDetalle As DataTable
         Dim objClientes As New SccClientes
-        Dim dia, diaanterior As Integer
-
+       
         Dim t As New TransactionManager
         Try
             ''Clonar estructura del DataTable
@@ -175,19 +174,14 @@ Public Class frmCambioRuta
                 If dtCuentas.Rows.Count > 0 Then
 
                     For Each drFilaCuentas As DataRow In dtCuentas.Rows
-                        dtCuentasDetalle = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID=" & CInt(drFilaCuentas("SccCuentaID")) & " AND objEstadoID= " & ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "VIGENTE"))
+                        dtCuentasDetalle = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID=" & CInt(drFilaCuentas("SccCuentaID")) & " AND objEstadoID= " & ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "01"), , , t)
 
                         If dtCuentasDetalle.Rows.Count > 0 Then
                             For Each drFilaCuentasDetalle As DataRow In dtCuentasDetalle.Rows
                                 Dim objDetalleCuenta As New SccCuentaPorCobrarDetalle
-
                                 objDetalleCuenta.Retrieve(CInt(drFilaCuentasDetalle("SccCuentaPorCobrarDetalleID")))
-
-                                diaanterior = objDetalleCuenta.FechaProximoPago.Value.DayOfWeek + 1
-                                dia = cmbDiaCrobro.SelectedValue
-
-                                objDetalleCuenta.FechaProximoPago = objDetalleCuenta.FechaProximoPago.Value.AddDays(Math.Abs(diaanterior - dia + 1))
-                               objDetalleCuenta.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                                objDetalleCuenta.FechaProximoPago = Calcularfechas(Convert.ToDateTime(drFilaCuentasDetalle("FechaProximoPago")), objDetalleCuenta.objModalidadPago, t)
+                                objDetalleCuenta.FechaModificacion = clsProyecto.Conexion.FechaServidor
                                 objDetalleCuenta.UsuarioModificacion = clsProyecto.Conexion.Usuario
                                 objDetalleCuenta.Update(t)
                             Next
@@ -206,6 +200,28 @@ Public Class frmCambioRuta
             objClientes = Nothing
         End Try
     End Sub
+
+    Private Function Calcularfechas(FechaProximoPago As DateTime, objmodadlidad As Integer, t As TransactionManager) As DateTime
+        Dim diaanterior, dia, diasModalidad, diferenciadias As Integer
+        Dim dtFechaProxima As DateTime
+        Dim FechaProximoPagoTemp As DateTime = Date.Now
+        Try
+            dia = cmbDiaCrobro.SelectedValue
+            diasModalidad = StbValorCatalogo.RetrieveDT("StbValorCatalogoID=" & objmodadlidad, , , t).Rows(0)("Codigo")
+            diaanterior = FechaProximoPago.DayOfWeek + 1
+            diferenciadias = diaanterior - dia
+
+            dtFechaProxima = FechaProximoPago.AddDays(-diferenciadias)
+
+            If dtFechaProxima < Date.Now Then
+                dtFechaProxima = dtFechaProxima.AddDays(diasModalidad)
+            End If
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+        Return dtFechaProxima
+    End Function
+
 #End Region
 
 #Region "Eventos del Formulario"
@@ -223,10 +239,10 @@ Public Class frmCambioRuta
     Private Sub cmdCancelar_Click(sender As Object, e As EventArgs) Handles cmdCancelar.Click
         Close()
     End Sub
-  
+
     Private Sub frmCambioRuta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-           CargarDatosIniciales
+            CargarDatosIniciales()
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

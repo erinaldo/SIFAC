@@ -43,7 +43,7 @@ Public Class frmSccBuscarCuentas
         Dim strFiltro As String = ""
         Try
             If Trim(Me.txtNumExp.Text) <> "" Then
-                strFiltro = "SccCuentaID= '" & Trim(Me.txtNumExp.Text) & "'"
+                strFiltro = "Numero= '" & Trim(Me.txtNumExp.Text) & "'"
                 GoTo Final
             End If
 
@@ -72,8 +72,8 @@ Final:
     End Sub
 
     Private Sub txtNumExp_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtNumExp.KeyPress
-        If Not clsProyecto.NumerosSinEspacio(e.KeyChar) Then
-            e.KeyChar = Microsoft.VisualBasic.ChrW(0)
-        End If
+        'If Not clsProyecto.NumerosSinEspacio(e.KeyChar) Then
+        '    e.KeyChar = Microsoft.VisualBasic.ChrW(0)
+        'End If
     End Sub
 End Class
