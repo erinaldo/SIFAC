@@ -208,6 +208,8 @@ Public Class frmBodegasEditar
     '' Descripción:        Procedimiento encargado de guardar los datos de una tienda
     Public Sub CrearBodega(ByVal T As DAL.TransactionManager)
         Dim objBodega As StbBodegas
+        Dim objBodegaProducto As SivBodegaProductos
+        Dim dtProducto As DataTable
         Try
             objBodega = New StbBodegas
             BodegaID = StbBodegas.RetrieveDT(, , "ISNULL(MAX(StbBodegaID),0)+1 AS ID").DefaultView.Item(0)("ID")
@@ -221,6 +223,23 @@ Public Class frmBodegasEditar
             objBodega.UsuarioCreacion = clsProyecto.Conexion.Usuario
             objBodega.FechaCreacion = fechaServidor
             objBodega.Insert(T)
+            BodegaID = objBodega.StbBodegaID
+
+            ''Agregar productos en 0 a esta bodega
+            ''Insertar en Bodega Productos con cantidad 0
+            objBodegaProducto = New SivBodegaProductos
+            dtProducto = SivProductos.RetrieveDT("Activo=1", , "SivProductoID")
+
+            ''Recorrer bodegas existentes
+            For Each row As DataRow In dtProducto.Rows
+                objBodegaProducto.objBodegaID = BodegaID
+                objBodegaProducto.objProductoID = row("SivProductoID")
+                objBodegaProducto.Cantidad = 0
+                objBodegaProducto.CantidadTransito = 0
+                objBodegaProducto.UsuarioCreacion = clsProyecto.Conexion.Servidor
+                objBodegaProducto.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objBodegaProducto.Insert(T)
+            Next
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try

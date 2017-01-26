@@ -96,9 +96,6 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
-        Me.cmdProcesar = New System.Windows.Forms.Button()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
         Me.numSubTotal = New C1.Win.C1Input.C1NumericEdit()
         Me.numTotalDescuento = New C1.Win.C1Input.C1NumericEdit()
         Me.numIVA = New C1.Win.C1Input.C1NumericEdit()
@@ -107,6 +104,9 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.ErrorFactura = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.lblCantidadMaxItems = New System.Windows.Forms.Label()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdProcesar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.tabFacturas.SuspendLayout()
         Me.TabPageGenerales.SuspendLayout()
         CType(Me.cmbMotivoAnular, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -240,7 +240,7 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         'cmdAgregarCliente
         '
-        Me.cmdAgregarCliente.Image = Global.SIFAC.My.Resources.Resources.Buscar
+        Me.cmdAgregarCliente.Image = CType(resources.GetObject("cmdAgregarCliente.Image"), System.Drawing.Image)
         Me.cmdAgregarCliente.Location = New System.Drawing.Point(406, 46)
         Me.cmdAgregarCliente.Name = "cmdAgregarCliente"
         Me.cmdAgregarCliente.Size = New System.Drawing.Size(24, 22)
@@ -1066,38 +1066,6 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Label20.TabIndex = 27
         Me.Label20.Text = "Total US$:"
         '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Location = New System.Drawing.Point(577, 626)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdAceptar.TabIndex = 6
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
-        '
-        'cmdProcesar
-        '
-        Me.cmdProcesar.BackgroundImage = Global.SIFAC.My.Resources.Resources.Aprobar
-        Me.cmdProcesar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.cmdProcesar.Enabled = False
-        Me.cmdProcesar.Location = New System.Drawing.Point(658, 626)
-        Me.cmdProcesar.Name = "cmdProcesar"
-        Me.cmdProcesar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdProcesar.TabIndex = 7
-        Me.cmdProcesar.Text = "Procesar"
-        Me.cmdProcesar.UseVisualStyleBackColor = True
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Location = New System.Drawing.Point(739, 626)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 8
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
         'numSubTotal
         '
         Me.numSubTotal.BackColor = System.Drawing.SystemColors.Info
@@ -1211,6 +1179,9 @@ Partial Class frmSfaFacturaRepuestosEditar
         '
         'PanelControl1
         '
+        Me.PanelControl1.Controls.Add(Me.cmdProcesar)
+        Me.PanelControl1.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl1.Controls.Add(Me.cmdAceptar)
         Me.PanelControl1.Controls.Add(Me.lblCantidadMaxItems)
         Me.PanelControl1.Controls.Add(Me.tabFacturas)
         Me.PanelControl1.Controls.Add(Me.cmdBuscar)
@@ -1236,6 +1207,50 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.PanelControl1.Size = New System.Drawing.Size(831, 683)
         Me.PanelControl1.TabIndex = 122
         '
+        'cmdProcesar
+        '
+        Me.cmdProcesar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdProcesar.Appearance.Options.UseFont = True
+        Me.cmdProcesar.Image = CType(resources.GetObject("cmdProcesar.Image"), System.Drawing.Image)
+        Me.cmdProcesar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdProcesar.Location = New System.Drawing.Point(652, 627)
+        Me.cmdProcesar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdProcesar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdProcesar.Name = "cmdProcesar"
+        Me.cmdProcesar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdProcesar.TabIndex = 124
+        Me.cmdProcesar.Tag = "PROCESAR"
+        Me.cmdProcesar.Text = "&Procesar"
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(738, 627)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 123
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(566, 627)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 122
+        Me.cmdAceptar.Tag = "GUARDAR"
+        Me.cmdAceptar.Text = "&Guardar"
+        '
         'frmSfaFacturaRepuestosEditar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1246,9 +1261,6 @@ Partial Class frmSfaFacturaRepuestosEditar
         Me.Controls.Add(Me.numIVA)
         Me.Controls.Add(Me.numTotalDescuento)
         Me.Controls.Add(Me.numSubTotal)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdProcesar)
-        Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.txtObervaciones)
         Me.Controls.Add(Me.numTasa)
         Me.Controls.Add(Me.numExistencia)
@@ -1351,9 +1363,6 @@ End Sub
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Label19 As System.Windows.Forms.Label
     Friend WithEvents Label20 As System.Windows.Forms.Label
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
-    Friend WithEvents cmdProcesar As System.Windows.Forms.Button
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
     Friend WithEvents numSubTotal As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents numTotalDescuento As C1.Win.C1Input.C1NumericEdit
     Friend WithEvents numIVA As C1.Win.C1Input.C1NumericEdit
@@ -1386,4 +1395,7 @@ End Sub
     Friend WithEvents NumDescuento As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents grdspnCodigoRepuesto As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
+    Friend WithEvents cmdProcesar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
 End Class

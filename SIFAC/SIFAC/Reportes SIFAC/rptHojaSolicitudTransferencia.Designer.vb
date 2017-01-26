@@ -258,7 +258,7 @@ Partial Public Class rptHojaSolicitudTransferencia
         '
         'XrLabel10
         '
-        Me.XrLabel10.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.Fechasolicitud")})
+        Me.XrLabel10.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.Fechasolicitud", "{0:d/M/yyyy}")})
         Me.XrLabel10.Font = New System.Drawing.Font("Arial", 9.0!)
         Me.XrLabel10.LocationFloat = New DevExpress.Utils.PointFloat(537.0833!, 63.79166!)
         Me.XrLabel10.Name = "XrLabel10"

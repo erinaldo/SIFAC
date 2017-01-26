@@ -145,7 +145,7 @@ Public Class frmSfaFacturaRepuestos
     Private Sub CargarFacturas(ByVal strFiltro As String)
         Try
 
-            dtFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SfaFacturaID, Numero,objSccClienteID,TotalDolares, Fecha, Estado, Vendedor, Cliente, Anulada,objEstadoID", "vwSfaFacturaMaster", strFiltro & " ORDER BY Numero DESC"), Me.SqlParametros)
+            dtFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("SfaFacturaID, Numero,objSccClienteID,TotalDolares, Fecha, Estado, Vendedor, Cliente, Anulada,objEstadoID", "vwSfaFacturaMaster", strFiltro & "  ORDER BY Numero DESC"), Me.SqlParametros)
             dtDetalleFactura = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("objSfaFacturaID,objSivProductoID, Cantidad, Precio, Subtotal, Descuento, Impuesto, Total, Producto,Fecha", "vwSafaFacturaDetalle", strFiltro), Me.SqlParametros)
 
             dsFactura = New DataSet
@@ -1164,7 +1164,7 @@ Public Class frmSfaFacturaRepuestos
     Private Sub frmSfaFacturaRepuestos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
 
-            CargarFacturas("datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturasRecientes"))
+            CargarFacturas(" datediff(DAY,GETDATE(),Fecha)<= " & ClsCatalogos.GetValorParametro("DiasFacturasRecientes"))
             Me.AplicarSeguridad()
         Catch ex As Exception
             clsError.CaptarError(ex)

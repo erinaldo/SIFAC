@@ -16,6 +16,7 @@ Imports C1.Win.C1TrueDBGrid
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraReports.UI
 
 Public Class frmSfaFacturaRepuestosEditar
 
@@ -221,7 +222,6 @@ Public Class frmSfaFacturaRepuestosEditar
         puntoBoton.X = 860
         puntoBoton.Y = 770
 
-        clsProyecto.CargarTemaDefinido(Me)
         Me.CargarTienda()
         Me.CargarClientes()
         Me.CargarVendedor()
@@ -247,6 +247,7 @@ Public Class frmSfaFacturaRepuestosEditar
             Case 2
                 Me.Text = "Procesar Factura"
                 Me.txtNumero.Text = Me.GenerarCodigo
+
                 CargarDatosConsulta()
 
                 'If Me.chkAgregarMoto.Checked Then
@@ -390,7 +391,7 @@ Public Class frmSfaFacturaRepuestosEditar
 
                 Me.cmbTPago.SelectedValue = objSfaFactura.objTerminoPagoID
                 Me.numTasa.Value = objSfaFactura.TasaCambio
-                
+
 
                 If Not String.IsNullOrEmpty(objSfaFactura.observaciones) Then
                     Me.txtObervaciones.Text = objSfaFactura.observaciones
@@ -532,14 +533,14 @@ Public Class frmSfaFacturaRepuestosEditar
         Dim cantidad, filas As Integer
 
         For Each row As DataRow In Me.dtDetalleFacturaMoto.Rows
-            If Me.numDescuento.Text.Trim.Length = 0 Then
+            If Me.NumDescuento.Text.Trim.Length = 0 Then
                 row("Descuento").Value = 0.0
             Else
                 precio = row("Precio")
                 subtotal = row("SubTotal")
                 cantidad = row("Cantidad")
                 filas = (Me.dtDetalleFactura.Rows.Count)
-                descuentofilas = Me.numDescuento.Value
+                descuentofilas = Me.NumDescuento.Value
                 row("Descuento") = (precio - ((subtotal - (descuentofilas) / filas) / cantidad)) * cantidad
                 row("DescuentoPor") = ((row("Descuento")) * 100) / subtotal
                 descuento = row("Descuento")
@@ -1561,36 +1562,54 @@ Public Class frmSfaFacturaRepuestosEditar
         End Try
     End Sub
 
-    Private Function GenerarCodigo() As String
+    Private Function GenerarCodigo() As Integer
         Dim strNumero As String = ""
-        'Dim strSerie As String = ""
         Dim dtMaximoNumero As New DataTable
-        'Dim dtTiendaMaximo As New DataTable
         Try
             Try
-                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero)+ 1 as NumeroMaximo", "SfaFacturas"))
-                'If dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo").ToString.Trim.Length = 0 Then
-                '    dtTiendaMaximo = StbTienda.RetrieveDT("StbTiendaID =" & Me.cmbBodega.SelectedValue, "", "ProximaFactura,Seriefactura")
-                '    strSerie = dtTiendaMaximo.DefaultView.Item(0)("Seriefactura")
-                '    strNumero = RellenarConCeros(dtTiendaMaximo.DefaultView.Item(0)("ProximaFactura"), 4)
-                'Else
-                'strSerie = StbTienda.RetrieveDT("StbTiendaID = " & Me.cmbBodega.SelectedValue, "", "Seriefactura").DefaultView.Item(0)("Seriefactura")
-                'strNumero = RellenarConCeros(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"), 6)
+                dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("ISNULL(MAX(Numero), 0) + 1 as NumeroMaximo", "SfaFacturas"))
                 strNumero = dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo")
-
-                'End If
-
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
         Finally
             dtMaximoNumero = Nothing
-            'dtTiendaMaximo = Nothing
         End Try
 
         Return strNumero.Trim
 
     End Function
+
+    'Private Function GenerarCodigo() As String
+    '    Dim strNumero As String = ""
+    '    'Dim strSerie As String = ""
+    '    Dim dtMaximoNumero As New DataTable
+    '    'Dim dtTiendaMaximo As New DataTable
+    '    Try
+    '        Try
+    '            dtMaximoNumero = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("MAX(Numero)+ 1 as NumeroMaximo", "SfaFacturas"))
+    '            'If dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo").ToString.Trim.Length = 0 Then
+    '            '    dtTiendaMaximo = StbTienda.RetrieveDT("StbTiendaID =" & Me.cmbBodega.SelectedValue, "", "ProximaFactura,Seriefactura")
+    '            '    strSerie = dtTiendaMaximo.DefaultView.Item(0)("Seriefactura")
+    '            '    strNumero = RellenarConCeros(dtTiendaMaximo.DefaultView.Item(0)("ProximaFactura"), 4)
+    '            'Else
+    '            'strSerie = StbTienda.RetrieveDT("StbTiendaID = " & Me.cmbBodega.SelectedValue, "", "Seriefactura").DefaultView.Item(0)("Seriefactura")
+    '            'strNumero = RellenarConCeros(dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo"), 6)
+    '            strNumero = dtMaximoNumero.DefaultView.Item(0)("NumeroMaximo")
+
+    '            'End If
+
+    '        Catch ex As Exception
+    '            clsError.CaptarError(ex)
+    '        End Try
+    '    Finally
+    '        dtMaximoNumero = Nothing
+    '        'dtTiendaMaximo = Nothing
+    '    End Try
+
+    '    Return strNumero.Trim
+
+    'End Function
     'Private Function GenerarNumero() As String
     '    Dim strNumero As String = ""
     '    Dim dtMaximoNumero As New DataTable
@@ -1819,17 +1838,24 @@ Public Class frmSfaFacturaRepuestosEditar
     End Sub
 
     Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
-        If Me.boolRegistrada Then
-            Me.DialogResult = Windows.Forms.DialogResult.OK
-        Else
-            Me.Close()
-        End If
+        Me.Close()
+        'If Me.boolRegistrada Then
+        '    Me.DialogResult = Windows.Forms.DialogResult.OK
+        'Else
+        '    Me.Close()
+        'End If
 
     End Sub
 
     Private Sub cmdProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdProcesar.Click
-        Dim t As New TransactionManager
-        Me.Procesar(t)
+        Try
+            Dim t As New TransactionManager
+            Me.Procesar(t)
+            Me.Imprimir()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
+
     End Sub
 
     Private Sub cmdAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAceptar.Click
@@ -2110,8 +2136,6 @@ Public Class frmSfaFacturaRepuestosEditar
 
                 T.CommitTran()
                 MsgBox(My.Resources.MsgActualizado, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
-
-                Me.Imprimir()
                 Me.DialogResult = Windows.Forms.DialogResult.OK
 
             Catch ex As Exception
@@ -2587,76 +2611,102 @@ Public Class frmSfaFacturaRepuestosEditar
 #Region "Imprimir Factura"
 
     Private Sub Imprimir()
-        Dim visor As New frmVisorRS
-        Dim sFiltro, sCampos, sSQL As String
-        Dim dtDatos As DataTable
-        Dim parametros As New List(Of Microsoft.Reporting.WinForms.ReportParameter)
-        Dim dblSubTotal, dblSubTotalVentas, dblTotalDolares, dblPrima, dblSaldo, dblTotalCordobas, dblTasa, dblImpuesto, dblDescuento As Double
-        Dim strObservaciones, strEslogan, strCedula As String
+
+        Dim dsReporte As DataSet
+        Dim sCampos, sSQL As String
+        Dim sFiltro As String
+
+        Try
+            Dim objjReporte As New rptSfaFactura()
+            sFiltro = "SfaFacturaID = " & Me.SfaFacturaID
+            sCampos = "Vendedor, Cliente, Estado, SfaFacturaID, Numero, Fecha, Contado, Credito, Precio, Cantidad, objSivProductoID, Subtotal, Descripcion, SubTotalMaestro, DescuentoMaestro, ImpuestoMaestro, TotalDolares, TotalCordobas, TasaCambio, Prima, Saldo, observaciones, objEstadoID, DGI, objSfaFacturaID, Dia, Mes, Ano, Eslogan, SubTotalVentas, Direccion, Cedula, TerminoPago, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa"
+            sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSfaFacturaRepuesto", sFiltro)
+            dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
+
+            If dsReporte.Tables(0).Rows.Count = 0 Then
+                MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Exit Sub
+            End If
+
+            objjReporte.DataSource = dsReporte
+            objjReporte.DataMember = dsReporte.Tables(0).TableName
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
+        Catch ex As Exception
+            clsError.CaptarError(ex)
+        End Try
 
 
-        strObservaciones = ""
-        strCedula = ""
-        strEslogan = ""
-        sFiltro = "SfaFacturaID = " & Me.SfaFacturaID
-        sCampos = "Vendedor, Cliente, Estado,SfaFacturaID, Numero,SubTotalVentas, Fecha, Contado, Credito, Precio, Cantidad, objSivProductoID, Subtotal, Descripcion, SubTotalMaestro, DescuentoMaestro, ImpuestoMaestro, TotalDolares, TotalCordobas, TasaCambio, Prima, Saldo, observaciones, objEstadoID, DGI, objSfaFacturaID, Dia, Mes, Ano,Eslogan, Cedula, Direccion"
-        sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSfaFacturaRepuesto", sFiltro)
-        dtDatos = DAL.SqlHelper.ExecuteQueryDT(sSQL)
+        'Dim visor As New frmVisorRS
+        'Dim sFiltro, sCampos, sSQL As String
+        'Dim dtDatos As DataTable
+        'Dim parametros As New List(Of Microsoft.Reporting.WinForms.ReportParameter)
+        'Dim dblSubTotal, dblSubTotalVentas, dblTotalDolares, dblPrima, dblSaldo, dblTotalCordobas, dblTasa, dblImpuesto, dblDescuento As Double
+        'Dim strObservaciones, strEslogan, strCedula As String
 
-        dblSubTotal = dtDatos.DefaultView.Item(0)("SubTotalMaestro")
-        dblTotalDolares = dtDatos.DefaultView.Item(0)("TotalDolares")
 
-        If Not IsDBNull(dtDatos.DefaultView.Item(0)("Prima")) Then
-            dblPrima = dtDatos.DefaultView.Item(0)("Prima")
-        End If
+        'strObservaciones = ""
+        'strCedula = ""
+        'strEslogan = ""
+        'sFiltro = "SfaFacturaID = " & Me.SfaFacturaID
+        'sCampos = "Vendedor, Cliente, Estado,SfaFacturaID, Numero,SubTotalVentas, Fecha, Contado, Credito, Precio, Cantidad, objSivProductoID, Subtotal, Descripcion, SubTotalMaestro, DescuentoMaestro, ImpuestoMaestro, TotalDolares, TotalCordobas, TasaCambio, Prima, Saldo, observaciones, objEstadoID, DGI, objSfaFacturaID, Dia, Mes, Ano,Eslogan, Cedula, Direccion"
+        'sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwRptSfaFacturaRepuesto", sFiltro)
+        'dtDatos = DAL.SqlHelper.ExecuteQueryDT(sSQL)
 
-        If Not IsDBNull(dtDatos.DefaultView.Item(0)("Saldo")) Then
-            dblSaldo = dtDatos.DefaultView.Item(0)("Saldo")
-        End If
+        'dblSubTotal = dtDatos.DefaultView.Item(0)("SubTotalMaestro")
+        'dblTotalDolares = dtDatos.DefaultView.Item(0)("TotalDolares")
 
-        dblTotalCordobas = dtDatos.DefaultView.Item(0)("TotalCordobas")
-        dblTasa = dtDatos.DefaultView.Item(0)("TasaCambio")
-        dblImpuesto = dtDatos.DefaultView.Item(0)("ImpuestoMaestro")
-        dblDescuento = dtDatos.DefaultView.Item(0)("DescuentoMaestro")
+        'If Not IsDBNull(dtDatos.DefaultView.Item(0)("Prima")) Then
+        '    dblPrima = dtDatos.DefaultView.Item(0)("Prima")
+        'End If
 
-        If Not IsDBNull(dtDatos.DefaultView.Item(0)("observaciones")) Then
-            strObservaciones = dtDatos.DefaultView.Item(0)("observaciones")
-        End If
+        'If Not IsDBNull(dtDatos.DefaultView.Item(0)("Saldo")) Then
+        '    dblSaldo = dtDatos.DefaultView.Item(0)("Saldo")
+        'End If
 
-        If Not IsDBNull(dtDatos.DefaultView.Item(0)("Eslogan")) Then
-            strEslogan = dtDatos.DefaultView.Item(0)("Eslogan")
-        End If
+        'dblTotalCordobas = dtDatos.DefaultView.Item(0)("TotalCordobas")
+        'dblTasa = dtDatos.DefaultView.Item(0)("TasaCambio")
+        'dblImpuesto = dtDatos.DefaultView.Item(0)("ImpuestoMaestro")
+        'dblDescuento = dtDatos.DefaultView.Item(0)("DescuentoMaestro")
 
-        If Not IsDBNull(dtDatos.DefaultView.Item(0)("Cedula")) Then
-            strCedula = dtDatos.DefaultView.Item(0)("Cedula")
-        End If
+        'If Not IsDBNull(dtDatos.DefaultView.Item(0)("observaciones")) Then
+        '    strObservaciones = dtDatos.DefaultView.Item(0)("observaciones")
+        'End If
 
-        If Not IsDBNull(dtDatos.DefaultView.Item(0)("SubTotalVentas")) Then
-            dblSubTotalVentas = dtDatos.DefaultView.Item(0)("SubTotalVentas")
-        End If
+        'If Not IsDBNull(dtDatos.DefaultView.Item(0)("Eslogan")) Then
+        '    strEslogan = dtDatos.DefaultView.Item(0)("Eslogan")
+        'End If
 
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("TotalVenta", dblSubTotal, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("TotalDolares", dblTotalDolares, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Prima", dblPrima, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Saldo", dblSaldo, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("TotalCordobas", dblTotalCordobas, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("TasaCambio", dblTasa, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Impuesto", dblImpuesto, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Descuento", dblDescuento, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Observaciones", strObservaciones, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Eslogan", strEslogan, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Cedula", strCedula, False))
-        parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("SubTotalVenta", dblSubTotalVentas, False))
+        'If Not IsDBNull(dtDatos.DefaultView.Item(0)("Cedula")) Then
+        '    strCedula = dtDatos.DefaultView.Item(0)("Cedula")
+        'End If
 
-        With visor.VisorReportes
-            .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-            .LocalReport.ReportEmbeddedResource = "SIFAC.rptSfaFacturaRepuesto.rdlc"
-            .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtRptFacturaRepuestos_vwRptSfaFacturaRepuesto", dtDatos))
-            .LocalReport.SetParameters(parametros)
-            .RefreshReport()
-        End With
+        'If Not IsDBNull(dtDatos.DefaultView.Item(0)("SubTotalVentas")) Then
+        '    dblSubTotalVentas = dtDatos.DefaultView.Item(0)("SubTotalVentas")
+        'End If
 
-        visor.ShowDialog()
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("TotalVenta", dblSubTotal, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("TotalDolares", dblTotalDolares, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Prima", dblPrima, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Saldo", dblSaldo, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("TotalCordobas", dblTotalCordobas, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("TasaCambio", dblTasa, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Impuesto", dblImpuesto, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Descuento", dblDescuento, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Observaciones", strObservaciones, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Eslogan", strEslogan, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("Cedula", strCedula, False))
+        'parametros.Add(New Microsoft.Reporting.WinForms.ReportParameter("SubTotalVenta", dblSubTotalVentas, False))
+
+        'With visor.VisorReportes
+        '    .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
+        '    .LocalReport.ReportEmbeddedResource = "SIFAC.rptSfaFacturaRepuesto.rdlc"
+        '    .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("dtRptFacturaRepuestos_vwRptSfaFacturaRepuesto", dtDatos))
+        '    .LocalReport.SetParameters(parametros)
+        '    .RefreshReport()
+        'End With
+
+        'visor.ShowDialog()
     End Sub
 
 #End Region
@@ -2722,7 +2772,7 @@ Public Class frmSfaFacturaRepuestosEditar
                         objSivBodegaRpuestos.FechaModificacion = clsProyecto.Conexion.FechaServidor
                         objSivBodegaRpuestos.Update()
                     Next
-                    
+
                     t.CommitTran()
                     MsgBox(" Factura Anulada satisfactoriamente.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
                     Me.DialogResult = Windows.Forms.DialogResult.OK
@@ -3009,7 +3059,7 @@ Public Class frmSfaFacturaRepuestosEditar
         Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Codigo") = objSivRepuestos.SivProductoID
         Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Codigo") = objSivRepuestos.SivProductoID
 
-       
+
         Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Cantidad") = 0
 
         Me.dtDetalleFactura.DefaultView.Item(intFilaActual)("Precio") = objSivRepuestos.Precio_Credito
@@ -3529,7 +3579,7 @@ Public Class frmSfaFacturaRepuestosEditar
         Me.CargarConsultaExistencia()
     End Sub
 
-    
+
     Private Sub NumDescuento_EditValueChanged(sender As Object, e As EventArgs) Handles NumDescuento.EditValueChanged
         numTotalDescuento.Value = NumDescuento.Value
         CalcularTotales()

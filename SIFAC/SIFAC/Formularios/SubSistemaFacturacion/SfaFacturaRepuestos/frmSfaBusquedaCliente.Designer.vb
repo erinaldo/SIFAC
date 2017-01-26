@@ -23,11 +23,11 @@ Partial Class frmSfaBusquedaCliente
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.grdCliente = New C1.Win.C1TrueDBGrid.C1TrueDBGrid()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.cmdCancelar = New System.Windows.Forms.Button()
-        Me.cmdAceptar = New System.Windows.Forms.Button()
         Me.cmdNuevaPersona = New System.Windows.Forms.Button()
         Me.PanelControl1 = New DevExpress.XtraEditors.PanelControl()
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
+        Me.cmdCancelar = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAceptar = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdPedido = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGuardar = New DevExpress.XtraEditors.SimpleButton()
@@ -44,7 +44,7 @@ Partial Class frmSfaBusquedaCliente
         Me.Panel1.Controls.Add(Me.grdCliente)
         Me.Panel1.Location = New System.Drawing.Point(12, 46)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(551, 245)
+        Me.Panel1.Size = New System.Drawing.Size(486, 245)
         Me.Panel1.TabIndex = 0
         '
         'grdCliente
@@ -59,7 +59,7 @@ Partial Class frmSfaBusquedaCliente
         Me.grdCliente.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdCliente.PreviewInfo.ZoomFactor = 75.0R
         Me.grdCliente.PrintInfo.PageSettings = CType(resources.GetObject("grdCliente.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdCliente.Size = New System.Drawing.Size(551, 245)
+        Me.grdCliente.Size = New System.Drawing.Size(486, 245)
         Me.grdCliente.TabIndex = 0
         Me.grdCliente.PropBag = resources.GetString("grdCliente.PropBag")
         '
@@ -69,33 +69,13 @@ Partial Class frmSfaBusquedaCliente
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel3.Location = New System.Drawing.Point(0, 334)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(575, 22)
+        Me.Panel3.Size = New System.Drawing.Size(511, 22)
         Me.Panel3.TabIndex = 7
-        '
-        'cmdCancelar
-        '
-        Me.cmdCancelar.Location = New System.Drawing.Point(488, 300)
-        Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdCancelar.TabIndex = 2
-        Me.cmdCancelar.Tag = "CANCELAR"
-        Me.cmdCancelar.Text = "&Cancelar"
-        Me.cmdCancelar.UseVisualStyleBackColor = True
-        '
-        'cmdAceptar
-        '
-        Me.cmdAceptar.Location = New System.Drawing.Point(407, 300)
-        Me.cmdAceptar.Name = "cmdAceptar"
-        Me.cmdAceptar.Size = New System.Drawing.Size(75, 28)
-        Me.cmdAceptar.TabIndex = 1
-        Me.cmdAceptar.Tag = "ACEPTAR"
-        Me.cmdAceptar.Text = "&Aceptar"
-        Me.cmdAceptar.UseVisualStyleBackColor = True
         '
         'cmdNuevaPersona
         '
         Me.cmdNuevaPersona.Image = CType(resources.GetObject("cmdNuevaPersona.Image"), System.Drawing.Image)
-        Me.cmdNuevaPersona.Location = New System.Drawing.Point(361, 297)
+        Me.cmdNuevaPersona.Location = New System.Drawing.Point(298, 297)
         Me.cmdNuevaPersona.Name = "cmdNuevaPersona"
         Me.cmdNuevaPersona.Size = New System.Drawing.Size(40, 35)
         Me.cmdNuevaPersona.TabIndex = 0
@@ -109,11 +89,13 @@ Partial Class frmSfaBusquedaCliente
         Me.PanelControl1.LookAndFeel.SkinName = "Caramel"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(575, 356)
+        Me.PanelControl1.Size = New System.Drawing.Size(511, 356)
         Me.PanelControl1.TabIndex = 34
         '
         'PanelControl2
         '
+        Me.PanelControl2.Controls.Add(Me.cmdCancelar)
+        Me.PanelControl2.Controls.Add(Me.cmdAceptar)
         Me.PanelControl2.Controls.Add(Me.cmdPedido)
         Me.PanelControl2.Controls.Add(Me.SimpleButton1)
         Me.PanelControl2.Controls.Add(Me.cmdGuardar)
@@ -122,8 +104,37 @@ Partial Class frmSfaBusquedaCliente
         Me.PanelControl2.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl2.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(571, 352)
+        Me.PanelControl2.Size = New System.Drawing.Size(507, 352)
         Me.PanelControl2.TabIndex = 29
+        '
+        'cmdCancelar
+        '
+        Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdCancelar.Appearance.Options.UseFont = True
+        Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
+        Me.cmdCancelar.Location = New System.Drawing.Point(421, 298)
+        Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Name = "cmdCancelar"
+        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.TabIndex = 119
+        Me.cmdCancelar.Tag = "CANCELAR"
+        Me.cmdCancelar.Text = "&Cancelar"
+        '
+        'cmdAceptar
+        '
+        Me.cmdAceptar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdAceptar.Appearance.Options.UseFont = True
+        Me.cmdAceptar.Image = CType(resources.GetObject("cmdAceptar.Image"), System.Drawing.Image)
+        Me.cmdAceptar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.cmdAceptar.Location = New System.Drawing.Point(339, 298)
+        Me.cmdAceptar.LookAndFeel.SkinName = "Office 2010 Silver"
+        Me.cmdAceptar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAceptar.Name = "cmdAceptar"
+        Me.cmdAceptar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAceptar.TabIndex = 118
+        Me.cmdAceptar.Tag = "ACEPTAR"
+        Me.cmdAceptar.Text = "&Aceptar"
         '
         'cmdPedido
         '
@@ -173,10 +184,8 @@ Partial Class frmSfaBusquedaCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(575, 356)
+        Me.ClientSize = New System.Drawing.Size(511, 356)
         Me.Controls.Add(Me.cmdNuevaPersona)
-        Me.Controls.Add(Me.cmdCancelar)
-        Me.Controls.Add(Me.cmdAceptar)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PanelControl1)
@@ -198,12 +207,12 @@ Partial Class frmSfaBusquedaCliente
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents grdCliente As C1.Win.C1TrueDBGrid.C1TrueDBGrid
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents cmdCancelar As System.Windows.Forms.Button
-    Friend WithEvents cmdAceptar As System.Windows.Forms.Button
     Friend WithEvents cmdNuevaPersona As System.Windows.Forms.Button
     Friend WithEvents PanelControl1 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents cmdPedido As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGuardar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancelar As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdAceptar As DevExpress.XtraEditors.SimpleButton
 End Class

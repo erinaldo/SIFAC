@@ -1201,7 +1201,7 @@ Public Class frmClientesEdit
                     Me.spnOrdenCobro.Enabled = False
                     Me.cmbRuta.Enabled = False
                     Me.cmdBuscar.Enabled = False
-
+                    txtReferencia.Enabled = False
                     Me.txtPrimerNombre.Tag = "BLOQUEADO"
                     Me.txtSegundoNombre.Tag = "BLOQUEADO"
                     Me.txtPrimerApellido.Tag = "BLOQUEADO"

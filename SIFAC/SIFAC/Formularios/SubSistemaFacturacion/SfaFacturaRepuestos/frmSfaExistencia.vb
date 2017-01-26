@@ -50,9 +50,9 @@ Public Class frmSfaExistencia
             Try
                 dtExistencia = New DataTable
                 If Not Me.bolAgregarMoto Then
-                    dtExistencia = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Bodega, Ubicacion, Cantidad, SivRepuestoID, DescripcionCorta", "vwSfaRepuestos", "SivRepuestoID NOT IN ('1','2') AND SivRepuestoID = '" & Me.strCodigo & "'"))
+                    dtExistencia = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Nombre as Bodega, Ubicacion, Cantidad, objProductoID, DescripcionCorta", "vwExistenciaBodegas", " objProductoID = '" & Me.strCodigo & "'"))
                 Else
-                    dtExistencia = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Bodega, Ubicacion, Cantidad, SivRepuestoID, DescripcionCorta", "vwSfaRepuestos", "SivRepuestoID  IN ('1','2') AND SivRepuestoID = '" & Me.strCodigo & "'"))
+                    dtExistencia = DAL.SqlHelper.ExecuteQueryDT(ObtenerConsultaGeneral("Nombre as Bodega, Ubicacion, Cantidad, objProductoID, DescripcionCorta", "vwExistenciaBodegas", " objProductoID = '" & Me.strCodigo & "'"))
                 End If
                 Me.grdExistencia.SetDataBinding(dtExistencia, "", True)
                 Me.grdExistencia.MarqueeStyle = MarqueeEnum.FloatingEditor
@@ -70,7 +70,6 @@ Public Class frmSfaExistencia
 #End Region
 
     Private Sub frmSfaExistencia_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        clsProyecto.CargarTemaDefinido(Me)
         Me.CargarExistencia()
     End Sub
 
