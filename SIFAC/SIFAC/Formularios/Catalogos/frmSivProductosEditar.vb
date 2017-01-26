@@ -563,6 +563,11 @@ Public Class frmSivProductosEditar
                 Return False
                 Exit Function
             End If
+            If txtNombre.Text.Trim.Length = 0 Then
+                ErrorProv.SetError(txtNombre, My.Resources.MsgObligatorio)
+                Return False
+                Exit Function
+            End If
             If objProductosTemp.RetrieveByFilter("Codigo = '" & txtProducto.Text & "'") And TypeGui = 0 Then
                 ErrorProv.SetError(txtProducto, "Codigo debe ser unico")
                 Return False

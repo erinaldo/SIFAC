@@ -110,6 +110,7 @@ Public Class frmSivCategorias
             editCategoria.TypeGui = 0
             If editCategoria.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
+                AplicarSeguridad()
             End If
         Catch ex As Exception
             clsError.CaptarError(ex)

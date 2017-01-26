@@ -371,6 +371,7 @@ Public Class frmSivSoliTransferenciaEdit
     Private Sub BloquerarControles(ByVal bValor As Boolean)
         Me.cmbSitioOrigen.Enabled = Not bValor
         Me.txtObservaciones.Enabled = Not bValor
+        cmbSitioDestino.Enabled = Not bValor
     End Sub
 #End Region
 

@@ -15,7 +15,7 @@ Public Class frmStbRutas
 
     Public DtRutas As DataTable
     Public objSeg As SsgSeguridad
-    Public boolAgregar, boolEditar, boolConsultar, boolDesactivar, boolImprimir As Boolean
+    Public boolAgregar, boolEditar, boolConsultar, boolDesactivar, boolImprimir, boolReubicar As Boolean
 #End Region
 
 #Region "Procedimientos del formulario"
@@ -82,12 +82,14 @@ Public Class frmStbRutas
             boolConsultar = objSeg.TienePermiso("ConsultarRuta")
             boolDesactivar = objSeg.TienePermiso("InactivasRuta")
             boolImprimir = objSeg.TienePermiso("ImprimirRuta")
+            boolReubicar = objSeg.TienePermiso("ReubicarClientes")
 
             cmdAgregar.Enabled = boolAgregar
             cmdEditar.Enabled = boolEditar And DtRutas.Rows.Count > 0
             cmdConsultar.Enabled = boolConsultar And DtRutas.Rows.Count > 0
             cmdDesactivar.Enabled = boolDesactivar And DtRutas.Rows.Count > 0
             cmdImprimir.Enabled = boolImprimir And DtRutas.Rows.Count > 0
+            cmdReubicar.Enabled = boolReubicar And DtRutas.Rows.Count > 0
         Catch ex As Exception
             clsError.CaptarError(ex)
         Finally

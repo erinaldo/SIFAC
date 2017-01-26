@@ -238,6 +238,7 @@ Partial Class frmSivEncargos
         Me.colNumero.Caption = "Número"
         Me.colNumero.FieldName = "Numero"
         Me.colNumero.Name = "colNumero"
+        Me.colNumero.OptionsColumn.AllowEdit = False
         Me.colNumero.OptionsColumn.AllowFocus = False
         Me.colNumero.OptionsColumn.ReadOnly = True
         Me.colNumero.Visible = True
@@ -249,6 +250,7 @@ Partial Class frmSivEncargos
         Me.colFecha.Caption = "Fecha Registro"
         Me.colFecha.FieldName = "Fecha"
         Me.colFecha.Name = "colFecha"
+        Me.colFecha.OptionsColumn.AllowEdit = False
         Me.colFecha.OptionsColumn.AllowFocus = False
         Me.colFecha.OptionsColumn.ReadOnly = True
         Me.colFecha.Visible = True
@@ -260,6 +262,7 @@ Partial Class frmSivEncargos
         Me.colRuta.Caption = "Ruta"
         Me.colRuta.FieldName = "Ruta"
         Me.colRuta.Name = "colRuta"
+        Me.colRuta.OptionsColumn.AllowEdit = False
         Me.colRuta.OptionsColumn.AllowFocus = False
         Me.colRuta.OptionsColumn.ReadOnly = True
         Me.colRuta.Visible = True
@@ -271,6 +274,7 @@ Partial Class frmSivEncargos
         Me.colVendedor.Caption = "Vendedor"
         Me.colVendedor.FieldName = "Vendedor"
         Me.colVendedor.Name = "colVendedor"
+        Me.colVendedor.OptionsColumn.AllowEdit = False
         Me.colVendedor.OptionsColumn.AllowFocus = False
         Me.colVendedor.OptionsColumn.ReadOnly = True
         Me.colVendedor.Visible = True
@@ -282,6 +286,7 @@ Partial Class frmSivEncargos
         Me.colEstado.Caption = "Estado"
         Me.colEstado.FieldName = "Estado"
         Me.colEstado.Name = "colEstado"
+        Me.colEstado.OptionsColumn.AllowEdit = False
         Me.colEstado.OptionsColumn.AllowFocus = False
         Me.colEstado.OptionsColumn.ReadOnly = True
         Me.colEstado.Visible = True
@@ -299,6 +304,8 @@ Partial Class frmSivEncargos
         Me.ColProducto.Caption = "Producto"
         Me.ColProducto.FieldName = "NombreProducto"
         Me.ColProducto.Name = "ColProducto"
+        Me.ColProducto.OptionsColumn.AllowEdit = False
+        Me.ColProducto.OptionsColumn.AllowFocus = False
         Me.ColProducto.Visible = True
         Me.ColProducto.VisibleIndex = 6
         Me.ColProducto.Width = 132
@@ -308,6 +315,7 @@ Partial Class frmSivEncargos
         Me.ColCantidadProducto.Caption = "Cantidad"
         Me.ColCantidadProducto.FieldName = "Cantidad"
         Me.ColCantidadProducto.Name = "ColCantidadProducto"
+        Me.ColCantidadProducto.OptionsColumn.AllowEdit = False
         Me.ColCantidadProducto.Visible = True
         Me.ColCantidadProducto.VisibleIndex = 7
         Me.ColCantidadProducto.Width = 62
@@ -317,6 +325,7 @@ Partial Class frmSivEncargos
         Me.colCostoProducto.Caption = "Costo"
         Me.colCostoProducto.FieldName = "CostoPromedio"
         Me.colCostoProducto.Name = "colCostoProducto"
+        Me.colCostoProducto.OptionsColumn.AllowEdit = False
         Me.colCostoProducto.Visible = True
         Me.colCostoProducto.VisibleIndex = 8
         Me.colCostoProducto.Width = 66
@@ -326,6 +335,7 @@ Partial Class frmSivEncargos
         Me.ColTotalCostoProducto.Caption = "Total costo"
         Me.ColTotalCostoProducto.FieldName = "TotalCosto"
         Me.ColTotalCostoProducto.Name = "ColTotalCostoProducto"
+        Me.ColTotalCostoProducto.OptionsColumn.AllowEdit = False
         Me.ColTotalCostoProducto.Visible = True
         Me.ColTotalCostoProducto.VisibleIndex = 9
         Me.ColTotalCostoProducto.Width = 71
@@ -335,6 +345,7 @@ Partial Class frmSivEncargos
         Me.colCategoriaProducto.Caption = "Categoria"
         Me.colCategoriaProducto.FieldName = "Categoria"
         Me.colCategoriaProducto.Name = "colCategoriaProducto"
+        Me.colCategoriaProducto.OptionsColumn.AllowEdit = False
         Me.colCategoriaProducto.Visible = True
         Me.colCategoriaProducto.VisibleIndex = 5
         Me.colCategoriaProducto.Width = 94

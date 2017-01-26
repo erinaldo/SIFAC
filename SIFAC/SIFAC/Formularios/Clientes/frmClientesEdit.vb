@@ -234,11 +234,12 @@ Public Class frmClientesEdit
         Try
             Select Case Me.ValidarNumeroTelefono
                 Case 0
-                    Me.ValidarPersonasNaturales()
-                    If Not boolPersonaExistente Then
-                        Me.InsertarPersonas()
-                    Else
-                        AsociarPersonaClientes()
+                    If Me.ValidarPersonasNaturales() Then
+                        If Not boolPersonaExistente Then
+                            Me.InsertarPersonas()
+                        Else
+                            AsociarPersonaClientes()
+                        End If
                     End If
                 Case 1
                     MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos un teléfono como Contacto del Cliente", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
@@ -361,14 +362,17 @@ Public Class frmClientesEdit
                 Exit Sub
             End If
 
-            ''Validar orden de cobro no coincida con otro en la misma ruta
-            objComparaClientes.RetrieveByFilter("OrdenCobro=" + Me.spnOrdenCobro.Text + " AND objRutaID=" & cmbRuta.SelectedValue)
-            If objComparaClientes.OrdenCobro IsNot Nothing Then
-                Me.ErrPrv.SetError(Me.spnOrdenCobro, "Ya existe un cliente con el mismo orden de compra.")
-                Me.spnOrdenCobro.Focus()
-                Exit Sub
-            End If
+            If cmbRuta.SelectedValue > 0 Then
+                ''Validar orden de cobro no coincida con otro en la misma ruta
+                objComparaClientes.RetrieveByFilter("OrdenCobro=" + Me.spnOrdenCobro.Text + " AND objRutaID=" & cmbRuta.SelectedValue)
+                If objComparaClientes.OrdenCobro IsNot Nothing Then
+                    Me.ErrPrv.SetError(Me.spnOrdenCobro, "Ya existe un cliente con el mismo orden de compra.")
+                    Me.spnOrdenCobro.Focus()
+                    Exit Sub
+                End If
 
+            End If
+           
 
             'PROCEDER A INGRESAR
             objPersonas.Nombre1 = txtPrimerNombre.Text
@@ -528,7 +532,9 @@ Public Class frmClientesEdit
         Try
             Select Case Me.ValidarNumeroTelefono
                 Case 0
-                    Me.ModificarPersonas()
+                    If Me.ValidarPersonasNaturales() Then
+                        Me.ModificarPersonas()
+                    End If
                 Case 1
                     MsgBox("No se puede ingresar el registro de persona." + vbCrLf + "Debe definir al menos un teléfono como Contacto del Cliente", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, clsProyecto.SiglasSistema)
                     Me.GuardarContactosTemp()
@@ -774,15 +780,23 @@ Public Class frmClientesEdit
 
         'Validar Ciudad
         If Me.cmbCiudad.Text.Trim.Length = 0 Then
-            Me.ErrPrv.SetError(Me.cmbGenero, "Debe especificar la ciudad del cliente")
+            Me.ErrPrv.SetError(Me.cmbciudad, "Debe especificar la ciudad del cliente")
             Me.cmbCiudad.Focus()
+            Return False
+            Exit Function
+        End If
+
+        'Validar Ruta
+        If Me.cmbRuta.Text.Trim.Length = 0 Then
+            Me.ErrPrv.SetError(Me.cmbRuta, "Debe especificar la ruta del cliente")
+            Me.cmbRuta.Focus()
             Return False
             Exit Function
         End If
 
         'Validar Direccion
         If Me.txtDireccion.Text.Trim.Length = 0 Then
-            Me.ErrPrv.SetError(Me.cmbGenero, "Debe especificar la direccion")
+            Me.ErrPrv.SetError(Me.txtDireccion, "Debe especificar la direccion")
             Me.txtDireccion.Focus()
             Return False
             Exit Function
@@ -1143,7 +1157,9 @@ Public Class frmClientesEdit
     Private Sub txtDireccion_TextChanged(sender As Object, e As EventArgs) Handles txtDireccion.TextChanged
         Me.ErrPrv.SetError(txtDireccion, "")
     End Sub
-
+    Private Sub cmbRuta_TextChanged(sender As Object, e As EventArgs) Handles cmbRuta.TextChanged
+        Me.ErrPrv.SetError(cmbRuta, "")
+    End Sub
 #End Region
 
 #Region "Cargar el Formulario"
@@ -1225,4 +1241,5 @@ Public Class frmClientesEdit
 
     
   
+   
 End Class

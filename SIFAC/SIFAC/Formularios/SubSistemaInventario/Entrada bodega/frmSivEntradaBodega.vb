@@ -132,6 +132,8 @@ Public Class frmSivEntradaBodega
                 objfrmSivEntradaBodegaAnular = New frmSivEntradaBodegaAnular
                 objfrmSivEntradaBodegaAnular.TypeGui = 1
                 objfrmSivEntradaBodegaAnular.SivEntradaBodegaID = Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Item(FilaActual)("NumeroEntrada")
+
+                If objfrmSivEntradaBodegaAnular.ShowDialog = Windows.Forms.DialogResult.OK Then
                     CargarEntradas("1=1")
 
                     Dim view As ColumnView = grdEntradaMaster.FocusedView
@@ -146,6 +148,8 @@ Public Class frmSivEntradaBodega
                     End If
                     'Me.grdEntradaBodega.Row = Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Find(frmSivEntradaBodegaAnular.SivEntradaBodegaID)
 
+                End If
+                
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try

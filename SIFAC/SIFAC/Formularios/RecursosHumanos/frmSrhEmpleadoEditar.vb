@@ -260,8 +260,11 @@ Public Class frmSrhEmpleadoEditar
                     objPersonas.FechaNacimiento = Nothing
                 End If
 
-                objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
-                objPersonas.objCiudadID = cmbCiudad.SelectedValue
+                If Not IsNothing(cmbCiudad.SelectedValue) Then
+                    objPersonas.objPaisID = StbCiudad.RetrieveDT("StbCiudadID=" & cmbCiudad.SelectedValue).DefaultView(0)("objPaisID")
+                    objPersonas.objCiudadID = cmbCiudad.SelectedValue
+                End If
+
                 objPersonas.Direccion = txtDireccion.Text
                 objPersonas.UsuarioCreacion = clsProyecto.Conexion.Usuario
                 objPersonas.FechaCreacion = clsProyecto.Conexion.FechaServidor
@@ -876,8 +879,12 @@ Public Class frmSrhEmpleadoEditar
         Me.boolEditado = True
         Me.ErrorProv.SetError(txtCedula, "")
     End Sub
-
+    Private Sub cmbCargo_TextChanged(sender As Object, e As EventArgs) Handles cmbCargo.TextChanged
+        Me.boolEditado = True
+        Me.ErrorProv.SetError(cmbCargo, "")
+    End Sub
 #End Region
    
    
+    
 End Class

@@ -81,6 +81,7 @@ Public Class frmSivEntradaBodegaAnular
                 txtComentarios.Enabled = False
                 txtComentariosAnular.Enabled = False
                 chkAnulado.Enabled = False
+                cmbProveedor.Enabled = False
                 'Me.grdDetalleEntradasBodegas.Enabled = False ' REVISAR ESTO
                 grdDetalleEntradasBodegas.Splits(0).DisplayColumns(1).Locked = True
                 grdDetalleEntradasBodegas.Splits(0).DisplayColumns(2).Locked = True

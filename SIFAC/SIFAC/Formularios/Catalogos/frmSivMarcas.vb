@@ -10,7 +10,7 @@ Public Class frmSivMarcas
     Dim dtMarcas As DataTable
     Dim objseg As SsgSeguridad
     Dim dsMarcas As DataSet
-    Dim boolAgregar, boolEditar, boolAnular, boolImprimir, boolBuscar As Boolean
+    Dim boolAgregar, boolEditar, boolAnular, boolImprimir, boolBuscar, boolConsultar As Boolean
     Dim SqlParametros(5) As SqlClient.SqlParameter
 #End Region
 
@@ -38,9 +38,10 @@ Public Class frmSivMarcas
             boolAgregar = objseg.TienePermiso("AgregarMarca")
             boolEditar = objseg.TienePermiso("EditarMarca")
             boolImprimir = objseg.TienePermiso("ImprimirMarca")
-
+            boolConsultar = objseg.TienePermiso("ConsultarMarca")
             cmdAgregar.Enabled = boolAgregar
             cmdEditar.Enabled = boolEditar And dtMarcas.Rows.Count > 0
+            cmdConsultar.Enabled = boolConsultar And dtMarcas.Rows.Count > 0
             cmdImprimir.Enabled = boolImprimir And dtMarcas.Rows.Count > 0
         Catch ex As Exception
             clsError.CaptarError(ex)
@@ -107,6 +108,7 @@ Public Class frmSivMarcas
             editMarcas.TypeGui = 0
             If editMarcas.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
                 CargarGrid()
+                AplicarSeguridad()
                 'Me.grdMarcasTabla.SelectRow = Me.dtMarcas.DefaultView.Find(editMarcas.intMarcaID)
             End If
         Catch ex As Exception

@@ -105,4 +105,12 @@ Public Class frmSivBuscarEntrada
     Private Sub cmdCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancelar.Click
         Close()
     End Sub
+
+    Private Sub dtpFechaDesde_TextChanged(sender As Object, e As EventArgs) Handles dtpFechaDesde.TextChanged
+        Me.ErrorBuscar.SetError(dtpFechaDesde, "")
+    End Sub
+
+    Private Sub dtpFechaHasta_TextChanged(sender As Object, e As EventArgs) Handles dtpFechaHasta.TextChanged
+        Me.ErrorBuscar.SetError(dtpFechaHasta, "")
+    End Sub
 End Class

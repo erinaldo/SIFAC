@@ -453,7 +453,7 @@ Partial Public Class rptHojaSalida
         '
         'XrLabel42
         '
-        Me.XrLabel42.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.FechaSalida")})
+        Me.XrLabel42.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CustomSqlQuery.FechaSalida", "{0:d/M/yyyy}")})
         Me.XrLabel42.Font = New System.Drawing.Font("Arial", 9.0!)
         Me.XrLabel42.LocationFloat = New DevExpress.Utils.PointFloat(327.5!, 10.0!)
         Me.XrLabel42.Name = "XrLabel42"
