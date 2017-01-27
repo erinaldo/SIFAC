@@ -290,6 +290,7 @@ Public Class frmSccEditReciboCaja
                 Me.txtNumCuenta.Text = objCuentasSeleccion.SccCuentaID
                 Me.IDCuenta = objCuentasSeleccion.SccCuentaID
                 Me.txtCliente.Text = objCuentasSeleccion.Cliente
+                Me.cmbRuta.SelectedValue = objCuentasSeleccion.RutaID
                 Me.CargarInfoCuenta(Me.IDCuenta)
                 Me.CargarFacturas()
 
