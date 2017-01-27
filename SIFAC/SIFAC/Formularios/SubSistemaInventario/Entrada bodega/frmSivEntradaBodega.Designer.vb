@@ -66,7 +66,7 @@ Partial Class frmSivEntradaBodega
         Me.tbCuentas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdAgregar, Me.cmdAnular, Me.cmdConsultar, Me.cmdBuscar, Me.cmdImprimir, Me.ToolStripSeparator2, Me.cmdRefrescar, Me.cmdSalir})
         Me.tbCuentas.Location = New System.Drawing.Point(0, 0)
         Me.tbCuentas.Name = "tbCuentas"
-        Me.tbCuentas.Size = New System.Drawing.Size(1104, 39)
+        Me.tbCuentas.Size = New System.Drawing.Size(1472, 39)
         Me.tbCuentas.TabIndex = 0
         Me.tbCuentas.Text = "ToolStrip1"
         '
@@ -114,7 +114,6 @@ Partial Class frmSivEntradaBodega
         Me.cmdImprimir.Name = "cmdImprimir"
         Me.cmdImprimir.Size = New System.Drawing.Size(36, 36)
         Me.cmdImprimir.ToolTipText = "Imprimir Entrada Bodega"
-        Me.cmdImprimir.Visible = False
         '
         'ToolStripSeparator2
         '
@@ -144,24 +143,27 @@ Partial Class frmSivEntradaBodega
         Me.C1Sizer1.Controls.Add(Me.grdEntradaMaster)
         Me.C1Sizer1.Controls.Add(Me.grdEntradaDetalle)
         Me.C1Sizer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.C1Sizer1.GridDefinition = "72.8155339805825:False:False;24.2718446601942:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.2753623188406:False" & _
+        Me.C1Sizer1.GridDefinition = "73.2558139534884:False:False;24.4186046511628:False:False;" & Global.Microsoft.VisualBasic.ChrW(9) & "99.4565217391304:False" & _
     ":False;"
         Me.C1Sizer1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.C1Sizer1.Location = New System.Drawing.Point(0, 39)
+        Me.C1Sizer1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.C1Sizer1.Name = "C1Sizer1"
-        Me.C1Sizer1.Size = New System.Drawing.Size(1104, 412)
+        Me.C1Sizer1.Size = New System.Drawing.Size(1472, 516)
         Me.C1Sizer1.TabIndex = 1
         Me.C1Sizer1.TabStop = False
         '
         'grdEntradaMaster
         '
+        Me.grdEntradaMaster.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdEntradaMaster.Location = New System.Drawing.Point(4, 4)
         Me.grdEntradaMaster.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdEntradaMaster.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdEntradaMaster.MainView = Me.grdEntradaMasterTabla
+        Me.grdEntradaMaster.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdEntradaMaster.Name = "grdEntradaMaster"
         Me.grdEntradaMaster.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemDateEdit1, Me.RepositoryItemCheckEdit1})
-        Me.grdEntradaMaster.Size = New System.Drawing.Size(1096, 300)
+        Me.grdEntradaMaster.Size = New System.Drawing.Size(1464, 508)
         Me.grdEntradaMaster.TabIndex = 6
         Me.grdEntradaMaster.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdEntradaMasterTabla})
         '
@@ -273,12 +275,14 @@ Partial Class frmSivEntradaBodega
         '
         'grdEntradaDetalle
         '
-        Me.grdEntradaDetalle.Location = New System.Drawing.Point(4, 308)
+        Me.grdEntradaDetalle.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdEntradaDetalle.Location = New System.Drawing.Point(4, 386)
         Me.grdEntradaDetalle.LookAndFeel.SkinName = "Office 2010 Blue"
         Me.grdEntradaDetalle.LookAndFeel.UseDefaultLookAndFeel = False
         Me.grdEntradaDetalle.MainView = Me.grdEntradaDetalleTable
+        Me.grdEntradaDetalle.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdEntradaDetalle.Name = "grdEntradaDetalle"
-        Me.grdEntradaDetalle.Size = New System.Drawing.Size(1096, 100)
+        Me.grdEntradaDetalle.Size = New System.Drawing.Size(1464, 126)
         Me.grdEntradaDetalle.TabIndex = 5
         Me.grdEntradaDetalle.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdEntradaDetalleTable})
         '
@@ -343,12 +347,13 @@ Partial Class frmSivEntradaBodega
         '
         'frmSivEntradaBodega
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1104, 451)
+        Me.ClientSize = New System.Drawing.Size(1472, 555)
         Me.Controls.Add(Me.C1Sizer1)
         Me.Controls.Add(Me.tbCuentas)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmSivEntradaBodega"
         Me.Text = "Entradas a Bodega Central"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

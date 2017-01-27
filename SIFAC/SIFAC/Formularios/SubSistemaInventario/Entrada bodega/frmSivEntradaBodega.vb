@@ -10,6 +10,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraReports.UI
 
 Public Class frmSivEntradaBodega
 
@@ -149,7 +150,7 @@ Public Class frmSivEntradaBodega
                     'Me.grdEntradaBodega.Row = Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Find(frmSivEntradaBodegaAnular.SivEntradaBodegaID)
 
                 End If
-                
+
             Catch ex As Exception
                 clsError.CaptarError(ex)
             End Try
@@ -230,33 +231,30 @@ Public Class frmSivEntradaBodega
         If Me.grdEntradaMasterTabla.RowCount = 0 Then
             Exit Sub
         End If
-        Dim strFiltro, strSQL, strCampos As String
-        Dim dtDatos As DataTable
-        Dim Visor As New frmVisorRS
+
+        Dim dsReporte As DataSet
+        Dim sCampos, sSQL As String
         Try
+            Dim objjReporte As New rptHojaEntrada()
             Dim selectedRow As Integer() = grdEntradaMasterTabla.GetSelectedRows()
-            Dim FilaActual As Integer = Me.grdEntradaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
-            strFiltro = "NumeroEntrada=" & Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Item(FilaActual)("NumeroEntrada").ToString
+            Dim FilaActual As Integer = grdEntradaMasterTabla.GetDataSourceRowIndex(selectedRow(0))
 
-            strCampos = "NumeroRelleno, NumeroEntrada, objStbBodegaID, Bodega, NumeroFactura, objTipoEntradaID, TipoEntrada, FechaEntrada, FechaFactura, Anulada, CodigoRepuesto, Descripcion, CantidadEntrante, CostoUnitario, SubTotal, Comentarios"
-            strSQL = clsConsultas.ObtenerConsultaGeneral(strCampos, "dbo.vwrptSivEntradaBodega", strFiltro + " ORDER BY NumeroEntrada")
-            dtDatos = SqlHelper.ExecuteQueryDT(strSQL)
+            sCampos = "NumeroRelleno, NumeroEntrada, objStbBodegaID, Bodega, NumeroFactura, objTipoEntradaID, TipoEntrada, FechaEntrada, FechaFactura, Anulada, CodigoRepuesto, Descripcion, CantidadEntrante, CostoUnitario, SubTotal, Comentarios, Empresa, DireccionEmpresa, TelefonosEmpresa, EmailEmpresa"
+            sSQL = clsConsultas.ObtenerConsultaGeneral(sCampos, "vwrptSivEntradaBodega", "NumeroEntrada = " & Me.dsEntradaBodega.Tables("SivEntradabodega").DefaultView.Item(FilaActual)("NumeroEntrada"))
+            dsReporte = SqlHelper.ExecuteQueryDS(sSQL)
 
-            With Visor.VisorReportes
-                .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-                .LocalReport.ReportEmbeddedResource = "SIFAC.rptHojaEntrada.rdlc"
-                .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("DtRptEntrada_vwrptSfaEntradaBodega", dtDatos))
-                Me.CargarEncabezadoReporte(.LocalReport)
-                .RefreshReport()
-            End With
-            Visor.ShowDialog()
+            If dsReporte.Tables(0).Rows.Count = 0 Then
+                MsgBox("No hay datos para generar el reporte", MsgBoxStyle.Information, clsProyecto.SiglasSistema)
+                Exit Sub
+            End If
+
+            objjReporte.DataSource = dsReporte
+            objjReporte.DataMember = dsReporte.Tables(0).TableName
+            Dim pt As New ReportPrintTool(objjReporte)
+            pt.ShowPreview()
         Catch ex As Exception
             clsError.CaptarError(ex)
-        Finally
-            dtDatos = Nothing
-            Visor = Nothing
         End Try
-
     End Sub
 
 #End Region
@@ -328,7 +326,7 @@ Public Class frmSivEntradaBodega
         Catch ex As Exception
             clsError.CaptarError(ex)
         End Try
-        
+
     End Sub
     Private Sub cmdConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdConsultar.Click
         Call Consultar()
