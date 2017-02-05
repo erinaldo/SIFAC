@@ -20,8 +20,17 @@ Public Class frmSccSeleccionCuentas
     Dim m_MontoPrima
     Dim m_TasaCambio As Decimal
     Dim m_LimiteCredito As Decimal
+    Dim m_rutaID As Integer
     
 #Region "Propiedades"
+    Property RutaID() As Integer
+        Get
+            RutaID = m_rutaID
+        End Get
+        Set(ByVal value As Integer)
+            m_rutaID = value
+        End Set
+    End Property
 
     Property SccCuentaID() As String
         Get
@@ -49,6 +58,8 @@ Public Class frmSccSeleccionCuentas
             m_Cliente = value
         End Set
     End Property
+
+
 
     Property MontoPrima() As Decimal
         Get
@@ -78,7 +89,7 @@ Public Class frmSccSeleccionCuentas
     Private Sub CargarDatos()
         Dim strConsulta As String = ""
         Try
-            strConsulta = clsConsultas.ObtenerConsultaGeneral("Cast(0 as Bit) as Seleccion,SccCuentaID,Cedula,NumeroCuenta,Cliente,StbPersonaID", "vwSccCuentasSeleccion", "Codigo<> 'CANCELADO' AND Codigo <> 'DEVOLUCION'")
+            strConsulta = clsConsultas.ObtenerConsultaGeneral("Cast(0 as Bit) as Seleccion,SccCuentaID,Cedula,NumeroCuenta,Cliente,StbPersonaID,objRutaID", "vwSccCuentasSeleccion", "Codigo<> 'CANCELADO' AND Codigo <> 'DEVOLUCION'")
             Me.DtDatosCuentas = SqlHelper.ExecuteQueryDT(strConsulta)
             Me.grdSeleccion.SetDataBinding(Me.DtDatosCuentas, "", True)
             'Me.grdSeleccion.Splits(0).DisplayColumns("CodigoTienda").Visible = False
@@ -111,6 +122,7 @@ Public Class frmSccSeleccionCuentas
                 Me.SccCuentaID = DtDatos(0)("SccCuentaID")
                 Me.NumeroCuenta = DtDatos(0)("NumeroCuenta")
                 Me.Cliente = DtDatos(0)("Cliente")
+                Me.RutaID = DtDatos(0)("objRutaID")
                 Me.DialogResult = Windows.Forms.DialogResult.OK
             End If
 
