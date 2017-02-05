@@ -285,34 +285,91 @@ Public Class frmSccEditDevolucion
         Dim objSccCuentaCobrar As New SccCuentaPorCobrar
         Dim objSccCuentaDetalle As New SccCuentaPorCobrarDetalle
 
-        Dim DtDatosFactura As New DataTable
+        Dim DtDatosCXCDetalle As New DataTable
+        Dim DtDatosDetalleFactura As New DataTable
         Dim IDEstadoN As Integer
         Dim T As New TransactionManager
-
+        Dim objSivEntradaBodegaDetalle As New SivEntradaBodegaDetalle
+        Dim objSivBodegaProductos As New SivBodegaProductos
+        Dim intSivEntradaBodegaID As Integer
+        Dim objSivEntradaBodega As SivEntradaBodega
         Try
             Try
                 T.BeginTran()
+
+                '1. Actualizar la devolucion al estado Autorizada
                 objDevolucion.Retrieve(Me.IDDevolucion, T)
                 objDevolucion.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADODEVOLUCION", "AUTORIZADA")
                 objDevolucion.UsuarioModificacion = clsProyecto.Conexion.Usuario
                 objDevolucion.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objDevolucion.Update(T)
 
-                DtDatosFactura = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID='" & objDevolucion.objSccCuentaID & "' AND objSfaFacturaID IS NOT NULL", , , T)
-                IDEstadoN = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "03")
-                For Each drw As DataRow In DtDatosFactura.Rows
-                    drw("UsuarioModificacion") = clsProyecto.Conexion.Usuario
-                    drw("FechaModificacion") = clsProyecto.Conexion.FechaServidor
-                    drw("objEstadoID") = IDEstadoN
-                Next
-                DtDatosFactura.TableName = "SccCuentaPorCobrarDetalle"
-                SccCuentaPorCobrarDetalle.BatchUpdate(DtDatosFactura.DataSet, T)
-
+                '2. Actualizar el estado de la cabecera de cuentas por cobrar
                 objSccCuentaCobrar.Retrieve(objDevolucion.objSccCuentaID, T)
                 objSccCuentaCobrar.UsuarioModificacion = clsProyecto.Conexion.Usuario
                 objSccCuentaCobrar.FechaModificacion = clsProyecto.Conexion.FechaServidor
                 objSccCuentaCobrar.objEstadoID = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOEXPEDIENTE", "DEVOLUCION")
                 objSccCuentaCobrar.Update(T)
+
+
+                '3.Crear Entrada en conceppto de Devolución
+                objSivEntradaBodega = New SivEntradaBodega
+                objSivEntradaBodega.objStbBodegaID = ClsCatalogos.GetStbTiendaID("C")
+                objSivEntradaBodega.objTipoEntradaID = ClsCatalogos.ObtenerIDSTbCatalogo("TIPOENTRADA", "04")
+                objSivEntradaBodega.FechaEntrada = Now.Date
+                objSivEntradaBodega.CostoTotal = objDevolucion.TotalDevolucion
+                objSivEntradaBodega.NumeroFactura = Nothing
+                objSivEntradaBodega.FechaFactura = Nothing
+                objSivEntradaBodega.Comentarios = "Devolución desde la Sincronización devoluciones"
+                objSivEntradaBodega.Anulada = 0
+                objSivEntradaBodega.ComentarioAnular = "---"
+                objSivEntradaBodega.objProvededorID = Nothing
+                objSivEntradaBodega.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                objSivEntradaBodega.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                objSivEntradaBodega.Insert(T)
+                intSivEntradaBodegaID = objSivEntradaBodega.SivEntradaBodegaID
+
+
+                '4. Actualizar estado del detalle de las cuentas por cobrar
+                DtDatosCXCDetalle = SccCuentaPorCobrarDetalle.RetrieveDT("objSccCuentaID='" & objDevolucion.objSccCuentaID & "' AND objSfaFacturaID IS NOT NULL", , , T)
+                IDEstadoN = ClsCatalogos.ObtenerIDSTbCatalogo("ESTADOCUENTA", "03")
+                For Each drw As DataRow In DtDatosCXCDetalle.Rows
+                    drw("UsuarioModificacion") = clsProyecto.Conexion.Usuario
+                    drw("FechaModificacion") = clsProyecto.Conexion.FechaServidor
+                    drw("objEstadoID") = IDEstadoN
+
+
+                    'Buscar detalle de la factura con el id de la factura del detalle de la cuenta por cobrar
+                    DtDatosDetalleFactura = SfaFacturasDetalle.RetrieveDT("objSfaFacturaID='" & drw("objSfaFacturaID") & "'", , , T)
+                    For Each drwDetFact As DataRow In DtDatosDetalleFactura.Rows
+
+                        '4.2. Detalle de Entrada
+
+                        objSivEntradaBodegaDetalle.objEntradaBodegaID = intSivEntradaBodegaID
+                        objSivEntradaBodegaDetalle.objProductoID = CInt(drwDetFact("objSivProductoID"))
+
+                        If objSivBodegaProductos.RetrieveByFilter("objProductoID='" & CInt(drwDetFact("objSivProductoID")) & "' AND objBodegaID=" & objSivEntradaBodega.objStbBodegaID) Then
+                            objSivEntradaBodegaDetalle.ExistenciaAnterior = objSivBodegaProductos.Cantidad
+                        End If
+                        objSivEntradaBodegaDetalle.Cantidad = CInt(drwDetFact("Cantidad"))
+                        objSivEntradaBodegaDetalle.Costo = CInt(drwDetFact("Cantidad")) * CDec(drwDetFact("Precio"))
+                        objSivEntradaBodegaDetalle.UsuarioCreacion = clsProyecto.Conexion.Usuario
+                        objSivEntradaBodegaDetalle.FechaCreacion = clsProyecto.Conexion.FechaServidor
+                        objSivEntradaBodegaDetalle.Insert(T)
+
+                        '4.3. Sumar el producto devuelto a la bodega
+                        If objSivBodegaProductos.RetrieveByFilter("objProductoID='" & CInt(drwDetFact("objSivProductoID")) & "' AND objBodegaID=" & objSivEntradaBodega.objStbBodegaID) Then
+                            objSivBodegaProductos.Cantidad = objSivBodegaProductos.Cantidad + CInt(drwDetFact("Cantidad"))
+                            objSivBodegaProductos.UsuarioModificacion = clsProyecto.Conexion.Usuario
+                            objSivBodegaProductos.FechaModificacion = clsProyecto.Conexion.FechaServidor
+                            objSivBodegaProductos.Update(T)
+                        End If
+
+                    Next
+
+                Next
+                DtDatosCXCDetalle.TableName = "SccCuentaPorCobrarDetalle"
+                SccCuentaPorCobrarDetalle.BatchUpdate(DtDatosCXCDetalle.DataSet, T)
 
                 T.CommitTran()
                 MsgBox("Autorización de Devolución Exitosa", MsgBoxStyle.Information, clsProyecto.SiglasSistema)

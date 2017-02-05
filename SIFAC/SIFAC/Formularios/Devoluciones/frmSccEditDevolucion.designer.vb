@@ -73,9 +73,11 @@ Partial Class frmSccEditDevolucion
         Me.GroupBox1.Controls.Add(Me.txtNumero)
         Me.GroupBox1.Controls.Add(Me.lblNumeroPedido)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(10, 22)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 27)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(665, 96)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(887, 118)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Devolución"
@@ -83,9 +85,10 @@ Partial Class frmSccEditDevolucion
         'txtEstado
         '
         Me.txtEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEstado.Location = New System.Drawing.Point(62, 43)
+        Me.txtEstado.Location = New System.Drawing.Point(83, 53)
+        Me.txtEstado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtEstado.Name = "txtEstado"
-        Me.txtEstado.Size = New System.Drawing.Size(200, 20)
+        Me.txtEstado.Size = New System.Drawing.Size(265, 23)
         Me.txtEstado.TabIndex = 1
         Me.txtEstado.Tag = "BLOQUEADO"
         '
@@ -93,9 +96,10 @@ Partial Class frmSccEditDevolucion
         '
         Me.Label1.AutoSize = True
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(11, 47)
+        Me.Label1.Location = New System.Drawing.Point(15, 58)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(50, 13)
+        Me.Label1.Size = New System.Drawing.Size(63, 17)
         Me.Label1.TabIndex = 45
         Me.Label1.Tag = ""
         Me.Label1.Text = "Estado:"
@@ -108,9 +112,11 @@ Partial Class frmSccEditDevolucion
         Me.GrpExpediente.Controls.Add(Me.Label11)
         Me.GrpExpediente.Controls.Add(Me.txtNumCuenta)
         Me.GrpExpediente.Controls.Add(Me.Label12)
-        Me.GrpExpediente.Location = New System.Drawing.Point(287, 12)
+        Me.GrpExpediente.Location = New System.Drawing.Point(383, 15)
+        Me.GrpExpediente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GrpExpediente.Name = "GrpExpediente"
-        Me.GrpExpediente.Size = New System.Drawing.Size(372, 74)
+        Me.GrpExpediente.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GrpExpediente.Size = New System.Drawing.Size(496, 91)
         Me.GrpExpediente.TabIndex = 43
         Me.GrpExpediente.TabStop = False
         Me.GrpExpediente.Text = "Datos Expediente"
@@ -118,18 +124,20 @@ Partial Class frmSccEditDevolucion
         'cmdConsultar
         '
         Me.cmdConsultar.Image = CType(resources.GetObject("cmdConsultar.Image"), System.Drawing.Image)
-        Me.cmdConsultar.Location = New System.Drawing.Point(342, 14)
+        Me.cmdConsultar.Location = New System.Drawing.Point(456, 17)
+        Me.cmdConsultar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdConsultar.Name = "cmdConsultar"
-        Me.cmdConsultar.Size = New System.Drawing.Size(24, 23)
+        Me.cmdConsultar.Size = New System.Drawing.Size(32, 28)
         Me.cmdConsultar.TabIndex = 18
         Me.cmdConsultar.Text = "..."
         Me.cmdConsultar.UseVisualStyleBackColor = True
         '
         'cmdExpediente
         '
-        Me.cmdExpediente.Location = New System.Drawing.Point(316, 14)
+        Me.cmdExpediente.Location = New System.Drawing.Point(421, 17)
+        Me.cmdExpediente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdExpediente.Name = "cmdExpediente"
-        Me.cmdExpediente.Size = New System.Drawing.Size(24, 23)
+        Me.cmdExpediente.Size = New System.Drawing.Size(32, 28)
         Me.cmdExpediente.TabIndex = 1
         Me.cmdExpediente.Text = "..."
         Me.cmdExpediente.UseVisualStyleBackColor = True
@@ -137,9 +145,10 @@ Partial Class frmSccEditDevolucion
         'txtCliente
         '
         Me.txtCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCliente.Location = New System.Drawing.Point(86, 44)
+        Me.txtCliente.Location = New System.Drawing.Point(115, 54)
+        Me.txtCliente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtCliente.Name = "txtCliente"
-        Me.txtCliente.Size = New System.Drawing.Size(254, 20)
+        Me.txtCliente.Size = New System.Drawing.Size(337, 23)
         Me.txtCliente.TabIndex = 2
         Me.txtCliente.Tag = "BLOQUEADO"
         '
@@ -147,9 +156,10 @@ Partial Class frmSccEditDevolucion
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(16, 47)
+        Me.Label11.Location = New System.Drawing.Point(21, 58)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(50, 13)
+        Me.Label11.Size = New System.Drawing.Size(63, 17)
         Me.Label11.TabIndex = 4
         Me.Label11.Tag = "OBLIGATORIO"
         Me.Label11.Text = "Cliente:"
@@ -157,9 +167,10 @@ Partial Class frmSccEditDevolucion
         'txtNumCuenta
         '
         Me.txtNumCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNumCuenta.Location = New System.Drawing.Point(168, 17)
+        Me.txtNumCuenta.Location = New System.Drawing.Point(224, 21)
+        Me.txtNumCuenta.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtNumCuenta.Name = "txtNumCuenta"
-        Me.txtNumCuenta.Size = New System.Drawing.Size(142, 20)
+        Me.txtNumCuenta.Size = New System.Drawing.Size(188, 23)
         Me.txtNumCuenta.TabIndex = 0
         Me.txtNumCuenta.Tag = "BLOQUEADO"
         '
@@ -167,9 +178,10 @@ Partial Class frmSccEditDevolucion
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.Color.Black
-        Me.Label12.Location = New System.Drawing.Point(16, 20)
+        Me.Label12.Location = New System.Drawing.Point(21, 25)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(56, 13)
+        Me.Label12.Size = New System.Drawing.Size(69, 17)
         Me.Label12.TabIndex = 1
         Me.Label12.Tag = "OBLIGATORIO"
         Me.Label12.Text = "No. Exp:"
@@ -188,9 +200,10 @@ Partial Class frmSccEditDevolucion
         Me.dtpFecha.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.System
         Me.dtpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFecha.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate
-        Me.dtpFecha.Location = New System.Drawing.Point(62, 68)
+        Me.dtpFecha.Location = New System.Drawing.Point(83, 84)
+        Me.dtpFecha.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtpFecha.Name = "dtpFecha"
-        Me.dtpFecha.Size = New System.Drawing.Size(200, 20)
+        Me.dtpFecha.Size = New System.Drawing.Size(267, 23)
         Me.dtpFecha.TabIndex = 2
         Me.dtpFecha.Tag = Nothing
         Me.dtpFecha.VisibleButtons = C1.Win.C1Input.DropDownControlButtonFlags.DropDown
@@ -199,9 +212,10 @@ Partial Class frmSccEditDevolucion
         '
         Me.lblFechaPedido.AutoSize = True
         Me.lblFechaPedido.ForeColor = System.Drawing.Color.Black
-        Me.lblFechaPedido.Location = New System.Drawing.Point(12, 71)
+        Me.lblFechaPedido.Location = New System.Drawing.Point(16, 87)
+        Me.lblFechaPedido.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFechaPedido.Name = "lblFechaPedido"
-        Me.lblFechaPedido.Size = New System.Drawing.Size(46, 13)
+        Me.lblFechaPedido.Size = New System.Drawing.Size(57, 17)
         Me.lblFechaPedido.TabIndex = 42
         Me.lblFechaPedido.Tag = "OBLIGATORIO"
         Me.lblFechaPedido.Text = "Fecha:"
@@ -210,9 +224,10 @@ Partial Class frmSccEditDevolucion
         '
         Me.txtNumero.Enabled = False
         Me.txtNumero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNumero.Location = New System.Drawing.Point(62, 19)
+        Me.txtNumero.Location = New System.Drawing.Point(83, 23)
+        Me.txtNumero.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtNumero.Name = "txtNumero"
-        Me.txtNumero.Size = New System.Drawing.Size(200, 20)
+        Me.txtNumero.Size = New System.Drawing.Size(265, 23)
         Me.txtNumero.TabIndex = 0
         Me.txtNumero.Tag = "BLOQUEADO"
         '
@@ -220,9 +235,10 @@ Partial Class frmSccEditDevolucion
         '
         Me.lblNumeroPedido.AutoSize = True
         Me.lblNumeroPedido.ForeColor = System.Drawing.Color.Black
-        Me.lblNumeroPedido.Location = New System.Drawing.Point(12, 23)
+        Me.lblNumeroPedido.Location = New System.Drawing.Point(16, 28)
+        Me.lblNumeroPedido.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNumeroPedido.Name = "lblNumeroPedido"
-        Me.lblNumeroPedido.Size = New System.Drawing.Size(54, 13)
+        Me.lblNumeroPedido.Size = New System.Drawing.Size(69, 17)
         Me.lblNumeroPedido.TabIndex = 19
         Me.lblNumeroPedido.Tag = ""
         Me.lblNumeroPedido.Text = "Número:"
@@ -231,9 +247,11 @@ Partial Class frmSccEditDevolucion
         '
         Me.GroupBox2.Controls.Add(Me.numTotal)
         Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Location = New System.Drawing.Point(446, 289)
+        Me.GroupBox2.Location = New System.Drawing.Point(595, 356)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(229, 50)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(305, 62)
         Me.GroupBox2.TabIndex = 7
         Me.GroupBox2.TabStop = False
         '
@@ -247,9 +265,10 @@ Partial Class frmSccEditDevolucion
         Me.numTotal.Enabled = False
         Me.numTotal.ErrorInfo.ShowErrorMessage = False
         Me.numTotal.FormatType = C1.Win.C1Input.FormatTypeEnum.StandardNumber
-        Me.numTotal.Location = New System.Drawing.Point(65, 19)
+        Me.numTotal.Location = New System.Drawing.Point(87, 23)
+        Me.numTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.numTotal.Name = "numTotal"
-        Me.numTotal.Size = New System.Drawing.Size(147, 20)
+        Me.numTotal.Size = New System.Drawing.Size(196, 22)
         Me.numTotal.TabIndex = 0
         Me.numTotal.Tag = "BLOQUEADO"
         Me.numTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -260,9 +279,10 @@ Partial Class frmSccEditDevolucion
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 22)
+        Me.Label2.Location = New System.Drawing.Point(13, 27)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(40, 13)
+        Me.Label2.Size = New System.Drawing.Size(50, 17)
         Me.Label2.TabIndex = 12
         Me.Label2.Tag = ""
         Me.Label2.Text = "Total:"
@@ -275,27 +295,30 @@ Partial Class frmSccEditDevolucion
         '
         Me.Panel1.BackgroundImage = Global.SIFAC.My.Resources.Resources.BackgroundImage
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 385)
+        Me.Panel1.Location = New System.Drawing.Point(0, 474)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(688, 22)
+        Me.Panel1.Size = New System.Drawing.Size(917, 27)
         Me.Panel1.TabIndex = 11
         '
         'tbFacturas
         '
         Me.tbFacturas.Controls.Add(Me.PGFacturas)
-        Me.tbFacturas.Location = New System.Drawing.Point(10, 136)
+        Me.tbFacturas.Location = New System.Drawing.Point(13, 167)
+        Me.tbFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.tbFacturas.Name = "tbFacturas"
         Me.tbFacturas.SelectedIndex = 0
-        Me.tbFacturas.Size = New System.Drawing.Size(665, 147)
+        Me.tbFacturas.Size = New System.Drawing.Size(887, 181)
         Me.tbFacturas.TabIndex = 0
         '
         'PGFacturas
         '
         Me.PGFacturas.Controls.Add(Me.grdFacturas)
-        Me.PGFacturas.Location = New System.Drawing.Point(4, 22)
+        Me.PGFacturas.Location = New System.Drawing.Point(4, 25)
+        Me.PGFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PGFacturas.Name = "PGFacturas"
-        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(3)
-        Me.PGFacturas.Size = New System.Drawing.Size(657, 121)
+        Me.PGFacturas.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PGFacturas.Size = New System.Drawing.Size(879, 152)
         Me.PGFacturas.TabIndex = 0
         Me.PGFacturas.Text = "Facturas Asociadas"
         Me.PGFacturas.UseVisualStyleBackColor = True
@@ -306,21 +329,23 @@ Partial Class frmSccEditDevolucion
         Me.grdFacturas.ExtendRightColumn = True
         Me.grdFacturas.GroupByCaption = "Drag a column header here to group by that column"
         Me.grdFacturas.Images.Add(CType(resources.GetObject("grdFacturas.Images"), System.Drawing.Image))
-        Me.grdFacturas.Location = New System.Drawing.Point(3, 3)
+        Me.grdFacturas.Location = New System.Drawing.Point(4, 4)
+        Me.grdFacturas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grdFacturas.Name = "grdFacturas"
         Me.grdFacturas.PreviewInfo.Location = New System.Drawing.Point(0, 0)
         Me.grdFacturas.PreviewInfo.Size = New System.Drawing.Size(0, 0)
         Me.grdFacturas.PreviewInfo.ZoomFactor = 75.0R
         Me.grdFacturas.PrintInfo.PageSettings = CType(resources.GetObject("grdFacturas.PrintInfo.PageSettings"), System.Drawing.Printing.PageSettings)
-        Me.grdFacturas.Size = New System.Drawing.Size(651, 115)
+        Me.grdFacturas.Size = New System.Drawing.Size(871, 144)
         Me.grdFacturas.TabIndex = 0
         Me.grdFacturas.PropBag = resources.GetString("grdFacturas.PropBag")
         '
         'lblInfo
         '
-        Me.lblInfo.Location = New System.Drawing.Point(14, 358)
+        Me.lblInfo.Location = New System.Drawing.Point(19, 441)
+        Me.lblInfo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblInfo.Name = "lblInfo"
-        Me.lblInfo.Size = New System.Drawing.Size(108, 13)
+        Me.lblInfo.Size = New System.Drawing.Size(144, 16)
         Me.lblInfo.TabIndex = 71
         Me.lblInfo.Tag = ""
         '
@@ -342,8 +367,9 @@ Partial Class frmSccEditDevolucion
         Me.PanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.PanelControl1.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.PanelControl1.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.PanelControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(688, 407)
+        Me.PanelControl1.Size = New System.Drawing.Size(917, 501)
         Me.PanelControl1.TabIndex = 98
         '
         'cmdAutorizar
@@ -352,11 +378,12 @@ Partial Class frmSccEditDevolucion
         Me.cmdAutorizar.Appearance.Options.UseFont = True
         Me.cmdAutorizar.Image = CType(resources.GetObject("cmdAutorizar.Image"), System.Drawing.Image)
         Me.cmdAutorizar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdAutorizar.Location = New System.Drawing.Point(511, 346)
+        Me.cmdAutorizar.Location = New System.Drawing.Point(681, 426)
         Me.cmdAutorizar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdAutorizar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdAutorizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdAutorizar.Name = "cmdAutorizar"
-        Me.cmdAutorizar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdAutorizar.Size = New System.Drawing.Size(107, 34)
         Me.cmdAutorizar.TabIndex = 2
         Me.cmdAutorizar.Tag = "AUTORIZAR"
         Me.cmdAutorizar.Text = "A&utorizar"
@@ -366,11 +393,12 @@ Partial Class frmSccEditDevolucion
         Me.cmdCancelar.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCancelar.Appearance.Options.UseFont = True
         Me.cmdCancelar.Image = CType(resources.GetObject("cmdCancelar.Image"), System.Drawing.Image)
-        Me.cmdCancelar.Location = New System.Drawing.Point(597, 346)
+        Me.cmdCancelar.Location = New System.Drawing.Point(796, 426)
         Me.cmdCancelar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdCancelar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdCancelar.Name = "cmdCancelar"
-        Me.cmdCancelar.Size = New System.Drawing.Size(75, 28)
+        Me.cmdCancelar.Size = New System.Drawing.Size(100, 34)
         Me.cmdCancelar.TabIndex = 3
         Me.cmdCancelar.Tag = "CANCELAR"
         Me.cmdCancelar.Text = "&Cancelar"
@@ -381,25 +409,27 @@ Partial Class frmSccEditDevolucion
         Me.cmdGuardar.Appearance.Options.UseFont = True
         Me.cmdGuardar.Image = CType(resources.GetObject("cmdGuardar.Image"), System.Drawing.Image)
         Me.cmdGuardar.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.cmdGuardar.Location = New System.Drawing.Point(425, 346)
+        Me.cmdGuardar.Location = New System.Drawing.Point(567, 426)
         Me.cmdGuardar.LookAndFeel.SkinName = "Office 2010 Silver"
         Me.cmdGuardar.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.cmdGuardar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdGuardar.Name = "cmdGuardar"
-        Me.cmdGuardar.Size = New System.Drawing.Size(80, 28)
+        Me.cmdGuardar.Size = New System.Drawing.Size(107, 34)
         Me.cmdGuardar.TabIndex = 1
         Me.cmdGuardar.Tag = "GUARDAR"
         Me.cmdGuardar.Text = "&Guardar"
         '
         'frmSccEditDevolucion
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(688, 407)
+        Me.ClientSize = New System.Drawing.Size(917, 501)
         Me.Controls.Add(Me.lblInfo)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.PanelControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSccEditDevolucion"
